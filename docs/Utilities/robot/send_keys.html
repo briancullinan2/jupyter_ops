@@ -1,0 +1,95 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The <code>keySend</code> function is designed to simulate typing a string on the keyboard with optional special key presses, using the <code>robotjs</code> library to interact with the mouse and keyboard. The function takes a string to be typed and an array of special keys to be pressed, and uses a loop to simulate typing the string with realistic timing and modifier key presses.</p>
+
+
+<pre><code>// Type "Hello World" then press enter.
+var robot = require("robotjs");
+
+const TAP_SPECIAL = [
+  'enter',
+  'escape',
+  'backspace',
+  'delete',
+]
+
+async function keySend(text, special) {
+
+  // Type "Hello World".
+  //robot.typeString(text)
+
+  let modifiers = special.filter(s => !TAP_SPECIAL.includes(s))
+
+  for(let i = 0; i < text.length; i++) {
+    let localModifiers = [].concat(modifiers)
+    if(text[i].toUpperCase() == text[i] && !localModifiers.includes('shift')) {
+      localModifiers.push('shift')
+    }
+    robot.keyToggle(text[i].toLowerCase(), 'down', modifiers)
+    await new Promise(resolve => setTimeout(resolve, 150))
+    robot.keyToggle(text[i].toLowerCase(), 'up', modifiers)
+  }
+
+  let tap = special.filter(s => TAP_SPECIAL.includes(s))
+  if(tap.length > 0) {
+    // Press enter.
+    robot.keyTap(tap[0], modifiers)
+  }
+
+}
+
+module.exports = keySend</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing the robotjs library</h4>
+<pre><code class="language-javascript">var robot = require(&quot;robotjs&quot;);
+</code></pre>
+<p>The <code>robotjs</code> library is imported, which allows the script to interact with the mouse and keyboard.</p>
+<h4>Defining a list of special keys</h4>
+<pre><code class="language-markdown">const TAP_SPECIAL = [
+  'enter',
+  'escape',
+  'backspace',
+  'delete',
+]
+</code></pre>
+<p>The <code>TAP_SPECIAL</code> array contains a list of special keys that should be tapped instead of toggled.</p>
+<h4>KeySend function</h4>
+<pre><code class="language-javascript">async function keySend(text, special) {
+  //...
+}
+</code></pre>
+<p>The <code>keySend</code> function takes two parameters:</p>
+<ul>
+<li><code>text</code>: the string to be typed</li>
+<li><code>special</code>: an array of special keys to be pressed</li>
+</ul>
+<h4>Function implementation</h4>
+<pre><code class="language-markdown">let modifiers = special.filter(s =&gt;!TAP_SPECIAL.includes(s))
+</code></pre>
+<p>The <code>modifiers</code> array is created by filtering the <code>special</code> array to exclude special keys.</p>
+<pre><code class="language-javascript">for(let i = 0; i &lt; text.length; i++) {
+  let localModifiers = [].concat(modifiers)
+  if(text[i].toUpperCase() == text[i] &amp;&amp;!localModifiers.includes('shift')) {
+    localModifiers.push('shift')
+  }
+  robot.keyToggle(text[i].toLowerCase(), 'down', modifiers)
+  await new Promise(resolve =&gt; setTimeout(resolve, 150))
+  robot.keyToggle(text[i].toLowerCase(), 'up', modifiers)
+}
+</code></pre>
+<p>The script loops through each character in the <code>text</code> string. For each character:</p>
+<ul>
+<li>If the character is uppercase and the <code>shift</code> key is not already pressed, the <code>shift</code> key is added to the <code>modifiers</code> array.</li>
+<li>The <code>keyToggle</code> function is called to press the character key with the specified modifiers.</li>
+<li>A 150ms timeout is added using a promise to simulate a realistic typing speed.</li>
+</ul>
+<pre><code class="language-javascript">let tap = special.filter(s =&gt; TAP_SPECIAL.includes(s))
+if(tap.length &gt; 0) {
+  robot.keyTap(tap[0], modifiers)
+}
+</code></pre>
+<p>After typing the string, the script checks if there are any special keys to be tapped in the <code>special</code> array. If there are, the <code>keyTap</code> function is called to tap the special key with the specified modifiers.</p>
+<h4>Exporting the function</h4>
+<pre><code class="language-javascript">module.exports = keySend
+</code></pre>
+<p>The <code>keySend</code> function is exported as a module, making it available for use in other scripts.</p>

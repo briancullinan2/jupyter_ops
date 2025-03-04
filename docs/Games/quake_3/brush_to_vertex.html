@@ -1,0 +1,139 @@
+<p>This code determines if a point is inside a polygon by checking if any ray originating from the point intersects the polygon's edges.</p>
+
+
+<pre><code>  
+// Given three colinear points p, q, r, the function checks if 
+// point q lies on line segment 'pr' 
+function onSegment(p, q, r) 
+{
+    if (q.x <= Math.max(p.x, r.x) && q.x >= Math.min(p.x, r.x) && 
+            q.y <= Math.max(p.y, r.y) && q.y >= Math.min(p.y, r.y)) {
+        return true; 
+    }
+    return false; 
+} 
+  
+// To find orientation of ordered triplet (p, q, r). 
+// The function returns following values 
+// 0 --> p, q and r are colinear 
+// 1 --> Clockwise 
+// 2 --> Counterclockwise 
+function orientation(p, q, r) 
+{ 
+    var val = (q.y - p.y) * (r.x - q.x) - 
+              (q.x - p.x) * (r.y - q.y); 
+  
+    if (val == 0) return 0;  // colinear 
+    return (val > 0)? 1: 2; // clock or counterclock wise 
+} 
+  
+// The function that returns true if line segment 'p1q1' 
+// and 'p2q2' intersect. 
+function doIntersect(p1, q1, p2, q2) 
+{ 
+    // Find the four orientations needed for general and 
+    // special cases 
+    var o1 = orientation(p1, q1, p2); 
+    var o2 = orientation(p1, q1, q2); 
+    var o3 = orientation(p2, q2, p1); 
+    var o4 = orientation(p2, q2, q1); 
+  
+    // General case 
+    if (o1 != o2 && o3 != o4) {
+        return true
+    }
+  
+    // Special Cases 
+    // p1, q1 and p2 are colinear and p2 lies on segment p1q1 
+    if (o1 == 0 && onSegment(p1, p2, q1)) return true
+  
+    // p1, q1 and p2 are colinear and q2 lies on segment p1q1 
+    if (o2 == 0 && onSegment(p1, q2, q1)) return true
+  
+    // p2, q2 and p1 are colinear and p1 lies on segment p2q2 
+    if (o3 == 0 && onSegment(p2, p1, q2)) return true
+  
+     // p2, q2 and q1 are colinear and q1 lies on segment p2q2 
+    if (o4 == 0 && onSegment(p2, q1, q2)) return true
+  
+    return false; // Doesn't fall in any of the above cases 
+} 
+
+
+// Returns true if the point p lies inside the polygon[] with n vertices 
+function isInside(polygon, n, p) 
+{ 
+    // There must be at least 3 vertices in polygon[] 
+    if (n < 3)  return false; 
+  
+    // Create a point for line segment from p to infinite 
+    var extreme = {x: Number.MAX_VALUE, y: p.y}; 
+  
+    // Count intersections of the above line with sides of polygon 
+    var count = 0, i = 0; 
+    do
+    { 
+        var next = (i+1)%n; 
+  
+        // Check if the line segment from 'p' to 'extreme' intersects 
+        // with the line segment from 'polygon[i]' to 'polygon[next]' 
+        if (doIntersect(polygon[i], polygon[next], p, extreme)) 
+        { 
+            // If the point 'p' is colinear with line segment 'i-next', 
+            // then check if it lies on segment. If it lies, return true, 
+            // otherwise false 
+            if (orientation(polygon[i], p, polygon[next]) == 0) 
+               return onSegment(polygon[i], p, polygon[next]); 
+  
+            count++; 
+        } 
+        i = next; 
+    } while (i != 0); 
+  
+    // Return true if count is odd, false otherwise 
+    return (count%2 == 1);
+} 
+
+
+module.exports = {
+    doIntersect,
+    isInside
+}
+</code></pre>
+
+<p>This code implements a polygon clipping algorithm to determine if a point lies inside a given polygon.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>onSegment</code> Function:</strong></p>
+<ul>
+<li>Takes three points (<code>p</code>, <code>q</code>, <code>r</code>) as input.</li>
+<li>Checks if point <code>q</code> lies on the line segment defined by points <code>p</code> and <code>r</code>.</li>
+<li>Returns <code>true</code> if <code>q</code> is on the segment, <code>false</code> otherwise.</li>
+</ul></li>
+<li><p><strong><code>orientation</code> Function:</strong></p>
+<ul>
+<li>Takes three points (<code>p</code>, <code>q</code>, <code>r</code>) as input.</li>
+<li>Determines the orientation of the triplet (<code>p</code>, <code>q</code>, <code>r</code>).</li>
+<li>Returns:
+<ul>
+<li><code>0</code> if the points are colinear.</li>
+<li><code>1</code> if the orientation is clockwise.</li>
+<li><code>2</code> if the orientation is counterclockwise.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>doIntersect</code> Function:</strong></p>
+<ul>
+<li>Takes two line segments defined by their endpoints (<code>p1</code>, <code>q1</code> and <code>p2</code>, <code>q2</code>) as input.</li>
+<li>Determines if the two line segments intersect.</li>
+<li>Returns <code>true</code> if they intersect, <code>false</code> otherwise.</li>
+<li>Uses the <code>orientation</code> function to check for different cases (colinear, intersecting, etc.).</li>
+</ul></li>
+<li><p><strong><code>isInside</code> Function:</strong></p>
+<ul>
+<li>Takes a polygon (array of points), the number of vertices (<code>n</code>), and a point (<code>p</code>) as input.</li>
+<li>Determines if point <code>p</code> lies inside the polygon.</li>
+<li>Uses the <code>doIntersect</code> function to check if any ray originating from <code>p</code> intersects the polygon's edges.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code provides a set of functions for geometric calculations related to polygons, including determining if a point lies inside a polygon, checking for line segment intersections, and calculating orientations. These functions can be used in various applications, such as game development, graphics rendering, or computer graphics algorithms.</p>

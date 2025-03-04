@@ -1,0 +1,122 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The <code>createWindow</code> function initializes SDL and OpenGL, creates a window with the title &quot;C++ SDL2 Window | OpenGL&quot; and size 1000x800, and enables double buffering and a core profile, before returning the window ID.</p>
+<p>This function uses SDL functions such as <code>SDL_Init</code>, <code>SDL_GL_SetAttribute</code>, <code>SDL_GL_CreateContext</code>, <code>SDL_CreateWindow</code>, and <code>SDL_GL_SwapWindow</code> for event handling and window management.</p>
+
+
+<pre><code>
+#include <iostream>
+//#include <glad/glad.h>
+#include <SDL.h>
+
+
+#if __cplusplus
+extern "C" {
+#endif
+
+static SDL_Window* window;
+
+int createWindow(void) {
+	window = nullptr;
+	
+	int screen_width = 1000;
+	int screen_height = 800;
+
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+		std::cout << "SDL failed initialization. " << SDL_GetError();
+		return 0;
+	} else {
+		std::cout << "SDL successfully initialized.";
+	}
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
+	window = SDL_CreateWindow("C++ SDL2 Window | OpenGL", 
+			0, 
+			0, 
+			screen_width, 
+			screen_height, 
+			SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+	SDL_GLContext context;
+	context = SDL_GL_CreateContext(window);
+
+	bool done = false;
+	
+	while(!done) {
+		//glViewport(0, 0, screen_width, screen_height);
+
+		SDL_Event event;
+		while(SDL_PollEvent(&event)){
+			if(event.type == SDL_QUIT) {
+				done = true;
+			}
+		}
+//		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+		SDL_GL_SwapWindow(window);
+		done = true;
+	}
+	//SDL_DestroyWindow(window);
+	//SDL_Quit();
+
+  return SDL_GetWindowID(window);
+}
+
+#if __cplusplus
+}
+#endif
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Header Includes</h3>
+<ul>
+<li><code>#include &lt;iostream&gt;</code>: Includes the iostream library for input/output operations.</li>
+<li><code>#include &lt;SDL.h&gt;</code>: Includes the SDL library for handling graphics and user interface.</li>
+</ul>
+<h3>Function createWindow</h3>
+<h4>Purpose</h4>
+<p>Creates a window with SDL and OpenGL initialized.</p>
+<h4>Return Value</h4>
+<p>Returns the ID of the created window.</p>
+<h4>Initialization</h4>
+<ol>
+<li>Initializes SDL with <code>SDL_Init(SDL_INIT_VIDEO)</code>. If initialization fails, it prints an error message and returns 0.</li>
+<li>Sets OpenGL attributes:
+<ul>
+<li>Major version: 4</li>
+<li>Minor version: 1</li>
+<li>Profile: Core profile</li>
+<li>Double buffering: Enabled</li>
+<li>Depth size: 24 bits</li>
+</ul></li>
+<li>Creates a window with SDL and OpenGL:
+<ul>
+<li>Window title: &quot;C++ SDL2 Window | OpenGL&quot;</li>
+<li>Position: (0, 0)</li>
+<li>Size: 1000x800</li>
+<li>Flags: <code>SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL</code></li>
+</ul></li>
+<li>Creates an OpenGL context with <code>SDL_GL_CreateContext</code>.</li>
+</ol>
+<h4>Event Handling</h4>
+<ol>
+<li>Waits for a <code>SDL_QUIT</code> event to exit the loop.</li>
+<li>Swaps the window with <code>SDL_GL_SwapWindow</code>.</li>
+</ol>
+<h4>Unused Code</h4>
+<ul>
+<li>Commented out code for clearing the depth and color buffers with OpenGL.</li>
+<li>Commented out code for destroying the window and quitting SDL.</li>
+</ul>
+<h4>SDL Functions Used</h4>
+<ul>
+<li><code>SDL_Init</code></li>
+<li><code>SDL_GL_SetAttribute</code></li>
+<li><code>SDL_GL_CreateContext</code></li>
+<li><code>SDL_CreateWindow</code></li>
+<li><code>SDL_GL_SwapWindow</code></li>
+<li><code>SDL_GetError</code></li>
+<li><code>SDL_GetWindowID</code></li>
+</ul>

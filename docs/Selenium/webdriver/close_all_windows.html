@@ -1,0 +1,91 @@
+<p>Here is a two-sentence summary:</p>
+<p>The code imports necessary classes and functions from the <code>selenium-webdriver</code> module and defines a function <code>closeAllWindows</code> that closes all browser windows except the one specified by the <code>keep</code> argument. The function creates a new instance of <code>WebDriver</code>, gets an array of window handles, and iterates over them to close all windows except the one specified by <code>keep</code>.</p>
+
+
+<pre><code>const { WebDriver, Capabilities, Session } = require('selenium-webdriver')
+const createExecutor = importer.import('selenium executor')
+
+const LOCAL_URL = 'http://localhost:4444/wd/hub';
+
+async function closeAllWindows(driver, sessionId, keep) {
+  let driver2 = new WebDriver(
+    new Session(sessionId, Capabilities.chrome()), createExecutor(Promise.resolve(LOCAL_URL)))
+
+  try {
+    let windows = await driver2.getAllWindowHandles()
+    console.log('closing session ' + sessionId[1] + ' windows ' + windows)
+    for(let i = 0; i < windows.length; i++) {
+      if(windows[i] != keep) {
+        await driver2.switchTo().window(windows[i])
+        await driver2.close()
+      }
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+module.exports = closeAllWindows
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Imports</h4>
+<pre><code class="language-javascript">const { WebDriver, Capabilities, Session } = require('selenium-webdriver')
+const createExecutor = importer.import('selenium executor')
+</code></pre>
+<ul>
+<li>The code imports the <code>WebDriver</code>, <code>Capabilities</code>, and <code>Session</code> classes from the <code>selenium-webdriver</code> module.</li>
+<li>It also imports a function <code>createExecutor</code> from a module named <code>selenium executor</code> using the <code>importer</code> module.</li>
+</ul>
+<h4>Constants</h4>
+<pre><code class="language-javascript">const LOCAL_URL = 'http://localhost:4444/wd/hub';
+</code></pre>
+<ul>
+<li>A constant <code>LOCAL_URL</code> is defined, which represents the URL of a Selenium WebDriver hub on localhost.</li>
+</ul>
+<h4>Function</h4>
+<pre><code class="language-javascript">async function closeAllWindows(driver, sessionId, keep) {
+  //...
+}
+</code></pre>
+<ul>
+<li>A function <code>closeAllWindows</code> is defined, which takes three arguments:
+<ul>
+<li><code>driver</code>: an instance of <code>WebDriver</code></li>
+<li><code>sessionId</code>: a session ID string</li>
+<li><code>keep</code>: a value to keep open</li>
+</ul></li>
+</ul>
+<h4>Function Body</h4>
+<pre><code class="language-javascript">let driver2 = new WebDriver(
+  new Session(sessionId, Capabilities.chrome()), createExecutor(Promise.resolve(LOCAL_URL)))
+
+//...
+</code></pre>
+<ul>
+<li>A new instance of <code>WebDriver</code> is created, using a <code>Session</code> instance with the provided <code>sessionId</code> and <code>Capabilities.chrome()</code>.</li>
+<li>The <code>createExecutor</code> function is used to create an executor, which is passed to the <code>WebDriver</code> constructor.</li>
+</ul>
+<pre><code class="language-javascript">try {
+  let windows = await driver2.getAllWindowHandles()
+  console.log('closing session'+ sessionId[1] +'windows'+ windows)
+  for(let i = 0; i &lt; windows.length; i++) {
+    if(windows[i]!= keep) {
+      await driver2.switchTo().window(windows[i])
+      await driver2.close()
+    }
+  }
+} catch (e) {
+  console.log(e)
+}
+</code></pre>
+<ul>
+<li>The <code>getAllWindowHandles</code> method is used to get an array of window handles.</li>
+<li>A for loop is used to iterate over the window handles, and if a handle is not equal to the <code>keep</code> value, the corresponding window is closed.</li>
+</ul>
+<h4>Export</h4>
+<pre><code class="language-javascript">module.exports = closeAllWindows
+</code></pre>
+<ul>
+<li>The <code>closeAllWindows</code> function is exported as a module.</li>
+</ul>

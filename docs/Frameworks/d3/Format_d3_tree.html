@@ -1,0 +1,72 @@
+<p>This code prepares node and edge data for hierarchical visualization by establishing parent-child relationships and propagating branch information, effectively structuring the data as a tree.</p>
+
+
+<pre><code>function formatNodes(nodes, edges) {
+    var nodeMap = {};
+    nodes.forEach(function (x) {
+        if (typeof x.size == 'undefined') {
+            x.size = 1;
+        }
+        nodeMap[x.name] = x;
+    });
+
+    edges.forEach(function (x) {
+        if (typeof nodeMap[x.source].children == 'undefined') {
+            nodeMap[x.source].children = [];
+        }
+        nodeMap[x.target].parent = nodeMap[x.source];
+        nodeMap[x.source].children.push(nodeMap[x.target]);
+        // return { parent: nodeMap[x.target], source: nodeMap[x.source], target: nodeMap[x.target] };
+    });
+    edges.forEach(function (x) {
+        if (typeof nodeMap[x.target].branch != 'undefined' && nodeMap[x.target].branch != ''
+            && typeof nodeMap[x.source].branch == 'undefined' || nodeMap[x.source].branch == '') {
+            nodeMap[x.source].branch = nodeMap[x.target].branch;
+        }
+    });
+    
+    return nodes;
+};
+module.exports = formatNodes;
+</code></pre>
+
+<p>This code processes a set of nodes and edges to prepare them for hierarchical visualization, likely a tree-like structure.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Creates an empty <code>nodeMap</code> object to store nodes with additional properties.</li>
+</ul></li>
+<li><p><strong>Node Processing:</strong></p>
+<ul>
+<li>Iterates through the <code>nodes</code> array.</li>
+<li>For each node:
+<ul>
+<li>If the <code>size</code> property is missing, it sets it to 1.</li>
+<li>Stores the node in the <code>nodeMap</code> using its <code>name</code> as the key.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Edge Processing:</strong></p>
+<ul>
+<li>Iterates through the <code>edges</code> array.</li>
+<li>For each edge:
+<ul>
+<li>If the source node doesn't have a <code>children</code> array, it creates one.</li>
+<li>Sets the <code>parent</code> property of the target node to the source node.</li>
+<li>Adds the target node to the children array of the source node.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Branch Propagation:</strong></p>
+<ul>
+<li>Iterates through the <code>edges</code> array again.</li>
+<li>For each edge:
+<ul>
+<li>If the target node has a <code>branch</code> property and the source node doesn't, it assigns the target node's <code>branch</code> to the source node.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Return:</strong></p>
+<ul>
+<li>Returns the modified <code>nodes</code> array, now enriched with parent-child relationships and potentially branch information.</li>
+</ul></li>
+</ol>
+<p>In essence, this code transforms raw node and edge data into a hierarchical structure suitable for visualization as a tree diagram.</p>

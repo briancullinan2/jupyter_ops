@@ -1,0 +1,50 @@
+<p>Here's a 2-sentence summary of the DNS Lookup Function:</p>
+<p>The <code>lookupDNS</code> function, a JavaScript module, performs a DNS lookup on a given IP address and caches the result for subsequent lookups. It uses the <code>dns</code> module to asynchronously retrieve the DNS information, and returns the cached or newly looked-up result as a promise.</p>
+
+
+<pre><code>var dns = require('dns')
+var _dnsLookup = {}
+
+async function lookupDNS(address) {
+  if(typeof _dnsLookup[address] != 'undefined')
+    return _dnsLookup[address]
+  return new Promise((resolve, reject) => dns.lookup(address, function(err, dstIP) {
+    if(err) {
+      return reject(err)
+    }
+    _dnsLookup[address] = dstIP
+    return resolve(dstIP)
+  }))
+}
+
+module.exports = lookupDNS
+</code></pre>
+
+<h2>DNS Lookup Function</h2>
+<h3>Overview</h3>
+<p>This JavaScript code exports a function <code>lookupDNS</code> that performs a DNS lookup on a given IP address.</p>
+<h3>Code Breakdown</h3>
+<h4>Variables</h4>
+<ul>
+<li><code>var dns = require('dns')</code>: Imports the DNS module.</li>
+<li><code>var _dnsLookup = {}</code>: Initializes an object to store cached DNS lookups.</li>
+</ul>
+<h4>Function: <code>lookupDNS(address)</code></h4>
+<ul>
+<li><code>async function lookupDNS(address)</code>: Defines an asynchronous function that takes an IP address as input.</li>
+<li><code>if(typeof _dnsLookup[address]!= 'undefined')</code>: Checks if the DNS lookup for the given address is already cached.
+<ul>
+<li>If cached, returns the cached result.</li>
+</ul></li>
+<li><code>return new Promise((resolve, reject) =&gt; {... })</code>: If not cached, creates a new promise to perform the DNS lookup.
+<ul>
+<li><code>dns.lookup(address, function(err, dstIP) {... })</code>: Uses the DNS module to perform the lookup.
+<ul>
+<li>If an error occurs, rejects the promise with the error.</li>
+<li>Otherwise, stores the result in the cache and resolves the promise with the result.</li>
+</ul></li>
+</ul></li>
+<li><code>module.exports = lookupDNS</code>: Exports the <code>lookupDNS</code> function.</li>
+</ul>
+<h3>Usage</h3>
+<p>This function can be used to perform DNS lookups, with the result being cached for subsequent lookups with the same address.</p>

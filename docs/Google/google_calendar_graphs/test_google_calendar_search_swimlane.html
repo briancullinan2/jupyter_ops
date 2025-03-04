@@ -1,0 +1,95 @@
+<p>This code creates an interactive swimlane chart visualizing Google Calendar events grouped by search query, allowing you to see the schedule of events for each keyword over time.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+var options = {};
+var {
+    listEvents, sumEvents, d3Swimlane
+} = importer.import([
+    'list events',
+    'import google calendar api',
+    'sum a list of events',
+    'd3 swimlane'
+]);
+
+var now = new Date();
+function calendarSearchToSwimlane(searches) {
+    return importer.runAllPromises(searches
+        .map((s, i) => (resolve) => listEvents({
+            auth: options.auth,
+            q: s
+        })
+            .then(r => {
+                //console.log(s);
+                //console.log(r.map(e => e.event.summary));
+                resolve(r.map(e => ({
+                    id: e.event.id,
+                    lane: i,
+                    start: new Date(e.event.start.dateTime),
+                    end: new Date(e.event.end.dateTime),
+                    class: e.event.end.dateTime > now ? 'future' : 'past',
+                    desc: e.event.summary
+                })));
+            })
+            .catch(e => console.log(e))))
+        .then(r => d3Swimlane({
+            lanes: searches.map((s, i) => ({
+                id: i,
+                label: s
+            })),
+            items: [].concat(...r)
+        }))
+        .catch(e => console.log(e))
+}
+
+$$.async();
+calendarSearchToSwimlane([
+    'study sauce',
+    'portal',
+    'renewal',
+    'work on sos',
+    'jupyter',
+    'jupytangular',
+    'unit tests',
+    'selenium',
+    'angular',
+    'mind spree',
+    '"c#"',
+    'docker'
+])
+    .then(r => $$.html(r))
+    .catch(e => $$.sendError(e))
+</code></pre>
+
+<p>This code visualizes Google Calendar events using a swimlane chart, grouping events by search query and showing their schedule over time.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module for importing other modules.</li>
+<li><code>listEvents</code>: Function to fetch events from Google Calendar.</li>
+<li><code>sumEvents</code>: Function to sum events (not used in this code).</li>
+<li><code>d3Swimlane</code>: Function to create a swimlane chart using D3.js.</li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>options</code>: An empty object for configuration (likely authentication).</li>
+<li><code>now</code>: A <code>Date</code> object representing the current time.</li>
+</ul></li>
+<li><p><strong><code>calendarSearchToSwimlane</code> Function:</strong></p>
+<ul>
+<li>Takes an array of search queries as input.</li>
+<li>Uses <code>importer.runAllPromises</code> to concurrently fetch events for each query using <code>listEvents</code>.</li>
+<li>Processes the fetched events, extracting relevant information (id, lane, start time, end time, class, description).</li>
+<li>Creates a swimlane chart using <code>d3Swimlane</code>, grouping events by lane (search query) and displaying them chronologically.</li>
+<li>Returns the generated swimlane chart.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>Checks if <code>$$</code> is defined (likely a custom environment variable or object).</li>
+<li>If defined, it executes <code>calendarSearchToSwimlane</code> with a list of search queries.</li>
+<li>Displays the generated swimlane chart using <code>$$.html</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to visualize Google Calendar events based on keywords, creating a swimlane chart that shows the schedule of events for each keyword over time.</p>

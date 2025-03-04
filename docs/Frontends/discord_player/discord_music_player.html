@@ -1,0 +1,84 @@
+<p>Here is a summary of the code in one sentence:<br />
+The <code>playerCommands</code> function is a JavaScript module that manages Discord bot commands by registering, updating, and deleting commands, as well as removing unused commands, using various functions from imported Discord modules.</p>
+
+
+<pre><code>
+const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {interactionsCommands} = importer.import('discord gateway')
+const {discordExpress, closeExpress} = importer.import('discord music player server')
+const {doMention, doPrivate} = importer.import('discord llm interactions')
+
+const ALL_COMMANDS = [
+  'browse',
+]
+
+// bot commands using new API, same names as above but lower-case
+async function playerCommands(guildId = null) {
+  var cmd, cmdDef
+  var commandResult = await getCommands(guildId)
+  var commands = commandResult.map(command => command.name)
+
+  interactionsCommands['startActivity'] = discordExpress
+  interactionsCommands['endActivity'] = closeExpress
+
+  interactionsCommands['promptMention'] = doMention
+  interactionsCommands['promptPrivate'] = doPrivate
+
+  cmdDef = {
+    'name': 'browse',
+    'description': 'Launch the music player',
+    'type': 4,
+    'handler': 2,
+  }
+  if(!commands.includes('browse')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'browse')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+
+  return await getCommands()
+}
+
+module.exports = playerCommands
+
+
+</code></pre>
+
+<h3>Code Overview</h3>
+<p>This is a JavaScript module that exports an asynchronous function <code>playerCommands</code>. The function manages Discord bot commands using the Discord API.</p>
+<h3>Imported Modules</h3>
+<p>The code imports the following modules:</p>
+<ul>
+<li><code>discord api</code>: Provides functions for managing Discord commands, such as <code>registerCommand</code>, <code>getCommands</code>, <code>deleteCommand</code>, and <code>updateCommand</code>.</li>
+<li><code>discord gateway</code>: Provides the <code>interactionsCommands</code> object, which is used to register custom interaction commands.</li>
+<li><code>discord music player server</code>: Provides the <code>discordExpress</code> and <code>closeExpress</code> functions, which are used to control the music player server.</li>
+<li><code>discord llm interactions</code>: Provides the <code>doMention</code> and <code>doPrivate</code> functions, which are used to handle LLM interactions.</li>
+</ul>
+<h3>Functionality</h3>
+<p>The <code>playerCommands</code> function performs the following tasks:</p>
+<ol>
+<li>Registers and updates bot commands using the <code>registerCommand</code>, <code>getCommands</code>, <code>updateCommand</code>, and <code>deleteCommand</code> functions.</li>
+<li>Registers custom interaction commands using the <code>interactionsCommands</code> object.</li>
+<li>Removes unused commands.</li>
+<li>Returns the updated list of bot commands.</li>
+</ol>
+<h3>Parameters</h3>
+<p>The function takes an optional <code>guildId</code> parameter, which specifies the guild ID for which to manage commands.</p>
+<h3>Variables</h3>
+<p>The code defines the following variables:</p>
+<ul>
+<li><code>ALL_COMMANDS</code>: An array of required command names, which is used to check for unused commands.</li>
+<li><code>cmdDef</code>: An object that defines the <code>browse</code> command.</li>
+<li><code>commands</code>: An array of command names retrieved from the <code>getCommands</code> function.</li>
+<li><code>toRemove</code>: An array of commands to be removed.</li>
+<li><code>cmd</code>: A command object retrieved from the <code>getCommands</code> function.</li>
+</ul>

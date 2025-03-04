@@ -1,0 +1,106 @@
+<p>This JavaScript code interacts with the LLaMA (Large Language Model Application) using the <code>node-llama-cpp</code> library, providing functions for session initialization and text analysis. It includes functions such as <code>initSession</code>, <code>createSession</code>, and <code>llmAnalyze</code> for interacting with the LLaMA model.</p>
+
+
+<pre><code>
+import path from "path"
+import {getLlama, LlamaChatSession} from "node-llama-cpp"
+import process from "process"
+
+const HOMEPATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+//const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let llama
+let model
+let context
+let session
+let initialChatHistory
+
+const DEFAULT_PROMPT = '```markdown\n# You are a\n##large language model\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that provides clear and concise answers in beautifully crafted `markdown` unless otherwise instructed.\n</think>\n...```\n'
+
+const DEFAULT_MODEL = process.env.DEFAULT_GGUF || 'Qwen2-VL-7B-Instruct-Q6_K.gguf'
+
+
+async function initSession(prompt, context2) {
+  if(!context2) {
+    context = await model.createContext()
+  } else {
+    context = context2
+  }
+
+  session = new LlamaChatSession({
+      contextSequence: context.getSequence(),
+      systemPrompt: prompt ? prompt : DEFAULT_PROMPT
+  })
+  // initialize the model
+  //console.log(await session.prompt())
+  initialChatHistory = session.getChatHistory();
+
+  // Reset the chat history
+  session.setChatHistory(initialChatHistory);
+  return session
+}
+
+async function createSession(modelName, prompt) {
+  if(!llama) {
+    llama = await getLlama();
+  }
+  if(!model) {
+      model = await llama.loadModel({
+          modelPath: path.join(HOMEPATH, "llama.cpp", "models", modelName ? modelName : DEFAULT_MODEL ),
+          //contextSize: 2048
+      });
+  }
+
+  await initSession(prompt, await model.createContext())
+
+  return session
+}
+
+async function getSession(model, prompt) {
+  if(!session) {
+    await createSession(model, prompt)
+  }
+  return session
+}
+
+async function llmAnalyze(prompt, session2) {
+  if(!session2) {
+    session2 = await getSession()
+  }
+  let result = await session2.prompt(prompt, {
+    //maxTokens: context.contextSize,
+    onTextChunk: function (text) {
+      process.stdout.write(text)
+    }
+  })
+  if(session == session2)
+    session2.setChatHistory(initialChatHistory);
+  return result
+}
+
+export default {
+  llmAnalyze,
+  createSession,
+  getSession,
+}
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<p>This code is a JavaScript implementation for interacting with the LLaMA (Large Language Model Application) using the <code>node-llama-cpp</code> library. It provides functions for initializing a session, creating a session, and analyzing text using the LLaMA model.</p>
+<h4>Key Components</h4>
+<ul>
+<li><strong>Environment Variables</strong>: The code uses environment variables to set the <code>HOMEPATH</code> and default model name.</li>
+<li><strong>Model Loading</strong>: The <code>createSession</code> function loads the LLaMA model from a specified path using the <code>loadModel</code> function from <code>node-llama-cpp</code>.</li>
+<li><strong>Session Initialization</strong>: The <code>initSession</code> function initializes a new session with a system prompt and optional context.</li>
+<li><strong>Text Analysis</strong>: The <code>llmAnalyze</code> function analyzes input text using the <code>prompt</code> method from the <code>node-llama-cpp</code> library, with an optional on-text-chunk callback to print the output in real-time.</li>
+</ul>
+<h4>Functions</h4>
+<ul>
+<li><strong><code>initSession(prompt, context2)</code></strong>: Initializes a new session with the provided prompt and context.</li>
+<li><strong><code>createSession(modelName, prompt)</code></strong>: Creates a new session with the specified model name and prompt.</li>
+<li><strong><code>getSession(model, prompt)</code></strong>: Retrieves an existing session or creates a new one if none exists.</li>
+<li><strong><code>llmAnalyze(prompt, session2)</code></strong>: Analyzes the input text using the <code>prompt</code> method from the <code>node-llama-cpp</code> library, with an optional on-text-chunk callback.</li>
+</ul>
+<h4>Export</h4>
+<p>The code exports an object with a single property <code>llm</code>, but the definition for <code>llm</code> is missing in the provided code.</p>

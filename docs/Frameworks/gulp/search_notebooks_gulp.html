@@ -1,0 +1,74 @@
+<p>This code defines a function <code>searchNotebooks</code> that searches for text within Jupyter Notebook files in a project directory and returns a promise that resolves with an array of matching cells.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+var gulp = require('gulp');
+var tap = require('gulp-tap');
+var Duplex = require('stream').Duplex;
+var tasksToPromise = importer.import('gulp tasks to promise', {gulp});
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = path.join(__dirname, '..');
+
+function bufferToStream(buffer) {
+    let stream = new Duplex();
+    stream.push(buffer);
+    stream.push(null);
+    return stream;
+}
+
+function searchNotebooks(search) {
+    var cells;
+    gulp.task('search notebooks', function () {
+        cells = [];
+        return gulp.src(
+            ['**/*.ipynb', '!node_modules{,/**}', '!**/\\.*'],
+            {cwd: project})
+            .pipe(tap(file => {
+                const result = importer.getCells(file.path);
+                result.forEach(r => {
+                    if(r.source.join('').match(search)) {
+                        cells.push(r);
+                    }
+                })
+            }));
+    });
+
+    return tasksToPromise(['search notebooks'], [])
+        .then(() => cells);
+}
+
+module.exports = searchNotebooks;
+
+</code></pre>
+
+<p>This code defines a function <code>searchNotebooks</code> that searches for specific text within Jupyter Notebook files within a project directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>importer</code> (likely for interacting with Jupyter Notebook files), <code>path</code> (for file path manipulation), <code>gulp</code> (for task management), <code>tap</code> (for stream processing), <code>Duplex</code> (for creating custom streams), and <code>tasksToPromise</code> (for converting Gulp tasks to promises).</li>
+<li>Defines constants: <code>PROFILE_PATH</code> (user's home directory) and <code>project</code> (path to the project directory).</li>
+</ul></li>
+<li><p><strong><code>bufferToStream</code> Function:</strong></p>
+<ul>
+<li>Creates a Duplex stream from a given buffer. This is likely used for handling file content as a stream.</li>
+</ul></li>
+<li><p><strong><code>searchNotebooks</code> Function:</strong></p>
+<ul>
+<li>Defines a Gulp task named &quot;search notebooks&quot; that:
+<ul>
+<li>Iterates through all <code>.ipynb</code> files in the project directory (excluding <code>node_modules</code> and hidden files).</li>
+<li>Uses <code>importer.getCells</code> to extract code cells from each notebook.</li>
+<li>Searches each cell's source code for a given <code>search</code> string.</li>
+<li>If a match is found, the cell is added to the <code>cells</code> array.</li>
+</ul></li>
+<li>Uses <code>tasksToPromise</code> to convert the Gulp task into a promise.</li>
+<li>Returns a promise that resolves with the <code>cells</code> array containing all matching cells.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>searchNotebooks</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>

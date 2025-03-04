@@ -1,0 +1,67 @@
+<p>The <code>walkTree</code> function recursively traverses an object or array, executing functions or evaluating expressions at each level, and returns the resulting value. It is exported as a module for use in other parts of the application.</p>
+
+
+<pre><code>
+// returns results from multiple queries added together
+function walkTree(select, ctx, evaluate) {
+    var result;
+    if(Array.isArray(select)) {
+        result = select.reduce((arr, query, i) => {
+            // pass the previous results to the next statement as the context
+            if(i > 0) {
+                return arr.map(r => walkTree(query, r, evaluate))
+            }
+            var result = walkTree(query, ctx, evaluate)
+            if(typeof result !== 'undefined') {
+                if(Array.isArray(result)) {
+                    return arr.concat(result)
+                } else {
+                    return arr.concat([result])
+                }
+            }
+            return arr
+        }, []);
+    } else if (typeof select === 'function') {
+        // this is just here because it could be
+        //   called from the array reduce above
+        result = select(ctx); 
+    } else if (typeof select === 'object') {
+        result = Object.keys(select).reduce((obj, prop) => {
+            obj[prop] = walkTree(select[prop], ctx, evaluate);
+            return obj;
+        }, {});
+    } else {
+        result = evaluate(select, ctx);
+    }
+    return typeof select === 'string' && Array.isArray(result)
+        && result.length <= 1
+       ? result[0]
+       : result;
+}
+
+
+module.exports = {
+    walkTree
+}
+
+</code></pre>
+
+<h3>Function Breakdown: <code>walkTree</code></h3>
+<h4>Purpose</h4>
+<p>The <code>walkTree</code> function recursively traverses an object or array, executing functions or evaluating expressions at each level.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>select</code>: The node to process, which can be a string, function, object, array, or undefined.</li>
+<li><code>ctx</code>: The context object passed to the function.</li>
+<li><code>evaluate</code>: A function to evaluate the <code>select</code> node.</li>
+</ul>
+<h4>Logic</h4>
+<ol>
+<li>If <code>select</code> is an array, recursively process each item in the array, passing the previous results as the context to the next item.</li>
+<li>If <code>select</code> is a function, call it with the context object.</li>
+<li>If <code>select</code> is an object, recursively process each property and return the resulting object.</li>
+<li>If <code>select</code> is a string, use the <code>evaluate</code> function to evaluate it.</li>
+<li>Return the result, possibly unwrapping an array or object to a single value.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>walkTree</code> function is exported as a module, making it available for use in other parts of the application.</p>

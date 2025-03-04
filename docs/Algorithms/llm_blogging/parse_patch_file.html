@@ -1,0 +1,99 @@
+<p>The <code>parsePatch</code> function takes a patch file as input, parses its content, and returns an object containing information about added and deleted lines across all files, along with the total number of additions and deletions. The function uses line type checks to determine the type of each line and update the corresponding object accordingly.</p>
+
+
+<pre><code>const fs = require("fs");
+
+function parsePatch(patchFile) {
+    let patchContent = patchFile
+    if(fs.existsSync(patchFile)) {
+        patchContent = fs.readFileSync(patchFile, "utf-8");
+    }
+    const lines = patchContent.split("\n");
+
+    let summary = {
+        files: {},
+        totalAdditions: 0,
+        totalDeletions: 0
+    };
+
+    let currentFile = null;
+
+    lines.forEach(line => {
+        console.log(line)
+        if (line.startsWith("+++ b/")) {
+            currentFile = line.replace("+++ b/", "").trim();
+            summary.files[currentFile] = { additions: [], deletions: [] };
+        } else if (line.startsWith("+") && !line.startsWith("+++")) {
+            const addedLine = line.slice(1).trim(); // Remove leading '+' and trim
+            summary.files[currentFile].additions.push(addedLine);
+            summary.totalAdditions++;
+        } else if (line.startsWith("-") && !line.startsWith("---")) {
+            const deletedLine = line.slice(1).trim(); // Remove leading '+' and trim
+            summary.files[currentFile].deletions.push(deletedLine);
+            summary.totalDeletions++;
+        } else if (line.startsWith('@')) {
+
+        } else if (line.startsWith('diff')) {
+
+        } else if (line.startsWith('index')) {
+
+        } else if (!line.startsWith("---")) {
+            const addedLine = line.slice(1).trim(); // Remove leading '+' and trim
+            summary.files[currentFile].additions.push(addedLine);
+        }
+    });
+
+    return summary;
+}
+
+module.exports = parsePatch
+
+</code></pre>
+
+<p><strong>Function Description:</strong></p>
+<pre><code class="language-markdown"># parsePatch Function
+## Purpose
+Parses a patch file and extracts information about added and deleted lines.
+
+## Parameters
+- `patchFile`: The path to the patch file to be parsed.
+
+## Returns
+- An object containing the following information:
+  - `files`: An object where each key is a file name and each value is another object containing arrays for added and deleted lines.
+  - `totalAdditions`: The total number of added lines across all files.
+  - `totalDeletions`: The total number of deleted lines across all files.
+</code></pre>
+<p><strong>Import Statement:</strong></p>
+<pre><code class="language-javascript">const fs = require(&quot;fs&quot;);
+</code></pre>
+<p><strong>Function Body:</strong></p>
+<pre><code class="language-markdown"># Function Body
+## Check if Patch File Exists
+- Check if the patch file exists using `fs.existsSync(patchFile)`.
+- If the file exists, read its content using `fs.readFileSync(patchFile, &quot;utf-8&quot;)`.
+
+## Initialize Variables
+- Initialize an object `summary` to store the extracted information.
+- Initialize a variable `currentFile` to keep track of the current file being processed.
+
+## Process Each Line in the Patch File
+- Iterate over each line in the patch file using `lines.forEach(line =&gt; {... })`.
+- Check the line type and update the `summary` object accordingly.
+</code></pre>
+<p><strong>Line Type Checks:</strong></p>
+<pre><code class="language-markdown"># Line Type Checks
+- If the line starts with `+++ b/`, it indicates the start of a new file.
+- If the line starts with `+` and does not start with `+++`, it indicates an added line.
+- If the line starts with `-` and does not start with `---`, it indicates a deleted line.
+- If the line starts with `@`, it is ignored (no action is taken).
+- If the line starts with `diff`, it is ignored (no action is taken).
+- If the line starts with `index`, it is ignored (no action is taken).
+- If the line does not start with `---` and is not an added line, it is assumed to be an added line.
+</code></pre>
+<p><strong>Return Statement:</strong></p>
+<pre><code class="language-javascript">return summary;
+</code></pre>
+<p><strong>Export Statement:</strong></p>
+<pre><code class="language-javascript">module.exports = parsePatch;
+</code></pre>

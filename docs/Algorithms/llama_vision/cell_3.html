@@ -1,0 +1,25 @@
+
+
+<pre><code>
+async function llmVoice(prompt, session2) {
+  if(!session2) {
+    const {createSession} = await importer.import('llama vision')
+    session2 = await createSession('OuteTTS-0.3-1B-Q8_0.gguf', 'you are an llm that responds with medium quality text to voice\n')
+  }
+  let result = await session2.prompt(prompt, {
+    //maxTokens: context.contextSize,
+    temperature: 0.1,
+    repetition_penalty: 1.1,
+    onTextChunk: function (text) {
+      process.stdout.write(text)
+    }
+  })
+  if(session == session2)
+    session2.setChatHistory(initialChatHistory);
+  return result
+}
+
+module.exports = llmVoice
+
+</code></pre>
+

@@ -1,0 +1,21 @@
+
+
+<pre><code>var util = require('util');
+var {OAuth2Client} = require('google-auth-library');
+var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', '.credentials');
+var SECRET_PATH = path.join(TOKEN_DIR, 'client_secret.json');
+var credentials = JSON.parse(fs.readFileSync(SECRET_PATH).toString());
+
+var oauth2Client = new OAuth2Client(
+    credentials.installed.client_id,
+    credentials.installed.client_secret,
+    credentials.installed.redirect_uris[0]);
+
+$$.async()
+util.promisify(oauth2Client.getToken.bind(oauth2Client))
+('4/QwGy62FM_KlubQwYvKLAu5z1xrT0cF85Zwb_3U7-IHvmm1gJZ-hj0Qo')
+    .then(r => $$.sendResult(JSON.stringify(r)))
+    .catch(e => $$.sendError(e))
+
+</code></pre>
+

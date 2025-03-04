@@ -1,0 +1,593 @@
+<p>Here's a two-sentence summary of the provided CSS stylesheet for a chat application:</p>
+<p>This CSS stylesheet sets the basic styles for a chat application, including global styles, container styles, chat program styles, chat inner styles, messages styles, text entry styles, and drag and drop styles. It defines elements such as the container, chat inner, messages, text entry, and drag and drop areas with styles for layout, colors, and typography to create a visually cohesive chat interface.</p>
+
+
+<pre><code><html>
+
+<head>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      background: rgb(51, 51, 68);
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    div.container {
+      width: auto;
+      padding: 0;
+      background: #222;
+      box-shadow: rgb(0 0 0 / 50%) 2px 3px 10px;
+      margin: 20px 20px 20px 240px;
+      border-radius: 2px;
+      border: 1px solid #666;
+      position: relative;
+      z-index: 1;
+    }
+
+    #chat-program {
+      position: absolute;
+      right: 0px;
+      left: 0px;
+      top: 0px;
+      bottom: 0px;
+    }
+
+    #chat-inner {
+      display: flex;
+      flex-direction: column-reverse;
+      min-height: 100%;
+      height: 100%;
+      max-height: 100%;
+    }
+
+    #chat-inner #messages {
+      height: 100%;
+      overflow: auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    #chat-inner #messages > div {
+      margin: 20px 0px;
+    }
+
+    #chat-inner #messages > div.user {
+      text-align: right;
+      margin: 30px 0px;
+    }
+
+    #chat-inner #messages > div.user p {
+      padding: 10px;
+      background-color: #444;
+      display: inline-block;
+      border-radius: 10px;
+    }
+
+    #chat-inner #text-entry {
+      display: flex;
+      border: 2px solid #CCC;
+      border-radius: 10px;
+      padding: 2px;
+    }
+
+    #chat-inner #text-entry textarea {
+      width: 100%;
+      border: none;
+      background-color: #222;
+      color: #EEE;
+      padding: 3px;
+      min-height: 3em;
+      max-height: 30em;
+      font-size: 18px;
+      outline: none;
+    }
+
+    #chat-inner #text-entry button {
+      background-color: #222;
+      border: none;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    #drag-and-drop {
+      display: none;
+      visibility: hidden;
+      top:0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      z-index: 999;
+      background-color: rgba(50, 50, 50, .5);
+      font-size: 72px;
+      position: absolute;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    #drag-and-drop div {
+      position: absolute;
+      top:50%;
+      margin-top:-36px;
+      width: 100%;
+    }
+
+    body.dragging #drag-and-drop {
+      display: block;
+      visibility: visible;
+    }
+
+    #text-entry {
+      position: relative;
+    }
+
+    #text-entry img {
+      width:auto;
+      height:auto;
+      max-width: 150px;
+      max-height: 150px;
+      position: absolute;
+      left:0;
+      bottom: 100%;
+      border: 3px solid transparent;
+    }
+
+    #text-entry img:hover {
+      border-color: aquamarine;
+    }
+
+    #chat-history {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: auto;
+      bottom: 20px;
+      overflow: auto;
+      width: 200px;
+    }
+
+    #chat-history a {
+      color: white;
+      font-weight: bold;
+      font-size: medium;
+      text-decoration: none;
+      display:block;
+      padding: 10px;
+    }
+
+    #chat-history a:hover {
+      background-color: #444;
+    }
+
+    #restart-now {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      display:none;
+      visibility: hidden;
+      margin-left: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: medium;
+      text-decoration: none;
+    }
+
+    body.historic #restart-now {
+      display:block;
+      visibility: visible;
+    }
+
+    @media all and (max-width: 700px) {
+      #chat-history {
+        width: 140px;
+      }
+
+      div.container {
+        margin-left: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="messages-hidden" style="display:none;"></div>
+
+  <div id="drag-and-drop">
+    <div>Drop files here</div>
+  </div>
+
+  <nav id="chat-history">
+
+  </nav>
+
+  <div class="container" id="chat-program">
+
+
+  </div>
+
+  <script>
+    let historyIndex = 0
+    let currentValue = ''
+    function sendHandler(evt) {
+      let chatBox = document.querySelector('#chat-program textarea')
+      if (evt.key === 'Enter' || event.type == 'click') {
+        evt.preventDefault()
+        let session = localStorage.getItem('brian-chat-session')
+        let messageHistory = document.querySelector('#messages')
+        let otr = document.querySelector('#chat-program input')
+        let image = document.querySelector('#text-entry img')
+        messageHistory.innerHTML += '<div class="user"><p>User: ' + chatBox.value + '</p></div>'
+        let messagePost = {
+          method: 'POST',
+          body: JSON.stringify({ otr: otr.checked, session: session, content: chatBox.value, image: image ? image.src : void 0 }),
+          headers: {
+            "Content-Type": "application/json",
+          }
+        }
+        if (chatBox.value.trim() == '') {
+          chatBox.value = ''
+          return
+        }
+        if(image)
+          image.remove()
+        chatBox.value = ''
+        historyIndex = 0
+        setTimeout(async () => {
+          messageHistory.scrollTop = messageHistory.scrollTop + 10000
+          let result = await fetch(window.location.origin + '/?session=' + session + '&t=' + Date.now(), messagePost)
+          if (result.ok) {
+            messageHistory.innerHTML += '<div class="ai">AI: ' + await result.text() + '</div>'
+          }
+          messageHistory.scrollTop = messageHistory.scrollTop + 10000
+        }, 100)
+        return false
+      }
+      if (evt.key === 'ArrowUp' && chatBox.scrollTop < 10) {
+        if (historyIndex === 0) {
+          currentValue = chatBox.value
+        }
+        let messageHistory = document.querySelector('#messages')
+        // TODO: adjust according to messages loaded, don't count too high
+        let count = 0
+        let i
+        for (i = messageHistory.childNodes.length - 1; i >= 0 && count < (historyIndex + 1); i--) {
+          if (!messageHistory.childNodes[i].innerText) {
+            continue
+          }
+          if (messageHistory.childNodes[i].innerText.startsWith('User:')) {
+            count++
+          }
+        }
+        if (i > 0) {
+          historyIndex++
+          chatBox.value = messageHistory.childNodes[i + 1].innerText.substring(6)
+        }
+      }
+      if (evt.key === 'ArrowDown' && historyIndex > 0) {
+        let messageHistory = document.querySelector('#messages')
+        if (historyIndex === 1) {
+          historyIndex--
+          chatBox.value = currentValue
+        } else {
+          let count = 0
+          let i
+          for (i = messageHistory.childNodes.length - 1; i >= 0 && count < (historyIndex - 1); i--) {
+            if (!messageHistory.childNodes[i].innerText) {
+              continue
+            }
+            if (messageHistory.childNodes[i].innerText.startsWith('User:')) {
+              count++
+            }
+          }
+          if (i > 0) {
+            historyIndex--
+            chatBox.value = messageHistory.childNodes[i + 1].innerText.substring(6)
+          }
+        }
+      }
+    }
+
+    let messageInterval
+
+    async function restartNow(evt) {
+      evt.preventDefault()
+      document.body.classList.remove('historic')
+      messageInterval = setInterval(updateHistory, 5000)
+    }
+
+
+    async function loadHistory(evt) {
+      evt.preventDefault()
+      let when = parseInt(evt.target.id.replace('history-', ''))
+      if(messageInterval) {
+        clearInterval(messageInterval)
+        messageInterval = null
+      }
+      let result = await fetch(window.location.origin + '/embed?session=' + session + '&when=' + when + '&t=' + Date.now(), {
+        method: 'GET'
+      })
+      let messageHistory = document.querySelector('#messages')
+      let newMessages = (/<div id="messages">([\s\S]*?)<\/div>\n<\/div>/gi).exec(await result.text())
+      if(newMessages && newMessages[1].length > 1) {
+        for(let i = 0; i < messageHistory.childNodes.length; i++) {
+          messageHistory.childNodes[0].remove()
+        }
+        messageHistory.innerHTML += newMessages[1]
+      }
+      document.body.classList.add('historic')
+      return false
+    }
+
+    document.addEventListener('dragenter', function (evt) {
+      evt.preventDefault()
+      if(document.querySelector('#text-entry img'))
+        return
+      document.body.classList.add('dragging')
+    })
+
+    document.addEventListener('dragover', function (evt) {
+      evt.preventDefault()
+      if(document.querySelector('#text-entry img'))
+        return
+      document.body.classList.add('dragging')
+    })
+
+    document.addEventListener('dragleave', function (evt) {
+      evt.preventDefault()
+      document.body.classList.remove('dragging')
+    })
+
+    function dropHandler(evt) {
+      evt.preventDefault()
+      document.body.classList.remove('dragging')
+      if(document.querySelector('#text-entry img'))
+        return
+
+      let reader = new FileReader()
+      reader.readAsDataURL(evt.dataTransfer.files[0])
+      reader.onloadend = function() {
+        let img = document.createElement('img')
+        img.src = reader.result
+        img.addEventListener('dblclick', function (evt) {
+          img.remove()
+        })
+        document.querySelector('#text-entry').appendChild(img)
+      }
+    }
+
+    let session = localStorage.getItem('brian-chat-session')
+
+    async function updateHistory() {
+      let messageHidden = document.querySelector('#messages-hidden')
+      let messageHistory = document.querySelector('#messages')
+      let messagesWithIds = document.querySelectorAll('#messages > *[id*="id-"]')
+      let messagesWithoutIds = document.querySelectorAll('#messages > *:not([id]), #restart-now')
+      if(messageHistory.scrollTop + messageHistory.clientHeight == messageHistory.scrollHeight) {
+        messageHistory.scrollTop = messageHistory.scrollTop + 10000
+      }
+      if(!messagesWithIds[messagesWithIds.length - 1]) {
+        return
+      }
+      messageHidden.innerHTML = ''
+      let from = parseInt(messagesWithIds[messagesWithIds.length - 1].id.replace('id-', ''))
+      let result = await fetch(window.location.origin + '/embed?session=' + session + '&from=' + (from + 1) + '&t=' + Date.now(), {
+        method: 'GET'
+      })
+      let newMessages = (/<div id="messages">([\s\S]*?)<\/div>\n<\/div>/gi).exec(await result.text())
+      if(newMessages && newMessages[1].length > 1) {
+        for(let i = 0; i < messagesWithoutIds.length; i++) {
+          messagesWithoutIds[i].remove()
+        }
+        messageHidden.innerHTML += newMessages[1]
+      }
+      setTimeout(() => {
+        for(let i = 0; i < messageHidden.childNodes.length; i++) {
+          messageHistory.appendChild(messageHidden.childNodes[0])
+        }
+        if(messageHistory.scrollTop + messageHistory.clientHeight == messageHistory.scrollHeight) {
+          messageHistory.scrollTop = messageHistory.scrollTop + 10000
+        }
+      }, 100)
+    
+      let result2 = await fetch(window.location.origin + '/history?session=' + session + '&from=' + (from + 1) + '&t=' + Date.now(), {
+        method: 'GET'
+      })
+      if(result2.status == 200)
+        document.querySelector('#chat-history').innerHTML = await result2.text()
+      /*
+      if(newMessages) {
+        messageHidden.innerHTML = newMessages[1]
+        setTimeout(() => {
+          for(let i = 0; i < messageHidden.length; i++) {
+            for(let j = 0; j < messageHistory.length; j++) {
+
+            }
+          }
+        }, 100)
+      }
+      */
+    }
+
+
+    document.addEventListener('drop', dropHandler)
+
+    document.addEventListener('DOMContentLoaded', async (event) => {
+
+      if (!session) {
+        const array = new Uint8Array(16)
+        window.crypto.getRandomValues(array)
+        localStorage.setItem('brian-chat-session', (session = Array.from(array).map(byte => byte.toString(16).padStart(2, '0')).join('')));
+      }
+
+
+      let result = await fetch(window.location.origin + '/embed?session=' + session + '&t=' + Date.now(), {
+        method: 'GET'
+      })
+      document.querySelector('#chat-program').innerHTML = await result.text()
+
+      let result2 = await fetch(window.location.origin + '/history?session=' + session + '&t=' + Date.now(), {
+        method: 'GET'
+      })
+      document.querySelector('#chat-history').innerHTML = await result2.text()
+
+
+      
+      setTimeout(() => {
+        let messageHistory = document.querySelector('#messages')
+        messageHistory.scrollTop = messageHistory.scrollTop + 10000
+        document.querySelector('#chat-program textarea').addEventListener('keydown', sendHandler)
+        document.querySelector('#chat-program button').addEventListener('click', sendHandler)
+        // TODO:
+        //document.querySelector('#chat-program #messages').addEventListener('scroll')
+      }, 100)
+
+      // in case it takes too long to respond and it errors out in 30 seconds
+      messageInterval = setInterval(updateHistory, 5000)
+
+    })
+  </script>
+</body>
+
+</html></code></pre>
+
+<h2>Breakdown of the Code</h2>
+<p>The provided code is a CSS stylesheet for a chat application. Here's a breakdown of the different sections:</p>
+<h3>Global Styles</h3>
+<pre><code class="language-css">html,
+body {
+  padding: 0;
+  margin: 0;
+  background: rgb(51, 51, 68);
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+</code></pre>
+<ul>
+<li>Sets the basic styles for the HTML and body elements.</li>
+</ul>
+<h3>Container Styles</h3>
+<pre><code class="language-css">div.container {
+  width: auto;
+  padding: 0;
+  background: #222;
+  box-shadow: rgb(0 0 0 / 50%) 2px 3px 10px;
+  margin: 20px 20px 20px 240px;
+  border-radius: 2px;
+  border: 1px solid #666;
+  position: relative;
+  z-index: 1;
+}
+</code></pre>
+<ul>
+<li>Styles a container element with a dark background, box shadow, and margin.</li>
+</ul>
+<h3>Chat Program Styles</h3>
+<pre><code class="language-css">#chat-program {
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+</code></pre>
+<ul>
+<li>Styles an element with absolute positioning to span the entire window.</li>
+</ul>
+<h3>Chat Inner Styles</h3>
+<pre><code class="language-css">#chat-inner {
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+</code></pre>
+<ul>
+<li>Styles an element with a flexbox layout and maximum height.</li>
+</ul>
+<h3>Messages Styles</h3>
+<pre><code class="language-css">#chat-inner #messages {
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
+  position: relative;
+}
+
+#chat-inner #messages &gt; div {
+  margin: 20px 0px;
+}
+
+#chat-inner #messages &gt; div.user {
+  text-align: right;
+  margin: 30px 0px;
+}
+
+#chat-inner #messages &gt; div.user p {
+  padding: 10px;
+  background-color: #444;
+  display: inline-block;
+  border-radius: 10px;
+}
+</code></pre>
+<ul>
+<li>Styles an element with a fixed height, overflow, and padding.</li>
+<li>Styles div elements within the messages container.</li>
+<li>Styles user messages with a specific background color and padding.</li>
+</ul>
+<h3>Text Entry Styles</h3>
+<pre><code class="language-css">#chat-inner #text-entry {
+  display: flex;
+  border: 2px solid #CCC;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+#chat-inner #text-entry textarea {
+  width: 100%;
+  border: none;
+  background-color: #222;
+  color: #EEE;
+  padding: 3px;
+  min-height: 3em;
+  max-height: 30em;
+  font-size: 18px;
+  outline: none;
+}
+
+#chat-inner #text-entry button {
+  background-color: #222;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+</code></pre>
+<ul>
+<li>Styles a text entry element with a border and padding.</li>
+<li>Styles a textarea within the text entry element.</li>
+<li>Styles a button within the text entry element.</li>
+</ul>
+<h3>Drag and Drop Styles</h3>
+<pre><code class="language-css">#drag-and-drop {
+  display: none;
+  visibility: hidden;
+  top:0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  background-color: rgba(50, 50, 50,.5);
+  font-size: 72px;
+  position: absolute;
+  text-align: center;
+  pointer-events: none;
+}
+</code></pre>
+<ul>
+<li>Styles an element with absolute positioning and a semi-transparent background color.</li>
+</ul>
+<p>Note that the <code>#dr</code> in the code snippet appears to be a typo, and it's likely that it should be <code>#drag-and-drop</code>.</p>

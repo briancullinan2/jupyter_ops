@@ -1,0 +1,36 @@
+<p>This Bash script takes three command-line arguments and prints each one to the console on a separate line.</p>
+
+
+<pre><code>echo "$1"
+echo "$2"
+echo "$3"
+</code></pre>
+
+<p>This code snippet simply prints the values of three command-line arguments to the console.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><strong><code>echo &quot;$1&quot;</code></strong>: Prints the value of the first command-line argument (<code>$1</code>).</li>
+<li><strong><code>echo &quot;$2&quot;</code></strong>: Prints the value of the second command-line argument.</li>
+</ol>
+<p><strong><code>echo &quot;$3&quot;</code></strong>: Prints the value of the third command-line argument.</p>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><strong><code>echo</code></strong>: This is a command in Unix-like operating systems that prints its arguments to the standard output (usually the console).</li>
+<li><strong><code>&quot;$1&quot;</code></strong>, <strong><code>&quot;$2&quot;</code></strong>, <strong><code>&quot;$3&quot;</code></strong>: These are variables that represent the command-line arguments passed to the script.
+<ul>
+<li><code>$1</code> refers to the first argument.</li>
+<li><code>$2</code> refers to the second argument.</li>
+<li><code>$3</code> refers to the third argument.</li>
+<li>The double quotes (<code>&quot;</code>) around the variables are important because they ensure that any spaces or special characters within the arguments are treated as part of the argument itself.</li>
+</ul></li>
+</ul>
+<p><strong>How it works:</strong></p>
+<p>When you run this script, you need to provide at least three arguments after the script name. For example:</p>
+<pre><code class="language-bash">./script.sh hello world example
+</code></pre>
+<p>The script will then print the following output:</p>
+<pre><code>hello
+world
+example
+</code></pre>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

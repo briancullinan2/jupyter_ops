@@ -1,0 +1,83 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code defines a test suite with three test cases to add a subdomain to a load balancer, involving inserting a backend bucket, adding a frontend, and updating a URL map, with each test case having a 60-second timeout.</p>
+<p>Alternatively, you can summarize it in two sentences:</p>
+<p>The code is a test suite that adds a subdomain to a load balancer, consisting of three test cases to insert a backend bucket, add a frontend, and update a URL map. Each test case has a 60-second timeout and includes assertions to verify the returned values are not empty.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var {
+    insertBackendBucket,
+    insertGlobalForward,
+    updateUrlMap
+} = importer.import('add google bucket web map');
+var addIP = importer.import('check dns');
+var project = 'spahaha-ea443';
+var domain = 'sheet-to-web.sheet-to-web.com';
+var urlMap = 'web-map';
+
+describe('adding a subdomain to a load balancer', () => {
+    it('should add a bucket backend', () => {
+        return insertBackendBucket(project, domain)
+            .then(bucketName => {
+                assert(bucketName.length > 0, 'should have added a backend');
+            })
+    }).timeout(60000)
+    
+    it('should add a frontend to load balancer', () => {
+        // TODO: check for A record in DNS to get ip
+        return addIP(project, domain)
+            .then(ip => insertGlobalForward(project, ip, urlMap, domain))
+            .then(bucketName => {
+                assert(bucketName.length > 0, 'should have added a forward');
+            })
+    }).timeout(60000)
+    
+    it('should update url map on load balancer', () => {
+        return updateUrlMap(project, urlMap, domain)
+            .then(map => {
+                assert(map.length > 0, 'should have updated the map');
+            })
+    }).timeout(60000)
+})
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Requirements and Imports</h3>
+<ul>
+<li><code>assert</code> module is required for assertions.</li>
+<li><code>importer</code> is required from a local module named <code>../Core</code>.</li>
+<li>Functions are imported from <code>importer</code>:
+<ul>
+<li><code>insertBackendBucket</code></li>
+<li><code>insertGlobalForward</code></li>
+<li><code>updateUrlMap</code></li>
+<li><code>addIP</code></li>
+</ul></li>
+</ul>
+<h3>Variables</h3>
+<ul>
+<li><code>project</code>: The project ID (<code>spahaha-ea443</code>).</li>
+<li><code>domain</code>: The domain name (<code>sheet-to-web.sheet-to-web.com</code>).</li>
+<li><code>urlMap</code>: The URL map name (<code>web-map</code>).</li>
+</ul>
+<h3>Test Suite</h3>
+<p>The code defines a test suite for adding a subdomain to a load balancer. It consists of three test cases:</p>
+<h4>1. Adding a Bucket Backend</h4>
+<ul>
+<li>Calls <code>insertBackendBucket</code> with <code>project</code> and <code>domain</code>.</li>
+<li>Asserts that the returned <code>bucketName</code> is not empty.</li>
+</ul>
+<h4>2. Adding a Frontend to the Load Balancer</h4>
+<ul>
+<li>Calls <code>addIP</code> with <code>project</code> and <code>domain</code>.</li>
+<li>Retrieves the IP address from <code>addIP</code>.</li>
+<li>Calls <code>insertGlobalForward</code> with <code>project</code>, <code>ip</code>, <code>urlMap</code>, and <code>domain</code>.</li>
+<li>Asserts that the returned <code>bucketName</code> is not empty.</li>
+</ul>
+<h4>3. Updating the URL Map on the Load Balancer</h4>
+<ul>
+<li>Calls <code>updateUrlMap</code> with <code>project</code>, <code>urlMap</code>, and <code>domain</code>.</li>
+<li>Asserts that the returned <code>map</code> is not empty.</li>
+</ul>
+<p>All three test cases have a timeout of 60 seconds each.</p>

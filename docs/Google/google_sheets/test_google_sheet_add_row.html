@@ -1,0 +1,48 @@
+<p>This code snippet is a unit test that verifies the functionality of a function responsible for adding a new row of data to a specified Google Sheet. It asserts that the function successfully adds a row by checking if a row is returned after the function is called.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var addRow = importer.import('add row data google sheet');
+
+var docsId = '16b1Z0sQkYhtMUfP7qMRL3vRBPWQsRbSlntURkMqWGX0';
+
+describe('add row data to google sheet', () => {
+    
+    it('should add a row', () => {
+        return addRow(docsId, {
+            timestamp: Date.now(),
+            name: 'Test Name',
+            email: 'test@test.com',
+            subject: 'This is a test subject',
+            message: 'This is a new message',
+            responded: 0
+        })
+            .then(rows => {
+                assert(typeof rows != 'undefined', 'should have added a row to the sheet');
+            })
+    })
+    
+    
+})
+</code></pre>
+
+<p>This code snippet is a unit test for a function that adds a new row of data to a Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports the <code>assert</code> module for making assertions (checking if conditions are true) and the <code>addRow</code> function from a local file (<code>../Core</code>).</li>
+<li>It defines the <code>docsId</code> which is the ID of the Google Sheet to modify.</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li>It uses <code>describe</code> to group related tests under the heading &quot;add row data to google sheet&quot;.</li>
+<li>Inside, <code>it</code> defines a specific test case: &quot;should add a row&quot;.</li>
+<li>The test calls the <code>addRow</code> function with the <code>docsId</code> and a sample row of data.</li>
+</ul></li>
+<li><p><strong>Assertion:</strong></p>
+<ul>
+<li>The <code>then</code> block after the <code>addRow</code> call checks if the returned <code>rows</code> value is not undefined, asserting that a row was successfully added.</li>
+</ul></li>
+</ol>

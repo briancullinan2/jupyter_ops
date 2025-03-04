@@ -1,0 +1,67 @@
+<p>This code tests a de-linting service by exporting and deploying a module, de-linting a project directory, and verifying the process's successful completion.</p>
+
+
+<pre><code>var fs = require('fs');
+var importer = require('../Core');
+var delint = importer.import('delint notebooks');
+var exportAndDeploy = importer.import('export deploy notebook');
+var exportNotebook = importer.import('notebook.ipynb[export cells modules]');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = path.resolve(path.join(__dirname, '../Utilities/.modules'));
+
+// just do it in load mode
+if(typeof describe === 'undefined') {
+    var it = ((l, func) => func());
+    it.timeout = () => {};
+    var beforeEach = ((func) => func());
+    var describe = ((l, func) => func());
+//    var describe = (() => {});
+}
+
+// TODO: make this a test script for exporting all notebooks on file change watcher
+describe('de-linting service', () => {
+    it('should de-lint a file', () => {
+        const r = importer.interpret('diff code blocks');
+        assert(r.filename.indexOf('diff.ipynb') > -1);
+        return exportAndDeploy(['delint notebooks'])
+            .then(() => exportNotebook(__filename))
+            .then(() => delint(project))
+            .then(r => {
+                //console.log(r);
+                //var filename = path.join(project, 'Utilities/diff/cell-' + cell.to + '.js');
+                //return diffTwoTexts(cell.code, fs.readFileSync(filename).toString());
+            })
+            .catch(r => console.log(r))
+    }).timeout(30000);
+})
+
+</code></pre>
+
+<p>This code defines a test suite for a de-linting service within a project.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>fs</code> for file system operations, <code>importer</code> for loading project modules, <code>delint</code> for code linting, <code>exportAndDeploy</code> for exporting and deploying notebooks, and <code>exportNotebook</code> for exporting individual notebooks.</li>
+<li>Sets up environment variables for project paths.</li>
+</ul></li>
+<li><p><strong>Test Environment Setup:</strong></p>
+<ul>
+<li>Detects if the code is running in a test environment (using <code>describe</code> function) and sets up a basic test environment if not.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li>Defines a test suite named &quot;de-linting service&quot; using <code>describe</code>.</li>
+<li>Defines a test case &quot;should de-lint a file&quot; using <code>it</code>.</li>
+</ul></li>
+<li><p><strong>Test Case Execution:</strong></p>
+<ul>
+<li>Calls <code>importer.interpret</code> to interpret code blocks and asserts that the filename contains &quot;diff.ipynb&quot;.</li>
+<li>Calls <code>exportAndDeploy</code> to export and deploy the &quot;delint notebooks&quot; module.</li>
+<li>Calls <code>exportNotebook</code> to export the current file.</li>
+<li>Calls <code>delint</code> to de-lint the project directory.</li>
+<li>Handles the result of the de-linting process, logging any errors.</li>
+</ul></li>
+</ol>
+<p>In essence, this code tests the functionality of a de-linting service by exporting and deploying a module, de-linting a project directory, and asserting that the process completes successfully.</p>

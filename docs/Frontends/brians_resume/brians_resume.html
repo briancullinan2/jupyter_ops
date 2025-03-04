@@ -1,0 +1,70 @@
+<p>Here's a 2-sentence summary of the <code>messageResume</code> function:</p>
+<p>The <code>messageResume</code> function breaks down a large HTML resume into smaller sections, prompting the user for a short summary and related answers. It extracts text from the HTML, iterates over it in chunks, and returns an array of user responses joined by newline characters.</p>
+
+
+<pre><code>const {selectDom} = importer.import('select tree')
+
+// TODO: populate the context with details from my resume
+
+async function messageResume(promptModel, session, prompt) {
+  let text = selectDom(['//*[text()]', './text()'], importer.interpret('brians resume in html').code)
+  let originalPrompt = 'This is part of Brian Cullinan\'s resume:\n'
+  let originalLength = originalPrompt.length
+  let answers = []
+  for(let i = 0; i < text.length; i++) {
+    originalPrompt += text[i]
+    if(originalPrompt.length > 2048) {
+      let q1 = originalPrompt + '\nWrite a short summary of this resume section.'
+      console.log('User: ' + q1)
+      answers.push(await promptModel(q1))
+      let a2 = await promptModel(originalPrompt 
+        + '\nAnswer this prompt, or respond No if it is not related to the question:\n' 
+        + prompt + '\nRespond with "No" if the prompt is unrelated.')
+      if(a2.trim() != 'No' && a2.trim() != 'No.') {
+        answers.push(a2)
+      }
+      originalPrompt = 'This is part of Brian Cullinan\'s resume:\n'
+    }
+  }
+
+  if(originalPrompt.length > originalLength) {
+    let q1 = originalPrompt + '\nWrite a short summary of this resume section.'
+    console.log('User: ' + q1)
+    answers.push(await promptModel(q1))
+    let a2 = await promptModel(originalPrompt 
+      + '\nAnswer this prompt, or respond No if it is not related to the question:\n' 
+      + prompt + '\nRespond with "No" if the prompt is unrelated.')
+    if(a2.trim() != 'No' && a2.trim() != 'No.') {
+      answers.push(a2)
+    }
+}
+
+  return answers.join('\n')
+}
+
+module.exports = messageResume
+</code></pre>
+
+<p><strong>Function:</strong> <code>messageResume</code></p>
+<p><strong>Purpose:</strong> Splits a large HTML block of text (a resume) into smaller sections and prompts the user for a short summary and related answers.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>promptModel</code>: A function that generates prompts and receives user responses.</li>
+<li><code>session</code>: The session object (not used in the function).</li>
+<li><code>prompt</code>: The original prompt to be answered (related to the resume section).</li>
+</ul>
+<p><strong>Behavior:</strong></p>
+<ol>
+<li>Extracts text from the HTML code using <code>selectDom</code>.</li>
+<li>Iterates over the text in chunks of 2048 characters or less.</li>
+<li>For each chunk:
+<ul>
+<li>Adds the text to the original prompt.</li>
+<li>If the prompt exceeds 2048 characters, sends the prompt to the user with a request to write a short summary.</li>
+<li>Sends the prompt to the user with a request to answer or respond &quot;No&quot; if unrelated.</li>
+<li>If the user's response is not &quot;No&quot;, adds it to the <code>answers</code> array.</li>
+</ul></li>
+<li>After iterating over all chunks, sends the remaining prompt to the user with the same requests as above.</li>
+<li>Returns the <code>answers</code> array joined by newline characters.</li>
+</ol>
+<p><strong>Export:</strong> The function is exported as a module, making it available for use in other scripts.</p>

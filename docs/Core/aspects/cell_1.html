@@ -1,0 +1,25 @@
+
+
+<pre><code>var importer = require('../Core')
+var {transpileInspect} = importer.import('inspect every statement')
+
+var code = `
+var importer = require('../Core');
+
+function addImports() {
+
+}
+
+`
+
+if(typeof $$ != 'undefined') {
+    $$.mime({'text/plain': transpileInspect(code, 'test_code.js')})
+    
+    /*
+    expected output 
+var addImports = importer.import('add missing imports')
+*/
+    
+}
+</code></pre>
+

@@ -1,0 +1,11 @@
+
+
+<pre><code>var importer = require('../Core');
+var syncLinkedInContacts = importer.import('sync linkedin contacts');
+$$.async();
+syncLinkedInContacts()
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
+
+</code></pre>
+

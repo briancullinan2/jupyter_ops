@@ -1,0 +1,50 @@
+
+
+<pre><code>var importer = require('../Core');
+var {treeToHtml, htmlToTree} = importer.import([
+    'tree to html', 'html to tree']);
+
+var assert = require('assert');
+var esprima = require('esprima'); 
+
+function setupASTArray(code) {
+    var ctx = esprima.parse(code, {range: true, tokens: true,
+                        comment: true, whitespace: true})
+    
+    return ctx;
+}
+
+function testASTArray(ctx) {
+    var page = treeToHtml(ctx);
+    var translated_back = htmlToTree(page);
+    console.log(translated_back[0]);
+    assert(JSON.stringify(ctx).length
+           === JSON.stringify(translated_back[0]).length,
+           'different code trees');    
+    console.log('two JSON trees are same-same')
+    return page;
+}
+
+module.exports = testASTArray;
+
+function htmlEntities(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+if(typeof $$ !== 'undefined') {
+    var code = `
+function name(params) {
+    
+}
+console.log()
+`
+    var ctx = setupASTArray(code);
+    var html = testASTArray(ctx);
+    $$.html('<pre>' + htmlEntities(html) + '</pre>')
+}
+</code></pre>
+

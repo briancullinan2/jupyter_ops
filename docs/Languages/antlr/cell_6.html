@@ -1,0 +1,328 @@
+
+
+<pre><code>
+// TODO: move this in to CPP visitor above is our GenericVisitor
+GenericVisitor.prototype.visitIdexpression = function (ctx) {
+//    var id = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'Identifier',
+        name: this.visitChildren(ctx).flat().pop()
+    }
+}
+GenericVisitor.prototype.visitMemberdeclaration = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'Property',
+        kind: obj.declspecifierseq.accept(this).flat(4).pop(), // get, set, init
+        key: obj.memberdeclaratorlist.accept(this).flat(6).pop(),
+    //    computed: boolean,
+        value: null, // TODO: default value
+        method: false,
+    //    shorthand: boolean,
+    }
+}
+GenericVisitor.prototype.visitTrailingtypespecifier = function (ctx) {
+    return {
+        type: 'Type',
+        name: this.visitChildren(ctx).flat(4).pop()
+    }
+}
+GenericVisitor.prototype.visitTypespecifier = function (ctx) {
+    return this.visitChildren(ctx).flat().pop()
+}
+GenericVisitor.prototype.visitEqualityexpression = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    if(!obj.NotEqual && !obj.Equal) return this.visitChildren(ctx)
+    return {
+        type: 'BinaryExpression',
+        operator: (obj.NotEqual || obj.Equal).accept(this),
+        left: obj.equalityexpression.accept(this),
+        right: obj.relationalexpression.accept(this),
+    }
+}
+GenericVisitor.prototype.visitClassspecifier = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'ClassExpression',
+        id: null,
+        superClass: obj.classhead.accept(this).flat(3).pop(),
+        body: obj.memberspecification.accept(this),
+    }
+}
+GenericVisitor.prototype.visitPtrdeclarator = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    return 
+}
+GenericVisitor.prototype.visitSimpledeclaration = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+}
+GenericVisitor.prototype.visitFunctiondefinition = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    var kind = getGenericContext.apply(this, [obj.declspecifierseq])
+    console.log(kind)
+    var declarator = obj.declarator.accept(this)
+    return {
+        type: 'Function',
+    //    id: ,
+    //    params: ,
+        body: obj.functionbody.accept(this),
+        kind: ,
+    //    generator: boolean,
+    //    async: boolean,
+    //    expression: boolean,
+        static: kind[0].flat(3).pop() === 'static',
+    //    returnType: returnType ? returnType.accept(this) : returnType,
+    //    void: ctx.declspecifierseq().accept(this) === 'void',
+    }
+}
+GenericVisitor.prototype.visitParameterdeclaration = function (ctx) {
+
+}
+GenericVisitor.prototype.visitDeclspecifierseq = function (ctx) {
+
+}
+GenericVisitor.prototype.visit = function (ctx) {
+    console.log(Object.getPrototypeOf(ctx))
+    var visit = Object.getPrototypeOf(ctx).constructor.name
+        .replace(/Context$/, '')
+    if(typeof this['visit' + visit] === 'function') {
+        return this['visit' + visit](ctx)
+    }
+    var obj = getGenericContext.apply(this, [ctx])
+    return Object.keys(obj).reduce((ret, cur) => {
+        ret[cur] = obj ? obj.accept(this) : obj
+    }, {})
+}
+GenericVisitor.prototype.visitTranslationunit = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'Program',
+        body: obj.declarationseq.accept(this)
+    }
+}
+GenericVisitor.prototype.visitDeclarationseq = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    if(!obj.declarationseq) return obj.declaration.accept(this)
+    return [...obj.declarationseq.accept(this), ...obj.declaration.accept(this)]
+}
+GenericVisitor.prototype.visitFunctiondefinition = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    var decl = getGenericContext.apply(this, [obj.declarator])
+    var ptr = getGenericContext.apply(this, [decl.ptrdeclarator])
+    var noptr = getGenericContext.apply(this, [ptr.noptrdeclarator])
+    return {
+        type: 'Function',
+        id: getGenericContext.apply(this, [noptr.noptrdeclarator]).declaratorid.accept(this),
+        params: noptr.parametersandqualifiers.accept(this),
+        body: obj.functionbody.accept(this),
+    //    returnType: returnType ? returnType.accept(this) : returnType,
+    //    void: ctx.declspecifierseq().accept(this) === 'void',
+    }
+}
+GenericVisitor.prototype.visitDeclaratorid = function (ctx) {
+    return getGenericContext.apply(this, [ctx]).idexpression.accept(this)
+}
+
+GenericVisitor.prototype.visitFunctionbody = function (ctx) {
+    return getGenericContext.apply(this, [ctx]).compoundstatement.accept(this)
+}
+GenericVisitor.prototype.visitCompoundstatement = function (ctx) {
+    return {
+        type: 'BlockStatement',
+        body: getGenericContext.apply(this, [ctx]).statementseq.accept(this)
+    }
+}
+GenericVisitor.prototype.visitStatementseq = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    if(!obj.statementseq) return obj.statement.accept(this)
+    return [...obj.statementseq.accept(this), ...obj.statement.accept(this)]
+}
+GenericVisitor.prototype.visitStatement = function (ctx) {
+    return this.visitChildren(ctx)
+}
+GenericVisitor.prototype.visitExpressionstatement = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    return obj.expression.accept(this)
+}
+GenericVisitor.prototype.visitExpression = function (ctx) {
+    var obj = getGenericContext.apply(this, [ctx])
+    return this.visitChildren(ctx)[0]
+}
+GenericVisitor.prototype.visitAssignmentexpression = function (ctx) {
+//    var obj = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'AssignmentExpression',
+        operator: '=' | '*=' | '**=' | '/=' | '%=' | '+=' | '-=' |
+            '<<=' | '>>=' | '>>>=' | '&=' | '^=' | '|=',
+        left: 0,
+        right: this.visitChildren(ctx)[0],
+    }
+}
+GenericVisitor.prototype.visitConditionalexpression = function (ctx) {
+//    var obj = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'ConditionalExpression',
+        test: this.visitChildren(ctx)[0],
+        consequent: 0,
+        alternate: 0,
+    }
+}
+GenericVisitor.prototype.visitInclusiveorexpression = function (ctx) {
+//    var obj = getGenericContext.apply(this, [ctx])
+    return {
+        type: 'LogicalExpression',
+        operator: '||',
+        left: this.visitChildren(ctx),
+        right: 0,
+    }
+}
+GenericVisitor.prototype.visitExclusiveorexpression = function (ctx) {
+    return {
+        type: 'LogicalExpression',
+        operator: '||',
+        left: this.visitChildren(ctx),
+        right: 0,
+    }
+}
+GenericVisitor.prototype.visitRelationalexpression = function (ctx) {
+    return this.visitChildren(ctx)[0]
+}
+GenericVisitor.prototype.visitAdditiveexpression = function (ctx) {
+    return this.visitChildren(ctx)[0]
+}
+GenericVisitor.prototype.visitDeclarator = function (ctx) {
+    var params = ctx.parametersandqualifiers()
+    if(params) return params.accept(this)
+    return {
+        type: 'Identifier',
+        name: getGenericToken(parser, ctx._start).value,
+        body: this.visitChildren(ctx)
+    }
+}
+GenericVisitor.prototype.visitDeclspecifierseq = function (ctx) {
+//    console.log(ctx.attributespecifierseq())
+//    console.log(ctx.declspecifierseq())
+//    console.log(ctx.declspecifier())
+    var seq = ctx.declspecifierseq()
+    if(!seq) return ctx.declspecifier().accept(this)
+    return [ctx.declspecifier().accept(this), seq.accept(this)]
+}
+GenericVisitor.prototype.visitDeclspecifier = function (ctx) {
+    return {
+        storage: ctx.storageclassspecifier(),
+        type: ctx.typespecifier(),
+        function: ctx.functionspecifier(),
+        typedef: getGenericToken(ctx.Typedef()),
+        friend: getGenericToken(ctx.Friend()),
+        const: getGenericToken(ctx.Constexpr())
+    }
+}
+GenericVisitor.prototype.visitPseudodestructorname = function (ctx) {
+    //console.log('hit')
+    return {
+        id: ctx.decltypespecifier().accept(this)
+    }
+}
+GenericVisitor.prototype.visitSimpledeclaration = function (ctx) {
+    return {
+        type: 'Declarator',
+        value: getGenericToken(parser, ctx._start).value,
+        body: this.visitChildren(ctx)
+    }
+}
+
+var types = selectDom(['//SimpletypespecifierContext'], dom)
+types.forEach(t => {
+    var node = selectDom(['.//TerminalNode'], t)
+    assert(node.length === 1)
+    t.replaceWith(selectDom('./*', treeToHtml([{
+        type: 'Type',
+        id: node[0].getAttribute('value')
+    }])))
+})
+
+var ids = selectDom(['//IdexpressionContext'], dom)
+ids.forEach(i => {
+    var node = selectDom(['.//TerminalNode'], i)
+    // unary operator parses incorrectly
+    var ctx = selectDom(['.//ClassnameContext'], i)
+    if(ctx.length > 0 && node[0].getAttribute('value') === '~') {
+        i.replaceWith(selectDom('./*', treeToHtml([{
+            type: 'UnaryExpression',
+            operator: '~',
+            argument: {
+                type: 'Identifier',
+                name: node[1].getAttribute('value')
+            },
+            prefix: true
+        }])))
+    } else {
+        assert(node.length === 1)
+        i.replaceWith(selectDom('./*', treeToHtml([{
+            type: 'Identifier',
+            name: node[0].getAttribute('value')
+        }])))
+    }
+})
+
+// TODO: use transpile to get even more succinct
+selectDom([
+    '//MemberdeclarationContext',
+    replace(ctx => selectDom('./*', treeToHtml([{
+        type: 'Property',
+        kind: htmlToTree(selectDom('.//Type', ctx)),
+        key: htmlToTree(selectDom('.//Identifier', ctx)),
+        method: false,
+        computed: false,
+        value: null,
+        shorthand: false,
+    }])))
+], dom)
+
+selectDom([
+    // TODO: use parent:: method instead especially since it supports it
+    '//ClassspecifierContext',
+    replace(ctx => selectDom('./*', treeToHtml([{
+        type: 'ClassExpression',
+        id: null,
+        superClass: selectDom('.//ClasskeyContext//@value', ctx),
+        body: {
+            type: 'ClassBody',
+            body: htmlToTree(selectDom('.//Property', ctx))
+        }
+    }])))
+], dom)
+
+selectDom([
+    '//DeclspecifierseqContext[not(.//DeclspecifierseqContext)]',
+    replace(ctx => {
+        var result = selectDom([
+            `.//Type[not(.//parent::Identifier)]
+            |.//Identifier[not(.//parent::ClassExpression)]
+            |.//ClassExpression`
+        ], ctx)
+        console.log(result)
+        return result
+    })
+], dom)
+
+selectDom([
+    '//SimpledeclarationContext',
+    replace(ctx => selectDom('./*', treeToHtml([{
+        type: 'VariableDeclaration',
+        declarations: [{
+            type: 'VariableDeclarator',
+            id: htmlToTree(selectDom('.//Identifier', ctx)),
+            init: htmlToTree(selectDom('.//ClassExpression', ctx)),
+            kind: htmlToTree(selectDom('.//Type', ctx)),
+            static: selectDom('.//DeclspecifierContext//@value', ctx) === 'static'
+        }],
+        kind: selectDom('.//CvqualifierContext//@value', ctx) === 'const'
+            ? 'const'
+            : selectDom('.//DeclspecifierContext//@value', ctx) === 'typedef'
+                ? 'typedef'
+                : 'let'
+    }])))
+], dom)
+</code></pre>
+

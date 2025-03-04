@@ -1,0 +1,93 @@
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>The code requires various modules, defines constants, and exports the <code>doStableRequest</code> function, which makes an API request, extracts image data, and saves the image to a specified directory. The <code>doStableRequest</code> function handles errors, logs any issues to the console, and returns data about the generated image, including the seed, image buffer, and original prompt.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const {request} = require('gaxios')
+
+const OUTPUT_PATH = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'stable-diffusion-webui/outputs')
+
+async function doStableRequest(prompt) {
+  let width = 1024
+  if(prompt.includes('View360')) {
+    width = 2048
+  }
+  let height = 1024
+  let specificHeight = prompt.match(/--height=(\d+)/)
+  let specificWidth = prompt.match(/--width=(\d+)/)
+  if(specificHeight) {
+    height = parseInt(specificHeight)
+    prompt = prompt.replace(/--height=(\d+)/, '')
+  }
+  if(specificWidth) {
+    width = parseInt(specificWidth)
+    prompt = prompt.replace(/--width=(\d+)/, '')
+  }
+  try {
+    let result = await request({
+      url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify({
+        prompt: prompt,
+        negative_prompt: 'bad hands, bad feet, bad faces, bad eyes, bad anatomy, extra limbs, missing limbs, tattoo, statue, picture frame, anime, cartoon, signature, abstract',
+        save_images: true,
+        "width": width,
+        "height": height,
+        "steps": 30,
+        tiling: false,
+      })
+    })
+    let seed = JSON.parse(result.data.info).seed
+    let buff = Buffer.from(result.data.images[0], 'base64');
+    let now = new Date()
+    let folderName = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0')
+    let stablePath = path.join(OUTPUT_PATH, 'txt2img-images', folderName)
+    let imagePath
+    if(fs.existsSync(stablePath)) {
+      let images = fs.readdirSync(stablePath)
+      for(let i = 0; i < images.length; i++) {
+        if(images[i].match('-' + seed + '-')) {
+          imagePath = path.join('txt2img-images', folderName, images[i])
+          break
+        }
+      }
+    }
+    return {seed, image: buff, imagePath, prompt}
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+module.exports = {
+  doStableRequest,
+  OUTPUT_PATH
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Variables</h3>
+<p>The code starts by requiring the following modules:</p>
+<ul>
+<li><code>fs</code>: a built-in Node.js module for interacting with the file system</li>
+<li><code>path</code>: a built-in Node.js module for working with file paths</li>
+<li><code>gaxios</code>: a library for making HTTP requests in Node.js</li>
+</ul>
+<p>The code then defines a constant <code>OUTPUT_PATH</code> which specifies the directory where output images will be saved.</p>
+<h3><code>doStableRequest</code> Function</h3>
+<p><code>doStableRequest</code> is an asynchronous function that takes a <code>prompt</code> string as an argument. It does the following:</p>
+<ol>
+<li><strong>Handles prompt options</strong>: If the prompt contains <code>View360</code>, it sets the image width to 2048. If the prompt contains specific width or height options (<code>--width</code> or <code>--height</code>), it extracts and applies those values.</li>
+<li><strong>Makes an API request</strong>: It sends a POST request to <code>http://127.0.0.1:7860/sdapi/v1/txt2img</code> with the modified prompt and image settings.</li>
+<li><strong>Extracts image data</strong>: It extracts the image buffer, seed, and other metadata from the response.</li>
+<li><strong>Saves image</strong>: It checks if the output directory exists and then saves the image to the directory with a filename based on the seed value.</li>
+<li><strong>Returns data</strong>: It returns an object with the seed, image buffer, image path, and the original prompt.</li>
+</ol>
+<h3>Error Handling</h3>
+<p>The function catches any errors that occur during the API request or image saving process and logs the error to the console.</p>
+<h3>Exports</h3>
+<p>The code exports the <code>doStableRequest</code> function and the <code>OUTPUT_PATH</code> constant.</p>

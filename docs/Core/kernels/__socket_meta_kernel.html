@@ -1,0 +1,102 @@
+<p>This code defines a Node.js application with a socket-based kernel implementation, featuring meta-programming capabilities. It exports functions for initializing and responding to socket messages, and creates a new kernel instance from a provided meta_kernel object.</p>
+
+
+<pre><code>var importer = require('../Core');
+var interface = importer.import('enforcing an interface');
+var metaKernelInterface = importer.import('meta kernel interface');
+var nativeMetaKernel = importer.import('native meta kernel');
+var nativeMethods = importer.import('native meta kernel methods');
+var {extend} = importer.import('extend prototype class');
+var assert = require('assert');
+
+function do_init(config) {
+    nativeMethods.do_init.call(this, config);
+    console.log('starting socket kernel');
+    if(this.socket) {
+        this.socket.on('message', this.do_message.bind(this));
+// TODO: this is a process feature but should be in the socket class?
+/*Object.assign(global.console, {
+    log: this.socket.stdout.write,
+    error: this.socket.stderr.write,
+    warn: this.socket.stderr.write,
+});*/
+    } else {
+        throw new Error('socket not ready!');
+    }
+}
+
+// TODO: do something on the client when shutting down
+//   same thing as parent but with process?
+// do_shutdown: (kernel, message) => kernel.socket.send({do_shutdown: message}),
+
+function do_respond(message) {
+    message = nativeMethods.do_respond.call(this, message);
+    if(this.socket.send) {
+        message = {do_respond: {content: message}};
+        return this.socket.send(message);
+    }
+    // assert here, possible defect, not sure when this would be used?
+    assert(false, 'why is this used?');
+    return message;
+}
+
+function socketMetaKernel(meta_kernel) {
+    // every time meta_kernel is extended we interface the input
+    var meta = interface(meta_kernel, metaKernelInterface);
+    //  to get the assignment values for the child object
+    var kernel = extend(meta, {
+        do_init,
+        do_respond
+    })
+    return nativeMetaKernel(kernel);
+}
+
+module.exports = {
+    socketMetaKernel,
+    do_respond,
+    do_init
+};
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>This code defines a set of functions and utilities for a Node.js application. It appears to be a socket-based kernel implementation with meta-programming features.</p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>../Core</code>: a local module that exports an <code>importer</code> function.</li>
+<li><code>assert</code>: a built-in Node.js module for assertions.</li>
+</ul>
+<h3>Functions</h3>
+<h4>do_init(config)</h4>
+<ul>
+<li>Initializes the socket kernel.</li>
+<li>Calls the <code>do_init</code> method of the <code>nativeMethods</code> object with the provided <code>config</code>.</li>
+<li>Sets up a message listener on the socket.</li>
+<li>Logs a message indicating that the socket kernel is starting.</li>
+</ul>
+<h4>do_respond(message)</h4>
+<ul>
+<li>Calls the <code>do_respond</code> method of the <code>nativeMethods</code> object with the provided <code>message</code>.</li>
+<li>If the socket has a <code>send</code> method, wraps the response in a <code>do_respond</code> object and sends it.</li>
+<li>Otherwise, returns the original message.</li>
+</ul>
+<h4>socketMetaKernel(meta_kernel)</h4>
+<ul>
+<li>Creates a new kernel instance from the provided <code>meta_kernel</code> object.</li>
+<li>Uses the <code>interface</code> function to apply the <code>metaKernelInterface</code> to the <code>meta_kernel</code> object.</li>
+<li>Extends the <code>meta</code> object with the <code>do_init</code> and <code>do_respond</code> functions using the <code>extend</code> function.</li>
+<li>Returns a new kernel instance created using the <code>nativeMetaKernel</code> method.</li>
+</ul>
+<h3>Exports</h3>
+<p>The code exports the following functions:</p>
+<ul>
+<li><code>socketMetaKernel</code></li>
+<li><code>do_respond</code></li>
+<li><code>do_init</code></li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The code uses a <code>TODO</code> comment to indicate areas that require further work.</li>
+<li>The <code>Object.assign</code> statement is commented out, suggesting that it was previously used to log messages to the socket's stdout and stderr streams.</li>
+</ul>

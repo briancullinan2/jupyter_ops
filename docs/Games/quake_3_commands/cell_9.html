@@ -1,0 +1,20 @@
+
+
+<pre><code>
+for /r %%v in (*.wal) do "Z:\planet_quake_data\tools\Wal2TGA\wal2tga copy.exe" "%%v" "%%~dpv%%~nv.tga"
+
+# TODO: bash uses glob, windows can use "or" keyword
+#windows
+for /r %%v in (*.pcx or *.jpg or *.jpeg) do convert -colorspace RGB "%%v" "%%~dpv%%~nv.tga" ; done
+
+#bash
+for i in $(find . -iname '*.pcx' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.tga'); \
+do if [ ! -f "${i%.*}.tga" ]; \
+then convert -colorspace RGB "$i" "${i%.*}.tga"; \
+fi; \
+done;
+
+
+convert -colorspace RGB pak0.pk3dir/models/deadbods/dude/dead1.pcx pak0.pk3dir/models/deadbods/dude/dead1.tga
+</code></pre>
+

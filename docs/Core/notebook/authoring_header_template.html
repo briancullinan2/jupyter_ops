@@ -1,0 +1,51 @@
+<p>The <code>authorTemplate</code> function creates a formatted header comment for code, including copyright details and markdown content, which can be easily reused in other code files.</p>
+
+
+<pre><code>
+// TODO: move this heading authoring template to utility function
+function authorTemplate(markdown, code) {
+    return `
+/**
+ * Written by Brian Cullinan, exported using magic.
+ * Copyright (c) ${(new Date()).getFullYear()} by Brian Cullinan, All rights reserved.
+ *
+${((markdown || '') + '').split('\n').map(l => ' * ' + l).join('\n')}
+ *
+ **/
+
+${code}`;
+}
+
+module.exports = authorTemplate;</code></pre>
+
+<p>This code defines a function called <code>authorTemplate</code> that generates a header comment block for code, including copyright information and a list of markdown lines.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong>Function Definition:</strong></p>
+<ul>
+<li><code>function authorTemplate(markdown, code)</code>: Defines a function named <code>authorTemplate</code> that takes two arguments:
+<ul>
+<li><code>markdown</code>: A string containing markdown text.</li>
+<li><code>code</code>: A string containing the code itself.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Header Generation:</strong></p>
+<ul>
+<li>The function constructs a multi-line string that represents the header comment block.</li>
+<li>It includes:
+<ul>
+<li>A copyright notice with the current year and the author's name.</li>
+<li>A list of markdown lines extracted from the <code>markdown</code> argument, each prefixed with &quot; * &quot;.</li>
+<li>The <code>code</code> argument is appended to the end of the header.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Return Value:</strong></p>
+<ul>
+<li>The function returns the complete header comment block as a string.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li><code>module.exports = authorTemplate;</code>: Makes the <code>authorTemplate</code> function available for use in other modules.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a reusable way to generate a standardized header comment for code, incorporating copyright information and potentially additional markdown content.</strong></p>

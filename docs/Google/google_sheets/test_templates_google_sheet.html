@@ -1,0 +1,47 @@
+<p>This code snippet is a unit test that verifies if a function called <code>getTemplates</code> successfully retrieves at least one template from a specified Google Sheet.  It uses assertions to check the result and includes optional logging for debugging.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var getTemplates = importer.import('templates google sheet');
+
+var docsId = '113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k';
+
+describe('get templates from sheet', () => {
+    
+    it('should have at least one page', () => {
+        return getTemplates(docsId)
+            .then(t => {
+                console.log(JSON.stringify(Object.keys(t).reduce((obj, cur) => {
+                    obj[cur] = {};
+                    obj[cur].template = ((t[cur].template || {}).title || '').substr(0, 1000);
+                    obj[cur].data = (t[cur].data ? ('yes: ' + t[cur].data.rowCount) : 'no');
+                    return obj;
+                }, {}), null, 4))
+                assert(Object.keys(t).length > 0, 'should have a page called template');
+            })
+    })
+})
+</code></pre>
+
+<p>This code snippet is a unit test for a function that retrieves templates from a Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules: <code>assert</code> for testing, and <code>getTemplates</code> from a local file (<code>../Core</code>).</li>
+<li>It defines the ID of the Google Sheet (<code>docsId</code>).</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li>It uses <code>describe</code> to group related tests under the heading &quot;get templates from sheet&quot;.</li>
+<li>Inside, <code>it</code> defines a specific test case: &quot;should have at least one page&quot;.</li>
+<li>The test calls <code>getTemplates</code> with the sheet ID.</li>
+<li>It then uses <code>assert</code> to check if the returned object has at least one key (representing a page).</li>
+</ul></li>
+<li><p><strong>Logging (Optional):</strong></p>
+<ul>
+<li>The code includes a line to log the structure of the returned data, which can be helpful for debugging.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this test ensures that the <code>getTemplates</code> function successfully retrieves at least one template from the specified Google Sheet.</strong></p>

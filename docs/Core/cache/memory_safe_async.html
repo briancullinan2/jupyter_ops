@@ -1,0 +1,45 @@
+<p>The <code>memorySafe</code> function allows you to execute a callback function safely by checking for excessive memory usage and returning an error if the limit is exceeded.  It returns a Promise that resolves with the callback's result or an error message.</p>
+
+
+<pre><code>
+function memorySafe(callback) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            try {
+                if (process.memoryUsage().heapUsed > 500000000) {
+                    throw new Error('out of memory')
+                }
+                return resolve(callback())
+            } catch (e) {
+                return resolve(e.message)
+            }
+        }, 100)
+    })
+}
+
+module.exports = {
+    memorySafe
+}
+</code></pre>
+
+<p>This code defines a function <code>memorySafe</code> that wraps a callback function and checks for excessive memory usage before executing it.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>memorySafe</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>callback</code> function as input.</li>
+<li>Returns a Promise that resolves with either the result of the <code>callback</code> or an error message.</li>
+</ul></li>
+<li><p><strong>Promise Handling:</strong></p>
+<ul>
+<li>Uses <code>setTimeout</code> to delay execution by 100 milliseconds.</li>
+<li>Inside the timeout, it checks if the current heap memory usage (<code>process.memoryUsage().heapUsed</code>) exceeds 500 MB (500,000,000 bytes).</li>
+<li>If memory usage is within the limit, it executes the <code>callback</code> function and resolves the Promise with its result.</li>
+<li>If memory usage exceeds the limit, it throws an <code>Error</code> with the message &quot;out of memory&quot; and resolves the Promise with the error message.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>memorySafe</code> function as a module, allowing it to be used in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a mechanism to execute potentially memory-intensive functions safely by checking for memory limits and handling potential out-of-memory errors.</p>

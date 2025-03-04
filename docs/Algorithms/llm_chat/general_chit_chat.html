@@ -1,0 +1,109 @@
+<p>Here's a 2-sentence summary:</p>
+<p>This code is a Node.js module that imports necessary modules and variables, defines functions for retrieving recent messages from conversations, and implements file system operations for loading and storing conversation data. The module exports the <code>messageRecents</code> function, along with other variables and constants, allowing it to be used in other applications.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+
+
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations')
+const ACTIVE_CONVERSATIONS = {}
+const DEFAULT_MODEL = process.env.DEFAULT_MODEL || 'Default'
+
+// TODO: load some previous summaries and contents
+
+async function messageRecents(session) {
+
+  if(!session) {
+    return ''
+  }
+
+  let now = new Date()
+  let convoFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+    + String(now.getMonth() + 1).padStart(2, '0') 
+    + '-' + DEFAULT_MODEL
+    + '-' + session + '.json')
+  // TODO: reload chat
+  if(typeof ACTIVE_CONVERSATIONS[convoFile] == 'undefined') {
+    if(fs.existsSync(convoFile)) {
+      ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+    } else {
+      ACTIVE_CONVERSATIONS[convoFile] = {}
+    }
+  }
+
+  let messageTimes = Object.keys(ACTIVE_CONVERSATIONS[convoFile])
+    .filter(k => k != 'summaries' && k != 'memories')
+  messageTimes.sort((a, b) => b - a)
+
+  if(messageTimes.length == 0) {
+    return ''
+  }
+  let count = 0
+  let messages = '\nCurrent date: ' + (new Date).toISOString() 
+    + '\nOur recent conversion:\n'
+  for(let i = 0; i < messageTimes.length && count < 25; i++) {
+    let message = ACTIVE_CONVERSATIONS[convoFile][messageTimes[i]]
+    let useSummary = i > 10 || messages.length > 1024 || (message.content && message.content.length > 1024)
+    let useKeywords = !message.content
+    messages += (message.user ? 'User: ' : 'AI: ') 
+      + (useKeywords ? message.keywords : (useSummary ? message.summary : message.content))
+      + '\n\n'
+    if(messages.length > 2048) {
+      break
+    }
+    count++
+  }
+
+  return messages
+}
+
+module.exports = {
+  messageRecents,
+  PROJECT_PATH,
+  ACTIVE_CONVERSATIONS,
+  DEFAULT_MODEL
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Modules and Variables</h3>
+<ul>
+<li><code>const path = require('path')</code> and <code>const fs = require('fs')</code>: Import Node.js modules for working with file paths and file system operations.</li>
+<li><code>const PROJECT_PATH</code>: The path to the project directory.</li>
+<li><code>const ACTIVE_CONVERSATIONS</code>: An object to store active conversations.</li>
+<li><code>const DEFAULT_MODEL</code>: The default model to use, set to the value of the <code>DEFAULT_MODEL</code> environment variable or 'Default' if not set.</li>
+</ul>
+<h3>Functions</h3>
+<ul>
+<li><code>messageRecents(session)</code>: An asynchronous function that retrieves recent messages from a conversation.
+<ul>
+<li>Parameters:
+<ul>
+<li><code>session</code>: The session ID of the conversation.</li>
+</ul></li>
+<li>Returns:
+<ul>
+<li>A string containing the recent messages.</li>
+</ul></li>
+</ul></li>
+<li><code>load some previous summaries and contents</code>: A TODO comment indicating that previous summaries and contents need to be loaded.</li>
+</ul>
+<h3>Implementation</h3>
+<ul>
+<li><code>messageRecents(session)</code>:
+<ul>
+<li>Checks if a session is provided, if not returns an empty string.</li>
+<li>Creates a file path based on the current date and session ID.</li>
+<li>Loads the conversation data from the file if it exists, or creates a new object if it doesn't.</li>
+<li>Extracts the message timestamps from the conversation data and sorts them in descending order.</li>
+<li>Iterates through the message timestamps, extracting the corresponding messages and keywords.</li>
+<li>Formats the messages into a string and returns it.</li>
+</ul></li>
+<li><code>fs.existsSync(convoFile)</code> and <code>fs.readFileSync(convoFile)</code>: Use file system operations to check if a file exists and read its contents.</li>
+<li><code>JSON.parse()</code> and <code>JSON.stringify()</code>: Use JavaScript functions to parse and stringifying JSON data.</li>
+</ul>
+<h3>Exports</h3>
+<ul>
+<li><code>module.exports = { messageRecents, PROJECT_PATH, ACTIVE_CONVERSATIONS, DEFAULT_MODEL }</code>: Exports the <code>messageRecents</code> function and the <code>PROJECT_PATH</code>, <code>ACTIVE_CONVERSATIONS</code>, and <code>DEFAULT_MODEL</code> variables as a module.</li>
+</ul>

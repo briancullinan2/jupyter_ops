@@ -1,0 +1,44 @@
+<p>The <code>getImports</code> function extracts import information from a given code string by parsing an Abstract Syntax Tree (AST) and selecting specific nodes using XPath-like query strings. It is exported as a module and returns an array of import information, removing duplicates in the process.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {selectAst} = importer.import('select code tree')
+var CORE_DECLARE = `//*[
+    contains(@type, "Declar")
+    and ./*/*[@type="Literal" and contains(@value, "Core")]
+]`;
+var IMPORTER = `${CORE_DECLARE}/*[@type="Identifier"]/@name`;
+var IMPORTER_CALLS = `//*[contains(@type, "Call") and ./*[
+    contains(@type, "Member") and contains(./Identifier/@name, "import")
+] and ./Literal]`;
+
+function getImports(code) {
+    var importer = selectAst([IMPORTER], code)[0]
+    return [].concat.apply([], selectAst([
+        IMPORTER_CALLS.replace('importer', importer),
+        [`./Identifier/@name|./*/Identifier/@name|.//Literal/@value`]
+    ], code))
+        .filter((i, j, arr) => arr.indexOf(i) === j)
+}
+
+module.exports = getImports;
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Variables and Functions</h3>
+<ul>
+<li><code>importer</code>: an object imported from <code>../Core</code> with a method <code>selectAst</code> used to parse Abstract Syntax Trees (ASTs)</li>
+<li><code>selectAst</code>: function that selects nodes from an AST based on a query string</li>
+<li><code>CORE_DECLARE</code>, <code>IMPORTER</code>, <code>IMPORTER_CALLS</code>: XPath-like query strings used to select specific nodes from the AST</li>
+<li><code>getImports</code>: a function that extracts import information from a given code string</li>
+</ul>
+<h3>getImports Function</h3>
+<ol>
+<li>Uses <code>selectAst</code> to find the first node matching the <code>IMPORTER</code> query in the given code, and assigns it to <code>importer</code>.</li>
+<li>Uses <code>selectAst</code> to find all nodes matching the <code>IMPORTER_CALLS</code> query, replacing <code>importer</code> with the actual node name.</li>
+<li>Concatenates the results of the previous step with an array containing the names of identifiers, their parent nodes, and literal values.</li>
+<li>Removes duplicates from the resulting array using the <code>filter</code> method.</li>
+</ol>
+<h3>Module Exports</h3>
+<p>The <code>getImports</code> function is exported as a module.</p>

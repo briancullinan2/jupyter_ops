@@ -1,0 +1,38 @@
+<p>Here is a summary of the function in two sentences:</p>
+<p>The <code>removeCtrlChars</code> function removes control characters and trims whitespace from a given string, returning the processed string. It uses regular expressions to match and remove control characters in specific formats, and is exported as a module for use in other parts of the application.</p>
+
+
+<pre><code>
+// TODO: use this for server names and player names when matching to discord
+function removeCtrlChars(str) {
+    return str
+        .replace(/\^\^[a-z0-9][a-z0-9]/ig, '')
+        .replace(/\^[a-z0-9]/ig, '')
+        .trim()
+}
+
+module.exports = removeCtrlChars
+</code></pre>
+
+<h3>Function: removeCtrlChars</h3>
+<h4>Description</h4>
+<p>Removes control characters and trim whitespace from a string.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>str</code>: The input string to process.</li>
+</ul>
+<h4>Regular Expressions Used</h4>
+<ul>
+<li><code>^\^[a-z0-9][a-z0-9]</code>: Matches and removes control characters in the format `^ followed by a lowercase letter or number followed by zero or more lowercase letters or numbers.</li>
+<li><code>^\^[a-z0-9]</code>: Matches and removes control characters in the format `^ followed by a lowercase letter or number.</li>
+<li><code>\s+</code>: Not used in the original function, but commonly used to trim whitespace.</li>
+</ul>
+<h4>Output</h4>
+<p>The function returns the processed string with control characters and whitespace removed.</p>
+<h4>Export</h4>
+<p>The function is exported as a module, allowing it to be used in other parts of the application.</p>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">const removeCtrlChars = require('./removeCtrlChars');
+
+console.log(removeCtrlChars('^Hello^World'));  // Output: &quot;HelloWorld&quot;
+</code></pre>

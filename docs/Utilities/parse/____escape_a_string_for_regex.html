@@ -1,0 +1,39 @@
+<p>This code snippet offers two JavaScript utility functions: <code>flatten</code> for simplifying nested arrays and <code>escapeRegExp</code> for preparing strings for use in regular expressions.</p>
+
+
+<pre><code>// How to flatten and array in javascript?
+var flatten = arr => arr.reduce((acc, val) =>
+    acc.concat(Array.isArray(val) ? flatten(val) : val), []);
+
+Array.prototype.flatten = function () {
+    return flatten(this)
+};
+
+// How to escape a string for regex?
+function escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+}
+
+
+</code></pre>
+
+<p>This code snippet provides two utility functions for working with arrays and regular expressions in JavaScript.</p>
+<ol>
+<li><p><strong><code>flatten</code> Function:</strong></p>
+<ul>
+<li>Takes an array as input.</li>
+<li>Uses the <code>reduce</code> method to iteratively flatten nested arrays.</li>
+<li>If an element is an array, it recursively calls <code>flatten</code> on that sub-array.</li>
+<li>Otherwise, it concatenates the element to the accumulator (<code>acc</code>).</li>
+<li>Returns a new flattened array.</li>
+</ul></li>
+<li><p><strong><code>escapeRegExp</code> Function:</strong></p>
+<ul>
+<li>Takes a string as input.</li>
+<li>Uses a regular expression to identify special characters that need to be escaped in a regular expression.</li>
+<li>Replaces each matched character with its escaped counterpart (<code>\</code>) using <code>replace</code>.</li>
+<li>Returns the escaped string, suitable for use in regular expressions.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>These functions provide convenient ways to flatten nested arrays and escape strings for use in regular expressions, which are common tasks in JavaScript programming.</p>

@@ -1,0 +1,105 @@
+<p>This code analyzes Quake map files to extract and list the textures used within them.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var {BitStream} = importer.import('bit buffer')
+
+var MAX_QPATH = 64
+
+var dshader_t = function () {
+	this.shaderName   = null;                              // byte * MAX_QPATH (string)
+	this.surfaceFlags = 0;                                 // int32
+	this.contents     = 0;                                 // int32
+};
+dshader_t.size = 72;
+
+function loadShaders(buffer, fileofs, filelen) {
+	var bb = new BitStream(buffer);
+	bb.byteIndex = fileofs;
+
+	var shaders = new Array(filelen / dshader_t.size);
+
+	for (var i = 0; i < shaders.length; i++) {
+		var shader = shaders[i] = new dshader_t();
+
+		shader.shaderName = bb.readASCIIString(MAX_QPATH);
+		shader.surfaceFlags = bb.readInt32();
+		shader.contents = bb.readInt32();
+	}
+    return shaders
+}
+
+function listTextures(file, dirsOnly) {
+
+    if(file.includes('.bsp')) {
+        file = fs.readFileSync(file)
+        let bb = new BitStream(file);
+        bb.readASCIIString(4);
+        bb.readInt32();
+        // lump 0 
+        bb.readInt32()
+        bb.readInt32()
+        // lump 1 shaders
+        let fileofs = bb.readInt32()
+        let filelen = bb.readInt32()
+        let shaders = loadShaders(file, fileofs, filelen)
+        return shaders.filter((s, i, arr) => s.shaderName && arr.indexOf(s) == i).map(s => s.shaderName)
+    }
+
+    if(typeof file === 'string' && fs.existsSync(file)) {
+        file = fs.readFileSync(file).toString('utf-8')
+    }
+
+    var used = []
+    var brushes = importer.regexToArray(/\{[\s\S^\}\{]*?\}/ig, file, -1) // returns indexes
+    console.log(`found ${brushes.length} brushes.`)
+    for(var i = 0; i < brushes.length; i++) {
+        var b = file.substr(brushes[i][0], brushes[i][1])
+        var texts = importer.regexToArray(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm, b, 1)
+        texts.forEach($1 => {
+            if(dirsOnly) {
+                if(!used.includes(path.dirname($1)))
+                    used.push(path.dirname($1))
+            } else {
+                if(!used.includes($1))
+                    used.push($1)
+            }
+        })
+    }
+    return used
+}
+
+module.exports = listTextures
+
+</code></pre>
+
+<p>This code snippet analyzes Quake map files to extract and list texture references used within the map.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>fs</code> for file system operations, <code>path</code> for path manipulation, and <code>importer</code> (presumably a custom module for parsing Quake files) and <code>BitStream</code> for binary data handling.</li>
+<li>Defines <code>dshader_t</code>, a structure representing a shader definition, and sets its size.</li>
+</ul></li>
+<li><p><strong><code>loadShaders</code> Function:</strong></p>
+<ul>
+<li>Takes a binary buffer, file offset, and file length as input.</li>
+<li>Creates a <code>BitStream</code> object to read data from the buffer.</li>
+<li>Allocates an array to store shader definitions.</li>
+<li>Iterates through the buffer, reading shader data and populating the array.</li>
+<li>Returns the array of shader definitions.</li>
+</ul></li>
+<li><p><strong><code>listTextures</code> Function:</strong></p>
+<ul>
+<li>Takes a file path or content as input.</li>
+<li>If the input is a file path and exists, it reads the file contents.</li>
+<li>If the file path ends with '.bsp', it parses the binary data to extract shader information using <code>loadShaders</code>.</li>
+<li>Otherwise, it parses the file content for texture references using regular expressions.</li>
+<li>Extracts texture names and optionally filters for directory paths only.</li>
+<li>Returns an array of extracted texture names.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as a tool for analyzing Quake map files and identifying the textures used within them. It can be used to generate lists of textures, identify missing textures, or analyze texture usage patterns.</p>

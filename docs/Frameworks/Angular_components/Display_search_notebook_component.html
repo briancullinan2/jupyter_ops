@@ -1,0 +1,100 @@
+<p>This code defines an Angular component for a search bar, including its template, styling, search functionality, and routing configuration, along with a module to encapsulate and share it.</p>
+
+
+<pre><code>import {Component, ModuleWithProviders, NgModule} from '@angular/core';
+import {COMMON_MODULES} from '../../../imports/core.module';
+import {RouterModule, Routes} from '@angular/router';
+import {SearchService} from '../../../imports/search.service';
+
+@Component({
+    selector: 'bc-search',
+    template: `
+        <form>
+            <md-input-container>
+                <input mdInput name="search" required type="text"
+                       placeholder="Search"
+                       maxlength="100" [(ngModel)]="query" (change)="search()">
+            </md-input-container>
+        </form>
+    `,
+    styles: [`
+        md-input-container {
+            width: 100%;
+        }
+    `]
+})
+export class SearchComponent {
+    query = '';
+    service: SearchService
+
+    constructor(public) {}
+
+    search(): void {
+        this.service.search(this.query).subscribe(r => {
+            console.log('searched ' + r);
+        });
+    }
+}
+
+export const COMPONENTS = [
+    SearchComponent
+];
+
+export const authRoutes: Routes = [
+    {
+        path: '',
+        component: SearchComponent,
+        data: {roles: ['anonymous', 'user']}
+    }
+];
+export const routing: ModuleWithProviders = RouterModule.forChild(authRoutes);
+
+@NgModule({
+    imports: [
+        ...COMMON_MODULES,
+        routing
+    ],
+    declarations: COMPONENTS,
+    exports: COMPONENTS
+})
+export class SearchModule {
+}
+
+</code></pre>
+
+<p>This code defines an Angular component for a search bar and its associated module.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary Angular modules (<code>Component</code>, <code>ModuleWithProviders</code>, <code>NgModule</code>, <code>RouterModule</code>, <code>Routes</code>) and services (<code>SearchService</code>).</li>
+</ul></li>
+<li><p><strong>SearchComponent:</strong></p>
+<ul>
+<li>Defines a component named <code>SearchComponent</code> with:
+<ul>
+<li><code>selector</code>: <code>bc-search</code> (HTML tag to use the component).</li>
+<li><code>template</code>: HTML template for the search bar with input field and placeholder.</li>
+<li><code>styles</code>: CSS styles for the input container.</li>
+</ul></li>
+<li><code>query</code>: Property to store the search query.</li>
+<li><code>service</code>: Injected <code>SearchService</code> to handle search logic.</li>
+<li><code>constructor</code>: Initializes the component.</li>
+<li><code>search()</code>: Method triggered on input change, calls <code>SearchService.search()</code> with the query and logs the result.</li>
+</ul></li>
+<li><p><strong>Routing:</strong></p>
+<ul>
+<li>Defines <code>authRoutes</code> for routing to the <code>SearchComponent</code>.</li>
+<li>Creates <code>routing</code> module using <code>RouterModule</code> with the defined routes.</li>
+</ul></li>
+<li><p><strong>SearchModule:</strong></p>
+<ul>
+<li>Defines a module named <code>SearchModule</code> with:
+<ul>
+<li><code>imports</code>: Imports <code>COMMON_MODULES</code> and the <code>routing</code> module.</li>
+<li><code>declarations</code>: Declares <code>SearchComponent</code> as part of the module.</li>
+<li><code>exports</code>: Exports <code>SearchComponent</code> to be used in other modules.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>In essence, this code defines a reusable Angular component for a search bar, including its template, styles, logic, and routing configuration.</p>

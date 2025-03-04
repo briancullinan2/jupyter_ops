@@ -1,0 +1,75 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code imports custom modules from the <code>../Core</code> directory and uses them to test the functionality of a <code>nodeMetaKernel</code> module, including logging its output and that of its <code>do_message</code> method. The <code>testNodeMetaKernel</code> function is then exported as a module and run in a test environment where the <code>$$</code> variable is defined.</p>
+
+
+<pre><code>var importer = require('../Core');
+var nodeMetaKernel = importer.import('node meta kernel')
+var metaKernelInterface = importer.import('meta kernel interface');
+var interface = importer.import('enforcing an interface');
+
+function testNodeMetaKernel() {
+    var kernel = nodeMetaKernel({
+        kernel_config: {autoinit: true}
+    });
+    console.log(interface(kernel, metaKernelInterface, false))
+    console.log(kernel.do_message({do_execute: 'console.log(1 + 1)'}));
+    console.log(kernel.do_message({do_execute: '1 + 1'}));
+}
+
+module.exports = testNodeMetaKernel;
+
+if(typeof $$ !== 'undefined') {
+    testNodeMetaKernel();
+    
+    /* expected output
+    2
+    undefined
+    2
+    */
+
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing modules from the <code>../Core</code> directory:</p>
+<pre><code class="language-javascript">var importer = require('../Core');
+var nodeMetaKernel = importer.import('node meta kernel')
+var metaKernelInterface = importer.import('meta kernel interface');
+var interface = importer.import('enforcing an interface');
+</code></pre>
+<p>This suggests that the code is using a custom module loader called <code>importer</code> to import specific modules from the <code>../Core</code> directory.</p>
+<h3>Defining the <code>testNodeMetaKernel</code> Function</h3>
+<p>The code defines a function called <code>testNodeMetaKernel</code>:</p>
+<pre><code class="language-javascript">function testNodeMetaKernel() {
+    //...
+}
+</code></pre>
+<p>This function will be used to test the functionality of the imported modules.</p>
+<h3>Creating a <code>kernel</code> Object</h3>
+<p>Inside the <code>testNodeMetaKernel</code> function, a <code>kernel</code> object is created using the <code>nodeMetaKernel</code> module:</p>
+<pre><code class="language-javascript">var kernel = nodeMetaKernel({
+    kernel_config: {autoinit: true}
+});
+</code></pre>
+<p>The <code>kernel_config</code> object is passed to the <code>nodeMetaKernel</code> function with the <code>autoinit</code> property set to <code>true</code>.</p>
+<h3>Logging Interface Output</h3>
+<p>The code logs the output of the <code>interface</code> function, which takes three arguments: <code>kernel</code>, <code>metaKernelInterface</code>, and a boolean value <code>false</code>:</p>
+<pre><code class="language-javascript">console.log(interface(kernel, metaKernelInterface, false))
+</code></pre>
+<h3>Logging Output of <code>kernel.do_message</code> Method</h3>
+<p>The code logs the output of the <code>kernel.do_message</code> method, which is called twice with different arguments:</p>
+<pre><code class="language-javascript">console.log(kernel.do_message({do_execute: 'console.log(1 + 1)'}));
+console.log(kernel.do_message({do_execute: '1 + 1'}));
+</code></pre>
+<h3>Exporting the <code>testNodeMetaKernel</code> Function</h3>
+<p>The code exports the <code>testNodeMetaKernel</code> function as a module:</p>
+<pre><code class="language-javascript">module.exports = testNodeMetaKernel;
+</code></pre>
+<h3>Running the <code>testNodeMetaKernel</code> Function</h3>
+<p>Finally, the code checks if the <code>$$</code> variable is defined, and if so, runs the <code>testNodeMetaKernel</code> function:</p>
+<pre><code class="language-javascript">if(typeof $$!== 'undefined') {
+    testNodeMetaKernel();
+}
+</code></pre>
+<p>This suggests that the code is being run in some kind of test environment where the <code>$$</code> variable is defined.</p>

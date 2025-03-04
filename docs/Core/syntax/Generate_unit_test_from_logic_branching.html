@@ -1,0 +1,25 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>This code snippet, likely written in JavaScript, declares a variable named <code>STATEMENTS</code> and selects elements in an XML or HTML document using XPath expressions that target elements with specific attribute values. The XPath expressions are combined using a logical OR operator to select elements with either &quot;Declaration&quot; or &quot;Statement&quot; in their <code>type</code> attribute.</p>
+
+
+<pre><code>var STATEMENTS = `//*[contains(@type, "Declaration")]
+|//*[contains(@type, "Statement")]`
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Variable Declaration</h4>
+<ul>
+<li><code>var STATEMENTS</code>: A variable named <code>STATEMENTS</code> is declared.</li>
+</ul>
+<h4>XPath Expression</h4>
+<ul>
+<li><code>//*[contains(@type, &quot;Declaration&quot;)]</code>: An XPath expression that selects all elements with an attribute named <code>type</code> that contains the substring &quot;Declaration&quot;.</li>
+<li><code>|</code>: A logical OR operator used to combine multiple XPath expressions.</li>
+<li><code>//*[contains(@type, &quot;Statement&quot;)]</code>: An XPath expression that selects all elements with an attribute named <code>type</code> that contains the substring &quot;Statement&quot;.</li>
+</ul>
+<h4>Context</h4>
+<ul>
+<li>This code snippet appears to be written in JavaScript, possibly for use in a web scraping or automation task.</li>
+<li>The XPath expressions suggest that this code is targeting elements in an XML or HTML document.</li>
+</ul>

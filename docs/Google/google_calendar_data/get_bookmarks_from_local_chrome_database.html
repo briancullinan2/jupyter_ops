@@ -1,0 +1,59 @@
+<p>This code retrieves and processes today's browsing history from a Chrome SQLite database, likely for analysis or reporting.</p>
+
+
+<pre><code>var sqlite3 = require('better-sqlite3');
+var HISTORY_FILE = '/Users/briancullinan/Library/Application Support/Google/Chrome/Default/History copy';
+var db = new sqlite3(HISTORY_FILE, {});
+var today = Math.floor(Date.now() / 60 / 60 / 48) * 60 * 60 * 48;
+// reverse of chromeDtToDate
+var todayOffset = (today - new Date(1601, 0, 1).getTime()) * 1000;
+
+function getHistory() {
+    return Promise.resolve()
+    //    .then(() => db.prepare('PRAGMA table_info(visits)').all())
+    //    .then(() => db.prepare('SELECT * FROM visits WHERE visit_time > ?').all(todayOffset))
+    // sqlite_temp_master
+    //    .then(() => db.prepare('SELECT name FROM sqlite_master WHERE type = ?').all('table'))
+        .then(() => db.prepare('SELECT * FROM urls WHERE last_visit_time > ?').all(todayOffset))
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getHistory()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet retrieves and processes browsing history data from a SQLite database file associated with Google Chrome.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>better-sqlite3</code> library for interacting with SQLite databases.</li>
+</ul></li>
+<li><p><strong>Database Setup:</strong></p>
+<ul>
+<li>It defines the path to the Chrome history database file (<code>HISTORY_FILE</code>).</li>
+<li>It creates a new SQLite database connection (<code>db</code>) to the specified file.</li>
+</ul></li>
+<li><p><strong>Time Filtering:</strong></p>
+<ul>
+<li>It calculates the timestamp for today (in seconds since epoch) and stores it in <code>today</code>.</li>
+<li>It also calculates an offset (<code>todayOffset</code>) to filter history entries for today onwards.</li>
+</ul></li>
+<li><p><strong><code>getHistory</code> Function:</strong></p>
+<ul>
+<li>This function is responsible for retrieving history data from the database.</li>
+<li>It uses a prepared SQL statement to select all entries from the <code>urls</code> table where the <code>last_visit_time</code> is greater than <code>todayOffset</code>.</li>
+<li>It returns a Promise that resolves with the retrieved history data.</li>
+</ul></li>
+<li><p><strong>Async Execution (if applicable):</strong></p>
+<ul>
+<li>The code checks if a variable <code>$$</code> exists (likely indicating an asynchronous environment).</li>
+<li>If <code>$$</code> is defined, it calls <code>$$.async()</code> and uses <code>getHistory()</code> to retrieve the history data.</li>
+<li>It then sends the result (<code>r</code>) to <code>$$.sendResult()</code> or the error (<code>e</code>) to <code>$$.sendError()</code> based on the outcome.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet extracts and processes browsing history data from a Chrome database file, likely for analysis or reporting purposes. It filters the history to include only entries from the current day.</p>

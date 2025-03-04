@@ -1,0 +1,101 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code imports necessary dependencies, sets up constants for Google Drive authentication and file paths, and defines two asynchronous functions: <code>convertGoogleDoc</code> to convert Google Docs to various output types and <code>downloadDocs</code> to download Google Docs from a specified folder. The code uses Node.js modules such as <code>path</code>, <code>fs</code>, and <code>google-auth</code> to perform tasks, and includes error handling mechanisms to prevent file corruption or security issues.</p>
+
+
+<pre><code>const listDrive = importer.import('merge google drive')
+const getRpcFromSpec = importer.import('get rpc from spec')
+const authorize = importer.import('google oauth token client')
+const google = {drive: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
+const { safeurl } = importer.import('domain cache tools')
+const GOOGLE_AUTH_SCOPE = [
+  'https://www.googleapis.com/auth/drive'
+]
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const DOWNLOAD_PATH = path.join(PROFILE_PATH, 'Downloads')
+
+async function convertGoogleDoc(fileId, outType) {
+  let client = await authorize(GOOGLE_AUTH_SCOPE)
+  let drive = await google.drive({version: 'v3', auth: client})
+  return await drive.files.export({
+    fileId: fileId,
+    mimeType: outType
+  })
+}
+
+
+async function downloadDocs(folder = 'root') {
+
+  let drive = await listDrive(folder)
+
+  for(let i = 0; i < drive.length; i++) {
+    if(drive[i].mimeType == 'application/vnd.google-apps.document') {
+      console.log('Exporting ' + drive[i].name)
+      try {
+        let response = await convertGoogleDoc(drive[i].id, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+        let data = await response.data.arrayBuffer()
+        fs.writeFileSync(path.join(DOWNLOAD_PATH, safeurl(drive[i].name + '_' + drive[i].id) + '.docx'), Buffer.from(data))
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    if(drive[i].mimeType == 'application/vnd.google-apps.spreadsheet') {
+      console.log('Exporting ' + drive[i].name)
+      try {
+        let response = await convertGoogleDoc(drive[i].id, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        let data = await response.data.arrayBuffer()
+        fs.writeFileSync(path.join(DOWNLOAD_PATH, safeurl(drive[i].name + '_' + drive[i].id) + '.xlsx'), Buffer.from(data))
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    // TODO: application/vnd.openxmlformats-officedocument.presentationml.presentation
+  }
+}
+
+module.exports = {
+  downloadDocs,
+  convertGoogleDoc,
+  
+}
+</code></pre>
+
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code starts by importing various dependencies using the <code>importer.import</code> function. These dependencies include:</p>
+<ul>
+<li><code>merge google drive</code>: likely a function for merging Google Drive data</li>
+<li><code>get rpc from spec</code>: a function for getting an RPC (Remote Procedure Call) from a specification</li>
+<li><code>google oauth token client</code>: a client for authorizing Google OAuth tokens</li>
+<li><code>domain cache tools</code>: a module for working with domain cache tools, specifically importing the <code>safeurl</code> function</li>
+</ul>
+<h3>Setting up Constants</h3>
+<p>The code sets up several constants:</p>
+<ul>
+<li><code>GOOGLE_AUTH_SCOPE</code>: an array of scopes for authorizing Google Drive access (in this case, only the Drive scope is used)</li>
+<li><code>PROFILE_PATH</code>: the path to the user's profile directory (determined by environment variables)</li>
+<li><code>DOWNLOAD_PATH</code>: the path to the user's downloads directory (determined by the <code>PROFILE_PATH</code> constant and a hardcoded path)</li>
+</ul>
+<h3>Defining Functions</h3>
+<p>The code defines two functions:</p>
+<ul>
+<li><code>convertGoogleDoc(fileId, outType)</code>: an asynchronous function that converts a Google Doc to a specified output type (e.g., Word document or Excel file). It:
+<ol>
+<li>Authorizes a Google OAuth token using the <code>authorize</code> function</li>
+<li>Creates a Google Drive client using the <code>google.drive</code> function</li>
+<li>Exports the Google Doc as a binary array buffer using the <code>drive.files.export</code> function</li>
+</ol></li>
+<li><code>downloadDocs(folder = 'root')</code>: an asynchronous function that downloads Google Docs from a specified folder. It:
+<ol>
+<li>Lists the files in the specified folder using the <code>listDrive</code> function</li>
+<li>Iterates over the files and exports those with the <code>application/vnd.google-apps.document</code> or <code>application/vnd.google-apps.spreadsheet</code> MIME type</li>
+<li>Writes the exported files to the user's downloads directory</li>
+</ol></li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The code assumes that the <code>path</code> and <code>fs</code> modules are available, which suggests that it is running in a Node.js environment.</li>
+<li>The <code>safeurl</code> function is used to sanitize the filename by removing any invalid characters, which is a good practice to prevent file corruption or security issues.</li>
+<li>The <code>try</code>-<code>catch</code> blocks are used to handle any errors that may occur during the file export or writing process.</li>
+</ul>

@@ -1,0 +1,165 @@
+<p>Here is a 2-sentence summary of the provided functions:</p>
+<p>The <code>getCellPath</code> function generates a unique path for a cell in a notebook, returning it as a string. The <code>importNotebook</code> function imports a notebook into a new module, interpreting the notebook's cells and creating a new module based on the cell's language.</p>
+
+
+<pre><code>var path = require('path');
+
+// TODO: combine with id2 from rpc and nicename from notebook export
+// TODO: insert niceName and getExports here?
+// must have a unique id for each unique cell so that
+// individual cells can serve as modules as well as notebooks
+// adding the cell id as a part of the filename
+function getCellPath(cell) {
+    var question = cell.questions && cell.questions[0]
+        ? (' aka ' + cell.questions[0].substr(0, 50))
+        : ''
+    return path.join(path.dirname(path.resolve(cell.filename)), cell.id) + question
+}
+
+// How to test if a notebook has already been imported
+function importNotebook(notebook, ctx = {}) {
+    var {interpret, makeModule, makeESModule, makeDylib, makeDLL, makePythonModule} = require('../Core')
+    // accept all arguments as the list of queries
+    if(arguments.length > 2) {
+        notebook = Array.from(arguments)
+        if(typeof arugments[arguments.length - 1] === 'object'
+          && !Array.isArray(arugments[arguments.length - 1])) {
+            notebook = notebook.slice(0, arguments.length - 1)
+            ctx = arugments[arguments.length - 1]
+        }
+    }
+
+    if (typeof notebook === 'undefined') {
+        return Promise.resolve({})
+    }
+    
+    // TODO: move this sort of thing to cache
+    var cells = interpret(notebook)
+    
+    if(typeof cells.code !== 'undefined') {
+        if(!cells.filename.includes('Core')) {
+            console.log(`importing ${notebook} - 1 cell - ${cells.id}`)
+        }
+
+        if(cells.language == 'python') {
+
+            return makePythonModule(cells.source.join(''),
+                cells.id,
+                ctx)
+
+        } else
+
+        if(cells.language == 'csharp') {
+
+            return makeDLL(cells.source.join(''), cells.id)
+
+        } else
+
+        if(cells.language == 'c' || cells.language == 'cpp' || cells.language == 'objective-c') {
+
+            return makeDylib(cells.source.join(''), cells.id)
+
+        } else
+
+        if (!cells.filename.match(/Core\//gi) && !cells.filename.match(/cache/gi) 
+            && cells.source.join('').match(/^import\s|\simport\s|^export\s/gmi)
+        ) {
+            console.error('ES module matched')
+            return Promise.resolve(makeESModule(cells.source.join(''), cells.filename, ctx))
+        } else
+        
+        return makeModule(cells.source.join(''),
+                          getCellPath(cells),
+                          ctx)
+    }
+    
+    console.log(`importing ${notebook} - ${cells.length} cells - ${cells.map(c => c.id)}`)
+    var package = {}
+
+    for(let i = 0; i < cells.length; i++) {
+
+        let result
+
+        if(cells.language == 'python') {
+
+            result = makePythonModule(cells[i].source.join(''),
+                cells[i].id,
+                ctx)
+
+        } else
+
+        if(cells[i].language == 'csharp') {
+
+            result = makeDLL(cells[i].source.join(''), cells[i].id)
+
+        } else
+
+        if(cells[i].language == 'c' || cells[i].language == 'cpp' || cells[i].language == 'objective-c') {
+
+            result = makeDylib(cells[i].source.join(''), cells[i].id)
+
+        } else
+        if (!cells[i].filename.match(/Core\//gi) && !cells[i].filename.match(/cache/gi) 
+            && cells[i].source.join('').match(/^import\s|\simport\s|^export\s|\sexport\s/gi)
+        ) {
+            result = Promise.resolve(makeESModule(cells[i].source.join(''), cells[i].filename, ctx))
+        } else
+            result = makeModule(cells[i].source.join(''),
+                                      getCellPath(cells[i]),
+                                      ctx)
+
+        if(typeof result === 'object') {
+            // TODO: handle promises and merge them if they are objects?
+            if(typeof result[Object.keys(result)[0]] === 'function') {
+                const func = result[Object.keys(result)[0]]
+                package[cells[i].id] = func
+                package[func.name] = func
+            }
+            Object.assign(package, result)
+        }
+        if (typeof result === 'function') {
+            package[cells[i].id] = result
+            package[result.name] = result
+        }
+        package[i] = result
+        Object.assign(ctx, package)
+    }
+
+    return package
+}
+
+module.exports.importNotebook = importNotebook;
+module.exports.import = importNotebook;
+</code></pre>
+
+<p><strong>Function Breakdown</strong></p>
+<h3>getCellPath(cell)</h3>
+<ul>
+<li>This function generates a unique path for a cell in a notebook.</li>
+<li>It takes a <code>cell</code> object as an argument.</li>
+<li>It returns a string representing the path to the cell.</li>
+</ul>
+<h3>importNotebook(notebook, ctx = {})</h3>
+<ul>
+<li>This function imports a notebook into a new module.</li>
+<li>It takes two arguments: <code>notebook</code> and <code>ctx</code> (optional).</li>
+<li>If <code>notebook</code> is not defined, it returns an empty Promise.</li>
+<li>Otherwise, it:
+<ul>
+<li>Interprets the notebook using the <code>interpret</code> function.</li>
+<li>If the notebook has a single cell, it logs a message with the notebook name and cell ID.</li>
+<li>It then creates a new module based on the cell's language:
+<ul>
+<li>If the language is Python, it uses <code>makePythonModule</code> to create a Python module.</li>
+<li>If the language is C# (Csharp), it uses <code>makeDLL</code> to create a DLL.</li>
+<li>If the language is C, C++, or Objective-C, it uses <code>makeDylib</code> to create a dynamic library.</li>
+</ul></li>
+</ul></li>
+<li>The function is currently under development, as indicated by the TODO comments.</li>
+</ul>
+<p><strong>Function Parameters</strong></p>
+<ul>
+<li><code>cell</code>: An object representing a cell in a notebook.</li>
+<li><code>notebook</code>: The notebook to be imported.</li>
+<li><code>ctx</code>: An optional object containing additional context for the import process.</li>
+</ul>

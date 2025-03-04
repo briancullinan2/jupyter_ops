@@ -1,0 +1,37 @@
+<p>This code snippet processes email messages, extracts their subjects and senders, and generates an HTML list of these details for display.</p>
+
+
+<pre><code>htmlPrint = '';
+messages.forEach(message => {
+    var header = message.parts.filter(function (part) {
+        return part.which.indexOf('HEADER') > -1;
+    });
+    var subject = header[0].body.subject[0];
+    var from = header[0].body.from[0];
+    htmlPrint += '<li>subject: ' + subject + ', from: ' + from + '</li>\n';
+});
+$$.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOuput:\n'});
+
+</code></pre>
+
+<p>This code snippet processes an array of email messages (<code>messages</code>) and generates an HTML-formatted list of email subjects and senders.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>htmlPrint = '';</code>: Initializes an empty string to store the HTML output.</li>
+</ul></li>
+<li><p><strong>Message Processing:</strong></p>
+<ul>
+<li><code>messages.forEach(message =&gt; { ... });</code>: Iterates through each email message in the <code>messages</code> array.</li>
+<li><code>var header = message.parts.filter(function (part) { ... });</code>: Extracts the header part of the email message.</li>
+<li><code>var subject = header[0].body.subject[0];</code>: Extracts the subject from the header.</li>
+<li><code>var from = header[0].body.from[0];</code>: Extracts the sender from the header.</li>
+<li><code>htmlPrint += '&lt;li&gt;subject: ' + subject + ', from: ' + from + '&lt;/li&gt;\n';</code>: Appends a list item (<code>&lt;li&gt;</code>) containing the subject and sender to the <code>htmlPrint</code> string.</li>
+</ul></li>
+<li><p><strong>Output Generation:</strong></p>
+<ul>
+<li><code>$$.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOuput:\n'});</code>: Sends the generated HTML code as a MIME response, likely within a larger application framework.</li>
+</ul></li>
+</ol>
+<p>In essence, this code snippet takes an array of email messages, extracts subject and sender information, and formats it as an HTML list for display or further processing.</p>

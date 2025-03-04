@@ -1,0 +1,93 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The <code>getJoke</code> function imports required modules and makes a GET request to a web page to retrieve a list of jokes, extracting the questions and answers using regular expressions. It then returns a random joke from the list, or resolves with the existing joke data if it has already been loaded.</p>
+
+
+<pre><code>var util = require('bluebird');
+var request = util.promisify(require('request'));
+var importer = require('../Core')
+
+var jokes;
+function getJoke() {
+    // TODO: collect jokes instead
+    return (typeof jokes === 'undefined'
+        ? request('http://www.ducksters.com/jokes/silly.php')
+        .then(res => importer.regexToArray(/^.*?Q:.*$|^.*?A:.*$/igm, res.body))
+        .then(r => {
+            r = r.reduce((arr, j, i) => {
+                if(i % 2 === 1) {
+                    arr.push([
+                        r[i-1].replace(/<.*?\s*\/?>/ig, '').trim().replace(/^\s*|\s*$/igm, ''),
+                        j.replace(/<.*?\s*\/?>/ig, '').trim().replace(/^\s*|\s*$/igm, '')
+                    ]);
+                }
+                return arr;
+            }, []);
+            console.log(r);
+            jokes = r;
+            return r;
+        })
+        : Promise.resolve(jokes))
+        .then(arr => {
+            const i = Math.round(Math.random() * arr.length);
+            return arr[i];
+        })
+}
+module.exports = getJoke;
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var util = require('bluebird');
+var request = util.promisify(require('request'));
+var importer = require('../Core')
+</code></pre>
+<ul>
+<li>The <code>bluebird</code> library is imported and assigned to the <code>util</code> variable.</li>
+<li>The <code>request</code> module is imported and its <code>promisify</code> method is used to convert it into a Promise-based function.</li>
+<li>The <code>importer</code> module is imported from a relative path.</li>
+</ul>
+<h4>Defining the <code>getJoke</code> Function</h4>
+<pre><code class="language-javascript">var jokes;
+function getJoke() {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>getJoke</code> function is defined.</li>
+<li>A <code>jokes</code> variable is declared.</li>
+</ul>
+<h4>Resolving Jokes</h4>
+<pre><code class="language-javascript">return (typeof jokes === 'undefined'
+   ? request('http://www.ducksters.com/jokes/silly.php')
+   .then(res =&gt; importer.regexToArray(/^.*?Q:.*$|^.*?A:.*$/igm, res.body))
+   .then(r =&gt; {
+        //...
+    })
+    : Promise.resolve(jokes))
+   .then(arr =&gt; {
+        //...
+    })
+</code></pre>
+<ul>
+<li>If <code>jokes</code> is undefined, the function makes a GET request to <code>http://www.ducksters.com/jokes/silly.php</code> using the <code>request</code> function.</li>
+<li>The response body is then processed using <code>importer.regexToArray</code> function, which extracts questions and answers from the response body.</li>
+<li>The extracted data is then cleaned and stored in the <code>jokes</code> variable.</li>
+<li>If <code>jokes</code> is defined, the function resolves with the existing <code>jokes</code> data.</li>
+</ul>
+<h4>Returning a Random Joke</h4>
+<pre><code class="language-javascript">.then(arr =&gt; {
+    const i = Math.round(Math.random() * arr.length);
+    return arr[i];
+})
+</code></pre>
+<ul>
+<li>A random index <code>i</code> is generated based on the length of the <code>arr</code> array.</li>
+<li>The joke at the random index <code>i</code> is returned.</li>
+</ul>
+<h4>Exporting the Function</h4>
+<pre><code class="language-javascript">module.exports = getJoke;
+</code></pre>
+<ul>
+<li>The <code>getJoke</code> function is exported as a module.</li>
+</ul>

@@ -1,0 +1,119 @@
+<p>This code processes Google Timeline data to identify and categorize destinations by finding nearby geographical locations associated with each timeline entry. It then calculates average coordinates for these destinations and filters out entries that are not relevant.</p>
+
+
+<pre><code>var importer = require('../Core');
+var _ = require('underscore');
+var fs = require('fs');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Timeline';
+
+function toRadians(angle) {
+    return angle * (Math.PI / 180);
+}
+
+function straightDistance(lat1, lon1, lat2, lon2) {
+    var R = 6371e3; // metres
+    var φ1 = toRadians(lat1);
+    var φ2 = toRadians(lat2);
+    var Δφ = toRadians(lat2 - lat1);
+    var Δλ = toRadians(lon2 - lon1);
+
+    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+        Math.cos(φ1) * Math.cos(φ2) *
+        Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    var d = R * c;
+    return d;
+}
+
+function averageDestinations(geoLocations, timelineLocations) {
+    var destinations = [];
+    for (const d of timelineLocations) {
+        if ((d.name + '') == '' || (d.name + '').indexOf('Driving') > -1) {
+            continue;
+        }
+        const nearest = _.sortBy(
+            geoLocations,
+            l => Math.abs(new Date(l.time).getTime() - new Date(d.time).getTime()))
+            .slice(0, 3);
+        // make sure it isn't off by much
+        const averageLat = nearest.map(n => n.latitudeE7)
+            .reduce((a, b) => a + b, 0) / nearest.length / 10000000;
+        const averageLon = nearest.map(n => n.longitudeE7)
+            .reduce((a, b) => a + b, 0) / nearest.length / 10000000;
+        if (nearest.filter(nearby => straightDistance(
+                nearby.latitudeE7 / 10000000,
+                nearby.longitudeE7 / 10000000,
+                averageLat,
+                averageLon
+            ) < 2000).length > 0) {
+            destinations.push(Object.assign(d, {
+                averageLat: averageLat,
+                averageLon: averageLon,
+                locations: nearest.map(nearby => Object.assign(nearby, {
+                    averageLat: nearby.latitudeE7 - averageLat,
+                    averageLon: nearby.longitudeE7 - averageLon,
+                    averageDist: straightDistance(
+                        nearby.latitudeE7 / 10000000,
+                        nearby.longitudeE7 / 10000000,
+                        averageLat,
+                        averageLon
+                    )
+                }))
+            }));
+        } else {
+            console.log('too far! ' + d.name + ' - ' + d.time);
+            console.log(nearest.map(nearby => straightDistance(
+                nearby.latitudeE7 / 10000000,
+                nearby.longitudeE7 / 10000000,
+                averageLat,
+                averageLon
+            )));
+        }
+        destinations.push(Object.assign(d, {
+            averageLat: averageLat,
+            averageLon: averageLon
+        }));
+    }
+    return destinations;
+}
+module.exports = averageDestinations;
+</code></pre>
+
+<p>This code analyzes Google Timeline data to identify and categorize destinations.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing utility functions.</li>
+<li><code>underscore</code>: A library for working with arrays and objects.</li>
+<li><code>fs</code>: For file system operations.</li>
+</ul></li>
+<li><p><strong>Constants:</strong></p>
+<ul>
+<li><code>PROFILE_PATH</code>: Path to the user's profile directory.</li>
+<li><code>PROJECT_PATH</code>: Path to a project directory within the user's profile.</li>
+</ul></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>toRadians</code>: Converts degrees to radians.</li>
+<li><code>straightDistance</code>: Calculates the straight-line distance between two points on Earth using the Haversine formula.</li>
+</ul></li>
+<li><p><strong><code>averageDestinations</code> Function:</strong></p>
+<ul>
+<li>Takes two arrays: <code>geoLocations</code> (likely containing geographical data) and <code>timelineLocations</code> (likely containing data from the Google Timeline).</li>
+<li>Iterates through <code>timelineLocations</code>, filtering out entries that are empty or related to driving.</li>
+<li>For each remaining destination:
+<ul>
+<li>Finds the three nearest <code>geoLocations</code> based on time proximity.</li>
+<li>Calculates the average latitude and longitude of these nearest locations.</li>
+<li>If the destination is close enough to the average location (within 2 km), it's considered a valid destination and its data is enriched with the average coordinates and nearby locations.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Overall Purpose:</strong></p>
+<ul>
+<li>The code aims to process Google Timeline data and identify meaningful destinations, likely for further analysis or visualization.</li>
+</ul></li>
+</ol>

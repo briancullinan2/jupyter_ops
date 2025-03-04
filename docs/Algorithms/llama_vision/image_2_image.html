@@ -1,0 +1,115 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The <code>doImage2Image</code> function is an asynchronous function that processes an image and a prompt, sends a POST request to a local API endpoint, and saves the generated image to a specified output directory. The function currently lacks error handling and checks for existing output directory or file, and requires additional functionality to handle potential issues during API requests and file operations.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const {request} = require('gaxios')
+
+const OUTPUT_PATH = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'stable-diffusion-webui/outputs')
+
+async function doImage2Image(image, prompt) {
+  let width = 1024
+  if(prompt.includes('View360')) {
+    width = 2048
+  }
+
+  let base64_image
+  if(typeof image == 'string') {
+    if(image.startsWith('data:image/'))
+      image = image.replace(/^data:image\/.*?;base64,/gi, '')
+  
+    if(image.includes('://')) {
+      let result = await request({
+        url: image,
+        method: 'GET',
+      })
+      base64_image = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(image)) {
+      base64_image = Buffer.from(image, 'base64').toString('base64')
+    } else {
+      base64_image = fs.readFileSync(image).toString('base64')
+    }  
+  } else {
+    base64_image = image.toString('base64')
+  }
+
+  try {
+    let result = await request({
+      url: 'http://127.0.0.1:7860/sdapi/v1/img2img',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify({
+        prompt: prompt,
+        negative_prompt: 'bad hands, bad feet, bad faces, bad eyes, bad anatomy, extra limbs, missing limbs, tattoo, statue, picture frame, anime, cartoon, signature, abstract',
+        save_images: true,
+        "width": width,
+        "height": 1024,
+        "steps": 30,
+        tiling: false,
+        init_images: [base64_image],
+      })
+    })
+    
+    let seed = JSON.parse(result.data.info).seed
+    let buff = Buffer.from(result.data.images[0], 'base64');
+    let now = new Date()
+    let folderName = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0')
+    let stablePath = path.join(OUTPUT_PATH, 'img2img-images', folderName)
+    let imagePath
+    if(fs.existsSync(stablePath)) {
+      let images = fs.readdirSync(stablePath)
+      for(let i = 0; i < images.length; i++) {
+        if(images[i].match('-' + seed + '-')) {
+          imagePath = path.join('img2img-images', folderName, images[i])
+          break
+        }
+      }
+    }
+    return {seed, image: buff, imagePath, prompt}
+
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+module.exports = {
+  doImage2Image,
+  OUTPUT_PATH
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Constants</h3>
+<p>The code requires three modules:</p>
+<ul>
+<li><code>fs</code> (File System) for interacting with the file system</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>gaxios</code> (a Google API client library) for making HTTP requests</li>
+</ul>
+<p>It defines a constant <code>OUTPUT_PATH</code> which is the path to a directory where image outputs will be saved.</p>
+<h3><code>doImage2Image</code> Function</h3>
+<p>This is an asynchronous function that takes two arguments: <code>image</code> and <code>prompt</code>.</p>
+<h4>Image Processing</h4>
+<p>The function checks if the <code>image</code> argument is a string. If so, it determines if it's a URL, a local file path, or a base64-encoded image. It then converts the image to base64 format if necessary.</p>
+<h4>API Request</h4>
+<p>The function sends a POST request to a local API endpoint (<code>http://127.0.0.1:7860/sdapi/v1/img2img</code>) with the following data:</p>
+<ul>
+<li><code>prompt</code>: the user-provided prompt</li>
+<li><code>negative_prompt</code>: a predefined string that describes what not to include in the image</li>
+<li><code>save_images</code>: set to <code>true</code> to save the generated image</li>
+<li><code>width</code>: the image width, which is either 1024 or 2048 depending on the presence of &quot;View360&quot; in the prompt</li>
+<li><code>height</code>: always 1024</li>
+<li><code>steps</code>: set to 30</li>
+<li><code>tiling</code>: set to <code>false</code></li>
+<li><code>init_images</code>: the base64-encoded image data</li>
+</ul>
+<h4>Processing Response</h4>
+<p>The function extracts the <code>seed</code> and <code>images</code> from the API response. It then generates a filename for the output image based on the current date and time. If the output directory does not exist, the function creates it.</p>
+<h4>Saving Image</h4>
+<p>The function attempts to save the generated image to the output directory. If the directory exists, it reads the existing images in the directory, extracts the filename, and saves the new image with a incremented filename.</p>
+<h3>Missing Functionality</h3>
+<p>The code does not handle errors or exceptions that may occur during API requests or file operations. It also does not check if the output directory or file already exists before saving the image.</p>

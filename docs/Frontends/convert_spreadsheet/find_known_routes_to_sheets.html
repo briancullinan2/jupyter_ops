@@ -1,0 +1,98 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code is a JavaScript function named <code>collectRoutes</code> that collects and processes URL paths as part of a routing mechanism, using functions from the <code>../Core</code> module to generate Google Sheets templates. The function iterates over the URL paths, removes duplicates, and creates new templates associated with each link, returning a promise that resolves when all links have been processed.</p>
+
+
+<pre><code>var importer = require('../Core')
+var wrapTemplate = importer.import('output google sheet template')
+var getTemplateProperties = importer.import('google sheet template properties')
+var getTemplateByUrl = importer.import('convert sheet helper functions')
+
+var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
+
+var isFiltered = (url) => url.split('/').length > 1
+
+// combine with "getSections" by using fake "{{> url/path}}" include
+function collectRoutes(routes, properties, templates, rendered) {
+    var local = routes.concat(properties['render'] || [])
+        .filter((link, i, arr) => !rendered.includes(link)
+                // protocol means it's absolute remote path and not to try to generate it
+                && arr.indexOf(link) == i && !link.includes(':'))
+
+    local.forEach(link => rendered[rendered.length] = link)
+    
+    var promises = local
+        // promise in series so there is no data collisions
+        .map(link => resolve => {
+            
+            var trimmedBase = (properties['base'] || '').replace(TRIM, '')
+            link = link.replace(/#.*$/, '') // remove hash #
+            link = link.replace(TRIM, '') // remove extra slashes
+            
+            if(link.substr(0, trimmedBase.length) === trimmedBase) {
+                link = link.substr(trimmedBase.length).replace(TRIM, '');
+            }
+            // any part of a path can contain the reference to a page template
+            var key = getTemplateByUrl(templates, link);
+            var newProps = Object.assign({}, properties);
+        
+            // create a temporary template to filter by
+            newProps[key + '-' + key + '-link'] = link;
+            templates[key + '-' + key] = {template: {rows: [[
+                isFiltered(link)
+                    ? `{{> ${key}/${key}-${key}-link}}`
+                    : `{{> ${key}}}`
+            ]]}}
+        
+            return getTemplateProperties(key + '-' + key, newProps, templates)
+                .then(() => wrapTemplate(link, key, newProps[key + '-' + key], newProps))
+                .then(page => {
+                    var pages = {};
+                    pages[link] = page;
+                    resolve(pages)
+                })
+        })
+    
+    return importer.runAllPromises(promises)
+        .then(results => results.reduce((obj, r) => Object.assign(obj, r), {}))
+}
+
+module.exports = collectRoutes;
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import Statements</h3>
+<p>The code imports several modules using the <code>require</code> function:</p>
+<ul>
+<li><code>importer</code>: imports the entire <code>../Core</code> module</li>
+<li><code>wrapTemplate</code>, <code>getTemplateProperties</code>, and <code>getTemplateByUrl</code>: imports specific functions from the <code>../Core</code> module:
+<ul>
+<li><code>wrapTemplate</code>: returns an output Google Sheets template</li>
+<li><code>getTemplateProperties</code>: returns properties for a Google Sheets template</li>
+<li><code>getTemplateByUrl</code>: returns a Google Sheets template by URL</li>
+</ul></li>
+</ul>
+<h3>Regular Expression and Helper Function</h3>
+<p>A regular expression <code>TRIM</code> is defined to remove leading and trailing slashes from a string. The <code>isFiltered</code> function checks if a URL has more than one path segment.</p>
+<h3><code>collectRoutes</code> Function</h3>
+<p>The <code>collectRoutes</code> function takes four arguments: <code>routes</code>, <code>properties</code>, <code>templates</code>, and <code>rendered</code>. It appears to be part of a routing mechanism, collecting and processing URL paths.</p>
+<p>Here's a step-by-step breakdown:</p>
+<ol>
+<li><strong>Combine Routes</strong>: Merges <code>routes</code> and <code>properties['render']</code> arrays, filters out any duplicate links, and adds them to the <code>rendered</code> array.</li>
+<li><strong>Process Each Link</strong>: Iterates over the combined array, processing each link:
+<ul>
+<li>Removes the hash (<code>#</code>) from the link</li>
+<li>Removes leading and trailing slashes from the link</li>
+<li>Checks if the link starts with the <code>base</code> path (if set). If so, removes the base path.</li>
+<li>Uses the <code>getTemplateByUrl</code> function to get a template key associated with the link</li>
+<li>Creates a new object <code>newProps</code> by copying <code>properties</code> and adding a new key-value pair with the link as the value</li>
+<li>Creates a temporary template by wrapping the link in a <code>{{&gt; template }}</code> syntax</li>
+<li>Calls <code>getTemplateProperties</code> to get properties for the new template</li>
+<li>Calls <code>wrapTemplate</code> to generate the template</li>
+<li>Calls <code>then</code> to process the result of <code>wrapTemplate</code></li>
+</ul></li>
+</ol>
+<h3>Return Value</h3>
+<p>The <code>collectRoutes</code> function returns a promise that resolves when all links have been processed.</p>
+<h3>Documentation</h3>
+<p>The code uses Markdown formatting for comments. Unfortunately, the code does not contain any explicit function or variable documentation.</p>

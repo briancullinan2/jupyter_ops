@@ -1,0 +1,46 @@
+<p>This code snippet provides a function <code>timelineEvents</code> that retrieves timeline event data for a specified date from a JSON file stored in a user-specific directory.  It handles both date object and string inputs and constructs a unique file path based on the date.</p>
+
+
+<pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Collections/timeline';
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function timelineEvents(date) {
+    var dateKey;
+    if(!isNaN((new Date(date + '')).getTime())) {
+        date = new Date(date + '');
+        dateKey = date.getDate() + months[date.getMonth()]
+            + (date.getFullYear() + '').substr(2, 2);
+    } else {
+        dateKey = date || '1Oct16';
+    }
+    return JSON.parse(fs.readFileSync(PROJECT_PATH + '/events-' + dateKey + '.json').toString());
+}
+module.exports = timelineEvents;
+</code></pre>
+
+<p>This code snippet defines a function <code>timelineEvents</code> that retrieves timeline event data for a given date.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets up <code>PROFILE_PATH</code> to the user's home directory.</li>
+<li>Defines <code>PROJECT_PATH</code> as a subdirectory within the user's home directory for storing timeline data.</li>
+<li>Defines an array <code>months</code> for abbreviating month names.</li>
+</ul></li>
+<li><p><strong><code>timelineEvents</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>date</code> as input, which can be either a date object or a string.</li>
+<li>Checks if the input <code>date</code> is a valid date object.
+<ul>
+<li>If valid, it formats the date into a key (<code>dateKey</code>) using the date's day, month abbreviation, and year.</li>
+<li>If not valid, it uses a default key <code>'1Oct16'</code>.</li>
+</ul></li>
+<li>Reads the JSON file located at <code>PROJECT_PATH + '/events-' + dateKey + '.json'</code>.</li>
+<li>Parses the JSON data and returns it as a JavaScript object.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>timelineEvents</code> function as the main module export.</li>
+</ul></li>
+</ol>

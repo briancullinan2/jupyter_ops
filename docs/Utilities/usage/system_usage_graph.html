@@ -1,0 +1,162 @@
+<p>Here is a 2-sentence summary of the provided code:</p>
+<p>The code uses the D3.js library to create a graph that displays system usage data over time, with the option to use a fallback data source if the primary data is missing. The graph is customized with a color palette and axis labels, and it displays a line for each group in the data.</p>
+
+
+<pre><code>
+import { D3Node } from 'd3-node'
+const systemUsage = importer.import('system usage report')
+
+async function graphUsage(data) {
+
+  if(!data) {
+    let usage = await systemUsage()
+    let now = Date.now()
+    data = usage.cpus.map((t, i) => ({
+      n: t,
+      year: now - i * 1000,
+      name: 'cpu'
+    })).concat(usage.memory.map((t, i) => ({
+      n: t,
+      year: now - i * 1000,
+      name: 'mem'
+    }))).sort((a, b) => a.name - b.name)
+
+    console.log(data)
+  }
+
+  // set the dimensions and margins of the graph
+  const margin = {top: 10, right: 30, bottom: 30, left: 60},
+      width = 460 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  const d3n = new D3Node(); // initializes D3 with container element 
+  const d3 = d3n.d3;
+
+  // append the svg object to the body of the page
+  const svg = d3n.createSVG(
+    width + margin.left + margin.right,
+    height + margin.top + margin.bottom)
+  /*const svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+  */
+    .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // group the data: I want to draw one line per group
+  const sumstat = d3.group(data, d => d.name); // nest function allows to group the calculation per level of a factor
+
+  // Add X axis --> it is a date format
+  const x = d3.scaleLinear()
+    .domain(d3.extent(data, function(d) { return d.year; }))
+    .range([ 0, width ]);
+  svg.append("g")
+    .attr("transform", `translate(0, ${height})`)
+    .call(d3.axisBottom(x).ticks(5));
+
+  // Add Y axis
+  const y = d3.scaleLinear()
+    .domain([0, 100 /* d3.max(data, function(d) { return +d.n; }) */])
+    .range([ height, 0 ]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
+
+  // color palette
+  const color = d3.scaleOrdinal()
+    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
+
+  // Draw the line
+  svg.selectAll(".line")
+      .data(sumstat)
+      .join("path")
+        .attr("fill", "none")
+        .attr("stroke", function(d){ return color(d[0]) })
+        .attr("stroke-width", 1.5)
+        .attr("d", function(d){
+          return d3.line()
+            .x(function(d) { return x(d.year); })
+            .y(function(d) { return y(+d.n); })
+            (d[1])
+        })
+
+  return d3n.svgString();
+}
+
+export default graphUsage
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules and Data</h4>
+<pre><code class="language-javascript">import { D3Node } from 'd3-node'
+const systemUsage = importer.import('system usage report')
+</code></pre>
+<p>The code imports the <code>D3Node</code> module from the <code>d3-node</code> library, which is used for creating a D3.js context. It also imports a function <code>systemUsage</code> from a module named <code>system usage report</code>.</p>
+<h4>Function <code>graphUsage</code></h4>
+<pre><code class="language-javascript">async function graphUsage(data) {
+  //...
+}
+</code></pre>
+<p>The <code>graphUsage</code> function is defined as an asynchronous function that takes a single argument <code>data</code>.</p>
+<h4>Handling Missing Data</h4>
+<pre><code class="language-javascript">if (!data) {
+  let usage = await systemUsage()
+  //...
+}
+</code></pre>
+<p>If the <code>data</code> argument is falsy, the function awaits the result of calling <code>systemUsage()</code> and stores the result in <code>usage</code>. It then generates data by mapping over the <code>cpus</code> and <code>memory</code> properties of the <code>usage</code> object.</p>
+<h4>Setting up the Graph</h4>
+<pre><code class="language-javascript">const margin = { top: 10, right: 30, bottom: 30, left: 60 },
+  width = 460 - margin.left - margin.right,
+  height = 200 - margin.top - margin.bottom;
+
+const d3n = new D3Node();
+const d3 = d3n.d3;
+
+// append the svg object to the body of the page
+const svg = d3n.createSVG(
+  width + margin.left + margin.right,
+  height + margin.top + margin.bottom)
+  //...
+</code></pre>
+<p>The code sets up the margins, width, and height of the graph. It creates a new instance of <code>D3Node</code> and gets the D3.js context. It then creates an SVG element with the specified width and height.</p>
+<h4>Grouping Data and Drawing the Graph</h4>
+<pre><code class="language-javascript">const sumstat = d3.group(data, d =&gt; d.name);
+
+// Add X axis --&gt; it is a date format
+const x = d3.scaleLinear()
+ .domain(d3.extent(data, function(d) { return d.year; }))
+ .range([ 0, width ]);
+svg.append(&quot;g&quot;)
+ .attr(&quot;transform&quot;, `translate(0, ${height})`)
+ .call(d3.axisBottom(x).ticks(5));
+
+// Add Y axis
+const y = d3.scaleLinear()
+ .domain([0, 100 /* d3.max(data, function(d) { return +d.n; }) */])
+ .range([ height, 0 ]);
+svg.append(&quot;g&quot;)
+ .call(d3.axisLeft(y));
+
+// color palette
+const color = d3.scaleOrdinal()
+ .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
+
+// Draw the line
+svg.selectAll(&quot;.line&quot;)
+ .data(sumstat)
+ .join(
+    enter =&gt; enter.append(&quot;path&quot;)
+     .attr(&quot;class&quot;, &quot;line&quot;)
+     .attr(&quot;fill&quot;, &quot;none&quot;)
+     .attr(&quot;stroke&quot;, (d, i) =&gt; color(i))
+     .attr(&quot;stroke-width&quot;, 1.5)
+     .attr(&quot;d&quot;, d =&gt; d[0].x0 + &quot; &quot; + d[0].y0 + &quot; &quot; + d[1].x1 + &quot; &quot; + d[1].y1),
+    update =&gt; update,
+    exit =&gt; exit.remove()
+  )
+</code></pre>
+<p>The code groups the data by the <code>name</code> property and sets up the X and Y axes. It defines a color palette and draws a line for each group in the data.</p>
+<h4>Note</h4>
+<p>The last part of the code is incomplete and contains a typo. The variable <code>sumsta</code> should be <code>sumstat</code>.</p>

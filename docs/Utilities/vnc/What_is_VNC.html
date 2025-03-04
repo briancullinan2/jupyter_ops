@@ -1,0 +1,26 @@
+<p>This code snippet configures a Linux desktop for remote access using VNC by launching a window manager and starting a VNC server on port 5900.  This allows another computer to connect and control the Linux machine remotely.</p>
+
+
+<pre><code>fluxbox -display :0
+x11vnc -forever -nopw -shared -rfbport -ncache 5900 -display :0
+
+</code></pre>
+
+<p>This code snippet starts two processes to enable remote access to a Linux desktop using VNC.</p>
+<ol>
+<li><p><strong><code>fluxbox -display :0</code>:</strong></p>
+<ul>
+<li>Launches the Fluxbox window manager on display :0 (the default display).</li>
+</ul></li>
+<li><p><strong><code>x11vnc -forever -nopw -shared -rfbport 5900 -display :0</code>:</strong></p>
+<ul>
+<li>Starts the <code>x11vnc</code> server, which enables remote access to the X11 display.</li>
+<li><code>-forever</code>: Runs the server indefinitely.</li>
+<li><code>-nopw</code>: Disables password authentication (insecure, use with caution).</li>
+<li><code>-shared</code>: Allows multiple clients to connect simultaneously.</li>
+<li><code>-rfbport 5900</code>: Specifies port 5900 for VNC connections.</li>
+<li><code>-display :0</code>: Connects to display :0.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This command sequence sets up a remote desktop session using VNC, allowing you to control the Linux machine from another computer over a network.</p>

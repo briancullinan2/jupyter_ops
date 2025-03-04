@@ -1,0 +1,85 @@
+<p>Here's a summary of the code breakdown in one to two sentences:</p>
+<p>The <code>testScraper</code> function, exported as a module, scrapes Reddit links using a Selenium client instance, which is obtained by calling the <code>getClient</code> function, and returns the scraped results. The function takes an optional <code>startPage</code> parameter, defaulting to a specific Reddit URL, and modifies it if necessary to include a protocol.</p>
+
+
+<pre><code>const redditLinks = importer.import('reddit scraper')
+const getClient = importer.import('selenium client')
+
+async function testScraper(startPage = 'https://www.reddit.com/r/CollapseSupport+climatechange+collapse+economicCollapse/') {
+  if(!startPage.includes('://')) {
+    startPage = 'https://www.reddit.com/r/' + startPage
+  }
+
+  driver = await getClient()
+
+  let result = await redditLinks(driver, startPage)
+
+  driver.quit()
+
+  return result
+}
+
+
+module.exports = testScraper
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">const redditLinks = importer.import('reddit scraper')
+const getClient = importer.import('selenium client')
+</code></pre>
+<ul>
+<li>Two dependencies are imported from the <code>importer</code> module:
+<ul>
+<li><code>reddit scraper</code>: a module providing a function to scrape Reddit links</li>
+<li><code>selenium client</code>: a module providing a function to get a Selenium client instance</li>
+</ul></li>
+</ul>
+<h4>testScraper Function</h4>
+<pre><code class="language-javascript">async function testScraper(startPage = 'https://www.reddit.com/r/CollapseSupport+climatechange+collapse+economicCollapse/') {
+ ...
+}
+</code></pre>
+<ul>
+<li>An asynchronous function <code>testScraper</code> is defined, which scrapes Reddit links using a Selenium client</li>
+<li>The function takes an optional <code>startPage</code> parameter, defaulting to a specific Reddit URL</li>
+</ul>
+<h4>URL Validation and Modification</h4>
+<pre><code class="language-javascript">if(!startPage.includes('://')) {
+  startPage = 'https://www.reddit.com/r/' + startPage
+}
+</code></pre>
+<ul>
+<li>If the <code>startPage</code> URL does not contain a protocol (e.g., '://'), it is assumed to be a subreddit name and is prepended with a default Reddit URL</li>
+</ul>
+<h4>Initializing Selenium Client</h4>
+<pre><code class="language-javascript">driver = await getClient()
+</code></pre>
+<ul>
+<li>The <code>getClient</code> function is called to get a Selenium client instance, which is stored in the <code>driver</code> variable</li>
+</ul>
+<h4>Scraping Reddit Links</h4>
+<pre><code class="language-javascript">let result = await redditLinks(driver, startPage)
+</code></pre>
+<ul>
+<li>The <code>redditLinks</code> function is called with the Selenium client instance and the modified <code>startPage</code> URL, and the result is stored in the <code>result</code> variable</li>
+</ul>
+<h4>Quiting Selenium Client</h4>
+<pre><code class="language-javascript">driver.quit()
+</code></pre>
+<ul>
+<li>The Selenium client instance is quit after scraping is complete</li>
+</ul>
+<h4>Returning Result</h4>
+<pre><code class="language-javascript">return result
+</code></pre>
+<ul>
+<li>The result of the scraping operation is returned by the <code>testScraper</code> function</li>
+</ul>
+<h4>Exporting Function</h4>
+<pre><code class="language-javascript">module.exports = testScraper
+</code></pre>
+<ul>
+<li>The <code>testScraper</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

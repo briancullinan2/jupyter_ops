@@ -1,0 +1,63 @@
+<p>Here is a 2-sentence summary of the function breakdown:</p>
+<p>The <code>askLlamaForAChapterSynopsis</code> function asynchronously generates a list of chapter or character synopses for a given topic by interacting with an LLM (Large Language Model), logging the user's prompt and the LLM's response, and parsing the response to extract the synopsis titles and descriptions. The function returns an object with key-value pairs representing the synopses, assuming the LLM's response contains a list of numbered titles followed by their descriptions.</p>
+
+
+<pre><code>
+
+// TODO: parse title from descriptions and return in a nicely formatted object array
+async function askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections = 'chapters') {
+  const {llmPrompt} = await importer.import('create llm session')
+
+  let q1 = 'Brainstorm a list of 12 ' + chapterOrCharacterOrSections + ' synopsis:\n' 
+    + topic + '\nRespond with the numbered titles followed by the description.'
+
+  console.log("User: " + q1);
+  const a1 = await llmPrompt(q1);
+  console.log("AI: " + a1);
+
+  let titles = a1.trim().split(/(^|\n)\s*[0-9]+\.\s*/gi)
+    .filter(a => a && a.trim().length > 0)
+  let obj = {}
+  for(let i = 0; i < titles.length; i++) {
+    if(topic.includes(titles[i]) && titles[i+1].length < 128) continue;
+    let lines = titles[i].split(/\*\*|\#\#|\n/gi).filter(a => a && a.trim().length > 0)
+    let key = lines[0]
+    obj[key] = lines.slice(1).join('\n')
+    if(obj[key].length == 0 && titles[i+1].length > 128) {
+      obj[key] = titles[i+1]
+      i++
+    }
+  }
+  console.log(obj)
+  return obj
+}
+
+module.exports = askLlamaForAChapterSynopsis
+</code></pre>
+
+<h2>Function Breakdown</h2>
+<h3><code>askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections = 'chapters')</code></h3>
+<ul>
+<li><strong>Purpose:</strong> Asynchronously generates a list of chapter or character synopses for a given topic.</li>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>topic</code>: The topic for which synopses are generated.</li>
+<li><code>chapterOrCharacterOrSections</code>: The type of synopses to generate. Defaults to <code>'chapters'</code>.</li>
+</ul></li>
+<li><strong>Return Value:</strong> An object with key-value pairs representing the synopses.</li>
+</ul>
+<h2>Function Flow</h2>
+<ol>
+<li><strong>LLM Session Creation:</strong> Imports an LLMPrompt object from a module named <code>create llm session</code>.</li>
+<li><strong>Prompt Generation:</strong> Creates a prompt for the LLM to generate a list of synopsis titles and descriptions.</li>
+<li><strong>LLM Response:</strong> Sends the prompt to the LLM and logs the LLM's response.</li>
+<li><strong>Synopsis Extraction:</strong> Extracts the synopsis titles and descriptions from the LLM's response.</li>
+<li><strong>Object Construction:</strong> Constructs an object with key-value pairs representing the synopses.</li>
+<li><strong>Logging and Return:</strong> Logs the constructed object and returns it.</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>The function logs the user's prompt and the LLM's response for debugging purposes.</li>
+<li>The function uses several regular expressions to parse the LLM's response and extract the synopsis titles and descriptions.</li>
+<li>The function assumes that the LLM's response contains a list of numbered titles followed by their descriptions.</li>
+</ul>

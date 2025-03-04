@@ -1,0 +1,40 @@
+<p>The <code>fillForm</code> function automates filling out web forms by taking an object of field names and values and using a custom <code>selectDropdown</code> function to populate dropdown menus with the specified values.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+function fillForm(obj) {
+    const fields = Object.keys(obj);
+    return importer.runAllPromises(fields.map(f => resolve => {
+        return selectDropdown(f, obj[f])
+            .catch(e => console.log(e))
+            .then(r => resolve(r))
+    }))
+}
+module.exports = fillForm;
+</code></pre>
+
+<p>This code snippet defines a function called <code>fillForm</code> that automates filling out a form on a webpage. Here's a breakdown:</p>
+<p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module (not shown) likely providing utility functions and potentially Selenium integration.</li>
+<li><code>selectDropdown</code>: Another custom function (not shown) presumably responsible for selecting an option from a dropdown menu on a webpage.</li>
+</ul>
+<p><strong>Function:</strong></p>
+<ul>
+<li><code>fillForm(obj)</code>:
+<ul>
+<li>Takes an object <code>obj</code> as input, where keys represent form field names and values represent the desired input values.</li>
+<li>Extracts an array of field names from the object using <code>Object.keys(obj)</code>.</li>
+<li>Uses <code>importer.runAllPromises</code> to execute a series of promises concurrently, each corresponding to filling a single form field.</li>
+<li>For each field name <code>f</code>:
+<ul>
+<li>Calls <code>selectDropdown(f, obj[f])</code> to select the appropriate option from the dropdown menu associated with the field.</li>
+<li>Handles potential errors during the selection process using <code>catch(e =&gt; console.log(e))</code>.</li>
+<li>Resolves the promise with the result of the selection using <code>then(r =&gt; resolve(r))</code>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<p>This code automates the process of filling out a form by iterating through a set of field names and values, selecting the corresponding options from dropdown menus on a webpage.</p>
+<p>Let me know if you have any other questions.</p>

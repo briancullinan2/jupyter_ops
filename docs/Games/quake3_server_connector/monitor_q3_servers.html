@@ -1,0 +1,255 @@
+<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<p>The code imports various modules and defines two asynchronous functions, <code>getServerChannel</code> and <code>updateChannelThread</code>, which interact with the Discord API to fetch and manipulate channels and threads in a Discord server. The <code>getServerChannel</code> function finds a suitable channel based on a server's gametype and settings, while the <code>updateChannelThread</code> function updates an existing thread or creates a new one if it doesn't exist.</p>
+
+
+<pre><code>var importer = require('../Core')
+var serverApi = importer.import('quake 3 server commands')
+var {authorizeGateway} = importer.import('authorize discord')
+var discordApi = importer.import('discord api')
+var removeCtrlChars = importer.import('remove ctrl characters')
+var DEFAULT_USERNAME = 'Orbb'
+
+async function getServerChannel(server) {
+    
+    // get a list of channels to pair gametype up with
+    var channels = await discordApi.guildChannels()
+    var channel
+
+    // sort ffa/ctf/freeZe
+    if(!channel && (server.server_freezetag == '1'
+        || server.gamename.toLowerCase() == 'freon'
+        || (typeof server.xp_version != 'undefined'
+           && server.g_gametype == '8'))) {
+        channel = channels.filter(c => c.name.toLowerCase() == 'freeze-tag')[0]
+    }
+    if(!channel && server.gamename.toLowerCase() == 'defrag') {
+        channel = channels.filter(c => c.name.toLowerCase() == 'defrag')[0]
+    }
+    if(!channel && server.g_gametype == '4') {
+        channel = channels.filter(c => c.name.toLowerCase() == 'capture-the-flag')[0]
+    }
+    if(!channel && server.g_gametype == '3') {
+        channel = channels.filter(c => c.name.toLowerCase() == 'team-deathmatch')[0]
+    }
+    if(!channel && typeof server.xp_version != 'undefined'
+        && server.g_gametype == '7') {
+        channel = channels.filter(c => c.name.toLowerCase() == 'clan-arena')[0]
+    }
+    if(!channel && typeof server.xp_version != 'undefined'
+        && server.g_gametype == '1') {
+        channel = channels.filter(c => c.name.toLowerCase() == '1on1-duel')[0]
+    }
+    if(!channel) {
+        channel = channels.filter(c => c.name.toLowerCase() == 'general')[0]
+    }
+
+    return channel
+}
+
+async function updateChannelThread(threadName, channel, json) {
+    
+    // find old threads to reactivate
+    var archived = (await discordApi.archivedThreads(channel.id)).threads 
+        .filter(t => t.name == threadName)
+
+    var thread
+    var removeOld
+    if(archived.length > 0) {
+        thread = archived[0]
+        removeOld = (await discordApi.getPins(thread.id))
+            .filter(p => p.author.username == DEFAULT_USERNAME)
+    } else {
+        // thread is already active
+        var active = (await discordApi.activeThreads(channel.id)).threads
+            .filter(t => t.name == threadName)
+        if(active.length > 0) {
+            // find and update previous "whos online" message, pins?
+            thread = active[0]
+            var pins = (await discordApi.getPins(thread.id))
+                .filter(p => p.author.username == DEFAULT_USERNAME)
+            if(pins.length > 0) {
+                await discordApi.updateMessage(json, pins[0].id, thread.id)
+                return thread
+            }
+        } else {
+            thread = await discordApi.createThread(threadName, channel.id)
+        }
+    }
+    // create new "whos online message"
+    var message = await discordApi.createMessage(json, thread.id)
+    await discordApi.pinMessage(message.id, thread.id)
+    if(removeOld && removeOld.length > 0) {
+        await discordApi.unpinMessage(removeOld[0].id, thread.id)
+    }
+    return thread
+}
+
+
+async function monitorServer(address = 'q3msk.ru', port = 27977) {
+    await serverApi.getInfo(address, port)
+    await serverApi.getStatus(address, port)
+    var server = await serverApi.nextStatusResponse(address, port)
+    if(!server || server.monitorRunning)
+        return
+    server.monitorRunning = true
+
+    var threadName = 'Pickup for ' + removeCtrlChars(server.sv_hostname || server.hostname).replace(/[^0-9a-z-]/ig, '-')
+    console.log(threadName)
+    var redTeam = (server.Players_Red || '').trim()
+        .split(/\s+/ig).filter(n => n)
+        .map(i => parseInt(i))
+    var blueTeam = (server.Players_Blue || '').trim()
+        .split(/\s+/ig).filter(n => n)
+        .map(i => parseInt(i))
+    server.players.forEach(p => {
+        if(redTeam.includes(p.i))
+            p.team = 'red'
+        else if (blueTeam.includes(p.i))
+            p.team = 'blue'
+        else
+            p.team = 'other'
+    })
+    server.players.sort((a, b) => {
+        return a.team - b.team
+    })
+    var json
+    if(redTeam.length > 0 || blueTeam.length > 0) {
+        json = {
+            embeds: [{
+                title: removeCtrlChars(server.sv_hostname || server.hostname || server.gamename || server.game || ''),
+                description: server.ip + ':' + server.port,
+                color: 0xdda60f,
+                fields: [
+                    {
+                        name: 'Map',
+                        value: server.mapname,
+                        inline: false
+                    },
+                    {
+                        name: 'Players',
+                        value: server.players.length + '/' + server.sv_maxclients,
+                        inline: false
+                    },
+                    {
+                        name: 'Player',
+                        value: ':red_circle: Red Team\n```http\n' 
+                            + server.players.filter(p => p.team == 'red').map((p, i) => (p.i) + ') ' 
+                            + removeCtrlChars(p.name)).join('\n') + '\u0020\n```\n'
+                            + ':blue_circle: Blue Team\n```http\n' 
+                            + server.players.filter(p => p.team == 'blue').map((p, i) => (p.i) + ') ' 
+                            + removeCtrlChars(p.name)).join('\n') + '\u0020\n```\n'
+                            + 'Other\n```http\n' 
+                            + server.players.filter(p => p.team == 'other').map((p, i) => (p.i) + ') ' 
+                            + removeCtrlChars(p.name)).join('\n') + '\u0020\n```\n',
+                        inline: true
+                    },
+                    {
+                        name: 'Score',
+                        value: '-\n```yaml\n' + server.players.filter(p => p.team == 'red').map(p => p.score).join('\n') + '\u0020\n```'
+                            + '-\n```yaml\n' + server.players.filter(p => p.team == 'blue').map(p => p.score).join('\n') + '\u0020\n```'
+                            + '-\n```yaml\n' + server.players.filter(p => p.team == 'other').map(p => p.score).join('\n') + '\u0020\n```',
+                        inline: true
+                    },
+                    {
+                        name: 'Ping',
+                        value: '-\n```fix\n' + server.players.filter(p => p.team == 'red').map(p => p.ping).join('\n') + '\u0020\n```'
+                            + '-\n```fix\n' + server.players.filter(p => p.team == 'blue').map(p => p.ping).join('\n') + '\u0020\n```'
+                            + '-\n```fix\n' + server.players.filter(p => p.team == 'other').map(p => p.ping).join('\n') + '\u0020\n```',
+                        inline: true
+                    }
+                ]
+            }]
+        }        
+    } else {
+        json = {
+            embeds: [{
+                title: removeCtrlChars(server.sv_hostname || server.hostname || server.gamename || server.game || ''),
+                description: server.ip + ':' + server.port,
+                color: 0xdda60f,
+                fields: [
+                    {
+                        name: 'Map',
+                        value: server.mapname,
+                        inline: false
+                    },
+                    {
+                        name: 'Players',
+                        value: server.players.length + '/' + server.sv_maxclients,
+                        inline: false
+                    },
+                    {
+                        name: 'Player',
+                        value: '```http\n' + server.players.map((p, i) => (p.i) + ') ' 
+                            + removeCtrlChars(p.name)).join('\n') + '\u0020\n```',
+                        inline: true
+                    },
+                    {
+                        name: 'Score',
+                        value: '```yaml\n' + server.players.map(p => p.score).join('\n') + '\u0020\n```',
+                        inline: true
+                    },
+                    {
+                        name: 'Ping',
+                        value: '```fix\n' + server.players.map(p => p.ping).join('\n') + '\u0020\n```',
+                        inline: true
+                    }
+                ]
+            }]
+        }
+    }
+
+    // TODO: comment this line out when launched from index? monitor script
+    await authorizeGateway()
+    var channel = getServerChannel(server)
+    var thread
+    if(!channel) {
+        console.log('No channel to create thread on.')
+    } else {
+        thread = await updateChannelThread(threadName, channel, json)
+        server.channelId = thread.id
+    }
+    server.monitorRunning = setTimeout(() => {
+        monitorServer(address, port)
+    }, 60 * 1000)
+    return thread
+}
+
+module.exports = monitorServer
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing various modules using <code>require()</code> and <code>import()</code>:</p>
+<pre><code class="language-javascript">var importer = require('../Core')
+var serverApi = importer.import('quake 3 server commands')
+var {authorizeGateway} = importer.import('authorize discord')
+var discordApi = importer.import('discord api')
+var removeCtrlChars = importer.import('remove ctrl characters')
+var DEFAULT_USERNAME = 'Orbb'
+</code></pre>
+<h3><code>getServerChannel</code> Function</h3>
+<p>The <code>getServerChannel</code> function is an asynchronous function that takes a <code>server</code> object as an argument. Its purpose is to find a suitable Discord channel based on the server's gametype and settings.</p>
+<pre><code class="language-javascript">async function getServerChannel(server) {
+    //...
+}
+</code></pre>
+<p>Here's a high-level overview of the function:</p>
+<ol>
+<li>It fetches a list of guild channels using <code>discordApi.guildChannels()</code>.</li>
+<li>It filters the channels based on the server's gametype and settings. If no suitable channel is found, it defaults to the &quot;general&quot; channel.</li>
+<li>It returns the selected channel.</li>
+</ol>
+<h3><code>updateChannelThread</code> Function</h3>
+<p>The <code>updateChannelThread</code> function is another asynchronous function that takes three arguments: <code>threadName</code>, <code>channel</code>, and <code>json</code>. Its purpose is to update an existing thread in the Discord channel.</p>
+<pre><code class="language-javascript">async function updateChannelThread(threadName, channel, json) {
+    //...
+}
+</code></pre>
+<p>Here's a high-level overview of the function:</p>
+<ol>
+<li>It fetches a list of archived threads in the specified channel using <code>discordApi.archivedThreads()</code>.</li>
+<li>It checks if a thread with the specified <code>threadName</code> exists in the archived threads.</li>
+<li>If a matching thread is found, it attempts to reactivate it. If the thread is not found, it likely creates a new thread.</li>
+</ol>
+<h3>Notes</h3>
+<p>The code uses various Discord API functions, such as <code>guildChannels()</code>, <code>archivedThreads()</code>, and <code>reactivateThread()</code>. These functions are not defined in the provided code snippet, so it's assumed that they are part of the <code>discordApi</code> module.</p>

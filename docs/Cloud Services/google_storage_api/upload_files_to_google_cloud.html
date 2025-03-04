@@ -1,0 +1,80 @@
+<p>This code provides a utility function called <code>streamToGoogle</code> that uploads files or streams to a specified Google Cloud Storage bucket, handling bucket creation and metadata.</p>
+
+
+<pre><code>var mime = require('mime-types');
+var path = require('path');
+var {Storage} = require("@google-cloud/storage");
+var importer = require('../Core');
+var createBucket = importer.import('create a bucket');
+var streamToOutput = importer.import('test stream to output');
+var fetchOrStream = importer.import('fetch file or stream');
+
+var storage = new Storage({  
+  projectId: process.env.GOOGLE_STORAGE_PROJECT,  
+  keyFilename: process.env.GOOGLE_STORAGE_CREDENTIALS
+});
+
+function streamToGoogle(fileUrl, bucketName, stream, metadata) {
+    var gcsname = (stream ? fileUrl : path.basename(fileUrl)).replace(/\?.*/ig, '');
+    console.log('project', storage.projectId, process.env.GOOGLE_STORAGE_PROJECT)
+    return createBucket(storage.projectId, bucketName)
+        .then(() => storage.bucket(bucketName).file(gcsname)
+            .createWriteStream({
+                metadata: Object.assign({
+                    contentType: mime.lookup(gcsname)
+                }, metadata || {})
+            }))
+        .then(writeStream => fetchOrStream(stream || fileUrl, writeStream))
+        .then(() => `https://storage.googleapis.com/${bucketName}/${gcsname}`)
+}
+
+module.exports = streamToGoogle;
+
+</code></pre>
+
+<p>This code defines a utility function called <code>streamToGoogle</code> that uploads a file or stream to a Google Cloud Storage bucket.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>mime</code>: Node.js module for determining MIME types based on file extensions.</li>
+<li><code>path</code>: Node.js module for working with file and directory paths.</li>
+<li><code>@google-cloud/storage</code>: Google Cloud Storage client library for Node.js.</li>
+<li><code>importer</code>: A custom module (likely located in <code>../Core</code>) used to import other functions.</li>
+</ul></li>
+<li><p><strong>Imported Functions:</strong></p>
+<ul>
+<li><code>createBucket</code>: Function to create a Google Cloud Storage bucket.</li>
+<li><code>streamToOutput</code>: Function to download a file or stream and save it to a local file (likely used internally).</li>
+<li><code>fetchOrStream</code>: Function to download a file from a URL or process a stream (likely used internally).</li>
+</ul></li>
+<li><p><strong>Google Cloud Storage Setup:</strong></p>
+<ul>
+<li>Creates a <code>Storage</code> client using the project ID and credentials from environment variables.</li>
+</ul></li>
+<li><p><strong><code>streamToGoogle</code> Function:</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Uploads a file or stream to a specified Google Cloud Storage bucket.</li>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>fileUrl</code>: The URL of the file to upload or a stream object.</li>
+<li><code>bucketName</code>: The name of the Google Cloud Storage bucket.</li>
+<li><code>stream</code>: An optional stream object containing the file data.</li>
+<li><code>metadata</code>: Optional metadata to associate with the uploaded file.</li>
+</ul></li>
+<li><strong>Logic:</strong>
+<ul>
+<li>Determines the filename (<code>gcsname</code>) based on the input.</li>
+<li>Creates the bucket if it doesn't exist using <code>createBucket</code>.</li>
+<li>Creates a write stream to the specified file in the bucket using <code>storage.bucket(bucketName).file(gcsname).createWriteStream</code>.</li>
+<li>Sets the content type based on the file extension using <code>mime.lookup</code>.</li>
+<li>Calls <code>fetchOrStream</code> to download the file or process the stream and write it to the write stream.</li>
+<li>Returns the URL of the uploaded file in Google Cloud Storage.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = streamToGoogle;</code>: Makes the <code>streamToGoogle</code> function available for use in other modules.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a reusable function for uploading files or streams to Google Cloud Storage, handling bucket creation and metadata setting.</p>

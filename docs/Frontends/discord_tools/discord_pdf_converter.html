@@ -1,0 +1,98 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The <code>doDiscordPdf</code> function is an asynchronous module that generates a temporary PDF, patches a Discord interaction's image attachment with the PDF, and updates the interaction with an error message if the PDF creation fails. It utilizes various external libraries and Node.js modules, including <code>discord api</code>, <code>collect all bookmarks</code>, <code>browser crawler tools</code>, and <code>domain cache tools</code>, to retrieve a cache, perform a browser request, and interact with the file system.</p>
+
+
+<pre><code>const os = require('os')
+const fs = require('fs')
+const {updateInteraction} = importer.import('discord api')
+const {savePdf} = importer.import('collect all bookmarks')
+const {patchInteractionImageAttachment} = importer.import('update discord interaction with attachments')
+const {doBrowserRequest} = importer.import('browser crawler tools')
+const {
+  safeurl,
+  existingCache,
+  storeCache,
+  readCache,
+} = importer.import('domain cache tools')
+
+const TEMP_DIR = os.tmpdir();
+let counter = 0
+
+async function doDiscordPdf(interaction) {
+  // overwrite old pdfs, just for API, should transfer in memory directly, but oh well
+  const cache = existingCache(interaction.data.options[0].value, false)
+  const filename = path.join(TEMP_DIR, 'temporary_discord_pdf_' + (counter % 4) + '.pdf')
+  if(fs.existsSync(filename))
+    fs.unlinkSync(filename)
+  counter++
+  await doBrowserRequest(interaction.data.options[0].value, 
+    readCache.bind(null, cache),
+    storeCache.bind(null, cache),
+    savePdf.bind(null, filename))
+  if(fs.existsSync(filename)) {
+    return await patchInteractionImageAttachment(interaction.data.options[0].value, fs.readFileSync(filename), interaction.token, 'application/pdf')
+  } else {
+    return await updateInteraction('Page saving failed: ' + interaction.data.options[0].value, interaction.id, interaction.token)
+  }
+}
+
+module.exports = {
+  doDiscordPdf
+}
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code begins by importing various Node.js modules and functions from external libraries:</p>
+<pre><code class="language-javascript">const os = require('os')
+const fs = require('fs')
+const {updateInteraction} = importer.import('discord api')
+const {savePdf} = importer.import('collect all bookmarks')
+const {patchInteractionImageAttachment} = importer.import('update discord interaction with attachments')
+const {doBrowserRequest} = importer.import('browser crawler tools')
+const {
+  safeurl,
+  existingCache,
+  storeCache,
+  readCache,
+} = importer.import('domain cache tools')
+</code></pre>
+<h4>Setting Environment Variables</h4>
+<p>The code sets the <code>TEMP_DIR</code> variable to the system's temporary directory using the <code>os</code> module:</p>
+<pre><code class="language-javascript">const TEMP_DIR = os.tmpdir();
+</code></pre>
+<h4>Initializing Counter Variable</h4>
+<p>A <code>counter</code> variable is initialized to keep track of the number of temporary PDFs created:</p>
+<pre><code class="language-javascript">let counter = 0
+</code></pre>
+<h4>Defining <code>doDiscordPdf</code> Function</h4>
+<p>The <code>doDiscordPdf</code> function is an asynchronous function that takes an <code>interaction</code> object as an argument:</p>
+<pre><code class="language-javascript">async function doDiscordPdf(interaction) {
+  //...
+}
+</code></pre>
+<h4>Function Implementation</h4>
+<p>The function does the following:</p>
+<ol>
+<li>Retrieves a cache from the <code>existingCache</code> function based on the interaction's value.</li>
+<li>Creates a temporary filename for the PDF.</li>
+<li>If the file already exists, deletes it.</li>
+<li>Increments the <code>counter</code> variable.</li>
+<li>Performs a browser request using the <code>doBrowserRequest</code> function, passing the interaction's value, a cache, and functions to store and read from the cache.</li>
+<li>If the PDF is created successfully, patches the interaction's image attachment with the PDF using the <code>patchInteractionImageAttachment</code> function.</li>
+<li>If the PDF creation fails, updates the interaction with an error message using the <code>updateInteraction</code> function.</li>
+</ol>
+<h4>Exporting <code>doDiscordPdf</code> Function</h4>
+<p>The <code>doDiscordPdf</code> function is exported as a module:</p>
+<pre><code class="language-javascript">module.exports = {
+  doDiscordPdf
+}
+</code></pre>
+<h3>Notes</h3>
+<ul>
+<li>The code assumes that the <code>importer</code> object is defined elsewhere and provides a way to import functions from external libraries.</li>
+<li>The <code>path</code> module is used to join the <code>TEMP_DIR</code> with a temporary filename, but it is not imported in this code snippet.</li>
+<li>The <code>safeurl</code> function is not used in this code snippet.</li>
+<li>The code uses the <code>fs</code> module to interact with the file system and the <code>os</code> module to access the system's temporary directory.</li>
+</ul>

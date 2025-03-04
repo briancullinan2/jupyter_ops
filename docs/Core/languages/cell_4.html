@@ -1,0 +1,22 @@
+
+
+<pre><code>var importer = require('../Core')
+var {replaceCore} = importer.import('replace core requirement')
+
+var code = `
+var importer = require('../Core');
+var getArrayAST = importer.import('get ast path array');
+`
+
+if(typeof $$ != 'undefined') {
+    $$.mime({'text/plain': replaceCore(code)})
+    
+    /*
+    expected output 
+var getArrayAST = importer.import('get ast path array');
+*/
+    
+}
+
+</code></pre>
+

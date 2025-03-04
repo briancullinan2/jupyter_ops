@@ -1,0 +1,18 @@
+
+
+<pre><code>def last_word_length(text):
+    """Given a string of words separated by spaced, return length of last word."""
+    i = len(text)-1
+    while i >= 0 and text[i] == ' ':
+        i -= 1
+    count = 0
+    while i >= 0 and text[i] != ' ':
+        i -= 1
+        count += 1
+    return count
+
+assert last_word_length('') == 0
+assert last_word_length('last   ') == 4
+assert last_word_length('string  of  words') == 5
+print('All passed!')</code></pre>
+

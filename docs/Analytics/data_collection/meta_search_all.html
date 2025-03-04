@@ -1,0 +1,119 @@
+<p>Here's a two-sentence summary:</p>
+<p>The <code>searchAll</code> function is a main exported function that retrieves search results from multiple search engines in parallel using the <code>multiCrawl</code> function, and saves the results to a JSON file in the user's <code>Collections/searches</code> directory. The function takes an optional <code>query</code> parameter and returns a promise that resolves to an object containing search results, with the file name constructed from the query string and the current date.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var multiCrawl = importer.import('multi crawl');
+
+// http://www.exploratorium.edu/files/ronh/research/index.html
+/*
+
+ Exploratorium	
+ Search
+ Google	
+ Search
+ alltheweb	
+ Search
+ Teoma	
+ Search
+ AltaVista	
+ Search
+ Wisenut	
+ Search
+ HotBot	
+ Search
+ lii.org	
+ Search
+ Northern Light	
+ Search
+ Lycos	
+ Search
+ Scirus	
+ 
+ Meta:
+ Ask Jeeves	
+ Search
+ MetaCrawler	
+ Search
+ Dogpile	
+ Search
+ SavvySearch	
+ 
+ 
+ */
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = path.join(PROFILE_PATH, 'Collections/searches');
+
+function searchAll(query = 'search engine') {
+    var engines = [
+        'https://www.google.com/search?q=' + query,
+        'https://www.bing.com/search?q=' + query,
+        'https://search.yahoo.com/search?p=' + query,
+        'https://www.ask.com/web?q=' + query,
+        'https://search.aol.com/aol/search?q=' + query,
+        'http://www.baidu.com/s?wd=' + query,
+        'https://www.wolframalpha.com/input/?i=' + query,
+        'https://duckduckgo.com/?q=' + query,
+        'https://www.yandex.com/search/?text=' + query,
+        'https://archive.org/search.php?query=' + query,
+    ];
+    
+    // TODO: save results
+    return multiCrawl(engines, 'search results json')
+        .then(r => {
+            const time = new Date();
+            fs.writeFileSync(path.join(project, query.replace(/[^a-z0-9]/ig, '_')
+                                       + '-' + time.getFullYear()
+                                       + '-' + (time.getMonth() + 1)
+                                       + '-' + time.getDate()
+                                       + '.json'), JSON.stringify(r, null, 4));
+            return r;
+        })
+}
+module.exports = searchAll;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    searchAll()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Imports</h3>
+<ul>
+<li>The code requires the following dependencies:
+<ul>
+<li><code>fs</code> (File System) module</li>
+<li><code>path</code> module</li>
+<li>A custom module named <code>Core</code> located at <code>../Core</code></li>
+</ul></li>
+<li>It imports the <code>multiCrawl</code> function from the <code>Core</code> module using <code>importer.import('multi crawl')</code></li>
+</ul>
+<h3>Variables and Constants</h3>
+<ul>
+<li><code>PROFILE_PATH</code> is set to the user's home directory using various environment variables (<code>HOME</code>, <code>HOMEPATH</code>, <code>USERPROFILE</code>)</li>
+<li><code>project</code> is the path to a directory named <code>Collections/searches</code> within the user's home directory</li>
+<li>The <code>engines</code> array contains URLs for various search engines</li>
+</ul>
+<h3><code>searchAll</code> Function</h3>
+<ul>
+<li>This is the main function being exported</li>
+<li>It takes an optional <code>query</code> parameter with a default value of <code>'search engine'</code></li>
+<li>It returns a promise that resolves to an object containing search results</li>
+<li>The function uses the <code>multiCrawl</code> function to crawl the search engines in parallel and retrieve their results</li>
+<li>The results are then saved to a JSON file using <code>fs</code> and <code>path</code></li>
+</ul>
+<h3>File Saving</h3>
+<ul>
+<li>The file name is constructed by replacing non-alphanumeric characters in the <code>query</code> string with underscores, and appending the current date and year</li>
+<li>The file is saved in the <code>Collections/searches</code> directory</li>
+</ul>
+<h3>Export and Usage</h3>
+<ul>
+<li>The <code>searchAll</code> function is exported as a module</li>
+<li>If the <code>$$</code> object is defined, it is used to send the search results or an error message</li>
+</ul>

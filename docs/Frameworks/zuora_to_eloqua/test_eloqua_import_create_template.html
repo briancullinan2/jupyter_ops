@@ -1,0 +1,37 @@
+<p>This code tests a function that generates import definitions for Eloqua, ensuring it correctly includes the provided instance ID in the generated template.  The test uses a placeholder instance ID and asserts that it is present in the resulting JSON output.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var { temporaryImportTemplate } = importer.import('eloqua import create template');
+
+describe('eloqua bulk import definition', () => {
+    it('should return the current import definition', () => {
+        const dummyInstance = 'instance123';
+        const template = temporaryImportTemplate(dummyInstance, 'execution123');
+        assert(JSON.stringify(template).includes(dummyInstance));
+    })
+})
+</code></pre>
+
+<p>This code snippet is a unit test for a function that generates an import definition for Eloqua, a marketing automation platform.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>assert</code>: A library for making assertions (checking if conditions are true) in tests.</li>
+<li><code>importer</code>: A custom module likely responsible for importing functions or configurations.</li>
+</ul></li>
+<li><p><strong>Test Setup:</strong></p>
+<ul>
+<li><code>describe('eloqua bulk import definition', () =&gt; { ... })</code>: This defines a test suite named &quot;eloqua bulk import definition&quot;. All tests within this suite will relate to this topic.</li>
+<li><code>it('should return the current import definition', () =&gt; { ... })</code>: This defines a specific test case within the suite.</li>
+</ul></li>
+<li><p><strong>Test Logic:</strong></p>
+<ul>
+<li><code>const dummyInstance = 'instance123';</code>: Creates a placeholder instance ID for testing.</li>
+<li><code>const template = temporaryImportTemplate(dummyInstance, 'execution123');</code>: Calls the <code>temporaryImportTemplate</code> function, passing in the dummy instance ID and an execution ID. This function likely generates the Eloqua import definition.</li>
+<li><code>assert(JSON.stringify(template).includes(dummyInstance));</code>: This assertion checks if the generated template (converted to a JSON string) contains the dummy instance ID. If it does, the test passes; otherwise, it fails.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this test verifies that the <code>temporaryImportTemplate</code> function correctly incorporates the provided instance ID into the generated Eloqua import definition.</strong></p>

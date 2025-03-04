@@ -1,0 +1,109 @@
+<p>Here is a summary of the code breakdown in two sentences:</p>
+<p>The code imports various modules and defines a function called <code>generateBash</code> which generates shell code using a Large Language Model (LLM) and saves it to a GitHub repository. The function checks the repository's existence, updates it if necessary, extracts code blocks from the LLM's response, and writes them to a new file in the repository.</p>
+
+
+<pre><code>
+const fs = require('fs')
+const path = require('path')
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const {spawnSync} = require('child_process')
+const {safeurl} = importer.import('domain cache tools')
+
+async function generateBash(prompt, github) {
+  const llmCode = await importer.import('llm code')
+
+  // TODO: local pull
+  if(!fs.existsSync(github)
+    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+      github = path.join(PROFILE_PATH, github)
+  }
+
+  if(github.includes('://')
+    && fs.existsSync(path.basename(github).replace('.git', ''))
+  ) {
+    github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
+  }
+
+  if(!fs.existsSync(github)) {
+    return
+  }
+
+  let baseName = path.basename(github)
+
+  await spawnSync('git', ['pull'], {
+    cwd: github,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
+
+  // TODO: generate bash
+  let q1 = 'Project listing:\n' +  fs.readdirSync(github).join('\n')
+    + '\nGenerate a Bash shell script for the following request, include any empty file touch/folder creations, file moves or general file management: ' + prompt + '\n</think>Don\'t do any file content insertion or reasoning, limit response to two or three shell command lines.'
+  console.log('User: ' + q1)
+  let a1 = await llmCode(q1)
+  console.log('AI: ' + a1)
+
+  // try to extract code blocks
+  let code = a1.matchAll(/```(bash|javascript|code)*\n[\s\S]*?\n```/gi)
+
+  // make sure we're oporating on our own directory
+  let codeBlocks = '#!/bin/bash\ncd /home/' + baseName + '\n\n'
+
+  // extract code blocks from response
+  for(let match of code) {
+    codeBlocks += match[0].replace(/^```(bash|javascript|code)*\n|\n```$/gi, '') + '\n'
+  }
+  if(!codeBlocks) {
+    console.log('Error, couldn\'t find code in:' + a1)
+    return
+  }
+
+  if(!fs.existsSync(path.join(github, '.automations'))) {
+    fs.mkdirSync(path.join(github, '.automations'))
+  }
+  const CODE_FILE = path.join('.automations', safeurl((new Date).toISOString() + '-' + prompt) + '.sh')
+  fs.writeFileSync(path.join(github, CODE_FILE), codeBlocks)
+  fs.chmodSync(path.join(github, CODE_FILE), 0o777)
+
+  // TODO: execute new docker file on project
+  let args = ['run', '-it', '--rm', '-v', 
+    // TODO: mount project directory
+    github + ':/home/' + baseName, 
+    // TODO: change docker image
+    'alpine:latest', 'sh', 
+    path.join('/home/', baseName, CODE_FILE)]
+  console.log('docker', args.join(' '))
+  await spawnSync('docker', args, {
+    cwd: github,
+    timeout: 3000,
+    stdio: [0, 1, 2]
+  })
+
+  // TODO: git commit and git push?
+
+}
+
+module.exports = generateBash
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import Statements</h3>
+<ul>
+<li><code>const fs = require('fs')</code>: Imports the File System module to interact with the file system.</li>
+<li><code>const path = require('path')</code>: Imports the Path module to work with file paths.</li>
+<li><code>const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';</code>: Defines the <code>PROFILE_PATH</code> constant to get the user's home directory, falling back to other environment variables if necessary.</li>
+<li><code>const {spawnSync} = require('child_process')</code>: Imports the <code>spawnSync</code> function from the Child Process module to execute commands in a child process.</li>
+<li><code>const {safeurl} = importer.import('domain cache tools')</code>: Imports the <code>safeurl</code> function from a module called <code>domain cache tools</code> using the <code>importer</code> module.</li>
+</ul>
+<h3>generateBash Function</h3>
+<ul>
+<li><code>async function generateBash(prompt, github) {... }</code>: Defines an asynchronous function <code>generateBash</code> that takes two parameters: <code>prompt</code> and <code>github</code>.</li>
+<li>The function checks the existence of the <code>github</code> repository in different locations and adjusts it if necessary.</li>
+<li>If the repository exists, the function executes a <code>git pull</code> command using <code>spawnSync</code> to update the repository.</li>
+<li>The function generates a prompt for the LLM (Large Language Model) code to run and logs the prompt to the console.</li>
+<li>The function waits for the LLM code to respond and logs the response to the console.</li>
+<li>The function tries to extract code blocks from the LLM code response using a regular expression.</li>
+<li>If code blocks are found, the function extracts them and appends them to a <code>codeBlocks</code> string.</li>
+<li>The function creates a new directory and file in the repository to store the generated shell script.</li>
+<li>The function writes the <code>codeBlocks</code> string to the file and logs a success message to the console.</li>
+</ul>

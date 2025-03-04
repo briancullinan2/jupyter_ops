@@ -1,0 +1,104 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This code defines an HTTP function named <code>getSignedUrl</code> that generates a signed URL for a file in Google Cloud Storage, allowing a user to upload a file to the specified bucket and file name. The function takes a POST request, retrieves the user's authorization (TODO), and creates a temporary upload URL with a 5-minute expiration time.</p>
+
+
+<pre><code>const {Storage} = require('@google-cloud/storage');
+const storage = new Storage();
+
+/**
+ * HTTP function that generates a signed URL
+ * The signed URL can be used to upload files to Google Cloud Storage (GCS)
+ *
+ * @param {Object} req Cloud Function request context.
+ * @param {Object} res Cloud Function response context.
+ */
+exports.getSignedUrl = (req, res) => {
+  if (req.method !== 'POST') {
+    // Return a "method not allowed" error
+    return res.status(405).end();
+  }
+  // TODO(developer) check that the user is authorized to upload
+
+  // Get a reference to the destination file in GCS
+  const file = storage.bucket(req.body.bucket).file(req.body.filename);
+
+  // Create a temporary upload URL
+  const expiresAtMs = Date.now() + 300000; // Link expires in 5 minutes
+  const config = {
+    action: 'write',
+    expires: expiresAtMs,
+    contentType: req.body.contentType,
+  };
+
+  file.getSignedUrl(config, (err, url) => {
+    if (err) {
+      console.error(err);
+      res.status(500).end();
+      return;
+    }
+    res.send(url);
+  });
+};
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Google Cloud Storage Library</h3>
+<pre><code class="language-javascript">const { Storage } = require('@google-cloud/storage');
+const storage = new Storage();
+</code></pre>
+<ul>
+<li>The code starts by importing the Google Cloud Storage library and instantiating it.</li>
+</ul>
+<h3>HTTP Function to Generate Signed URL</h3>
+<pre><code class="language-javascript">exports.getSignedUrl = (req, res) =&gt; {
+  //...
+}
+</code></pre>
+<ul>
+<li>The code defines an HTTP function named <code>getSignedUrl</code> that takes two parameters: <code>req</code> and <code>res</code>, which represent the request and response contexts.</li>
+</ul>
+<h3>Handling Request Method</h3>
+<pre><code class="language-javascript">if (req.method!== 'POST') {
+  return res.status(405).end();
+}
+</code></pre>
+<ul>
+<li>The function checks if the request method is not POST. If not, it returns a 405 Method Not Allowed response.</li>
+</ul>
+<h3>Authorizing User (TODO)</h3>
+<pre><code class="language-javascript">// TODO(developer) check that the user is authorized to upload
+</code></pre>
+<ul>
+<li>This is a TODO comment reminding the developer to implement user authorization.</li>
+</ul>
+<h3>Getting Reference to Destination File</h3>
+<pre><code class="language-javascript">const file = storage.bucket(req.body.bucket).file(req.body.filename);
+</code></pre>
+<ul>
+<li>The function gets a reference to the destination file in Google Cloud Storage by accessing the bucket and file name specified in the request body.</li>
+</ul>
+<h3>Creating Temporary Upload URL</h3>
+<pre><code class="language-javascript">const expiresAtMs = Date.now() + 300000; // Link expires in 5 minutes
+const config = {
+  action: 'write',
+  expires: expiresAtMs,
+  contentType: req.body.contentType,
+};
+</code></pre>
+<ul>
+<li>The function creates a configuration object for generating a signed URL. It sets the action to write, expiration time to 5 minutes, and content type based on the request body.</li>
+</ul>
+<h3>Generating Signed URL</h3>
+<pre><code class="language-javascript">file.getSignedUrl(config, (err, url) =&gt; {
+  if (err) {
+    console.error(err);
+    res.status(500).end();
+    return;
+  }
+  res.send(url);
+});
+</code></pre>
+<ul>
+<li>The function generates a signed URL by calling the <code>getSignedUrl</code> method on the file reference. If an error occurs, it logs the error and returns a 500 Internal Server Error response. Otherwise, it sends the signed URL as a response.</li>
+</ul>

@@ -1,0 +1,84 @@
+<p>This code automates the process of fixing import statements and updating dependencies in a project by analyzing code files and identifying missing imports and dependencies.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var {relativeImports} = importer.import('builtin and local modules')
+var {glob} = importer.import('glob files')
+
+function fixImports(project) {
+    var packagePath = path.join(project, 'package.json')
+    var codeFiles = glob('**/*.+(ts|js|ipynb)', project)
+    codeFiles.forEach(f => {
+        var imports = relativeImports(f)
+        
+        // TODO: find file based on matching syntax structure
+        imports.missing.forEach(i => {
+            var match = codeFiles
+                .filter(f => path.basename(f) === path.basename(i))[0]
+            if(match) {
+                var newRelative = './' + path.relative(
+                    path.dirname(f), path.join(project, match))
+                var fixFile = fs.readFileSync(f).toString()
+                fs.writeFileSync(f, fixFile.replace(i, newRelative))
+            }
+        })
+        
+        // fix package json
+        if(fs.existsSync(packagePath)) {
+            var packageJson = JSON.parse(fs.readFileSync(packagePath))
+            var toAdd = imports.packages
+                .filter(p => typeof packageJson.dependencies[p] === 'undefined'
+                        && typeof packageJson.devDependencies[p] === 'undefined')
+            toAdd.forEach(a => {
+                console.log(`adding ${a}`)
+                packageJson.dependencies[a] = 'latest'
+            })
+            if(toAdd.length > 0) {
+                fs.writeFileSync(packagePath,
+                                 JSON.stringify(packageJson, null, 4))
+            }
+        }
+    })
+}
+
+module.exports = {
+    fixImports
+}
+</code></pre>
+
+<p>This code aims to automatically fix import statements and dependencies within a project directory.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+<li><code>path</code>: Node.js built-in module for working with file paths.</li>
+<li><code>importer</code>: A custom module (likely from the project's <code>Core</code> directory) used to import other modules.</li>
+<li><code>relativeImports</code>: A function (imported from <code>builtin and local modules</code>) that analyzes code files and identifies missing imports.</li>
+<li><code>glob</code>: A module (imported from <code>glob files</code>) for finding files matching a given pattern.</li>
+</ul></li>
+<li><p><strong><code>fixImports(project)</code> Function:</strong></p>
+<ul>
+<li>Takes a project directory path as input.</li>
+<li>Finds all TypeScript, JavaScript, and Jupyter Notebook files within the project using <code>glob</code>.</li>
+<li>Iterates through each code file:
+<ul>
+<li>Analyzes imports using <code>relativeImports</code>.</li>
+<li>For each missing import, it attempts to find the corresponding file within the project based on the import path.</li>
+<li>If a matching file is found, it updates the import statement in the code file to use a relative path.</li>
+</ul></li>
+<li>Checks if a <code>package.json</code> file exists in the project directory.
+<ul>
+<li>If it exists, it parses the <code>package.json</code> file and identifies any missing dependencies based on the identified imports.</li>
+<li>Adds the missing dependencies to the <code>dependencies</code> section of the <code>package.json</code> file.</li>
+<li>Writes the updated <code>package.json</code> file back to disk.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>fixImports</code> function as the main module.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code automates the process of fixing import statements and updating dependencies within a project directory by analyzing code files and identifying missing imports and dependencies.</strong></p>

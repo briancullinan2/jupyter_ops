@@ -1,0 +1,92 @@
+<p>This code automates website logins by using Selenium to locate and fill in username, password, and submit fields on various websites. It retrieves login credentials based on the website's hostname and handles potential errors during the process.</p>
+
+
+<pre><code>var url = require('url')
+
+var SIGN_IN = '//a[contains(.,"Sign in")]|//a[contains(.,"Log in")]|//a[contains(.,"Login")]|//a[contains(.,"Log In")]|//a[contains(.,"Sign In")]';
+
+var MATCH_USERNAME = '//input[contains(@name, "Email")]|//input[contains(@name, "email")]|//input[contains(@name, "user")]';
+
+var MATCH_PASSWORD = '//input[contains(@name, "pass")]|//input[contains(@name, "Pass")]|//input[contains(@autocomplete, "pass")]';
+
+var MATCH_SUBMIT = '//*[@type = "submit"]'
+    // google plus
+    + '|//*[@role = "button"][contains(., "Next")]'
+    // linkedin
+    + '|//*[@type = "submit"][contains(., "Sign in")]';
+
+function fillAll(client, obj) {
+    const promises = [];
+    for(const k of Object.keys(obj)) {
+        promises.push((k => resolve => client
+            .isExisting(k)
+            .then(is => is && obj[k] !== false
+                  ? client.click(k).keys(obj[k])
+                  : (client
+                     ? client.click(k)
+                     : []))
+            .then(() => resolve())
+            .catch(e => resolve(e))
+                      )(k));
+    }
+    
+    return importer.runAllPromises(promises)
+}
+
+function multiLogin(client, baseUrl) {
+    console.log(baseUrl);
+    const parts = url.parse(baseUrl);
+    const login = getCredentials(parts.hostname);
+    const usernameField = Object.keys(login).filter(k => k.match(/user|mail|name/ig))[0];
+    const passwordField = Object.keys(login).filter(k => k.match(/pass/ig))[0];
+    return client
+        .url(baseUrl)
+        .isExisting(SIGN_IN)
+        .then(is => is ? client.click(SIGN_IN) : [])
+        // TODO: check for form elements or URL to see if it needs logging in again like Google an Facebook service do
+        .then(() => {
+            const obj = {};
+            obj[MATCH_USERNAME] = login[usernameField];
+            obj[MATCH_PASSWORD] = login[passwordField];
+            obj[MATCH_SUBMIT] = false
+            return fillAll(obj).then(() => fillAll(obj)).then(() => fillAll(obj))
+        })
+        .catch(e => console.log(e))
+        .getUrl();
+}
+module.exports = multiLogin
+</code></pre>
+
+<p>This code snippet appears to be designed for automating logins to various websites. Here's a breakdown:</p>
+<p><strong>Variables:</strong></p>
+<ul>
+<li><code>url</code>:  A module for parsing URLs.</li>
+<li><code>SIGN_IN</code>, <code>MATCH_USERNAME</code>, <code>MATCH_PASSWORD</code>, <code>MATCH_SUBMIT</code>:  Regular expressions used to locate specific elements on web pages (sign-in buttons, username/password fields, and submit buttons).</li>
+</ul>
+<p><strong>Functions:</strong></p>
+<ul>
+<li><code>fillAll(client, obj)</code>:
+<ul>
+<li>Takes a Selenium WebDriver client (<code>client</code>) and an object (<code>obj</code>) containing field names and their corresponding values.</li>
+<li>Iterates through the object's keys (field names) and uses the Selenium client to:
+<ul>
+<li>Check if the field exists on the page.</li>
+<li>If it exists and has a value provided in the object, click the field and type the value into it.</li>
+</ul></li>
+<li>Returns a promise that resolves when all fields have been filled.</li>
+</ul></li>
+<li><code>multiLogin(client, baseUrl)</code>:
+<ul>
+<li>Takes a Selenium WebDriver client (<code>client</code>) and a base URL (<code>baseUrl</code>).</li>
+<li>Parses the URL to extract the hostname.</li>
+<li>Retrieves login credentials (username and password) from a function <code>getCredentials</code> (not shown) based on the hostname.</li>
+<li>Navigates to the provided URL.</li>
+<li>Checks if a sign-in button exists on the page.</li>
+<li>If found, clicks the sign-in button.</li>
+<li>Creates an object with the extracted username and password, and calls <code>fillAll</code> three times to fill the form fields.</li>
+<li>Handles potential errors during the process.</li>
+</ul></li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet provides a framework for automating the login process to multiple websites. It uses Selenium to interact with web pages, locate form elements, and fill them with credentials retrieved from a separate function.</p>
+<p>Let me know if you have any other questions.</p>

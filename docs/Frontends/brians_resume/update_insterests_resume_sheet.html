@@ -1,0 +1,78 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>updateInterestPage</code> function updates a Google Sheets document's &quot;Interests&quot; page by retrieving bookmarks, filtering them by categories, and updating the document's rows with the formatted data. This function is exported as a module and, if a <code>$$</code> object is defined, it is executed asynchronously, with results sent to <code>$$.sendResult</code> and errors sent to <code>$$.sendError</code>.</p>
+
+
+<pre><code>var _ = require('lodash');
+var importer = require('../Core');
+var getBookmarksFromTakeout = importer.import('parse bookmarks file');
+var updateRow = importer.import('update a row in google sheets')
+var getDataSheet = importer.import('get google data sheet')
+
+var doc = 'https://docs.google.com/spreadsheets/d/1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g/edit#gid=257854275';
+
+function updateInterestPage() {
+    var links, interests;
+    return getDataSheet(doc, 'Interests data')
+        .then(rows => interests = rows.map(r => r.category).filter((r, i, arr) => arr.indexOf(r) === i))
+        .then(() => getBookmarksFromTakeout())
+        .then(l => links = [].concat(...Object.values(l))
+              .filter(b => interests.includes(b.folder))
+              .map(b => ({
+                category: b.folder,
+                date: b.time,
+                title: b.title,
+                link: b.url,
+                skills: null,
+                tools: null
+            })))
+        .then(() => importer.runAllPromises(links.map(l => resolve => {
+            // category date title link skills tools
+            return updateRow(doc, r => {
+                return r.category == l.category && !r.link
+                             || r.date == l.date && r.link == l.link}, l, 'Interests data')
+                .then(resolve);
+        })))
+}
+
+module.exports = updateInterestPage;
+
+if(typeof $$ != 'undefined') {
+    $$.async();
+    
+    updateInterestPage()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>lodash</code> is imported for functional utilities.</li>
+<li><code>importer</code> is a custom module that imports specific functions from another module (<code>../Core</code>).</li>
+<li>The following functions are imported from <code>importer</code>:
+<ul>
+<li><code>getBookmarksFromTakeout</code>: parses a bookmarks file.</li>
+<li><code>updateRow</code>: updates a row in a Google Sheets document.</li>
+<li><code>getDataSheet</code>: retrieves a Google Data Sheet.</li>
+</ul></li>
+</ul>
+<h3><code>updateInterestPage</code> Function</h3>
+<ul>
+<li>This function updates the &quot;Interests&quot; page in a Google Sheets document.</li>
+<li>It performs the following steps:
+<ol>
+<li>Retrieves the &quot;Interests&quot; data from the Google Sheets document using <code>getDataSheet</code>.</li>
+<li>Extracts the unique categories from the &quot;Interests&quot; data.</li>
+<li>Retrieves bookmarks from a Takeout file using <code>getBookmarksFromTakeout</code>.</li>
+<li>Filters the bookmarks to only include those with categories present in the &quot;Interests&quot; data.</li>
+<li>Maps the filtered bookmarks to a new array with a specific format.</li>
+<li>Updates the rows in the Google Sheets document using <code>updateRow</code>, passing in the formatted bookmarks data.</li>
+</ol></li>
+<li>The function returns a promise that resolves when all updates are complete.</li>
+</ul>
+<h3>Export and Async Execution</h3>
+<ul>
+<li>The <code>updateInterestPage</code> function is exported as a module.</li>
+<li>If the <code>$$</code> object is defined, the function is executed asynchronously, and the result is sent to the <code>$$.sendResult</code> method. If an error occurs, the error is sent to the <code>$$.sendError</code> method.</li>
+</ul>

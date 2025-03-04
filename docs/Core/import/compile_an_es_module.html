@@ -1,0 +1,108 @@
+<p>Here is a 2-sentence summary of the <code>makeESModule</code> function:</p>
+<p>The <code>makeESModule</code> function compiles and caches JavaScript code using the <code>vm</code> module, setting up an execution context and linking the module with its dependencies. If the module has not been compiled before, it logs a message to the console and returns the compiled module instance, otherwise it returns the already cached module.</p>
+
+
+<pre><code>const Module = require('module').Module
+const path = require('path')
+const vm = require('vm')
+
+async function makeESModule(code, filename, context) {
+  var filepath = path.resolve(process.cwd(), filename);
+
+  if (typeof Module._cache[filepath] != 'undefined') {
+    if (Module._cache[filepath].namespace.default) {
+      return Module._cache[filepath].namespace.default
+    }
+    return Module._cache[filepath].namespace
+  }
+
+  context = context || {}
+  Object.assign(context, {
+    importer: require('../Core'),
+    __dirname: path.dirname(filename),
+    __filename: filename.split('[')[0],
+    global: context,
+  })
+  const vmModule = new vm.SourceTextModule(code, {
+      identifier: filename,
+      context: await vm.createContext(context),
+      initializeImportMeta(meta) {
+          meta.url = filename
+      },
+      // @ts-expect-error: wrong type definition
+      async importModuleDynamically(specifier) {
+          return await import(resolveModuleSpecifier(specifier, dirname))
+      }
+  })
+  context['__INTERNAL_IMPORTS_FROM_STRING'] = {}
+  Module._cache[filepath] = vmModule;
+  Module._cache[filepath].exports = {}
+  
+  if (!filename.includes('Core')) {
+    console.info(`compiling ES ${filename} with ${Object.keys(context)}`);
+  }
+
+  const linker = async (specifier) => {
+      const resolvedSpecifier = specifier //resolveModuleSpecifier(specifier, dirname)
+      const targetModule = await import(resolvedSpecifier)
+      context['__INTERNAL_IMPORTS_FROM_STRING'][specifier] = targetModule
+
+      const stringifiedSpecifier = JSON.stringify(specifier)
+      const exportedNames = Object.keys(targetModule)
+      const targetModuleContent = `${exportedNames.includes('default')
+              ? `export default __INTERNAL_IMPORTS_FROM_STRING[${stringifiedSpecifier}].default;\n`
+              : ''
+          }export const { ${exportedNames
+              .filter(exportedName => exportedName !== 'default')
+              .join(', ')} } = __INTERNAL_IMPORTS_FROM_STRING[${stringifiedSpecifier}];`
+
+      return new vm.SourceTextModule(targetModuleContent, {
+          identifier: resolvedSpecifier,
+          context
+      })
+  }
+
+  await vmModule.link(linker)
+  await vmModule.evaluate()
+  Object.assign(Module._cache[filepath].exports, vmModule.namespace.default)
+  Module._cache[filepath].loaded = true
+  if (vmModule.namespace.default) {
+      return vmModule.namespace.default
+  }
+  return vmModule.namespace
+}
+
+module.exports.makeESModule = makeESModule
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<p><strong>Requires and Variable Declarations</strong></p>
+<p>The code starts by requiring three built-in Node.js modules:</p>
+<ul>
+<li><code>module</code> for accessing module functionality</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>vm</code> for creating virtual machines to execute JavaScript code</li>
+</ul>
+<p>It then declares several variables:</p>
+<ul>
+<li><code>Module</code> is assigned the result of requiring the <code>module</code> module and accessing its <code>Module</code> property</li>
+<li><code>path</code> is assigned the required <code>path</code> module</li>
+<li><code>vm</code> is assigned the required <code>vm</code> module</li>
+</ul>
+<p><strong><code>makeESModule</code> Function</strong></p>
+<p>The <code>makeESModule</code> function is defined as an async function that takes three parameters:</p>
+<ul>
+<li><code>code</code>: the JavaScript code to compile</li>
+<li><code>filename</code>: the file path of the code</li>
+<li><code>context</code>: an optional object to use as the execution context</li>
+</ul>
+<p><strong>Compilation and Caching</strong></p>
+<p>The function checks if the module has already been compiled by checking if the file path is present in the <code>Module._cache</code> object. If it is, it returns the cached module.</p>
+<p>If not, it compiles the code using the <code>vm</code> module, creating a new <code>vm.SourceTextModule</code> instance with the <code>code</code> parameter. It sets up a context for the module, including the <code>importer</code>, <code>__dirname</code>, <code>__filename</code>, and <code>global</code> variables.</p>
+<p><strong>Linking and Exporting</strong></p>
+<p>The function defines a <code>linker</code> function that takes a module specifier and returns a stringified specifier value. It then imports the target module and exports its names.</p>
+<p>The <code>linker</code> function returns a new <code>vm.SourceTextModule</code> instance with the exported names and stringified specifier.</p>
+<p><strong>Console Logging</strong></p>
+<p>If the filename does not contain the string &quot;Core&quot;, the function logs a message to the console indicating that it is compiling an ES module.</p>
+<p><strong>Return Value</strong></p>
+<p>The function returns the compiled module instance.</p>

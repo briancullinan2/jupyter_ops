@@ -1,0 +1,73 @@
+<p>This code automates email command processing by retrieving emails, extracting commands, processing them, generating responses, and sending them back to the sender.  It utilizes a custom <code>importer</code> module for various functions like email searching, sending, command filtering, and result storage.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    searchImap,
+    sendEmail,
+    getOauthClient,
+    filterCommand,
+    storeResult
+} = importer.import([
+    'search imap messages',
+    'send email',
+    'filter command permission',
+    'store rpc result'
+]);
+
+var options = {
+    calendarId: 'Commands'
+};
+
+function scanCommandsEmail() {
+    return searchImap('*', 'megamind', 1, 'Megamind')
+        .then(messages => messages.flatten())
+        // get settings for each
+        .then(friends => {
+            const hasCommands = friends.map(f => Object.assign(f, {
+                id: 'Email: ' + id,
+                command: (/megamind\s*(.*)/ig).exec(f.subject)[1].trim()
+            })).filter(f => f.command.length > 0
+                       // filter out responses from my own INBOX so I can test this service myself
+                        && !f.body.match(/^\s* Mm\s*$/gm));
+            return importer.runAllPromises(hasCommands.map(f => resolve => {
+                return filterCommand(f.command, f.date, f.id, f.email)
+                    .then(props => resolve(Object.assign(f, props)));
+            }))
+        })
+        // generate and send responses
+        .then(friends => {
+            return importer.runAllPromises(friends.map(f => resolve => {
+                return storeResult(f)
+                    .then(response => sendEmail(
+                        f.email,
+                        JSON.stringify(response, null, 4) + '\n Mm\n',
+                        f.subject))
+                    .catch(e => console.log(e))
+                    .then(r => resolve(r))
+            }))
+        })
+        .catch(e => console.log(e))
+}
+module.exports = scanCommandsEmail;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    scanCommandsEmail()
+        .then(r => $$.sendResult(r))
+        .catch((e) => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code defines a function <code>scanCommandsEmail</code> that processes incoming emails containing commands, filters them, retrieves relevant information, and sends back responses.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports several functions from a custom <code>importer</code> module, including <code>searchImap</code> for fetching emails, <code>sendEmail</code> for sending responses, <code>filterCommand</code> for processing commands, and <code>storeResult</code> for storing results.</p></li>
+<li><p><strong>Email Scanning:</strong> The <code>scanCommandsEmail</code> function uses <code>searchImap</code> to retrieve emails from a specific mailbox (likely the sender's inbox) matching certain criteria (sender, subject, date range).</p></li>
+<li><p><strong>Command Extraction:</strong> It extracts commands from the email subjects and filters out irrelevant emails.</p></li>
+<li><p><strong>Command Processing:</strong> It uses <code>filterCommand</code> to process each extracted command, likely retrieving additional information or performing actions based on the command.</p></li>
+<li><p><strong>Response Generation:</strong> It generates responses based on the processed commands and stores them using <code>storeResult</code>.</p></li>
+<li><p><strong>Email Sending:</strong> It sends the generated responses back to the sender using <code>sendEmail</code>.</p></li>
+<li><p><strong>Error Handling:</strong> The code includes error handling using <code>.catch</code> blocks to log any errors that occur during the process.</p></li>
+</ol>
+<p>Essentially, this code automates a process of receiving commands via email, processing them, and sending back automated responses.</p>

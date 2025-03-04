@@ -1,0 +1,39 @@
+
+
+<pre><code>// add all passwords from passwords.html?
+var importer = require('../Core');
+var fs = require('fs');
+var saveCredentials = importer.import('add encrypted passwords.json');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = PROFILE_PATH + '/Documents/passwords.htm';
+
+function readPasswordsHtm() {
+    var credentials;
+    var passwords = fs.readFileSync(project).toString('utf16le');
+    importer.regexToArray(/TBODY[^>]*>[\s\S]*?\/TBODY/ig, passwords).forEach(b => {
+        var creds = {};
+        creds['host'] = (((/subcaption[^>]*>(.*?)<\/td>/ig)
+            .exec(b) || [])[1] || '').replace(/<wbr>/ig, '').toLowerCase();
+        if (creds.host.trim() === '') {
+            return;
+        }
+        importer.regexToArray(/<tr>[\s\S]*?<\/tr>/ig, b).forEach(f => {
+            var key = (((/field[^>]*>(.*?)<\/td>/ig)
+                .exec(f) || [])[1] || '').replace(/<wbr>/ig, '');
+            var value = (((/wordbreakfield[^>]*>(.*?)<\/td>/ig)
+                .exec(f) || [])[1] || '').replace(/<wbr>/ig, '');
+            if (key.trim() !== '') {
+                creds[key] = value;
+            }
+        });
+        credentials = saveCredentials(creds);
+    });
+    return credentials;
+};
+module.exports = readPasswordsHtm;
+
+// display login form and add to passwords.json?
+
+</code></pre>
+

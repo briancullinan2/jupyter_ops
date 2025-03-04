@@ -1,0 +1,82 @@
+<p>Here is a summary of the code breakdown in two sentences:</p>
+<p>The code uses the <code>acorn</code> JavaScript parser to parse code and collect comments and tokens, and the <code>../Core</code> module to export necessary functions. It exports the <code>selectAcorn(descriptor, code)</code> function, which parses the code, selects an AST, and converts it to a tree structure using the <code>htmlToTree(call)</code> function.</p>
+
+
+<pre><code>var acorn = require("acorn")
+var importer = require('../Core')
+var {selectAst, htmlToTree} = importer.import([
+    'select code tree', 'html to tree'])
+
+function selectAcorn(descriptor, code) {
+    var comments = [], tokens = [];
+    if(typeof code === 'string') {
+        code = acorn.parse(code, {
+            ecmaVersion: 6,
+            // collect ranges for each node
+            locations: true,
+            ranges: true,
+            // collect comments in Esprima's format
+            onComment: comments,
+            // collect token ranges
+            onToken: tokens,
+        })
+    }
+    return selectAst(descriptor, code);
+}
+
+module.exports = {
+    selectAcorn
+}
+
+if(typeof $$ !== 'undefined') {
+    var code = `
+    var importer = require('../Core');
+    function name(params) {
+        return importer.interpret('this is a describe request');
+    }
+    console.log()
+    `
+    var call = selectAcorn(`//*[@name="interpret"]`, code);
+    console.log(htmlToTree(call))
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies</h3>
+<ul>
+<li><code>acorn</code> is a JavaScript parser and used to parse the code.</li>
+<li><code>../Core</code> is an external module that exports the necessary functions.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>selectAcorn(descriptor, code)</code></h4>
+<ul>
+<li>This function takes a <code>descriptor</code> and <code>code</code> as input.</li>
+<li>It uses the <code>acorn.parse()</code> function to parse the code and collect comments and tokens.</li>
+<li>It then calls <code>selectAst()</code> function with the parsed code as an argument.</li>
+<li>The function is exported as a module.</li>
+</ul>
+<h4><code>htmlToTree(call)</code></h4>
+<ul>
+<li>This function takes a <code>call</code> as input and converts it to a tree structure.</li>
+<li>It is used when <code>selectAcorn()</code> function is called with a string representation of a call.</li>
+</ul>
+<h3>Usage</h3>
+<ul>
+<li>The code checks if <code>$$</code> is defined, and if so, it calls <code>selectAcorn()</code> function with a specific <code>descriptor</code> and <code>code</code> as input.</li>
+<li>The result of the function call is then passed to <code>htmlToTree()</code> function and logged to the console.</li>
+</ul>
+<h3>Module Exports</h3>
+<ul>
+<li>The <code>selectAcorn()</code> function is exported as a module.</li>
+</ul>
+<h3>Note</h3>
+<ul>
+<li>The <code>acorn.parse()</code> function is used with the following options:
+<ul>
+<li><code>ecmaVersion</code>: 6 (parse ES6 code)</li>
+<li><code>locations</code>: true (collect ranges for each node)</li>
+<li><code>ranges</code>: true (collect token ranges)</li>
+<li><code>onComment</code>: collect comments in Esprima's format</li>
+<li><code>onToken</code>: collect token ranges</li>
+</ul></li>
+</ul>

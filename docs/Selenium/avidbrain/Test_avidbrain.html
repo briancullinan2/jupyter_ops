@@ -1,0 +1,30 @@
+<p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website by navigating to the login page, entering credentials, and submitting the login form.  It is likely used for testing purposes or integration with other tools.</p>
+
+
+<pre><code>function testLogin() {
+    return client.url('http://web.avidbrain.com/#/index')
+        .click('a*=Log In')
+        .click('.emailInputBox')
+        .keys('.emailInputBox', 'megamindbrian@gmail.com')
+        .click('[type="password"]')
+        .keys('[type="password"]', 'P4$$w0rd!')
+        .click('[type="submit"]')
+        .pause(1000)
+};
+module.exports = testLogin;
+</code></pre>
+
+<p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><p><strong><code>client.url('http://web.avidbrain.com/#/index')</code>:</strong> Navigates the browser to the specified URL, likely the homepage of the website.</p></li>
+<li><p><strong><code>.click('a*=Log In')</code>:</strong> Clicks on the first link that contains the text &quot;Log In&quot;.</p></li>
+<li><p><strong><code>.click('.emailInputBox')</code>:</strong> Clicks on an element with the class &quot;emailInputBox&quot;, presumably an email input field.</p></li>
+<li><p><strong><code>.keys('.emailInputBox', 'megamindbrian@gmail.com')</code>:</strong> Types the email address &quot;megamindbrian@gmail.com&quot; into the email input field.</p></li>
+<li><p><strong><code>.click('[type=&quot;password&quot;]')</code>:</strong> Clicks on an element with the type attribute &quot;password&quot;, likely a password input field.</p></li>
+<li><p><strong><code>.keys('[type=&quot;password&quot;]', 'P4$$w0rd!')</code>:</strong> Types the password &quot;P4$$w0rd!&quot; into the password input field.</p></li>
+<li><p><strong><code>.click('[type=&quot;submit&quot;]')</code>:</strong> Clicks on a submit button, likely to log in.</p></li>
+<li><p><strong><code>.pause(1000)</code>:</strong> Pauses the script execution for 1000 milliseconds (1 second) to allow the login process to complete.</p></li>
+<li><p><strong><code>module.exports = testLogin;</code>:</strong> Exports the <code>testLogin</code> function, making it available for use in other parts of the application.</p></li>
+</ul>
+<p>In essence, this code is a test script that automates the login process for a website, likely used for testing purposes or integration with other tools.</p>

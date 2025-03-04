@@ -1,0 +1,93 @@
+<p>This code generates a heatmap visualization of Google Calendar events based on specified keywords, calculating the total time spent on those events.  It uses the Google Calendar API to fetch events, calculates event durations, and visualizes the results using a heatmap.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    getOauthClient,
+    d3Heatmap,
+    listEvents,
+    correctCalendarId,
+    sumEvents
+} = importer.import([
+    'import google calendar api',
+    'd3 calendar',
+    'list events',
+    'lookup calendar name',
+    'sum a list of events'
+]);
+
+var options = {
+    
+}
+
+function calendarHeatmap(search, calendar) {
+    if(calendar) {
+        options.calendarId = calendar;
+    }
+    var total = 0;
+    return getOauthClient(options)
+        .then(() => correctCalendarId(options))
+        .then(() => importer.runAllPromises(search.split('|').map(term => resolve => {
+            return listEvents({
+                auth: options.auth,
+                calendarId: options.calendarId,
+                q: term
+            }).then(r => {
+                console.log(term);
+                console.log(r.map(e => e.event.summary).slice(0, 10));
+                const hours = sumEvents(r);
+                console.log(hours + ' hrs');
+                total += hours;
+                return resolve(r);
+            })
+        })))
+        .then(r => [].concat(...r.map((e, i) => ({
+            id: e.id,
+            start: new Date(e.event.start.dateTime),
+            end: new Date(e.event.end.dateTime),
+        }))))
+        .then(r => {
+            console.log(total + ' hrs total');
+            console.log((total / 41) + ' hrs / week') // subtract from 48 weeks, 2 weeks of mental health, 2 weeks of holidays
+            return [d3Heatmap(r)]
+        })
+}
+module.exports = calendarHeatmap;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+//    calendarHeatmap('work')
+    calendarHeatmap('portal|eloqua|zuora|angular|webpack|renewals|unit test|unit tests|unit testing|selenium|angular2|pricing|jupytangular|notebook|work|sos|study sauce|notebooks|jupyter|cloud|docker|build')
+    /*
+    5776.5 hrs total
+    120.34375 hrs / week
+    */
+//    calendarHeatmap('portal|eloqua|zuora|angular|webpack|renewals|unit test|unit tests|unit testing|selenium|angular2|pricing')
+//    calendarHeatmap('portal')
+    /*
+    1353.75 hrs total
+    28.203125 hrs / week
+    */
+        .then(r => $$.html(r[0]))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet is designed to generate a heatmap visualization of events from a Google Calendar based on keywords.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong> It imports functions for interacting with the Google Calendar API, creating a heatmap, listing events, and handling calendar IDs.</p></li>
+<li><p><strong>Configuration:</strong> It sets up options for interacting with the Google Calendar, including the calendar ID.</p></li>
+<li><p><strong><code>calendarHeatmap</code> Function:</strong></p>
+<ul>
+<li>Takes a search term (keywords) and an optional calendar ID.</li>
+<li>Fetches events from the Google Calendar matching the search term.</li>
+<li>Calculates the total hours spent on events based on their duration.</li>
+<li>Generates a heatmap visualization using the <code>d3Heatmap</code> function, likely displaying event occurrences over time.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>The code includes an example usage of the <code>calendarHeatmap</code> function with a list of keywords.</li>
+<li>It calculates the total hours spent on events and displays the result.</li>
+</ul></li>
+</ol>

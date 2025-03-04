@@ -1,0 +1,60 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary libraries, loads credentials from a service account JSON file, and sets up a YouTube API client using the <code>googleapiclient</code> library. The <code>live_stream</code> function is defined to create a new live stream on YouTube, utilizing the API client and specifying parameters such as title, description, and scheduled start time.</p>
+
+
+<pre><code>import os
+from googleapiclient.discovery import build
+from google.oauth2 import service_account
+
+HOME_DIR = os.environ.get("HOME") or os.environ.get("USERPROFILE")
+
+# Load credentials (Replace with your service account JSON file)
+SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
+SERVICE_ACCOUNT_FILE = os.path.join(HOME_DIR, '.credentials', "oval-silicon-449118-t6-841e34d683cf.json")  # Replace with actual JSON file
+
+credentials = service_account.Credentials.from_service_account_file(
+    SERVICE_ACCOUNT_FILE, scopes=SCOPES
+)
+youtube = build("youtube", "v3", credentials=credentials)
+
+def live_stream():
+
+  # Insert a new livestream
+  request = youtube.liveBroadcasts().insert(
+      part="snippet,status,contentDetails",
+      body={
+          "snippet": {
+              "title": "My Live Stream",
+              "description": "Live streaming via Python",
+              "scheduledStartTime": "2025-02-26T12:00:00Z",  # Schedule in ISO format
+              "channelId": "UCPaZDuwY1sJOb5l-QHm9mDw"
+          },
+          "status": {"privacyStatus": "public"},
+          "contentDetails": {"enableAutoStart": True},
+      },
+  )
+  response = request.execute()
+
+  print("Live Stream Created:", response["id"])
+
+__all__ = {
+  "live_stream": live_stream
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Libraries</h3>
+<p>The code begins by importing the necessary libraries:</p>
+<ul>
+<li><code>os</code>: For interacting with the operating system and environment variables.</li>
+<li><code>googleapiclient.discovery</code>: For building clients for Google APIs.</li>
+<li><code>google.oauth2.service_account</code>: For authenticating with Google APIs using service accounts.</li>
+</ul>
+<h3>Environment Variables and Credentials</h3>
+<p>It then loads credentials from a service account JSON file using environment variables. The <code>HOME_DIR</code> variable is set to the user's home directory, and the service account file is loaded from a specific path within that directory.</p>
+<h3>API Client Setup</h3>
+<p>The API client is set up using the <code>build</code> function from <code>googleapiclient.discovery</code>, with the YouTube API in version 3. The <code>credentials</code> object is created using the service account file and scopes.</p>
+<h3>Function Definition</h3>
+<p>The <code>live_stream</code> function is defined to create a new live stream on YouTube. It uses the <code>youtube.liveBroadcasts().insert</code> method to create a new broadcast, specifying the title, description, scheduled start time, and channel ID. The function also sets the privacy status to public and enables auto-start. The response from the API is then printed to the console.</p>
+<h3>Module Exports</h3>
+<p>Finally, the <code>__all__</code> variable is set to export the <code>live_stream</code> function as a module variable.</p>

@@ -1,0 +1,78 @@
+<p>This code provides a function to resize and position a browser window into a grid layout, allowing for the management of multiple browser instances in a structured manner.  It uses a <code>client</code> object (likely Selenium) to interact with the browser and calculates window positions based on a specified grid structure.</p>
+
+
+<pre><code>var rows = 6;
+var columns = 6;
+var screen = {
+    height: 1024 * 6,
+    width: 1350 * 6
+};
+
+function getScreenSize(client) {
+    return client
+        .getWindowHandle()
+        .then(r => client.maximizeWindow(r))
+        .catch(e => {})
+        .getWindowSize()
+        .then(r => (screen = r))
+        .catch(e => console.log(e))
+}
+
+function resizeWindow(client, i = 0) {
+    i = Math.abs(i + (typeof OFFSET !== 'undefined' ? OFFSET : 0));
+    var hwnd;
+    return client
+        .getWindowHandle()
+        .then(r => client.switchToWindow((hwnd = r)))
+        .then(() => typeof screen === 'undefined' ? getScreenSize() : screen)
+        .catch(e => console.log(e))
+        .then(screen => {
+            const newPosition = {
+                x: Math.floor(i % columns)
+                    * Math.floor(screen.width / columns),
+                y: Math.floor(i / columns % rows)
+                    * Math.floor(screen.height / rows)
+            };
+            console.log(newPosition);
+            return client.setWindowPosition(
+                newPosition.x,
+                newPosition.y)
+        })
+        .catch(e => console.log(e))
+        .then(() => client.setWindowSize(
+            Math.floor(screen.width / columns),
+            Math.floor(screen.height / rows)))
+        .catch(e => console.log(e))
+}
+
+
+module.exports = resizeWindow;
+</code></pre>
+
+<p>This code defines a function <code>resizeWindow</code> that resizes and positions a browser window into a grid layout.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Sets up variables for the desired number of rows and columns in the grid.</li>
+<li>Defines a <code>screen</code> object to store the browser window's dimensions.</li>
+</ul></li>
+<li><p><strong><code>getScreenSize</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>client</code> object (likely a Selenium WebDriver instance) as input.</li>
+<li>Maximizes the browser window.</li>
+<li>Retrieves the current window size and updates the <code>screen</code> object.</li>
+</ul></li>
+<li><p><strong><code>resizeWindow</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>client</code> object and an optional <code>i</code> parameter (index for grid positioning).</li>
+<li>Calculates the new window position based on the grid layout and the provided index.</li>
+<li>Sets the window position and size using the calculated values.</li>
+<li>Logs the new position to the console.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>resizeWindow</code> function for use in other modules.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other questions.</p>

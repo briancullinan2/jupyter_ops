@@ -1,0 +1,100 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code utilizes the <code>child_process</code> and <code>importer</code> modules to execute external Bash commands and handle errors, with functions such as <code>bashToExec</code> and <code>execCmd</code> to prepare and run the commands. The <code>execCmd</code> function creates a promise that resolves with the output of the executed command and logs the command and its output if not in quiet mode.</p>
+
+
+<pre><code>var {exec} = require('child_process');
+var path = require('path');
+var importer = require('../Core');
+
+var multiline = process.platform === 'win32' ? '^\n ' : '\\\n ';
+var multicmd = process.platform === 'win32' ? ' ^\n&& ' : ' \\\n&& ';
+
+// read cmd template and execute each line?
+function bashToExec(code) {
+    return code
+        .split(/\n/ig)
+        .map(l => '{EXEC} ' + l)
+        .join('\n')
+        .replace(/\\((\s*\n)+\{EXEC\})+\s*&&/ig, multicmd)
+        .replace(/\\((\s*\n)+\{EXEC\})+\s*/ig, multiline);
+}
+
+function execCmd(script, options) {
+    if(typeof options == 'undefined') options = {}
+    // TODO: fix current working directory matching project name in the cwd: option
+    // add some run commands to the bash script
+    return importer.runAllPromises(
+        bashToExec(script)
+            .split(/\s*\{EXEC\}\s*/ig)
+            .filter(r => r.trim() !== '')
+            .map(r => (resolve, reject) => {
+                if(!options.quiet) console.log('spawning process ' + r)
+                const ps = exec(r.replace(/\$[0-9]+/ig, i => process.argv[parseInt(i.substr(1))+1] || ''), Object.assign(options || {}, {maxBuffer: 1024 * 50000}),  (err, result) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve(result);
+                });
+                let errors = '';
+                let data = '';
+                ps.stderr.on('data', d => {
+                    if(!options.quiet) console.error(d);
+                    data += d;
+                });
+                ps.stdout.on('data', d => {
+                    if(!options.quiet) console.log(d);
+                    errors += d;
+                });
+                ps.on('exit', (code, signal) => {
+                    if(code > 0) {
+                        const err = new Error(`child process exited with code ${code} and signal ${signal}`);
+                        err.data = data + errors;
+                        reject(err);
+                    }
+                });
+            })
+    );
+};
+module.exports = execCmd;
+
+//        "test": "concurrently --kill-others --success first \"mocha **/*.spec.js\" \"node ./zuora-eloqua-express-mock.js\" ",
+ 
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requirements and Variables</h3>
+<p>The code requires the following modules:</p>
+<ul>
+<li><code>child_process</code> for executing external commands</li>
+<li><code>path</code> (not used in this code snippet)</li>
+<li><code>importer</code> (a custom module, likely for running commands)</li>
+</ul>
+<p>Variables are defined:</p>
+<ul>
+<li><code>multiline</code> and <code>multicmd</code> for handling shell commands on different platforms (Windows and Unix-based)</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>bashToExec(code)</code></h4>
+<ul>
+<li>Takes a string <code>code</code> representing a Bash command</li>
+<li>Splits the command into individual lines</li>
+<li>Wraps each line with <code>{EXEC}</code> to indicate execution</li>
+<li>Replaces <code>\n &amp;&amp;</code> and <code>\n</code> with platform-specific multiline and multicmd patterns</li>
+<li>Returns the modified command as a string</li>
+</ul>
+<h4><code>execCmd(script, options)</code></h4>
+<ul>
+<li>Takes a string <code>script</code> representing a Bash command and an optional <code>options</code> object</li>
+<li>If <code>options</code> is not provided, it defaults to an empty object</li>
+<li>Splits the script into individual lines and extracts the command to be executed</li>
+<li>Creates a promise that resolves with the output of the executed command</li>
+<li>Logs the command and its output if <code>quiet</code> is false in <code>options</code></li>
+<li>Returns the promise</li>
+</ul>
+<h3>Execution and Error Handling</h3>
+<ul>
+<li>The <code>execCmd</code> function uses <code>importer.runAllPromises</code> to execute the command</li>
+<li>The <code>exec</code> function from <code>child_process</code> is used to execute the command</li>
+<li>The <code>on</code> method is used to listen to the <code>stderr</code> and <code>stdout</code> streams of the process</li>
+<li>If the process exits with a non-zero code, an error is rejected with the output and errors from the process.</li>
+</ul>

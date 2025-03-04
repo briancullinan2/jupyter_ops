@@ -1,0 +1,9 @@
+
+
+<pre><code>xattr -d com.apple.quarantine /Applications/ioquake3/ioquake3.app
+
+open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+
+sudo codesign --force --deep --sign - path-to-app.app
+</code></pre>
+

@@ -1,0 +1,175 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code imports necessary modules and constants, then defines an asynchronous function <code>manageMemories</code> that handles memory management, including loading and saving memories based on user input. The function uses regular expressions to match user responses to different memory functions, such as saving, removing, or listing memories, and performs the corresponding actions.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+const {findMemories, listMemories} = importer.import('llm load memories')
+
+
+async function manageMemories(promptModel, session, prompt) {
+
+  if(!session) {
+    return ''
+  }
+
+  let now = new Date()
+  let currentFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+    + String(now.getMonth() + 1).padStart(2, '0') 
+    + '-' + DEFAULT_MODEL
+    + '-' + session + '.json')
+  // TODO: reload chat
+  if(typeof ACTIVE_CONVERSATIONS[currentFile] == 'undefined') {
+    if(fs.existsSync(currentFile)) {
+      ACTIVE_CONVERSATIONS[currentFile] = JSON.parse(fs.readFileSync(currentFile))
+    } else {
+      ACTIVE_CONVERSATIONS[currentFile] = {}
+    }
+  }
+
+  const MEMORY_FUNCTIONS = [
+    'listMemories() - display a list of stored memories at the users request.',
+    'saveMemory() - saves a new memory given the instructions to always remember something.',
+    'removeMemory() - removes a matching memory from the storage bank.',
+    'clearMemory() - removes all memories but only if the user is absolutely certain.',
+  ]
+
+  let q1 = 'Given the following memory related functions\n'
+    + MEMORY_FUNCTIONS.join('\n')
+    + '\nWhich function best matches this prompt?\n'
+    + prompt
+    + '\nOnly return the function name and nothing else.'
+  let a1 = await promptModel(q1)
+
+  if(a1.match('listMemories')) {
+
+  } else if(a1.match('saveMemory')) {
+    let q2 = 'Summerize this memory in one very precise sentance in first person:\n' + prompt + '\nOnly return the summary, no explanation.'
+    let a2 = await promptModel(q2)
+
+    ACTIVE_CONVERSATIONS[currentFile]['memories'] = await findMemories(session)
+    ACTIVE_CONVERSATIONS[currentFile]['memories'][Date.now()] = a2
+    fs.writeFileSync(currentFile, JSON.stringify(ACTIVE_CONVERSATIONS[currentFile], null, 4))
+  } else if (a1.match('removeMemory')) {
+    // TODO: make a functional list of memories
+  } else if (a1.match('clearMemory')) {
+    // TODO: did the user indicate they are absolutely sure about this action? Yes or No
+    
+  }
+  return 'This is the list of available memories:\n' + await listMemories(session)
+}
+
+module.exports = manageMemories
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules and Constants</h3>
+<pre><code class="language-javascript">const fs = require('fs')
+const path = require('path')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+const {findMemories, listMemories} = importer.import('llm load memories')
+</code></pre>
+<ul>
+<li>The code imports the <code>fs</code> (file system) and <code>path</code> modules.</li>
+<li>It also imports constants from two modules:
+<ul>
+<li><code>general chit chat</code>: This module exports constants <code>ACTIVE_CONVERSATIONS</code>, <code>PROJECT_PATH</code>, and <code>DEFAULT_MODEL</code>.</li>
+<li><code>llm load memories</code>: This module exports functions <code>findMemories</code> and <code>listMemories</code>.</li>
+</ul></li>
+</ul>
+<h3>manageMemories Function</h3>
+<pre><code class="language-javascript">async function manageMemories(promptModel, session, prompt) {
+  //...
+}
+</code></pre>
+<ul>
+<li>This is an asynchronous function named <code>manageMemories</code> that takes three arguments:
+<ul>
+<li><code>promptModel</code>: a model used for generating responses</li>
+<li><code>session</code>: the current session ID</li>
+<li><code>prompt</code>: the user's input prompt</li>
+</ul></li>
+</ul>
+<h3>Session Setup and Memory Loading</h3>
+<pre><code class="language-javascript">if (!session) {
+  return ''
+}
+
+let now = new Date()
+let currentFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+  + String(now.getMonth() + 1).padStart(2, '0') 
+  + '-' + DEFAULT_MODEL
+  + '-' + session + '.json')
+
+if (typeof ACTIVE_CONVERSATIONS[currentFile] == 'undefined') {
+  if (fs.existsSync(currentFile)) {
+    ACTIVE_CONVERSATIONS[currentFile] = JSON.parse(fs.readFileSync(currentFile))
+  } else {
+    ACTIVE_CONVERSATIONS[currentFile] = {}
+  }
+}
+</code></pre>
+<ul>
+<li>If the <code>session</code> argument is falsy, the function returns an empty string.</li>
+<li>The code generates a file path based on the current date, session ID, and defaults.</li>
+<li>It checks if the file exists and loads its contents into the <code>ACTIVE_CONVERSATIONS</code> object if it does.</li>
+<li>If the file does not exist, it creates an empty object in the <code>ACTIVE_CONVERSATIONS</code> object for the given file path.</li>
+</ul>
+<h3>Memory Function Selection</h3>
+<pre><code class="language-javascript">const MEMORY_FUNCTIONS = [
+  'listMemories() - display a list of stored memories at the users request.',
+ 'saveMemory() - saves a new memory given the instructions to always remember something.',
+ 'removeMemory() - removes a matching memory from the storage bank.',
+  'clearMemory() - removes all memories but only if the user is absolutely certain.',
+]
+
+let q1 = 'Given the following memory related functions\n'
+  + MEMORY_FUNCTIONS.join('\n')
+  + '\nWhich function best matches this prompt?\n'
+  + prompt
+  + '\nOnly return the function name and nothing else.'
+
+let a1 = await promptModel(q1)
+
+if (a1.match('listMemories')) {
+  //...
+} else if (a1.match('saveMemory')) {
+  //...
+} else if (a1.match('removeMemory')) {
+  //...
+} else if (a1.match('clearMemory')) {
+  //...
+}
+</code></pre>
+<ul>
+<li>The code defines an array of memory function names with descriptions.</li>
+<li>It generates a prompt asking the user to select the most appropriate memory function based on their input.</li>
+<li>The user's response (a1) is matched against the memory function names using regular expressions.</li>
+<li>Depending on the matched function, the code branches to different sections of the function.</li>
+</ul>
+<h3>Saving Memory</h3>
+<pre><code class="language-javascript">else if (a1.match('saveMemory')) {
+  let q2 = 'Summerize this memory in one very precise sentance in first person:\n' + prompt + '\nOnly return the summary, no explanation.'
+
+  let a2 = await promptModel(q2)
+
+  ACTIVE_CONVERSATIONS[currentFile]['memories'] = await findMemories(session)
+  ACTIVE_CONVERSATIONS[currentFile]['memories'][Date.now()] = a2
+  fs.writeFileSync(currentFile, JSON.stringify(ACTIVE_CONVERSATIONS[currentFile], null, 4))
+}
+</code></pre>
+<ul>
+<li>If the user selects the <code>saveMemory</code> function, the code generates a prompt asking them to summarize the memory in a specific way.</li>
+<li>The user's response (a2) is used to create a new memory entry in the <code>ACTIVE_CONVERSATIONS</code> object.</li>
+<li>The updated object is written to the file using <code>fs.writeFileSync</code>.</li>
+</ul>
+<h3>TODO: Implement Remove Memory</h3>
+<pre><code class="language-javascript">else if (a1.match('removeMemory')) {
+  // TODO: make a functional list of memories
+}
+</code></pre>
+<ul>
+<li>This section is currently empty and marked as a TODO item to implement the <code>removeMemory</code> function.</li>
+</ul>

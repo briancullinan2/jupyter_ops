@@ -1,0 +1,37 @@
+<p>The <code>runAllPromises</code> function executes an array of promises in sequence, concatenating the results of each promise to produce a final array. It uses the <code>reduce</code> method to iterate over the promises array and returns a promise that resolves with the concatenated array of results.</p>
+
+
+<pre><code>function runAllPromises(promises) {
+    return promises.reduce((promise, func) => {
+        return promise.then(result => {
+            return (typeof func == 'function'
+                ? (new Promise(func)) : Promise.resolve(func))
+                .then(Array.prototype.concat.bind(result));
+        });
+    }, Promise.resolve([]));
+}
+
+module.exports.runAllPromises = runAllPromises;
+</code></pre>
+
+<h2>Function: <code>runAllPromises</code></h2>
+<h3>Purpose</h3>
+<p>Executes an array of promises in sequence, where each subsequent promise is executed with the result of the previous promise.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>promises</code>: An array of functions that return promises, or values that can be resolved into promises.</li>
+</ul>
+<h3>Return Value</h3>
+<p>A promise that resolves with an array of results, where each result is the concatenated output of each function in the original <code>promises</code> array.</p>
+<h3>Behavior</h3>
+<p>The function uses <code>reduce</code> to iterate over the <code>promises</code> array, executing each function in sequence. Each function's result is then concatenated with the previous result, and the resulting value is used as the input for the next function.</p>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">const promises = [
+  () =&gt; new Promise(resolve =&gt; resolve([1, 2, 3])),
+  () =&gt; new Promise(resolve =&gt; resolve([4, 5, 6])),
+  () =&gt; new Promise(resolve =&gt; resolve([7, 8, 9])),
+];
+
+runAllPromises(promises).then(results =&gt; console.log(results));
+// Output: [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+</code></pre>

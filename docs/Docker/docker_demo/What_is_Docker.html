@@ -1,0 +1,38 @@
+<p>This code snippet determines the operating system and sets a variable <code>notebook</code> to the path of a corresponding Jupyter Notebook file for either Windows or macOS. If the platform is neither Windows nor macOS, it signals an error.</p>
+
+
+<pre><code>$$.async();
+var path = require('path');
+if (process.platform === 'win32') {
+    var notebook = 'How to install Docker on Windows.ipynb';
+} else if (process.platform === 'darwin') {
+    var notebook = 'How to install Docker on Mac.ipynb';
+} else {
+    $$.done('docker not installed');
+}</code></pre>
+
+<p>This code snippet checks the operating system and sets a variable <code>notebook</code> to the path of a Jupyter Notebook file based on the platform.</p>
+<p><strong>Breakdown:</strong></p>
+<ol>
+<li><p><strong><code>$$.async();</code></strong>:</p>
+<ul>
+<li>This line likely initializes an asynchronous operation using a variable <code>$$</code> (possibly a custom function or library).</li>
+</ul></li>
+<li><p><strong><code>var path = require('path');</code></strong>:</p>
+<ul>
+<li>This line imports the built-in <code>path</code> module, which provides utilities for working with file and directory paths.</li>
+</ul></li>
+<li><p><strong><code>if (process.platform === 'win32') { ... } else if (process.platform === 'darwin') { ... } else { ... }</code></strong>:</p>
+<ul>
+<li>This block checks the operating system using <code>process.platform</code>:
+<ul>
+<li>If it's Windows (<code>'win32'</code>), it sets <code>notebook</code> to <code>'How to install Docker on Windows.ipynb'</code>.</li>
+<li>If it's macOS (<code>'darwin'</code>), it sets <code>notebook</code> to <code>'How to install Docker on Mac.ipynb'</code>.</li>
+<li>Otherwise (presumably Linux or another platform), it calls <code>$$.done('docker not installed')</code>, likely signaling an error or completion with a message.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>In essence:</strong></p>
+<ul>
+<li>The code determines the operating system and prepares a path to a Jupyter Notebook file specific to that platform.</li>
+</ul>

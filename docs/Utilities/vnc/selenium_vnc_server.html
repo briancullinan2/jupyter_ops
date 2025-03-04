@@ -1,0 +1,84 @@
+<p>This script automates the setup of a Selenium testing environment on a Linux machine by installing required dependencies, configuring the system, and setting up the Selenium server and ChromeDriver.</p>
+
+
+<pre><code>echo "deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse \n" > /etc/apt/sources.list \
+  && echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse \n" >> /etc/apt/sources.list \
+  && echo "deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe multiverse \n" >> /etc/apt/sources.list \
+  && apt-get -qqy update \
+  && apt-get -qqy --no-install-recommends install \
+    bzip2 \
+    ca-certificates \
+    openjdk-8-jre-headless \
+    tzdata \
+    sudo \
+    unzip \
+    wget \
+    x11vnc \
+    locales \
+    xvfb \
+  && echo "UTC" > /etc/timezone \
+  && dpkg-reconfigure --frontend noninteractive tzdata \
+  && useradd seluser \
+         --shell /bin/bash  \
+         --create-home \
+  && usermod -a -G sudo seluser \
+  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+  && echo 'seluser:secret' | chpasswd \
+  && sudo mkdir -p /opt/selenium \
+  && sudo chown seluser:seluser /opt/selenium \
+  && wget --no-verbose https://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar \
+    -O /opt/selenium/selenium-server-standalone.jar \
+  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
+  && apt-get update -qqy \
+  && apt-get -qqy install \
+    google-chrome-stable \
+  && CD_VERSION=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE) \
+  && echo "Using chromedriver version: "$CD_VERSION \
+  && wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CD_VERSION/chromedriver_linux64.zip \
+  && rm -rf /opt/selenium/chromedriver \
+  && unzip /tmp/chromedriver_linux64.zip -d /opt/selenium \
+  && rm /tmp/chromedriver_linux64.zip \
+  && mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CD_VERSION \
+  && chmod 755 /opt/selenium/chromedriver-$CD_VERSION \
+  && ln -fs /opt/selenium/chromedriver-$CD_VERSION /usr/bin/chromedriver \
+  && locale-gen en_US.UTF-8 \
+  && dpkg-reconfigure --frontend noninteractive locales \
+  && apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install \
+    language-pack-en \
+    fonts-ipafont-gothic \
+    xfonts-100dpi \
+    xfonts-75dpi \
+    xfonts-cyrillic \
+    xfonts-scalable \
+    fluxbox
+  
+</code></pre>
+
+<p>This code snippet automates the setup of a Selenium testing environment on a Linux machine.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>System Configuration:</strong></p>
+<ul>
+<li>Configures the system's package sources to include Ubuntu repositories for <code>xenial</code> (Ubuntu 16.04 LTS).</li>
+<li>Updates the package lists and installs essential packages:
+<ul>
+<li><code>bzip2</code>, <code>ca-certificates</code>, <code>openjdk-8-jre-headless</code>, <code>tzdata</code>, <code>sudo</code>, <code>unzip</code>, <code>wget</code>, <code>x11vnc</code>, <code>locales</code>, <code>xvfb</code></li>
+</ul></li>
+<li>Sets the system timezone to UTC and configures the time zone data.</li>
+<li>Creates a user account named <code>seluser</code> with specific permissions (sudo access).</li>
+</ul></li>
+<li><p><strong>Selenium Environment Setup:</strong></p>
+<ul>
+<li>Creates a directory <code>/opt/selenium</code> for Selenium-related files.</li>
+<li>Downloads the Selenium server standalone JAR file.</li>
+<li>Adds the Google Chrome repository key and updates the package lists.</li>
+<li>Installs the Google Chrome browser.</li>
+<li>Downloads the ChromeDriver executable matching the installed Chrome version.</li>
+<li>Extracts the ChromeDriver archive and moves it to the Selenium directory.</li>
+<li>Creates a symbolic link to the ChromeDriver executable.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This script automates the process of setting up a complete Selenium testing environment on a Linux machine, including necessary dependencies, a user account for running tests, and the Selenium server and ChromeDriver.</p>

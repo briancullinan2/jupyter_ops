@@ -1,0 +1,91 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code requires several modules for file system operations and importing functionality, and defines three main functions: <code>initSync</code>, <code>copyAllFiles</code>, and <code>importTest</code>. The <code>importTest</code> function imports sheet resources, filters out existing files, and returns a promise resolving with new files to be copied, using <code>copyAllFiles</code> and <code>initSync</code> functions.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var getEnvironment = importer.import('get environment');
+var importSheet = importer.import('sheet marketing import');
+var {glob} = importer.import('glob files')
+var streamToGoogle
+
+function initSync(env) {
+    getEnvironment(env || process.env.ENVIRONMENT || 'TEST_SPREADSHEET');
+    if((process.env.ENVIRONMENT || '').includes('LOCAL')
+    || (process.env.ENVIRONMENT || '').includes('TEST')
+    || !(process.env.ENVIRONMENT || '').includes('DEPLOY')) {
+        streamToGoogle = importer.import('test stream to output');
+    } else {
+        streamToGoogle = importer.import('upload files google cloud');
+    }
+}
+
+initSync(process.env.ENVIRONMENT);
+
+var copyAllFiles = (resources, bucketName) => Promise.all(resources
+    .map(f => f && streamToGoogle(path.basename(f),
+                                  bucketName,
+                                  fs.createReadStream(f))
+        .catch(e => console.error(e))))
+
+async function importTest(link, domain, env) {
+    if(env) {
+        initSync(env)
+    }
+    var resources = await importSheet(link, domain)
+    // TODO: fix google storage check
+    if(process.env.PROJECT_OUTPUT) {
+        var existingFiles = glob(resources
+            .map(r => `**/*${path.basename(r)}*`), process.env.PROJECT_OUTPUT)
+        resources = resources.filter(r => existingFiles.filter(e => e.includes(path.basename(r))).length == 0)
+        console.log(resources)
+    }
+    var newFiles = glob(resources
+        .map(r => `**/*${path.basename(r)}*`), process.env.DOWNLOAD_PATH)
+    resources = resources.filter(r => newFiles.filter(e => e.includes(path.basename(r))).length == 0)
+    var desktopFiles = glob(resources
+        .map(r => `**/*${path.basename(r)}*`), path.join(process.env.DOWNLOAD_PATH, '../Desktop'))
+    var pictureFiles = glob(resources
+        .map(r => `**/*${path.basename(r)}*`), path.join(process.env.DOWNLOAD_PATH, '../Pictures'))
+    return copyAllFiles(newFiles.concat(desktopFiles).concat(pictureFiles), domain)
+}
+
+module.exports = importTest;
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Requires and Imports</h4>
+<ul>
+<li><code>fs</code> and <code>path</code> modules are required for file system operations.</li>
+<li>The <code>importer</code> module is required for importing functionality from other modules.</li>
+<li>The <code>getEnvironment</code>, <code>importSheet</code>, and <code>glob</code> functionalities are imported from other modules using <code>importer</code>.</li>
+<li><code>streamToGoogle</code> is not initialized at this point.</li>
+</ul>
+<h4>initSync Function</h4>
+<ul>
+<li>Takes an environment variable <code>env</code> as input or defaults to <code>process.env.ENVIRONMENT</code> or <code>'TEST_SPREADSHEET'</code> if it's not provided.</li>
+<li>Checks if the environment is local, test, or neither deploy, and sets <code>streamToGoogle</code> to either <code>'test stream to output'</code> or <code>'upload files google cloud'</code> based on this condition.</li>
+<li>Calls itself with <code>process.env.ENVIRONMENT</code> as the argument.</li>
+</ul>
+<h4>copyAllFiles Function</h4>
+<ul>
+<li>Takes an array of resources and a bucket name as input.</li>
+<li>Uses <code>Promise.all</code> to create a promise that resolves when all resources have been processed.</li>
+<li>For each resource, it creates a read stream from the file using <code>fs.createReadStream</code>, and streams the file to Google using <code>streamToGoogle</code>.</li>
+<li>If there's an error, it catches the error and logs it to the console using <code>console.error</code>.</li>
+</ul>
+<h4>importTest Function</h4>
+<ul>
+<li>Takes a link, domain, and environment variable as input.</li>
+<li>Calls <code>initSync</code> with the environment variable if it's provided.</li>
+<li>Imports sheet resources using <code>importSheet</code> and filters out files that already exist in the project output directory (<code>process.env.PROJECT_OUTPUT</code>) or the download path (<code>process.env.DOWNLOAD_PATH</code>).</li>
+<li>Returns a promise that resolves with an array of new files that need to be copied, which is the result of calling <code>copyAllFiles</code> with the remaining resources and the bucket name.</li>
+</ul>
+<h3>Observations and Suggestions</h3>
+<ul>
+<li>The <code>initSync</code> function modifies a global variable <code>streamToGoogle</code> based on the environment. This might not be the intended behavior. Consider making it a local variable within the function.</li>
+<li>The <code>copyAllFiles</code> function uses <code>Promise.all</code> to process resources asynchronously. However, it doesn't handle any errors that might occur during the processing of resources. Consider adding error handling to this function as well.</li>
+<li>The <code>importTest</code> function filters out files that already exist in the project output directory or the download path. However, it doesn't handle any edge cases, such as files being deleted between the import and the copy operation. Consider adding error handling and logging to this function as well.</li>
+</ul>

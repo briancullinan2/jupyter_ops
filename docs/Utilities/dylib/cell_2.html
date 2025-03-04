@@ -1,0 +1,37 @@
+
+
+<pre><code>const {
+  equal
+} = require('assert')
+const {
+  load,
+  DataType,
+  open,
+  close,
+  arrayConstructor,
+  define
+} = require('ffi-rs')
+const path = require('path')
+const {platform} = require('os')
+
+const dynamicLib = platform === 'win32' ? '../mouse.dll' : (platform === 'linux' ? '../mouse.so' : '../mouse.dylib')
+
+function moveMouse(x, y) {
+  open({
+    library: 'mouse', // key
+    path: path.join(__dirname, dynamicLib) // path
+  })
+  load({
+    library: "mouse", // path to the dynamic library file
+    funcName: 'SetMousePosition', // the name of the function to call
+    retType: DataType.Void, // the return value type
+    paramsType: [DataType.Float, DataType.Float], // the parameter types
+    paramsValue: [x || 0, y || 0] // the actual parameter values
+    // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
+  })
+  close('mouse')
+}
+
+module.exports = moveMouse
+</code></pre>
+

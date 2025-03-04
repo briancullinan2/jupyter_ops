@@ -1,0 +1,56 @@
+<p>This code defines a list of file and directory patterns to be ignored, commonly used for excluding unwanted files during various tasks.  It exports this list as a module, making it reusable in other parts of an application.</p>
+
+
+<pre><code>var ignores = [
+    '**/bin/**',
+    '**/obj/**',
+    '**/dist/**',
+    
+    '**/*.spec*',
+    '**/*.Tests/**',
+    '**/typings/**',
+    '**/packages/**',
+    '**/node_modules/**',
+    '**/vendor/**',
+//            '**/*test*/*',
+//            '**/*Test*/*',
+    '**/Downloads/**',
+    '**/Library/**',
+    '**/Applications/**',
+    '**/AppData/**',
+    '**/Trash/**',
+    '**/proc/**',
+    '**/wp-content/**',
+    '**/wp-includes/**',
+    '**/Pods/**',
+    '**/svn/**',
+    '**/lib/**',
+    '**/.git/**',
+    '**/.vscode/**',
+    '**/.npm/**',
+    '**/\\.*',
+    '**/.*',
+    '**/Cache/**',
+    '**/Creative Cloud Files/**',
+]
+
+module.exports = {
+    ignores
+}
+</code></pre>
+
+<p>This code defines a list of file and directory patterns to be ignored.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><p><strong><code>ignores</code> Array:</strong></p>
+<ul>
+<li>Contains an array of strings, each representing a pattern to match and exclude.</li>
+<li>The patterns use Unix-style wildcards (e.g., <code>**/bin/**</code> matches all directories named &quot;bin&quot; within any subdirectory).</li>
+<li>The patterns cover common scenarios like ignoring build artifacts, test files, dependencies, temporary files, and system directories.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>The module exports the <code>ignores</code> array, making it available for use in other parts of the application.</li>
+</ul></li>
+</ul>
+<p>In essence, this code provides a set of predefined ignore patterns that can be used to filter files and directories during tasks like file processing, version control, or code analysis.</p>

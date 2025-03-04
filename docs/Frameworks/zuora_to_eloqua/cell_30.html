@@ -1,0 +1,40 @@
+
+
+<pre><code>
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    var eloquaToken, eloquaConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/eloqua_production.json').toString().trim());
+    eloquaOauth(eloquaConfig)
+        .then(r => {
+            eloquaToken = r;
+            return getEloquaExistingImport(eloquaToken, eloquaConfig)
+        })
+        /*
+        .then(r => {
+            // delete import definitions
+            const imports = JSON.parse(r.body).items;
+            return importer.runAllPromises(imports.map(r => resolve => {
+                return request({
+                    followAllRedirects: true,
+                    uri: eloquaConfig.rest_api_url + '/bulk/2.0' + r.uri,
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': "Bearer " + eloquaToken.access_token,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).then(r => resolve(r)).catch(e => resolve(e))
+            }))
+        })
+        */
+        .then(r => {
+            console.log(r);
+            $$.mime({'text/html': '<pre>' + JSON.stringify(r, null, 4) + '</pre>'});
+        })
+        .catch(e => $$.sendError(e))
+}
+
+// TODO: find other definitions, compare, and import using the same definition
+
+</code></pre>
+

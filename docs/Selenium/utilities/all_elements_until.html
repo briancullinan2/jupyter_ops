@@ -1,0 +1,80 @@
+<p>Here's a two-sentence summary of the <code>getAllUntil</code> function:</p>
+<p>The <code>getAllUntil</code> function is an asynchronous function that retrieves and filters data from the DOM using Selenium WebDriver, allowing for conditional scrolling and optional filtering. It recursively retrieves data, filters it based on a callback function, and returns the collected data when no more data is found or the scrolling condition is met.</p>
+
+
+<pre><code>var importer = require('../Core');
+var scrollClient = importer.import('scroll specific element')
+const selectDom = importer.import('selenium select')
+
+async function getAllUntil(driver, scrollableSelector,
+    dataSelector,
+    compare = (a, b) => a === b,
+    cb = (i) => i < 3,
+    set = [],
+    up = false,
+    i = 0) {
+    //let body = await driver.findElement(By.css('body'))
+    let result = await selectDom(driver, dataSelector)
+    //let result = await driver.executeScript('return (function main() {\n return 1;\n})()')
+
+    let filtered = []
+    let newPosts = ((typeof result === 'string' ? [result] : result) || [])
+    for (let i = 0; i < newPosts.length; i++) {
+        let found = false
+        for (let j = 0; j < set.length; j++) {
+            if (await compare(newPosts[i], set[j])) {
+                found = true
+            }
+        }
+        if (!found) {
+            filtered.push(newPosts[i])
+        }
+    }
+    set = set.concat(filtered);
+    // TODO: something with page timing is causing this to fail, continue to call until cb
+    if (filtered.length > 0 && await cb(i, set)) {
+        await scrollClient(driver, scrollableSelector, up)
+        await new Promise(resolve => setTimeout(resolve, 2500))
+        await scrollClient(driver, scrollableSelector, up)
+        await new Promise(resolve => setTimeout(resolve, 2500))
+        return await getAllUntil(driver, scrollableSelector, dataSelector, compare, cb, set, up, i + 1)
+    }
+    return set
+}
+
+
+module.exports = getAllUntil;
+
+
+</code></pre>
+
+<h2>Function <code>getAllUntil</code></h2>
+<h3>Overview</h3>
+<p><code>getAllUntil</code> is an asynchronous function that retrieves and filters data from the DOM using Selenium WebDriver.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>driver</code>: Selenium WebDriver instance</li>
+<li><code>scrollableSelector</code>: CSS selector for the scrollable element</li>
+<li><code>dataSelector</code>: CSS selector for the data elements</li>
+<li><code>compare</code>: Optional callback function for filtering data (default: <code>(a, b) =&gt; a === b</code>)</li>
+<li><code>cb</code>: Optional callback function for conditionally scrolling (default: <code>(i) =&gt; i &lt; 3</code>)</li>
+<li><code>set</code>: Optional array of collected data (default: <code>[]</code>)</li>
+<li><code>up</code>: Optional flag indicating whether to scroll up (default: <code>false</code>)</li>
+<li><code>i</code>: Optional index for the callback function (default: <code>0</code>)</li>
+</ul>
+<h3>Behavior</h3>
+<ol>
+<li>It retrieves the data from the DOM using <code>selectDom</code>.</li>
+<li>It filters the retrieved data using the <code>compare</code> callback function.</li>
+<li>It adds the filtered data to the <code>set</code> array.</li>
+<li>If conditionally scrolling is enabled, it scrolls the scrollable element and waits for 2.5 seconds before recursing.</li>
+<li>It returns the <code>set</code> array when no more data is found or the condition for conditionally scrolling is not met.</li>
+</ol>
+<h2>Modules</h2>
+<ul>
+<li><code>importer</code>: Requires the <code>../Core</code> module.</li>
+<li><code>scrollClient</code>: Imports the <code>scroll specific element</code> module from <code>importer</code>.</li>
+<li><code>selectDom</code>: Imports the <code>selenium select</code> module from <code>importer</code>.</li>
+</ul>
+<h2>Export</h2>
+<p><code>getAllUntil</code> is exported as a module.</p>

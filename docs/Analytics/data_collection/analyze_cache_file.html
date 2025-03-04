@@ -1,0 +1,71 @@
+<p>Here is a 2-sentence summary of the <code>analyzeCache</code> function:</p>
+<p>The <code>analyzeCache</code> function analyzes the cache file for a given URL, extracting statistics such as the number of cache objects, distinct domains, and repeated URLs. It returns an object with various statistics, including the count of pages, caches, and domains, as well as the URLs for the 10 largest objects and repeated URLs.</p>
+
+
+<pre><code>var {URL} = require('url')
+var fs = require('fs')
+var {findCache} = importer.import('domain crawler tools')
+
+function analyzeCache(url) {
+    var cache = findCache(url)
+    if(cache.length === 0) {
+        return {
+            error: `No cache file found ${url}`
+        }
+    }
+    
+    var json = JSON.parse(fs.readFileSync(cache[0]))
+    var domains = json.map(s => new URL(s.url).hostname)
+        .filter((h, i, arr) => arr.indexOf(h) === i)
+    var largeness = json.sort((a, b) => b.content.length - a.content.length)
+        .slice(0, 10)
+    var urls = json.map(s => s.url)
+    var repeats = json.filter((s, i, arr) => i > 0 && urls.indexOf(s.url) === i)
+    fs.writeFileSync(cache[0], JSON.stringify(repeats, null, 2))
+    return {
+        countPages: json.length,
+        countCaches: cache.length,
+        target: json[0].url,
+        countDomains: domains.length,
+        domains: domains,
+        countLargest: largeness.reduce((cur, l) => cur + l.content.length, 0),
+        largest10: largeness.map(l => l.url),
+        repeats: json.length - repeats.length,
+    }
+}
+
+module.exports = analyzeCache</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>var {URL} = require('url')</code>: Imports the <code>URL</code> class from the built-in Node.js <code>url</code> module.</li>
+<li><code>var fs = require('fs')</code>: Imports the file system module.</li>
+<li><code>var {findCache} = importer.import('domain crawler tools')</code>: Imports the <code>findCache</code> function from an external module using the <code>importer</code> object.</li>
+</ul>
+<h3>Function <code>analyzeCache(url)</code></h3>
+<h4>Purpose</h4>
+<p>Analyzes the cache file for the given <code>url</code> and returns an object with various statistics.</p>
+<h4>Steps</h4>
+<ol>
+<li>Finds the cache file for the given <code>url</code> using <code>findCache(url)</code>.</li>
+<li>If no cache file is found, returns an object with an error message.</li>
+<li>Reads the cache file as JSON and maps each object to its hostname using <code>new URL(s.url).hostname</code>.</li>
+<li>Filters the unique hostnames to get the distinct domains.</li>
+<li>Sorts the cache objects in descending order by content length and takes the first 10 largest objects.</li>
+<li>Maps the JSON objects to their URLs.</li>
+<li>Filters the cache objects to find repeated URLs and writes the result back to the cache file.</li>
+<li>Returns an object with various statistics:
+<ul>
+<li><code>countPages</code>: The number of cache objects.</li>
+<li><code>countCaches</code>: The number of cache files.</li>
+<li><code>target</code>: The URL of the first cache object.</li>
+<li><code>countDomains</code>: The number of distinct domains.</li>
+<li><code>domains</code>: An array of distinct domains.</li>
+<li><code>countLargest</code>: The total content length of the 10 largest objects.</li>
+<li><code>largest10</code>: An array of URLs for the 10 largest objects.</li>
+<li><code>repeats</code>: The number of unique URLs in the cache.</li>
+</ul></li>
+</ol>
+<h3>Export</h3>
+<p>The <code>analyzeCache</code> function is exported as a module.</p>

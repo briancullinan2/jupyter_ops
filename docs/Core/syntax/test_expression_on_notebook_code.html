@@ -1,0 +1,83 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code is a Node.js module that exports a function <code>testExpressions</code>, which generates an XPath expression from the <code>findImport</code> function and searches for cells in the <code>cellCache</code> array that match the expression. If the <code>$$</code> variable is defined, the function is called and its result is sent to the <code>$$</code> object using the <code>sendResult</code> method.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {exprToXpath, selectAst} = importer.import([
+    'select expression', 'select code tree'
+]);
+var {cellCache} = importer.import('cell cache')
+
+function matchCell(xpath, cell) {
+    try {
+        var match = selectAst([`//${xpath}`], cell.code);
+        if(match.length > 0) {
+            console.log(`match ${cell.id}`)
+            return cell;
+        }
+        return false;
+    } catch (e) {
+        console.log(e.message);
+        return false;
+    }
+}
+
+function findImport(importer) {
+    var importer = require('../Core');
+}
+
+function testExpressions() {
+    var xpath = exprToXpath(findImport);
+    console.log(`matching ${xpath}`);
+    var allCellIds = cellCache.map(c => c.id)
+    // get only first occurrence
+    var allCells = cellCache
+        .filter((c, i) => allCellIds.indexOf(c.id) == i)
+        .filter(c => c.code.length < 10000
+                && c.code.trim().length > 10)
+    //    .slice(0, 10)
+    return Promise
+        .all(allCells.map(cell => new Promise(resolve => {
+            return setTimeout(() => resolve(matchCell(xpath, cell)), 100);
+        })))
+        .then(matches => matches.filter(cell => cell)
+              .map(cell => cell.id))
+}
+
+module.exports = testExpressions;
+
+if(typeof $$ !== 'undefined') {
+    testExpressions()
+        .then(matches => $$.sendResult(matches))
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>The code is a Node.js module that exports a function <code>testExpressions</code>. It appears to be part of a larger project, likely a browser extension or a web application, that interacts with a Core module.</p>
+<h3>Modules and Imports</h3>
+<ul>
+<li>The code requires the <code>../Core</code> module and imports several functions from it:
+<ul>
+<li><code>exprToXpath</code> and <code>selectAst</code> are imported together with the label <code>select expression</code> and <code>select code tree</code>, respectively.</li>
+<li><code>cellCache</code> is imported separately.</li>
+</ul></li>
+<li>The <code>findImport</code> function is supposed to import the <code>../Core</code> module, but it ends up re-declaring the <code>importer</code> variable and doing nothing else. This function seems to be unnecessary and can be removed.</li>
+</ul>
+<h3>Functions</h3>
+<ul>
+<li><code>matchCell(xpath, cell)</code>: This function takes an XPath expression and a code cell as input. It uses the <code>selectAst</code> function to search for a match in the code cell and returns the cell if a match is found, or <code>false</code> otherwise.</li>
+<li><code>testExpressions()</code>: This is the main exported function. It:
+<ol>
+<li>Uses <code>exprToXpath</code> to convert the <code>findImport</code> function into an XPath expression.</li>
+<li>Logs the generated XPath expression.</li>
+<li>Filters the <code>cellCache</code> array to get only cells with short code (less than 10,000 characters and more than 10 characters).</li>
+<li>Maps each cell to a promise that resolves after a 100ms timeout, calling <code>matchCell</code> with the generated XPath expression and the cell.</li>
+<li>Returns a promise that resolves with an array of cell IDs that matched the XPath expression.</li>
+</ol></li>
+</ul>
+<h3>Export and Usage</h3>
+<ul>
+<li>The <code>testExpressions</code> function is exported as a module.</li>
+<li>If the <code>$$</code> variable is defined, the function is called and its result is sent to the <code>$$</code> object using the <code>sendResult</code> method.</li>
+</ul>

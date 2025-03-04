@@ -1,0 +1,42 @@
+<p>Here is a two-sentence summary of the <code>getTypes</code> function:</p>
+<p>The <code>getTypes</code> function is an asynchronous function that retrieves function types from a given C++ code snippet, optionally specifying a function name to retrieve the type for. It uses an XPath expression to parse the code and extract the function types, and is exported as a module for use in other parts of the application.</p>
+
+
+<pre><code>
+let selectCode
+
+async function getTypes(code, functionName) {
+    if(!selectCode)
+        selectCode = await importer.import('select antlr tree')
+
+    if(functionName) {
+        let result = await selectCode(['(//functionDefinition[contains(.//declaratorid/@strdata, "' + functionName + '")]/declSpecifierSeq/declSpecifier/typeSpecifier|//functionDefinition[contains(.//declaratorid/@strdata, "' + functionName + '")]/declarator//typeSpecifier)', './@strdata'], code, 'cpp')
+        return result
+    }
+
+    var result = await selectCode(['(//functionDefinition/declSpecifierSeq/declSpecifier/typeSpecifier|//functionDefinition/declarator//typeSpecifier)', './@strdata'], code, 'cpp')
+    return result
+}
+
+module.exports = getTypes
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Function Overview</h4>
+<p>The <code>getTypes</code> function is an asynchronous function that retrieves function types from a given code snippet in C++.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>code</code>: The C++ code snippet to analyze.</li>
+<li><code>functionName</code>: An optional parameter specifying the name of the function to retrieve the type for (default is null).</li>
+</ul>
+<h4>Implementation</h4>
+<ol>
+<li>The function checks if <code>selectCode</code> has been initialized. If not, it imports the <code>select antlr tree</code> module and assigns it to <code>selectCode</code>.</li>
+<li>If <code>functionName</code> is provided, it constructs a XPath expression to select the function definition with the specified name and retrieve its type specifier.</li>
+<li>The function calls <code>selectCode</code> with the constructed XPath expression, the code, and the language ('cpp') and returns the result.</li>
+<li>If <code>functionName</code> is not provided, it constructs a XPath expression to select all function definitions and retrieve their type specifiers.</li>
+<li>The function calls <code>selectCode</code> with the constructed XPath expression, the code, and the language ('cpp') and returns the result.</li>
+</ol>
+<h4>Export</h4>
+<p>The <code>getTypes</code> function is exported as a module, making it available for use in other parts of the application.</p>

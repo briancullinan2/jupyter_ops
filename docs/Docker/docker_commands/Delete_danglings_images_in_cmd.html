@@ -1,0 +1,49 @@
+<p>This Windows batch script identifies and removes all dangling Docker images from your system.</p>
+
+
+<pre><code>FOR /f "tokens=*" %i IN ('docker images -q -f "dangling=true"') DO docker rmi %i
+</code></pre>
+
+<p>This code snippet removes all dangling Docker images from the system.</p>
+<p><strong>Breakdown:</strong></p>
+<ol>
+<li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker images -q -f &quot;dangling=true&quot;')</code>:</strong></p>
+<ul>
+<li>This is a Windows batch script command.</li>
+<li><code>FOR /f</code> iterates over lines of input.</li>
+<li><code>&quot;tokens=*&quot;</code> tells it to capture all tokens (words) from each line.</li>
+<li><code>%i</code> is a loop variable that will hold each captured token (image ID).</li>
+<li><code>'docker images -q -f &quot;dangling=true&quot;'</code> executes the command <code>docker images -q -f &quot;dangling=true&quot;</code> and pipes its output (IDs of dangling images) to the loop.
+<ul>
+<li><code>-q</code> (quiet) flag outputs only image IDs.</li>
+<li><code>-f &quot;dangling=true&quot;</code> filters for images that are dangling (not associated with any running or stopped containers).</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>DO docker rmi %i</code>:</strong></p>
+<ul>
+<li>This is executed for each image ID captured by the loop.</li>
+<li><code>docker rmi %i</code> removes the Docker image with the ID stored in <code>%i</code>.</li>
+</ul></li>
+</ol>
+<p><strong>In essence:</strong></p>
+<ul>
+<li>The code identifies dangling Docker images using <code>docker images -q -f &quot;dangling=true&quot;</code>.</li>
+</ul>
+<p>Here's a breakdown:</p>
+<ul>
+<li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker images -q -f &quot;dangling=true&quot;') DO</code></strong>: This is a Windows batch script command that iterates over a list of dangling Docker images.</p>
+<ul>
+<li><strong><code>FOR /f</code></strong>: This initiates a &quot;for each file&quot; loop.</li>
+<li><strong><code>&quot;tokens=*&quot;</code></strong>: This tells the loop to capture all tokens (words) from the output of the command inside the parentheses.</li>
+<li><strong><code>%i</code></strong>: This is a placeholder variable that will hold each captured token (i.e., each dangling image ID).</li>
+<li><strong><code>IN ('docker images -q -f &quot;dangling=true&quot;')</code></strong>: This is the command that generates the list of dangling images.
+<ul>
+<li><strong><code>docker images</code></strong>: This command lists Docker images.</li>
+<li><strong><code>-q</code></strong>: This flag tells <code>docker images</code> to output only the image IDs.</li>
+<li><strong><code>-f &quot;dangling=true&quot;</code></strong>: This flag filters the output to only include images that are dangling (not associated with any running or stopped containers).</li>
+</ul></li>
+<li><strong><code>DO</code></strong>: This keyword marks the beginning of the code block that will be executed for each dangling image ID.</li>
+</ul></li>
+<li><p><strong><code>docker rmi %i</code></strong>: This command removes the dangling Docker image specified by the <code>%i</code> variable.</p></li>
+</ul>
+<p><strong>In summary:</strong> This code snippet finds all dangling Docker images on your system and then removes them.</p>

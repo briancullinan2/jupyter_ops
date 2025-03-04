@@ -1,0 +1,151 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary dependencies, including Selenium, and defines environment variables for a user's profile directory and password file. The <code>enterFacebook</code> function is an asynchronous function that automates a Facebook sign-in process, including finding and filling out form elements, waiting for and handling potential CAPTCHA or other issues, and submitting the form.</p>
+
+
+<pre><code>
+const getClient = importer.import('selenium client')
+const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'brian.json');
+
+async function enterFacebook(driver) {
+  console.log('Facebook: Sign in required');
+
+  var credentials = require(PASSWORDS_FILE)
+
+  //let body = await driver.findElement(By.css('body'))
+  await driver.wait(until.elementLocated(By.css('.login-form, [type="submit"]')), 10000);
+  let submit = await driver.findElement(By.css('.login-form, [type="submit"]'))
+
+  let login = await driver.findElement(By.css('input[name*="email"]'))
+  
+  await driver.executeScript('arguments[0].click();', login)
+  await driver.actions().sendKeys(credentials.username).perform()
+
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  //await pass.sendKeys(credentials.username)
+  //await driver.executeScript('arguments[0].value="' + credentials.username + '";', login)
+  
+  console.log('Facebook: Require password')
+
+  let pass = await driver.findElement(By.css('input[name*="pass"]'))
+  await pass.click()
+  await pass.sendKeys(credentials.password)
+
+  await submit.click()
+
+  await new Promise(resolve => setTimeout(resolve, 3000))
+
+  let loginStill, loginStill2, loginStill3
+  try {
+    loginStill = await driver.findElement(By.css('#captcha-internal'))
+  } catch (e) {}
+  try {
+    loginStill2 = await driver.findElement(By.css('input[name*="session_password"]'))
+  } catch (e) {}
+  try {
+    loginStill3 = await driver.findElement(By.xpath('//*[contains(text(),"Check your notifications")]'))
+  } catch (e) {}
+
+  if(loginStill3) {
+    await new Promise(resolve => setTimeout(resolve, 20000))
+    try {
+      loginStill = false
+      loginStill2 = false
+      loginStill3 = await driver.findElement(By.xpath('//*[contains(text(),"Check your notifications")]'))
+    } catch (e) {}
+  }
+
+  if(loginStill || loginStill2 || loginStill3) {
+    throw new Error('captcha')
+  }
+}
+
+async function loginFacebook(driver) {
+  if(!driver) {
+    driver = await getClient();
+  }
+
+  try {
+    let url = await driver.getCurrentUrl()
+    let loggedIn = url.indexOf('facebook') > -1 && url.indexOf('login') == -1
+
+    if(loggedIn) {
+      if(await driver.findElement(By.xpath('iframe.authentication-iframe'))) {
+        await driver.frame((await driver.element('iframe.authentication-iframe')).value)
+        await enterFacebook()
+        await frame()
+      }
+    } else {
+      await driver.get('https://www.facebook.com/')
+      let loginLink, loginLink2
+      try {
+        loginLink = await driver.findElement(By.xpath('//a[text()[contains(.,"Forgot password?")]]'))
+      } catch (e) {}
+      try {
+        loginLink2 = await driver.findElement(By.xpath('//a[text()[contains(.,"Create new account")]]'))
+      } catch (e) {}
+      if(loginLink || loginLink2) {
+        await enterFacebook(driver)
+      }
+    }
+  } catch (e) {
+    driver.quit() // avoid leaving sessions hanging around
+
+    throw e
+  }
+
+  return driver
+}
+
+module.exports = loginFacebook
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code imports the following dependencies:</p>
+<ul>
+<li><code>selenium client</code> using <code>importer.import()</code></li>
+<li><code>selenium-webdriver</code> using <code>require()</code>, importing the following modules:
+<ul>
+<li><code>Builder</code></li>
+<li><code>Browser</code></li>
+<li><code>By</code></li>
+<li><code>Key</code></li>
+<li><code>until</code></li>
+</ul></li>
+</ul>
+<h3>Environment Variable and File Path</h3>
+<p>The code defines two environment variables:</p>
+<ul>
+<li><code>PROFILE_PATH</code>: the path to the user's profile directory, determined by the presence of <code>HOME</code>, <code>HOMEPATH</code>, or <code>USERPROFILE</code> environment variables</li>
+<li><code>PASSWORDS_FILE</code>: the path to a file named <code>brian.json</code> in the <code>.credentials</code> directory within the profile directory</li>
+</ul>
+<h3><code>enterFacebook</code> Function</h3>
+<p>The <code>enterFacebook</code> function is an asynchronous function that takes a <code>driver</code> object as an argument. It performs the following actions:</p>
+<ol>
+<li>Logs a message to the console indicating that a Facebook sign-in is required</li>
+<li>Requires the credentials from the <code>brian.json</code> file</li>
+<li>Waits for the login form to be present on the page</li>
+<li>Finds the login form and submit button elements</li>
+<li>Finds the email input element, clicks it, and sends the username to it</li>
+<li>Waits for 1 second</li>
+<li>Finds the password input element, clicks it, and sends the password to it</li>
+<li>Submits the form</li>
+<li>Waits for 3 seconds</li>
+<li>Attempts to find the following elements:
+<ul>
+<li>A CAPTCHA element (<code>#captcha-internal</code>)</li>
+<li>A password input element (<code>input[name*=&quot;session_password&quot;]</code>)</li>
+<li>A notification element (<code>//*[contains(text(),&quot;Check your notifications&quot;)]</code>)</li>
+</ul></li>
+<li>If any of these elements are found, it throws an error indicating that a CAPTCHA is required</li>
+</ol>
+<h3>Other Notes</h3>
+<ul>
+<li>The code uses <code>await</code> to wait for promises to resolve, and <code>try</code>/<code>catch</code> blocks to handle errors</li>
+<li>The code uses <code>setTimeout</code> to introduce delays between actions</li>
+<li>The code uses JavaScript <code>executeScript</code> method to interact with the webpage, such as clicking and sending text to elements.</li>
+</ul>

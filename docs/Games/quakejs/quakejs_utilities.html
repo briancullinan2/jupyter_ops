@@ -1,0 +1,65 @@
+<p>This code provides utilities for encoding and decoding out-of-band (OOB) data, a method used to send special instructions or metadata within a network stream.</p>
+
+
+<pre><code>
+function _formatOOB(data) {
+	var str = '\xff\xff\xff\xff' + data + '\x00';
+
+	var buffer = new ArrayBuffer(str.length);
+	var view = new Uint8Array(buffer);
+
+	for (var i = 0; i < str.length; i++) {
+		view[i] = str.charCodeAt(i);
+	}
+
+	return buffer;
+};
+
+function _stripOOB(buffer) {
+	var view = new DataView(buffer);
+
+	if (view.getInt32(0) !== -1) {
+		return null;
+	}
+
+	var str = '';
+	var i_start = 4; /* ignore leading -1 */
+	var i_end = buffer.byteLength;
+
+	/* ignore trailing whitespace */
+	while (i_end > i_start && view.getUint8(i_end - 1) <= ' '.charCodeAt(0)) {
+		--i_end;
+	}
+
+	for (var i = i_start; i < i_end; i++) {
+		var c = String.fromCharCode(view.getUint8(i));
+		str += c;
+	}
+
+	return str;
+};
+
+module.exports = {
+    _formatOOB,
+    _stripOOB
+}
+</code></pre>
+
+<p>This code defines two functions for handling out-of-band (OOB) data, a common technique used in network communication to send special instructions or metadata alongside regular data.</p>
+<p><strong><code>_formatOOB(data)</code>:</strong></p>
+<ul>
+<li>Takes a string <code>data</code> as input.</li>
+<li>Prepends a specific byte sequence (<code>\xff\xff\xff\xff</code>) and a null terminator (<code>\x00</code>) to the string.</li>
+<li>Converts the resulting string into a binary <code>ArrayBuffer</code>.</li>
+<li>Returns the <code>ArrayBuffer</code> containing the formatted OOB data.</li>
+</ul>
+<p><strong><code>_stripOOB(buffer)</code>:</strong></p>
+<ul>
+<li>Takes a binary <code>ArrayBuffer</code> as input.</li>
+<li>Creates a <code>DataView</code> to access the buffer's contents as numbers.</li>
+<li>Checks if the first four bytes represent the expected OOB marker (<code>-1</code>). If not, it returns <code>null</code>, indicating invalid OOB data.</li>
+<li>Extracts the remaining data from the buffer, skipping the marker and any trailing whitespace.</li>
+<li>Converts the extracted bytes back into a string.</li>
+<li>Returns the stripped OOB data as a string.</li>
+</ul>
+<p>In essence, these functions provide a way to encode and decode messages that need to be treated differently from regular data within a network stream.</p>

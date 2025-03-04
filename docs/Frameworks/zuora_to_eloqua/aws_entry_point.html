@@ -1,0 +1,71 @@
+<p>This Lambda function automates the export of data from Zuora to Eloqua, handling data mapping and upload to Eloqua's system.</p>
+
+
+<pre><code>var importer = require('../Core');
+var eloquaUpload = importer.import('bulk upload eloqua');
+var zuoraExport = importer.import('zuora export month');
+var mapper = importer.import('zuora eloqua mapper');
+
+function handler(event, context, callback) {
+    const zuoraConfig = {
+        "rest_api_user": process.env.ZUORA_API_USER,
+        "rest_api_password": process.env.ZUORA_API_PASS,
+        "rest_api_url": process.env.ZUORA_API_URL
+    };
+    const eloquaConfig = {
+        "authorize_uri": process.env.ELOQUA_AUTHORIZE_URL,
+        "token_uri": process.env.ELOQUA_TOKEN_URL,
+        "rest_api_url": process.env.ELOQUA_API_URL,
+        "rest_client_id": process.env.ELOQUA_CLIENT_ID,
+        "rest_secret": process.env.ELOQUA_CLIENT_SECRET,
+        "rest_api_company": process.env.ELOQUA_API_COMPANY,
+        "rest_api_user": process.env.ELOQUA_API_USER,
+        "rest_api_password": process.env.ELOQUA_API_PASS
+    };
+    return zuoraExport.getZuoraMonth(0, zuoraConfig)
+        .then(records => mapper.mapDataToFields(records))
+        .then(accounts => eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig))
+        .then(() => callback(null, {
+            'statusCode': 200,
+            'headers': { 'Content-Type': 'text/plain' },
+            'body': 'Success!'
+        }))
+        .catch(e => callback(e.message || e.body || e, {
+            'statusCode': 500,
+            'headers': { 'Content-Type': 'text/plain' },
+            'body': 'Error: ' + e.message
+        }))
+}
+module.exports = {
+    handler
+};
+</code></pre>
+
+<p>This code defines a Lambda function handler that exports data from Zuora to Eloqua.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A module likely providing utilities for importing other modules.</li>
+<li><code>bulk upload eloqua</code>: A module for uploading data to Eloqua.</li>
+<li><code>zuora export month</code>: A module for exporting data from Zuora.</li>
+<li><code>zuora eloqua mapper</code>: A module for mapping data between Zuora and Eloqua formats.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Retrieves Zuora and Eloqua configuration from environment variables.</li>
+</ul></li>
+<li><p><strong>Handler Function:</strong></p>
+<ul>
+<li><code>handler(event, context, callback)</code>: The Lambda function handler.</li>
+<li>Calls <code>zuoraExport.getZuoraMonth(0, zuoraConfig)</code> to export data from Zuora for the current month.</li>
+<li>Maps the exported data to Eloqua fields using <code>mapper.mapDataToFields(records)</code>.</li>
+<li>Uploads the mapped data to Eloqua using <code>eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig)</code>.</li>
+<li>Returns a success response with a 200 status code or an error response with a 500 status code if an error occurs.</li>
+</ul></li>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li>Exports the <code>handler</code> function, making it available for invocation by AWS Lambda.</li>
+</ul></li>
+</ol>
+<p>In essence, this code automates the process of exporting data from Zuora, mapping it to Eloqua's format, and uploading it to Eloqua, likely as part of a data synchronization workflow.</p>

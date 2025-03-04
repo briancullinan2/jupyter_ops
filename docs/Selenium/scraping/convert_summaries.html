@@ -1,0 +1,121 @@
+<p>This code imports necessary modules and functions, assigns project-related constants, and defines an array of 14 conversion prompts for text rewriting. The imported functions include safeURL, getNearestSunday, and summarizeArticle, among others.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const { safeurl } = importer.import('domain cache tools')
+const { getNearestSunday } = importer.import('default link collector')
+const summerizeArticle = importer.import('summarize all articles')
+
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'reasonings')
+
+const CONVERSION_PROMPTS = [
+  'pretend you\'re living in a star wars themed universe and reverse sentence structure like Yoda',
+  'pretend you\'re a super intelligent alien species and write a metaphor for how they could be teasing us',
+  'break the news to me as gently as possible, mommy me a little and tell me it\'s going to be okay',
+  //'Rewrite this news story as if it were a stand-up comedy routine, complete with witty punchlines and audience reactions',  
+  'Make this breaking news sound like a script for a sitcom, with awkward misunderstandings, dramatic pauses, and a laugh track',  
+  'Turn this serious news article into a rhyming Dr. Seuss-style poem, making it lighthearted but still informative',  
+  'Retell this news story from the perspective of a sarcastic but lovable talking animal who’s just trying to make sense of the human world',  
+  'Rewrite this news article as if it were an absurd conspiracy theory from a tin-foil-hat-wearing enthusiast',  
+  'Make this news sound like an over-the-top tabloid headline, with wild exaggerations and celebrity name-drops',  
+  'Rephrase this bad news as if you were a kindergarten teacher gently explaining it to a room full of toddlers',  
+  'Write this difficult news as if it were a whimsical fairy tale where things work out in the end (or at least have a hopeful moral)',  
+  'Turn this stressful news into a motivational speech, making it sound like an inspiring challenge rather than a disaster',  
+  'Rewrite this news as if a wise old grandma was breaking it to you over a warm cup of tea and cookies',  
+  'Make this bad news sound like a quirky horoscope, full of mystical optimism and cosmic reassurance',  
+  'Transform this news into an uplifting bedtime story where even the roughest parts have a silver lining'
+]
+
+async function alternativeSummary(summary, funny) {
+  let { llmPrompt } = await importer.import('create llm session')
+
+  let q1 = 'Convert this article summary, ' + funny + ':\n' + summary[0] + '\nOnly return the summary and nothing else, no explanations.'
+  console.log('User: ' + q1)
+  let a1 = await llmPrompt(q1)
+  console.log('AI: ' + a1)
+
+
+  let q2 = 'Convert this article description, ' + funny + ':\n' + summary[1] + '\nOnly return the single sentence and nothing else, no explanations.'
+  console.log('User: ' + q2)
+  let a2 = await llmPrompt(q2)
+  console.log('AI: ' + a2)
+
+  return [a1, a2]
+}
+
+async function alternativeArticles(startPage, random) {
+
+  // TODO: get base summary, if it doesn't exist generate it
+  const CONVERSION_FILES = CONVERSION_PROMPTS.map(funny =>
+    path.join(PROJECT_PATH, safeurl(getNearestSunday()) + '-' + safeurl(funny) + '.json'))
+
+
+  // TODO: get a list of all other summary conversions
+  const allSummaries = []
+  for (let i = 0; i < CONVERSION_FILES.length; i++) {
+    if (fs.existsSync(CONVERSION_FILES[i]))
+      allSummaries[i] = JSON.parse(fs.readFileSync(CONVERSION_FILES[i]))
+    else
+      allSummaries[i] = {}
+  }
+
+  if (Object.values(allSummaries[0]).length == 0) {
+    allSummaries[0] = await summerizeArticle(startPage)
+  }
+
+  // TODO: convert the base summaries to funny conversions and save
+  let links = Object.keys(allSummaries[0])
+  if(random) {
+    random = Math.round(Math.random() * (CONVERSION_PROMPTS.length - 1)) + 1
+  }
+  for (let i = 0; i < links.length; i++) {
+    for (let j = random ? random : 1; j < CONVERSION_PROMPTS.length; j++) {
+
+      if(typeof allSummaries[j][links[i]] != 'undefined') {
+        continue
+      }
+
+      // TODO: persist
+      allSummaries[j][links[i]] = await alternativeSummary(allSummaries[0][links[i]], CONVERSION_PROMPTS[j])
+      fs.writeFileSync(CONVERSION_FILES[j], JSON.stringify(allSummaries[j], null, 4))
+      
+      if(random) {
+        break
+      }
+    }
+  }
+
+  return allSummaries
+}
+
+
+module.exports = {
+  alternativeArticles,
+  alternativeSummary,
+  CONVERSION_PROMPTS,
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This code imports various modules and functions, assigns constants, and defines an array of conversion prompts.</p>
+<h3>Imported Modules and Functions</h3>
+<ul>
+<li><code>fs</code>: File system module for interacting with the file system.</li>
+<li><code>path</code>: Module for working with file paths.</li>
+<li><code>importer.import()</code>: A function that imports modules or functions from a specified namespace.
+<ul>
+<li><code>safeurl</code>: A function imported from <code>domain cache tools</code> namespace.</li>
+<li><code>getNearestSunday</code>: A function imported from <code>default link collector</code> namespace.</li>
+<li><code>summerizeArticle</code>: A function imported from <code>summarize all articles</code> namespace.</li>
+</ul></li>
+</ul>
+<h3>Constants</h3>
+<ul>
+<li><code>PROJECT_PATH</code>: A constant representing the path to a project directory.</li>
+</ul>
+<h3>Conversion Prompts</h3>
+<ul>
+<li><code>CONVERSION_PROMPTS</code>: An array of 14 conversion prompts that specify different tones, styles, or perspectives for rewriting text. Each prompt is a string that describes the desired rewriting style.</li>
+</ul>

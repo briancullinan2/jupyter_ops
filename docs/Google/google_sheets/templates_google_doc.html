@@ -1,0 +1,47 @@
+<p>This code analyzes a Google Sheet document to identify and categorize its sheets as either templates or data sheets based on their titles. It then returns an organized object containing these categorized sheets.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getInfo = importer.import('get google sheet info');
+
+function getTemplates(doc) {
+    return getInfo(doc)
+        .then(info => {
+            console.log(`loaded doc: ${info.properties.title} ${info.spreadsheetId}`);
+            return info.sheets.reduce((obj, worksheet) => {
+                var layoutTitle = worksheet.properties.title.toLowerCase()
+                    .replace(/\s*layout|\s*data|\s*template/ig, '')
+                    .split(/\s+/ig).join('-');
+
+                if( typeof obj[layoutTitle] == 'undefined' ) obj[layoutTitle] = {template: null, data: null};
+                if( worksheet.properties.title.toLowerCase().includes('data') ) obj[layoutTitle].data = worksheet;
+                else obj[layoutTitle].template = worksheet;
+                return obj;
+            }, {})
+        })
+}
+
+module.exports = getTemplates;
+</code></pre>
+
+<p>This code defines a function <code>getTemplates</code> that extracts template and data sheets from a Google Sheet document.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports a module named <code>getInfo</code> from the <code>Core</code> directory, which presumably handles fetching information about a Google Sheet.</li>
+</ul></li>
+<li><p><strong><code>getTemplates</code> Function:</strong></p>
+<ul>
+<li>Takes a Google Sheet document (<code>doc</code>) as input.</li>
+<li>Calls the <code>getInfo</code> function to retrieve information about the document.</li>
+<li>Processes the retrieved information to identify template and data sheets based on their titles.</li>
+<li>Organizes the extracted sheets into an object where keys are derived from the sheet titles (removing &quot;layout&quot;, &quot;data&quot;, or &quot;template&quot; from the title) and values are the corresponding sheet objects.</li>
+<li>Returns the object containing the extracted templates and data sheets.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>getTemplates</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to programmatically analyze a Google Sheet and categorize its sheets into templates and data based on their titles.</strong></p>

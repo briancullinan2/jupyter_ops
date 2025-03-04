@@ -1,0 +1,29 @@
+
+
+<pre><code>var importer = require('../Core');
+var {getRequires} = importer.import('get requires from source')
+
+var code = `
+var importer = require('../Core');
+var glob = require('glob');
+var path = require('path');
+`
+
+function testGetRequires() {
+    return getRequires(code)
+}
+
+module.exports = testGetRequires
+
+if(typeof $$ != 'undefined') {
+    testGetRequires()
+    
+    /*
+    expected output
+    ../Core
+    glob
+    path
+    */
+}
+</code></pre>
+

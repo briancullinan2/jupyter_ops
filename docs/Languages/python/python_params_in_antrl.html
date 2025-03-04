@@ -1,0 +1,103 @@
+<p>Here's a summary of the code in one sentence:</p>
+<p>The Node.js module provides a function <code>pythonParams</code> that uses the ANTLR4 tool to parse Python code and extract function parameters, returning them as an array of objects.</p>
+<p>And here's a slightly expanded version in two sentences:</p>
+<p>This Node.js module uses the ANTLR4 tool to parse Python code and extract function parameters, which are then returned as an array of objects. The module exports a single function, <code>pythonParams</code>, which can be used to analyze Python code and extract function parameter information.</p>
+
+
+<pre><code>const path = require('path')
+
+// Function to parse Python code
+async function pythonParams(pythonCode) {
+  const getParser = await importer.import('get antrl tool')
+  const { antlr4, parser: Python3Parser, lexer: Python3Lexer, listener: Python3Listener } = await getParser('Python3')
+
+
+  class ParameterListener extends Python3Listener {
+    constructor() {
+      super();
+      this.parameters = [];
+    }
+  
+    enterFuncdef(ctx) {
+      let funcName = ctx.children[1].getText();  // Function name
+      let paramCtx = ctx.children[2]; // Parameters
+  
+      if (paramCtx && paramCtx.children.length > 1) {
+        let params = paramCtx.getText()
+          .replace(/[()]/g, '')  // Remove brackets
+          .split(',')
+          .map(param => param.trim());
+  
+        this.parameters.push({ function: funcName, parameters: params });
+      }
+    }
+  }
+  
+
+  
+  const chars = new antlr4.InputStream(pythonCode);
+  const lexer = new Python3Lexer(chars);
+  const tokens = new antlr4.CommonTokenStream(lexer);
+  const parser = new Python3Parser(tokens);
+
+  parser.buildParseTrees = true;
+  const tree = parser.file_input();
+
+  let listener = new ParameterListener();
+  antlr4.tree.ParseTreeWalker.DEFAULT.walk(listener, tree);
+
+  if(pythonCode.match('__all__ = ' + listener.parameters[0].function)) {
+    return listener.parameters[0]
+  }
+
+  return listener.parameters;
+}
+
+module.exports = pythonParams
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Purpose</h3>
+<p>This code is a Node.js module that provides a function to parse Python code and extract function parameters.</p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>path</code>: a built-in Node.js module for handling file paths</li>
+<li><code>importer</code>: a module to import the ANTLR4 tool (not a built-in Node.js module, implementation not shown)</li>
+</ul>
+<h3>Function: <code>pythonParams</code></h3>
+<ul>
+<li>Takes a string of Python code as input</li>
+<li>Returns an array of objects, each containing the function name and parameters</li>
+</ul>
+<h3>ANTLR4 Tool Integration</h3>
+<ul>
+<li>The code uses the ANTLR4 tool to parse the Python code</li>
+<li>The <code>getParser</code> function is used to import the ANTLR4 parser and lexer for Python 3</li>
+<li>The <code>ParameterListener</code> class is defined to listen for events in the parse tree and extract function parameters</li>
+</ul>
+<h3>ParameterListener Class</h3>
+<ul>
+<li>Extends the <code>Python3Listener</code> class</li>
+<li>Has a constructor that initializes an empty array to store function parameters</li>
+<li>The <code>enterFuncdef</code> method is called when a function definition is encountered in the parse tree</li>
+<li>Extracts the function name and parameters from the parse tree and adds them to the <code>parameters</code> array</li>
+</ul>
+<h3>Main Logic</h3>
+<ul>
+<li>Creates an input stream from the Python code</li>
+<li>Creates a lexer and parser for the Python code</li>
+<li>Parses the Python code and builds a parse tree</li>
+<li>Creates a <code>ParameterListener</code> instance and walks the parse tree to extract function parameters</li>
+<li>Returns the extracted function parameters</li>
+</ul>
+<h3>Export</h3>
+<ul>
+<li>The <code>pythonParams</code> function is exported as a module export</li>
+</ul>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">const pythonParams = require('./pythonParams');
+const pythonCode = 'def my_function(a, b): pass';
+const result = pythonParams(pythonCode);
+console.log(result); // [{ function:'my_function', parameters: ['a', 'b'] }]
+</code></pre>

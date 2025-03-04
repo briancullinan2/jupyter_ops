@@ -1,0 +1,68 @@
+<p>This code defines a function that compares two specific Git commits within a project, outputs the differences to a directory, and utilizes Gulp and Promises for task management.</p>
+
+
+<pre><code>var path = require('path');
+var gulp = require('gulp');
+var run = require('gulp-run');
+var tap = require('gulp-tap');
+var importer = require('../Core');
+var gulpPromise = importer.import('gulp task to a Promise', {gulp})
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = typeof project === 'undefined' ? path.join(PROFILE_PATH, 'Documents/portal') : project;
+
+function getBranchBoundaries(p) {
+    if(p) {
+        project = p;
+    }
+
+    gulp.task('git watch', function () {
+        return run('git diff -w a229417..498d5a5', {cwd: project})
+            .pipe(tap(file => console.log(file)))
+            .pipe(gulp.dest('output'))
+    });
+
+    return gulpPromise(['git watch'])
+}
+module.exports = getBranchBoundaries;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getBranchBoundaries(project)
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+
+</code></pre>
+
+<p>This code defines a function <code>getBranchBoundaries</code> that executes a Git command to compare two specific commits within a project and outputs the differences to a &quot;output&quot; directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for file system operations, task management, running shell commands, and data manipulation.</li>
+<li>Imports a custom function <code>gulpPromise</code> to convert a Gulp task into a Promise.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets the <code>PROFILE_PATH</code> to the user's home directory.</li>
+<li>Defines the <code>project</code> path based on an environment variable or a default value.</li>
+</ul></li>
+<li><p><strong><code>getBranchBoundaries</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>p</code> parameter to override the <code>project</code> path.</li>
+<li>Defines a Gulp task named &quot;git watch&quot; that:
+<ul>
+<li>Executes a Git command to compare commits <code>a229417</code> and <code>498d5a5</code> within the specified project directory.</li>
+<li>Pipes the output to a <code>tap</code> stream to log each file to the console.</li>
+<li>Writes the output to a directory named &quot;output&quot;.</li>
+</ul></li>
+<li>Uses <code>gulpPromise</code> to convert the Gulp task into a Promise.</li>
+<li>Returns the Promise.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>If the <code>$$</code> variable is defined (likely indicating a testing environment), it executes the <code>getBranchBoundaries</code> function, sends the result to <code>$$.sendResult</code>, and handles any errors using <code>$$.sendError</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to compare two Git commits within a project and visualize the differences using Gulp and a custom Promise-based task execution mechanism.</p>

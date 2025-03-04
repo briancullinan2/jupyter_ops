@@ -1,0 +1,72 @@
+<p>The <code>getExtension</code> function determines the appropriate file extension for a code cell based on its language and type, such as <code>.js</code>, <code>.md</code>, or <code>.py</code>.  This function is designed to be used in a notebook environment for organizing and processing code.</p>
+
+
+<pre><code>// TODO: replace with a library?
+
+// TODO: move into interpret notebook cell?
+
+function getExtension(cell, notebook) {
+    var extension;
+    if(cell.cell_type === 'markdown') {
+        extension = '.md';
+    } else if(cell.cell_type === 'raw') {
+        extension = '.txt';
+    } else if(cell.language === 'javascript' || cell.language === 'node') {
+        if((cell.source || [cell.code]).join('').match(/describe\s*\(/igm)) {
+            extension = '.spec.js'
+        } else {
+            extension = '.js';
+        }
+    } else if(cell.language === 'powershell') {
+        extension = '.ps1';
+    } else if(cell.language === 'csharp') {
+        extension = '.cs';
+    } else if(cell.language === 'python') {
+        extension = '.py';
+    } else if(cell.language === 'typescript') {
+        if((cell.source || [cell.code]).join('').match(/describe\s*\(/igm)
+            || (cell.questions[0] || '').includes('test')) {
+            extension = '.spec.ts'
+        } else {
+            extension = '.ts';
+        }
+    } else if(cell.language === 'bash') {
+        extension = '.sh';
+    } else {
+        throw 'unknown language or cell type: '
+            + (cell.filename || notebook)
+            + ' (' + cell.cell_type + ',' + cell.language + ')';
+    }
+    return extension;
+}
+module.exports = getExtension;
+</code></pre>
+
+<p>This code defines a function called <code>getExtension</code> that determines the appropriate file extension for a given code cell based on its content and type.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong>Input:</strong> The function takes two arguments:</p>
+<ul>
+<li><code>cell</code>: An object representing a code cell, containing properties like <code>cell_type</code>, <code>language</code>, <code>source</code>, <code>code</code>, and <code>questions</code>.</li>
+<li><code>notebook</code>:  Likely the name or identifier of the notebook the cell belongs to.</li>
+</ul></li>
+<li><p><strong>Extension Logic:</strong></p>
+<ul>
+<li>It uses a series of <code>if</code> and <code>else if</code> statements to check the <code>cell_type</code> and <code>language</code> properties.</li>
+<li>Based on these values, it assigns a file extension:
+<ul>
+<li><code>.md</code> for markdown cells</li>
+<li><code>.txt</code> for raw cells</li>
+<li><code>.js</code> or <code>.spec.js</code> for JavaScript/Node.js cells (<code>.spec.js</code> if it contains <code>describe()</code> function, likely indicating a test file)</li>
+<li><code>.ps1</code> for PowerShell</li>
+<li><code>.cs</code> for C#</li>
+<li><code>.py</code> for Python</li>
+<li><code>.ts</code> or <code>.spec.ts</code> for TypeScript (<code>.spec.ts</code> if it contains <code>describe()</code> or &quot;test&quot; in the <code>questions</code> array)</li>
+<li><code>.sh</code> for Bash</li>
+</ul></li>
+<li>If no matching condition is found, it throws an error indicating an unknown language or cell type.</li>
+</ul></li>
+<li><p><strong>Output:</strong> The function returns the determined file extension as a string.</p></li>
+<li><p><strong>Module Export:</strong> The <code>module.exports = getExtension;</code> line makes the <code>getExtension</code> function available for use in other modules.</p></li>
+</ol>
+<p><strong>In essence, this code provides a way to automatically infer the file extension for a code cell based on its content and type, which could be useful for organizing and processing code within a notebook environment.</strong></p>

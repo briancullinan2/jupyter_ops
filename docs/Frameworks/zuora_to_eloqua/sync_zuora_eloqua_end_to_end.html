@@ -1,0 +1,68 @@
+<p>This code defines a set of test cases for a system integrating Zuora and Eloqua, focusing on data transfer and various subscription management scenarios.  The tests cover data export, product matching, end-to-end data flow, and a range of user interactions with subscriptions.</p>
+
+
+<pre><code>
+describe('zuora to eloqua', () => {
+    beforeEach(() => {
+    })
+    
+    it('should export a month of zuora data', () => {
+    })
+    
+    it('should match all products in zuora catalog', () => {
+    })
+    
+    it('should transfer data end-to-end', () => {
+    })
+    
+    /*
+    TODO: 
+Start a trial through portal
+Add / remove support
+ACC / distributor updates
+Make a purchase
+Purchase expires
+Change quantity
+Cancel subscription
+Change quantity within 30 days of renewal
+Change quantity within 60 days of renewal
+AU/NZ renewals
+ACC have eternally free terms
+Renew with new subscription, same account
+Renew new subscription, same email
+*/
+    
+})
+</code></pre>
+
+<p>This code snippet appears to be a set of test specifications for a system that integrates Zuora (a subscription management platform) with Eloqua (a marketing automation platform).</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li><code>describe('zuora to eloqua', () =&gt; { ... })</code>: Defines a test suite named &quot;zuora to eloqua&quot;.</li>
+</ul></li>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li><code>beforeEach(() =&gt; { ... })</code>: A function that runs before each individual test case within the suite. It likely sets up any necessary environment or data for the tests.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li><code>it('should export a month of zuora data', () =&gt; { ... })</code>: Tests the functionality of exporting a month's worth of data from Zuora.</li>
+<li><code>it('should match all products in zuora catalog', () =&gt; { ... })</code>: Tests the accuracy of matching products between Zuora and Eloqua.</li>
+<li><code>it('should transfer data end-to-end', () =&gt; { ... })</code>: Tests the complete data transfer process from Zuora to Eloqua.</li>
+</ul></li>
+<li><p><strong>TODO List:</strong></p>
+<ul>
+<li>The commented section outlines a list of additional test cases to be implemented. These cover various scenarios like:
+<ul>
+<li>Starting and managing trials</li>
+<li>Handling support updates</li>
+<li>Processing account and distributor changes</li>
+<li>Making purchases and managing subscriptions</li>
+<li>Renewals with different conditions (quantity changes, timeframes)</li>
+<li>Handling specific regional scenarios (AU/NZ)</li>
+<li>Testing cases with special account types (eternally free)</li>
+</ul></li>
+</ul></li>
+</ol>

@@ -1,0 +1,40 @@
+<p>This code sets up a Socket.IO server and client for testing, handling potential port conflicts by retrying server startup if necessary.</p>
+
+
+<pre><code>var tryReset = false;
+try {
+    var io = sockifyServer(8098);
+} catch (e) {
+    if (e.code !== 'EADDRINUSE') {
+        throw e;
+    } else {
+        tryReset = true;
+    }
+}
+var fs = sockifyClient(require('fs'), 'fs', 'http://localhost:8098');
+if (tryReset) {
+    fs.___close();
+    var io = sockifyServer(8098);
+}
+</code></pre>
+
+<p>This code snippet sets up a mock Socket.IO server and client for testing purposes.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Server Setup:</strong></p>
+<ul>
+<li>It attempts to start a Socket.IO server on port 8098 using <code>sockifyServer(8098)</code>.</li>
+<li>It handles potential errors, specifically catching <code>EADDRINUSE</code> errors (which indicate the port is already in use).</li>
+<li>If the port is already in use, it sets a flag <code>tryReset</code> to <code>true</code>, indicating a retry attempt.</li>
+</ul></li>
+<li><p><strong>Client Setup:</strong></p>
+<ul>
+<li>It creates a mock client for the <code>fs</code> module using <code>sockifyClient(require('fs'), 'fs', 'http://localhost:8098')</code>. This means it's mocking the <code>fs</code> module's interactions with the Socket.IO server.</li>
+</ul></li>
+<li><p><strong>Retry Server:</strong></p>
+<ul>
+<li>If <code>tryReset</code> is <code>true</code> (meaning the port was initially in use), it closes the mock client (<code>fs.___close()</code>) and tries to start the Socket.IO server again on port 8098.</li>
+</ul></li>
+</ol>
+<p><strong>In essence:</strong></p>
+<p>This code aims to create a reliable test environment by handling potential port conflicts and ensuring a working Socket.IO server and client for testing purposes.</p>

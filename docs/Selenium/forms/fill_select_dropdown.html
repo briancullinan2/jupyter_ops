@@ -1,0 +1,35 @@
+<p>This code automates the selection of a dropdown menu option on a webpage by finding the dropdown and the desired option based on their labels and values.</p>
+
+
+<pre><code>function selectDropdown(client, label, value) {
+    return client
+        .click('//*[contains(., "' + label + '")][not(*)]/parent::*/*[contains(@role, "listbox")]' +
+               '|//*[contains(@aria-label, "' + label + '")]//*[contains(@role, "listbox")]' + 
+               '|//*[contains(@aria-label, "' + label + '")]//*[contains(@class, "button-dropdown")]') // [contains(@aria-selected, "true")]
+        .pause(1000)
+        .click('//*[contains(., "' + label + '")][not(*)]/parent::*[not(self::body)]//*[contains(@role,"option")][contains(.,"' + value + '")]' +
+               // handle google angular drop down lists or google calendar drop down
+               // TODO: break up this line in to two
+               '|//*[contains(@aria-label, "' + label + '")]//*[contains(@class,"menuitem") or contains(@role, "gridcell")][not(contains(@class,"other-month"))][contains(.,"' + value + '")]')
+        .pause(1000)
+}
+module.exports = selectDropdown;
+</code></pre>
+
+<p>This code snippet defines a function <code>selectDropdown</code> that automates the process of selecting an option from a dropdown menu on a webpage.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Function Definition:</strong></p>
+<ul>
+<li>Defines a function <code>selectDropdown</code> that takes three arguments: <code>client</code> (presumably a web automation client), <code>label</code> (the text label of the dropdown menu), and <code>value</code> (the text value of the desired option).</li>
+</ul></li>
+<li><p><strong>Dropdown Selection:</strong></p>
+<ul>
+<li>Uses <code>client.click()</code> to find and click the dropdown menu element based on its label. It uses multiple selectors to handle different dropdown implementations, including those with ARIA attributes and Google-specific styles.</li>
+<li>Waits for 1 second using <code>client.pause(1000)</code>.</li>
+<li>Uses <code>client.click()</code> again to find and click the desired option within the dropdown menu based on its label and value.</li>
+<li>Waits for another second.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This function provides a way to programmatically select a specific option from a dropdown menu on a webpage, handling various dropdown types and potential variations in their implementation.</p>

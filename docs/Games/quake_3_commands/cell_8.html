@@ -1,0 +1,57 @@
+
+
+<pre><code>
+
+Z:\Downloads\netradiant-custom-win64\netradiant-custom-20190705\mbspc.exe -bsp2map Z:\.quake2\baseq2\pak0.pak\maps\base1.bsp
+
+for /r %%v in (*.bsp) do (
+    cd "%%~dpv"
+    "Z:\planet_quake_data\tools\mbspc.exe" -bsp2map "%%~nv.bsp")
+
+for /r %%v in (*.md2) do "Z:\planet_quake_data\tools\qwalk\modelconv.exe" -i "%%v" "%%~dpv%%~nv.md3"
+
+
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq3 -convert -format map ~/planet_quake_data/quake3-baseq3/pak0.pk3dir/maps/q3tourney6.bsp
+
+for i in $(find "$(pwd -P)" -iname '*.bsp'); \
+do if [ ! -f "${i%.*}.map" ]; \
+then pushd $(dirname "$i"); \
+/Users/briancullinan/netradiant-custom/tools/mbspc/build/macosx/mbspc -bsp2map $(basename "$i"); \
+popd; \
+fi; \
+done;
+
+# normalize brushes verteces using q3map2
+for i in $(find "$(pwd -P)" -iname '*.bsp'); \
+do if [ ! -f "${i%.*}_converted.map" ]; \
+then pushd $(dirname "$i"); \
+/Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap $(basename "${i%.*}.map")
+popd; \
+fi; \
+done;
+
+
+# run the entire process for a single map
+i="/Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2.map"; \
+pushd $(dirname "$i"); \
+/Users/briancullinan/planet_quake_data/tools/mbspc/build/macosx/mbspc -bsp2map $(basename "${i%.*}.bsp"); \
+/Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap $(basename "${i%.*}.map");
+
+# convert acting on nicely formated verteces
+pushd /Users/briancullinan/jupyter_ops/; \
+npm run import "convert quake 2 map" -- "['${i%.*}_converted.map']"; \
+npm run import "split map hints" -- "['${i%.*}_converted.map']";
+
+# compile hinted maps
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${i%.*}-a.map"; \
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${i%.*}-b.map"; \
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${i%.*}-c.map";
+
+/Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${i%.*}_converted.map"
+
+popd
+popd
+
+
+</code></pre>
+

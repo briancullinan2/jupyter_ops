@@ -1,0 +1,32 @@
+<p>Here's a summary:</p>
+<p>The <code>getExports</code> function extracts function definitions from C++ code by parsing the input code and returning an array of function definitions as strings. It uses the <code>select</code> function from the <code>antlr</code> and <code>tree</code> modules to implement this functionality.</p>
+
+
+<pre><code>
+async function getExports(code) {
+    const selectCode = await importer.import('select antlr tree')
+    const result = await selectCode(['//functionDefinition', './declarator//declaratorid/@strdata'], code, 'cpp')
+    return result.map(e => typeof e == 'string' ? e : e[0])
+}
+
+module.exports = getExports
+
+</code></pre>
+
+<h3>Function: <code>getExports</code></h3>
+<h4>Description</h4>
+<p>Extracts function definitions from C++ code.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>code</code>: The C++ code to parse.</li>
+</ul>
+<h4>Returns</h4>
+<p>An array of function definitions as strings.</p>
+<h4>Implementation</h4>
+<ol>
+<li>Imports the <code>select</code> function from the <code>antlr</code> and <code>tree</code> modules.</li>
+<li>Uses the <code>select</code> function to extract function definitions from the input code.</li>
+<li>Maps the extracted results to a string representation, or the first element if the result is an array.</li>
+</ol>
+<h4>Export</h4>
+<p>The <code>getExports</code> function is exported as a module.</p>

@@ -1,0 +1,54 @@
+<p>The <code>groupPermissions</code> function filters and organizes code cell permissions based on provided groups and optional search queries, allowing for fine-grained access control.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core');
+var getPermissions = importer.import('rpc permissions');
+var {cellCache} = importer.import(path.join(__dirname, './cache.ipynb'))
+
+function groupPermissions(groups, search) {
+    if(typeof groups === 'string') groups = [groups];
+    var permissions = getPermissions(!search && groups.includes('Available')
+                                     ? cellCache.map(i => i.id)
+                                     : search);
+    if(typeof groups !== 'undefined') {
+        return Object.keys(permissions)
+            .reduce((obj, p) => groups.filter(g => permissions[p].includes(g)).length === groups.length
+                    ? (obj[p] = permissions[p], obj)
+                    : obj, {});
+    }
+    
+    // TODO: convert this to pattern utility
+    return Object.keys(permissions).reduce((types, key) => {
+        return permissions[key].reduce((types, group) => {
+            if(typeof types[group] === 'undefined') types[group] = {};
+            types[group][key] = permissions[key];
+        }, types)
+    }, {});
+}
+
+module.exports = groupPermissions;
+</code></pre>
+
+<p>This code defines a function <code>groupPermissions</code> that filters and organizes permissions for code cells based on provided groups and a search query.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules (<code>path</code>, <code>importer</code>).</li>
+<li>It imports <code>getPermissions</code> function and <code>cellCache</code> from the <code>importer</code>.</li>
+</ul></li>
+<li><p><strong><code>groupPermissions</code> Function:</strong></p>
+<ul>
+<li>Takes two arguments: <code>groups</code> (an array or string of permission groups) and <code>search</code> (an optional search query).</li>
+<li>If <code>search</code> is not provided and <code>groups</code> includes &quot;Available&quot;, it retrieves all cell IDs from <code>cellCache</code>.</li>
+<li>It calls <code>getPermissions</code> to retrieve permissions for either all cells or cells matching the <code>search</code> query.</li>
+<li>If <code>groups</code> is provided, it filters the permissions based on the specified groups, returning only cells with permissions matching all groups.</li>
+<li>If <code>groups</code> is not provided, it organizes the permissions into a nested object structure, grouping cells by permission group.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>Returns a filtered or organized map of cell IDs to their associated permissions.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to manage and filter code cell permissions based on predefined groups and search criteria, allowing for granular control over access and functionality.</strong></p>

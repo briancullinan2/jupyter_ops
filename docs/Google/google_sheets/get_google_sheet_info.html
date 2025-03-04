@@ -1,0 +1,48 @@
+<p>The <code>getInfo</code> function takes a Google Sheet URL, authenticates with the Google Sheets API, and returns a structured object containing information about the spreadsheet and its sheets.  This function is designed to be used by other parts of an application to access Google Sheet data.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeSheets = importer.import('authorize sheets api');
+
+function getInfo(link) {
+    if(!link) {
+        throw new Error('You didn\'t specify a spreadsheet to work on.')
+    }
+    var docId = link.replace(/https:\/\/docs.google.com\/spreadsheets\/d\/|\/edit.*$|\/copy.*$/ig, '');
+    var sheets;
+    
+    return authorizeSheets()
+        .then(s => sheets = s)
+        .then(() => sheets.spreadsheets.get({
+            spreadsheetId: docId
+        }))
+        .then(res => Object.assign(res.data, {
+            sheets: res.data.sheets.map(s => Object.assign(s, {
+                spreadsheetId: res.data.spreadsheetId
+            }))
+        }))
+}
+
+module.exports = getInfo;
+</code></pre>
+
+<p>This code defines a function <code>getInfo</code> that retrieves information about a Google Sheet given its URL.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong> It imports the <code>authorizeSheets</code> function from a local module <code>Core</code>, which likely handles authentication with the Google Sheets API.</p></li>
+<li><p><strong><code>getInfo</code> Function:</strong></p>
+<ul>
+<li>Takes a Google Sheet URL (<code>link</code>) as input.</li>
+<li>Validates that a URL was provided.</li>
+<li>Extracts the spreadsheet ID from the URL.</li>
+<li>Uses <code>authorizeSheets</code> to obtain an authorized client for interacting with the Google Sheets API.</li>
+<li>Calls the <code>spreadsheets.get</code> method to retrieve details about the spreadsheet using the extracted ID.</li>
+<li>Processes the response to:
+<ul>
+<li>Assign the spreadsheet ID to each sheet within the response.</li>
+</ul></li>
+<li>Returns an object containing the spreadsheet information, including its title, ID, and details about each sheet.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>getInfo</code> function is exported, allowing other parts of the application to use it to fetch Google Sheet data.</p></li>
+</ol>
+<p>Let me know if you'd like a deeper dive into any specific part of the code!</p>

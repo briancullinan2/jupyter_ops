@@ -1,0 +1,138 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The code defines a JavaScript object <code>wireKernelInterface</code> that extends the properties of <code>metaKernelInterface</code> and implements required and optional kernel interface methods, as well as custom reply and protocol methods. The object is then exported as a module using <code>module.exports</code>, making it available for use in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var metaKernelInterface = importer.import('meta kernel interface');
+
+var wireKernelInterface = {
+    ...metaKernelInterface,
+    // implement all requests, these are required by the meta kernel
+    execute_request: () => {},
+    inspect_request: () => {},
+    complete_request: () => {},
+    shutdown_request: () => {},
+    history_request: () => {},
+    is_complete_request: () => {},
+    
+    // requests maybe not required right now?
+    kernel_info_request: () => {},
+    interrupt_request: [void 0, () => {}],
+    input_request: [void 0, () => {}],
+    connect_request: [void 0, () => {}],
+    comm_info_request: [void 0, () => {}],
+
+    // custom, implement all replys,
+    //   allows for manipulating before sending
+    execute_reply: [void 0, () => {}],
+    inspect_reply: [void 0, () => {}],
+    complete_reply: [void 0, () => {}],
+    shutdown_reply: [void 0, () => {}],
+    history_reply: [void 0, () => {}],
+    is_complete_reply: [void 0, () => {}],
+    
+    kernel_info_reply: [void 0, () => {}],
+    connect_reply: [void 0, () => {}],
+    comm_info_reply: [void 0, () => {}],
+    interrupt_reply: [void 0, () => {}],
+    input_reply: [void 0, () => {}],
+
+    // a few extra protocol methods
+    //   these might just be used to intercept a message from the client
+    display_data: [void 0, () => {}],
+    update_display_data: [void 0, () => {}],
+    execute_input: [void 0, () => {}],
+    execute_result: [void 0, () => {}],
+    error: [void 0, () => {}],
+    status: [void 0, () => {}],
+    clear_output: [void 0, () => {}],
+    comm_msg: [void 0, () => {}],
+    comm_close: [void 0, () => {}],
+}
+
+module.exports = wireKernelInterface;
+    </code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var metaKernelInterface = importer.import('meta kernel interface');
+</code></pre>
+<ul>
+<li>This code imports a module from <code>../Core</code> and assigns it to <code>importer</code>.</li>
+<li>It then imports the <code>metaKernelInterface</code> from <code>importer</code> using the <code>import</code> method.</li>
+</ul>
+<h4>Defining the <code>wireKernelInterface</code> Object</h4>
+<pre><code class="language-javascript">var wireKernelInterface = {
+    //...
+};
+</code></pre>
+<ul>
+<li>This defines an object named <code>wireKernelInterface</code>.</li>
+</ul>
+<h4>Extending <code>metaKernelInterface</code> Properties</h4>
+<pre><code class="language-javascript">...
+metaKernelInterface,
+...
+</code></pre>
+<ul>
+<li>This uses the spread operator to extend the properties of <code>metaKernelInterface</code> into <code>wireKernelInterface</code>.</li>
+</ul>
+<h4>Implementing Kernel Interface Methods</h4>
+<pre><code class="language-javascript">// implement all requests, these are required by the meta kernel
+execute_request: () =&gt; {},
+inspect_request: () =&gt; {},
+complete_request: () =&gt; {},
+shutdown_request: () =&gt; {},
+history_request: () =&gt; {},
+is_complete_request: () =&gt; {},
+</code></pre>
+<ul>
+<li>These methods are required by the meta kernel and are implemented as empty functions with default behaviors.</li>
+</ul>
+<h4>Implementing Optional Kernel Interface Methods</h4>
+<pre><code class="language-javascript">// requests maybe not required right now?
+kernel_info_request: () =&gt; {},
+interrupt_request: [void 0, () =&gt; {}],
+input_request: [void 0, () =&gt; {}],
+connect_request: [void 0, () =&gt; {}],
+comm_info_request: [void 0, () =&gt; {}],
+</code></pre>
+<ul>
+<li>These methods may not be required right now and are implemented as empty functions or arrays with empty functions.</li>
+</ul>
+<h4>Implementing Custom Reply Methods</h4>
+<pre><code class="language-javascript">// custom, implement all replys,
+//   allows for manipulating before sending
+execute_reply: [void 0, () =&gt; {}],
+inspect_reply: [void 0, () =&gt; {}],
+complete_reply: [void 0, () =&gt; {}],
+shutdown_reply: [void 0, () =&gt; {}],
+history_reply: [void 0, () =&gt; {}],
+is_complete_reply: [void 0, () =&gt; {}],
+</code></pre>
+<ul>
+<li>These methods are custom replies and allow for manipulation before sending.</li>
+</ul>
+<h4>Implementing Additional Protocol Methods</h4>
+<pre><code class="language-javascript">// a few extra protocol methods
+//   these might just be used to intercept a message from the client
+display_data: [void 0, () =&gt; {}],
+update_display_data: [void 0, () =&gt; {}],
+execute_input: [void 0, () =&gt; {}],
+execute_result: [void 0, () =&gt; {}],
+error: [void 0, () =&gt; {}],
+status: [void 0, () =&gt; {}],
+clear_output: [void 0, () =&gt; {}],
+comm_msg: [void 0, () =&gt; {}],
+comm_close: [void 0, () =&gt; {}],
+</code></pre>
+<ul>
+<li>These methods are additional protocol methods that might be used to intercept messages from the client.</li>
+</ul>
+<h4>Exporting the <code>wireKernelInterface</code> Object</h4>
+<pre><code class="language-javascript">module.exports = wireKernelInterface;
+</code></pre>
+<ul>
+<li>This exports the <code>wireKernelInterface</code> object as a module.</li>
+</ul>

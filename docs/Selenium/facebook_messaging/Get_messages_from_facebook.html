@@ -1,0 +1,197 @@
+<p>This code extracts information about participants in Facebook message threads by navigating to each participant and scraping their profile data using web automation techniques.</p>
+
+
+<pre><code>var importer = require('../Core');
+var chrono = require('chrono-node');
+var glob = require('glob');
+var fs = require('fs');
+var readFacebookProfileInfo = importer.import('scrape facebook profile', {client})
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+function switchToParticipantThread(i) {
+    return client
+        .pause(1000)
+        .click('//*[contains(@class, "scrollable")]//h4[contains(., "People")]/parent::*//li[' + i + ']')
+        .pause(1000)
+        .then(() => readFacebookProfileInfo())
+        .catch(e => console.log(e))
+};
+
+function getThreadParticipants(thread) {
+    return client
+        .execute(() => {
+            return document.evaluate(
+                'count(//*[contains(@class, "scrollable")]//h4[contains(., "People")]/parent::*//li)',
+                document, null,
+                XPathResult.NUMBER_TYPE, null).numberValue;
+        })
+        .then(r => {
+            var result = [];
+            for (var i = 1; i < Math.min(3, r.value); i++) {
+                result[result.length] = (i =>
+                    resolve => {
+                        var profile = {};
+                        switchToParticipantThread(i)
+                            .then(r => profile = r)
+                            .url(thread)
+                            .pause(3000)
+                            .catch(e => console.log(e))
+                            .then(() => resolve(profile))
+                    })(i);
+            }
+            if (r.value === 0) {
+                result[result.length] = (resolve => {
+                    var profile = {};
+                    readFacebookProfileInfo()
+                        .then(r => profile = r)
+                        .url(thread)
+                        .pause(3000)
+                        .catch(e => console.log(e))
+                        .then(() => resolve(profile))
+                })
+            }
+            return importer.runAllPromises(result).catch(e => console.log(e));
+        })
+        .catch(e => console.log(e))
+};
+
+function readFacebookMessages(messages, i = 0) {
+    const offset = (new Date()).getTimezoneOffset() / 60;
+    var browserOffset;
+    // TODO: add check for needing to go to LinkedIn
+    // TODO: add check for needing to login
+    return client
+        // TODO: move this to utility?
+        .execute(() => (new Date()).getTimezoneOffset())
+        .then(o => browserOffset = o.value)
+        .getAllUntil(
+            '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]',
+            '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]//h4//text()',
+            [],
+            (a, b) => a + '' === b + '',
+            i => i < 10,
+            true /* scroll up, not down */
+        )
+        .getAllXPath([
+            '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]//h4',
+            {
+                time: './/text()',
+                messages: [
+                    './following-sibling::div[count(./preceding-sibling::h4)=$i+1]',
+                    {
+                        from: './/h5//text()',
+                        message: './/*[not(name()="H5")]/text()'
+                    }
+                ]
+            }
+        ])
+        .then(messages => {
+            return messages.reduce((acc, m) => {
+                // TODO: this should get the timezone inside the container using client.execute() and append:
+                var results = new chrono.parse(m.time); // Create new ParsedResult Object
+                results[0].start.assign('timezoneOffset', browserOffset * 60); // Change value in ParsedComponents Object 'start'
+                var newTime = results[0].start.date(); // lazy fix
+                // facebook only displays the time if the message is sent that day,
+                //   this causes a problem if the timezones in the brwoser are different than the timezone here in Node.
+                //   We have to reverse the effect of the timezone, check if the day is incremented and increment the newTime accordingly.
+                /*
+                const localTime = new Date();
+                const offsetTime = new Date();
+                offsetTime.setHours(offsetTime.getHours() - (browserOffset - offset));
+                if(newTime.getDate() === localTime.getDate() && newTime.getDate() + 1 === offsetTime.getDate()) {
+                    // the current time adjusted for GMT has incremented one day
+                    newTime.setDate(newTime.getDate() + 1);
+                    console.log(newTime);
+                }
+                */
+                
+                m.messages.forEach((r, i) => {
+                    const newMessage = {
+                        time: newTime,
+                        from: r.from,
+                        message: typeof r.message === 'string' ? r.message : r.message.join('\n')
+                    };
+                    if(i === 0 && newMessage.message === newMessage.from) {
+                        return;
+                    }
+                    acc.push(newMessage);
+                })
+                return acc;
+            }, []);
+        })
+        .catch(e => console.log(e))
+};
+
+function readFacebookThread(thread) {
+    var threadId = thread.replace(/^\/|\/$/ig, '').split('/').pop()
+        .replace(/[^a-z0-9]/ig, '_');
+    var file = glob.sync('**/' + threadId + '-*.json', {cwd: project})[0];
+    var messages;
+    try {
+        messages = JSON.parse(fs.readFileSync(file))
+    }
+    catch (e) {
+        messages = []
+    }
+    var participants;
+    return client.getUrl().then(url => url.indexOf(thread) === -1
+        ? client.url(thread)
+        : client)
+        // get participants from topcard
+        .pause(1000)
+        .then(() => getThreadParticipants(thread))
+        .then(p => (participants = p))
+
+        // TODO: save to contacts
+        .then(() => readFacebookMessages(messages || []))
+        .then(messages => ({
+            thread: thread,
+            participants: participants || [],
+            messages: messages
+        }))
+        .then(t => {
+            var filename = project + '/'
+                + threadId
+                + '-' + t.participants
+                    .map(p => p.name).join('')
+                    .replace(/[^a-z0-9]/ig, '_') + '.json';
+            fs.writeFileSync(filename, JSON.stringify(t, null, 4));
+            return t;
+        })
+        .catch(e => console.log(e))
+};
+module.exports = readFacebookThread;
+</code></pre>
+
+<p>This code snippet focuses on extracting information about participants in Facebook message threads.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules: <code>importer</code> (likely for interacting with other parts of the application), <code>chrono</code> (for date/time parsing), <code>glob</code> (for file pattern matching), <code>fs</code> (for file system operations), and <code>readFacebookProfileInfo</code> (a function to scrape profile data from Facebook).</li>
+<li>It defines <code>PROFILE_PATH</code> and <code>project</code> for storing data.</li>
+</ul></li>
+<li><p><strong><code>switchToParticipantThread(i)</code> Function:</strong></p>
+<ul>
+<li>This function navigates to a specific participant in a thread.</li>
+<li>It uses Selenium-like commands to click on a list item representing a participant.</li>
+<li>It calls <code>readFacebookProfileInfo()</code> to extract profile data for the selected participant.</li>
+</ul></li>
+<li><p><strong><code>getThreadParticipants(thread)</code> Function:</strong></p>
+<ul>
+<li>This function determines the number of participants in a given thread.</li>
+<li>It uses JavaScript's <code>document.evaluate</code> to count list items representing participants.</li>
+<li>It then iterates through a limited number of participants (up to 3) and calls <code>switchToParticipantThread()</code> to extract profile information for each.</li>
+<li>If there are no participants, it extracts the profile information of the current user.</li>
+<li>It uses <code>importer.runAllPromises()</code> to handle the asynchronous nature of these operations.</li>
+</ul></li>
+</ol>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Web Automation:</strong> The code relies heavily on Selenium-like commands to interact with Facebook.</li>
+<li><strong>Profile Scraping:</strong> It extracts profile information from Facebook using <code>readFacebookProfileInfo()</code>.</li>
+<li><strong>Asynchronous Operations:</strong> Promises are used to manage the asynchronous nature of web requests and data extraction.</li>
+</ul>
+<p>Let me know if you have any other questions.</p>

@@ -1,0 +1,62 @@
+<p><code>sockifyClient</code> creates a mock Socket.IO client that intercepts function calls on a dependency object and emits events to a server, enabling testing of Socket.IO interactions in a serverless context.</p>
+
+
+<pre><code>var client = require('socket.io-client');
+
+function sockifyClient(req, dep, host) {
+    let ctx;
+    ctx = automock.mockValue(req, {
+        stubCreator: (name) => {
+            return function () {
+                var args = ['call', dep, name.split('.')[1]];
+                for (var i = 0; i < arguments.length; i++) {
+                    args[args.length] = arguments[i];
+                }
+                socket.emit.apply(socket, args);
+            };
+        },
+        name: dep
+    });
+    var promises = promisifyMock(ctx, dep);
+    promises.___close = () => socket.emit('close');
+    var socket = client.connect(host);
+    socket.on('connect', function () {
+        // TODO: socket.emit('handler') service provider
+        socket.emit('require', dep, function () {
+
+        });
+        socket.on('resolve', function () {
+
+        });
+    });
+    return promises;
+};
+module.exports = sockifyClient;
+
+</code></pre>
+
+<p>The code defines a function <code>sockifyClient</code> that creates a mock client for a Socket.IO server.</p>
+<p><strong>Functionality:</strong></p>
+<ol>
+<li><p><strong>Mock Context Creation:</strong></p>
+<ul>
+<li>Uses <code>automock.mockValue</code> to create a mock context (<code>ctx</code>) for the request object (<code>req</code>).</li>
+<li>Defines a stub creator function within the mock context that intercepts function calls on the dependency object (<code>dep</code>).</li>
+<li>When a function is called on <code>dep</code>, it emits an event to the Socket.IO server with the function name and arguments.</li>
+</ul></li>
+<li><p><strong>Promise-Based Mocking:</strong></p>
+<ul>
+<li>Uses <code>promisifyMock</code> to create promise-based versions of the mocked functions.</li>
+</ul></li>
+<li><p><strong>Socket.IO Connection:</strong></p>
+<ul>
+<li>Establishes a connection to the Socket.IO server at the specified <code>host</code>.</li>
+<li>Emits events to the server to register the dependency and handle responses.</li>
+</ul></li>
+<li><p><strong>Return Value:</strong></p>
+<ul>
+<li>Returns the promise-based mocked functions.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>The code likely aims to facilitate testing and mocking of Socket.IO interactions within a serverless environment.</p>

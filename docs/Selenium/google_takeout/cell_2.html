@@ -1,0 +1,12 @@
+
+
+<pre><code>var importer = require('../Core');
+var googleTakeout = importer.import('order google takeout');
+
+$$.async();
+googleTakeout('chrome')
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
+
+</code></pre>
+

@@ -1,0 +1,74 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code initializes variables, maps an array of image sources to promises, and resolves them to write response bodies to files. The execution of these promises creates HTML and HTML print strings, which are then processed by a utility or framework object to generate a Markdown string.</p>
+
+
+<pre><code>var html = '';
+var htmlPrint = '';
+var requests = images.map((src) => {
+    var filename = src.split('/').pop();
+    return new Promise((resolve, reject) => {
+        request(src, {encoding: 'binary'}, (err, res, body) => {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(body)
+            }
+        });
+    }).then(body => {
+        return new Promise((resolve, reject) => {
+            fs.writeFile(
+                path.join(output, filename),
+                body,
+                'binary',
+                function (err) {
+                    if (err) reject(err);
+                    else resolve({filename: filename, data: body});
+                });
+        })
+    });
+});
+$$.async();
+Promise.all(requests).then(images => {
+    images.forEach((i) => {
+        var filename = i.filename.split('/').pop();
+        var ext = mime.lookup(i.filename);
+        html += '<img src="data:' + ext + ';base64,' + (new Buffer(i.data, 'binary')).toString('base64') + '" />';
+        htmlPrint += '<li><img src="/assets/' + filename + '" /></li>\n';
+    });
+    $$.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOutput:\n' + html});
+}).catch(e => $$.done(e));
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Variable Initialization</h3>
+<p>The code initializes two variables: <code>html</code> and <code>htmlPrint</code>. Both are set to empty strings.</p>
+<h3>Request Mapping</h3>
+<p>The <code>images</code> array is mapped using the <code>map</code> function to create a new array of promises. For each image source <code>src</code> in the <code>images</code> array:</p>
+<ol>
+<li>The filename is extracted by splitting the source string by the <code>/</code> character and taking the last element (<code>pop()</code> method).</li>
+<li>A promise is created using the <code>Promise</code> constructor, which will be resolved or rejected based on the result of the <code>request</code> function.
+<ul>
+<li>If an error occurs, the promise is rejected with the error.</li>
+<li>If the request is successful, the promise is resolved with the response body (<code>body</code> variable).</li>
+</ul></li>
+<li>The <code>then</code> method is called on the promise to perform a subsequent operation.
+<ul>
+<li>A new promise is created to write the response body to a file using the <code>fs.writeFile</code> function.</li>
+<li>The promise is resolved with an object containing the filename and the written data.</li>
+</ul></li>
+</ol>
+<h3>Execution</h3>
+<p>The <code>async</code> function is called on the <code>$$.</code> object, which is assumed to be a utility or framework object.</p>
+<p>The <code>Promise.all</code> method is called on the array of promises created in the previous step. This method returns a promise that resolves when all items in the array have resolved.</p>
+<p>When the promise resolves, the <code>then</code> method is called to process the results.</p>
+<ul>
+<li>The <code>forEach</code> method is called on the array of resolved promises to iterate over the results.</li>
+<li>For each promise, the filename is extracted by splitting the filename string by the <code>/</code> character and taking the last element.</li>
+<li>The MIME type of the file is looked up using the <code>mime.lookup</code> function.</li>
+<li>The HTML string is constructed by concatenating image tags with the data encoded in base64.</li>
+<li>The HTML print string is constructed by concatenating image tags with the file path.</li>
+<li>The <code>$$.mime</code> function is called to generate a Markdown string from the HTML and HTML print strings.</li>
+</ul>
+<h3>Error Handling</h3>
+<p>The <code>catch</code> method is called on the promise returned by <code>Promise.all</code> to handle any errors that may occur during the execution. If an error occurs, the <code>$$.done</code> function is called with the error as an argument.</p>

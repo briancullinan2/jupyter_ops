@@ -1,0 +1,98 @@
+<p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha testing framework, enabling the testing of code snippets or Jupyter notebook cells.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+var Module = require('module').Module;
+var Mocha = require('mocha');
+
+// call test runner
+var mocha;
+if(typeof mocha === 'undefined') {
+    mocha = new Mocha({
+        ui: 'bdd',
+        reporter: 'list',
+        timeout: 10000,
+    });
+}
+
+function resetTests(suite) {
+    suite.tests.forEach(function(t) {
+        delete t.state;
+        t.timedOut = false;
+    });
+    suite.suites.forEach(resetTests);
+    suite.tests = [];
+}
+
+function testCells(cells, ctx = {}) {
+    resetTests(mocha.suite);
+    if(!cells) {
+        cells = 'test test runner';
+    }
+    if(!cells[0].code) {
+         cells = typeof cells === 'string'
+            && (!cells.includes('.ipynb') || cells.includes('['))
+             ? [importer.interpret(cells)]
+             : importer.interpret(cells);
+    }
+    cells.forEach(r => {
+        mocha.suite.emit('pre-require', ctx, r.id, mocha);
+        Object.assign(ctx, Mocha);
+        try {
+            var required = r.runInNewContext(ctx, {useCache: false});
+            Object.assign(ctx, required);
+        } catch (e) {
+            console.log(e);
+        }
+        mocha.suite.emit('require', required, r.id, mocha);
+        mocha.suite.emit('post-require', ctx, r.id, mocha);    
+    });
+    return new Promise(resolve => mocha.run(function (failures) {
+        resolve(failures);
+    }));
+}
+module.exports = testCells;
+</code></pre>
+
+<p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha test runner environment.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely used for interpreting code (possibly from Jupyter notebooks).</li>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+<li><code>Module</code>: Node.js module for working with modules.</li>
+<li><code>Mocha</code>: A popular JavaScript testing framework.</li>
+</ul></li>
+<li><p><strong>Mocha Setup:</strong></p>
+<ul>
+<li>It initializes a Mocha instance with specific options (BDD style UI, list reporter, 10-second timeout) if it's not already defined.</li>
+</ul></li>
+<li><p><strong>Test Reset:</strong></p>
+<ul>
+<li><code>resetTests</code> function clears the state of Mocha tests and resets them for each execution.</li>
+</ul></li>
+<li><p><strong><code>testCells</code> Function:</strong></p>
+<ul>
+<li>Takes an array of code cells (<code>cells</code>) and an optional context object (<code>ctx</code>).</li>
+<li>Resets Mocha tests using <code>resetTests</code>.</li>
+<li>If <code>cells</code> is not provided, it defaults to a string &quot;test test runner&quot;.</li>
+<li>If <code>cells</code> is a string, it interprets it using <code>importer.interpret</code> and converts it into an array of code cells.</li>
+<li>Iterates through each code cell (<code>r</code>) and:
+<ul>
+<li>Emits &quot;pre-require&quot; event to Mocha.</li>
+<li>Assigns Mocha context to <code>ctx</code>.</li>
+<li>Runs the code cell in a new context using <code>r.runInNewContext</code> and assigns the results to <code>ctx</code>.</li>
+<li>Catches any errors during execution.</li>
+<li>Emits &quot;require&quot; and &quot;post-require&quot; events to Mocha.</li>
+</ul></li>
+<li>Runs Mocha tests using <code>mocha.run</code> and returns a promise that resolves with the number of failures.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>testCells</code> function for use in other modules.</li>
+</ul></li>
+</ol>
+<p><strong>In essence:</strong></p>
+<p>This code provides a way to execute JavaScript code cells within a Mocha test environment, allowing for testing of code snippets or Jupyter notebook cells. It handles code interpretation, test setup, and result handling.</p>

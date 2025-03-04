@@ -1,0 +1,105 @@
+<p>Here is a summary of the code breakdown in one to two sentences:</p>
+<p>The code imports various modules and functions, defines two helper functions <code>addCB</code> and <code>wireKernel</code>, and creates a <code>wireKernel</code> class that extends the kernel object with methods to handle requests. The <code>wireKernel</code> class and its interface are then exported as a module.</p>
+
+
+<pre><code>var importer = require('../Core');
+var extend = importer.import('extend prototype')
+var {
+    setupSockets, parseMessage, collapseMessage
+} = importer.import('decode encode ipython zmq protocol');
+var {nativeMetaKernel, metaKernelInterface} = importer.import('jupyter meta kernel');
+var {processMetaKernel} = importer.import('process meta kernel');
+var {wireMetaKernel} = importer.import('wire meta kernel');
+
+// TODO: move this to patterns, improve this flow
+function addCB(og, cb) {
+    return cb(og.apply(null, Array.from(arguments).slice(2)));
+}
+
+function wireKernel(kernel) {
+    console.log('starting wire kernel');
+    console.log(kernel.kernel_info);
+    console.log(this.kernel_info);
+    
+    var wire_kernel = extend(kernel, wireKernelInterface);
+    console.log(wire_kernel.kernel_info);
+    
+    var meta_kernel = extend(wire_kernel, wireMetaKernel);
+    console.log(meta_kernel.kernel_info);
+    
+    return new processMetaKernel(meta_kernel);
+}
+
+wireKernel.prototype = {
+    input_request: (kernel, request) => {
+        // TODO: finish this
+        //this.onReplies[response.header.msg_id] = onReply;
+    },
+    comm_info_request: (kernel, request) => {
+        kernel.do_respond({status: {execution_state: 'busy'}});
+        kernel.do_respond({status: {execution_state: 'idle'}});
+        kernel.do_respond({comm_info_reply: {comms: {}}});
+    },
+    kernel_info_request: (kernel, request) => {
+        kernel.do_respond({status: {execution_state: 'busy'}});
+        kernel.do_respond({status: {execution_state: 'idle'}});
+        kernel.do_respond({kernel_info_reply: kernel.kernel_info});
+    },
+}
+
+module.exports = {
+    wireKernelInterface,
+    wireKernel
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code starts by importing various modules and functions from the <code>../Core</code> module.</p>
+<pre><code class="language-javascript">var importer = require('../Core');
+var extend = importer.import('extend prototype')
+var {
+    setupSockets, parseMessage, collapseMessage
+} = importer.import('decode encode ipython zmq protocol');
+var {nativeMetaKernel, metaKernelInterface} = importer.import('jupyter meta kernel');
+var {processMetaKernel} = importer.import('process meta kernel');
+var {wireMetaKernel} = importer.import('wire meta kernel');
+</code></pre>
+<h4>Helper Functions</h4>
+<p>Two helper functions, <code>addCB</code> and <code>wireKernel</code>, are defined.</p>
+<pre><code class="language-javascript">function addCB(og, cb) {
+    return cb(og.apply(null, Array.from(arguments).slice(2)));
+}
+
+function wireKernel(kernel) {
+    //...
+}
+</code></pre>
+<p>The <code>addCB</code> function takes two arguments: <code>og</code> and <code>cb</code>. It applies the <code>cb</code> function to the <code>og</code> function, passing the remaining arguments to <code>cb</code>.</p>
+<h4>WireKernel Class</h4>
+<p>The <code>wireKernel</code> class is defined, which extends the <code>kernel</code> object.</p>
+<pre><code class="language-javascript">wireKernel.prototype = {
+    //...
+}
+</code></pre>
+<p>The class has three methods: <code>input_request</code>, <code>comm_info_request</code>, and <code>kernel_info_request</code>. These methods take two arguments: <code>kernel</code> and <code>request</code>. They are used to handle requests from the kernel.</p>
+<h4>Exporting the wireKernel Class</h4>
+<p>Finally, the <code>wireKernel</code> class and its interface are exported as a module.</p>
+<pre><code class="language-javascript">module.exports = {
+    wireKernelInterface,
+    wireKernel
+}
+</code></pre>
+<h3>Functions and Variables</h3>
+<ul>
+<li><code>addCB</code>: A helper function that applies a callback function to another function.</li>
+<li><code>wireKernel</code>: A class that extends the kernel object and handles requests from the kernel.</li>
+<li><code>kernel_info_request</code>, <code>comm_info_request</code>, <code>input_request</code>: Methods of the <code>wireKernel</code> class that handle requests from the kernel.</li>
+<li><code>extend</code>: A function that extends the prototype of an object with another object.</li>
+<li><code>processMetaKernel</code>: A function that processes the meta kernel.</li>
+<li><code>wireMetaKernel</code>: An object that contains the wire meta kernel interface.</li>
+<li><code>nativeMetaKernel</code>: An object that contains the native meta kernel.</li>
+<li><code>metaKernelInterface</code>: An object that contains the meta kernel interface.</li>
+<li><code>setupSockets</code>, <code>parseMessage</code>, <code>collapseMessage</code>: Functions that handle messages and sockets.</li>
+<li><code>importer</code>: An object that imports modules and functions from other files.</li>
+</ul>

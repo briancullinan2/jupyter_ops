@@ -1,0 +1,33 @@
+
+
+<pre><code>var importer = require('../Core');
+var {
+    listInProject,
+    listProjects
+} = importer.import(['list project files', 'list all projects by name']);
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+if(typeof describe !== 'undefined') {
+
+    describe('file system service', () => {
+        beforeEach(() => {
+        })
+
+        it('should list files quickly', () => {
+            var files = listInProject(PROFILE_PATH);
+            console.log(files.length);
+            assert(files.length > 0);
+        })
+
+        it('should ignore hidden directories for better performance', () => {
+            var files = listProjects(PROFILE_PATH);
+            console.log(files.portal);
+            assert(files.jupytangular && files.jupytangular.indexOf('jupytangular') > -1
+                    || files.jupytangular2 && files.jupytangular2.indexOf('jupytangular2') > -1, 'could not find own notebook project under the name jupytangular');
+        })
+    });
+
+}
+</code></pre>
+

@@ -1,0 +1,120 @@
+<p>This code manages and visualizes Git branches by resetting them to their parent commits and generating SVG representations of the resulting tree structure.</p>
+
+
+<pre><code>var importer = require('../Core');
+var _ = require('underscore');
+var fs = require('fs');
+var path = require('path');
+var {
+    formatNodes, gitTree, displayBranches,
+    cloneProject, execCmd
+} = importer.import([
+    'spawn child process',
+    'd3.ipynb[format d3 tree]',
+    'json git tree',
+    'd3.ipynb[display d3 tree]',
+    'git project directory'
+]);
+
+// TODO: convert this to bash
+function getResetCommit(branch, parent, project) {
+    branch = branch.replace('HEAD -> ', '').trim();
+    parent = parent.replace('HEAD -> ', '').trim();
+    return execCmd(`
+git checkout ${branch}
+git reset --mixed ${parent}
+git add -A
+git commit -m "auto reset ${branch}"
+`, {cwd: project});
+}
+
+var svgs = [];
+function resetAllBranches() {
+    var children = [];
+    var nodeTree = _.sortBy(gitTree(project), a => a.time);
+    var promises = [];
+    for (const n of nodeTree) {
+        var current = n;
+        var parentCount = 0;
+        while (typeof current.parent !== 'undefined'
+            && current.parent.branch === current.branch) {
+            current = current.parent;
+            parentCount++;
+        }
+        if (parentCount > 0 && typeof current.parent !== 'undefined') {
+            // TODO: keep track of the parent so the squashed branch can be merged on to the newly squashed parent
+            promises.push(((current, n) => resolve => {
+                if (typeof n.children !== 'undefined') {
+                    children.push(n);
+                }
+                return getResetCommit(n.branch, current.parent.name, project)
+                    .then(() => {
+                        var nodeTree = _.sortBy(gitTree(project), a => a.time);
+                        svgs.push(displayBranches(nodeTree));
+                        resolve();
+                    })
+            })(current, n));
+        }
+    }
+    return importer.runAllPromises(promises)
+        .then(() => children);
+}
+
+function gitTipOfTree(project) {
+    svgs = [];
+    return (Promise.resolve(project) || cloneProject(project, true))
+        // TODO: git checkout command
+        // TODO: pull all missing remmotes
+        .then(r => {
+            project = r;
+            var nodeTree = _.sortBy(gitTree(project), a => a.time);
+            const head = nodeTree.filter(r => r.branch.indexOf('HEAD') > -1)[0];
+            const branch = head
+                ? (nodeTree.filter(r => r.branch.indexOf(head.branch.replace(/HEAD *-*>* */ig, '').split(/\s*,\s*/ig)) > -1)[0] || nodeTree[0])
+                : nodeTree[0];
+            return displayBranches([branch]);
+        })
+        .then(r => svgs.push(r))
+        //.then(() => resetAllBranches())
+        .then(() => svgs)
+}
+module.exports = gitTipOfTree;
+
+if(typeof $$ !== 'undefined') {
+    var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+    var project = path.join(PROFILE_PATH, 'Documents/portal-copy-2018-1-24-23-49-46');
+    $$.async();
+    gitTipOfTree(project)
+        .then(r => $$.html(r.join('')))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code defines functions for managing and visualizing Git branches within a project.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for file system operations, path manipulation, child process execution, and data manipulation.</li>
+<li>Imports functions for formatting Git trees, displaying them as SVGs, cloning projects, and executing Git commands.</li>
+</ul></li>
+<li><p><strong><code>getResetCommit</code> Function:</strong></p>
+<ul>
+<li>Takes a branch name, parent commit hash, and project path as input.</li>
+<li>Executes a Git command to checkout the specified branch, reset it to the parent commit, add all changes, and commit with a descriptive message.</li>
+</ul></li>
+<li><p><strong><code>resetAllBranches</code> Function:</strong></p>
+<ul>
+<li>Retrieves a sorted list of Git commits for the project.</li>
+<li>Iterates through the commits, identifying branches with parent commits within the same branch.</li>
+<li>For each identified branch, it calls <code>getResetCommit</code> to reset the branch to its parent commit.</li>
+<li>Generates SVG visualizations of the Git tree after each reset using <code>displayBranches</code>.</li>
+</ul></li>
+<li><p><strong><code>gitTipOfTree</code> Function:</strong></p>
+<ul>
+<li>Initializes an array to store SVG visualizations.</li>
+<li>Calls <code>cloneProject</code> to clone the project if it doesn't exist locally.</li>
+<li>Calls <code>resetAllBranches</code> to reset all branches within the project.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to manage and visualize Git branches by resetting them to their parent commits and generating SVG representations of the resulting tree structure.</p>

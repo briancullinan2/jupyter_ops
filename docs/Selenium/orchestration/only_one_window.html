@@ -1,0 +1,85 @@
+<p>This code provides functions to control browser windows and tabs, with the primary purpose of ensuring that only a single window remains open after a series of actions.  It achieves this by closing all other windows and tabs, leaving a designated window active.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+function closeAllTabs(client, keep) {
+    return client
+        .getWindowHandles()
+        .then(h => {
+            var promises = [];
+            for(var i = 0; i < h.length; i++) {
+                if(h[i] === keep) {
+                    continue;
+                }
+                promises.push((i => resolve => client
+                              .switchToWindow(h[i])
+                              .then(() => client.close())
+                              .then(() => resolve())
+                              .catch(e => resolve()))
+                              .apply(this, [i]));
+            }
+            return importer.runAllPromises(promises);
+        })
+        .catch(e => console.log(e))
+}
+
+function closeAllWindows(client, keep) {
+    return client
+        .getWindowHandles()
+        .then(h => {
+            var promises = [];
+            for(var i = 0; i < h.length; i++) {
+                if(h[i] === keep) {
+                    continue;
+                }
+                promises.push((i => resolve => client
+                              .switchToWindow(h[i])
+                              .then(() => client.close())
+                              .then(() => resolve())
+                              .catch(e => resolve()))
+                              .apply(this, [i]));
+            }
+            return importer.runAllPromises(promises);
+        })
+        .then(() => client.switchToWindow(keep))
+        .catch(e => console.log(e))
+}
+
+function onlyOneWindow(client) {
+    return client
+        .newWindow('https://google.com')
+        .then(() => client.getWindowHandle())
+        .then(r => closeAllWindows(client, r))
+        .then(() => client.getWindowHandle())
+        .then(r => closeAllTabs(client, r))
+        .catch(e => console.log(e))
+    // TODO: close all tabs
+}
+
+module.exports = onlyOneWindow;
+
+</code></pre>
+
+<p>This code defines functions to manage browser windows and tabs, specifically focusing on ensuring only one window remains open.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>closeAllTabs(client, keep)</code>:</strong></p>
+<ul>
+<li>Takes a <code>client</code> object (likely Selenium WebDriver) and an optional <code>keep</code> window handle.</li>
+<li>Closes all tabs except the specified <code>keep</code> window.</li>
+</ul></li>
+<li><p><strong><code>closeAllWindows(client, keep)</code>:</strong></p>
+<ul>
+<li>Similar to <code>closeAllTabs</code>, but closes all windows except the specified <code>keep</code> window.</li>
+</ul></li>
+<li><p><strong><code>onlyOneWindow(client)</code>:</strong></p>
+<ul>
+<li>Opens a new window to Google, then closes all other windows and tabs, leaving only the Google window open.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>onlyOneWindow</code> function for use in other modules.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other questions.</p>

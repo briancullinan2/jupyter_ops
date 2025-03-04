@@ -1,0 +1,61 @@
+<p>Here is a summary in two sentences:</p>
+<p>The code imports OpenCV and glob libraries, sets output video properties, and defines a <code>write_video</code> function that creates an output video from a list of images. The function gets the list of images, defines a <code>VideoWriter</code> object, writes each image to the video, and releases the object after cleanup.</p>
+
+
+<pre><code>import cv2
+import glob
+
+# Set output video properties
+fps = 30
+output_file = "output.mp4"
+
+def write_video():
+  # Get list of images
+  image_files = sorted(glob.glob("frame_*.jpg"))  # Adjust pattern as needed
+
+  # Read first image to get dimensions
+  frame = cv2.imread(image_files[0])
+  height, width, _ = frame.shape
+
+  # Define VideoWriter object
+  fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # Codec
+  out = cv2.VideoWriter(output_file, fourcc, fps, (width, height))
+
+  # Write images to video
+  for img_path in image_files:
+      frame = cv2.imread(img_path)
+      out.write(frame)
+
+  # Cleanup
+  out.release()
+  cv2.destroyAllWindows()
+
+__all__ = {
+  "write_video": write_video
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Libraries</h3>
+<p>The code starts by importing two libraries:</p>
+<ul>
+<li><code>cv2</code>: OpenCV, a computer vision library used for image and video processing.</li>
+<li><code>glob</code>: A library used for finding files based on patterns.</li>
+</ul>
+<h3>Setting Output Video Properties</h3>
+<p>The code sets two properties for the output video:</p>
+<ul>
+<li><code>fps</code>: The frame rate of the output video, set to 30 frames per second.</li>
+<li><code>output_file</code>: The file name of the output video, set to &quot;output.mp4&quot;.</li>
+</ul>
+<h3>write_video Function</h3>
+<p>The <code>write_video</code> function takes care of creating the output video. Here's a step-by-step breakdown:</p>
+<ol>
+<li><strong>Get list of images</strong>: It uses <code>glob</code> to find all files with the pattern &quot;frame_*.jpg&quot; and sorts the list.</li>
+<li><strong>Read first image to get dimensions</strong>: It reads the first image in the list using <code>cv2.imread</code> to get the dimensions (height and width).</li>
+<li><strong>Define VideoWriter object</strong>: It creates a <code>VideoWriter</code> object using <code>cv2.VideoWriter</code>, specifying the codec (&quot;mp4v&quot;), frame rate (30), and frame dimensions (height and width).</li>
+<li><strong>Write images to video</strong>: It iterates over the list of images and writes each image to the video using <code>out.write(frame)</code>.</li>
+<li><strong>Cleanup</strong>: It releases the <code>VideoWriter</code> object and closes all OpenCV windows using <code>cv2.destroyAllWindows</code>.</li>
+</ol>
+<h3>Exporting the write_video Function</h3>
+<p>The code exports the <code>write_video</code> function using the <code>__all__</code> attribute, making it available for import in other modules.</p>

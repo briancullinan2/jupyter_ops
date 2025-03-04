@@ -1,0 +1,193 @@
+<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<p>The code defines a static class <code>ProgramExtensions</code> in the <code>window_tracker</code> namespace, which imports various Windows API functions from the <code>user32.dll</code> library and provides methods to retrieve window text, find windows, and retrieve the foreground window. The class includes a delegate <code>EnumWindowsProc</code> to filter which windows to include and uses various attributes and classes to handle the imported functions and their return types.</p>
+
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace window_tracker
+{
+    public static class ProgramExtensions
+    {
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern int GetWindowText(IntPtr hWnd, StringBuilder strText, int maxCount);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        // Delegate to filter which windows to include 
+        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+        /// <summary> Get the text for the window pointed to by hWnd </summary>
+        public static string GetWindowText(IntPtr hWnd)
+        {
+            int size = GetWindowTextLength(hWnd);
+            if(size > 0)
+            {
+                var builder = new StringBuilder(size + 1);
+                GetWindowText(hWnd, builder, builder.Capacity);
+                return builder.ToString();
+            }
+
+            return String.Empty;
+        }
+
+        /// <summary> Find all windows that match the given filter </summary>
+        /// <param name="filter"> A delegate that returns true for windows
+        ///    that should be returned and false for windows that should
+        ///    not be returned </param>
+        public static IEnumerable<IntPtr> FindWindows(EnumWindowsProc filter)
+        {
+            IntPtr found = IntPtr.Zero;
+            List<IntPtr> windows = new List<IntPtr>();
+
+            EnumWindows(delegate (IntPtr wnd, IntPtr param)
+            {
+                if(filter(wnd, param))
+                {
+                    // only add the windows that pass the filter
+                    windows.Add(wnd);
+                }
+
+                // but return true here so that we iterate all windows
+                return true;
+            }, found);
+
+            return windows;
+        }
+
+        /// <summary> Find all windows that contain the given title text </summary>
+        /// <param name="titleText"> The text that the window title must contain. </param>
+        public static IEnumerable<IntPtr> FindWindowsWithText(string titleText)
+        {
+            return FindWindows(delegate (IntPtr wnd, IntPtr param)
+            {
+                return GetWindowText(wnd).Contains(titleText);
+            });
+        }
+
+        public static Process GetProcess(IntPtr wnd)
+        {
+            uint proc;
+            GetWindowThreadProcessId(wnd, out proc);
+            return Process.GetProcessById((int)proc);
+        }
+
+        public static string GetProcessTitle(IntPtr wnd)
+        {
+            return GetProcess(wnd).MainWindowTitle;
+        }
+
+        public static bool IsForeground(IntPtr wnd)
+        {
+            return GetForegroundWindow() == wnd;
+        }
+
+        public static WINDOWPLACEMENT GetPlacement(IntPtr hwnd)
+        {
+            WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
+            placement.length = Marshal.SizeOf(placement);
+            GetWindowPlacement(hwnd, ref placement);
+            return placement;
+        }
+
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPLACEMENT
+        {
+            public int length;
+            public int flags;
+            public ShowWindowCommands showCmd;
+            public POINTAPI ptMinPosition;
+            public POINTAPI ptMaxPosition;
+            public RECT rcNormalPosition;
+        }
+
+        public struct POINTAPI {
+            public int x;
+            public int y;
+        }
+        public struct RECT {
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
+        }
+
+        public enum ShowWindowCommands : int
+        {
+            Hide = 0,
+            Normal = 1,
+            Minimized = 2,
+            Maximized = 3,
+        }
+    }
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Namespace and Class</h3>
+<ul>
+<li>The code defines a static class <code>ProgramExtensions</code> in the <code>window_tracker</code> namespace.</li>
+</ul>
+<h3>DLL Imports</h3>
+<ul>
+<li>The code imports various functions from the <code>user32.dll</code> library, which provides Windows API functions.</li>
+<li>The imported functions are:
+<ul>
+<li><code>GetWindowPlacement</code></li>
+<li><code>GetWindowThreadProcessId</code></li>
+<li><code>GetWindowText</code></li>
+<li><code>GetWindowTextLength</code></li>
+<li><code>EnumWindows</code></li>
+<li><code>GetForegroundWindow</code></li>
+</ul></li>
+</ul>
+<h3>Delegate</h3>
+<ul>
+<li>The code defines a delegate <code>EnumWindowsProc</code> to filter which windows to include.</li>
+</ul>
+<h3>Methods</h3>
+<ul>
+<li><code>GetWindowText(IntPtr hWnd)</code>: Retrieves the text for the window pointed to by <code>hWnd</code>.</li>
+<li><code>FindWindows(EnumWindowsProc filter)</code>: Finds all windows that match the given filter.</li>
+</ul>
+<h3>Parameters</h3>
+<ul>
+<li><code>filter</code>: A delegate that returns true for windows that should be returned and false for windows that should not be returned.</li>
+<li><code>hWnd</code>: An integer pointer to a window handle.</li>
+<li><code>lpwndpl</code>, <code>lpdwProcessId</code>, <code>strText</code>, <code>lParam</code>: Parameters for the imported functions.</li>
+</ul>
+<h3>Return Types</h3>
+<ul>
+<li><code>bool</code>: Returns true if the function is successful, false otherwise.</li>
+<li><code>uint</code>: Returns the thread ID of the process that owns the specified window.</li>
+<li><code>int</code>: Returns the length of the window text or the result of the <code>EnumWindows</code> function.</li>
+<li><code>string</code>: Returns the text for the window pointed to by <code>hWnd</code>.</li>
+<li><code>IEnumerable&lt;IntPtr&gt;</code>: Returns a collection of window handles.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The <code>DllImport</code> attribute is used to import the functions from the <code>user32.dll</code> library.</li>
+<li>The <code>[return: MarshalAs(UnmanagedType.Bool)]</code> attribute is used to specify the return type of the <code>GetWindowPlacement</code> function.</li>
+<li>The <code>StringBuilder</code> class is used to retrieve the text for the window.</li>
+<li>The <code>EnumWindows</code> function is used to find all windows that match the given filter.</li>
+<li>The <code>GetForegroundWindow</code> function is used to retrieve the handle of the foreground window.</li>
+</ul>

@@ -1,0 +1,61 @@
+
+
+<pre><code>var lockFile = require('lockfile');
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var readSessions = importer.import('load webdriver sessions');
+
+var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials');
+var SESSIONS_PATH = path.join(TOKEN_DIR, 'sessions.json');
+var INIT_WAIT = 60000; // 36 * session test time * number of simultaneous sessions
+var UPDATE_WAIT = 1000;
+
+// lock / unlock
+// insert - posibility of a session being reused, but sych session starts
+function lockPromise(lock = true, init = false) {
+    console.log((init ? 'init' : 'update') + ' - ' + (lock ? 'locking' : 'unlocking'));
+    return new Promise((resolve, reject) => {
+        const func = lock ? lockFile.lock : lockFile.unlock;
+        const p = SESSIONS_PATH + '.' + (init ? 'init' : 'update') + '.lock';
+        return func.apply(lockFile, [p].concat(lock ? [{
+            stale: init ? INIT_WAIT : UPDATE_WAIT,
+            wait: init ? INIT_WAIT : UPDATE_WAIT
+        }] : []).concat([(err) => {
+            if(err) {
+                return reject(err);
+            }
+            console.log((init ? 'init' : 'update') + ' - ' + (lock ? 'lock' : 'unlock'));
+            resolve();
+        }]));
+    });
+}
+
+function updateOrAddSession(currentSession) {
+    const sessions = readSessions();
+    if(!currentSession) {
+        return sessions;
+    }
+    // don't update sessions while scanning
+    const updateSession = sessions.filter(s => s[1] === currentSession)[0];
+    if(typeof updateSession !== 'undefined') {
+        console.log('update ' + currentSession);
+        updateSession[0] = (new Date()).getTime();
+    } else {
+        console.log('insert ' + currentSession);
+        const oldSession = sessions[sessions.length] = [];
+        // http://www.english.upenn.edu/~jenglish/English104/tzara.html
+        oldSession[1] = currentSession;
+        oldSession[0] = (new Date()).getTime();
+    }
+    fs.writeFileSync(
+        SESSIONS_PATH,
+        JSON.stringify(sessions, null, 4));
+    return sessions;
+}
+module.exports = {
+    updateOrAddSession,
+    lockPromise
+};
+</code></pre>
+

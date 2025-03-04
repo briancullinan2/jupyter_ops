@@ -1,0 +1,9 @@
+
+
+<pre><code>def ef(image):
+    img = load_img(image,grayscale =  True )
+    feature = np.array(img)
+    feature = feature.reshape(1,48,48,1)
+    return feature/255.0
+    </code></pre>
+

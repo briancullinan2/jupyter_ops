@@ -1,0 +1,46 @@
+<p>Here is a 2-sentence summary of the <code>bashToOne</code> function:</p>
+<p>The <code>bashToOne</code> function maps Bash shell script code to a single executable command, handling platform-specific line endings and command separators. It does this by splitting, modifying, and joining the input code according to the detected platform (Windows or Unix-like).</p>
+
+
+<pre><code>// read cmd template and execute each line?
+var multiline = process.platform === 'win32' ? '^\n ' : '\\\n ';
+var multicmd = process.platform === 'win32' ? ' ^\n; ' : ' \\\n&& ';
+
+function bashToOne(code) {
+    return code
+        .split(/\n/ig)
+        .map(l => '{EXEC} ' + l)
+        .join('\n')
+        .replace(/\\((\s*\n)+\{EXEC\})+\s*&&/ig, multicmd)
+        .replace(/\\((\s*\n)+\{EXEC\})+/ig, multiline)
+        .split(/\s*\{EXEC\}\s*/ig)
+        .filter(r => r.trim() !== '')
+        .join(multicmd);
+}
+module.exports = bashToOne;
+</code></pre>
+
+<p><strong>Function: <code>bashToOne</code></strong></p>
+<h3>Description</h3>
+<p>Maps Bash shell script code to a single executable command.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>code</code>: The Bash shell script code to be converted.</li>
+</ul>
+<h3>Returns</h3>
+<p>The converted code as a single executable command.</p>
+<h3>Logic</h3>
+<ol>
+<li>Splits the input code into individual lines using the newline character (<code>\n</code>).</li>
+<li>Prepends each line with <code>{EXEC}</code> to indicate where the command should be executed.</li>
+<li>Replaces sequences of newline characters with either a Windows-style newline (<code>\n</code>) or a Windows-style command separator (<code>;</code>) depending on the platform.</li>
+<li>Replaces sequences of newline characters followed by <code>{EXEC}</code> with either a Windows-style newline or a Unix-style command separator, depending on the platform.</li>
+<li>Filters out empty lines and joins the remaining lines with the Unix-style command separator (<code>&amp;&amp;</code>).</li>
+<li>Returns the converted code as a single executable command.</li>
+</ol>
+<h3>Platform Detection</h3>
+<p>Uses the <code>process.platform</code> property to determine whether to use Windows-style or Unix-style line endings and command separators.</p>
+<ul>
+<li><code>process.platform === 'win32'</code>: Windows platform</li>
+<li><code>process.platform!== 'win32'</code>: Unix-like platform</li>
+</ul>

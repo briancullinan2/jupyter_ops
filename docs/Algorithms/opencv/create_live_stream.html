@@ -1,0 +1,84 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code imports necessary libraries, defines constants and two functions (<code>create_livestream</code> and <code>sanitize_filename</code>), and exports the <code>create_livestream</code> function for use. The <code>create_livestream</code> function creates a new live stream on YouTube by authorizing the user, building a YouTube API client, and inserting the live stream details, while the <code>sanitize_filename</code> function replaces invalid characters in a string with underscores.</p>
+
+
+<pre><code>import os
+import re
+import json
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+import_notebook("list live stream", globals())
+
+SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
+HOME_DIR = os.environ.get("HOME") or os.environ.get("USERPROFILE")
+
+def create_livestream(youtube):
+
+    credentials = youtube_authorize()
+    # Build the YouTube API client
+    youtube = build("youtube", "v3", credentials=credentials)
+
+    print(youtube)
+    request = youtube.liveStreams().insert(
+        part="snippet,cdn,status",
+        body={
+            "snippet": {
+                "title": "My Live Stream",
+                "description": "Streaming via API"
+            },
+            "cdn": {
+                "frameRate": "30fps",
+                "resolution": "1080p",
+                "ingestionType": "rtmp"
+            },
+            "status": {
+                "streamStatus": "active"
+            }
+        }
+    )
+
+    response = request.execute()
+    return response['cdn']['ingestionInfo']['streamName']
+
+def sanitize_filename(name):
+    """Sanitize a string to be a valid filename."""
+    return re.sub(r"[^\w.-]", "_", name)  # Replace invalid characters with "_"
+
+
+__all__ = {
+  "create_livestream": create_livestream
+}</code></pre>
+
+<h2>Breakdown of the Code</h2>
+<h3>Importing Libraries</h3>
+<p>The code starts by importing necessary libraries:</p>
+<ul>
+<li><code>os</code>: for interacting with the operating system</li>
+<li><code>re</code>: for regular expression matching operations</li>
+<li><code>json</code>: not used in this code snippet, but imported for potential use</li>
+<li><code>google.oauth2.credentials</code>: for handling Google OAuth credentials</li>
+<li><code>googleapiclient.discovery</code>: for building Google API clients</li>
+<li><code>import_notebook</code>: a custom function for importing code from a Jupyter notebook (likely used for loading the <code>list live stream</code> function)</li>
+</ul>
+<h3>Defining Constants</h3>
+<p>The code defines two constants:</p>
+<ul>
+<li><code>SCOPES</code>: a list of Google API scopes, specifically for the YouTube API</li>
+<li><code>HOME_DIR</code>: the home directory of the user, determined by checking environment variables <code>HOME</code> and <code>USERPROFILE</code></li>
+</ul>
+<h3>Defining Functions</h3>
+<p>The code defines two functions:</p>
+<h4><code>create_livestream</code></h4>
+<p>This function takes a <code>youtube</code> object as input and returns the stream name of the newly created live stream.</p>
+<ol>
+<li>It authorizes the user using the <code>youtube_authorize</code> function (not shown in this snippet) and gets the credentials.</li>
+<li>It builds a YouTube API client using the <code>build</code> function from <code>googleapiclient.discovery</code>.</li>
+<li>It creates a new live stream using the <code>liveStreams().insert</code> method, specifying the stream details (title, description, frame rate, resolution, and ingestion type).</li>
+<li>It executes the request and returns the stream name.</li>
+</ol>
+<h4><code>sanitize_filename</code></h4>
+<p>This function takes a string as input and returns a sanitized version of it, replacing any invalid characters with underscores.</p>
+<h3>Exporting Functions</h3>
+<p>The code exports the <code>create_livestream</code> function as part of the <code>__all__</code> dictionary, making it available for import.</p>
+<h3>Note</h3>
+<p>The <code>youtube_authorize</code> function is not shown in this snippet and is assumed to handle the authorization process for the YouTube API.</p>

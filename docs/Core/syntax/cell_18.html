@@ -1,0 +1,26 @@
+
+
+<pre><code>var importer = require('../Core');
+var {htmlToTree} = importer.import('html to tree');
+
+function testHtmlTree(page) {
+    var translated_back = htmlToTree(page);
+    return translated_back;
+}
+
+if(typeof $$ !== 'undefined') {
+    // copied from Chrome Google search homepage
+    var code = `<div id="fakebox-container">
+      <div id="fakebox">
+        <div id="fakebox-search-icon"></div>
+        <div id="fakebox-text">Search Google or type a URL</div>
+        <input id="fakebox-input" autocomplete="off" tabindex="-1" type="url" aria-hidden="true">
+        <div id="fakebox-cursor"></div>
+        <button id="fakebox-microphone" title="Search by voice"></button>
+      </div>
+    </div>`
+    var tree = testHtmlTree(code);
+    console.log(tree);
+}
+</code></pre>
+

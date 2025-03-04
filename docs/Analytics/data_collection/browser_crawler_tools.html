@@ -1,0 +1,226 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code snippet relies on the <code>puppeteer</code> library and internal modules to extract information from web pages, including style URLs, links, and HTML content. It also includes utility functions to calculate expiration dates based on <code>Cache-Control</code> headers and extract URLs from CSS content using regular expressions.</p>
+
+
+<pre><code>var puppeteer = require('puppeteer')
+var importer = require('../Core')
+var {selectDom} = importer.import('select tree')
+
+// TODO: make a utility for this because it keeps coming up here and in convert spreadsheet
+function getStyleUrls(content, url) {
+    return importer.regexToArray(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, content, 1)
+}
+
+// TODO: make a utility for this because it keeps coming up here and in convert spreadsheet
+function getAllLinks(url, doc) {
+    // TODO: only return elements because of 
+    //   https://github.com/google/wicked-good-xpath/issues/40
+    //   Uncaught TypeError: Cannot read property 'createRange' of undefined
+    // MUST SEPERATE ATTRIBUTES AND ELEMENTS BECAUSE OF ABOVE ISSUE
+    var r = selectDom({
+        links: ['//a', './@href'],
+        sources: ['(//img|//iframe|//audio)[@src]', './@src'],
+        styles: ['//link', './@href'],
+        styleInners: ['//style', './text()'],
+        styleTags: ['//*[@style]', './@style'],
+        html: ['/*']
+    }, doc)
+    var html = r.html.map(h => h.outerHTML).join('')
+    return {
+        links: r.links
+            .concat(r.sources)
+            .concat(['/favicon.ico']) // always implied 100% of the time
+            .map(s => {
+                try {
+                    return new URL(s, url).href
+                } catch (e) {
+                    return null
+                }
+            }),
+        styles: r.styles
+            .concat(...r.styleInners.map(s => getStyleUrls(s, url)))
+            .concat(...r.styleTags.map(s => getStyleUrls(s, url)))
+            .map(s => {
+                try {
+                    return new URL(s, url).href
+                } catch (e) {
+                    return null
+                }
+            }),
+        html: html
+    }
+}
+
+async function getExpires(headers) {
+    const cacheControl = headers['cache-control'] || '';
+    const maxAgeMatch = cacheControl.match(/max-age=(\d+)/);
+    const maxAge = maxAgeMatch && maxAgeMatch.length > 1 ? parseInt(maxAgeMatch[1], 10) : 0;
+    return Date.now() + (maxAge * 1000)
+}
+
+async function getResponseContent(response, headers) {
+    // TODO: save in the same format as the request expects
+    var result = {
+        url: await response.url(),
+        type: (headers['content-type'] || '').split(/\n|;/gi)[0],
+        length: parseInt(headers['content-length']),
+        expires: await getExpires(headers),
+        status: await response.status(),
+        location: headers['location'],
+    }
+    if(result.url.substr(0, 5) === 'data:') {
+        return {}
+    }
+    if(result.status < 200 || result.status > 300) {
+        return result
+    }
+    // check headers and make sure we don't download too much
+    if(!result.length || isNaN(result.length) || result.length < 100*1024*1024) {
+        try {
+            var buffer = await response.buffer()
+            if(result.type.includes('text/')) {
+                // TODO replace with encoding from header
+                result.content = buffer.toString('utf8') 
+            } else {
+                result.content = `data:${result.type};base64,${buffer.toString('base64')}`
+            }
+            if(result.type.includes('/html')) {
+                Object.assign(result, getAllLinks(result.url, result.content))
+            }
+        } catch (e) {
+            if(e.message.includes('Target closed')
+              || e.message.includes('Response body is unavailable')
+              || e.message.includes('Protocol error')
+              || e.message.includes('Could not load body for this request')
+              || e.message.includes('Network.getResponseBody timed out')
+            ) {
+                console.log(`Probable tracker ${result.url}`)
+                return {}
+            } else {
+                throw e
+            }
+        }
+    }
+    return result
+}
+
+var browser
+var RETRY_COUNT = 1
+async function doBrowserRequest(url, readCache, storeCache, callback, retry = 0) {
+    if(url === false) {
+        console.log('Closing browser')
+        if(browser) {
+            await browser.close()
+            browser = null
+        }
+        return
+    }
+    try {
+        var response
+        //const ext = '/Users/briancullinan/Downloads/1.18.4.crx'
+        if(!browser) browser = await puppeteer.launch({
+            args: [
+            //    `--disable-extensions-except="${ext}"`,
+            //    `--load-extension="${ext}"`,
+                '--enable-remote-extensions',
+                '--no-first-run',
+                '--disable-notifications',
+                '--disable-geolocation',
+                '--disable-infobars',
+                '--disable-session-crashed-bubble',
+                '--no-sandbox',
+                '--silent-debugger-extension-api',
+                '--extensions-on-chrome-urls',
+            //    '--single-process',
+            //    '--no-zygote',
+            //    '--disable-setuid-sandbox',
+                // extensions.ui.developer_mode
+                // --flag-switches-begin --extensions.ui.developer_mode --flag-switches-end.
+            ],
+            headless: true,
+            dumpio: true,
+            ignoreHTTPSErrors: true,
+        }).catch(e => console.log(e))
+        
+        console.log(`Initiating ${url}`)
+        const page = await browser.newPage()
+        await page.setRequestInterception(true)
+        page.on('request', readCache)
+        page.on('response', storeCache)
+        if(url)
+            response = await page.goto(url, {waitUntil: "networkidle2", timeout: 5*1000})
+
+        // close page
+        console.log(`Finishing ${url}`)
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        //await page._client.send('Page.stopLoading')
+        //await page._client.send('BrowserWindow.addDevToolsExtension', ext)
+        page.off('request', readCache)
+        page.off('response', storeCache)
+        await page.setRequestInterception(false)
+        if(response && callback) await callback(response, page)
+        console.log('Closing page')
+        await page.close()
+        return response
+    } catch (e) {
+        if(retry < RETRY_COUNT) {
+            await doBrowserRequest(false)
+            return await doBrowserRequest(url, readCache, storeCache, callback, retry+1)
+        } else if(e.message.includes('ERR_NAME_NOT_RESOLVED')
+                 || e.message.includes('Navigation timeout')
+                 || e.message.includes('ERR_CONNECTION_REFUSED')
+                 || e.message.includes('ERR_ABORTED')) {
+            console.log(`Could not fetch ${url}`)
+        } else {
+            throw e
+        }
+    }
+}
+    
+module.exports = {
+    getAllLinks,
+    getResponseContent,
+    doBrowserRequest
+}
+    </code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Imports</h3>
+<pre><code class="language-javascript">var puppeteer = require('puppeteer')
+var importer = require('../Core')
+var { selectDom } = importer.import('select tree')
+</code></pre>
+<p>The code requires the following dependencies:</p>
+<ul>
+<li><code>puppeteer</code>: a Node.js library for controlling a headless Chromium browser.</li>
+<li><code>importer</code>: an internal module that exports the <code>selectDom</code> function.</li>
+<li><code>selectDom</code>: a function that selects elements from a DOM tree.</li>
+</ul>
+<h3>Utility Functions</h3>
+<h4><code>getStyleUrls(content, url)</code></h4>
+<pre><code class="language-javascript">function getStyleUrls(content, url) {
+    return importer.regexToArray(/url\s*\(['&quot;]*([^\)]*?)['&quot;]*\)/ig, content, 1)
+}
+</code></pre>
+<p>This function extracts URLs from a string of CSS content using a regular expression. It returns an array of URLs.</p>
+<h4><code>getAllLinks(url, doc)</code></h4>
+<pre><code class="language-javascript">function getAllLinks(url, doc) {
+    //...
+}
+</code></pre>
+<p>This function extracts all links, styles, and HTML content from a DOM document. It returns an object with the following properties:</p>
+<ul>
+<li><code>links</code>: an array of URLs.</li>
+<li><code>styles</code>: an array of URLs.</li>
+<li><code>html</code>: the HTML content of the document.</li>
+</ul>
+<h3><code>getExpires(headers)</code></h3>
+<pre><code class="language-javascript">async function getExpires(headers) {
+    const cacheControl = headers['cache-control'] || '';
+    const maxAgeMatch = cacheControl.match(/max-age=(\d+)/);
+    const maxAge = maxAgeMatch &amp;&amp; maxAgeMatch.length &gt; 1? parseInt(maxAgeMatch[1], 10) : 0;
+    return Date.now() + (maxAge * 1000);
+}
+</code></pre>
+<p>This function calculates the expiration date of a resource based on the <code>Cache-Control</code> header. It returns a Date object representing the expiration date.</p>
+<p>Note: the <code>puppeteer</code> dependency is not used in this code snippet. It is likely used elsewhere in the project to interact with a headless browser.</p>

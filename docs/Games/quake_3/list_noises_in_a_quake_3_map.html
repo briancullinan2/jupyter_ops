@@ -1,0 +1,42 @@
+<p>This code analyzes a Quake 2 map file to find missing sound files referenced by &quot;noise&quot; entities.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+
+function listNoise() {
+    var contents = fs.readFileSync('/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/maps/base1.map').toString('utf8')
+    var noises = importer.regexToArray(/noise.*?"\s*"(.*?)"/ig, contents, 1)
+    return {all: noises, missing: noises.filter(n => {
+        return !fs.existsSync(path.join('/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/sound/', n))
+    })}
+}
+
+module.exports = listNoise</code></pre>
+
+<p>This code snippet analyzes a Quake 2 map file (<code>base1.map</code>) to identify missing sound files referenced by &quot;noise&quot; entities.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>fs</code> for file system operations, <code>path</code> for path manipulation, and <code>importer</code> (presumably a custom module for parsing Quake files).</li>
+</ul></li>
+<li><p><strong><code>listNoise</code> Function:</strong></p>
+<ul>
+<li>Reads the contents of the specified Quake map file (<code>base1.map</code>).</li>
+<li>Uses a regular expression (<code>/noise.*?&quot;\s*&quot;(.*?)&quot;/ig</code>) to extract all occurrences of &quot;noise&quot; entities and their associated sound file paths.</li>
+<li>Filters the extracted sound file paths to identify those that don't exist in the specified sound directory (<code>/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/sound/</code>).</li>
+<li>Returns an object containing two arrays:
+<ul>
+<li><code>all</code>: All extracted sound file paths.</li>
+<li><code>missing</code>: Sound file paths that are not found in the specified directory.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>listNoise</code> function as the module's main export.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as a tool for identifying missing sound files in a Quake 2 map. It analyzes the map file, extracts references to sound files, and then checks if those files exist in the expected location. This can be useful for debugging or ensuring that all necessary sound files are present for a map to function correctly.</p>

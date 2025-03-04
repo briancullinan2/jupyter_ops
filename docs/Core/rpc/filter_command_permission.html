@@ -1,0 +1,71 @@
+<p>This code processes user commands, checks for duplicates, retrieves user settings, and prepares the command for potential execution, likely as a scheduled Google Calendar event.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getPermissions = importer.import('rpc permissions');
+var getDaysEvents = importer.import('days events');
+var getSettings = importer.import('google contact settings');
+var getOauthClient = importer.import('import google calendar api');
+
+var options = {
+    calendarId: 'Commands'
+};
+
+var alreadyRun = (date, id) => getDaysEvents(new Date(date), options)
+    .then(events => events
+          .filter(e => e.event.summary.indexOf('Result:') > -1
+                  && e.event.summary.indexOf(id) > -1).length > 0);
+
+// TODO: move this logic out to a higher level coordinator?
+function filterCommand(command, date, id, user) {
+    const props = {};
+    return authorizeCalendar(options)
+        .then(() => getSettings(user))
+        .then(settings => {
+            // assign user controls and interpreted command
+            try {
+                Object.assign(props, settings, {
+                    result: importer.interpret(command)
+                });
+                // TODO: accept parameters from message context
+            } catch (e) {
+                if((e + '').indexOf('Nothing found') > -1) {
+                    Object.assign(props, {result: null});
+                } else {
+                    throw e;
+                }
+            }
+        })
+        .then(() => alreadyRun(date, id))
+        .catch(e => console.log(e))
+        .then(already => Object.assign(props, {already: already || null}))
+}
+module.exports = filterCommand;
+</code></pre>
+
+<p>This code defines a function <code>filterCommand</code> that processes a user command, checks for existing events, and prepares data for potential execution.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports functions for handling RPC permissions, retrieving daily events, accessing Google contact settings, and importing the Google Calendar API.</li>
+</ul></li>
+<li><p><strong><code>options</code> Object:</strong></p>
+<ul>
+<li>Defines a configuration object with a <code>calendarId</code> for interacting with the Google Calendar API.</li>
+</ul></li>
+<li><p><strong><code>alreadyRun</code> Function:</strong></p>
+<ul>
+<li>Helper function to check if an event with a specific summary (containing &quot;Result:&quot; and the command ID) already exists for a given date.</li>
+</ul></li>
+<li><p><strong><code>filterCommand</code> Function:</strong></p>
+<ul>
+<li>Takes command, date, ID, and user as input.</li>
+<li>Authorizes access to the Google Calendar API.</li>
+<li>Retrieves user settings.</li>
+<li>Interprets the command using <code>importer.interpret</code>.</li>
+<li>Checks if the command has already been run on the specified date.</li>
+<li>Combines the interpreted command, user settings, and run status into a <code>props</code> object.</li>
+</ul></li>
+</ol>
+<p>In essence, this code prepares a command for execution by checking for existing events, retrieving user settings, and interpreting the command itself. It likely serves as a part of a system that manages user commands and schedules them as Google Calendar events.</p>

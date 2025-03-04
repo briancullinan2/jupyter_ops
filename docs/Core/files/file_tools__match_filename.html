@@ -1,0 +1,53 @@
+<p>This code provides a way to map filenames to specific locations within a project directory based on predefined patterns, enabling flexible file organization and processing.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {minimatch} = importer.import('minimatch')
+
+var getDirectory = (match) => match[match.length-1] === '/'
+    ? match
+    : (fs.existsSync(match) && fs.lstatSync(match).isDirectory()
+       ? match
+       : path.dirname(match));
+
+
+function matchFilename(filename, matchOutput, projectOutput) {
+    // TODO: examples of defensive programming
+    if(!matchOutput || Object.keys(matchOutput).length === 0) {
+         matchOutput = {'{**,**/*}': './'}
+    }
+    return Object.keys(matchOutput)
+    .filter(match => minimatch(filename, match))
+    .map(match => {
+        var projectMatch = path.join(projectOutput, matchOutput[match])
+        var dir = getDirectory(projectMatch);
+        return path.join(dir, path.basename(projectMatch) === path.basename(dir)
+            ? filename
+            : path.basename(matchOutput[match]));
+    })
+}
+
+module.exports = {
+    matchFilename,
+    getDirectory
+}
+</code></pre>
+
+<p>This code defines functions for matching filenames within a project directory structure based on provided patterns.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports the <code>minimatch</code> function from a <code>Core</code> module for pattern matching.</p></li>
+<li><p><strong><code>getDirectory(match)</code>:</strong></p>
+<ul>
+<li>This helper function determines the directory path from a given file or directory path.</li>
+</ul></li>
+<li><p><strong><code>matchFilename(filename, matchOutput, projectOutput)</code>:</strong></p>
+<ul>
+<li>This function takes a filename, a mapping of patterns to output paths (<code>matchOutput</code>), and a project output directory (<code>projectOutput</code>).</li>
+<li>It filters patterns from <code>matchOutput</code> that match the given filename using <code>minimatch</code>.</li>
+<li>For each matching pattern, it constructs a resolved path within the project directory structure.</li>
+<li>It returns an array of resolved paths.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong> The <code>matchFilename</code> and <code>getDirectory</code> functions are exported for use in other parts of the application.</p></li>
+</ol>
+<p>In essence, this code provides a way to map filenames to specific locations within a project directory based on predefined patterns, potentially for file organization, processing, or other purposes.</p>

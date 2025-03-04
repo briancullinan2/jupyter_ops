@@ -1,0 +1,109 @@
+<p>This code defines an environment configuration using Mustache templating, allowing for dynamic generation of settings based on environment variables.</p>
+
+
+<pre><code>var process = require('process');
+var path = require('path');
+var Mustache = require('mustache');
+
+var ENVIRONMENT = (key) => Object.assign({}, {
+    'DEFAULT': {
+        'PROFILE_PATH': '{{#HOME}}{{{.}}}{{/HOME}}{{^HOME}}{{#HOMEPATH}}{{{.}}}{{/HOMEPATH}}{{^HOMEPATH}}{{{USERPROFILE}}}{{/HOMEPATH}}{{/HOME}}',
+        'DOWNLOAD_PATH': '{{{PROFILE_PATH}}}/Downloads'
+    },
+    'BRIAN_RESUME': {
+        'CONTACT_DOCID': '1F07qFwP2LO14dJkExjaMHDfuNcB8HfuBQJWiVlmzrAQ',
+        'CONTACT_REDIRECT': 'https://briancullinan.com'
+    },
+    'ILLUMINATI': {
+        'CONTACT_DOCID': '16b1Z0sQkYhtMUfP7qMRL3vRBPWQsRbSlntURkMqWGX0',
+        'CONTACT_REDIRECT': 'https://www.shopilluminati.com/contact'
+    },
+    'GOOGLE_RPC': {
+        'HOME': '',
+        'HOMEPATH': '',
+        'USERPROFILE': '',
+        'PROFILE_PATH': ''
+    },
+    'TEST_SPREADSHEET': {
+        'PROJECT_OUTPUT': './.output/'
+    },
+    'DEPLOY': {
+        'GOOGLE_STORAGE_CREDENTIALS': '{{{PROFILE_PATH}}}/.credentials/spahaha-ea443-a78ab2269985.json',
+        'GOOGLE_STORAGE_PROJECT': 'spahaha-ea443',
+    },
+    'STUDY_REMOTE': {
+        'DOCID': '1EGwxT6InTXuvpLujnwKV3asEFDZhhZk2LdosjW2Tz_M',
+        'SECRETS_PATH': './client_secret.json',
+        'FUNCTIONS_URL': 'https://us-central1-sheet-to-web.cloudfunctions.net/studyRPC',
+        'AUTH_REDIRECT': '{{{FUNCTIONS_URL}}}?function=receiveCode',
+        'DOMAIN': 'https://studysauce.sheet-to-web.com',
+        'BUCKET': 'studysauce.sheet-to-web.com',
+        'GOOGLE_STORAGE_CREDENTIALS': './spahaha-ea443-a78ab2269985.json',
+        'GOOGLE_STORAGE_PROJECT': 'spahaha-ea443'
+    },
+    'STUDY_LOCAL': {
+        'DOCID': '1EGwxT6InTXuvpLujnwKV3asEFDZhhZk2LdosjW2Tz_M',
+        'SECRETS_PATH': '{{PROFILE_PATH}}./client_secret.json',
+        'FUNCTIONS_URL': 'http://localhost:8010/sheet-to-web/us-central1/studyRPC',
+        'AUTH_REDIRECT': '{{{FUNCTIONS_URL}}}?function=receiveCode',
+        'DOMAIN': 'http://localhost:8080',
+        'BUCKET': 'studysauce.sheet-to-web.com',
+        'GOOGLE_STORAGE_CREDENTIALS': '{{{PROFILE_PATH}}}/.credentials/spahaha-ea443-a78ab2269985.json',
+        'GOOGLE_STORAGE_PROJECT': 'spahaha-ea443',
+        'PROJECT_OUTPUT': './.output/'
+    }
+}[key] || {});
+
+var assign = (key) => {
+    var envs = Object.assign.apply(null, [
+        {
+            'ENVIRONMENT': key || ''
+        },
+        ENVIRONMENT('DEFAULT'),
+        ENVIRONMENT(key) || {}
+    ])
+    var env = Object.keys(envs).reduce((env, e) => {
+        var properties = Object.assign({}, process.env, env);
+        //Mustache.parse(envs[e]);
+        env[e.toUpperCase()] = Mustache.render(envs[e], properties, properties);
+        return env;
+    }, {})
+    return Object.assign(process.env, env);
+}
+
+function getEnvironment(environment) {
+    assign();
+    if(process.env.ENVIRONMENT) {
+        assign(process.env.ENVIRONMENT);
+    }
+    if(environment) {
+        assign(environment);
+    }
+}
+
+getEnvironment();
+module.exports = getEnvironment;
+
+</code></pre>
+
+<p>This code defines an environment configuration object using Mustache templating.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules (<code>process</code>, <code>path</code>, <code>Mustache</code>).</li>
+</ul></li>
+<li><p><strong><code>ENVIRONMENT</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>key</code> argument representing an environment name.</li>
+<li>Returns an object containing environment-specific settings.</li>
+<li>Each environment (e.g., <code>DEFAULT</code>, <code>BRIAN_RESUME</code>, <code>ILLUMINATI</code>) has its own set of key-value pairs.</li>
+<li>Values can be simple strings or use Mustache templating to dynamically generate paths or URLs based on environment variables like <code>HOME</code>, <code>HOMEPATH</code>, or <code>USERPROFILE</code>.</li>
+</ul></li>
+<li><p><strong>Environment Variables:</strong></p>
+<ul>
+<li>The code relies on environment variables to provide values for paths and URLs.</li>
+<li>Mustache templating allows for flexible substitution of these variables.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to configure different environments with specific settings, using Mustache templating to dynamically generate values based on available environment variables.</strong></p>

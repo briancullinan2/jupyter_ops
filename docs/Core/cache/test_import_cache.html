@@ -1,0 +1,31 @@
+<p>This code defines a module that provides a function, <code>createImportCache</code>, for managing import caching, likely within a Jupyter Notebook environment.  It exports this function and conditionally initializes the cache based on the presence of a global variable <code>$$</code>.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {createImportCache} = importer.import('create import cache')
+
+module.exports = createImportCache
+
+if(typeof $$ !== 'undefined') {
+    createImportCache()
+}
+</code></pre>
+
+<p>This code sets up a module for managing import caching, likely for Jupyter Notebook environments.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Import:</strong></p>
+<ul>
+<li><code>importer = require('../Core')</code>: Imports a module named <code>Core</code> from a parent directory.</li>
+<li><code>createImportCache = importer.import('create import cache')</code>: Imports a specific function named <code>createImportCache</code> from the <code>Core</code> module.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = createImportCache</code>: Exports the <code>createImportCache</code> function, making it available for use in other modules.</li>
+</ul></li>
+<li><p><strong>Initialization (Conditional):</strong></p>
+<ul>
+<li><code>if(typeof $$ !== 'undefined') { createImportCache() }</code>: Checks if a global variable <code>$$</code> exists. If it does, it calls the <code>createImportCache</code> function, likely indicating an initialization step within a specific environment (possibly a Jupyter Notebook context).</li>
+</ul></li>
+</ol>
+<p>In essence, this code defines a module that provides a function for creating an import cache, which is likely used to optimize and manage the loading of modules within Jupyter Notebooks or a related environment.</p>

@@ -1,0 +1,131 @@
+<p>Here is a two-sentence summary of the JavaScript code:</p>
+<p>This code manages the Discord OAuth flow by exchanging a handshake message, authorizing the user, and fetching an access token to authenticate with the Discord API. It uses event listeners to respond to messages from the parent window, sending POST requests and authentication messages to complete the OAuth flow.</p>
+
+
+<pre><code>
+let expiry
+let result
+let initNonce = Math.round(Math.random() * 1000)
+
+window.addEventListener('message', async (evt) => {
+
+  document.querySelector('h1').innerHTML = '<pre>' + JSON.stringify(evt.data, null, 2) + '</pre>'
+
+  const sourceWindow = () => {
+    return (window.parent.opener || window.parent)
+  }
+
+  if(evt.data[0] == 3 && typeof evt.data[1].frame_id != 'undefined') {
+
+    result = evt.data[1] // get it from page init instead of query params
+    // send handshake
+    sourceWindow().postMessage([0, {
+      v: 1,
+      encoding: 'json',
+      client_id: '{CLIENT_ID}',
+      frame_id: evt.data[1].frame_id,
+      nonce: initNonce,
+      transfer: void 0
+    }], 'https://discord.com' || '*')
+  }
+
+  if(evt.data[0] == 1 && evt.data[1].cmd == 'DISPATCH') {
+
+    // start authorization chain
+    sourceWindow().postMessage([1, {
+      cmd: 'AUTHORIZE',
+      args: {
+        client_id: '{CLIENT_ID}',
+        prompt: 'none',
+        response_type: 'code',
+        scope: ['applications.commands', 'identify', 'guilds.members.read', 'rpc.activities.write'],
+        state: '',
+      },
+      nonce: Math.random() * 1000,
+      transfer: void 0
+    }], 'https://discord.com' || '*')
+
+  }
+
+  if(evt.data[1].cmd == 'AUTHORIZE') {
+    code = evt.data[1].data.code
+
+    const response = await fetch("{BASE_URI}api/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        code,
+        launch_id: result.launch_id,
+        frame_id: result.frame_id,
+      }),
+    });
+    const { access_token, expires_in, session_id } = await response.json();
+    window.session_id = session_id
+    
+    debugger
+
+    // TODO: take authenticate commands
+  
+    sourceWindow().postMessage([1, {
+      cmd: 'AUTHENTICATE',
+      args: {
+        access_token: access_token
+      },
+      nonce: Math.random() * 1000,
+      transfer: void 0
+    }], 'https://discord.com' || '*')
+
+    expiry = Date.now() + expires_in
+  }
+
+  if(evt.data[1].cmd == 'AUTHENTICATE') {
+    // TODO: some authenticated page update
+    // trying to solve the cookie problem
+    if(window.session_id)
+      window.location = '{BASE_URI}?t=' + Date.now() + '&session=' + window.session_id
+  }
+})
+
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>This JavaScript code handles messages received from a parent window and performs the following actions:</p>
+<ol>
+<li><strong>Discord OAuth flow</strong>: It receives messages from the parent window, sends a handshake, and then initiates the OAuth flow to obtain an access token.</li>
+<li><strong>Fetch token</strong>: It sends a POST request to the Discord API to exchange the authorization code for an access token.</li>
+<li><strong>Authenticate</strong>: It posts a message back to the parent window with the access token to authenticate.</li>
+</ol>
+<p><strong>Breakdown</strong></p>
+<h3>Variables</h3>
+<ul>
+<li><code>expiry</code>: stores the expiration time of the access token</li>
+<li><code>result</code>: stores the result of the page initialization</li>
+<li><code>initNonce</code>: a random nonce used in the handshake (initialized with <code>Math.round(Math.random() * 1000)</code>)</li>
+</ul>
+<h3>Event Listener</h3>
+<p>The code listens for messages received from the parent window using the <code>window.addEventListener</code> method.</p>
+<h3>Discord OAuth Flow</h3>
+<ol>
+<li><strong>Handshake</strong>: When <code>evt.data[0] == 3 &amp;&amp; typeof evt.data[1].frame_id!= 'undefined'</code>, it sends a handshake message to the parent window with the client ID, frame ID, and nonce.</li>
+<li><strong>Authorize</strong>: When <code>evt.data[0] == 1 &amp;&amp; evt.data[1].cmd == 'DISPATCH'</code>, it starts the authorization chain by sending an <code>AUTHORIZE</code> command to the parent window.</li>
+<li><strong>Fetch Token</strong>: When <code>evt.data[1].cmd == 'AUTHORIZE'</code>, it sends a POST request to the Discord API to exchange the authorization code for an access token.</li>
+<li><strong>Authenticate</strong>: It posts a message back to the parent window with the access token to authenticate.</li>
+</ol>
+<h3>Fetch Token Request</h3>
+<p>The code sends a POST request to the Discord API to fetch an access token, including the following:</p>
+<ul>
+<li><code>code</code>: the authorization code received from the parent window</li>
+<li><code>launch_id</code>: the launch ID from the page initialization result</li>
+<li><code>frame_id</code>: the frame ID from the page initialization result</li>
+</ul>
+<h3>Authenticate</h3>
+<p>After obtaining the access token, it posts a message back to the parent window with the access token to authenticate, including:</p>
+<ul>
+<li><code>cmd</code>: <code>AUTHENTICATE</code></li>
+<li><code>args</code>: <code>{ access_token: access_token }</code></li>
+<li><code>nonce</code>: a random nonce</li>
+<li><code>transfer</code>: <code>void 0</code></li>
+</ul>

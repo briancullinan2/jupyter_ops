@@ -1,0 +1,105 @@
+<p>Here is a 2-sentence summary of the provided code breakdown:</p>
+<p>The provided code appears to be part of a template rendering engine that processes Google Sheets data, utilizing functions from the <code>importer</code> object to load, process, and render templates. It includes functions like <code>getTemplateProperties</code> and <code>matchSections</code> that recursively process template properties and sections, respectively.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getDataSheet = importer.import('google sheet array objects');
+var renderRows = importer.import('google sheet layout template');
+var getRows = importer.import('get worksheet rows');
+var {filteredData, unfilteredData} = importer.import('filter data sheet based on url');
+var promiseOrResolve = importer.import('resolve promise property');
+
+var isWrapper = rows => rows.length === 1 && rows[0].length === 1
+              && rows[0][0].match(/\{\{\s*>\s*(.*?)(\/(.*?-)+link)*\}\}/ig);
+
+var isFiltered = (url) => url.split('/').length > 1
+
+// TODO: remove previous properties if for some strange reason recalling the same template,
+//   prevents situations like ::stylesheet being added to many times
+var addedProperties = {};
+
+function getTemplateProperties(key, properties, templates) {
+    if(typeof templates[key] === 'undefined') {
+        throw new Error(`section "${key}" not found!`)
+    }
+    // load template data
+    var rows;
+    return promiseOrResolve(templates[key].data, 'rows', getDataSheet)
+        .then(data => {
+            properties[key + '-original-data'] = data;
+            properties[key + '-data'] = unfilteredData.bind(null, key);
+        })
+        // load template layout
+        .then(() => promiseOrResolve(templates[key].template, 'rows', getRows))
+        .then(rs => {
+            rows = rs || []
+            return rows.flat()
+              .reduce((p, c, j) => p.then(() => matchSections(c, properties, templates)), Promise.resolve())
+        })
+        // detect if this is just a wrapper template and don't render rows, do a direct replacement
+        .then(() => isWrapper(rows) ? rows[0][0] : renderRows(key, rows, properties, templates))
+        .then(template => (properties[key] = template))
+}
+
+// must do this up front so we can process all data
+var matchSections = (cell, properties, templates) => importer
+    .regexToArray(/\{\{\s*>\s*(.*?)\s*\}\}/ig, cell, 1)
+    .reduce((promise, section) => promise
+        .then(() => getTemplateProperties(section.split('/')[0], properties, templates))
+        .then(() => isFiltered(section)
+              ? createAssignFilter(section, properties)
+              : Promise.resolve()),
+            Promise.resolve())
+
+var isCategorical = (data, key) => data.filter(row => row.hasOwnProperty(key)).length > 0;
+
+function createAssignFilter(section, properties) {
+    var key = section.split('/')[0];
+    var match = section.split('/').slice(1).join('/');
+    properties[section] = properties[key];
+    
+    // add a special partial for the filtered data
+    var categorical = isCategorical(properties[key + '-original-data'] || [], key)
+    // automatically wrap unique templates in a data section for accessing filtered properties
+    if(!categorical && !properties[key].includes(`{{#${key}-data}}`)
+        && typeof properties[key + '-original-data'] !== 'undefined') {
+        properties[section] = `{{#${key}-data}}${properties[key]}{{/${key}-data}}`;
+    }
+    // run the filtered function instead of using the array
+    properties[key + '-data'] = filteredData.bind(null, key, match, properties, categorical);
+}
+
+module.exports = getTemplateProperties;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Variables and Functions</h3>
+<ul>
+<li><code>importer</code>: an object that provides various functions from the <code>../Core</code> module.</li>
+<li><code>getDataSheet</code>, <code>renderRows</code>, <code>getRows</code>, and <code>filteredData</code>: functions imported from the <code>importer</code> object.</li>
+<li><code>promiseOrResolve</code>: a function imported from the <code>importer</code> object, used to resolve promises.</li>
+<li><code>isWrapper</code> and <code>isFiltered</code>: functions that check if a given data is a wrapper template or if a URL is filtered.</li>
+</ul>
+<h3>getTemplateProperties Function</h3>
+<p>This function retrieves template properties from a given key and updates the properties object. Here's a step-by-step breakdown:</p>
+<ol>
+<li><strong>Error Handling</strong>: Checks if the template key exists in the <code>templates</code> object. If not, throws an error.</li>
+<li><strong>Load Template Data</strong>: Uses <code>promiseOrResolve</code> to load the template data from the <code>getDataSheet</code> function.</li>
+<li><strong>Update Properties</strong>: Binds the <code>unfilteredData</code> function to the key and stores the data in the properties object.</li>
+<li><strong>Load Template Layout</strong>: Uses <code>promiseOrResolve</code> to load the template layout from the <code>getRows</code> function.</li>
+<li><strong>Process Rows</strong>: Flattens the rows array and uses <code>reduce</code> to process each row. If the row matches a wrapper template, it returns the row as a single element. Otherwise, it renders the rows using the <code>renderRows</code> function.</li>
+<li><strong>Update Properties</strong>: Stores the rendered template in the properties object.</li>
+</ol>
+<h3>matchSections Function</h3>
+<p>This function matches sections in a cell and recursively calls <code>getTemplateProperties</code> to process each section. Here's a step-by-step breakdown:</p>
+<ol>
+<li><strong>Regex Extraction</strong>: Uses <code>importer.regexToArray</code> to extract sections from the cell.</li>
+<li><strong>Reduce Function</strong>: Recursively calls <code>getTemplateProperties</code> for each section and returns a promise chain.</li>
+</ol>
+<h3>Other Functions</h3>
+<ul>
+<li><code>isWrapper</code>: Checks if a given data is a wrapper template by matching a specific regex pattern.</li>
+<li><code>isFiltered</code>: Checks if a URL is filtered by checking if it has more than one '/' character.</li>
+</ul>
+<h3>Context</h3>
+<p>The code appears to be part of a template rendering engine that processes Google Sheets data. It uses a combination of functions from the <code>importer</code> object to load and process data, update properties, and render templates.</p>

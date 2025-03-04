@@ -1,0 +1,33 @@
+<p>These Git commands help you visualize and explore your project's commit history, with options for displaying a graphical representation, listing branches, and controlling the level of detail in the output.</p>
+
+
+<pre><code>git log --graph --oneline --decorate --all
+
+git log --graph --all
+
+git show-branch --list
+</code></pre>
+
+<p>These are Git commands used for visualizing and navigating your project's commit history. Let's break them down:</p>
+<p><strong>1. <code>git log --graph --oneline --decorate --all</code></strong></p>
+<ul>
+<li><code>git log</code>: This is the core command for viewing commit history.</li>
+<li><code>--graph</code>:  Displays a graphical representation of the commit history as a tree-like structure.</li>
+<li><code>--oneline</code>:  Shows each commit on a single line, making the output more concise.</li>
+<li><code>--decorate</code>:  Adds information about branches to the commit messages (e.g., <code>master</code>, <code>develop</code>).</li>
+<li><code>--all</code>: Includes commits from all branches, not just the current one.</li>
+</ul>
+<p><strong>2. <code>git log --graph --all</code></strong></p>
+<ul>
+<li>Similar to the first command, but without the <code>--oneline</code> and <code>--decorate</code> flags. This will show a more detailed log with multiple lines per commit.</li>
+</ul>
+<p><strong>3. <code>git show-branch --list</code></strong></p>
+<ul>
+<li><code>git show-branch</code>: This command is used to list all branches in your repository.</li>
+<li><code>--list</code>:  Displays a simple list of branch names.</li>
+</ul>
+<p><strong>In Summary:</strong></p>
+<ul>
+<li>The first two commands provide different ways to visualize your commit history, with varying levels of detail.</li>
+<li>The third command simply lists all the branches in your repository.</li>
+</ul>

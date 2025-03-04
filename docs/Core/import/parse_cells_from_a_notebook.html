@@ -1,0 +1,77 @@
+<p>Here's a 2-sentence summary of the provided code:</p>
+<p>This code defines a module in Node.js that imports the <code>path</code> and <code>fs</code> modules and exports a <code>getCells</code> function, which retrieves and transforms cells from a Jupyter Notebook file. The <code>getCells</code> function takes a notebook path and an array of cell types as parameters, and returns a transformed array of cells with added properties such as language and filename.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+
+function getCells(notebook, types = ['*', 'code']) {
+    notebook = path.resolve(notebook)
+    //console.info('reading notebook ' + notebook);
+    var json = JSON.parse(fs.readFileSync(notebook))
+    var kernel = json.metadata.kernelspec;
+    var cells = json.cells
+        .filter(c => types.includes(c.cell_type))
+        .map((c, i) => Object.assign(c, {
+            language: c.metadata && c.metadata.vscode 
+                ? c.metadata.vscode.languageId : (json.metadata.kernelspec 
+                    ? json.metadata.kernelspec.language : (json.metadata.language_info 
+                        ? json.metadata.language_info.name : '')),
+            filename: notebook,
+            id: `${path.basename(notebook)}[${i}]`
+        }));
+    return cells
+}
+
+module.exports.getCells = getCells;
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Requires</h3>
+<pre><code class="language-javascript">var path = require('path')
+var fs = require('fs')
+</code></pre>
+<p>This code imports the <code>path</code> and <code>fs</code> (file system) modules, which are built-in Node.js modules for working with file paths and interacting with the file system, respectively.</p>
+<h3>getCells Function</h3>
+<pre><code class="language-javascript">function getCells(notebook, types = ['*', 'code']) {
+   ...
+}
+</code></pre>
+<p>This function takes two parameters:</p>
+<ul>
+<li><code>notebook</code>: The path to a Jupyter Notebook file.</li>
+<li><code>types</code>: An array of cell types to include. Defaults to <code>['*', 'code']</code>.</li>
+</ul>
+<h3>Function Implementation</h3>
+<pre><code class="language-javascript">notebook = path.resolve(notebook)
+</code></pre>
+<p>Resolves the notebook path to an absolute path.</p>
+<pre><code class="language-javascript">var json = JSON.parse(fs.readFileSync(notebook))
+</code></pre>
+<p>Reads the notebook file and parses its contents as JSON.</p>
+<pre><code class="language-javascript">var kernel = json.metadata.kernelspec;
+var cells = json.cells
+   .filter(c =&gt; types.includes(c.cell_type))
+   .map((c, i) =&gt; Object.assign(c, {
+        language: c.metadata &amp;&amp; c.metadata.vscode 
+           ? c.metadata.vscode.languageId : (json.metadata.kernelspec 
+               ? json.metadata.kernelspec.language : (json.metadata.language_info 
+                   ? json.metadata.language_info.name : '')),
+        filename: notebook,
+        id: `${path.basename(notebook)}[${i}]`
+    }));
+</code></pre>
+<ul>
+<li>Retrieves the kernel spec metadata from the notebook JSON.</li>
+<li>Filters the cells to only include those of the specified types.</li>
+<li>Maps over the filtered cells to add the following properties:
+<ul>
+<li><code>language</code>: The language used in the cell, determined from metadata or the kernel spec.</li>
+<li><code>filename</code>: The path to the notebook file.</li>
+<li><code>id</code>: A unique ID for each cell, based on the notebook filename and the cell index.</li>
+</ul></li>
+</ul>
+<h3>Exports</h3>
+<pre><code class="language-javascript">module.exports.getCells = getCells;
+</code></pre>
+<p>Exports the <code>getCells</code> function as a module export, making it available for use in other parts of the application.</p>

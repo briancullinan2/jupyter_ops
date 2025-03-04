@@ -1,0 +1,64 @@
+<p>This code provides a function <code>getEmailFormat</code> that searches the web for email address formats associated with a given query, combining results from both a specific site (rocketreach.co) and a general search. It extracts potential email addresses using a regular expression and returns a list of found formats.</p>
+
+
+<pre><code>var importer = require('../Core');
+var search = importer.import('search the web');
+
+async function getEmailFormat(q) {
+    var hits = []
+    var {items} = await search(q + '+email+format+site%3Arocketreach.co')
+    return items
+    var {items2} = await search(q + ' email format')
+    var results = (items || []).concat(items2 || [])
+    results.forEach(i => {
+        var match = (/\S*\s{0,2}\S+@\S+\.\S+/).exec(i.htmlSnippet)
+        if(match) hits.push(match)
+    })
+    return hits
+}
+
+module.exports = getEmailFormat
+</code></pre>
+
+<p>This code defines an asynchronous function <code>getEmailFormat</code> that searches the web for email address formats related to a given query.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports the <code>search</code> function from a module named <code>search the web</code> (presumably a custom module for web searching).</li>
+</ul></li>
+<li><p><strong><code>getEmailFormat</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>q</code> (query string) as input.</li>
+<li><strong>Initializes <code>hits</code>:</strong>
+<ul>
+<li>Creates an empty array <code>hits</code> to store extracted email formats.</li>
+</ul></li>
+<li><strong>Searches for Email Formats:</strong>
+<ul>
+<li>Performs two web searches using the <code>search</code> function:
+<ul>
+<li>First search: <code>q + '+email+format+site%3Arocketreach.co'</code> (searches for email formats specifically on rocketreach.co)</li>
+<li>Second search: <code>q + ' email format'</code> (general search for email formats)</li>
+</ul></li>
+</ul></li>
+<li><strong>Combines Results:</strong>
+<ul>
+<li>Concatenates the results from both searches into a single <code>results</code> array.</li>
+</ul></li>
+<li><strong>Extracts Email Addresses:</strong>
+<ul>
+<li>Iterates through each result in <code>results</code>.</li>
+<li>Uses a regular expression <code>/\S*\s{0,2}\S+@\S+\.\S+/</code> to extract potential email addresses from the <code>htmlSnippet</code> of each result.</li>
+<li>If a match is found, it's pushed into the <code>hits</code> array.</li>
+</ul></li>
+<li><strong>Returns Hits:</strong>
+<ul>
+<li>Returns the <code>hits</code> array containing the extracted email formats.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>getEmailFormat</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>

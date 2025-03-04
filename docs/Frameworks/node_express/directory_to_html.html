@@ -1,0 +1,108 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The <code>directoryToHtml</code> function takes a directory path and optional parameters, and returns an HTML string representing the directory listing, excluding files starting with a dot or containing explicit content. The function uses <code>fs</code> and <code>path</code> modules to read directory contents and dynamically generate HTML links for files and subdirectories.</p>
+
+
+<pre><code>const fs = require('fs');
+const path = require('path');
+
+async function directoryToHtml(dirPath, back, session) {
+  let files = await fs.readdirSync(dirPath)
+
+  let htmlOutput = `<html>
+<head>
+<style>
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+i {
+  font-size: 18px;
+  margin-right: 10px;
+  color: #666;
+}
+
+span {
+  font-size: 16px;
+  color: #333;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  padding-left: 10px;
+}
+</style>
+</head>  
+<body><h1>Directory Listing</h1><ul>`;
+
+  if(back) {
+    htmlOutput += `<li><a href="../?t=${Date.now()}${session ? ('&session=' + session): ''}">Parent directory/</a></li>`;
+  }
+
+  files.forEach((file) => {
+    const filePath = path.join(dirPath, file);
+    const fileStat = fs.statSync(filePath);
+
+    if(file[0] == '.' || file.includes('nsfw') || file.includes('naked') || file.includes('x-rated')) {
+      return
+    }
+
+    if (fileStat.isDirectory()) {
+      htmlOutput += `<li><a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}/?t=${Date.now()}${session ? ('&session=' + session): ''}">${file}/</a></li>`;
+    } else {
+      htmlOutput += `<li><a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}?t=${Date.now()}${session ? ('&session=' + session): ''}">${file}</a></li>`;
+    }
+  });
+
+  htmlOutput += '</ul></body></html>';
+
+  return htmlOutput
+}
+
+module.exports = directoryToHtml
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>fs</code> (File System) module is required for file system operations.</li>
+<li><code>path</code> module is required for path manipulation.</li>
+</ul>
+<h3>Function: <code>directoryToHtml</code></h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>dirPath</code>: Path to the directory to be converted to HTML.</li>
+<li><code>back</code>: A boolean indicating whether to include a link to the parent directory.</li>
+<li><code>session</code>: Optional session parameter.</li>
+</ul>
+<h4>Returns</h4>
+<ul>
+<li>A string representing the HTML output of the directory listing.</li>
+</ul>
+<h4>Functionality</h4>
+<ol>
+<li>Reads the contents of the directory using <code>fs.readdirSync</code>.</li>
+<li>Creates the HTML structure for the directory listing.</li>
+<li>Iterates over the directory contents and dynamically generates HTML links for files and subdirectories.</li>
+<li>Excludes files starting with a dot (<code>.</code>), containing the words &quot;nsfw&quot;, &quot;naked&quot;, or &quot;x-rated&quot;.</li>
+<li>Returns the generated HTML output.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The function uses <code>fs.statSync</code> to get the file stats, which can be blocking if dealing with large directories.</li>
+<li>The function assumes the directory path exists and is readable.</li>
+<li>The <code>encodeURIComponent</code> function is used to encode file names for use in URLs.</li>
+</ul>

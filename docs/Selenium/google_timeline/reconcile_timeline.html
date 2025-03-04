@@ -1,0 +1,144 @@
+<p>This code snippet processes location history data from Google Takeout and combines it with timeline data from Google Calendar, likely for analysis or visualization purposes. It uses Selenium to scrape timeline data and writes the reconciled data to JSON files.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    loadLocations, averageDestinations, reconcileTimelineLocations,
+    runSeleniumCell
+} = importer.import([
+    'load locations export data',
+    'average latitude longitude',
+    'reconcile timeline calendar',
+    'selenium cell'
+])
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Collections/timeline';
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+if(typeof geoLocations === 'undefined') {
+    var geoLocations, readTimelinePage, getGoogleTimeline;
+}
+
+function loadOnce() {
+    console.log('loading location history. this may take a while');
+    if(typeof geoLocations !== 'undefined') {
+        return Promise.resolve(geoLocations);
+    }
+    geoLocations = loadLocations('/Users/briancullinan/Downloads/Takeout 7/Location History/Location History.json');
+    return runSeleniumCell([
+        'log in google',
+        'single timeline page',
+        'scrape google timeline'
+    ])
+        .then(r => {
+            readTimelinePage = r.readTimelinePage;
+            getGoogleTimeline = r.getGoogleTimeline;
+            return geoLocations;
+        })
+}
+
+function reconcileTimeline(date) {
+    var dateKey = date.getDate() + months[date.getMonth()]
+        + (date.getFullYear() + '').substr(2, 2);
+    return loadOnce()
+        .then(() => getGoogleTimeline(date))
+        .then(() => readTimelinePage())
+        .catch(e => console.log(e))
+        .then(timelineLocations => {
+            if (timelineLocations.length === 0) {
+                console.log('no timeline data for ' + date);
+                return;
+            }
+            var dateKey = timelineLocations[0].timeline;
+            fs.writeFileSync(
+                        PROJECT_PATH + '/timeline-' + dateKey + '.json',
+                        JSON.stringify(timelineLocations, null, 4))
+        
+            if (typeof geoLocations[dateKey] === 'undefined') {
+                console.log('no location data for ' + date);
+                return;
+            }
+            var d = averageDestinations(geoLocations[dateKey], timelineLocations);
+            if (d.length === 0) {
+                console.log('no still geo data for ' + date);
+                return;
+            }
+            fs.writeFileSync(
+                        PROJECT_PATH + '/location-' + dateKey + '.json',
+                        JSON.stringify(d, null, 4))
+            return reconcileTimelineLocations(d, date);
+        })
+        .then(events => {
+            fs.writeFileSync(
+                        PROJECT_PATH + '/events-' + dateKey + '.json',
+                        JSON.stringify(events, null, 4));
+            return events;
+        })
+        .catch(e => console.log(e))
+}
+module.exports = reconcileTimeline;
+
+function daysInMonth(month,year) {
+    return new Date(year, month, 0).getDate();
+}
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    var start = new Date('10/1/2016');
+    var end = daysInMonth(start.getMonth()+1, start.getFullYear());
+    var promises = [];
+    for(var day = start.getDate(); day <= end; day++) {
+        var tmpDate = new Date(start);
+        tmpDate.setDate(day);
+        promises.push((date => resolve => reconcileTimeline(date)
+                       .catch(e => console.log(e))
+                       .then(r => resolve(r)))(tmpDate));
+    }
+    importer.runAllPromises(promises)
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet appears to be part of a larger script designed to analyze location history data from Google Takeout and reconcile it with timeline data from Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing functions for interacting with various data sources and tools.</li>
+</ul></li>
+<li><p><strong>Importing Functions:</strong></p>
+<ul>
+<li>Imports several functions from <code>importer</code>:
+<ul>
+<li><code>loadLocations</code>: Loads location history data from a JSON file.</li>
+<li><code>averageDestinations</code>: Calculates average latitude and longitude from a set of locations.</li>
+<li><code>reconcileTimelineLocations</code>: Reconciles timeline data with location history.</li>
+<li><code>runSeleniumCell</code>: Executes a Selenium script (likely for web scraping).</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets up paths for user profile and project directories.</li>
+<li>Defines an array of abbreviated month names.</li>
+</ul></li>
+<li><p><strong>Global Variables:</strong></p>
+<ul>
+<li>Declares <code>geoLocations</code> (location history data) and other variables, potentially initialized later.</li>
+</ul></li>
+<li><p><strong><code>loadOnce</code> Function:</strong></p>
+<ul>
+<li>Loads location history data from a JSON file if it's not already loaded.</li>
+<li>Executes a Selenium script to scrape Google Timeline data.</li>
+<li>Returns a promise that resolves with the loaded location history and timeline data.</li>
+</ul></li>
+<li><p><strong><code>reconcileTimeline</code> Function:</strong></p>
+<ul>
+<li>Takes a date as input.</li>
+<li>Calls <code>loadOnce</code> to ensure location history and timeline data are loaded.</li>
+<li>Retrieves timeline data for the specified date.</li>
+<li>Scrapes the Google Timeline page.</li>
+<li>Writes the reconciled timeline data to a JSON file.</li>
+<li>Performs further processing based on the availability of location data for the date.</li>
+</ul></li>
+</ol>

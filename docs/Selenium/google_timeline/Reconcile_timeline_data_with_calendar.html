@@ -1,0 +1,105 @@
+<p>This code snippet correlates Google Calendar events with nearby locations based on location names, event summaries, and event locations, likely for analyzing travel patterns or daily routines. It identifies matching events and locations, logging the results for further analysis.</p>
+
+
+<pre><code>var unidecode = require('unidecode');
+var importer = require('../Core');
+var {
+    getDaysEvents,
+    getNearby,
+    getOauthClient
+} = importer.import([
+    'days events',
+    'import google calendar api',
+    'cache locations nearby',
+]);
+
+function filterEvents(events, locations) {
+    const unmatched = [], matches = [];
+    for (const l of locations) {
+        const matching = events.filter(e => {
+            return ((l.name + '').indexOf('Gainey') > -1
+                && e.event.summary == 'Drive to work')
+                || ((l.name + '').indexOf('Swiftpage') > -1
+                    && e.event.summary == 'Drive to work')
+                || ((l.name + '').indexOf('6934') > -1
+                    && e.event.summary == 'Drive home')
+                || ((l.name + '').indexOf('6934') > -1
+                    && e.event.summary == 'Work from home')
+                || (typeof e.event.location !== 'undefined'
+                    && ((e.event.location + '').indexOf(l.location + '') > -1
+                        || (e.event.summary + '').indexOf(l.name + '') > -1
+                        || (e.event.location + '').indexOf(l.name + '') > -1
+                        || (e.event.location + '').indexOf((l.name + '').split(/[,:-]/ig)[0]) > -1
+                        || (e.event.summary + '').indexOf((l.name + '').split(/[,:-]/ig)[0]) > -1
+                        || (e.event.summary + '').indexOf((l.location + '').split(/[,:-]/ig)[0]) > -1
+                        || (e.event.location + '').indexOf((l.location + '').split(/[,:-]/ig)[0]) > -1
+                        || (e.event.location + '').indexOf(unidecode(l.name + '').split(/[,:-]/ig)[0]) > -1))
+        });
+        if (matching.length == 0) {
+            unmatched.push(l);
+        } else {
+            const result = {};
+            Object.assign(result, l);
+            Object.assign(result, matching[0]);
+            matches.push(result);
+            Object.assign(result.event, l);
+        }
+    }
+    console.log(events.map(e => e.event.summary + ' - ' + e.event.location));
+    console.log('Unmatched ' + unmatched.length
+            + ' -  out of ' + matches.length
+            + ' - ' + unmatched.map(u => u.name + '').join(', '));
+    return events;
+}
+
+var options = {
+    calendarId: 'primary'
+};
+
+function reconcileTimelineLocations(destinations, date) {
+    var locations, events;
+    return getOauthClient(options)
+        .then(() => getDaysEvents(date, options))
+        .then(r => {
+            events = r;
+            return getNearby(destinations);
+        })
+        .then(locs => {
+            locations = locs;
+            return filterEvents(events, locations);
+        })
+        .catch(e => console.log(e))
+        .then(() => events.map(e => e.event))
+}
+module.exports = reconcileTimelineLocations;
+</code></pre>
+
+<p>This code snippet aims to match events from a Google Calendar with nearby locations.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>unidecode</code>: A library for converting Unicode characters to ASCII.</li>
+<li><code>importer</code>: A custom module likely containing functions for interacting with Google Calendar and retrieving nearby locations.</li>
+</ul></li>
+<li><p><strong>Importing Functions:</strong></p>
+<ul>
+<li>Imports three functions: <code>getDaysEvents</code>, <code>getNearby</code>, and <code>getOauthClient</code> from the <code>importer</code> module.</li>
+</ul></li>
+<li><p><strong><code>filterEvents</code> Function:</strong></p>
+<ul>
+<li>Takes two arguments: <code>events</code> (an array of calendar events) and <code>locations</code> (an array of nearby locations).</li>
+<li>Initializes two arrays: <code>unmatched</code> to store locations without matching events and <code>matches</code> to store matched locations and events.</li>
+<li>Iterates through each location in <code>locations</code>.</li>
+<li>For each location, it filters the <code>events</code> array to find matching events based on:
+<ul>
+<li>Location name (e.g., &quot;Gainey&quot;, &quot;Swiftpage&quot;, &quot;6934&quot;)</li>
+<li>Event summary (e.g., &quot;Drive to work&quot;, &quot;Drive home&quot;, &quot;Work from home&quot;)</li>
+<li>Event location (using string matching and <code>unidecode</code> for case-insensitive comparison)</li>
+</ul></li>
+<li>If a match is found, it combines the location and event data into a new object and adds it to the <code>matches</code> array.</li>
+<li>If no match is found, the location is added to the <code>unmatched</code> array.</li>
+<li>Finally, it logs the summaries and locations of all events.</li>
+</ul></li>
+</ol>
+<p><strong>Overall, this code snippet aims to correlate calendar events with nearby locations based on various criteria, likely for analyzing travel patterns or generating insights about daily routines.</strong></p>

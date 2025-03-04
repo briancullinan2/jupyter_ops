@@ -1,0 +1,116 @@
+<p>This code automates the creation of Angular component test files by finding component <code>.ts</code> files, generating corresponding <code>.spec.ts</code> files using a template, and filling in component titles and import statements.</p>
+
+
+<pre><code>var execSync = require('child_process').execSync;
+try {
+    require.resolve('glob');
+} catch (e) {
+    execSync('npm install glob');
+}
+var fs = require('fs');
+var glob = require('glob');
+var path = require('path');
+
+var cwd = 'C:\\Users\\brian.cullinan\\Documents\\portal\\src';
+
+var spec = `
+import {ComponentFixture} from '@angular/core/testing';
+import {} from 'jasmine';
+import {MockBackend} from '@angular/http/testing';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
+import {By} from '@angular/platform-browser';
+import {Core} from '../../../testing/core';
+{import}
+
+describe('{title}', function () {
+    let fixture: ComponentFixture<{title}>;
+    let router: Router;
+    let location: Location;
+    let xhr: MockBackend;
+    let comp: {title};
+
+    beforeEach(() => {
+        fixture = Core.createAppWithShared([], [], [{title}]);
+        comp = fixture.componentInstance;
+        router = fixture.debugElement.injector.get(Router);
+        xhr = fixture.debugElement.injector.get(MockBackend);
+        location = fixture.debugElement.injector.get(Location);
+    });
+
+    it('should load {title}', (done) => {
+        fixture.whenStable().then(() => {
+            expect(comp).not.toBeNull();
+            done();
+        });
+    });
+
+});
+`;
+
+var files = glob.sync('**/*component.ts', {
+    ignore: '**/*.spec.ts',
+    cwd: cwd
+});
+
+var titles = files.map(f => {
+    var name = f.split('.')[0].split('/').pop();
+    var ucFirst = name.replace(/(^|\s|-)([a-z])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+    return ucFirst.replace(/-/ig, '') + 'Component';
+});
+
+titles.forEach((t, i) => {
+    try {
+        var specPath = path.join(cwd, files[i].replace('.ts', '.spec.ts'));
+        if (fs.existsSync(specPath)) {
+            return;
+        }
+        var fileStr = files[i].split('/').pop().replace('.ts', '');
+        var importStr = 'import {' + t + '} from \'./' + fileStr + '\';';
+        fs.writeFileSync(specPath, spec
+            .replace(/\{title\}/ig, t)
+            .replace(/\{import\}/ig, importStr));
+    } catch (e) {
+    }
+});
+
+
+</code></pre>
+
+<p>This code generates Angular component test files using a template.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports necessary modules like <code>child_process</code>, <code>fs</code>, <code>glob</code>, and <code>path</code>.</li>
+</ul></li>
+<li><p><strong>Install Glob:</strong></p>
+<ul>
+<li>It checks if the <code>glob</code> package is installed and installs it using <code>npm</code> if not.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets the working directory (<code>cwd</code>) to a specific path.</li>
+</ul></li>
+<li><p><strong>Template:</strong></p>
+<ul>
+<li>Defines a template (<code>spec</code>) for the Angular component test file, including placeholders for component title and import statements.</li>
+</ul></li>
+<li><p><strong>File Search:</strong></p>
+<ul>
+<li>Uses <code>glob</code> to find all <code>.ts</code> files within the <code>cwd</code> directory, excluding those ending with <code>.spec.ts</code>.</li>
+</ul></li>
+<li><p><strong>Component Titles:</strong></p>
+<ul>
+<li>Extracts component titles from the file names, converting them to PascalCase.</li>
+</ul></li>
+<li><p><strong>Test File Generation:</strong></p>
+<ul>
+<li>Iterates through the found component files:
+<ul>
+<li>Constructs the path for the corresponding test file (<code>.spec.ts</code>).</li>
+<li>If the test file doesn't exist, it populates the template with the component title and import statement, and writes the generated code to the test file.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>In essence, this script automates the creation of Angular component test files based on a template and the existing component files in a directory.</p>

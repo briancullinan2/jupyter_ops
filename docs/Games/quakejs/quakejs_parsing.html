@@ -1,0 +1,155 @@
+<p>This code provides functions to parse various types of responses from a Quake 3 server, extracting information like server details, player lists, and game state.</p>
+
+
+<pre><code>
+function _parseInfoString(str) {
+	var data = {};
+
+	if (str) {
+		// trim the incoming string
+		str = str.replace(/^\\+|\\+$/g, '');
+
+		var split = str.split('\\');
+
+		for (var i = 0; i < split.length - 1; i += 2) {
+			var key = split[i];
+			var value = split[i+1];
+			data[key] = value;
+		}
+	}
+
+	return data;
+};
+
+function _parseServers(str) {
+	var servers = [];
+
+	str = str.replace(/\\EOT$|^\\/g, '');
+
+	if (str) {
+		var split = str.split('\\');
+
+		for (var i = 0; i < split.length; i++) {
+			var info = split[i];
+			var addr = (info.charCodeAt(0) & 0xff).toString() + '.' + (info.charCodeAt(1) & 0xff).toString() + '.' +
+				(info.charCodeAt(2) & 0xff).toString() + '.' + (info.charCodeAt(3) & 0xff).toString();
+			var port = ((info.charCodeAt(4) & 0xff) << 8) | (info.charCodeAt(5) & 0xff);
+
+			servers.push({ addr: addr, port: port });
+		}
+	}
+
+	return servers;
+};
+
+function _parsePlayers(str) {
+	var players = [];
+
+	if (str) {
+		// trim the incoming string
+		str = str.replace(/^\n+|\n+$/g, '');
+
+		var split = str.split('\n');
+
+		for (var i = 0; i < split.length; i++) {
+			var pinfo = split[i];
+			var psplit = pinfo.match(/\S+|"[^"]+"/g);  // split on space, combining quoted items
+
+			players.push({
+				frags: parseInt(psplit[0], 10),
+				ping: parseInt(psplit[1], 10),
+				name: psplit[2]
+			});
+		}
+	}
+
+	return players;
+};
+
+function _parseStatusResponse(data) {
+	var self = this;
+	if (data.indexOf('statusResponse\n') !== 0) {
+		throw new Error('Invalid getstatus response: ' + data);
+	}
+	data = data.substr(15);
+
+	var idx = data.indexOf('\n');
+	var variableData = idx !== -1 ? data.substr(0, idx) : data;
+	var playerData = idx !== -1 ? data.substr(idx) : null;
+
+	var info = _parseInfoString(variableData);
+	info.players = _parsePlayers(playerData);
+	return info;
+};
+
+function _parseInfoResponse(data) {
+	var self = this;
+	if (data.indexOf('infoResponse\n') !== 0) {
+		throw new Error('Invalid getinfo response: ' + data);
+	}
+	data = data.substr(13);
+	var info = _parseInfoString(data);
+
+	// Compute the number of bots for the template
+	info.g_botplayers = info.clients - info.g_humanplayers;
+
+	return info;
+};
+
+module.exports = {
+    _parseServers,
+    _parsePlayers,
+    _parseStatusResponse,
+    _parseInfoResponse
+}
+</code></pre>
+
+<p>This code defines several functions for parsing responses from a Quake 3 server.</p>
+<p>Here's a breakdown:</p>
+<p><strong>Parsing Functions:</strong></p>
+<ul>
+<li><p><strong><code>_parseInfoString(str)</code>:</strong></p>
+<ul>
+<li>Takes a string as input, likely representing a key-value pair list.</li>
+<li>Removes leading and trailing whitespace.</li>
+<li>Splits the string by backslashes (<code>\</code>) and extracts key-value pairs.</li>
+<li>Returns an object where keys are the extracted strings before the backslash and values are the strings after the backslash.</li>
+</ul></li>
+<li><p><strong><code>_parseServers(str)</code>:</strong></p>
+<ul>
+<li>Takes a string representing a list of server addresses and ports.</li>
+<li>Removes leading and trailing backslashes.</li>
+<li>Splits the string by backslashes.</li>
+<li>Extracts the IP address and port from each server entry (using character codes).</li>
+<li>Returns an array of objects, each representing a server with <code>addr</code> (IP address) and <code>port</code> properties.</li>
+</ul></li>
+<li><p><strong><code>_parsePlayers(str)</code>:</strong></p>
+<ul>
+<li>Takes a string representing a list of player information.</li>
+<li>Removes leading and trailing newline characters.</li>
+<li>Splits the string by newline characters.</li>
+<li>For each player entry, it extracts frags, ping, and name using regular expressions.</li>
+<li>Returns an array of objects, each representing a player with <code>frags</code>, <code>ping</code>, and <code>name</code> properties.</li>
+</ul></li>
+</ul>
+<p><strong>Response Parsing Functions:</strong></p>
+<ul>
+<li><p><strong><code>_parseStatusResponse(data)</code>:</strong></p>
+<ul>
+<li>Takes a string representing a status response from the server.</li>
+<li>Checks if the response starts with &quot;statusResponse\n&quot;.</li>
+<li>Extracts the variable data and player data from the response.</li>
+<li>Parses the variable data using <code>_parseInfoString</code>.</li>
+<li>Parses the player data using <code>_parsePlayers</code>.</li>
+<li>Returns an object containing the parsed information.</li>
+</ul></li>
+<li><p><strong><code>_parseInfoResponse(data)</code>:</strong></p>
+<ul>
+<li>Takes a string representing an info response from the server.</li>
+<li>Checks if the response starts with &quot;infoResponse\n&quot;.</li>
+<li>Extracts the data after the header.</li>
+<li>Parses the data using <code>_parseInfoString</code>.</li>
+<li>Calculates the number of bots (not shown in the provided code).</li>
+<li>Returns an object containing the parsed information.</li>
+</ul></li>
+</ul>

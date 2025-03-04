@@ -1,0 +1,97 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code imports required modules, defines several functions for path manipulation and cell processing, and exports a <code>getRpcSpecFromCells()</code> function that generates a REST API specification object. This function groups permissions by cell type, extracts metadata, and constructs API methods to create the specification object.</p>
+
+
+<pre><code>var path = require('path')
+var package = require('../package.json')
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+var getPermissions = importer.import('rpc permissions')
+var groupPermissions = importer.import('test rpc permissions')
+var getParameters = importer.import('get parameters')
+
+// TODO: move this to patterns utility
+function getTail(path, ctx) {
+    var cur = path.split('.')[0]
+    if(!cur) return ctx
+    if(typeof ctx[cur] === 'undefined') ctx[cur] = {}
+    return getTail(path.split('.').slice(1).join('.'), ctx[cur])
+}
+
+function getPathId(cell) {
+    return path
+        .relative('../', cell.filename)
+        .replace(/\.ipynb|\s+/ig, '')
+        .replace(/[^a-z0-9_\/]/ig, '')
+        .replace(/\//ig, '.resources.')
+        .toLowerCase()
+}
+
+function getRpcSpecFromCells(search) {
+    var functions = groupPermissions(['Function', 'Available'], search)
+    var resources = Object.keys(functions).reduce((obj, f) => {
+        var cell = importer.interpret(f)
+        var path = getPathId(cell)
+        cell.params = getParameters(cell.code)
+        var fn = cell.params[0]
+        var tail = getTail(`${path}`, obj)
+        if(typeof tail.methods === 'undefined') tail.methods = {}
+        tail.methods[fn] = {
+            description: cell.markdown,
+            scopes: functions[f],
+            id: `${package.name}.${path}.${fn}`,
+            httpMethod: 'GET',
+            path: `?function=${cell.questions[0]}`,
+            parameters: cell.params.slice(1).reduce((o, p) => (o[p] = {
+                type: 'string',
+                location: 'query',
+                required: true,
+                description: ''
+            }, o), {})
+        }
+        return obj
+    }, {})
+    return {
+        title: 'Jupyter Ops',
+        name: package.name,
+        description: package.description,
+        protocol: 'rest',
+        baseUrl: process.env.FUNCTIONS_URL,
+        resources: resources,
+        auth: {},
+        schemas: {},
+        parameters: {}
+    }
+}
+
+module.exports = getRpcSpecFromCells;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Imports</h3>
+<p>The code starts by importing required modules:</p>
+<ul>
+<li><code>path</code> module for path manipulation</li>
+<li><code>package.json</code> file for package information</li>
+<li><code>Core</code> module with several functions imported using <code>importer.import()</code></li>
+</ul>
+<h3>Functions</h3>
+<h4><code>getTail()</code></h4>
+<p>A recursive function that takes a path and a context object as arguments. It splits the path by dots, traverses the context object, and returns the last element of the path.</p>
+<h4><code>getPathId()</code></h4>
+<p>A function that takes a cell object as an argument and returns a string representing the path ID. It:</p>
+<ul>
+<li>Gets the relative path from the current directory to the cell's file</li>
+<li>Removes file extensions and whitespace</li>
+<li>Replaces directory separators with <code>.resources.</code></li>
+<li>Converts the path to lowercase</li>
+</ul>
+<h4><code>getRpcSpecFromCells()</code></h4>
+<p>A function that takes a search object as an argument and returns a REST API specification object. It:</p>
+<ul>
+<li>Groups permissions by cell type using <code>groupPermissions()</code></li>
+<li>Iterates over cell types, extracts metadata, and constructs API methods</li>
+<li>Returns a REST API specification object</li>
+</ul>
+<h3>Export</h3>
+<p>The code exports an object with the <code>getRpcSpecFromCells()</code> function.</p>

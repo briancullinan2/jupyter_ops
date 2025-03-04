@@ -1,0 +1,32 @@
+<p>This code adds a remote repository (&quot;MEDIA&quot;) as a submodule within the &quot;PROJECT1&quot; project, enabling version control and management of both projects together.</p>
+
+
+<pre><code>cd /path/to/PROJECT1
+git submodule add ssh://path.to.repo/MEDIA
+git commit -m "Added Media submodule"
+
+git submodule update --init
+
+</code></pre>
+
+<p>This code snippet sets up a Git submodule to include a remote repository named &quot;MEDIA&quot; within a project called &quot;PROJECT1&quot;.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>cd /path/to/PROJECT1</code>:</strong></p>
+<ul>
+<li>Navigates to the directory containing the &quot;PROJECT1&quot; project.</li>
+</ul></li>
+<li><p><strong><code>git submodule add ssh://path.to.repo/MEDIA</code>:</strong></p>
+<ul>
+<li>Adds a submodule named &quot;MEDIA&quot; to the &quot;PROJECT1&quot; repository, pointing to the specified remote repository using SSH.</li>
+</ul></li>
+<li><p><strong><code>git commit -m &quot;Added Media submodule&quot;</code>:</strong></p>
+<ul>
+<li>Commits the addition of the submodule to the &quot;PROJECT1&quot; repository with a descriptive message.</li>
+</ul></li>
+<li><p><strong><code>git submodule update --init</code>:</strong></p>
+<ul>
+<li>Updates the submodule, initializing it within the &quot;PROJECT1&quot; repository and fetching the latest changes from the remote repository.</li>
+</ul></li>
+</ol>
+<p>In essence, this code snippet integrates a separate repository (&quot;MEDIA&quot;) as a submodule within the &quot;PROJECT1&quot; project, allowing for version control and management of both projects together.</p>

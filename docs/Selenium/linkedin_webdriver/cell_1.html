@@ -1,0 +1,34 @@
+
+
+<pre><code>const fs = require('fs')
+const getClient = importer.import('selenium client')
+const getAllUntil = importer.import('all elements until')
+const loginLinkedIn = importer.import('login linkedin')
+
+async function listConnections(driver) {
+  if(!driver) {
+    driver = await getClient()
+    await loginLinkedIn(driver)
+  }
+
+  let url = await driver.getCurrentUrl()
+  let loggedIn = url.indexOf('mynetwork') > -1
+  if(!loggedIn) {
+    await driver.get('https://www.linkedin.com/mynetwork/')
+    await new Promise(resolve => setTimeout(resolve, 4000))
+  }
+
+  let result = await getAllUntil(driver, 
+    false,
+    '//a[contains(@href, "/in/")]/@href',
+    /* friends */ [],
+    (a, b) => a === b,
+    (i) => i < 10
+  )
+
+  return result.filter((l, i, arr) => arr.indexOf(l) === i)
+}
+
+module.exports = listConnections
+</code></pre>
+

@@ -1,0 +1,40 @@
+<p>The <code>correctTimeLimits</code> function converts natural language date and time expressions (like &quot;tomorrow morning&quot;) into standardized ISO 8601 format for use with APIs or systems requiring a specific date format.  It achieves this by using the <code>chrono</code> library to parse the natural language and <code>ISODateString</code> to format the dates.</p>
+
+
+<pre><code>var importer = require('../Core');
+var chrono = require('chrono-node');
+var ISODateString = importer.import('convert date to ISO');
+
+function correctTimeLimits(options) {
+    if (typeof options.timeMin !== 'undefined') {
+        options.timeMin = ISODateString(
+            chrono.parseDate(options.timeMin));
+    }
+    if (typeof options.timeMax !== 'undefined') {
+        options.timeMax = ISODateString(
+            chrono.parseDate(options.timeMax));
+    }
+    return options;
+};
+module.exports = correctTimeLimits;
+
+</code></pre>
+
+<p>This code defines a function <code>correctTimeLimits</code> that takes an object <code>options</code> as input.</p>
+<p>Here's what it does:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely used for importing other modules.</li>
+<li><code>chrono</code>: A library for parsing natural language dates and times.</li>
+<li><code>ISODateString</code>: A function from <code>importer</code> that converts a date to ISO 8601 format.</li>
+</ul></li>
+<li><p><strong>Function Logic:</strong></p>
+<ul>
+<li>It checks if <code>options.timeMin</code> and <code>options.timeMax</code> exist.</li>
+<li>If they do, it uses <code>chrono.parseDate</code> to convert the natural language date strings into JavaScript Date objects.</li>
+<li>Then, it uses <code>ISODateString</code> to convert these Date objects into ISO 8601 format strings.</li>
+<li>Finally, it returns the modified <code>options</code> object.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this function takes time limits specified in natural language (e.g., &quot;tomorrow morning&quot;) and converts them into standardized ISO 8601 format for use with APIs or other systems that require a specific date format.</strong></p>

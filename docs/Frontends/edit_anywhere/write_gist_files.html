@@ -1,0 +1,55 @@
+<p>This code provides a function <code>updateGist</code> that allows you to update the content of a GitHub Gist using the Octokit library.  It handles authentication (currently commented out) and updates the specified Gist with the provided file changes.</p>
+
+
+<pre><code>var Octokit = require('@octokit/rest');
+
+// commit changes to github
+async function updateGist(gist, files) {
+    if(!gist) return {}
+    const github = new Octokit({
+        host: 'api.github.com'
+    });
+    /*
+    github.authenticate({
+        type: 'basic',
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD
+    });
+    */
+
+    return github.gists.update({
+        gist_id,
+        files
+    })
+        .then(r => r.data)
+        .catch(e => console.log(e))
+}
+
+module.exports = updateGist
+</code></pre>
+
+<p>This code defines a function <code>updateGist</code> that commits changes to a GitHub Gist.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>@octokit/rest</code> library, which provides a client for interacting with the GitHub API.</li>
+</ul></li>
+<li><p><strong><code>updateGist</code> Function:</strong></p>
+<ul>
+<li>This asynchronous function takes two arguments: <code>gist</code> (presumably an object containing Gist information) and <code>files</code> (an object representing the files to be updated in the Gist).</li>
+<li>It first checks if <code>gist</code> is provided. If not, it returns an empty object.</li>
+<li>It creates an instance of the Octokit client, configured to use the GitHub API.</li>
+<li><strong>Authentication (Commented Out):</strong>
+<ul>
+<li>There's commented-out code for authenticating with GitHub using basic authentication (username and password). This would typically be replaced with a more secure method like OAuth.</li>
+</ul></li>
+<li>It uses the <code>github.gists.update</code> method to update the specified Gist with the provided <code>files</code>.</li>
+<li>The <code>.then</code> block handles the successful response, returning the updated Gist data.</li>
+<li>The <code>.catch</code> block logs any errors that occur during the update process.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>updateGist</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>

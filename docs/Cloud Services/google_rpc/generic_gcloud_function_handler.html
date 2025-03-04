@@ -1,0 +1,119 @@
+<p>This code provides a framework for creating cloud functions by defining a generic handler and a function to generate specialized handlers from code snippets.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {selectAst} = importer.import('select ast')
+var {
+    niceName, getExports, getParameters
+} = importer.import(['nice name', 'get exports', 'get parameters'])
+
+async function handler(req, res) {
+    if(!req && process.stdout.isTTY) {
+        res = {}
+        req = {query: {}, body: {}, form: {}}
+        Array.from(process.argv).forEach(arg => {
+            req.query[arg.split('=')[0]] = arg.split('=').slice(1).join('=')
+        })
+    }
+    res.set('Access-Control-Allow-Origin', '*')
+    var parameters = Object.values(req.query || {})
+        .concat(Object.values(req.body || {}))
+        .concat(Object.values(req.form || {}))
+    
+    var func = require('./entry.js')
+    return await func(...parameters)
+        .then(r => !res ? console.log(r) : res.status(200).send(r))
+        .catch(e => !res ? console.log(e) : res.status(500).send(e))
+}
+
+// use syntax to alter the function handler above
+//  to pull out parameters and call the requested function
+//  slightly simpler code than including the entire library
+function makeHandler(entry) {
+    var thisCell = importer.interpret('generic cloud function handler')
+    if(!Array.isArray(entry)) {
+        entry = [entry]
+    }
+    var exports = []
+    var interpret = importer.interpret(entry)
+    var handlers = interpret.map(cell => {
+        // replace the require statement
+        // TODO: make this part generic, moving vars to parameters
+        var doc = selectAst('.', handler.toString())
+
+        var exportsName = getExports(cell.code)[0]
+        exports.push(exportsName + 'Handler')
+        var functionStmt = selectAst(`
+//FunctionDeclaration/Identifier[@name="handler"]`, doc)
+        functionStmt.setAttribute('name', exportsName + 'Handler')
+        var parameters = getParameters(cell.code).slice(1)
+
+        // replace the parameters with names
+        var replaceParams = selectAst('//VariableDeclaration', `
+var parameters = [${parameters
+            .map(p => `(req.body || {})['${p}'] || (req.form || {})['${p}'] || (req.query || {})['${p}']`)
+            .join(',\n')}]`)
+        
+        var assignmentStmt = selectAst([`//VariableDeclaration[./*/*[@name = "parameters"]]`], doc)
+        assignmentStmt[0].replaceWith(replaceParams)
+        
+        var requireStmt = selectAst(`//VariableDeclaration[./*/*[@name = "func"]]`, doc)
+        var replaceRequire = selectAst('//VariableDeclaration', `
+var ${exportsName} = require('./${niceName(cell)}')`)
+        requireStmt.replaceWith(replaceRequire)
+                
+        // replace function call with new named
+        var callStmt = selectAst(`//CallExpression/Identifier[@name = "func"]`, doc)
+        callStmt.setAttribute('name', exportsName)
+        return doc.ownerDocument.toString()
+    }).join('\n\n')
+    return `${handlers}
+
+module.exports = {
+    ${exports.join(',\n    ')}
+}`
+}
+
+module.exports = {
+    makeHandler,
+    handler
+}
+</code></pre>
+
+<p>This code defines a generic cloud function handler and a function <code>makeHandler</code> to create specialized handlers from code snippets.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for interacting with the cloud function environment, selecting AST nodes, generating nice names, extracting exports and parameters from code.</li>
+</ul></li>
+<li><p><strong><code>handler</code> Function:</strong></p>
+<ul>
+<li>This is the main function that acts as the cloud function handler.</li>
+<li>It handles incoming requests (<code>req</code>) and responses (<code>res</code>).</li>
+<li>If run in a non-TTY environment (likely a cloud function), it uses the provided <code>req</code> and <code>res</code> objects.</li>
+<li>If run in a TTY environment (likely for local testing), it simulates a request object based on command-line arguments.</li>
+<li>Sets the <code>Access-Control-Allow-Origin</code> header to allow requests from any origin.</li>
+<li>Extracts parameters from the request query, body, and form.</li>
+<li>Requires the <code>entry.js</code> file, which likely contains the code for the specific function to be executed.</li>
+<li>Calls the function with the extracted parameters.</li>
+<li>Handles the result:
+<ul>
+<li>If <code>res</code> is not provided (likely in a TTY environment), it logs the result to the console.</li>
+<li>If <code>res</code> is provided, it sends the result as a response with a 200 status code.</li>
+</ul></li>
+<li>Handles errors:
+<ul>
+<li>If <code>res</code> is not provided, it logs the error to the console.</li>
+<li>If <code>res</code> is provided, it sends the error as a response with a 500 status code.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>makeHandler</code> Function:</strong></p>
+<ul>
+<li>This function takes a code snippet (<code>entry</code>) as input and generates a specialized handler function.</li>
+<li>It interprets the code snippet using <code>importer.interpret</code>.</li>
+<li>Extracts the exports and parameters from the code.</li>
+<li>Modifies the AST of the handler function to replace the require statement and parameters with the extracted information.</li>
+<li>Returns the modified handler function.</li>
+</ul></li>
+</ol>

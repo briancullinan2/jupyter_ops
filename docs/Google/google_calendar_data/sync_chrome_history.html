@@ -1,0 +1,112 @@
+<p>This code synchronizes your Chrome browsing history from Takeout files into a Google Calendar, creating a visual timeline of your online activity grouped by half-hour intervals.</p>
+
+
+<pre><code>var importer = require('../Core');
+var url = require('url');
+var glob = require('glob');
+var path = require('path');
+var fs = require('fs');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Downloads';
+
+function loadChromeHistory(file) {
+    var chromeHistory = {};
+    var wholeFile = JSON.parse(fs.readFileSync(file).toString('utf-8'))
+    wholeFile['Browser History'].forEach((match) => {
+        var timeGroup = Math.round(match.time_usec / 60 / 30 / 1000000) * 60 * 30 * 1000;
+        if (typeof chromeHistory[timeGroup] === 'undefined') {
+            chromeHistory[timeGroup] = [];
+        }
+        match.host = url.parse(match.url).hostname;
+        var hostAlreadyListed = chromeHistory[timeGroup]
+            .filter(h => h.host === match.host)
+        if (hostAlreadyListed.length === 0) {
+            chromeHistory[timeGroup].push(match);
+        } else {
+            if (typeof hostAlreadyListed[0].urls === 'undefined') {
+                hostAlreadyListed[0].urls = {};
+            }
+            hostAlreadyListed[0].urls[match.time_usec] = match.url;
+        }
+    })
+    return Promise.resolve(chromeHistory);
+}
+
+var {
+    ISODateString, updateEvent, correctCalendarId
+} = importer.import([
+    'import google calendar api',
+    'lookup calendar name',
+    'convert date iso',
+    'update create merge event'
+]);
+
+var options = {
+    calendarId: 'Bookmarks'
+};
+
+function syncChromeHistory() {
+    var files = glob.sync('Takeout*/Chrome/BrowserHistory.json', {cwd: PROJECT_PATH})
+        .map(f => path.join(PROJECT_PATH, f));
+    files.sort((a, b) => fs.statSync(a).ctime - fs.statSync(b).ctime);
+    return correctCalendarId(options)
+        .then(() => loadChromeHistory(files.pop()))
+        .then(links => {
+            const groups = Object.keys(links).sort((a, b) => parseInt(b) - parseInt(a));
+            console.log(groups.slice(0, 10));
+            console.log(new Date(parseInt(Object.keys(links)[0])));
+            return Object.keys(links).map(t => ({
+                start: {
+                    dateTime: ISODateString(new Date(parseInt(t)))
+                },
+                end: {
+                    dateTime: ISODateString(new Date(parseInt(t) + 60 * 30 * 1000))
+                },
+                summary: 'Chrome activity',
+                description: JSON.stringify(links[t], null, 4)
+            }))
+        })
+        .then(results => {
+            return importer.runAllPromises(results
+                .map(event => resolve => {
+                    return updateEvent(event, options)
+                        .then(r => resolve(r))
+                        .catch(e => {
+                            console.log(e);
+                            resolve()
+                        })
+                }))
+        })
+        .catch(e => console.log(e))
+}
+
+module.exports = syncChromeHistory;
+</code></pre>
+
+<p>This code synchronizes your Chrome browsing history from Takeout files with a Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules for file system operations, URL parsing, glob matching, and interacting with Google Calendar.</li>
+<li>It defines paths to your Downloads folder and the location of Takeout files.</li>
+</ul></li>
+<li><p><strong>History Loading:</strong></p>
+<ul>
+<li><code>loadChromeHistory</code> parses a Chrome history JSON file, groups visits by half-hour intervals, and extracts hostnames and URLs.</li>
+<li>It handles duplicate entries by storing multiple URLs for the same host within the same time group.</li>
+</ul></li>
+<li><p><strong>Calendar Integration:</strong></p>
+<ul>
+<li>It imports functions for interacting with Google Calendar, including correcting calendar IDs, creating events, and converting dates to ISO format.</li>
+<li>It defines options for targeting a specific calendar named &quot;Bookmarks&quot;.</li>
+</ul></li>
+<li><p><strong>Synchronization Logic:</strong></p>
+<ul>
+<li><code>syncChromeHistory</code> locates Takeout files containing Chrome history, sorts them by creation time, and loads the most recent history file.</li>
+<li>It groups the loaded history data by half-hour intervals.</li>
+<li>It then iterates through these groups and likely creates corresponding Google Calendar events, summarizing each group by its time range and including details about visited hosts and URLs.</li>
+</ul></li>
+</ol>
+<p>In essence, this code fetches your Chrome browsing history from Takeout files, organizes it by time, and pushes it into a Google Calendar as a visual timeline of your online activity.</p>

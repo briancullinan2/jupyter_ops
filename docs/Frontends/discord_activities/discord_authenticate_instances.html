@@ -1,0 +1,81 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code imports dependencies from a 'discord gateway' module and defines allowed user IDs, authenticates routes using a session-based system, and handles unauthenticated requests. The <code>authenticateRoute</code> function checks for a valid session and user ID, and exports the authentication function, as well as the <code>INSTANCES</code> and <code>SESSIONS</code> variables, from the current module.</p>
+
+
+<pre><code>const {INSTANCES, SESSIONS} = importer.import('discord gateway')
+
+const ALLOWED_USERS = [
+  '1019970191603544164'
+]
+
+async function authenticateRoute(req, res, next) {
+  var url_parts = url.parse(req.url, true);
+  var query = url_parts.query;
+  //console.log(query, SESSIONS, query.session && typeof SESSIONS[query.session] != 'undefined' 
+  //  && ALLOWED_USERS.includes(SESSIONS[query.session]))
+  if(query.session && typeof SESSIONS[query.session] != 'undefined' 
+    && ALLOWED_USERS.includes(SESSIONS[query.session])) {
+    req.authenticated = query.session
+    return next()
+  }
+
+  // TODO: check if the user is in fact apart of the activity
+  req.authenticated = false
+
+  return next()
+}
+
+
+module.exports = {
+  //registerInstance,
+  authenticateRoute,
+  INSTANCES,
+  SESSIONS,
+  
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">const {INSTANCES, SESSIONS} = importer.import('discord gateway')
+</code></pre>
+<p>This line imports two variables, <code>INSTANCES</code> and <code>SESSIONS</code>, from a module named <code>'discord gateway'</code> using the <code>importer.import</code> function.</p>
+<h3>Defining Allowed Users</h3>
+<pre><code class="language-javascript">const ALLOWED_USERS = [
+  '1019970191603544164'
+]
+</code></pre>
+<p>This line defines an array of allowed user IDs, where only users with the specified ID are granted access.</p>
+<h3>Authenticating Route</h3>
+<pre><code class="language-javascript">async function authenticateRoute(req, res, next) {
+  //...
+}
+</code></pre>
+<p>This is an asynchronous function, <code>authenticateRoute</code>, which takes three parameters: <code>req</code> (request), <code>res</code> (response), and <code>next</code> (the next middleware function in the chain).</p>
+<h3>Checking Authentication</h3>
+<pre><code class="language-javascript">if(query.session &amp;&amp; typeof SESSIONS[query.session]!= 'undefined' 
+  &amp;&amp; ALLOWED_USERS.includes(SESSIONS[query.session])) {
+  req.authenticated = query.session
+  return next()
+}
+</code></pre>
+<p>This block checks if:</p>
+<ol>
+<li>A <code>session</code> query parameter is present in the request URL.</li>
+<li>The corresponding session exists in the <code>SESSIONS</code> object.</li>
+<li>The session's user ID is in the <code>ALLOWED_USERS</code> array.</li>
+</ol>
+<p>If all conditions are met, the function sets <code>req.authenticated</code> to the session ID and continues execution.</p>
+<h3>Handling Unauthenticated Requests</h3>
+<pre><code class="language-javascript">req.authenticated = false
+return next()
+</code></pre>
+<p>If the request is not authenticated, the function sets <code>req.authenticated</code> to <code>false</code> and continues execution.</p>
+<h3>Exporting Functions and Variables</h3>
+<pre><code class="language-javascript">module.exports = {
+  authenticateRoute,
+  INSTANCES,
+  SESSIONS,
+}
+</code></pre>
+<p>This line exports the <code>authenticateRoute</code> function, as well as the <code>INSTANCES</code> and <code>SESSIONS</code> variables, from the current module.</p>

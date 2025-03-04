@@ -1,0 +1,59 @@
+<p>This code defines a function <code>promisifyMock</code> that creates mock implementations for asynchronous functions in a request object, enabling easier testing by replacing these functions with controlled stubs.</p>
+
+
+<pre><code>var Promise = require('bluebird');
+var importer = require('../Core');
+var automock = importer.import('mock all properties and functions using rewire');
+
+function promisifyMock(req, dep) {
+    let ctx;
+    ctx = automock.mockValue(req, {
+        stubCreator: (name) => {
+            var orig = Promise.promisify(req[name.split('.')[1]], {
+                multiArgs: true,
+                context: req
+            });
+            //console.log('create stub ' + name);
+            return function () {
+                console.log(name + ' (' + arguments[0] + ') in ' + JSON.stringify(dep));
+                return orig.apply(null, arguments);
+            };
+        }
+    });
+    return ctx;
+};
+module.exports = promisifyMock;
+</code></pre>
+
+<p>This code defines a function <code>promisifyMock</code> that creates mock implementations for asynchronous functions within a given request object (<code>req</code>) using the <code>rewire</code> library.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>Promise</code>: A library for working with promises.</li>
+<li><code>importer</code>: A custom module likely responsible for importing external libraries.</li>
+<li><code>automock</code>: A function from the <code>importer</code> module that provides mocking capabilities.</li>
+</ul></li>
+<li><p><strong><code>promisifyMock</code> Function:</strong></p>
+<ul>
+<li>Takes two arguments: <code>req</code> (the request object) and <code>dep</code> (the dependency object).</li>
+<li>Uses <code>automock.mockValue</code> to create a mock context (<code>ctx</code>) for the <code>req</code> object.</li>
+<li>Defines a stub creator function within the mock context that:
+<ul>
+<li>Takes a function name (<code>name</code>) as input.</li>
+<li>Uses <code>Promise.promisify</code> to create a promise-based version of the original function from <code>req</code>.</li>
+<li>Logs a message indicating the stub creation and function name.</li>
+<li>Returns a stub function that:
+<ul>
+<li>Logs a message with the function name and arguments.</li>
+<li>Calls the original promisified function with the provided arguments.</li>
+</ul></li>
+</ul></li>
+<li>Returns the mock context (<code>ctx</code>).</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = promisifyMock;</code>: Exports the <code>promisifyMock</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to mock asynchronous functions within a request object, allowing for easier testing and mocking of dependencies.</p>

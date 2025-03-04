@@ -1,0 +1,99 @@
+<p>This code provides a utility for extracting files from Quake 3 game archives (<code>.pk3</code> and <code>.zip</code>) by defining functions to handle individual archive extraction (<code>readPak</code>) and recursive extraction of multiple archives within a directory (<code>extractPaks</code>).  This utility enables users to access Quake 3 game assets and resources.</p>
+
+
+<pre><code>var StreamZip = require('node-stream-zip');
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var {globSync} = require('glob')
+var mkdirpSync = importer.import('mkdirp')
+
+async function readPak(zipFile, outdir) {
+    if(!outdir) {
+        outdir = '/Users/briancullinan/.q3a/unpacked/' + path.basename(zipFile) + 'dir'
+    }
+    const zip = new StreamZip.async({ file: zipFile, skipEntryNameValidation: true })
+
+    const entries = await zip.entries()
+    console.log(entries)
+    for (const entry of Object.values(entries)) {
+        var levelPath = path.join(outdir, entry.name).replace(/\\/g, '/')
+        if(fs.existsSync(levelPath)) continue
+        if(entry.isDirectory) continue
+        mkdirpSync(path.dirname(levelPath))
+        await zip.extract(entry.name, levelPath);
+    }
+
+    await zip.close();
+}
+
+
+async function extractPaks(inpaks, outdir) {
+    let root = path.resolve(path.dirname(inpaks))
+    var results = globSync('**', {cwd: root})
+    results.sort()
+    console.log(path.resolve(path.dirname(inpaks)), results)
+    for(let i = 0; i < results.length; i++) {
+        if(!results[i].match(/(\.pk3|\.zip)/))
+            continue
+        if(results[i].match(/\/|\\/))
+            await readPak(path.join(root, results[i]), path.join(outdir, path.dirname(results[i])))
+        else
+            await readPak(path.join(root, results[i]), outdir)
+    }
+
+}
+
+
+module.exports = extractPaks;
+</code></pre>
+
+<p>This code snippet defines two asynchronous functions, <code>readPak</code> and <code>extractPaks</code>, designed to extract files from Quake 3 game archives (<code>.pk3</code> and <code>.zip</code> files).</p>
+<p><strong><code>readPak</code> Function:</strong></p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Takes a <code>zipFile</code> (the archive to extract) and an optional <code>outdir</code> (the output directory). If <code>outdir</code> is not provided, it defaults to a directory named after the archive file.</li>
+<li>Uses the <code>node-stream-zip</code> library to create a zip archive object.</li>
+</ul></li>
+<li><p><strong>Extraction:</strong></p>
+<ul>
+<li>Gets a list of entries within the archive.</li>
+<li>Iterates through each entry:
+<ul>
+<li>Constructs the full path to the extracted file in the output directory.</li>
+<li>Skips the extraction if the file already exists.</li>
+<li>Creates any necessary parent directories.</li>
+<li>Extracts the entry to the specified path.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Cleanup:</strong></p>
+<ul>
+<li>Closes the zip archive object.</li>
+</ul></li>
+</ol>
+<p><strong><code>extractPaks</code> Function:</strong></p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Takes a <code>inpaks</code> (the directory containing the archives) and an optional <code>outdir</code> (the output directory).</li>
+<li>Determines the root directory of the input.</li>
+<li>Finds all files within the input directory using <code>globSync</code>.</li>
+<li>Sorts the found files.</li>
+</ul></li>
+<li><p><strong>Extraction Loop:</strong></p>
+<ul>
+<li>Iterates through the found files:
+<ul>
+<li>Skips files that are not <code>.pk3</code> or <code>.zip</code> archives.</li>
+<li>If the file is a directory, recursively calls <code>readPak</code> to extract its contents.</li>
+<li>Otherwise, calls <code>readPak</code> to extract the file directly.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>extractPaks</code> function as a module.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet provides a utility for extracting files from Quake 3 game archives, allowing users to access individual game assets and resources.</p>

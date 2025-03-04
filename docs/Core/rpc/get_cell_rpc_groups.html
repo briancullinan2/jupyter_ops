@@ -1,0 +1,86 @@
+<p>This code categorizes code cells into predefined groups based on their language, content, metadata, and other factors, likely for organization or analysis within a code editor.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    selectAst,
+    getExports
+} = importer.import(['select code tree', 'get exports'])
+
+// TODO: filter RPC functions by fully unit tested or unlinted?
+// TODO: filter by local system groups?
+// TODO: move these classifications to import notebook?
+var {FUNCTION_GROUPS, SELENIUM_GROUPS,
+     UNITTEST_GROUPS, DEFAULT_GROUPS, PUBLIC} = importer.import('rpc groups')
+
+function getUnmatched(cell) {
+    try {
+        return !cell.questions[0]
+            || cell.id != importer.interpret(cell.id2).id
+            || cell.id != importer.interpret(cell.questions[0]).id
+    } catch (e) {
+        return false;
+    }
+}
+
+function filterClassGroups(cell) {
+    return (cell.groups || [])
+        .filter(g => g !== 'Unmatched' && g !== 'Exact'
+           && g !== 'Corrected' && g !== 'Available'
+           && g !== 'Error' && g !== 'Uncallable')
+}
+
+function getCellGroups(cell) {
+    if(cell.language === 'javascript') {
+        try {
+            cell.ast = selectAst('*', cell.code)
+            cell.exports = getExports(cell.code)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    return [].concat.apply([], [
+        cell.groups,
+        cell.ast ? [] : ['Error'],
+        cell.ast && cell.exports[0] ? FUNCTION_GROUPS : ['Uncallable'],
+        cell.filename.includes('Selenium') ? SELENIUM_GROUPS : [],
+        cell.questions[0].includes('test') ? UNITTEST_GROUPS : [],
+        // TODO: add AST check for describe function call
+        [cell.language],
+        // filter RPC functions by module.exports
+        cell.exports || [],
+        // filter by notebook name
+        cell.notebook.replace(/\.ipynb|\s+/ig, '').toLowerCase(),
+        getUnmatched(cell) ? ['Unmatched'] : DEFAULT_GROUPS,
+        !cell.original || cell.id2 === cell.original ? ['Exact'] : ['Corrected']
+    ]).filter((g, i, arr) => arr.indexOf(g) === i)
+}
+
+module.exports = getCellGroups;
+</code></pre>
+
+<p>This code defines a function <code>getCellGroups</code> that categorizes code cells based on various criteria.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports functions for interacting with code trees, retrieving exports, and defining RPC groups.</li>
+</ul></li>
+<li><p><strong><code>getUnmatched</code>, <code>filterClassGroups</code> Functions:</strong></p>
+<ul>
+<li>Helper functions to identify unmatched cells and filter out specific group classifications.</li>
+</ul></li>
+<li><p><strong><code>getCellGroups</code> Function:</strong></p>
+<ul>
+<li>Takes a code cell as input.</li>
+<li>Analyzes the cell's language, code, and metadata.</li>
+<li>Uses <code>selectAst</code> and <code>getExports</code> to extract AST and exports information (if applicable).</li>
+<li>Constructs a list of groups based on various factors:
+<ul>
+<li>Existing <code>cell.groups</code></li>
+<li>Language, AST presence, exports, filename, notebook name, and other criteria.</li>
+</ul></li>
+<li>Filters out duplicate groups and returns the final list.</li>
+</ul></li>
+</ol>
+<p>In essence, this code categorizes code cells into predefined groups based on their content, structure, and metadata, likely for organization, analysis, or filtering purposes within a code editor or development environment.</p>

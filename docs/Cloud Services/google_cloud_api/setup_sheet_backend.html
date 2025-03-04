@@ -1,0 +1,81 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>The code imports various functions and modules, including <code>getSheet</code> for retrieving data from a Google Sheets API and <code>addIP</code> for performing a DNS lookup, and defines a <code>setupBackend</code> function that uses these functions to set up a Google Cloud Backend. The <code>setupBackend</code> function takes <code>link</code> and <code>domain</code> as arguments, performs a series of operations to set up the backend, and returns the <code>domain</code> value.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getSheet = importer.import('get sheet purchases');
+//var purchaseId = '1kWjkjLGxQyzFUzRLBk3LpcjPW3UjcaF-PBMDX_3hZfM';
+var addIP = importer.import('check dns');
+var {
+    insertBackendBucket,
+    insertGlobalForward,
+    updateUrlMap
+} = importer.import('add google bucket web map');
+
+var urlMap = 'web-map';
+
+function setupBackend(link, domain) {
+    var project;
+
+    return getSheet(link, domain)
+        .then(match => {
+            project = match.project;
+            domain = domain || match.bucket;
+            return addIP(project, domain);
+        })
+        .then(ip => insertGlobalForward(project, ip, urlMap, domain))
+        .then(() => insertBackendBucket(project, domain))
+        .then(() => updateUrlMap(project, urlMap, domain))
+        .then(() => domain)
+}
+
+module.exports = setupBackend;
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<p><strong>Importing Modules and Functions</strong></p>
+<pre><code class="language-javascript">var importer = require('../Core');
+var getSheet = importer.import('get sheet purchases');
+var addIP = importer.import('check dns');
+var {
+    insertBackendBucket,
+    insertGlobalForward,
+    updateUrlMap
+} = importer.import('add google bucket web map');
+</code></pre>
+<p>This section imports functions and modules from another file (<code>../Core</code>):</p>
+<ul>
+<li><code>getSheet</code>: retrieves data from a sheet ( likely a Google Sheets API)</li>
+<li><code>addIP</code>: checks a DNS (likely performs a DNS lookup)</li>
+<li>Three functions (<code>insertBackendBucket</code>, <code>insertGlobalForward</code>, <code>updateUrlMap</code>) are imported from a module named <code>add google bucket web map</code>, likely related to setting up a Google Cloud Backend.</li>
+</ul>
+<p><strong>Defining the <code>setupBackend</code> Function</strong></p>
+<pre><code class="language-javascript">function setupBackend(link, domain) {
+    var project;
+
+    return getSheet(link, domain)
+       .then(match =&gt; {
+            project = match.project;
+            domain = domain || match.bucket;
+            return addIP(project, domain);
+        })
+       .then(ip =&gt; insertGlobalForward(project, ip, urlMap, domain))
+       .then(() =&gt; insertBackendBucket(project, domain))
+       .then(() =&gt; updateUrlMap(project, urlMap, domain))
+       .then(() =&gt; domain)
+}
+</code></pre>
+<p>This function, <code>setupBackend</code>, takes two arguments: <code>link</code> and <code>domain</code>. It:</p>
+<ol>
+<li>Calls <code>getSheet</code> to retrieve data and sets <code>project</code> and <code>domain</code> accordingly.</li>
+<li>Calls <code>addIP</code> to perform a DNS lookup.</li>
+<li>Calls <code>insertGlobalForward</code> to set up a global forward.</li>
+<li>Calls <code>insertBackendBucket</code> to set up a backend bucket.</li>
+<li>Calls <code>updateUrlMap</code> to update a URL map.</li>
+<li>Returns the <code>domain</code> value.</li>
+</ol>
+<p><strong>Exporting the <code>setupBackend</code> Function</strong></p>
+<pre><code class="language-javascript">module.exports = setupBackend;
+</code></pre>
+<p>This line exports the <code>setupBackend</code> function as a module, making it available for use in other files.</p>

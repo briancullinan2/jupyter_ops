@@ -1,0 +1,11 @@
+
+
+<pre><code>
+convert /Users/briancullinan/jupyter_ops/.output/IMG_6104.jpeg -scale 50% -quality 50% /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg && \
+
+convert /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg
+
+#convert /Users/briancullinan/jupyter_ops/.output/IMG_6104.jpeg +clone -scale 200% -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -sampling-factor 4:2:2 -strip -scale 200% -quality 10% -interlace JPEG -colorspace sRGB /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg
+
+echo "done"</code></pre>
+

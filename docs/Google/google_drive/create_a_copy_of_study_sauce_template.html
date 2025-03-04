@@ -1,0 +1,61 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The <code>copyStudy</code> function duplicates a Google Drive file named &quot;Study sauce template&quot; and grants permissions for a specified email address. It achieves this by listing files, copying the file, inserting permissions, and retrieving a sheet identifier, before returning the new file ID.</p>
+
+
+<pre><code>var uuid = require('uuid/v1');
+var importer = require('../Core');
+var getSheet = importer.import('get sheet identifier');
+var copyFile = importer.import('copy a file on google drive');
+var listDrive = importer.import('list google drive files');
+var insertPermission = importer.import('insert google drive permissions');
+
+function copyStudy(email) {
+    var fileId, newId;
+    if(!email) {
+        throw new Error('email not specified!');
+    }
+    return listDrive()
+        .then(r => fileId = r.filter(f => f.name === 'Study sauce template')[0].id)
+        .then(() => copyFile(fileId, 'Study sauce ' + uuid().substr(0, 5)))
+        .then(id => newId = id)
+        .then(() => insertPermission(newId, email))
+        .then(() => getSheet(newId, null, email))
+        .then(() => newId)
+}
+
+module.exports = copyStudy;
+
+</code></pre>
+
+<h2>Breakdown of the Code</h2>
+<h3>Dependencies</h3>
+<ul>
+<li><code>uuid/v1</code>: a module for generating unique IDs.</li>
+<li><code>../Core</code>: a module that exports various functions for interacting with Google Drive.</li>
+</ul>
+<h3>Imported Functions</h3>
+<ul>
+<li><code>getSheet</code>: retrieves a sheet identifier.</li>
+<li><code>copyFile</code>: copies a file from Google Drive.</li>
+<li><code>listDrive</code>: lists files in Google Drive.</li>
+<li><code>insertPermission</code>: inserts permissions on a Google Drive file.</li>
+</ul>
+<h3>Function <code>copyStudy</code></h3>
+<h4>Purpose</h4>
+<p>Duplicates a Google Drive file named &quot;Study sauce template&quot; and inserts permissions for the specified email.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>email</code>: the email address to grant permissions for.</li>
+</ul>
+<h4>Flow</h4>
+<ol>
+<li>Checks if the <code>email</code> parameter is specified. If not, throws an error.</li>
+<li>Lists files in Google Drive using <code>listDrive</code>.</li>
+<li>Retrieves the ID of the file named &quot;Study sauce template&quot;.</li>
+<li>Copies the file using <code>copyFile</code> and generates a new ID.</li>
+<li>Inserts permissions for the specified email using <code>insertPermission</code>.</li>
+<li>Retrieves the sheet identifier using <code>getSheet</code>.</li>
+<li>Returns the new file ID.</li>
+</ol>
+<h4>Export</h4>
+<p>The <code>copyStudy</code> function is exported as a module.</p>

@@ -1,0 +1,40 @@
+<p>This code snippet showcases two methods for applying patches in Git: using a visual diff tool (<code>git difftool</code>) and a text-based approach with the <code>patch</code> command.</p>
+
+
+<pre><code>git difftool --tool=b3 branch1..branch2
+
+git diff > save.patch
+patch -p1 < save.patch
+
+git diff --no-prefix > save.patch
+patch -p0 < save.patch
+
+</code></pre>
+
+<p>This code snippet demonstrates two different ways to apply patches in Git, using both a visual diff tool and a text-based approach.</p>
+<p><strong>First Part:</strong></p>
+<pre><code class="language-bash">git difftool --tool=b3 branch1..branch2
+</code></pre>
+<ul>
+<li><strong><code>git difftool</code>:</strong> This command opens a visual diff tool to compare the changes between two branches (<code>branch1</code> and <code>branch2</code>).</li>
+<li><strong><code>--tool=b3</code>:</strong> Specifies the diff tool to use, in this case, <code>b3</code>.</li>
+</ul>
+<p><strong>Purpose:</strong> This part visually compares the changes between the two branches, allowing you to review and understand the differences.</p>
+<p><strong>Second Part:</strong></p>
+<pre><code class="language-bash">git diff &gt; save.patch
+patch -p1 &lt; save.patch
+</code></pre>
+<ul>
+<li><strong><code>git diff &gt; save.patch</code>:</strong> This captures the changes between the current state and the last commit and saves them as a patch file named <code>save.patch</code>.</li>
+<li><strong><code>patch -p1 &lt; save.patch</code>:</strong> This applies the patch file to the working directory. The <code>-p1</code> flag indicates that the patch file contains relative paths.</li>
+</ul>
+<p><strong>Purpose:</strong> This part creates a patch file containing the changes and then applies it to the working directory.</p>
+<p><strong>Third Part:</strong></p>
+<pre><code class="language-bash">git diff --no-prefix &gt; save.patch
+patch -p0 &lt; save.patch
+</code></pre>
+<ul>
+<li><strong><code>git diff --no-prefix &gt; save.patch</code>:</strong> This captures the changes between the current state and the last commit, but without the file path prefixes, and saves them as a patch file named <code>save.patch</code>.</li>
+<li><strong><code>patch -p0 &lt; save.patch</code>:</strong> This applies the patch file to the working directory. The <code>-p0</code> flag indicates that the patch file contains absolute paths.</li>
+</ul>
+<p><strong>Purpose:</strong> This part creates a patch file without file path prefixes and applies it to the working directory.</p>

@@ -1,0 +1,82 @@
+<p>This module exports various constants and variables used in a Discord bot application, including environment variables, local filepaths, and token and secret retrieval. The module provides default values for these variables, and can be accessed by importing the module.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+
+var DEFAULT_GUILD = process.env.DEFAULT_GUILD || '319817668117135362'
+var DEFAULT_CHANNEL = process.env.DEFAULT_CHANNEL || '1328142980967563337' // 366715821654933515
+var DEFAULT_APPLICATION = process.env.DEFAULT_APPLICATION || '1328141471840206899'
+var DEFAULT_API = process.env.DEFAULT_API || 'https://discord.com/api/v10/'
+var MESSAGE_TIME = process.env.DEFAULT_TIME || 1000 * 60 * 2 // * 60 // 2 minutes to respond
+var DEFAULT_RATE = 1000 / 50 // from discord documentation
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+var DEFAULT_USERNAME = 'Orbb'
+var MESSAGES_START = 1420070400000
+
+var tokenPath
+if(fs.existsSync('./discord-bot.txt')) {
+  tokenPath = path.resolve('./discord-bot.txt')
+} else {
+  tokenPath = path.join(PROFILE_PATH, '.credentials/discord-bot.txt')
+}
+
+var secretPath
+if(fs.existsSync('./discord.txt')) {
+  secretPath = path.resolve('./discord.txt')
+} else {
+  secretPath = path.join(PROFILE_PATH, '.credentials/discord.txt')
+}
+
+
+var TOKEN = process.env.TOKEN
+if(!TOKEN && fs.existsSync(process.env.TOKENPATH || tokenPath)) {
+  TOKEN = fs.readFileSync(process.env.TOKENPATH || tokenPath).toString('utf-8').trim()
+}
+
+var SECRET = process.env.SECRET
+if(!SECRET && fs.existsSync(process.env.SECRETPATH || secretPath)) {
+  SECRET = fs.readFileSync(process.env.SECRETPATH || secretPath).toString('utf-8').trim()
+}
+
+module.exports = {
+  DEFAULT_GUILD,
+  DEFAULT_CHANNEL,
+  DEFAULT_APPLICATION,
+  DEFAULT_API,
+  MESSAGE_TIME,
+  DEFAULT_RATE,
+  PROFILE_PATH,
+  TOKEN,
+  SECRET,
+  DEFAULT_USERNAME,
+  MESSAGES_START
+}
+</code></pre>
+
+<h2>Module Overview</h2>
+<p>This module exports various constants and variables used in a Discord bot application.</p>
+<h3>Environment Variables</h3>
+<ul>
+<li><code>DEFAULT_GUILD</code>: The default Discord guild ID (defaults to '319817668117135362' if not set)</li>
+<li><code>DEFAULT_CHANNEL</code>: The default Discord channel ID (defaults to '1328142980967563337' if not set)</li>
+<li><code>DEFAULT_APPLICATION</code>: The default Discord application ID (defaults to '1328141471840206899' if not set)</li>
+<li><code>DEFAULT_API</code>: The default Discord API URL (defaults to 'https://discord.com/api/v10/' if not set)</li>
+<li><code>MESSAGE_TIME</code>: The time in milliseconds to respond (defaults to 2 minutes if not set)</li>
+<li><code>DEFAULT_RATE</code>: The default rate limit (50 requests per second)</li>
+<li><code>PROFILE_PATH</code>: The path to the user's profile directory</li>
+<li><code>DEFAULT_USERNAME</code>: The default username ('Orbb')</li>
+<li><code>MESSAGES_START</code>: The start time of messages (1420070400000)</li>
+</ul>
+<h3>Local Filepaths</h3>
+<ul>
+<li><code>tokenPath</code>: The path to the Discord bot token file</li>
+<li><code>secretPath</code>: The path to the Discord secret file</li>
+</ul>
+<h3>Token and Secret Retrieval</h3>
+<ul>
+<li><code>TOKEN</code>: The Discord bot token (read from <code>TOKENPATH</code> or <code>tokenPath</code>)</li>
+<li><code>SECRET</code>: The Discord secret (read from <code>SECRETPATH</code> or <code>secretPath</code>)</li>
+</ul>
+<h3>Module Exports</h3>
+<p>The module exports all the above constants and variables.</p>

@@ -1,0 +1,47 @@
+<p>This code defines a function <code>sendTwilio</code> that uses your Twilio account credentials to send text messages to a specified phone number.  It takes the recipient's phone number and the message content as input and returns the unique identifier of the sent message.</p>
+
+
+<pre><code>var accountSid = 'SKb0edec7c2a729ae2cb2ae0561bc0ed33'; // Your Account SID from www.twilio.com/console
+var authToken = 'V53NuXy1ZJcwBXwmo6or35E7X5gNPnSY';   // Your Auth Token from www.twilio.com/console
+
+var twilio = require('twilio');
+var client = new twilio(accountSid, authToken);
+
+function sendTwilio(to, message) {
+    return client.messages.create({
+        body: message,
+        to: (!to.includes('+') ? '+1' : '') + to,  // Text this number
+        from: '+18086701280' // From a valid Twilio number
+    }).then(message => message.sid);
+}
+module.exports = sendTwilio;
+</code></pre>
+
+<p>This code sets up a function to send text messages using the Twilio API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Credentials:</strong></p>
+<ul>
+<li>It defines <code>accountSid</code> and <code>authToken</code>, which are your Twilio account credentials obtained from the Twilio console.</li>
+</ul></li>
+<li><p><strong>Twilio Library:</strong></p>
+<ul>
+<li>It imports the <code>twilio</code> library to interact with the Twilio API.</li>
+</ul></li>
+<li><p><strong>Client Initialization:</strong></p>
+<ul>
+<li>It creates a <code>twilio</code> client object using your credentials.</li>
+</ul></li>
+<li><p><strong><code>sendTwilio</code> Function:</strong></p>
+<ul>
+<li>This function takes a <code>to</code> (phone number) and <code>message</code> as input.</li>
+<li>It constructs a message object with the message body, recipient number (prefixed with <code>+1</code> if needed), and a Twilio sender number.</li>
+<li>It uses <code>client.messages.create()</code> to send the message through the Twilio API.</li>
+<li>It returns the <code>sid</code> (unique identifier) of the sent message.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>sendTwilio</code> function is exported, allowing other parts of the application to use it to send text messages.</li>
+</ul></li>
+</ol>
+<p>Essentially, this code provides a reusable way to send text messages using your Twilio account.</p>

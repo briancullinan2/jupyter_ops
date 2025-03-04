@@ -1,0 +1,93 @@
+<p>This code analyzes a Git repository and generates a structured representation of its commit history, essentially creating a visual &quot;tree&quot; of branches and commits that can be used for visualization or further processing.</p>
+
+
+<pre><code>var execSync = require('child_process').execSync;
+/*var {
+    execCmd
+} = importer.import([
+    'spawn child process',
+]);*/
+
+
+function gitTree(project) {
+    console.log('creating tree "' + project + '"');
+    var branches = execSync('git branch --list --all ', {cwd: project}).toString()
+        .trim().split(/\s*\n\s*\**\s*/ig)
+        .map(b => b.replace('remotes/', '').trim());
+
+    // reverse git so we can add merges to the "graph" after the branch tree is constructed
+    var branch = execSync('git log --pretty=format:"%ct %d %h %p" '
+        + '--reverse --branches --tags ', {cwd: project}).toString().split(/\s*\n\s*/ig);
+    var all = []; //execSync('git log --pretty=format:"%h %p" --reverse --all').toString().split(/\s*\n\s*/ig);
+
+    var nodes = [];
+    var edges = [];
+    branch.forEach(b => {
+        var commits = ((/[0-9]+\s+\(.*?\)\s*(.+)/ig).exec(b)
+            || (/[0-9]+\s+(.+)/ig).exec(b) || [b, b.trim()])[1].trim().split(/\s+/ig);
+        commits.forEach(r => {
+            if (nodes.filter(d => d.name == r).length == 0) {
+                nodes[nodes.length] = {
+                    name: r,
+                    index: nodes.length,
+                    branch: ((/[0-9]+\s+\((.*?)\)/ig).exec(b) || [b, ''])[1],
+                    time: (/([0-9]+)\s+/ig).exec(b)[1]
+                }
+            }
+        });
+        // don't include merges in tree
+        if (commits.length == 3) {
+            commits = [commits[0], commits[1]];
+        }
+        if (commits.length == 2) {
+            edges = edges.concat(commits.slice(1)
+                // check all existing sources to test for merge
+                .map((c, i) => {
+                    return {source: c, target: commits[i]}; // -1 because of slice(1)
+                }))
+        }
+    });
+
+    return formatNodes(nodes, edges.reverse());
+}
+module.exports = gitTree;
+
+</code></pre>
+
+<p>This code defines a function <code>gitTree</code> that analyzes a Git repository and generates a structured representation of its commit history, essentially creating a visual &quot;tree&quot; of branches and commits.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports the <code>execSync</code> function from the <code>child_process</code> module, which allows executing shell commands synchronously.</li>
+<li>It defines a function <code>gitTree</code> that takes a <code>project</code> path as input.</li>
+</ul></li>
+<li><p><strong>Fetching Branch Information:</strong></p>
+<ul>
+<li>It uses <code>execSync</code> to list all branches (including remote branches) in the specified project using the command <code>git branch --list --all</code>.</li>
+<li>It parses the output, removes remote prefixes, and stores the branch names in the <code>branches</code> array.</li>
+</ul></li>
+<li><p><strong>Fetching Commit History:</strong></p>
+<ul>
+<li>It uses <code>execSync</code> to fetch commit history in a specific format (<code>%ct %d %h %p</code>) using the command <code>git log --pretty=format:&quot;%ct %d %h %p&quot; --reverse --branches --tags</code>.</li>
+<li>It splits the output into individual commits and stores them in the <code>branch</code> array.</li>
+</ul></li>
+<li><p><strong>Building the Tree Structure:</strong></p>
+<ul>
+<li>It initializes two arrays: <code>nodes</code> to store commit information and <code>edges</code> to store relationships between commits (branches).</li>
+<li>It iterates through each commit in the <code>branch</code> array.</li>
+<li>For each commit, it extracts the commit hash, parent commit hash, branch name, and timestamp.</li>
+<li>It creates a <code>node</code> object for each unique commit hash and adds it to the <code>nodes</code> array.</li>
+<li>It identifies merge commits (those with three parent hashes) and adjusts the <code>commits</code> array accordingly.</li>
+<li>It creates <code>edges</code> representing the relationships between parent and child commits.</li>
+</ul></li>
+<li><p><strong>Formatting the Output:</strong></p>
+<ul>
+<li>It calls a function <code>formatNodes</code> (not shown in the code) to format the <code>nodes</code> and <code>edges</code> into a desired structure, likely for visualization or further processing.</li>
+</ul></li>
+<li><p><strong>Returning the Tree:</strong></p>
+<ul>
+<li>The function returns the formatted tree structure.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

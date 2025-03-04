@@ -1,0 +1,54 @@
+<p>This code fetches a complete product catalog from the Zuora API, handling pagination to retrieve all products across multiple pages.</p>
+
+
+<pre><code>
+function getCatalog(zuoraConfig, next) {
+    var catalog = [];
+    return request.request({
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + (typeof next !== 'undefined' ? next.replace(/\/v1/ig, '') : '/catalog/products'),
+        method: 'GET',
+        headers: getAuthHeaders(zuoraConfig)
+    }).then(r => {
+        catalog = catalog.concat(r.body.products);
+        if(r.body.nextPage) {
+            return getCatalog(zuoraConfig, r.body.nextPage).then(r => catalog.concat(r));
+        }
+        return catalog;
+    })
+}
+module.exports = getCatalog;
+</code></pre>
+
+<p>This code defines a function <code>getCatalog</code> that fetches a complete product catalog from the Zuora API, handling pagination.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>catalog</code>: An empty array to store the fetched products.</li>
+</ul></li>
+<li><p><strong>API Request:</strong></p>
+<ul>
+<li><code>request.request</code>: Makes a GET request to the Zuora API endpoint for the catalog.
+<ul>
+<li><code>uri</code>: The base URL for the catalog, with an optional <code>next</code> parameter for pagination.</li>
+<li><code>method</code>: 'GET' for retrieving data.</li>
+<li><code>headers</code>: Authorization headers obtained from <code>getAuthHeaders(zuoraConfig)</code>.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Response Handling:</strong></p>
+<ul>
+<li><code>r.body.products</code>: Extracts the list of products from the API response.</li>
+<li><code>catalog.concat(r.body.products)</code>: Appends the fetched products to the <code>catalog</code> array.</li>
+<li><code>if (r.body.nextPage)</code>: Checks if there are more pages to fetch.
+<ul>
+<li>If yes, recursively calls <code>getCatalog</code> with the <code>nextPage</code> URL and concatenates the results.</li>
+</ul></li>
+<li><code>return catalog</code>: Returns the complete <code>catalog</code> array when all pages are fetched.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = getCatalog</code>: Makes the <code>getCatalog</code> function available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code efficiently retrieves a complete product catalog from the Zuora API by handling pagination and returning a consolidated array of products.</p>

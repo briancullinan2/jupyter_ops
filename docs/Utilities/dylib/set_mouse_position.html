@@ -1,0 +1,31 @@
+<p>The <code>moveMouse</code> function moves the mouse cursor to the specified coordinates (x, y) asynchronously, returning a promise that resolves when the move is complete. It requires an <code>importer</code> object and the <code>mouse control c</code> module, and is exported as a module.</p>
+
+
+<pre><code>
+async function moveMouse(x, y) {
+  let {SetMousePosition} = await importer.import('mouse control c')
+  await SetMousePosition(parseFloat(x), parseFloat(y))
+}
+
+module.exports = moveMouse
+</code></pre>
+
+<h3>Function: <code>moveMouse</code></h3>
+<h4>Description</h4>
+<p>Moves the mouse cursor to the specified coordinates (x, y) asynchronously.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>x</code> (number): The x-coordinate to move the mouse cursor to.</li>
+<li><code>y</code> (number): The y-coordinate to move the mouse cursor to.</li>
+</ul>
+<h4>Returns</h4>
+<ul>
+<li><code>Promise</code> (void): A promise that resolves when the mouse cursor has been moved.</li>
+</ul>
+<h4>Dependencies</h4>
+<ul>
+<li><code>importer</code>: An object with an <code>import</code> method that imports external modules.</li>
+<li><code>mouse control c</code>: An external module that exports the <code>SetMousePosition</code> function.</li>
+</ul>
+<h4>Exported</h4>
+<p>The <code>moveMouse</code> function is exported as a module.</p>

@@ -1,0 +1,55 @@
+<p>Here is a 2-sentence summary:</p>
+<p>The code imports necessary modules and defines a <code>copyMarketing</code> function to copy a Google Drive file named &quot;Marketing site&quot; and grant permissions to a specified email address. The function executes a sequential workflow of listing Google Drive files, copying the file, inserting permissions, and retrieving a sheet identifier (although the latter's purpose is unclear).</p>
+
+
+<pre><code>var uuid = require('uuid/v1');
+var importer = require('../Core');
+var getSheet = importer.import('get sheet identifier');
+var copyFile = importer.import('copy a file on google drive');
+var listDrive = importer.import('list google drive files');
+var insertPermission = importer.import('insert google drive permissions');
+
+function copyMarketing(email) {
+    var fileId;
+    return listDrive()
+        .then(r => fileId = r.filter(f => f.name === 'Marketing site')[0].id)
+        .then(() => copyFile(fileId, 'Marketing site ' + uuid().substr(0, 5)))
+        .then(id => insertPermission(id, email))
+        .then(() => getSheet(fileId, email))
+        .then(() => fileId)
+}
+
+module.exports = copyMarketing;
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing several modules:</p>
+<ul>
+<li><code>uuid/v1</code> to generate a unique identifier.</li>
+<li><code>importer</code> from a <code>../Core</code> module, which is used to import other modules.</li>
+<li>Four specific functions from the <code>importer</code> module:
+<ul>
+<li><code>getSheet</code>: retrieves a sheet identifier.</li>
+<li><code>copyFile</code>: copies a file on Google Drive.</li>
+<li><code>listDrive</code>: lists Google Drive files.</li>
+<li><code>insertPermission</code>: inserts permissions for a Google Drive file.</li>
+</ul></li>
+</ul>
+<h3>Defining <code>copyMarketing</code> Function</h3>
+<p>The <code>copyMarketing</code> function is defined, which appears to be a workflow for copying a Google Drive file and granting permissions to an email address.</p>
+<h4>Function Parameters</h4>
+<p>The function takes one parameter <code>email</code>, which is used to grant permissions for the copied file.</p>
+<h4>Function Flow</h4>
+<p>The function returns a promise that sequentially executes the following steps:</p>
+<ol>
+<li><code>listDrive()</code> lists Google Drive files and stores the ID of a file named &quot;Marketing site&quot; in the <code>fileId</code> variable.</li>
+<li><code>copyFile(fileId, 'Marketing site'+ uuid().substr(0, 5))</code> copies the file with the ID stored in <code>fileId</code>, generates a new name with a unique identifier, and stores the new file ID.</li>
+<li><code>insertPermission(id, email)</code> inserts permissions for the new file ID and grants access to the email address.</li>
+<li><code>getSheet(fileId, email)</code> retrieves a sheet identifier for the new file ID and email address (though the purpose of this step is unclear).</li>
+<li><code>fileId</code> is returned as a promise resolution.</li>
+</ol>
+<h3>Exporting <code>copyMarketing</code> Function</h3>
+<p>The <code>copyMarketing</code> function is exported as a module.</p>
+<p><strong>Note</strong>: The purpose of the <code>getSheet</code> function in step 4 is unclear, as it is not used in the rest of the code.</p>

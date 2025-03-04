@@ -1,0 +1,92 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>This code defines three functions: <code>prime_factors</code> to calculate the unique prime factors of a number, <code>overlap</code> to remove duplicate elements from two lists, and uses these functions to calculate the product of unique prime factors of numbers from 1 to 20. The functions are then exported as part of the module, making them available for import by other modules.</p>
+
+
+<pre><code>from operator import mul
+from functools import reduce
+
+def prime_factors(n):
+    found = False
+    if isinstance(n, str):
+        try:
+            n = int(n)
+        except ValueError:
+            try:
+                n = float(n)
+            except ValueError:
+              raise
+
+    v = 2
+
+    i = 2
+
+    while i < n -1 and found == False:
+        if n % i == 0:
+            found = True
+
+            v = i
+
+        i += 1
+
+    if found:
+        factors = [v] + prime_factors(n // v)
+    else:
+        factors = [n]
+
+    return factors
+
+def overlap(a, b):
+    for n in b:
+        if n in a:
+            a.remove(n)
+
+    result = sorted(a + b)
+
+
+    return result
+
+#print(reduce(mul, reduce(overlap, [prime_factors(x) for x in range(1, 21)])))
+__all__ = {
+  "prime_factors": prime_factors,
+  "overlap": overlap
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-python">from operator import mul
+from functools import reduce
+</code></pre>
+<p>The code imports the <code>mul</code> function from the <code>operator</code> module, which is used for element-wise multiplication, and the <code>reduce</code> function from the <code>functools</code> module, which is used to apply a function cumulatively to the elements of a sequence.</p>
+<h4>prime_factors Function</h4>
+<pre><code class="language-python">def prime_factors(n):
+   ...
+</code></pre>
+<p>This function calculates the prime factors of a given number <code>n</code>. It does the following:</p>
+<ol>
+<li>Checks if <code>n</code> is a string, and if so, attempts to convert it to an integer or float. If this fails, it raises an exception.</li>
+<li>Initializes two variables: <code>v</code> to 2 (the first prime number) and <code>found</code> to <code>False</code>.</li>
+<li>Enters a while loop that continues until <code>i</code> is greater than or equal to <code>n</code> or <code>found</code> is <code>True</code>.</li>
+<li>Inside the loop, it checks if <code>n</code> is divisible by <code>i</code>. If it is, it sets <code>found</code> to <code>True</code> and assigns the value of <code>i</code> to <code>v</code>.</li>
+<li>If <code>found</code> is <code>True</code>, it recursively calls the <code>prime_factors</code> function with <code>n</code> divided by <code>v</code> and adds the result to a list containing <code>v</code>. Otherwise, it returns a list containing <code>n</code>.</li>
+</ol>
+<h4>overlap Function</h4>
+<pre><code class="language-python">def overlap(a, b):
+   ...
+</code></pre>
+<p>This function removes elements of list <code>b</code> from list <code>a</code> and returns the resulting merged list in sorted order.</p>
+<ol>
+<li>It iterates over the elements of <code>b</code> and removes any elements found in <code>b</code> from <code>a</code>.</li>
+<li>It merges the resulting lists <code>a</code> and <code>b</code> and sorts the result.</li>
+</ol>
+<h4>Example Usage</h4>
+<pre><code class="language-python">print(reduce(mul, reduce(overlap, [prime_factors(x) for x in range(1, 21)])))
+</code></pre>
+<p>This line of code calculates the product of the unique prime factors of the numbers from 1 to 20.</p>
+<h4>Module Exports</h4>
+<pre><code class="language-python">__all__ = {
+  &quot;prime_factors&quot;: prime_factors,
+  &quot;overlap&quot;: overlap
+}
+</code></pre>
+<p>This line exports the <code>prime_factors</code> and <code>overlap</code> functions as part of the current module, making them available for import by other modules.</p>

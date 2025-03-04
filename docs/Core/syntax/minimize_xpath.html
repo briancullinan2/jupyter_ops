@@ -1,0 +1,62 @@
+<p>The <code>minXpath</code> function takes an array of XPath expressions and a context object, filters them to match exactly one DOM element, sorts them by length, and returns the shortest one. It is exported as a module named <code>minXpath</code> for use in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {selectDom} = importer.import('select tree');
+
+function minXpath(combinations, ctx) {
+    // flatten the XPath stack using '/'
+    // sort by smallest and return shortest path matching 1 DOM element
+    const minimal = combinations
+            .filter(c => selectDom([`.//${c}`], ctx).length === 1)
+            .sort((a, b) => a.length - b.length);
+    return minimal[ 0 ];
+
+    // TODO: prioritize by button/input, ids, classes, attributes? (extra credit), index
+}
+
+module.exports = {
+    minXpath
+};
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {selectDom} = importer.import('select tree');
+</code></pre>
+<ul>
+<li>The code imports a module named <code>importer</code> from a file located at <code>../Core</code>.</li>
+<li>The <code>importer</code> module is used to import another module named <code>selectDom</code> from a module named <code>select tree</code>.</li>
+</ul>
+<h3><code>minXpath</code> Function</h3>
+<pre><code class="language-javascript">function minXpath(combinations, ctx) {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>minXpath</code> function takes two arguments:
+<ul>
+<li><code>combinations</code>: an array of XPath expressions</li>
+<li><code>ctx</code>: a context object (not used in the function)</li>
+</ul></li>
+</ul>
+<h3>Function Body</h3>
+<pre><code class="language-javascript">const minimal = combinations
+       .filter(c =&gt; selectDom([`.//${c}`], ctx).length === 1)
+       .sort((a, b) =&gt; a.length - b.length);
+return minimal[0];
+</code></pre>
+<ul>
+<li>The function filters the <code>combinations</code> array to only include XPath expressions that match exactly one DOM element using the <code>selectDom</code> function.</li>
+<li>The filtered array is sorted in ascending order based on the length of each XPath expression.</li>
+<li>The shortest XPath expression that matches exactly one DOM element is returned.</li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+    minXpath
+};
+</code></pre>
+<ul>
+<li>The <code>minXpath</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

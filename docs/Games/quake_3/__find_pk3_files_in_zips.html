@@ -1,0 +1,93 @@
+<p>This code extracts <code>.pk3</code> files from <code>.zip</code> archives found in a specified directory, using a custom <code>importer</code> module for file listing and parallel processing.</p>
+
+
+<pre><code>var StreamZip = require('node-stream-zip');
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var {listInProject} = importer.import('list project files')
+
+function readZip(zipFile, cb) {
+    const zip = new StreamZip({
+        file: zipFile,
+        storeEntries: true
+    });
+
+    zip.on('ready', () => {
+        // Take a look at the files
+        console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(zipFile));
+        var pk3s = Object.values(zip.entries())
+            .filter(entry => entry.name.match(/\.pk3/i))
+
+        return importer.runAllPromises(pk3s.map((pk3, i) => new Promise((resolve) => {
+            var pk3Path = '/Volumes/External/Personal/planet_quake_data/bestmaps/' + path.basename(pk3.name);
+            if(!fs.existsSync(pk3Path)) {
+                zip.extract(pk3.name, pk3Path, err => {
+                    if(err) {
+                        console.log('Extract error ' + err)
+                        return resolve()
+                    }
+                    console.log('Extracted ' + pk3.name);
+                    resolve(pk3Path)
+                });
+            } else {
+                resolve()
+            }
+        }))).then(() => {
+            zip.close()
+            cb()
+        })
+    });
+    
+    zip.on('error', err => { cb() });
+}
+
+function extractAll(root) {
+    var results = listInProject(root || '/Volumes/External/Personal/planet_quake_data/lvlworld/new-2020-11-6', '**/*.zip')
+    console.log(results)
+    return importer.runAllPromises(results.map(r => {
+        return (resolve) => {
+            try {
+                readZip(r, resolve)
+            } catch (e) {
+                if(e.message.includes('Bad archive')) {}
+                else { console.log(e) }
+                resolve()
+            }
+        }
+    })).then(results => results.filter(r => r))
+}
+
+module.exports = extractAll;
+</code></pre>
+
+<p>This code snippet extracts files from <code>.zip</code> archives within a specified directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>node-stream-zip</code>: Library for reading and extracting zip archives.</li>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+<li><code>path</code>: Node.js built-in module for working with file paths.</li>
+<li><code>importer</code>: Custom module likely containing utility functions.</li>
+</ul></li>
+<li><p><strong><code>readZip</code> Function:</strong></p>
+<ul>
+<li>Takes a zip file path and a callback function as input.</li>
+<li>Creates a <code>StreamZip</code> object to read the zip archive.</li>
+<li>Extracts all <code>.pk3</code> files from the archive to a specific directory (<code>/Volumes/External/Personal/planet_quake_data/bestmaps/</code>).</li>
+<li>Calls the callback function when extraction is complete.</li>
+</ul></li>
+<li><p><strong><code>extractAll</code> Function:</strong></p>
+<ul>
+<li>Takes an optional root directory path as input.</li>
+<li>Lists all <code>.zip</code> files within the specified directory (defaults to <code>/Volumes/External/Personal/planet_quake_data/lvlworld/new-2020-11-6</code>).</li>
+<li>Uses <code>importer.runAllPromises</code> to concurrently extract files from each zip archive using the <code>readZip</code> function.</li>
+<li>Returns a filtered array of extracted file paths.</li>
+</ul></li>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li>Exports the <code>extractAll</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

@@ -1,0 +1,113 @@
+<p>This code provides a set of functions to interact with the Zuora API, enabling users to initiate, track, and retrieve bulk data exports.</p>
+
+
+<pre><code>var importer = require('../Core');
+var xlsx = require('xlsx');
+var request = importer.import('request polyfill');
+
+function getAuthHeaders(zuoraConfig) {
+    if (typeof zuoraConfig === 'undefined'
+        || zuoraConfig === null
+        || typeof zuoraConfig.rest_api_user === 'undefined'
+        || typeof zuoraConfig.rest_api_password === 'undefined'
+        || typeof zuoraConfig.rest_api_url === 'undefined') {
+        return Promise.resolve([]).then(() => {
+            throw new Error('Please supply valid zuora configuration.');
+        });
+    }
+    return {
+        'Content-Type': 'application/json',
+        'apiAccessKeyId': zuoraConfig.rest_api_user,
+        'apiSecretAccessKey': zuoraConfig.rest_api_password,
+        'Accept': 'application/json'
+    };
+}
+
+function createBulkExportJob(query, zuoraConfig) {
+    return request.request({
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + '/object/export',
+        json: query,
+        method: 'POST',
+        headers: getAuthHeaders(zuoraConfig)
+    }).then(r => r.body.Id)
+}
+
+function getBulkExportJobStatus(exportId, zuoraConfig) {
+    console.log('waiting...');
+    return request.request({
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + '/object/export/' + exportId,
+        method: 'GET',
+        headers: getAuthHeaders(zuoraConfig)
+    }).then(r => {
+        if (r.body.Status === 'Completed') {
+            return r.body.FileId;
+        } else if (r.body.Status === 'Processing' || r.body.Status === 'Pending') {
+            return new Promise(resolve => setTimeout(resolve, 500))
+                .then(() => getBulkExportJobStatus(exportId, zuoraConfig));
+        } else {
+            throw new Error('Export status error ' + r.statusCode + ' ' + r.body.Status);
+        }
+    });
+}
+
+function getBulkExportFile(fileId, zuoraConfig) {
+    return request.request({
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + '/files/' + fileId,
+        method: 'GET',
+        headers: getAuthHeaders(zuoraConfig)
+    }).then(r => r.body)
+}
+
+function csvToJson(csv) {
+    const workbook = xlsx.read(new Buffer(csv), {type:"buffer"});
+    return xlsx.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+}
+
+module.exports = {
+    csvToJson,
+    createBulkExportJob,
+    getBulkExportFile,
+    getBulkExportJobStatus,
+    getAuthHeaders
+}
+</code></pre>
+
+<p>This code defines functions to interact with the Zuora API for bulk data exports.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module for importing other modules (likely for handling requests).</li>
+<li><code>xlsx</code>: A library for working with Excel files (likely used for processing the exported data).</li>
+<li><code>request</code>: A library for making HTTP requests (imported via <code>importer</code>).</li>
+</ul></li>
+<li><p><strong><code>getAuthHeaders</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>zuoraConfig</code> object containing API credentials.</li>
+<li>Validates the presence of required credentials.</li>
+<li>Returns an object containing the authorization headers for Zuora API requests.</li>
+</ul></li>
+<li><p><strong><code>createBulkExportJob</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>query</code> object defining the data to export and <code>zuoraConfig</code>.</li>
+<li>Makes a POST request to the Zuora API endpoint for creating a bulk export job.</li>
+<li>Returns the ID of the created export job.</li>
+</ul></li>
+<li><p><strong><code>getBulkExportJobStatus</code> Function:</strong></p>
+<ul>
+<li>Takes the <code>exportId</code> and <code>zuoraConfig</code>.</li>
+<li>Makes a GET request to check the status of the export job.</li>
+<li>If the status is &quot;Completed&quot;, returns the <code>FileId</code> for downloading the export file.</li>
+<li>If the status is &quot;Processing&quot; or &quot;Pending&quot;, it waits for 500 milliseconds and recursively calls itself to check the status again.</li>
+<li>If the status is anything else, it throws an error.</li>
+</ul></li>
+<li><p><strong><code>getBulkExportFile</code> Function:</strong></p>
+<ul>
+<li>Takes the <code>fileId</code> and <code>zuoraConfig</code>.</li>
+<li>Makes a GET request to download the export file using the <code>FileId</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a set of functions to initiate, monitor, and retrieve bulk data exports from the Zuora API.</p>

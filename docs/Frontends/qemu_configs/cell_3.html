@@ -1,0 +1,9 @@
+
+
+<pre><code>qemu-system-x86_64 -smp 3 -cpu host -m 3G -vga qxl \
+    -spice port=5924,disable-ticketing \
+    -drive file=/Users/briancullinan/VirtualBox\ VMs/Ubuntu/Ubuntu.vmdk,if=virtio \
+    -net nic,model=virtio -net user,hostname=ubuntuvm \
+    -monitor stdio -name "Ubuntu" \
+&& spicy --title Ubuntu 127.0.0.1 -p 5924</code></pre>
+

@@ -1,0 +1,192 @@
+<p>Here's a 2-sentence summary:</p>
+<p>The <code>evaluateDom</code> function evaluates a given XPath query or CSS selector on a DOM document, catching errors and handling various query formats and types, including those with wildcards. It returns an array of node values or a single value (number, string, or boolean) depending on the query type.</p>
+
+
+<pre><code>var importer = require('../Core')
+var { walkTree } = importer.import('walk tree')
+var { XPathResult, JSDOM } = require('jsdom')
+//var cheerio = require('cheerio')
+//var assert = require('assert')
+var wgxpath = require('wgxpath')
+var document
+
+function evaluateDom(select, ctx, query) {
+    try {
+        //    let $ = cheerio.load(ctx)
+        //if(!select.match(/^\/|\*\/|\.\//ig) && select.localeCompare('*') !== 0) { // probably XPath, fall through
+        //    return query(select);
+        //}
+    } catch (e) {
+        // TODO: determine any side effects of ignoring
+        if (e.name !== 'SyntaxError') {
+            console.log(select.localeCompare('*'))
+            console.log(select)
+            console.log(query)
+            throw e
+        }
+    }
+
+    try {
+        if (select.includes('//*')) {
+            console.warn(`Possible slow query evaluation due to wildcard: ${select}`)
+        }
+        // defaults to trying for iterator type
+        //   so it can automatically be ordered
+        var iterator = document.evaluate(select, ctx, null,
+            ((XPathResult || {}).ORDERED_NODE_ITERATOR_TYPE || 5), null)
+        //var iterator = evaluate(select, ctx, null, 5, null)
+        // TODO: create a pattern regonizer for bodyless while
+        var co = []
+        var m
+        while (m = iterator.iterateNext()) {
+            co.push(m.nodeValue || m)
+        }
+        return co
+    } catch (e) {
+        if (e.message.includes('Value should be a node-set')
+            || e.message.includes('You should have asked')) {
+            var result = document.evaluate(select, ctx, null,
+                (XPathResult || {}).ANY_TYPE || 0, null)
+            return result.resultType === ((XPathResult || {}).NUMBER_TYPE || 1)
+                ? result.numberValue
+                : result.resultType === ((XPathResult || {}).STRING_TYPE || 2)
+                    ? result.stringValue
+                    : result.resultType === ((XPathResult || {}).BOOLEAN_TYPE || 3)
+                        ? result.booleanValue
+                        : result.resultValue
+        }
+        throw e;
+    }
+}
+
+// parse as html if it's string,
+//   if there is no context convert the tree to html
+function selectDom(select, ctx) {
+    // var cheerio = require('cheerio');
+    if (typeof ctx === 'string' && typeof JSDOM != 'undefined') {
+        var dom = new JSDOM(ctx)
+        wgxpath.install(dom.window, true)
+        ctx = dom.window.document
+        document = dom.window.document
+    } else if (ctx) {
+        document = ctx.ownerDocument
+    } else {
+        ctx = document
+    }
+    //var query = ctx.querySelector.bind(ctx.ownerDocument)
+    //    || ctx.ownerDocument.querySelector.bind(ctx.ownerDocument)
+    return walkTree(select, ctx, (select, ctx) => {
+        return evaluateDom(select, ctx /*, query*/)
+    })
+}
+
+function queryDom(select, ctx) {
+    if (typeof ctx === 'string' && typeof JSDOM != 'undefined') {
+        var dom = new JSDOM(ctx)
+        wgxpath.install(dom.window, true)
+        ctx = dom.window.document
+        document = dom.window.document
+    } else if (ctx) {
+        document = ctx.ownerDocument
+    } else {
+        ctx = document
+    }
+    return walkTree(select, ctx, (select, ctx) => {
+        let result = ctx.querySelectorAll(select)
+        let co = []
+        for (let m of result) {
+            if(m)
+                co.push(m)
+        }
+        if (ctx.shadowRoot) {
+            let shadowResult = ctx.shadowRoot.querySelectorAll(select)
+            for (let m of shadowResult) {
+                if(m)
+                    co.push(m)
+            }
+        }
+        return co.length == 1 ? co[0] : co
+    })
+}
+
+// TODO: try catch with esquery, vm.runInThisContext, conver and select DOM, and jsel
+
+// from least nuanced to most nuanced, CSS -> XPath -> custom ASTQ
+//   Most xpath like //Element will not work on CSS, might have a problem with *
+function evaluateQuery(select, ctx) {
+    try {
+        var esquery = require('esquery');
+        // we might have to help out the CSS parser here
+        if (!select.match(/^\/\/|\*\/|\.\//ig)) // probably XPath, fall through
+            return esquery(ctx, select);
+    } catch (e) {
+        if (!e.name.includes('SyntaxError')
+            && !e.message.includes('Cannot find module')) {
+            throw e;
+        }
+    }
+
+    try {
+        var jsel = require('jsel');
+        return jsel(ctx).selectAll(select);
+    } catch (e) {
+        if (!e.message.includes('XPath parse error')
+            && !e.message.includes('Unexpected character')
+            && !e.message.includes('Cannot find module')) {
+            throw e;
+        }
+    }
+    try {
+        var ASTQ = require("astq");
+        var astq = new ASTQ();
+        return astq.query(ctx, select);
+    } catch (e) {
+        if (!e.message.includes('query parsing failed')) {
+            throw e;
+        }
+    }
+
+    throw new Error(`Could not parse select query ${JSON.stringify(select)} using XPath, CSS, or ASTQ`);
+}
+
+function selectTree(select, ctx) {
+    // TODO: when converting to html, make sure to only return
+    //   matching child objects not their attributes containers
+    // TODO: something when we receive a string?
+    //   Try to parse with all different selectors?
+    return walkTree(select, ctx, evaluateQuery)
+}
+
+
+module.exports = {
+    evaluateDom,
+    evaluateQuery,
+    selectTree,
+    selectDom,
+    queryDom,
+}
+</code></pre>
+
+<p><strong>Function Breakdown: <code>evaluateDom</code></strong></p>
+<h3>Overview</h3>
+<p>The <code>evaluateDom</code> function evaluates a given XPath query on a DOM document. It attempts to handle various query formats and types, including XPath and CSS selectors.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>select</code>: The XPath query or CSS selector to evaluate.</li>
+<li><code>ctx</code>: The context node in the DOM document.</li>
+<li><code>query</code>: Not used in the implementation.</li>
+</ul>
+<h3>Implementation</h3>
+<p>The function consists of two main sections:</p>
+<ol>
+<li><strong>Error handling</strong>: The function catches any errors that occur during execution. If the error is a <code>SyntaxError</code>, it is ignored and the function proceeds. Otherwise, the error is re-thrown.</li>
+<li><strong>XPath evaluation</strong>: The function attempts to evaluate the XPath query using the <code>document.evaluate</code> method. If the query contains a wildcard (<code>//*</code>), a warning is logged. The function then iterates over the resulting nodes and returns an array of node values.</li>
+</ol>
+<h3>XPath Evaluation Types</h3>
+<p>The function supports the following XPath evaluation types:</p>
+<ul>
+<li><code>ORDERED_NODE_ITERATOR_TYPE</code> (type 5): Returns an ordered iterator over the nodes that match the query.</li>
+<li><code>ANY_TYPE</code> (type 0): Returns the value of the query, which can be a node-set, number, string, or boolean.</li>
+</ul>
+<h3>Return Value</h3>
+<p>The function returns an array of node values or a single value (number, string, or boolean) depending on the query type.</p>

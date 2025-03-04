@@ -1,0 +1,58 @@
+<p>Here is a summary of the provided code in two sentences:</p>
+<p>The <code>testRcon</code> function is an asynchronous module that retrieves a list of server masters, logs the list, sends an RCON command to the first master, waits for a second, and closes the UDP client, before being exported as a module. This function utilizes the <code>serverApi</code> to interact with the Quake 3 server, including importing and executing specific functions for listing masters and sending RCON commands.</p>
+
+
+<pre><code>var importer = require('../Core')
+var serverApi = importer.import('quake 3 server commands')
+
+async function testRcon (command) {
+    var masters = await serverApi.listMasters(void 0, void 0, false)
+    console.log(masters)
+    await serverApi.sendRcon(masters[0].ip, masters[0].port, command)
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    serverApi.udpClient.close()
+}
+
+module.exports = testRcon
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<ul>
+<li><code>var importer = require('../Core')</code>: Imports a module named <code>Core</code> from the parent directory (<code>../</code>) and assigns it to the variable <code>importer</code>.</li>
+</ul>
+<h3>Server API Import</h3>
+<ul>
+<li><code>var serverApi = importer.import('quake 3 server commands')</code>: Imports a specific module or set of functions from the <code>Core</code> module, identified by the string <code>'quake 3 server commands'</code>, and assigns it to the variable <code>serverApi</code>.</li>
+</ul>
+<h3><code>testRcon</code> Function</h3>
+<ul>
+<li><code>async function testRcon (command)</code>: Defines an asynchronous function named <code>testRcon</code> that takes a single argument <code>command</code>.</li>
+</ul>
+<h3>Functionality</h3>
+<ol>
+<li><strong>List Server Masters</strong>:
+<ul>
+<li><code>var masters = await serverApi.listMasters(void 0, void 0, false)</code>: Uses the <code>listMasters</code> function from the <code>serverApi</code> to retrieve a list of server masters. The function returns a promise, which is awaited for the result. The <code>void 0</code> arguments suggest that some parameters may be optional or do not apply in this case.</li>
+</ul></li>
+<li><strong>Log Masters</strong>:
+<ul>
+<li><code>console.log(masters)</code>: Logs the list of server masters to the console.</li>
+</ul></li>
+<li><strong>Send RCON Command</strong>:
+<ul>
+<li><code>await serverApi.sendRcon(masters[0].ip, masters[0].port, command)</code>: Uses the <code>sendRcon</code> function from the <code>serverApi</code> to send an RCON (Remote Console) command to the first server master's IP address and port. The command is passed as an argument, which is the function's argument <code>command</code>.</li>
+</ul></li>
+<li><strong>Delay</strong>:
+<ul>
+<li><code>await new Promise(resolve =&gt; setTimeout(resolve, 1000))</code>: Waits for 1 second (1000 milliseconds) before proceeding.</li>
+</ul></li>
+<li><strong>Close UDP Client</strong>:
+<ul>
+<li><code>serverApi.udpClient.close()</code>: Closes the UDP client associated with the <code>serverApi</code>.</li>
+</ul></li>
+</ol>
+<h3>Export</h3>
+<ul>
+<li><code>module.exports = testRcon</code>: Exports the <code>testRcon</code> function as a module, making it available for import and use in other parts of the application.</li>
+</ul>

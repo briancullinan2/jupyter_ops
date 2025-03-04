@@ -1,0 +1,83 @@
+
+
+<pre><code>var _ = require('lodash');
+var fs = require('fs');
+var importer = require('../Core');
+var { request } = importer.import('request polyfill');
+var { getAuthHeaders } = importer.import('zuora export service');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var zuoraConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/zuoraRest_production.json').toString().trim());
+
+function zuoraQuery(query) {
+    return request({
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + '/action/query',
+        json: {
+            queryString: query
+        },
+        method: 'POST',
+        headers: getAuthHeaders(zuoraConfig)
+    });
+}
+
+function getContact(email) {
+    return zuoraQuery(`SELECT AccountId, PersonalEmail, WorkEmail FROM Contact WHERE PersonalEmail LIKE '${email}' OR WorkEmail LIKE '${email}'`)
+}
+
+function getContactByAccount(accountId) {
+    return zuoraQuery(`SELECT AccountId, PersonalEmail, WorkEmail FROM Contact WHERE AccountId='${accountId}'`)
+}
+
+function getAccountById(accountId) {
+    return zuoraQuery(`SELECT Id, Status, Name, Currency, DefaultPaymentMethodId FROM Account WHERE Id='${accountId}'`);
+}
+
+function getAccount(accountNumber) {
+    return zuoraQuery(`SELECT Id, Status, Name, Currency, DefaultPaymentMethodId FROM Account WHERE AccountNumber='${accountNumber}'`);
+}
+
+function getSubscription(accountId) {
+    return zuoraQuery(`SELECT Id, Status, TermEndDate FROM Subscription WHERE AccountId='${accountId}'`);
+}
+
+function getPaymentMethod(paymentId) {
+    return zuoraQuery(`SELECT CreditCardMaskNumber FROM PaymentMethod WHERE Id='${paymentId}'`);
+}
+
+function getRatePlans(subscriptionIds) {
+    return zuoraQuery(`SELECT Id, Name, SubscriptionId FROM RatePlan WHERE SubscriptionId='${subscriptionIds.join('\', OR SubscriptionId=\'')}'`);
+}
+
+if(typeof $$ !== 'undefined') {
+$$.async();
+    var accountId, paymentId;
+    getContact('flyfisher8008@yahoo.com')
+        .then(r => {
+            console.log(r.body.records);
+            return getAccountById(r.body.records[0].AccountId)
+        })
+        .then(r => {
+            console.log(r.body.records);
+            accountId = r.body.records[0].Id;
+            paymentId = r.body.records[0].DefaultPaymentMethodId
+            return getSubscription(accountId)
+        })
+        .then(r => {
+            console.log(r.body.records);
+            return getRatePlans(r.body.records.map(r => r.Id));
+        })
+        .then(r => {
+            console.log(_.groupBy(r.body.records, r => r.SubscriptionId))
+            return getPaymentMethod(paymentId);
+        })
+        .then(r => {
+            console.log(r.body.records[0].CreditCardMaskNumber)
+            return getContactByAccount(accountId);
+        })
+        .then(r => r.body.records)
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+

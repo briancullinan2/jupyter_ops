@@ -1,0 +1,117 @@
+<p>This code snippet uses Selenium to scrape comprehensive data from a LinkedIn profile, including basic information and details from various sections like experience, skills, and recommendations. It employs techniques to load all content, including hidden sections, to ensure complete data extraction.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+function loadEntirePage() {
+    return client
+    // load all defered elements by scrolling
+        .then(() => getAllUntil(
+            false,
+            '//*[contains(@class, "pv-deferred-area")]/@id',
+            [],
+            (a, b) => a === b,
+            (i) => i < 30
+        ))
+        .pause(2000)
+        // show more all sections
+        .scroll(0, 0)
+        .then(() => importer.runAllPromises([
+            '//button[contains(., "See more")]',
+            '//button[contains(., "more skills")]',
+            '//button[contains(., "more education")]',
+            '//button[contains(., "more recommendations")]'
+        ].map(selector => resolve => {
+            return client
+                .isVisible(selector)
+                .then(is => is
+                    ? client.click(selector).pause(1000)
+                    : [])
+                .then(e => resolve())
+                .catch(e => {console.log; return resolve()})
+        })))
+        .catch(e => console.log(e))
+};
+
+function scrapeEntireLinkedInProfile(profile) {
+    var contact;
+    return client
+        .then(() => clickSpa(profile))
+        .then(() => readLinkedInProfileInfo())
+        .then(r => {
+            contact = r;
+            return loadEntirePage();
+        })
+        // get extra profile info
+        .then(() => {
+            return getAllXPath({
+                summary: '//p[contains(@class, "section__summary")]//text()',
+                experience: [
+                    '//*[contains(@class, "profile-section__card")]|//*[contains(@class, "profile-section__section-info-item")]',
+                    ['.//text()']
+                ],
+                skills: [
+                    '//*[contains(@class, "skill-entity--featured")]|//*[contains(@class, "skill-entity__pill")]',
+                    ['.//text()']
+                ],
+                recommendations: [
+                    '//*[contains(@class, "recommendation-entity")]',
+                    ['.//text()']
+                ],
+                interests: [
+                    '//*[contains(@class, "interest-entity")]',
+                    ['.//text()']
+                ]
+            });
+        })
+        .then(r => {
+            return Object.assign(r, {
+                summary: r.summary.join(''),
+                experience: r.experience.map(e => typeof e[0] === 'string'
+                    ? e[0]
+                    : e[0].join('')
+                        .trim().split(/\s*\n+\s*/)),
+                skills: r.skills.map(e => typeof e[0] === 'string'
+                    ? e[0]
+                    : e[0].join('')
+                        .trim().split(/\s*\n+\s*/)),
+                recommendations: r.recommendations.map(e => typeof e[0] === 'string'
+                    ? e[0]
+                    : e[0].join('')
+                        .trim().split(/\s*\n+\s*/)),
+                interests: r.interests.map(e => typeof e[0] === 'string'
+                    ? e[0]
+                    : e[0].join('')
+                        .trim().split(/\s*\n+\s*/))
+            }, contact)
+        })
+        .catch(e => console.log(e))
+};
+module.exports = scrapeEntireLinkedInProfile;
+
+</code></pre>
+
+<p>This code snippet appears to be part of a larger script designed to scrape data from a LinkedIn profile using Selenium.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing functions for interacting with various data sources and tools.</li>
+</ul></li>
+<li><p><strong><code>loadEntirePage</code> Function:</strong></p>
+<ul>
+<li>This function aims to load all content on a LinkedIn profile page, including deferred elements and hidden sections.</li>
+<li>It uses Selenium commands to scroll the page, click &quot;See more&quot; buttons for various sections, and wait for elements to load.</li>
+</ul></li>
+<li><p><strong><code>scrapeEntireLinkedInProfile</code> Function:</strong></p>
+<ul>
+<li>This function takes a LinkedIn profile URL as input and performs the following steps:
+<ul>
+<li>Navigates to the profile URL.</li>
+<li>Reads basic profile information (likely using <code>readLinkedInProfileInfo</code>, not shown in the snippet).</li>
+<li>Calls <code>loadEntirePage</code> to ensure all content is loaded.</li>
+<li>Scrapes additional profile information using XPath queries, targeting elements like summary, experience, skills, recommendations, and interests.</li>
+<li>Stores the scraped data in a <code>contact</code> variable.</li>
+</ul></li>
+</ul></li>
+</ol>

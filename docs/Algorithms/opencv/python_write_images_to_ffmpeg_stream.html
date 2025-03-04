@@ -1,0 +1,136 @@
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>The code imports various libraries and takes a screenshot using <code>pyautogui</code> before defining an FFmpeg command to encode and save a video. The <code>stream_images</code> function uses the FFmpeg command to start a stream, taking a screenshot, encoding it as a JPEG image, and writing the encoded image to the subprocess's <code>stdin</code> 15 times with a 1/30 second interval.</p>
+
+
+<pre><code>import os
+import cv2
+import subprocess
+import time
+import signal
+import pyautogui
+import numpy as np
+
+# Take a screenshot and save it to a file
+screenshot = pyautogui.screenshot()
+
+width, height = screenshot.size
+
+# Video properties
+#width, height, fps = 1280, 720, 30
+#fps = 4
+
+# FFmpeg command for encoding & saving video
+ffmpeg_cmd = [
+    "ffmpeg",
+    "-y",
+    "-f", "image2pipe",
+    "-vcodec", "mjpeg",
+    "-r", "30",
+    "-i", "-",  # Read from stdin
+    "-re", # https://stackoverflow.com/questions/64745099/youtube-isnt-receiving-any-data-from-my-ffmpeg-stream-to-the-rtmp-server
+    "-f", "lavfi",
+    "-i", "anullsrc",
+    "-c:v", "libx264",
+    "-pix_fmt", "yuv420p",
+    "-preset", "ultrafast",
+    "-b:v", "4500k",
+    "-maxrate", "4500k",
+    "-bufsize", "9000k",
+    "-g", "50",
+    "-c:a", "aac", 
+    "-b:a", "128k", 
+    "-ar", "44100",
+    "-f", "flv",
+    # "-fifo_format", "flv",
+    
+]
+
+def stream_images(streamName):
+
+  args = ffmpeg_cmd + ["rtmp://a.rtmp.youtube.com/live2/" + streamName]
+  # Start FFmpeg process
+  process = subprocess.Popen(args, stdin=subprocess.PIPE)
+
+  # OpenCV VideoWriter (encoding to a memory buffer)
+  # fourcc = cv2.VideoWriter_fourcc(*"H264")
+  # video_writer = cv2.VideoWriter(process.stdin, fourcc, fps, (width, height))
+
+  # OpenCV video capture
+  #cap = cv2.VideoCapture(0)
+
+  try:
+    while True:
+      #ret, frame = cap.read()
+      #if not ret:
+      #    break
+      screenshot = pyautogui.screenshot()
+      screenshot_np = np.array(screenshot)
+
+      # Convert RGB to BGR (OpenCV uses BGR format)
+      screenshot_cv = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2BGR)
+
+      image = cv2.resize(screenshot_cv, (1920, 1080))
+
+      _, jpeg_bytes = cv2.imencode(".jpg", image, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+
+      # Write frame to OpenCV VideoWriter
+      # video_writer.write(screenshot_cv)
+
+      # Get encoded frame and send to FFmpeg
+      for i in range(15):
+        process.stdin.write(jpeg_bytes.tobytes())
+        time.sleep(1 / 30)
+
+
+  except KeyboardInterrupt:
+    print("\nCTRL+C detected. Exiting...")
+  # Cleanup
+  # cap.release()
+  # video_writer.release()
+  process.stdin.close()
+  #os.killpg(process.pid, signal.SIGTERM) 
+  os.killpg(os.getpgid(process.pid), signal.SIGTERM) 
+  process.wait()
+
+__all__ = {
+  "stream_images": stream_images
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Libraries</h3>
+<p>The code starts by importing various libraries:</p>
+<ul>
+<li><code>os</code></li>
+<li><code>cv2</code> (OpenCV)</li>
+<li><code>subprocess</code></li>
+<li><code>time</code></li>
+<li><code>signal</code></li>
+<li><code>pyautogui</code></li>
+<li><code>numpy</code> (as <code>np</code>)</li>
+</ul>
+<h3>Taking a Screenshot</h3>
+<p>The code takes a screenshot using <code>pyautogui.screenshot()</code> and gets its size using <code>screenshot.size</code>.</p>
+<h3>Defining FFmpeg Command</h3>
+<p>The code defines an FFmpeg command in a list, <code>ffmpeg_cmd</code>, which is used to encode and save a video. The command reads from <code>stdin</code>, encodes the video using <code>libx264</code>, and saves it to an FLV file.</p>
+<h3>Defining the <code>stream_images</code> Function</h3>
+<p>The <code>stream_images</code> function takes a <code>streamName</code> parameter and uses the FFmpeg command to start a stream. It creates a subprocess using <code>subprocess.Popen</code> and writes encoded image frames to <code>stdin</code>.</p>
+<h3>Function Body</h3>
+<p>The function body contains a <code>try</code> block that runs indefinitely until a <code>KeyboardInterrupt</code> is raised. Inside the block:</p>
+<ul>
+<li>The code takes a screenshot and converts it to a NumPy array using <code>np.array</code>.</li>
+<li>It converts the screenshot from RGB to BGR format using <code>cv2.cvtColor</code>.</li>
+<li>It resizes the screenshot to 1920x1080 using <code>cv2.resize</code>.</li>
+<li>It encodes the screenshot as a JPEG image using <code>cv2.imencode</code>.</li>
+<li>It writes the encoded image to the subprocess's <code>stdin</code> 15 times with a 1/30 second interval using <code>time.sleep</code>.</li>
+</ul>
+<h3>Error Handling</h3>
+<p>The function catches <code>KeyboardInterrupt</code> exceptions and prints... (nothing, as the documentation instructs).</p>
+<h3>Unused Code</h3>
+<p>There are several lines of code that are commented out, including:</p>
+<ul>
+<li>OpenCV VideoWriter and video capture initialization</li>
+<li>Writing frames to the VideoWriter</li>
+<li>Getting a frame from the camera</li>
+</ul>
+<p>These code blocks are not used in the current implementation.</p>

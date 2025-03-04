@@ -1,0 +1,67 @@
+<p>This code downloads the &quot;elevate&quot; tool from GitHub, extracts it to a local directory, and signals completion of the process.  It uses <code>https</code> to download the file, <code>fs</code> to write it to disk, and <code>child_process</code> to execute a PowerShell command for extraction.</p>
+
+
+<pre><code>$$.async();
+var exec = require('child_process').exec;
+var http = require('https');
+var fs = require('fs');
+var elevateLoc = path.join(process.cwd(), 'elevate.zip');
+var expandedLoc = path.join(process.cwd(), 'elevate');
+http.get('https://github.com/jpassing/elevate/releases/download/1.0/elevate.zip', (r) => {
+    http.get(r.headers['location'], (r) => {
+        r.pipe(fs.createWriteStream(elevateLoc)).on('finish', () => {
+            var expand = exec('powershell -c "Expand-Archive -Force ' + elevateLoc + ' ' + expandedLoc + '"', () => {
+                $$.done('downloaded and extracted elevate.exec');
+            });
+            expand.stdout.on('data', (d) => console.log(d));
+            expand.stderr.on('data', (d) => console.log(d));
+        });
+    });
+});
+
+</code></pre>
+
+<p>This code downloads and extracts the &quot;elevate&quot; tool, a utility for running commands with elevated privileges on Windows.</p>
+<p><strong>Breakdown:</strong></p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>$$.async();</code>: Likely initializes an asynchronous operation.</li>
+<li><code>var exec = require('child_process').exec;</code>: Imports the <code>exec</code> function for running shell commands.</li>
+<li><code>var http = require('https');</code>: Imports the <code>https</code> module for making HTTP requests.</li>
+<li><code>var fs = require('fs');</code>: Imports the <code>fs</code> module for file system operations.</li>
+<li><code>var elevateLoc = path.join(process.cwd(), 'elevate.zip');</code>: Defines the path to the downloaded zip file.</li>
+<li><code>var expandedLoc = path.join(process.cwd(), 'elevate');</code>: Defines the path to the extracted elevate directory.</li>
+</ul></li>
+<li><p><strong>Downloading elevate.zip:</strong></p>
+<ul>
+<li><code>http.get('https://github.com/jpassing/elevate/releases/download/1.0/elevate.zip', (r) =&gt; { ... });</code>: Downloads the elevate.zip file from the specified URL.
+<ul>
+<li>The callback function handles the response:
+<ul>
+<li><code>http.get(r.headers['location'], (r) =&gt; { ... });</code>: Redirects to the actual download URL from the <code>location</code> header.
+<ul>
+<li>The callback function handles the download response:
+<ul>
+<li><code>r.pipe(fs.createWriteStream(elevateLoc)).on('finish', () =&gt; { ... });</code>: Pipes the downloaded data to a file stream and writes it to <code>elevateLoc</code>.
+<ul>
+<li>The <code>on('finish')</code> event handler executes after the download completes:</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Extracting elevate:</strong></p>
+<ul>
+<li><code>var expand = exec('powershell -c &quot;Expand-Archive -Force ' + elevateLoc + ' ' + expandedLoc + '&quot;', () =&gt; { ... });</code>: Executes a PowerShell command to extract the contents of <code>elevate.zip</code> to <code>expandedLoc</code>.
+<ul>
+<li>The callback function executes after the extraction completes:
+<ul>
+<li><code>$$.done('downloaded and extracted elevate.exec');</code>: Signals completion of the asynchronous operation.</li>
+</ul></li>
+<li><code>expand.stdout.on('data', (d) =&gt; console.log(d));</code>: Logs the standard output of the extraction process.</li>
+<li><code>expand.stderr.on('data', (d) =&gt; console.log(d));</code>: Logs any standard error output from the extraction process.</li>
+</ul></li>
+</ul></li>
+</ol>

@@ -1,0 +1,91 @@
+<p>This code automates the process of caching and updating code cells from Jupyter notebooks, storing the cache within the notebooks themselves.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+var assert = require('assert')
+var importer = require('../Core')
+var {listInProject} = importer.import('list project files');
+var {
+    cacheCells, cellCache, refreshCache,
+    updateCache, updateCode
+} = importer.import([
+    'cache notebook', 'cell cache', 'refresh regular cache',
+    'update regular cache', 'update code cell'
+])
+
+function findNotebooks(dirname) {
+    return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+}
+
+function cacheAll() {
+    // include the path to this notebook first
+    var notebooks = [
+        path.resolve(__dirname, './cache.ipynb')
+    ].concat(findNotebooks(path.resolve(__dirname, '../')))
+    
+    // all ids are the ones in the cache plus missing notebooks
+    var allIds = notebooks
+        .reduce((arr, n) => arr
+                .concat([n + '[0]'])
+                .concat(cellCache
+                        .filter(c => c[1].substr(0, n.length) === n)
+                        .map(c => c[1])), [])
+    
+    // update by loading every notebook
+    var updates = notebooks.reduce((arr, n) => {
+        return arr.concat(cacheCells(n)
+            .map(({mtime, id, filename, from, to, questions}) => [
+                mtime,
+                path.join(path.dirname(filename), id),
+                {
+                    from,
+                    to,
+                    questions,
+                }
+            ]))
+    }, [])
+     
+    // save the cache in this notebook
+    updateCache(updates, cellCache, updates.map(u => u[1]))
+    
+    saveCache()
+}
+
+function saveCache() {
+    var code = `
+// cell cache automatically replaced
+var cellCache = ${JSON.stringify(cellCache, null, 4)}
+
+module.exports = {
+    cellCache
+}
+
+`
+    var cacheCell = importer.interpret('cell cache')
+    updateCode(cacheCell, code)
+}
+
+module.exports = {
+    findNotebooks,
+    cacheAll,
+    saveCache
+}
+</code></pre>
+
+<p>This code manages a cache of code cells from Jupyter notebooks.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports necessary modules for file system operations, assertions, and custom functions from a <code>Core</code> module.</p></li>
+<li><p><strong><code>findNotebooks(dirname)</code>:</strong> This function finds all Jupyter notebooks (<code>.ipynb</code> files) within a given directory and its subdirectories.</p></li>
+<li><p><strong><code>cacheAll()</code>:</strong> This is the core function that caches code cells from notebooks.</p>
+<ul>
+<li>It gathers a list of notebooks, including the current notebook itself.</li>
+<li>It builds a list of all IDs (file paths and cell IDs) to track.</li>
+<li>It iterates through each notebook, extracts code cells using <code>cacheCells()</code>, and updates the <code>cellCache</code> with the latest cell data.</li>
+<li>It saves the updated <code>cellCache</code> back into the current notebook using <code>updateCode()</code>.</li>
+</ul></li>
+<li><p><strong><code>saveCache()</code>:</strong> This function saves the <code>cellCache</code> to the current notebook file.</p></li>
+<li><p><strong>Exports:</strong> The module exports functions for finding notebooks, caching cells, and saving the cache.</p></li>
+</ol>
+<p>In essence, this code automates the process of keeping a cache of code cells from Jupyter notebooks up-to-date within the notebooks themselves.</p>

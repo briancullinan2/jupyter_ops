@@ -1,0 +1,138 @@
+<p>This code parses a Chrome browser history file to categorize and count website visits, likely for the purpose of visualizing browsing habits using a pie chart. It identifies common websites visited and provides a summary of their frequency.</p>
+
+
+<pre><code>var fs = require('fs');
+var importer = require('../Core');
+var d3PieChart = importer.import('d3 pie chart');
+
+function convertUnicode(x) {
+    var r = /\\u([\d\w]{4})/gi;
+    x = x.replace(r, function (match, grp) {
+        return String.fromCharCode(parseInt(grp, 16));
+    });
+    return unescape(x);
+}
+
+var history = JSON.parse(fs.readFileSync('/Users/briancullinan/Downloads/Takeout 6/Chrome/BrowserHistory.json'));
+var total = history['Browser History'].length;
+
+console.log(new Date(Math.round(history['Browser History'][0].time_usec / 1000)));
+console.log(new Date(Math.round(history['Browser History'][total - 1].time_usec / 1000)));
+
+var groupCounts = [];
+function addSite(label, value = 1) {
+    var site = groupCounts.filter(g => g.label === label)[0];
+    if (typeof site === 'undefined') {
+        groupCounts[groupCounts.length] = {
+            label: label,
+            value: value
+        }
+    } else {
+        site.value += value;
+    }
+};
+
+for (var i = 0; i < total; i++) {
+    var uri = convertUnicode(history['Browser History'][i].url);
+    if (uri.match('google.*?search')) {
+        addSite('google search');
+    }
+    else if (uri.match('calendar.*?google')) {
+        addSite('google calendar');
+    }
+    else if (uri.match('stackoverflow')) {
+        addSite('stackoverflow');
+    }
+    else if (uri.match('localhost:9090')) {
+        addSite('local dev');
+    }
+    else if (uri.match('linkedin')) {
+        addSite('linkedin');
+    }
+    else if (uri.match('google')) {
+        addSite('other google');
+    }
+    else if (uri.match('amazon')) {
+        addSite('amazon');
+    }
+    else if (uri.match('github')) {
+        addSite('github');
+    }
+    else if (uri.match('facebook')) {
+        addSite('facebook');
+    }
+    else if (uri.match('wikipedia')) {
+        addSite('wikipedia');
+    }
+    else if (uri.match('youtube')) {
+        addSite('youtube');
+    }
+    else if (uri.match('ftp:')) {
+        addSite('ftp');
+    }
+    else if (uri.match('chrome:|about:|native:|source:|file:|data:|extension:|intent:|content:|market:')) {
+        addSite('settings');
+    }
+    else {
+        var domain = (/https?:\/\/(.*?)(\/|$)/ig).exec(uri);
+        if (domain === null) {
+            console.log(uri);
+        }
+        addSite(domain[1]);
+    }
+}
+
+var oldGroups = groupCounts;
+groupCounts = [];
+for (var i = 0; i < oldGroups.length; i++) {
+    if (oldGroups[i].value < 300) {
+        addSite('other', oldGroups[i].value);
+    } else {
+        addSite(oldGroups[i].label, oldGroups[i].value);
+    }
+}
+
+$$.async();
+d3PieChart(groupCounts)
+    .then(r => $$.svg(r))
+    .catch(e => $$.sendError(e));
+
+// TODO: show month by month, week by week?
+
+// TODO: use this chart instead? https://bl.ocks.org/mbostock/8d2112a115ad95f4a6848001389182fb
+</code></pre>
+
+<p>This code analyzes a Chrome browser history file (likely exported from Google Takeout) to categorize and count website visits.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>fs</code> for file system operations and <code>importer</code> for custom modules (likely containing a D3 pie chart component).</li>
+</ul></li>
+<li><p><strong><code>convertUnicode</code> Function:</strong></p>
+<ul>
+<li>Converts Unicode escape sequences (e.g., <code>\uXXXX</code>) in a string to their corresponding characters.</li>
+</ul></li>
+<li><p><strong>Loading History Data:</strong></p>
+<ul>
+<li>Reads the Chrome history JSON file (<code>BrowserHistory.json</code>) from the specified path.</li>
+<li>Extracts the total number of entries from the history.</li>
+<li>Logs the timestamps of the first and last entries for reference.</li>
+</ul></li>
+<li><p><strong>Grouping Website Visits:</strong></p>
+<ul>
+<li>Initializes an empty array <code>groupCounts</code> to store website visit counts.</li>
+<li>Defines the <code>addSite</code> function to increment the count for a given website label. If the label doesn't exist, it creates a new entry.</li>
+</ul></li>
+<li><p><strong>Analyzing History Entries:</strong></p>
+<ul>
+<li>Iterates through each history entry.</li>
+<li>Converts the URL to a readable string using <code>convertUnicode</code>.</li>
+<li>Uses regular expressions to categorize the URL into different groups (e.g., &quot;google search&quot;, &quot;stackoverflow&quot;, &quot;local dev&quot;).</li>
+<li>Calls <code>addSite</code> to update the count for the corresponding category.</li>
+</ul></li>
+<li><p><strong>Visualizing Results (Not Shown):</strong></p>
+<ul>
+<li>The code likely uses the <code>d3PieChart</code> module (imported from <code>importer</code>) to create a pie chart visualizing the website visit counts.</li>
+</ul></li>
+</ol>

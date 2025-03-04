@@ -1,0 +1,35 @@
+<p>The code snippet highlights the importance of choosing the right method for handling multiple asynchronous operations in JavaScript. While <code>Promise.all</code> works, the recommended approach using <code>runAllPromises</code> likely offers more efficient and flexible management of asynchronous tasks.</p>
+
+
+<pre><code>/*
+var importer = require('./Core')));
+
+$$.async();
+
+// don't do this
+Promise.all([
+    importer.importNotebook(n)
+    importer.importNotebook(n)
+    ]);
+
+// do this instead!
+runAllPromises([
+    importer.importNotebook(n)
+    importer.importNotebook(n)
+    ])
+*/
+
+</code></pre>
+
+<p>This code snippet demonstrates the correct way to handle multiple asynchronous operations using promises in JavaScript.</p>
+<p><strong>Problem:</strong></p>
+<p>The commented-out code uses <code>Promise.all</code> to run multiple <code>importer.importNotebook</code> calls concurrently. While this works, it's not ideal because it waits for <em>all</em> promises to resolve before proceeding.</p>
+<p><strong>Solution:</strong></p>
+<p>The recommended approach uses <code>runAllPromises</code>, which likely comes from the <code>importer</code> module. This function likely handles the asynchronous execution of promises more efficiently, potentially allowing for parallel execution and better handling of potential errors.</p>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Asynchronous Operations:</strong> <code>importer.importNotebook</code> is likely an asynchronous function that takes some time to complete.</li>
+<li><strong>Promises:</strong> Promises are used to represent the eventual result of an asynchronous operation.</li>
+<li><strong><code>Promise.all</code>:</strong> This method waits for all provided promises to resolve before returning a new promise that resolves with an array of results.</li>
+<li><strong><code>runAllPromises</code>:</strong> This custom function likely provides a more tailored approach to managing multiple asynchronous operations, potentially offering features like parallel execution, error handling, and progress tracking.</li>
+</ul>

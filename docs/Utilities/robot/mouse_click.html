@@ -1,0 +1,42 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>clickMouse</code> function uses the <code>node-screenshots</code> and <code>mouse-controller</code> modules to simulate a left mouse click at a specified position (x, y) on the primary monitor. This function is exported as a module, making it available for use in other scripts.</p>
+
+
+<pre><code>const { Monitor } = require("node-screenshots")
+const MouseController = require('mouse-controller')
+const mc = new MouseController();
+
+function clickMouse(x, y) {
+  let monitors = Monitor.all()
+  monitors.sort((a, b) => (a.x + a.y) - (b.x + b.y))
+  /*console.log({
+    x: monitors[0].x,
+    y: monitors[0].y,
+    width: monitors[0].width,
+    height: monitors[0].height,
+  })*/
+  mc.click(mc.BUTTON.LEFT, {x: x * monitors[0].width * 3 + monitors[0].x, y: y * monitors[0].height})
+}
+
+module.exports = clickMouse
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies</h3>
+<ul>
+<li><code>node-screenshots</code>: A Node.js module for capturing screenshots.</li>
+<li><code>mouse-controller</code>: A Node.js module for controlling the mouse.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>clickMouse(x, y)</code></h4>
+<ul>
+<li>Requires the <code>MouseController</code> module and creates a new instance.</li>
+<li>Uses the <code>Monitor.all()</code> method from <code>node-screenshots</code> to get an array of available monitors.</li>
+<li>Sorts the monitors by their combined x and y coordinates.</li>
+<li>Calculates the mouse click position by scaling the input coordinates (<code>x</code> and <code>y</code>) by the monitor's width and height, then adds the monitor's offset.</li>
+<li>Simulates a left mouse click at the calculated position using <code>mouse-controller</code>.</li>
+</ul>
+<h3>Export</h3>
+<ul>
+<li>Exports the <code>clickMouse</code> function as a module, making it available for use in other scripts.</li>
+</ul>

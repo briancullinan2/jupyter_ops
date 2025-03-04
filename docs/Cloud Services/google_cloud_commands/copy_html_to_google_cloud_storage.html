@@ -1,0 +1,44 @@
+<p>This Bash script processes HTML files in a specified directory, sets their content type to &quot;text/html; charset=utf-8&quot;, and uploads them to Google Cloud Storage.</p>
+
+
+<pre><code>output="../.output"; \
+if [[ -n $1 ]]; \
+    then output=$1; \
+fi; \
+for file in $(find "$output" -type f -name "*.html"); \
+do \
+    f=${file#"$output"/*} && \
+    gsutil setmeta -h "Content-Type:text/html; charset=utf-8" "$2/$f" && \
+    gsutil -h "Content-Type:text/html; charset=utf-8" cp "$file" "$2/${f%.*}"; \
+done
+</code></pre>
+
+<p>This Bash script sets the content type of HTML files in a directory to &quot;text/html; charset=utf-8&quot; and uploads them to Google Cloud Storage.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>output=&quot;../.output&quot;;</code></strong>:</p>
+<ul>
+<li>Sets the default output directory to &quot;../.output&quot;.</li>
+</ul></li>
+<li><p><strong><code>if [[ -n $1 ]]; then output=$1; fi;</code></strong>:</p>
+<ul>
+<li>Checks if a command-line argument (<code>$1</code>) is provided. If so, it overrides the default output directory with the provided argument.</li>
+</ul></li>
+<li><p><strong><code>for file in $(find &quot;$output&quot; -type f -name &quot;*.html&quot;); do ... done</code></strong>:</p>
+<ul>
+<li>This loop iterates over all HTML files (<code>*.html</code>) found in the specified output directory.</li>
+</ul></li>
+<li><p><strong><code>f=${file#&quot;$output&quot;/*} &amp;&amp; ...</code></strong>:</p>
+<ul>
+<li>Removes the output directory path from the filename, leaving only the filename.</li>
+</ul></li>
+<li><p><strong><code>gsutil setmeta -h &quot;Content-Type:text/html; charset=utf-8&quot; &quot;$2/$f&quot; &amp;&amp; ...</code></strong>:</p>
+<ul>
+<li>Sets the &quot;Content-Type&quot; metadata of the file on Google Cloud Storage to &quot;text/html; charset=utf-8&quot;.</li>
+</ul></li>
+<li><p><strong><code>gsutil -h &quot;Content-Type:text/html; charset=utf-8&quot; cp &quot;$file&quot; &quot;$2/${f%.*}&quot;</code></strong>:</p>
+<ul>
+<li>Uploads the HTML file to Google Cloud Storage, using the filename without the extension.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

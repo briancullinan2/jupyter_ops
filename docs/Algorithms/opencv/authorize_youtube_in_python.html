@@ -1,0 +1,160 @@
+<p>Here's a summary of the code breakdown in one sentence:</p>
+<p>This Python script uses the Flask web framework and Google API Client Library to create a simple web application that authenticates users with Google and authorizes them to access the YouTube API using OAuth 2.0 authentication.</p>
+<p>Alternatively, here's a two-sentence summary:</p>
+<p>The script imports necessary libraries and sets environment variables for Google API authentication, then creates a Flask application instance. It defines a single route, <code>/authorize</code>, which handles the OAuth 2.0 authorization flow, generating a URL to redirect users to the Google authorization page for consent and offline access.</p>
+
+
+<pre><code>
+import os
+import sys
+import flask
+import requests
+from urllib.parse import urlparse, parse_qs
+import json
+import re
+
+import google.oauth2.credentials
+import google_auth_oauthlib.flow
+import googleapiclient.discovery
+
+HOME_DIR = os.environ.get("HOME") or os.environ.get("USERPROFILE")
+# This variable specifies the name of a file that contains the OAuth 2.0
+# information for this application, including its client_id and client_secret.
+CLIENT_SECRETS_FILE = os.path.join(HOME_DIR, '.credentials', "youtube_secret.json")
+
+# The OAuth 2.0 access scope allows for access to the
+# authenticated user's account and requires requests to use an SSL connection.
+SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
+API_SERVICE_NAME = 'youtube'
+API_VERSION = 'v3'
+
+app = flask.Flask(__name__)
+# Note: A secret key is included in the sample so that it works.
+# If you use this code in your application, replace this with a truly secret
+# key. See https://flask.palletsprojects.com/quickstart/#sessions.
+app.secret_key = '73954364293-ju9vifnt5233jt4fquk57hs07mh7dudg.apps.googleusercontent.com'
+
+@app.route('/authorize')
+def authorize():
+  # Create flow instance to manage the OAuth 2.0 Authorization Grant Flow steps.
+  flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+      CLIENT_SECRETS_FILE, scopes=SCOPES)
+
+  # The URI created here must exactly match one of the authorized redirect URIs
+  # for the OAuth 2.0 client, which you configured in the API Console. If this
+  # value doesn't match an authorized URI, you will get a 'redirect_uri_mismatch'
+  # error.
+  flow.redirect_uri = 'https://localhost:8080' #flask.url_for('oauth2callback', _external=True)
+
+  authorization_url, state = flow.authorization_url(
+      prompt='consent',
+      # Enable offline access so that you can refresh an access token without
+      # re-prompting the user for permission. Recommended for web server apps.
+      access_type='offline',
+      # Enable incremental authorization. Recommended as a best practice.
+      include_granted_scopes='true') # flow.redirect_uri
+
+  # Store the state so the callback can verify the auth server response.
+  # flask.session['state'] = state
+  print("Visit this URL to authorize:", authorization_url)
+  print("Paste the resulting URL:")
+  line = sys.stdin.readline().strip()
+  oauth2callback(line)
+
+# https://localhost:8080/?state=O2rTe25jM5gOZ6fZBpl9A9JeLm7SYK&code=4/0AQSTgQH3rDCG1u4-CyvP1oiuKLGOMf3ZzgZRrlsaju-NKQJUPKDvB_1xalzp9_EiEXhAOw&scope=https://www.googleapis.com/auth/youtube.force-ssl
+@app.route('/oauth2callback')
+def oauth2callback(request_response):
+  # Specify the state when creating the flow in the callback so that it can
+  # verified in the authorization server response.
+  # state = flask.session['state']
+  parsed_uri = urlparse(request_response)
+  query_params = parse_qs(parsed_uri.query)
+  state = query_params['state']
+
+  flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+      CLIENT_SECRETS_FILE, scopes=SCOPES)
+  flow.redirect_uri = 'https://localhost:8080' # flask.url_for('oauth2callback', _external=True)
+
+  # Use the authorization server's response to fetch the OAuth 2.0 tokens.
+  authorization_response = request_response
+  flow.fetch_token(authorization_response=authorization_response)
+
+  # Store credentials in the session.
+  # ACTION ITEM: In a production app, you likely want to save these
+  #              credentials in a persistent database instead.
+  credentials = flow.credentials
+  
+  credentials = credentials_to_dict(credentials)
+  # flask.session['credentials'] = credentials
+  print(credentials)
+
+  # Check which scopes user granted
+  #features = check_granted_scopes(credentials)
+  #flask.session['features'] = features
+  #return flask.redirect('/')
+  save_json_with_scopes(credentials, SCOPES, os.path.join(HOME_DIR, '.credentials'))
+
+def sanitize_filename(name):
+    """Sanitize a string to be a valid filename."""
+    return re.sub(r"[^\w.-]", "_", name)  # Replace invalid characters with "_"
+
+def save_json_with_scopes(data, scopes, directory="."):
+    """Save a dictionary as a JSON file, using sanitized Google OAuth scopes as filename."""
+    sanitized_name = sanitize_filename("_".join(scopes))
+    filename = f"{directory}/{sanitized_name}.json"
+
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=4)
+    
+    print(f"Saved JSON to {filename}")
+
+def credentials_to_dict(credentials):
+  return {'token': credentials.token,
+          'refresh_token': credentials.refresh_token,
+          'token_uri': credentials.token_uri,
+          'client_id': credentials.client_id,
+          'client_secret': credentials.client_secret,
+          'granted_scopes': credentials.granted_scopes}
+
+
+__all__ = {
+  "authorize": authorize,
+  "oauth2callback": oauth2callback,
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This is a Python script that uses the Flask web framework and the Google API Client Library to create a simple web application that authenticates users with Google and authorizes them to access the YouTube API.</p>
+<h3>Importing Libraries</h3>
+<p>The script starts by importing various libraries:</p>
+<ul>
+<li><code>os</code> and <code>sys</code> for system-related tasks</li>
+<li><code>flask</code> for creating the web application</li>
+<li><code>requests</code> for making HTTP requests</li>
+<li><code>urllib.parse</code> for parsing URLs</li>
+<li><code>json</code> for handling JSON data</li>
+<li><code>re</code> for regular expressions</li>
+<li><code>google.oauth2.credentials</code> and <code>google_auth_oauthlib.flow</code> for Google API authentication</li>
+<li><code>googleapiclient.discovery</code> for discovering Google API services</li>
+</ul>
+<h3>Setting Environment Variables and API Credentials</h3>
+<p>The script sets several environment variables and API credentials:</p>
+<ul>
+<li><code>HOME_DIR</code>: the home directory of the current user (or <code>USERPROFILE</code> on Windows)</li>
+<li><code>CLIENT_SECRETS_FILE</code>: the path to a JSON file containing the OAuth 2.0 credentials for the application</li>
+<li><code>SCOPES</code>: the API scopes required for authentication (in this case, the YouTube API)</li>
+<li><code>API_SERVICE_NAME</code>: the name of the API service (YouTube)</li>
+<li><code>API_VERSION</code>: the version of the API (v3)</li>
+</ul>
+<h3>Creating the Flask Application</h3>
+<p>The script creates a Flask application instance and sets a secret key for sessions:</p>
+<pre><code class="language-python">app = flask.Flask(__name__)
+app.secret_key = '...secret key...'
+</code></pre>
+<h3>The <code>/authorize</code> Route</h3>
+<p>The script defines a single route, <code>/authorize</code>, which handles the OAuth 2.0 authorization flow:</p>
+<pre><code class="language-python">@app.route('/authorize')
+def authorize():
+   ...
+</code></pre>
+<p>This route creates a <code>Flow</code> instance from the client secrets file and sets the redirect URI to <code>https://localhost:8080</code>. The <code>authorization_url</code> method is called to generate a URL that will redirect the user to the Google authorization page. The <code>prompt</code> parameter is set to <code>'consent'</code> to enable user consent, and <code>access_type</code> is set to <code>'offline'</code> to enable offline access.</p>

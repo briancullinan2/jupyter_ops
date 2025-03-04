@@ -1,0 +1,86 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code imports various libraries and modules to interact with the operating system, handle JSON data, build a web application, and make HTTP requests, and configures the Google API for YouTube. It defines functions to authorize and list live broadcasts using the YouTube API, sanitize file names, and maps function names to their corresponding functions in the module.</p>
+
+
+<pre><code>import os
+import re
+import json
+import flask
+import requests
+
+import_notebook("list live stream", globals())
+
+import google.oauth2.credentials
+import google_auth_oauthlib.flow
+import googleapiclient.discovery
+
+SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
+API_SERVICE_NAME = 'youtube'
+API_VERSION = 'v3'
+HOME_DIR = os.environ.get("HOME") or os.environ.get("USERPROFILE")
+
+def list_broadcasts():
+  credentials = youtube_authorize()
+
+  youtube = googleapiclient.discovery.build(
+      API_SERVICE_NAME, API_VERSION, credentials=credentials)
+
+  broadcasts = youtube.liveBroadcasts().list(part='id,snippet', mine=True).execute()
+
+  return broadcasts["items"]
+  # Save credentials back to session in case access token was refreshed.
+  # ACTION ITEM: In a production app, you likely want to save these
+  #              credentials in a persistent database instead.
+  #flask.session['credentials'] = credentials_to_dict(credentials)
+
+  #return flask.jsonify(**broadcasts)
+
+
+def sanitize_filename(name):
+    """Sanitize a string to be a valid filename."""
+    return re.sub(r"[^\w.-]", "_", name)  # Replace invalid characters with "_"
+
+
+__all__ = {
+  "list_broadcasts": list_broadcasts
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import Statements</h3>
+<p>The code imports various libraries and modules, including:</p>
+<ul>
+<li><code>os</code> for interacting with the operating system</li>
+<li><code>re</code> for regular expressions</li>
+<li><code>json</code> for handling JSON data</li>
+<li><code>flask</code> for building a web application</li>
+<li><code>requests</code> for making HTTP requests</li>
+<li><code>google.oauth2.credentials</code> for handling Google OAuth credentials</li>
+<li><code>google_auth_oauthlib.flow</code> for Google OAuth flow</li>
+<li><code>googleapiclient.discovery</code> for interacting with the Google API</li>
+</ul>
+<h3>Google API Configuration</h3>
+<p>The code defines several constants:</p>
+<ul>
+<li><code>SCOPES</code>: a list of API scopes for the YouTube API</li>
+<li><code>API_SERVICE_NAME</code>: the name of the API service (YouTube)</li>
+<li><code>API_VERSION</code>: the version of the API (v3)</li>
+<li><code>HOME_DIR</code>: the home directory of the user (determined by the <code>HOME</code> or <code>USERPROFILE</code> environment variables)</li>
+</ul>
+<h3>list_broadcasts Function</h3>
+<p>The <code>list_broadcasts</code> function:</p>
+<ol>
+<li>Authorizes the user using the <code>youtube_authorize</code> function (not shown in this excerpt)</li>
+<li>Creates a YouTube API client using the authorized credentials</li>
+<li>Lists the user's live broadcasts using the <code>liveBroadcasts().list</code> method</li>
+<li>Returns the list of broadcasts as a JSON object</li>
+</ol>
+<h3>sanitize_filename Function</h3>
+<p>The <code>sanitize_filename</code> function:</p>
+<ol>
+<li>Takes a string as input</li>
+<li>Uses a regular expression to replace invalid characters with underscores</li>
+<li>Returns the sanitized string</li>
+</ol>
+<h3><strong>all</strong> Dictionary</h3>
+<p>The <code>__all__</code> dictionary defines a mapping of function names to their corresponding functions in the module. In this case, the only function defined is <code>list_broadcasts</code>.</p>

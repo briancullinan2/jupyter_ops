@@ -1,0 +1,200 @@
+<p>This code snippet is designed to interact with LinkedIn, extracting information about participants in a given thread and attempting to read messages within that thread.  It uses a <code>client</code> object to control interactions with the LinkedIn website, but the specifics of this object and how it works are not provided.</p>
+
+
+<pre><code>var importer = require('../Core');
+var moment = require('moment');
+var chrono = require('chrono-node');
+
+function getThreadParticipants(thread) {
+    var profiles = [], alreadyAt = false;
+    // check for thread url and go there
+    return client
+        .getUrl()
+        .then(url => {
+            return url.indexOf(thread + 'topcard/') === -1
+                ? client.url('https://www.linkedin.com' + thread + 'topcard/')
+                    .alertText()
+                    .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
+                    .catch(e => {
+                    })
+                : Promise.resolve([]);
+        })
+        .pause(3000)
+        .elements('.view-profile')
+        .then(els => Promise.all(els.value.map(a => {
+            return client.elementIdAttribute(a.ELEMENT, 'href').then(h => h.value);
+        })))
+        .then(links => {
+            return importer.runAllPromises(links.map(link => (resolve => {
+                var results = [];
+                return client
+                    .click('a[href*="' + link.replace('https://www.linkedin.com', '') + '"]')
+                    .pause(3000)
+                    .then(() => readLinkedInProfileInfo(link))
+                    .then(r => results = r)
+                    .back()
+                    .pause(1000)
+                    .then(r => resolve(results))
+                    .catch(e => console.log(e))
+            })));
+        });
+};
+
+function scrollLinkedInMessages(messages) {
+    // TODO: add check for needing to go to LinkedIn
+    // TODO: add check for needing to login
+    // scroll to bottom of messages
+    return client
+        .execute(() => {
+            document.getElementsByClassName('msg-s-message-list')[0]
+                .scrollTop -= 10000;
+        })
+        .pause(2000)
+        .then(() => readLinkedInMessages(messages));
+}
+
+function readLinkedInMessages(messages) {
+    // TODO: check for thread id in url?
+    var lastTime;
+    return client
+        .alertText()
+        .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
+        .catch(e => {
+        })
+        .then(() => getAllXPath([
+            '//li[contains(@class, "msg-s-message-list__event")]',
+            {
+                from: './/img/@title',
+                time: './/time//text()',
+                message: './/*[contains(@class, "msg-s-message-listitem__message-bubble")]//text()'
+            }
+        ]))
+        .then(r => {
+            return r.map(m => {
+                var newTime = chrono.parseDate(m.time + '');
+                if (newTime !== null) {
+                    newTime.setHours(newTime.getHours() - (new Date()).getTimezoneOffset() / 60)
+                    lastTime = newTime;
+                }
+                return Object.assign(m, {
+                    time: lastTime,
+                    from: m.from + '',
+                    message: m.message.filter(s => !s.match(/^\s*$/igm)).join('\n')
+                })
+            })
+        })
+        .then(r => {
+            var newMessages = r
+                .filter(e => messages
+                    .filter(m => m.message === e.message).length === 0);
+            messages = newMessages.concat(messages);
+            return newMessages.length > 0
+                ? scrollLinkedInMessages(messages)
+                : Promise.resolve(messages);
+        })
+        .catch(e => console.log(e))
+};
+
+function readLinkedInThread(thread, messages) {
+    var participants;
+    return client
+        .getUrl()
+        .then(url => url.indexOf(thread) === -1
+            ? client.url('https://www.linkedin.com' + thread)
+                .alertText()
+                .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
+                .catch(e => {
+                })
+                .pause(1000)
+                .isExisting('a[href*="topcard"]').then(is => is
+                    ? client.click('a[href*="topcard"]')
+                    : Promise.resolve([]))
+            : (url.indexOf('topcard') === -1
+                ? client.isExisting('a[href*="topcard"]').then(is => is
+                    ? client.click('a[href*="topcard"]')
+                    : Promise.resolve([]))
+                : Promise.resolve([])))
+        // get participants from topcard
+        .pause(3000)
+        .then(() => getThreadParticipants(thread))
+        .then(p => participants = p)
+        .back()
+        // TODO: save to contacts
+        .then(() => readLinkedInMessages(messages || []))
+        .then(messages => ({
+            thread: thread,
+            participants: participants,
+            messages: messages
+        }))
+        .catch(e => console.log(e));
+};
+module.exports = readLinkedInThread;
+</code></pre>
+
+<p>This code defines functions to interact with LinkedIn messages and extract information about thread participants.</p>
+<p>Here's a breakdown:</p>
+<p><strong><code>getThreadParticipants(thread)</code>:</strong></p>
+<ol>
+<li><p><strong>Navigation:</strong></p>
+<ul>
+<li>It first checks if the user is already on the specified thread's page. If not, it navigates there.</li>
+<li>It handles any potential &quot;leave&quot; alerts that might appear.</li>
+</ul></li>
+<li><p><strong>Participant Extraction:</strong></p>
+<ul>
+<li>It finds all elements representing user profiles within the thread.</li>
+<li>It extracts the URLs of these profiles.</li>
+<li>It iterates through each profile URL, opens the profile page, extracts the profile information using <code>readLinkedInProfileInfo</code>, and then navigates back to the thread page.</li>
+</ul></li>
+</ol>
+<p><strong><code>scrollLinkedInMessages(messages)</code>:</strong></p>
+<ol>
+<li><p><strong>Scrolling:</strong></p>
+<ul>
+<li>Uses <code>client.execute()</code> to scroll the LinkedIn messages list to the bottom by subtracting a large value (<code>10000</code>) from the scrollTop property of the message list element.</li>
+<li>Pauses for 2 seconds (<code>pause(2000)</code>) to allow the scrolling to complete.</li>
+</ul></li>
+<li><p><strong>Reading Messages:</strong></p>
+<ul>
+<li>Calls <code>readLinkedInMessages(messages)</code> to process the messages.</li>
+</ul></li>
+</ol>
+<p><strong><code>readLinkedInMessages(messages)</code>:</strong></p>
+<ol>
+<li><p><strong>Alert Handling:</strong></p>
+<ul>
+<li>Checks for a &quot;leave&quot; alert using <code>client.alertText()</code>. If found, it accepts the alert using <code>client.alertAccept()</code>.</li>
+</ul></li>
+<li><p><strong>TODOs:</strong></p>
+<ul>
+<li>Contains TODOs for:
+<ul>
+<li>Checking if LinkedIn needs to be accessed.</li>
+<li>Checking if the user needs to log in.</li>
+<li>Determining the thread ID from the URL.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Message Processing:</strong></p>
+<ul>
+<li>The code is incomplete and doesn't show how messages are actually read and processed.</li>
+</ul></li>
+</ol>
+<p><strong>Overall:</strong></p>
+<p>The code snippet appears to be part of a larger script that interacts with LinkedIn to:</p>
+<ul>
+<li><strong>Get Thread Participants:</strong>
+<ul>
+<li>Extracts participant profiles from a LinkedIn thread.</li>
+</ul></li>
+<li><strong>Scroll and Read Messages:</strong>
+<ul>
+<li>Scrolls to the bottom of LinkedIn messages and attempts to read them.</li>
+</ul></li>
+</ul>
+<p><strong>Missing Information:</strong></p>
+<ul>
+<li>The code lacks context about the <code>client</code> object and how it interacts with LinkedIn.</li>
+<li>The <code>importer</code> module's functionality is unclear.</li>
+<li>The <code>readLinkedInProfileInfo</code> and <code>readLinkedInMessages</code> functions are not fully defined.</li>
+</ul>
+<p>Let me know if you have any other questions.</p>

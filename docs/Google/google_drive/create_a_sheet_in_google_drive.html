@@ -1,0 +1,44 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The <code>createSheet(email)</code> function creates a Google Sheets document, inserts permissions for two emails, and exports it as a module, using the <code>authorizeSheets</code> and <code>insertPermission</code> modules to handle authorization and permission insertion.</p>
+
+
+<pre><code>var util = require('util');
+var importer = require('../Core');
+var authorizeSheets = importer.import('authorize sheets api');
+var insertPermission = importer.import('insert google drive permissions');
+
+function createSheet(email) {
+    var sheets;
+    
+    return authorizeSheets()
+        .then(s => sheets = s)
+        .then(() => util.promisify(sheets.spreadsheets.create.bind(sheets))())
+        .then(r => insertPermission(r.data.spreadsheetId, 'megamindbrian@gmail.com'))
+        .then(r => insertPermission(r.data.spreadsheetId, email))
+}
+
+module.exports = createSheet;
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies</h3>
+<ul>
+<li><code>util</code>: a built-in Node.js module for utility functions.</li>
+<li><code>importer</code>: a custom module located at <code>../Core</code> that is used to import other modules.</li>
+</ul>
+<h3>Imported Modules</h3>
+<ul>
+<li><code>authorizeSheets</code>: a module that handles authorization for Google Sheets API.</li>
+<li><code>insertPermission</code>: a module that inserts permissions for Google Drive using the provided spreadsheet ID and email.</li>
+</ul>
+<h3>Function: <code>createSheet(email)</code></h3>
+<p>This function creates a Google Sheets document and inserts permissions for two emails.</p>
+<h3>Code Flow</h3>
+<ol>
+<li><code>authorizeSheets()</code>: authorizes the application to use the Google Sheets API.</li>
+<li><code>util.promisify(sheets.spreadsheets.create.bind(sheets))()</code>: creates a new Google Sheets document using the Sheets API.</li>
+<li><code>insertPermission(r.data.spreadsheetId,'megamindbrian@gmail.com')</code>: inserts permission for'megamindbrian@gmail.com' using the created spreadsheet ID.</li>
+<li><code>insertPermission(r.data.spreadsheetId, email)</code>: inserts permission for the provided email using the created spreadsheet ID.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>createSheet(email)</code> function is exported as a module, making it available for use in other parts of the application.</p>

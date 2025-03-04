@@ -1,0 +1,98 @@
+<p>This code establishes a secure connection to a Gmail inbox using OAuth 2.0 authentication and the IMAP protocol.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var Imap = require('imap');
+var util = require('util');
+var mime = require('mime');
+var importer = require('../Core');
+var getCredentials = importer.import('decrypt passwords');
+
+var path = require('path');
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var credentials = path.join(PROFILE_PATH, '.credentials/sheet to web-8ca5784e0b05.json');
+
+var {GoogleAuth} = require('google-auth-library');
+var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://mail.google.com/'
+];
+
+function authorizeGmail() {
+    return new GoogleAuth({
+        keyFile: credentials,
+        scopes: GOOGLE_AUTH_SCOPE
+    }).getClient(/* options here are always ignored b/c cache */)
+}
+
+function imapClient() {
+    var imap, client;
+    
+    return authorizeGmail()
+        .then(c => {
+            client = c;
+            return client.request({
+                url: 'https://people.googleapis.com/v1/people/me?personFields=names'
+            })
+        })
+        .then(res => {
+            var creds = 'user=megamindbrian@gmail.com\x01auth=Bearer ' + client.credentials.access_token + '\x01\x01';
+            var base64 = (new Buffer(creds)).toString('base64');
+            imap = new Imap({
+                host: 'imap.gmail.com',
+                port: 993,
+                tls: true,
+                xoauth2: base64,
+                debug: console.log
+            });
+            return new Promise((resolve, reject) => {
+                imap.once('error', reject);
+                imap.once('ready', resolve);
+                imap.once('end', reject);
+                imap.connect();
+            })
+        })
+        .then(() => util.promisify(imap.openBox.bind(imap))('INBOX', true))
+        .then(() => imap)
+}
+module.exports = imapClient;
+</code></pre>
+
+<p>This code sets up an IMAP client to access Gmail using OAuth 2.0 authentication.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: File system module for reading credentials.</li>
+<li><code>path</code>: Path manipulation module for constructing file paths.</li>
+<li><code>imap</code>: IMAP client library.</li>
+<li><code>util</code>: Utility module for promisifying functions.</li>
+<li><code>mime</code>: MIME type detection library.</li>
+<li><code>importer</code>: Custom module for importing functions (likely for decrypting credentials).</li>
+<li><code>google-auth-library</code>: Google OAuth 2.0 library.</li>
+</ul></li>
+<li><p><strong>Credentials:</strong></p>
+<ul>
+<li>Reads credentials from a JSON file located in the user's home directory.</li>
+</ul></li>
+<li><p><strong>Google Authentication:</strong></p>
+<ul>
+<li>Defines <code>authorizeGmail()</code> function to obtain an OAuth 2.0 client using the provided credentials and scopes.</li>
+</ul></li>
+<li><p><strong>IMAP Client Setup:</strong></p>
+<ul>
+<li>Defines <code>imapClient()</code> function to:
+<ul>
+<li>Obtain an authorized Google client.</li>
+<li>Extract the access token from the client.</li>
+<li>Construct an IMAP client using the access token for authentication.</li>
+<li>Connect to the Gmail IMAP server.</li>
+<li>Open the &quot;INBOX&quot; mailbox.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>imapClient()</code> function, allowing other parts of the application to use it to establish an IMAP connection.</li>
+</ul></li>
+</ol>

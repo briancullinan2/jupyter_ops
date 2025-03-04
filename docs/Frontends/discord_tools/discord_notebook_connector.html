@@ -1,0 +1,89 @@
+<p>Here is a two-sentence summary:</p>
+<p>The code imports various modules and defines functions to interact with the Discord API, interpret code, and summarize articles. It exports three main functions: <code>doInterpret</code>, <code>doSystemUsage</code>, and <code>doSummary</code>, which are used to provide user interaction and generate content on demand.</p>
+
+
+<pre><code>const systemBuffer = importer.import('system usage png buffer')
+const {patchInteractionImageAttachment} = importer.import('update discord interaction with attachments')
+const {triggerTyping, createMessage, updateInteraction} = importer.import('disrcord api')
+const summerizeArticle = importer.import('test article summarizer')
+
+/*
+async function doVoice(interaction) {
+  const {llmVoice} = await importer.import('llm voice')
+  await triggerTyping(interaction.channel_id)
+  let a1 = await llmVoice('Convert the text to speech: ' + interaction.data.options[0].value)
+  return await patchInteractionImageAttachment(interaction.data.options[0].value, Buffer.from(a1), interaction.token, 'audio/wav')
+}
+*/
+
+async function doSystemUsage(interaction) {
+  let buffer = await systemBuffer()
+  await patchInteractionImageAttachment('system usage', buffer, interaction.token)
+  let update
+  let count = 24
+  update = setInterval(async () => {
+    count--
+    buffer = await systemBuffer()
+    await patchInteractionImageAttachment('system usage', buffer, interaction.token)
+    if(count == 0) {
+      clearInterval(update)
+    }
+  }, 4000)
+}
+
+async function doInterpret(interaction) {
+  let code = await importer.interpret(interaction.data.options[0].value)
+  await updateInteraction({
+    content: code.language + ' code:\n```' + (code.language == 'node' ? 'javascript' : code.language) + '\n' + code.code.substring(0, 1800) + '\n```\n'
+  }, interaction.id, interaction.token)
+}
+
+async function doSummary(interaction) {
+  let summary = await summerizeArticle(interaction.data.options[0].value)
+  await updateInteraction({
+    content: 'Link: ' + interaction.data.options[0].value + '\nTLDR: ' + summary[1] + '\n\n' + summary[0]
+  }, interaction.id, interaction.token)
+}
+
+module.exports = {
+  doInterpret,
+  doSystemUsage,
+  //doVoice,
+  doSummary,
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<p>The code imports various modules from the <code>importer</code> object:</p>
+<ul>
+<li><code>systemBuffer</code>: Returns a PNG buffer for system usage information.</li>
+<li><code>patchInteractionImageAttachment</code>: Updates an interaction with an image attachment.</li>
+<li><code>triggerTyping</code>, <code>createMessage</code>, <code>updateInteraction</code>: Functions for interacting with the Discord API.</li>
+<li><code>summerizeArticle</code>: Summarizes an article.</li>
+<li><code>interpret</code>: Interprets code and returns a code object.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>doSystemUsage</code></h4>
+<ul>
+<li>Updates an interaction with system usage information as an image attachment every 4 seconds.</li>
+<li>Stops updating after 24 iterations.</li>
+</ul>
+<h4><code>doInterpret</code></h4>
+<ul>
+<li>Interprets code provided in an interaction.</li>
+<li>Updates the interaction with the interpreted code.</li>
+</ul>
+<h4><code>doSummary</code></h4>
+<ul>
+<li>Summarizes an article provided in an interaction.</li>
+<li>Updates the interaction with a summary of the article.</li>
+</ul>
+<h3>Exports</h3>
+<p>The code exports the following functions:</p>
+<ul>
+<li><code>doInterpret</code></li>
+<li><code>doSystemUsage</code></li>
+<li><code>doSummary</code></li>
+</ul>
+<p>Note: The <code>doVoice</code> function is commented out and not exported.</p>

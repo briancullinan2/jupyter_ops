@@ -1,0 +1,71 @@
+
+
+<pre><code>
+
+async function run() {
+    const {
+        importNotebook, interpret
+    } = require('../Core')
+    const getParameters = await importNotebook('function parameters')
+    //const cell = await interpret(process.argv[1])
+    let result = await importNotebook(process.argv[1])
+    console.log(result)
+    // HACK to get C# working
+    if(typeof result.functions != 'undefined') {
+        result = result[result.functions[0]]
+    }
+    if(typeof result == 'object' && typeof result[Object.keys(result)[0]] == 'function') {
+        result = result[Object.keys(result)[0]]
+    }
+    const params = typeof result.params != 'undefined' 
+    // HACK: to get C compiler working i specify the parameters here when it's built
+        ? result.params : (result.params = getParameters(result.toString()).slice(1)) //.concat(getParameters(cell.code).slice(1))
+    console.log(params)
+    let inputs = []
+    try {
+        inputs = eval(process.argv[2] || '[]')
+    } catch (e) {
+        inputs = []
+    }
+    if(!Array.isArray(inputs)) {
+        inputs = [inputs]
+    }
+    for(let i = 0; i < process.argv.length; i++) {
+        let a = process.argv[i]
+        for(let j = 0; j < params.length; j++) {
+            if(a.includes('--' + params[j])) {
+                if(a.includes('=')) {
+                    inputs[j] = a.split('=')[1]
+                } else {
+                    inputs[j] = process.argv[i+1]
+                    i++
+                }
+                if(result.types && typeof inputs[j] != 'number') {
+                    if(result.types[j+1] == 'int') {
+                        inputs[j] = parseInt(inputs[j])
+                    } else if(result.types[j+1] == 'float' || result.types[j+1] == 'double') {
+                        inputs[j] = parseFloat(inputs[j])
+                    }
+                }
+            }
+        }
+    }
+
+    debugger
+
+    const executed = await result.apply(null, inputs)
+    if(executed == global) {
+        return
+    }
+    // TODO: try to write the entire output back into the notebook cell because it was started from CLI
+    
+    if(executed && typeof executed.catch != 'undefined') {
+        return await executed.catch(e => e).then(r => console.log(r))
+    } else {
+        console.log(executed)
+    }
+}
+
+module.exports.run = run;
+</code></pre>
+

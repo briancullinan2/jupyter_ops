@@ -1,0 +1,142 @@
+<p>This code provides tools for managing and exporting Jupyter Notebooks, specifically handling import dependencies and generating function handlers for deployment. It recursively analyzes notebooks, extracts import information, and likely produces output files containing functions based on the processed code.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var mkdirpSync = importer.import('mkdirp')
+
+var importer = require('../Core')
+var authorTemplate = importer.import('authoring header template')
+var {
+    replaceImports, replaceCore
+} = importer.import(['replace notebook imports', 'replace core requirement'])
+var getImports = importer.import('get imports')
+var {fixImports} = importer.import('fix project paths')
+var delintCode = importer.import('delint notebooks')
+var niceName = importer.import('rename cell to nice name')
+var {matchFilename} = importer.import('match filename')
+var {makeHandler} = importer.import('generic gcloud function handler')
+var makeHandlerCell = importer.interpret('generic gcloud function handler')
+
+function getImportsRecursively(searches) {
+    if(typeof searches === 'string') {
+        searches = [searches]
+    }
+    const processed = []
+    const allCells = []
+    const pending = importer.interpret(searches)
+    while(pending.length > 0) {
+        var cell = pending.pop()
+        processed.push(cell.id)
+        allCells.push(cell)
+        if(cell.code.length > 10000 || cell.filename.includes('cache.ipynb')) continue
+        continue
+        getImports(cell.code).forEach(search => {
+            try {
+                var cells = importer.interpret([search])
+                cells.forEach(c => {
+                    if(!processed.includes(c.id))
+                        pending.push(c)
+                })
+            } catch (e) {console.log(e)}
+        })
+    }
+    return allCells
+}
+
+// searches are the top level cells starting the import tree
+function exportNotebook(searches, projectOutput, matchOutput) {
+    projectOutput = projectOutput || process.env.EXPORT_PATH
+        || path.join(path.resolve(__dirname), '../.functions');
+    if(!matchOutput) matchOutput = {}
+    const nextImports = []
+    const cells = getImportsRecursively(searches)
+    cells.forEach((cell, i) => {
+        var exportedCode
+        assert(!niceName(cell).match(/^\./),
+               `No filename ${cell.id} -> ${niceName(cell)} ${cell.questions}!`)
+        // some special exceptions with file-naming
+        if(cell.name === 'readme.md') {
+            exportedCode = cell.markdown
+        } else if (cell.language === 'javascript' || cell.language === 'node') {
+            try {
+                exportedCode = replaceImports(cell.code).ownerDocument.toString()
+                exportedCode = replaceCore(exportedCode).ownerDocument.toString()
+                const delinted = delintCode(exportedCode)[0]
+                exportedCode = delinted.fixed || delinted.code
+            } catch (e) {
+                console.log(exportedCode)
+                throw new Error(`Error exporting ${cell.id}: ${e.message}`)
+            }
+        } else {
+            exportedCode = cell.code
+        }
+        outputExport(exportedCode, cell, projectOutput, matchOutput)
+    })
+    
+    // if there is no index, add a google handler
+    if(Object.values(matchOutput).filter(o => o.includes('index.js')).length === 0
+       && cells.filter(cell => niceName(cell).includes('index')).length === 0) {
+        outputExport(makeHandler(searches), makeHandlerCell, projectOutput, {
+            '*function-handler*': './index.js'
+        })
+    }
+    
+    return fixImports(projectOutput)
+    // TODO: output packed cells and cache
+    // TODO: zip and upload to AWS
+}
+
+function outputExport(exportedCode, cell, projectOutput, matchOutput) {
+    // emit the file in every location request
+    matchFilename(niceName(cell), matchOutput, projectOutput).forEach(filename => {
+        console.log(`emitting ${filename}`);
+        // create directory if needed
+        mkdirpSync(path.dirname(filename));
+        // add a code block header
+        if(path.extname(filename) == '.js' || path.extname(filename) == '.cs') {
+            exportedCode = authorTemplate(cell.markdown, exportedCode)
+        }
+        fs.writeFileSync(filename, exportedCode);
+    })
+}
+
+module.exports = exportNotebook;
+</code></pre>
+
+<p>This code defines functions for processing and exporting Jupyter Notebooks, focusing on handling imports and generating function handlers.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>fs</code>: For file system operations.</li>
+<li><code>path</code>: For working with file paths.</li>
+<li><code>mkdirpSync</code>: For creating directories.</li>
+<li><code>importer</code>: A custom module for importing other modules.</li>
+<li>Various functions from <code>importer</code> for tasks like:
+<ul>
+<li>Authoring header templates</li>
+<li>Replacing imports and core requirements</li>
+<li>Getting imports from code</li>
+<li>Fixing project paths</li>
+<li>Delinting notebooks</li>
+<li>Renaming cells</li>
+<li>Matching filenames</li>
+<li>Creating generic GCloud function handlers</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>getImportsRecursively</code> Function:</strong></p>
+<ul>
+<li>Takes an array or string of search terms (likely file paths or code snippets).</li>
+<li>Recursively traverses the notebook structure, following import dependencies.</li>
+<li>Uses <code>getImports</code> to extract import statements from code cells.</li>
+<li>Returns an array of processed cells.</li>
+</ul></li>
+<li><p><strong><code>exportNotebook</code> Function:</strong></p>
+<ul>
+<li>Takes search terms, project output path, and match output (likely for mapping cells to functions).</li>
+<li>Calls <code>getImportsRecursively</code> to get all relevant cells.</li>
+<li>Iterates through the cells, processing each one (details not shown in the provided snippet).</li>
+<li>Likely generates output files based on the processed cells, potentially creating GCloud function handlers using <code>makeHandlerCell</code>.</li>
+</ul></li>
+</ol>

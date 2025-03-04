@@ -1,0 +1,75 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The <code>transition_stream</code> function uses the YouTube API to authorize and bind a stream to a broadcast, then starts a subprocess to write images to an FFmpeg stream, waiting indefinitely until interrupted. The code includes unused sections for creating stream data and transitioning the broadcast status to 'live', which are likely part of a larger script or implementation.</p>
+
+
+<pre><code>import time
+import subprocess
+from googleapiclient.discovery import build
+import_notebook("bind youtube stream", globals())
+import_notebook("list live stream", globals())
+
+
+def transition_stream():
+
+    credentials = youtube_authorize()
+
+    # Build the YouTube API client
+    youtube = build("youtube", "v3", credentials=credentials)
+
+    stream, broadcast_id = bind_stream_to_broadcast()
+
+    args = ["python", "-c", "__import__('Core').run()", "python write images to ffmpeg stream", "--streamName=" + stream['cdn']['ingestionInfo']['streamName']]
+    process = subprocess.Popen(args)
+
+
+    # create 10 seconds of stream data before going live
+    #time.sleep(10)
+
+    # Set the broadcast status to 'live'
+    #request = youtube.liveBroadcasts().transition(
+    #    broadcastStatus="live",
+    #    id=broadcast_id,
+    #    part="id,status"
+    #)
+    #response = request.execute()
+    #print(response)
+
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nCTRL+C detected. Exiting...")
+
+    os.killpg(os.getpgid(process.pid), signal.SIGTERM) 
+
+
+__all__ = {
+    "transition_stream": transition_stream
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import Statements</h3>
+<p>The code imports the following modules:</p>
+<ul>
+<li><code>time</code>: for time-related functions</li>
+<li><code>subprocess</code>: for executing external processes</li>
+<li><code>googleapiclient.discovery</code>: for building the YouTube API client</li>
+<li><code>import_notebook</code>: used to import functions from Jupyter notebooks (not a standard Python module)</li>
+<li><code>os</code> and <code>signal</code>: for process management (not explicitly imported, but used later)</li>
+</ul>
+<h3>transition_stream Function</h3>
+<p>The <code>transition_stream</code> function performs the following tasks:</p>
+<ol>
+<li>Authorizes with the YouTube API using <code>youtube_authorize</code> function (not shown in the code snippet).</li>
+<li>Builds the YouTube API client using <code>build</code> function from <code>googleapiclient</code>.</li>
+<li>Binds a stream to a broadcast using <code>bind_stream_to_broadcast</code> function (not shown in the code snippet).</li>
+<li>Starts a subprocess to run a Python script that writes images to an FFmpeg stream.</li>
+<li>Waits indefinitely (with a 1-second sleep) until interrupted by a KeyboardInterrupt.</li>
+<li>Terminates the subprocess using <code>os.killpg</code> and <code>signal.SIGTERM</code>.</li>
+</ol>
+<h3>Unused Code</h3>
+<p>The code snippet includes commented-out sections that create 10 seconds of stream data before going live and transition the broadcast status to 'live'. These sections are not executed in the provided code.</p>
+<h3>Special Note</h3>
+<p>The <code>import_notebook</code> function and the <code>bind_stream_to_broadcast</code> function are not standard Python functions and are likely custom implementations. The <code>youtube_authorize</code> function is also not shown in the code snippet. These functions are not explained in the provided code, and their implementation is assumed to be elsewhere.</p>

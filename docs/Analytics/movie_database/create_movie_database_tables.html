@@ -1,0 +1,157 @@
+<p>This code sets up a SQLite database schema for storing IMDb movie data, including tables for movies, actors, titles, crew, and episodes, along with indexes to optimize data retrieval.</p>
+
+
+<pre><code>
+function createTables(db) {
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS principals (
+    tconst TEXT NOT NULL,
+    ordering INT NOT NULL,
+    nconst TEXT NOT NULL,
+    category TEXT,
+    job TEXT,
+    characters TEXT,
+    UNIQUE(tconst, ordering),
+    PRIMARY KEY (tconst, ordering)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS principles_titles
+ON principals (tconst);`).run()
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS principles_names
+ON principals (nconst);`).run()
+    
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS titles (
+    tconst TEXT NOT NULL,
+    titleType TEXT NOT NULL,
+    primaryTitle TEXT,
+    originalTitle TEXT,
+    isAdult INTEGER,
+    startYear INTEGER,
+    endYear INTEGER,
+    runtimeMinutes INTEGER,
+    genres TEXT,
+    UNIQUE(tconst, titleType),
+    PRIMARY KEY (tconst, titleType)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS titles_titles
+ON titles (tconst);`).run()
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS titles_types
+ON titles (tconst, titleType);`).run()
+    
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS akas (
+    tconst TEXT NOT NULL,
+    ordering INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    region TEXT NOT NULL,
+    language TEXT,
+    types TEXT,
+    attributes TEXT,
+    isOriginalTitle INTEGER,
+    UNIQUE(tconst, ordering),
+    PRIMARY KEY (tconst, ordering)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS akas_titles
+ON akas (tconst);`).run()
+    
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS crew (
+    tconst TEXT NOT NULL,
+    directors TEXT,
+    writers TEXT,
+    UNIQUE(tconst),
+    PRIMARY KEY (tconst)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS crew_titles
+ON crew (tconst);`).run()
+    
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS episode (
+    tconst TEXT NOT NULL,
+    parentTconst TEXT NOT NULL,
+    seasonNumber INTEGER,
+    episodeNumber INTEGER,
+    UNIQUE(tconst, parentTconst),
+    PRIMARY KEY (tconst, parentTconst)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS episode_titles
+ON episode (tconst);`).run()
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS episode_parents
+ON episode (tconst, parentTconst);`).run()
+    
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS ratings (
+    tconst TEXT NOT NULL,
+    averageRating INTEGER,
+    numVotes INTEGER,
+    UNIQUE(tconst),
+    PRIMARY KEY (tconst)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS episode_titles
+ON ratings (tconst);`).run()
+    
+    db.prepare(`
+CREATE TABLE IF NOT EXISTS name (
+    nconst TEXT NOT NULL,
+    primaryName TEXT,
+    birthYear INTEGER,
+    deathYear INTEGER,
+    primaryProfession TEXT,
+    knownForTitles TEXT,
+    UNIQUE(nconst),
+    PRIMARY KEY (nconst)
+);`).run()
+    
+    db.prepare(`
+CREATE INDEX IF NOT EXISTS name_names
+ON name (nconst);`).run()
+    
+    return Promise.resolve();
+}
+
+module.exports = createTables;
+</code></pre>
+
+<p>This code defines SQL statements to create tables and indexes for storing IMDb movie data in a SQLite database.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Table Creation:</strong></p>
+<ul>
+<li>It defines SQL <code>CREATE TABLE</code> statements for several tables:
+<ul>
+<li><code>principals</code>: Stores information about actors, directors, writers, etc. associated with movies.</li>
+<li><code>titles</code>: Stores basic information about movies (title, type, year, etc.).</li>
+<li><code>akas</code>: Stores alternative titles for movies in different languages and regions.</li>
+<li><code>crew</code>: Stores director and writer information for movies.</li>
+<li><code>episode</code>: Stores information about TV episodes, including their parent series.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Index Creation:</strong></p>
+<ul>
+<li>It defines SQL <code>CREATE INDEX</code> statements to create indexes on various columns within the tables.
+<ul>
+<li>Indexes speed up data retrieval by creating a sorted lookup structure for specific columns.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Database Interaction:</strong></p>
+<ul>
+<li>It uses <code>db.prepare</code> to prepare the SQL statements and <code>db.run</code> to execute them.</li>
+<li><code>CREATE TABLE IF NOT EXISTS</code> ensures that the tables are created only if they don't already exist.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

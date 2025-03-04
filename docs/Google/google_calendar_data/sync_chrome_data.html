@@ -1,0 +1,78 @@
+<p>This code automates the process of syncing your Chrome browsing history and bookmarks with Google Calendar by downloading, extracting, and processing your Google Takeout archive.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+var glob = require('glob');
+var fs = require('fs');
+var rimraf = require('rimraf');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var DOWNLOADS_PATH = PROFILE_PATH + '/Downloads';
+
+// TODO: run unzip as a service?
+function unzip(file) {
+    console.log('unzipping ' + file);
+    return execCmd('unzip -o "' + file + '"', {cwd: DOWNLOADS_PATH})
+}
+
+var {
+    googleTakeout, syncChromeHistory, syncChromeBookmarks, execCmd
+} = importer.import([
+    'order google takeout',
+    'sync chrome history',
+    'sync chrome bookmarks',
+    'spawn child process'
+]);
+function syncChrome() {
+    if(fs.existsSync(DOWNLOADS_PATH + '/Takeout')) {
+        rimraf.sync(DOWNLOADS_PATH + '/Takeout');
+    }
+    var takeouts = glob.sync('takeout-*.zip', {cwd: DOWNLOADS_PATH}).map(f => path.join(DOWNLOADS_PATH, f));
+    var takeout = takeouts.sort((a, b) => fs.statSync(a).mtime.getTime() - fs.statSync(b).mtime.getTime()).pop();
+    console.log(takeout);
+    var shouldDownload = !fs.existsSync(takeout) || (new Date().getTime()) - fs.statSync(takeout).mtime.getTime() > 24 * 60 * 60 * 1000;
+    return (shouldDownload
+        ? googleTakeout('chrome')
+            .then(() => {
+                const takeout = path.join(DOWNLOADS_PATH, glob.sync('takeout-*.zip', {cwd: DOWNLOADS_PATH}).pop());
+                return unzip(takeout);
+            })
+        : unzip(takeout))
+        .then(() => syncChromeHistory())
+        .then(() => syncChromeBookmarks())
+}
+
+module.exports = syncChrome;
+</code></pre>
+
+<p>This code automates the synchronization of your Chrome browsing history and bookmarks with Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules for file system operations, glob matching, and executing shell commands.</li>
+<li>It defines paths to your Downloads folder.</li>
+</ul></li>
+<li><p><strong>Unzipping Takeout Files:</strong></p>
+<ul>
+<li><code>unzip</code> function unzips a Takeout archive file.</li>
+</ul></li>
+<li><p><strong>Importing Functions:</strong></p>
+<ul>
+<li>It imports functions for downloading a Google Takeout archive, synchronizing Chrome history, synchronizing Chrome bookmarks, and executing shell commands.</li>
+</ul></li>
+<li><p><strong>Synchronization Logic:</strong></p>
+<ul>
+<li><code>syncChrome</code> function:
+<ul>
+<li>Removes any existing Takeout folder.</li>
+<li>Finds the most recent Takeout archive file.</li>
+<li>Downloads a new Takeout archive if necessary (based on file age).</li>
+<li>Unzips the Takeout archive.</li>
+<li>Synchronizes Chrome history with Google Calendar.</li>
+<li>Synchronizes Chrome bookmarks with Google Calendar.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>In essence, this code fetches your latest Google Takeout archive, extracts it, and then uses other functions to synchronize your browsing history and bookmarks with Google Calendar.</p>

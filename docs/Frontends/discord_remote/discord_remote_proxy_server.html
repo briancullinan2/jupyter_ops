@@ -1,0 +1,111 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code sets up an Express.js app, importing necessary modules and configuring routes for authentication, key tracking, and monitor management, as well as API endpoints for token retrieval and server monitoring. The app can be started or closed via the <code>discordExpress</code> and <code>closeExpress</code> functions, which manage the app's lifecycle based on the presence of participants in the activity and the server's running state.</p>
+
+
+<pre><code>const {doClick, doKeys, getMonitor, serveHomepage} = importer.import('express automation routes')
+const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const getToken = importer.import('discord express token endpoint')
+const {authenticateRoute} = importer.import('discord authenticate instances')
+
+
+const express = require('express')
+const cors = require('cors')
+const cookieParser = require('cookie-parser');
+
+const app = express()
+
+const BASE_URI = `https://${DEFAULT_APPLICATION}.discordsays.com/.proxy/`
+
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
+app.use(cors({
+  credentials: true,
+  origin: '*' 
+}))
+app.use(express.json())
+app.use(cookieParser())
+
+app.post('/keys', authenticateRoute, doKeys)
+app.post('/click', authenticateRoute, doClick)
+app.get('/monitors/*', getMonitor)
+app.post('/api/token', getToken)
+//app.post('/register', registerInstance)
+app.get('*', serveHomepage.bind(null, BASE_URI))
+
+let server
+
+async function discordExpress(activity) {
+  if(!express) {
+    return false
+  }
+  
+  //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
+  if(activity.participants.length == 0 && server) {
+    server.close()
+    server = null
+  }
+
+  // TODO: check if user was removed
+
+  if(activity.length > 1 || server) {
+    return
+  }
+
+  return (server = await app.listen(3000, () => {
+    console.log('Listening on: ', 3000)
+  }))
+}
+
+function closeExpress(activity) {
+  if(activity) {
+    return
+  }
+  if(server) {
+    server.close()
+    server = null
+  }
+}
+
+module.exports = {
+  discordExpress,
+  closeExpress,
+}
+
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing various modules using the <code>importer.import()</code> function. These modules are:</p>
+<ul>
+<li><code>express automation routes</code>: exports functions for Express.js routing (<code>doClick</code>, <code>doKeys</code>, <code>getMonitor</code>, <code>serveHomepage</code>)</li>
+<li><code>discord configuration</code>: exports the <code>DEFAULT_APPLICATION</code> constant</li>
+<li><code>discord express token endpoint</code>: exports the <code>getToken</code> function</li>
+<li><code>discord authenticate instances</code>: exports the <code>authenticateRoute</code> function</li>
+</ul>
+<h3>Setting up Express App</h3>
+<p>The code then sets up an Express.js app by:</p>
+<ul>
+<li>Requiring the <code>express</code> module</li>
+<li>Requiring the <code>cors</code> and <code>cookie-parser</code> modules</li>
+<li>Creating an instance of the Express app</li>
+<li>Configuring CORS and JSON parsing middleware</li>
+</ul>
+<h3>Defining Routes</h3>
+<p>The code defines several routes using the <code>app.use()</code> and <code>app.get()</code> methods:</p>
+<ul>
+<li><code>/keys</code>: accepts POST requests, uses the <code>authenticateRoute</code> middleware, and calls the <code>doKeys</code> function</li>
+<li><code>/click</code>: accepts POST requests, uses the <code>authenticateRoute</code> middleware, and calls the <code>doClick</code> function</li>
+<li><code>/monitors/*</code>: accepts GET requests and calls the <code>getMonitor</code> function</li>
+<li><code>/api/token</code>: accepts POST requests and calls the <code>getToken</code> function</li>
+<li><code>*</code>: accepts GET requests and calls the <code>serveHomepage</code> function</li>
+</ul>
+<h3>Starting and Closing the Server</h3>
+<p>The code defines two functions:</p>
+<ul>
+<li><code>discordExpress(activity)</code>: starts the Express app listening on port 3000 if there are no participants in the activity and the server is not already running</li>
+<li><code>closeExpress(activity)</code>: closes the Express app if the server is running</li>
+</ul>
+<h3>Exporting Functions</h3>
+<p>The code exports the <code>discordExpress</code> and <code>closeExpress</code> functions.</p>

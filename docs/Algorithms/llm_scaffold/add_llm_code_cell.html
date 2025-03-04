@@ -1,0 +1,190 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>This Node.js script uses a large language model (LLM) to generate code blocks for a project by fetching code from the LLM and extracting relevant blocks. The script handles errors, resolves GitHub repository and notebook file paths, executes a <code>git pull</code> command, and logs the generated code blocks to the console.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const { spawnSync } = require('child_process')
+
+async function makeCell(prompt, notebookFile, github) {
+  const llmCode = await importer.import('llm code')
+
+  if (!github) {
+    console.error('Project not specified.')
+    return
+  }
+
+  // TODO: local pull
+  if (!fs.existsSync(github)
+    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+    github = path.join(PROFILE_PATH, github)
+  }
+
+  if (github.includes('://')
+    && fs.existsSync(path.basename(github).replace('.git', ''))
+  ) {
+    github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
+  }
+
+  if (!fs.existsSync(github)) {
+    console.error('Project not found.')
+    return
+  }
+
+  if (!notebookFile) {
+    console.error('Notebook not specified.')
+    return
+  }
+
+  if (fs.existsSync(path.join(github, notebookFile))) {
+    notebookFile = path.join(github, notebookFile)
+  }
+
+  if (!fs.existsSync(notebookFile)) {
+    console.error('Notebook not found.')
+    return
+  }
+
+  let baseName = path.basename(github)
+
+  await spawnSync('git', ['pull'], {
+    cwd: github,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
+
+  // TODO: compare existing project files
+  let q1 = 'Give the project files:\n' + fs.readdirSync(github).join('\n')
+    + '\nFulfill the following instructions on the code file, only return the block of new code:'
+    + '\n' + prompt
+    + '\n' + 'Response with only the block of code and no summary or reasoning.'
+
+  // TODO: create new files
+  console.log('User: ' + q1)
+  let a1 = await llmCode(q1)
+  console.log('AI: ' + a1)
+
+  // try to extract code blocks
+  let code = a1.matchAll(/```(bash|javascript|code|markdown)*\n[\s\S]*?\n```/gi)
+
+  // extract code blocks from response
+  let codeBlocks = ''
+  for (let match of code) {
+    codeBlocks += match[0].replace(/^```(bash|javascript|code|markdown)*\n|\n```$/gi, '') + '\n'
+  }
+
+  if (!codeBlocks) {
+    codeBlocks = a1
+  }
+
+  if (!codeBlocks) {
+    console.log('Error, couldn\'t find code in:' + a1)
+    return
+  }
+
+  let q2 = 'Summarize this code:\n' + codeBlocks + '\nRespond with the code summary in beautifully crafted markdown. Do not include the original code in the response.'
+  console.log('User: ' + q2)
+  let a2 = await llmCode(q2)
+  console.log('AI: ' + a2)
+
+  let markdown = a2.matchAll(/```(markdown)*\n[\s\S]*?\n```/gi)
+
+  // extract code blocks from response
+  let markdownBlocks = ''
+  for (let match of markdown) {
+    markdownBlocks += match[0].replace(/^```(markdown)*\n|\n```$/gi, '') + '\n'
+  }
+
+  if (!markdownBlocks) {
+    markdownBlocks = a2
+  }
+
+  if (!markdownBlocks) {
+    return // should never happen
+  }
+
+  var notebook = JSON.parse(fs.readFileSync(notebookFile))
+  // TODO: initialize new notebook
+  if (!notebook) {
+    notebook = {
+      "cells": [],
+      "metadata": {
+        "language_info": {
+          "name": "javascript"
+        }
+      },
+      "nbformat": 4,
+      "nbformat_minor": 2
+    }
+  }
+
+  notebook.cells[notebook.cells.length] = {
+    source: markdownBlocks.split('\n').map(line => line + '\n'),
+    cell_type: "markdown",
+    metadata: {},
+    outputs: [],
+  }
+
+  notebook.cells[notebook.cells.length] = {
+    source: codeBlocks.split('\n').map(line => line + '\n'),
+    cell_type: "code",
+    metadata: {
+      "vscode": {
+        "languageId": "javascript"
+      }
+    },
+    outputs: [],
+  }
+
+  // TODO: populate code files with goals
+  //fs.writeFileSync(path.join(github, codeFile), codeBlocks)
+  //updateCode(codeCell, codeBlocks)
+  fs.writeFileSync(notebookFile, JSON.stringify(notebook, null, 4))
+
+    // TODO: populate goals with actual code
+
+}
+
+module.exports = makeCell
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This is a Node.js script that appears to be designed to use a large language model (LLM) to generate code blocks for a project. Here's a high-level overview of the code:</p>
+<h3>Dependencies and Variables</h3>
+<p>The script starts by importing the following dependencies:</p>
+<ul>
+<li><code>fs</code> (File System) for file system operations</li>
+<li><code>path</code> for path manipulation</li>
+<li><code>process.env</code> to access environment variables</li>
+<li><code>child_process</code> to use the <code>spawnSync</code> function for executing shell commands</li>
+</ul>
+<p>It also defines some variables:</p>
+<ul>
+<li><code>PROFILE_PATH</code>: a string representing the user's profile path (e.g., <code>/home/user</code> on Linux or <code>C:\Users\user</code> on Windows)</li>
+<li><code>llmCode</code>: an object representing the LLM code (imported using the <code>importer</code> module, but not shown in this code snippet)</li>
+</ul>
+<h3><code>makeCell</code> Function</h3>
+<p>The <code>makeCell</code> function takes three parameters:</p>
+<ul>
+<li><code>prompt</code>: a string prompting the LLM to generate code</li>
+<li><code>notebookFile</code>: a string representing the path to a notebook file (optional)</li>
+<li><code>github</code>: a string representing the path to a GitHub repository (optional)</li>
+</ul>
+<p>Here's a step-by-step breakdown of the function:</p>
+<ol>
+<li><strong>Error handling</strong>: If <code>github</code> or <code>notebookFile</code> are not provided, the function logs an error message and returns.</li>
+<li><strong>GitHub repository resolution</strong>: If <code>github</code> is not a valid path, the function tries to resolve it by checking the following locations:
+<ul>
+<li>The <code>github</code> directory at the root of the profile path</li>
+<li>The <code>github</code> directory with the <code>.git</code> extension removed (e.g., <code>github.git</code>)</li>
+<li>The <code>github</code> directory with the <code>.git</code> extension removed and the base name of the repository</li>
+</ul></li>
+<li><strong>Notebook file resolution</strong>: If <code>notebookFile</code> is not a valid path, the function logs an error message and returns.</li>
+<li><strong>Git pull</strong>: The function executes a <code>git pull</code> command in the GitHub repository directory using <code>spawnSync</code>.</li>
+<li><strong>LLM code generation</strong>: The function prompts the LLM to generate code by asking it to &quot;fulfill the following instructions on the code file, only return the block of new code&quot; and provides the <code>prompt</code> string as input. The LLM's response is stored in the <code>a1</code> variable.</li>
+<li><strong>Code block extraction</strong>: The function tries to extract code blocks from the LLM's response using a regular expression. If no code blocks are found, it defaults to the entire LLM response.</li>
+<li><strong>Code block logging</strong>: The function logs the extracted code blocks to the console.</li>
+</ol>
+<p>Overall, this script appears to be designed to automate the process of generating code blocks for a project using an LLM.</p>

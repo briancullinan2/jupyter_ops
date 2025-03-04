@@ -1,0 +1,61 @@
+<p>This JavaScript code authorizes access to Google APIs by resolving the path to a credentials file, using the Google Auth library to authenticate, and exporting a function to obtain a Google client instance. The authorization function returns a Google client instance with specific scopes.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var credentials;
+if(fs.existsSync('./spahaha-ea443-a78ab2269985.json')) {
+    credentials = path.resolve('./spahaha-ea443-a78ab2269985.json');
+} else {
+    credentials = path.join(PROFILE_PATH, '.credentials/spahaha-ea443-a78ab2269985.json');
+}
+
+var {GoogleAuth} = require('google-auth-library');
+var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/compute',
+    'https://www.googleapis.com/auth/cloud-platform'
+];
+
+function authorizeGoogle() {
+    return new GoogleAuth({
+        keyFile: credentials,
+        scopes: GOOGLE_AUTH_SCOPE
+    }).getClient(/* options here are always ignored b/c cache */)
+}
+
+module.exports = authorizeGoogle;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Requires and Variable Declarations</strong></p>
+<pre><code class="language-javascript">var fs = require('fs'); // File system module
+var path = require('path'); // Path module
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE; // Environment variable for user profile path
+var credentials; // Variable to store credentials file path
+</code></pre>
+<p><strong>File Path Resolution</strong></p>
+<pre><code class="language-javascript">if (fs.existsSync('./spahaha-ea443-a78ab2269985.json')) {
+    credentials = path.resolve('./spahaha-ea443-a78ab2269985.json'); // Use local file if exists
+} else {
+    credentials = path.join(PROFILE_PATH, '.credentials/spahaha-ea443-a78ab2269985.json'); // Use file in user profile directory if not found locally
+}
+</code></pre>
+<p><strong>Google Auth Library and Scope Definition</strong></p>
+<pre><code class="language-javascript">var {GoogleAuth} = require('google-auth-library'); // Google Authentication library
+var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/compute', // Compute Engine scope
+    'https://www.googleapis.com/auth/cloud-platform' // Cloud Platform scope
+];
+</code></pre>
+<p><strong>Authorization Function</strong></p>
+<pre><code class="language-javascript">function authorizeGoogle() {
+    return new GoogleAuth({
+        keyFile: credentials, // Path to credentials file
+        scopes: GOOGLE_AUTH_SCOPE // Scope for Google Auth
+    }).getClient(/* options here are always ignored b/c cache */) // Get client instance
+}
+</code></pre>
+<p><strong>Module Exports</strong></p>
+<pre><code class="language-javascript">module.exports = authorizeGoogle; // Export authorization function as module
+</code></pre>

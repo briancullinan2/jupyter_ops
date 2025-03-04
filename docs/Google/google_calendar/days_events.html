@@ -1,0 +1,81 @@
+<p>The <code>getDaysEvents</code> function retrieves events from a specified Google Calendar for a given day, utilizing a cache to improve performance and efficiency. It parses the input date, constructs the date range, fetches events from the API, and returns a filtered list of non-deleted events.</p>
+
+
+<pre><code>var chrono = require('chrono-node');
+var assert = require('assert');
+var importer = require('../Core');
+var {
+    ISODateString,
+    listEvents 
+} = importer.import([
+    'convert date iso',
+    'list events'
+]);
+
+function getDaysEvents(startDate, options) {
+    var eventCache = {}; // TODO: fix this, move it outside, only update if calendar is modified?
+    startDate = chrono.parseDate(startDate + '');
+    var day = new Date(startDate);
+    day.setHours(0, 0, 0);
+    var dayEnd = new Date(day);
+    dayEnd.setDate(dayEnd.getDate() + 1);
+    var todaysEvents;
+    assert(options.calendarId, 'calendarId must be set by now! ' + JSON.stringify(options, null, 4));
+    if(typeof eventCache[options.calendarId] === 'undefined') {
+        eventCache[options.calendarId] = {};
+    }
+    if(typeof eventCache[options.calendarId][day.getTime()] !== 'undefined') {
+        todaysEvents = Promise.resolve(eventCache[options.calendarId][day.getTime()])
+    } else {
+        console.log({
+            timeMin: ISODateString(new Date(day.getTime())),
+            timeMax: ISODateString(new Date(dayEnd.getTime()))
+        });
+        todaysEvents = listEvents({
+            auth: options.auth,
+            calendarId: options.calendarId,
+            timeMin: ISODateString(new Date(day.getTime())),
+            timeMax: ISODateString(new Date(dayEnd.getTime()))
+        })
+    }
+    return todaysEvents
+        .then(m => {
+            assert(eventCache[options.calendarId], 'something is seriously wrong with the calendar service "' + options.calendarId + '" ' + JSON.stringify(eventCache, null, 4));
+            eventCache[options.calendarId][day.getTime()] = m;
+            return m.filter(e => e.event.deleted !== true)
+        })
+}
+module.exports = getDaysEvents;
+</code></pre>
+
+<p>This code defines a function <code>getDaysEvents</code> that fetches events from a Google Calendar for a specific day.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>chrono</code>: A library for parsing natural language dates and times.</li>
+<li><code>assert</code>: A built-in Node.js module for making assertions (checking if conditions are true).</li>
+<li><code>importer</code>: A custom module for importing other modules.</li>
+<li><code>ISODateString</code>: A function from <code>importer</code> that converts a date to ISO 8601 format.</li>
+<li><code>listEvents</code>: A function from <code>importer</code> to list events from a Google Calendar.</li>
+</ul></li>
+<li><p><strong><code>getDaysEvents</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>startDate</code> (a string representing the date) and an <code>options</code> object as input.</li>
+<li>Initializes an <code>eventCache</code> object to store fetched events for faster retrieval.</li>
+<li>Parses the <code>startDate</code> using <code>chrono.parseDate</code>.</li>
+<li>Creates a <code>day</code> object representing the start of the day (midnight) and a <code>dayEnd</code> object representing the end of the day.</li>
+<li>Asserts that <code>options.calendarId</code> is set.</li>
+<li>Checks if events for the current day and calendar have already been fetched from the cache.
+<ul>
+<li>If yes, it resolves a Promise with the cached events.</li>
+<li>If no, it calls <code>listEvents</code> to fetch events for the specified day and calendar, using <code>ISODateString</code> to format the date range.</li>
+</ul></li>
+<li>Returns a Promise that resolves with the fetched events:
+<ul>
+<li>It asserts that the <code>eventCache</code> exists for the calendar.</li>
+<li>Stores the fetched events in the cache.</li>
+<li>Filters out deleted events.</li>
+</ul></li>
+</ul></li>
+</ol>

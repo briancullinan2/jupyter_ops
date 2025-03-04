@@ -1,0 +1,57 @@
+<p>This code checks if Docker is installed by running the <code>docker ps</code> command and signals completion with a message indicating whether Docker is found or not.</p>
+
+
+<pre><code>$$.async();
+var exec = require('child_process').exec;
+var installed = false;
+var docker = exec('docker ps', function (err, stdout, stderr) {
+    if (stdout.indexOf('not found') > -1) {
+        $$.done('Docker not found, installing');
+    } else {
+        installed = true;
+        $$.done('Docker is already installed');
+    }
+});
+
+</code></pre>
+
+<p>This code snippet checks if Docker is installed on the system and signals completion based on the result.</p>
+<p><strong>Breakdown:</strong></p>
+<ol>
+<li><p><strong><code>$$.async();</code></strong>:</p>
+<ul>
+<li>This line likely initializes an asynchronous operation using a variable <code>$$</code> (possibly a custom function or library).</li>
+</ul></li>
+<li><p><strong><code>var exec = require('child_process').exec;</code></strong>:</p>
+<ul>
+<li>Imports the <code>exec</code> function from the <code>child_process</code> module, which allows executing shell commands.</li>
+</ul></li>
+<li><p><strong><code>var installed = false;</code></strong>:</p>
+<ul>
+<li>Initializes a boolean variable <code>installed</code> to <code>false</code>, assuming Docker is not installed initially.</li>
+</ul></li>
+<li><p><strong><code>var docker = exec('docker ps', function (err, stdout, stderr) { ... });</code></strong>:</p>
+<ul>
+<li>Executes the command <code>docker ps</code> (which lists running Docker containers) using <code>exec()</code>.</li>
+<li>The callback function handles the result:
+<ul>
+<li><code>err</code>: Error object if any occurred during execution.</li>
+<li><code>stdout</code>: Standard output from the command (the list of containers).</li>
+<li><code>stderr</code>: Standard error output (if any).</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Inside the callback:</strong></p>
+<ul>
+<li><code>if (stdout.indexOf('not found') &gt; -1) { ... }</code>:
+<ul>
+<li>Checks if the output contains the string &quot;not found&quot;, indicating Docker is not installed.</li>
+<li>If found, calls <code>$$.done('Docker not found, installing')</code> to signal the asynchronous operation with a message.</li>
+</ul></li>
+<li><code>else { ... }</code>:
+<ul>
+<li>If &quot;not found&quot; is not found, it means Docker is installed.</li>
+<li>Sets <code>installed</code> to <code>true</code>.</li>
+<li>Calls <code>$$.done('Docker is already installed')</code> to signal completion with a success message.</li>
+</ul></li>
+</ul></li>
+</ol>

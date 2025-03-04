@@ -1,0 +1,100 @@
+<p>This code analyzes a Quake 3 map file, identifies used textures, locates them within the mod directory, and optionally organizes them into a specified output directory.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var {chext, chroot} = importer.import('changing file name')
+var listTextures = importer.import('list textures in quake 3 map')
+var mkdirpSync = importer.import('mkdirp')
+//var findShaders = importer.import('list shaders in quake 3 shader')
+
+async function findTextures(file, modDir, outDir) {
+    var textures = listTextures(file)
+    var shaders = require(path.join(modDir, 'all_shaders.json'))
+    var textureCount = textures.length
+    var shaded = []
+    for(var i = 0; i < textureCount; i++) {
+        var realTexture = textures[i].includes('textures') ? textures[i] : ('textures/' + textures[i])
+        if(typeof shaders[realTexture] != 'undefined') {
+            console.log('shaded ' + realTexture)
+            shaded.push(textures[i])
+            var shader = shaders[realTexture]
+            var extraTextures = importer
+                .regexToArray(/map\s([^\s]+?\/[^\s]+?$)/img, shader, 1)
+                .map(t => chext(t, ''))
+            textures.push.apply(textures, extraTextures)
+        }
+    }
+    
+    var defaults = textures
+        .filter(t => !shaded.includes(t))
+    var matched = await glob(defaults.map(t => '**/' + t + '*'), modDir)
+    var listStr = matched.join(';')
+    var unmatched = defaults
+        .filter(t => !listStr.includes(path.basename(t)))
+    
+    if(outDir) {
+        for(var i = 0; i < matched.length; i++) {
+            var outFile = chroot(matched[i], modDir, outDir)
+            mkdirpSync(path.dirname(outFile))
+            fs.copyFileSync(matched[i], outFile)
+        }
+    }
+    
+    return {
+        matched: matched,
+        unmatched: unmatched
+    }
+}
+
+module.exports = findTextures
+</code></pre>
+
+<p>This code snippet analyzes a Quake 3 map file to identify textures used within it and then attempts to locate and organize those textures within a specified output directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>path</code>: For working with file paths.</li>
+<li><code>Core</code>: A custom module likely containing utility functions and imported modules.</li>
+<li><code>glob</code>: A module for finding files matching a pattern.</li>
+<li><code>chext</code>: A function (imported from <code>Core</code>) for extracting file extensions.</li>
+<li><code>chroot</code>: A function (imported from <code>Core</code>) for changing the root directory of a file path.</li>
+<li><code>listTextures</code>: A custom function (imported from <code>Core</code>) that extracts texture names from a Quake 3 map file.</li>
+<li><code>mkdirp</code>: A module for creating directories recursively.</li>
+</ul></li>
+<li><p><strong><code>findTextures</code> Function:</strong></p>
+<ul>
+<li>Takes three arguments:
+<ul>
+<li><code>file</code>: The path to the Quake 3 map file.</li>
+<li><code>modDir</code>: The directory containing the Quake 3 mod.</li>
+<li><code>outDir</code>: The directory to output the found textures to (optional).</li>
+</ul></li>
+<li>Calls <code>listTextures</code> to get a list of textures used in the map.</li>
+<li>Loads a JSON file <code>all_shaders.json</code> containing shader definitions from the <code>modDir</code>.</li>
+<li>Iterates through the list of textures:
+<ul>
+<li>Constructs the full texture path (including the &quot;textures/&quot; prefix if needed).</li>
+<li>Checks if the texture has a corresponding shader definition.</li>
+<li>If a shader is found:
+<ul>
+<li>Logs the texture as &quot;shaded&quot;.</li>
+<li>Extracts additional textures referenced within the shader using a regular expression.</li>
+<li>Appends these extra textures to the main texture list.</li>
+</ul></li>
+</ul></li>
+<li>Filters the textures to separate those with shaders (shaded) from those without.</li>
+<li>Uses <code>glob</code> to find matching files for the textures without shaders.</li>
+<li>Constructs a string containing the paths of the matched files.</li>
+<li>Filters the textures again to identify those that were not found.</li>
+<li>If an <code>outDir</code> is provided:
+<ul>
+<li>Creates the output directory if it doesn't exist.</li>
+<li>Copies the matched files to the output directory, renaming them using <code>chroot</code> to adjust the root directory.</li>
+</ul></li>
+<li>Returns an object containing the list of matched and unmatched textures.</li>
+</ul></li>
+</ol>
+<p>In essence, this code snippet helps analyze Quake 3 map files, identify textures used, locate them within the mod directory, and optionally organize them into a separate output directory.</p>

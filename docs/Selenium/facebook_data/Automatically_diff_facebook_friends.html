@@ -1,0 +1,65 @@
+<p>This code tracks changes in a Facebook user's friend list by scraping their friend list from Facebook, comparing it to previous lists, and identifying new and removed friends.  It then exports this functionality for use in other parts of an application.</p>
+
+
+<pre><code>var glob = require('glob');
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+function getFriends(file) {
+    var html = fs.readFileSync(file).toString();
+    return importer.regexToArray(/href="([^"]*)/ig, html, 1)
+        .filter(h => h.indexOf('.js') === -1 && h.indexOf('.css') === -1
+            && h.indexOf('friends_tab') > -1)
+        .map(m => (/(.*)\?/ig).exec(m)[1])
+        .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+};
+
+function getFriendsDiff() {
+    return runSeleniumCell([
+        'log in facebook',
+        'scrape facebook profile',
+        'scrape facebook friends'
+    ])
+        .then(r => r.scrapeFacebookFriends())
+        .then(doc => {
+            var date = new Date();
+            fs.writeFileSync(project + '/friendlist-' + date.getFullYear()
+                + '-' + (date.getMonth() + 1)
+                + '-' + date.getDate() + '.htm', '<html>' + doc + '</html>');
+            var friends = glob.sync('**/*friend*', {cwd: project, nodir: true});
+            friends.sort((a, b) => new Date(fs.statSync(path.join(project, a)).mtime).getTime() - new Date(fs.statSync(
+                path.join(project, b)).mtime).getTime());
+            //console.log(friends);
+            var urls = getFriends(path.join(project, friends.pop()));
+            //console.log(urls);
+            var urls2 = getFriends(path.join(project, friends.pop()));
+            //console.log(urls2);
+            var diff = urls.filter(u => urls2.indexOf(u) === -1)
+                .concat(urls2.filter(u => urls.indexOf(u) === -1))
+            return diff;
+        })
+        .catch(e => console.log(e))
+}
+module.exports = getFriendsDiff;
+</code></pre>
+
+<p>This code snippet is designed to track changes in a Facebook user's friend list over time.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong> It imports necessary modules for file system operations, path manipulation, and a custom <code>importer</code> module.</p></li>
+<li><p><strong><code>getFriends</code> Function:</strong> This function takes a file path as input and extracts URLs from the HTML content, likely representing friend profiles. It filters out irrelevant URLs (like CSS or JavaScript files) and removes duplicates.</p></li>
+<li><p><strong><code>getFriendsDiff</code> Function:</strong> This function orchestrates the entire process:</p>
+<ul>
+<li>It uses a <code>runSeleniumCell</code> function (presumably a web scraping tool) to log into Facebook, scrape the user's profile, and extract their friend list.</li>
+<li>It saves the current friend list to a file.</li>
+<li>It finds the two most recent friend list files.</li>
+<li>It compares the friend lists in the two files to identify new and removed friends.</li>
+<li>It returns an array of URLs representing the changes.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>getFriendsDiff</code> function is exported, making it available for use in other parts of the application.</p></li>
+</ol>

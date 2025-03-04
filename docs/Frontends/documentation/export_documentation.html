@@ -1,0 +1,153 @@
+<p>This code imports and exports functions for caching and storing LLM functions. It defines an asynchronous <code>exportAll</code> function that calls <code>storeAllLlamaFunctions</code> and waits for its completion, then exports this function as a module.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const { storeAllLlamaFunctions } = importer.import('store all notebook llm functions')
+const { listInProject } = importer.import('list project files');
+const { askLlamaAboutCode } = importer.import('ask llm about code')
+const { askLlamaToSummerize, askLlamaToGeneralize } = importer.import('ask llm to summerize')
+const {cacheCells} = importer.import('cache notebook')
+const {safeurl} = importer.import('domain cache tools')
+const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+
+const PROJECT_PATH = path.resolve(path.join(path.dirname(__dirname), 'docs'))
+
+async function exportAll(query) {
+  // await storeAllLlamaFunctions()
+  if(!fs.existsSync(PROJECT_PATH)) {
+    fs.mkdirSync(PROJECT_PATH)
+  }
+
+  // TODO: get a list of all notebooks
+  let notebooks = listInProject(path.resolve(__dirname, '../'), '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+
+  // TODO: generate an index page that describes the index.js and __init__.py loaders
+
+  let results = {}
+  const intro = path.join(PROJECT_PATH, 'index.html')
+  results[intro] = {
+    output: ''
+  }
+  let categories = []
+  let namespaces = {}
+  for (let i = 0; i < notebooks.length; i++) {
+    // TODO: output folders and pages for every namespace and notebook
+    const relative = path.relative(path.resolve(__dirname, '../'), notebooks[i])
+    let category = relative.split(path.sep)[0]
+    if(category.endsWith('.ipynb')) {
+      category = 'Introduction'
+    }
+
+    if(!categories.includes(category)) {
+      categories.push(category)
+      results[intro].output += '<a href="./' +  safeurl(category) + '/index.html">' + category + '</a>' + '\n\n'
+    }
+
+    if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
+      fs.mkdirSync(path.join(PROJECT_PATH, category))
+    }
+
+    const catpath = path.join(PROJECT_PATH, category, 'index.html')
+    if(typeof results[catpath] == 'undefined') {
+      results[catpath] = {
+        output: ''
+      }
+    }
+
+
+    const namespace = path.basename(notebooks[i]).replace('.ipynb', '')
+    const fullpath = path.join(PROJECT_PATH, category, safeurl(namespace))
+    if (!fs.existsSync(fullpath)) {
+      fs.mkdirSync(fullpath)
+    }
+
+    results[catpath].output += '<a href="./' +  safeurl(namespace) + '/index.html">' + namespace + '</a>' + '\n\n'
+    let index = path.join(fullpath, 'index.html')
+    results[index] = {
+      output: ''
+    }
+
+
+    namespaces[relative] = []
+
+    const newCache = cacheCells(notebooks[i])
+
+    for(let j = 0; j < newCache.length; j++) {
+      let cellname = newCache[j].questions[0]
+      if(!cellname) {
+        cellname = 'cell_' + j
+      } else {
+        cellname = safeurl(cellname)
+      }
+      let key = path.join(fullpath, cellname + '.html')
+      results[key] = {
+        output: '\n\n<pre><code>' + newCache[j].code + '</code></pre>\n\n'
+      }
+
+      let title = newCache[j].questions[0]
+      if(!title) {
+        title = 'Cell ' + j
+      }
+
+      results[index].output += '<a href="./' +  cellname + '.html">' + title + '</a>' + '\n\n'
+
+      const description = functionCache[notebooks[i] + '[' + j + ']']
+      if(!description) {
+        continue
+      }
+
+      results[index].output += md.render(description.summary)
+      results[key].output = md.render(description.summary) + results[key].output
+      results[key].output = results[key].output + md.render(description.description)
+      
+    }
+
+    // TODO: generate parameter, return type descriptions
+    
+
+    // TODO: export all the markdown
+
+  }
+
+
+  const paths = Object.keys(results)
+  for (let i = 0; i < paths.length; i++) {
+    // TODO: add navigation and full template
+    fs.writeFileSync(paths[i], results[paths[i]].output)
+  }
+
+}
+
+module.exports = exportAll
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const { storeAllLlamaFunctions } = importer.import('store all notebook llm functions')
+</code></pre>
+<ul>
+<li>This code imports two objects from other modules:
+<ul>
+<li><code>functionCache</code> from a module that exports functions for caching RPC functions with LLM descriptions.</li>
+<li><code>storeAllLlamaFunctions</code> from a module that exports a function to store all notebook LLM functions.</li>
+</ul></li>
+</ul>
+<h4>Exporting the Main Function</h4>
+<pre><code class="language-javascript">async function exportAll(query) {
+  await storeAllLlamaFunctions()
+}
+</code></pre>
+<ul>
+<li>This code defines an asynchronous function <code>exportAll</code> that takes a <code>query</code> parameter (which is not used).</li>
+<li>The function calls <code>storeAllLlamaFunctions</code> and waits for its completion using the <code>await</code> keyword.</li>
+</ul>
+<h4>Exporting the Function</h4>
+<pre><code class="language-javascript">module.exports = exportAll
+</code></pre>
+<ul>
+<li>This line exports the <code>exportAll</code> function as a module, making it available for import and use in other parts of the application.</li>
+</ul>

@@ -1,0 +1,94 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The <code>redditList</code> function is an asynchronous function that retrieves a list of Reddit posts from a specified subreddit, handling parameters such as the start page and time span. It iteratively retrieves posts using the <code>redditLinks</code> function, checks for posts older than the specified time span, and introduces a delay between iterations to prevent infinite loops.</p>
+
+
+<pre><code>
+const redditLinks = importer.import('reddit scraper')
+const getClient = importer.import('selenium client')
+
+async function redditList(driver, startPage, timeSpan = 'week') {
+  if(!startPage) {
+    startPage = 'https://www.reddit.com/r/CollapseSupport+climatechange+collapse+economicCollapse/'
+  }
+
+  if(!startPage.includes('://')) {
+    startPage = 'https://www.reddit.com/r/' + startPage
+  }
+
+  if(!driver)
+    driver = await getClient()
+
+  try {
+
+    let safety = 20
+
+    let weekAgo = new Date(Date.now() - 1000 * 60 * 60 * 24 * 7)
+    let monthAgo = new Date(Date.now() - 1000 * 60 * 60 * 24 * 7 * 4.2)
+
+    let finalResult = []
+
+    let result
+    let beforeTimeSpan = 0
+    do {
+
+      console.log(startPage)
+
+      result = await redditLinks(driver, startPage)
+
+      finalResult = finalResult.concat(result)
+
+      startPage = result.next
+
+      // not yet includes any articles over a month ago
+      beforeTimeSpan = result.filter(r => timeSpan == 'month' 
+        ? r.time < monthAgo : r.time < weekAgo).length
+
+      safety--
+
+      if(result.next && beforeTimeSpan == 0 && safety > 0) {
+        await new Promise(resolve => setTimeout(resolve, 1000))
+      }
+
+    } while(result.next && beforeTimeSpan == 0 && safety > 0)
+
+    return finalResult;
+
+  } catch (e) {
+    driver.quit()
+
+    throw e
+  }
+}
+
+
+module.exports = redditList
+
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>The code defines an asynchronous function <code>redditList</code> that retrieves a list of Reddit posts from a specified subreddit.</p>
+<h3>Function Parameters</h3>
+<ul>
+<li><code>driver</code>: an instance of a Selenium client</li>
+<li><code>startPage</code>: the URL of the subreddit to retrieve posts from (default: 'https://www.reddit.com/r/CollapseSupport+climatechange+collapse+economicCollapse/')</li>
+<li><code>timeSpan</code>: the time span for which to retrieve posts (default: 'week')</li>
+</ul>
+<h3>Function Behavior</h3>
+<ol>
+<li>If <code>startPage</code> is not provided, it defaults to 'https://www.reddit.com/r/CollapseSupport+climatechange+collapse+economicCollapse/'. If <code>startPage</code> does not contain a protocol (e.g., 'http://' or 'https://'), it is prepended with 'https://www.reddit.com/r/'.</li>
+<li>If <code>driver</code> is not provided, it is obtained from the <code>getClient</code> function.</li>
+<li>The function iteratively retrieves posts from the subreddit using the <code>redditLinks</code> function, which takes the <code>driver</code> and <code>startPage</code> as arguments.</li>
+<li>The retrieved posts are stored in the <code>finalResult</code> array.</li>
+<li>The function checks if there are any posts that are older than the specified <code>timeSpan</code>. If there are no such posts, it waits for 1 second before continuing.</li>
+<li>The loop continues until there are no more posts to retrieve or the <code>safety</code> counter reaches 0.</li>
+<li>If an error occurs during the execution of the function, the <code>driver</code> is quit, and the error is re-thrown.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The code uses the <code>do...while</code> loop construct to ensure that the loop body is executed at least once.</li>
+<li>The <code>safety</code> counter is used to prevent the loop from running indefinitely in case there are no posts that match the specified <code>timeSpan</code>.</li>
+<li>The <code>beforeTimeSpan</code> variable is used to check if there are any posts that are older than the specified <code>timeSpan</code>.</li>
+<li>The <code>Promise</code> constructor is used to introduce a delay of 1 second between iterations of the loop.</li>
+</ul>

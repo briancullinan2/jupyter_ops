@@ -1,0 +1,63 @@
+<p>This code calculates the total duration of a list of events in minutes, handling cases where end times are missing. It iterates through the events, calculates the duration of each event, and sums them up to provide the total duration in minutes.</p>
+
+
+<pre><code>// sum up events
+function sumEvents(events) {
+    var total = 0;
+    events.forEach(e => {
+        if (typeof e.event.end === 'undefined' || typeof e.event.end.dateTime === 'undefined') {
+            console.log('ignoring ' + e.event.summary + ' - ' + JSON.stringify(e.event.start));
+            return;
+        }
+        total += new Date(e.event.end.dateTime).getTime()
+            - new Date(e.event.start.dateTime).getTime();
+        if(isNaN(total)) {
+            throw new Error('nan! ' + JSON.stringify(e.event));
+        }
+    });
+    return total / 1000 / 60 / 60;
+};
+module.exports = sumEvents;
+
+</code></pre>
+
+<p>This code calculates the total duration of events in minutes.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>sumEvents(events)</code> function:</strong></p>
+<ul>
+<li>Takes an array of events as input, where each event is assumed to have properties like <code>summary</code>, <code>start</code>, and <code>end</code>.</li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Initializes a <code>total</code> variable to 0 to store the cumulative duration.</li>
+</ul></li>
+<li><p><strong>Iterating through Events:</strong></p>
+<ul>
+<li>Uses <code>forEach</code> to loop through each event in the <code>events</code> array.</li>
+</ul></li>
+<li><p><strong>Handling Missing End Times:</strong></p>
+<ul>
+<li>Checks if the <code>end</code> property exists and if it has a <code>dateTime</code> property. If either is missing, it logs a message and skips the event.</li>
+</ul></li>
+<li><p><strong>Calculating Duration:</strong></p>
+<ul>
+<li>If both <code>start</code> and <code>end</code> times are present:
+<ul>
+<li>Creates <code>Date</code> objects from the <code>start.dateTime</code> and <code>end.dateTime</code> strings.</li>
+<li>Calculates the difference between the two dates in milliseconds.</li>
+<li>Adds this duration to the <code>total</code>.</li>
+<li>Includes a check for <code>isNaN(total)</code> to handle potential errors and throw an error if the calculation results in NaN.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Returning Total Duration:</strong></p>
+<ul>
+<li>After processing all events, divides the <code>total</code> milliseconds by 1000 (to get seconds), then by 60 (to get minutes).</li>
+<li>Returns the total duration in minutes.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>sumEvents</code> function for use in other parts of the project.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

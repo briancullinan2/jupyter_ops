@@ -1,0 +1,202 @@
+<p>Here is a summary of the <code>whiskImages</code> function in two sentences:</p>
+<p>The <code>whiskImages</code> function is an asynchronous function that takes four parameters (<code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>) and processes them to return an object with the processed parameters. It handles base64-encoded images, URLs, and file paths, and uses various modules such as <code>gaxios</code> and <code>fs</code> to make HTTP requests and interact with files.</p>
+
+
+<pre><code>const fs = require('fs')
+const { request } = require('gaxios')
+const requestOllamaVision = importer.import('request ollama vision')
+const selectModel = importer.import('select llm')
+const {doStableRequest} = importer.import('stable diffusion request')
+const {doImage2Image} = importer.import('image 2 image')
+const {doBackgroundMask} = importer.import('mask image')
+const {doInpaintMask} = importer.import('inpaint mask')
+// TODO: use the above functions in combination to whisk together a set of images
+
+async function whiskImages(subject, scene, style, short) {
+  let promptModel = await selectModel(process.env.DEFAULT_MODEL || 'Default')
+
+  let subjectString
+  let subjectShort
+  let base64_subject
+  if(typeof subject == 'string') {
+    if(subject.startsWith('data:image/')) {
+      subject = subject.replace(/^data:image\/.*?;base64,/gi, '')
+      base64_subject = Buffer.from(subject, 'base64').toString('base64')
+    } else if(subject.includes('://')) {
+      let result = await request({
+        url: subject,
+        method: 'GET',
+      })
+      base64_subject = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(subject)) {
+      subjectString = subject
+    } else {
+      base64_subject = fs.readFileSync(subject).toString('base64')
+    }  
+  } else if(subject) {
+    base64_subject = subject.toString('base64')
+  }
+
+
+  let sceneString
+  let sceneShort
+  let base64_scene
+  if(typeof scene == 'string') {
+    if(scene.startsWith('data:image/')) {
+      scene = scene.replace(/^data:image\/.*?;base64,/gi, '')
+      base64_scene = Buffer.from(scene, 'base64').toString('base64')
+    } else if(scene.includes('://')) {
+      let result = await request({
+        url: scene,
+        method: 'GET',
+      })
+      base64_scene = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(scene)) {
+      sceneString = scene
+    } else {
+      base64_scene = fs.readFileSync(scene).toString('base64')
+    }  
+  } else if (scene) {
+    base64_scene = scene.toString('base64')
+  }
+
+
+  let styleString
+  let styleShort
+  let base64_style
+  if(typeof style == 'string') {
+    if(style.startsWith('data:image/')) {
+      style = style.replace(/^data:image\/.*?;base64,/gi, '')
+      base64_style = Buffer.from(style, 'base64').toString('base64')
+    } else if(style.includes('://')) {
+      let result = await request({
+        url: style,
+        method: 'GET',
+      })
+      base64_style = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(style)) {
+      styleString = style
+    } else {
+      base64_style = fs.readFileSync(style).toString('base64')
+    }  
+  } else if(style) {
+    base64_style = style.toString('base64')
+  }
+
+  // TODO: if passing in an image, ask ollama vision for a description, 
+  //   if passing in a description use it to generate the next image
+  if(!subjectString && base64_subject) {
+    subjectString = await requestOllamaVision('data:image/png;base64,' + base64_subject, 'Describe the foreground subject of the image in one short sentence.')
+  }
+  if(short && subjectString) {
+    subjectShort = await promptModel('Summarize this sentence into four or five words:\n' + subjectString + '\nOnly return the summary, no title or explanation.')
+  }
+
+  if(!sceneString && base64_scene) {
+    sceneString = await requestOllamaVision('data:image/png;base64,' + base64_scene, 'Describe the scenery in the image in one short sentence.')
+  }
+  if(short && sceneString) {
+    sceneShort = await promptModel('Summarize this sentence into four or five words:\n' + sceneString + '\nOnly return the summary, no title or explanation.')
+  }
+
+  if(!styleString && base64_style) {
+    styleString = await requestOllamaVision('data:image/png;base64,' + base64_style, 'Describe the art style of image in one short sentence.')
+  }
+  if(short && styleString) {
+    styleShort = await promptModel('Summarize this sentence into four or five words:\n' + styleString + '\nOnly return the summary, no title or explanation.')
+  }
+
+  // TODO: if no scene, only subject and style, then just call image 2 image
+  if(!base64_scene && !base64_style && !base64_subject) {
+    // no images passed in, send directly to image generator
+    if(short)
+      return await doStableRequest(subjectShort + '\n' + sceneShort + '\n' + styleShort)
+    else
+      return await doStableRequest(subjectString + '\n' + sceneString + '\n' + styleString)
+  } else if (base64_subject && !sceneString) {
+    // subject and style process only, pass directly to image 2 image
+    if(short)
+      return await doImage2Image('data:image/png;base64,' + base64_subject, subjectShort + (styleShort ? ('\n' + styleShort) : ''))
+    else
+      return await doImage2Image('data:image/png;base64,' + base64_subject, subjectString + (styleString ? ('\n' + styleString) : ''))
+  } else if (base64_scene && !subjectString) {
+    // scene and style only, pass to image 2 image
+    if(short)
+      return await doImage2Image('data:image/png;base64,' + base64_scene, sceneShort + (styleShort ? ('\n' + styleShort) : ''))
+    else
+      return await doImage2Image('data:image/png;base64,' + base64_scene, sceneString + (styleString ? ('\n' + styleString) : ''))
+  } else if (base64_subject && sceneString) {
+    // TODO: extract mask on subject
+    let maskObject = await doBackgroundMask('data:image/png;base64,' + base64_subject)
+    let base64_mask = maskObject.image.toString('base64')
+
+    // TODO: combine subject with new scene
+    let inpaintObject
+    if(short)
+      inpaintObject = await doInpaintMask(
+        'data:image/png;base64,' + base64_subject, 
+        'data:image/png;base64,' + base64_mask, 
+        sceneShort)
+    else
+      inpaintObject = await doInpaintMask(
+        'data:image/png;base64,' + base64_subject, 
+        'data:image/png;base64,' + base64_mask, 
+        sceneString)
+    
+    // Drop out early if there is no style specified, just do the proper inpainting
+    if(!styleString) {
+      return inpaintObject
+    }
+
+    let base64_inpaint = inpaintObject.image.toString('base64')
+    
+
+    // TODO: generate final image in new style
+    if(short)
+      return await doImage2Image('data:image/png;base64,' + base64_inpaint, styleShort + '\n' + subjectShort + '\n' + sceneShort)
+    else
+      return await doImage2Image('data:image/png;base64,' + base64_inpaint, styleString + '\n' + subjectString + '\n' + sceneString)
+  } else {
+    console.error('Missing components: ')
+    return {}
+  }
+}
+
+module.exports = whiskImages
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Importing Modules</strong></p>
+<p>The code starts by importing various modules:</p>
+<ul>
+<li><code>fs</code>: The file system module for interacting with files.</li>
+<li><code>gaxios</code>: A HTTP client library for making requests.</li>
+<li><code>importer</code>: A custom module for importing other modules (not shown in this code snippet).</li>
+<li><code>requestOllamaVision</code>, <code>selectModel</code>, <code>doStableRequest</code>, <code>doImage2Image</code>, <code>doBackgroundMask</code>, <code>doInpaintMask</code>: Various functions imported from other modules.</li>
+</ul>
+<p><strong>Function <code>whiskImages</code></strong></p>
+<p>The <code>whiskImages</code> function takes four parameters: <code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>. It is an asynchronous function.</p>
+<p><strong>Functionality</strong></p>
+<p>The function performs the following tasks:</p>
+<ol>
+<li><strong>Selects a model</strong>: It selects a model using the <code>selectModel</code> function and assigns it to the <code>promptModel</code> variable.</li>
+<li><strong>Processes the <code>subject</code> parameter</strong>:
+<ul>
+<li>If <code>subject</code> is a string, it checks if it's a base64-encoded image, a URL, or a file path. If it's a base64-encoded image, it decodes it. If it's a URL, it makes a GET request to the URL and decodes the response. If it's a file path, it reads the file and decodes it.</li>
+<li>If <code>subject</code> is not a string, it converts it to a string using <code>toString('base64')</code>.</li>
+</ul></li>
+<li><strong>Processes the <code>scene</code> parameter</strong>:
+<ul>
+<li>Similar to the <code>subject</code> parameter, but with its own set of checks and processing.</li>
+</ul></li>
+<li><strong>Returns</strong>: The function returns an object with the processed <code>subject</code> and <code>scene</code> parameters.</li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The function uses <code>async/await</code> syntax to handle promises.</li>
+<li>The <code>request</code> function from <code>gaxios</code> is used to make HTTP requests.</li>
+<li>The <code>fs</code> module is used to interact with files.</li>
+<li>The <code>importer</code> module is used to import other modules.</li>
+<li>The <code>requestOllamaVision</code>, <code>selectModel</code>, <code>doStableRequest</code>, <code>doImage2Image</code>, <code>doBackgroundMask</code>, <code>doInpaintMask</code> functions are not used in this code snippet, but are likely used elsewhere in the codebase.</li>
+</ul>

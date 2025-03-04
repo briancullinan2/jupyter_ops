@@ -1,0 +1,96 @@
+<p>Here is a 2-sentence summary of the provided code:</p>
+<p>This code utilizes oauth2Client to interact with Google services, generating unique IDs and extracting user profile data, which is then stored in a Google Sheets document. It consists of four main functions: <code>safeName</code> for string modification, <code>extractProfile</code> for user data extraction, <code>receiveCode</code> for handling OAuth authorization, and exports the <code>receiveCode</code> and <code>extractProfile</code> functions.</p>
+
+
+<pre><code>var uuid = require('uuid/v1');
+var uuidSess = require('uuid/v4');
+
+function safeName(name) {
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 40).toLowerCase();
+}
+
+function extractProfile(oauth2Client) {
+    return util.promisify(oauth2Client.request.bind(oauth2Client))({
+            url: 'https://www.googleapis.com/oauth2/v3/userinfo?alt=json'
+        })
+        .then(r => {
+            var profile = r.data;
+            var rowData = {
+                link: safeName(profile.name) + '-' + uuid().substr(0, 5),
+                first: profile.given_name,
+                last: profile.family_name,
+                email: profile.email,
+                token: JSON.stringify(oauth2Client.credentials),
+                image: profile.picture || profile.photos[0].value,
+                google: profile.id,
+                username: profile.name,
+                session: uuidSess(),
+                date: (new Date).getTime()
+            }
+            return updateRow(process.env.DOCID, u => u.email === profile.email, rowData, 'User data')
+        })
+}
+
+function receiveCode(req, res) {
+    var oauth2Client = new OAuth2Client(
+        credentials.installed.client_id,
+        credentials.installed.client_secret,
+        process.env.AUTH_REDIRECT)
+
+    var token;
+    return util.promisify(oauth2Client.getToken.bind(oauth2Client))(req.query['code'])
+        .then(t => token = t)
+        .then(() => oauth2Client.setCredentials(token))
+        .then(() => extractProfile(oauth2Client))
+        .then(profile => {
+            res.cookie('__session', profile.session);
+            return res.redirect(process.env.DOMAIN + '/home/' + profile.link);
+        })
+}
+
+module.exports = receiveCode
+module.exports.extractProfile = extractProfile
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Requirements and Dependencies</h4>
+<ul>
+<li><code>uuid/v1</code> and <code>uuid/v4</code> are required for generating unique IDs.</li>
+<li><code>oauth2Client</code> and <code>credentials</code> are assumed to be defined elsewhere.</li>
+<li><code>util.promisify</code> is required for converting callback functions to promises.</li>
+<li><code>updateRow</code> is assumed to be a function defined elsewhere.</li>
+</ul>
+<h4>Functions</h4>
+<h4><code>safeName(name)</code></h4>
+<ul>
+<li>Replaces non-alphanumeric characters with hyphens (<code>-</code>) and trims the string to 40 characters.</li>
+<li>Converts the resulting string to lowercase.</li>
+<li>Returns the modified string.</li>
+</ul>
+<h4><code>extractProfile(oauth2Client)</code></h4>
+<ul>
+<li>Uses <code>oauth2Client</code> to request user information from Google.</li>
+<li>Extracts the user's profile data from the response.</li>
+<li>Creates a <code>rowData</code> object with the following properties:
+<ul>
+<li><code>link</code>: a unique ID based on the user's name and a shortened UUID.</li>
+<li><code>first</code>, <code>last</code>, <code>email</code>, <code>token</code>, <code>image</code>, <code>google</code>, <code>username</code>: extracted from the user's profile data.</li>
+<li><code>session</code>: a new UUID.</li>
+<li><code>date</code>: the current timestamp.</li>
+</ul></li>
+<li>Updates a document in Google Sheets using <code>updateRow</code>.</li>
+</ul>
+<h4><code>receiveCode(req, res)</code></h4>
+<ul>
+<li>Creates an <code>oauth2Client</code> instance with the client ID, secret, and redirect URL.</li>
+<li>Retrieves an authorization token from Google using the provided code.</li>
+<li>Sets the client credentials using the retrieved token.</li>
+<li>Extracts the user's profile data using <code>extractProfile</code>.</li>
+<li>Sets a cookie with the user's session ID and redirects them to the <code>home</code> page.</li>
+</ul>
+<h4>Exports</h4>
+<ul>
+<li>The <code>receiveCode</code> function is exported as the main module.</li>
+<li>The <code>extractProfile</code> function is exported separately.</li>
+</ul>

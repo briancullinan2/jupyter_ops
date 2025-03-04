@@ -1,0 +1,90 @@
+<p>This JavaScript code defines a configuration object containing lists of file extensions and directory names commonly used in a software project, likely a game.  This object can be used for tasks like file filtering, directory navigation, and asset management within the project.</p>
+
+
+<pre><code>
+var imageTypes = [
+    '.png',
+    '.jpg',
+    '.jpeg',
+    '.tga',
+    '.gif',
+    '.pcx',
+    '.webp',
+]
+
+var audioTypes = [
+    '.opus',
+    '.wav',
+    '.mp3',
+]
+
+var sourceFiles = [
+    '.map',
+    '.scc',
+]
+
+var fileTypes = [
+    '.cfg',
+    '.qvm',
+    '.bot',
+    '.txt',
+    '.bsp',
+    '.aas',
+    '.md3',
+    '.md5',
+    '.shader',
+    '.skin',
+    '.pk3',
+    '.c',
+    '.h',
+    '.config',
+    '.menu'
+]
+
+
+var knownDirs = [
+    'scripts',
+    'botfiles',
+	'fonts',
+	'gfx',
+    'hud',
+	'icons',
+	'include',
+	'menu',
+	'models',
+	'music',
+	'powerups',  // powerup shaders
+	'sprites',
+	'sound',
+	'ui',
+    'maps',
+    'textures',
+    
+]
+
+module.exports = {
+    imageTypes,
+    audioTypes,
+    sourceFiles,
+    fileTypes,
+    knownDirs,
+}
+
+</code></pre>
+
+<p>This code defines a JavaScript object containing lists of file extensions and directory names commonly associated with a specific type of software project (likely a game or similar application).</p>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong><code>imageTypes</code>:</strong> An array of common image file extensions (e.g., <code>.png</code>, <code>.jpg</code>, <code>.gif</code>).</li>
+<li><strong><code>audioTypes</code>:</strong> An array of common audio file extensions (e.g., <code>.wav</code>, <code>.mp3</code>).</li>
+<li><strong><code>sourceFiles</code>:</strong> An array of file extensions typically associated with source code or build files (e.g., <code>.map</code>, <code>.scc</code>).</li>
+<li><strong><code>fileTypes</code>:</strong> A broader array of file extensions potentially found in the project (e.g., configuration files, game assets, scripts).</li>
+<li><strong><code>knownDirs</code>:</strong> An array of directory names commonly used in this type of project structure (e.g., <code>scripts</code>, <code>gfx</code>, <code>models</code>, <code>sound</code>).</li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<p>This object likely serves as a configuration or lookup table within the project. It could be used for:</p>
+<ul>
+<li><strong>File Filtering:</strong> Identifying and handling different types of files based on their extensions.</li>
+<li><strong>Directory Navigation:</strong> Organizing and accessing files within specific directories.</li>
+<li><strong>Asset Management:</strong> Managing and loading various assets (images, audio, models) based on their types.</li>
+</ul>

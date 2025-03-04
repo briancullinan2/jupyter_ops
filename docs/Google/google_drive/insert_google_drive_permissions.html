@@ -1,0 +1,56 @@
+<p>Here's a two-sentence summary:</p>
+<p>The <code>insertPermission</code> function, located in a Node.js module, takes a file ID and a user's email address as input and returns a promise that resolves to the ID of a newly created permission. The function authorizes access to Google Drive, creates a new permission on the specified file, and extracts the permission ID from the response before exporting it as a module for use elsewhere.</p>
+
+
+<pre><code>var util = require('util');
+var importer = require('../Core');
+var authorizeDrive = importer.import('authorize google drive');
+
+function insertPermission(fileId, email) {
+    return authorizeDrive()
+        .then(drive => util.promisify(drive.permissions.create.bind(drive))({
+            resource: {
+                'type': 'user',
+                'role': 'owner',
+                'emailAddress': email
+            },
+            fileId: fileId,
+            fields: 'id',
+            transferOwnership: true
+        }))
+        .then(r => r.data.id)
+}
+
+module.exports = insertPermission;
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code starts by importing two modules:</p>
+<ul>
+<li><code>util</code>: a built-in Node.js module that provides utility functions for working with promises.</li>
+<li><code>importer</code>: a custom module located in the <code>../Core</code> directory, which is used to import specific functions from other modules.</li>
+<li><code>authorizeDrive</code>: a function imported from the previously imported <code>importer</code> module, which authorizes access to Google Drive.</li>
+</ul>
+<h4>Defining the <code>insertPermission</code> Function</h4>
+<p>The <code>insertPermission</code> function takes two arguments:</p>
+<ul>
+<li><code>fileId</code>: the ID of a Google Drive file.</li>
+<li><code>email</code>: the email address of the user to be given permission to the file.</li>
+</ul>
+<p>The function returns a promise that resolves to the ID of the newly created permission.</p>
+<p>Here's a step-by-step breakdown of the function:</p>
+<ol>
+<li><code>authorizeDrive()</code> is called to authorize access to Google Drive. This returns a promise that resolves to the authorized Drive object.</li>
+<li>The <code>promisify</code> function from the <code>util</code> module is used to convert the <code>permissions.create</code> method of the Drive object into a promises-based function. This method creates a new permission on the specified file.</li>
+<li>The <code>permissions.create</code> function is called with the following arguments:
+<ul>
+<li><code>resource</code>: an object containing the permission settings, including the user's email address, role, and type.</li>
+<li><code>fileId</code>: the ID of the file to which the permission should be granted.</li>
+<li><code>fields</code>: a string specifying which fields should be returned in the response (in this case, only the <code>id</code> field).</li>
+<li><code>transferOwnership</code>: a boolean indicating whether the ownership of the file should be transferred to the specified user (set to <code>true</code> in this case).</li>
+</ul></li>
+<li>The result of the <code>permissions.create</code> function is awaited and the <code>id</code> field of the response is extracted.</li>
+</ol>
+<h4>Exporting the <code>insertPermission</code> Function</h4>
+<p>Finally, the <code>insertPermission</code> function is exported as a module, making it available for use in other parts of the application.</p>

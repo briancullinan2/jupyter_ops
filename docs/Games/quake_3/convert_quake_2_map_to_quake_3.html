@@ -1,0 +1,117 @@
+<p>This code defines a function <code>convertMap</code> that modifies Quake 3 map files by replacing entities, classes, and textures, scaling the map, and optionally adding a skybox.  The modified map is then saved to a new file.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var replaceClasses = importer.import('replace known classes in map')
+var replaceEntities = importer.import('replace entities in map')
+var replaceTextures = importer.import('replace common textures in map')
+var scaleMap = importer.import('scale quake map')
+var {addSkybox} = importer.import('add skybox to map')
+var {MAPS_HINTS, addHints} = importer.import('draw hints in map')
+
+function convertMap(fileName) {
+    var file;
+    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        file = fs.readFileSync(fileName).toString('utf-8')
+    }
+    
+    file = replaceEntities(file)
+    
+    file = replaceClasses(file)
+    
+    // replace water with foggy water
+    
+    // replace message with target print
+    
+    // replace duplicate textures / don't interfere with basepack
+    file = replaceTextures(file)
+    
+    // replace barrels with rocket launchers
+    
+    // replace animations and generate proper shaders
+    // scale map 1.2x
+    file = scaleMap(file, 1.15)
+    
+    //file = addSkybox(file)
+    
+    // scale lighting with q3map2 bsp options
+    var newFile = fileName.substr(0, fileName.length - path.extname(fileName).length) + '.map'
+    console.log(`writing ${newFile}`)
+    fs.writeFileSync(newFile, file)
+}
+
+module.exports = convertMap;
+</code></pre>
+
+<p>This code snippet defines a function <code>convertMap</code> that modifies Quake 3 map files.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js module for file system operations.</li>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+<li><code>importer</code>: Custom module likely containing utility functions.</li>
+<li>Several imported functions from <code>importer</code> handle tasks like replacing entities, classes, textures, scaling the map, and adding a skybox.</li>
+</ul></li>
+<li><p><strong><code>convertMap</code> Function:</strong></p>
+<ul>
+<li>Takes a map file name as input.</li>
+<li>Reads the map file content.</li>
+<li>Calls various imported functions to modify the map content:
+<ul>
+<li><code>replaceEntities</code>: Replaces entities in the map.</li>
+<li><code>replaceClasses</code>: Replaces classes in the map.</li>
+<li><code>replaceTextures</code>: Replaces textures in the map.</li>
+<li><code>scaleMap</code>: Scales the map by a factor of 1.15.</li>
+<li><code>addSkybox</code>: Adds a skybox to the map (commented out).</li>
+</ul></li>
+<li>Writes the modified map content to a new file with a <code>.map</code> extension.</li>
+</ul></li>
+<li><p><strong>Exports:</strong> The code exports the <code>convertMap</code> function, making it available for use in other parts of the project.</p></li>
+</ol>
+<p><strong>Functionality Breakdown:</strong></p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js built-in module for file system operations (reading and writing files).</li>
+<li><code>path</code>: Node.js built-in module for working with file and directory paths.</li>
+<li><code>importer</code>: A custom module (likely located in <code>../Core</code>) that provides functions for modifying Quake map files.</li>
+</ul></li>
+<li><p><strong>Importing Functions:</strong></p>
+<ul>
+<li><code>replaceClasses</code>, <code>replaceEntities</code>, <code>replaceTextures</code>, <code>scaleMap</code>, and <code>addSkybox</code> are imported from the <code>importer</code> module. These functions are responsible for specific modifications to the map file.</li>
+</ul></li>
+<li><p><strong><code>convertMap</code> Function:</strong></p>
+<ul>
+<li><strong>Input:</strong> Takes a <code>fileName</code> (string) as input, representing the path to the Quake map file.</li>
+<li><strong>File Reading:</strong>
+<ul>
+<li>Checks if the provided <code>fileName</code> is a valid string and if the file exists using <code>fs.existsSync</code>.</li>
+<li>If valid, reads the file contents into a <code>file</code> variable using <code>fs.readFileSync</code> and converts it to a UTF-8 string.</li>
+</ul></li>
+<li><strong>Map Modifications:</strong>
+<ul>
+<li>Calls the imported functions in a specific order to perform the following:
+<ul>
+<li><code>replaceEntities(file)</code>: Replaces entities in the map file.</li>
+<li><code>replaceClasses(file)</code>: Replaces classes in the map file.</li>
+<li><code>replaceTextures(file)</code>: Replaces common textures in the map file.</li>
+<li><code>scaleMap(file, 1.15)</code>: Scales the map by a factor of 1.15.</li>
+</ul></li>
+<li><strong>Commented-out sections:</strong>
+<ul>
+<li>Placeholder comments indicate additional modifications that could be implemented, such as replacing water, messages, barrels, and animations.</li>
+</ul></li>
+</ul></li>
+<li><strong>Output:</strong>
+<ul>
+<li>Creates a new file name by removing the original extension and adding <code>.map</code>.</li>
+<li>Writes the modified <code>file</code> content to the new file using <code>fs.writeFileSync</code>.</li>
+<li>Logs a message indicating the new file name.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet is a script for converting Quake map files. It reads a map file, applies various modifications (entity, class, texture replacements, scaling), and writes the modified map to a new file. The script is designed to be modular, allowing for easy addition or removal of modification functions.</p>

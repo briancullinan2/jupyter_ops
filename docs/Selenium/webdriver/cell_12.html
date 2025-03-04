@@ -1,0 +1,53 @@
+
+
+<pre><code>var importer = require('../Core');
+var readSessions = importer.import('load webdriver sessions');
+var {
+    verifySession,
+    lockPromise,
+    updateOrAddSession
+} = importer.import('verify session');
+
+var TIMEOUT = 10000;
+
+function getSessions(client, inactive = false) {
+    const sessions = readSessions();
+    const original = client.sessionId;
+    var active = [].concat(sessions)
+        .filter(session => typeof session[1] !== 'undefined'
+                && session[1] !== null && session[1].length > 0);
+    if(inactive) {
+        active = active.filter(session => (new Date()).getTime() - session[0] > TIMEOUT);
+    }
+    var cancelled = false;
+    return importer.runAllPromises(active.map(session => (resolve) => {
+        if(cancelled) {
+            return resolve();
+        }
+        console.log(session);
+        return verifySession(client, session)
+            .catch(e => console.log(e))
+            .then(r => {
+                // only try to find 1 decent session
+                if(inactive && typeof r !== 'undefined') {
+                    cancelled = true;
+                }
+                return resolve(r);
+            })
+    }))
+        .then(available => {
+            client.sessionId = original;
+            return available
+                .filter(sess => typeof sess !== 'undefined' && sess !== null)
+                .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+        })
+}
+
+module.exports = {
+    getSessions,
+    lockPromise,
+    updateOrAddSession
+};
+
+</code></pre>
+

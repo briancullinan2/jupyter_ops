@@ -1,0 +1,44 @@
+<p>The <code>contactUs</code> function handles incoming contact form submissions, stores the data in a Google Sheet, and redirects the user upon successful submission.</p>
+
+
+<pre><code>var importer = require('../Core');
+var addRow = importer.import('add row data google sheet');
+
+function contactUs(name, email, subject, message) {
+    console.log(`Adding contact row for ${req.body['name']}`)
+    return addRow(process.env.CONTACT_DOCID, {
+        timestamp: Date.now(),
+        name,
+        email,
+        subject,
+        message,
+        responded: 0,
+    })
+        .then(r => res.redirect(process.env.CONTACT_REDIRECT))
+}
+    
+module.exports = contactUs;
+
+</code></pre>
+
+<p>This code defines a function <code>contactUs</code> that handles incoming contact form submissions and adds them to a Google Sheet.</p>
+<p><strong>Functionality:</strong></p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports a function <code>addRow</code> from a custom module (<code>../Core</code>) responsible for adding data to a Google Sheet.</li>
+</ul></li>
+<li><p><strong><code>contactUs</code> Function:</strong></p>
+<ul>
+<li>Takes <code>name</code>, <code>email</code>, <code>subject</code>, and <code>message</code> as input, representing the contact form data.</li>
+<li>Logs a message indicating the contact submission.</li>
+<li>Calls <code>addRow</code> to add a new row to the specified Google Sheet document (<code>process.env.CONTACT_DOCID</code>) with the provided data and additional fields (<code>timestamp</code>, <code>responded</code>).</li>
+<li>Redirects the user to a specified URL (<code>process.env.CONTACT_REDIRECT</code>) upon successful submission.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>contactUs</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>The code provides a mechanism for capturing contact form submissions and storing them in a Google Sheet for later processing or review.</p>

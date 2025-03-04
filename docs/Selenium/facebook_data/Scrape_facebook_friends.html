@@ -1,0 +1,52 @@
+<p>This code provides a function <code>scrapeFacebookFriends</code> that automates the process of logging into Facebook, extracting unique friend URLs from the user's friends page, and storing them in an array.  It utilizes Selenium for browser automation and XPath for element selection.</p>
+
+
+<pre><code>var importer = require('../Core');
+function scrapeFacebookFriends() {
+    var friends = [];
+    return loginFacebook()
+        .url('https://www.facebook.com/me/friends')
+        .pause(4000)
+        .then(() => getAllUntil(
+            false,
+            '//a[contains(@href, "friends_tab")]/@href',
+            friends,
+            (a, b) => a === b,
+            (i) => i < 30
+        ))
+        .getHTML('body')
+        .catch(e => console.log(e))
+}
+module.exports = scrapeFacebookFriends;
+
+</code></pre>
+
+<p>This code defines a function <code>scrapeFacebookFriends</code> that automates the process of scraping Facebook friend URLs.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports the <code>importer</code> module from <code>../Core</code>, which likely contains helper functions for interacting with Selenium.</li>
+</ul></li>
+<li><p><strong><code>scrapeFacebookFriends</code> Function:</strong></p>
+<ul>
+<li>Initializes an empty array <code>friends</code> to store the extracted URLs.</li>
+<li>Calls <code>loginFacebook</code> (presumably from the imported <code>importer</code> module) to log in to Facebook.</li>
+<li>Navigates to the user's friends page (<code>https://www.facebook.com/me/friends</code>).</li>
+<li>Pauses for 4 seconds to allow the page to load.</li>
+<li>Uses <code>getAllUntil</code> (likely from the imported <code>importer</code> module) to extract all unique friend URLs from the page.
+<ul>
+<li><code>false</code> indicates that it should stop when a duplicate URL is found.</li>
+<li><code>'//a[contains(@href, &quot;friends_tab&quot;)]/@href'</code> is the XPath expression to target friend links.</li>
+<li><code>friends</code> is the array to store the extracted URLs.</li>
+<li><code>(a, b) =&gt; a === b</code> is a comparison function to check for duplicates.</li>
+<li><code>(i) =&gt; i &lt; 30</code> is a condition to limit the number of extracted URLs to 30.</li>
+</ul></li>
+<li>Retrieves the HTML content of the page body.</li>
+<li>Catches any errors and logs them to the console.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>scrapeFacebookFriends</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>

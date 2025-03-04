@@ -1,0 +1,175 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>The code imports various dependencies and defines a list of available commands, then outlines four functions (<code>doDeceive</code>, <code>doArgument</code>, <code>doMention</code>, and <code>doPrivate</code>) that interact with these commands using various discord API functionalities. Each function generates a response to a user's prompt or message using either the <code>llmDeceive</code> module or the <code>argueLlama</code> function, with some functions creating new messages or updating interactions with the generated responses.</p>
+
+
+<pre><code>const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {interactionsCommands} = importer.import('discord gateway')
+const {triggerTyping, createMessage, updateInteraction} = importer.import('disrcord api')
+const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const argueLlama = importer.import('argue with multiple llms')
+
+const ALL_COMMANDS = [
+  'deceive',
+  'argue',
+]
+
+async function doDeceive(interaction) {
+  const llmDeceive = await importer.import('llm deceive')
+  await triggerTyping(interaction.channel_id)
+  let a1 = await llmDeceive('Give the most wrong or incorrect response to, be as deceptive as possible:\n' + interaction.data.options[0].value)
+  return await updateInteraction(a1.substring(0, 1800), interaction.id, interaction.token)
+}
+
+async function doArgument(interaction) {
+  let count = 0
+  return Promise.resolve(argueLlama(interaction.data.options[0].value, async (prompt, answer) => {
+    if(count == 0) {
+      // don't repost original prompt
+      await updateInteraction(answer.substring(0, 1800), interaction.id, interaction.token)
+    } else {
+      //await createMessage(prompt.substring(0, 1800), interaction.channel_id)
+      await createMessage(answer.substring(0, 1800), interaction.channel_id)
+    }
+    count++
+  }))
+}
+
+async function doMention(interaction) {
+  const llmDeceive = await importer.import('llm deceive')
+  await triggerTyping(interaction.channel_id)
+  let a1 = await llmDeceive(interaction.content.replace('@' + DEFAULT_APPLICATION) + '\nBe as deceptive as possible and make it short.')
+  return await createMessage({
+    content: a1.substring(0, 1800), 
+    message_reference: { 
+      message_id: interaction.id
+    }
+  }, interaction.channel_id)
+}
+
+async function doPrivate(interaction) {
+  const llmDeceive = await importer.import('llm deceive')
+  await triggerTyping(interaction.channel_id)
+  let a1 = await llmDeceive('Deceive me with the opposite of:\n' + interaction.content)
+  return await createMessage({
+    content: a1.substring(0, 1800), 
+    message_reference: { 
+      message_id: interaction.id
+    }
+  }, interaction.channel_id)
+}
+
+
+// bot commands using new API, same names as above but lower-case
+async function syncTools(guildId = null) {
+  var cmd, cmdDef
+  var commandResult = await getCommands(guildId)
+  var commands = commandResult.map(command => command.name)
+
+
+  cmdDef = {
+    'name': 'deceive',
+    'description': 'DeepSeek 7B Chat.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt deceptive LLM with.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('deceive')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'deceive')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['deceive'] = doDeceive
+  interactionsCommands['promptMention'] = doMention
+  interactionsCommands['promptPrivate'] = doPrivate
+
+
+  cmdDef = {
+    'name': 'argue',
+    'description': 'Start an argument between deceptive DeepSeek 7B Chat and Meta Llama 8B.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt argumentative LLM with.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('argue')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'argue')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['argue'] = doArgument
+
+
+  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+
+  return await getCommands()
+}
+
+module.exports = syncTools
+</code></pre>
+
+<h3>Breakdown of the Code</h3>
+<h4>Importing Dependencies</h4>
+<p>The code starts by importing various dependencies using the <code>importer.import()</code> function. The imported modules are:</p>
+<ul>
+<li><code>discord API</code>:
+<ul>
+<li><code>registerCommand</code>, <code>getCommands</code>, <code>deleteCommand</code>, <code>updateCommand</code></li>
+<li><code>triggerTyping</code>, <code>createMessage</code>, <code>updateInteraction</code></li>
+</ul></li>
+<li><code>discord gateway</code>: <code>interactionsCommands</code></li>
+<li><code>discord configuration</code>: <code>DEFAULT_APPLICATION</code></li>
+<li><code>argue with multiple llms</code>: <code>argueLlama</code></li>
+</ul>
+<h4>Command List</h4>
+<p>The code defines a list of available commands: <code>ALL_COMMANDS = ['deceive', 'argue']</code>.</p>
+<h4>Functions</h4>
+<p>There are four functions:</p>
+<h3>1. <code>doDeceive(interaction)</code></h3>
+<ul>
+<li>Imports the <code>llmDeceive</code> module</li>
+<li>Triggers typing in the interaction's channel</li>
+<li>Uses <code>llmDeceive</code> to generate a response to the original prompt</li>
+<li>Updates the interaction with the generated response</li>
+</ul>
+<h3>2. <code>doArgument(interaction)</code></h3>
+<ul>
+<li>Calls <code>argueLlama</code> with the original prompt and a callback function</li>
+<li>In the callback function:
+<ul>
+<li>Updates the interaction with the response (on the first iteration)</li>
+<li>Creates a message with the response (on subsequent iterations)</li>
+</ul></li>
+<li>Returns a promise that resolves when the argument is complete</li>
+</ul>
+<h3>3. <code>doMention(interaction)</code></h3>
+<ul>
+<li>Imports the <code>llmDeceive</code> module</li>
+<li>Triggers typing in the interaction's channel</li>
+<li>Uses <code>llmDeceive</code> to generate a response to the original message (without the mention)</li>
+<li>Creates a new message with the generated response</li>
+</ul>
+<h3>4. <code>doPrivate(interaction)</code></h3>
+<ul>
+<li>Imports the <code>llmDeceive</code> module</li>
+<li>Triggers typing in the interaction's channel</li>
+<li>Uses <code>llmDeceive</code> to generate a response to the opposite of the original message</li>
+<li>Creates a new message with the generated response</li>
+</ul>

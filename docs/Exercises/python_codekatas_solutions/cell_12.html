@@ -1,0 +1,24 @@
+
+
+<pre><code>def mergesort(nums):
+    """Mergesort."""
+    def merge(a, b):
+        i, j, merged, m, n = 0, 0, [], len(a), len(b)
+        while i < m and j < n:
+            if a[i] < b[j]:
+                merged.append(a[i])
+                i += 1
+            else:
+                merged.append(b[j])
+                j += 1
+        return merged + a[i:] + b[j:]
+    if len(nums) < 2:
+        return nums
+    a = mergesort(nums[:len(nums)//2])
+    b = mergesort(nums[len(nums)//2:])
+    return merge(a, b)
+    
+a = [2, 9, 2, 3, 5, 8, 1]
+assert mergesort(a) == [1, 2, 2, 3, 5, 8, 9]
+print('All passed!')</code></pre>
+

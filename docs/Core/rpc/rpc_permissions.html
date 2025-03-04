@@ -1,0 +1,69 @@
+<p>This code defines a function <code>getPermissions</code> that determines the permissions for code cells based on a search query, combining predefined public permissions with cell-specific classifications.</p>
+
+
+<pre><code>var path = require('path');
+var importer = require('../Core');
+var getCellGroups = importer.import('get cell rpc groups');
+var {PUBLIC} = importer.import('rpc groups')
+
+// find the shortest words from the query to match the same cell
+var id2 = (cell) => path.basename(cell.filename) + '[' + cell.questions[0] + ']';
+
+var catchInterpret = search => search.map(s => {
+    try {
+        return importer.interpret(s);
+    } catch (e) {
+        if(!e.message.includes('Nothing found')) throw e;
+        return [];
+    }
+});
+
+var mapReduceCells = (search, public) => catchInterpret(search || [])
+    .map((results, i) => (typeof results.id !== 'undefined' ? [results] : results)
+         .map(cell => Object.assign(cell, {
+            id2: id2(cell),
+            original: search[i],
+            groups: (public === PUBLIC ? [] : ['Search'])
+                .concat(public[search[i]] || [])
+                .concat(public[id2(cell)] || [])
+         })))
+    .reduce((arr, i) => typeof i.id !== 'undefined'
+            ? arr.concat([i])
+            : arr.concat(i), [])
+    .reduce((acc, cell) => (acc[cell.id] = acc[cell.id2] = getCellGroups(cell), acc), {})
+
+function getPermissions(search) {
+    if(typeof search === 'string' && search) {
+        search = [search];
+    }
+    var public = mapReduceCells(Object.keys(PUBLIC), PUBLIC);
+    return search ? mapReduceCells(search || [], public) : public;
+}
+
+module.exports = getPermissions;
+</code></pre>
+
+<p>This code defines a function <code>getPermissions</code> that retrieves permissions for code cells based on a given search query.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules (<code>path</code>, <code>importer</code>).</li>
+<li>It imports functions <code>getCellGroups</code> and <code>PUBLIC</code> from the <code>importer</code>.</li>
+</ul></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>id2</code>: Generates a unique identifier for a cell based on its filename and first question.</li>
+<li><code>catchInterpret</code>: Attempts to interpret search terms using <code>importer.interpret</code> and handles potential errors gracefully.</li>
+<li><code>mapReduceCells</code>: Processes search results, maps them to cells, and combines permissions from various sources (e.g., <code>PUBLIC</code>, cell-specific groups).</li>
+</ul></li>
+<li><p><strong><code>getPermissions</code> Function:</strong></p>
+<ul>
+<li>Takes a search query (string or array) as input.</li>
+<li>If a string is provided, it converts it to an array.</li>
+<li>It retrieves a map of public permissions using <code>mapReduceCells</code> with <code>PUBLIC</code> as the permission source.</li>
+<li>If a search query is provided, it uses <code>mapReduceCells</code> to find matching cells and combine their permissions with the public permissions.</li>
+<li>Returns a map of cell IDs to their associated permissions.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a mechanism to determine the permissions associated with code cells based on a search query, considering both predefined public permissions and cell-specific classifications.</strong></p>

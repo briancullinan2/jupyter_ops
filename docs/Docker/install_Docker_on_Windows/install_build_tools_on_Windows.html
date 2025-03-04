@@ -1,0 +1,38 @@
+<p>This code installs NativeScript build tools on Windows using npm, leveraging elevated privileges and potentially making network configuration adjustments.</p>
+
+
+<pre><code>var npmCmd = 'npm install --global --production --unsafe-perm nativescript windows-build-tools';
+var firewall = exec(elevateExecLoc + ' powershell -c "' + npmCmd + ' ; ' + networkCmd + '"', () => {
+    $$.done('npm build tools installed');
+});</code></pre>
+
+<p>This code installs the necessary build tools for NativeScript on Windows using npm.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>var npmCmd = 'npm install --global --production --unsafe-perm nativescript windows-build-tools';</code>:</strong></p>
+<ul>
+<li>Defines a string variable <code>npmCmd</code> containing the command to install NativeScript build tools globally with specific flags:
+<ul>
+<li><code>--global</code>: Installs the package globally.</li>
+<li><code>--production</code>: Uses production settings for installation.</li>
+<li><code>--unsafe-perm</code>: Allows installation even if permissions are not explicitly granted.</li>
+<li><code>nativescript windows-build-tools</code>: Specifies the package to install.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>var firewall = exec(elevateExecLoc + ' powershell -c &quot;' + npmCmd + ' ; ' + networkCmd + '&quot;', () =&gt; { ... });</code>:</strong></p>
+<ul>
+<li>Executes the <code>npmCmd</code> command using <code>exec</code> with the following:
+<ul>
+<li><code>elevateExecLoc</code>: Likely a path to a script or tool that elevates privileges for the command execution.</li>
+<li><code>powershell -c ...</code>: Executes the command within a PowerShell session.</li>
+<li><code>npmCmd</code>: The previously defined npm command.</li>
+<li><code>networkCmd</code>: Another command (not shown) that might be related to network configuration.</li>
+</ul></li>
+<li>The callback function <code>() =&gt; { ... }</code> is executed when the command execution completes.</li>
+</ul></li>
+<li><p><strong><code>$$.done('npm build tools installed');</code>:</strong></p>
+<ul>
+<li>Signals the completion of the installation process, likely to a task runner or workflow manager.</li>
+</ul></li>
+</ol>
+<p>In essence, this code installs NativeScript build tools on Windows using npm, potentially with elevated privileges and network configuration adjustments.</p>

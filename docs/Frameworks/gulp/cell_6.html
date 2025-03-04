@@ -1,0 +1,12 @@
+
+
+<pre><code>var importer = require('../Core');
+var searchNotebooks = importer.import('search notebooks using gulp');
+var searchRegexp = 'permissions';
+
+$$.async();
+searchNotebooks(searchRegexp)
+    .then(r => $$.mime({'text/markdown': '```\n' + r.map(c => c.code).join('') + '\n```\n-------------\n'}))
+    .catch(e => $$.sendError(e));
+</code></pre>
+

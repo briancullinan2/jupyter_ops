@@ -1,0 +1,54 @@
+<p>This code downloads the Docker installer from the Docker website and saves it to the current working directory, notifying a task manager upon completion.</p>
+
+
+<pre><code>$$.async();
+var exec = require('child_process').exec;
+var http = require('https');
+var fs = require('fs');
+var dockerLoc = path.join(process.cwd(), 'InstallDocker.msi');
+var downloads = http.get('https://download.docker.com/win/stable/InstallDocker.msi', (r) => {
+    r.pipe(fs.createWriteStream(dockerLoc)).on('finish', () => {
+        $$.done('downloaded InstallDocker.msi');
+    });
+});
+</code></pre>
+
+<p>This code downloads the Docker installer (InstallDocker.msi) from the official Docker website and saves it to the current working directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>$$.async();</code>:</strong></p>
+<ul>
+<li>This line likely initializes an asynchronous operation, possibly related to a task runner or workflow manager.</li>
+</ul></li>
+<li><p><strong><code>var exec = require('child_process').exec;</code>:</strong></p>
+<ul>
+<li>Imports the <code>exec</code> module from the <code>child_process</code> library, which allows executing shell commands.</li>
+</ul></li>
+<li><p><strong><code>var http = require('https');</code>:</strong></p>
+<ul>
+<li>Imports the <code>https</code> module for making HTTPS requests.</li>
+</ul></li>
+<li><p><strong><code>var fs = require('fs');</code>:</strong></p>
+<ul>
+<li>Imports the <code>fs</code> module for file system operations.</li>
+</ul></li>
+<li><p><strong><code>var dockerLoc = path.join(process.cwd(), 'InstallDocker.msi');</code>:</strong></p>
+<ul>
+<li>Constructs the full path to the downloaded installer file (<code>InstallDocker.msi</code>) by joining the current working directory (<code>process.cwd()</code>) with the filename.</li>
+</ul></li>
+<li><p><strong><code>var downloads = http.get('https://download.docker.com/win/stable/InstallDocker.msi', (r) =&gt; { ... });</code>:</strong></p>
+<ul>
+<li>Initiates an HTTPS GET request to download the Docker installer from the specified URL.</li>
+<li>The callback function <code>(r) =&gt; { ... }</code> is executed when the response is received.</li>
+</ul></li>
+<li><p><strong><code>r.pipe(fs.createWriteStream(dockerLoc)).on('finish', () =&gt; { ... });</code>:</strong></p>
+<ul>
+<li>Pipes the downloaded data from the response object (<code>r</code>) to a write stream created for the specified file location (<code>dockerLoc</code>).</li>
+<li>The <code>on('finish', () =&gt; { ... })</code> event listener is triggered when the writing process is complete.</li>
+</ul></li>
+<li><p><strong><code>$$.done('downloaded InstallDocker.msi');</code>:</strong></p>
+<ul>
+<li>Signals the completion of the download task, likely to the task runner or workflow manager.</li>
+</ul></li>
+</ol>
+<p>In essence, this code downloads the Docker installer from the internet and saves it to the current working directory, indicating successful completion.</p>

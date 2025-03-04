@@ -1,0 +1,21 @@
+
+
+<pre><code>var assert = require('assert')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+
+// test that glob works on the current directory
+function testGlobFiles() {
+    var results = glob('**index**', '.')
+    assert(results.length === 1,
+           'index is missing in glob resultss')
+    return results
+}
+
+module.exports = testGlobFiles
+
+if(typeof $$ !== 'undefined') {
+    console.log(testGlobFiles())
+}
+</code></pre>
+

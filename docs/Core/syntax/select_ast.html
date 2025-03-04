@@ -1,0 +1,90 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The Node.js module exports two functions, <code>selectAst</code> and <code>makeExpr</code>, which are used for parsing and manipulating JavaScript code, and require dependencies such as <code>esprima</code> and <code>escodegen</code>. The functions work together to convert code to HTML, generate string representations of ASTs, and parse code to extract its structure and content.</p>
+
+
+<pre><code>var esprima = require('esprima')
+var escodegen = require('escodegen')
+var importer = require('../Core')
+var {
+    selectDom,
+    evaluateDom,
+    treeToHtml,
+    htmlToTree
+} = importer.import(['select tree', 'tree to html', 'html to tree'])
+
+var FUNCTION_BODY = `//FunctionDeclaration/BlockStatement`
+
+function toString(ctx, subctx) {
+    var ast = (subctx || ctx)
+    if(typeof ast.ownerDocument !== 'undefined') {
+        ast = htmlToTree(ast)
+    }
+    //escodegen.attachComments(ast, ast.comments, ast.tokens, ast.whitespace)
+    return escodegen.generate(ast, {
+        comment: true,
+        tokens: true,
+        whitespace: true,
+        format: {indent: {style: '    '}, quotes: 'single'}
+    })
+}
+
+function selectAst(descriptor, code) {
+    if(typeof code === 'function') {
+        code = code.toString()
+    }
+    if(typeof code === 'string') {
+        try {
+            if(code.match(/^import\s|\simport\s|^export\s|\sexport\s/gi)) {
+                code = esprima.parseModule(code, {range: true, tokens: true,
+                    comment: true, whitespace: true, strict: false})
+            } else {
+                code = esprima.parse(code, {range: true, tokens: true,
+                    comment: true, whitespace: true, strict: false})
+            }
+        } catch(e) {
+            console.log(e)
+            throw new Error('Could not parse \n' + code)
+        }
+    }
+    // TODO: move this conversion to selectDom for all objects?
+    //   No more selectTree because jsel and friends are inconsistent.
+    if(typeof code.evaluate === 'undefined'
+       && typeof code.ownerDocument === 'undefined') {
+        code = selectDom('//Program', treeToHtml(code))
+        code.ownerDocument.toString = toString.bind(code, code)
+    }
+    return selectDom(descriptor, code)
+}
+
+function makeExpr(code) {
+    if(typeof code === 'function') {
+        return selectAst([FUNCTION_BODY], code.toString())[0]
+    }
+    return selectAst([`//ExpressionStatement/*`], `(${code})`)[0]
+}
+
+module.exports = {
+    selectAst,
+    makeExpr
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Overview</h3>
+<p>The provided code is a Node.js module that exports two functions: <code>selectAst</code> and <code>makeExpr</code>. These functions appear to be used for parsing and manipulating JavaScript code.</p>
+<h3>Dependencies</h3>
+<p>The code requires the following dependencies:</p>
+<ul>
+<li><code>esprima</code> for parsing JavaScript code</li>
+<li><code>escodegen</code> for generating JavaScript code from Abstract Syntax Trees (ASTs)</li>
+<li><code>../Core</code> (not shown in the code snippet) which exports several functions, including <code>selectDom</code>, <code>evaluateDom</code>, <code>treeToHtml</code>, and <code>htmlToTree</code></li>
+</ul>
+<h3>Functions</h3>
+<h4><code>toString(ctx, subctx)</code></h4>
+<p>This function takes an AST and its optional subcontext as input. It converts the AST to HTML using <code>htmlToTree</code>, if necessary, and then generates a string representation of the AST using <code>escodegen.generate</code>.</p>
+<h4><code>selectAst(descriptor, code)</code></h4>
+<p>This function takes a descriptor and a code string (or a function that returns a code string) as input. It attempts to parse the code using <code>esprima.parseModule</code> or <code>esprima.parse</code>, depending on whether the code contains import/export statements. If parsing fails, it logs an error and throws a new error. If the code is a function, it converts it to a string. It then converts the code to an AST, if necessary, and passes it to <code>selectDom</code> along with the descriptor.</p>
+<h4><code>makeExpr(code)</code></h4>
+<p>This function takes a code string (or a function that returns a code string) as input. If the code is a function, it calls <code>selectAst</code> with the function body descriptor (<code>FUNCTION_BODY</code>) and the code string. Otherwise, it calls <code>selectAst</code> with a descriptor that matches an expression statement and wraps the code string in parentheses. The resulting AST is returned.</p>
+<h3>Exports</h3>
+<p>The module exports the <code>selectAst</code> and <code>makeExpr</code> functions.</p>

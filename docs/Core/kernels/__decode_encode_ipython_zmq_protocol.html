@@ -1,0 +1,112 @@
+<p>Here is a summary of the module in one sentence:</p>
+<p>This module exports four functions (<code>parseMessage</code>, <code>hash</code>, <code>json</code>, and <code>collapseMessage</code>) and several variables for message processing, formatting, and cryptographic operations. The functions can be used for tasks such as parsing messages, generating hashes, JSON-stringifying data, and collapsing messages into a compact format.</p>
+
+
+<pre><code>var util = require('util');
+var zmq = require("jmp").zmq;
+var crypto = require('crypto');
+var uuid = require('uuid/v4');
+
+// uuids, delim, hmac, header, parent_header, metadata, content
+var DELIM = '<IDS|MSG>'
+function parseMessage() {
+    const strs = [].map.call(arguments, a => a.toString())
+    let i
+    for (i=0; i<strs.length; i++) {
+      if (strs[i] === DELIM) {
+        break
+      }
+    }
+    const uuids = [].slice.call(arguments, 0, i)
+    const args = strs.slice(i + 2).map(a => JSON.parse(a))
+    let [header, parent, metadata, content] = args
+    var result = {};
+    result[header.msg_type] = {content, header, metadata, parent};
+    return result;
+}
+
+function hash(string, key) {
+    const hmac = crypto.createHmac('sha256', key)
+    hmac.update(string)
+    const res = hmac.digest('hex')
+    return res
+}
+
+function json(data) {
+    return JSON.stringify(data).replace('\ufdd0', '\\ufdd0')
+}
+
+function collapseMessage(key, message) {
+    var msg_type = Object.keys(message)[0];
+    var {header, parent, metadata, content} = message[msg_type];
+    var header = Object.assign({}, parent || {}, {
+        msg_id: uuid(),
+        msg_type: msg_type
+    })
+    const toHash = [
+      json(header || {}),
+      json(parent || {}),
+      json(metadata || {}),
+      json(content || {})]
+    const hmac = hash(toHash.join(''), key)
+    return ((parent || {}).uuids || []).concat([DELIM, hmac]).concat(toHash);
+}
+
+module.exports = {
+    parseMessage,
+    collapseMessage,
+}
+</code></pre>
+
+<p><strong>Module Overview</strong></p>
+<p>This module exports two functions, <code>parseMessage</code> and <code>collapseMessage</code>, which are used for message processing and formatting.</p>
+<h3>Functions</h3>
+<h4><code>parseMessage</code> (string, uuid, uuid, hmac, header, parent_header, metadata, content)</h4>
+<p>Parses a message string into its constituent parts.</p>
+<ul>
+<li><strong>Arguments:</strong>
+<ul>
+<li><code>strs</code>: An array of strings, including the message string and its parts.</li>
+</ul></li>
+<li><strong>Returns:</strong> An object with the parsed message contents.</li>
+</ul>
+<h4><code>hash</code> (string, key)</h4>
+<p>Generates a SHA-256 HMAC hash of a given string using a provided key.</p>
+<ul>
+<li><strong>Arguments:</strong>
+<ul>
+<li><code>string</code>: The input string to be hashed.</li>
+<li><code>key</code>: The key used for hashing.</li>
+</ul></li>
+<li><strong>Returns:</strong> The hashed result as a hexadecimal string.</li>
+</ul>
+<h4><code>json</code> (data)</h4>
+<p>JSON-stringifies the input data, replacing any <code>\ufdd0</code> characters with their escaped version.</p>
+<ul>
+<li><strong>Arguments:</strong>
+<ul>
+<li><code>data</code>: The input data to be stringified.</li>
+</ul></li>
+<li><strong>Returns:</strong> The JSON-stringified result.</li>
+</ul>
+<h4><code>collapseMessage</code> (key, message)</h4>
+<p>Collapses a message object into a compact format.</p>
+<ul>
+<li><strong>Arguments:</strong>
+<ul>
+<li><code>key</code>: The key used for hashing.</li>
+<li><code>message</code>: The message object to be collapsed.</li>
+</ul></li>
+<li><strong>Returns:</strong> An array of strings representing the collapsed message.</li>
+</ul>
+<h3>Variables</h3>
+<h4><code>DELIM</code></h4>
+<p>A constant string used as a delimiter in the parsed message.</p>
+<h4><code>uuid</code></h4>
+<p>A UUID generator function used to create unique IDs.</p>
+<h4><code>crypto</code></h4>
+<p>The Node.js <code>crypto</code> module used for cryptographic operations.</p>
+<h4><code>zmq</code></h4>
+<p>The <code>jmp</code> Node.js module's <code>zmq</code> function, which is not used in this code.</p>
+<h4><code>util</code></h4>
+<p>The Node.js <code>util</code> module, which is not used in this code.</p>

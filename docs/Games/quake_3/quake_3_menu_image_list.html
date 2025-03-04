@@ -1,0 +1,354 @@
+<p>This code snippet prepares to process a list of image files by importing necessary modules for file system interaction, pattern matching, directory creation, and file renaming.  It utilizes a predefined <code>imagelist</code> containing details about each image to guide the processing steps.</p>
+
+
+<pre><code>var fs = require('fs')
+var importer = require('../Core')
+var { chext, chroot } = importer.import('changing file names')
+var {glob} = importer.import('glob files')
+var mkdirpSync = importer.import('mkdirp')
+
+var imagelist = `
+  68:   32x  32 RGB        4kb gfx/misc/flare.tga
+  69:   32x  32 RGB        4kb gfx/misc/sun.tga
+  70:  256x 256 RGBA     256kb gfx/2d/bigchars.tga
+  71:  128x 128 RGBA      64kb gfx/misc/console01.tga
+  72:  128x 128 RGB       48kb gfx/misc/console02.tga
+  73:  256x 256 RGBA     256kb menu/art/font1_prop.tga
+  74:  256x 256 RGBA     256kb menu/art/font1_prop_glo.tga
+  75:  256x 256 RGBA     256kb menu/art/font2_prop.tga
+  76:   32x  32 RGBA       4kb menu/art/3_cursor2
+  77:   16x  16 RGBA    1024b  menu/art/switch_on
+  78:   16x  16 RGBA    1024b  menu/art/switch_off
+  79:  512x 512 RGB      768kb textures/sfx/logo512.tga
+  80:    8x   8 RGB      192b  gfx/colors/black.tga
+  81:  128x  16 RGBA       8kb menu/art/slider2
+  82:   16x  32 RGBA       2kb menu/art/sliderbutt_0
+  83:   16x  32 RGBA       2kb menu/art/sliderbutt_1
+  84:  128x 128 RGB       48kb levelshots/q3tourney1.tga
+  85:  256x 256 RGB      288kb textures/sfx/detail.tga
+  86:  512x 512 RGBA    1024kb _fatlightmap0
+  87:  128x 128 RGB       72kb textures/gothic_block/blocks18b
+  88:  128x 128 RGB       72kb textures/base_wall/bluemetal2
+  89:   64x  64 RGB       18kb textures/gothic_trim/metalsupsolid
+  90:   64x  64 RGB       18kb textures/base_trim/dirty_pewter
+  91:   64x  64 RGB       18kb textures/base_wall/greenmet2b
+  92:  128x  32 RGB       18kb textures/gothic_trim/km_arena1tower4_a
+  93:  128x 128 RGB       72kb textures/gothic_block/blocks11b
+  94:  128x 128 RGB       72kb textures/gothic_trim/metalsupport4c
+  95:  256x 256 RGB      288kb textures/gothic_door/archxiandm1dblack
+  96:  128x 128 RGB       72kb textures/gothic_door/xian_tourneyarch_inside2
+  97:  256x 256 RGB      288kb textures/gothic_door/archxiandm1b
+  98:  128x 128 RGB       72kb textures/gothic_block/blocks18c
+  99:  128x 128 RGB       72kb textures/gothic_trim/pitted_rust
+ 100:  128x 128 RGB       72kb textures/gothic_trim/metalsupport4
+ 101:  128x 128 RGB       72kb textures/gothic_trim/metalsupport4d
+ 102:  128x  64 RGB       36kb textures/gothic_trim/border11
+ 103:   64x  64 RGB       18kb textures/sfx/tesla1.tga
+ 104:   64x  64 RGB       18kb textures/sfx/electricslime.tga
+ 105:  128x 128 RGBA      96kb textures/sfx/cabletest2.tga
+ 106:   32x 128 RGB       18kb textures/sfx/hologirl.tga
+ 107:  128x 128 RGBA      96kb textures/base_wall/atech1_alpha.tga
+ 108:  128x 128 RGB       72kb textures/gothic_cath/smalldoor_xiandm9a
+ 109:  128x 128 RGB       72kb textures/gothic_cath/smalldoor_xiandm9i
+ 110:  128x  64 RGB       36kb textures/base_trim/spiderbit3
+ 111:  128x 128 RGB       72kb env/xnight2_rt.tga
+ 112:  128x 128 RGB       72kb env/xnight2_bk.tga
+ 113:  128x 128 RGB       72kb env/xnight2_lf.tga
+ 114:  128x 128 RGB       72kb env/xnight2_ft.tga
+ 115:  128x 128 RGB       72kb env/xnight2_up.tga
+ 116:  128x 128 RGB       72kb env/xnight2_dn.tga
+ 117:  128x 128 RGB       72kb textures/sfx/demonltblackfinal.tga
+ 118:  128x 128 RGB       72kb textures/sfx/demonltblackfinal_glow2.tga
+ 119:   16x  16 RGB        1kb textures/base_light/ceil1_39.tga
+ 120:   16x  16 RGB        1kb textures/base_light/ceil1_39.blend.tga
+ 121:   32x  32 RGB        4kb textures/gothic_light/gothic_light3.tga
+ 122:   32x  32 RGB        4kb textures/gothic_light/gothic_light2_blend.tga
+ 123:  128x 128 RGB       72kb textures/gothic_floor/pent_metalbridge06.tga
+ 124:  128x 128 RGB       72kb textures/gothic_floor/pent_glow.tga
+ 125:   64x  64 RGB       18kb textures/gothic_ceiling/stucco7top
+ 126:  128x 128 RGB       72kb textures/gothic_trim/pitted_rust3
+ 127:   16x  16 RGB        1kb textures/base_light/ceil1_38.tga
+ 128:   16x  16 RGB        1kb textures/base_light/ceil1_38.blend.tga
+ 129:  128x 128 RGB       72kb textures/base_floor/metalbridge06
+ 130:  128x 128 RGBA      96kb textures/base_floor/proto_rustygrate.tga
+ 131:   64x  64 RGB       18kb textures/sfx/jacobs_x.tga
+ 132:   16x 128 RGB        9kb textures/sfx/beam_1.tga
+ 133:  128x 128 RGB       72kb models/mapobjects/Bitch/bitch
+ 134:   64x  64 RGB       18kb models/mapobjects/bitch/orb.tga
+ 135:   16x  32 RGB        2kb models/mapobjects/bitch/forearm.tga
+ 136:   16x  32 RGB        2kb models/mapobjects/bitch/forearm01.tga
+ 137:   16x  32 RGB        2kb models/mapobjects/bitch/forearm02.tga
+ 138:  128x 128 RGB       72kb models/mapobjects/pitted_rust_ps.tga
+ 139:   64x  64 RGB       18kb models/mapobjects/flares/electric.tga
+ 140:   64x 128 RGB       36kb textures/sfx/flame1.tga
+ 141:   64x 128 RGB       36kb textures/sfx/flame2.tga
+ 142:   64x 128 RGB       36kb textures/sfx/flame3.tga
+ 143:   64x 128 RGB       36kb textures/sfx/flame4.tga
+ 144:   64x 128 RGB       36kb textures/sfx/flame5.tga
+ 145:   64x 128 RGB       36kb textures/sfx/flame6.tga
+ 146:   64x 128 RGB       36kb textures/sfx/flame7.tga
+ 147:   64x 128 RGB       36kb textures/sfx/flame8.tga
+ 148:   64x 128 RGB       36kb textures/sfx/flameball.tga
+ 149:   16x  32 RGB        2kb models/mapobjects/gratelamp/gratetorch2
+ 150:   16x  32 RGBA       3kb models/mapobjects/gratelamp/gratetorch2b.tga
+ 151:   64x  64 RGB       18kb textures/liquids/lavahell.tga
+ 152:   32x  32 RGBA       6kb gfx/2d/numbers/zero_32b.tga
+ 153:   32x  32 RGBA       6kb gfx/2d/numbers/one_32b.tga
+ 154:   32x  32 RGBA       6kb gfx/2d/numbers/two_32b.tga
+ 155:   32x  32 RGBA       6kb gfx/2d/numbers/three_32b.tga
+ 156:   32x  32 RGBA       6kb gfx/2d/numbers/four_32b.tga
+ 157:   32x  32 RGBA       6kb gfx/2d/numbers/five_32b.tga
+ 158:   32x  32 RGBA       6kb gfx/2d/numbers/six_32b.tga
+ 159:   32x  32 RGBA       6kb gfx/2d/numbers/seven_32b.tga
+ 160:   32x  32 RGBA       6kb gfx/2d/numbers/eight_32b.tga
+ 161:   32x  32 RGBA       6kb gfx/2d/numbers/nine_32b.tga
+ 162:   32x  32 RGBA       6kb gfx/2d/numbers/minus_32b.tga
+ 163:   16x  16 RGBA       1kb menu/art/skill1.tga
+ 164:   16x  16 RGBA       1kb menu/art/skill2.tga
+ 165:   16x  16 RGBA       1kb menu/art/skill3.tga
+ 166:   16x  16 RGBA       1kb menu/art/skill4.tga
+ 167:   16x  16 RGBA       1kb menu/art/skill5.tga
+ 168:   32x  32 RGBA       6kb gfx/damage/blood_screen.tga
+ 169:   32x  32 RGBA       4kb gfx/2d/defer.tga
+ 170:  128x  32 RGBA      16kb menu/tab/name.tga
+ 171:  128x  32 RGBA      16kb menu/tab/ping.tga
+ 172:  128x  32 RGBA      16kb menu/tab/score.tga
+ 173:  128x  32 RGBA      16kb menu/tab/time.tga
+ 174:   64x  64 RGBA      24kb gfx/misc/smokepuff3.tga
+ 175:   64x  64 RGBA      24kb gfx/misc/smokepuffragepro.tga
+ 176:   64x  64 RGBA      24kb gfx/misc/smokepuff2b.tga
+ 177:   32x  32 RGB        4kb sprites/plasmaa.tga
+ 178:   64x  64 RGBA      24kb gfx/damage/blood_spurt.tga
+ 179:   32x  32 RGB        4kb gfx/2d/lag.tga
+ 180:   32x  32 RGB        4kb gfx/2d/net.tga
+ 181:   16x  16 RGBA       1kb sprites/bubble.tga
+ 182:    8x   8 RGB      288b  gfx/misc/tracer2.tga
+ 183:   32x  32 RGBA       6kb gfx/2d/select.tga
+ 184:   16x  16 RGBA       1kb gfx/2d/crosshaira
+ 185:   32x  32 RGBA       6kb gfx/2d/crosshairb.tga
+ 186:   32x  32 RGBA       6kb gfx/2d/crosshairc.tga
+ 187:   32x  32 RGBA       6kb gfx/2d/crosshaird.tga
+ 188:   32x  32 RGBA       6kb gfx/2d/crosshaire.tga
+ 189:   32x  32 RGBA       6kb gfx/2d/crosshairf.tga
+ 190:   32x  32 RGBA       6kb gfx/2d/crosshairg.tga
+ 191:   32x  32 RGBA       6kb gfx/2d/crosshairh.tga
+ 192:   32x  32 RGBA       6kb gfx/2d/crosshairi.tga
+ 193:   32x  32 RGBA       6kb gfx/2d/crosshairj.tga
+ 194:   32x  32 RGB        4kb gfx/2d/backtile
+ 195:   16x  16 RGBA       1kb icons/noammo
+ 196:   32x  32 RGB        4kb textures/effects/quadmap2.tga
+ 197:   32x  32 RGB        4kb textures/effects/envmapgold2.tga
+ 198:   32x  32 RGB        4kb textures/effects/invismap.tga
+ 199:   32x  32 RGB        4kb textures/effects/regenmap2.tga
+ 200:   64x  64 RGB       18kb textures/sfx/specular.tga
+ 201:   64x  64 RGBA      24kb models/powerups/armor/newyellow.tga
+ 202:   64x  32 RGB        9kb models/powerups/armor/energy_yel3.tga
+ 203:   32x  32 RGBA       6kb icons/iconr_yellow.tga
+ 204:   32x  32 RGB        4kb models/weapons2/shells/M_shell.tga
+ 205:   32x  32 RGB        4kb models/weapons2/shells/s_shell.tga
+ 206:  128x 128 RGB       72kb models/gibs/gibs.tga
+ 207:   32x  32 RGBA       6kb sprites/balloon4.tga
+ 208:   32x  32 RGBA       6kb models/weaphits/blood201.tga
+ 209:   32x  32 RGBA       6kb models/weaphits/blood202.tga
+ 210:   32x  32 RGBA       6kb models/weaphits/blood203.tga
+ 211:   32x  32 RGBA       6kb models/weaphits/blood204.tga
+ 212:   32x  32 RGBA       6kb models/weaphits/blood205.tga
+ 213:   32x  32 RGB        4kb models/weaphits/bullet1.tga
+ 214:   32x  32 RGB        4kb models/weaphits/bullet2.tga
+ 215:   32x  32 RGB        4kb models/weaphits/bullet3.tga
+ 216:   32x  32 RGBA       6kb models/weaphits/ring01_1.tga
+ 217:   64x  64 RGB       18kb models/weaphits/newexplo1.tga
+ 218:  128x 128 RGB       72kb gfx/misc/teleportEffect2.tga
+ 219:   64x  64 RGBA      24kb menu/medals/medal_impressive.tga
+ 220:   64x  64 RGBA      24kb menu/medals/medal_excellent.tga
+ 221:   64x  64 RGBA      24kb menu/medals/medal_gauntlet.tga
+ 222:   64x  64 RGBA      24kb menu/medals/medal_defend.tga
+ 223:   64x  64 RGBA      24kb menu/medals/medal_assist.tga
+ 224:   64x  64 RGBA      24kb menu/medals/medal_capture.tga
+ 225:   32x  32 RGBA       6kb icons/iconh_yellow.tga
+ 226:   32x  32 RGB        4kb textures/effects/envmapyel.tga
+ 227:   64x  64 RGB       18kb textures/effects/tinfx2b.tga
+ 228:   32x  32 RGBA       6kb icons/iconh_red.tga
+ 229:   32x  32 RGB        4kb textures/effects/envmapgold.tga
+ 230:   32x  32 RGB        4kb textures/sfx/kenelectric.tga
+ 231:   32x  32 RGBA       6kb icons/iconw_gauntlet.tga
+ 232:  128x 128 RGB       72kb models/weapons2/gauntlet/gauntlet1.tga
+ 233:   64x  64 RGB       18kb models/weapons2/gauntlet/gauntlet3.tga
+ 234:   64x  64 RGB       18kb models/weapons2/gauntlet/gauntlet4.tga
+ 235:   64x  64 RGBA      24kb models/weapons2/gauntlet/gauntlet2.tga
+ 236:   32x  32 RGBA       6kb icons/iconw_shotgun.tga
+ 237:  128x 128 RGB       72kb models/weapons2/shotgun/shotgun.tga
+ 238:   32x   2 RGB      288b  models/weapons2/shotgun/shotgun_laser.tga
+ 239:   32x  32 RGB        4kb models/powerups/ammo/shotammo2.tga
+ 240:   64x  64 RGB       18kb textures/effects/tinfx2c.tga
+ 241:   64x  64 RGBA      24kb models/powerups/ammo/shotammo.tga
+ 242:   64x  64 RGB       18kb models/weapons2/shotgun/f_shotgun.tga
+ 243:   32x  32 RGBA       6kb icons/iconw_machinegun.tga
+ 244:  128x 128 RGB       72kb models/weapons2/machinegun/machinegun.tga
+ 245:   32x  32 RGBA       6kb models/powerups/ammo/machammo2.tga
+ 246:   64x  64 RGB       18kb textures/effects/tinfx2d.tga
+ 247:   64x  64 RGBA      24kb models/powerups/ammo/machammo.tga
+ 248:   64x  64 RGB       18kb models/weapons2/machinegun/f_machinegun.tga
+ 249:   32x  32 RGBA       6kb icons/iconw_rocket.tga
+ 250:  128x 128 RGB       72kb models/weapons2/rocketl/rocketl.TGA
+ 251:   32x  32 RGB        4kb models/weapons2/rocketl/rocketl2.tga
+ 252:   32x  32 RGB        4kb models/powerups/ammo/rockammo2.tga
+ 253:   64x  64 RGBA      24kb models/powerups/ammo/rockammo.tga
+ 254:   64x  64 RGB       18kb models/weapons2/rocketl/f_rocketl.tga
+ 255:   32x  32 RGB        4kb models/ammo/rocket/rockfls1.tga
+ 256:   32x  32 RGB        4kb models/ammo/rocket/rockfls2.tga
+ 257:   32x  16 RGB        2kb models/ammo/rocket/rockflar.tga
+ 258:   32x  32 RGB        4kb models/ammo/rocket/rocket.tga
+ 259:   16x  16 RGB        1kb models/ammo/rocket/rocketfn.tga
+ 260:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_1.tga
+ 261:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_2.tga
+ 262:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_3.tga
+ 263:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_4.tga
+ 264:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_5.tga
+ 265:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_6.tga
+ 266:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_7.tga
+ 267:   32x  32 RGB        4kb models/weaphits/rlboom/rlboom_8.tga
+ 268:   32x  32 RGBA       6kb icons/icona_shotgun.tga
+ 269:   32x  32 RGBA       6kb icons/icona_machinegun.tga
+ 270:   32x  32 RGBA       6kb icons/icona_rocket.tga
+ 271:   32x  32 RGBA       6kb icons/quad.tga
+ 272:   32x  32 RGB        4kb textures/effects/envmapblue.tga
+ 273:   32x  32 RGBA       6kb icons/regen.tga
+ 274:   32x  32 RGB        4kb textures/effects/envmapred.tga
+ 275:    8x   8 RGB      288b  gfx/damage/bullet_mrk.tga
+ 276:   32x  32 RGB        4kb gfx/damage/burn_med_mrk.tga
+ 277:   32x  32 RGB        4kb gfx/damage/hole_lg_mrk.tga
+ 278:   32x  32 RGBA       6kb gfx/damage/plasma_mrk.tga
+ 279:   16x  16 RGBA       1kb gfx/damage/shadow.tga
+ 280:   32x  32 RGB        4kb sprites/splash.tga
+ 281:   64x  64 RGBA      24kb gfx/damage/blood_stain.tga
+ 282:   32x  32 RGB        4kb sprites/explode1/fs2-0000.tga
+ 283:   32x  32 RGB        4kb sprites/explode1/fs2-0001.tga
+ 284:   32x  32 RGB        4kb sprites/explode1/fs2-0002.tga
+ 285:   32x  32 RGB        4kb sprites/explode1/fs2-0003.tga
+ 286:   32x  32 RGB        4kb sprites/explode1/fs2-0004.tga
+ 287:   32x  32 RGB        4kb sprites/explode1/fs2-0005.tga
+ 288:   32x  32 RGB        4kb sprites/explode1/fs2-0006.tga
+ 289:   32x  32 RGB        4kb sprites/explode1/fs2-0007.tga
+ 290:   32x  32 RGB        4kb sprites/explode1/fs2-0008.tga
+ 291:   32x  32 RGB        4kb sprites/explode1/fs2-0009.tga
+ 292:   32x  32 RGB        4kb sprites/explode1/fs2-0010.tga
+ 293:   32x  32 RGB        4kb sprites/explode1/fs2-0011.tga
+ 294:   32x  32 RGB        4kb sprites/explode1/fs2-0012.tga
+ 295:   32x  32 RGB        4kb sprites/explode1/fs2-0013.tga
+ 296:   32x  32 RGB        4kb sprites/explode1/fs2-0014.tga
+ 297:   32x  32 RGB        4kb sprites/explode1/fs2-0015.tga
+ 298:   32x  32 RGB        4kb sprites/explode1/fs2-0016.tga
+ 299:   32x  32 RGB        4kb sprites/explode1/fs2-0017.tga
+ 300:   32x  32 RGB        4kb sprites/explode1/fs2-0018.tga
+ 301:   32x  32 RGB        4kb sprites/explode1/fs2-0019.tga
+ 302:   32x  32 RGB        4kb sprites/explode1/fs2-0020.tga
+ 303:   32x  32 RGB        4kb sprites/explode1/fs2-0021.tga
+ 304:   32x  32 RGB        4kb sprites/explode1/fs2-0022.tga
+ 305:   64x  64 RGBA      16kb models/players/sarge/icon_default.tga
+ 306:  128x 128 RGB       72kb models/players/sarge/band.tga
+ 307:    8x   4 RGB      144b  models/players/sarge/cigar.tga
+ 308:    8x   4 RGB      144b  models/players/sarge/cigar.glow.tga
+`
+
+var shaderlist = `
+1     gen : gfx/2d/sunflare
+1   E gen : gfx/2d/bigchars
+1   E gen : white
+2   E gen : console
+1     gen : menu/art/font1_prop
+1     gen : menu/art/font1_prop_glo
+1     gen : menu/art/font2_prop
+1     gen : menu/art/3_cursor2
+1     gen : menu/art/switch_on
+1     gen : menu/art/switch_off
+1   E gen : menuback
+1   E gen : menubacknologo
+1     gen : menu/art/slider2
+1     gen : menu/art/sliderbutt_0
+1     gen : menu/art/sliderbutt_1
+3   E gen : models/mapobjects/banner/q3banner02
+3   E gen : models/mapobjects/banner/q3banner04
+1     gen : menu/art/maps_select
+1     gen : menu/art/maps_selected
+1     gen : menu/art/narrow_0
+1     gen : menu/art/narrow_1
+1     gen : menu/art/unknownmap
+1     gen : menu/art/level_complete1
+1     gen : menu/art/level_complete2
+1     gen : menu/art/level_complete3
+1     gen : menu/art/level_complete4
+1     gen : menu/art/level_complete5
+1     gen : menu/art/back_0
+1     gen : menu/art/back_1
+1     gen : menu/art/fight_0
+1     gen : menu/art/fight_1
+1     gen : menu/art/reset_0
+1     gen : menu/art/reset_1
+1     gen : menu/art/skirmish_0
+1     gen : menu/art/skirmish_1
+1     gen : menu/medals/medal_accuracy
+1     gen : menu/medals/medal_impressive
+1     gen : menu/medals/medal_excellent
+1     gen : menu/medals/medal_gauntlet
+1     gen : menu/medals/medal_frags
+1     gen : menu/medals/medal_victory
+1     gen : models/players/sarge/icon_default
+1     gen : levelshots/q3dm0
+1     gen : models/players/crash/icon_default
+`
+
+async function getImages(root) {
+    var result = []
+    var output = path.join(path.dirname(root), path.basename(root) + '-menu')
+    var images = imagelist
+        .split('\n').map(l => l.split(/[\t\s]+/ig)[6])
+        .filter(i => i)
+        .map(i => '**/' + chext(i, '') + '*')
+    var files = await glob(images, root)
+    for(var i = 0; i < files.length; i++) {
+        var outFile = chroot(files[i], root, output)
+        mkdirpSync(path.dirname(outFile))
+        fs.copyFileSync(files[i], outFile)
+        result.push(outFile)
+    }
+    
+    
+    return result
+}
+
+module.exports = getImages
+</code></pre>
+
+<p>This code snippet sets up the environment for processing a list of image files.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Importing Modules:</strong></p>
+<ul>
+<li><code>fs</code>:  The built-in Node.js module for interacting with the file system.</li>
+<li><code>importer</code>: A custom module (likely located in the <code>../Core</code> directory) that provides functions for importing other modules.</li>
+<li><code>chext</code> and <code>chroot</code>: Functions imported from the <code>changing file names</code> module, likely used for renaming files.</li>
+<li><code>glob</code>: A function imported from the <code>glob files</code> module, used for finding files matching a specific pattern.</li>
+<li><code>mkdirpSync</code>: A function imported from the <code>mkdirp</code> module, used for creating directories recursively.</li>
+</ul></li>
+<li><p><strong>Image List:</strong></p>
+<ul>
+<li>The code defines a multi-line string <code>imagelist</code> containing information about each image file. Each line seems to represent a single image with details like:
+<ul>
+<li>ID number</li>
+<li>Dimensions (width x height)</li>
+<li>Color format (e.g., RGB, RGBA)</li>
+<li>File size</li>
+<li>File path</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>The code appears to be preparing to process a list of image files. It likely uses the imported modules to:</p>
+<ul>
+<li>Find image files based on a pattern.</li>
+<li>Rename files using <code>chext</code> and <code>chroot</code>.</li>
+<li>Create necessary directories using <code>mkdirpSync</code>.</li>
+<li>Potentially manipulate or convert the images based on the information in the <code>imagelist</code>.</li>
+</ul>
+<p>Let me know if you have any more questions or would like me to elaborate on any specific part!</p>

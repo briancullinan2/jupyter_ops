@@ -1,0 +1,71 @@
+<p>Here's a two-sentence summary of the <code>listFriends</code> function:</p>
+<p>The <code>listFriends</code> function is an asynchronous module that lists Facebook friends using Selenium WebDriver, either by logging in and using an existing driver or creating a new one. It extracts friend links from the Facebook suggestions page, filters out duplicates, and returns the result, while handling errors by quitting the Selenium WebDriver session and re-throwing the error.</p>
+
+
+<pre><code>
+//const fs = require('fs')
+const getClient = importer.import('selenium client')
+const getAllUntil = importer.import('all elements until')
+const loginFacebook = importer.import('facebook login')
+//const {FACEBOOK_PATH} = require('./config.js')
+
+async function listFriends(driver) {
+  if (!driver) {
+    driver = await getClient()
+    await loginFacebook(driver)
+  }
+
+  try {
+    let url = await driver.getCurrentUrl()
+    let alreadyThere = url.indexOf('facebook') && url.indexOf('suggestions') > -1
+    if (!alreadyThere) {
+      await driver.get('https://www.facebook.com/friends/suggestions')
+      await new Promise(resolve => setTimeout(resolve, 4000))
+    }
+
+    let result = await getAllUntil(driver,
+      '//div[@aria-label="Suggestions"]/div/div/following-sibling::div[contains(.//text(), "People you may know")]',
+      '//div[@aria-label="Suggestions"]//a[@role="link"]/@href',
+      (a, b) => a === b,
+      (i) => i < 10,
+    )
+
+    return result.filter((l, i, arr) => arr.indexOf(l) === i)
+  } catch (e) {
+    driver.quit() // avoid leaving sessions hanging around
+
+    throw e
+  }
+}
+
+module.exports = listFriends
+</code></pre>
+
+<h3>Function Overview</h3>
+<p>The <code>listFriends</code> function is an asynchronous module that lists friends on Facebook using Selenium WebDriver.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>driver</code> (optional): An instance of Selenium WebDriver. If not provided, it is created using <code>getClient()</code> and logged in using <code>loginFacebook()</code>.</li>
+</ul>
+<h3>Functionality</h3>
+<ol>
+<li>If no <code>driver</code> is provided, it creates a new instance using <code>getClient()</code> and logs in to Facebook using <code>loginFacebook()</code>.</li>
+<li>Checks if the current URL is the Facebook suggestions page. If not, navigates to the page after a 4-second delay.</li>
+<li>Uses <code>getAllUntil()</code> to extract friend links from the page. The function waits for the presence of a specific label, searches for a specific pattern in the page, and extracts the <code>href</code> attribute of links.</li>
+<li>Filters out duplicate friend links and returns the result.</li>
+</ol>
+<h3>Error Handling</h3>
+<p>If an error occurs, the function quits the Selenium WebDriver session and re-throws the error.</p>
+<h3>Export</h3>
+<p>The <code>listFriends</code> function is exported as a module.</p>
+<h3>Imported Functions</h3>
+<ul>
+<li><code>getClient()</code>: Creates a new Selenium WebDriver instance.</li>
+<li><code>loginFacebook()</code>: Logs in to Facebook using Selenium WebDriver.</li>
+<li><code>getAllUntil()</code>: Waits for the presence of a specific label, searches for a specific pattern in the page, and extracts the required information.</li>
+</ul>
+<h3>Imported Modules</h3>
+<ul>
+<li><code>importer</code>: A module that imports other modules.</li>
+<li><code>config.js</code>: A configuration file that exports environment variables (not used in this code snippet).</li>
+</ul>

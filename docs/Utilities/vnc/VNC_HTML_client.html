@@ -1,0 +1,33 @@
+<p>This code sets up a local copy of the noVNC project by creating a directory, checking if a &quot;master&quot; branch already exists, and cloning the repository from GitHub if necessary. It then lists the contents of the &quot;novnc&quot; directory and displays the current working directory.</p>
+
+
+<pre><code>mkdir -p novnc ; if git --work-tree=./novnc branch | grep master; then \
+echo "Already checked out novnc"; \
+else \
+git clone https://github.com/novnc/noVNC.git ./novnc ; \
+fi ; ls -la novnc ; pwd
+</code></pre>
+
+<p>This code snippet is designed to set up a local copy of the noVNC project. Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>mkdir -p novnc</code></strong>:</p>
+<ul>
+<li>Creates a directory named &quot;novnc&quot; if it doesn't already exist. The <code>-p</code> flag ensures that parent directories are created as needed.</li>
+</ul></li>
+<li><p><strong><code>if git --work-tree=./novnc branch | grep master; then ... else ... fi</code></strong>:</p>
+<ul>
+<li>This is a conditional statement that checks if a branch named &quot;master&quot; already exists within the &quot;novnc&quot; directory.</li>
+<li><strong><code>git --work-tree=./novnc branch</code></strong>: Lists the branches within the &quot;novnc&quot; directory.</li>
+<li><strong><code>| grep master</code></strong>: Pipes the output of the <code>git branch</code> command to <code>grep</code>, searching for the string &quot;master&quot;.</li>
+<li><strong><code>then echo &quot;Already checked out novnc&quot;;</code></strong>: If &quot;master&quot; is found, it prints a message indicating that the &quot;novnc&quot; directory already contains a checkout of the project.</li>
+<li><strong><code>else git clone https://github.com/novnc/noVNC.git ./novnc; fi</code></strong>: If &quot;master&quot; is not found, it clones the noVNC repository from GitHub into the &quot;novnc&quot; directory.</li>
+</ul></li>
+<li><p><strong><code>ls -la novnc</code></strong>:</p>
+<ul>
+<li>Lists the contents of the &quot;novnc&quot; directory with detailed information (permissions, size, etc.).</li>
+</ul></li>
+<li><p><strong><code>pwd</code></strong>:</p>
+<ul>
+<li>Prints the current working directory, which should be the directory containing the &quot;novnc&quot; directory.</li>
+</ul></li>
+</ol>

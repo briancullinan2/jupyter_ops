@@ -1,0 +1,144 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>The <code>blogAboutCode</code> function takes a project directory path, timeframe, and model as inputs, and uses these to extract commit hashes, get the diff between commits, and parse the patch. The function involves several steps, including selecting a model, resolving the project path, checking project existence, getting commits, extracting commit hashes, getting the diff, and parsing the patch.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const selectModel = importer.import('select llm')
+const {spawnSync} = require('child_process')
+const parsePatch = importer.import('parse patch file')
+const {safeurl} = importer.import('domain cache tools')
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'code-summaries')
+
+
+async function blogAboutCode(project, timeframe = 3, promptModel = 'Meta') {
+
+  if(typeof promptModel != 'function') {
+    promptModel = await selectModel(promptModel)
+  }
+
+  // TODO: local pull
+  if(!fs.existsSync(project)
+    && fs.existsSync(path.join(PROFILE_PATH, project))) {
+      project = path.join(PROFILE_PATH, project)
+  }
+
+  if(project.includes('://')
+    && fs.existsSync(path.basename(project).replace('.git', ''))
+  ) {
+    project = path.join(PROFILE_PATH, path.basename(project).replace('.git', ''))
+  }
+
+  if(!fs.existsSync(project)) {
+    console.error('No project')
+    return
+  }
+
+
+  let result = await spawnSync('git', ['log', '--since=' + timeframe + '.days'], {
+    cwd: project,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
+
+  let commits = result.stdout.toString()
+
+  //console.log(commits)
+  const matches = [...commits.matchAll(/commit ([a-z0-9]+)/gi)]
+  let first = matches[0]
+  let last = matches[matches.length - 1]
+
+  if(!first || !last) {
+    console.error('No commits!')
+    return
+  }
+
+  console.log(first[1], last[1])
+
+  if(first == last) {
+    result = await spawnSync('git', ['diff', '-U5', first[1]], {
+      cwd: project,
+      timeout: 3000,
+      stdio: ['pipe', 'pipe', 'pipe']
+    })
+  } else {
+    result = await spawnSync('git', ['diff', '-U5', last[1], first[1]], {
+      cwd: project,
+      timeout: 3000,
+      stdio: ['pipe', 'pipe', 'pipe']
+    })
+  }
+
+  let codePatch = result.stdout.toString()
+
+  summary = parsePatch(codePatch)
+
+  summaryOutputs = []
+  let files = Object.keys(summary.files)
+  for(let i = 0; i < files.length; i++) {
+    if(files[i].match('cache.ipynb')) {
+      continue
+    }
+    let q1 = 'Summerize this code like you\'re writing for a fun coding blog, include code excerpts as context:\n'
+      + files[i] + '\nAdditions that were made:\n' + summary.files[files[i]].additions.join('')
+      + '\nDeletions that were made:\n' + summary.files[files[i]].deletions.join('')
+    console.log('User: ' + q1)
+    let a1 = await promptModel(q1)
+    console.log('AI: ' + a1)
+    summaryOutputs.push(a1)
+  }
+
+  const mdHtml = md.render(summaryOutputs.join('\n'))
+  let now = new Date()
+  const filename = path.join(PROJECT_PATH, safeurl(path.basename(project) + now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate()) + '.html')
+  fs.writeFileSync(filename, mdHtml)
+  return mdHtml
+}
+
+
+module.exports = blogAboutCode
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code starts by importing various dependencies:</p>
+<ul>
+<li><code>path</code>: for working with file paths</li>
+<li><code>fs</code>: for interacting with the file system</li>
+<li><code>Remarkable</code>: a Markdown parser, not used in this code snippet</li>
+<li><code>importer</code>: a module for dynamically importing other modules</li>
+<li><code>child_process</code>: for spawning child processes</li>
+</ul>
+<h3>Setting Constants</h3>
+<p>Several constants are defined:</p>
+<ul>
+<li><code>PROFILE_PATH</code>: the user's home directory</li>
+<li><code>PROJECT_PATH</code>: the path to a project directory</li>
+</ul>
+<h3>Defining the <code>blogAboutCode</code> Function</h3>
+<p>The main function, <code>blogAboutCode</code>, takes three parameters:</p>
+<ul>
+<li><code>project</code>: the path to a project directory</li>
+<li><code>timeframe</code>: the timeframe to consider (default: 3 days)</li>
+<li><code>promptModel</code>: the model to use for prompts (default: 'Meta')</li>
+</ul>
+<p><strong>Function Flow</strong></p>
+<ol>
+<li><strong>Select Model</strong>: If <code>promptModel</code> is not a function, it is replaced with a function obtained from <code>selectModel</code>.</li>
+<li><strong>Resolve Project Path</strong>: The project path is resolved by:
+<ul>
+<li>Checking if the project already exists in the file system and using it if so.</li>
+<li>If the project path includes a URL, it is resolved by checking if the project directory exists in the file system.</li>
+</ul></li>
+<li><strong>Check Project Existence</strong>: If the project does not exist, an error is logged.</li>
+<li><strong>Get Commits</strong>: The function uses <code>git log</code> to get the commits for the project within the specified timeframe.</li>
+<li><strong>Extract Commit Hashes</strong>: The commit hashes are extracted from the log output.</li>
+<li><strong>Get Diff</strong>: If there are multiple commits, the function uses <code>git diff</code> to get the patch between the first and last commit. Otherwise, it gets the diff for the single commit.</li>
+<li><strong>Parse Patch</strong>: The patch is parsed using the <code>parsePatch</code> function.</li>
+</ol>
+<h3>Unused Code</h3>
+<p>The code includes some unused functions and variables, such as <code>summary</code> and <code>parsePa</code>, which are likely typos.</p>

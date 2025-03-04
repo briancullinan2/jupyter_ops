@@ -1,0 +1,50 @@
+<p>This code snippet illustrates how a function called <code>addImports</code> can automatically insert missing import statements into JavaScript code, potentially aiding in code completion or refactoring.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {addImports} = importer.import('add missing imports')
+
+var code = `
+var importer = require('../Core');
+
+addImports('some code')
+
+`
+
+if(typeof $$ != 'undefined') {
+    $$.mime({'text/plain': addImports(code)})
+    
+    /*
+    expected output 
+var addImports = importer.import('add missing imports')
+*/
+    
+}
+
+</code></pre>
+
+<p>This code snippet demonstrates a simple example of using a function called <code>addImports</code> to automatically insert missing imports into a JavaScript code snippet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Importing:</strong></p>
+<ul>
+<li>It starts by importing the <code>addImports</code> function from a module named <code>Core</code>.</li>
+</ul></li>
+<li><p><strong>Sample Code:</strong></p>
+<ul>
+<li>Defines a sample JavaScript code snippet (<code>code</code>) that itself imports a function called <code>addImports</code>.</li>
+</ul></li>
+<li><p><strong>Conditional Execution:</strong></p>
+<ul>
+<li>The code checks if a variable <code>$$</code> exists. This suggests it might be running in a specific environment (like a web browser) where <code>$$</code> is available.</li>
+</ul></li>
+<li><p><strong>Output Generation:</strong></p>
+<ul>
+<li>If <code>$$</code> exists, it calls <code>addImports</code> on the <code>code</code> snippet and sets the output MIME type to <code>text/plain</code>. This implies the output will be plain text.</li>
+</ul></li>
+<li><p><strong>Expected Output:</strong></p>
+<ul>
+<li>The comment indicates the expected output, which is the <code>code</code> snippet with the missing import statement for <code>addImports</code> added.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code showcases a mechanism for dynamically adding necessary imports to JavaScript code, potentially enhancing code completion or refactoring tools.</strong></p>

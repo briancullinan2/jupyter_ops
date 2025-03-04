@@ -1,0 +1,153 @@
+<p>This code snippet compares two code snippets, calculates their differences, and presents the results as a visually highlighted HTML diff using Prism.js for syntax highlighting.</p>
+
+
+<pre><code>// npm install diff --save
+var fs = require('fs');
+var {JSDOM} = require('jsdom');
+var JsDiff = require('diff');
+var importer = require('../Core');
+var prismPlugin = '../node_modules/prismjs/plugins/keep-markup/prism-keep-markup.js';
+//TODO: fix diff fs.readFileSync(prismPlugin).toString()
+function htmlEntities(str) { return str.replace(/[\u00A0-\u9999<>\&]/gim, i => '&#' + i.charCodeAt(0) + ';'); }
+
+function prismHighlightHtml(code) {
+    var Prism = require('prismjs');
+    var dom = new JSDOM('<body>' + code + '</body>');
+    dom.window.document.createRange = () => ({
+        createContextualFragment: str => JSDOM.fragment(str)
+    });
+    const ctx = {
+        __filename: prismPlugin,
+        Prism: Prism,
+        document: dom.window.document,
+    };
+    ctx.self = ctx;
+    return Prism.highlightElement(dom.window.document.body, Prism.languages.javascript);
+}
+
+function diffTwoTexts(left, right) {
+    var diff = JsDiff.diffWords(left, right);
+    var code = '';
+    for (var i = 0; i < diff.length; i++) {
+        if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+            var swap = diff[i];
+            diff[i] = diff[i + 1];
+            diff[i + 1] = swap;
+        }
+
+        if (diff[i].removed) {
+            code += '<span class="del">' + htmlEntities(diff[i].value) + '</span>';
+        } else if (diff[i].added) {
+            code += '<span class="ins">' + htmlEntities(diff[i].value) + '</span>';
+        } else {
+            code += '<span>' + htmlEntities(diff[i].value) + '</span>';
+        }
+    }
+    return `
+<style>
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #a67f59;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+.del {
+    text-decoration: none;
+    background: #fadad7;
+}
+.ins {
+    background: #eaf2c2;
+    text-decoration: none;
+}
+</style>
+<pre>` + prismHighlightHtml(code) + `</pre>`;
+}
+module.exports = diffTwoTexts;
+diffTwoTexts;
+
+</code></pre>
+
+<p>This code snippet focuses on comparing and highlighting code diffs using D3.js and Prism.js.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports necessary modules like <code>fs</code> for file system operations, <code>JSDOM</code> for creating a virtual DOM, <code>JsDiff</code> for calculating code differences, and <code>prismjs</code> for syntax highlighting.</li>
+</ul></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>htmlEntities</code>: Escapes special characters in strings for safe HTML output.</li>
+<li><code>prismHighlightHtml</code>: Highlights code using Prism.js within a virtual DOM environment.</li>
+</ul></li>
+<li><p><strong>Diff Calculation:</strong></p>
+<ul>
+<li><code>diffTwoTexts</code>: Takes two strings as input, calculates their differences using <code>JsDiff</code>, and formats the result as HTML with added/removed classes for visual representation.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code snippet provides a way to compare two code snippets, highlight the differences, and present them in a visually understandable format using HTML and CSS.</strong></p>

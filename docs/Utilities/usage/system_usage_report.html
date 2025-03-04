@@ -1,0 +1,98 @@
+<p>The <code>systemUsage</code> function monitors system CPU usage and memory usage over time, calculating and returning the average percentage usage in an object format. It measures CPU usage at regular intervals, calculates the average CPU usage, and stores memory usage data in an object.</p>
+
+
+<pre><code>
+const os = require('os')
+
+
+const reportCPU = []
+const reportMem = []
+
+//Create function to get CPU information
+function cpuAverage() {
+
+  //Initialise sum of idle and time of cores and fetch CPU info
+  var totalIdle = 0, totalTick = 0;
+  var cpus = os.cpus();
+
+  //Loop through CPU cores
+  for(var i = 0, len = cpus.length; i < len; i++) {
+
+    //Select CPU core
+    var cpu = cpus[i];
+
+    //Total up the time in the cores tick
+    for(type in cpu.times) {
+      totalTick += cpu.times[type];
+   }     
+
+    //Total up the idle time of the core
+    totalIdle += cpu.times.idle;
+  }
+
+  //Return the average Idle and Tick times
+  return {idle: totalIdle / cpus.length,  total: totalTick / cpus.length};
+}
+
+async function systemUsage() {
+
+  var startMeasure = cpuAverage();
+
+  reportMem.unshift(Math.round(100 * (os.totalmem() - os.freemem()) / os.totalmem()))
+
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  var endMeasure = cpuAverage(); 
+
+  //Calculate the difference in idle and total time between the measures
+  var idleDifference = endMeasure.idle - startMeasure.idle;
+  var totalDifference = endMeasure.total - startMeasure.total;
+
+  //Calculate the average percentage CPU usage
+  var percentageCPU = 100 - ~~(100 * idleDifference / totalDifference);
+  reportCPU.unshift(percentageCPU)
+
+  if(reportMem.length > 30 || reportCPU.length > 30) {
+    reportMem.pop()
+    reportCPU.pop()
+  }
+
+  return {
+    memory: reportMem,
+    cpus: reportCPU
+  }
+}
+
+module.exports = systemUsage
+</code></pre>
+
+<h1><strong>System Usage Monitor</strong></h1>
+<p><strong>Overview</strong></p>
+<p>The <code>systemUsage</code> function monitors system CPU usage and memory usage over time. It calculates the average percentage CPU usage and memory usage, and returns the data in an object format.</p>
+<p><strong>Function Breakdown</strong></p>
+<h3><code>cpuAverage()</code></h3>
+<ul>
+<li>Returns the average idle and total time for all CPU cores.</li>
+<li>Calculates the sum of idle and total time for all cores, then divides by the number of cores.</li>
+</ul>
+<h3><code>systemUsage()</code></h3>
+<ul>
+<li>Initializes an object <code>reportMem</code> to store memory usage data and an object <code>reportCPU</code> to store CPU usage data.</li>
+<li>Measures CPU usage at the start and end of a 1-second interval using <code>cpuAverage()</code>.</li>
+<li>Calculates the difference in idle and total time between the start and end measures.</li>
+<li>Calculates the average percentage CPU usage using the difference in idle and total time.</li>
+<li>Adds the CPU usage percentage to the <code>reportCPU</code> array.</li>
+<li>Adds the current memory usage percentage to the <code>reportMem</code> array.</li>
+<li>Removes excess data from the arrays if they exceed 30 entries.</li>
+<li>Returns an object containing the memory usage data and CPU usage data.</li>
+</ul>
+<p><strong>Exports</strong></p>
+<ul>
+<li>The <code>systemUsage</code> function is exported as a module.</li>
+</ul>
+<p><strong>Usage</strong></p>
+<pre><code class="language-javascript">const systemUsage = require('./systemUsage');
+systemUsage().then((data) =&gt; {
+  console.log(data);
+});
+</code></pre>

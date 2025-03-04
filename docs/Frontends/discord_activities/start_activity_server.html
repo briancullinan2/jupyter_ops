@@ -1,0 +1,77 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code imports Discord API modules, defines constants, and an asynchronous <code>activityCommands</code> function that manages bot commands for a specific guild, including registering, updating, and deleting commands.</p>
+<p>This function is then exported as a module.</p>
+
+
+<pre><code>const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {interactionsCommands} = importer.import('discord gateway')
+//const {discordExpress, closeExpress, getInstance} = importer.import('discord express server')
+
+const ALL_COMMANDS = [
+  'launch',
+]
+
+// bot commands using new API, same names as above but lower-case
+async function activityCommands(guildId = null) {
+  var cmd, cmdDef
+  var commandResult = await getCommands(guildId)
+  var commands = commandResult.map(command => command.name)
+
+  interactionsCommands['startActivity'] = discordExpress
+  interactionsCommands['endActivity'] = closeExpress
+
+  cmdDef = {
+    'name': 'launch',
+    'description': 'Launch an activity',
+    'type': 4,
+    'handler': 2,
+  }
+  if(!commands.includes('launch')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'launch')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+
+  return await getCommands()
+}
+
+module.exports = activityCommands
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code imports several modules using the <code>importer.import</code> function.</p>
+<ul>
+<li><code>discord api</code> module is imported, extracting the following functions: <code>registerCommand</code>, <code>getCommands</code>, <code>deleteCommand</code>, and <code>updateCommand</code>.</li>
+<li><code>discord gateway</code> module is imported, extracting the <code>interactionsCommands</code> object.</li>
+<li>Note: The <code>discord express server</code> module is not actually used in the code, so it is commented out.</li>
+</ul>
+<h4>Defining Constants</h4>
+<ul>
+<li><code>ALL_COMMANDS</code> is a constant array containing a single string, <code>'launch'</code>.</li>
+</ul>
+<h4>activityCommands Function</h4>
+<p>The <code>activityCommands</code> function is an asynchronous function that manages bot commands for a specific guild.</p>
+<ul>
+<li>It takes an optional <code>guildId</code> parameter, which defaults to <code>null</code>.</li>
+<li>It retrieves the list of commands for the specified guild using <code>getCommands(guildId)</code>.</li>
+<li>It maps the command list to extract the command names.</li>
+<li>It updates the <code>interactionsCommands</code> object to point <code>startActivity</code> and <code>endActivity</code> to the <code>discordExpress</code> and <code>closeExpress</code> functions respectively.</li>
+<li>It defines a command definition object <code>cmdDef</code> with the name, description, type, and handler for the command <code>launch</code>.</li>
+<li>If the <code>launch</code> command is not already registered, it registers the command using <code>registerCommand</code>.</li>
+<li>Otherwise, it updates the command definition if the name or description has changed.</li>
+<li>It filters the command list to find commands that are not in the <code>ALL_COMMANDS</code> array and deletes them using <code>deleteCommand</code>.</li>
+<li>Finally, it returns the updated list of commands.</li>
+</ul>
+<h4>Exporting the Function</h4>
+<p>The <code>activityCommands</code> function is exported as a module.</p>

@@ -1,0 +1,43 @@
+<p>The code provides a function called <code>placeDetails</code> that retrieves detailed information about a Google Places location using its ID and your Google Maps API key.  It utilizes the <code>request</code> library to make an API call and returns the parsed JSON response containing place details.</p>
+
+
+<pre><code>var util = require('util');
+var request = util.promisify(require('request'));
+
+var API_KEY = 'AIzaSyDVoQW6NTPuVz8ClOtl0ShITBr_E2sP4l0';
+
+function placeDetails(placeId) {
+    const uri = 'https://maps.googleapis.com/maps/api/place/details/json' 
+        + '?placeid=' + placeId
+        + '&key=' + API_KEY;
+    return request(uri)
+        .then(r => JSON.parse(r.body).result)
+}
+module.exports = placeDetails;
+</code></pre>
+
+<p>This code defines a function called <code>placeDetails</code> that fetches detailed information about a Google Places location given its ID.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>util</code>: A built-in Node.js module for utility functions.</li>
+<li><code>request</code>: A library for making HTTP requests, promisified using <code>util.promisify</code> for easier asynchronous handling.</li>
+</ul></li>
+<li><p><strong>API Key:</strong></p>
+<ul>
+<li><code>API_KEY</code>: Stores your Google Maps API key, which is required for making requests to the Google Places API.</li>
+</ul></li>
+<li><p><strong><code>placeDetails</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>placeId</code> (a unique identifier for a Google Places location) as input.</li>
+<li>Constructs a URL to the Google Places Details API endpoint, including the <code>placeId</code> and your API key.</li>
+<li>Uses <code>request</code> to make a GET request to the constructed URL.</li>
+<li>Parses the JSON response and returns the <code>result</code> object containing detailed information about the place.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>placeDetails</code> function is exported using <code>module.exports</code>, making it available for use in other parts of your application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

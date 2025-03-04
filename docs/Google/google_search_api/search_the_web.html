@@ -1,0 +1,38 @@
+<p>This code defines a function that performs custom Google searches using the Google Custom Search Engine API, handling authentication and returning the search results data.  It's designed to be reusable in other parts of an application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeSearch = importer.import('authorize custom search');
+
+async function search(q) {
+    var params = {
+        num: 10,
+        cx: '002593731262048611104:885kc72tzdc',
+        q: q
+    };
+    var client = await authorizeSearch();
+    var r = await client.request({
+        method: 'GET',
+        url: `https://www.googleapis.com/customsearch/v1`,
+        params
+    })
+    return r.data
+}
+
+module.exports = search;
+</code></pre>
+
+<p>This code snippet defines a function <code>search</code> that performs a custom Google Search using the Google Custom Search Engine API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong> It imports a function <code>authorizeSearch</code> from a local module <code>Core</code> which likely handles authentication with the Google Custom Search Engine API.</p></li>
+<li><p><strong><code>search</code> Function:</strong></p>
+<ul>
+<li>Takes a search query <code>q</code> as input.</li>
+<li>Defines search parameters including the number of results (<code>num</code>), the custom search engine ID (<code>cx</code>), and the search query (<code>q</code>).</li>
+<li>Uses <code>authorizeSearch</code> to obtain an authorized client for making API requests.</li>
+<li>Sends a GET request to the Google Custom Search Engine API endpoint using the provided parameters.</li>
+<li>Returns the search results data (<code>r.data</code>) from the API response.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>search</code> function is exported as a module, allowing it to be used in other parts of the application.</p></li>
+</ol>

@@ -1,0 +1,74 @@
+<p>This code automates the process of collecting URLs of LinkedIn threads by scrolling through the messages page and extracting thread links until no new threads are found.</p>
+
+
+<pre><code>function scrollLinkedInThreads(threads) {
+    // TODO: add check for needing to go to LinkedIn
+    // TODO: add check for needing to login
+    // scroll to bottom of messages
+    return client
+        .execute(() => {
+            document.getElementsByClassName(
+                'msg-conversations-container__conversations-list')[0]
+                .scrollTop += 10000;
+        })
+        .pause(2000)
+        .then(() => getLinkedInThreads(threads));
+}
+
+function getLinkedInThreads(threads) {
+    return client
+        .execute(() => {
+            var iterator = document.evaluate(
+                '//*[@data-control-name="view_message"]/@href',
+                document, null,
+                XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null);
+            var co = [];
+            var m;
+            while ((m = iterator.iterateNext()) && co.push(m.value)) ;
+            return co;
+        })
+        .then(els => {
+            var newThreads = els.value.filter(e => threads.indexOf(e) === -1);
+            threads = threads.concat(newThreads);
+            return newThreads.length > 0
+                ? scrollLinkedInThreads(threads)
+                : Promise.resolve(threads);
+        });
+}
+
+function listLinkedInThreads(threads) {
+    return client.getUrl().then(url => url.indexOf('/messaging') == -1
+        ? client.click('a[href*="/messaging/"]')
+        : Promise.resolve([]))
+        .pause(2000)
+        .then(() => getLinkedInThreads(threads || []))
+};
+module.exports = listLinkedInThreads;
+</code></pre>
+
+<p>This code defines a function <code>listLinkedInThreads</code> that automates the process of retrieving a list of LinkedIn thread URLs.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>scrollLinkedInThreads</code> Function:</strong></p>
+<ul>
+<li>This function scrolls down the LinkedIn messages page to load more threads.</li>
+<li>It uses <code>client.execute</code> to execute JavaScript code that scrolls the page by 10,000 pixels.</li>
+<li>It then calls <code>getLinkedInThreads</code> to fetch the new threads.</li>
+</ul></li>
+<li><p><strong><code>getLinkedInThreads</code> Function:</strong></p>
+<ul>
+<li>This function extracts the URLs of LinkedIn threads from the current page.</li>
+<li>It uses <code>document.evaluate</code> with an XPath expression to find all elements with the attribute <code>data-control-name=&quot;view_message&quot;</code> and extract their <code>href</code> values.</li>
+<li>It filters out threads that are already in the <code>threads</code> array and adds the new threads to it.</li>
+<li>If there are new threads, it recursively calls <code>scrollLinkedInThreads</code> to load more.</li>
+</ul></li>
+<li><p><strong><code>listLinkedInThreads</code> Function:</strong></p>
+<ul>
+<li>This function orchestrates the entire process:
+<ul>
+<li>It first checks if the user is on the LinkedIn messages page. If not, it navigates there.</li>
+<li>It then calls <code>getLinkedInThreads</code> to fetch the initial list of threads.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

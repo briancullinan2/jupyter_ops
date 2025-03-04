@@ -1,0 +1,78 @@
+<p>This Firebase Cloud Function, using Express.js middleware, provides a remote procedure call (RPC) endpoint that accepts function names from requests, executes them, and returns the results as JSON responses. It also logs the results and handles cookies and CORS.</p>
+
+
+<pre><code>var cookie = require('cookie');
+var cors = require('cors')({origin: true});
+var importer = require('../Core');
+var getResult = importer.import('rpc result');
+var getEnvironment = importer.import('get environment');
+
+var expressToResult = (req, res) => getResult({
+    command: (req.body || {})['function'] || (req.query || {})['function'],
+    result: importer.interpret((req.body || {})['function'] || (req.query || {})['function']),
+    body: req.method === 'POST' ? req.body : req.query,
+    circles: ['Public']
+})
+
+var logResult = (r) => {
+    // TODO: call storeResult()?
+    var result = typeof r === 'object'
+        ? Object.keys(r).reduce((alt, key) => {
+            alt[key] = r[key] + '';
+            return alt;
+        }, {})
+        : ('' + r);
+    console.log(result);
+    return result;
+}
+
+function expressHandler(req, res) {
+    getEnvironment();
+    req.cookies = cookie.parse(req.get('cookie') || '');
+    res.setHeader('Cache-Control', 'private');
+    cors(req, res, () => {});
+    return Promise.resolve()
+        .then(() => expressToResult(req, res))
+        .then(r => (res.status(200), r))
+        .catch(e => (res.status(500), e))
+        .then(r => logResult(r))
+        .then(r => res.send(r));
+}
+
+module.exports.handler = expressHandler;
+
+</code></pre>
+
+<p>This code sets up an Express.js middleware function for a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>Imports <code>cookie</code> for parsing cookies, <code>cors</code> for handling cross-origin requests, and custom modules <code>importer</code> and <code>getResult</code>.</li>
+</ul></li>
+<li><p><strong><code>expressToResult</code> Function:</strong></p>
+<ul>
+<li>Extracts the function name from the request body or query parameters.</li>
+<li>Calls <code>getResult</code> to interpret the function name and execute the corresponding logic.</li>
+<li>Returns the result object.</li>
+</ul></li>
+<li><p><strong><code>logResult</code> Function:</strong></p>
+<ul>
+<li>Logs the result to the console.</li>
+<li>(TODO) Should call <code>storeResult</code> to persist the result.</li>
+</ul></li>
+<li><p><strong><code>expressHandler</code> Function:</strong></p>
+<ul>
+<li>Initializes the environment.</li>
+<li>Parses cookies from the request headers.</li>
+<li>Sets the <code>Cache-Control</code> header to <code>private</code>.</li>
+<li>Enables CORS.</li>
+<li>Calls <code>expressToResult</code> to process the request.</li>
+<li>Sends the result back to the client as a JSON response.</li>
+<li>Logs the result.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>expressHandler</code> function as the Cloud Function's handler.</li>
+</ul></li>
+</ol>

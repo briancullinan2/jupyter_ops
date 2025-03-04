@@ -1,0 +1,91 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>The <code>exprToXpath</code> function takes in a code parameter and uses various dependencies to convert it into an XPath expression, including selecting function declarations, extracting parameter names, and creating minimizing expressions. This function is then exported as a module, making it available for use in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    selectAst, makeXpaths, minXpath,
+    htmlToTree
+} = importer.import([
+    'select code tree', 'make xpaths', 'minimize xpath',
+    'html to tree']);
+
+function exprToXpath(code) {
+    // create an XPath search out of the function body
+    //   using the parameters as matching predicates
+    code = selectAst([
+        `(*/FunctionDeclaration|*/*/ArrowFunctionExpression)`
+    ], code.toString())[0]
+    
+    var expression = selectAst([
+        `Identifier[@parent-attr="params"]/@name`,
+        // select all elements from func that match param name
+        //   TODO: default functionality can be overridden by specifying
+        //   a function as the default parameter value
+        (name) => selectAst([`BlockStatement//*[@name="${name}"]`], code)[0]
+    ], code)[0]; // TODO: make multiple expressions?
+    if(!expression) {
+        throw new Error(`can't match expression ${JSON.stringify(htmlToTree(code))}`)
+    }
+    var xpath = makeXpaths(expression);
+    // add minimizing expressions, unique to the original context
+    var min = minXpath(xpath, selectAst(`BlockStatement`, code));
+    delete code;
+    return min;
+}
+
+module.exports = {
+    exprToXpath
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {
+    selectAst, makeXpaths, minXpath,
+    htmlToTree
+} = importer.import([
+   'select code tree','make xpaths','minimize xpath',
+    'html to tree']);
+</code></pre>
+<p>The code imports dependencies from a core module using the <code>require</code> function. It utilizes the <code>import</code> function to load specific functions and assign them to variables.</p>
+<h4>exprToXpath Function</h4>
+<pre><code class="language-javascript">function exprToXpath(code) {
+    // create an XPath search out of the function body
+    //   using the parameters as matching predicates
+    code = selectAst([
+        `(*/FunctionDeclaration|*/*/ArrowFunctionExpression)`
+    ], code.toString())[0]
+    
+    var expression = selectAst([
+        `Identifier[@parent-attr=&quot;params&quot;]/@name`,
+        // select all elements from func that match param name
+        //   TODO: default functionality can be overridden by specifying
+        //   a function as the default parameter value
+        (name) =&gt; selectAst([`BlockStatement//*[@name=&quot;${name}&quot;]`], code)[0]
+    ], code)[0]; // TODO: make multiple expressions?
+    if (!expression) {
+        throw new Error(`can't match expression ${JSON.stringify(htmlToTree(code))}`)
+    }
+    var xpath = makeXpaths(expression);
+    // add minimizing expressions, unique to the original context
+    var min = minXpath(xpath, selectAst(`BlockStatement`, code));
+    delete code;
+    return min;
+}
+</code></pre>
+<p>This function, <code>exprToXpath</code>, takes a <code>code</code> parameter and is responsible for converting it to an XPath expression. It performs the following steps:</p>
+<ol>
+<li>Selects the function declaration or arrow function expression from the code using <code>selectAst</code>.</li>
+<li>Extracts the parameter names from the function declaration.</li>
+<li>Creates an XPath search for each match.</li>
+<li>Selects the minimizing expression from the resulting XPath search.</li>
+<li>Returns the minimizing expression.</li>
+</ol>
+<h4>Exporting Function</h4>
+<pre><code class="language-javascript">module.exports = {
+    exprToXpath
+}
+</code></pre>
+<p>The <code>exprToXpath</code> function is exported as a module, making it available for use in other parts of the application.</p>

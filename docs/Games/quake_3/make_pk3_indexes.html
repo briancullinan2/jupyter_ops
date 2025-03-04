@@ -1,0 +1,107 @@
+<p>This code creates an index of Quake 3 maps stored in <code>.pk3dir</code> archives, listing each map and its associated files.  It generates a structured JSON manifest for each archive, making it easier to manage and access the maps.</p>
+
+
+<pre><code>var fs = require('fs')
+var os = require('os')
+var path = require('path')
+var glob = require('glob')
+
+var DEFAULT_PATH = path.join(process.env.HOME || process.env.HOMEPATH 
+  || process.env.USERPROFILE || os.tmpdir(), '/.quake3/bestmaps-cc')
+
+async function makePk3MapIndex(searchPath, prefixPath) {
+    if(typeof searchPath == 'undefined' || !searchPath) {
+        searchPath = DEFAULT_PATH
+    }
+    if(typeof prefixPath == 'undefined') {
+        prefixPath = '/base/baseq3-cc'
+    } else if (!prefixPath) {
+        prefixPath = '/'
+    }
+    // TODO: find files in dir based on alt-filetypes and names listed in pk3 file,
+    //   so a combined directory of files, but separate indexes
+    var pk3dirs = glob.sync('**/*.pk3dir/', {
+        nodir: false, cwd: searchPath, nocase: true
+    })
+    var allMaps = {}
+    pk3dirs.forEach(dir => {
+        var pk3path = path.join(searchPath, dir)
+        var pk3files = glob.sync('**/*', {
+            nodir: false, cwd: pk3path, nocase: true
+        })
+        var maps = pk3files.filter(file => file.match(/\.bsp$/i))
+        var pk3Key = path.join(prefixPath, dir).toLowerCase()
+        var initial = {}
+        allMaps[pk3Key] = initial[pk3Key] = {
+            name: path.join('/', dir).replace(/\/$/ig, '')
+        }
+        var manifest = pk3files.map(file => {
+            var stat = fs.statSync(path.join(searchPath, dir, file))
+            return stat.isDirectory() ? ({
+                name: path.join('/', dir, file).replace(/\/$/ig, ''),
+            }) : ({
+                name: path.join('/', dir, file),
+                size: stat.size
+            })
+        }).reduce((obj, o) => {
+            var key = path.join(prefixPath, o.name).toLowerCase()
+                + (typeof o.size == 'undefined' ? '/' : '')
+            obj[key] = o
+            return obj
+        }, initial)
+        var manifestJson = JSON.stringify(manifest, null, 2)
+        maps.forEach(map => {
+            var mapName = path.basename(map).toLowerCase().replace(/\.bsp/i, '')
+            var outIndexFile = path.join(searchPath, 'index-' + mapName + '.json')
+            var key = path.join(prefixPath, path.basename(pk3path), map).toLowerCase()
+            fs.writeFileSync(outIndexFile, manifestJson)
+            allMaps[key] = {
+                name: path.join('/', dir, map),
+                size: fs.statSync(path.join(searchPath, dir, map)).size
+            }
+        })
+    })
+    return JSON.stringify(allMaps, null, 2)
+}
+
+module.exports = makePk3MapIndex
+</code></pre>
+
+<p>This code generates a map index for Quake 3 maps stored in <code>.pk3dir</code> archives.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It sets up default paths for searching Quake 3 maps.</li>
+<li>It defines an asynchronous function <code>makePk3MapIndex</code> that takes optional <code>searchPath</code> and <code>prefixPath</code> arguments.</li>
+</ul></li>
+<li><p><strong>Finding PK3 Directories:</strong></p>
+<ul>
+<li>It uses <code>glob.sync</code> to find all <code>.pk3dir</code> files within the specified <code>searchPath</code>.</li>
+</ul></li>
+<li><p><strong>Processing Each PK3 Directory:</strong></p>
+<ul>
+<li>For each <code>.pk3dir</code> found, it:
+<ul>
+<li>Constructs the full path to the directory.</li>
+<li>Finds all files within the directory using <code>glob.sync</code>.</li>
+<li>Filters the files to include only <code>.bsp</code> files (Quake 3 maps).</li>
+<li>Creates a map index object for the current <code>.pk3dir</code>, storing its name and a list of its files.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Generating Manifest:</strong></p>
+<ul>
+<li>It creates a manifest of all files within the <code>.pk3dir</code>, including their names and sizes.</li>
+<li>The manifest is formatted as JSON and stored in a variable.</li>
+</ul></li>
+<li><p><strong>Populating Map Index:</strong></p>
+<ul>
+<li>It iterates through the <code>.bsp</code> files found in the <code>.pk3dir</code>.</li>
+<li>For each map, it extracts its name and adds it to the map index object.</li>
+</ul></li>
+<li><p><strong>Outputting Index:</strong></p>
+<ul>
+<li>The code seems to be setting up to write the generated map index to a file, but the specific implementation is not shown in the provided snippet.</li>
+</ul></li>
+</ol>
+<p>In essence, this code automates the process of creating a structured index of Quake 3 maps stored in <code>.pk3dir</code> archives, making it easier to manage and access them.</p>

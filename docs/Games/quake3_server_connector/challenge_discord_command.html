@@ -1,0 +1,113 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code is a Discord bot that responds to challenge commands, which trigger the launch of a Quake III Arena server with customized settings based on environment variables and command input. The bot uses regular expressions to parse challenge commands, connects to a Quake III Arena server via the <code>serverApi</code> module, and handles errors by displaying a message when no servers are available.</p>
+
+
+<pre><code>var importer = require('../Core')
+var discordApi = importer.import('discord api')
+var serverApi = importer.import('quake 3 server commands')
+
+var CHALLENGE = /(@[^:@\s]+\s*chall?[ae]nge|chall?[ae]nge\s*@[^:@\s]+)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig
+var DEFAULT_HOST = process.env.DEFAULT_HOST || 'http://quakeiiiarena.com/play/'
+var MODS = typeof process.env.DEFAULT_MODS == 'string'
+    ? JSON.parse(process.env.DEFAULT_MODS)
+    : [
+        'baseq3',
+        'freon'
+    ]
+
+async function challengeCommand(command) {
+    if(!command.private && (!command.mentions || command.mentions.length === 0))
+        return
+    var options = CHALLENGE.exec(command.content)
+    var launch = (options ? options[2] : '') || ''
+    var map = (options ? options[3] : '') || ''
+    var message = 'I read you'
+    var instruction = ''
+    if(!MODS.includes(launch) && map.length === 0) {
+        map = launch
+        launch = ''
+    }
+    if(map.length === 0) {
+        map = 'q3dm17'
+    }
+    if(launch.length == 0) {
+        instruction += ', assuming baseq3 on map ' + map
+    } else if(command.launching) {
+        instruction += ' ' + launch + ' on map ' + map
+    }
+    if(!command.launching && !command.content.match(/:thumbsup:/ig)) {
+        message = 'Waiting for reaction'
+        instruction += ', react with :thumbsup: to launch'
+    }
+    if(command.launching) {
+        message = 'Launching'
+        await discordApi.createMessage(message + instruction + '\n```BOT'+command.id+'L\nbeep boop\n```\n', command.channel_id)
+        await discordApi.triggerTyping(command.channel_id)
+        var masters = await serverApi.listMasters(void 0, void 0, false)
+        if(masters.length === 0) {
+            await discordApi.createMessage(`Boo hoo, no servers available. :cry:` 
+                + '\n```BOT'+command.id+'L\nbeep boop\n```\n', command.channel_id)
+            return
+        }
+        await serverApi.sendRcon(masters[0].ip, masters[0].port, '\exec ' + launch + '.cfg')
+        await serverApi.sendRcon(masters[0].ip, masters[0].port, '\map ' + map)
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        await discordApi.createMessage(`Match is ready ${DEFAULT_HOST}?connect%20${masters[0].ip}:${masters[0].port} (${masters[0].ip}:${masters[0].port})`
+                                       + '\n```BOT'+command.id+'L\nbeep boop\n```\n', command.channel_id)
+    } else if (instruction.length > 0) {
+        await discordApi.createMessage(message + instruction + '\n```BOT'+command.id+'\nbeep boop\n```\n', command.channel_id)
+    }
+}
+
+module.exports = challengeCommand
+</code></pre>
+
+<h2>Breakdown of the Code</h2>
+<h3>Importing Modules</h3>
+<p>The code starts by importing two modules using the <code>require</code> function:</p>
+<pre><code class="language-javascript">var importer = require('../Core')
+var discordApi = importer.import('discord api')
+var serverApi = importer.import('quake 3 server commands')
+</code></pre>
+<p>These modules are likely custom modules for interacting with the Discord API and a Quake III Arena server.</p>
+<h3>Regular Expressions</h3>
+<p>The code defines a regular expression <code>CHALLENGE</code> to match challenge commands:</p>
+<pre><code class="language-javascript">var CHALLENGE = /(@[^:@\s]+\s*chall?[ae]nge|chall?[ae]nge\s*@[^:@\s]+)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig
+</code></pre>
+<p>This regular expression matches commands in the format <code>@username chall[ae]nge [launch] [map]</code>, where <code>launch</code> and <code>map</code> are optional.</p>
+<h3>Environment Variables</h3>
+<p>The code retrieves environment variables for the default host and mods:</p>
+<pre><code class="language-javascript">var DEFAULT_HOST = process.env.DEFAULT_HOST || 'http://quakeiiiarena.com/play/'
+var MODS = typeof process.env.DEFAULT_MODS =='string'
+   ? JSON.parse(process.env.DEFAULT_MODS)
+    : [
+        'baseq3',
+        'freon'
+    ]
+</code></pre>
+<p>These variables are used to determine the default host and mods for the Quake III Arena server.</p>
+<h3>Challenge Command Function</h3>
+<p>The code defines an asynchronous function <code>challengeCommand</code> to handle challenge commands:</p>
+<pre><code class="language-javascript">async function challengeCommand(command) {
+    //...
+}
+</code></pre>
+<p>This function takes a <code>command</code> object as an argument and uses the <code>CHALLENGE</code> regular expression to parse the command content. It then determines the launch and map values based on the command content and environment variables.</p>
+<h3>Launching the Quake III Arena Server</h3>
+<p>The code uses the <code>serverApi</code> module to connect to a Quake III Arena server and send rcon commands to launch the game:</p>
+<pre><code class="language-javascript">if(command.launching) {
+    //...
+    await serverApi.sendRcon(masters[0].ip, masters[0].port, '\exec'+ launch + '.cfg')
+    await serverApi.sendRcon(masters[0].ip, masters[0].port, '\map'+ map)
+}
+</code></pre>
+<p>This code assumes that the <code>serverApi</code> module provides a way to connect to a Quake III Arena server and send rcon commands to launch the game.</p>
+<h3>Error Handling</h3>
+<p>The code includes error handling to display a message when no servers are available:</p>
+<pre><code class="language-javascript">if(masters.length === 0) {
+    await discordApi.createMessage(`Boo hoo, no servers available. :cry:` 
+        + '\n```BOT'+command.id+'L\nbeep boop\n```\n', command.channel_id)
+    return
+}
+</code></pre>
+<p>This code displays a message when no servers are available and returns from the function.</p>

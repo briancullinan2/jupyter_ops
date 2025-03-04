@@ -1,0 +1,74 @@
+<p>This code sets up a Gulp task to continuously watch for changes in TypeScript files and automatically rebuild the project when changes are detected.</p>
+
+
+<pre><code>var gulp = require('gulp'),
+    watch = require('gulp-watch');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = PROFILE_PATH + '/Documents/universal';
+
+var searching = false;
+
+gulp.task('watch for changes', function () {
+    // Callback mode, useful if any plugin in the pipeline depends on the `end`/`flush` event 
+    return watch('src/**/*.ts', {
+        cwd: project,
+        ignoreInitial: true,
+        read: false,
+        readDelay: 100
+    }, function () {
+        if (!searching) {
+            searching = true;
+            projectRelatives(project).then(() => {
+                searching = false
+            });
+        }
+    });
+});
+
+$$.async();
+gulp.task(['watch for changes'])();
+
+</code></pre>
+
+<p>This code snippet sets up a Gulp task to watch for changes in TypeScript files and trigger a build process.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>var gulp = require('gulp'), watch = require('gulp-watch');</code>: Imports the <code>gulp</code> and <code>gulp-watch</code> modules, which are essential for creating a Gulp workflow and watching for file changes.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li><code>var PROFILE_PATH = ...</code>: Determines the user's home directory path based on environment variables.</li>
+<li><code>var project = PROFILE_PATH + '/Documents/universal';</code>: Sets the project directory path.</li>
+</ul></li>
+<li><p><strong><code>searching</code> Flag:</strong></p>
+<ul>
+<li><code>var searching = false;</code>: Initializes a flag to prevent multiple build processes from running concurrently.</li>
+</ul></li>
+<li><p><strong><code>watch for changes</code> Task:</strong></p>
+<ul>
+<li><code>gulp.task('watch for changes', function () { ... });</code>: Defines a Gulp task named &quot;watch for changes&quot;.</li>
+<li><code>watch('src/**/*.ts', { ... }, function () { ... });</code>: Watches for changes in all <code>.ts</code> files within the <code>src</code> directory of the project.
+<ul>
+<li><code>cwd: project</code>: Specifies the working directory for the watcher.</li>
+<li><code>ignoreInitial: true</code>: Ignores the initial file system scan.</li>
+<li><code>read: false</code>: Disables reading file contents on each change.</li>
+<li><code>readDelay: 100</code>: Introduces a 100ms delay before reading file contents.</li>
+</ul></li>
+<li>The callback function is executed whenever a change is detected:
+<ul>
+<li><code>if (!searching) { ... }</code>: Ensures that only one build process runs at a time.</li>
+<li><code>searching = true;</code>: Sets the <code>searching</code> flag to true.</li>
+<li><code>projectRelatives(project).then(() =&gt; { ... });</code>: Calls a function <code>projectRelatives</code> (not shown in the code) to perform some action related to the project.</li>
+<li><code>searching = false;</code>: Resets the <code>searching</code> flag to false after the build process is complete.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Task Execution:</strong></p>
+<ul>
+<li><code>$$.async();</code>: Initializes an asynchronous task runner (likely a custom implementation).</li>
+<li><code>gulp.task(['watch for changes'])();</code>: Runs the &quot;watch for changes&quot; task.</li>
+</ul></li>
+</ol>
+<p>In essence, this code sets up a continuous build process where whenever TypeScript files in the <code>src</code> directory change, the <code>projectRelatives</code> function is executed, likely performing tasks like compiling the TypeScript code, running tests, or generating documentation.</p>

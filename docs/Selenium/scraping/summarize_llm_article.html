@@ -1,0 +1,62 @@
+<p>Here is a 2-sentence summary:</p>
+<p>The <code>summerizeArticle</code> function is an asynchronous function that summarizes an article in two ways: a detailed summary and a single sentence summary. It creates an LLM session, sends prompts for both types of summaries, and returns the results as an array.</p>
+
+
+<pre><code>
+// TODO: prompt llm, in one sentence summarize this article. in a whole paragraph summarize this article.
+
+async function summerizeArticle(article, funny) {
+  let {llmPrompt} = await importer.import('create llm session')
+
+  if(!funny) {
+    funny = ''
+  }
+
+  let q1 = 'Summerize this article in great detail ' + funny + ':\n' + article.substr(0, 4096) + '\nOnly return the summary and nothing else, no explanations.'
+  console.log('User: ' + q1)
+  let a1 = await llmPrompt(q1)
+  console.log('AI: ' + a1)
+
+
+  let q2 = 'Summerize this article in a single sentence ' + funny + ':\n' + article.substr(0, 4096) + '\nOnly return the summary and nothing else, no explanations.'
+  console.log('User: ' + q2)
+  let a2 = await llmPrompt(q2)
+  console.log('AI: ' + a2)
+
+  return [a1, a2]
+}
+
+
+module.exports = summerizeArticle
+</code></pre>
+
+<h3>Function Definition</h3>
+<p><code>summerizeArticle</code> is an asynchronous function that summarizes an article in two ways:</p>
+<ol>
+<li><strong>Detailed Summary</strong>: A detailed summary of the article in a few paragraphs.</li>
+<li><strong>Single Sentence Summary</strong>: A brief summary of the article in a single sentence.</li>
+</ol>
+<h3>Parameters</h3>
+<ul>
+<li><code>article</code>: The article to be summarized, with a maximum of 4096 characters.</li>
+<li><code>funny</code>: An optional parameter that can be used to make the summary humorous.</li>
+</ul>
+<h3>Return Value</h3>
+<p>The function returns an array containing two summaries:</p>
+<ol>
+<li><code>a1</code>: The detailed summary.</li>
+<li><code>a2</code>: The single sentence summary.</li>
+</ol>
+<h3>Functionality</h3>
+<ol>
+<li>Creates an LLM session using the <code>create llm session</code> module.</li>
+<li>Sends two prompts to the LLM session:
+<ul>
+<li>One for a detailed summary.</li>
+<li>One for a single sentence summary.</li>
+</ul></li>
+<li>Retrieves the summaries from the LLM session and logs them to the console.</li>
+<li>Returns the two summaries as an array.</li>
+</ol>
+<h3>Export</h3>
+<p>The function is exported as a module using <code>module.exports = summerizeArticle</code>.</p>

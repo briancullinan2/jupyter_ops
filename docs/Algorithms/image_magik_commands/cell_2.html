@@ -1,0 +1,20 @@
+
+
+<pre><code>#windows
+# for /r %%v in (*.pcx or *.jpg or *.jpeg) do convert -colorspace RGB "%%v" "%%~dpv%%~nv.tga" ; done
+#
+
+#/bin/bash
+find /Users/briancullinan/jupyter_ops/.output -iname '*.jpeg' -o -iname '*.jpg' -o -iname '*.heic' -o -iname '*.tga' -o -iname '*.png' -o -iname '*.svg' -o -name '*.webp' -o -name '*.wal' | \
+while IFS= read -r i; do \
+o="${i%.*}"; \
+o="${o%-final*}-final.jpg"; \
+if [ ! -f "$o" ]; \
+then convert -density 600 "$i" -resize "600^<" -scale 50% "$o" || true && \
+    convert "$o" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality 50% "$o" || true; \
+fi; \
+done;
+
+echo "done"
+</code></pre>
+

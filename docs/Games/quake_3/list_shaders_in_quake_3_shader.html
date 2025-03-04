@@ -1,0 +1,47 @@
+<p>This code snippet parses a text file, likely a Quake game configuration, to extract shader definitions enclosed within curly braces.  It returns an object mapping shader names to their corresponding definitions.</p>
+
+
+<pre><code>var importer = require('../Core')
+var balanced = importer.import('balanced')
+
+function findShaders(file) {
+    if(typeof file === 'string' && fs.existsSync(file)) {
+        file = fs.readFileSync(file).toString('utf-8')
+            .replace(/\/\/.*/ig, '')
+    }
+    var match
+    var current = file
+    var result = {}
+    while((match = balanced('{', '}', current))) {
+        var name = match.pre.trim()
+        console.log('found shader ' + name)
+        result[name] = match.body
+        current = match.post
+    }
+    return result
+}
+
+module.exports = findShaders
+</code></pre>
+
+<p>This code snippet is designed to extract shader definitions from a text file, likely a Quake game configuration or script file.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong> It imports the <code>balanced</code> module from a custom <code>Core</code> module, which likely provides functionality for parsing balanced parentheses or brackets in text.</p></li>
+<li><p><strong><code>findShaders</code> Function:</strong></p>
+<ul>
+<li>Takes a file path (string) as input.</li>
+<li>If the input is a valid file path, it reads the file contents, removes comments (lines starting with <code>//</code>), and stores the cleaned text in the <code>current</code> variable.</li>
+<li>It uses a <code>while</code> loop and the <code>balanced</code> function to find pairs of opening and closing curly braces (<code>{</code>, <code>}</code>) within the text.</li>
+<li>For each matched pair:
+<ul>
+<li>It extracts the text before the opening brace as the shader name (<code>name</code>).</li>
+<li>It logs the found shader name to the console.</li>
+<li>It stores the text between the braces as the shader definition (<code>match.body</code>) in a <code>result</code> object, using the shader name as the key.</li>
+<li>It updates the <code>current</code> variable to the text after the closing brace, continuing the search.</li>
+</ul></li>
+<li>Finally, it returns the <code>result</code> object containing the extracted shader names and their definitions.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>findShaders</code> function is exported as a module, allowing it to be used in other parts of a larger application.</p></li>
+</ol>
+<p>In essence, this code snippet provides a way to parse and extract shader definitions from a text file, likely used for analyzing or modifying Quake game assets.</p>

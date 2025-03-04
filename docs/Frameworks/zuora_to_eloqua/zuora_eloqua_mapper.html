@@ -1,0 +1,137 @@
+<p>This code processes subscription data by categorizing rate plans into product types and extracting account-specific information, including the latest charges and contact details.</p>
+
+
+<pre><code>var moment = require('moment');
+var _ = require('lodash');
+var chrono = require('chrono-node');
+
+function mapRatePlanToProduct(description) {
+    description = description.toLowerCase();
+    if(description.includes('trial'))
+        return 'trial';
+    else if (description.includes('volume') || description.includes('discount'))
+        return 'discount';
+    else if (description.includes('cloud') && !description.includes('trial'))
+        return 'actpremiumcloud';
+    else if (description.includes('premium') && !description.includes('cloud')
+             && !description.includes('trial') && !description.includes('support'))
+        return 'actpremium';
+    else if (description.includes('pro')  && !description.includes('support'))
+        return 'actpro';
+    else if (description.includes('support'))
+        return 'support';
+    else if (description.includes('handheld') || description.includes('contact'))
+        return 'handheld';
+    else if (description.includes('aem'))
+        return 'aem';
+    else if (description.includes('password'))
+        return 'password';
+    else if (description.includes('training'))
+        return 'training';
+    else throw new Error('product not recognized ' + description);
+}
+
+function mapDataToFields(records) {
+    var uniqueIds = _.groupBy(records, r => r['Account.Id']);
+    return Object.keys(uniqueIds).map(k => {
+        const rpcs = _.groupBy(uniqueIds[k], r => r['RatePlanCharge.Id']);
+        const charges = Object.keys(rpcs).map(k => _.sortBy(rpcs[k], r => r['RatePlanCharge.Version']).pop());
+        const record = {};
+        charges.sort((a, b) =>
+                          chrono.parseDate(b['Subscription.TermEndDate']).getTime()
+                          - chrono.parseDate(a['Subscription.TermEndDate']).getTime());
+        // contact information
+        const contact = charges.filter(charge => charge['SoldToContact.WorkEmail'] || charge['BillToContact.WorkEmail'])[0]
+        if(typeof contact === 'undefined') {
+            console.log('No contact information for ' + JSON.stringify(charges));
+            return;
+        }
+        record['EmailAddress'] = contact['SoldToContact.WorkEmail'] || contact['BillToContact.WorkEmail'];
+        record['State'] = contact['SoldToContact.State'];
+        record['Country'] = contact['SoldToContact.Country'];
+        record['Currency'] = contact['Account.Currency'];
+
+        // primary product
+        const actProduct = charges.filter(p => {
+            const pname = mapRatePlanToProduct(p['ProductRatePlan.Name']);
+            return pname === 'actpremiumcloud' || pname === 'actpremium' || pname === 'actpro' || pname === 'trial'
+        })[0];
+        
+        if(typeof actProduct !== 'undefined') {
+            record['ActProduct'] = mapRatePlanToProduct(actProduct['ProductRatePlan.Name']);
+            record['Quantity'] = actProduct['RatePlanCharge.Quantity'];
+        } else {
+            record['ActProduct'] = 'Unknown';
+            record['Quantity'] = 0;
+        }
+        
+        // discounts!
+        const discount = charges.filter(p => {
+            const pname = mapRatePlanToProduct(p['ProductRatePlan.Name']);
+            return pname === 'discount'
+        })[0];
+        if(typeof discount !== 'undefined') {
+            record['Discount'] = discount['ProductRatePlan.Name'];
+        } else {
+            record['Discount'] = '';
+        }
+        
+        // support
+        const support = charges.filter(charge => {
+            return mapRatePlanToProduct(charge['ProductRatePlan.Name']) === 'support'
+        })[0];
+        if(typeof support !== 'undefined') {
+            record['Support'] = support['ProductRatePlan.Name'];
+            record['SupportQuantity'] = support['RatePlanCharge.Quantity'];
+        } else {
+            record['Support'] = 'Unknown';
+            record['SupportQuantity'] = 0;
+        }
+        
+        // subscription
+        const renewal = chrono.parseDate(charges[0]['Subscription.TermEndDate']);
+        record['RenewalsStatus'] = charges[0]['Subscription.Status'];
+        record['RenewalDate'] = moment(renewal).format('YYYY-MM-DD');
+        
+        // card expiration
+        const expiration = new Date();
+        expiration.setDate(1);
+        expiration.setMonth(parseInt(charges[0]['DefaultPaymentMethod.CreditCardExpirationMonth']) - 1);
+        expiration.setYear(parseInt(charges[0]['DefaultPaymentMethod.CreditCardExpirationYear']));
+        record['CardExpiration'] = moment(expiration).format('YYYY-MM-DD');
+        //record['Last4DigitsOfCard'] = ((/([0-9]+)/ig).exec(charges[0]['DefaultPaymentMethod.CreditCardMaskNumber']) || [])[1];
+        
+        // account data
+        record['RepName'] = charges[0]['Account.renewalRep__c'];
+        record['RORName'] = charges[0]['Account.resellerofRecord__c'];
+        record['RORNumber'] = ((/([0-9]+)/ig).exec(charges[0]['Account.resellerofRecord__c']) || [])[1];
+        record['AccountId'] = charges[0]['Account.Id'];
+
+        return record;
+    }).filter(r => typeof r !== 'undefined');
+}
+module.exports = {
+    mapDataToFields,
+    mapRatePlanToProduct
+};
+</code></pre>
+
+<p>This code snippet defines two functions for processing data likely retrieved from a database, possibly related to subscriptions or billing.</p>
+<p><strong>1. <code>mapRatePlanToProduct(description)</code>:</strong></p>
+<ul>
+<li>Takes a <code>description</code> string (presumably from a rate plan) as input.</li>
+<li>Converts the description to lowercase.</li>
+<li>Uses a series of <code>if</code> and <code>else if</code> statements to map the description to a product category (e.g., &quot;trial&quot;, &quot;discount&quot;, &quot;actpremiumcloud&quot;, etc.).</li>
+<li>If no match is found, it throws an error.</li>
+</ul>
+<p><strong>2. <code>mapDataToFields(records)</code>:</strong></p>
+<ul>
+<li>Takes an array of <code>records</code> (likely objects containing subscription data) as input.</li>
+<li>Groups the records by <code>Account.Id</code> using <code>_.groupBy</code> from Lodash.</li>
+<li>Iterates through each unique <code>Account.Id</code> and further groups the records by <code>RatePlanCharge.Id</code>.</li>
+<li>Extracts the latest <code>RatePlanCharge</code> for each group (based on <code>RatePlanCharge.Version</code>).</li>
+<li>Creates a new object <code>record</code> for each account, containing the latest charges sorted by <code>Subscription.TermEndDate</code> in descending order.</li>
+<li>Attempts to find the first record with contact information (either <code>SoldToContact.WorkEmail</code> or <code>BillToContact.WorkEmail</code>) and logs a message if no contact information is found.</li>
+</ul>
+<p><strong>In essence:</strong></p>
+<p>This code snippet processes subscription data, categorizes rate plans into product types, and extracts relevant information for each account, including the latest charges and contact details.</p>

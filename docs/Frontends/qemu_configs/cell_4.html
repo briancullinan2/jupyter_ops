@@ -1,0 +1,13 @@
+
+
+<pre><code>qemu-system-x86_64 -monitor stdio \
+    -device ati-vga \
+    -enable-kvm -accel hvf \
+    -smp 2 \
+    -m 3G \
+    -net nic,model=virtio -net user,hostname=windowsvm \
+    -drive if=ide,index=1,media=cdrom,file="" \
+    -drive file="./Parallels/Windows 10.pvm/harddisk.hdd/harddisk.hdd.0.{5fbaabe3-6958-40ff-92a7-860e329aab41}.hds",if=none,id=windowshdd \
+    -device virtio-blk-pci,drive=windowshdd,bus=pci.0,bootindex=2
+</code></pre>
+

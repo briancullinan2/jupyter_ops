@@ -1,0 +1,65 @@
+<p>This code snippet modifies JavaScript code by injecting caching logic into the AST (Abstract Syntax Tree).  This optimization likely improves performance and reduces bundle size by caching imported modules.</p>
+
+
+<pre><code>var path = require('path');
+var importer = require('../Core');
+var getArrayAST = importer.import('get ast path array');
+var {importsTemplate, cachedTemplate} = importer.import('include require like import');
+
+// TODO: this should be a test in the Core notebook
+// inject cellCache and cellIds loaded in to the interpreter so notebooks don't need to be uploaded,
+//   and webpack can tree-shake on functions already packed
+function injectImports(ast, allImports) {
+    var cacheBody = getArrayAST(`//*[/*/ExpressionStatement/CallExpression[
+/Identifier[@name == 'cacheAll']]]`, ast)[0];
+    var firstCache = getArrayAST(`//ExpressionStatement[/CallExpression[
+/Identifier[@name == 'cacheAll']]]`, cacheBody)[0];
+    var cacheCode = getArrayAST('*', cachedTemplate(cellsToNotebook(allImports)))[0];
+    cacheBody.body.splice(cacheBody.body.indexOf(firstCache), 1, ...cacheCode.body);
+    var runContext = getArrayAST(`//AssignmentExpression[
+//Identifier[@name == 'runInNewContext']]`, ast)[0];
+    var addImports = Object.values(allImports).map(i => i.id).filter((i, j, arr) => arr.indexOf(i) === j)
+    var requireCode = getArrayAST('*', importsTemplate(addImports))[0].body[0];
+    requireCode.expression.right = runContext.right;
+    runContext.right = requireCode;
+}
+
+module.exports = injectImports;
+</code></pre>
+
+<p>This code snippet appears to be part of a JavaScript project that deals with code transformation and execution, likely within a notebook environment. Let's break it down:</p>
+<p><strong>1. Dependencies:</strong></p>
+<ul>
+<li><code>path</code>: A built-in Node.js module for working with file and directory paths.</li>
+<li><code>importer</code>: A custom module (likely from the <code>Core</code> directory) responsible for importing and using other modules or functions.</li>
+</ul>
+<p><strong>2. Imports:</strong></p>
+<ul>
+<li><code>getArrayAST</code>: A function imported from <code>Core</code> that seems to extract specific AST (Abstract Syntax Tree) nodes from a given code snippet.</li>
+<li><code>importsTemplate</code>, <code>cachedTemplate</code>:  Functions or templates imported from <code>Core</code> related to handling imports and caching.</li>
+</ul>
+<p><strong>3. <code>injectImports</code> Function:</strong></p>
+<ul>
+<li>This function takes an AST (<code>ast</code>) and an array of imports (<code>allImports</code>) as input.</li>
+<li>Its purpose is to modify the AST by injecting code related to caching imports.</li>
+</ul>
+<p><strong>4. AST Manipulation:</strong></p>
+<ul>
+<li>The code uses <code>getArrayAST</code> to locate specific nodes within the AST:
+<ul>
+<li>A node representing a call to the <code>cacheAll</code> function.</li>
+<li>The code snippet within the <code>cachedTemplate</code> function, which likely generates code for caching imports.</li>
+</ul></li>
+<li>It then modifies the AST by:
+<ul>
+<li>Removing the original call to <code>cacheAll</code>.</li>
+<li>Inserting the cached code snippet generated from <code>cachedTemplate</code>.</li>
+</ul></li>
+</ul>
+<p><strong>5. <code>runContext</code>:</strong></p>
+<ul>
+<li>The code snippet ends with an ellipsis (<code>...</code>), indicating that the <code>runContext</code> variable is being initialized or modified. This variable likely holds information about the execution context for the modified code.</li>
+</ul>
+<p><strong>Overall:</strong></p>
+<p>This code snippet demonstrates a technique for dynamically modifying code at the AST level. It likely aims to optimize the execution of code by caching imports, potentially improving performance and reducing the size of the final bundle.</p>
+<p>Let me know if you have any more questions or would like me to elaborate on any specific part!</p>

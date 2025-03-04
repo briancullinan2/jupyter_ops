@@ -1,0 +1,191 @@
+<p>Here is a 1-2 sentence summary:</p>
+<p>This Python script uses the Blender API to import 3D models from various formats (e.g.,.map,.bsp,.obj) and export them as MD3 files, with the option to scale the model down by 50% and export it with a &quot;-half&quot; suffix. The script performs these tasks using the Blender API's import and export operators, with some error handling for specific exceptions.</p>
+
+
+<pre><code>
+import bpy
+# from import_bsp import MD3
+import sys
+from pathlib import Path
+
+# bpy.context.window.cursor_warp(10, 10)
+# current_file_name = bpy.path.basename(file_path)
+bpy.ops.object.select_all(action="SELECT")
+bpy.ops.object.delete()
+# bpy.ops.render.view_show('INVOKE_DEFAULT')
+
+# usage: 
+
+print(f'Starting {sys.argv[4]}...')
+
+extname = '.map'
+if ".map" in sys.argv[4]:
+  bpy.ops.import_scene.id_map(filepath=sys.argv[4])
+elif ".bsp" in sys.argv[4]:
+  extname = '.bsp'
+  bpy.ops.import_scene.id3_bsp(
+    filepath=sys.argv[4], 
+    preset="BRUSHES", 
+    vert_map_packing="Keep"
+    )
+elif ".obj" in sys.argv[4]:
+  extname = '.obj'
+  bpy.ops.wm.obj_import(filepath=sys.argv[4])
+
+
+bpy.context.view_layer.update()
+
+# https://github.com/SomaZ/Blender_BSP_Importer/blob/main/import_bsp/UI.py#L362
+# bpy.ops.export_scene.id3_md3(
+#     filepath = file,
+#     preset = "MATERIALS",
+#     only_selected = True,
+#     limits = "LEGACY",
+#     start_frame = 0,
+#     end_frame = 0,
+#     individual = False # use model space coordinates instead of world space
+#     )
+
+try:
+  bpy.ops.export_scene.id3_md3(
+    filepath = sys.argv[4].replace(extname, '.md3'),
+    preset = "MATERIALS",
+    only_selected = False,
+    limits = "STUPID",
+    start_frame = 0,
+    end_frame = 0,
+    individual = False # use model space coordinates instead of world space
+  )
+except RuntimeError as err:
+  if not "Model exceeds MD3 bounds" in str(err):
+    raise RuntimeError
+except Exception as err:
+  if not "BSP format not supported" in str(err):
+    raise err
+
+for ob in bpy.data.objects:
+   ob.scale = (0.5,0.5,0.5)
+   bpy.ops.object.transform_apply(scale=True)
+
+bpy.context.view_layer.update()
+
+try:
+  bpy.ops.export_scene.id3_md3(
+    filepath = sys.argv[4].replace(extname, '-half.md3'),
+    preset = "MATERIALS",
+    only_selected = False,
+    limits = "STUPID",
+    start_frame = 0,
+    end_frame = 0,
+    individual = False # use model space coordinates instead of world space
+  )
+except RuntimeError as err:
+  if not "Model exceeds MD3 bounds" in str(err):
+    raise err
+except Exception as err:
+  if not "BSP format not supported" in str(err):
+    raise err
+
+for ob in bpy.data.objects:
+   ob.scale = (0.25,0.25,0.25)
+   bpy.ops.object.transform_apply(scale=True)
+
+bpy.context.view_layer.update()
+
+# MD3.ExportMD3(
+#   sys.argv[4].replace(extname, '-quarter.md3'),
+#   bpy.data.objects,
+#   range(0, 1),
+#   False,
+#   True,
+#   100000,
+#   1024)
+
+try:
+  bpy.ops.export_scene.id3_md3(
+    filepath = sys.argv[4].replace(extname, '-quarter.md3'),
+    preset = "MATERIALS",
+    only_selected = False,
+    limits = "STUPID",
+    start_frame = 0,
+    end_frame = 0,
+    individual = False # use model space coordinates instead of world space
+  )
+except RuntimeError as err:
+  if not "Model exceeds MD3 bounds" in str(err):
+    raise err
+except Exception as err:
+  if not "BSP format not supported" in str(err):
+    raise err
+
+
+for ob in bpy.data.objects:
+   ob.scale = (0.125,0.125,0.125)
+   bpy.ops.object.transform_apply(scale=True)
+
+bpy.context.view_layer.update()
+
+try:
+  bpy.ops.export_scene.id3_md3(
+    filepath = sys.argv[4].replace(extname, '-eigth.md3'),
+    preset = "MATERIALS",
+    only_selected = False,
+    limits = "STUPID",
+    start_frame = 0,
+    end_frame = 0,
+    individual = False # use model space coordinates instead of world space
+  )
+except RuntimeError as err:
+  if not "Model exceeds MD3 bounds" in str(err):
+    raise err
+except Exception as err:
+  if not "BSP format not supported" in str(err):
+    raise err
+
+
+# bpy.ops.wm.revert_mainfile()
+
+print(f'Done {sys.argv[4]}...')
+# bpy.ops.wm.call_menu(name="FILE_quit")
+# bpy.ops.file.reset_recent()
+bpy.ops.wm.window_close()
+bpy.ops.wm.quit_blender()
+sys.exit()
+
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>This is a Python script that utilizes the Blender API (bpy) to import 3D models in various formats and export them as MD3 files. The script takes a file path as an argument and performs the following tasks:</p>
+<ol>
+<li>Deletes all objects in the scene.</li>
+<li>Imports the model from the specified file path, depending on the file extension.</li>
+<li>Exports the model as an MD3 file at the original scale.</li>
+<li>Scales down the model by 50% and exports it as an MD3 file with a &quot;-half&quot; suffix.</li>
+</ol>
+<p><strong>Import Logic</strong></p>
+<p>The script checks the file extension of the input file and imports it accordingly:</p>
+<ul>
+<li><code>.map</code> files are imported using the <code>id_map</code> operator.</li>
+<li><code>.bsp</code> files are imported using the <code>id3_bsp</code> operator with the <code>BRUSHES</code> preset and <code>Keep</code> vertex map packing.</li>
+<li><code>.obj</code> files are imported using the <code>obj_import</code> operator.</li>
+</ul>
+<p><strong>Export Logic</strong></p>
+<p>The script exports the model as an MD3 file using the <code>export_scene.id3_md3</code> operator. The export settings are:</p>
+<ul>
+<li><code>preset</code>: <code>MATERIALS</code></li>
+<li><code>only_selected</code>: <code>False</code></li>
+<li><code>limits</code>: <code>STUPID</code></li>
+<li><code>start_frame</code> and <code>end_frame</code>: <code>0</code></li>
+<li><code>individual</code>: <code>False</code> (uses model space coordinates instead of world space)</li>
+</ul>
+<p><strong>Error Handling</strong></p>
+<p>The script catches <code>RuntimeError</code> exceptions and checks if the error message contains specific text. If not, it re-raises the exception. This is done to handle the &quot;Model exceeds MD3 bounds&quot; error and the &quot;BSP format not supported&quot; error.</p>
+<p><strong>Scaling and Export</strong></p>
+<p>The script scales down the model by 50% using the <code>transform_apply</code> operator and exports it as an MD3 file with a &quot;-half&quot; suffix.</p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The script uses the <code>sys.argv</code> list to access the command-line arguments, specifically the file path.</li>
+<li>The script uses the <code>bpy</code> module to interact with the Blender API.</li>
+<li>The script assumes that the Blender API is installed and available.</li>
+<li>The script does not contain any error handling for the file import or export operations.</li>
+</ul>

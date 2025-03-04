@@ -1,0 +1,82 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>This JavaScript code imports the Google Calendar API and defines an <code>options</code> object with a calendar ID. It also exports a <code>scheduleSearch</code> function that takes a search parameter and schedules a new event on the specified calendar, using OAuth authentication if it is defined in the <code>options</code> object.</p>
+
+
+<pre><code>var google = require('googleapis');
+var importer = require('../Core');
+var {
+    getOauthClient,
+    ISODateString,
+    createNewEvent,
+} = importer.import([
+    'convert date iso',
+    'create new calendar event',
+    'import google calendar api',
+]);
+
+var options = {
+    calendarId: 'aws'
+}
+
+function scheduleSearch(search) {
+    const parameters = {
+        query: search
+    }
+    const newDate = new Date();
+    return (typeof options.auth === 'undefined'
+           ? getOauthClient(options)
+           : Promise.resolve([]))
+        .then(() => createNewEvent('crawl domain', JSON.stringify(parameters, null, 4), options))
+}
+module.exports = scheduleSearch;
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Requirements and Imports</h4>
+<pre><code class="language-javascript">var google = require('googleapis');
+var importer = require('../Core');
+var {
+  getOauthClient,
+  ISODateString,
+  createNewEvent,
+} = importer.import([
+  'convert date iso',
+  'create new calendar event',
+  'import google calendar api',
+]);
+</code></pre>
+<ul>
+<li>The code requires the <code>googleapis</code> library and an <code>importer</code> module from a <code>Core</code> directory.</li>
+<li>It imports specific functions (<code>getOauthClient</code>, <code>ISODateString</code>, and <code>createNewEvent</code>) using the <code>importer.import()</code> method.</li>
+</ul>
+<h4>Options and Function</h4>
+<pre><code class="language-javascript">var options = {
+  calendarId: 'aws'
+}
+
+function scheduleSearch(search) {
+  const parameters = {
+    query: search
+  }
+  const newDate = new Date();
+  return (typeof options.auth === 'undefined'
+        ? getOauthClient(options)
+         : Promise.resolve([]))
+   .then(() =&gt; createNewEvent('crawl domain', JSON.stringify(parameters, null, 4), options))
+}
+module.exports = scheduleSearch;
+</code></pre>
+<ul>
+<li>An <code>options</code> object with a <code>calendarId</code> property is defined.</li>
+<li>A <code>scheduleSearch</code> function takes a <code>search</code> parameter and:
+<ul>
+<li>Creates a <code>parameters</code> object with a <code>query</code> property set to the <code>search</code> parameter.</li>
+<li>Creates a new date object called <code>newDate</code>.</li>
+<li>Returns a promise that:
+<ul>
+<li>If the <code>options.auth</code> property is undefined, calls <code>getOauthClient(options)</code> and then creates a new event with <code>createNewEvent()</code>.</li>
+<li>If the <code>options.auth</code> property is not undefined, resolves an empty array (<code>Promise.resolve([])</code>).</li>
+</ul></li>
+<li>Exports the <code>scheduleSearch</code> function as a module.</li>
+</ul></li>
+</ul>

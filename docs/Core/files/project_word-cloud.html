@@ -1,0 +1,79 @@
+<p>This code generates a word cloud visualization of a project's imported packages and relative files, using a custom <code>importer</code> module and the <code>d3.ipynb</code> library for word cloud creation.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+    
+function projectWordCloud(project) {
+    var d3CloudToSVG = importer.import('d3.ipynb[create word-cloud]');
+    var relativePaths = importer.import('relative paths and includes', {project});
+    
+    var words = [];
+
+    function wordCount(r) {
+        var words = r['packages'].map(p => p.import)
+            .concat(r['packages'].map(p => path.basename(p.file)))
+            .concat(r['relatives'].map(r => path.basename(r.import)))
+            .concat(r['relatives'].map(r => path.basename(r.file)));
+        var wordCount = {};
+        words.forEach(w => {
+            if (typeof wordCount[w] === 'undefined') {
+                wordCount[w] = 15;
+            } else {
+                wordCount[w]++;
+            }
+        });
+        return Object.keys(wordCount).map((d) => ({text: d, size: wordCount[d]}));
+    };
+
+    return relativePaths(project)
+        .then(words => d3CloudToSVG(wordCount(words)));
+}
+
+module.exports = projectWordCloud;
+
+if(typeof $$ !== 'undefined') {
+    var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+    var project = PROFILE_PATH + '/Documents/portal';
+
+    $$.async()
+    projectWordCloud(project)
+        .then(svg => $$.svg(svg))
+        .catch(e => $$.sendError(e));
+}
+</code></pre>
+
+<p>This code generates a word cloud visualization based on the imported packages and relative files within a given project.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: Likely a custom module for importing functions and modules.</li>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+</ul></li>
+<li><p><strong><code>projectWordCloud</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>project</code> path as input.</li>
+<li>Imports <code>d3.ipynb[create word-cloud]</code> for generating the word cloud.</li>
+<li>Imports <code>relative paths and includes</code> to get a list of relative paths and imports within the project.</li>
+<li>Defines a <code>wordCount</code> function that:
+<ul>
+<li>Extracts words from packages, relative imports, and file names.</li>
+<li>Counts the occurrences of each word.</li>
+<li>Returns an array of word objects with <code>text</code> and <code>size</code> properties.</li>
+</ul></li>
+<li>Calls <code>relativePaths</code> to get the list of relative paths and imports.</li>
+<li>Calls <code>d3CloudToSVG</code> with the word count data to generate the SVG word cloud.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>projectWordCloud</code> function.</li>
+</ul></li>
+<li><p><strong>Conditional Execution:</strong></p>
+<ul>
+<li>Checks if <code>$$</code> is defined (likely a special environment variable).</li>
+<li>If defined, it sets the <code>project</code> path to a default location and calls <code>projectWordCloud</code> to generate the word cloud.</li>
+<li>Sends the resulting SVG to the caller using <code>$$.svg</code>.</li>
+<li>Handles any errors using <code>$$.sendError</code>.</li>
+</ul></li>
+</ol>

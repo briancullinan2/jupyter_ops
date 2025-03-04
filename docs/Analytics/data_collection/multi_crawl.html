@@ -1,0 +1,114 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules, defines constants for timeouts and connections, and implements two key functions: <code>deQueue</code> for recursively dequeuing tasks from an input queue and <code>multiCrawl</code> for parallel crawling using Selenium connections. The <code>multiCrawl</code> function uses <code>deQueue</code> to crawl through an input list and returns a promise with the crawl results.</p>
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+
+var TIMEOUT = 1000;
+var CONNECTIONS = 3;
+
+// recursively dequeue tasks
+function deQueue(inputQueue, searchCallback, ctx) {
+    const results = [];
+    console.log(ctx.client.requestHandler.sessionID);
+    const callback = typeof searchCallback === 'function'
+        ? searchCallback
+        : importer.import(searchCallback, Object.assign({useCache: false}, ctx));
+    if(inputQueue.length > 0) {
+        const item = inputQueue.shift();
+        return new Promise(resolve => setTimeout(() => resolve(), 100))
+            .then(() => callback(...[item, ctx]))
+            .catch(e => {
+                console.log(e + '');
+                if((e + '').indexOf('Already') > -1 || (e + '').indexOf('session') > -1) {
+                    inputQueue.push(item);
+                    throw new Error('Abandoning session :(', e);
+                }
+            })
+            .then(r => results.push(r))
+            .then(() => deQueue(inputQueue, searchCallback, ctx))
+            .then(r => results.concat(r))
+            .catch(e => console.log(e))
+    } else {
+        return results;
+    }
+}
+
+// create a number of individual selenium sessions and dequeue the tasks with the callback search
+function multiCrawl(inputList, searchCallback) {
+    var indexes = Array.from(Array(Math.min(inputList.length, CONNECTIONS)).keys());
+    var connections = [];
+    var promises = indexes.map((s, i) => resolve => {
+        const client = runSeleniumCell(false, false);
+        return client
+            // skip this if error
+            //.then(() => connections[i].onlyOneWindow())
+            //.then(() => connections[i].resizeWindow())
+            .then(ctx => {
+                connections.push(ctx);
+                resolve(ctx)
+            })
+            .catch(e => {
+                console.log(e);
+                resolve(null);
+            })
+    });
+    var queue = [].concat(inputList);
+    var count = 0;
+    return importer.runAllPromises(promises)
+        .then(() => {
+            console.log(connections.map(c => c.client.requestHandler.sessionID));
+        })
+        .then(() => {
+            return connections[0].client
+                .scanning(true)
+                .then(() => connections[0].getAllSessionUrls())
+                .scanning(false)
+        })
+        .then(() => console.log('done loading sessions'))
+        .then(() => Promise.all(connections.map(ctx => deQueue(queue, searchCallback, ctx))))
+        .then(r => [].concat([], ...r))
+}
+module.exports = multiCrawl;
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Import Statements</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+</code></pre>
+<ul>
+<li>The code starts by importing two modules: <code>importer</code> from <code>../Core</code> and <code>runSeleniumCell</code> from the <code>selenium cell</code> module imported by <code>importer</code>.</li>
+</ul>
+<h3>Constants</h3>
+<pre><code class="language-javascript">var TIMEOUT = 1000;
+var CONNECTIONS = 3;
+</code></pre>
+<ul>
+<li>Two constants are defined: <code>TIMEOUT</code> with a value of 1000 (1 second) and <code>CONNECTIONS</code> with a value of 3.</li>
+</ul>
+<h3>deQueue Function</h3>
+<pre><code class="language-javascript">function deQueue(inputQueue, searchCallback, ctx) {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>deQueue</code> function takes three arguments: <code>inputQueue</code>, <code>searchCallback</code>, and <code>ctx</code>.</li>
+<li>It recursively dequeues tasks from the <code>inputQueue</code> using the <code>searchCallback</code> function.</li>
+<li>If an error occurs during the execution of the <code>searchCallback</code> function, the task is pushed back to the input queue.</li>
+<li>The function returns a promise that resolves with an array of results.</li>
+</ul>
+<h3>multiCrawl Function</h3>
+<pre><code class="language-javascript">function multiCrawl(inputList, searchCallback) {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>multiCrawl</code> function takes two arguments: <code>inputList</code> and <code>searchCallback</code>.</li>
+<li>It creates an array of connections using the <code>runSeleniumCell</code> function.</li>
+<li>It uses <code>Promise.all</code> to wait for the connections to be established.</li>
+<li>It then creates a queue with the input list and starts the <code>deQueue</code> function with the queue and the connections.</li>
+<li>The function returns a promise that resolves with the results of thecrawl.</li>
+</ul>

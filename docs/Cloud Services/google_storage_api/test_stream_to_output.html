@@ -1,0 +1,60 @@
+<p>This code defines a utility function called <code>streamToOutput</code> that downloads a file from a URL or processes a stream and saves it to a local file.  It handles directory creation and utilizes imported functions for file fetching and stream processing.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var mkdirpSync = importer.import('mkdirp');
+var fetchOrStream = importer.import('fetch file or stream');
+
+// locally based utility for editing styles
+function streamToOutput(fileUrl, bucketName, stream) {
+    var outputPath = path.join(path.resolve(process.env.PROJECT_OUTPUT),
+                               fileUrl.replace(/\?.*/ig, ''));
+    mkdirpSync(path.dirname(outputPath));
+    var writeStream = fs.createWriteStream(outputPath);
+    return fetchOrStream(stream || fileUrl, writeStream)
+        .then(() => outputPath)
+}
+
+module.exports = streamToOutput;
+</code></pre>
+
+<p>This code defines a utility function called <code>streamToOutput</code> that takes a file URL, a bucket name, and an optional stream as input.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+<li><code>path</code>: Node.js built-in module for working with file and directory paths.</li>
+<li><code>importer</code>: A custom module (likely located in <code>../Core</code>) used to import other functions.</li>
+</ul></li>
+<li><p><strong>Imported Functions:</strong></p>
+<ul>
+<li><code>mkdirpSync</code>: Imported from <code>importer</code>, likely a function to create directories recursively.</li>
+<li><code>fetchOrStream</code>: Imported from <code>importer</code>, likely a function to fetch a file from a URL or process a stream.</li>
+</ul></li>
+<li><p><strong><code>streamToOutput</code> Function:</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Takes a file URL, bucket name, and an optional stream, downloads the file content, and saves it to a local file.</li>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>fileUrl</code>: The URL of the file to download.</li>
+<li><code>bucketName</code>: The name of the bucket (likely used for context or potential future integration).</li>
+<li><code>stream</code>: An optional stream object containing the file data.</li>
+</ul></li>
+<li><strong>Logic:</strong>
+<ul>
+<li>Constructs the output file path based on the <code>fileUrl</code> and the <code>PROJECT_OUTPUT</code> environment variable.</li>
+<li>Uses <code>mkdirpSync</code> to create any necessary parent directories for the output file.</li>
+<li>Creates a write stream using <code>fs.createWriteStream</code> to write the downloaded data to the output file.</li>
+<li>Calls <code>fetchOrStream</code> to either fetch the file from the URL or process the provided stream, writing the data to the write stream.</li>
+<li>Returns the path to the saved output file once the download/processing is complete.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = streamToOutput;</code>: Makes the <code>streamToOutput</code> function available for use in other modules.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a reusable function for downloading files from URLs or processing streams and saving them to local files.</p>

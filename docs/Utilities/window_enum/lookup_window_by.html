@@ -1,0 +1,67 @@
+<p>Here's a summary of the <code>getTitle(int i)</code> function in one sentence:</p>
+<p>The <code>getTitle(int i)</code> function retrieves the title of a window with the specified layer index <code>i</code> by searching through an array of window dictionaries and constructing a string with the window's layer index and owner name.</p>
+<p>Alternatively, you can also condense the summary into two sentences:</p>
+<p>The <code>getTitle(int i)</code> function searches for a window with a matching layer index <code>i</code> in an array of window dictionaries.<br />
+If found, it constructs a string with the window's layer index and owner name, and returns a duplicate of this string as a C-style string.</p>
+
+
+<pre><code>__attribute__((visibility("default")))
+const char* getTitle(int i) {
+    if (windows == NULL) {
+        count = enumWindows();
+    }
+
+    NSDictionary* targetWindow = nil;
+    for (NSDictionary* window in windows) {
+        NSNumber* windowLayer = (NSNumber*)[window objectForKey:(__bridge NSString*)kCGWindowLayer];
+        if (windowLayer && [windowLayer intValue] == i) { // Compare with the provided index
+            targetWindow = window;
+            break;
+        }
+    }
+
+    if (!targetWindow) {
+        return NULL;
+    }
+
+    NSString* windowName = (NSString*)[targetWindow objectForKey:(__bridge NSString*)kCGWindowOwnerName];
+    NSNumber* windowLayer = (NSNumber*)[targetWindow objectForKey:(__bridge NSString*)kCGWindowLayer];
+    NSString* res = [NSString stringWithFormat:@"%@: %s", windowLayer, [windowName UTF8String]];
+    
+    return strdup([res UTF8String]); // Use strdup to return a persistent C-string
+}
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Code Attributes</h4>
+<ul>
+<li><code>__attribute__((visibility(&quot;default&quot;)))</code>: This attribute specifies the visibility of the function in the compiled binary. In this case, it is set to &quot;default&quot;, which means the function will be visible to other objects outside the current unit.</li>
+</ul>
+<h4>Function <code>getTitle(int i)</code></h4>
+<ul>
+<li><strong>Purpose</strong>: Retrieves the title of a window with the specified layer index.</li>
+<li><strong>Parameters</strong>:
+<ul>
+<li><code>i</code>: The layer index of the target window.</li>
+</ul></li>
+<li><strong>Variables</strong>:
+<ul>
+<li><code>windows</code>: An array of dictionaries containing window information. It is assumed to be initialized elsewhere.</li>
+<li><code>targetWindow</code>: A temporary dictionary variable to store the target window.</li>
+<li><code>count</code>: A variable used to store the number of windows, initialized in the <code>enumWindows()</code> function.</li>
+</ul></li>
+<li><strong>Flow</strong>:
+<ol>
+<li>If the <code>windows</code> array is empty, it is populated by calling the <code>enumWindows()</code> function.</li>
+<li>Iterate through the <code>windows</code> array and check if the current window's layer index matches the provided <code>i</code>. If a match is found, store the window in <code>targetWindow</code> and break the loop.</li>
+<li>If no matching window is found, return <code>NULL</code>.</li>
+<li>Extract the window's owner name and layer index from the <code>targetWindow</code> dictionary.</li>
+<li>Construct a string with the window's layer index and owner name.</li>
+<li>Return a duplicate of the constructed string using <code>strdup</code>.</li>
+</ol></li>
+</ul>
+<h4>Function Return Value</h4>
+<ul>
+<li>The function returns a C-style string (a pointer to a character array) using <code>strdup</code>. This ensures the returned string is persistent and can be stored or used by other functions.</li>
+</ul>

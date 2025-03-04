@@ -1,0 +1,81 @@
+<p>The <code>getResult</code> function acts as a command dispatcher, verifying user permissions and extracting parameters before executing a requested command.</p>
+
+
+<pre><code>var path = require('path');
+var assert = require('assert');
+var importer = require('../Core');
+var groupPermissions = importer.import('test get permissions');
+var getParameters = importer.import('function parameters');
+
+function getResult(props) {
+    if (props.result === null) {
+        throw new Error('command not found, please specify a command');
+    }
+    assert(props.result.id, 'something is terribly wrong with this execution: '
+           + JSON.stringify(props.result));
+    
+    // filter permissions compare id with permissions
+    props.allowed = Object.keys(groupPermissions(props.circles || ['Public'])).includes(props.result.id);
+    if(!props.allowed) {
+        throw new Error('Would have run "' + props.result.id
+                        + '" but you don\'t have permission. '
+                        + 'Deploy your own server to get access to all RPC functions.');
+    }
+    
+    console.log(`running ${props.result.id} (${props.command})`)    
+    // TODO: make this nicer, ugly because importer doesn't conform to the same importing
+    //   style and therefore functions are missing from the context when loaded separately.
+    // This is maybe a sign there is something wrong with this style of dependency injection
+    var commandResult = importer.import(result.id);
+    if(commandResult && typeof commandResult[Object.keys(commandResult)[0]] === 'function') {
+        commandResult = commandResult[Object.keys(commandResult)[0]];
+    }
+       
+    if(typeof commandResult === 'function') {
+        var parameterValues = [];
+        if(props.body) {
+            if(typeof props.body[0] !== 'undefined') {
+                parameterValues = props.body;
+            } else {
+                parameterValues = getParameters(commandResult).slice(1).map((k, i) => {
+                    const p = props.body[k] || props.body[i];
+                    if(typeof p === 'undefined' || p === 'undefined') {
+                        return;
+                    }
+                    return p;
+                });
+            }
+        }
+        console.log(`calling ${props.result.id} (${props.command}) ${JSON.stringify(parameterValues)}`)    
+        return commandResult.apply(null, parameterValues);
+    }
+    return commandResult;
+}
+
+module.exports = getResult;
+
+</code></pre>
+
+<p>This code snippet defines a function <code>getResult</code> that handles the execution of a command based on provided parameters and permissions.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules (<code>path</code>, <code>assert</code>, <code>importer</code>).</li>
+<li>It imports functions <code>groupPermissions</code> and <code>getParameters</code> from the <code>importer</code>.</li>
+</ul></li>
+<li><p><strong><code>getResult</code> Function:</strong></p>
+<ul>
+<li>Takes an object <code>props</code> containing command information, user permissions, and parameters.</li>
+<li>Checks if a valid command ID exists and throws an error if not.</li>
+<li>Determines if the user has permission to execute the command based on <code>groupPermissions</code>.</li>
+<li>Logs the command being executed.</li>
+<li>Imports the actual command function from the <code>importer</code> based on the command ID.</li>
+<li>Extracts parameters from the <code>props</code> object, handling different parameter formats.</li>
+</ul></li>
+<li><p><strong>Command Execution:</strong></p>
+<ul>
+<li>Calls the imported command function with the extracted parameters.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code acts as a command dispatcher, ensuring proper authorization and parameter handling before executing a user-requested command.</strong></p>

@@ -1,0 +1,33 @@
+
+
+<pre><code>const fs = require('fs');
+
+function decodeJupyterNotebook(filePath) {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        
+        try {
+            const notebook = JSON.parse(data);
+            const cells = notebook.cells;
+            
+            cells.forEach(cell => {
+                if (cell.cell_type === 'code') {
+                    const source = cell.source.join('');
+                    console.log('Decoded code cell content:');
+                    console.log(source);
+                }
+            });
+        } catch (err) {
+            console.error('Error parsing notebook:', err);
+        }
+    });
+}
+
+// Usage example
+decodeJupyterNotebook('Untitled.ipynb');
+
+</code></pre>
+

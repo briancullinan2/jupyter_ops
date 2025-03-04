@@ -1,0 +1,44 @@
+<p>This script clones a GitHub repository named &quot;repository&quot; into a local &quot;project&quot; directory, only if the &quot;master&quot; branch doesn't already exist locally.</p>
+
+
+<pre><code>mkdir -p project ; \
+if git --work-tree=./project branch | grep 'master'; \
+then echo \"Already checked out project\"; \
+else git clone https://{username}@github.com/username/repository ./project ; \
+fi ; ls -la project ; \
+pwd
+</code></pre>
+
+<p>This code snippet checks out a Git repository named &quot;repository&quot; from GitHub into a local directory named &quot;project&quot;.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Directory Creation:</strong></p>
+<ul>
+<li><code>mkdir -p project</code>: Creates a directory named &quot;project&quot; if it doesn't exist. The <code>-p</code> flag ensures that any necessary parent directories are also created.</li>
+</ul></li>
+<li><p><strong>Branch Check:</strong></p>
+<ul>
+<li><code>if git --work-tree=./project branch | grep 'master'; then</code>:
+<ul>
+<li><code>git --work-tree=./project branch</code>: Lists branches within the &quot;project&quot; directory.</li>
+<li><code>grep 'master'</code>: Checks if the &quot;master&quot; branch exists in the list.</li>
+<li><code>then echo &quot;Already checked out project&quot;;</code>: If the &quot;master&quot; branch exists, it prints a message indicating that the project is already checked out.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Cloning Repository:</strong></p>
+<ul>
+<li><code>else git clone https://{username}@github.com/username/repository ./project; fi</code>:
+<ul>
+<li>If the &quot;master&quot; branch doesn't exist, it clones the repository from the specified URL into the &quot;project&quot; directory.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Listing Files:</strong></p>
+<ul>
+<li><code>ls -la project</code>: Lists all files and directories within the &quot;project&quot; directory with detailed information.</li>
+</ul></li>
+<li><p><strong>Current Directory:</strong></p>
+<ul>
+<li><code>pwd</code>: Prints the current working directory.</li>
+</ul></li>
+</ol>
+<p>In essence, this script checks if a local &quot;project&quot; directory exists and if it contains the &quot;master&quot; branch. If not, it clones the repository from GitHub into the &quot;project&quot; directory.</p>

@@ -1,0 +1,118 @@
+<p>This code defines a system for inserting debugging information into JavaScript code by modifying its Abstract Syntax Tree (AST) and injecting calls to a logging function.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {transpile} = importer.import('transpile code')
+var {selectAst, makeExpr} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+
+var STATEMENTS = `//*[contains(@type, "Declaration")]
+|//*[contains(@type, "Statement")]`
+var NEAR_IDENTIFIERS = `
+ ./Identifier/@name
+|./*/Identifier/@name
+|./*/*/Identifier/@name
+|./*/*/*/Identifier/@name
+
+|./parent::*/Identifier/@name
+|./parent::*/*/Identifier/@name
+|./parent::*/*/*/Identifier/@name
+|./parent::*/*/*/*/Identifier/@name
+
+|./parent::*/parent::*/Identifier/@name
+|./parent::*/parent::*/*/Identifier/@name
+|./parent::*/parent::*/*/*/Identifier/@name
+|./parent::*/parent::*/*/*/*/Identifier/@name
+
+`
+
+function inspectCallback(ctx) {
+    console.log(JSON.stringify(ctx))
+}
+
+function inspectTemplate(ctx) {
+    // code inserted in to transpiled module
+    inspectCallback(ctx)
+}
+
+function insertInspect(filename, code, ctx) {
+    var inspect = makeExpr(inspectTemplate)
+
+    // replace line with the line number from original range
+    var range = JSON.parse(ctx.getAttribute('range'))
+    var line = code.substr(0, range[0]).split('\n').length
+    
+    // replace the ctx with nearby identifiers
+    // TODO: 'replace' transpiler command
+    var replaceCtx = selectAst(`.//Identifier[@name="ctx"]`, inspect)
+    var nearbyIdentifiers = selectAst([NEAR_IDENTIFIERS], ctx)
+    var nearbyCtx = makeExpr(`{
+${nearbyIdentifiers.join(',')},
+//ctx: ${JSON.stringify(htmlToTree(ctx))},
+type: "${ctx.getAttribute('type')}",
+line: ${line},
+filename: "${filename}"
+}`)
+    nearbyCtx.setAttribute('parent-attr', 'arguments')
+    replaceCtx.replaceWith(nearbyCtx)
+    
+    // insert into parent statement body
+    // TODO: make this a transpile operation because it contains node calls
+    var parent = selectAst(`./parent::*`, ctx)
+    Array.from(inspect.childNodes).forEach(n => {
+        if(n.setAttribute) {
+            n.setAttribute('parent-attr', 'body')
+        }
+        parent.insertBefore(n, ctx)
+    })
+}
+
+function transpileInspect(code, filename) {
+    return transpile([
+        [STATEMENTS, insertInspect.bind(null, filename, code)]
+    ], code)
+}
+
+module.exports = {
+    inspectCallback,
+    inspectTemplate,
+    transpileInspect,
+}
+</code></pre>
+
+<p>This code defines a function <code>transpileInspect</code> that aims to modify JavaScript code by inserting debugging information into it.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module used to import other functions.</li>
+<li><code>transpile</code>: Function to transpile code (likely JavaScript).</li>
+<li><code>selectAst</code>: Function to select parts of an Abstract Syntax Tree (AST).</li>
+<li><code>htmlToTree</code>: Function to convert HTML to an AST.</li>
+</ul></li>
+<li><p><strong>Constants:</strong></p>
+<ul>
+<li><code>STATEMENTS</code>: XPath expression to select statement nodes in an AST.</li>
+<li><code>NEAR_IDENTIFIERS</code>: XPath expression to select identifiers (variable names) near a given node.</li>
+</ul></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>inspectCallback</code>: Logs the context of a given AST node to the console.</li>
+<li><code>inspectTemplate</code>: A template function that calls <code>inspectCallback</code> with the provided context.</li>
+</ul></li>
+<li><p><strong><code>insertInspect</code> Function:</strong></p>
+<ul>
+<li>Takes the filename, original code, and a context object (likely from an AST) as input.</li>
+<li>Creates an expression <code>inspect</code> using the <code>inspectTemplate</code>.</li>
+<li>Determines the line number of the context node in the original code.</li>
+<li>Selects nearby identifiers using <code>selectAst</code> and <code>NEAR_IDENTIFIERS</code>.</li>
+<li>Constructs a new expression <code>nearbyCtx</code> that includes the nearby identifiers, context information, and the line number.</li>
+<li>Replaces the original context node with <code>nearbyCtx</code>.</li>
+<li>Inserts the <code>inspect</code> expression into the parent statement of the context node.</li>
+</ul></li>
+<li><p><strong><code>transpileInspect</code> Function (Incomplete):</strong></p>
+<ul>
+<li>This function is likely intended to take the original code and transpile it, inserting the <code>insertInspect</code> logic at appropriate points. The code snippet provided is incomplete.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a mechanism to instrument JavaScript code with debugging information by inserting calls to a logging function at specific points within the code. The <code>insertInspect</code> function handles the logic of finding the relevant context and constructing the debugging information.</p>

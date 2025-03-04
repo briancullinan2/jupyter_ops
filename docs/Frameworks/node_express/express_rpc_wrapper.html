@@ -1,0 +1,124 @@
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>The code sets up an Express web server that uses CORS, body parsing, and the <code>getResult</code> function to process incoming requests, and returns a JSON response with a status code of 200 if successful. The server is configured to listen on port 8181, handles error and process events, and exports a <code>start</code> function that returns a promise that does nothing.</p>
+
+
+<pre><code>var cors = require('cors')({origin: true});
+var bodyParser = require('body-parser');
+var express = require('express');
+var importer = require('../Core');
+var { getResult } = importer.import(['get rpc permissions', 'rpc result']);
+
+var app = express();
+var server = require('http').createServer(app);
+app.use(bodyParser.json());    // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({// to support URL-encoded bodies
+    extended: true
+}));
+app.use(cors);
+
+var router = express.Router();
+
+// TODO: ? https://en.wikipedia.org/wiki/Portmap
+router.all('/rpc', (req, res) => {
+    return Promise.resolve([])
+        .then(() => getResult({
+            command: req.body['function'] || req.query['function'],
+            result: importer.interpret(req.body['function'] || req.query['function']),
+            body: req.method === 'POST' ? req.body : req.query,
+            circles: ['Public']
+        }))
+        .then(r => {
+            //console.log(r);
+            res.status(200).send(JSON.stringify(r, null, 4));
+        })
+        // TODO: object assign error?
+        .catch(e => {
+            const resultError = Object.getOwnPropertyNames(e).reduce((alt, key) => {
+                alt[key] = e[key];
+                return alt;
+            }, {});
+            console.log(e);
+            res.status(500).send(JSON.stringify(resultError, null, 4))
+        });
+});
+
+app.use(router);
+
+// open the port
+if(typeof listener !== 'undefined') {
+    listener.close();
+}
+console.log('Listening on 0.0.0.0:8181');
+var listener = server.listen(8181)
+    .on('error', e => {
+        debugger
+        if(e.code !== 'EADDRINUSE') {
+            throw e;
+        }
+    })
+    .on('close', () => {
+        debugger
+    })
+
+// shut down properly
+process.on ('SIGTERM', () => {
+    debugger
+    listener.close()
+    process.exit(0)
+});
+process.on ('SIGINT', () => {
+    debugger
+    listener.close()
+    process.exit(0)
+});
+
+module.exports = function start() {
+    return new Promise(resolve => {
+    })
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.done();
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Dependencies and Setup</h4>
+<ul>
+<li>The code requires the following dependencies:
+<ul>
+<li><code>cors</code> for Cross-Origin Resource Sharing support</li>
+<li><code>body-parser</code> for parsing request bodies</li>
+<li><code>express</code> for creating the web server</li>
+<li><code>importer</code> for importing other modules (not a standard Node module)</li>
+<li><code>getResult</code> and <code>interpret</code> functions imported from <code>importer</code></li>
+</ul></li>
+<li>The code creates an Express application and a server using <code>http</code></li>
+<li>The code sets up CORS and body parsing middleware</li>
+</ul>
+<h4>Routing and Handling</h4>
+<ul>
+<li>The code defines a single route <code>/rpc</code> that handles all HTTP methods</li>
+<li>The route uses the <code>getResult</code> function to process the request, passing in the <code>command</code>, <code>result</code>, <code>body</code>, and <code>circles</code> parameters</li>
+<li>The route returns a JSON response with a status code of 200 if successful</li>
+<li>If an error occurs, the route returns a JSON response with a status code of 500 and the error details</li>
+</ul>
+<h4>Server and Event Handling</h4>
+<ul>
+<li>The code sets up the server to listen on port 8181</li>
+<li>The code sets up event listeners for the server:
+<ul>
+<li><code>error</code> event: catches and logs errors, but does not exit the process if the error is a duplicate address in use error</li>
+<li><code>close</code> event: not used in the code</li>
+</ul></li>
+<li>The code sets up event listeners for process events:
+<ul>
+<li><code>SIGTERM</code>: closes the server and exits the process</li>
+<li><code>SIGINT</code>: closes the server and exits the process</li>
+</ul></li>
+</ul>
+<h4>Exporting and Cleanup</h4>
+<ul>
+<li>The code exports a <code>start</code> function that returns a promise that does nothing</li>
+<li>The code checks for the existence of the <code>$$.done()</code> function and calls it if it exists.</li>
+</ul>

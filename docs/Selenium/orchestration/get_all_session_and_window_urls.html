@@ -1,0 +1,97 @@
+<p>This code uses Selenium to manage multiple browser sessions, resizing and retrieving URLs from each window across all active sessions.  It is designed for use in a testing environment and can be executed asynchronously.</p>
+
+
+<pre><code>var importer = require('../Core');
+var resizeWindow = importer.import('resize selenium window');
+
+var windowCounter = -1;
+function repositionSession(client, s, reposition = true) {
+    client.sessionId = s.id;
+    return client
+        .getUrl()
+        .then(() => client.getWindowHandles())
+        .then(h => {
+            return importer.runAllPromises(h.map(hwnd => resolve => {
+                windowCounter++
+                return client
+                    .switchToWindow(hwnd)
+                    .then(() => reposition ? resizeWindow(client, windowCounter) : [])
+                    .then(() => client.getUrl())
+                    .catch(e => console.log(e))
+                    .then(r => resolve(r))
+            }));
+        });
+}
+
+function getAllSessionUrls(client, reposition = true) {
+    var session, urls;
+    session = client.sessionId;
+    return client
+        .getSessions()
+        .then(r => {
+            return importer.runAllPromises(r.map(s => resolve => {
+                return repositionSession(client, s, reposition)
+                    .catch(e => e.message.includes('chrome not reachable') ? [] : console.log(e))
+                    .then(r => resolve(r));
+            }));
+        })
+        .then(r => {
+            client.sessionId = session;
+            urls = r;
+        })
+        .catch(e => console.log(e))
+        .then(() => urls)
+}
+
+module.exports = getAllSessionUrls;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getAllSessionUrls(false)
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code manages and repositions multiple browser sessions, allowing you to retrieve URLs from each session.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports the <code>resizeWindow</code> function from an external module (<code>importer</code>).</li>
+</ul></li>
+<li><p><strong><code>repositionSession(client, s, reposition = true)</code>:</strong></p>
+<ul>
+<li>Takes a <code>client</code> object (likely Selenium WebDriver), a session object (<code>s</code>), and an optional <code>reposition</code> flag.</li>
+<li>Sets the client's session ID to the provided session ID.</li>
+<li>Gets the URLs of all open windows in the session.</li>
+<li>Resizes each window if <code>reposition</code> is true.</li>
+<li>Gets the URL of each window.</li>
+<li>Catches errors and logs them.</li>
+<li>Returns a promise that resolves with the URL of each window.</li>
+</ul></li>
+</ol>
+<p><strong>getAllSessionUrls(client, reposition = true)</strong></p>
+<ul>
+<li>Gets all active sessions.</li>
+<li>Iterates through each session and calls <code>repositionSession</code> to resize and get the URL of each window in that session.</li>
+<li>Catches errors and logs them.</li>
+<li>Returns a promise that resolves with an array of URLs from all sessions.</li>
+</ul>
+<p><strong>Module Exports</strong></p>
+<ul>
+<li>Exports the <code>getAllSessionUrls</code> function.</li>
+</ul>
+<p><strong>Async Execution (if $$ is defined)</strong></p>
+<ul>
+<li>If a variable <code>$$</code> is defined (likely a testing framework), it executes the <code>getAllSessionUrls</code> function asynchronously.</li>
+<li>Sends the result or error to the testing framework.</li>
+</ul>
+<p><strong>Summary</strong></p>
+<p>This code snippet is designed to manage and interact with multiple browser windows within a Selenium testing environment. It allows you to:</p>
+<ul>
+<li>Get the URLs of all windows in all active sessions.</li>
+<li>Resize each window if desired.</li>
+<li>Handle potential errors gracefully.</li>
+</ul>
+<p>The code is structured to be reusable and adaptable to different testing scenarios.</p>

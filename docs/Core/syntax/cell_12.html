@@ -1,0 +1,28 @@
+
+
+<pre><code>/*
+var wireKernelInterface = {
+    ...metaKernelInterface,
+    // implement all requests, these are required by the meta kernel
+    execute_request, inspect_request, complete_request,
+    history_request, is_complete_request, shutdown_request,
+    // requests maybe not required right now?
+    kernel_info_request, interrupt_request, input_request,
+    connect_request, comm_info_request, kernel_info_request,
+
+    // implement all replys
+    execute_reply, inspect_reply, complete_reply,
+    history_reply, kernel_info_reply, is_complete_reply,
+    connect_reply, comm_info_reply, kernel_info_reply,
+    shutdown_reply, interrupt_reply, input_reply,
+
+    // a few extra protocol methods
+    display_data, update_display_data, execute_input,
+    execute_result, error, status, clear_output,
+    comm_msg, comm_close
+}
+
+module.exports = wireKernelInterface;
+*/
+</code></pre>
+

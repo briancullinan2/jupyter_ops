@@ -1,0 +1,64 @@
+<p>This code acts as a Quake 3 server browser, connecting to a master server to retrieve a list of servers and then scanning each server for detailed information.  It logs the server details and scanned information, and handles connection errors by attempting to reconnect.</p>
+
+
+<pre><code>var importer = require('../Core')
+var master = importer.import('quakejs connection')
+
+var host = 'local.games' //'master.quakejs.com'
+var port = 27950
+
+function testServers() {
+    master.connect(host, port, function (err, servers) {
+        if (err) {
+            console.error(err);
+
+            // attempt to reconnect in a minute
+            setTimeout(testServers, 60000);
+
+            return;
+        }
+
+        servers.forEach(function (server) {
+            console.log(server);
+            
+            master.scanServer(server, function (err, info) {
+                if (err) {
+                    console.log('Failed to scan ' + server.addr + ':' + server.port + ', ' + err.message);
+                    return;
+                }
+
+                console.log(server, info);
+            });
+        });
+    });
+    
+}
+
+module.exports = testServers
+</code></pre>
+
+<p>This code fetches and scans information about Quake 3 servers.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports the <code>quakejs connection</code> module from <code>../Core</code>, which likely provides functions for connecting to and interacting with Quake 3 servers.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets the <code>host</code> and <code>port</code> variables to connect to a Quake 3 master server.</li>
+</ul></li>
+<li><p><strong><code>testServers</code> Function:</strong></p>
+<ul>
+<li>Connects to the master server using <code>master.connect</code>.</li>
+<li>If successful, it iterates through the list of servers received and calls <code>master.scanServer</code> for each server to retrieve detailed information.</li>
+<li>For each server, it logs the server details and the scanned information.</li>
+<li>If there's an error connecting or scanning a server, it logs the error message.</li>
+<li>If there's an error connecting to the master server, it attempts to reconnect after 60 seconds.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>testServers</code> function, making it available to be run from other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code acts as a simple Quake 3 server browser, connecting to a master server, retrieving a list of servers, and then scanning each server for details.</p>

@@ -1,0 +1,35 @@
+<p>This code checks for a running Docker container by name and, if found, stops and removes it.</p>
+
+
+<pre><code>if docker ps | grep "{name}" then; \
+    docker stop {name}; \
+    docker rm {name}; \
+fi
+</code></pre>
+
+<p>This code snippet checks if a Docker container with a specific name (&quot;{name}&quot;) is running and, if so, stops and removes it.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>docker ps | grep &quot;{name}&quot;</code>:</strong></p>
+<ul>
+<li>Executes the <code>docker ps</code> command to list running containers.</li>
+<li>Pipes the output to <code>grep</code> to search for a line containing the specified container name (&quot;{name}&quot;).</li>
+</ul></li>
+<li><p><strong><code>then;</code>:</strong></p>
+<ul>
+<li>If <code>grep</code> finds a match (meaning the container is running), the code block following the <code>then</code> statement is executed.</li>
+</ul></li>
+<li><p><strong><code>docker stop {name};</code>:</strong></p>
+<ul>
+<li>Sends a <code>STOP</code> signal to the container with the specified name.</li>
+</ul></li>
+<li><p><strong><code>docker rm {name};</code>:</strong></p>
+<ul>
+<li>Removes the stopped container with the specified name.</li>
+</ul></li>
+<li><p><strong><code>fi</code>:</strong></p>
+<ul>
+<li>Marks the end of the <code>if</code> statement.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a concise way to stop and remove a Docker container if it is currently running.</p>

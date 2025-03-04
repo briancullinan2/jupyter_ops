@@ -1,0 +1,12 @@
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+
+$$.async()
+runSeleniumCell('test avidbrain')
+    .then(testLogin => testLogin())
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
+</code></pre>
+

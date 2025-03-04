@@ -1,0 +1,116 @@
+<p>Here's a 2-sentence summary:</p>
+<p>This code is designed to parse a directory structure for grammar files and extract language information for a parser generator tool, likely ANTLR. It utilizes two key functions: <code>findGrammars(directory)</code> to recursively extract language information from grammar files, and <code>getParser(language)</code> to search for corresponding parser files.</p>
+
+
+<pre><code>import fs from 'fs'
+import path from 'path'
+
+const PARSER_PATH = path.join(__dirname, '../Resources/Parsers')
+const LANGUAGES = []
+const GRAMMARS = []
+
+function findGrammars(directory) {
+    let grammars = fs.readdirSync(path.join(PARSER_PATH, directory))
+    for(let j = 0; j < grammars.length; j++) {
+        if(grammars[j][0] == '.' || grammars[j].match('examples')) {
+            continue
+        }
+        if(grammars[j].endsWith('.g4')) {
+            let language = path.basename(grammars[j], path.extname(grammars[j]))
+                .replace('Lexer', '').replace('Parser', '')
+            if(!LANGUAGES.includes(directory)) {
+                LANGUAGES.push(directory)
+            }
+            if(!LANGUAGES.includes(language)) {
+                LANGUAGES.push(language)
+            }
+
+            GRAMMARS.push(path.join(directory, grammars[j]))
+        } else if (fs.statSync(path.join(PARSER_PATH, directory, grammars[j])).isDirectory()) {
+            findGrammars(path.join(directory, grammars[j]))
+        }
+    }
+}
+
+let languages = fs.readdirSync(PARSER_PATH)
+for(let i = 0; i < languages.length; i++) {
+    if(languages[i][0] == '.') {
+        continue
+    }
+    if(!fs.statSync(path.join(PARSER_PATH, languages[i])).isDirectory()) {
+        continue
+    }
+    findGrammars(languages[i])
+}
+
+async function getParser(language) {
+    for(let i = 0; i < GRAMMARS.length; i++) {
+        if(GRAMMARS[i].match(language + '/') || GRAMMARS[i].match('/' + language)) {
+            let lang = path.basename(GRAMMARS[i], path.extname(GRAMMARS[i]))
+                .replace('Lexer', '').replace('Parser', '')
+            let lexerPath = path.join(PARSER_PATH, path.dirname(GRAMMARS[i]), lang + 'Lexer.js')
+            let parserPath = path.join(PARSER_PATH, path.dirname(GRAMMARS[i]), lang + 'Parser.js')
+            let listenerPath = path.join(PARSER_PATH, path.dirname(GRAMMARS[i]), lang + 'Listener.js')
+            if(!fs.existsSync(listenerPath)) {
+                listenerPath = path.join(PARSER_PATH, path.dirname(GRAMMARS[i]), lang + 'ParserListener.js')
+            }
+            let hasListener = fs.existsSync(listenerPath)
+            console.log(language, lexerPath, parserPath)
+            if(!fs.existsSync(lexerPath) || !fs.existsSync(parserPath)) {
+                continue
+            }
+            let codeCell = `
+import antlr4 from 'antlr4'
+import lexer from '${lexerPath}'
+import parser from '${parserPath}'
+${hasListener?('import listener from \''+listenerPath+'\''):''}
+export default {antlr4, lexer, parser${hasListener?', listener':''}}
+`
+            let module = await importer.makeESModule(codeCell, __filename + '<inline>', global)
+            return module
+        }
+    }
+    return {}
+}
+
+export default getParser
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>This code is used to parse a directory structure for grammar files and extract language information. It appears to be designed for a parser generator tool, likely ANTLR.</p>
+<h3>Directory Structure</h3>
+<p>The code assumes the following directory structure:</p>
+<pre><code class="language-markdown">Resources/
+  Parsers/
+    Language1/
+      Language1.g4
+      Language1Lexer.js
+      Language1Parser.js
+      Language1Listener.js
+    Language2/
+      Language2.g4
+      Language2Lexer.js
+      Language2Parser.js
+      Language2Listener.js
+   ...
+</code></pre>
+<h3>Functions</h3>
+<h4><code>findGrammars(directory)</code></h4>
+<p>This function recursively traverses the directory structure and extracts language information from grammar files (<code>*.g4</code>).</p>
+<ul>
+<li>It iterates over the files in the current directory and checks if any matches the grammar file pattern.</li>
+<li>If a grammar file is found, it extracts the language name from the file path and adds it to the <code>LANGUAGES</code> array.</li>
+<li>If a subdirectory is found, it calls <code>findGrammars(directory)</code> recursively.</li>
+<li>It adds the grammar file path to the <code>GRAMMARS</code> array.</li>
+</ul>
+<h4><code>getParser(language)</code></h4>
+<p>This function searches for the parser files corresponding to the given language.</p>
+<ul>
+<li>It iterates over the <code>GRAMMARS</code> array and checks if any grammar file path matches the given language.</li>
+<li>If a match is found, it extracts the lexer, parser, and listener file paths using the <code>path</code> module.</li>
+<li>It returns the parser file path.</li>
+</ul>
+<h3>Main Logic</h3>
+<p>The code first reads the top-level <code>Parsers</code> directory and calls <code>findGrammars(directory)</code> for each subdirectory. Then, it calls <code>getParser(language)</code> for each language in the <code>LANGUAGES</code> array.</p>

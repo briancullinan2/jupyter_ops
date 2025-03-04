@@ -1,0 +1,16 @@
+
+
+<pre><code>find /Users/briancullinan/.q3a/unpacked/baseq3vm -iname '*.jpeg' -o -iname '*.jpg' -o -iname '*.heic' -o -iname '*.tga' -o -iname '*.png' -o -iname '*.svg' -o -name '*.webp' -o -name '*.wal' | \
+while IFS= read -r i; do \
+o="${i%.*}"; \
+o="${o%-final*}-final.jpg"; \
+if [ ! -f "$o" ]; then \
+    convert "$i" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality 50% "$o" || true; \
+    rm "$i"; \
+    mv "$o" "${i%.*}.jpg"; \
+else \
+    mv "$o" "${i%.*}.jpg"; \
+fi; \
+done;
+</code></pre>
+

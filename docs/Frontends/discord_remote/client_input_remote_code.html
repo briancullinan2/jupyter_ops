@@ -1,0 +1,205 @@
+<p>Here is a two-sentence summary of the provided code:</p>
+<p>This code adds event listeners to various elements on a web page to capture user interactions, including clicks, key presses, and button clicks, and sends POST requests to a server with session IDs and relevant data. The code also parses query parameters from the URL and sets the session ID property, and defines a function to retrieve checked input values from elements with the class &quot;container&quot;.</p>
+
+
+<pre><code>
+document.addEventListener('DOMContentLoaded', (evt) => {
+
+  let queryParams = {}
+  let params = (window.location.search.split('?')[1] || '').split('&')
+  for(var param in params) {
+    if (params.hasOwnProperty(param)) {
+      let paramParts = params[param].split('=')
+      queryParams[paramParts[0]] = decodeURIComponent(paramParts[1] || "")
+    }
+  }
+
+  if(queryParams.session) {
+    window.session_id = queryParams.session
+  }
+  
+  document.querySelector('.livedev').addEventListener('click', (evt) => {
+    debugger
+    let localX = evt.clientX - evt.currentTarget.offsetLeft
+    let localY = evt.clientY - evt.currentTarget.offsetTop
+    fetch('{BASE_URI}click?session=' + window.session_id, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        x: localX / evt.currentTarget.clientWidth,
+        y: localY / evt.currentTarget.clientHeight
+      })
+    })
+  })
+
+
+  function getSpecialKeys() {
+    let modifiers = document.querySelectorAll('.container input:checked')
+    let result = []
+    for(let i = 0; i < modifiers.length; i++) {
+      result.push(modifiers[i].value)
+    }
+    return result
+  }
+
+
+  let currentTimer
+  document.querySelector('#sendkeys').addEventListener('keypress', (evt) => {
+    if(currentTimer) {
+      return
+    }
+    currentTimer = setTimeout(((target) => {
+      fetch('{BASE_URI}keys?session=' + window.session_id, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: target.value,
+          special: getSpecialKeys()
+        })
+      })
+      target.value = ''
+      currentTimer = void 0
+    }).bind(null, evt.currentTarget), 1000)
+    evt.preventDefault()
+  })
+
+
+  let buttons = document.querySelectorAll('.container button')
+  for(let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', (evt) => {
+      let target = document.querySelector('#sendkeys')
+      let keys = getSpecialKeys()
+      if(evt.currentTarget.value)
+        keys.push(evt.currentTarget.value)
+      fetch('{BASE_URI}keys?session=' + window.session_id, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: target.value,
+          special: keys
+        })
+      })
+      target.value = ''
+      evt.preventDefault()
+    })
+  }
+
+
+
+  setInterval(() => {
+    // TODO: refresh images
+    let images = document.querySelectorAll('.livedev > img')
+    for(let i = 0; i < images.length; i++) {
+      if(images[i].src && !images[i].getAttribute('original-src')) {
+        images[i].setAttribute('original-src', images[i].src)
+      }
+      let originalImage = images[i].getAttribute('original-src')
+      let newImage = originalImage.replace(/\?.*/, '') + '?t=' + Date.now()
+      // set background to previous image
+      if(images[i].src) {
+        images[i].style.backgroundImage = "url('" + encodeURI(images[i].src) + "')"
+      }
+      setTimeout(() => {
+        images[i].src = newImage
+      }, 100)
+    }
+  }, 5000)
+})
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Event Listener for DOM Content Loaded</h3>
+<p>The code starts by adding an event listener to the <code>document</code> object when the DOM content is loaded. This event listener is used to execute a function when the DOM is fully loaded.</p>
+<pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', (evt) =&gt; {
+  // code here
+});
+</code></pre>
+<h3>Parsing Query Parameters</h3>
+<p>The code then parses the query parameters from the current URL. It uses the <code>split()</code> method to extract the query string and then splits it into individual parameters.</p>
+<pre><code class="language-javascript">let queryParams = {}
+let params = (window.location.search.split('?')[1] || '').split('&amp;')
+for(var param in params) {
+  if (params.hasOwnProperty(param)) {
+    let paramParts = params[param].split('=')
+    queryParams[paramParts[0]] = decodeURIComponent(paramParts[1] || &quot;&quot;)
+  }
+}
+</code></pre>
+<h3>Setting Session ID</h3>
+<p>The code checks if a <code>session</code> parameter is present in the query parameters and sets it as the <code>window.session_id</code> property.</p>
+<pre><code class="language-javascript">if(queryParams.session) {
+  window.session_id = queryParams.session
+}
+</code></pre>
+<h3>Click Event Listener</h3>
+<p>The code adds an event listener to an element with the class <code>livedev</code>. When this element is clicked, it sends a POST request to a URL with the session ID and the click coordinates.</p>
+<pre><code class="language-javascript">document.querySelector('.livedev').addEventListener('click', (evt) =&gt; {
+  debugger
+  let localX = evt.clientX - evt.currentTarget.offsetLeft
+  let localY = evt.clientY - evt.currentTarget.offsetTop
+  fetch('{BASE_URI}click?session=' + window.session_id, {
+    method: 'POST',
+    headers: {
+      &quot;Content-Type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify({
+      x: localX / evt.currentTarget.clientWidth,
+      y: localY / evt.currentTarget.clientHeight
+    })
+  })
+})
+</code></pre>
+<h3>getSpecialKeys Function</h3>
+<p>The <code>getSpecialKeys</code> function returns an array of values from input elements with the class <code>container</code> that have a <code>checked</code> property.</p>
+<pre><code class="language-javascript">function getSpecialKeys() {
+  let modifiers = document.querySelectorAll('.container input:checked')
+  let result = []
+  for(let i = 0; i &lt; modifiers.length; i++) {
+    result.push(modifiers[i].value)
+  }
+  return result
+}
+</code></pre>
+<h3>Key Press Event Listener</h3>
+<p>The code adds an event listener to an element with the ID <code>sendkeys</code>. When this element receives a key press, it sends a POST request to a URL with the session ID and the text entered in the element. It also clears the text input.</p>
+<pre><code class="language-javascript">document.querySelector('#sendkeys').addEventListener('keypress', (evt) =&gt; {
+  if(currentTimer) {
+    return
+  }
+  currentTimer = setTimeout(((target) =&gt; {
+    fetch('{BASE_URI}keys?session=' + window.session_id, {
+      method: 'POST',
+      headers: {
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+      },
+      body: JSON.stringify({
+        text: target.value,
+        special: getSpecialKeys()
+      })
+    })
+    target.value = ''
+    currentTimer = void 0
+  }).bind(null, evt.currentTarget), 1000)
+  evt.preventDefault()
+})
+</code></pre>
+<h3>Button Event Listeners</h3>
+<p>The code adds event listeners to all button elements with the class <code>container</code>. When a button is clicked, it calls the <code>getSpecialKeys</code> function and sends a POST request to a URL with the session ID.</p>
+<pre><code class="language-javascript">let buttons = document.querySelectorAll('.container button')
+for(let i = 0; i &lt; buttons.length; i++) {
+  buttons[i].addEventListener('click', (evt) =&gt; {
+    let target = document.querySelector('#sendkeys')
+    let keys = getSpecialKeys()
+    if(evt.currentTarget!== target) {
+      // code here
+    }
+  })
+}
+</code></pre>

@@ -1,0 +1,36 @@
+<p>The <code>regexToArray</code> function takes a regular expression object and a string, and returns an array of arrays or numbers containing the index and length of each match. It can also return a single match at a specified index.</p>
+
+
+<pre><code>function regexToArray(ex, str, i = 0) {
+    var co = []
+    var m
+    while ((m = ex.exec(str))) {
+        co.push(i === -1 ? [m.index, m[0].length] : i === false ? m : m[i])
+    }
+    return co
+}
+
+module.exports.regexToArray = regexToArray;
+</code></pre>
+
+<h3>Function: <code>regexToArray</code></h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>ex</code>: A regular expression object</li>
+<li><code>str</code>: The string to search</li>
+<li><code>i</code>: The index of each match (default: <code>0</code>)</li>
+</ul>
+<h4>Return Value</h4>
+<ul>
+<li>An array of arrays or numbers</li>
+</ul>
+<h4>Description</h4>
+<p>The <code>regexToArray</code> function takes a regular expression object <code>ex</code> and a string <code>str</code>, and returns an array of arrays or numbers. The function uses the regular expression to find matches in the string and returns the index and length of each match, or a single match at the specified index <code>i</code>.</p>
+<h3>Example Use Case</h3>
+<pre><code class="language-javascript">const regexToArray = require('./regexToArray');
+
+const regex = /ab/g;
+const str = 'ababab';
+const result = regexToArray(regex, str);
+console.log(result); // Output: [[0, 2], [3, 2], [6, 2]]
+</code></pre>

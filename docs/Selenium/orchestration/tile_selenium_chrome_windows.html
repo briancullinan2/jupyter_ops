@@ -1,0 +1,94 @@
+<p>This code provides a way to open multiple URLs in separate browser windows and arrange them in a tiled layout using Selenium WebDriver.  It leverages imported functions for window resizing and URL management to achieve this functionality.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    resizeWindow,
+    getAllSessionUrls
+} = importer.import([
+    'resize selenium window',
+    'get all session urls'
+])
+
+function openUrl(client, url) {
+    var handles;
+    return client
+        .getWindowHandles()
+        .then(h => handles = h)
+        .execute((url, width, height) => {
+            window.open(url, '', 'width=1350,height=1024');
+        }, url)
+        .getWindowHandles()
+        .then(h => h.filter(hwnd => handles.indexOf(hwnd) === -1)[0])
+        .catch(e => console.log(e))
+}
+
+function createNewWindows(client, urls) {
+    var hwnd;
+    return client
+        .getWindowHandle()
+        .then(r => hwnd = r)
+        .getWindowHandles()
+        .then(r => {
+            // -1 first window is already used by sliced url
+            const count = urls.length - (r.length - 1);
+            const promises = [];
+            for(var i = 0; i < count; i++) {
+                promises.push((i => resolve => {
+                    console.log(urls[i]);
+                    return openUrl(urls[i])
+                        .switchToWindow(hwnd)
+                        .then(h => resolve(h))
+                        .catch(e => { console.log(e); resolve() })
+                }).apply(this, [i]));
+            }
+            return importer.runAllPromises(promises);
+        })
+        .catch(e => console.log(e))
+}
+
+function tileWindows(client, urls) {
+    return client
+        .resizeWindow(client, 0)
+        .url(typeof urls === 'string' ? urls : urls[0])
+        .then(h => typeof urls === 'string' ? [] : createNewWindows(urls.slice(1)))
+        .then(() => getAllSessionUrls())
+        .then(() => client.getWindowHandles())
+        .catch(e => console.log(e))
+}
+module.exports = tileWindows;
+
+</code></pre>
+
+<p>This code manages multiple browser windows, allowing you to open URLs in separate windows and arrange them in a tiled layout.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports functions <code>resizeWindow</code> and <code>getAllSessionUrls</code> from an external module (<code>importer</code>).</li>
+</ul></li>
+<li><p><strong><code>openUrl(client, url)</code>:</strong></p>
+<ul>
+<li>Opens a new browser window with the given <code>url</code>.</li>
+</ul></li>
+<li><p><strong><code>createNewWindows(client, urls)</code>:</strong></p>
+<ul>
+<li>Opens multiple new browser windows with the provided <code>urls</code>.</li>
+</ul></li>
+<li><p><strong><code>tileWindows(client, urls)</code>:</strong></p>
+<ul>
+<li>This is the main function:
+<ul>
+<li>Resizes the first window.</li>
+<li>Opens the first URL in the first window.</li>
+<li>Opens the remaining URLs in new windows using <code>createNewWindows</code>.</li>
+<li>Retrieves all session URLs.</li>
+<li>Gets the current window handles.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>tileWindows</code> function for use in other modules.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other questions.</p>

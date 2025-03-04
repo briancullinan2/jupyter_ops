@@ -1,0 +1,38 @@
+<p>This script automates the setup of a Selenium project by cloning a specific Git branch (&quot;branch1&quot;) if it doesn't already exist locally.</p>
+
+
+<pre><code>mkdir -r selenium/repository
+cd selenium/repository
+git branch | grep 'branch1' &> /dev/null
+if [ $? != 0 ]; then
+   git clone -b branch1 https://github.com/username/repository.git ./
+fi
+cd ../../
+</code></pre>
+
+<p>This code snippet automates the setup of a specific Git branch named &quot;branch1&quot; for a Selenium project.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Directory Creation:</strong></p>
+<ul>
+<li><code>mkdir -r selenium/repository</code>: Creates a directory named &quot;repository&quot; within a &quot;selenium&quot; directory if it doesn't exist. The <code>-r</code> flag ensures that any necessary parent directories are created.</li>
+</ul></li>
+<li><p><strong>Navigation:</strong></p>
+<ul>
+<li><code>cd selenium/repository</code>: Changes the current working directory to the newly created &quot;repository&quot; directory.</li>
+</ul></li>
+<li><p><strong>Branch Check:</strong></p>
+<ul>
+<li><code>git branch | grep 'branch1' &amp;&gt; /dev/null</code>: Lists all existing branches and checks if a branch named &quot;branch1&quot; exists. The output is redirected to <code>/dev/null</code> to suppress it.</li>
+<li><code>if [ $? != 0 ]; then</code>: Checks the exit status of the previous command. If the exit status is not 0 (meaning the branch wasn't found), the code inside the <code>if</code> block is executed.</li>
+</ul></li>
+<li><p><strong>Branch Cloning:</strong></p>
+<ul>
+<li><code>git clone -b branch1 https://github.com/username/repository.git ./</code>: Clones the repository from the specified URL, specifically targeting the &quot;branch1&quot; branch. The cloned repository is placed in the current directory (<code>.</code>).</li>
+</ul></li>
+<li><p><strong>Return to Parent Directory:</strong></p>
+<ul>
+<li><code>cd ../../</code>: Changes the working directory back to two levels up from the current location.</li>
+</ul></li>
+</ol>
+<p>In essence, this script ensures that the &quot;branch1&quot; branch of a Selenium project is available locally. If the branch doesn't exist, it's cloned from the remote repository.</p>

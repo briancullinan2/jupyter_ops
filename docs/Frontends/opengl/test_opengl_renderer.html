@@ -1,0 +1,52 @@
+<p>Here's a two-sentence summary:</p>
+<p>The code defines an asynchronous <code>doFrame</code> function that initializes and calls OpenGL functions, and an asynchronous <code>testOpenGL</code> function that creates a window and sets an interval to repeatedly call <code>doFrame</code> with the window object. The <code>testOpenGL</code> function is exported as a module.</p>
+
+
+<pre><code>
+
+let beginFrame, endFrame
+async function doFrame(window) {
+  if(!beginFrame) {
+    frameLoader = await importer.import('opengl frame')
+    beginFrame = frameLoader.beginFrame
+    endFrame = frameLoader.endFrame
+  }
+  beginFrame(window)
+
+  endFrame(window)
+}
+
+async function testOpenGL() {
+  const {createWindow} = await importer.import('opengl context')
+  let window = createWindow()
+  //console.log(window)
+  doFrame(window)
+  setInterval(doFrame.bind(null, window), 10)
+}
+
+module.exports = testOpenGL
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Variables</h3>
+<ul>
+<li><code>beginFrame</code> and <code>endFrame</code> are variables initialized to <code>null</code>. They are later assigned functions from an imported module.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>doFrame(window)</code></h4>
+<ul>
+<li>This is an asynchronous function that takes a <code>window</code> object as an argument.</li>
+<li>It checks if <code>beginFrame</code> is not initialized, and if so, imports an <code>opengl frame</code> module and assigns its <code>beginFrame</code> and <code>endFrame</code> functions to the variables.</li>
+<li>It calls the <code>beginFrame</code> and <code>endFrame</code> functions with the provided <code>window</code> object as an argument.</li>
+<li>It is designed to be called repeatedly.</li>
+</ul>
+<h4><code>testOpenGL()</code></h4>
+<ul>
+<li>This is an asynchronous function that imports an <code>opengl context</code> module and assigns its <code>createWindow</code> function to a variable.</li>
+<li>It creates a window using the <code>createWindow</code> function and passes it to the <code>doFrame</code> function.</li>
+<li>It sets an interval to call the <code>doFrame</code> function every 10 milliseconds, passing the previously created window object.</li>
+</ul>
+<h3>Module Exports</h3>
+<ul>
+<li>The <code>testOpenGL</code> function is exported as a module.</li>
+</ul>

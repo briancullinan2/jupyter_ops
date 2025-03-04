@@ -1,0 +1,477 @@
+
+
+<pre><code>var input = `
+, Abt Associates
+, AEA Committee on the Status of LGBTQ+ Individuals in the Economics Profession
+, Alumn University of Chicago
+, Alzahra University
+, Amazon
+, American University
+, American University
+, American University
+, American University
+, American University
+, American University
+, Appalachian State University
+, Arizona State University
+, Auburn University
+, Bank of Spain
+, Barnard College, Columbia University
+, Baylor University
+, Benedictine University
+, Bocconi University
+, Bocconi University
+, Boston College
+, Boston College
+, Boston University
+, Boston University
+, Boston University
+, Brandeis
+, Brandeis University
+, Brookfield Institute - Ryerson University
+, Brookings
+, Brookings
+, Brown University
+, Brown University
+, Brown University
+, Brown University
+, Brown University
+, California Ocean Science Trust
+, California State University Fullerton
+, Case Western Reserve University
+, Center for Global Development
+, Center for Global Development  
+, Central Michigan University
+, Central Michigan University
+, Centre for Global Political Economy, Simon Fraser University
+, Chapman University
+, Chicago
+, CIDE & Chapman, Economic Science Institute 
+, City, University of London Moore Frances , UC Davis
+, Clemson University
+, CNRS
+, Colorado State University
+, Columbia
+, Columbia Business School
+, Columbia University
+, Columbia University
+, Columbia University
+, Compass Lexecon
+, Competition and Markets Authority
+, Consumer Financial Protection Bureau
+, Cornell University
+, Cornell University
+, Cornell University
+, Critical Theory Bilbo-Barcelona
+, CUNEF
+, Dartmouth College
+, Dartmouth College
+, Department of Economics, UC Berkeley
+, Department of Psychology, University of Texas at Austin
+, Dickinson College
+, Drew University
+, Duke University
+, Duke University
+, Duke University
+, Duke University
+, Duke University
+, Eastern Illinois University
+, EDF
+, European Central Bank
+, European University Institute
+, Federal Government
+, Federal Government
+, Federal Reserve Bank of Minneapolis 
+, Federal University of Parana
+, Florida State University
+, Fordham University
+, Freie Universität Berlin
+, George Washington University
+, George Washington University
+, Georgetown University
+, Georgetown University
+, GiveWell
+, Goethe University Frankfurt
+, Grenoble Ecole de Management
+, Harris Public Policy
+, Harvard
+, Harvard Busienss School
+, Harvard Business School
+, Harvard Business School
+, Harvard University
+, Harvard University
+, Harvard University
+, Harvard University
+, Harvard University
+, Harvard University
+, Harvard University
+, IAMO, Germany
+, IIM Kashipur
+, Indian Institute of Management Bangalore, India 
+, Information Technology University, Lahore, Pakistan 
+, Integra FEC
+, International Food Policy Research Institute
+, Iowa State University
+, J-PAL North America
+, Johns Hopkins SAIS
+, Johns Hopkins University
+, Johns Hopkins University School of Advanced International Studies
+, Kansas State University
+, Khazanah Nasional
+, King's College London
+, Krea University
+, Kyoungpook national university
+, Lancaster University
+, Liser
+, London School of Economics and Political Science 
+, LSE
+, LUISS University
+, LUMS - Department of Economics
+, Maastricht University
+, Manhattan College
+, Mathematica
+, Michigan State University
+, Michigan State University
+, Michigan State University
+, Michigan State University
+, Michigan State University
+, Michigan State University
+, Middlebury College
+, Middlebury College Department of Economics
+, MIT
+, MIT
+, MIT
+, MIT, Department of Economics
+, Montana State University
+, Montana State University
+, Mount Royal University
+, New York University
+, Newcastle University
+, Norrhwestern University
+, Northwestern
+, Northwestern University
+, Northwestern University
+, Northwestern University 
+, Norwegian Business School
+, Norwegian University of Life Sciences
+, NYU
+, NYU Stern
+, Occidental college
+, Ohio State University
+, Ohio State University
+, Opportunity Insights
+, Oregon State University
+, Overseas Development Institute
+, Pace University
+, Paris School of Economics
+, Penn State
+, Penn State
+, Penn Wharton Budget Model 
+, Politecnico di Torino
+, Portland State University
+, Portland State University Sylvan Herskowitz, IFPRI
+, Princeton University
+, Princeton University
+, Princeton University
+, Princeton University
+, Princeton University
+, Princeton University
+, Princeton University
+, Princeton University
+, PUC-Rio
+, Queen Mary, University of London 
+, Queen Mary. University of London
+, Questrom school of Business
+, Resources for the Future
+, Rhodium Group
+, Rice University
+, Rice University
+, Russell Sage Foundation 
+, Rutgers
+, Rutgers-New Brunswick
+, Saint Louis University
+, Salem State University
+, Simon Fraser University
+, Simon Fraser University
+, Simon Fraser University
+, Skidmore
+, SOAS, University of London
+, Southern Methodist University
+, St Mary's College of Maryland
+, St. Norbert College
+, Stanford
+, Stanford
+, Stanford
+, Stanford Graduate School of Business
+, Stanford Law School
+, Stanford University
+, Stanford University
+, Stanford University
+, Stanford University
+, Stanford University
+, Stanford University
+, Stanford University
+, State University of New York at Oswego
+, Strathclyde Business School , Amherst 
+, SUNY New Paltz
+, Sussex & LSE
+, Syracuse University
+, Syracuse University
+, Technical University of Munich
+, Texas A&M University
+, Texas A&M University
+, The Ohio State University
+, The Ohio State University
+, The University of Maryland, College Park 
+, The University of Sydney
+, The Urban Institute
+, The World Bank
+, Toulouse School of Economics 
+, Trent University
+, Tufts University
+, Tufts University
+, U. Pompeu Fabra & Barcelona GSE 
+, UBC
+, UBC Vancouver
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley
+, UC Berkeley Agriculture and Resource Economics
+, UC Berkeley ARE
+, UC Berkeley School of Public Health
+, UC Davis
+, UC Davis
+, UC Davis
+, UC Irvine
+, UC Irvine
+, UC Office of the President 
+, UC Santa Barbara
+, UC-Berkeley
+, UCLA
+, UCLA
+, UCLA
+, UCSB
+, UCSD
+, UCSD
+, UCSD
+, UMASS Amherst
+, UMass Amherst
+, UMass Amherst Economics
+, Union of Concerned Scientists
+, United States Air Force Academy
+, Universidad de los Andes, Department of Economics 
+, Universidad del Pacifico
+, Universidad del Rosario
+, Universitat Pompeu Fabra
+, Université Laval
+, Universiteit van Amsterdam
+, University College Dublin
+, University of Alberta
+, University of Alicante
+, University of Bern
+, University of Bristol
+, University of British Columbia
+, University of California Berkeley
+, University of California San Diego
+, University of California Santa Barbara
+, University of California, Berkeley
+, University of California, Berkeley
+, University of California, Davis
+, University of California, Irvine
+, University of California, Irvine
+, University of California, Merced
+, University of California, Santa Barbara
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago
+, University of Chicago 
+, University of Chicago 
+, University of Chicago Booth School of Business
+, University of Chicago, Harris School of Public Policy 
+, University of Colorado Boulder
+, University of Colorado Denver
+, University of Colorado Denver
+, University of Colorado Denver
+, University of Connecticut
+, University of Connecticut  
+, University of Delaware
+, University of Delaware
+, University of Duisburg
+, University of Exeter
+, University of Florida
+, University of Florida
+, University of Fort Hare
+, University of Goettingen
+, University of Guelph
+, University of Guelph
+, University of Hawai'i at Mānoa
+, University of Hawai'i at Mānoa
+, University of Hawaii, Manoa
+, University of Houston
+, University of Illinois
+, University of Illinois at Chicago, Department of Economics 
+, University of Illinois at Urbana-Champaign 
+, University of Iowa
+, University of Leeds
+, University of Liverpool
+, University of London
+, University of Manchester
+, University of Maryland
+, University of Maryland
+, University of Maryland at College Park
+, University of Massachusetts
+, University of Massachusetts Amherst
+, University of Massachusetts Amherst
+, University of Massachusetts Amherst
+, University of Miami
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan
+, University of Michigan and NBER
+, University of Michigan Dearborn
+, University of Michigan-Dearborn
+, University of Minnesota
+, University of Minnesota
+, University of Minnesota Carlson School of Management
+, University of Montana
+, University of New Hampshire
+, University of North Carolina Chapel Hill 
+, University of Notre Dame
+, University of Notre Dame
+, University of Oregon
+, University of Oregon
+, University of Oregon Econ PhD program
+, University of Oxford
+, University of Oxford
+, University of Pennsylvania
+, University of Pennsylvania
+, University of Pittsburgh
+, University of Pittsburgh
+, University of Pittsburgh
+, University of Pretoria
+, University of Rhode Island
+, University of San Francisco
+, University of Southern California
+, University of Southern California
+, University of St Andrews
+, University of Strasbourg
+, University of Sussex
+, University of Texas Rio Grande Valley
+, University of Texas Rio Grande Valley 
+, University of the Basque Country
+, University of Toledo
+, University of Toronto
+, University of Toronto
+, University of Toronto
+, University of Toronto
+, University of Utah
+, University of Victoria
+, University of Virginia
+, University of Virginia School of Law
+, University of Warwick
+, University of Warwick
+, University of Warwick
+, University of Warwick
+, University of Washington
+, University of Washington
+, University of Washington
+, University of Washington
+, University of Washington
+, University of Washington, Seattle
+, University of Waterloo
+, University of Western Australia
+, University of Western Ontario
+, University of Wisconsin - Madison
+, University of Wisconsin - Madison
+, University of Wisconsin Madison
+, University of Wisconsin-Madison
+, University of Wisconsin-Madison
+, University of Zurich
+, University of Zurich
+, Universtiy of Warwick
+, Urban Institute
+, URPE
+, USC
+, USC
+, UTRGV
+, UW Madison
+, UWE Bristol
+, Valdosta State University
+, Vancouver School of Economics
+, Wageningen University
+, Wageningen University
+, Wake Forest University
+, Washington University in St. Louis
+, Wesleyan University
+, Wesleyan University
+, Wesleyan University
+, West Virginia University
+, Wilfrid Laurier University
+, William & Mary
+, William & Mary
+, Williams College
+, World Bank
+, World Bank
+, World Bank
+, World Bank
+, Worldbank
+, WU Vienna
+, Yale
+, Yale
+, Yale
+, Yale School of Management
+, Yale University
+, Yale University SOM`
+
+var universities = input.split('\n')
+    .map(i => i.replace(/\s*,\s*/ig, ''))
+    .filter((a, i, arr) => arr.indexOf(a) === i)
+
+
+
+
+</code></pre>
+

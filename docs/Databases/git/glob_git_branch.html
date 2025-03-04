@@ -1,0 +1,165 @@
+<p>The <code>globBranch</code> function automates the process of cloning a Git repository, resetting to a specific commit, and creating new branches based on modified files matching provided patterns.  It simplifies the workflow of isolating and managing changes within a project.</p>
+
+
+<pre><code>var glob = require('glob');
+var minimatch = require('minimatch');
+var importer = require('../Core');
+var {
+    cloneProject,
+    execCmd
+} = importer.import([
+    'git project directory',
+    'spawn child process'
+]);
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = path.join(PROFILE_PATH, 'Documents/portal');
+
+function globBranch(globs, project, remote, branch) {
+    // TODO: not using default parameters because babel removes them entirely, fix RPC service using AST instead
+    remote = remote || 'swiftpage';
+    branch = branch || 'development';
+    var projectCopy;
+    return cloneProject(project, true)
+        .then(p => {
+            projectCopy = p;
+            return execCmd(`
+git fetch ${remote}
+git log ${remote}/${branch}..${'HEAD'}`, {cwd: projectCopy});
+        })
+        .then(c => {
+            commits = importer.regexToArray(/commit\s+(.*?)\s+/ig, c, 1);
+            // TODO: match commits to specified branches
+            console.log(commits[commits.length-1])
+            return execCmd(`
+git reset --mixed ${commits[commits.length-1]}
+git status -s`, {cwd: projectCopy});
+        })
+        .then(r => {
+            const files = r[1].split('\n').map(f => f.split(/\s+/ig)[2]).filter(f => f);
+            var promises = [];
+            Object.keys(globs).forEach(k => {
+                const matches = files.filter(f => minimatch(f, k));
+                if(matches.length) {
+                    promises.push(resolve => execCmd(`
+git checkout -B ${globs[k]}
+git add ${matches.join('\ngit add ')}
+git commit -m "auto-commit ${globs[k]}"
+`, {cwd: projectCopy}).catch(e => console.log(e)).then(r => resolve(r)));
+                }
+            });
+            return importer.runAllPromises(promises);
+        })
+        // TODO: add to commit message all commit messages / features
+        // TODO: require minimatch for commit message <> feature
+}
+module.exports = globBranch;
+
+/*
+TODO:
+	deleted:    .babelrc
+	deleted:    .gitignore
+	modified:   angular-cli.json
+	modified:   config/ecommerceResources.ts
+	modified:   config/environment.dev.ts
+	modified:   config/identityResources.ts
+	modified:   package-lock.json
+	modified:   src/app/auth/forgot-password/forgot-password.component.html
+	modified:   src/app/auth/forgot-password/forgot-password.component.spec.ts
+	modified:   src/app/auth/forgot-password/forgot-password.component.ts
+	modified:   src/app/auth/register-form/register-form.component.spec.ts
+	modified:   src/app/auth/user.service.ts
+	modified:   src/app/core/core.module.ts
+	new file:   src/app/layout/custom-spinner/custom-spinner.component.html
+	new file:   src/app/layout/custom-spinner/custom-spinner.component.scss
+	new file:   src/app/layout/custom-spinner/custom-spinner.component.spec.ts
+	new file:   src/app/layout/custom-spinner/custom-spinner.component.ts
+	new file:   src/app/layout/custom-spinner/custom-spinner.module.ts
+	modified:   src/app/layout/footer/footer.component.scss
+	modified:   src/app/layout/layout.component.scss
+	modified:   src/app/layout/layout.module.ts
+	modified:   src/app/layout/menu/menu.component.scss
+	modified:   src/app/layout/toolbar/toolbar.component.html
+	deleted:    src/assets/.gitkeep
+	deleted:    src/assets/.npmignore
+	renamed:    src/assets/act-logo-circle.png -> src/assets/act-logo-circle.png
+	renamed:    src/assets/act-pro.png -> src/assets/act-pro.png
+	renamed:    src/assets/act_logo_small.png -> src/assets/act_logo_small.png
+	renamed:    src/assets/actpremium.jpg -> src/assets/actpremium.jpg
+	renamed:    src/assets/actpremiumcloud.png -> src/assets/actpremiumcloud.png
+	renamed:    src/assets/aem_logo.png -> src/assets/aem_logo.png
+	renamed:    src/assets/background.jpg -> src/assets/background.jpg
+	renamed:    src/assets/colors.scss -> src/assets/colors.scss
+	new file:   src/assets/css/three-dot-loader.scss
+	renamed:    src/assets/hhc_logo.png -> src/assets/hhc_logo.png
+	modified:   src/assets/i18n/en.json
+	renamed:    src/assets/layout.scss -> src/assets/layout.scss
+	renamed:    src/assets/loader.svg -> src/assets/loader.svg
+	renamed:    src/assets/material-overrides.scss -> src/assets/material-overrides.scss
+	renamed:    src/assets/noise.png -> src/assets/noise.png
+	renamed:    src/assets/palette.scss -> src/assets/palette.scss
+	modified:   src/index.html
+	modified:   src/testing/account-stubs.ts
+	modified:   src/testing/auth-stubs.ts
+
+
+*/
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    globBranch({
+        // TODO: pull from version1 api
+        '**/+(custom-spinner|layout|core|assets|testing)/**': 'B-11801_Moving_Layout_To_Match_Mobile',
+        '**/trial/**': 'B-11801_Loadding_Spinner',
+
+        '**/auth/register*/**': 'B-11803_Portal_Register',
+        '**/auth/login/**': 'B-11802_Portal_Login',
+        '**/auth/forgot*/**': 'B-11802_Portal_Login_Missing_Or_Unscheduled_Work',
+        
+        '**/account/subscription/**': 'B-11819_Modify_Subscription',
+
+        '**/*handheld*/**': 'B-11806_Addons',
+        '**/*emarketing*/**': 'B-11804_AEM',
+        '**/*support*/**': 'B-11807_Support',
+        '**/*+(primary|premium)*/**': 'B-11818_Premium_Plus',
+        '**/*billing*/**': 'B-11808_Billing',
+        '**/*confirm*/**': 'B-11809_Review',
+
+        '**/+(cart|order-tracker*|*line-item*)/**': 'B-11804_Cart',
+
+        '**/account/overview/**': 'B-11812_Summary',
+        '**/account/billing/**': 'B-11813_Billing',
+        '**/account/subscription/**': 'B-11814_Manage_Subscription',
+        '**/account/**': 'B-11811_My_Account',
+    },
+               // TODO: connect AST to git
+               // ignore whitespace?
+               // run all git commands and show the tree?
+               project)
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet defines a function <code>globBranch</code> that automates the process of cloning a Git repository, fetching branches, resetting to a specific commit, and creating new branches based on modified files.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules for file globbing (<code>glob</code>), pattern matching (<code>minimatch</code>), and interacting with Git (<code>importer</code>).</li>
+<li>It defines a default project path based on the user's home directory.</li>
+</ul></li>
+<li><p><strong><code>globBranch</code> Function:</strong></p>
+<ul>
+<li>Takes arguments for globs (file patterns), project path, remote repository name, and branch name (with defaults).</li>
+<li>Clones the project to a temporary location.</li>
+<li>Fetches the specified branch from the remote repository.</li>
+<li>Retrieves the latest commit message and resets the working directory to that commit.</li>
+<li>Identifies modified files using <code>git status</code>.</li>
+<li>Iterates through the provided globs and creates new branches for each matching file, adding the modified files to the branch and committing them with an automated message.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>The function returns a promise that resolves when all branches have been created successfully.</li>
+</ul></li>
+</ol>

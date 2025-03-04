@@ -1,0 +1,35 @@
+<p>The <code>addRow</code> function adds a new row to a specified sheet in a Google Sheet by leveraging the <code>updateRow</code> function from a local module.  It takes the sheet URL, the new row data, and the sheet number as input.</p>
+
+
+<pre><code>var util = require('util');
+var importer = require('../Core');
+var updateRow = importer.import('update a row in google sheets');
+
+function addRow(link, newRow, page) {
+    return updateRow(link, r => false, newRow, page)
+}
+
+module.exports = addRow;</code></pre>
+
+<p>This code defines a function <code>addRow</code> that adds a new row to a specific sheet in a Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports <code>util</code> for utility functions (though it's not used in this snippet).</li>
+<li>It imports <code>updateRow</code> from a local module <code>Core</code>, which likely handles updating rows in Google Sheets.</li>
+</ul></li>
+<li><p><strong><code>addRow</code> Function:</strong></p>
+<ul>
+<li>Takes a Google Sheet URL (<code>link</code>), a new row (<code>newRow</code>) as an object, and a page number (<code>page</code>) as input.</li>
+<li>Calls <code>updateRow</code> with the following arguments:
+<ul>
+<li><code>link</code>: The Google Sheet URL.</li>
+<li><code>r =&gt; false</code>: A function that always returns <code>false</code>, indicating that no existing row should be updated.</li>
+<li><code>newRow</code>: The new row data to be added.</li>
+<li><code>page</code>: The page number (likely referring to a specific sheet within the spreadsheet).</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>addRow</code> function is exported, allowing other parts of the application to use it to add new rows to Google Sheets.</p></li>
+</ol>
+<p>Let me know if you'd like a deeper dive into any specific part of the code!</p>

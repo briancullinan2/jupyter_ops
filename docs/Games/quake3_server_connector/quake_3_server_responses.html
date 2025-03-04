@@ -1,0 +1,127 @@
+<p>These are four functions used to extract and parse information from server-related input strings:</p>
+<ul>
+<li>Functions <code>getServersResponse</code> and <code>statusResponse</code> extract server information, while <code>infoResponse</code> extracts server information in a simplified format. The function <code>parseConfigStr</code> parses configuration strings into objects.</li>
+</ul>
+
+
+<pre><code>
+function getServersResponse(m) {
+    var masters = []
+    m = m.slice('getserversResponse'.length)
+    for(var i = 0; i < m.length / 7; i++) {
+        var ip = i*7+1
+        if(m[ip-1] !== '\\'.charCodeAt(0)) continue
+        if(m.slice(ip, ip+3) == 'EOT') continue
+        var master = {
+            ip: m[ip] + '.' + m[ip+1] + '.' + m[ip+2] + '.' + m[ip+3],
+            port: (m[ip+4] << 8) + m[ip+5],
+        }
+        masters.push(master)
+    }
+    return masters
+}
+
+function parseConfigStr(m) {
+    return m.toString('utf-8')
+        .trim().split(/\n/ig)[0]
+        .trim().split(/\\/ig).slice(1)
+        .reduce((obj, c, i, arr) => {
+            if(i & 1) {
+                obj[arr[i-1].toLowerCase()] = c
+                obj[arr[i-1]] = c
+            }
+            return obj
+        }, {})
+}
+
+function statusResponse(m) {
+    m = m.slice('statusResponse'.length)
+    var status = parseConfigStr(m)
+    var players = m.toString('utf-8')
+        .trim().split(/\n/ig)
+        .slice(1)
+        .reduce((obj, c, i, arr) => {
+            if(c.trim().length == 0)
+                return obj
+            var player = {
+                'i': (i + 1),
+                'name': (/[0-9]+\s+[0-9]+\s+"(.*)"/ig).exec(c)[1],
+                'score': (/([0-9]+)\s+/ig).exec(c)[1],
+                'ping': (/[0-9]+\s+([0-9]+)\s+/ig).exec(c)[1],
+            }
+            player.isBot = player.ping == 0
+            obj.push(player)
+            return obj
+        }, [])
+    return Object.assign(status, {players})
+}
+
+function infoResponse(m) {
+    m = m.slice('infoResponse'.length)
+    return parseConfigStr(m)
+}
+
+module.exports = {
+    getServersResponse,
+    statusResponse,
+    infoResponse,
+    parseConfigStr,
+}
+</code></pre>
+
+<h3>Functions</h3>
+<h4>getServersResponse(m)</h4>
+<ul>
+<li><strong>Purpose:</strong> Extracts server information from a given string <code>m</code>.</li>
+<li><strong>Input:</strong> <code>m</code> - The input string containing server information.</li>
+<li><strong>Output:</strong> An array of objects containing server IP and port information.</li>
+<li><strong>Logic:</strong>
+<ol>
+<li>Remove the prefix &quot;getserversResponse&quot; from the input string <code>m</code>.</li>
+<li>Iterate over the string <code>m</code> in increments of 7, checking for invalid characters.</li>
+<li>Extract IP and port information from the string using bitwise operations.</li>
+<li>Store the extracted information in an object and add it to the <code>masters</code> array.</li>
+</ol></li>
+</ul>
+<h4>parseConfigStr(m)</h4>
+<ul>
+<li><strong>Purpose:</strong> Parses a configuration string into an object.</li>
+<li><strong>Input:</strong> <code>m</code> - The input string containing configuration information.</li>
+<li><strong>Output:</strong> An object containing configuration key-value pairs.</li>
+<li><strong>Logic:</strong>
+<ol>
+<li>Convert the input string to a UTF-8 encoded string.</li>
+<li>Remove leading and trailing whitespace from the string.</li>
+<li>Split the string into lines using newline characters.</li>
+<li>Split each line into key-value pairs using backslash as a delimiter.</li>
+<li>Reduce the pairs into an object, converting keys to lowercase.</li>
+</ol></li>
+</ul>
+<h4>statusResponse(m)</h4>
+<ul>
+<li><strong>Purpose:</strong> Extracts server status information from a given string <code>m</code>.</li>
+<li><strong>Input:</strong> <code>m</code> - The input string containing server status information.</li>
+<li><strong>Output:</strong> An object containing server status and player information.</li>
+<li><strong>Logic:</strong>
+<ol>
+<li>Remove the prefix &quot;statusResponse&quot; from the input string <code>m</code>.</li>
+<li>Parse the configuration string using <code>parseConfigStr</code>.</li>
+<li>Extract player information from the remaining string, using regular expressions to extract player name, score, and ping.</li>
+<li>Add the extracted player information to the <code>players</code> array.</li>
+<li>Return an object containing the parsed configuration and player information.</li>
+</ol></li>
+</ul>
+<h4>infoResponse(m)</h4>
+<ul>
+<li><strong>Purpose:</strong> Extracts server information from a given string <code>m</code>.</li>
+<li><strong>Input:</strong> <code>m</code> - The input string containing server information.</li>
+<li><strong>Output:</strong> An object containing server information.</li>
+<li><strong>Logic:</strong>
+<ol>
+<li>Remove the prefix &quot;infoResponse&quot; from the input string <code>m</code>.</li>
+<li>Parse the configuration string using <code>parseConfigStr</code>.</li>
+<li>Return the parsed configuration object.</li>
+</ol></li>
+</ul>
+<h3>Module Exports</h3>
+<p>The functions <code>getServersResponse</code>, <code>statusResponse</code>, <code>infoResponse</code>, and <code>parseConfigStr</code> are exported as a module.</p>

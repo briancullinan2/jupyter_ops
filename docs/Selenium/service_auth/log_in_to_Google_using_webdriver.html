@@ -1,0 +1,115 @@
+<p>This code automates the Google sign-in process using Selenium, handling both username and password entry, and includes logic to select an account from multiple options if necessary.</p>
+
+
+<pre><code>var matchUsername = 'input[name="Email"], input[autocomplete="username"]';
+function enterGoogleUsername(email) {
+    console.log('Google: Sign in required');
+    return client
+        .pause(1000)
+        .then(() => client.$(matchUsername))
+        .then(el => el.addValue(email))
+        .then(() => client.$('#identifierNext'))
+        .then(el => el.click())
+        .catch((e) => console.log(e));
+}
+
+var matchPassword = 'input[name="Passwd"], input[autocomplete="password"], input[name="password"]';
+function enterGooglePassword(pass) {
+    console.log('Google: Require password');
+    return client
+        .pause(2000)
+        .then(() => client.$(matchPassword))
+        .then(el => el.addValue(pass))
+        .then(() => client.$('#passwordNext'))
+        .then(el => el.click());
+}
+
+function enterCredentials(is) {
+    var credentials = getCredentials('accounts.google.com');
+    if (is) {
+        return client.$('#passwordNext')
+            .then(el => el.isDisplayed())
+            .then(is => is
+                ? enterGooglePassword(credentials.Passwd)
+                : enterGoogleUsername(credentials.Email)
+                    .then(() => enterGooglePassword(credentials.Passwd)))
+    } else {
+        return client
+            .findElements('xpath', '//h1[contains(., "Choose an account")]')
+            .then(is => {
+                if (is.length > 0) {
+                    return client
+                        .findElements('xpath', '//*[@data-authuser][contains(., "@")]')
+                        .then(is => {
+                            console.log(is);
+                            return is.length > 0
+                              ? client.$('//*[@data-authuser][contains(., "@")]').then(el => el.click())
+                              : []
+                        })
+                        .then(() => client.$('#passwordNext'))
+                        .then(el => el.isDisplayed())
+                        .then(is => is
+                            ? enterGooglePassword(credentials.Passwd)
+                            : [])
+                } else {
+                    return client.findElements('xpath', '//h1[contains(., "Sign in")]')
+                        .then(is => is
+                            ? enterGoogleUsername(credentials.Email)
+                                .then(() => enterGooglePassword(credentials.Passwd))
+                            : null)
+                }
+            })
+            .catch((e) => console.log(e));
+    }
+}
+
+function loginGoogle() {
+    return client
+        .findElements('css selector', 'a[href*="ServiceLogin"]')
+        .then(is => is.length > 0 ? client.click('a[href*="ServiceLogin"]') : null)
+        .then(() => client.pause(1000))
+        .then(() => client.findElements('css selector', 'form[action*="signin"]'))
+        .then(is => enterCredentials(is.length > 0))
+        .catch((e) => {
+            console.log(e);
+            console.log('Google: Could not log in');
+        });
+}
+
+module.exports = loginGoogle;
+
+</code></pre>
+
+<p>This code snippet defines functions for automating the Google sign-in process using a Selenium WebDriver client.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Selectors:</strong></p>
+<ul>
+<li><code>matchUsername</code>: CSS selector to find the username input field on the Google sign-in page.</li>
+<li><code>matchPassword</code>: CSS selector to find the password input field on the Google sign-in page.</li>
+</ul></li>
+<li><p><strong><code>enterGoogleUsername</code> Function:</strong></p>
+<ul>
+<li>Takes an email address as input.</li>
+<li>Waits for 1 second, then finds the username input field using the <code>matchUsername</code> selector.</li>
+<li>Enters the provided email address into the field.</li>
+<li>Finds the &quot;Next&quot; button (likely for proceeding to the password field) and clicks it.</li>
+</ul></li>
+<li><p><strong><code>enterGooglePassword</code> Function:</strong></p>
+<ul>
+<li>Takes a password as input.</li>
+<li>Waits for 2 seconds, then finds the password input field using the <code>matchPassword</code> selector.</li>
+<li>Enters the provided password into the field.</li>
+<li>Finds the &quot;Next&quot; button and clicks it.</li>
+</ul></li>
+<li><p><strong><code>enterCredentials</code> Function:</strong></p>
+<ul>
+<li>Retrieves credentials for &quot;accounts.google.com&quot; using a <code>getCredentials</code> function (not shown in the snippet).</li>
+<li>Checks if the &quot;password&quot; button is displayed.
+<ul>
+<li>If yes, it calls <code>enterGooglePassword</code> to enter the password.</li>
+<li>If no, it calls <code>enterGoogleUsername</code> to enter the email and then <code>enterGooglePassword</code> to enter the password.</li>
+</ul></li>
+<li>Includes additional logic to handle cases where multiple accounts are available, selecting the appropriate account before proceeding with the password entry.</li>
+</ul></li>
+</ol>

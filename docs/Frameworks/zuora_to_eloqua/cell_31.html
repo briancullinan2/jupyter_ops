@@ -1,0 +1,30 @@
+
+
+<pre><code>var _ = require('lodash');
+var assert = require('assert');
+var xlsx = require('xlsx');
+var importer = require('../Core');
+var fs = require('fs');
+
+var {getZuoraMonth} = importer.import('zuora export month');
+var calculatePrice = importer.import('calculate price');
+var {getCatalog} = importer.import('zuora to eloqua.ipynb[0]');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var zuoraConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/zuoraRest_production.json').toString().trim());
+
+var zuora;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    (zuora ? Promise.resolve(zuora) : getZuoraMonth(6, zuoraConfig))
+        .then(r => {
+            zuora = r;
+        console.log(zuora.length);
+            console.log(JSON.stringify(_.uniqBy(zuora, r => r['ProductRatePlan.Name']), null, 4));
+        })
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+

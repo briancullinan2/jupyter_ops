@@ -1,0 +1,13 @@
+
+
+<pre><code>var importer = require('../Core');
+var getGist = importer.import('read gist files');
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getGist('a572d0830ae72b962e12a57adaec7c52')
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+

@@ -1,0 +1,15 @@
+
+
+<pre><code>var logger = (message) => {
+    console.log(message)
+    return (m) => 'wtf? ' + m
+}
+
+function test() {
+    return logger `test` `another`;
+}
+
+test()
+
+</code></pre>
+

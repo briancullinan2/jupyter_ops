@@ -1,0 +1,112 @@
+<p>This code provides functions to format and display search results from a Jupyter notebook in a structured Markdown format, including summaries, matched content, and code snippets.</p>
+
+
+<pre><code>const Module = require('module').Module
+const path = require('path')
+const {spawn} = require('child_process')
+
+async function runPythonModule(isOne, cellId, signature, ...args) {
+  let params = signature.parameters.map((p, i) => '--' + p + '=' + String(args[i]))
+  console.log(params)
+  console.log(path.resolve(path.dirname(__dirname)))
+  result = spawn('python3', ['-u', '-c', '__import__(\'Core\').run()', cellId].concat(params), {
+    cwd: path.resolve(path.dirname(__dirname)),
+    env: {
+      RUN_OUTPUT: 'json',
+      PYTHONPATH: path.resolve(path.dirname(__dirname)) + ':/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages'
+    },
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
+  if (result.error) {
+    console.error('Failed to execute:', result.error)
+    return
+  }
+
+  let lines = []
+  result.stdout.on('data', (data) => {
+    lines.push(data)
+    console.log(`stdout: ${data.toString().trim()}`);
+  });
+  
+  result.stderr.on('data', (data) => {
+    console.error(`stderr: ${data.toString().trim()}`);
+  });
+  
+  await new Promise((resolve, reject) => result.on('close', (code) => {
+    if(code != 0) return reject()
+    return resolve()
+  }));
+
+  lines = lines.join('').trim().split('\n')
+  try {
+    let json = JSON.parse(lines[lines.length - 1])
+    return json
+  } catch (up) {
+    throw up
+  }
+}
+
+
+async function makePythonModule(code, filename, context) {
+  var { importNotebook } = require('../Core')
+  var filepath = path.resolve(process.cwd(), filename);
+  if (typeof Module._cache[filepath] != 'undefined') {
+    return Module._cache[filepath].exports
+  }
+
+  let pythonParams = await importNotebook('python params in antlr')
+  console.log(pythonParams)
+  let params = await pythonParams(code)
+  console.log(params)
+
+  let cellExportsOne = false
+  if(typeof params.function != 'undefined') {
+    cellExportsOne = true
+  }
+
+  Module._cache[filepath] = {}
+  Module._cache[filepath].exports = {}
+
+  for(let i = 0; i < params.length; i++) {
+    Module._cache[filepath].exports[params[i].function] = runPythonModule.bind(null, cellExportsOne, filename, params[i])
+    Module._cache[filepath].exports[params[i].function].params = params[i].parameters
+  }
+
+  Module._cache[filepath].exports.functions = params.map(p => p.function)
+
+  return Module._cache[filepath].exports
+}
+
+module.exports.makePythonModule = makePythonModule
+</code></pre>
+
+<p>This code defines two functions for formatting and displaying search results from a Jupyter notebook context.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong><code>resultMarkdown(res)</code> Function:</strong></p>
+<ul>
+<li>Takes an array <code>res</code> (presumably containing search results) as input.</li>
+<li>Constructs a Markdown string summarizing the results:
+<ul>
+<li>Displays the number of matches found.</li>
+<li>Includes a pluralization for &quot;match&quot; based on the number of results.</li>
+<li>Lists the matched items (likely file paths or cell IDs).</li>
+<li>If there are matches, it also includes:
+<ul>
+<li>A Markdown representation of the matched content.</li>
+<li>The raw code associated with the matches.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>displayCell(results)</code> Function:</strong></p>
+<ul>
+<li>Takes an array <code>results</code> as input.</li>
+<li>Handles two scenarios:
+<ul>
+<li>If <code>results</code> contains objects (likely representing individual search results), it iterates through them, calling <code>resultMarkdown</code> for each result and concatenating the output into a single string.</li>
+<li>If <code>results</code> is a single string (possibly a single result), it directly calls <code>resultMarkdown</code> on it.</li>
+</ul></li>
+<li>Returns the formatted Markdown string.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to present search results from a Jupyter notebook context in a structured and readable Markdown format.</p>

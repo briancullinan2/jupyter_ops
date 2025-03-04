@@ -1,0 +1,78 @@
+<p>Here is a summary of the code breakdown in one to two sentences:</p>
+<p>The code imports necessary modules and functions, defines variables, and sets up a test suite using Mocha to verify that the <code>listGlobalForwards</code> function correctly lists global forwards. The test case calls the function with <code>project</code> and <code>proxy</code> parameters, checks the result, and logs any errors or failures to the console.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var {listGlobalForwards} = importer.import('list global bucket url map');
+var project = 'spahaha-ea443';
+var proxy = 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/targetHttpsProxies/thp-0c28d-marketing-site-7b81f-sheet-to-web-com';
+
+describe('listing global forwards', () => {
+    it('should list forward', () => {
+        return listGlobalForwards(project, proxy)
+            .then(ip => {
+                console.log(ip);
+                assert(Object.keys(ip).length > 0, 'should list forward');
+            })
+    }).timeout(60000)
+    
+});
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<p>The code starts by importing two modules:</p>
+<pre><code class="language-javascript">var assert = require('assert');
+var importer = require('../Core');
+</code></pre>
+<ul>
+<li><code>assert</code> is a built-in Node.js module for making assertions about the state of the program.</li>
+<li><code>importer</code> is a custom module located in the <code>../Core</code> directory.</li>
+</ul>
+<h3>Importing Functions</h3>
+<p>The code then imports a function <code>listGlobalForwards</code> from the <code>importer</code> module:</p>
+<pre><code class="language-javascript">var {listGlobalForwards} = importer.import('list global bucket url map');
+</code></pre>
+<p>This function is expected to return a promise that resolves to a list of global forwards.</p>
+<h3>Variable Definitions</h3>
+<p>Two variables are defined:</p>
+<pre><code class="language-javascript">var project ='spahaha-ea443';
+var proxy = 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/targetHttpsProxies/thp-0c28d-marketing-site-7b81f-sheet-to-web-com';
+</code></pre>
+<ul>
+<li><code>project</code> is a string representing a project ID.</li>
+<li><code>proxy</code> is a string representing a URL for a target HTTPS proxy.</li>
+</ul>
+<h3>Test Suite</h3>
+<p>The code defines a test suite using the <code>describe</code> function from Mocha:</p>
+<pre><code class="language-javascript">describe('listing global forwards', () =&gt; {
+    //...
+});
+</code></pre>
+<h3>Test Case</h3>
+<p>Inside the test suite, a single test case is defined using the <code>it</code> function from Mocha:</p>
+<pre><code class="language-javascript">it('should list forward', () =&gt; {
+    //...
+});
+</code></pre>
+<p>This test case is expected to pass if the <code>listGlobalForwards</code> function returns a non-empty object when called with the <code>project</code> and <code>proxy</code> parameters.</p>
+<h3>Test Implementation</h3>
+<p>The test case implementation is as follows:</p>
+<pre><code class="language-javascript">return listGlobalForwards(project, proxy)
+   .then(ip =&gt; {
+        console.log(ip);
+        assert(Object.keys(ip).length &gt; 0,'should list forward');
+    })
+</code></pre>
+<ul>
+<li>The <code>listGlobalForwards</code> function is called with the <code>project</code> and <code>proxy</code> parameters, and the result is expected to be a promise that resolves to an object <code>ip</code>.</li>
+<li>The <code>then</code> method is used to handle the resolved promise.</li>
+<li>Inside the <code>then</code> callback, the <code>console.log</code> function is used to print the <code>ip</code> object to the console.</li>
+<li>The <code>assert</code> function is used to check that the <code>ip</code> object has at least one key. If this assertion fails, the test will fail with the error message <code>'should list forward'</code>.</li>
+</ul>
+<h3>Timeout</h3>
+<p>The test case is given a timeout of 60 seconds:</p>
+<pre><code class="language-javascript">}).timeout(60000)
+</code></pre>
+<p>This means that if the test case takes longer than 60 seconds to complete, it will automatically be considered failed.</p>

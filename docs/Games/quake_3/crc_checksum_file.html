@@ -1,0 +1,74 @@
+<p>This code calculates the MD4 checksum of a ZIP archive, which can be used to verify file integrity or identify specific archives.  It reads the ZIP file, extracts CRC values from its entries, and then computes the checksum using the MD4 algorithm.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var StreamZip = require('node-stream-zip')
+var mdfour = importer.import('md4 checksum')
+
+async function checksumZip(file) {
+    var digest = new Uint32Array(4)
+    const zip = new StreamZip({
+      file: file,
+      storeEntries: true
+    })
+    var index = await new Promise(resolve => {
+        var skipped = 0
+        zip.on('ready', async () => {
+          console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(file))
+          resolve(Object.values(zip.entries()))
+        })
+        zip.on('error', resolve)
+    })
+    var contents = [0]
+    var j = 1
+    for(var i = 0; i < index.length; i++) {
+        var entry = index[i]
+        if((entry.method != 0 && entry.method != 8) || entry.size === 0)
+            continue
+        contents[j++] = entry.crc
+    }
+    var headers = new Uint8Array(Uint32Array.from(contents).buffer)
+    process.stdout.write(JSON.stringify(contents))
+    mdfour(digest, headers.slice(4, j * 4), j * 4 - 4)
+    var unsigned = new Uint32Array(1)
+    unsigned[0] = digest[0] ^ digest[1] ^ digest[2] ^ digest[3]
+    return unsigned
+}
+
+module.exports = checksumZip
+</code></pre>
+
+<p>This code defines an asynchronous function <code>checksumZip</code> that calculates the MD4 checksum of a ZIP archive.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules: <code>fs</code>, <code>path</code>, <code>node-stream-zip</code>, and <code>md4</code> checksum function.</li>
+<li>It initializes an empty <code>digest</code> array to store the MD4 checksum.</li>
+</ul></li>
+<li><p><strong>ZIP File Processing:</strong></p>
+<ul>
+<li>It creates a <code>StreamZip</code> object to read the ZIP file.</li>
+<li>It waits for the ZIP archive to be fully read and retrieves a list of entries.</li>
+<li>It iterates through the entries, skipping those that are not compressed or have zero size.</li>
+</ul></li>
+<li><p><strong>Checksum Calculation:</strong></p>
+<ul>
+<li>It extracts the CRC values from the valid entries and stores them in a <code>contents</code> array.</li>
+<li>It converts the <code>contents</code> array to a <code>Uint8Array</code> for MD4 processing.</li>
+<li>It calculates the MD4 checksum using the <code>md4</code> function, passing the <code>headers</code> (CRC values) as input.</li>
+<li>It XORs the individual bytes of the checksum to obtain an unsigned checksum value.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>It writes the CRC values to the console in JSON format.</li>
+<li>It returns the unsigned checksum value.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>checksumZip</code> function is exported as a module.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code provides a utility for calculating the MD4 checksum of a ZIP archive, which can be used for verifying file integrity or identifying specific archives.</p>

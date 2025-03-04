@@ -1,0 +1,69 @@
+<p>This code automatically converts images in a directory to PNG format for transparency support, while using existing JPGs for non-transparent images to maintain quality. It uses shell commands and image processing tools to handle the conversions efficiently.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var execCmd = importer.import('spawn child process')
+var mkdirpSync = importer.import('mkdirp')
+var { chext, chroot } = importer.import('changing file names')
+var {imageTypes} = importer.import('quake 3 file whitelist')
+
+async function convertNonAlpha(root) {
+    var result = []
+    var output = path.join(path.dirname(root), path.basename(root) + '-converted')
+    var files = await glob(imageTypes.map(a => '**/*' + a), root)
+    for(var i = 0; i < files.length; i++) {
+        var outFile, inFile = files[i]
+        var alphaCmd = await execCmd(`identify -format '%[opaque]' '${inFile}'`, {quiet: true})
+        // if it is alpha
+        if(alphaCmd[0].localeCompare('False') === 0) {
+            // convert everything else to png to support transparency
+            outFile = chroot(chext(inFile, '.png'), root, output)
+        } else {
+            // if a jpg already exists, use that file for convert
+            if(fs.existsSync(chext(inFile, '.jpg'))) {
+                inFile = chext(inFile, '.jpg')
+            }
+            // transfer low quality jpeg instead
+            outFile = chroot(chext(inFile, '.jpg'), root, output)
+        }
+        mkdirpSync(path.dirname(outFile))
+        // convert, baseq3 already includes jpg
+        await execCmd(`convert -strip -interlace Plane -sampling-factor 4:2:0 -quality 50% "${inFile}" "${outFile}"`, {quiet: true})
+        result.push(outFile)
+    }
+    return result
+}
+
+
+module.exports = convertNonAlpha</code></pre>
+
+<p>This code defines an asynchronous function <code>convertNonAlpha</code> that converts image files within a specified directory to PNG format, ensuring transparency support.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for file system operations, glob pattern matching, executing shell commands, creating directories, and handling file extensions.</li>
+</ul></li>
+<li><p><strong><code>convertNonAlpha</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>root</code> directory path as input.</li>
+<li>Iterates through image files (identified by their extensions) within the <code>root</code> directory and its subdirectories.</li>
+<li>For each file:
+<ul>
+<li>Checks if the image has an alpha channel using the <code>identify</code> command.</li>
+<li>If no alpha channel exists, converts the file to PNG format.</li>
+<li>If an alpha channel exists, checks if a JPG version already exists; if so, uses that instead. Otherwise, converts the file to a low-quality JPG.</li>
+<li>Creates the necessary directory structure for the output file.</li>
+<li>Uses the <code>convert</code> command to perform the conversion, ensuring transparency support and setting specific image quality parameters.</li>
+</ul></li>
+<li>Returns an array of paths to the converted files.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>convertNonAlpha</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code automates the conversion of images to a consistent format (PNG for transparency, JPG for non-transparent images) within a given directory, ensuring compatibility and quality control.</strong></p>

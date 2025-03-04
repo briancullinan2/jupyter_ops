@@ -1,0 +1,113 @@
+<p>Here is a 2-sentence summary of the <code>storeResponse</code> function:</p>
+<p>The <code>storeResponse</code> function stores user interactions, analyzing the content, emotions, and context, and returns an object containing metadata about the interaction. It selects a model, checks for existing conversation files, and updates the conversation data in memory and the file system, generating a summary and keywords for the interaction.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const selectModel = importer.import('select llm')
+const {askLlamaAboutEmotions} = importer.import('ask llm about emotions')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+
+
+async function storeResponse(user, session, content, context, otr) {
+  let promptModel = await selectModel(DEFAULT_MODEL)
+
+  if(!session) {
+    return {
+      emotions: await askLlamaAboutEmotions(content)
+    }
+  }
+
+  let now = new Date()
+  let convoFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+    + String(now.getMonth() + 1).padStart(2, '0') 
+    + '-' + DEFAULT_MODEL
+    + '-' + session + '.json')
+  if(typeof ACTIVE_CONVERSATIONS[convoFile] == 'undefined') {
+    if(fs.existsSync(convoFile)) {
+      ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+    } else {
+      ACTIVE_CONVERSATIONS[convoFile] = {}
+    }
+  }
+
+  let contextContainsImage = false
+  if(context && context.startsWith('data:image/png;base64,')) {
+    contextContainsImage = true
+  }
+
+  let summary
+  if(!otr) {
+    summary = await promptModel('Summerize this prompt in one short sentence:\n' 
+      + content + '\nOnly respond with the summary, no pleasantries.')
+  }
+  let keywords = await promptModel('List a few key words that categorize this prompt:\n' 
+    + content + '\nOnly respond with a single category, no pleasantries.')
+  let emotions = await askLlamaAboutEmotions(content)
+
+  let result = ACTIVE_CONVERSATIONS[convoFile][Date.now()] = {
+    user: user,
+    content: otr ? void 0 : content,
+    context: contextContainsImage ? void 0 : context,
+    summary: summary,
+    keywords: keywords,
+    emotions: emotions,
+    otr: otr ? true : false,
+  }
+  fs.writeFileSync(convoFile, JSON.stringify(ACTIVE_CONVERSATIONS[convoFile], null, 4))
+
+  return result
+}
+
+
+module.exports = storeResponse
+</code></pre>
+
+<p><strong>Function Breakdown</strong></p>
+<h3><code>storeResponse</code> Function</h3>
+<h4>Purpose</h4>
+<p>Stores responses from user interactions.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>user</code>: The user who interacted with the system.</li>
+<li><code>session</code>: The current session ID.</li>
+<li><code>content</code>: The content of the user's interaction.</li>
+<li><code>context</code>: Additional context about the interaction.</li>
+<li><code>otr</code>: A flag indicating whether the interaction was in an off-the-record (OTR) session.</li>
+</ul>
+<h4>Returns</h4>
+<p>An object containing metadata about the user's interaction, including:</p>
+<ul>
+<li><code>user</code>: The user who interacted with the system.</li>
+<li><code>content</code>: The content of the user's interaction, unless it was an OTR session.</li>
+<li><code>context</code>: Additional context about the interaction, unless it contained an image.</li>
+<li><code>summary</code>: A brief summary of the user's interaction.</li>
+<li><code>keywords</code>: A list of keywords categorizing the user's interaction.</li>
+<li><code>emotions</code>: An analysis of the emotions expressed in the user's interaction.</li>
+<li><code>otr</code>: A flag indicating whether the interaction was in an OTR session.</li>
+</ul>
+<h4>Function Flow</h4>
+<ol>
+<li>Selects a model to use based on the <code>DEFAULT_MODEL</code> constant.</li>
+<li>If no <code>session</code> is provided, returns an object containing an analysis of emotions in the <code>content</code>.</li>
+<li>Creates a conversation file path based on the current date and session ID.</li>
+<li>Checks if a conversation file already exists and loads its contents into memory if so.</li>
+<li>Checks if the conversation file is empty and initializes it if necessary.</li>
+<li>Parses and stores the conversation data in memory.</li>
+<li>Analyzes the <code>content</code> to determine if it contains an image and updates the conversation data accordingly.</li>
+<li>Prompts the model to generate a summary and keywords for the <code>content</code>.</li>
+<li>Analyzes the emotions expressed in the <code>content</code>.</li>
+<li>Stores the conversation data in the file system.</li>
+<li>Returns the conversation data as an object.</li>
+</ol>
+<h3>Imported Modules and Functions</h3>
+<ul>
+<li><code>importer</code>: An import function.</li>
+<li><code>path</code>: A module for working with file paths.</li>
+<li><code>fs</code>: A module for interacting with the file system.</li>
+<li><code>selectModel</code>: A function for selecting a model.</li>
+<li><code>askLlamaAboutEmotions</code>: A function for analyzing emotions in text.</li>
+<li><code>ACTIVE_CONVERSATIONS</code>: An object containing conversation data.</li>
+<li><code>PROJECT_PATH</code>: A constant representing the project's root directory.</li>
+<li><code>DEFAULT_MODEL</code>: A constant representing the default model to use.</li>
+</ul>

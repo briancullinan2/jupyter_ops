@@ -1,0 +1,105 @@
+<p>This code manages the execution and storage of RPC commands as Google Calendar events, allowing for tracking and logging of command history.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var createNewEvent = importer.import('create new calendar event');
+var ISODateString = importer.import('convert date iso');
+var getOauthClient = importer.import('import google calendar api');
+var getResult = importer.import('rpc result');
+
+var options = {
+    calendarId: 'Commands'
+};
+
+function updateResultEvent(response, executed, isError, isStarting = false) {
+    const config = {
+        start: {
+            dateTime: ISODateString(new Date(executed.date.getTime()))
+        },
+        end: {
+            dateTime: ISODateString(new Date(executed.date.getTime() + 60 * 30 * 1000))
+        },
+        summary: 'Result: ' + executed.id,
+        description: JSON.stringify(response, null, 4).substr(0, 1000),
+        colorId: isStarting ? 9 : (isError ? 11 : 10)
+    }
+    assert(config.colorId !== 10 || !isError,
+           'something went wrong with reporting the error ' + JSON.stringify(response, null, 4));
+    return createNewEvent(config, options).then(() => response);
+}
+
+function storeResult(executed, calendar) {
+    if(calendar) {
+        options.calendarId = calendar || options.calendarId;
+    }
+    if(typeof executed === 'undefined' || executed === null
+       || executed.already !== false) {
+        // skip commands that have already been run
+        throw new Error('Nothing to do!');
+    }
+    
+    console.log('creating rpc event ' + JSON.stringify(Object.keys(executed).reduce((acc, k) => {
+        acc[k] = (JSON.stringify(executed[k]) || '').substr(0, 200);
+        return acc;
+    }, {})));
+    
+    assert(executed.date, 'There should always be a date associated with the event result.');
+    
+    var isError = false;
+    return getOauthClient(options)
+        // create a new events to store the results
+        .then(() => updateResultEvent({
+            time: new Date(),
+            result: executed.result.filename,
+            command: executed.command,
+            parameters: executed.body,
+            status: 'starting'
+        }, executed, false, true))
+        // process the command, this should return a function to be called after event
+        .then(() => getResult(executed))
+        .catch(e => {
+            isError = true;
+            const resultError = Object.getOwnPropertyNames(e).reduce((alt, key) => {
+                alt[key] = e[key];
+                return alt;
+            }, {});
+            console.log(resultError);
+            return resultError;
+        })
+        // update event with logged results or tracking
+        .then(response => updateResultEvent(response, executed, isError || !response))
+        .catch(e => console.log(e))
+}
+module.exports = storeResult;
+
+</code></pre>
+
+<p>This code defines functions for managing the execution and storage of RPC commands as Google Calendar events.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for assertions, importing functions, creating calendar events, converting dates to ISO format, and retrieving RPC results.</li>
+</ul></li>
+<li><p><strong><code>options</code> Object:</strong></p>
+<ul>
+<li>Defines a configuration object with a <code>calendarId</code> for interacting with the Google Calendar API.</li>
+</ul></li>
+<li><p><strong><code>updateResultEvent</code> Function:</strong></p>
+<ul>
+<li>Takes a response object, execution details, and flags for error and starting status.</li>
+<li>Constructs a calendar event object with details like start/end times, summary, description, and color.</li>
+<li>Uses <code>createNewEvent</code> to create the event in the specified calendar.</li>
+</ul></li>
+<li><p><strong><code>storeResult</code> Function:</strong></p>
+<ul>
+<li>Takes execution details and an optional calendar ID.</li>
+<li>Skips commands that have already been run or lack execution details.</li>
+<li>Logs the command details.</li>
+<li>Asserts the presence of a date for the event.</li>
+<li>Retrieves an OAuth client for the calendar.</li>
+<li>Calls <code>updateResultEvent</code> to create the event.</li>
+</ul></li>
+</ol>
+<p>In essence, this code handles the scheduling and logging of RPC command executions as Google Calendar events, providing a way to track and manage command history.</p>

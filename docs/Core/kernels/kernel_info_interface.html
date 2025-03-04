@@ -1,0 +1,83 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules and data, and defines the <code>kernelInfoInterface</code> object with various properties that provide information about a kernel. The <code>nativeKernelInfo</code> function takes a <code>kernel_info</code> object, extends it with additional information, and returns an object with language, kernel, and meta data.</p>
+
+
+<pre><code>var importer = require('../Core');
+var interface = importer.import('enforcing an interface');
+var languageInterface = importer.import('kernel language interface');
+
+var PACKAGE_VERSION = require('../package.json').version;
+
+var kernelInfoInterface = {
+    // from the docs 
+    protocol_version: [void 0, ''],
+    implementation: [void 0, ''],
+    implementation_version: [void 0, ''],
+    banner: [void 0, ''],
+    language_info: languageInterface,
+    help_links: [void 0, []],
+    // custom, path to it's own script for installing
+    install_config: [void 0, '']
+}
+
+function nativeKernelInfo(kernel_info) {
+    if(!kernel_info) {
+        return;
+    }
+    var {
+        language_info,
+        protocol_version,
+        implementation,
+        implementation_version,
+        banner
+    } = kernel_info; // for easy reading
+    
+    //if(typeof language_info === 'function')
+    //    kernel_info.language_info = language_info(language_info);
+    kernel_info.language_info = interface(language_info, languageInterface);
+    language_info.name = language_info.name || implementation;
+    var info = interface(kernel_info, kernelInfoInterface)
+    var self = extend(meta_info, {
+        protocol_version: protocol_version || '5.1',
+        implementation: implementation || language_info.name,
+        implementation_version: implementation_version || PACKAGE_VERSION,
+        banner: banner || language_info.language
+    })
+    return self;
+}
+
+module.exports = {
+    kernelInfoInterface,
+    nativeKernelInfo
+};
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules and Data</h4>
+<p>The code starts by importing necessary modules and data:</p>
+<ul>
+<li><code>importer</code> is required from <code>../Core</code> and used to import other modules: <code>interface</code> and <code>languageInterface</code>.</li>
+<li><code>PACKAGE_VERSION</code> is extracted from <code>../package.json</code>.</li>
+</ul>
+<h4>Defining the <code>kernelInfoInterface</code> Object</h4>
+<p>The <code>kernelInfoInterface</code> object is defined with several properties, including:</p>
+<ul>
+<li><code>protocol_version</code>, <code>implementation</code>, <code>implementation_version</code>, and <code>banner</code>, which are all initialized with default values.</li>
+<li><code>language_info</code>, which is set to the <code>languageInterface</code> object.</li>
+<li><code>help_links</code> and <code>install_config</code> are initialized with default values.</li>
+</ul>
+<h4>Defining the <code>nativeKernelInfo</code> Function</h4>
+<p>The <code>nativeKernelInfo</code> function takes a <code>kernel_info</code> object as an argument and returns an extended version of it. Here's what it does:</p>
+<ul>
+<li>It checks if <code>kernel_info</code> is truthy and returns immediately if it's not.</li>
+<li>It extracts several properties from <code>kernel_info</code> and assigns them to local variables.</li>
+<li>It applies the <code>interface</code> function to the <code>language_info</code> property, using <code>languageInterface</code> as the interface.</li>
+<li>It sets the <code>name</code> property of <code>language_info</code> to either <code>language_info.name</code> or <code>implementation</code>.</li>
+<li>It applies the <code>interface</code> function to the entire <code>kernel_info</code> object, using <code>kernelInfoInterface</code> as the interface.</li>
+<li>It creates a new object <code>self</code> by extending <code>meta_info</code> with the extracted properties and returns it.</li>
+</ul>
+<h4>Exporting Modules</h4>
+<p>Finally, the code exports the <code>kernelInfoInterface</code> object and the <code>nativeKernelInfo</code> function as a module:</p>
+<ul>
+<li><code>module.exports = { kernelInfoInterface, nativeKernelInfo }</code></li>
+</ul>

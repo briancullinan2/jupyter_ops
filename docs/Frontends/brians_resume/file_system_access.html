@@ -1,0 +1,125 @@
+<p>Here's a two-sentence summary of the <code>messageFilesystem</code> function:</p>
+<p>The <code>messageFilesystem</code> function is an asynchronous function that retrieves information about available projects and their related files by interacting with the file system and user input. It generates a prompt, filters related projects and files, and logs user responses and project information, although it has some potential performance and logging issues that should be addressed.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+
+async function messageFilesystem(promptModel, session, prompt) {
+
+  let currentProject = path.basename(path.resolve(__dirname, '..'))
+  let availableProjects = fs.readdirSync(PROFILE_PATH)
+    .filter(dir => dir[0] != '.')
+    .filter(dir => fs.statSync(path.join(PROFILE_PATH, dir)).isDirectory())
+    .filter(dir => fs.existsSync(path.join(PROFILE_PATH, dir, '.git')))
+  let q1 = 'Current project: ' + currentProject
+    + '\nAvailable projects:\n' + availableProjects.join('\n')
+    + '\nAre any of these project related to the current prompt:\n'
+    + prompt
+    + '\nOnly respond with the project name or "No" if none are related.'
+  console.log('User: ' + q1)
+  let a1 = await promptModel(q1)
+  console.log('AI: ' + a1)
+  
+  let relatedProjects = availableProjects.filter(dir => a1.match(dir))
+
+  if(relatedProjects.length == 0) {
+    return 'Current project: ' + currentProject
+      + '\nAvailable projects:\n' + availableProjects.join('\n')
+  }
+
+  let projectFiles = fs.readdirSync(path.join(PROFILE_PATH, relatedProjects[0]))
+    .filter(dir => dir[0] != '.' && dir != 'node_modules')
+    .map(file => {
+      let currentPath = path.join(PROFILE_PATH, relatedProjects[0], file)
+      if(fs.statSync(currentPath).isDirectory()) {
+        return [file].concat(fs.readdirSync(currentPath)
+          .filter(dir => dir[0] != '.')
+          .map(dir => path.join(file, dir)))
+      } else {
+        return file
+      }
+    })
+    .flat(1)
+  let relatedFiles = []
+  if(currentProject == relatedProjects[0]) {
+    // TODO: use cell lookup instead of notebook files
+    let q2 = 'Current project: ' + currentProject
+      + '\nRelated projects:\n' + relatedProjects.join('\n')
+      + '\nProject files:\n'
+    let originalFilePrompt = q2
+    let count = 0
+    for(let i = 0; i < projectFiles.length; i++) {
+      q2 += projectFiles[i] + '\n'
+      count++
+      if(count == 25 || q2.length > 2048) {
+        q2 += '\nAre any of the project files relevant to the prompt:\n'
+          + prompt
+          + '\nOnly respond with the related file paths or file names, nothing else.'
+        console.log('User: ' + q2)
+        let a2 = await promptModel(q2)
+        console.log('AI: ' + a2)
+        relatedFiles = relatedFiles.concat(projectFiles
+          .filter(file => a2.match(file) || a2.match(path.basename(file))))
+        count = 0
+        q2 = originalFilePrompt
+      }
+    }
+    if(q2.length != originalFilePrompt.length || count > 0) {
+      q2 += '\nAre any of the project files relevant to the prompt:\n'
+        + prompt
+        + '\nOnly respond with the related file paths or file names, nothing else.'
+      console.log('User: ' + q2)
+      let a2 = await promptModel(q2)
+      console.log('AI: ' + a2)
+      relatedFiles = relatedFiles.concat(projectFiles
+        .filter(file => a2.match(file) || a2.match(path.basename(file))))
+    }
+  }
+
+  if(relatedFiles.length == 0) {
+    return 'Current project: ' + currentProject
+      + '\nRelated projects:\n' + relatedProjects.join('\n')
+      + '\nProject files:\n' + projectFiles.join('\n')
+  }
+
+  // TODO: another depth of related files
+  
+  return 'Current project: ' + currentProject
+    + '\nRelated projects:\n' + relatedProjects.join('\n')
+    + '\nRelated files:\n' + relatedFiles.join('\n')
+
+
+}
+
+module.exports = messageFilesystem
+</code></pre>
+
+<p><strong>Function Breakdown: <code>messageFilesystem</code></strong></p>
+<p>This is an asynchronous function that interacts with the file system to provide information about available projects and their related files. It takes in three parameters:</p>
+<ul>
+<li><code>promptModel</code>: a model used to generate prompts</li>
+<li><code>session</code>: not used in this function</li>
+<li><code>prompt</code>: a prompt to check for related projects</li>
+</ul>
+<p>Here's a step-by-step breakdown of the function:</p>
+<ol>
+<li><strong>Get current project directory</strong>: It uses the <code>path</code> module to get the current working directory and its parent directory (the project root).</li>
+<li><strong>Get available projects</strong>: It uses the <code>fs</code> module to read the contents of the user's home directory and filter out directories that are hidden or not Git repositories.</li>
+<li><strong>Generate prompt</strong>: It generates a prompt asking if any of the available projects are related to the current prompt.</li>
+<li><strong>Get user response</strong>: It uses the <code>promptModel</code> to generate a response to the prompt and logs the user's response.</li>
+<li><strong>Filter related projects</strong>: It filters the available projects to those that match the user's response.</li>
+<li><strong>Get project files</strong>: If there are related projects, it gets a list of files in that project directory and its subdirectories.</li>
+<li><strong>Generate response</strong>: It generates a response that includes the current project, available projects, related projects, and project files.</li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The function uses the <code>fs</code> module to interact with the file system, which can be slow and blocking. Consider using asynchronous methods or a library like <code>fs-promises</code> to improve performance.</li>
+<li>The function uses <code>process.env.HOME</code> and other environment variables to determine the user's home directory. This may not work correctly on all systems or in all environments.</li>
+<li>The function uses <code>path.basename</code> and <code>path.join</code> to manipulate file paths, which is good practice.</li>
+<li>The function uses <code>fs.existsSync</code> and <code>fs.statSync</code> to check if a file or directory exists and get its stats, which is good practice.</li>
+<li>The function uses <code>filter</code> and <code>map</code> methods to process arrays of project files, which is good practice.</li>
+<li>The function uses <code>console.log</code> to log user responses and AI-generated text, which may not be suitable for production environments where logs should be handled differently.</li>
+</ul>

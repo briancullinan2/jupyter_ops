@@ -1,0 +1,93 @@
+<p>This code uses a Google Calendar to trigger the execution of Node.js scripts by parsing event descriptions and extracting parameters to run.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {JSDOM} = require('jsdom');
+var {
+    getOauthClient,
+    getDaysEvents,
+    thump
+} = importer.import([
+    'days events',
+    'import google calendar api',
+    'heartbeat thump'
+]);
+
+var options = {
+    calendarId: 'aws'
+};
+
+// test Google calendar API?
+function runTodaysHeartbeat(calendar, exit) {
+    if(calendar) {
+        options.calendarId = calendar;
+    }
+    return (typeof options.auth === 'undefined'
+           ? getOauthClient(options)
+           : Promise.resolve([]))
+        .then(() => getDaysEvents(new Date(), options))
+        .then(r => {
+            const heartbeat = r.filter(r => r.event.summary === 'heartbeat'
+                                       || r.event.summary === 'todays heartbeat items');
+        
+            try {
+                var dom = new JSDOM('<body>' + (heartbeat[0].event.description || '').replace(/<br\/?>/igm, '\n') + '</body>');
+                const desc = dom.window.document.body.textContent.split('\n');
+                desc.forEach(c => {
+                    if(c.trim().length > 0) {
+                        const parameters = (/[\{].*[\}]|[\[].*[\]]|(['"]).*\1/igm).exec(c) || ['""'];
+                        thump(c.replace(parameters[0], ''), JSON.parse(parameters[0]), false);
+                    }
+                });
+            } catch ( e ) {
+                console.log(e);
+            }
+        
+            if(exit !== false) {
+                process.exit(0);
+            }
+        })
+}
+module.exports = runTodaysHeartbeat;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    runTodaysHeartbeat(false, false)
+        .then(r => $$.sendResult(r))
+        .then(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code fetches events from a Google Calendar, parses their descriptions, and executes Node.js scripts based on the extracted parameters.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>importer</code> (likely a custom module), <code>JSDOM</code> for creating a virtual DOM, and functions <code>getOauthClient</code>, <code>getDaysEvents</code>, and <code>thump</code> from the imported <code>importer</code>.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets up <code>options</code> with a default <code>calendarId</code>.</li>
+</ul></li>
+<li><p><strong><code>runTodaysHeartbeat</code> Function:</strong></p>
+<ul>
+<li>Takes <code>calendar</code> (optional) and <code>exit</code> (boolean) as arguments.</li>
+<li>If <code>calendar</code> is provided, updates <code>options.calendarId</code>.</li>
+<li>Fetches an OAuth client (if not already available) and then retrieves events for today from the specified calendar.</li>
+<li>Filters events for those with summaries &quot;heartbeat&quot; or &quot;todays heartbeat items&quot;.</li>
+<li>Parses the description of the first matching event using <code>JSDOM</code> to create a virtual DOM.</li>
+<li>Extracts lines from the description and iterates through them:
+<ul>
+<li>If a line is not empty, it extracts parameters enclosed in curly braces, square brackets, or single quotes using a regular expression.</li>
+<li>Executes the extracted line as a Node.js script using the <code>thump</code> function, passing the line and extracted parameters.</li>
+</ul></li>
+<li>Handles potential errors during parsing.</li>
+<li>Exits the process if <code>exit</code> is not <code>false</code>.</li>
+</ul></li>
+<li><p><strong>Module Export and Execution:</strong></p>
+<ul>
+<li>Exports the <code>runTodaysHeartbeat</code> function.</li>
+<li>If a <code>$$</code> object is available (likely a framework or environment-specific object), it executes the function asynchronously and handles results and errors.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code acts as a scheduler or trigger for executing Node.js scripts based on events from a Google Calendar.</strong></p>

@@ -1,0 +1,166 @@
+<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<p>The code establishes and manages a WebSocket connection to Discord, handling events such as connection opening, message receiving, and connection closing, with functions like <code>authorizeGateway()</code> and <code>closeGateway()</code>. It also includes functions like <code>requestAuthQ()</code> for making requests to the Discord API, although this function appears to be incomplete and intended to handle a queue of requests.</p>
+
+
+<pre><code>const {request} = require('gaxios')
+const WebSocket = require('ws')
+const {delay, wait, timeout} = importer.import('discord utilities')
+const {
+  gatewayIdentified, gatewayClose, gatewayMessage,
+} = importer.import('discord gateway')
+const {
+  TOKEN, DEFAULT_API, DEFAULT_RATE
+} = importer.import('discord configuration')
+
+var ws = false
+var wsConnecting = false
+var previousRequest = 0
+
+async function gatewayUrl() {
+  // TODO: return the same result if queried less than 1 second ago
+  // doesn't use requestAuthQ because that would create an infinite loop
+  var result = await request({
+    headers: {
+      'Authorization': `Bot ${TOKEN}`
+    },
+    method: 'GET',
+    url: `${DEFAULT_API}gateway/bot`
+  })
+  return result.data
+}
+
+function gatewayOpen() {
+  console.log('Connecting to Discord')
+}
+
+async function authorizeGateway() {
+  if(wsConnecting) {
+    var result = await wait(() => ws && ws.identified, 3000)
+    if(!result)
+      return await authorizeGateway()
+    else
+      return ws
+  } else if (ws && ws.readyState == 1 && ws.identified) {
+    return ws
+  }
+
+  wsConnecting = true
+  try {
+    ws = new WebSocket((await gatewayUrl()).url)
+    ws.identified = false
+  } catch (e) {
+    console.log('Authorize error', e.message)
+    ws = false
+    wsConnecting = false
+    return
+  }
+  ws.on('open', gatewayOpen)
+  ws.on('message', gatewayMessage.bind(null, ws, authorizeGateway, interactionResponse))
+  ws.on('close', gatewayClose.bind(null, ws, authorizeGateway))
+  await wait(() => ws.identified, 3000)
+  wsConnecting = false
+  return ws
+}
+
+function closeGateway() {
+  gatewayClose(ws)
+}
+
+var previousRequest = 0
+
+async function requestAuthQ(outgoing) {
+  await authorizeGateway()
+  if(typeof outgoing.headers == 'undefined')
+    outgoing.headers = {}
+  outgoing.headers['Authorization'] = `Bot ${TOKEN}`
+  outgoing.url = DEFAULT_API + outgoing.url
+  previousRequest = await delay(previousRequest, DEFAULT_RATE)
+  var resolveRequest
+  resolveRequest = async () => {
+    var result
+    try {
+      //console.log('Discord request', outgoing)
+      result = (await request(outgoing)).data
+    } catch (e) {
+      // check result for rate limit and re-run this request in a queue
+      if(e.code == 429) {
+        console.log('Delayed request', e.response.data.retry_after)
+        await timeout(e.response.data.retry_after * 1000)
+        return await resolveRequest()
+      } else {
+        console.log(e)
+        if(e.response) {
+          console.log(e.response.data.errors)
+        }
+        throw e
+      }
+    }
+    return result
+  }
+  return await resolveRequest()
+}
+
+async function interactionResponse(interactionId, interactionToken) {
+  var json = {
+    'type': 5
+  }
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    url: `interactions/${interactionId}/${interactionToken}/callback`,
+    data: JSON.stringify(json)
+  })
+}
+
+module.exports = {
+  authorizeGateway,
+  gatewayUrl,
+  closeGateway,
+  requestAuthQ,
+  interactionResponse,
+}
+
+
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules and Variables</h3>
+<p>The code imports various modules and variables:</p>
+<ul>
+<li><code>gaxios</code>: a Google API client library for making HTTP requests.</li>
+<li><code>ws</code>: a WebSocket library for establishing a real-time connection to Discord.</li>
+<li><code>discord utilities</code>, <code>discord gateway</code>, and <code>discord configuration</code>: custom modules for handling Discord-related functionality.</li>
+</ul>
+<p>Variables are declared for the WebSocket connection (<code>ws</code> and <code>wsConnecting</code>) and for tracking the timing of requests (<code>previousRequest</code>).</p>
+<h3>Functions</h3>
+<h4><code>gatewayUrl()</code></h4>
+<p>This function retrieves the Discord gateway URL by making a GET request to the Discord API with the bot token as an authorization header. The result is returned as a promise.</p>
+<h4><code>gatewayOpen()</code></h4>
+<p>This function logs a message to the console indicating that the connection to Discord is being established.</p>
+<h4><code>authorizeGateway()</code></h4>
+<p>This function is responsible for establishing a WebSocket connection to Discord and authorizing the bot. It:</p>
+<ol>
+<li>Checks if a connection is already being attempted (<code>wsConnecting</code>) or if a connection already exists (<code>ws</code>).</li>
+<li>If a connection is not present, creates a new WebSocket object using the gateway URL obtained from <code>gatewayUrl()</code>.</li>
+<li>Sets up event listeners for the WebSocket connection:
+<ul>
+<li><code>open</code>: logs a message to the console when the connection is established.</li>
+<li><code>message</code>: receives messages from Discord and passes them to <code>gatewayMessage()</code> for handling.</li>
+<li><code>close</code>: closes the connection and attempts to re-authorize when the connection is closed.</li>
+</ul></li>
+<li>Waits for the connection to be fully established (identified by Discord) before returning the connection object.</li>
+</ol>
+<h4><code>closeGateway()</code></h4>
+<p>This function closes the WebSocket connection to Discord.</p>
+<h4><code>requestAuthQ()</code></h4>
+<p>This function makes a request to the Discord API with authentication. It:</p>
+<ol>
+<li>Calls <code>authorizeGateway()</code> to establish a new connection if necessary.</li>
+<li>Sets up the request headers and URL.</li>
+<li>Waits for the previous request to complete before sending the new request.</li>
+<li>Makes the request and returns the response as a promise.</li>
+</ol>
+<p>Note that this function seems to be incomplete, as indicated by the TODO comment and the presence of a <code>resolveRequest</code> function. The code appears to be intended to handle a queue of requests, but this part is not fully implemented.</p>

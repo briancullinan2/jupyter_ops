@@ -1,0 +1,114 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This module exports two functions, <code>extend</code> and <code>override</code>, which create a new class by inheriting properties from a parent class, allowing for property overriding and extension. The functions are demonstrated through example usage and unit tests, showcasing their functionality and flexibility.</p>
+
+
+<pre><code>var parentObj = {
+    do_init() {
+        console.log('parent');
+    },
+    do_message() {
+        console.log('original');
+    }
+}
+
+var childObj = {
+    do_init() {
+        console.log('child');
+        parentObj.do_init();
+    },
+    do_message() {
+        parentObj.do_message();
+        console.log('overridden');
+    }
+}
+
+function extend(child, parent) {
+    var newClass = Object.create(parent || {});
+    Object.assign(newClass, child, Object.getPrototypeOf(child || {}));
+    var self = Object.create(newClass);
+    return self;
+}
+
+function override(child) {
+    return extend(child, this);
+}
+
+module.exports = {
+    extend,
+    override
+}
+//module.exports = Object.create.bind(null, childObj)
+
+if(typeof $$ !== 'undefined') {
+    console.log(typeof module.exports)
+    var testClass = module.exports.extend();
+    console.log(typeof testClass.do_init)
+    testClass = module.exports.extend(childObj, parentObj)
+    testClass.do_init();
+    testClass.do_message();
+    testClass = module.exports.extend({}, parentObj)
+    testClass.do_init();
+    testClass.do_message();
+    // TODO: more tests
+    
+    /* expected output
+    object
+    undefined
+    child
+    parent
+    original
+    overridden
+    parent
+    original
+    */
+}
+
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>This code defines a module that exports two functions, <code>extend</code> and <code>override</code>, which are used to create a new class by inheriting properties from a parent class. The code also includes unit tests to demonstrate the functionality.</p>
+<p><strong>Functions</strong></p>
+<h3><code>extend(child, parent)</code></h3>
+<ul>
+<li>Creates a new class by inheriting properties from the <code>parent</code> object.</li>
+<li>Copies the properties of the <code>child</code> object onto the new class using <code>Object.assign</code>.</li>
+<li>Returns the new class.</li>
+</ul>
+<h3><code>override(child)</code></h3>
+<ul>
+<li>Wraps the <code>extend</code> function and binds the <code>parent</code> object to the <code>this</code> context.</li>
+<li>Calls the <code>extend</code> function with the <code>child</code> object and the <code>this</code> context (i.e., the parent object).</li>
+<li>Returns the new class.</li>
+</ul>
+<p><strong>Example Usage</strong></p>
+<pre><code class="language-javascript">var parentObj = {
+    do_init() {
+        console.log('parent');
+    },
+    do_message() {
+        console.log('original');
+    }
+}
+
+var childObj = {
+    do_init() {
+        console.log('child');
+        parentObj.do_init();
+    },
+    do_message() {
+        parentObj.do_message();
+        console.log('overridden');
+    }
+}
+
+var newClass = module.exports.extend(childObj, parentObj);
+newClass.do_init(); // outputs: child, parent
+newClass.do_message(); // outputs: original, overridden
+</code></pre>
+<p><strong>Tests</strong></p>
+<p>The code includes a test section to demonstrate the functionality of the <code>extend</code> and <code>override</code> functions.</p>
+<pre><code class="language-javascript">if(typeof $$!== 'undefined') {
+    //...
+}
+</code></pre>
+<p>The test creates a new class using the <code>extend</code> function with no parent object and checks that the resulting class has a <code>do_init</code> method. It then creates a new class using the <code>extend</code> function with the <code>childObj</code> and <code>parentObj</code> objects as arguments and checks that it inherits the correct behavior. Finally, it creates a new class using the <code>extend</code> function with an empty child object and the <code>parentObj</code> object as arguments and checks that it inherits the correct behavior.</p>

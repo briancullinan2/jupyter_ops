@@ -1,0 +1,111 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>The <code>postMessageImageAttachment</code> function is an asynchronous function that posts a message with an image attachment to a Discord channel, using a POST request to the Discord API with a multipart/form-data payload. The function takes four parameters: <code>prompt</code>, <code>buff</code>, <code>channelId</code>, and <code>content</code>, and returns a promise that resolves when the request is complete.</p>
+
+
+<pre><code>const { safeurl } = importer.import('domain cache tools')
+const mime = require('mime-types');
+const {requestAuthQ} = importer.import('discord request')
+
+
+async function postMessageImageAttachment(prompt, buff, channelId, content = 'image/png') {
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'multipart/form-data; boundary=boundary123'
+    },
+    method: 'POST',
+    url: `channels/${channelId}/messages`,
+    body: `--boundary123
+Content-Disposition: form-data; name="payload_json"
+Content-Type: application/json
+
+${JSON.stringify({
+  content: 'Your ' + (content.includes('image') ? 'image' : content) + ' delivered: *' + prompt + '*',
+  attachments: [{
+    "id": 0,
+    "description": prompt,
+    "filename": safeurl(prompt) + '.' + mime.extension(content)
+  }],
+})}
+--boundary123
+Content-Disposition: form-data; name="files[0]"; filename="${safeurl(prompt)}.${mime.extension(content)}"
+Content-Transfer-Encoding: base64
+Content-Type: ${content}
+
+${buff.toString('base64')}
+--boundary123--`
+  })
+}
+
+
+module.exports = {
+  postMessageImageAttachment
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">const { safeurl } = importer.import('domain cache tools')
+const mime = require('mime-types');
+const {requestAuthQ} = importer.import('discord request')
+</code></pre>
+<ul>
+<li>The code imports dependencies:
+<ul>
+<li><code>safeurl</code> from the <code>domain cache tools</code> module.</li>
+<li><code>mime</code> from the <code>mime-types</code> package.</li>
+<li><code>requestAuthQ</code> from the <code>discord request</code> module.</li>
+</ul></li>
+</ul>
+<h4>postMessageImageAttachment Function</h4>
+<pre><code class="language-javascript">async function postMessageImageAttachment(prompt, buff, channelId, content = 'image/png') {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>postMessageImageAttachment</code> function is an asynchronous function that takes four parameters:
+<ul>
+<li><code>prompt</code>: The prompt for the message.</li>
+<li><code>buff</code>: A buffer representing the image attachment.</li>
+<li><code>channelId</code>: The ID of the Discord channel to post the message.</li>
+<li><code>content</code>: The MIME type of the attachment (defaults to <code>'image/png'</code>).</li>
+</ul></li>
+</ul>
+<h4>Function Implementation</h4>
+<pre><code class="language-javascript">return await requestAuthQ({
+    //...
+})
+</code></pre>
+<ul>
+<li>The function uses <code>requestAuthQ</code> to make a POST request to the Discord API to post a message with an image attachment.</li>
+</ul>
+<h4>Request Body</h4>
+<pre><code class="language-javascript">body: `--boundary123
+Content-Disposition: form-data; name=&quot;payload_json&quot;
+Content-Type: application/json
+
+${JSON.stringify({
+    //...
+})}
+--boundary123
+Content-Disposition: form-data; name=&quot;files[0]&quot;; filename=&quot;${safeurl(prompt)}.${mime.extension(content)}&quot;
+Content-Transfer-Encoding: base64
+Content-Type: ${content}
+
+${buff.toString('base64')}
+--boundary123--`
+</code></pre>
+<ul>
+<li>The request body is a multipart/form-data payload with two parts:
+<ul>
+<li>The first part is a JSON payload with the message content and attachment details.</li>
+<li>The second part is the image attachment itself, encoded as a base64 string.</li>
+</ul></li>
+</ul>
+<h4>Exporting the Function</h4>
+<pre><code class="language-javascript">module.exports = {
+    postMessageImageAttachment
+}
+</code></pre>
+<ul>
+<li>The <code>postMessageImageAttachment</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

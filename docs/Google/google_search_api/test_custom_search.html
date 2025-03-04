@@ -1,0 +1,25 @@
+<p>This code performs a web search using a custom search engine and sends the results (or any errors) to an external system for further processing.  It uses promises to handle the asynchronous nature of the search operation.</p>
+
+
+<pre><code>var importer = require('../Core');
+var search = importer.import('search the web');
+
+$$.async();
+
+search('google')
+    .then(({items}) => $$.sendResult(items))
+    .catch(e => $$.sendError(e))
+</code></pre>
+
+<p>This code snippet performs a web search using a custom search engine and sends the results to an external system.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong> It imports a function <code>search</code> from a local module <code>Core</code> which likely handles the interaction with a web search engine.</p></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>It initializes an asynchronous context using <code>$$.async()</code>.</li>
+<li>It calls the <code>search</code> function with the query &quot;google&quot;.</li>
+<li>The <code>.then()</code> block handles the successful search result, extracting the <code>items</code> array (presumably containing search results) and sending it to the external system using <code>$$.sendResult</code>.</li>
+<li>The <code>.catch()</code> block handles any errors during the search process and sends the error to the external system using <code>$$.sendError</code>.</li>
+</ul></li>
+</ol>

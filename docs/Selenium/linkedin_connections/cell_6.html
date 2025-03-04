@@ -1,0 +1,11 @@
+
+
+<pre><code>var importer = require('../Core');
+var addLinkedinConnections = importer.import('connect add friends linkedin');
+
+$$.async();
+addLinkedinConnections(null, '')
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e))
+</code></pre>
+

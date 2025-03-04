@@ -1,0 +1,78 @@
+<p>This code uses the Google Maps Places API to find places near a given location or by name, returning a list of matching results.</p>
+
+
+<pre><code>var util = require('util');
+var request = util.promisify(require('request'));
+
+var API_KEY = 'AIzaSyDVoQW6NTPuVz8ClOtl0ShITBr_E2sP4l0';
+
+function placesNearby(name, nearby) {
+    console.log('searching ' + name);
+    if(typeof nearby === 'undefined') {
+        const uri = 'https://maps.googleapis.com/maps/api/place/textsearch/json' 
+            + '?query=' + encodeURIComponent(name)
+            + '&key=' + API_KEY;
+        return request(uri)
+            .then(r => JSON.parse(r.body).results)
+    }
+    const uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json' 
+        + '?name=' + encodeURIComponent(name)
+        + '&location=' + nearby.lat + ',' + (nearby.lng || nearby.lon)
+        + '&rankby=distance&key=' + API_KEY;
+    return request(uri)
+        .then(r => JSON.parse(r.body).results)
+}
+
+module.exports = placesNearby;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    var results;
+    //placesNearby('Kazimierz World Wine Bar near', {lat:  33.505033, lng: -111.926218})
+    //placesNearby('Rock Springs', lat_long)
+    placesNearby('Sportsman\'s Bar & Grill near 1000 N Humphreys St, Flagstaff')
+        .then(r => {
+        console.log(r);
+            results = r;
+            return placeDetails(r[0].place_id);
+        })
+        .then(r => {
+            Object.assign(results[0], r);
+            return results;
+        })
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e));
+}
+</code></pre>
+
+<p>This code snippet searches for places near a given location using the Google Maps Places API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>request</code> module for making HTTP requests and uses <code>util.promisify</code> to convert it to a Promise-based API.</li>
+</ul></li>
+<li><p><strong>API Key:</strong></p>
+<ul>
+<li>It defines an API key for accessing the Google Maps Places API.</li>
+</ul></li>
+<li><p><strong><code>placesNearby</code> Function:</strong></p>
+<ul>
+<li>This asynchronous function takes a <code>name</code> (the place to search for) and an optional <code>nearby</code> object (containing latitude and longitude coordinates) as input.</li>
+<li>If <code>nearby</code> is provided, it constructs a URL for the <code>nearbysearch</code> endpoint, specifying the name, location, and ranking by distance.</li>
+<li>Otherwise, it constructs a URL for the <code>textsearch</code> endpoint, searching for the name directly.</li>
+<li>It makes a request to the API using <code>request</code>, parses the JSON response, and returns an array of matching places.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>placesNearby</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul></li>
+<li><p><strong>Execution Block:</strong></p>
+<ul>
+<li>The code includes a conditional block that executes if the <code>$$</code> object is available (likely a testing framework).</li>
+<li>It calls <code>placesNearby</code> with a sample query and then chains additional calls to <code>placeDetails</code> (not shown in the provided code) to retrieve more detailed information about the first matching place.</li>
+<li>Finally, it sends the results or errors to the testing framework.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet demonstrates how to use the Google Maps Places API to search for places near a given location and retrieve basic information about the results.</p>

@@ -1,0 +1,57 @@
+
+
+<pre><code>var importer = require('../Core');
+var readSessions = importer.import('load webdriver sessions');
+var {
+    getSessions,
+    lockPromise,
+    updateOrAddSession
+} = importer.import('manage webdriver sessions');
+
+var TIMEOUT = 10000;
+var MAX_SESSIONS = 4;
+
+function connectSession(client) {
+    var isError = false;
+    return lockPromise(true, true)
+        .then(() => getSessions(client, true))
+        // save current session
+        .then(validSessions => {
+            isError = false;
+            var sessions = readSessions();
+            // the next null or end will be the next available profile id
+            var index = sessions.map(s => s[1]).indexOf(validSessions[0] || 0);
+            if(index === -1) {
+                console.log('session not found ' + validSessions[0]);
+                index = sessions.length;
+            }
+            if(index >= MAX_SESSIONS) {
+                throw new Error('Already running max sessions ' + MAX_SESSIONS);
+            }
+            client.options.connectionRetryTimeout = TIMEOUT;
+            //client.options.capabilities['goog:chromeOptions'].args[0] = 'user-data-dir=/tmp/profile-' + index;
+            // TODO: fix this, doesn't work on second init, keeps opening new windows if chrome profile path is alreading open for read/write
+            if(typeof validSessions[0] !== 'undefined') {
+                console.log('using existing session ' + index + ' - ' + validSessions[0]);
+                client.sessionId = validSessions[0];
+            } else {
+                console.log('new session ' + index);
+            }
+        })
+        .then(() => client.status())
+        .then(r => updateOrAddSession(client.sessionId))
+        .catch(e => {
+            console.log(e);
+            client.sessionId = null;
+            isError = e;
+        })
+        .then(() => lockPromise(false, true))
+        .then(() => {
+            if(isError)
+                throw isError;
+            return client.sessionId;
+        })
+}
+module.exports = connectSession;
+</code></pre>
+

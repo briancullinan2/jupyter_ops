@@ -1,0 +1,44 @@
+<p>The <code>moveMouse</code> function moves the mouse cursor to a specified position on the primary monitor by scaling the input coordinates and using the <code>mouse-controller</code> library. It requires the <code>node-screenshots</code> library to get the list of monitors.</p>
+
+
+<pre><code>const { Monitor } = require("node-screenshots")
+const MouseController = require('mouse-controller')
+const mc = new MouseController();
+
+function moveMouse(x, y) {
+  let monitors = Monitor.all()
+  monitors.sort((a, b) => (a.x + a.y) - (b.x + b.y))
+  /*console.log({
+    x: monitors[0].x,
+    y: monitors[0].y,
+    width: monitors[0].width,
+    height: monitors[0].height,
+  })*/
+  mc.move(x * monitors[0].width * 3 + monitors[0].x, y * monitors[0].height)
+}
+
+module.exports = moveMouse
+</code></pre>
+
+<p><strong>Function Breakdown: <code>moveMouse</code></strong></p>
+<h3>Overview</h3>
+<p>The <code>moveMouse</code> function moves the mouse cursor to a specified position on the primary monitor.</p>
+<h3>Requirements</h3>
+<ul>
+<li><code>node-screenshots</code> library to get the list of monitors</li>
+<li><code>mouse-controller</code> library to control the mouse</li>
+</ul>
+<h3>Parameters</h3>
+<ul>
+<li><code>x</code>: The x-coordinate of the position to move the mouse to</li>
+<li><code>y</code>: The y-coordinate of the position to move the mouse to</li>
+</ul>
+<h3>Functionality</h3>
+<ol>
+<li>Retrieves a list of monitors using the <code>Monitor.all()</code> method from the <code>node-screenshots</code> library.</li>
+<li>Sorts the list of monitors by their <code>x + y</code> coordinates in ascending order.</li>
+<li>Calculates the <code>x</code> and <code>y</code> coordinates of the position to move the mouse to by scaling the input coordinates by the width and height of the primary monitor, respectively.</li>
+<li>Moves the mouse cursor to the calculated position using the <code>mouse-controller</code> library.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>moveMouse</code> function is exported as a module.</p>

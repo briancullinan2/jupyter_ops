@@ -1,0 +1,72 @@
+<p>This code generates a client certificate and its corresponding private key, signs it using a self-signed intermediate CA, and then verifies the signed certificate.</p>
+
+
+<pre><code>ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
+
+# create a client key
+cd $ROOT
+openssl genrsa -aes256 -passout pass:x \
+      -out intermediate/private/localhost.key.pem 2048
+chmod 700 intermediate/private/localhost.key.pem
+
+# create a client csr
+cd $ROOT
+openssl req -config intermediate/openssl.cnf \
+      -passin pass:x \
+      -subj "/C=US/ST=Who/L=Is/O=John/OU=Galt/CN=localhost" \
+      -key intermediate/private/localhost.key.pem \
+      -new -sha256 -out intermediate/csr/localhost.csr.pem
+# sign the client certificate with the intermediate CA
+cd $ROOT
+openssl ca -config intermediate/openssl.cnf \
+      -passin pass:x \
+      -extensions server_cert -days 375 -notext -md sha256 \
+      -batch \
+      -in intermediate/csr/localhost.csr.pem \
+      -out intermediate/certs/localhost.cert.pem
+chmod 744 intermediate/certs/localhost.cert.pem
+# verify client certificate
+openssl x509 -noout -text \
+      -in intermediate/certs/localhost.cert.pem
+openssl verify -CAfile intermediate/certs/ca-chain.cert.pem \
+      intermediate/certs/localhost.cert.pem      
+
+
+#openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
+#openssl rsa -passin pass:x -in server.pass.key -out server.key
+#rm server.pass.key
+#openssl req -new -key server.key -out server.csr
+#openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+#security add-trusted-cert -d -r trustRoot -k /Users/briancullinan/Library/Keychains/login.keychain /Users/briancullinan/jupytangular2/Utilities/ca/certs/ca.cert.pem
+#security add-trusted-cert -d -r trustRoot -k /Users/briancullinan/Library/Keychains/login.keychain /Users/briancullinan/jupytangular2/Utilities/ca/intermediate/certs/localhost.cert.pem
+</code></pre>
+
+<p>This code snippet demonstrates the process of creating and signing a client certificate using a self-signed intermediate CA.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Client Key Generation:</strong></p>
+<ul>
+<li>Generates a private key for the client certificate using <code>openssl genrsa</code>.</li>
+<li>Encrypts the key with a password (<code>pass:x</code>).</li>
+<li>Sets permissions on the key file to restrict access.</li>
+</ul></li>
+<li><p><strong>Client CSR Creation:</strong></p>
+<ul>
+<li>Creates a Certificate Signing Request (CSR) for the client certificate using <code>openssl req</code>.</li>
+<li>Specifies the certificate details (country, state, organization, etc.) using the <code>-subj</code> flag.</li>
+<li>Uses the previously generated private key.</li>
+</ul></li>
+<li><p><strong>Client Certificate Signing:</strong></p>
+<ul>
+<li>Signs the client CSR using the intermediate CA's private key and certificate configuration (<code>intermediate/openssl.cnf</code>).</li>
+<li>Sets the certificate validity period to 375 days.</li>
+<li>Generates the signed client certificate.</li>
+</ul></li>
+<li><p><strong>Client Certificate Verification:</strong></p>
+<ul>
+<li>Displays the details of the signed client certificate using <code>openssl x509</code>.</li>
+<li>Verifies the client certificate against the intermediate CA's certificate chain using <code>openssl verify</code>.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code demonstrates the process of creating a client certificate and verifying its authenticity using a self-signed intermediate CA. This is a common practice in development environments or for testing purposes.</p>

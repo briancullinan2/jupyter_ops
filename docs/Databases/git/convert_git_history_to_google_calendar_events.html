@@ -1,0 +1,134 @@
+<p>This code provides utilities for interacting with Git repositories, enabling you to fetch remote information, retrieve branch names, and parse commit logs.</p>
+
+
+<pre><code>var chrono = require('chrono-node');
+var _ = require('lodash');
+var importer = require('../Core');
+var execCmd = importer.import('spawn child process');
+var ISODateString = importer.import('convert date iso');
+var correctCalendarId = importer.import('lookup calendar name');
+var updateEvent = importer.import('update create merge event');
+var offset = (new Date()).getTimezoneOffset() * 60 * 1000;
+
+function gitRemote(project) {
+    return execCmd(`
+git remote -v
+`, {cwd: project})
+        .then(r => r[0].trim().split('\n').map(l => {
+            if(!l) return {function: '(fetch)', name: false}
+            var line = l.split('\t');
+            return {
+                name: line[0],
+                address: line[1].split(' ')[0],
+                function: line[1].split(' ')[1]
+            };
+        }))
+}
+
+function gitBranch(project, remote) {
+    if(!remote) return 'master'
+    return execCmd(`
+git remote show ${remote}
+`, {cwd: project})
+        .then(r => `${remote}/${(/\s*HEAD branch:\s*(.*?)\s/ig).exec(r[0].trim())[1]}`)
+}
+
+function gitLog(project, remote, branch) {
+    var cmd
+    if(remote)
+        cmd = `
+git fetch ${remote}
+git log --name-only --pretty=format:"%h%x09%an%x09%aD%x09%s" ${branch}`
+    else
+        cmd = `git log --name-only --pretty=format:"%h%x09%an%x09%aD%x09%s" ${branch}`
+        
+    return execCmd(cmd, {cwd: project})
+        .then(log => log[remote ? 1 : 0].split('\n\n').map(l => {
+            var fields = l.split('\n')[0].split('\t');
+            var files = l.split('\n').slice(1);
+            return {
+                hash: fields[0],
+                author: fields[1],
+                date: chrono.parse(fields[2])[0].start.date(),
+                message: fields[3],
+                files: files
+            }
+        }))
+}
+
+function gitHistory(project, summary, branch) {
+    var remote, branch;
+    if(typeof project == 'undefined') {
+        project = '/Users/briancullinan/planet_quake'
+    }
+    if(typeof summary == 'undefined') {
+        summary = 'Worked on Quake 3'
+    }
+    return gitRemote(project)
+        .then(remotes => remote = remotes.filter(r => r.function == '(fetch)')[0].name)
+        .then(() => branch || gitBranch(project, remote))
+        .then(b => branch = b)
+        .then(() => gitLog(project, remote, branch))
+        .then(commits => {
+        console.log(commits)
+            // group commits by a few hours and make a working event
+            var grouped = _.groupBy(commits, c => {
+                // round to the nearest 3 hours
+                return Math.round(c.date.getTime() / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000;
+            })
+            return Object.keys(grouped).map(t => {
+                var min = _.min(grouped[t].map(g => g.date)).getTime();
+                min = Math.round(min / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000
+                var max = _.max(grouped[t].map(g => g.date)).getTime();
+                max = Math.round(max / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000
+                var s = grouped[t].map(g => g.message).filter(g => g != 'no message').join(', ')
+                return {
+                    start: {
+                        dateTime: ISODateString(new Date(parseInt(min) - offset))
+                    },
+                    end: {
+                        dateTime: ISODateString(new Date(parseInt(max) + 60 * 60 * 1000 - offset))
+                    },
+                    summary: summary + (s != '' ? (', ' + s) : ''),
+                    description: JSON.stringify(grouped[t], null, 4)
+                }
+            })
+        })
+        .then(results => {
+            return importer.runAllPromises(results
+                .map(event => resolve => updateEvent(event, {})
+                    .then(r => resolve(r))))
+        })
+}
+
+module.exports = gitHistory;
+</code></pre>
+
+<p>This code defines several functions for interacting with Git repositories, including fetching remote information, retrieving branch names, and parsing commit logs.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for date parsing, data manipulation, executing shell commands, and converting dates to ISO format.</li>
+</ul></li>
+<li><p><strong><code>gitRemote</code> Function:</strong></p>
+<ul>
+<li>Executes a Git command to list remote repositories for a given project.</li>
+<li>Parses the output to extract remote names, addresses, and fetch/push functions.</li>
+</ul></li>
+<li><p><strong><code>gitBranch</code> Function:</strong></p>
+<ul>
+<li>Retrieves the current branch name for a specified remote repository.</li>
+<li>Defaults to &quot;master&quot; if no remote is provided.</li>
+</ul></li>
+<li><p><strong><code>gitLog</code> Function:</strong></p>
+<ul>
+<li>Executes a Git command to fetch commits for a specified branch (and remote if provided).</li>
+<li>Parses the output to extract commit hashes, author names, dates, messages, and modified files.</li>
+</ul></li>
+<li><p><strong><code>gitHistory</code> Function:</strong></p>
+<ul>
+<li>Defines a function to retrieve Git history, but the implementation is incomplete in the provided code snippet.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a set of utilities for interacting with Git repositories, allowing you to fetch remote information, retrieve branch names, and parse commit logs.</p>

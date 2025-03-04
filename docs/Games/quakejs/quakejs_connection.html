@@ -1,0 +1,116 @@
+<p>This code provides a module for interacting with Quake 3 servers, allowing you to connect to master servers to find available game servers and retrieve detailed information about specific servers.</p>
+
+
+<pre><code>var importer = require('../Core')
+var WebSocket = require('ws')
+var {_formatOOB, _stripOOB} = importer.import('quakejs utilities')
+var {_parseServers, _parseInfoResponse} = importer.import('quakejs parsing')
+
+function connect(address, port, callback) {
+	var self = this;
+
+	var errored = false;
+	var ws = new WebSocket('ws://' + address + ':' + port);
+	ws.binaryType = 'arraybuffer';
+
+	ws.onopen = function () {
+		var buffer = _formatOOB('subscribe');
+
+		ws.send(buffer);
+	};
+
+	ws.onmessage = function (event) {
+		var data = _stripOOB(event.data);
+
+		if (data.indexOf('getserversResponse') === 0) {
+			data = data.substr(18);
+
+			var servers = _parseServers(data);
+
+			callback(null, servers);
+		}
+	};
+
+	ws.onclose = function () {
+		if (!errored) {
+			callback(new Error('Connection to master server lost.'));
+			errored = true;
+		}
+	};
+};
+
+function scanServer(server, callback) {
+	var self = this;
+
+	var ws = new WebSocket('ws://' + server.addr + ':' + server.port);
+	ws.binaryType = 'arraybuffer';
+	var start, end;
+	var finish = function (err, info) {
+		if (callback) {
+			callback(err, info);
+			callback = null;
+		}
+		ws.close();
+	};
+
+    ws.onerror = function (err) {
+        callback(err, null)
+    }
+    
+	ws.onopen = function () {
+		start = Date.now();
+
+		var buffer = _formatOOB('getinfo');
+
+		ws.send(buffer);
+	};
+
+	ws.onmessage = function (event) {
+		end = Date.now();
+
+		var data = _stripOOB(event.data);
+		var info;
+		try {
+			info = _parseInfoResponse(data);
+		} catch (err) {
+			finish(err);
+			return;
+		}
+		info.ping = parseInt(end - start, 10);
+		finish(null, info);
+	};
+
+	ws.onclose = function (ev) {
+		finish(new Error(ev.reason));
+	};
+};
+
+module.exports = {
+    connect,
+    scanServer
+}
+</code></pre>
+
+<p>This code defines a module for interacting with Quake 3 servers using WebSockets.</p>
+<p>Here's a breakdown:</p>
+<p><strong>Core Functionality:</strong></p>
+<ul>
+<li><strong><code>connect(address, port, callback)</code>:</strong> Establishes a WebSocket connection to a Quake 3 master server.
+<ul>
+<li>It subscribes to server updates and calls the <code>callback</code> function with a list of available servers when received.</li>
+</ul></li>
+<li><strong><code>scanServer(server, callback)</code>:</strong> Connects to a specific Quake 3 server and retrieves server information (e.g., player count, map name).
+<ul>
+<li>It measures the server's ping time and calls the <code>callback</code> function with the server information or an error.</li>
+</ul></li>
+</ul>
+<p><strong>Helper Functions:</strong></p>
+<ul>
+<li><strong><code>_formatOOB</code> and <code>_stripOOB</code>:</strong> These functions likely handle formatting and parsing data in a specific binary format used by Quake 3 servers.</li>
+<li><strong><code>_parseServers</code> and <code>_parseInfoResponse</code>:</strong> These functions parse the server data received from the WebSocket connection into usable objects.</li>
+</ul>
+<p><strong>Module Exports:</strong></p>
+<ul>
+<li>The module exports the <code>connect</code> and <code>scanServer</code> functions, making them available for use in other parts of the application.</li>
+</ul>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

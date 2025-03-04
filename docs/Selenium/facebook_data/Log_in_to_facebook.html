@@ -1,0 +1,92 @@
+<p>This code automates Facebook login using Puppeteer. It first checks if the user is already logged in, and if not, it fills in the username and password, submits the form, and handles potential CAPTCHAs.</p>
+
+
+<pre><code>function enterFacebook() {
+    console.log('Facebook: Sign in required');
+    var credentials = getCredentials('facebook.com');
+    return client.click('input[name*="email"]')
+        .keys(credentials.username)
+        .pause(1000)
+        .then(() => console.log('Facebook: Require password'))
+        .click('input[name*="pass"]')
+        .keys(credentials.password)
+        .submitForm('[type="submit"]')
+        .pause(2000)
+        .isExisting('.cp-challenge-form')
+        .then(is => {
+            if (is) {
+                throw new Error('captcha');
+            }
+        });
+}
+
+function loginFacebook() {
+    return client
+        .getUrl()
+        .then(url => {
+            var loggedIn = url.indexOf('facebook') > -1 && url.indexOf('login') === -1;
+            return loggedIn
+                ? client
+                    .isVisible('input[name*="email"]')
+                    .then(is => is ? enterFacebook() : client)
+                : client.url('https://www.facebook.com/')
+                    .isVisible('input[name*="email"]')
+                    .then(is => is ? enterFacebook() : client)
+        })
+}
+module.exports = loginFacebook;
+loginFacebook;
+
+</code></pre>
+
+<p>This code snippet defines two functions, <code>enterFacebook</code> and <code>loginFacebook</code>, designed to automate the process of logging into a Facebook account using Selenium.</p>
+<p><strong><code>enterFacebook</code> Function:</strong></p>
+<ol>
+<li><strong>Log Message:</strong> Prints a message to the console indicating that Facebook sign-in is required.</li>
+<li><strong>Get Credentials:</strong> Retrieves Facebook login credentials (username and password) from a function called <code>getCredentials</code> (not shown in the snippet).</li>
+<li><strong>Fill Username:</strong>
+<ul>
+<li>Finds the email input field on the Facebook login page using the selector <code>input[name*=&quot;email&quot;]</code>.</li>
+<li>Enters the retrieved username into the field.</li>
+</ul></li>
+<li><strong>Pause:</strong> Waits for 1 second.</li>
+<li><strong>Log Password:</strong>
+<ul>
+<li>Finds the password input field using the selector <code>input[name*=&quot;pass&quot;]</code>.</li>
+</ul></li>
+</ol>
+<p><strong>Functionality Breakdown:</strong></p>
+<ol>
+<li><p><strong><code>enterFacebook()</code> Function:</strong></p>
+<ul>
+<li>Logs a message indicating sign-in is required.</li>
+<li>Retrieves credentials (username and password) for Facebook using <code>getCredentials('facebook.com')</code>.</li>
+<li>Uses a Puppeteer client (<code>client</code>) to automate interactions:
+<ul>
+<li>Clicks the email input field.</li>
+<li>Types the username into the email field.</li>
+<li>Pauses for 1 second.</li>
+<li>Logs a message indicating the password is required.</li>
+<li>Clicks the password input field.</li>
+<li>Types the password into the password field.</li>
+<li>Submits the login form.</li>
+<li>Pauses for 2 seconds.</li>
+<li>Checks if a CAPTCHA form exists (<code>.cp-challenge-form</code>).</li>
+<li>If a CAPTCHA is found, throws an error.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>loginFacebook()</code> Function:</strong></p>
+<ul>
+<li>Gets the current URL using the Puppeteer client.</li>
+<li>Checks if the user is already logged in by looking for &quot;facebook&quot; in the URL and the absence of &quot;login&quot;.</li>
+<li>If logged in, checks if the email input field is visible. If visible, calls <code>enterFacebook()</code>.</li>
+<li>If not logged in, navigates to the Facebook login page and checks if the email input field is visible. If visible, calls <code>enterFacebook()</code>.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>loginFacebook()</code> function as the main function to be used.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code automates the process of logging into Facebook using Puppeteer. It handles both scenarios: logging in when not logged in and handling potential CAPTCHAs.</p>
+<p>Let me know if you have any other questions.</p>

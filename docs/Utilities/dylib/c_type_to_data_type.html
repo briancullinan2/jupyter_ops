@@ -1,0 +1,68 @@
+<p>Here's a summary of the code in one sentence:</p>
+<p>The <code>typeToDataType</code> function takes in parameters <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code> and returns an object compatible with the <code>ffi-rs</code> library, handling different data types through switch statements.</p>
+
+
+<pre><code>const { open, load, close, DataType, arrayConstructor } = require('ffi-rs')
+
+function typeToDataType(returnLength, returnType, dataType) {
+  if(returnLength > 1) {
+    switch(returnType) {
+      case 'void':
+        return arrayConstructor({ type: DataType.StackArray, length: returnLength })
+      case 'double':
+        return arrayConstructor({ type: DataType.DoubleArray, length: returnLength })
+      case 'float':
+        return arrayConstructor({ type: DataType.DoubleArray, length: returnLength })
+      case 'int':
+        return arrayConstructor({ type: DataType.I32Array, length: returnLength })
+      case 'char':
+        return arrayConstructor({ type: DataType.StringArray, length: returnLength })
+      default:
+        return arrayConstructor({ type: dataType, length: returnLength })
+    }
+
+  } else {
+    switch(returnType) {
+      case 'void':
+        return DataType.Void
+      case 'double':
+        return DataType.Double
+      case 'float':
+        return DataType.Double
+      case 'int':
+        return DataType.I32
+      case 'char':
+        return DataType.String
+      default:
+        return dataType
+    }
+  }
+}
+
+module.exports = typeToDataType</code></pre>
+
+<h3>Breakdown of the Code</h3>
+<h4>Overview</h4>
+<p>The code exports a function <code>typeToDataType</code> which takes three parameters: <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code>. It is designed to convert these parameters into an object compatible with the <code>ffi-rs</code> library.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>returnLength</code>: an integer representing the number of elements to be returned</li>
+<li><code>returnType</code>: a string representing the type of data being returned (e.g., 'void', 'double', 'int', etc.)</li>
+<li><code>dataType</code>: an object representing the data type (e.g., DataType.Void, DataType.Double, etc.)</li>
+</ul>
+<h4>Return Value</h4>
+<p>The function returns an object compatible with the <code>ffi-rs</code> library, which can be used to make foreign function calls.</p>
+<h4>Logic</h4>
+<ul>
+<li>If <code>returnLength</code> is greater than 1, it creates an array of the specified data type with the given length.</li>
+<li>If <code>returnLength</code> is 1, it returns a single element of the specified data type.</li>
+</ul>
+<h4>Switch Statements</h4>
+<p>The code uses switch statements to handle different data types. The return value depends on the <code>returnType</code> and <code>dataType</code>. If the <code>returnType</code> is a primitive type (e.g., 'void', 'double', 'int', etc.), the corresponding <code>DataType</code> is returned. Otherwise, the <code>dataType</code> is returned as is.</p>
+<h4>Example Usage</h4>
+<pre><code class="language-javascript">const { typeToDataType } = require('./typeToDataType');
+
+const dataType = typeToDataType(2, 'double', DataType.Double);
+console.log(dataType); // Output: { type: 1, length: 2 }
+</code></pre>
+<p>In this example, <code>typeToDataType</code> is called with <code>returnLength</code> set to 2, <code>returnType</code> set to 'double', and <code>dataType</code> set to DataType.Double. The function returns an object with <code>type</code> set to 1 (representing <code>DataType.Double</code>) and <code>length</code> set to 2.</p>

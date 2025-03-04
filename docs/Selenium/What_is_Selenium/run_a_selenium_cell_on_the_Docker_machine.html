@@ -1,0 +1,71 @@
+<p>The <code>runSeleniumCell</code> function sets up a Selenium WebDriver session and executes a user-defined search within a web browser, leveraging imported functionalities for tasks like element manipulation and form interaction.  It's designed to be reusable and can be integrated into a larger framework or library based on the presence of the <code>$$</code> global variable.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+function runSeleniumCell(search) {
+    var createWebdriverClient = importer.import('webdriver client');
+    var promise = createWebdriverClient();
+    var isError = false;
+    return promise
+        .then(client => {
+            var context = {
+                client,
+                browser: client
+            };
+            Object.assign(
+                context,
+                importer.import([
+                    'decrypt password',
+                    'all elements xpath',
+                    'get all elements until',
+                    'resize selenium window',
+                    'click spa link',
+                ], context));
+            Object.assign(
+                context,
+                importer.import('form utilities', context))
+            if(!search) {
+                return context;
+            }
+            return importer.import(search, context);
+        })
+};
+module.exports = runSeleniumCell;
+
+if(typeof $$ !== 'undefined') {
+    console.log('this should not be hit!');
+    $$.async()
+    runSeleniumCell('test docker selenium')
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e));
+}
+</code></pre>
+
+<p>This code defines a function <code>runSeleniumCell</code> that sets up a Selenium WebDriver session and executes a user-specified search.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules from <code>../Core</code> using <code>importer.import()</code>.</li>
+<li>It creates a promise using <code>createWebdriverClient()</code> to handle the WebDriver setup.</li>
+</ul></li>
+<li><p><strong>Context Creation:</strong></p>
+<ul>
+<li>A <code>context</code> object is created to hold the WebDriver client and browser objects.</li>
+<li>It imports and assigns additional functions related to decryption, element manipulation, window resizing, and form utilities to the <code>context</code>.</li>
+</ul></li>
+<li><p><strong>Search Execution:</strong></p>
+<ul>
+<li>If a <code>search</code> parameter is provided, it imports and executes the corresponding function from <code>../Core</code> using the <code>context</code>.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>runSeleniumCell</code> function is exported as the main module export.</li>
+</ul></li>
+<li><p><strong>Conditional Execution:</strong></p>
+<ul>
+<li>The code checks if a global variable <code>$$</code> exists. If it does, it assumes it's part of a framework or library and executes <code>runSeleniumCell</code> with a sample search (<code>test docker selenium</code>) and handles the result using <code>$$.sendResult</code> and <code>$$.sendError</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a reusable function to initialize a Selenium WebDriver session, load additional functionalities, and execute user-defined searches within a web browser.</p>

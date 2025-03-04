@@ -1,0 +1,95 @@
+<p>This code provides a module for retrieving Zuora account information, including email addresses and the last four digits of associated credit cards, by making API calls and chaining promises to process the results.  The <code>getZuoraAccounts</code> function is the main entry point, accepting a list of email addresses and returning an array of account details.</p>
+
+
+<pre><code>var zuoraExport = importer.import('zuora export service');
+var request = importer.import('request polyfill');
+
+module.exports = {
+    getZuoraAccounts,
+    zuoraQuery
+};
+
+function zuoraQuery(query, zuoraConfig) {
+    return request.request({
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + '/action/query',
+        json: {
+            queryString: query
+        },
+        method: 'POST',
+        headers: zuoraExport.getAuthHeaders(zuoraConfig)
+    });
+}
+
+function getContact(email, zuoraConfig) {
+    return module.exports.zuoraQuery(`
+SELECT AccountId, PersonalEmail, WorkEmail
+FROM Contact
+WHERE PersonalEmail LIKE '${email}'
+OR WorkEmail LIKE '${email}'`, zuoraConfig)
+}
+
+function getAccountById(accountId, zuoraConfig) {
+    return module.exports.zuoraQuery(`
+SELECT Id, Status, Name, Currency, DefaultPaymentMethodId
+FROM Account
+WHERE Id='${accountId}'`, zuoraConfig);
+}
+
+function getPaymentMethod(paymentId, zuoraConfig) {
+    return module.exports.zuoraQuery(`
+SELECT CreditCardMaskNumber
+FROM PaymentMethod
+WHERE Id='${paymentId}'`, zuoraConfig);
+}
+
+function getAccountLast4Digits(email, zuoraConfig) {
+    return getContact(email, zuoraConfig)
+        .then(r => getAccountById(r.body.records[0].AccountId, zuoraConfig))
+        .then(r => getPaymentMethod(r.body.records[0].DefaultPaymentMethodId, zuoraConfig))
+        .then(r => {
+            return {
+                "EmailAddress": email,
+                "Last4DigitsOfCard": r.body.records[0].CreditCardMaskNumber
+            }
+        })
+}
+
+function getZuoraAccounts(notifyRequest, zuoraConfig) {
+    if(!notifyRequest.items) {
+        return Promise.resolve([]).then(() => {
+            throw new Error('Account items not defined, nothing to do!');
+        });
+    }
+    return Promise.all(notifyRequest.items.map(c => {
+        return getAccountLast4Digits(c.EmailAddress, zuoraConfig);
+    }))
+}
+</code></pre>
+
+<p>This code defines a module for interacting with the Zuora API to retrieve account information, specifically focusing on email addresses and the last four digits of associated credit cards.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>zuoraExport</code>: Likely contains functions for authentication and other Zuora-specific interactions.</li>
+<li><code>request polyfill</code>: A library for making HTTP requests.</li>
+</ul></li>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li><code>getZuoraAccounts</code>: The main function that processes a list of email addresses and retrieves account details.</li>
+<li><code>zuoraQuery</code>: A helper function to make API requests to the Zuora query endpoint.</li>
+</ul></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>getContact</code>, <code>getAccountById</code>, <code>getPaymentMethod</code>: These functions use <code>zuoraQuery</code> to fetch specific data from Zuora based on provided parameters (email, account ID, payment ID).</li>
+<li><code>getAccountLast4Digits</code>: A chain of promises that combines the results of <code>getContact</code>, <code>getAccountById</code>, and <code>getPaymentMethod</code> to retrieve the desired information.</li>
+</ul></li>
+<li><p><strong><code>getZuoraAccounts</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>notifyRequest</code> object (likely containing a list of email addresses) and <code>zuoraConfig</code> (API credentials).</li>
+<li>Checks if email addresses are provided.</li>
+<li>Uses <code>Promise.all</code> to concurrently fetch account details for each email address using <code>getAccountLast4Digits</code>.</li>
+<li>Returns a promise that resolves with an array of account information.</li>
+</ul></li>
+</ol>

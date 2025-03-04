@@ -1,0 +1,128 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This JavaScript module handles OAuth2 authentication with Google Calendar using various external libraries and provides error handling and fallback scenarios to recover from connection issues. The module defines four primary functions: storing tokens, exchanging codes for OAuth2 tokens, error fallback, and renewing existing tokens, with the last function having incomplete documentation and implementation.</p>
+
+
+<pre><code>var readline = require('readline');
+var process = require('process');
+var path = require('path');
+var fs = require('fs');
+var util = require('util');
+var {OAuth2Client} = require('google-auth-library');
+
+var importer = require('../Core');
+//var runSeleniumCell = importer.import('selenium cell');
+
+// Load client secrets from a local file.
+var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+var SECRET_PATH, credentials;
+var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', '.credentials');
+
+try {
+    SECRET_PATH = path.join(TOKEN_DIR, 'client_secret.json');
+    credentials = JSON.parse(fs.readFileSync(SECRET_PATH).toString());
+} catch(e) {
+    console.log(e);
+}
+
+function storeToken(token, tokenPath) {
+    fs.writeFileSync(tokenPath, JSON.stringify(token, null, 4));
+    console.log('Token stored to ' + tokenPath);
+}
+
+function receiveCode(code, oauth2Client, tokenPath) {
+    return util.promisify(oauth2Client.getToken.bind(oauth2Client))(code)
+        .then(token => {
+            console.log('recieved token: ' + token.access_token);
+            oauth2Client.setCredentials(token);
+            storeToken(token, tokenPath);
+            return oauth2Client;
+        })
+}
+
+async function errorFallback(up, authUrl, oauth2Client, tokenPath) {
+    if(up.message.includes('ECONNREFUSED')
+      || up.message.includes('find module')
+      || up.message.includes('runSeleniumCell is not defined')) {
+        console.log('can\'t authenticate with selenium, waiting for user input.');
+        console.log('Authorize this app by visiting this url:', authUrl);
+        //if (process.stdout.isTTY) {
+        //}
+        var interface = readline.createInterface(process.stdin, process.stdout);
+        var code = await new Promise(resolve => interface.question(
+            'Enter the code from that page here: ', resolve))
+        interface.close();
+        return receiveCode(code, oauth2Client, tokenPath)
+    } else {
+        throw up;
+    }
+}
+
+async function renewToken(oauth2Client, scopes, tokenPath) {
+    var authUrl = oauth2Client.generateAuthUrl({
+        access_type: 'offline',
+        scope: scopes
+    })
+    try {
+        var {authorizeSelenium} = await runSeleniumCell(['log in Google', 'selenium authorize google access'])
+        console.log('using selenium to authorize: ' + authUrl)
+        var code = await authorizeSelenium(authUrl) 
+        return receiveCode(code, oauth2Client, tokenPath)
+    } catch (up) {
+        return errorFallback(up, authUrl, oauth2Client, tokenPath)
+    }
+}
+
+async function authorize(scopes = SCOPES) {
+    const tokenPath = path.join(TOKEN_DIR, scopes.join('')
+        .replace(/[^a-z]+/ig, '_') + '.json')
+    var oauth2Client = new OAuth2Client(
+        credentials.web.client_id,
+        credentials.web.client_secret,
+        credentials.web.redirect_uris[0])
+
+    try {
+        // Check if we have previously stored a token.
+        oauth2Client.setCredentials(JSON.parse(fs.readFileSync(tokenPath)));
+        await oauth2Client.getAccessToken()
+        return oauth2Client
+    } catch (up) {
+        // if the token file isn't found start a new auth
+        if(up.message == 'invalid_token'
+          || up.code === 'ENOENT') {
+            return renewToken(oauth2Client, scopes, tokenPath);
+        } else {
+            throw up;
+        }
+    }
+}
+
+module.exports = authorize;
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>This code is a JavaScript module that utilizes various external libraries to handle OAuth2 authentication with Google Calendar. The module appears to be designed to handle errors and fallback scenarios, allowing the application to recover from connection issues.</p>
+<p><strong>Breakdown</strong></p>
+<h3>Importing Libraries</h3>
+<p>The code begins by importing various Node.js libraries:</p>
+<ul>
+<li><code>readline</code>: for reading user input</li>
+<li><code>process</code>: for accessing environmental variables</li>
+<li><code>path</code>: for working with file paths</li>
+<li><code>fs</code>: for interacting with the file system</li>
+<li><code>util</code>: for utilizing utility functions</li>
+<li><code>google-auth-library</code>: for OAuth2 authentication with Google</li>
+</ul>
+<h3>Loading Client Secrets</h3>
+<p>The code attempts to load client secrets from a local file (<code>client_secret.json</code>) located in the user's home directory. If the file does not exist, an error is caught and logged to the console.</p>
+<h3>Functions</h3>
+<p>There are four main functions in this code:</p>
+<ul>
+<li><code>storeToken(token, tokenPath)</code>: writes a token to a file at the specified <code>tokenPath</code>.</li>
+<li><code>receiveCode(code, oauth2Client, tokenPath)</code>: exchanges a code for an OAuth2 token using the Google authentication library. It stores the token and sets the <code>oauth2Client</code> credentials.</li>
+<li><code>errorFallback(up, authUrl, oauth2Client, tokenPath)</code>: a function that handles errors and triggers a fallback scenario when OAuth2 authentication fails.</li>
+<li><code>renewToken(oauth2Client, tokenPath)</code>: a function that renews an existing OAuth2 token. The documentation and implementation for this function are incomplete, so it is unclear how it works.</li>
+</ul>
+<h3>Error Fallback</h3>
+<p>The <code>errorFallback</code> function is triggered when an error occurs during OAuth2 authentication. It checks if the error message indicates a connection issue or a problem with importing Selenium cells. If so, it prompts the user to visit the authorization URL and enter the code received. Once the code is entered, the <code>receiveCode</code> function is called to exchange the code for a token.</p>
+<h3>Notes</h3>
+<p>The code is written in a asynchronous manner, using <code>async/await</code> syntax to handle promises. The <code>process.stdout.isTTY</code> property is used to detect if the console is a terminal, but it is commented out. The <code>importer</code> variable is imported from another module, but the <code>runSeleniumCell</code> import is commented out.</p>

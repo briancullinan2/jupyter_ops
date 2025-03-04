@@ -1,0 +1,23 @@
+<p>This script deploys a Node.js function to Google Cloud Functions, taking the function name as input and configuring it to be triggered by HTTP requests.</p>
+
+
+<pre><code>gcloud functions deploy $1 --entry-point handler --runtime nodejs8 --trigger-http --source ./.functions
+</code></pre>
+
+<p>This code snippet deploys a Node.js function to Google Cloud Functions.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Command:</strong></p>
+<ul>
+<li><code>gcloud functions deploy $1</code> is the primary command to deploy a function using the Google Cloud SDK.</li>
+<li><code>$1</code> represents the function name, which is expected to be provided as the first command-line argument.</li>
+</ul></li>
+<li><p><strong>Configuration Options:</strong></p>
+<ul>
+<li><code>--entry-point handler</code> specifies the entry point function name within the deployed code.</li>
+<li><code>--runtime nodejs8</code> sets the runtime environment to Node.js version 8.</li>
+<li><code>--trigger-http</code> configures the function to be triggered by HTTP requests.</li>
+<li><code>--source ./.functions</code> indicates the source directory containing the function code.</li>
+</ul></li>
+</ol>
+<p>In essence, this script takes a function name as input and deploys a Node.js function to Google Cloud Functions, making it callable via HTTP requests.</p>

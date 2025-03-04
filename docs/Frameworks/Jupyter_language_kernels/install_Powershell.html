@@ -1,0 +1,27 @@
+<p>This code installs Jupyter Notebook and JupyterLab, enabling Python kernel support and configuring them for use.</p>
+
+
+<pre><code>jupyter--
+version
+#pip3
+install
+jupyter
+jupyterlab
+notebook
+#jupyter - notebook
+serverextension
+enable--
+py
+jupyterlab--
+sys - prefix
+</code></pre>
+
+<p>This code snippet installs and configures Jupyter Notebook and JupyterLab, enabling the use of Python kernels and extensions.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>jupyter --version</code></strong>: This command displays the installed version of Jupyter Notebook.</p></li>
+<li><p><strong><code>pip3 install jupyter jupyterlab notebook</code></strong>: This command uses <code>pip3</code>, the Python 3 package installer, to install Jupyter Notebook, JupyterLab, and the core <code>notebook</code> package.</p></li>
+<li><p><strong><code>jupyter notebook serverextension enable --py</code></strong>: This command enables Python kernel support for Jupyter Notebook.</p></li>
+<li><p><strong><code>jupyterlab --sys-prefix</code></strong>: This command likely configures JupyterLab to use the system's Python installation and its associated packages.</p></li>
+</ol>
+<p>In essence, this code snippet sets up a Jupyter Notebook and JupyterLab environment, ensuring Python kernel support and proper configuration.</p>

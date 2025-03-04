@@ -1,0 +1,75 @@
+<p>Here's a summary of the two functions in one or two sentences:</p>
+<p>The module contains two functions, <code>resultMarkdown</code> and <code>displayCell</code>, which format the result of a search into a markdown string. The <code>resultMarkdown</code> function takes an object as input, while the <code>displayCell</code> function takes an array of objects and uses either <code>resultMarkdown</code> or its own logic to generate a markdown-formatted string.</p>
+
+
+<pre><code>function resultMarkdown(res) {
+    return ('\n\n\n' + res.length + ' match'
+        + (res.length !== 1 ? 'es' : '')
+        + ' found: ' + res.join(' , ') + '\n\n\n'
+        + (res.length > 0
+            ? ('\n\n\n' + res.markdown.join('\n') + '\n\n\n'
+                + '```\n\n\n' + res.code + '\n\n\n```\n\n\n')
+            : ''));
+};
+
+function displayCell(results) {
+    return (typeof results[0] !== 'undefined' && typeof results[0] !== 'string'
+        ? results.reduce((str, res) => {
+            str += resultMarkdown(res);
+            return str;
+        }, '')
+        : resultMarkdown(results));
+}
+
+module.exports.displayCell = displayCell
+</code></pre>
+
+<h3>Function Breakdown</h3>
+<h4>Function 1: <code>resultMarkdown(res)</code></h4>
+<ul>
+<li>This function formats the result of a search into a markdown string.</li>
+<li>It takes an object <code>res</code> as input and returns a markdown-formatted string.</li>
+</ul>
+<p><strong>Function Parameters</strong></p>
+<ul>
+<li><code>res</code>: An object containing the result of a search, which includes:
+<ul>
+<li><code>length</code>: The number of matches found.</li>
+<li><code>markdown</code>: An array of markdown-formatted strings.</li>
+<li><code>code</code>: A string representing the code associated with the result.</li>
+</ul></li>
+</ul>
+<p><strong>Function Output</strong></p>
+<ul>
+<li>A markdown-formatted string containing:
+<ul>
+<li>The number of matches found.</li>
+<li>A list of markdown-formatted strings.</li>
+<li>The code associated with the result.</li>
+</ul></li>
+</ul>
+<h4>Function 2: <code>displayCell(results)</code></h4>
+<ul>
+<li>This function formats an array of search results into a markdown string.</li>
+<li>It takes an array <code>results</code> as input and returns a markdown-formatted string.</li>
+</ul>
+<p><strong>Function Parameters</strong></p>
+<ul>
+<li><code>results</code>: An array of objects containing the result of a search.</li>
+</ul>
+<p><strong>Function Logic</strong></p>
+<ul>
+<li>If the array contains at least one object and its first element is not a string, it will:
+<ul>
+<li>Use the <code>reduce</code> function to concatenate the markdown-formatted strings for each result in the array.</li>
+</ul></li>
+<li>Otherwise, it will call <code>resultMarkdown</code> with the array as its argument.</li>
+</ul>
+<p><strong>Function Output</strong></p>
+<ul>
+<li>A markdown-formatted string containing the results of the search.</li>
+</ul>
+<h4>Module Exports</h4>
+<ul>
+<li>The <code>displayCell</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

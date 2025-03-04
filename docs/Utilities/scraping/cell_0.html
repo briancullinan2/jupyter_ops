@@ -1,0 +1,74 @@
+
+
+<pre><code>var importer = require('../Core');
+var util = require('util');
+var request = util.promisify(require('request'));
+var {JSDOM} = require('jsdom');
+var fs = require('fs');
+var path = require('path');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Collections/flagstaff-happy';
+
+
+var locations, getAllXPath;
+function getLocations() {
+    if(typeof locations !== 'undefined') {
+        return Promise.resolve(locations);
+    }
+    return request('https://web.archive.org/web/20160322001433/http://keepflaghappy.com/happy-hours/friday/')
+        .then(r => {
+            const getAllXPath = importer.import('all elements xpath from string')(r.body);
+            return getAllXPath([
+                '//a[contains(@href, "by-location")]/@href',
+            ]);
+        })
+        .then(r => {
+            locations = r
+                .filter(l => l.match(/by-location\/[^#]+/ig))
+                .map(l => l.includes('archive.org') ? l : 'https://web.archive.org' + l);
+            return locations;
+        });
+}
+
+function getLocation(l) {
+    console.log('Downloading ' + l);
+    return request(l)
+        .then(r => {
+            const getAllXPath = importer.import('all elements xpath from string')(r.body);
+            return getAllXPath([
+                '//h3[contains(., "Mon") or contains(., "Tue") or contains(., "Wed") or contains(., "Thu") or contains(., "Fri") or contains(., "Sat") or contains(., "Sun")]',
+                {
+                    dotw: './text()',
+                    time: './following-sibling::p[count(./preceding-sibling::h3)=$i+1]//text()',
+                    deals: './following-sibling::ul[count(./preceding-sibling::h3)=$i+1]//text()'
+                }
+            ]);
+        })
+        .then(r => {
+            const happy = r.map(l => {
+                return {
+                    dotw: l.dotw,
+                    time: l.time,
+                    deals: l.deals.join('\n').trim().split(/\s*\n+\s*/ig)
+                };
+            });
+            const name = l.trim().replace(/\/$/ig, '').split('/').pop().replace(/[^a-z0-9-_]/ig, '_');
+            fs.writeFileSync(path.join(project, name + '.json'), JSON.stringify(happy, null, 4));
+            return happy;
+        })
+}
+
+$$.async();
+getLocations()
+    .then(r => {
+        return importer.runAllPromises(r.map(l => resolve => {
+            return getLocation(l)
+                .then(r => setTimeout(() => resolve(r), 100))
+        }));
+    })
+    .then(r => $$.mime({'text/plain': JSON.stringify(r, null, 4)}))
+    .catch(e => $$.sendError(e))
+
+</code></pre>
+

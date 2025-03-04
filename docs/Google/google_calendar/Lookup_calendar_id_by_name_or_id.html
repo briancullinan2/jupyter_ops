@@ -1,0 +1,99 @@
+<p>The <code>correctCalendarId</code> function determines the appropriate Google Calendar to use based on a provided <code>calendarId</code>, handling cases where the ID is undefined, &quot;primary&quot;, or needs to be resolved from a list of available calendars. It fetches the calendar list if necessary, selects a matching calendar, and returns the modified options object with the correct calendar ID.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeCalendar = importer.import('authorize google calendar');
+var assert = require('assert');
+var util = require('util');
+
+var calendarList = [], lastCalendar;
+
+function filterCalendar(options) {
+    var rexexp = new RegExp(options.calendarId, 'ig');
+    var matches = calendarList
+        .filter(c => c.id == options.calendarId);
+    if (matches.length == 0) {
+        matches = calendarList
+            .filter(c => c.summary.match(rexexp));
+    }
+    assert(matches.length > 0, 'something is seriously wrong with the calendarId ' + JSON.stringify(options, null, 4) + JSON.stringify(calendarList, null, 4));
+    if (lastCalendar !== matches[0].summary) {
+        lastCalendar = matches[0].summary;
+        console.log('Using calendar: ' + matches[0].summary
+            + ' - ' + matches[0].id);
+    }
+    options.calendarId = matches[0].id;
+    return Promise.resolve(options);
+}
+
+function correctCalendarId(options) {
+    if (typeof options.calendarId === 'undefined' || options.calendarId === 'primary') {
+        return Promise.resolve(Object.assign(options, {
+            calendarId: 'primary'
+        }))
+    }
+    if (calendarList.length > 0) {
+        return filterCalendar(options);
+    }
+    return (calendarList.length == 0
+        ? authorizeCalendar()
+            .then(calendar => util.promisify(calendar.calendarList.list.bind(calendar))())
+        : Promise.resolve(calendarList))
+        .then(r => {
+            calendarList = (r.data || {}).items || [];
+            return filterCalendar(options);
+        })
+        .catch(e => console.log(e))
+};
+
+module.exports = correctCalendarId;
+
+</code></pre>
+
+<p>This code defines a function <code>correctCalendarId</code> that handles the process of selecting a Google Calendar to use based on a provided <code>calendarId</code>.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module for importing other modules.</li>
+<li><code>authorizeCalendar</code>: A function from <code>importer</code> to authorize access to the Google Calendar API.</li>
+<li><code>assert</code>: A built-in Node.js module for making assertions (checking if conditions are true).</li>
+<li><code>util</code>: A built-in Node.js module for utility functions.</li>
+</ul></li>
+<li><p><strong>Variables:</strong></p>
+<ul>
+<li><code>calendarList</code>: An array to store a list of available calendars.</li>
+<li><code>lastCalendar</code>: A variable to keep track of the last selected calendar.</li>
+</ul></li>
+<li><p><strong><code>filterCalendar</code> Function:</strong></p>
+<ul>
+<li>Takes an <code>options</code> object containing a <code>calendarId</code>.</li>
+<li>Attempts to find a matching calendar in <code>calendarList</code> based on the provided <code>calendarId</code>.</li>
+<li>If no exact match is found, it searches for a calendar whose summary (name) matches the <code>calendarId</code> using a regular expression.</li>
+<li>Asserts that at least one matching calendar is found.</li>
+<li>Updates <code>lastCalendar</code> if a different calendar is selected.</li>
+<li>Sets the <code>calendarId</code> in the <code>options</code> object to the ID of the selected calendar.</li>
+<li>Returns a Promise that resolves with the modified <code>options</code> object.</li>
+</ul></li>
+<li><p><strong><code>correctCalendarId</code> Function:</strong></p>
+<ul>
+<li>Takes an <code>options</code> object containing a <code>calendarId</code>.</li>
+<li>Handles different cases:
+<ul>
+<li>If <code>calendarId</code> is undefined or &quot;primary&quot;, it sets <code>calendarId</code> to &quot;primary&quot; and returns the modified <code>options</code>.</li>
+<li>If <code>calendarList</code> is not empty, it calls <code>filterCalendar</code> to select a calendar.</li>
+<li>If <code>calendarList</code> is empty, it:
+<ul>
+<li>Authorizes access to the Google Calendar API using <code>authorizeCalendar</code>.</li>
+<li>Fetches the list of calendars using <code>calendar.calendarList.list</code>.</li>
+<li>Updates <code>calendarList</code> with the retrieved calendars.</li>
+<li>Calls <code>filterCalendar</code> to select a calendar.</li>
+</ul></li>
+</ul></li>
+<li>Returns a Promise that resolves with the modified <code>options</code> object.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>correctCalendarId</code> function as the module's main export.</li>
+</ul></li>
+</ol>

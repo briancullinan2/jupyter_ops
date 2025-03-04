@@ -1,0 +1,34 @@
+<p>These Docker commands build an image named &quot;act-selenium&quot;, list all your local Docker images, and display information about all your Docker containers, both running and stopped.</p>
+
+
+<pre><code>docker build -t act-selenium
+docker images
+docker ps -a
+</code></pre>
+
+<p>Here's a breakdown of those Docker commands:</p>
+<ul>
+<li><p><strong><code>docker build -t act-selenium</code></strong></p>
+<ul>
+<li>This command builds a Docker image.</li>
+<li><code>-t act-selenium</code>: This tag names the image &quot;act-selenium&quot;.  Think of a tag like a label for your image.</li>
+<li>You'll need a <code>Dockerfile</code> in the current directory to tell Docker how to build the image. This file contains instructions like which base image to use, what software to install, and how to configure the environment.</li>
+</ul></li>
+<li><p><strong><code>docker images</code></strong></p>
+<ul>
+<li>This command lists all the Docker images you have locally.</li>
+<li>You'll see the image names (including &quot;act-selenium&quot; if the build was successful), their tags, sizes, and other details.</li>
+</ul></li>
+<li><p><strong><code>docker ps -a</code></strong></p>
+<ul>
+<li>This command lists all Docker containers, both running and stopped.</li>
+<li><code>-a</code>: This flag tells Docker to show <em>all</em> containers, not just the currently running ones.</li>
+<li>You'll see information about each container, including its ID, name, image, status (running or stopped), ports it's exposing, and more.</li>
+</ul></li>
+</ul>
+<p><strong>In summary:</strong></p>
+<ol>
+<li>Build a Docker image named &quot;act-selenium&quot; based on your <code>Dockerfile</code>.</li>
+<li>View a list of all your Docker images.</li>
+<li>View a list of all your Docker containers, including stopped ones.</li>
+</ol>

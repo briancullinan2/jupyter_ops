@@ -1,0 +1,93 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>The <code>elaborateLlama</code> function analyzes an XLSX spreadsheet, creates prompt sequences from its data, and sends them to a Large Language Model (LLM) for responses, which are then logged and written to a temporary text file. The function is designed to handle asynchronous operations and can be exported as a module for use in other applications.</p>
+
+
+<pre><code>const os = require('os')
+const fs = require('fs')
+
+const analyzeSpreadsheet = importer.import('decode xlsx spreadsheet')
+
+const TEMP_DIR = os.tmpdir();
+let counter = 0
+
+
+async function elaborateLlama(sheetFile, sheetName, rangeString, prefix, suffix) {
+
+  let results = await analyzeSpreadsheet(sheetFile, sheetName, rangeString)
+
+  console.log(results)
+
+  const {llmPrompt} = await importer.import('create llm session')
+  
+  if(!prefix) {
+    prefix = 'Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic:\n'
+  }
+  if(!suffix) {
+    suffix = '\nFit as much detail as possible in to two or three sentences.'
+  }
+  let results2 = []
+
+  for(let i = 0; i < results.length; i++) {
+    let q1 = prefix + results[i] + suffix
+    console.log('User: ' + q1)
+    let a1 = await llmPrompt(q1)
+    console.log('AI: ' + a1)
+    results2.push(a1)
+  }
+
+  const filename = path.join(TEMP_DIR, 'temporary_xlsx_' + (counter % 4) + '.txt')
+  if(fs.existsSync(filename))
+    fs.unlinkSync(filename)
+  counter++
+  console.log('Writing ', filename)
+  fs.writeFileSync(filename, results2.join('\n'))
+
+  return results2
+}
+
+
+module.exports = elaborateLlama
+</code></pre>
+
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Importing Modules</h3>
+<ul>
+<li><code>const os = require('os')</code>: Imports the <code>os</code> module, which provides information about the operating system.</li>
+<li><code>const fs = require('fs')</code>: Imports the <code>fs</code> (File System) module, which provides functions for interacting with the file system.</li>
+<li><code>const analyzeSpreadsheet = importer.import('decode xlsx spreadsheet')</code>: Imports an <code>analyzeSpreadsheet</code> function from a module named <code>importer</code> that decodes an XLSX spreadsheet.</li>
+<li><code>const TEMP_DIR = os.tmpdir();</code>: Gets the temporary directory path from the <code>os</code> module.</li>
+<li><code>let counter = 0</code>: Initializes a counter variable to 0.</li>
+</ul>
+<h3>Function <code>elaborateLlama</code></h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>sheetFile</code>: The file path to the XLSX spreadsheet.</li>
+<li><code>sheetName</code>: The name of the sheet in the spreadsheet.</li>
+<li><code>rangeString</code>: The range of cells to analyze in the spreadsheet.</li>
+<li><code>prefix</code> (optional): The prefix to add to each question prompt.</li>
+<li><code>suffix</code> (optional): The suffix to add to each question prompt.</li>
+</ul>
+<h4>Returns</h4>
+<ul>
+<li>An array of responses from the LLM (Large Language Model) for each prompt.</li>
+</ul>
+<h4>Function Body</h4>
+<ol>
+<li>Calls <code>analyzeSpreadsheet</code> to analyze the spreadsheet and logs the results.</li>
+<li>Imports a function <code>llmPrompt</code> from a module named <code>importer</code> that creates an LLM session.</li>
+<li>Checks if <code>prefix</code> and <code>suffix</code> are not provided and sets default values if they are not.</li>
+<li>Loops through the results of the spreadsheet analysis and creates a prompt by concatenating <code>prefix</code>, the result, and <code>suffix</code>.</li>
+<li>Sends the prompt to the LLM using <code>llmPrompt</code> and logs the response.</li>
+<li>Pushes the response to an array <code>results2</code>.</li>
+<li>Writes the array of responses to a temporary text file.</li>
+<li>Returns the array of responses.</li>
+</ol>
+<h3>Exporting the Function</h3>
+<ul>
+<li><code>module.exports = elaborateLlama</code>: Exports the <code>elaborateLlama</code> function as a module.</li>
+</ul>
+<h3>Note</h3>
+<ul>
+<li>The code uses asynchronous functions and <code>await</code> to handle promises.</li>
+<li>The <code>path</code> module is not imported, but it is used in the code. This may cause an error if not imported.</li>
+</ul>

@@ -1,0 +1,40 @@
+<p>Here is a 2-sentence summary of the <code>copyFile</code> function:</p>
+<p>The <code>copyFile</code> function copies a file in Google Drive by its ID and assigns a new title, and returns the ID of the copied file. It uses the <code>drive.files.copy</code> method and the <code>authorizeGoogleDrive</code> function to authenticate and perform the file copy operation.</p>
+
+
+<pre><code>var util = require('util');
+var importer = require('../Core');
+var authorizeDrive = importer.import('authorize google drive');
+
+function copyFile(fileId, title) {
+    return authorizeDrive()
+        .then(drive => util.promisify(drive.files.copy.bind(drive))({
+            fileId: fileId,
+            resource: {name: title},
+            convert: true
+        }))
+        .then(r => r.data.id)
+}
+
+module.exports = copyFile;
+</code></pre>
+
+<p><strong>Function Breakdown: <code>copyFile</code></strong></p>
+<h3>Parameters</h3>
+<ul>
+<li><code>fileId</code>: The ID of the file to be copied</li>
+<li><code>title</code>: The desired title of the copied file</li>
+</ul>
+<h3>Functionality</h3>
+<ul>
+<li>Requires the <code>util</code> and <code>importer</code> modules</li>
+<li>Imports the <code>authorizeGoogleDrive</code> function from the <code>../Core</code> module</li>
+<li>Calls <code>authorizeGoogleDrive()</code> which returns a promise that resolves to a <code>drive</code> object</li>
+<li>Uses <code>util.promisify</code> to convert the <code>drive.files.copy</code> method to a promise-returning function</li>
+<li>Calls <code>drive.files.copy</code> with the file ID, a resource object containing the desired file title, and the <code>convert: true</code> option</li>
+<li>Returns a promise that resolves to the ID of the copied file</li>
+</ul>
+<h3>Export</h3>
+<ul>
+<li>The <code>copyFile</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

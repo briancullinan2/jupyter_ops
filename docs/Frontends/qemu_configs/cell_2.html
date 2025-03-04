@@ -1,0 +1,16 @@
+
+
+<pre><code>qemu-system-x86_64 -monitor stdio \
+    -device ati-vga \
+    -enable-kvm -accel hvf \
+    -smp 2 \
+    -m 3G \
+    -netdev tap,ifname=tap0,br=bridge1,script=no,downscript=no,id=n1 \
+    -device rtl8139,netdev=n1 \
+    -drive if=ide,index=1,media=cdrom,file="" \
+    -drive file="./VirtualBox VMs/Ubuntu/Ubuntu.vmdk",if=none,id=ubuntuhdd \
+    -device virtio-blk-pci,drive=ubuntuhdd,bus=pci.0,bootindex=2 \
+    -device piix3-usb-uhci \
+    -drive id=freeagent,file=/dev/disk2,if=none,format=raw \
+    -device usb-storage,drive=freeagent</code></pre>
+

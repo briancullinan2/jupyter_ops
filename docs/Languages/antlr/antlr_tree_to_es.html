@@ -1,0 +1,192 @@
+<p>Here is a two-sentence summary of the <code>antlrToESTree</code> function:</p>
+<p>The <code>antlrToESTree</code> function converts an ANTLR-generated tree into an ESTree (ECMA Script Abstract Syntax Tree) by performing various operations such as node replacement and logging. It uses functions like <code>selectDom</code>, <code>treeToHtml</code>, and <code>replace</code> to manipulate the tree and create a new ESTree representation.</p>
+
+
+<pre><code>var assert = require('assert')
+var importer= require('../Core')
+var {treeToHtml, htmlToTree} = importer.import(['tree to html', 'html to tree'])
+var {selectDom} = importer.import('select tree')
+var {transpile, replace} = importer.import('transpile code')
+
+function antlrToESTree(tree) {
+    console.log(tree)
+    var dom = selectDom('./*', treeToHtml([tree]))
+    
+    selectDom([
+        `//TerminalNode/ancestor::ThetypenameContext
+        |//TerminalNode/ancestor::SimpletypespecifierContext`,
+        replace(ctx => {
+            var {range, value} = htmlToTree(selectDom('.//TerminalNode', ctx))
+            return selectDom('./*', treeToHtml({
+                type: 'Type',
+                name: value,
+                range: range,
+            }))
+        })
+    ], dom)
+    
+    
+    selectDom([
+        `//TerminalNode/ancestor::IdexpressionContext`,
+        replace(ctx => {
+            if(selectDom('.//TerminalNode/ancestor::ClassnameContext', ctx)) {
+                var {range, value} = htmlToTree(selectDom('.//TerminalNode[./parent::ClassnameContext]', ctx))
+                return selectDom('./*', treeToHtml({
+                    type: 'UnaryExpression',
+                    operator: '~',
+                    argument: {
+                        type: 'Identifier',
+                        name: value,
+                        kind: null,
+                        pointer: false,
+                        range: range
+                    },
+                    prefix: true
+                }))
+            }
+            var {range, value} = htmlToTree(selectDom('.//TerminalNode', ctx))
+            return selectDom('./*', treeToHtml({
+                type: 'Identifier',
+                name: value,
+                kind: null,
+                pointer: false,
+                range: range,
+            }))
+        })
+    ], dom)
+    
+    selectDom([
+        `//MemberdeclarationContext`,
+        replace(ctx => {
+            var {kind, key, semi} = selectDom({
+                kind: './/Type',
+                key: './/Identifier',
+                semi: './/TerminalNode[@value = ";"]'
+            }, ctx)
+            var id = htmlToTree(key)
+            id.kind = htmlToTree(kind)
+            return selectDom('./*', treeToHtml({
+                type: 'Property',
+                kind: 'init',
+                key: id,
+                method: false,
+                computed: false,
+                value: null,
+                shorthand: false,
+                range: [
+                    htmlToTree(kind).range[0],
+                    htmlToTree(semi).range[1]
+                ]
+            }))
+        })
+    ], dom)
+    
+    selectDom([
+        `//SimpledeclarationContext[
+            .//ClassheadContext//TerminalNode[@value = "struct"]
+        ]`,
+        replace(ctx => {
+            var {typedef, body, id, superClass, semi} = selectDom({
+                typedef: './/TerminalNode[@value = "typedef"]',
+                id: './/InitdeclaratorContext//Identifier',
+                body: ['.//Property'],
+                superClass: './/ClasskeyContext//@value',
+                semi: './TerminalNode[@value = ";"]'
+            }, ctx)
+            return selectDom('./*', treeToHtml({
+                type: 'ClassExpression',
+                id: htmlToTree(id),
+                superClass: superClass,
+                body: {
+                    type: 'ClassBody',
+                    body: htmlToTree(body)
+                },
+                typedef: true,
+                range: [
+                    htmlToTree(typedef).range[0],
+                    htmlToTree(semi).range[1]
+                ]
+            }))
+        })
+    ], dom)
+    
+    selectDom([
+        `//ParameterdeclarationContext`,
+        replace(ctx => {
+            var {type, constant, ptr, id} = selectDom({
+                type: './/Type',
+                constant: './/TerminalNode[@value="const"]/@value',
+                ptr: './/TerminalNode[@value="*"]/@value',
+                id: './/Identifier'
+            }, ctx)
+            if(!id) return type
+            var result = Object.assign(htmlToTree(id), {
+                kind: htmlToTree(type),
+                pointer: !!ptr
+            })
+            return selectDom('./*', treeToHtml(result))
+        })
+    ], dom)
+    
+    /*
+    selectDom([
+        `//SimpledeclarationContext`,
+        replace(ctx => {
+            var {type, constant, ptr, ids} = selectDom({
+                static: './/TerminalNode[@value="static"]',
+                type: './/Type',
+                constant: './/TerminalNode[@value="const"]/@value',
+                ptr: './/TerminalNode[@value="*"]/@value',
+                ids: ['.//Identifier'],
+                semi: './TerminalNode[@value = ";"]'
+            }, ctx)
+            var result = {
+                type: 'VariableDeclaration',
+                declarations: htmlToTree(ids).map(id => ({
+                    type: 'VariableDeclarator',
+                    id: Object.assign(id, {
+                        kind: htmlToTree(type),
+                        pointer: !!ptr
+                    }),
+                    init: null
+                })),
+                kind: constant ? 'const' : 'let',
+                range: [
+                    
+                ]
+            }
+            return selectDom('./*', treeToHtml(result))
+        })
+    ], dom)
+    */
+    
+    return htmlToTree(dom)
+}
+
+module.exports = antlrToESTree
+</code></pre>
+
+<p><strong>Function Breakdown: antlrToESTree</strong></p>
+<p>The <code>antlrToESTree</code> function appears to be a part of a code generator or transformer that converts an ANTLR-generated tree into an ESTree (ECMA Script Abstract Syntax Tree).</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>tree</code>: The ANTLR-generated tree to be converted.</li>
+</ul>
+<h3>Functionality</h3>
+<p>The function performs the following operations:</p>
+<ol>
+<li><strong>Logging and Initial Tree Conversion</strong>: It logs the input tree and converts it into an HTML string using the <code>treeToHtml</code> function.</li>
+<li><strong>Selecting Terminal Nodes</strong>: It uses the <code>selectDom</code> function to select Terminal Node elements within the HTML string.</li>
+<li><strong>Replacing Terminal Nodes (Type)</strong>: It replaces Terminal Nodes that are ancestors of ThetypeNameContext or SimpleTypeSpecifierContext elements with a new Type node. The old Type node is extracted from the Terminal Node and the new Type node is created with the same range and value.</li>
+<li><strong>Replacing Terminal Nodes (IdExpression)</strong>: It replaces Terminal Nodes that are descendants of IdExpressionContext elements. If the Terminal Node is a descendant of a ClassnameContext element, it creates a UnaryExpression node with the Terminal Node's value as the argument. Otherwise, it creates an Identifier node with the Terminal Node's value.</li>
+<li><strong>Replacing MemberDeclarationContext</strong>: It replaces MemberDeclarationContext elements by creating a new node with the same kind, key, and semi-colon information.</li>
+</ol>
+<h3>Functions Used</h3>
+<ul>
+<li><code>selectDom</code>: A function that selects elements within the DOM (Document Object Model) using a CSS-like selector.</li>
+<li><code>treeToHtml</code>: A function that converts an ANTLR-generated tree into an HTML string.</li>
+<li><code>htmlToTree</code>: A function that converts an HTML string back into an ANTLR-generated tree.</li>
+<li><code>replace</code>: A function that replaces elements within the DOM using a callback function.</li>
+</ul>
+<h3>Assumptions</h3>
+<p>This function appears to be part of a larger code generator or transformer, and it assumes the presence of certain functions and variables, such as <code>importer</code>, <code>selectDom</code>, <code>treeToHtml</code>, and <code>htmlToTree</code>.</p>

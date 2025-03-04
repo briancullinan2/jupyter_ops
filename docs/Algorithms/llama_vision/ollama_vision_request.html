@@ -1,0 +1,110 @@
+<p>Here's a 2-sentence summary of the function:</p>
+<p>The <code>requestOllamaVision</code> function sends a POST request to the LLaMA Vision API with a base64-encoded image and a provided prompt, and returns the response message content. It handles various image input types, including URLs, file paths, and base64-encoded strings, and logs an error if no image is provided.</p>
+
+
+<pre><code>const { request } = require('gaxios')
+const fs = require('fs')
+
+async function requestOllamaVision(image, prompt) {
+  if (!image) {
+    console.error('image not set!')
+    return
+  }
+
+  let base64_image
+  if(typeof image == 'string') {
+    if(image.startsWith('data:image/'))
+      image = image.replace(/^data:image\/.*?;base64,/gi, '')
+  
+    if(image.includes('://')) {
+      let result = await request({
+        url: image,
+        method: 'GET',
+      })
+      base64_image = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(image)) {
+      base64_image = Buffer.from(image, 'base64').toString('base64')
+    } else {
+      base64_image = fs.readFileSync(image).toString('base64')
+    }  
+  } else {
+    base64_image = image.toString('base64')
+  }
+
+  let result = await request({
+    url: 'http://localhost:11434/api/chat',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      "model": "llama3.2-vision",
+      "stream": false,
+      "messages": [
+        {
+          "role": "user",
+          "content": prompt ? prompt : "Describe the image in great detail.",
+          //"content": (
+          //    "Extract all text from the image and return it as markdown.\n"
+          //    "Do not describe the image or add extra text.\n"
+          //    "Only return the text found in the image."
+          //),
+          "images": [base64_image]
+        }
+      ]
+    })
+  })
+  //let buff = Buffer.from(result.data.images[0], 'base64');
+  if(result.data && result.data.message)
+    return result.data.message.content
+  else
+    return
+}
+
+module.exports = requestOllamaVision
+
+</code></pre>
+
+<p><strong>Function Breakdown: <code>requestOllamaVision</code></strong></p>
+<h3>Function Signature</h3>
+<p><code>async function requestOllamaVision(image, prompt)</code></p>
+<h3>Parameters</h3>
+<ul>
+<li><code>image</code>: The image to be processed. Can be a URL, file path, or base64-encoded image string.</li>
+<li><code>prompt</code>: The prompt to be sent to LLaMA Vision API. Defaults to &quot;Describe the image in great detail.&quot; if not provided.</li>
+</ul>
+<h3>Function Behavior</h3>
+<ol>
+<li>Checks if <code>image</code> is not set. If so, logs an error and returns.</li>
+<li>Converts the <code>image</code> to base64-encoded string if it is:
+<ul>
+<li>A string starting with &quot;data:image/...&quot; (e.g., base64-encoded image string).</li>
+<li>A URL that is not a local file (fetches the image using <code>gaxios</code>).</li>
+<li>A local file path (reads the file using <code>fs</code>).</li>
+</ul></li>
+<li>Sends a POST request to LLaMA Vision API with the <code>image</code> as a base64-encoded string and the provided <code>prompt</code>.</li>
+<li>Returns the response message content if the response has a <code>message</code> property.</li>
+</ol>
+<h3>API Request Details</h3>
+<ul>
+<li>URL: <code>http://localhost:11434/api/chat</code></li>
+<li>Method: <code>POST</code></li>
+<li>Headers:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul></li>
+<li>Data: JSON object with the following structure:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;model&quot;: &quot;llama3.2-vision&quot;,
+  &quot;stream&quot;: false,
+  &quot;messages&quot;: [
+    {
+      &quot;role&quot;: &quot;user&quot;,
+      &quot;content&quot;: &quot;...&quot;,
+      &quot;images&quot;: [&quot;...&quot;]
+    }
+  ]
+}
+</code></pre>
+<p>Note: The <code>messages</code> array can contain multiple messages, but in this implementation, it only contains a single message with the provided <code>prompt</code> and <code>image</code>.</p>

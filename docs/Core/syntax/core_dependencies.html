@@ -1,0 +1,59 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>This code provides a module that exports a function <code>coreDependencies</code> which retrieves and logs package dependencies from notebooks in a project directory, excluding cache.ipynb.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core')
+var {relativeImports} = importer.import('builtin and local modules')
+var {listInProject} = importer.import('list project files')
+
+function coreDependencies() {
+    var packages = []
+    var builtin = []
+    var coreNotebooks = listInProject(__dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+        .filter(n => !n.includes('cache.ipynb'))
+    coreNotebooks.forEach(n => {
+        var cells = importer.interpret(path.basename(n))
+        cells.forEach(cell => {
+            try {
+                var imports = relativeImports(cell.code, cell.filename)
+                imports.packages.forEach(p => packages.push(p))
+                imports.builtin.forEach(p => builtin.push(p))
+            } catch (e) {
+                console.log(`problem with ${cell.id} ${e.message}`)
+            }
+            
+        })
+    })
+    console.log(packages)
+    console.log(builtin)
+    return packages
+}
+
+module.exports = {
+    coreDependencies
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Required Modules</h4>
+<ul>
+<li><code>path</code>: A built-in Node.js module for working with file paths.</li>
+<li><code>importer</code>: A custom module located in the <code>../Core</code> directory, which provides functionality for importing and interpreting modules.</li>
+</ul>
+<h4>Functions</h4>
+<ul>
+<li><code>coreDependencies()</code>: A function that exports a list of core dependencies.</li>
+</ul>
+<h4>Function Flow</h4>
+<ol>
+<li>Retrieves a list of notebooks in the project directory (excluding cache.ipynb).</li>
+<li>Iterates through each notebook, interpreting each cell.</li>
+<li>For each cell, it attempts to parse the imports, extracting package and built-in dependencies.</li>
+<li>Logs any issues encountered during the processing of each cell.</li>
+<li>Returns the list of package dependencies.</li>
+</ol>
+<h4>Exports</h4>
+<ul>
+<li><code>module.exports</code>: Exports the <code>coreDependencies</code> function as a module.</li>
+</ul>

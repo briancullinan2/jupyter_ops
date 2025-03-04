@@ -1,0 +1,82 @@
+<p>This code calculates the total price of a subscription by retrieving product and pricing information from a catalog export and applying discounts, while also identifying areas for future improvement.</p>
+
+
+<pre><code>// given a list of subscription IDs and products, calculate the new subscription total using a catalog export and compare with the preview API
+
+// returns [account number, subtotal, previous discount]
+function calculatePrice(subscription, products) {
+    const rpcs = _.groupBy(subscription, r => r['RatePlanCharge.Id']);
+    const charges = Object.keys(rpcs).map(k => _.sortBy(rpcs[k], r => r['RatePlanCharge.Version']).pop());
+    var subtotal = 0;
+    var discount;
+    var quantity = 0;
+    charges
+        // TODO: escelate this to mapDataToFields function?
+        .filter(c => !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('perpetual'))
+        .forEach(charge => {
+            const product = products.filter(p => p['id'] === charge['Product.Id'])[0];
+            const productRatePlan = product.productRatePlans.filter(p => p['id'] === charge['ProductRatePlan.Id'])[0];
+            // select correct price plan for the item
+            const productCharge = productRatePlan.productRatePlanCharges.filter(p => p['id'] === charge['ProductRatePlanCharge.Id'])[0];
+            const pricing = productCharge.pricing.filter(p => p['currency'] === charge['Account.Currency'])[0];
+        
+        
+            if((charge['ProductRatePlan.Name'] || '').toLowerCase().includes('discount')
+                                    || (charge['ProductRatePlan.Name'] || '').toLowerCase().includes('volume')) {
+                // TODO: add handler for quantity based discounts?
+                discount = pricing.discountPercentage / 100;
+            } else {
+                const price = pricing.tiers === null
+                    ? pricing.price
+                    : pricing.tiers.filter(t => charge['RatePlanCharge.Quantity'] >= t['startingUnit']
+                                           && charge['RatePlanCharge.Quantity'] <= t['endingUnit'])[0];
+                if(typeof price === 'undefined') {
+                    throw new Error('unknown rate plan component');
+                }
+                quantity += parseInt(charge['RatePlanCharge.Quantity']);
+                subtotal += parseInt(charge['RatePlanCharge.Quantity']) * price;
+            }
+        });
+    const discounts = charges.filter(c => (c['ProductRatePlan.Name'] || '').toLowerCase().includes('discount') > -1
+                                    || (c['ProductRatePlan.Name'] || '').toLowerCase().includes('volume') > -1)
+                             .filter(c => !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('diamond')
+                                    && !(c['ProductRatePlan.Name'] || '').toLowerCase().includes('distribution'));
+    assert(!isNaN(subtotal), 'not a number! ' + JSON.stringify(charges, null, 4))
+    //assert(discounts.length <= 1, 'multiple discounts! ' + JSON.stringify(discounts, null, 4))
+    return [subscription[0]['Account.AccountNumber'], subtotal, discount, quantity];
+}
+module.exports = calculatePrice;
+</code></pre>
+
+<p>This code snippet calculates the total price of a subscription based on a list of subscription IDs, products, and a catalog export.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Grouping and Filtering:</strong></p>
+<ul>
+<li>It groups subscription charges by <code>RatePlanCharge.Id</code> and filters out perpetual charges.</li>
+</ul></li>
+<li><p><strong>Product and Pricing Lookup:</strong></p>
+<ul>
+<li>It iterates through the filtered charges and looks up the corresponding product and pricing information from the provided <code>products</code> array and the catalog export.</li>
+</ul></li>
+<li><p><strong>Discount Handling:</strong></p>
+<ul>
+<li>It identifies charges related to discounts or volume-based pricing and stores the discount percentage.</li>
+</ul></li>
+<li><p><strong>Price Calculation:</strong></p>
+<ul>
+<li>For non-discount charges, it selects the appropriate price tier based on the quantity and calculates the subtotal.</li>
+</ul></li>
+<li><p><strong>Subtotal and Discount:</strong></p>
+<ul>
+<li>It accumulates the subtotal and stores the discount percentage.</li>
+</ul></li>
+<li><p><strong>TODOs:</strong></p>
+<ul>
+<li>The code includes several TODOs, suggesting areas for improvement:
+<ul>
+<li>Refactor the filtering logic to a separate function (<code>mapDataToFields</code>).</li>
+<li>Implement handling for quantity-based discounts.</li>
+</ul></li>
+</ul></li>
+</ol>

@@ -1,0 +1,43 @@
+<p>This code automates the process of finding and listing projects within a directory by identifying common project configuration files.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+var listInProject = importer.import('list project files');
+
+// But we also want to automatically load projects?
+function listProjects(root, match = '{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}+(package.json|NuGet.config|*.sln|*.csproj)') {
+    var result = {};
+    var matches = listInProject(root, match);
+    matches.forEach(m => {
+        var projectPath = path.resolve(path.dirname(m));
+        result[path.basename(projectPath)] = projectPath;
+    });
+    return result;
+};
+module.exports = listProjects;
+
+</code></pre>
+
+<p>This code defines a function to automatically discover and list projects within a given directory.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module (likely from the project's <code>Core</code> directory) used to import other modules.</li>
+<li><code>path</code>: Node.js built-in module for working with file paths.</li>
+</ul></li>
+<li><p><strong><code>listProjects(root, match)</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>root</code> directory path and an optional <code>match</code> pattern as input.</li>
+<li>Uses <code>listInProject</code> (imported from <code>list project files</code>) to find files matching the <code>match</code> pattern within the <code>root</code> directory. The default <code>match</code> pattern is designed to find common project configuration files like <code>package.json</code>, <code>NuGet.config</code>, <code>.sln</code>, and <code>.csproj</code>.</li>
+<li>Iterates through the matching files and extracts the directory path of each project.</li>
+<li>Stores the project name (based on the directory name) as the key and the full project path as the value in a <code>result</code> object.</li>
+<li>Returns the <code>result</code> object containing a list of discovered projects.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>listProjects</code> function as the main module.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a function to automatically locate and list projects within a directory based on the presence of common project configuration files.</strong></p>

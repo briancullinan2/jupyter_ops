@@ -1,0 +1,69 @@
+<p>This script automates the process of integrating JavaScript code generated from Jupyter Notebook cells back into the original notebooks. It finds corresponding JavaScript files, extracts their content, and replaces the code cells in the notebooks with the retrieved JavaScript.</p>
+
+
+<pre><code>var fs = require('fs');
+var glob = require('glob');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Documents/jupytangular2/Utilities/.modules';
+var project = PROFILE_PATH + '/Documents/jupytangular2';
+
+var cells = glob.sync('**/cell-*', {cwd: PROJECT_PATH});
+for(const c of cells) {
+    const cell = path.basename(c);
+    const notebook = path.basename(path.dirname(c));
+    const parent = path.basename(path.dirname(path.dirname(c)));
+    if(parent === 'jupytangular2') {
+        continue;
+    }
+    const nb = JSON.parse(fs.readFileSync(path.join(
+        project, parent, notebook + '.ipynb')));
+    let counter = 0;
+    for(const i in nb.cells) {
+        if(!nb.cells.hasOwnProperty(i)) {
+            continue;
+        }
+        // TODO: reimport all cells
+        if(nb.cells[i].cell_type === 'code') {
+            if(cell === 'cell-' + counter + '.js') {
+                nb.cells[i].source = fs.readFileSync(path.join(PROJECT_PATH, c)).toString().split('\n');
+            }
+            counter++;
+        }
+    }
+    fs.writeFileSync(path.join(project, parent, notebook + '.ipynb'),
+                     JSON.stringify(nb, null, 2));
+}
+</code></pre>
+
+<p>This code script processes Jupyter Notebook files (.ipynb) and replaces code cells with content from corresponding JavaScript files.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Requires the <code>fs</code> (filesystem) and <code>glob</code> (file pattern matching) modules.</li>
+<li>Defines paths for user profile, project directory, and the location of Jupyter notebooks.</li>
+</ul></li>
+<li><p><strong>Finding Notebook Cells:</strong></p>
+<ul>
+<li>Uses <code>glob.sync</code> to find all files matching the pattern <code>**/cell-*</code> within the project's <code>.modules</code> directory. These files likely contain JavaScript code generated from notebook cells.</li>
+</ul></li>
+<li><p><strong>Processing Each Notebook:</strong></p>
+<ul>
+<li>Iterates through each found cell file.</li>
+<li>Extracts the notebook name, parent directory, and cell number.</li>
+<li>Skips notebooks located in the root <code>jupytangular2</code> directory.</li>
+<li>Reads the corresponding Jupyter notebook file using <code>fs.readFileSync</code>.</li>
+<li>Parses the notebook content as JSON.</li>
+</ul></li>
+<li><p><strong>Replacing Code Cells:</strong></p>
+<ul>
+<li>Iterates through each cell in the notebook.</li>
+<li>If the cell type is 'code', it checks if the cell filename matches the current JavaScript file.</li>
+<li>If a match is found, it replaces the cell's source code with the content from the corresponding JavaScript file.</li>
+</ul></li>
+<li><p><strong>Saving Modified Notebook:</strong></p>
+<ul>
+<li>Writes the modified notebook content back to the file using <code>fs.writeFileSync</code>.</li>
+</ul></li>
+</ol>

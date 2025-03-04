@@ -1,0 +1,81 @@
+
+
+<pre><code>// permutation
+function spliceClone(arr, i) {
+    return (a => a.splice(i, 1).concat(a))
+        // call it with a clone to preserve array reference
+        ([].concat(arr))
+}
+function permute(array) {
+    return array.reduce((acc, cv, ci, arr) => {
+        const spliced = spliceClone(arr, ci);
+        // recursive
+        const perm = permute(spliced.slice(1))
+            .map(p => spliced.slice(0, 1).concat(p));
+        return acc.concat(perm);
+    }, [].concat(array));
+}
+
+var permutations = permute([1,3,4,6])
+    .filter(c => c.length === 4);
+
+var op = ['+','-','*','/','^'];
+var operators = op.reduce((acc, o) => acc.concat(op.reduce((acc2, o2) => acc2.concat(op.map(o3 => [o2, o3])), []).map(c => [o].concat(c))), [])
+    .filter(c => c.length === 3);
+//console.log(operators);
+function solve(op, p) {
+    switch(op) {
+        case '+':
+            return p[0] + p[1];
+        case '-':
+            return p[0] - p[1];
+        case '*':
+            return p[0] * p[1];
+        case '/':
+            return p[0] / p[1];
+        case '^':
+            return p[0] ^ p[1];
+        case '%':
+            return p[0] % p[1];
+    }
+}
+var equations = operators.reduce((acc, o) => {
+    return acc.concat(permutations.reduce((acc, p) => {
+        acc.push([
+            '(', p[0], o[0], p[1], ')', o[1], '(', p[2], o[2], p[3], ')',
+            '=',
+            solve(o[1], [
+                solve(o[0], p),
+                solve(o[2], p.slice(2))
+            ])
+               ]);
+        acc.push([
+            p[0], o[0], '(', p[1], o[1], '(', p[2], o[2], p[3], ')', ')',
+            '=',
+            solve(o[0], [
+                p[0],
+                solve(o[1], [
+                p[1],
+                solve(o[2], p.slice(2))
+            ])
+                ])
+               ]);
+        acc.push([
+            '(', '(', p[0], o[0], p[1], ')', o[1], p[2], ')', o[2], p[3],
+            '=',
+            solve(o[2], [solve(o[1], [
+                solve(o[0], p),
+                p[2]
+                ]),
+                p[3]
+            ])
+               ]);
+        return acc;
+    }, []));
+}, [])
+
+for(var e of equations) { // .filter(e => e[12] === 24)) {
+    console.log(e.join(' '))
+}
+</code></pre>
+

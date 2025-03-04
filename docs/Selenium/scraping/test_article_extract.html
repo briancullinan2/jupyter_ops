@@ -1,0 +1,56 @@
+<p>Here is a 2-sentence summary of the <code>testExtractor</code> function:</p>
+<p>The <code>testExtractor</code> function extracts data from a specified webpage using the <code>selenium client</code> and returns the extracted data as an object. It uses the <code>extractArticle</code> function to scrape data from the webpage and imports functions from the <code>selenium client</code> and <code>extract llm article</code> modules.</p>
+
+
+<pre><code>
+
+const extractArticle = importer.import('extract llm article')
+const getClient = importer.import('selenium client')
+
+async function testExtractor(startPage) {
+  if(!startPage) {
+    startPage = 'https://tsakraklides.com/2025/02/05/in-the-age-of-infinite-consumer-choice-the-only-choice-is-collapse/'
+  }
+
+  driver = await getClient()
+
+  let result = await extractArticle(driver, startPage)
+
+  driver.quit()
+
+  return result
+}
+
+
+module.exports = testExtractor
+
+
+</code></pre>
+
+<h3>Function: <code>testExtractor</code></h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>startPage</code>: URL of the webpage to extract data from (optional, defaults to <code>'https://tsakraklides.com/2025/02/05/in-the-age-of-infinite-consumer-choice-the-only-choice-is-collapse/'</code> if not provided)</li>
+</ul>
+<h4>Returns</h4>
+<ul>
+<li>Extracted data from the webpage as an object</li>
+</ul>
+<h4>Description</h4>
+<p>This function uses the <code>selenium client</code> to scrape data from a webpage using the <code>extract llm article</code> function. It:</p>
+<ol>
+<li>Fetches the <code>selenium client</code> and creates a driver instance.</li>
+<li>Uses the <code>extractArticle</code> function to extract data from the specified webpage.</li>
+<li>Quits the driver instance.</li>
+<li>Returns the extracted data.</li>
+</ol>
+<h4>Imported Functions</h4>
+<ul>
+<li><code>extractArticle</code>: imported from <code>extract llm article</code> module</li>
+<li><code>getClient</code>: imported from <code>selenium client</code> module</li>
+<li><code>importer</code>: module used to import functions from other modules</li>
+</ul>
+<h4>Exported Function</h4>
+<ul>
+<li><code>testExtractor</code>: exported as a module, allowing it to be used in other parts of the application.</li>
+</ul>

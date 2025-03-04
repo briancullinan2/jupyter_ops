@@ -1,0 +1,56 @@
+<p>This code tests the <code>streamToGoogle</code> function, which uploads a file to Google Cloud Storage, by asserting that a valid URL is returned after the upload.</p>
+
+
+<pre><code>var path = require('path');
+var assert = require('assert');
+var importer = require('../Core');
+var streamToGoogle = importer.import('upload files google cloud');
+
+describe('upload google storage', () => {
+    
+    it('should upload a file to a bucket', () => {
+        return streamToGoogle(
+            'https://www.sgs.com/-/media/global/images/structural-website-images/hero-images/hero-color-palette.jpg?la=en&hash=70B51DB0FA678306B2EAF2E6C4A725BAB0D12342',
+            'sheet-to-web.com')
+            .then(url => {
+                assert(url.length > 0, 'should have a file url');
+            })
+    })
+    
+    
+})
+</code></pre>
+
+<p>This code defines a test suite using the <code>describe</code> and <code>it</code> functions from a testing framework (likely Jest) to verify the functionality of a function called <code>streamToGoogle</code>.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>path</code>: Node.js module for working with file and directory paths.</li>
+<li><code>assert</code>: Node.js built-in module for making assertions in tests.</li>
+<li><code>importer</code>: A custom module (likely located in <code>../Core</code>) used to import other functions.</li>
+<li><code>streamToGoogle</code>: Function imported from <code>importer</code> to upload files to Google Cloud Storage.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li><code>describe('upload google storage', () =&gt; { ... });</code>: Defines a test suite named &quot;upload google storage&quot;.</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li><code>it('should upload a file to a bucket', () =&gt; { ... });</code>: Defines a test case within the suite named &quot;should upload a file to a bucket&quot;.</li>
+</ul></li>
+<li><p><strong>Test Logic:</strong></p>
+<ul>
+<li>Calls <code>streamToGoogle</code> with a URL of an image and a bucket name.</li>
+<li>Uses <code>.then</code> to handle the Promise returned by <code>streamToGoogle</code>.</li>
+<li>Inside the <code>.then</code> block:
+<ul>
+<li><code>assert(url.length &gt; 0, 'should have a file url');</code>: Asserts that the returned URL is not empty, ensuring the file was successfully uploaded.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>This test suite will likely be executed by a testing framework, which will run the test case and report whether it passed or failed based on the assertions.</li>
+</ul></li>
+</ol>
+<p>In essence, this code tests the functionality of the <code>streamToGoogle</code> function by uploading a file to a Google Cloud Storage bucket and verifying that a valid URL is returned.</p>

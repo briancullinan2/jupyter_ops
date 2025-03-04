@@ -1,0 +1,63 @@
+<p>This code converts audio files within a Quake 3 game directory to the Opus format using the <code>opusenc</code> command-line tool.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var execCmd = importer.import('spawn child process')
+var mkdirpSync = importer.import('mkdirp')
+var { chext, chroot } = importer.import('changing file names')
+var {audioTypes} = importer.import('quake 3 file whitelist')
+
+async function convertAudio(root) {
+    var result = []
+    var output = path.join(path.dirname(root), path.basename(root) + '-converted')
+    
+    var files = await glob(audioTypes.map(a => '**/*' + a), root)
+    for(var i = 0; i < files.length; i++) {
+        var outFile, inFile = files[i]
+        outFile = chroot(chext(inFile, '.opus'), root, output)
+        mkdirpSync(path.dirname(outFile))
+        await execCmd(`opusenc --bitrate 24 --vbr "${inFile}" "${outFile}"`, {quiet: false})
+        result.push(outFile)
+    }
+    return result
+}
+
+module.exports = convertAudio
+</code></pre>
+
+<p>This code snippet converts audio files in a Quake 3 game directory to the Opus format.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+<li><code>fs</code>: Node.js module for file system operations.</li>
+<li><code>importer</code>: Custom module likely containing utility functions.</li>
+<li><code>glob</code>: Module for finding files matching a pattern.</li>
+<li><code>spawn</code>: Module for running shell commands.</li>
+<li><code>mkdirp</code>: Module for creating directories recursively.</li>
+<li><code>changing file names</code>: Custom module for renaming files.</li>
+<li><code>quake 3 file whitelist</code>: Custom module defining supported audio types.</li>
+</ul></li>
+<li><p><strong><code>convertAudio</code> Function:</strong></p>
+<ul>
+<li>Takes a directory path as input.</li>
+<li>Finds all audio files matching supported types using <code>glob</code>.</li>
+<li>Iterates through each file:
+<ul>
+<li>Renames the file to have a <code>.opus</code> extension using <code>chroot</code> and <code>chext</code>.</li>
+<li>Creates the output directory if it doesn't exist.</li>
+<li>Uses <code>opusenc</code> to convert the audio file to Opus format with a bitrate of 24 kbps using <code>execCmd</code>.</li>
+<li>Adds the converted file path to the <code>result</code> array.</li>
+</ul></li>
+<li>Returns the array of converted file paths.</li>
+</ul></li>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li>Exports the <code>convertAudio</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

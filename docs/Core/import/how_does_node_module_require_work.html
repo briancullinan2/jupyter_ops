@@ -1,0 +1,135 @@
+<p>Here's a two-sentence summary:</p>
+<p>The provided code imports necessary Node.js modules, including <code>Module</code>, <code>path</code>, and <code>fs</code>, and defines two functions, <code>getCached</code> and <code>makeModule</code>, which manage module caching and creation, respectively. The <code>makeModule</code> function creates a new module instance, caches it if unchanged, and loads exports, while the <code>getCached</code> function checks the last modified time of a file to determine if a cached module exists.</p>
+
+
+<pre><code>const Module = require('module').Module
+const path = require('path')
+const fs = require('fs')
+
+function getCached(filepath) {
+    // must have a new name for every generation otherwise cache will be returned
+    var mtime = fs.statSync(filepath
+        // TODO: find a better way to serve notebook names
+        .replace(/\.ipynb(\[[0-9]+\]).*$/ig, '.ipynb')).mtime.getTime();
+
+    // TODO: don't use cache of parent modules that have includes that have changed
+    var cachedModule = Module._cache[filepath];
+    if (cachedModule && mtime < cachedModule.buildTime) {
+        return cachedModule;
+    }
+}
+
+function makeModule(code, pathToCode, ctxGlobal) {
+    var filepath = path.resolve(process.cwd(), pathToCode);
+
+    ctxGlobal = ctxGlobal || {}
+    ctxGlobal.module = getCached(filepath)
+    if (ctxGlobal.module) {
+        if (!ctxGlobal.module.loaded) {
+            return ((module) => new Promise(resolve => {
+                let inter = setInterval(() => {
+                    if (module.loaded) {
+                        clearInterval(inter)
+                        resolve()
+                    }
+                }, 100)
+            }).then(() => module.exports))(ctxGlobal.module)
+        }
+        return ctxGlobal.module.exports
+    }
+    delete require.cache[filepath]
+    Object.assign(ctxGlobal, {
+        importer: require('../Core'),
+        module: new Module(filepath, module),
+        exports: { original: true },
+        __dirname: path.dirname(pathToCode),
+        __filename: pathToCode.split('[')[0],
+        $$: void 0,
+        console: console,
+        global: ctxGlobal,
+        //require: require,
+    })
+    Object.assign(ctxGlobal.module, {
+        module: ctxGlobal.module,
+        exports: ctxGlobal.exports,
+        parent: module,
+        buildTime: (new Date()).getTime(),
+        filename: pathToCode,
+        paths: Module._nodeModulePaths(path.dirname(filepath))
+    })
+    Module._cache[filepath] = ctxGlobal.module;
+
+    // this is basically the magic of the 'rewire' module, reuse this?
+    const validVars = Object.keys(ctxGlobal)
+        .filter(k => k.match(/^(\$\$|[a-z_][a-z0-9_]*)$/i))
+        .join(',');
+
+    if (!pathToCode.includes('Core')) {
+        console.info(`compiling ${pathToCode} with ${validVars}`);
+    }
+
+    // TODO: use the transpiler or kernels here
+    try {
+        ctxGlobal.module._compile(`
+        module.exports = (({${validVars}}) => {
+        ${code}
+        return module.exports || exports || {}
+        })`, filepath);
+
+        // assign the actual imports internally by calling the func export
+        var wrapperContext = ctxGlobal.module.exports;
+        var result = wrapperContext(ctxGlobal);
+        ctxGlobal.module.loaded = true;
+        ctxGlobal.module.exports = result;
+        return result;
+    } catch (err) {
+        if (err.code === 'ERR_REQUIRE_ESM') {
+            const { makeESModule } = require('../Core')
+            console.error('ES module required', err)
+            return makeESModule(code, filepath, ctxGlobal)
+        } else {
+            throw err
+        }
+    }
+}
+
+module.exports.makeModule = makeModule;
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">const Module = require('module').Module
+const path = require('path')
+const fs = require('fs')
+</code></pre>
+<ul>
+<li>The code starts by importing the <code>Module</code> class from the built-in Node.js <code>module</code> module.</li>
+<li>It also imports the <code>path</code> and <code>fs</code> modules, which are used for working with file paths and the file system, respectively.</li>
+</ul>
+<h4><code>getCached</code> Function</h4>
+<pre><code class="language-javascript">function getCached(filepath) {
+    //...
+}
+</code></pre>
+<ul>
+<li>This function takes a file path as an argument and checks if a cached version of the module exists.</li>
+<li>It checks the last modified time of the file and compares it with the build time of the cached module.</li>
+<li>If the file has not changed, it returns the cached module.</li>
+</ul>
+<h4><code>makeModule</code> Function</h4>
+<pre><code class="language-javascript">function makeModule(code, pathToCode, ctxGlobal) {
+    //...
+}
+</code></pre>
+<ul>
+<li>This function takes three arguments: code, path to code, and an optional context object (<code>ctxGlobal</code>).</li>
+<li>It creates a new module instance using the <code>Module</code> class and caches it if it has not changed since the last build.</li>
+<li>If the module is already cached, it loads the cached exports; otherwise, it creates a new module and loads the exports.</li>
+<li>The function returns the loaded exports.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The <code>getCached</code> function uses the <code>fs.statSync</code> method to get the last modified time of the file, which may not be the most efficient way to do this.</li>
+<li>The <code>makeModule</code> function uses the <code>Module._cache</code> object to cache modules, which is a built-in Node.js cache mechanism.</li>
+<li>The function also uses the <code>Module._nodeModulePaths</code> method to get the paths of the parent modules, which is used to resolve dependencies.</li>
+</ul>

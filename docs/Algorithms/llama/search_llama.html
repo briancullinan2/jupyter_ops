@@ -1,0 +1,95 @@
+<p>Here's a two-sentence summary of the <code>askLlamaMatchingFunction</code> code breakdown:</p>
+<p>The <code>askLlamaMatchingFunction</code> function searches for a matching function in a notebook by fetching all available functions, filtering them based on categories, and then using another function (<code>askLlamaAboutFunctions</code>) to narrow down the results. The function iterates through the cell cache, appends functions and their descriptions to arrays, and limits the number of calls to <code>askLlamaAboutFunctions</code> to improve efficiency and reduce excessive calls.</p>
+
+
+<pre><code>const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+const {askLlamaAboutCategories} = importer.import('ask llm about categories')
+const lookupCell = importer.lookupCell
+const { cacheCells } = importer.import('cache notebook')
+const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const { cellCache } = importer.import('cell cache')
+const {storeAllLlamaFunctions} = importer.import('store all notebook llm functions')
+
+async function askLlamaMatchingFunction(query) {
+  await storeAllLlamaFunctions()
+
+  let filterCategories = await askLlamaAboutCategories(query)
+  if(filterCategories.length > 0) {
+    console.log(filterCategories)
+  }
+
+  let matchingFunction = []
+  let functions = []
+  let descriptions = []
+
+  for(let i = 0; i < cellCache.length; i++) {
+    let cell = cellCache[i]
+    if(!cell[2].questions || !cell[2].questions[0]) continue
+    let code = lookupCell(cell[1], cacheCells)
+
+    if(!functionCache[cell[1]].exports) continue
+    if(!functionCache[cell[1]].exports[0]) continue
+
+    // limit number of calls based on filter
+    if(filterCategories.length > 0 && !filterCategories.includes(code.filename)) {
+      continue
+    }
+
+    // finally append to array that will be used to find the function
+    functions[functions.length] = functionCache[cell[1]].exports[0]
+    descriptions[descriptions.length] = functionCache[cell[1]].summary
+
+    if(functions.length == 20) {
+        let result = await askLlamaAboutFunctions(query, functions, descriptions)
+        descriptions = []
+        functions = []
+        if(result)
+          matchingFunction = matchingFunction.concat(result)
+    }
+  }
+  if(functions.length > 0) {
+      let result = await askLlamaAboutFunctions(query, functions, descriptions)
+      descriptions = []
+      functions = []
+      if(result)
+        matchingFunction = matchingFunction.concat(result)
+  }
+  return matchingFunction
+}
+
+module.exports = {
+  askLlamaMatchingFunction
+}
+</code></pre>
+
+<p><strong>askLlamaMatchingFunction Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>The <code>askLlamaMatchingFunction</code> function is designed to find a matching function in a notebook based on a query. It fetches all available functions, filters them based on categories, and then uses another function (<code>askLlamaAboutFunctions</code>) to narrow down the results.</p>
+<h3>Dependencies</h3>
+<p>The function uses several imported modules and functions:</p>
+<ul>
+<li><code>importer.import</code>: imports functions from other modules</li>
+<li><code>importer.lookupCell</code>: looks up a cell in the notebook</li>
+<li><code>importer.cacheCells</code>: caches notebook cells</li>
+<li><code>importer.cacheRpcFunctions</code>: caches functions with LLM descriptions</li>
+<li><code>importer.cellCache</code>: caches cell data</li>
+<li><code>importer.storeAllLlamaFunctions</code>: stores all notebook LLM functions</li>
+</ul>
+<h3>Function Flow</h3>
+<p>The function executes the following steps:</p>
+<ol>
+<li><strong>Fetch all functions</strong>: Calls <code>storeAllLlamaFunctions</code> to fetch all available functions.</li>
+<li><strong>Fetch categories</strong>: Calls <code>askLlamaAboutCategories</code> to fetch categories related to the query.</li>
+<li><strong>Filter categories</strong>: If categories are available, it filters the functions based on the categories.</li>
+<li><strong>Loop through cell cache</strong>: Iterates through the cell cache to find matching functions.</li>
+<li><strong>Append functions and descriptions</strong>: Appends functions and their descriptions to arrays for later use.</li>
+<li><strong>Limit number of calls</strong>: Limits the number of calls to <code>askLlamaAboutFunctions</code> based on the filter categories.</li>
+<li><strong>Call askLlamaAboutFunctions</strong>: Calls <code>askLlamaAboutFunctions</code> to narrow down the results.</li>
+<li><strong>Return matching function</strong>: Returns the matching function.</li>
+</ol>
+<h3>Implementation Details</h3>
+<ul>
+<li>The function uses two arrays (<code>functions</code> and <code>descriptions</code>) to store function data for later use.</li>
+<li>It uses a <code>limit</code> of 20 to avoid excessive calls to <code>askLlamaAboutFunctions</code>.</li>
+<li>It appends the results of <code>askLlamaAboutFunctions</code> to the <code>matchingFunction</code> array.</li>
+</ul>

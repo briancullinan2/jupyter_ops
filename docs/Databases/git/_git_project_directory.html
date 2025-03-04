@@ -1,0 +1,105 @@
+<p>This code provides tools for cloning and creating deep copies of Git repositories, allowing for isolated project environments for testing or experimentation.</p>
+
+
+<pre><code>var fs = require('fs');
+var glob = require('glob');
+var rimraf = require('rimraf');
+var path = require('path');
+var importer = require('../Core');
+var listInProject = importer.import('list project files');
+
+function deepCopy(project_orig) {
+    const now = new Date();
+    // delete old cloned directories
+    const copies = glob.sync(path.basename(project_orig) + '-copy-*', {cwd: path.dirname(project_orig)});
+    copies.forEach(c => {
+        rimraf.sync(path.join(path.dirname(project_orig), c));
+    });
+    const projectName = path.basename(project_orig) + '-copy-' + now.getFullYear()
+        + '-' + (now.getMonth() + 1) + '-' + now.getDate()
+        + '-' + now.getHours() + '-' + now.getMinutes()
+        + '-' + now.getSeconds();
+    const project = path.join(path.dirname(project_orig), projectName);
+    // do a deep copy of all git files
+    console.log('cloning repo ' + project_orig + ' -> ' + project);
+    return Promise.all([
+        listInProject(project_orig, '**/*'),
+        listInProject(project_orig + '/.git', '**/*'),
+    ])
+        // TODO: clone from remote
+        .then(r => {
+            for (const file of [].concat(...r).sort()) {
+                const dirname = path.dirname(
+                    file.replace(project_orig, project)).split(/\/|\\/ig);
+
+                for (var i = 2; i <= dirname.length; i++) {
+                    if (!fs.existsSync(dirname.slice(0, i).join('/'))) {
+                        fs.mkdirSync(dirname.slice(0, i).join('/'));
+                    }
+                }
+                fs.copyFileSync(file, file.replace(project_orig, project));
+            }
+        })
+        .then(() => listInProject(project, '**/*.lock').forEach(p => rimraf.sync(p)))
+        .then(() => project)
+}
+
+function cloneProject(project, copy) {
+    var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+    if(!project) {
+        throw new Error('specify project path or github');
+    }
+    if(fs.existsSync(path.resolve(project))) {
+        project = path.resolve(project);
+    } else if(fs.existsSync(path.join(PROFILE_PATH, 'Documents/' + project))) {
+        project = path.resolve(path.join(PROFILE_PATH, 'Documents/' + project));
+    } else if(fs.existsSync(path.join(PROFILE_PATH, project))) {
+        project = path.resolve(path.join(PROFILE_PATH, project));
+    } else if(project.match(/github.com\/[a-z0-9_-]+\/[a-z0-9_-]+/ig)) {
+        // fetch remote
+        const projectName = (/github.com\/([a-z0-9_-]+)\/([a-z0-9_-]+)/ig).exec(project)[2];
+        const projectHttp = project.replace(/^(https*)*:*\/*\/*/ig, 'https://');
+        if(fs.existsSync(path.join(PROFILE_PATH, projectName))) {
+            project = path.resolve(path.join(PROFILE_PATH, projectName));
+        } else {
+            return execCmd(`
+git clone -v ${projectHttp}
+`, {cwd: path.resolve(PROFILE_PATH)})
+                .then(r => path.resolve(path.join(PROFILE_PATH, projectName)))
+                .then(r => copy ? deepCopy(r) : r)
+        }
+    } else {
+        throw new Error('invalid project path "' + project + '"');
+    }
+    return Promise.resolve(project)
+            .then(r => copy ? deepCopy(r) : r)
+}
+module.exports = cloneProject;
+
+</code></pre>
+
+<p>This code defines functions for cloning and managing Git repositories, particularly focusing on creating deep copies of projects.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports necessary modules for file system operations (<code>fs</code>, <code>glob</code>, <code>rimraf</code>), path manipulation (<code>path</code>), and project file listing (<code>listInProject</code>).</li>
+</ul></li>
+<li><p><strong><code>deepCopy</code> Function:</strong></p>
+<ul>
+<li>This function creates a deep copy of a Git repository.</li>
+<li>It first removes any existing copies with a specific naming pattern.</li>
+<li>It generates a unique name for the new copy based on the current timestamp.</li>
+<li>It lists all files in the original project and its <code>.git</code> directory.</li>
+<li>It recursively creates directories and copies files to the new project location.</li>
+<li>It removes lock files (e.g., <code>package-lock.json</code>) from the copied project.</li>
+</ul></li>
+<li><p><strong><code>cloneProject</code> Function:</strong></p>
+<ul>
+<li>This function handles cloning a Git repository, either from a local path or a GitHub URL.</li>
+<li>It checks if the project path exists locally.</li>
+<li>It handles cases where the project is provided as a GitHub URL, likely using a library like <code>git-url-parser</code> to extract the repository information.</li>
+<li>It then calls <code>deepCopy</code> to create a deep copy of the cloned repository.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to create isolated copies of Git repositories, useful for testing, experimentation, or other purposes where you need a separate, independent copy of the project.</p>

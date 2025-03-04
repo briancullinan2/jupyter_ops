@@ -1,0 +1,87 @@
+<p>Here's a summary in one sentence:</p>
+<p>The <code>redditLinks</code> function uses Selenium WebDriver to scrape Reddit posts from a specified subreddit or URL, extracting title, timestamp, link, and comment count for each post, and returning an array of objects with additional metadata.</p>
+<p>If you'd like a two-sentence summary, here it is:</p>
+<p>The <code>redditLinks</code> function scrapes Reddit posts from a specified subreddit or URL using Selenium WebDriver, extracting key metadata for each post. It returns an array of objects containing the scraped data, along with the URL of the next page of posts.</p>
+
+
+<pre><code>const selectDom = importer.import('selenium select')
+const getClient = importer.import('selenium client')
+const {URL} = require('url')
+
+async function redditLinks(driver, startPage) {
+  if(!startPage.includes('://')) {
+    startPage = 'https://www.reddit.com/r/' + startPage
+  }
+
+  let startUrl = new URL(startPage)
+
+  if(!driver) {
+    driver = await getClient()
+  }
+
+  try {
+    await driver.get(startPage)
+
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    let links = await selectDom(driver, [
+      '//div[contains(@role, "main")]//div[contains(@class, "link") and not(contains(@class, "linklisting")) and not(contains(@class, "promoted"))]'])
+
+    // TODO: get some special links, get comment count, titles, finally next page
+    let results = []
+    for(let i = 0; i < links.length; i++) {
+      let result = await selectDom(driver, {
+        title: './/a[contains(@class, "title")]/text()',
+        link: './/a[contains(@class, "title")]/@href',
+        time: './/time/@datetime',
+        comment: './/a[contains(@class, "comments")]/text()',
+      }, links[i])
+      results.push(result)
+    }
+
+    let next = await selectDom(driver, '//a[contains(@rel, "next")]/@href')
+
+    let objectArray = results.map(r => ({
+      title: r.title,
+      time: new Date(r.time),
+      link: r.link.includes('://') 
+        ? r.link : ((!r.link.startsWith('/') 
+        ? (startUrl.origin + '/' + startUrl.pathname + './') : startUrl.origin) + r.link),
+      comment: r.comment
+    }))
+    objectArray.next = next
+    return objectArray
+  } catch (e) {
+    driver.quit()
+
+    throw e
+  }
+}
+
+module.exports = redditLinks
+</code></pre>
+
+<h2>Function: redditLinks</h2>
+<h3>Parameters</h3>
+<ul>
+<li><code>driver</code>: an instance of Selenium WebDriver, or <code>null</code>/<code>undefined</code> to initialize a new instance.</li>
+<li><code>startPage</code>: the name of the Reddit subreddit to scrape, or a full URL to the subreddit.</li>
+</ul>
+<h3>Returns</h3>
+<ul>
+<li>An object containing the scraped data, with the following properties:
+<ul>
+<li><code>title</code>: the title of the post.</li>
+<li><code>time</code>: the timestamp of the post, as a <code>Date</code> object.</li>
+<li><code>link</code>: the link to the post.</li>
+<li><code>comment</code>: the number of comments on the post.</li>
+<li><code>next</code>: the URL of the next page of posts.</li>
+</ul></li>
+</ul>
+<h3>Behavior</h3>
+<p>If <code>startPage</code> does not contain a scheme (<code>://</code>), it is assumed to be a subreddit name and is prepended with <code>https://www.reddit.com/r/</code>.</p>
+<p>The function uses Selenium WebDriver to navigate to the specified subreddit, wait for 1 second, and then extracts the links to the posts.</p>
+<p>For each post, it extracts the title, link, timestamp, and comment count, and returns an array of objects containing this data.</p>
+<p>The <code>next</code> property is the URL of the next page of posts.</p>
+<h3>Error Handling</h3>
+<p>If an error occurs during the scraping process, the function closes the WebDriver instance and re-throws the error.</p>

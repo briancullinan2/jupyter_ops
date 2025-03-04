@@ -1,0 +1,69 @@
+<p>This Angular component, <code>ResultsComponent</code>, displays search results, fetching them from a service and using Prism.js to highlight code snippets within each result.</p>
+
+
+<pre><code>import {SearchService} from '../../../imports/search.service';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import * as Prism from 'prismjs';
+
+@Component({
+    selector: 'bc-results',
+    template: `
+        <pre [class]="'language-'+(r.lang||'javascript')" *ngFor="let r of results" [innerHTML]="highlight(r.code)">
+        </pre>
+    `,
+    styleUrls: ['./results.component.scss']
+})
+export class ResultsComponent implements OnInit, OnDestroy {
+    query = '';
+    results: Array<any> = [];
+    private resultsSub: Subscription;
+    
+
+    constructor(public service: SearchService, public ref: ChangeDetectorRef) {}
+
+    ngOnInit(): void {
+        this.resultsSub = this.service.results(this.query).subscribe(r => {
+            this.results = [(r as Array < any >)[0]];
+            this.ref.detectChanges();
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.resultsSub.unsubscribe();
+    }
+
+    highlight(code: string): string {
+        return Prism.highlight(code, Prism.languages.javascript);
+    }
+}
+
+</code></pre>
+
+<p>This code defines an Angular component called <code>ResultsComponent</code> that displays search results, highlighting code snippets.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports <code>SearchService</code>, Angular core modules (<code>Component</code>, <code>OnInit</code>, <code>OnDestroy</code>, <code>ChangeDetectorRef</code>), <code>Subscription</code> from RxJS, and <code>Prism</code> for code highlighting.</li>
+</ul></li>
+<li><p><strong><code>ResultsComponent</code>:</strong></p>
+<ul>
+<li>Declares a component with a template that iterates over an array of <code>results</code> and displays each result as a preformatted code block with syntax highlighting.</li>
+<li>The <code>highlight()</code> method uses <code>Prism</code> to highlight the code.</li>
+</ul></li>
+<li><p><strong>Constructor:</strong></p>
+<ul>
+<li>Injects <code>SearchService</code> and <code>ChangeDetectorRef</code>.</li>
+</ul></li>
+<li><p><strong><code>ngOnInit()</code>:</strong></p>
+<ul>
+<li>Subscribes to the <code>results</code> observable from <code>SearchService</code> and updates the <code>results</code> array when new data arrives.</li>
+<li>Uses <code>ChangeDetectorRef.detectChanges()</code> to trigger change detection.</li>
+</ul></li>
+<li><p><strong><code>ngOnDestroy()</code>:</strong></p>
+<ul>
+<li>Unsubscribes from the observable to prevent memory leaks.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

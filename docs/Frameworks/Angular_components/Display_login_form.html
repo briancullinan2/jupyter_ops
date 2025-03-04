@@ -1,0 +1,110 @@
+<p>This Angular code defines an <code>AuthModule</code> that handles user login, including a login form component, routing, and authentication logic using an <code>AuthService</code>.</p>
+
+
+<pre><code>import {RouterModule, Routes} from '@angular/router';
+import {Component, ModuleWithProviders, NgModule} from '@angular/core';
+import {COMMON_MODULES} from '../../../imports/core.module';
+import {AuthService} from '../../../imports/auth.service';
+
+@Component({
+    selector: 'bc-login',
+    template: `
+        <form>
+            <md-input-container>
+                <input mdInput name="signupEmail" required type="email"
+                       placeholder="Username"
+                       maxlength="100" [(ngModel)]="username">
+            </md-input-container>
+            <br/>
+            <md-input-container>
+                <input mdInput name="signupPassword" required type="password" maxlength="25"
+                       placeholder="Password"
+                       length="40" [(ngModel)]="password">
+            </md-input-container>
+            <button md-raised-button color="primary"
+                    id="signupSubmit" type="submit" (click)="onLogin()">
+                Login
+            </button>
+        </form>
+    `,
+    styleUrls: ['./login.component.scss']
+})
+export class LoginComponent {
+    username: string;
+    password: string;
+    service: AuthService
+
+    constructor(public
+) {
+}
+
+onLogin()
+:
+void {
+    this.service.login(this.username, this.password).subscribe(r => {
+    console.log(r);
+});
+}
+}
+
+export const COMPONENTS = [
+    LoginComponent
+];
+
+export const authRoutes: Routes = [
+    {
+        path: '',
+        component: LoginComponent,
+        data: {roles: ['anonymous', 'user']}
+    }
+];
+export const routing: ModuleWithProviders = RouterModule.forChild(authRoutes);
+
+@NgModule({
+    imports: [
+        ...COMMON_MODULES,
+        routing
+    ],
+    declarations: COMPONENTS,
+    exports: COMPONENTS
+})
+export class AuthModule {
+}
+
+</code></pre>
+
+<p>This Angular code defines a module (<code>AuthModule</code>) responsible for handling user login functionality.</p>
+<p>Here's a breakdown:</p>
+<p><strong>1. Imports:</strong></p>
+<ul>
+<li>Imports necessary modules from Angular Router, Core, and custom modules (<code>core.module</code> and <code>auth.service</code>).</li>
+</ul>
+<p><strong>2. LoginComponent:</strong></p>
+<ul>
+<li>Defines a component (<code>LoginComponent</code>) responsible for displaying the login form.
+<ul>
+<li><strong>Template:</strong> Uses Material Design components (<code>md-input-container</code>, <code>md-raised-button</code>) to create a form with fields for username and password.</li>
+<li><strong>Logic:</strong>
+<ul>
+<li><code>username</code> and <code>password</code> properties store the user's input.</li>
+<li><code>onLogin()</code> method is triggered when the login button is clicked.</li>
+<li>It calls the <code>AuthService.login()</code> method, passing the username and password.</li>
+<li>The response from the login attempt is logged to the console.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>3. Routing:</strong></p>
+<ul>
+<li>Defines a route configuration (<code>authRoutes</code>) that maps the empty path (<code>/</code>) to the <code>LoginComponent</code>.</li>
+<li>The <code>data</code> property specifies that this route is accessible to anonymous users and users with the &quot;user&quot; role.</li>
+</ul>
+<p><strong>4. AuthModule:</strong></p>
+<ul>
+<li>Defines the <code>AuthModule</code> which:
+<ul>
+<li>Imports <code>COMMON_MODULES</code>, the routing configuration, and the <code>LoginComponent</code>.</li>
+<li>Declares the <code>LoginComponent</code> as part of this module.</li>
+<li>Exports the <code>LoginComponent</code> so it can be used in other modules.</li>
+</ul></li>
+</ul>
+<p><strong>In summary:</strong> This code sets up a basic Angular login system with a form, authentication logic, and routing.</p>

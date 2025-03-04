@@ -1,0 +1,54 @@
+
+
+<pre><code>// Each composite transpiler instance has the ability to traverse the parse tree
+// for a specific language with its 'visit*' methods, and generate output code for 
+// another language with its 'emit*' methods.
+const getJavascriptVisitor = require('./codegeneration/javascript/Visitor');
+const getJavaGenerator = require('./codegeneration/java/Generator');
+const getPythonGenerator = require('./codegeneration/python/Generator');
+...
+
+const loadJSTree = (input) => {
+/* Lexing and parsing the user input */
+  ...
+};
+
+/**
+ * Compose a transpiler and return a compile method that will use that transpiler
+ * to visit the tree and return generated code.
+ *
+ * @param {function} loadTree - the method takes in user input and returns a tree.
+ * @param {Visitor} visitor - the input-language visitor.
+ * @param {function} generator - returns a generator that inherits from it’s arg.
+ * 
+ * @returns {function} the compile function to be exported
+ */
+const composeTranspiler = (loadTree, visitor, generator) => {
+  const Transpiler = generator(visitor);
+  const transpiler = new Transpiler();
+
+  return {
+    compile: (input) => {
+      const tree = loadTree(input);
+      return transpiler.start(tree);
+    }
+  };
+}
+
+module.exports = {
+  javascript: {
+    java: composeTranspiler(
+      loadJSTree,
+      getJavascriptVisitor(JavascriptANTLRVisitor), // Visitor + ANTLR visitor
+      getJavaGenerator // Method that takes in a superclass, i.e. the visitor
+    ),
+    python: composeTranspiler(
+      loadJSTree,
+      getJavascriptVisitor(JavascriptANTLRVisitor)),
+      getPythonGenerator
+    ),
+    ...
+   },
+   ...
+}</code></pre>
+

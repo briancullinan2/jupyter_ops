@@ -1,0 +1,79 @@
+<p>This code automates interactions on a &quot;YouEarnedIt&quot; website, including logging in and simulating &quot;High-Five&quot; button clicks.  It uses functions to handle each step of the process, making it modular and reusable.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+function loginYouEarnedIt() {
+    var credentials = getCredentials('swiftpage.youearnedit.com');
+    return client
+        .click('input[name="user[login]"]')
+        .keys(credentials.username)
+        .pause(1000)
+        .click('input[name="user[password]"]')
+        .keys(credentials.password)
+        .pause(1000)
+        .submitForm('form[action]')
+        .pause(2000)
+}
+
+function doHighFive(el) {
+    return client.elementIdClick(el)
+        .pause(1000)
+        .isExisting('//div[contains(@class, "modal")]//button[contains(., "Continue")]')
+        .then(is => is
+            ? client.click('//div[contains(@class, "modal")]//button[contains(., "Continue")]')
+            : Promise.resolve([]))
+    // TODO: check for multiple dialog?
+}
+
+function highFive() {
+    return client.url('https://swiftpage.youearnedit.com/posts')
+        .pause(2000)
+        .isExisting('form[action*="sign_in"]')
+        .then(is => is ? loginYouEarnedIt() : Promise.resolve([]))
+        .elements('//button[not(@disabled)]/i[contains(@class, "High-Five")]')
+        .then(els => {
+            console.log(els);
+            return importer.runAllPromises(els.value
+                .map(el => resolve => doHighFive(el.ELEMENT)
+                    .then(() => resolve())
+                    .catch(e => {
+                        console.log(e);
+                        resolve();
+               
+            })));
+        })
+        .catch(e => console.log(e))
+    // TODO: repeat or just first page?
+}
+
+module.exports = highFive;
+
+</code></pre>
+
+<p>This code defines a series of functions to automate interactions with a website, likely related to a &quot;YouEarnedIt&quot; platform.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>loginYouEarnedIt()</code>:</strong></p>
+<ul>
+<li>Fetches login credentials from a function <code>getCredentials</code>.</li>
+<li>Simulates a login process by filling in username and password fields and submitting the form.</li>
+</ul></li>
+<li><p><strong><code>doHighFive(el)</code>:</strong></p>
+<ul>
+<li>Clicks on a button identified by <code>el</code>.</li>
+<li>Waits for a modal dialog to appear and clicks the &quot;Continue&quot; button within it.</li>
+</ul></li>
+<li><p><strong><code>highFive()</code>:</strong></p>
+<ul>
+<li>Navigates to the website's posts page.</li>
+<li>Checks if a login form exists and logs in if necessary.</li>
+<li>Finds all &quot;High-Five&quot; buttons on the page.</li>
+<li>Iterates through the buttons and calls <code>doHighFive</code> for each, simulating a high-five action.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>highFive</code> function is exported as the main module export, making it callable from other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code automates a workflow on the &quot;YouEarnedIt&quot; website, handling login and interacting with &quot;High-Five&quot; buttons.</p>

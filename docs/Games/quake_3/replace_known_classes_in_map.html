@@ -1,0 +1,77 @@
+<p>This code modifies a map file by replacing specific entity classes with predefined alternatives, allowing for customization and potential behavior changes within the map.  It achieves this by using a mapping of old classes to new ones and performing a series of string replacements within the map file content.</p>
+
+
+<pre><code>var fs = require('fs')
+
+var classes = {
+    weapon_chaingun:                'weapon_lightning',
+    misc_teleporter:                'trigger_teleport',
+    weapon_hyperblasters:           'weapon_plasmagun',
+    weapon_supershotgun:            'weapon_shotgun',
+    info_teleport_destination:      'target_position',
+    item_armor1:                    'item_armor_combat',
+    item_armor2:                    'item_armor_combat',
+    item_armorInv:                  'item_armor_body',
+    item_artifact_envirosuit:       'item_enviro',
+    item_artifact_invisibility:     'item_invis',
+    item_artifact_super_damage:     'item_quad',
+    item_cells:                     'ammo_lightning',
+    item_rockets:                   'ammo_rockets',
+    item_shells:                    'ammo_shells',
+    item_spikes:                    'ammo_cells',
+    weapon_nailgun:                 'weapon_plasmagun',
+    weapon_supernailgun:            'weapon_plasmagun',
+    weapon_supershotgun:            'weapon_shotgun',
+    // replace target_help with target_print
+    target_help:                    'target_print',
+    func_door_rotating:             'func_rotating'
+}
+function replaceClasses(file) {
+    if(typeof file === 'string' && fs.existsSync(file)) {
+        file = fs.readFileSync(file).toString('utf-8')
+    }
+    
+    // replace explosions with misc_model
+    file = file.replace(/"classname" "target_explosion"/ig,
+                        '"classname" "misc_model"\n "model" "models/objects/r_explode/tris.md2"')
+    // TODO: replace explosions with animated delay
+    // replace tigger_once with multiple wait -1
+    file = file.replace(/"classname" "trigger_once"/ig,
+                        '"classname" "trigger_multiple"\n "wait" "-1"')
+    // replace classes
+    Object.keys(classes).forEach(k => {
+        file = file.replace(new RegExp('"classname" "' + k + '"', 'ig'),
+                            '"classname" "' + classes[k] + '"')
+    })
+    return file
+}
+
+module.exports = replaceClasses
+</code></pre>
+
+<p>This code snippet defines a function <code>replaceClasses</code> that modifies a map file by replacing specific entity classes with predefined alternatives.</p>
+<p><strong>Functionality:</strong></p>
+<ol>
+<li><p><strong><code>classes</code> Object:</strong></p>
+<ul>
+<li>Defines a mapping of old entity classes to new ones. For example, <code>weapon_chaingun</code> is replaced with <code>weapon_lightning</code>.</li>
+</ul></li>
+<li><p><strong><code>replaceClasses</code> Function:</strong></p>
+<ul>
+<li>Takes a map file path (or content as a string) as input.</li>
+<li>Reads the file content if provided as a path.</li>
+<li>Performs the following replacements:
+<ul>
+<li>Replaces all occurrences of <code>&quot;classname&quot; &quot;target_explosion&quot;</code> with <code>&quot;classname&quot; &quot;misc_model&quot;\n &quot;model&quot; &quot;models/objects/r_explode/tris.md2&quot;</code>.</li>
+<li>Replaces all occurrences of <code>&quot;classname&quot; &quot;trigger_once&quot;</code> with <code>&quot;classname&quot; &quot;trigger_multiple&quot;\n &quot;wait&quot; &quot;-1&quot;</code>.</li>
+<li>Iterates through the <code>classes</code> object and replaces all occurrences of an old class name with its corresponding new class name.</li>
+</ul></li>
+<li>Returns the modified map file content.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This function likely serves as a tool for customizing map entities. It allows for:</p>
+<ul>
+<li>Replacing outdated or unwanted entity classes with more modern or desired alternatives.</li>
+<li>Modifying entity behavior by changing their class (e.g., replacing <code>trigger_once</code> with <code>trigger_multiple</code>).</li>
+</ul>

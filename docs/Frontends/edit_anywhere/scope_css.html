@@ -1,0 +1,74 @@
+<p>This code modifies CSS stylesheets by adding a prefix to selectors, effectively renaming elements within the stylesheet for purposes like theming or component isolation.</p>
+
+
+<pre><code>var css = require('css');
+
+function prefixRule(r, str, prefix, bodyId) {
+    if(typeof r.rules !== 'undefined') {
+        r.rules.forEach(r2 => prefixRule(r2, str, prefix, bodyId))
+    }
+    if(typeof r.selectors === 'undefined') {
+        return;
+    }
+    r.selectors.forEach((s, i) => {
+        if(s.includes(bodyId)) {
+            r.selectors[i] = s.replace('#' + bodyId, prefix);
+        } else if(s.includes('body') && !s.includes('#body')) {
+            r.selectors[i] = s.replace(/\s*body\s*/ig, prefix);
+        } else {
+            r.selectors[i] = prefix + ' ' + s;
+        }
+    });
+}
+
+function prefixCssRules(str, prefix, bodyId) {
+    try {
+        const ast = css.parse(str);
+        // TODO: add a check for media queries
+        ast.stylesheet.rules.forEach(r => prefixRule(r, str, prefix, bodyId))
+        return css.stringify(ast);
+    } catch (e) {
+        console.log(e)
+        return str
+    }
+    
+}
+
+
+// TODO: convert media queries to togglable javascript classes for good emulation in a golden layout tab
+
+module.exports = prefixCssRules;
+</code></pre>
+
+<p>This code defines a function <code>prefixCssRules</code> that modifies CSS rules by adding a prefix to selectors, effectively renaming elements within the stylesheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>css</code> library for parsing and manipulating CSS syntax.</li>
+</ul></li>
+<li><p><strong><code>prefixRule</code> Function:</strong></p>
+<ul>
+<li>Recursively traverses a CSS rule tree (rules within rules).</li>
+<li>For each selector within a rule:
+<ul>
+<li>If the selector includes a specific <code>bodyId</code>, it replaces the <code>#bodyId</code> with the provided <code>prefix</code>.</li>
+<li>If the selector includes &quot;body&quot; but not &quot;#body&quot;, it replaces occurrences of &quot;body&quot; with the <code>prefix</code>.</li>
+<li>Otherwise, it prepends the <code>prefix</code> to the selector.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>prefixCssRules</code> Function:</strong></p>
+<ul>
+<li>Takes CSS string, <code>prefix</code>, and <code>bodyId</code> as input.</li>
+<li>Parses the CSS string using <code>css.parse</code>.</li>
+<li>Calls <code>prefixRule</code> to modify selectors within the parsed AST.</li>
+<li>Stringifies the modified AST back into CSS using <code>css.stringify</code>.</li>
+<li>Handles potential parsing errors by logging the error and returning the original CSS string.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>prefixCssRules</code> function as a module.</li>
+</ul></li>
+</ol>
+<p><strong>Overall Purpose:</strong></p>
+<p>This code provides a way to dynamically modify CSS stylesheets by adding a prefix to selectors, likely for purposes like theming, component isolation, or code generation. It allows for selective renaming of elements based on specific IDs or the presence of &quot;body&quot; in selectors.</p>

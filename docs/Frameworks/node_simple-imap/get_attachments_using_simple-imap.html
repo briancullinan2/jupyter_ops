@@ -1,0 +1,60 @@
+<p>This code downloads email attachments, saves them to a local directory, and generates HTML and Markdown previews for display.</p>
+
+
+<pre><code>var output = path.join(process.cwd(), 'output');
+// TODO: convert the attachments to a virtual filesystem, lay it on top of the current app, run end-to-end tests
+if (!fs.existsSync(output)) {
+    fs.mkdirSync(output);
+}
+
+function getAttachments(messages) {
+    attachments = []
+    return Promise.all(messages.map(message => {
+        return Promise.all(imaps.getParts(message.attributes.struct)
+            .filter((part) => part.disposition && part.disposition.type === 'ATTACHMENT')
+            // retrieve the attachments only of the messages with attachments 
+            .map((part) => connection.getPartData(message, part).then((partData) => ({
+                filename: part.disposition.params.filename,
+                data: partData
+            }))))
+            .then(a => attachments = attachments.concat(a));
+    }));
+}
+
+function saveAttachments(attachments) {
+    var result = attachments.map((attachment) => {
+        return new Promise((resolve, reject) => fs.writeFile(
+            path.join(output, attachment.filename),
+            attachment.data,
+            'binary',
+            function (err) {
+                if (err) reject(err);
+                else resolve(attachment);
+            }));
+    });
+    return Promise.all(result).then(images => {
+        html = '';
+        htmlPrint = '';
+        images.forEach((i) => {
+            var filename = i.filename.split('/').pop();
+            var ext = mime.lookup(i.filename);
+            html += '<img src="data:' + ext + ';base64,' + (new Buffer(i.data, 'binary')).toString('base64') + '" />';
+            htmlPrint += '<li><img src="/assets/' + filename + '" /></li>\n';
+        });
+        $$.mime({'text/markdown': 'Usage:\n\n```html\n' + htmlPrint + '\n```\nOutput:\n' + html});
+    })
+}
+
+
+</code></pre>
+
+<p>This code snippet downloads attachments from a set of emails and saves them to a local directory. It then generates HTML and Markdown representations of the attachments for display.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong> It defines an output directory (<code>output</code>) and creates it if it doesn't exist.</p></li>
+<li><p><strong>Attachment Retrieval:</strong> The <code>getAttachments</code> function iterates through a list of emails (<code>messages</code>), extracts attachments from each email using <code>imaps.getParts</code> and <code>connection.getPartData</code>, and stores them in an array.</p></li>
+<li><p><strong>Attachment Saving:</strong> The <code>saveAttachments</code> function takes the array of attachments and saves each attachment to the output directory using <code>fs.writeFile</code>.</p></li>
+<li><p><strong>HTML and Markdown Generation:</strong> After saving the attachments, it generates HTML and Markdown code to display the attachments. The HTML code embeds the attachments as images using base64 encoding, while the Markdown code creates a list of image links.</p></li>
+<li><p><strong>Output:</strong> Finally, it uses <code>$$.mime</code> to send the generated HTML and Markdown code as a response.</p></li>
+</ol>
+<p>Essentially, this code automates the process of downloading email attachments, saving them locally, and generating HTML and Markdown representations for display.</p>

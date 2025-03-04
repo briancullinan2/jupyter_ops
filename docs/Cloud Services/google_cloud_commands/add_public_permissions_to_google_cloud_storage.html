@@ -1,0 +1,30 @@
+<p>This script grants read access to all users on a specified Google Cloud Storage bucket and its contents, provided a bucket name is given as input.</p>
+
+
+<pre><code>if [[ -n $1 ]]; \
+    then gsutil defacl ch -u AllUsers:R "$1" && \
+    gsutil acl ch -u AllUsers:R "$1/**"; \
+fi;
+</code></pre>
+
+<p>This code snippet uses the <code>gsutil</code> command-line tool to set read access for all users on a specified Google Cloud Storage bucket and its contents.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Conditional Check:</strong></p>
+<ul>
+<li><code>if [[ -n $1 ]];</code> checks if the first command-line argument (<code>$1</code>) is not empty.</li>
+</ul></li>
+<li><p><strong>Access Control:</strong></p>
+<ul>
+<li><code>then gsutil defacl ch -u AllUsers:R &quot;$1&quot; &amp;&amp; gsutil acl ch -u AllUsers:R &quot;$1/**&quot;;</code> executes two <code>gsutil</code> commands if the condition is true:
+<ul>
+<li><code>gsutil defacl ch -u AllUsers:R &quot;$1&quot;</code> sets the default access control list (ACL) for the bucket (<code>$1</code>) to grant read access (<code>R</code>) to all users (<code>AllUsers</code>).</li>
+<li><code>gsutil acl ch -u AllUsers:R &quot;$1/**&quot;</code> applies the same read access to all objects (<code>*</code>) within the bucket.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>End of Block:</strong></p>
+<ul>
+<li><code>fi</code> marks the end of the <code>if</code> statement block.</li>
+</ul></li>
+</ol>
+<p>In essence, this script grants read access to all users on a specified Google Cloud Storage bucket and its contents, but only if a bucket name is provided as input.</p>

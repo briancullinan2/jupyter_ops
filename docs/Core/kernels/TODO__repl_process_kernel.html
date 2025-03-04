@@ -1,0 +1,65 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>This code imports modules and functions from a parent directory, sets up event listeners, and defines functions for initializing and responding to incoming messages in a meta kernel. The code exports the main functions (<code>replMetaKernal</code>, <code>do_respond</code>, and <code>do_init</code>) to be used elsewhere in the program.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {processMetaKernel} = processMethods = importer.import('process meta kernel')
+
+function do_init(config) {
+    processMethods.do_init.call(this, config);
+    this.socket.stdout.on('data', this.do_respond);
+    this.socket.stderr.on('data', this.do_respond);
+}
+
+function do_respond(message) {
+
+/* TODO: streams
+{stdout: {
+    name: stream,
+    text: text,
+}})
+*/
+    // TODO: 
+    // TODO: call reply methods
+    // no need to call socketMethods.do_respond again!
+}
+
+function replMetaKernal(meta_kernel) {
+    var meta = interface(meta_kernel, metaKernelInterface);
+    var kernel = extend(meta, {
+        do_respond,
+        do_init
+    })
+    return processMetaKernel(kernel);
+
+}
+
+module.exports = {
+    replMetaKernal,
+    do_respond,
+    do_init
+}
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Variables and Imports</h4>
+<ul>
+<li><code>var importer = require('../Core')</code>: Imports a module from a parent directory (<code>../Core</code>) and assigns it to the <code>importer</code> variable.</li>
+<li><code>var {processMetaKernel} = processMethods = importer.import('process meta kernel')</code>: Imports the <code>processMetaKernel</code> function from the <code>processMethods</code> object, which is imported from the parent directory. The <code>processMethods</code> object is assigned to the <code>processMethods</code> variable and the <code>processMetaKernel</code> function is extracted and assigned to the current scope.</li>
+</ul>
+<h4>Functions</h4>
+<ul>
+<li><code>function do_init(config)</code>: Initializes the object by calling <code>processMethods.do_init</code> with the provided <code>config</code> and setting up event listeners for the <code>stdout</code> and <code>stderr</code> events of the <code>socket</code> object. When data is received, it calls the <code>do_respond</code> method.</li>
+<li><code>function do_respond(message)</code>: Handles incoming messages and is intended to be overridden by a stream (as indicated by TODO comments). Currently, it does nothing.</li>
+<li><code>function replMetaKernal(meta_kernel)</code>: Creates a meta kernel by:
+<ol>
+<li>Calling the <code>interface</code> function to create a meta object based on a meta kernel interface.</li>
+<li>Extending the meta object with the <code>do_respond</code> and <code>do_init</code> functions.</li>
+<li>Calling <code>processMetaKernel</code> with the resulting kernel object.</li>
+</ol></li>
+</ul>
+<h4>Exports</h4>
+<ul>
+<li><code>module.exports = {replMetaKernal, do_respond, do_init}</code>: Exports the <code>replMetaKernal</code>, <code>do_respond</code>, and <code>do_init</code> functions as part of the module's exports.</li>
+</ul>

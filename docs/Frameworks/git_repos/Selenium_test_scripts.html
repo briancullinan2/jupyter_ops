@@ -1,0 +1,23 @@
+<p>This command runs a Node.js test suite within a Docker container named &quot;selenium&quot; by executing the <code>test</code> script using npm.</p>
+
+
+<pre><code>docker exec -t selenium npm --prefix /home/seluser/selenium/test run test
+</code></pre>
+
+<p>This command executes a Node.js test suite within a Docker container named &quot;selenium&quot;.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>docker exec -t selenium</code></strong>: This part executes a command inside a Docker container named &quot;selenium&quot;.</p>
+<ul>
+<li><code>docker exec</code> is used to run a command in a running container.</li>
+<li><code>-t</code> allocates a pseudo-TTY, allowing for interactive commands.</li>
+<li><code>selenium</code> is the name of the Docker container.</li>
+</ul></li>
+<li><p><strong><code>npm --prefix /home/seluser/selenium/test run test</code></strong>: This part runs the <code>test</code> command using npm within the container.</p>
+<ul>
+<li><code>npm</code> is the Node.js package manager.</li>
+<li><code>--prefix /home/seluser/selenium/test</code> specifies the working directory for npm, which is <code>/home/seluser/selenium/test</code> inside the container.</li>
+<li><code>run test</code> executes the <code>test</code> script within the specified directory.</li>
+</ul></li>
+</ol>
+<p>In essence, this command runs a Node.js test suite located within a Docker container named &quot;selenium&quot;.</p>

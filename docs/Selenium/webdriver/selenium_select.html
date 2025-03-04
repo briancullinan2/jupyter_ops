@@ -1,0 +1,72 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports three functions (<code>selectDom</code>, <code>evaluateDom</code>, and <code>walkTree</code>) from separate modules and uses them in an asynchronous function called <code>getAllXPath</code> to execute a script on a web page. The <code>getAllXPath</code> function takes three parameters and returns the result of calling the <code>selectDom</code> function after making the <code>evaluateDom</code> and <code>walkTree</code> functions available on the web page.</p>
+
+
+<pre><code>
+const {selectDom, evaluateDom} = importer.import('select tree')
+const {walkTree} = importer.import('walk tree')
+
+async function getAllXPath(driver, select, ctx) {
+  return await driver.executeScript((
+    function main(evaluateDomString, walkTreeString, selectDomString, select, ctx) {
+      if(!window.evaluateDom)
+        window.evaluateDom = eval('(' + evaluateDomString + ')')
+      if(!window.walkTree)
+        window.walkTree = eval('(' + walkTreeString + ')')
+      if(!window.selectDom)
+        window.selectDom = eval('(' + selectDomString + ')')
+      let result = selectDom(select, ctx || document)
+      return result;
+    }), evaluateDom, walkTree, selectDom, select, ctx)
+}
+
+module.exports = getAllXPath
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Functions</h3>
+<pre><code class="language-javascript">const {selectDom, evaluateDom} = importer.import('select tree')
+const {walkTree} = importer.import('walk tree')
+</code></pre>
+<ul>
+<li>Two functions, <code>selectDom</code> and <code>evaluateDom</code>, are imported from a module named'select tree' using the <code>importer.import</code> function.</li>
+<li>Another function, <code>walkTree</code>, is imported from a module named 'walk tree' using the <code>importer.import</code> function.</li>
+</ul>
+<h3>getAllXPath Function</h3>
+<pre><code class="language-javascript">async function getAllXPath(driver, select, ctx) {
+ ...
+}
+</code></pre>
+<ul>
+<li><code>getAllXPath</code> is an asynchronous function that takes three parameters:
+<ul>
+<li><code>driver</code>: an object representing a driver (likely a web driver).</li>
+<li><code>select</code>: a string or object representing the DOM element to select.</li>
+<li><code>ctx</code>: an optional object representing the context in which to select the element.</li>
+</ul></li>
+</ul>
+<h3>Executing Script on Web Page</h3>
+<pre><code class="language-javascript">return await driver.executeScript((
+  function main(evaluateDomString, walkTreeString, selectDomString, select, ctx) {
+   ...
+  }), evaluateDom, walkTree, selectDom, select, ctx)
+</code></pre>
+<ul>
+<li>The <code>driver.executeScript</code> function is used to execute a script on the web page represented by the <code>driver</code> object.</li>
+<li>The script is a function <code>main</code> that takes five parameters:
+<ul>
+<li><code>evaluateDomString</code>, <code>walkTreeString</code>, and <code>selectDomString</code>: strings representing the source code of the functions <code>evaluateDom</code>, <code>walkTree</code>, and <code>selectDom</code>, respectively.</li>
+<li><code>select</code> and <code>ctx</code>: the <code>select</code> parameter passed to <code>getAllXPath</code> and the <code>ctx</code> parameter passed to <code>getAllXPath</code>, respectively.</li>
+</ul></li>
+<li>Inside the <code>main</code> function:
+<ul>
+<li>The <code>evaluateDom</code>, <code>walkTree</code>, and <code>selectDom</code> functions are assigned to the <code>window</code> object if they do not already exist.</li>
+<li>The <code>selectDom</code> function is called with the <code>select</code> and <code>ctx</code> parameters and the result is returned.</li>
+</ul></li>
+</ul>
+<h3>Export</h3>
+<pre><code class="language-javascript">module.exports = getAllXPath
+</code></pre>
+<ul>
+<li>The <code>getAllXPath</code> function is exported as a module.</li>
+</ul>

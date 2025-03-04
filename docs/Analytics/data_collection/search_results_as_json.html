@@ -1,0 +1,81 @@
+<p>The <code>searchResultsToJson(url)</code> function extracts search results from a given URL and returns them in JSON format, containing the URL, query, and results. It logs the URL and session ID, sends a request, extracts the search query and results, maps them to a desired format, and catches any errors that occur during the process.</p>
+
+
+<pre><code>function searchResultsToJson(url) {
+    console.log(url + ' - ' + client.requestHandler.sessionID);
+    return client
+        .url(url)
+        .pause(2000)
+        .getAllXPath({
+            query: '//input[contains(@aria-label, "Search")]/@value'
+            +
+            '|//input[contains(@aria-label, "search")]/@value'
+            +
+            // yahoo
+            '|//label[contains(., "Search")]/following::*//input[@type="text"]/@value' 
+            +
+            '|//input[contains(@class, "Search")]/@value'
+            +
+            // wolfram
+            '|//input[contains(@name, "query")]/@value'
+            +
+            // duckduckgo
+            '|//input[contains(@id, "search")]/@value'
+            +
+            // yandex
+            '|//input[contains(@aria-label, "Request")]/@value',
+            results: [
+                '//h3|//h2|div[contains(@class, "title")]'
+                +
+                // ask
+                '|//*[contains(@class, "item-title")]',
+                {
+                    name: './/text()',
+                    summary: './/following-sibling::div//text()'
+                }
+            ]
+        })
+        .then(r => {
+            return {
+                url: url,
+                query: typeof r.query === 'string'
+                    ? r.query
+                    : r.query[0],
+                results: r.results.map(s => ({
+                    name: typeof s.name === 'string'
+                        ? s.name : s.name.join('\n'),
+                    summary: typeof s.summary === 'string'
+                        ? s.summary : s.summary.join('\n')
+                }))
+            };
+        })
+        .catch(e => {
+            console.log(e)
+            return {
+                url: url,
+                query: null,
+                results: []
+            }
+        })
+}
+module.exports = searchResultsToJson;
+</code></pre>
+
+<h3>Function: <code>searchResultsToJson(url)</code></h3>
+<h4>Description</h4>
+<p>Extracts search results from a given URL and returns them in JSON format.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>url</code>: The URL of the page to extract search results from.</li>
+</ul>
+<h4>Returns</h4>
+<p>An object containing the URL, query, and results of the search. The results are an array of objects with <code>name</code> and <code>summary</code> properties.</p>
+<h4>Breakdown</h4>
+<ol>
+<li>Logs the URL and session ID to the console.</li>
+<li>Sends a request to the URL and pauses for 2 seconds.</li>
+<li>Uses a XPath query to extract the search query and search results from the page.</li>
+<li>Maps the results to an object with <code>name</code> and <code>summary</code> properties.</li>
+<li>Returns the URL, query, and results as a JSON object.</li>
+<li>Catches any errors that occur during the process and returns an empty results array.</li>
+</ol>

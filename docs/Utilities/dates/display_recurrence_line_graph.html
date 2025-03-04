@@ -1,0 +1,109 @@
+<p>This code snippet uses the D3.js library to generate a line graph visualizing time-series data from an array of events. It sets up scales, defines a line generator, creates an SVG element, binds data, and renders axes to display the graph.</p>
+
+
+<pre><code>var D3Node = require('d3-node');
+
+function graphDates(events) {
+    var d3n = new D3Node(); // initializes D3 with container element 
+    var d3 = d3n.d3;
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        width = 700 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    // set the ranges
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+    // define the line
+    var valueline = d3.line()
+        .x(function (d) {
+            return x(d.start);
+        })
+        .y(function (d) {
+            return y(d.days);
+        });
+
+    // append the svg obgect to the body of the page
+    // appends a 'group' element to 'svg'
+    // moves the 'group' element to the top left margin
+    var svg = d3n.createSVG(
+        width + margin.left + margin.right,
+        height + margin.top + margin.bottom)
+        .append('g')
+        .attr(
+            'transform',
+            'translate(' + margin.left + ',' + margin.top + ')');
+
+    // Scale the range of the data
+    x.domain(d3.extent(events, function (d) {
+        return d.start;
+    }));
+    y.domain([0, d3.max(events, function (d) {
+        return d.days;
+    })]);
+
+    // Add the valueline path.
+    svg.append('path')
+        .data([events])
+        .attr('class', 'line')
+        .attr('fill', 'none')
+        .attr('stroke', '#000')
+        .attr('d', valueline);
+
+    // Add the X Axis
+    svg.append('g')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(d3.axisBottom(x));
+
+    // Add the Y Axis
+    svg.append('g')
+        .call(d3.axisLeft(y));
+
+    return d3n.svgString();
+};
+module.exports = graphDates;
+
+</code></pre>
+
+<p>This code snippet generates a line graph visualizing time-series data using the D3.js library.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>var D3Node = require('d3-node');</code> imports the <code>d3-node</code> library, which allows using D3.js in a Node.js environment.</li>
+<li><code>function graphDates(events) { ... }</code> defines a function <code>graphDates</code> that takes an array of <code>events</code> as input.</li>
+</ul></li>
+<li><p><strong>Setting up the Graph:</strong></p>
+<ul>
+<li><code>var d3n = new D3Node();</code> creates a new D3Node instance.</li>
+<li><code>var d3 = d3n.d3;</code> accesses the D3.js object from the <code>d3n</code> instance.</li>
+<li>The code defines margins, width, and height for the graph area.</li>
+</ul></li>
+<li><p><strong>Scales and Line Definition:</strong></p>
+<ul>
+<li><code>x</code> and <code>y</code> scales are defined using <code>d3.scaleTime</code> and <code>d3.scaleLinear</code> respectively, to map data values to visual positions on the graph.</li>
+<li><code>valueline</code> is a line generator function that defines how data points are connected in the line graph.</li>
+</ul></li>
+<li><p><strong>Creating the SVG Element:</strong></p>
+<ul>
+<li><code>svg = d3n.createSVG(...)</code> creates an SVG element with the specified dimensions and appends it to the document.</li>
+<li>A <code>g</code> (group) element is added to the SVG to hold the graph elements and is translated to the top-left margin.</li>
+</ul></li>
+<li><p><strong>Data Binding and Rendering:</strong></p>
+<ul>
+<li>The <code>x</code> and <code>y</code> scales are set using the data's domain (extremes) using <code>d3.extent</code> and <code>d3.max</code>.</li>
+<li>A path element is appended to the SVG, representing the line graph.</li>
+<li>Data is bound to the path using <code>data([events])</code>, and the <code>valueline</code> function is used to generate the path's <code>d</code> attribute.</li>
+</ul></li>
+<li><p><strong>Axes:</strong></p>
+<ul>
+<li>X and Y axes are added using <code>d3.axisBottom</code> and <code>d3.axisLeft</code> respectively, and positioned accordingly.</li>
+</ul></li>
+<li><p><strong>Returning SVG String:</strong></p>
+<ul>
+<li><code>return d3n.svgString();</code> returns the SVG string representation of the generated graph, which can be used to display it in a web page or other output.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code takes an array of events, creates a D3.js line graph visualizing the time series of these events, and returns the SVG representation of the graph.</strong></p>

@@ -1,0 +1,52 @@
+<p>This code provides a function to authenticate with the Google Calendar API, handling both existing tokens and OAuth 2.0 authorization for new tokens.</p>
+
+
+<pre><code>var {google} = require('googleapis');
+var importer = require('../Core');
+var authorize = importer.import('google oauth token client');
+
+// Authorize a client with the loaded credentials, then call the
+// Google Calendar API.
+var oauth2Client;
+function authorizeCalendar(options = {}) {
+    if(options.auth) {
+        return Promise.resolve(google.calendar({version: 'v3', auth: options.auth}))
+    }
+    return authorize(options.scopes || [
+            'https://www.googleapis.com/auth/calendar'])
+        .then(c => {
+            options.auth = c;
+            return google.calendar({version: 'v3', auth: c});
+        })
+}
+
+module.exports = authorizeCalendar;
+
+</code></pre>
+
+<p>This code sets up authentication with the Google Calendar API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>googleapis</code> library for interacting with Google APIs.</li>
+<li>It imports an <code>authorize</code> function from a local module (<code>../Core</code>) to handle OAuth 2.0 authentication with Google.</li>
+</ul></li>
+<li><p><strong><code>authorizeCalendar</code> Function:</strong></p>
+<ul>
+<li>This function takes an optional <code>options</code> object that can include:
+<ul>
+<li><code>auth</code>: An existing OAuth 2.0 access token.</li>
+<li><code>scopes</code>: An array of required Google API scopes (permissions).</li>
+</ul></li>
+<li>If an <code>auth</code> object is provided, it directly returns a Google Calendar API client initialized with the provided credentials.</li>
+<li>Otherwise, it calls the <code>authorize</code> function to obtain an access token using the specified scopes.</li>
+<li>Once the access token is obtained, it initializes a Google Calendar API client with the token and returns it.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>authorizeCalendar</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code provides a reusable function to authenticate with the Google Calendar API, either using an existing access token or by obtaining a new one through OAuth 2.0 authorization.</p>

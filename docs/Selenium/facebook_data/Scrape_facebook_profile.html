@@ -1,0 +1,66 @@
+<p>The <code>readFacebookProfileInfo</code> function automates the process of extracting a Facebook profile's name, description, and URL from a given profile page. It uses web scraping techniques to locate and interact with elements on the page, ultimately returning a structured object containing the extracted data.</p>
+
+
+<pre><code>var importer = require('../Core');
+// TODO: pass profile path in as parameter becomes readFacebookProfileInfo
+function readFacebookProfileInfo() {
+    var profile = {};
+    // TODO: check for profile path
+    return client
+        .getAllXPath('//*[contains(@class, "scrollable")]//h4[contains(., "Profile")]/parent::*//a/@href')
+        .then(r => r != ''
+            ? client.clickSpa(r)
+                .pause(2000)
+                .then(() => importer.runAllPromises([
+                    client.getText('[role="main"] h1'),
+                    client.isExisting('#intro_container_id li').then(is => is
+                        ? client.getText('#intro_container_id li')
+                        : Promise.resolve('')),
+                    client.getUrl()
+                ]))
+                .then(r => (profile = ({
+                    name: r[0],
+                    description: r[1],
+                    url: r[2]
+                })))
+            : client)
+        .then(() => profile)
+        .catch(e => console.log(e))
+};
+module.exports = readFacebookProfileInfo;
+
+</code></pre>
+
+<p>This code snippet defines a function called <code>readFacebookProfileInfo</code> that aims to extract information from a Facebook profile.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It initializes an empty object <code>profile</code> to store the extracted data.</li>
+</ul></li>
+<li><p><strong>Finding the Profile Link:</strong></p>
+<ul>
+<li>It uses <code>client.getAllXPath</code> to locate the link to the profile page. The XPath expression targets elements containing &quot;Profile&quot; within a scrollable container and extracts the <code>href</code> attribute of the link.</li>
+</ul></li>
+<li><p><strong>Navigating to the Profile:</strong></p>
+<ul>
+<li>If a profile link is found, it clicks on the link using <code>client.clickSpa</code> and waits for 2 seconds using <code>pause(2000)</code>.</li>
+</ul></li>
+<li><p><strong>Extracting Profile Data:</strong></p>
+<ul>
+<li>It then uses <code>importer.runAllPromises</code> to execute multiple asynchronous operations:
+<ul>
+<li><code>client.getText('[role=&quot;main&quot;] h1')</code>: Extracts the profile name from the main heading.</li>
+<li><code>client.isExisting('#intro_container_id li').then(is =&gt; is ? client.getText('#intro_container_id li') : Promise.resolve(''))</code>: Checks if an element with the ID <code>intro_container_id</code> exists and contains list items. If it does, it extracts the text content of those list items (likely the profile description). Otherwise, it resolves with an empty string.</li>
+<li><code>client.getUrl()</code>: Gets the current URL of the profile page.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Storing Profile Data:</strong></p>
+<ul>
+<li>The extracted data is then combined into the <code>profile</code> object, which includes <code>name</code>, <code>description</code>, and <code>url</code> properties.</li>
+</ul></li>
+<li><p><strong>Returning Profile Data:</strong></p>
+<ul>
+<li>Finally, the function returns the <code>profile</code> object containing the extracted information.</li>
+</ul></li>
+</ol>

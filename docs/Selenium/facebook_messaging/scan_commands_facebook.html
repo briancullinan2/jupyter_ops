@@ -1,0 +1,76 @@
+<p>This code automates Facebook message responses by identifying messages containing a specific command pattern (&quot;megamind [command]&quot;), processing the commands, and sending automated replies.  It uses a custom module to interact with Facebook and manage the command processing and response generation.</p>
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+var {
+    filterCommand,
+    storeResult
+} = importer.import([
+    'filter command permission',
+    'store rpc result'
+]);
+
+var getUnreadThreads, sendFacebookMessage;
+function scanCommandsFacebook() {
+    return runSeleniumCell([
+        'unread threads facebook',
+        'send facebook message',
+    ])
+        .then(r => {
+            getUnreadThreads = r.getUnreadThreads;
+            sendFacebookMessage = r.sendFacebookMessage;
+            return getUnreadThreads();
+        })
+        .then(friends => {
+            const hasCommands = friends.map(f => Object.assign(f, {
+                messages: f.messages
+                    .filter(m => m.from !== 'Brian' && (/megamind\s*(.*)/ig).exec(m.message))
+            })).filter(f => f.messages.length > 0).map(f => Object.assign(f, {
+                name: f.participants[0].name.split('\n')[0],
+                command: (/megamind\s*(.*)/ig).exec(f.messages[0].message)[1].trim(),
+                date: f.messages[0].time,
+                id: 'Facebook: ' + f.thread.replace(/^\/|\/$/ig, '').split('/').pop()
+                    + f.messages[0].time
+            }));
+            return importer.runAllPromises(hasCommands.map(f => resolve => {
+                return filterCommand(f.command, f.date, f.id, f.name)
+                    .then(props => resolve(Object.assign(f, props)));
+            }))
+        })
+        // generate and send responses
+        .then(friends => {
+            return importer.runAllPromises(friends.map(f => resolve => {
+                return storeResult(f)
+                    .then(response => sendFacebookMessage(JSON.stringify(response, null, 4) + '\n Mm\n', f.thread))
+                    .catch(e => console.log(e))
+                    .then(r => resolve(r))
+            }))
+        })
+        .catch(e => console.log(e))
+}
+module.exports = scanCommandsFacebook;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    scanCommandsFacebook()
+        .then(r => $$.sendResult(r))
+        .catch((e) => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet is designed to scan Facebook messages for specific commands, filter them, and generate automated responses.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong> It imports necessary modules for interacting with Facebook, running commands, and storing results.</p></li>
+<li><p><strong><code>scanCommandsFacebook</code> Function:</strong></p>
+<ul>
+<li>It initializes functions for retrieving unread threads and sending messages from a custom <code>importer</code> module.</li>
+<li>It fetches unread threads and filters them based on messages containing a specific pattern (&quot;megamind [command]&quot;).</li>
+<li>It extracts relevant information from each filtered thread (name, command, date, ID).</li>
+<li>It uses a <code>filterCommand</code> function to process each command and obtain additional properties.</li>
+<li>It stores the processed data using <code>storeResult</code>.</li>
+<li>It sends automated responses to the corresponding threads using <code>sendFacebookMessage</code>.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>scanCommandsFacebook</code> function is exported, making it callable from other parts of the application.</p></li>
+</ol>

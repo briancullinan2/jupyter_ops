@@ -1,0 +1,26 @@
+
+
+<pre><code>var importer = require('../Core')
+var {
+    replaceImports, replaceCore
+} = importer.import(['replace notebook import', 'replace core requirement'])
+var {selectAst} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+
+var code = `
+var importer = require('../Core');
+var getArrayAST = importer.import('get ast path array');
+`
+
+if(typeof $$ != 'undefined') {
+    $$.mime({'text/plain': replaceCore(code).ownerDocument.toString()})
+    
+    /*
+    expected output 
+var getArrayAST = importer.import('get ast path array');
+*/
+    
+}
+
+</code></pre>
+

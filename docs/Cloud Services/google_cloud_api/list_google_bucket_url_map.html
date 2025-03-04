@@ -1,0 +1,159 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>This code is a set of functions for interacting with Google Cloud's Compute Engine API, using the <code>google-auth-library</code> and <code>googleapis</code> libraries to authenticate and make requests to the API. The functions, including <code>listUrlMaps</code>, <code>listTargetProxies</code>, and <code>listGlobalForwards</code>, follow a common pattern to retrieve metadata from the API and return promises that resolve to objects with the desired data.</p>
+
+
+<pre><code>var path = require('path');
+var importer = require('../Core');
+var authorizeGoogle = importer.import('authorize google service');
+
+function listUrlMaps(project, urlMap) {
+    var params = {};
+    if(urlMap) {
+        params.filter = `name="${urlMap}"`
+    }
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps`,
+            params
+        }))
+        .then(res => {
+            return (res.data.items || []).reduce((obj, cur) => {
+                obj[cur.name] = {
+                    hostRules: cur.hostRules,
+                    pathMatchers: cur.pathMatchers,
+                    fingerprint: cur.fingerprint
+//    defaultService: 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/backendServices/web-map-backend-service',
+                };
+                return obj;
+            }, {})
+        });
+}
+
+function listTargetProxies(project, urlMap) {
+    var params = {};
+    if(urlMap) {
+        params.filter = `urlMap="https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}"`
+    }
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies`,
+            params
+        }))
+        .then(res => (res.data.items || []).reduce((obj, p) => {
+            obj[p.name] = p.sslCertificates;
+            return obj
+        }, {}));
+}
+
+function listGlobalForwards(project, proxy, ip) {
+    var params = {};
+    if(proxy) {
+        params['filter'] = `target="https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies/${proxy}"`
+    }
+    if(ip) {
+        params['filter'] = `IPAddress="https://www.googleapis.com/compute/v1/projects/${project}/global/addresses/${ip}"`;
+    }
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/forwardingRules`,
+            params
+        }))
+        .then(res => {
+            return (res.data.items || []).reduce((obj, cur) => {
+                obj[cur.name] = {
+                    IPAddress: cur.IPAddress,
+                    target: cur.target
+                }
+                return obj;
+            }, {})
+        });
+}
+
+function listBackendBuckets(project, bucketName) {
+    var params = {};
+    if(bucketName) {
+        params.filter = `bucketName="${bucketName}"`;
+    }
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets`,
+            params
+        }))
+        .then(res => {
+            return (res.data.items || []).reduce((obj, cur) => {
+                obj[cur.name] = cur.bucketName;
+                return obj;
+            }, {})
+        });
+}
+
+function listSslCertificates(project, certName) {
+    var params = {};
+    if(certName) {
+        params.filter = `name="${certName}"`;
+    }
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates`,
+            params
+        }))
+        .then(res => {
+            return (res.data.items || []).reduce((obj, cur) => {
+                obj[cur.name] = cur.description;
+                return obj;
+            }, {})
+        });
+}
+
+module.exports = {
+    listUrlMaps,
+    listTargetProxies,
+    listGlobalForwards,
+    listBackendBuckets,
+    listSslCertificates
+};
+</code></pre>
+
+<p>This code is a set of functions for interacting with Google Cloud's Compute Engine API. It uses the <code>google-auth-library</code> and <code>googleapis</code> libraries to authenticate and make requests to the API.</p>
+<h3>Functions</h3>
+<h4>1. <code>listUrlMaps(project, urlMap)</code></h4>
+<ul>
+<li>Retrieves a list of URL Maps for a given project.</li>
+<li>Takes two parameters:
+<ul>
+<li><code>project</code>: the ID of the project</li>
+<li><code>urlMap</code>: the name of the URL Map to filter by (optional)</li>
+</ul></li>
+<li>Returns a promise that resolves to an object with URL Map metadata (host rules, path matchers, fingerprint)</li>
+</ul>
+<h4>2. <code>listTargetProxies(project, urlMap)</code></h4>
+<ul>
+<li>Retrieves a list of Target Proxies for a given project.</li>
+<li>Takes two parameters:
+<ul>
+<li><code>project</code>: the ID of the project</li>
+<li><code>urlMap</code>: the name of the URL Map associated with the Target Proxy (optional)</li>
+</ul></li>
+<li>Returns a promise that resolves to an object with Target Proxy metadata (SSL certificates)</li>
+</ul>
+<h4>3. <code>listGlobalForwards(project, proxy, ip)</code></h4>
+<ul>
+<li>Retrieves a list of Global Forwarding Rules for a given project.</li>
+<li>Takes three parameters:
+<ul>
+<li><code>project</code>: the ID of the project</li>
+<li><code>proxy</code>: the name of the Target Proxy associated with the Forwarding Rule (optional)</li>
+<li><code>ip</code>: the IP address associated with the Forwarding Rule (optional)</li>
+</ul></li>
+<li>Returns a promise that resolves to an object with Forwarding Rule metadata</li>
+</ul>
+<h3>Common Pattern</h3>
+<p>All three functions follow a similar pattern:</p>
+<ol>
+<li>They create a filter object to restrict the API request to a specific URL Map, Target Proxy, or Forwarding Rule.</li>
+<li>They use the <code>authorizeGoogle</code> function to authenticate and get a client object.</li>
+<li>They make a request to the Compute Engine API using the client object.</li>
+<li>They process the response data and return a promise that resolves to an object with the desired metadata.</li>
+</ol>
+<h3>Note</h3>
+<p>This code uses the <code>google-auth-library</code> and <code>googleapis</code> libraries, which are not included in this snippet. You would need to have these libraries installed and imported in your project for this code to work.</p>

@@ -1,0 +1,88 @@
+<p>This code offers functions for manipulating code represented as an Abstract Syntax Tree (AST), including adding, replacing, and removing nodes, with a focus on the <code>transpile</code> function for modifying the AST structure.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {htmlToTree} = importer.import('html to tree')
+var {selectAst} = importer.import('select code tree')
+
+function add() {
+}
+
+function replace(func, ctx) {
+    if(!ctx) {
+        return (ctx) => replace(func, ctx) 
+    }
+    ctx.replaceWith(func(ctx))
+}
+
+function remove(ctx) {
+    if(!Array.isArray(ctx)) {
+        ctx = [ctx]
+    }
+    ctx.forEach(o => {
+        var body = selectAst([`./parent::*`], o)[0]
+        body.removeChild(o)
+    })
+}
+
+// TODO: use selectDom or handle antlr trees or existing doms properly
+function transpile(input, output, code) {
+    var root
+    if(Array.isArray(input) && typeof code === 'undefined') {
+        code = output
+    }
+    root = selectAst(`//Program`, code)
+    input.forEach(i => {
+        selectAst([...i], root)
+    })
+    // TODO: add a feature for parsing default parameters
+    // TODO: check if tree string and tree dom and tree ast are changed
+    /*
+    if()
+    } else {
+        root = selectAst(`//Program`, code)
+        selectAst([input, output], root)
+    }
+    */
+    return root
+}
+
+module.exports = {
+    transpile,
+    remove,
+    replace
+}
+</code></pre>
+
+<p>This code provides functions for manipulating code represented as an Abstract Syntax Tree (AST).</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A module for importing other modules.</li>
+<li><code>htmlToTree</code>: A function for converting HTML to an AST.</li>
+<li><code>selectAst</code>: A function for selecting nodes in an AST.</li>
+</ul></li>
+<li><p><strong><code>add</code>, <code>replace</code>, <code>remove</code> Functions:</strong></p>
+<ul>
+<li>These functions are intended for modifying the AST.</li>
+<li><code>add</code>: Currently empty, likely intended for adding nodes to the AST.</li>
+<li><code>replace</code>: Replaces a node in the AST with a new node.</li>
+<li><code>remove</code>: Removes nodes from the AST.</li>
+</ul></li>
+<li><p><strong><code>transpile</code> Function:</strong></p>
+<ul>
+<li>Takes input (potentially an array of AST nodes), output (potentially a code string), and code (the AST to modify).</li>
+<li>Selects the root node of the AST.</li>
+<li>Iterates through the input and attempts to insert them into the AST.</li>
+<li>Contains TODO comments indicating potential future features:
+<ul>
+<li>Handling default parameters.</li>
+<li>Checking for changes in different representations (tree string, DOM, AST).</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>transpile</code>, <code>remove</code>, and <code>replace</code> functions.</li>
+</ul></li>
+</ol>

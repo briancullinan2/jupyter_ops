@@ -1,0 +1,5 @@
+
+
+<pre><code>convert -density 600 "./.output/IMG_1587.JPG" -resize "600^<" -scale 50% "./.output/IMG_1587-final.jpg" || true && \
+    convert "./.output/IMG_1587-final.jpg" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality </code></pre>
+

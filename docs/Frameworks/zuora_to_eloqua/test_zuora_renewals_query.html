@@ -1,0 +1,47 @@
+<p>This code unit tests a function that generates a Zuora query for retrieving renewal data, ensuring it includes the correct start date based on the provided date range.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var renewalsQuery = importer.import('zuora renewals query');
+
+describe('zuora query', () => {
+    it('should include the dates specified', () => {
+        const now = new Date();
+        const year = now.getMonth() < 11 ? (now.getFullYear() - 1) : now.getFullYear()
+        const q = renewalsQuery.getQuery('beginning of November', 'beginning of December');
+        assert(q.Query.includes(year + '-11-01'), 'should have correct dates');
+    })
+})
+</code></pre>
+
+<p>This code snippet defines a unit test for a function that generates a Zuora query for retrieving renewal information.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>assert</code>: Node.js built-in module for making assertions in tests.</li>
+<li><code>importer</code>: A custom module likely used for importing other modules or utilities.</li>
+</ul></li>
+<li><p><strong>Import:</strong></p>
+<ul>
+<li><code>renewalsQuery</code>: Imports a function called <code>getQuery</code> from the <code>zuora renewals query</code> module.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li><code>describe('zuora query', () =&gt; { ... })</code>: Defines a test suite named &quot;zuora query&quot;.</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li><code>it('should include the dates specified', () =&gt; { ... })</code>: Defines a test case within the suite.</li>
+</ul></li>
+<li><p><strong>Test Logic:</strong></p>
+<ul>
+<li><code>const now = new Date();</code>: Gets the current date.</li>
+<li><code>const year = now.getMonth() &lt; 11 ? (now.getFullYear() - 1) : now.getFullYear()</code>: Determines the current year or the previous year depending on the month.</li>
+<li><code>const q = renewalsQuery.getQuery('beginning of November', 'beginning of December');</code>: Calls the <code>getQuery</code> function with start and end dates.</li>
+<li><code>assert(q.Query.includes(year + '-11-01'), 'should have correct dates');</code>: Asserts that the generated query string (<code>q.Query</code>) includes the expected start date (November 1st of the calculated year).</li>
+</ul></li>
+</ol>
+<p><strong>In essence:</strong></p>
+<p>This code tests whether the <code>getQuery</code> function correctly generates a Zuora query that includes the specified start and end dates for retrieving renewal information.</p>

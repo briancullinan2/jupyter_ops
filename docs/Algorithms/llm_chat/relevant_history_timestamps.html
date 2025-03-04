@@ -1,0 +1,124 @@
+<p>Here is a summary of the code breakdown in two sentences:</p>
+<p>The code imports constants and uses two functions, <code>askLlamaMatchTimestamps</code> and <code>matchingTimestamps</code>, to process timestamps and generate responses based on keywords and prompts. The <code>matchingTimestamps</code> function iterates over conversations, generates messages, and calls the <code>askLlamaMatchTimestamps</code> function to match timestamps with the generated responses, returning an array of matching timestamps.</p>
+
+
+<pre><code>const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+
+async function askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps) {
+  let q3 = 'Given the following keywords:\n'
+    + keywords.join('\n')
+    + '\n' + messages
+    + prompt + '\nOnly respond with related and unique timestamps, no explanations.'
+  console.log('User: ' + q3)
+  let a3 = await promptModel(q3)
+  console.log('AI: ' + a3)
+
+  return timestamps
+    .filter(time => a3.match(time) || a3.match(new Date(parseInt(time)).toISOString()))
+}
+
+
+async function matchingTimestamps(promptModel, session, prompt, keywords) {
+  
+  let matchingTimestamps = []
+  let messages = 'Current date: ' + (new Date).toISOString() 
+    + '\nOur recent topics:\n'
+  let originalTimestamp = messages
+  let loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
+    .filter(key => key.match('-' + DEFAULT_MODEL + '-' + session + '.json'))
+  for(let i = 0; i < loadedConversations.length; i++) {
+    let conversation = ACTIVE_CONVERSATIONS[loadedConversations[i]]
+    let timestamps = Object.keys(conversation).filter(k => k != 'summaries' && k != 'memories')
+    timestamps.sort((a, b) => b - a)
+    for(let j = 0; j < timestamps.length; j++) {
+      let message = conversation[timestamps[j]]
+      let topics = keywords.filter(key => message.keywords.match(key))
+      if(!prompt.match(timestamps[j]) && topics.length == 0) {
+        continue
+      }
+
+      messages += new Date(parseInt(timestamps[j])).toISOString() 
+        + ' - ' + topics.join(', ') 
+        + (message.summary ? (' - ' + message.summary) : '') 
+        + '\n'
+
+      if(messages.length > 2048) {
+        let newTimestamps = await askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps)
+
+        matchingTimestamps = matchingTimestamps.concat(newTimestamps)
+
+        messages = originalTimestamp
+      }
+    }
+
+    if(messages.length > originalTimestamp.length) {
+      let newTimestamps = await askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps)
+
+      matchingTimestamps = matchingTimestamps.concat(newTimestamps)
+    }
+  }
+
+  return matchingTimestamps
+}
+
+module.exports = matchingTimestamps
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Constants</h3>
+<p>The code starts by importing constants from an <code>importer</code> module:</p>
+<pre><code class="language-javascript">const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = importer.import('general chit chat')
+</code></pre>
+<p>These constants are likely used throughout the codebase and represent:</p>
+<ul>
+<li><code>ACTIVE_CONVERSATIONS</code>: an object containing active conversations</li>
+<li><code>PROJECT_PATH</code>: the path to the project directory</li>
+<li><code>DEFAULT_MODEL</code>: the default model to use</li>
+</ul>
+<h3>askLlamaMatchTimestamps Function</h3>
+<p>This function takes in several parameters:</p>
+<ul>
+<li><code>promptModel</code>: a function to generate a prompt</li>
+<li><code>messages</code>: a string of messages to process</li>
+<li><code>keywords</code>: an array of keywords to match</li>
+<li><code>prompt</code>: a prompt to generate a response for</li>
+<li><code>timestamps</code>: an array of timestamps to match</li>
+</ul>
+<p>The function generates a new prompt using the provided <code>keywords</code> and <code>messages</code>, and then uses the <code>promptModel</code> to generate a response. It then filters the <code>timestamps</code> array to only include timestamps that are mentioned in the response:</p>
+<pre><code class="language-javascript">return timestamps
+ .filter(time =&gt; a3.match(time) || a3.match(new Date(parseInt(time)).toISOString()))
+</code></pre>
+<h3>matchingTimestamps Function</h3>
+<p>This function takes in several parameters:</p>
+<ul>
+<li><code>promptModel</code>: a function to generate a prompt</li>
+<li><code>session</code>: a session ID</li>
+<li><code>prompt</code>: a prompt to generate a response for</li>
+<li><code>keywords</code>: an array of keywords to match</li>
+</ul>
+<p>The function initializes several variables:</p>
+<ul>
+<li><code>matchingTimestamps</code>: an array to store matching timestamps</li>
+<li><code>messages</code>: an initial message string</li>
+<li><code>originalTimestamp</code>: a copy of the initial message string</li>
+<li><code>loadedConversations</code>: an array of conversation IDs that match the current session and model</li>
+</ul>
+<p>The function then iterates over the <code>loadedConversations</code> array, processing each conversation:</p>
+<ol>
+<li>It extracts the conversation timestamps and sorts them in descending order.</li>
+<li>It iterates over the timestamps, generating a message for each one:</li>
+</ol>
+<pre><code class="language-javascript">let message = conversation[timestamps[j]]
+let topics = keywords.filter(key =&gt; message.keywords.match(key))
+if (!prompt.match(timestamps[j]) &amp;&amp; topics.length == 0) {
+  continue
+}
+</code></pre>
+<p>If the prompt does not match the timestamp and no keywords match, it skips to the next timestamp.</p>
+<ol start="3">
+<li>It appends the message to the <code>messages</code> string.</li>
+<li>If the <code>messages</code> string exceeds a certain length (2048 characters), it calls the <code>askLlamaMatchTimestamps</code> function to generate a response for the current <code>messages</code> string and appends the returned timestamps to the <code>matchingTimestamps</code> array.</li>
+<li>It resets the <code>messages</code> string to the original timestamp.</li>
+</ol>
+<p>Finally, the function returns the <code>matchingTimestamps</code> array.</p>

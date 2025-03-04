@@ -1,0 +1,39 @@
+<p>Here's a 2-sentence summary:</p>
+<p>This code uses the Mocha testing framework to test the <code>addIP</code> function, which adds an external IP to a project and bucket, with error handling and a 60-second timeout. The code also utilizes a custom <code>importer</code> module and built-in Node.js <code>assert</code> module for assertions.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var addIP = importer.import('check dns');
+var project = 'spahaha-ea443';
+var bucketName = 'sheet-to-web.sheet-to-web.com';
+
+describe('adding an external ip', () => {
+    it('should add an ip', () => {
+        return addIP(project, bucketName)
+            .then(ip => {
+                console.log(ip);
+                assert(ip.length > 0, 'should have added an ip');
+            })
+    }).timeout(60000)
+    
+});
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Dependencies</h4>
+<ul>
+<li><code>assert</code>: A built-in Node.js module for asserting conditions in the code.</li>
+<li><code>importer</code>: A custom module (<code>../Core</code>) that exports a function to import other modules.</li>
+<li><code>addIP</code>: A function imported from <code>importer</code> using the alias <code>'check dns'</code>.</li>
+<li><code>project</code>: A string variable representing the project name.</li>
+<li><code>bucketName</code>: A string variable representing the name of the bucket.</li>
+</ul>
+<h4>Test Suite</h4>
+<ul>
+<li><code>describe</code>: A Mocha testing framework function that groups related tests together.</li>
+<li><code>it</code>: A Mocha testing framework function that defines a single test case.</li>
+<li><code>addIP(project, bucketName)</code>: A function called to add an external IP, with the project and bucket name as arguments.</li>
+<li><code>.then(ip =&gt; {... })</code>: A promise handler that logs the added IP and asserts that it's not empty.</li>
+<li><code>.timeout(60000)</code>: Sets a timeout of 60 seconds for the test case.</li>
+</ul>

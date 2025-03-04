@@ -1,0 +1,209 @@
+<p>Here is a summary of the HTML and CSS code breakdown in two sentences:</p>
+<p>The HTML document has a standard structure with a <code>&lt;head&gt;</code> for metadata and external links, and a <code>&lt;body&gt;</code> for content, and is secured by a Content Security Policy (CSP) that specifies allowed sources for content execution. The CSS styles define the layout and appearance of the HTML elements, applying various properties to elements such as <code>.container</code>, <code>.livedev</code>, and specific HTML tags like <code>h1</code>, <code>h2</code>, <code>img</code>, and <code>iframe</code>.</p>
+
+
+<pre><code><html>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src *;
+   img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+   style-src  'self' 'unsafe-inline' *" />
+  <style type="text/css">
+    html, body {
+      padding: 0;
+      margin: 0;
+      background: rgb(51, 51, 68);
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    h1,
+    h2,
+    h3 {
+      color: white;
+      padding: 10px;
+      margin: 0;
+    }
+    
+    div.container {
+      /*min-height: 1080px;*/
+      min-width: 3840px;
+      width: auto;
+      padding: 20mm 16mm;
+      background: #222;
+      box-shadow: rgb(0 0 0 / 50%) 2px 3px 10px;
+      margin: 20px;
+      border-radius: 2px;
+      border: 1px solid #666;
+      position: relative;
+      z-index: 1;
+    }
+    
+    div.livedev {
+      position: relative;
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 460px;
+      display:flex;
+      padding-bottom: 18.75%;
+      position: relative;
+    }
+    
+    div.livedev img {
+      width: 33.3%;
+      min-width: 33.3%;
+      height: 100%;
+      position: absolute;
+      background-size: 100% contain;
+      border: none;
+      border-style: none;
+      background-repeat: no-repeat;
+      left: 0;
+    }
+
+    div.livedev img:nth-of-type(2) {
+      left: 33.3%;
+    }
+
+    div.livedev img:nth-of-type(3) {
+      left: 66.6%;
+    }
+    
+    div.livedev p {
+      text-align: center;
+      padding-bottom: 60%;
+    }
+    
+    div.livedev iframe {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    div.container p {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    div.container p input {
+      opacity: 0;
+      height: 1px;
+      width: 1px;
+      position: absolute;
+      right: 1px;
+      bottom: 1px;
+    }
+
+    div.container p label,
+    div.container p button {
+      border: 5px solid transparent;
+      border-radius: 10px;
+      background: #226;
+      position: relative;
+      display: inline-block;
+      background-clip: padding-box;
+      z-index: unset;
+      list-style: none;
+      text-align: left;
+      text-decoration: none;
+      color: white;
+      min-width: 200px;
+      text-align: center;
+      cursor: pointer;
+      padding: 10px;
+      font-size: unset;
+    }
+
+    input[id="special-shift"]:checked ~ label[for="special-shift"]
+    input[id="special-control"]:checked ~ label[for="special-control"]
+    input[id="special-command"]:checked ~ label[for="special-command"]
+    input[id="special-alt"]:checked ~ label[for="special-alt"] {
+      background-color: white;
+      color: #226;
+    }
+
+    #sendkeys {
+      width: 100%;
+    }
+    
+    
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Live Development</h2>
+  <ol class="windows"></ol>
+  <div class="livedev">
+    <img src="{BASE_URI}monitors/0" />
+    <img src="{BASE_URI}monitors/1" />
+    <img src="{BASE_URI}monitors/2" />
+    <!--<p>
+      <script>
+        document.write(`<iframe width="560" height="315" allow="autoplay" modestbranding="true" src="https://www.youtube.com/embed/live_stream?channel=UCPaZDuwY1sJOb5l-QHm9mDw&origin=${window.location.origin}&controls=0&rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>`)
+      </script>
+    </p>-->
+  </div>
+
+  <p>
+    <textarea id="sendkeys"></textarea>
+    <span>
+      <input type="checkbox" id="special-alt" value="alt" />
+      <input type="checkbox" id="special-command" value="command" />
+      <input type="checkbox" id="special-control" value="control" />
+      <input type="checkbox" id="special-shift" value="shift" />
+      <button id="special-esc" value="">send</button>
+      <button id="special-esc" value="enter">enter</button>
+      <button id="special-esc" value="escape">escape</button>
+      <button id="special-esc" value="backspace">backspace</button>
+      <button id="special-esc" value="delete">delete</button>
+      <label for="special-alt">alt</label>
+      <label for="special-command">command</label>
+      <label for="special-control">control</label>
+      <label for="special-shift">shift</label>
+    </span>
+    <a class="nowButton" target="_blank" href="https://www.youtube.com/channel/UCPaZDuwY1sJOb5l-QHm9mDw">
+      My YouTube Channel</a>
+  </p>
+</div>
+</body>
+</html>
+
+</code></pre>
+
+<p><strong>HTML and CSS Code Breakdown</strong></p>
+<h3>HTML Structure</h3>
+<p>The HTML document has a standard structure:</p>
+<ul>
+<li><code>&lt;head&gt;</code> contains metadata and links to external stylesheets or scripts.</li>
+<li><code>&lt;body&gt;</code> contains the content of the HTML document.</li>
+</ul>
+<h3>Content Security Policy (CSP)</h3>
+<p>The <code>Content-Security-Policy</code> meta tag is set to:</p>
+<p><code>default-src *; img-src *'self' data: https:; script-src'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *</code></p>
+<p>This policy specifies the sources of content that are allowed to be executed within the browser. It allows:</p>
+<ul>
+<li>Any source (<code>*</code>) for <code>default-src</code> (loading of stylesheets, scripts, etc.)</li>
+<li>Any source (<code>*</code>), the current document (<code>'self'</code>), <code>data:</code> URLs, and HTTPS sources (<code>https:</code>) for <code>img-src</code> (loading of images)</li>
+<li>The current document (<code>'self'</code>), <code>'unsafe-inline'</code>, <code>'unsafe-eval'</code>, and any source (<code>*</code>) for <code>script-src</code> (loading of scripts)</li>
+<li>The current document (<code>'self'</code>), <code>'unsafe-inline'</code>, and any source (<code>*</code>) for <code>style-src</code> (loading of stylesheets)</li>
+</ul>
+<h3>Styles</h3>
+<p>The CSS styles define the layout and appearance of the HTML elements. The styles are applied to the following elements:</p>
+<ul>
+<li><code>html</code> and <code>body</code>: sets the background color, text color, and font family</li>
+<li><code>h1</code>, <code>h2</code>, and <code>h3</code>: sets the color, padding, and margin</li>
+<li><code>.container</code>: sets the width, padding, background color, box shadow, margin, border radius, and border</li>
+<li><code>.livedev</code>: sets the maximum width, maximum height, display, padding bottom, and position</li>
+<li><code>.livedev img</code>: sets the width, height, position, background size, border, and background repeat</li>
+<li><code>.livedev img:nth-of-type(2)</code> and <code>.livedev img:nth-of-type(3)</code>: sets the left position</li>
+<li><code>.livedev p</code>: sets the text alignment and padding bottom</li>
+<li><code>.livedev iframe</code>: sets the height, width, position, top, left, bottom, and right</li>
+<li><code>.container p</code>: sets the display and flex wrap</li>
+<li><code>.container p input</code>: sets the opacity, height, width, position, right, and bottom</li>
+<li><code>.container p label</code> and <code>.container p button</code>: sets the border, border radius, background color, and position</li>
+</ul>
+<p>Note: The styles are applied to specific HTML elements using CSS selectors. The <code>.container</code> and <code>.livedev</code> classes are used to target these elements.</p>

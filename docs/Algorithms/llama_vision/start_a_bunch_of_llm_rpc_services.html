@@ -1,0 +1,92 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules, defines an array of environment settings for launching chat bots, and creates a <code>launchChats</code> function that spawns new processes for each environment. The <code>launchChats</code> function iterates through the environments, launching a new process for each one and passing in the environment settings using the <code>env</code> option.</p>
+
+
+<pre><code>
+const {spawn, spawnSync} = require("child_process");
+const path = require('path')
+
+const ENVIRONMENTS = [
+  void 0,
+  {
+    CHAT_PORT: 8181,
+    DEFAULT_MODEL: 'Default',
+  },
+  {
+    CHAT_PORT: 8282,
+    DEFAULT_MODEL: 'Meta',
+  },
+  {
+    CHAT_PORT: 8383,
+    DEFAULT_MODEL: 'DeepSeek',
+  },
+  {
+    CHAT_PORT: 8484,
+    DEFAULT_MODEL: 'Qwen',
+  },
+  {
+    CHAT_PORT: 8585,
+    DEFAULT_MODEL: 'Code',
+  },
+  {
+    CHAT_PORT: 8686,
+    DEFAULT_MODEL: 'Mistral',
+  },
+]
+
+function launchChats(botIndex = 0) {
+
+  if(parseInt(botIndex).toString() != botIndex.toString()) {
+    return
+  } else {
+    botIndex = parseInt(botIndex)
+  }
+
+  if(typeof botIndex != 'number' && !botIndex) {
+    return
+  }
+
+  for(let i = botIndex; i < ENVIRONMENTS.length; i++) {
+    if(!ENVIRONMENTS[i]) {
+      continue
+    }
+
+    spawn('node', ['--experimental-vm-modules', '-e', 'var result = require(\'./Core\').run()', '--', 'resume express chat service'], {
+      env: Object.assign({}, process.env, ENVIRONMENTS[i] ? ENVIRONMENTS[i] : {}),
+      stdio: [0, 1, 2],
+      //detached: true,
+      //shell: true,
+      cwd: path.dirname(__dirname)
+    })
+
+    if(botIndex) {
+      break
+    }
+  }
+}
+
+module.exports = launchChats
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code imports two modules:</p>
+<ul>
+<li><code>child_process</code>: Specifically imports the <code>spawn</code> and <code>spawnSync</code> functions, which are used to execute child processes.</li>
+<li><code>path</code>: Imports the <code>path</code> module, which provides utilities for working with file paths.</li>
+</ul>
+<h3>Defining ENVIRONMENTS Array</h3>
+<p>An array <code>ENVIRONMENTS</code> is defined, containing six objects with different settings for launching chat bots. Each object has two properties: <code>CHAT_PORT</code> and <code>DEFAULT_MODEL</code>, which are used to configure the environment for a specific bot.</p>
+<h3>launchChats Function</h3>
+<p>The <code>launchChats</code> function is defined to launch multiple chat bots in different environments. It takes an optional <code>botIndex</code> parameter, which specifies the starting index for launching bots.</p>
+<p><strong>Function Flow</strong></p>
+<ol>
+<li>The function checks if the <code>botIndex</code> is a valid integer. If not, it returns immediately.</li>
+<li>It loops through the <code>ENVIRONMENTS</code> array starting from the specified <code>botIndex</code> and continues until the end of the array.</li>
+<li>For each environment, it spawns a new process using the <code>spawn</code> function, passing in the command to launch the chat bot (<code>node...</code>).</li>
+<li>The environment settings for the current bot are passed to the spawned process using the <code>env</code> option.</li>
+<li>The function breaks out of the loop if <code>botIndex</code> is truthy, launching only the bots specified by the index.</li>
+</ol>
+<h3>Exporting the Function</h3>
+<p>The <code>launchChats</code> function is exported as a module, making it available for use in other parts of the application.</p>

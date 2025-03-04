@@ -1,0 +1,56 @@
+<p>This code creates a function that simplifies the process of adding new events to a Google Calendar, handling calendar ID validation and API calls.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {google} = require('googleapis');
+var util = require('util');
+var {
+    correctCalendarId
+} = importer.import([
+    'lookup calendar name',
+    'import google calendar api'
+]);
+
+function createNewEvent(summary, description, options) {
+    const now = new Date();
+    options = options || {};
+    const event = {
+        summary: summary,
+        description: description,
+        start: {dateTime: new Date(now.getTime())},
+        end: {dateTime: new Date(now.getTime() + 30 * 60 * 1000)}
+    }
+    if(typeof summary === 'object') {
+        Object.assign(event, summary);
+        options = description;
+    }
+    return correctCalendarId(options)
+        .then(() => util.promisify(
+            calendar.events.insert.bind(calendar.events, {
+                calendarId: options.calendarId,
+                auth: options.auth,
+                resource: event
+            })))
+}
+module.exports = createNewEvent;
+
+</code></pre>
+
+<p>This code snippet defines a function <code>createNewEvent</code> that creates a new event in a Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for interacting with the Google Calendar API, utility functions, and custom functions for calendar ID lookup.</li>
+</ul></li>
+<li><p><strong><code>createNewEvent</code> Function:</strong></p>
+<ul>
+<li>Takes <code>summary</code>, <code>description</code>, and optional <code>options</code> as arguments.</li>
+<li>Creates an event object with default start and end times (30 minutes from now).</li>
+<li>If <code>summary</code> is an object, it assumes it contains event details and assigns them to the event object, using <code>description</code> as the <code>options</code> argument.</li>
+<li>Calls <code>correctCalendarId</code> to ensure the calendar ID is valid.</li>
+<li>Uses <code>util.promisify</code> to create a promise-based function for inserting the event into the specified calendar using the Google Calendar API.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This function provides a convenient way to create new events in a Google Calendar, handling calendar ID lookup and API interaction.</p>

@@ -1,0 +1,41 @@
+<p>This Dockerfile configures a container to run a VNC server with a customized resolution, scaling, and user account.</p>
+
+
+<pre><code>
+RUN dos2unix /home/seluser/novnc/utils/launch.sh
+RUN sed -i -e 's/export GEOMETRY.*/export GEOMETRY="8160x6120x24"/g' /opt/bin/start-xvfb.sh
+RUN sed -i -e 's/x11vnc/x11vnc -scale 4080x3060 -noxdamage/g' /opt/bin/start-vnc.sh
+RUN sed -i '/wait \$/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &' /opt/bin/entry_point.sh
+USER seluser
+</code></pre>
+
+<p>This code snippet appears to be part of a Dockerfile, used to configure a Docker image for running a VNC server with a specific resolution and some customizations.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>RUN dos2unix /home/seluser/novnc/utils/launch.sh</code>:</strong></p>
+<ul>
+<li>This line converts any DOS-style line endings in the <code>launch.sh</code> script to Unix-style line endings. This is necessary to ensure the script runs correctly on Linux systems.</li>
+</ul></li>
+<li><p><strong><code>RUN sed -i -e 's/export GEOMETRY.*/export GEOMETRY=&quot;8160x6120x24&quot;/g' /opt/bin/start-xvfb.sh</code>:</strong></p>
+<ul>
+<li>This line uses the <code>sed</code> command to modify the <code>start-xvfb.sh</code> script.</li>
+<li>It replaces any existing <code>export GEOMETRY</code> line with <code>export GEOMETRY=&quot;8160x6120x24&quot;</code>. This sets the resolution of the virtual framebuffer to 8160x6120 pixels with 24-bit color depth.</li>
+</ul></li>
+<li><p><strong><code>RUN sed -i -e 's/x11vnc/x11vnc -scale 4080x3060 -noxdamage/g' /opt/bin/start-vnc.sh</code>:</strong></p>
+<ul>
+<li>This line modifies the <code>start-vnc.sh</code> script.</li>
+<li>It replaces any occurrences of <code>x11vnc</code> with <code>x11vnc -scale 4080x3060 -noxdamage</code>.</li>
+<li>This scales the VNC display to 4080x3060 pixels and disables the <code>noxdamage</code> option, which can improve performance.</li>
+</ul></li>
+<li><p><strong><code>RUN sed -i '/wait \$/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &amp;' /opt/bin/entry_point.sh</code>:</strong></p>
+<ul>
+<li>This line inserts a new line into the <code>entry_point.sh</code> script.</li>
+<li>The new line executes the <code>launch.sh</code> script with the <code>--vnc localhost:5900</code> argument, which starts the VNC server on port 5900.</li>
+<li>The <code>&amp;</code> at the end runs the command in the background.</li>
+</ul></li>
+<li><p><strong><code>USER seluser</code>:</strong></p>
+<ul>
+<li>This line sets the user to <code>seluser</code> within the Docker container.</li>
+</ul></li>
+</ol>
+<p>In essence, this Dockerfile configures a container to run a VNC server with a specific resolution, scales the display, and sets up a user account for accessing the server.</p>

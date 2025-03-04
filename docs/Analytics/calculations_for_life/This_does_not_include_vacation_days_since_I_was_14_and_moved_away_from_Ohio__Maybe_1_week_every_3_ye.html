@@ -1,0 +1,80 @@
+<p>This code determines the proportion of the author's life spent with a friend named Jim, factoring in years of friendship, visit frequency, vacation duration, and life expectancy.</p>
+
+
+<pre><code>var _3daysPer14 = 3/14; // 3 days out of every 14 spent with Jim
+var _12yearsInOhio = 12; // number of years in Ohio consistently visiting Jim every other weekend
+var _2yearsInVienna = 2; // number of years moved to Vienna
+var _2yearsInOhioNotWithJim = 2; // number of years in Ohio that I didn't feel like visiting every other week
+var _12yearsMinusTwo = _12yearsInOhio - _2yearsInVienna;
+var _7daysVacay = 7; // average length of vacation with Jim
+var _2everyOtherMultiplier = 2;
+var _everyOtherWeekendInAYear = 52 / _2everyOtherMultiplier;
+var _3holidaysAlternating = 3; // number of holidays per year we alternated between Linda and Jim
+
+// calculate exact age based on current date
+var _currentDate = new Date();
+var _daysUntilBirthday = (_currentDate.getMonth() + 1) / 11 * 365.25 + (_currentDate.getDate() - 12);
+var _daysLifeOfBrian = (_currentDate.getFullYear() - 1986) * 365.25 - _daysUntilBirthday;
+var _32exactYearsLifeOfBrian = _daysLifeOfBrian / 365.25;
+
+// life expectancy of a male age 65 today
+var _82yearsLifeExpectancyOfJim = 82;
+
+var _yearsSinceAge14 = _32exactYearsLifeOfBrian - 14;
+
+// calculate weekends spent with Jim
+var _everyOtherWeekendTotal = _3daysPer14 * _12yearsMinusTwo * _everyOtherWeekendInAYear;
+
+// calculate holidays spent with Jim
+var _holiDays = _3holidaysAlternating * (_12yearsInOhio * _7daysVacay / _2everyOtherMultiplier);
+var _holiDaysOnly = _3holidaysAlternating * (_2yearsInOhioNotWithJim * _7daysVacay / _2everyOtherMultiplier);
+
+// calculate vacations since age 14
+var _superflousVacays = _7daysVacay * _yearsSinceAge14 / 3; // average seeing Jim for a week once every 3 years
+
+// calculate total days spent with Jim
+var _totalDaysSpentWithJim = _everyOtherWeekendTotal + _holiDays + _holiDaysOnly + _superflousVacays;
+var _percentOfLife = _totalDaysSpentWithJim / 365.25 / _32exactYearsLifeOfBrian;
+var _percentOfLifeFormatted = Math.round(_percentOfLife * 10000) / 100 + '%';
+var _percentOfJimsLifeSpentWithBrian = _totalDaysSpentWithJim / 365.25 / _82yearsLifeExpectancyOfJim;
+var _percentOfJimsLifeSpentWithBrianFormatted = Math.round(_percentOfJimsLifeSpentWithBrian * 10000) / 100 + '%';
+
+// print the results
+console.log('Total number of days spent with Jim in lifetime: ' + _totalDaysSpentWithJim);
+console.log('Percent of Brian\'s life spent with Jim: ' + _percentOfLifeFormatted);
+console.log('Percent of Jim\'s life spent with his only son: ' + _percentOfJimsLifeSpentWithBrianFormatted)
+</code></pre>
+
+<p>This code calculates the percentage of the author's life spent with a friend named Jim, taking into account various factors like the number of years they've known each other, how often they visited, and the length of vacations.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Variables:</strong></p>
+<ul>
+<li>It defines numerous variables to store specific durations (e.g., years spent in Ohio, length of vacations), frequencies (e.g., visits every other weekend), and other relevant data points.</li>
+</ul></li>
+<li><p><strong>Age Calculation:</strong></p>
+<ul>
+<li>It calculates the author's age in days and years based on the current date and their birthdate.</li>
+</ul></li>
+<li><p><strong>Life Expectancy:</strong></p>
+<ul>
+<li>It assumes a life expectancy of 82 years for Jim.</li>
+</ul></li>
+<li><p><strong>Weekend and Holiday Calculations:</strong></p>
+<ul>
+<li>It calculates the total number of weekends and holidays spent with Jim over the years, considering factors like alternating holidays and periods when they didn't visit as frequently.</li>
+</ul></li>
+<li><p><strong>Vacation Calculation:</strong></p>
+<ul>
+<li>It estimates the number of vacations taken with Jim since the author turned 14.</li>
+</ul></li>
+<li><p><strong>Total Days Calculation:</strong></p>
+<ul>
+<li>It sums up all the calculated days spent with Jim (weekends, holidays, vacations).</li>
+</ul></li>
+<li><p><strong>Percentage Calculation:</strong></p>
+<ul>
+<li>It calculates the percentage of the author's life spent with Jim and the percentage of Jim's life spent with the author.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

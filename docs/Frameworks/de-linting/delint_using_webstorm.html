@@ -1,0 +1,57 @@
+<p>This code provides a function to format code within a project directory using WebStorm and potentially import project settings from a <code>.idea</code> directory.</p>
+
+
+<pre><code>// TODO: display a tree of require dependencies and make sure it all still compiles properly
+var path = require('path');
+var {ncp} = require('ncp');
+var importer = require('../Core');
+var execCmd = importer.import('spawn child process');
+ncp.limit = 16;
+
+var webstormWin = 'C:\\Program Files\\JetBrains\\WebStorm 2017.1.1\\bin\\format.bat';
+var webstormMac = '/Applications/WebStorm.app/Contents/bin/format.sh';
+var webstorm = process.platform === 'win32' ? webstormWin : webstormMac;
+var idea = path.resolve(path.join(__dirname, '../.idea'));
+
+function delint(project) {
+    // output .idea to set the framework preferences?
+    // I think I overwrote the default, some way to env variables for this?
+    return util.promisify(ncp)(idea, project + '/.idea')
+        .then(() => execCmd(`"${webstorm}" "${project}"`, {cwd: project}))
+}
+
+module.exports = delint;
+
+</code></pre>
+
+<p>This code sets up a function <code>delint</code> that performs code formatting and potentially imports project settings from a <code>.idea</code> directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>Requires <code>path</code> for file path manipulation.</li>
+<li>Requires <code>ncp</code> for copying directories.</li>
+<li>Imports <code>importer</code> (likely a custom module) for accessing other functions.</li>
+<li>Imports <code>execCmd</code> (likely from <code>importer</code>) for executing shell commands.</li>
+</ul></li>
+<li><p><strong>WebStorm Path:</strong></p>
+<ul>
+<li>Defines paths to WebStorm formatters for Windows and macOS.</li>
+<li>Selects the appropriate path based on the operating system.</li>
+</ul></li>
+<li><p><strong><code>.idea</code> Directory:</strong></p>
+<ul>
+<li>Defines the path to the <code>.idea</code> directory, which likely contains project-specific settings.</li>
+</ul></li>
+<li><p><strong><code>delint</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>project</code> path as input.</li>
+<li>Copies the <code>.idea</code> directory to the specified project directory.</li>
+<li>Executes the WebStorm formatter on the project directory.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>delint</code> function as the module's main export.</li>
+</ul></li>
+</ol>
+<p>In essence, this code aims to format code within a project directory using WebStorm and potentially import project-specific settings from a <code>.idea</code> directory.</p>

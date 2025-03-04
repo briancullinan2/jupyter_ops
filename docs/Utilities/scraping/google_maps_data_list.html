@@ -1,0 +1,103 @@
+<p>This code uses Selenium to scrape location names and descriptions from Google Maps search results, handling pagination to retrieve all available data.  It then prepares the data for further processing or storage, likely in JSON format.</p>
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+var fs = require('fs');
+var path = require('path');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Collections/flagstaff-happy';
+
+function getResultsPage() {
+    return client
+        .then(() => getAllXPath([
+            '//*[contains(@class, "section-result-text-content")]',
+            {
+                name: './/h3[contains(@class, "section-result-title")]//text()',
+                description: './/span[contains(@class, "section-result-details")]//text()|.//span[contains(@class, "section-result-location")]//text()'
+            }
+        ]))
+        .then(r => r.map(l => ({
+            name: typeof l.name === 'string' ? l.name : l.name.join('\n').trim(),
+            description: typeof l.description === 'string'
+                ? l.description
+                : l.description.join('\n').trim().split(/\s*\n\s*/ig),
+        })));
+}
+
+function getAllResults() {
+    var locations = [];
+    return getResultsPage()
+        .then(newLocs => {
+            locations = newLocs;
+            return client.isExisting('//*[contains(@class, "section-pagination-right")]//button[contains(@aria-label, "Next page") and not(@disabled)]');
+        })
+        .then(is => {
+            if(is) {
+                return client.click('//*[contains(@class, "section-pagination-right")]//button[contains(@aria-label, "Next page") and not(@disabled)]')
+                    .pause(3000)
+                    .then(() => getAllResults())
+                    .then(newLocs => locations.concat(newLocs))
+            } else {
+                return locations;
+            }
+        });
+}
+
+function getNearbyJSON(place) {
+    if(typeof place === 'undefined') {
+        place = 'bars+near+Flagstaff,+AZ';
+    }
+    return client.url('https://www.google.com/maps/search/' + place)
+        .then(() => getAllResults())
+        .then(r => {
+            const day = new Date();
+            const date = day.getFullYear() + '-' + (day.getMonth() + 1) + '-' + day.getDate();
+            fs.writeFileSync(path.join(project, 'locations-' + date + '.json'), JSON.stringify(r, null, 4));
+            return r;
+        })
+}
+module.exports = getNearbyJSON;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    runSeleniumCell('google maps data list', false)
+        .then(func => func())
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet uses Selenium to scrape location data from Google Maps search results.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>importer</code> (custom module), <code>selenium-cell</code>, <code>fs</code>, and <code>path</code>.</li>
+<li>Defines a <code>PROFILE_PATH</code> for storing project files.</li>
+<li>Defines a <code>project</code> path.</li>
+</ul></li>
+<li><p><strong><code>getResultsPage</code> Function:</strong></p>
+<ul>
+<li>Navigates to a Google Maps search results page.</li>
+<li>Uses <code>getAllXPath</code> to extract location names and descriptions from the page elements.</li>
+<li>Processes the extracted data into an array of objects with <code>name</code> and <code>description</code> properties.</li>
+</ul></li>
+<li><p><strong><code>getAllResults</code> Function:</strong></p>
+<ul>
+<li>Calls <code>getResultsPage</code> to get the initial set of results.</li>
+<li>Checks if there are more pages of results using pagination buttons.</li>
+<li>If more pages exist, clicks the &quot;Next page&quot; button, waits, recursively calls <code>getAllResults</code> to fetch additional pages, and combines all results.</li>
+<li>Returns the complete array of location data.</li>
+</ul></li>
+<li><p><strong><code>getNearbyJSON</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>place</code> parameter (defaults to &quot;bars+near+Flagstaff,+AZ&quot;).</li>
+<li>Navigates to the Google Maps search page for the specified location.</li>
+<li>Calls <code>getAllResults</code> to fetch the location data.</li>
+<li>(Incomplete code) - likely intended to format the data into a JSON object and save it to a file.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code automates the process of scraping location data from Google Maps search results for a given location. It fetches both the initial page and subsequent pages of results, extracts relevant information, and prepares it for further processing or storage.</p>

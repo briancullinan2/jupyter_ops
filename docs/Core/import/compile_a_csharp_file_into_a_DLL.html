@@ -1,0 +1,115 @@
+<p>Here is a 2-sentence summary of the provided code:</p>
+<p>The code consists of two functions, <code>buildDLL</code> and <code>makeDLL</code>, which are used to create and manage DLLs from Python code. The <code>buildDLL</code> function interprets and compiles the code, while the <code>makeDLL</code> function checks for an existing cached module and calls <code>buildDLL</code> to rebuild the DLL if necessary.</p>
+
+
+<pre><code>
+const fs = require('fs')
+const path = require('path')
+const { Module } = require('module')
+
+const BUILD_DIRECTORY = path.join(__dirname, '../.build')
+
+function buildDLL(code, pathToCode, ctx) {
+  if (!fs.existsSync(BUILD_DIRECTORY)) {
+    fs.mkdirSync(BUILD_DIRECTORY)
+  }
+
+  const {
+    importNotebook, interpret
+  } = require('../Core')
+  const codeCell = interpret(pathToCode)
+  // TODO: compare file times for dylib module recompile
+  const { safeurl } = importNotebook('domain cache tools')
+  let libName = safeurl(codeCell.questions[0])
+  let libPath = path.join(BUILD_DIRECTORY, libName + '.cs')
+  if (!fs.existsSync(libPath)
+    || fs.statSync(codeCell.filename).mtime > fs.statSync(libPath).mtime
+  ) {
+    fs.writeFileSync(libPath, codeCell.source.join(''))
+  }
+
+
+  // TODO: recompile dylib
+  let objPath = path.join(BUILD_DIRECTORY, libName + '.dll')
+  if (!fs.existsSync(objPath)
+    || fs.statSync(libPath).mtime > fs.statSync(objPath).mtime
+  ) {
+    const { spawnSync } = require('child_process')
+    let args = ['-target:library', '-out:' + objPath, libPath]
+    spawnSync('mcs', args, { stdio: [0, 1, 2] })
+  }
+}
+
+async function makeDLL(code, pathToCode, ctx) {
+
+  if (Module._cache[pathToCode]) {
+    return Module._cache[pathToCode].exports
+  }
+  // TODO: await module loaded
+  buildDLL(code, pathToCode, ctx)
+
+  const {
+    importNotebook, interpret
+  } = require('../Core')
+  const codeCell = interpret(pathToCode)
+  // TODO: compare file times for dylib module recompile
+  const { safeurl } = importNotebook('domain cache tools')
+  let libName = safeurl(codeCell.questions[0])
+
+  const selectCode = await importNotebook('select antlr tree')
+  const rootNode = (await selectCode(['//*'], code.toString(), 'csharp'))[0]
+
+  const getClassParams = await importNotebook('list csharp params')
+  const getClassNames = await importNotebook('list csharp classes')
+  const getNamespacesBySize = await importNotebook('list csharp namespaces')
+  const namespace = (await getNamespacesBySize(rootNode))[0]
+  console.log(namespace)
+  const dotnet = require('node-api-dotnet')
+  dotnet.load(path.join(BUILD_DIRECTORY, libName + '.dll'))
+  const classes = await getClassNames(rootNode, namespace)
+  console.log(classes)
+  const params = await getClassParams(rootNode, classes[0])
+  console.log(params)
+
+  // TODO: loop through classes
+  dotnet[namespace][classes[0]].functions = params.map(p => p[0])
+  for(let i = 0; i < params.length; i++) {
+    if(dotnet[namespace][classes[0]][params[i][0]]) {
+      dotnet[namespace][classes[0]][params[i][0]].params = params
+    }
+  }
+
+  return dotnet[namespace][classes[0]]
+}
+
+module.exports.makeDLL = makeDLL
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Required Modules and Constants</h3>
+<ul>
+<li><code>fs</code>: file system module for interacting with the file system</li>
+<li><code>path</code>: module for working with file paths</li>
+<li><code>Module</code>: module from the Node.js standard library</li>
+<li><code>BUILD_DIRECTORY</code>: a constant defining the path to the build directory</li>
+</ul>
+<h3><code>buildDLL</code> Function</h3>
+<ul>
+<li>Creates a build directory if it doesn't exist</li>
+<li>Imports <code>interpret</code> and <code>importNotebook</code> from the <code>Core</code> module</li>
+<li>Interprets the code at the specified <code>pathToCode</code> using <code>interpret</code></li>
+<li>Writes the interpreted code to a file in the build directory if the file doesn't exist or is outdated</li>
+<li>Compiles the code to a DLL using <code>mcs</code> if the DLL doesn't exist or is outdated</li>
+</ul>
+<h3><code>makeDLL</code> Function</h3>
+<ul>
+<li>Checks if a module has already been cached</li>
+<li>If cached, returns the exported module</li>
+<li>Otherwise, calls <code>buildDLL</code> to build the DLL</li>
+<li>Imports <code>interpret</code> and <code>importNotebook</code> from the <code>Core</code> module again</li>
+<li>Interprets the code at the specified <code>pathToCode</code> using <code>interpret</code></li>
+<li>Selects the root node of the abstract syntax tree (AST) using <code>selectCode</code></li>
+<li>Gets the namespace, class names, and class parameters using various <code>importNotebook</code> functions</li>
+<li>Logs the namespace to the console</li>
+</ul>

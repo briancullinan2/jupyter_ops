@@ -1,0 +1,96 @@
+<p>This code provides a function <code>delintCode</code> that lints code using ESLint, optionally fixes identified issues, and returns both the original and fixed code along with linting results.</p>
+
+
+<pre><code>var CLIEngine = require("eslint").CLIEngine;
+
+var esLintConfig = {
+    parser: "babel-eslint",
+    "plugins": ["prettier"],
+    envs: ["es6", "node", "browser", "mocha"],
+    useEslintrc: false,
+    extends: ["eslint:recommended", "google"],
+    fix: true,
+    'fix-dry-run': true,
+    'fix-type': 'problem,suggestion,layout',
+    rules: {
+        'semi': 2,
+        'prefer-const': 2,
+        'no-var': 2,
+        'no-undef': 2,
+        'no-unused-vars': [2, {vars: 'all', args: 'all'}],
+        'max-len': 2,
+        'max-depth': 2,
+        "prettier/prettier": "error",
+        'quotes': [2, 'single']
+    }
+};
+
+var cli = new CLIEngine(Object.assign(esLintConfig, {fix: false}));
+var fix = new CLIEngine(Object.assign(esLintConfig, {fix: true}));
+
+function delintCode(code) {
+    // TODO: accept a file path
+    if(typeof code === 'string') {
+        code = [code]
+    }
+    try {
+        return code
+            .map(c => Object.assign(cli.executeOnText(c).results[0], {
+                source: c,
+                fixed: fix.executeOnText(c).results[0].output || c
+            }))
+    } catch (e) {
+        console.log(e.message)
+        console.log('Error: doing nothing to code.')
+        return [{
+            code: code
+        }]
+    }
+}
+
+module.exports = delintCode;
+
+</code></pre>
+
+<p>This code defines a function <code>delintCode</code> that performs code linting using ESLint and optionally fixes identified issues.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports the <code>CLIEngine</code> class from the <code>eslint</code> package.</li>
+<li>Defines an <code>esLintConfig</code> object with various ESLint configuration options:
+<ul>
+<li><code>parser</code>: Specifies the parser to use (Babel for ES6+ code).</li>
+<li><code>plugins</code>: Includes the <code>prettier</code> plugin for code formatting.</li>
+<li><code>envs</code>: Sets the environment contexts for linting (ES6, Node.js, browser, Mocha).</li>
+<li><code>useEslintrc</code>: Disables using a separate <code>.eslintrc</code> file.</li>
+<li><code>extends</code>: Inherits rules from ESLint's recommended rules and Google's style guide.</li>
+<li><code>fix</code>: Enables automatic fixing of linting issues.</li>
+<li><code>fix-dry-run</code>: Enables a dry run of the fixers without actually modifying the code.</li>
+<li><code>fix-type</code>: Specifies the types of issues to fix (problems, suggestions, layout).</li>
+<li><code>rules</code>: Defines custom ESLint rules and their severity levels.</li>
+</ul></li>
+<li>Creates two <code>CLIEngine</code> instances:
+<ul>
+<li><code>cli</code>: For linting without fixing issues.</li>
+<li><code>fix</code>: For linting and fixing issues.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>delintCode</code> Function:</strong></p>
+<ul>
+<li>Takes code as input, either as a string or an array of strings.</li>
+<li>If the input is a string, it converts it to an array.</li>
+<li>Uses <code>cli.executeOnText</code> to lint the code and <code>fix.executeOnText</code> to fix issues.</li>
+<li>Returns an array of objects, each containing:
+<ul>
+<li>The original code.</li>
+<li>The fixed code (if fixes were applied).</li>
+<li>Linting results from ESLint.</li>
+</ul></li>
+<li>Handles potential errors during linting and provides a fallback message.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>delintCode</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>

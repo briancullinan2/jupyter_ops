@@ -1,0 +1,33 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code imports a module from <code>Core.js</code> and uses it to define a function <code>testChannel</code> that exports a function <code>respondCommand</code> from a module, which takes a <code>channel</code> argument and calls <code>respondCommand</code> with it.</p>
+
+
+<pre><code>var importer = require('../Core')
+var respondCommand = importer.import('respond discord commands')
+
+module.exports = function testChannel(channel) {
+    respondCommand(channel)
+    
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core')
+var respondCommand = importer.import('respond discord commands')
+</code></pre>
+<ul>
+<li>The <code>require</code> function is used to import modules in Node.js.</li>
+<li>The <code>importer</code> variable is set to the result of <code>require('../Core')</code>, which imports a module from a file named <code>Core.js</code> located in the parent directory.</li>
+<li>The <code>respondCommand</code> variable is set to the result of calling the <code>import</code> method on the <code>importer</code> object, which imports and returns a function named <code>respond discord commands</code> from the imported module.</li>
+</ul>
+<h4>Exporting a Function</h4>
+<pre><code class="language-javascript">module.exports = function testChannel(channel) {
+    respondCommand(channel)
+}
+</code></pre>
+<ul>
+<li>The <code>module.exports</code> syntax is used to export a function from a Node.js module.</li>
+<li>The exported function, <code>testChannel</code>, takes a single argument <code>channel</code>.</li>
+<li>Inside the function, <code>respondCommand(channel)</code> is called, passing the <code>channel</code> argument to the <code>respondCommand</code> function.</li>
+</ul>

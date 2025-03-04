@@ -1,0 +1,89 @@
+<p>This AWS Lambda function processes events to retrieve Zuora account data and bulk upload it to Eloqua, handling errors and returning appropriate responses.  It requires additional development to implement features for import template creation and single record updates.</p>
+
+
+<pre><code>var importer = require('../Core');
+var zuoraExport = importer.import('zuora account service');
+var eloquaUpload = importer.import('bulk upload eloqua');
+
+function handler(event, context, callback) {
+    const zuoraConfig = {
+        "rest_api_user": process.env.ZUORA_API_USER,
+        "rest_api_password": process.env.ZUORA_API_PASS,
+        "rest_api_url": process.env.ZUORA_API_URL
+    };
+    const eloquaConfig = {
+        "authorize_uri": process.env.ELOQUA_AUTHORIZE_URL,
+        "token_uri": process.env.ELOQUA_TOKEN_URL,
+        "rest_api_url": process.env.ELOQUA_API_URL,
+        "rest_client_id": process.env.ELOQUA_CLIENT_ID,
+        "rest_secret": process.env.ELOQUA_CLIENT_SECRET,
+        "rest_api_company": process.env.ELOQUA_API_COMPANY,
+        "rest_api_user": process.env.ELOQUA_API_USER,
+        "rest_api_password": process.env.ELOQUA_API_PASS
+    };
+    var body = event || {};
+    try {
+        if (event.body || event.queryStringParameters) {
+            body = Object.assign(event.body || {}, event.queryStringParameters || {});
+        }
+    } catch(e) {
+        console.log(e);
+        callback(e, {
+            'statusCode': 500,
+            'headers': { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': JSON.stringify({'Error': e.message})
+        })
+        return;
+    }
+    
+    // TODO: add if statement for creating the import template
+    // TODO: add an entry point for Zuora subscription callout to update single records in eloqua?
+    return zuoraExport.getZuoraAccounts(body, zuoraConfig)
+        .then(accounts => eloquaUpload.bulkUploadEloqua(accounts, eloquaConfig, body.instanceId, body.executionId))
+        .then(() => callback(null, {
+            'statusCode': 200,
+            'headers': { 'Content-Type': 'text/plain' },
+            'body': 'Success!'
+        }))
+        .catch(e => callback(e.message || e.body || e, {
+            'statusCode': 500,
+            'headers': { 'Content-Type': 'text/plain' },
+            'body': 'Error: ' + e.message
+        }))
+}
+module.exports = {
+    handler
+};
+</code></pre>
+
+<p>This code defines an AWS Lambda function that handles the bulk upload of Zuora account data to Eloqua.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules for interacting with Zuora and Eloqua APIs.</li>
+<li>It defines configuration objects for both Zuora and Eloqua, using environment variables for API credentials.</li>
+</ul></li>
+<li><p><strong>Event Handling:</strong></p>
+<ul>
+<li>The <code>handler</code> function takes an event object, context object, and a callback function as input.</li>
+<li>It extracts data from the event object, handling potential errors during the process.</li>
+</ul></li>
+<li><p><strong>Data Processing:</strong></p>
+<ul>
+<li>It calls the <code>getZuoraAccounts</code> function from the <code>zuoraExport</code> module to retrieve account data from Zuora.</li>
+<li>It then calls the <code>bulkUploadEloqua</code> function from the <code>eloquaUpload</code> module to upload the retrieved data to Eloqua.</li>
+</ul></li>
+<li><p><strong>Response:</strong></p>
+<ul>
+<li>If the upload is successful, it returns a success response with a status code of 200.</li>
+<li>If an error occurs, it returns an error response with a status code of 500 and the error message.</li>
+</ul></li>
+</ol>
+<p><strong>TODOs:</strong></p>
+<ul>
+<li>The code includes TODO comments indicating the need to add functionality for creating import templates and handling single record updates in Eloqua.</li>
+</ul>

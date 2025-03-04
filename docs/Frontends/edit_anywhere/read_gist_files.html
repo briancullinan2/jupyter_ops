@@ -1,0 +1,43 @@
+<p>This code provides a reusable function to fetch a GitHub Gist by its ID using the Octokit library and handles both successful retrieval and potential errors.  It is designed to be used in other parts of an application.</p>
+
+
+<pre><code>var Octokit = require('@octokit/rest');
+
+// commit changes to github
+async function getGist(gist) {
+    if(!gist) return {}
+    const github = new Octokit({
+        host: 'api.github.com'
+    });
+    /*
+    github.authenticate({
+        type: 'basic',
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD
+    });
+    */
+
+    return github.gists.get({gist_id: gist})
+        .then(r => r.data)
+        .catch(e => console.log(e))
+}
+
+module.exports = getGist
+</code></pre>
+
+<p>This code defines a function <code>getGist</code> that retrieves a GitHub Gist by its ID.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Import:</strong> It imports the <code>Octokit</code> library, which is used to interact with the GitHub API.</p></li>
+<li><p><strong><code>getGist</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>gist</code> ID as input.</li>
+<li>Creates an instance of the <code>Octokit</code> client, configured to use the GitHub API.</li>
+<li><strong>Commented-out Authentication:</strong> There's commented-out code for basic authentication using environment variables <code>USERNAME</code> and <code>PASSWORD</code>. This suggests that authentication might be handled differently in a production environment.</li>
+<li>Calls the <code>github.gists.get</code> method to fetch the Gist with the given ID.</li>
+<li>Uses <code>.then</code> to handle the successful response, extracting the Gist data (<code>r.data</code>).</li>
+<li>Uses <code>.catch</code> to handle any errors, logging them to the console.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>getGist</code> function is exported as a module, allowing it to be used in other parts of the application.</p></li>
+</ol>
+<p>In essence, this code provides a reusable function for fetching a specific GitHub Gist from the API.</p>

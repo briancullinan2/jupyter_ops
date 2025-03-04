@@ -1,0 +1,91 @@
+<p>This code provides a utility for selecting and manipulating code structures based on a grammar and a selection descriptor, likely used in a larger code analysis or transformation tool.  It parses code, allows for querying specific parts using a descriptor, and converts the selected code into a string representation.</p>
+
+
+<pre><code>var fs = require('fs');
+var jison = require('jison');
+var importer = require('../Core')
+var {
+    selectDom,
+    evaluateDom,
+    treeToHtml,
+    htmlToTree
+} = importer.import(['select tree', 'tree to html', 'html to tree'])
+
+function getParser(jisonFile) {
+    var bnf
+    if(fs.existsSync(jisonFile)) {
+        bnf = fs.readFileSync(jisonFile, 'utf8')
+    } else {
+        bnf = importer.interpret(jisonFile).code
+    }
+    
+    var parser = new jison.Parser(bnf)
+    return parser
+}
+
+
+function toString(ctx, subctx) {
+    var ast = (subctx || ctx)
+    if(typeof ast.ownerDocument !== 'undefined') {
+        ast = htmlToTree(ast)
+    }
+    //escodegen.attachComments(ast, ast.comments, ast.tokens, ast.whitespace)
+    return escodegen.generate(ast, {
+        comment: true,
+        tokens: true,
+        whitespace: true,
+        format: {indent: {style: '    '}, quotes: 'single'}
+    })
+}
+
+function selectCode(descriptor, code, language) {
+    if(typeof code === 'function') {
+        code = code.toString()
+    }
+    if(typeof code === 'string') {
+        if(fs.existsSync(code)) {
+            code = fs.readFileSync(code)
+            if(typeof language === 'undefined') {
+                language = 
+            }
+        }
+        var parser = getParser(language)
+        try {
+            code = esprima.parse(code, {range: true, tokens: true,
+                                        comment: true, whitespace: true})
+        } catch(e) {
+            console.log(e)
+            throw new Error('Could not parse \n' + code)
+        }
+    }
+    // TODO: move this conversion to selectDom for all objects?
+    //   No more selectTree because jsel and friends are inconsistent.
+    if(typeof code.evaluate === 'undefined'
+       && typeof code.ownerDocument === 'undefined') {
+        code = selectDom('//Program', treeToHtml(code))
+        code.ownerDocument.toString = toString.bind(code, code)
+    }
+    return selectDom(descriptor, code)
+}
+
+module.exports = {
+    selectCode
+}
+</code></pre>
+
+<p>This code defines a utility for selecting and manipulating code structures, likely within a larger code analysis or transformation system.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><p><strong>Dependencies:</strong> It relies on several libraries: <code>fs</code> for file system operations, <code>jison</code> for parsing grammars, and <code>importer</code> for accessing other functionalities.</p></li>
+<li><p><strong><code>getParser(jisonFile)</code>:</strong> This function takes a Jison grammar file (either a path or a string) and returns a Jison parser instance. It handles both file-based and interpreted grammars.</p></li>
+<li><p><strong><code>toString(ctx, subctx)</code>:</strong> This function converts an abstract syntax tree (AST) into a string representation using <code>escodegen</code>. It supports comments, tokens, and whitespace formatting.</p></li>
+<li><p><strong><code>selectCode(descriptor, code, language)</code>:</strong> This is the core function. It takes a code snippet (string or function), a language specification, and a descriptor (likely a JSEL-like query) to select a specific part of the code.</p>
+<ul>
+<li>It handles various input types for <code>code</code>, including functions, strings, and file paths.</li>
+<li>It parses the code using a Jison parser based on the specified <code>language</code>.</li>
+<li>It uses <code>selectDom</code> to select the desired part of the parsed code based on the <code>descriptor</code>.</li>
+<li>It converts the selected code to a string representation using <code>toString</code>.</li>
+</ul></li>
+<li><p><strong>Exports:</strong> The module exports the <code>selectCode</code> function, making it available for use in other parts of the system.</p></li>
+</ul>
+<p>In essence, this code provides a way to query and extract specific parts of code based on a grammar and a selection descriptor.</p>

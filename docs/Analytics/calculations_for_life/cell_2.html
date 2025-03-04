@@ -1,0 +1,14 @@
+
+
+<pre><code>
+function getSequenceNumeral(pre, count) {
+  var digitCount = Math.ceil(count / 10) + 1
+  var result = 0
+  for(var i = 1; i < digitCount; i++) {
+    result += pre * Math.pow(10, i)
+  }
+  return result + (count % 10)
+}
+
+getSequenceNumeral(3, 1)</code></pre>
+

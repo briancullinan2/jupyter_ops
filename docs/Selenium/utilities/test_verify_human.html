@@ -1,0 +1,48 @@
+<p>Here's a summary of the code breakdown in 2 sentences:</p>
+<p>The <code>testVerify</code> function is an asynchronous function that checks if a provided <code>page</code> parameter is falsy, sets it to a default value if so, navigates to the specified <code>page</code> using a Selenium driver, and calls the <code>verifyHuman</code> function to verify a user is human. The <code>testVerify</code> function is then exported as a module, making it available for use in other JavaScript files.</p>
+
+
+<pre><code>const getClient = importer.import('selenium client')
+const verifyHuman = importer.import('verify human')
+
+async function testVerify(page) {
+  let driver = await getClient()
+
+  if(!page) {
+    page = 'https://medium.com/@hanton.yang/how-to-create-a-360-video-player-with-opengl-es-3-0-and-glkit-360-3f29a9cfac88'
+  }
+
+  await driver.get(page)
+
+  return await verifyHuman()
+}
+
+
+module.exports = {
+  testVerify
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Imported Modules</h4>
+<ul>
+<li><code>getClient</code> and <code>verifyHuman</code> are imported functions from external modules:
+<ul>
+<li><code>getClient</code> is imported from <code>selenium client</code></li>
+<li><code>verifyHuman</code> is imported from <code>verify human</code></li>
+</ul></li>
+</ul>
+<h4><code>testVerify</code> Function</h4>
+<ul>
+<li><code>async function testVerify(page)</code>: an asynchronous function named <code>testVerify</code> that takes a <code>page</code> parameter.</li>
+<li>Within the function:
+<ul>
+<li>It checks if the <code>page</code> parameter is falsy (null, undefined, empty string, etc.). If so, it sets the <code>page</code> to a default value (<code>https://medium.com/@hanton.yang/how-to-create-a-360-video-player-with-opengl-es-3-0-and-glkit-360-3f29a9cfac88</code>).</li>
+<li>It creates a Selenium driver using <code>getClient</code> and navigates to the specified <code>page</code>.</li>
+<li>It returns the result of calling <code>verifyHuman</code>, which is expected to be an asynchronous operation.</li>
+</ul></li>
+</ul>
+<h4>Module Exports</h4>
+<ul>
+<li>The <code>testVerify</code> function is exported as a module using <code>module.exports</code>. This makes it available for use in other JavaScript files.</li>
+</ul>

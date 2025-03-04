@@ -1,0 +1,130 @@
+<p>Here is a two-sentence summary of the provided code:</p>
+<p>This JavaScript module exports a <code>testProcessKernel</code> function that creates a new kernel instance and tests its functionality by executing a message and shutting down the kernel. The function uses the <code>bashKernel</code> function to create a new kernel instance and sets up a custom <code>do_respond</code> function to simulate a response to executed messages.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {processMetaKernel} = processMethods = importer.import('process meta kernel')
+var metaKernelInterface = importer.import('meta kernel interface');
+var interface = importer.import('enforcing an interface');
+
+function do_respond(message) {
+    console.log(`response "${message.toString()}"`);
+}
+
+// TODO: move this to ibash kernel below
+function testProcessKernel() {
+    return new Promise(resolve => {
+        var kernel = bashKernel({
+            do_respond: (message) => {
+                setTimeout(resolve.bind(kernel, kernel), 1000);
+                return do_respond(message);
+            },
+            kernel_config: {
+                autoinit: true, 
+                // because its a test with no connection file
+                //   so native doesn't automatically start
+            }
+        })
+
+        setTimeout(() => {
+            console.log(interface(kernel, metaKernelInterface, false))
+            console.log(kernel.do_message({do_execute: `hello`}))
+        }, 500)
+    })
+    .then(kernel => console.log(kernel.do_shutdown()))
+}
+
+module.exports = testProcessKernel;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    testNodeProcessKernel();
+    
+    /* expected output
+    undefined
+    undefined
+    2
+    2
+    */
+
+}
+</code></pre>
+
+<h2><strong>Overview</strong></h2>
+<p>This code defines a JavaScript module that exports a <code>testProcessKernel</code> function. The function creates a new instance of a kernel using the <code>bashKernel</code> function and tests its functionality by executing a message and shutting down the kernel.</p>
+<h2><strong>Importing and Initializing Variables</strong></h2>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {processMetaKernel} = processMethods = importer.import('process meta kernel')
+var metaKernelInterface = importer.import('meta kernel interface');
+var interface = importer.import('enforcing an interface');
+</code></pre>
+<ul>
+<li>The code imports modules from a parent directory (<code>../Core</code>) using the <code>require</code> function.</li>
+<li>It then imports specific functions and variables from the imported modules using the <code>import</code> function.</li>
+</ul>
+<h2><strong>Defining Functions</strong></h2>
+<pre><code class="language-javascript">function do_respond(message) {
+    console.log(`response &quot;${message.toString()}&quot;`);
+}
+
+function testProcessKernel() {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>do_respond</code> function logs a response to the console with the provided message.</li>
+<li>The <code>testProcessKernel</code> function creates a new kernel instance and tests its functionality.</li>
+</ul>
+<h2><strong>Creating a Kernel Instance and Testing Its Functionality</strong></h2>
+<pre><code class="language-javascript">function testProcessKernel() {
+    return new Promise(resolve =&gt; {
+        var kernel = bashKernel({
+            do_respond: (message) =&gt; {
+                setTimeout(resolve.bind(kernel, kernel), 1000);
+                return do_respond(message);
+            },
+            kernel_config: {
+                autoinit: true, 
+                // because its a test with no connection file
+                //   so native doesn't automatically start
+            }
+        })
+
+        setTimeout(() =&gt; {
+            console.log(interface(kernel, metaKernelInterface, false))
+            console.log(kernel.do_message({do_execute: `hello`}))
+        }, 500)
+    })
+   .then(kernel =&gt; console.log(kernel.do_shutdown()))
+}
+</code></pre>
+<ul>
+<li>The <code>testProcessKernel</code> function creates a new kernel instance using the <code>bashKernel</code> function.</li>
+<li>It sets up the kernel instance with a custom <code>do_respond</code> function that logs a response to the console after a 1-second delay.</li>
+<li>After creating the kernel instance, the code waits for 500 milliseconds and then executes the following:
+<ul>
+<li>Logs the result of calling the <code>interface</code> function with the kernel instance and <code>metaKernelInterface</code> as arguments.</li>
+<li>Executes a message on the kernel instance with the <code>do_execute</code> property set to <code>&quot;hello&quot;</code>.</li>
+<li>Logs the result of calling the <code>do_shutdown</code> function on the kernel instance.</li>
+</ul></li>
+</ul>
+<h2><strong>Exporting and Running the <code>testProcessKernel</code> Function</strong></h2>
+<pre><code class="language-javascript">module.exports = testProcessKernel;
+
+if(typeof $$!== 'undefined') {
+    $$.async();
+    testNodeProcessKernel();
+    
+    /* expected output
+    undefined
+    undefined
+    2
+    2
+    */
+
+}
+</code></pre>
+<ul>
+<li>The code exports the <code>testProcessKernel</code> function as a module.</li>
+<li>If the <code>$</code> variable is defined, it runs the <code>async</code> function on it and then calls the <code>testNodeProcessKernel</code> function.</li>
+</ul>

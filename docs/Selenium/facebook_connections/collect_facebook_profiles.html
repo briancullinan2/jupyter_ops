@@ -1,0 +1,132 @@
+<p>This code automates the process of scraping Facebook friend data using Selenium, storing it in a file, and providing a method to access the extracted friend URLs. It utilizes <code>jsdom</code> for parsing the scraped HTML and custom modules for interacting with Facebook and managing data.</p>
+
+
+<pre><code>var {JSDOM} = require('jsdom');
+var fs = require('fs');
+var path = require('path');
+var glob = require('glob');
+var assert = require('assert');
+var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+var loginFacebook,
+    likeAllPosts,
+    getAllXPath,
+    scrapeFacebookFriends;
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+function parseFacebookFriends() {
+    return getAllXPath([
+        '//a[contains(@href, "friends_tab")]/@href'
+    ])
+    .then(friends => {
+        return friends
+          .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+          .map(f => f.replace(/\?.*$/ig, ''))
+    })
+}
+
+var FRIENDS_FILE;
+function collectFacebookProfiles() {
+    var fresh;
+    return runSeleniumCell([
+        'log in facebook',
+        'like all facebook posts',
+        'scrape facebook profile',
+        'scrape facebook friends',
+    ])
+        .then(r => ({
+            loginFacebook,
+            likeAllPosts,
+            scrapeFacebookFriends
+        } = r).loginFacebook())
+        // TODO: abstract this data collection from JSDOM
+        // TODO: only scrape once per day? use last file instead?
+        //.then(() => scrapeFacebookFriends())
+        .then(() => {
+            var friends = glob.sync('**/*friend*', {cwd: project, nodir: true});
+            friends.sort((a, b) => 
+                new Date(fs.statSync(path.join(project, a)).mtime).getTime()
+                    - new Date(fs.statSync(path.join(project, b)).mtime).getTime());
+            FRIENDS_FILE = path.join(project, friends.pop());
+            return fs.readFileSync(FRIENDS_FILE).toString();
+        })
+        .then(doc => {
+            // call script to get all Facebook friends
+            var dom = new JSDOM(doc);
+            getAllXPath = importer.import('all elements xpath',  {
+                client: {
+                    execute: (func, ...args) => Promise.resolve({
+                        value: func.apply(dom.window.document, args)
+                    }),
+                    addCommand: () => {
+                    }
+                },
+                document: dom.window.document,
+                XPathResult: {ORDERED_NODE_ITERATOR_TYPE: 5}
+            })
+            return parseFacebookFriends();
+        })
+        .then(friends => {
+            assert(friends.length > 0, FRIENDS_FILE + ' should have friends links in it')
+            // use glob.sync to make sure every friend is hit at least once in a rotation
+            var existingPosts = glob.sync('**/*-posts-*.json', {cwd: project});
+            // TODO: way to tell which part of the URL is unique?
+            var friendCount = friends.length;
+            fresh = friends.filter(profile => {
+                const profileId = profile.replace(/^\/|\/$/ig, '').split('/').pop()
+                .replace(/[^a-z0-9]/ig, '_');
+                // TODO: check for file.stat instead of year?
+                return existingPosts.indexOf(profileId
+                    + '-posts-' + (new Date()).getFullYear() + '.json') === -1;
+            });
+            const percent = Math.round((friendCount - fresh.length) / friendCount * 100);
+            console.log((friendCount - fresh.length) + ' / ' + friendCount + ' : '
+                + percent
+                + '%');
+            //return percent === 100 ? scrapeFacebookFriends() : [];
+        })
+        .then(() => {
+            const rand = Math.round(fresh.length * Math.random());
+            console.log(fresh.slice(rand, rand + 1));
+            return importer.runAllPromises(fresh.slice(rand, rand + 1)
+                .map(p => (resolve) => likeAllPosts(p, null).then(r => resolve(r))));
+        })
+};
+module.exports = collectFacebookProfiles;
+</code></pre>
+
+<p>This code is designed to scrape Facebook friend data and process it. Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>jsdom</code> for DOM manipulation, <code>fs</code> for file system operations, <code>path</code> for path manipulation, <code>glob</code> for finding files, <code>assert</code> for assertions, and custom modules from <code>../Core</code>.</li>
+<li>Defines constants for the project directory (<code>PROFILE_PATH</code>) and the project's data directory (<code>project</code>).</li>
+</ul></li>
+<li><p><strong><code>parseFacebookFriends</code> Function:</strong></p>
+<ul>
+<li>Uses <code>getAllXPath</code> (imported from <code>../Core</code>) to extract Facebook friend URLs from a given HTML document.</li>
+<li>Filters out duplicate URLs and removes query parameters.</li>
+</ul></li>
+<li><p><strong><code>collectFacebookProfiles</code> Function:</strong></p>
+<ul>
+<li>Runs a series of Selenium commands (imported from <code>../Core</code>) to:
+<ul>
+<li>Log in to Facebook.</li>
+<li>Like all Facebook posts.</li>
+<li>Scrape Facebook profile data.</li>
+<li>Scrape Facebook friends data.</li>
+</ul></li>
+<li>Retrieves the latest scraped friends file using <code>glob</code> and <code>fs</code>.</li>
+<li>Parses the HTML content of the friends file using <code>jsdom</code>.</li>
+<li>Sets up <code>getAllXPath</code> with a custom client that uses the <code>jsdom</code> instance.</li>
+</ul></li>
+</ol>
+<p><strong>Overall, this code:</strong></p>
+<ul>
+<li>Scrapes Facebook friend data using Selenium.</li>
+<li>Processes the data to extract unique friend URLs.</li>
+<li>Stores the scraped data in a file.</li>
+<li>Provides a way to access the scraped data using <code>getAllXPath</code>.</li>
+</ul>

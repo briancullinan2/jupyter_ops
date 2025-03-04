@@ -1,0 +1,189 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This JavaScript code appears to be part of a parser or tree-traversal function that handles tasks such as special character handling, filtering object properties, and converting a tree-like data structure to a string representation. The main function, <code>treeToStr</code>, recursively traverses the tree, extracting information from statement objects and using parser objects to resolve rule names and input strings.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {selectDom} = importer.import('select tree')
+
+//TODO: remove \u200b characters
+var specialChars = (str) => {
+    var special = {
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&apos;'
+    }
+    Object.keys(special).forEach(s => {
+        str = (str || '').replace(new RegExp(s, 'ig'), special[s])
+    })
+    return str
+}
+
+function filterObject(obj) {
+  let result = {}
+  for(var i in obj) {
+    if(i == 'children' || i == 'parentCtx') {
+      continue
+    }
+    result[i] = obj[i]
+  }
+  return result
+}
+
+function treeToStr(statement, parent, parser) {
+    var {type, ruleIndex, start, stop, exception, strdata} = statement;
+
+    if(typeof start == 'object') {
+        statement['start'] = start.start
+        statement['line'] = start.line
+    }
+    if(typeof stop == 'object') {
+        statement['stop'] = stop.stop
+    }
+
+    if(!parser)
+        parser = (statement.parentCtx ? statement.parentCtx.parser : statement.parser)
+
+
+    if(typeof type == 'number') {
+        type = parser.ruleNames[type]
+    } else
+    if(typeof ruleIndex == 'number') {
+        type = parser.ruleNames[ruleIndex]
+        statement.type = type
+    }
+
+    if(exception) {
+        return ''
+    }
+
+    if(!strdata && statement.start && statement.stop && statement.type) {
+        statement.strdata = parser.input.substring(statement.start, statement.stop + 1)
+    }
+
+    var result = ``, attrs = ``;
+    var isList = true;
+    for(var i in statement) {
+        if(parseInt(i) + '' === i + '') {
+            result += treeToStr(statement[i], parent, parser)
+            continue;
+        }
+        if(i == 'parentCtx' || i == 'parser' || i[0] == '_' || i == 'exception' || i == 'source') {
+            continue
+        }
+
+        if(i == 'strdata') {
+            statement[i] = statement[i].split('\n')[0]
+        }
+
+        if(i == 'type' && typeof statement[i] == 'number') {
+            statement[i] = parser.ruleNames[statement[i]]
+        }
+
+        isList = false;
+        var jsType = typeof statement[i];
+        if(jsType === 'object' && statement[i]) {
+            jsType = Object.getPrototypeOf(statement[i]).constructor.name;
+        }
+
+        if(i == 'symbol' && jsType == 'vt') {
+            continue
+        }
+
+        // if the property is an Object, print out as a child
+        // TODO: replace this type property when converting other trees
+        //   should be like getEl() treeToStr(() => el.type)
+        if(statement[i] && typeof statement[i].type !== 'undefined'
+           // or if the property is an Array,
+           //   print them out as child elements
+           || (Array.isArray(statement[i]) /* && statement[i].length
+           && typeof statement[i][0].type !== 'undefined' */)
+        ) {
+            // print out the other keys just for fun matching
+            attrs +=  `
+${i}="" ${i}-type="${jsType}"`;
+            result += `
+${treeToStr(statement[i], i, parser)}`
+            // output as child element and <-attr> elements
+            //   for posterity, only child elements are return on the select,
+            //   but attr elements can still be matched
+        } else {
+            // if the property is not an object, i.e. native types
+            if(typeof statement[i] == 'object' && statement[i] !== null) {
+                attrs +=  `
+${i}="${specialChars(JSON.stringify(filterObject(statement[i])))}" ${i}-type="${jsType}"`
+            } else if(typeof statement[i] !== 'string') {
+                attrs +=  `
+${i}="${specialChars(JSON.stringify(statement[i]))}" ${i}-type="${jsType}"`
+            } else {
+                attrs +=  `
+${i}="${specialChars(statement[i])}" ${i}-type="${jsType}"`
+            }
+        }
+    }
+    
+    return isList ? result : `
+<${type}${attrs}${parent ? `
+ parent-attr="${parent}"`: ``}>${result}</${type}>`
+}
+
+function treeToHtml(tree) {
+    var body = treeToStr(tree);
+    require('fs').writeFileSync('text.html', body)
+    return selectDom('//BODY', '<BODY>' + body + '</BODY>');
+}
+
+module.exports = {treeToHtml}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This code appears to be a part of a parser or a tree-traversal function. It's written in JavaScript and uses Node.js's <code>require</code> function to import other modules. Here's a brief explanation of the code:</p>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {selectDom} = importer.import('select tree')
+</code></pre>
+<p>This code imports a module from <code>../Core</code> and extracts the <code>selectDom</code> function from it.</p>
+<h3>Special Character Handling</h3>
+<pre><code class="language-javascript">var specialChars = (str) =&gt; {
+    var special = {
+        '&amp;':'&amp;amp;',
+        '&lt;':'&amp;lt;',
+        '&gt;':'&amp;gt;',
+        '&quot;':'&amp;quot;',
+        &quot;'&quot;:'&amp;apos;'
+    }
+    Object.keys(special).forEach(s =&gt; {
+        str = (str || '').replace(new RegExp(s, 'ig'), special[s])
+    })
+    return str
+}
+</code></pre>
+<p>This function takes a string as input and replaces special characters with their HTML entity equivalents. This is likely used to escape special characters in text data.</p>
+<h3>Filtering Object Properties</h3>
+<pre><code class="language-javascript">function filterObject(obj) {
+  let result = {}
+  for(var i in obj) {
+    if(i == 'children' || i == 'parentCtx') {
+      continue
+    }
+    result[i] = obj[i]
+  }
+  return result
+}
+</code></pre>
+<p>This function takes an object as input and returns a new object with some properties filtered out. Specifically, it ignores properties named <code>'children'</code> and <code>'parentCtx'</code>.</p>
+<h3>Tree to String Conversion</h3>
+<pre><code class="language-javascript">function treeToStr(statement, parent, parser) {
+    //...
+}
+</code></pre>
+<p>This is the main function of interest. It takes a statement object, an optional parent object, and a parser object as input. It appears to recursively traverse a tree-like data structure, converting each statement to a string representation.</p>
+<p>The function performs several tasks:</p>
+<ul>
+<li>It extracts information from the statement object, such as its type, rule index, start and stop positions, and exception status.</li>
+<li>It uses a parser object to resolve rule names and input strings.</li>
+<li>It recursively calls itself to traverse the tree, building a string representation of each statement.</li>
+<li>It handles special cases, such as exception status and parent-child relationships.</li>
+</ul>
+<p>This function seems to be used to serialize a tree-like data structure into a human-readable string representation.</p>

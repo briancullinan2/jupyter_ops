@@ -1,0 +1,56 @@
+<p>Here's a summary of the <code>askLlamaAboutCode</code> function in one sentence:</p>
+<p>The <code>askLlamaAboutCode</code> function takes a code snippet, asks a large language model (LLM) named Llama to provide a short breakdown, and returns the AI's response.</p>
+<p>If you'd like a two-sentence summary, here it is:</p>
+<p>The <code>askLlamaAboutCode</code> function takes a code snippet as input, breaks it down using a large language model named Llama, and returns the AI's response in a clear and concise manner. This function can be imported and used in other parts of an application to provide explanations of code snippets.</p>
+
+
+<pre><code>
+
+async function askLlamaAboutCode(code) {
+  const {llmPrompt} = await importer.import('create llm session')
+
+  const q2 = "Give me a short breakdown of this code:\n" + code.substr(0, 2048) + "\nDocumentation only, discard any friendly remarks.";
+  console.log("User: " + q2);
+
+  const a2 = await llmPrompt(q2);
+  console.log("AI: " + a2);
+
+  return a2.trim()
+}
+
+module.exports = {
+  askLlamaAboutCode,
+}
+</code></pre>
+
+<h1><strong>Function Breakdown: <code>askLlamaAboutCode</code></strong></h1>
+<h3>Purpose</h3>
+<p>The <code>askLlamaAboutCode</code> function takes a code snippet as input, asks a large language model (LLM) named Llama to provide a short breakdown of the code, and returns the AI's response.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>code</code>: The code snippet to be explained, limited to 2048 characters.</li>
+</ul>
+<h3>Function Flow</h3>
+<ol>
+<li>Import the <code>create llm session</code> module using <code>importer</code>.</li>
+<li>Create a query string (<code>q2</code>) by concatenating a prompt (&quot;Give me a short breakdown of this code...&quot;) with the first 2048 characters of the input code.</li>
+<li>Log the user's query (<code>q2</code>) to the console.</li>
+<li>Call the LLM session to generate a response (<code>a2</code>) based on the query.</li>
+<li>Log the AI's response (<code>a2</code>) to the console.</li>
+<li>Trim the AI's response to remove any unnecessary whitespace and return it.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>askLlamaAboutCode</code> function is exported as a module, allowing it to be imported and used in other parts of the application.</p>
+<p><strong>Example Usage</strong></p>
+<pre><code class="language-markdown">import { askLlamaAboutCode } from './askLlamaAboutCode.js';
+
+const code = `
+function add(a, b) {
+  return a + b;
+}
+`;
+
+const breakdown = await askLlamaAboutCode(code);
+console.log(breakdown);
+</code></pre>
+<p>This code snippet would ask Llama to provide a short breakdown of the <code>add</code> function code and log the response to the console.</p>

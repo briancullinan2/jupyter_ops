@@ -1,0 +1,84 @@
+<p>This code defines a function <code>bulkUploadEloqua</code> that securely authenticates with Eloqua, handles import definition setup, and then uploads account data in bulk to Eloqua. It's likely designed to be used within a Lambda function for serverless execution.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var eloquaImport = importer.import('eloqua import service');
+var eloquaObjects = importer.import('eloqua existing import');
+
+module.exports = {
+    bulkUploadEloqua,
+};
+
+function bulkUploadEloqua(accounts, eloquaConfig, instanceId, executionId) {
+    var eloquaToken, importUri;
+    return eloquaImport.eloquaOauth(eloquaConfig)
+        .then(token => {
+            eloquaToken = token;
+            assert(token.expires > (new Date()).getTime());
+            if(instanceId) {
+                return eloquaImport.createInstanceDefinition(instanceId, executionId, eloquaToken, eloquaConfig)
+            } else {
+                // get custom data object ID from API
+                var existingId;
+                return eloquaObjects.getCustomDataObject(eloquaToken, eloquaConfig)
+                    .then(existing => {
+                        if(!existing) {
+                            throw new Error('Eloqua custom data object not configured.')
+                        }
+                        existingId = existing.uri.split('/').pop();
+                        return eloquaObjects.getImportDefinitions(existing.uri, eloquaToken, eloquaConfig);
+                    })
+                    .then(importDef => importDef
+                          ? importDef.uri
+                          : eloquaImport.createImportDefinition(existingId, eloquaToken, eloquaConfig))
+            }
+        })
+        .then(r => {
+            importUri = r;
+            return eloquaImport.startBulkImportData(accounts, importUri, eloquaToken, eloquaConfig);
+        })
+        .then(() => eloquaImport.completeBulkImportSync(importUri, eloquaToken, eloquaConfig))
+        .then(() => accounts)
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    bulkUploadEloqua()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code defines a function <code>bulkUploadEloqua</code> that handles the bulk upload of account data to Eloqua.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules for Eloqua interaction and assertion testing.</li>
+<li>It defines the <code>bulkUploadEloqua</code> function, which takes account data, Eloqua configuration, instance ID (optional), and execution ID (optional) as input.</li>
+</ul></li>
+<li><p><strong>Eloqua Authentication:</strong></p>
+<ul>
+<li>It first obtains an Eloqua access token using <code>eloquaOauth</code>.</li>
+<li>It asserts that the token is valid (expires in the future).</li>
+</ul></li>
+<li><p><strong>Import Definition Handling:</strong></p>
+<ul>
+<li>If an instance ID is provided, it creates an instance definition in Eloqua.</li>
+<li>Otherwise, it retrieves an existing custom data object ID and either uses an existing import definition or creates a new one.</li>
+</ul></li>
+<li><p><strong>Bulk Import Process:</strong></p>
+<ul>
+<li>It starts a bulk import using the obtained import URI, Eloqua token, and account data.</li>
+<li>It then synchronously completes the import process.</li>
+</ul></li>
+<li><p><strong>Result Handling:</strong></p>
+<ul>
+<li>Finally, it returns the uploaded account data.</li>
+</ul></li>
+<li><p><strong>Lambda Function Integration:</strong></p>
+<ul>
+<li>The code includes a conditional block that suggests it's intended for use within a Lambda function, handling asynchronous execution and result/error sending.</li>
+</ul></li>
+</ol>

@@ -1,0 +1,68 @@
+<p>This code defines a function that extracts <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags from HTML content, processing links and scripts to include their content dynamically. It then combines the extracted styles and scripts into a single string and returns the result.</p>
+
+
+<pre><code>function getScriptsAndStyles(content, additional = '0.*.js') {
+    var output = content.match(/<style.*?\/style>/ig) || '';
+    var scripts = ``;
+
+    var m, re = (/<link.*?>/ig);
+    while (m = re.exec(content)) {
+        var src;
+        if ((src = (/href="(.*?)"/ig).exec(m[0])) != null && src[1].indexOf('google') == -1) {
+            scripts += '<style>' + fs.readFileSync(path.join(project, 'public', src[1])) + '</style>';
+        } else {
+            scripts += m[0];
+        }
+    }
+
+    var m, re = (/<script.*?\/script>/ig);
+    while (m = re.exec(content)) {
+        var src;
+        if ((src = (/src="(.*?)"/ig).exec(m[0])) != null) {
+            scripts += '<script defer>'
+                + fs.readFileSync(path.join(project, 'public', src[1]))
+                + '</script>';
+        } else {
+            scripts += m[0];
+        }
+    }
+
+    return output + scripts;
+};
+module.exports = getScriptsAndStyles;
+getScriptsAndStyles;
+
+</code></pre>
+
+<p>This code defines a function <code>getScriptsAndStyles</code> that extracts and processes <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags from HTML content.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It initializes an empty string <code>output</code> to store the extracted styles.</li>
+<li>It initializes an empty string <code>scripts</code> to store the extracted scripts.</li>
+</ul></li>
+<li><p><strong>Extracting Styles:</strong></p>
+<ul>
+<li>It uses a regular expression to find all <code>&lt;style&gt;</code> tags within the input <code>content</code> and stores them in the <code>output</code> variable.</li>
+</ul></li>
+<li><p><strong>Processing Links:</strong></p>
+<ul>
+<li>It iterates through all <code>&lt;link&gt;</code> tags using a regular expression.</li>
+<li>For each <code>&lt;link&gt;</code> tag, it checks if it has a <code>href</code> attribute and if the URL doesn't contain &quot;google&quot;.</li>
+<li>If the conditions are met, it reads the content of the linked file using <code>fs.readFileSync</code> and adds it as a <code>&lt;style&gt;</code> tag to the <code>scripts</code> variable.</li>
+<li>Otherwise, it simply adds the original <code>&lt;link&gt;</code> tag to <code>scripts</code>.</li>
+</ul></li>
+<li><p><strong>Processing Scripts:</strong></p>
+<ul>
+<li>It iterates through all <code>&lt;script&gt;</code> tags using a regular expression.</li>
+<li>For each <code>&lt;script&gt;</code> tag, it checks if it has a <code>src</code> attribute.</li>
+<li>If the condition is met, it reads the content of the linked script file using <code>fs.readFileSync</code> and adds it as a <code>&lt;script&gt;</code> tag with <code>defer</code> attribute to the <code>scripts</code> variable.</li>
+<li>Otherwise, it simply adds the original <code>&lt;script&gt;</code> tag to <code>scripts</code>.</li>
+</ul></li>
+<li><p><strong>Returning Combined Content:</strong></p>
+<ul>
+<li>Finally, it combines the extracted styles (<code>output</code>) and processed scripts (<code>scripts</code>) and returns the result.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions.</p>

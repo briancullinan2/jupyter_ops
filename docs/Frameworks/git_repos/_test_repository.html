@@ -1,0 +1,46 @@
+<p>This code sets up a local Git repository for Selenium testing by either cloning an existing repository with the &quot;Buy_funnel&quot; branch or creating a new one if it doesn't exist.</p>
+
+
+<pre><code>mkdir -r selenium/repository
+cd selenium/repository
+git branch | grep 'Buy_funnel' &> /dev/null
+if [ $? != 0 ]; then
+   git clone -b Buy_funnel https://github.com/username/repository.git ./
+fi
+cd ../../
+</code></pre>
+
+<p>This code snippet automates the setup of a Git repository for Selenium testing, specifically targeting a branch named &quot;Buy_funnel&quot;.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>mkdir -r selenium/repository</code></strong>:</p>
+<ul>
+<li>Creates a new directory named &quot;repository&quot; within a directory called &quot;selenium&quot; if it doesn't already exist. The <code>-r</code> flag ensures that any necessary parent directories are also created.</li>
+</ul></li>
+<li><p><strong><code>cd selenium/repository</code></strong>:</p>
+<ul>
+<li>Changes the current working directory to the newly created &quot;repository&quot; directory.</li>
+</ul></li>
+<li><p><strong><code>git branch | grep 'Buy_funnel' &amp;&gt; /dev/null</code></strong>:</p>
+<ul>
+<li>Lists all existing branches in the repository and pipes the output to <code>grep</code> to search for a branch named &quot;Buy_funnel&quot;.</li>
+<li>The <code>&amp;&gt; /dev/null</code> redirects any output from <code>grep</code> to <code>/dev/null</code>, effectively suppressing it.</li>
+<li>The exit status of the command (whether a match was found) is stored in the <code>$?</code> variable.</li>
+</ul></li>
+<li><p><strong><code>if [ $? != 0 ]; then</code></strong>:</p>
+<ul>
+<li>Checks if the exit status of the previous <code>grep</code> command is not 0 (meaning &quot;Buy_funnel&quot; branch was not found).</li>
+</ul></li>
+<li><p><strong><code>git clone -b Buy_funnel https://github.com/username/repository.git ./</code></strong>:</p>
+<ul>
+<li>If the &quot;Buy_funnel&quot; branch doesn't exist, this line clones the repository from the specified URL (replace &quot;username&quot; and &quot;repository&quot; with the actual values) and checks out the &quot;Buy_funnel&quot; branch.</li>
+</ul></li>
+<li><p><strong><code>fi</code></strong>:</p>
+<ul>
+<li>Marks the end of the <code>if</code> statement.</li>
+</ul></li>
+<li><p><strong><code>cd ../../</code></strong>:</p>
+<ul>
+<li>Changes the current working directory back up two levels, effectively moving out of the &quot;selenium/repository&quot; directory.</li>
+</ul></li>
+</ol>

@@ -1,0 +1,72 @@
+<p>This code automates the login process to multiple websites defined in a JSON file, likely for the purpose of web scraping or further interaction, using a custom <code>multiCrawl</code> function. It reads credentials from a local file and executes the logins asynchronously, sending results and handling errors through a testing framework.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var multiCrawl = importer.import('multi crawl');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'passwords.json');
+
+function testLogins() {
+    var sites = JSON.parse(fs.readFileSync(PASSWORDS_FILE)).map(s => s.host);
+    sites = [
+        'twitter.com',
+        'linkedin.com',
+        /*
+        'angel.co',
+        'linkedin.com',
+        'facebook.com',
+        'github.com',
+        'plus.google.com'
+        */
+    ];
+
+    console.log(sites);
+    return multiCrawl(sites.map(s => 'https://' + s), 'log in multiple sites');    
+}
+module.exports = testLogins;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    testLogins()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+
+</code></pre>
+
+<p>This code snippet is designed to automate the login process to multiple websites and potentially scrape or interact with them. Here's a breakdown:</p>
+<p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js built-in module for file system operations (reading files).</li>
+<li><code>path</code>: Node.js built-in module for working with file paths.</li>
+<li><code>importer</code>: A custom module (likely providing utility functions and potentially Selenium integration).</li>
+<li><code>multiCrawl</code>: A function imported from the <code>importer</code> module, presumably responsible for crawling multiple websites concurrently.</li>
+</ul>
+<p><strong>Variables:</strong></p>
+<ul>
+<li><code>PROFILE_PATH</code>: Determines the user's home directory.</li>
+<li><code>PASSWORDS_FILE</code>: Specifies the path to a JSON file containing website credentials (hostnames and passwords).</li>
+</ul>
+<p><strong>Function:</strong></p>
+<ul>
+<li><code>testLogins()</code>:
+<ul>
+<li>Reads the <code>passwords.json</code> file and extracts an array of website hostnames.</li>
+<li>Defines an array <code>sites</code> containing the hostnames to be crawled (can be customized).</li>
+<li>Calls <code>multiCrawl</code> with the list of websites and a description of the task.</li>
+<li>Returns a promise that resolves with the results of the crawling process.</li>
+</ul></li>
+</ul>
+<p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>testLogins</code> function, making it available for use in other parts of the application.</li>
+</ul>
+<p><strong>Execution:</strong></p>
+<ul>
+<li>The <code>if(typeof $$ !== 'undefined')</code> block appears to be a conditional statement for running the code in a specific environment (possibly a testing framework).</li>
+<li>If the environment supports <code>$$</code>, it executes <code>testLogins()</code> asynchronously, sends the results to <code>$$.sendResult</code>, and handles potential errors using <code>$$.sendError</code>.</li>
+</ul>
+<p>Let me know if you have any other questions.</p>

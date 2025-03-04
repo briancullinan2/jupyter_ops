@@ -1,0 +1,66 @@
+<p>This code automates the process of connecting with LinkedIn contacts using Selenium to control a web browser. It takes a list of connections or a single connection as input and attempts to connect with a random subset of them.</p>
+
+
+<pre><code>var importer = require('../Core');
+var glob = require('glob');
+var path = require('path');
+var fs = require('fs');
+var runSeleniumCell = importer.import('run selenium cell');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+
+var listAllConnections, connectLinkedin, loginLinkedIn;
+function addLinkedinConnections(conn, list) {
+    var pages;
+    return runSeleniumCell(['log in linkedin', 'connect on linkedin'])
+        .then(r => {
+            listAllConnections = r[1].listAllConnections;
+            connectLinkedin = r[1].connectLinkedin;
+            loginLinkedIn = r.loginLinkedIn;
+            return loginLinkedIn();
+        })
+        .then(() => typeof conn === 'string' ? [conn] : (typeof conn !== 'undefined' ? conn : listAllConnections(list)))
+        .then(pages => {
+            const rand = Math.round(pages.length / 30 * Math.random()) * 30;
+            console.log(pages.slice(rand, rand + 30));
+            return importer.runAllPromises(pages.slice(rand, rand + 30).map(page => resolve => {
+                return connectLinkedin(page, true)
+                    .then(() => resolve(page))
+                    .catch(e => resolve(e))
+            }));
+        })
+        .then(r => {
+            console.log(r);
+            return r;
+        })
+}
+module.exports = addLinkedinConnections;
+
+</code></pre>
+
+<p>This code defines a function <code>addLinkedinConnections</code> that automates connecting with LinkedIn contacts.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules like <code>runSeleniumCell</code> for interacting with a web browser, <code>glob</code> for file handling, and <code>fs</code> for file system operations.</li>
+<li>It defines paths for storing project data.</li>
+</ul></li>
+<li><p><strong>Function Logic:</strong></p>
+<ul>
+<li><code>addLinkedinConnections</code> takes a <code>conn</code> (connection) and an optional <code>list</code> (list of connections) as input.</li>
+<li>It first runs a Selenium cell to log in to LinkedIn and retrieve functions for listing connections (<code>listAllConnections</code>) and connecting with them (<code>connectLinkedin</code>).</li>
+<li>It then either uses the provided <code>conn</code> or calls <code>listAllConnections</code> to get a list of connections.</li>
+<li>It randomly selects a subset of connections and uses <code>connectLinkedin</code> to attempt to connect with each one.</li>
+<li>Finally, it logs the results and returns them.</li>
+</ul></li>
+<li><p><strong>Key Points:</strong></p>
+<ul>
+<li>The code relies on Selenium to automate browser interactions.</li>
+<li>It handles different input scenarios: a single connection or a list of connections.</li>
+<li>It includes error handling and logging.</li>
+</ul></li>
+</ol>
+<p>Let me know if you'd like a deeper dive into any specific part of the code!</p>

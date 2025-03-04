@@ -1,0 +1,114 @@
+<p>Here's a two-sentence summary of the <code>renderMessages(req, res)</code> function:</p>
+<p>The <code>renderMessages(req, res)</code> function is responsible for rendering a set of messages for a specific conversation based on user query parameters, by parsing dates, loading conversation files, filtering messages, and rendering them in a formatted format. It utilizes Markdown rendering with the <code>remarkable</code> library to format AI-generated messages, and limits the number of rendered messages to 25.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+
+function renderMessages(req, res) {
+  let now = new Date()
+  let when = now
+  if(req.query.when) {
+    when = new Date(parseInt(req.query.when))
+  }
+  let from = new Date(0)
+  if(req.query.from) {
+    from = new Date(parseInt(req.query.from))
+  }
+  //console.log(when.getTime(), from.getTime())
+  if(!req.query.session) {
+    return res.send(importer.interpret('resume chat program').code)
+  }
+  let convoFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+    + String(now.getMonth() + 1).padStart(2, '0') 
+    + '-' + DEFAULT_MODEL
+    + '-' + req.query.session + '.json')
+  // TODO: reload chat
+  if(typeof ACTIVE_CONVERSATIONS[convoFile] == 'undefined') {
+    if(fs.existsSync(convoFile)) {
+      ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+    } else {
+      ACTIVE_CONVERSATIONS[convoFile] = {}
+    }
+  }
+  let messageTimes = Object.keys(ACTIVE_CONVERSATIONS[convoFile]).filter(k => k != 'summaries' && k != 'memories')
+  messageTimes.sort((a, b) => b - a)
+  let compareWhen = when.getTime()
+  let compareFrom = from.getTime()
+  let count = 0
+  let messages = ''
+  for(let i = 0; i < messageTimes.length && count < 25; i++) {
+    if(parseInt(messageTimes[i]) > compareWhen || parseInt(messageTimes[i]) < compareFrom) {
+      continue
+    }
+
+    let message = ACTIVE_CONVERSATIONS[convoFile][messageTimes[i]]
+    // load messages in reverse order because the are sorted from recent to oldest
+    if(typeof message.content != 'undefined') {
+      if(message.user) {
+        messages = '<div id="id-' + messageTimes[i] + '" class="user"><p>User: ' + message.content + '</p></div>\n' + messages
+      } else {
+        const mdHtml = md.render(message.content);
+        messages = '<div id="id-' + messageTimes[i] + '" class="ai">AI: ' + mdHtml + '</div>\n' + messages
+      }
+    } else {
+      if(message.user) {
+        messages = '<div id="id-' + messageTimes[i] + '" class="user"><p>User: Content off the record</p></div>\n' + messages
+      } else {
+        messages = '<div id="id-' + messageTimes[i] + '" class="ai">AI: Content off the record</div>\n' + messages
+      }
+    }
+    count++
+  }
+  return res.send(importer.interpret('resume chat program').code
+    .replace('<div id="messages">', '<div id="messages">' + messages))
+}
+
+module.exports = renderMessages
+</code></pre>
+
+<p><strong>Function Breakdown: <code>renderMessages(req, res)</code></strong></p>
+<h3>Overview</h3>
+<p>The <code>renderMessages(req, res)</code> function is responsible for rendering a set of messages for a specific conversation based on user query parameters.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>req</code>: HTTP request object</li>
+<li><code>res</code>: HTTP response object</li>
+</ul>
+<h3>Logic</h3>
+<ol>
+<li><strong>Date parsing</strong>:
+<ul>
+<li>Extracts <code>when</code> and <code>from</code> dates from query parameters using <code>parseInt()</code>.</li>
+<li>Falls back to current date if <code>when</code> or <code>from</code> parameters are missing.</li>
+</ul></li>
+<li><strong>Conversation file generation</strong>:
+<ul>
+<li>Creates a conversation file path using the current date, session ID, and default model.</li>
+</ul></li>
+<li><strong>Conversation loading</strong>:
+<ul>
+<li>Checks if the conversation file exists and loads its contents into <code>ACTIVE_CONVERSATIONS</code> object.</li>
+<li>Initializes an empty conversation file if it doesn't exist.</li>
+</ul></li>
+<li><strong>Message filtering</strong>:
+<ul>
+<li>Extracts message timestamps from the conversation object.</li>
+<li>Filters out timestamps that are earlier than <code>from</code> or later than <code>when</code>.</li>
+</ul></li>
+<li><strong>Message rendering</strong>:
+<ul>
+<li>Iterates through the filtered message timestamps and extracts message contents.</li>
+<li>Renders messages in the format <code>&lt;div&gt;AI/User: Message content&lt;/div&gt;</code>.</li>
+<li>Returns the rendered messages in the response object.</li>
+</ul></li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The function uses Markdown rendering with <code>remarkable</code> library to format AI-generated messages.</li>
+<li>The <code>count</code> variable is used to limit the number of messages rendered to 25.</li>
+<li>The <code>messages</code> variable is built incrementally using string concatenation.</li>
+</ul>

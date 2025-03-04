@@ -1,0 +1,116 @@
+<p>This code unit tests a module responsible for interacting with the Zuora API to initiate, monitor, and retrieve data exports.  These tests use mocking to simulate API responses and verify the module's functionality in handling various export stages.</p>
+
+
+<pre><code>var assert = require('assert');
+var sinon = require('sinon');
+var importer = require('../Core');
+var {
+    createBulkExportJob,
+    getBulkExportJobStatus,
+    getBulkExportFile,
+    csvToJson,
+} = importer.import('zuora to eloqua.ipynb[0]');
+var request = importer.import('http request polyfill');
+
+var sandbox = sinon.createSandbox();
+var zuoraConfig = {
+    "rest_api_user":"devteam@fakepage.com",
+    "rest_api_password":"pass",
+    "rest_api_url": "http://localhost:18888"
+};
+
+describe('zuora oauth', () => {
+    
+    afterEach(() => {
+        sandbox.restore();
+    })
+    
+    it('should connect to zuora using oauth', () => {
+        const dummyId = '123';
+        const dummyQuery = 'SELECT * FROM Accounts';
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {Id: dummyId } }));
+        
+        return createBulkExportJob(dummyQuery, zuoraConfig)
+            .then(result => {
+                assert.equal(result, dummyId);
+                assert(requestStub.calledOnce, 'request should only be called once');
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[0].json, dummyQuery);
+            });
+    })
+    
+    it('should wait for the export to complete', () => {
+        const dummyId = '12345'
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {Status: 'Completed', FileId: dummyId } }));
+        
+        return getBulkExportJobStatus('123', zuoraConfig)
+            .then(result => {
+                assert.equal(result, dummyId);
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+    it('should download the csv file', () => {
+        const csvFile = 'some,csv,file';
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: csvFile }));
+        
+        return getBulkExportFile('1234', zuoraConfig)
+            .then(result => {
+                assert.equal(result, csvFile);
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+    it('should convert CSV to JSON', () => {
+        const result = csvToJson('some,csv,file\n1,2,3');
+        assert.equal(result[0].file, 3);
+    })
+    
+})
+
+</code></pre>
+
+<p>This code defines unit tests for a module that interacts with the Zuora API to export data and handle the export process.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>assert</code> for assertions, <code>sinon</code> for mocking, and modules related to Zuora API interaction.</li>
+<li>Creates a sandbox using <code>sinon.createSandbox()</code> to isolate test environment.</li>
+<li>Defines a sample <code>zuoraConfig</code> object with placeholder credentials.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li>Defines a test suite using <code>describe('zuora oauth', () =&gt; { ... })</code>.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li><code>afterEach(() =&gt; { sandbox.restore(); })</code>: Restores the sandbox after each test to avoid interference.</li>
+<li><code>it('should connect to zuora using oauth', () =&gt; { ... })</code>:
+<ul>
+<li>Mocks the <code>request</code> function using <code>sandbox.stub(request, &quot;request&quot;)</code> to return a predefined response containing a dummy job ID.</li>
+<li>Calls <code>createBulkExportJob(dummyQuery, zuoraConfig)</code> to test the function.</li>
+<li>Asserts that the returned job ID matches the dummy ID and that the <code>request</code> function was called only once with the correct query.</li>
+</ul></li>
+<li><code>it('should wait for the export to complete', () =&gt; { ... })</code>:
+<ul>
+<li>Similar to the previous test, but mocks the <code>request</code> function to return a response indicating the export is completed and provides a dummy file ID.</li>
+<li>Calls <code>getBulkExportJobStatus('123', zuoraConfig)</code> to test the function.</li>
+<li>Asserts that the returned file ID matches the dummy ID and that the <code>request</code> function was called only once.</li>
+</ul></li>
+<li><code>it('should download the csv file', () =&gt; { ... })</code>:
+<ul>
+<li>Mocks the <code>request</code> function to return a predefined CSV file content.</li>
+<li>Calls <code>getBulkExportFile('1234', zuoraConfig)</code> to test the function.</li>
+<li>Asserts that the returned CSV content matches the dummy CSV file.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Conclusion:</strong></p>
+<p>These tests verify the functionality of the Zuora API interaction module by mocking API responses and asserting the expected behavior.</p></li>
+</ol>

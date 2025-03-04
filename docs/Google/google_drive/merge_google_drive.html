@@ -1,0 +1,107 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code imports dependencies and creates a <code>google</code> object to simplify access to Google APIs, then defines two functions: <code>listDriveFiles</code> to list files in a specified Google Drive folder, and <code>listDrive</code> to list files in the root folder. The <code>listDrive</code> function is exported, and an optional section allows it to be executed using a <code>$$.sendResult</code> method in a testing or debugging context.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var {GoogleAuth} = require('google-auth-library');
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+var authorize = importer.import('google oauth token client')
+
+// TODO: pattern recognized! create a "google" object that does this for every service in the Google discovery list
+var google = {drive: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
+
+//var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+/*
+var credentials;
+if(fs.existsSync('./sheet to web-8ca5784e0b05.json')) {
+    credentials = path.resolve('./sheet to web-8ca5784e0b05.json');
+} else {
+    credentials = path.join(PROFILE_PATH, '.credentials/sheet to web-8ca5784e0b05.json');
+}
+*/
+
+var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/drive'
+];
+
+async function listDriveFiles(drive, folder, pageToken) {
+    var result = await drive.files.list({
+        fields: 'files(kind,id,name,modifiedTime,md5Checksum,mimeType,owners,size,parents,originalFilename)',
+        pageToken: pageToken,
+        q: `'${folder}' in parents and trashed = false`
+        //driveId: 'my-drive',
+        //includeTeamDriveItems: true,
+        //corpora: 'drive',
+        //supportsAllDrives: true
+    })
+    if(result.data.nextPageToken) {
+        var moreFiles = listDriveFiles(drive, folder, result.data.nextPageToken)
+        return result.data.files.concat(moreFiles)
+    } else {
+        return result.data.files
+    }
+}
+
+async function listDrive(folder = 'root') {
+    var client = await authorize(GOOGLE_AUTH_SCOPE)
+    var drive = await google.drive({version: 'v3', auth: client})
+    var files = await listDriveFiles(drive, folder)
+    return files
+}
+
+module.exports = listDrive
+
+if(typeof $$ != 'undefined') {
+    listDrive()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code starts by importing necessary dependencies:</p>
+<pre><code class="language-javascript">var fs = require('fs');
+var path = require('path');
+var {GoogleAuth} = require('google-auth-library');
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+var authorize = importer.import('google oauth token client')
+</code></pre>
+<p>It then creates a <code>google</code> object to simplify access to Google APIs:</p>
+<pre><code class="language-javascript">var google = {drive: ({version, auth}) =&gt; getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth)}
+</code></pre>
+<h3>Defining Constants and Functions</h3>
+<p>The code defines a constant for the Google authentication scope:</p>
+<pre><code class="language-javascript">var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/drive'
+];
+</code></pre>
+<p>It then defines two async functions:</p>
+<h4><code>listDriveFiles</code> function</h4>
+<p>This function lists files in a specified Google Drive folder. It takes three parameters: <code>drive</code> (a Google Drive API client), <code>folder</code> (the ID of the folder to list), and <code>pageToken</code> (the current page token).</p>
+<pre><code class="language-javascript">async function listDriveFiles(drive, folder, pageToken) {
+   ...
+}
+</code></pre>
+<h4><code>listDrive</code> function</h4>
+<p>This function lists files in the root folder of the user's Google Drive account. It takes an optional <code>folder</code> parameter (defaulting to <code>'root'</code>) and returns a list of files.</p>
+<pre><code class="language-javascript">async function listDrive(folder = 'root') {
+   ...
+}
+</code></pre>
+<h3>Exporting the <code>listDrive</code> function</h3>
+<p>The code exports the <code>listDrive</code> function:</p>
+<pre><code class="language-javascript">module.exports = listDrive
+</code></pre>
+<h3>Executing the <code>listDrive</code> function (Commented out)</h3>
+<p>The code includes a conditional statement to execute the <code>listDrive</code> function using a <code>$$.sendResult</code> method, which is likely a part of a testing or debugging framework. This section is currently commented out:</p>
+<pre><code class="language-javascript">if(typeof $$!= 'undefined') {
+    listDrive()
+       .then(r =&gt; $$.sendResult(r))
+       .catch(e =&gt; $$.sendError(e))
+}
+</code></pre>

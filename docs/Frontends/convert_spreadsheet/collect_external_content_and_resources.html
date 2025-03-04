@@ -1,0 +1,129 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code is a part of a web application or static site generator written in JavaScript, which transforms HTML templates into a format usable by a static site generator. It does this by selecting and processing image and URL elements, replacing text nodes with Markdown, adding IDs to headings and paragraphs, and using several dependencies such as <code>stream</code> and <code>remarkable</code>.</p>
+
+
+<pre><code>var {Readable} = require('stream');
+var importer = require('../Core');
+var {Remarkable} = require('remarkable');
+var md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+var importer = require('../Core');
+var {selectDom} = importer.import('select tree');
+
+var TRIM_ENTITIES = /<\/?\s*p\s*>|[\s\n\r]+|<\s*br\s*\/?\s*>/ig
+
+function safeName(name) {
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 40);
+}
+
+function collectExternalResources(page, rendered, routes) {
+    // get all images and urls from template
+    var body = selectDom('*', page);
+    
+    // replace all leaf Text nodes with markdown
+    var textObjs = selectDom([`//*[not(self::STYLE) and contains(., /text())]`], body);
+    textObjs.forEach((parent, i) => {
+        parent.childNodes.forEach(string => {
+            if(string.nodeType !== 3) return;
+            var mdHtml = md.render(string.textContent);
+            // if all markdown did was insert a paragraph and line break, use value instead
+            if(mdHtml.replace(TRIM_ENTITIES, '').trim()
+               != string.textContent.replace(TRIM_ENTITIES, '').trim()) {
+                string.replaceWith.apply(string, selectDom(['//BODY/*'], `<html><body>${mdHtml}</body></html>`));
+            }
+        })
+    })
+    
+    // add IDs to h1, h2, h3, etc elements that match their text contents
+    var headingsObjs = selectDom(['(//h1|//h2|//h3|//h4)[not(@id) and not(./ancestor::nav)]'], body);
+    headingsObjs.forEach(h => h.setAttribute('id', safeName(h.textContent)));
+    
+    var paragraphs = selectDom(['//p'], body)
+    paragraphs.forEach(p => {
+        p.setAttribute('class', selectDom(['.//*'], p)
+                       .map(e => e.tagName).join(' '))
+        var img = selectDom(['.//img'], p)[0]
+        var id = 'id' + safeName(p.textContent || img.src)
+        p.setAttribute('id', id)
+        if(img) {
+            var style = img.ownerDocument.createElement('style')
+            var src = decodeURIComponent(img.getAttribute('src'))
+                .replace(/(-final)*\.[^\.]*$/ig, '')
+            style.appendChild(img.ownerDocument.createTextNode(`
+#${id}:before {background-image: url("${src}-final.jpg");}`));
+            p.parentNode.insertBefore(style, p)
+        }
+    })
+    
+    var linksObjs = selectDom(['//a[@href]'], body);
+    var links = linksObjs.map(l => decodeURIComponent(l.getAttribute('href')));
+    
+    // TODO: convert images and add timestamps, add svg
+    var imgObjs = selectDom(['//img[@src]'], body);
+    var imgs = imgObjs.map(l => decodeURIComponent(l.getAttribute('src')));
+    imgObjs.forEach(img => {
+        var src = decodeURIComponent(img.getAttribute('src'))
+            .replace(/(-final)*\.[^\.]*$/ig, '-final.jpg')
+        img.setAttribute('src', src)
+    })
+
+    // TODO: scan for urls and inline
+    var stylesObjs = selectDom(['//link[@href]'], body);
+    var styles = stylesObjs.map(l => l.getAttribute('href'));
+
+    // TODO: add timestamps and inline
+    var scriptsObjs = selectDom(['//script[@src]'], body);
+    var scripts = scriptsObjs.map(l => l.getAttribute('src'));
+    
+    // TODO: add CSS imports
+    var backgrounds = importer.regexToArray(/url\(['"]?(.*?)['"]?\)/ig, page, 1);
+    
+    var searches = [].concat.apply([], [
+        imgs, styles, backgrounds, scripts
+    ])
+    
+    links.forEach(s => routes[routes.length] = s)
+    searches.forEach(s => rendered[rendered.length] = s)
+    
+    // TODO: copy resource images to output directory
+    var newPage = body.ownerDocument.documentElement.outerHTML
+    backgrounds.forEach(b => newPage = newPage.replace(b, b.replace(/(-final)*\.[^\.]*$/ig, '-final.jpg')))
+    var stream = new Readable();
+    stream.push(newPage);
+    stream.push(null);
+    return Promise.resolve(stream);
+}
+
+module.exports = collectExternalResources;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This code appears to be a part of a web application or a static site generator, written in JavaScript. It transforms HTML templates into a format that can be used by a static site generator. Here's a high-level overview of the code:</p>
+<h3>Dependencies</h3>
+<p>The code requires several dependencies:</p>
+<ul>
+<li><code>stream</code>: for working with streams of data</li>
+<li><code>remarkable</code>: a Markdown parser for rendering Markdown text into HTML</li>
+<li><code>select tree</code>: a library for selecting elements in an HTML document</li>
+</ul>
+<h3>Functions</h3>
+<p>The code defines the following functions:</p>
+<ul>
+<li><code>safeName(name)</code>: takes a string <code>name</code> and returns a safe name by replacing non-alphanumeric characters with hyphens and truncating the result to 40 characters.</li>
+<li><code>collectExternalResources(page, rendered, routes)</code>: the main function that transforms an HTML template into a format that can be used by a static site generator.</li>
+</ul>
+<h3><code>collectExternalResources</code> Function</h3>
+<p>The <code>collectExternalResources</code> function takes three arguments:</p>
+<ul>
+<li><code>page</code>: the HTML template to transform</li>
+<li><code>rendered</code>: an object that is not used in this code snippet</li>
+<li><code>routes</code>: an object that is not used in this code snippet</li>
+</ul>
+<p>The function performs the following tasks:</p>
+<ol>
+<li><strong>Selects all image and URL elements</strong>: uses the <code>selectDom</code> function to select all elements in the HTML template that contain images or URLs.</li>
+<li><strong>Replaces text nodes with Markdown</strong>: uses the <code>Remarkable</code> library to render Markdown text in the HTML template. If the rendered Markdown text is different from the original text, it replaces the original text with the rendered Markdown text.</li>
+<li><strong>Adds IDs to headings</strong>: uses the <code>selectDom</code> function to select headings (h1, h2, h3, etc.) in the HTML template that do not have an ID attribute. It sets the ID attribute of each heading to a safe name generated by the <code>safeName</code> function.</li>
+<li><strong>Adds IDs to paragraphs</strong>: uses the <code>selectDom</code> function to select paragraphs in the HTML template. It sets the ID attribute of each paragraph to a safe name generated by the <code>safeName</code> function. If the paragraph contains an image, it sets the ID attribute to a combination of the paragraph text and the image source.</li>
+</ol>
+<h3>Note</h3>
+<p>The code appears to be incomplete, as it references several variables and functions that are not defined in the code snippet. Additionally, the code seems to be part of a larger application, so some of the functions and variables may be defined elsewhere in the codebase.</p>

@@ -1,0 +1,58 @@
+<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<p>The <code>friendFacebook</code> function performs a series of actions to navigate to a Facebook profile page, check for the &quot;Add Friend&quot; button, and click it to send a friend request. The function is designed to handle user login and profile navigation using Selenium WebDriver and is exported as a module for use in other code.</p>
+
+
+<pre><code>
+const getClient = importer.import('selenium client')
+
+async function friendFacebook(driver, profile) {
+  if(!driver) {
+    driver = await getClient()
+    await loginFacebook(driver)
+  }
+
+  let url = await driver.getCurrentUrl()
+  let loggedIn = url.indexOf(profile) > -1
+  if(!loggedIn) {
+    if(profile.indexOf('facebook.com') == -1) {
+      profile = 'https://www.facebook.com' + profile
+    }
+
+    await driver.get(profile)
+    await new Promise(resolve => setTimeout(resolve, 4000))
+  }
+
+
+  let connectButton
+  try {
+    connectButton = await driver.findElements(By.xpath('//*[@role="button" and contains(., "Add friend")]'))
+  } catch (e) {}
+
+  if(!connectButton[0] || !(await connectButton[0].isDisplayed())) {
+    // todo:
+  } else {
+    await connectButton[0].click()
+
+    await new Promise(resolve => setTimeout(resolve, 1000))
+  }
+
+}
+
+module.exports = friendFacebook
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<p>The code starts by importing the <code>selenium client</code> using the <code>importer.import()</code> function and assigns it to the <code>getClient</code> constant.</p>
+<h4>Function: friendFacebook</h4>
+<p>The <code>friendFacebook</code> function takes two parameters: <code>driver</code> and <code>profile</code>.</p>
+<ul>
+<li>If <code>driver</code> is falsy, it uses the <code>getClient</code> function to get a new <code>driver</code> instance and logs in to Facebook using the <code>loginFacebook</code> function (not shown in this code snippet).</li>
+<li>It then checks the current URL of the <code>driver</code> instance to determine if the user is logged in. If not, it constructs the full URL of the Facebook profile page and navigates to it.</li>
+</ul>
+<h4>Checking for Add Friend Button</h4>
+<p>The code attempts to find an element with the XPath <code>//*[@role=&quot;button&quot; and contains(., &quot;Add friend&quot;)]</code> on the current page, which should be the &quot;Add Friend&quot; button. If the button is not found or not displayed, it skips the rest of the function.</p>
+<h4>Clicking the Add Friend Button</h4>
+<p>If the button is found and displayed, it clicks the button and waits for 1000 milliseconds.</p>
+<h4>Exporting the Function</h4>
+<p>The <code>friendFacebook</code> function is exported as a module using <code>module.exports = friendFacebook</code>.</p>

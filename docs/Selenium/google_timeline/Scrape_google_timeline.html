@@ -1,0 +1,76 @@
+<p>This code provides functions to automate interactions with the Google Maps timeline, including navigating to the page, logging in, selecting a specific date, and handling different page states.</p>
+
+
+<pre><code>var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function selectDate(date) {
+    return client
+        .then(() => fillForm({
+            'Year': date.getFullYear(),
+            'Month': months[date.getMonth()],
+            'Day': date.getDate(),
+        }))
+}
+
+function getGoogleTimeline(date) {
+    console.log('Google: Logging timeline history');
+    return client
+        .getUrl()
+        .then(url => {
+             return client
+                .isVisible('button[jsaction="header.select-today"]')
+                .then(is => url.indexOf('/timeline') === -1 || !is
+                    ? client.url('https://www.google.com/maps/timeline')
+                        .loginGoogle()
+                        .pause(3000)
+                    : []
+                      )
+        })
+        .catch(function (e) {
+            console.log(e);
+        })
+        .then(() => date
+             ? selectDate(date)
+             : client.click('button[jsaction="header.select-today"]'))
+        .pause(3000)
+        .catch(e => console.log(e))
+}
+if (typeof client.getGoogleTimeline == 'undefined') {
+    client.addCommand('getGoogleTimeline', getGoogleTimeline);
+}
+module.exports = getGoogleTimeline;
+</code></pre>
+
+<p>This code snippet defines two functions, <code>selectDate</code> and <code>getGoogleTimeline</code>, that interact with a Google Maps timeline interface.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>months</code> Array:</strong></p>
+<ul>
+<li>Defines an array <code>months</code> containing abbreviated month names.</li>
+</ul></li>
+<li><p><strong><code>selectDate</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>date</code> object as input.</li>
+<li>Uses <code>client</code> (presumably a web automation client) to fill a form with the year, month, and day from the provided date.</li>
+</ul></li>
+<li><p><strong><code>getGoogleTimeline</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>date</code> object as input.</li>
+<li>Uses <code>client.getUrl()</code> to get the current URL.</li>
+<li>Checks if the URL is already on the Google Maps timeline page and if the &quot;Select Today&quot; button is visible.</li>
+<li>If not, navigates to the Google Maps timeline page, logs in to Google, and waits for 3 seconds.</li>
+<li>If a <code>date</code> object is provided, it calls <code>selectDate</code> to fill the form with the specified date.</li>
+<li>Otherwise, it clicks the &quot;Select Today&quot; button.</li>
+<li>Waits for another 3 seconds.</li>
+</ul></li>
+<li><p><strong>Command Registration:</strong></p>
+<ul>
+<li>Checks if a command named <code>getGoogleTimeline</code> already exists on the <code>client</code> object.</li>
+<li>If not, it adds the <code>getGoogleTimeline</code> function as a command to the <code>client</code>.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>getGoogleTimeline</code> function as the main module export.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code provides a way to programmatically interact with the Google Maps timeline, navigating to the timeline page, potentially logging in, selecting a specific date, and handling different scenarios based on the current URL and button visibility.</p>

@@ -1,0 +1,93 @@
+<p>Here's a 2-sentence summary of the provided code:</p>
+<p>The code consists of two functions, <code>doHallucinate</code> and <code>doImagineProxy</code>, which interact with the Discord API to generate images based on user prompts, while implementing content filtering and loading indicators. The functions utilize external libraries and services such as <code>llmPrompt</code> and <code>doStableRequest</code> to create and send the generated images to users.</p>
+
+
+<pre><code>const {patchInteractionImageAttachment} = importer.import('update discord interaction with attachments')
+const {doStableRequest} = importer.import('stable diffusion request')
+const whiskImages = importer.import('whisk images')
+
+async function doHallucinate(interaction) {
+  const {llmPrompt} = await importer.import('create llm session')
+  let a1 = await llmPrompt('Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic:\n' 
+    + interaction.data.options[0].value + '\nFit as much detail as possible in to two or three sentences.')
+  await triggerTyping(interaction.channel_id)
+  if(interaction.guild_id) {
+    let q2 = 'Would this prompt be considered to be rated R or for mature audiences, answer Yes or No only?\n' + a1
+    let a2 = await llmPrompt(q2)
+    if(a2.includes('Yes')) {
+      return await updateInteraction({
+        content: 'I will not.'
+      }, interaction.id, interaction.token)
+    }
+  }
+  await updateInteraction('This could take a while...', interaction.id, interaction.token)
+  let {image} = await doStableRequest(a1)
+  return await patchInteractionImageAttachment(interaction.data.options[0].value + '* -> *' + a1, image, interaction.token)
+}
+
+
+async function doImagineProxy(interaction) {
+  await triggerTyping(interaction.channel_id)
+  if(interaction.guild_id) {
+    const {llmPrompt} = await importer.import('create llm session')
+    let q2 = 'Would this prompt be considered to be rated PG or safe for children, answer Yes or No only?\n' + interaction.data.options[0].value
+    let a2 = await llmPrompt(q2)
+    if(a2.includes('No')) {
+      return await updateInteraction({
+        content: 'I will not.'
+      }, interaction.id, interaction.token)
+    }
+  }
+  await updateInteraction('This could take a while...', interaction.id, interaction.token)
+  let {image} = await doStableRequest(interaction.data.options[0].value)
+  //const fs = require('fs')
+  //fs.writeFileSync('/Users/briancullinan/Downloads/test.png', buff)
+  //console.log(atob(result.data.images[0]))
+  return await patchInteractionImageAttachment(interaction.data.options[0].value, image, interaction.token)
+}
+
+
+async function doWhisk(interaction) {
+  let {image} = await whiskImages(interaction.data.options[0].value, interaction.data.options[1].value, interaction.data.options[2].value)
+  return await patchInteractionImageAttachment(interaction.data.options[0].value, image, interaction.token)
+}
+
+
+module.exports = {
+  doHallucinate,
+  doImagineProxy,
+  doWhisk,
+}
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>The provided code consists of two functions: <code>doHallucinate</code> and <code>doImagineProxy</code>. Both functions are designed to interact with the Discord API and utilize external libraries (<code>importer</code>) to perform various tasks.</p>
+<h3><code>doHallucinate</code> Function</h3>
+<ul>
+<li>This function takes an <code>interaction</code> object as input.</li>
+<li>It uses the <code>llmPrompt</code> function from <code>create llm session</code> to ask the user to imagine a scene that is exotic, weird, bizarre, and detailed.</li>
+<li>If the interaction is in a guild (server), it checks if the prompt is rated R using the <code>llmPrompt</code> function.</li>
+<li>If the prompt is rated R, the function returns an &quot;I will not&quot; response to the interaction.</li>
+<li>Otherwise, it sends a typing indicator to the interaction channel and updates the interaction with a loading message.</li>
+<li>It then uses the <code>doStableRequest</code> function to generate an image based on the prompt.</li>
+<li>Finally, it updates the interaction with the generated image using the <code>patchInteractionImageAttachment</code> function.</li>
+</ul>
+<h3><code>doImagineProxy</code> Function</h3>
+<ul>
+<li>This function takes an <code>interaction</code> object as input.</li>
+<li>It sends a typing indicator to the interaction channel.</li>
+<li>If the interaction is in a guild (server), it checks if the prompt is rated PG using the <code>llmPrompt</code> function.</li>
+<li>If the prompt is not rated PG, the function returns an &quot;I will not&quot; response to the interaction.</li>
+<li>Otherwise, it sends a typing indicator to the interaction channel and updates the interaction with a loading message.</li>
+<li>It then uses the <code>doStableRequest</code> function to generate an image based on the prompt.</li>
+<li>However, the code is incomplete and seems to be missing the return statement.</li>
+</ul>
+<h3>External Functions and Libraries</h3>
+<ul>
+<li><code>importer</code> is an external library used to import various functions and modules.</li>
+<li><code>llmPrompt</code> is a function used to create an LLM (Large Language Model) session and ask a prompt.</li>
+<li><code>doStableRequest</code> is a function used to generate an image based on a prompt.</li>
+<li><code>patchInteractionImageAttachment</code> is a function used to update an interaction with an image attachment.</li>
+<li><code>updateInteraction</code> is a function used to update an interaction with a new content or message.</li>
+<li><code>triggerTyping</code> is a function used to send a typing indicator to a channel.</li>
+</ul>

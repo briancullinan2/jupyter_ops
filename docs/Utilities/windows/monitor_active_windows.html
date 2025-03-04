@@ -1,0 +1,54 @@
+<p>Here's a two-sentence summary of the provided code:</p>
+<p>The C# code, located within the <code>window_tracker</code> namespace, retrieves a list of windows that meet certain conditions (e.g., non-zero height, non-empty title, matching process title) using the <code>FindWindows</code> method from the <code>ProgramExtensions</code> class. The filtered window details, including their titles, process names, and foreground status, are then printed to the console.</p>
+
+
+<pre><code>using System;
+using System.Linq;
+
+namespace window_tracker
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var listWindows = ProgramExtensions.FindWindows(delegate (IntPtr wnd, IntPtr param)
+            {
+                var placement = ProgramExtensions.GetPlacement(wnd);
+                var title = ProgramExtensions.GetWindowText(wnd);
+                return placement.rcNormalPosition.top != placement.rcNormalPosition.bottom
+                    && !String.IsNullOrWhiteSpace(title)
+                    && ProgramExtensions.GetProcessTitle(wnd) == title;
+            });
+            Console.WriteLine(String.Join("\n", listWindows.Select(ptr => (ProgramExtensions.IsForeground(ptr) ? "* " : "" )
+                + ProgramExtensions.GetWindowText(ptr) + " - " + ProgramExtensions.GetProcess(ptr).ProcessName)));
+        }
+    }
+}
+</code></pre>
+
+<p><strong>Namespace and Class Declaration</strong></p>
+<p>The code is written in C# and resides in the <code>window_tracker</code> namespace within the <code>Program</code> class.</p>
+<p><strong>Using Directives</strong></p>
+<p>The code imports the following namespaces:</p>
+<ul>
+<li><code>System</code>: Provides basic data types such as <code>string</code> and <code>int</code>.</li>
+<li><code>System.Linq</code>: Enables LINQ (Language Integrated Query) functionality for querying collections.</li>
+</ul>
+<p><strong>Main Method</strong></p>
+<p>The <code>Main</code> method is the entry point of the program, responsible for executing the application.</p>
+<p><strong>FindWindows Method Call</strong></p>
+<p>The <code>FindWindows</code> method from the <code>ProgramExtensions</code> class is called, passing a delegate that filters windows based on the following conditions:</p>
+<ol>
+<li>The window's normal position has a non-zero height.</li>
+<li>The window's title is not empty or whitespace-only.</li>
+<li>The window's title matches its process title.</li>
+</ol>
+<p><strong>Console Output</strong></p>
+<p>The filtered window pointers are then enumerated and their details are printed to the console using <code>String.Join</code>. For each window, the following information is displayed:</p>
+<ol>
+<li>A '*' character if the window is in the foreground.</li>
+<li>The window's title.</li>
+<li>The window's process name.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>The <code>ProgramExtensions</code> class is not shown in the provided code, but it is assumed to contain methods for interacting with windows, such as <code>FindWindows</code>, <code>GetPlacement</code>, <code>GetWindowText</code>, <code>IsForeground</code>, <code>GetProcess</code>, and <code>GetProcessTitle</code>.</p>

@@ -1,0 +1,27 @@
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+
+var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials');
+var SESSIONS_PATH = path.join(TOKEN_DIR, 'sessions.json');
+
+var sessions = [];
+var sessionModified = 0;
+
+function readSessions() {
+    try {
+        if(fs.existsSync(SESSIONS_PATH)
+           && fs.statSync(SESSIONS_PATH).mtime.getTime() > sessionModified) {
+            sessionModified = fs.statSync(SESSIONS_PATH).mtime.getTime();
+            sessions = JSON.parse(fs.readFileSync(SESSIONS_PATH)
+                .toString());
+        }
+    } catch (e) {
+        sessions = [];
+    }
+    return sessions;
+};
+module.exports = readSessions;
+</code></pre>
+

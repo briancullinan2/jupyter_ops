@@ -1,0 +1,115 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The code defines a function <code>accessInternet</code> that uses Selenium to extract articles from websites or search for knowledge on the internet based on user input, and summarizes the results using the <code>summarizeArticle</code> function.</p>
+<p>Or, if you prefer a two-sentence summary:</p>
+<p>The <code>accessInternet</code> function is an asynchronous function that takes a prompt model, session object, and prompt string as input and performs various tasks based on user input. These tasks include extracting articles from websites, searching for knowledge on the internet, and summarizing the results using the <code>summarizeArticle</code> function.</p>
+
+
+<pre><code>const extractArticle = importer.import('extract llm article')
+const getClient = importer.import('selenium client')
+const summerizeArticle = importer.import('summarize llm article')
+
+const HTTPS_LINK = /https:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/;
+
+const SEARCH_ENGINES = [
+  'https://www.google.com/search?q=',
+  'https://www.bing.com/search?q=',
+  'https://search.yahoo.com/search?p=',
+  'https://www.ask.com/web?q=',
+  'https://search.aol.com/aol/search?q=',
+  'http://www.baidu.com/s?wd=',
+  'https://www.wolframalpha.com/input/?i=',
+  'https://duckduckgo.com/?q=',
+  'https://www.yandex.com/search/?text=',
+  'https://archive.org/search.php?query=',
+];
+
+async function accessInternet(promptModel, session, prompt) {
+  let q1 = 'Given the following functions:\n'
+    + 'extractArticle - extract article text from specific websites\n'
+    + 'knowledgeSearch - search the web for related knowledge\n'
+    + '\nWhich function would be related to solving this prompt:\n'
+    + prompt
+    + '\nAnswer with only the functions names, nothing else.'
+
+  console.log('User: ' + q1)
+  let a1 = await promptModel(q1)
+  console.log('AI: ' + a1)
+
+  let matching = [
+    'extractArticle',
+    'knowledgeSearch',
+  ].filter(func => a1.match(func))
+
+  let driver = await getClient()
+  let link = HTTPS_LINK.exec(prompt)
+  let summary1 = ''
+  if (matching.includes('extractArticle') || link) {
+    let article = await extractArticle(driver, link[0])
+    let summary = await summerizeArticle(article)
+    summary1 = 'TLDR: ' + summary[1] + '\n\n' + summary[0]
+  }
+  let summary2 = ''
+  if(matching.includes('knowledgeSearch')) {
+    let q2 = 'What is the search topic for this prompt:\n'
+    + prompt
+    + '\nOnly return the search text and nothing else.'
+    console.log('User: ' + q2)
+    let a2 = await promptModel(q2)
+    console.log('AI: ' + a2)
+    let article = await extractArticle(driver, 'https://www.google.com/search?q=' + a2)
+    let summary = await summerizeArticle(article)
+    summary2 = 'TLDR: ' + summary[1] + '\n\n' + summary[0]
+  }
+  driver.quit()
+  return summary1 + summary2
+}
+
+module.exports = accessInternet
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code imports three modules:</p>
+<ul>
+<li><code>extractArticle</code>: extracts article text from specific websites</li>
+<li><code>getClient</code>: returns a Selenium client</li>
+<li><code>summarizeArticle</code>: summarizes an article</li>
+</ul>
+<h3>Regular Expressions</h3>
+<p>The code defines a regular expression <code>HTTPS_LINK</code> to match HTTPS links.</p>
+<h3>Search Engines</h3>
+<p>The code defines an array <code>SEARCH_ENGINES</code> containing URLs of various search engines.</p>
+<h3><code>accessInternet</code> Function</h3>
+<p>The <code>accessInternet</code> function is an asynchronous function that takes three parameters:</p>
+<ul>
+<li><code>promptModel</code>: a prompt model</li>
+<li><code>session</code>: a session object (not used in the function)</li>
+<li><code>prompt</code>: a prompt string</li>
+</ul>
+<p>The function does the following:</p>
+<ol>
+<li><strong>Ask User for Function Choice</strong>: It logs a question to the console asking the user to choose a function related to the prompt.</li>
+<li><strong>Get User Response</strong>: It awaits the user's response and logs it to the console.</li>
+<li><strong>Match Function Choice</strong>: It filters the user's response to match one of the two functions: <code>extractArticle</code> or <code>knowledgeSearch</code>.</li>
+<li><strong>Get Driver and Link</strong>: It gets a Selenium client driver and extracts an HTTPS link from the prompt.</li>
+<li><strong>Extract Article (if matched)</strong>: If the user chose <code>extractArticle</code> or a link was found, it extracts the article text from the link using <code>extractArticle</code> function.</li>
+<li><strong>Summarize Article (if extracted)</strong>: If an article was extracted, it summarizes the article using <code>summarizeArticle</code> function.</li>
+<li><strong>Search Knowledge (if matched)</strong>: If the user chose <code>knowledgeSearch</code>, it asks the user for a search topic, extracts the article text from the search engine, and summarizes the article.</li>
+</ol>
+<h3>Variables and Strings</h3>
+<p>The code defines several variables and strings:</p>
+<ul>
+<li><code>q1</code>: a question string asking the user to choose a function</li>
+<li><code>a1</code>: the user's response to <code>q1</code></li>
+<li><code>matching</code>: an array of matched functions</li>
+<li><code>link</code>: an HTTPS link extracted from the prompt</li>
+<li><code>summary1</code>: a summarized version of the article (if extracted)</li>
+<li><code>summary2</code>: a summarized version of the article (if searched)</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The code uses <code>await</code> to wait for the user's response and for the functions to complete.</li>
+<li>The code uses <code>filter</code> to match the user's response with the allowed functions.</li>
+<li>The code uses <code>exec</code> to extract the HTTPS link from the prompt.</li>
+<li>The code uses template literals to format the summary strings.</li>
+</ul>

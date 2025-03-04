@@ -1,0 +1,106 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code consists of two main functions, <code>reassignProperties</code> and <code>nativeMetaKernel</code>, which interact with a <code>meta_kernel</code> object to fill in properties, create a new kernel instance, and perform installation and initialization tasks. The code imports various modules and functions from the <code>../Core</code> directory, utilizing an <code>extend</code> function, <code>metaKernelInterface</code>, and <code>nativeMethods</code> to create a new kernel instance and perform additional tasks.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {extend} = importer.import('extend prototype class');
+var interface = importer.import('enforcing an interface');
+var metaKernelInterface = importer.import('meta kernel interface');
+var nativeMethods = importer.import('native meta kernel methods');
+var {nativeKernelInfo} = importer.import('kernel info interface');
+
+// automatically fill in some properties passed in from children
+function reassignProperties(meta_kernel) {
+    var {
+        language_info,
+        kernel_config,
+        kernel_info,
+        install_config
+    } = meta_kernel;
+    
+    if(!language_info && kernel_info)
+        meta_kernel.language_info = kernel_info.language_info
+    
+    // if(typeof kernel_config === 'function')
+    //     meta_kernel.kernel_config = kernel_config(kernel_config);
+    if(kernel_info && !kernel_info.language_info)
+        kernel_info.language_info = language_info;
+    
+    meta_kernel.kernel_info = nativeKernelInfo(kernel_info);
+    
+    // Only auto init if receiving a valid connection file?
+    if(fs.existsSync(kernel_config)) {
+        meta_kernel.kernel_config = Object.assign(
+            {autoinit: true},
+            meta_kernel.start_config || {},
+            JSON.parse(fs.readFileSync(kernel_config)),
+        );
+    }
+    
+    if(typeof install_config === 'function')
+        meta_kernel.install_config = install_config({
+            display_name: install_config.display_name
+                || meta_kernel.banner,
+            language: install_config.language
+                || meta_kernel.implementation,
+        });
+}
+
+function nativeMetaKernel(meta_kernel) {
+    reassignProperties(meta_kernel);
+    var meta = interface(meta_kernel, metaKernelInterface);
+    var kernel = extend(meta, nativeMethods);
+    
+    // TODO: allow calling any kernel from command line with a repl interface
+    // reference jupyter command for this
+    if(this.kernel_config === 'do_install') {
+        kernel.do_install(kernel.install_config);
+    } else if((kernel.kernel_config || {}).autoinit) {
+        kernel.do_init(kernel.kernel_config);
+    } 
+    return kernel;
+}
+
+module.exports = nativeMetaKernel;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Imports</h3>
+<p>The code starts by importing various modules and functions from the <code>../Core</code> directory.</p>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {extend} = importer.import('extend prototype class');
+var interface = importer.import('enforcing an interface');
+var metaKernelInterface = importer.import('meta kernel interface');
+var nativeMethods = importer.import('native meta kernel methods');
+var {nativeKernelInfo} = importer.import('kernel info interface');
+</code></pre>
+<h3><code>reassignProperties</code> Function</h3>
+<p>This function takes a <code>meta_kernel</code> object as an argument and fills in some properties automatically.</p>
+<pre><code class="language-javascript">function reassignProperties(meta_kernel) {
+    //...
+}
+</code></pre>
+<p>The function does the following:</p>
+<ul>
+<li>Extracts several properties from the <code>meta_kernel</code> object: <code>language_info</code>, <code>kernel_config</code>, <code>kernel_info</code>, and <code>install_config</code>.</li>
+<li>Checks if <code>language_info</code> is missing but <code>kernel_info</code> is present. If so, sets <code>language_info</code> to <code>kernel_info.language_info</code>.</li>
+<li>Checks if <code>kernel_info</code> has a <code>language_info</code> property. If not, sets <code>kernel_info.language_info</code> to <code>language_info</code>.</li>
+<li>Calls <code>nativeKernelInfo</code> on <code>kernel_info</code> and sets the result to <code>meta_kernel.kernel_info</code>.</li>
+<li>Checks if a file exists at the path specified by <code>kernel_config</code>. If so, reads the file, parses its JSON content, and sets <code>meta_kernel.kernel_config</code> to the result.</li>
+<li>Checks if <code>install_config</code> is a function. If so, calls it with some arguments and sets <code>meta_kernel.install_config</code> to the result.</li>
+</ul>
+<h3><code>nativeMetaKernel</code> Function</h3>
+<p>This function takes a <code>meta_kernel</code> object as an argument and creates a new kernel instance.</p>
+<pre><code class="language-javascript">function nativeMetaKernel(meta_kernel) {
+    //...
+}
+</code></pre>
+<p>The function does the following:</p>
+<ul>
+<li>Calls <code>reassignProperties</code> on <code>meta_kernel</code>.</li>
+<li>Creates a new instance of the <code>metaKernelInterface</code> class, passing <code>meta_kernel</code> as an argument.</li>
+<li>Extends the new instance with the <code>nativeMethods</code> functions using the <code>extend</code> function.</li>
+<li>Checks if the <code>kernel_config</code> property is set to <code>'do_install'</code>. If so, calls the <code>do_install</code> method on the new kernel instance with the <code>install_config</code> object as an argument.</li>
+<li>Checks if the <code>autoinit</code> property is set to <code>true</code> on the <code>kernel_config</code> object. If so, calls the <code>autoinit</code> method on the new kernel instance.</li>
+</ul>
+<p>Note that the code has some commented-out sections and TODO comments, indicating that it is not yet complete or fully functional.</p>

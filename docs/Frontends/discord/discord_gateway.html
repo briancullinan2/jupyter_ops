@@ -1,0 +1,253 @@
+<p>Here is a summary of the code in one or two sentences:</p>
+<p>The code is a Discord bot implementation that initializes variables and functions for handling WebSocket connections, sending heartbeats, and processing gateway messages. The <code>gatewayMessage</code> function is the main entry point for processing messages from the WebSocket server, and it updates the sequence number, logs messages, and performs different actions based on the <code>op</code> value of the gateway message.</p>
+
+
+<pre><code>const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
+const systemUsage = importer.import('system usage report')
+
+const INSTANCES = {}
+const SESSIONS = {}
+var indentifyTimer
+var privateChannels = {}
+var interactions = {}
+const interactionsCommands = {}
+var cancelConnection // if gateway doesn't respond properly, close web socket
+var heartbeat
+var resources
+var seq = 0
+
+function sendHeartbeat(ws, reconnect) {
+  if(!ws) return
+  console.log('Sending heartbeat')
+  ws.send(JSON.stringify({
+    op: 1,
+    d: seq
+  }))
+  cancelConnection = setTimeout(gatewayClose.bind(null, ws, reconnect), 4000)
+}
+
+function gatewayMessage(ws, reconnectGateway, interactionResponse, message) {
+  var msgBuff = new Buffer.from(message)
+  var gateway = JSON.parse(msgBuff.toString('utf-8'))
+  if(gateway.s) seq = gateway.s
+  if(gateway.d && gateway.d.seq) seq = gateway.d.seq
+  
+  console.log('Gateway message', gateway)
+  
+  if(gateway.op == 10) {
+    ws.identified = true
+    heartbeat = setInterval(sendHeartbeat.bind(null, ws, reconnectGateway), gateway.d.heartbeat_interval)
+    resources = setInterval(systemUsage, 1000)
+    ws.send(JSON.stringify({
+      op: 2,
+      intents: [
+        'DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS', 
+        'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 
+        'GUILDS', 'THREAD_UPDATE', 'THREAD_CREATE',
+        'THREAD_DELETE', 'THREAD_LIST_SYNC', 'THREAD_MEMBER_UPDATE',
+        'THREAD_MEMBERS_UPDATE', 'MESSAGE_CREATE', 'MESSAGE_UPDATE',
+        'GUILD_PRESENCES',
+      ],
+      d: {
+        token: TOKEN,
+        properties: {
+          "$os": "linux",
+          "$browser": "nodejs",
+          "$device": "quake3"
+        }
+      }
+    }))
+    return
+  } else if (gateway.op === 7) { // should reconnect
+    console.log('Reconnecting...')
+    gatewayClose(ws, reconnectGateway)
+    return
+  } else if (gateway.op === 0 || gateway.op === 9) {
+    if(gateway.t == 'MESSAGE_CREATE') {
+      // guild ID can only be null if it is a personal message
+      if(typeof gateway.d.guild_id == 'undefined') {
+        privateChannels[gateway.d.channel_id] = Date.now()
+        if(gateway.d.author.id != DEFAULT_APPLICATION) {
+          interactionsCommands['promptPrivate'](gateway.d)
+        }
+      } else if(gateway.d.content.includes('@' + DEFAULT_APPLICATION)
+        && typeof interactionsCommands['promptMention'] != 'undefined'
+      ) {
+        interactionsCommands['promptMention'](gateway.d)
+      }
+    }
+    if(gateway.t == 'INTERACTION_CREATE') {
+      if(typeof interactions[gateway.d.channel_id] == 'undefined')
+        interactions[gateway.d.channel_id] = []
+      interactions[gateway.d.channel_id].push(gateway.d)
+      if(typeof interactionsCommands[gateway.d.data.name] != 'undefined') {
+        Promise.resolve(interactionsCommands[gateway.d.data.name](gateway.d))
+      }
+      interactionResponse(gateway.d.id, gateway.d.token)
+    }
+    if(gateway.t == 'EMBEDDED_ACTIVITY_UPDATE_V2') {
+      if(typeof INSTANCES[gateway.d['instance_id']] == 'undefined') {
+        INSTANCES[gateway.d['instance_id']] = []
+      }
+      INSTANCES[gateway.d['instance_id']] = INSTANCES[gateway.d['instance_id']].filter(i => gateway.d.participants.includes(i[0]))
+    
+      if(typeof interactionsCommands['startActivity'] != 'undefined'
+        && typeof interactionsCommands['endActivity'] != 'undefined'
+      ) {
+        if(gateway.d.participants.length) {
+          Promise.resolve(interactionsCommands['startActivity'](gateway.d))
+        } else {
+          Promise.resolve(interactionsCommands['endActivity'](gateway.d))
+        }
+      }
+    }
+    return
+  } else if (gateway.op === 11) {
+    clearTimeout(cancelConnection)
+    return
+  }
+  console.log('Unrecognized gateway', gateway)
+}
+
+function gatewayClose(ws, reconnect) {
+  console.log('Discord disconnected')
+  if(indentifyTimer)
+    clearInterval(indentifyTimer)
+  if(heartbeat)
+    clearInterval(heartbeat)
+  if(resources)
+    clearInterval(resources)
+  if(ws.readyState == 1)
+    ws.close()
+  if(reconnect) {
+    setTimeout(reconnect, 1000)
+  }
+  if(typeof interactionsCommands['endActivity'] != 'undefined') {
+    Promise.resolve(interactionsCommands['endActivity']())
+  }
+  ws.identified = false
+  return
+}
+
+module.exports = {
+  gatewayClose,
+  gatewayMessage,
+  privateChannels,
+  interactions,
+  interactionsCommands,
+  INSTANCES,
+  SESSIONS,
+}
+
+</code></pre>
+
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Importing Configuration and Functionality</h3>
+<pre><code class="language-javascript">const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
+const systemUsage = importer.import('system usage report')
+</code></pre>
+<ul>
+<li>This code imports two constants from a module named 'discord configuration': <code>TOKEN</code> and <code>DEFAULT_APPLICATION</code>. It also imports a function <code>systemUsage</code> from a module named'system usage report'.</li>
+</ul>
+<h3>Initializing Variables</h3>
+<pre><code class="language-javascript">const INSTANCES = {}
+const SESSIONS = {}
+var indentifyTimer
+var privateChannels = {}
+var interactions = {}
+const interactionsCommands = {}
+var cancelConnection // if gateway doesn't respond properly, close web socket
+var heartbeat
+var resources
+var seq = 0
+</code></pre>
+<ul>
+<li>This code initializes several variables:
+<ul>
+<li>Two empty objects: <code>INSTANCES</code> and <code>SESSIONS</code>.</li>
+<li>A variable <code>indentifyTimer</code> (with a typo: it should be <code>identifyTimer</code>).</li>
+<li>An object <code>privateChannels</code>.</li>
+<li>An object <code>interactions</code>.</li>
+<li>An object <code>interactionsCommands</code>.</li>
+<li>A variable <code>cancelConnection</code> (used to close the WebSocket connection if the gateway doesn't respond).</li>
+<li>A variable <code>heartbeat</code> (used to track the heartbeat interval).</li>
+<li>A variable <code>resources</code> (used to track the system usage report).</li>
+<li>A variable <code>seq</code> (initially set to 0, used to track the sequence number).</li>
+</ul></li>
+</ul>
+<h3>sendHeartbeat Function</h3>
+<pre><code class="language-javascript">function sendHeartbeat(ws, reconnect) {
+  if(!ws) return
+  console.log('Sending heartbeat')
+  ws.send(JSON.stringify({
+    op: 1,
+    d: seq
+  }))
+  cancelConnection = setTimeout(gatewayClose.bind(null, ws, reconnect), 4000)
+}
+</code></pre>
+<ul>
+<li>This function sends a heartbeat packet to the WebSocket server with the current sequence number (<code>seq</code>).</li>
+<li>If the <code>ws</code> parameter is falsy, the function returns immediately.</li>
+<li>The function logs a message to the console indicating that a heartbeat packet is being sent.</li>
+<li>After sending the heartbeat packet, the function sets a timer (<code>cancelConnection</code>) to close the WebSocket connection after 4 seconds if the gateway doesn't respond.</li>
+</ul>
+<h3>gatewayMessage Function</h3>
+<pre><code class="language-javascript">function gatewayMessage(ws, reconnectGateway, interactionResponse, message) {
+  var msgBuff = new Buffer.from(message)
+  var gateway = JSON.parse(msgBuff.toString('utf-8'))
+  if(gateway.s) seq = gateway.s
+  if(gateway.d &amp;&amp; gateway.d.seq) seq = gateway.d.seq
+  
+  console.log('Gateway message', gateway)
+  
+  if(gateway.op == 10) {
+    ws.identified = true
+    heartbeat = setInterval(sendHeartbeat.bind(null, ws, reconnectGateway), gateway.d.heartbeat_interval)
+    resources = setInterval(systemUsage, 1000)
+    ws.send(JSON.stringify({
+      op: 2,
+      intents: [
+        'DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS', 
+        'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 
+        'GUILDS', 'THREAD_UPDATE', 'THREAD_CREATE',
+        'THREAD_DELETE', 'THREAD_LIST_SYNC', 'THREAD_MEMBER_UPDATE',
+        'THREAD_MEMBERS_UPDATE', 'MESSAGE_CREATE', 'MESSAGE_UPDATE',
+        'GUILD_PRESENCES',
+      ],
+      d: {
+        token: TOKEN,
+        properties: {
+          &quot;$os&quot;: &quot;linux&quot;,
+          &quot;$browser&quot;: &quot;nodejs&quot;,
+          &quot;$device&quot;: &quot;quake3&quot;
+        }
+      }
+    }))
+    return
+  } else if (gateway.op === 7) { // should reconnect
+    console.log('Reconnecting...')
+    gatewayClose(ws, reconnectGateway)
+    return
+  } else if (gateway.op === 0 || gateway.op === 9) {
+    if(gateway.t == 'MESSAGE_CREATE') {
+      // guild ID can only be null if it is a personal message
+      if(typeof gateway.d.guild_id == 'undefined') {
+        return
+      }
+    }
+  }
+}
+</code></pre>
+<ul>
+<li>This function is called when a message is received from the WebSocket server.</li>
+<li>The function creates a buffer from the received message and parses it as JSON to extract the gateway message.</li>
+<li>The function updates the sequence number (<code>seq</code>) if the gateway message contains it.</li>
+<li>The function logs a message to the console indicating the received gateway message.</li>
+<li>Depending on the <code>op</code> value of the gateway message, the function performs different actions:
+<ul>
+<li>If <code>op</code> is 10, the function sets the WebSocket connection to identified and starts sending heartbeat packets at regular intervals. It also sets up an interval to send the system usage report every second.</li>
+<li>If <code>op</code> is 7, the function logs a message indicating that the gateway is reconnecting and calls the <code>gatewayClose</code> function.</li>
+<li>If <code>op</code> is 0 or 9 and the message type is 'MESSAGE_CREATE', the function checks if the guild ID is null (indicating a personal message). If the guild ID is not null, the function does nothing.</li>
+</ul></li>
+</ul>

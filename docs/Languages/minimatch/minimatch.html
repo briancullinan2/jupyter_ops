@@ -1,0 +1,84 @@
+<p>This code provides a <code>minimatch</code> function that allows you to match filenames against simplified glob-like patterns by converting them into regular expressions. It handles brace expansions, splits patterns into segments, parses them into regexps, and efficiently tests filename matches against the resulting expression.</p>
+
+
+<pre><code>var importer = require('../Core')
+var expand = importer.import('expand')
+var parse = importer.import('mini parser')
+
+function regExpEscape (s) {
+  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+}
+
+// convert minimatch expression to regular expression
+function minimatch (filename, pattern) {
+    // expand braces
+    var set = expand(pattern)
+
+        // matching patterns.
+        .map(function (s) {
+            return s.split(/\/+/)
+        })
+
+        // glob --> regexps
+        .map(function (s, si, set) {
+            return s.map(parse)
+        })
+
+        // filter out everything that didn't compile properly.
+        .filter(function (s) {
+            return s.indexOf(false) === -1
+        })
+
+        // convert the sets to regular expressions
+        .map(function (pattern) {
+            return pattern.map(function (p) {
+                return (typeof p.glob === 'boolean') 
+                    ? '(?:(?!(?:\\\/|^)(?:\\.{1,2})($|\\\/)).)*?'
+                    : (typeof p === 'string') ? regExpEscape(p)
+                    : p._src
+            }).join('\\\/')
+        }).join('|')
+    try {
+        var re = new RegExp('^(?:' + set + ')$', 'i')
+        return filename.match(re) !== null
+    } catch (ex) {
+        throw ex
+    }
+}
+
+module.exports = {
+    minimatch
+}
+</code></pre>
+
+<p>This code implements a <code>minimatch</code> function that performs pattern matching on filenames using a simplified glob-like syntax.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports <code>expand</code>, <code>parse</code> modules from the <code>Core</code> directory.</li>
+</ul></li>
+<li><p><strong><code>regExpEscape</code> Function:</strong></p>
+<ul>
+<li>Escapes special characters in a string for use in regular expressions.</li>
+</ul></li>
+<li><p><strong><code>minimatch</code> Function:</strong></p>
+<ul>
+<li>Takes a filename and a pattern as input.</li>
+<li><strong>Expands Braces:</strong> Uses the <code>expand</code> function to expand brace expansions in the pattern (e.g., <code>a{1,3}</code> becomes <code>a1 a2 a3</code>).</li>
+<li><strong>Splits into Segments:</strong> Splits the expanded pattern into segments based on directory separators (<code>/</code>).</li>
+<li><strong>Parses into Regexps:</strong> Uses the <code>parse</code> function to convert each pattern segment into a regular expression.</li>
+<li><strong>Filters Invalid Patterns:</strong> Removes any segments that couldn't be parsed successfully.</li>
+<li><strong>Concatenates Regexps:</strong> Joins the valid regular expressions into a single expression, handling file path matching.</li>
+<li><strong>Creates and Tests Regex:</strong>
+<ul>
+<li>Creates a regular expression object from the concatenated pattern.</li>
+<li>Tests if the filename matches the regular expression.</li>
+</ul></li>
+<li><strong>Returns Result:</strong> Returns <code>true</code> if the filename matches the pattern, <code>false</code> otherwise.</li>
+</ul></li>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li>Exports the <code>minimatch</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>

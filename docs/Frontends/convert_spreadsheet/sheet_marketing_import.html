@@ -1,0 +1,60 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code imports necessary functions from the <code>importer</code> module and defines an asynchronous <code>importSheet</code> function that retrieves information from a Google Sheet, including templates, properties, and resources. The function exports the <code>importSheet</code> function as a module, making it available for use in other scripts.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getSheet = importer.import('get sheet purchases');
+var getTemplates = importer.import('templates google sheet');
+var wrapTemplate = importer.import('output google sheet template');
+var getTemplateProperties = importer.import('google sheet template properties');
+var collectTemplateResources = importer.import('collect google sheet resources');
+var getTemplateByUrl = importer.import('convert sheet helper functions');
+
+async function importSheet(link, domain) {
+    var properties = {}, templates, key
+    var match = await getSheet(link, domain)
+    console.log(match)
+    domain = domain || match.bucket
+    templates = await getTemplates(match.sheet)
+    key = getTemplateByUrl(templates, '/')
+    await getTemplateProperties(key, properties, templates)
+    var page = await wrapTemplate('', key, properties[key], properties)
+    var resources = (await collectTemplateResources(key, page, properties, templates, domain))
+        .filter((cur, i, arr) => arr.indexOf(cur) == i)
+        .filter(r => !r.includes(':') && r.includes('.'))
+    return resources
+}
+
+module.exports = importSheet;
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Variables and Imports</h4>
+<ul>
+<li><code>var importer = require('../Core');</code>: Imports the <code>importer</code> from the <code>../Core</code> module.</li>
+<li>Various <code>importer.import()</code> functions are used to import specific functions from the <code>importer</code> module:
+<ul>
+<li><code>getSheet</code></li>
+<li><code>getTemplates</code></li>
+<li><code>wrapTemplate</code></li>
+<li><code>getTemplateProperties</code></li>
+<li><code>collectTemplateResources</code></li>
+<li><code>getTemplateByUrl</code></li>
+</ul></li>
+</ul>
+<h4><code>importSheet</code> Function</h4>
+<ul>
+<li><code>async function importSheet(link, domain) {... }</code>: An asynchronous function that takes two parameters: <code>link</code> and <code>domain</code>.</li>
+<li><code>var properties = {}, templates, key</code>: Initializes three variables: <code>properties</code> (an object), <code>templates</code>, and <code>key</code>.</li>
+<li><code>var match = await getSheet(link, domain)</code>: Calls the <code>getSheet</code> function with <code>link</code> and <code>domain</code> as arguments and stores the result in <code>match</code>.</li>
+<li><code>domain = domain || match.bucket</code>: Sets <code>domain</code> to the provided value if it's truthy, otherwise sets it to <code>match.bucket</code>.</li>
+<li><code>templates = await getTemplates(match.sheet)</code>: Calls the <code>getTemplates</code> function with <code>match.sheet</code> as an argument and stores the result in <code>templates</code>.</li>
+<li><code>key = getTemplateByUrl(templates, '/')</code>: Calls the <code>getTemplateByUrl</code> function with <code>templates</code> and <code>'/'</code> as arguments and stores the result in <code>key</code>.</li>
+<li><code>await getTemplateProperties(key, properties, templates)</code>: Calls the <code>getTemplateProperties</code> function with <code>key</code>, <code>properties</code>, and <code>templates</code> as arguments.</li>
+<li><code>var page = await wrapTemplate('', key, properties[key], properties)</code>: Calls the <code>wrapTemplate</code> function with an empty string, <code>key</code>, <code>properties[key]</code>, and <code>properties</code> as arguments and stores the result in <code>page</code>.</li>
+<li><code>var resources = (await collectTemplateResources(key, page, properties, templates, domain))...</code>: Calls the <code>collectTemplateResources</code> function with various arguments and stores the result in <code>resources</code>. The result is then filtered to remove duplicates and resources with certain conditions.</li>
+</ul>
+<h4>Exports</h4>
+<ul>
+<li><code>module.exports = importSheet;</code>: Exports the <code>importSheet</code> function as a module.</li>
+</ul>

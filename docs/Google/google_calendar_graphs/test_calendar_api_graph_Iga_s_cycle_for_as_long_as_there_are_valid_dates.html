@@ -1,0 +1,49 @@
+<p>This code retrieves events from a Google Calendar, filters them based on a query, and creates a line graph visualizing the dates and durations of the filtered events.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+var {
+    filterDistant,
+    listEvents,
+    graphDates
+} = importer.import([
+    'import google calendar api',
+    'how to list events',
+    'number of days between events',
+    'display recurrence line graph'
+]);
+
+
+$$.async();
+listEvents({
+    q: 'period',
+    calendarId: 'p4685f6at8ccctenocjlqgnqss@group.calendar.google.com'
+})
+    .then(r => {
+        var dates = filterDistant(r);
+        console.log(dates.map(d => d.start + ' - ' + d.days));
+        return $$.svg(graphDates(dates))
+    })
+    .catch(e => $$.sendError(e));
+
+</code></pre>
+
+<p>This code snippet fetches events from a Google Calendar, filters them based on a specific query, and generates a line graph visualizing the dates and durations of the events.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports functions for filtering events, listing events, and generating a graph from the <code>Core</code> module.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>Calls <code>listEvents()</code> with a query (<code>q: 'period'</code>) and a specific calendar ID.</li>
+<li>Filters the retrieved events using <code>filterDistant()</code>.</li>
+<li>Logs the filtered events with their start dates and durations.</li>
+<li>Generates an SVG graph using <code>graphDates()</code> and sends it to an external system using <code>$$.svg()</code>.</li>
+<li>Handles any errors using <code>.catch()</code>.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely visualizes the schedule of events from a specific Google Calendar, focusing on events matching a particular query and potentially highlighting events that are spaced out over time.</p>

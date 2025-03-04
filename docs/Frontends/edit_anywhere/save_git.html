@@ -1,0 +1,79 @@
+<p>This code updates a GitHub Gist with modified web page content, likely scraped from a URL, and tracks changes made to the HTML.</p>
+
+
+<pre><code>var importer = require('../Core')
+var updateGist = importer.import('write gist files')
+
+async function gitSave(url, data, gist) {
+    if(!gist) return {}
+    if(typeof url == 'string') {
+        url = new URL(url);
+    }
+    //console.log(url)
+    var host = url.hostname.replace(/[^a-z0-9_-]/ig, '_')
+    var file = url.pathname.replace(/[^a-z0-9_-]/ig, '_')
+    
+    // check if the file exists
+    const saved = (await getGist(gist)).files
+    var acl
+    if(typeof saved[file] === 'undefined') {
+        var files = await loadScraped(url)
+        var changes = {}
+        changes[file] = {content: files[file]}
+        if(files[file]) {
+            await updateGist(gist, files)
+        }
+    }
+    
+    // add changes to gist
+    var changes = {}
+    changes[file] = {content: data}
+    await updateGist(gist, files)
+    
+    // diff the HTML for changes
+    const changes = []
+    if(saved && saved[host + '-acl.json']) {
+        var acl = files[host + '-acl.json'] || []
+        if(typeof acl === 'string') {
+            acl = [acl]
+        }
+        var bodyPrevious = selectDom('//body', saved[file])
+        var bodyNew = selectDom('//body', data)
+        acl.forEach(i => {
+            var before = selectDom([i], bodyPrevious)
+            var after = selectDom([i], bodyNew)
+            
+        })
+    }
+    
+    // save the changes to spreadsheet
+    
+}
+
+module.exports = gitSave
+</code></pre>
+
+<p>This code defines a function <code>gitSave</code> that updates a GitHub Gist with modified content, likely from a web page scraping process.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports a module <code>updateGist</code> responsible for updating the Gist content.</li>
+</ul></li>
+<li><p><strong><code>gitSave</code> Function:</strong></p>
+<ul>
+<li>Takes <code>url</code>, <code>data</code> (presumably the updated content), and <code>gist</code> (Gist information) as arguments.</li>
+<li>Extracts the hostname and filename from the URL.</li>
+<li>Checks if the file already exists in the Gist.</li>
+<li>If the file doesn't exist, it loads content from the URL using <code>loadScraped</code> (not shown in the snippet), creates a new file entry, and updates the Gist.</li>
+<li>Updates the Gist with the provided <code>data</code> for the specified file.</li>
+<li>Performs a diff comparison between the previous and new HTML content, likely to track changes.</li>
+<li>Finally, it aims to save the changes to a spreadsheet (implementation not shown).</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>gitSave</code> function is exported as a module.</li>
+</ul></li>
+</ol>
+<p><strong>Overall Purpose:</strong></p>
+<p>This code snippet appears to be part of a system that scrapes web pages, modifies their content, and then saves the changes to a GitHub Gist. It also attempts to track and potentially report the changes made to the HTML content.</p>

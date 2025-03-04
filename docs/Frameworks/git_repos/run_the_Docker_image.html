@@ -1,0 +1,22 @@
+<p>This code snippet launches a Selenium container in the background, mapping necessary ports for access, and then displays a list of running containers.</p>
+
+
+<pre><code>docker run --shm-size=2g --name selenium -d -p 8888:8888 -p 6080:6080 -p 5900:5900 -p 4444:4444 -p 4200:4200 -p 3000:3000 selenium
+docker ps
+</code></pre>
+
+<p>This code snippet starts and manages a Selenium Docker container.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><p><strong><code>docker run --shm-size=2g --name selenium -d -p 8888:8888 -p 6080:6080 -p 5900:5900 -p 4444:4444 -p 4200:4200 -p 3000:3000 selenium</code></strong>:</p>
+<ul>
+<li><code>docker run</code>: This command starts a new Docker container.</li>
+<li><code>--shm-size=2g</code>: Allocates 2GB of shared memory for the container. This is important for Selenium, which can use a lot of memory.</li>
+<li><code>--name selenium</code>:  Names the container &quot;selenium&quot; for easy identification.</li>
+<li><code>-d</code>: Runs the container in detached mode (in the background).</li>
+<li><code>-p 8888:8888 -p 6080:6080 ...</code>:  Maps ports from the container to the host machine. This allows you to access Selenium's web driver and other services from your local machine.</li>
+<li><code>selenium</code>: Specifies the Docker image to use. This assumes you have a Selenium image pulled and available.</li>
+</ul></li>
+<li><p><strong><code>docker ps</code></strong>: Lists all running Docker containers, including the &quot;selenium&quot; container you just started.</p></li>
+</ul>
+<p>Let me know if you'd like more details on any specific part of the code!</p>

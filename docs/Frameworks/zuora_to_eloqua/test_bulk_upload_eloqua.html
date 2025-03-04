@@ -1,0 +1,112 @@
+<p>This code unit tests the <code>bulkUploadEloqua</code> function within the <code>dataImporter</code> module, verifying its interaction with the Eloqua API by mocking API calls and asserting the correct function execution order.</p>
+
+
+<pre><code>var assert = require('assert');
+var sinon = require('sinon');
+var importer = require('../Core');
+var dataImporter = importer.import('bulk upload service');
+var eloquaImport = importer.import('eloqua import service');
+var eloquaObjects = importer.import('eloqua existing import');
+var {
+    getEloquaConfig,
+    getOauthToken
+} = importer.import('eloqua import blueprints');
+
+var eloquaConfig = getEloquaConfig();
+var eloquaToken = getOauthToken();
+var sandbox = sinon.createSandbox();
+
+describe('eloqua bulk upload', () => {
+    
+    afterEach(() => {
+        sandbox.restore();
+    })
+
+    it('should call oauth', () => {
+        const requestStub = sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
+        sandbox.stub(eloquaImport, "createImportDefinition");
+        sandbox.stub(eloquaImport, "startBulkImportData");
+        sandbox.stub(eloquaObjects, "getImportDefinitions");
+        sandbox.stub(eloquaObjects, "getCustomDataObject").returns(Promise.resolve({uri: '/customObject/1234'}));
+        sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve());
+        
+        return dataImporter.bulkUploadEloqua({}, eloquaConfig)
+            .then(() => {
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[0], eloquaConfig);
+            })
+    })
+    
+    it('should call import data', () => {
+        sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
+        sandbox.stub(eloquaImport, "createImportDefinition").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
+        sandbox.stub(eloquaImport, "startBulkImportData").returns(Promise.resolve({ body: {status: 'success'} }));
+        sandbox.stub(eloquaObjects, "getImportDefinitions");
+        sandbox.stub(eloquaObjects, "getCustomDataObject").returns(Promise.resolve({uri: '/customObject/1234'}));
+        const requestStub = sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
+        
+        return dataImporter.bulkUploadEloqua({}, eloquaConfig)
+            .then(() => {
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[1], eloquaToken);
+            })
+    })
+    
+    it('should import temporary for each email from Content', () => {
+        sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
+        sandbox.stub(eloquaImport, "createInstanceDefinition").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
+        sandbox.stub(eloquaImport, "startBulkImportData").returns(Promise.resolve({ body: {status: 'success'} }));
+        const requestStub = sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
+        
+        return dataImporter.bulkUploadEloqua({}, eloquaConfig, 'instance123', 'execution123')
+            .then(() => {
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[1], eloquaToken);
+            })
+    })
+    
+    it('should import an existing definition', () => {
+        sandbox.stub(eloquaImport, "eloquaOauth").returns(Promise.resolve(eloquaToken));
+        sandbox.stub(eloquaImport, "createImportDefinition").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
+        sandbox.stub(eloquaImport, "startBulkImportData").returns(Promise.resolve({ body: {status: 'success'} }));
+        sandbox.stub(eloquaObjects, "getImportDefinitions").returns(Promise.resolve({uri: '/customObject/1234'}));
+        sandbox.stub(eloquaObjects, "getCustomDataObject").returns(Promise.resolve({uri: '/customObject/1234'}));
+        const requestStub = sandbox.stub(eloquaImport, "completeBulkImportSync").returns(Promise.resolve({ body: {uri: '/imports/1234'} }));
+        
+        return dataImporter.bulkUploadEloqua({}, eloquaConfig)
+            .then(() => {
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[1], eloquaToken);
+            })
+    })
+})
+</code></pre>
+
+<p>This code defines unit tests for the <code>dataImporter</code> module's <code>bulkUploadEloqua</code> function, which handles uploading data to Eloqua.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>assert</code> for assertions, <code>sinon</code> for mocking, <code>importer</code> for loading other modules, and specific modules related to Eloqua interaction.</li>
+<li>Defines <code>eloquaConfig</code> and <code>eloquaToken</code> using helper functions from <code>eloqua import blueprints</code>.</li>
+<li>Creates a sandbox using <code>sinon.createSandbox()</code> to isolate the test environment.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li>Uses <code>describe('eloqua bulk upload', () =&gt; { ... })</code> to define a test suite.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li><code>afterEach(() =&gt; { sandbox.restore(); })</code>: Restores the sandbox after each test.</li>
+<li><code>it('should call oauth', () =&gt; { ... })</code>:
+<ul>
+<li>Mocks various Eloqua-related functions using <code>sandbox.stub</code> to simulate API calls.</li>
+<li>Calls <code>dataImporter.bulkUploadEloqua</code> with sample data and <code>eloquaConfig</code>.</li>
+<li>Asserts that the <code>eloquaOauth</code> function was called with the correct configuration.</li>
+</ul></li>
+<li><code>it('should call import data', () =&gt; { ... })</code>:
+<ul>
+<li>Similar to the previous test, but focuses on verifying that other Eloqua functions (createImportDefinition, startBulkImportData, etc.) are called in the correct order.</li>
+</ul></li>
+</ul></li>
+</ol>

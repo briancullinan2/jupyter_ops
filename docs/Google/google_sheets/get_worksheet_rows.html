@@ -1,0 +1,46 @@
+<p>This code defines a function <code>getRows</code> that retrieves data from a specified worksheet in a Google Sheet, handling authentication and API interactions to return the data as an array of rows.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeSheets = importer.import('authorize sheets api');
+var getInfo = importer.import('get google sheet info');
+var getSheetByName = importer.import('get worksheet by name');
+
+function getRows(link, worksheet) {
+    var sheets;
+    if(typeof link === 'object') (worksheet = link, link = worksheet.spreadsheetId);
+    return authorizeSheets()
+        .then(s => (sheets = s, getSheetByName(link, worksheet)))
+        .then(ws => (worksheet = ws,
+              console.log(`reading sheet: ${worksheet.properties.title}`
+                          + ` - ${worksheet.properties.gridProperties.rowCount}`)))
+        .then(() => sheets.spreadsheets.values.get({
+            spreadsheetId: worksheet.spreadsheetId,
+            range: `'${worksheet.properties.title}'!A1:Z${worksheet.properties.gridProperties.rowCount}`
+        }))
+        .then(res => res.data.values || [])
+}
+
+module.exports = getRows;
+</code></pre>
+
+<p>This code snippet defines a function <code>getRows</code> that retrieves data from a specified worksheet in a Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports functions for authorizing Google Sheets API access, getting sheet information, and retrieving a worksheet by name.</li>
+</ul></li>
+<li><p><strong><code>getRows</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>link</code> (either a spreadsheet ID or an object containing the spreadsheet ID and worksheet name) and an optional <code>worksheet</code> name as arguments.</li>
+<li>If <code>link</code> is an object, it extracts the spreadsheet ID and worksheet name.</li>
+<li>Uses <code>authorizeSheets</code> to obtain an authorized Google Sheets client.</li>
+<li>Calls <code>getSheetByName</code> to retrieve the specified worksheet using the spreadsheet ID and worksheet name.</li>
+<li>Logs a message indicating the sheet being read.</li>
+<li>Uses the authorized client to make a request to the Google Sheets API to retrieve data from the specified worksheet range (column A to Z, from row 1 to the last row).</li>
+<li>Returns the retrieved data as an array of rows.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This function provides a way to fetch data from a specific worksheet in a Google Sheet, handling authentication and API interaction.</p>

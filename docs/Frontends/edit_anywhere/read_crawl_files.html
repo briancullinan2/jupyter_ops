@@ -1,0 +1,404 @@
+<p>This code snippet is a part of a web crawler or data extraction tool that loads and processes previously scraped web pages from a local cache. It parses URLs, matches them against cached data, and extracts stylesheets and images for further processing.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+var {URL} = require('url')
+var uuid = require('uuid/v1')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var {minimatch} = importer.import('minimatch')
+var {selectDom} = importer.import('select tree')
+var prefixCssRules = importer.import('scope css')
+var {findCache} = importer.import('domain crawler tools')
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = path.join(PROFILE_PATH, 'Collections/crawls');
+
+function matchPage(match, search, hostname) {
+    return search.toLowerCase() == match.toLowerCase()
+        || minimatch(search, match)
+        || (!match || match === 'index')
+        && search.match(/https?:\/\/[^\/]*\/?$/ig)
+        && search.includes(hostname)
+}
+
+function loadScraped(url) {
+    if(typeof url == 'undefined') {
+        url = 'https://google.com'
+    }
+    if(typeof url == 'string') {
+        url = new URL(url);
+    }
+    //console.log(url)
+    var host = url.hostname
+    var file = url.pathname
+    var hostEscaped = host.replace(/[^a-z0-9_-]/ig, '_')
+    if(!file || file === '/') file = 'index'
+    
+    // lookup on filesystem
+    var cache = findCache(hostEscaped)
+    if(!cache[0]) {
+        return
+    }
+    var crawl = JSON.parse(fs.readFileSync(cache[0]).toString());
+    var entry = crawl.filter(r => matchPage(file, r.url, host))[0];
+    var result = {}
+    //console.log(entry)
+    // parse out styles and images and package it up in to one nice page
+    if(entry) {
+        var doc = selectDom('*', entry.html)
+        var styles = selectDom(['//link[@rel = "stylesheet"]|//style'], doc)
+        var css = ''
+        styles.forEach(s => {
+            var src = s.getAttribute('src') || s.getAttribute('href')
+            s.remove()
+            if(!src) {
+                css += s.innerHTML
+                return
+            }
+            src = new URL(src, url).href
+            var rules = crawl.filter(r => r.url === src)[0]
+            if(rules) {
+                css += rules.content
+            }
+        })
+        
+        var scripts = selectDom(['//script|//iframe'], doc)
+        scripts.forEach(s => s.remove())
+        
+        var images = selectDom(['//img'], doc)
+        images.forEach(i => {
+            var src = i.getAttribute('src')
+            src = new URL(src, url).pathname
+            var images = crawl.filter(r => r.url.includes(src))[0]
+            if(images && images.content.includes('data:')) {
+                i.setAttribute('src', images.content)
+            }
+            var src = i.getAttribute('srcset')
+            if(src) {
+                src = src.split(' ')[0]
+                src = new URL(src, url).pathname
+                var images = crawl.filter(r => r.url.includes(src))[0]
+                if(images && images.content.includes('data:')) {
+                    i.setAttribute('src', images.content)
+                    i.removeAttribute('srcset')
+                }
+            }
+        })
+        
+        var links = selectDom(['//a'], doc)
+        links.forEach(l => {
+            var src = l.getAttribute('href')
+            src = new URL(src, url).href
+            l.setAttribute('href', '/?url=' + src)
+        })
+        
+        var bodyId = selectDom('body', doc).getAttribute('id')
+        
+        var urlReplace = ($0, $1) => {
+            if(!$1 || $1.length === 0) return $0
+            var src = new URL($1, url).pathname
+            var images = crawl.filter(r => r.url.includes(src))[0]
+            if(images && images.content.includes('data:')) {
+                return `url(${images.content})`
+            }
+            return $0
+        }
+        // TODO: load images as data URIs and lower quality
+        css = prefixCssRules(css, '#' + hostEscaped, bodyId)
+            .replace(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, urlReplace)
+            .replace(/href="([^\"]*)"/ig, ($0, $1) => {
+                var src = new URL($1, url).href
+                return $0.replace($1, '/?url=' + src)
+            })
+        
+        var styleTags = selectDom(['//*[@style]'], doc)
+        styleTags.forEach(i => {
+            var style = i.getAttribute('style')
+                .replace(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, urlReplace)
+            i.setAttribute('style', style)
+        })
+
+        var icon = (crawl.filter(r => r.url.includes('favicon.ico'))[0] || {}).content
+        
+        // inject the editor into copied page
+        var body = selectDom('//body', doc)
+        var classes = body.getAttribute('class')
+        result[file.replace(/[^a-z0-9_-]/ig, '_')] = `
+<!DOCTYPE html>
+<html><head>
+<link rel="icon" href="${icon}">
+<link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" />
+<link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/solid.css" />
+<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
+<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
+<link type="text/css" rel="stylesheet" href="" />
+<style>${css}</style>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.initial-page {
+    height: 100%;
+    width: 100%;
+}
+
+.lm_item_container {
+    overflow: auto;
+}
+
+.lm_content {
+    min-height: 400px;
+    overflow: auto;
+    z-index: 1;
+}
+
+.lm_header .lm_tab {
+    height: 18px;
+    font-size: 18px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-top: 10px;
+}
+
+.lm_header .lm_tab.lm_active {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.lm_header .lm_tab .lm_close_tab {
+    height: 20px;
+    width: 20px;
+    background-size: 75%;
+}
+
+.lm_controls>li {
+    background-size: 15px;
+    padding: 5px 5px;
+}
+
+.lm_header .lm_controls>li,
+.lm_maximised .lm_controls .lm_maximise,
+.lm_header .lm_tab .lm_close_tab {
+    text-align: unset;
+    background: none;
+    color: white;
+}
+
+.lm_maximised .lm_controls .lm_maximise .fa-window-maximize,
+.lm_controls .lm_maximise .fa-window-minimize {
+    display: none;
+}
+
+.lm_maximised .lm_controls .lm_maximise .fa-window-minimize {
+    display: inline-block;
+}
+
+.lm_header .lm_tab .fa-search,
+.lm_header .lm_tab .fa-stop,
+.lm_header .lm_tab .fa-stream {
+    top: 4px;
+    right: 80px;
+}
+
+.lm_header .lm_tab .fa-print,
+.lm_header .lm_tab .fa-backspace,
+.lm_header .lm_tab .fa-columns {
+    top: 4px;
+    right: 58px;
+}
+
+.lm_header .lm_tab .fa-binoculars,
+.lm_header .lm_tab .fa-play,
+.lm_header .lm_tab .fa-exchange-alt {
+    top: 4px;
+    right: 102px;
+}
+
+.lm_header .lm_tab {
+    padding-right: 110px;
+}
+
+.file-tree {
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.file-tree i.fas,
+.file-tree i.fas:not(.fa-folder):not(.fa-angle-right) {
+    margin-right: 5px;
+    margin-left: 25px;
+}
+
+
+.file-tree i.fa-folder,
+.file-tree i.fa-angle-right {
+    margin-left: 5px;
+}
+
+.file-tree li {
+    list-style: none;
+    cursor: pointer;
+    padding: 5px 0 0;
+    overflow: hidden;
+}
+
+.file-tree label {
+    cursor: pointer;
+}
+
+.file-tree ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 5px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-tree ul ul {
+    list-style: none;
+    padding: 0 0 0 20px;
+    margin: 0;
+}
+
+.file-tree input[type="checkbox"] {
+    opacity: 0;
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    top: auto;
+    left: -100px;
+}
+
+.file-tree input[type="checkbox"]:not(:checked) ~ ul {
+    display: none;
+}
+
+.file-tree input[type="checkbox"]:checked ~ ul {
+    display: block;
+}
+
+.file-tree input[type="checkbox"]:not(:checked) ~ label .fa-angle-right {
+    transition: transform 0.5s;
+    transform: rotate(0);
+}
+
+.file-tree input[type="checkbox"]:checked ~ label .fa-angle-right {
+    transition: transform 0.5s;
+    transform: rotate(90deg);
+}
+
+.file-tree label:hover:before {
+    background: #333;
+}
+
+.file-tree input[type="checkbox"]:checked ~ label:before {
+    background: #339;
+}
+
+.file-tree label:after,
+.file-tree label:before {
+    z-index: -1;
+    width: 100%;
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    height: 20px;
+    left: 0;
+}
+
+.file-tree label:after {
+    z-index: 0;
+}
+
+/*
+*,
+:before,
+:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+*/
+
+.code-editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+</style>
+</head><body><div id="${hostEscaped}" class="initial-page"><div class="${classes}">${body.innerHTML}</div></div>
+<script>
+${importer.interpret('ckeditor configuration').code}
+</script>
+</body></html>`
+    }
+    return result
+}
+
+module.exports = loadScraped
+
+//var importer = require('../Core')
+//var loadScraped = importer.import('read crawl files')
+
+if(typeof $$ != 'undefined') {
+    var scraped = loadScraped('https://google.com')
+    $$.html(scraped)
+}
+</code></pre>
+
+<p>This code snippet is designed to load and process scraped web pages, likely for a web crawler or data extraction tool.</p>
+<p>Here's a breakdown:</p>
+<p><strong>1. Dependencies:</strong></p>
+<ul>
+<li>It imports necessary modules:
+<ul>
+<li><code>path</code>: For working with file paths.</li>
+<li><code>fs</code>: For file system operations (reading files).</li>
+<li><code>url</code>: For parsing and manipulating URLs.</li>
+<li><code>uuid</code>: For generating unique identifiers.</li>
+<li><code>glob</code>: For matching files based on patterns.</li>
+<li><code>minimatch</code>: For more flexible pattern matching.</li>
+<li><code>selectDom</code>: For selecting elements from HTML using CSS selectors.</li>
+<li><code>prefixCssRules</code>: For managing CSS stylesheets.</li>
+<li><code>findCache</code>: For locating cached scraped data.</li>
+</ul></li>
+</ul>
+<p><strong>2. Configuration:</strong></p>
+<ul>
+<li><code>PROFILE_PATH</code>: Sets the default path to the user's profile directory.</li>
+<li><code>project</code>: Defines the directory where scraped data is stored.</li>
+</ul>
+<p><strong>3. <code>matchPage</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>match</code> (file path or URL), a <code>search</code> term, and a <code>hostname</code>.</li>
+<li>Determines if the <code>search</code> matches the <code>match</code> using various criteria:
+<ul>
+<li>Exact lowercase comparison.</li>
+<li><code>minimatch</code> pattern matching.</li>
+<li>If <code>match</code> is empty or &quot;index&quot;, and the <code>search</code> is a URL containing the <code>hostname</code>.</li>
+</ul></li>
+</ul>
+<p><strong>4. <code>loadScraped</code> Function:</strong></p>
+<ul>
+<li>Takes a URL as input (defaults to &quot;https://google.com&quot;).</li>
+<li>Parses the URL into its components (hostname, path).</li>
+<li>Escapes the hostname for use in file names.</li>
+<li>Looks up cached data for the URL using <code>findCache</code>.</li>
+<li>If cached data is found:
+<ul>
+<li>Parses the JSON data.</li>
+<li>Filters the data to find the entry matching the URL.</li>
+<li>Extracts stylesheets and images from the HTML content.</li>
+<li>Processes the stylesheets and images (details not shown in the provided code).</li>
+</ul></li>
+</ul>
+<p>Let me know if you have any more questions.</p>

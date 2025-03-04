@@ -1,0 +1,49 @@
+<p>Here's a 2-sentence summary:</p>
+<p>The <code>getNamespacesBySize</code> function parses C# code and retrieves namespaces based on their size, sorting them in descending order. It is exported as a module and takes a string of C# code as input, returning an array of namespace names.</p>
+
+
+<pre><code>
+async function getNamespacesBySize(code) {
+    const selectCode = await importer.import('select antlr tree')
+    const result = await selectCode(['//namespace_declaration', {
+      start: './@start',
+      stop: './@stop',
+      name: '(./qualified_identifier/@strdata)[1]'
+    }], code, 'csharp')
+    result.sort((a, b) => (b.stop - b.start) - (a.stop - a.start))
+    return result.map(r => r.name)
+}
+
+module.exports = getNamespacesBySize
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Function: <code>getNamespacesBySize</code></h4>
+<ul>
+<li><p><strong>Purpose:</strong> Retrieves namespaces from C# code based on their size.</p></li>
+<li><p><strong>Parameters:</strong></p>
+<ul>
+<li><code>code</code>: The C# code to parse.</li>
+</ul></li>
+</ul>
+<h4>Function Flow:</h4>
+<ol>
+<li><strong>Importing Dependencies:</strong> The <code>importer.import</code> function is used to load the <code>'select antlr tree'</code> module asynchronously.</li>
+<li><strong>Parsing Code:</strong> The <code>selectCode</code> function, now referencing the loaded module, is called with the following parameters:
+<ul>
+<li>A CSS selector <code>//namespace_declaration</code> to target namespace declarations in the code.</li>
+<li>An object defining a tree structure:
+<ul>
+<li><code>start</code>: The start position of the namespace declaration, specified as <code>./@start</code>.</li>
+<li><code>stop</code>: The stop position of the namespace declaration, specified as <code>./@stop</code>.</li>
+<li><code>name</code>: The namespace name, extracted from the first element of the qualified identifier within the namespace declaration.</li>
+</ul></li>
+<li>The C# code <code>code</code> to parse.</li>
+<li>The programming language <code>csharp</code>.</li>
+</ul></li>
+<li><strong>Sorting Result:</strong> The obtained result is sorted in descending order based on the size of the namespace declarations (stop position - start position).</li>
+<li><strong>Returning Namespaces:</strong> The sorted result is mapped to extract and return the namespace names.</li>
+</ol>
+<h4>Exports:</h4>
+<p>The <code>getNamespacesBySize</code> function is exported as a module.</p>

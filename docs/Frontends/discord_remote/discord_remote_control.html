@@ -1,0 +1,92 @@
+<p>Here's a 2-sentence summary:</p>
+<p>The <code>activityCommands</code> function is used to manage bot commands for a specific Discord guild, registering or updating the <code>remote</code> command and removing any unnecessary commands. It retrieves existing commands, iterates over them, and returns an updated list of commands for the guild.</p>
+
+
+<pre><code>
+const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {interactionsCommands} = importer.import('discord gateway')
+const {discordExpress, closeExpress} = importer.import('discord remote proxy server')
+const {doMention, doPrivate} = importer.import('discord llm interactions')
+
+const ALL_COMMANDS = [
+  'remote',
+]
+
+// bot commands using new API, same names as above but lower-case
+async function activityCommands(guildId = null) {
+  var cmd, cmdDef
+  var commandResult = await getCommands(guildId)
+  var commands = commandResult.map(command => command.name)
+
+  interactionsCommands['startActivity'] = discordExpress
+  interactionsCommands['endActivity'] = closeExpress
+
+  interactionsCommands['promptMention'] = doMention
+  interactionsCommands['promptPrivate'] = doPrivate
+
+  cmdDef = {
+    'name': 'remote',
+    'description': 'Launch the remote',
+    'type': 4,
+    'handler': 2,
+  }
+  if(!commands.includes('remote')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'remote')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+
+  return await getCommands()
+}
+
+module.exports = activityCommands
+
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<p>The code imports various modules from the <code>importer</code> object:</p>
+<pre><code class="language-javascript">const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {interactionsCommands} = importer.import('discord gateway')
+const {discordExpress, closeExpress} = importer.import('discord remote proxy server')
+const {doMention, doPrivate} = importer.import('discord llm interactions')
+</code></pre>
+<p>These imported modules are used to interact with the Discord API, Gateway, Remote Proxy Server, and LLM Interactions.</p>
+<h3>Defining Constants</h3>
+<p>A constant array <code>ALL_COMMANDS</code> is defined to contain a list of command names:</p>
+<pre><code class="language-javascript">const ALL_COMMANDS = [
+ 'remote',
+]
+</code></pre>
+<h3>Defining the <code>activityCommands</code> Function</h3>
+<p>The <code>activityCommands</code> function is defined to manage bot commands for a specific guild:</p>
+<pre><code class="language-javascript">async function activityCommands(guildId = null) {
+  // function implementation
+}
+</code></pre>
+<h3>Registering and Updating Commands</h3>
+<p>The function retrieves existing commands for the guild using <code>getCommands</code> and iterates over them to:</p>
+<ol>
+<li>Register or update the <code>remote</code> command if it doesn't exist or has changed.</li>
+<li>Remove commands not in the <code>ALL_COMMANDS</code> array.</li>
+</ol>
+<h3>Returning Updated Commands</h3>
+<p>The function returns the updated list of commands for the guild:</p>
+<pre><code class="language-javascript">return await getCommands()
+</code></pre>
+<h3>Exporting the <code>activityCommands</code> Function</h3>
+<p>The <code>activityCommands</code> function is exported as a module:</p>
+<pre><code class="language-javascript">module.exports = activityCommands
+</code></pre>

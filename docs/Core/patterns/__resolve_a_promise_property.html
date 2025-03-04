@@ -1,0 +1,44 @@
+<p>Here is a summary of the <code>promiseOrResolve</code> function in one sentence:</p>
+<p>The <code>promiseOrResolve</code> function returns a promise that resolves to the value of a specified property on an object, using an optional callback function if the property is <code>undefined</code>, or resolves to <code>undefined</code> if the property does not exist.</p>
+<p>Here is a brief explanation of the function's behavior in two sentences:</p>
+<p>The function checks if the object has the specified property, and if so, returns a resolved promise with the property value if it's not <code>undefined</code>. If the property is <code>undefined</code>, the function returns a promise that resolves the property value using the callback function.</p>
+
+
+<pre><code>
+function promiseOrResolve(obj, property, cb) {
+    return obj ? (typeof obj[property] != 'undefined'
+                  ? Promise.resolve(obj[property])
+                  : cb(obj).then(d => (obj[property] = d)))
+        : Promise.resolve()
+}
+
+module.exports = promiseOrResolve;
+</code></pre>
+
+<h2>Function: <code>promiseOrResolve</code></h2>
+<h3>Description</h3>
+<p>A utility function that returns a promise or resolves a value based on the availability of a property on an object.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>obj</code>: The object to check for a property.</li>
+<li><code>property</code>: The name of the property to check on the object.</li>
+<li><code>cb</code>: An optional callback function to resolve the property.</li>
+</ul>
+<h3>Return Value</h3>
+<p>A promise that resolves to the value of the property if it exists, or resolves to <code>undefined</code> if the property does not exist.</p>
+<h3>Behavior</h3>
+<ul>
+<li>If <code>obj</code> is falsy, the function returns a resolved promise.</li>
+<li>If <code>obj</code> has the <code>property</code> and its value is not <code>undefined</code>, the function returns a resolved promise with the property value.</li>
+<li>If <code>obj</code> has the <code>property</code> but its value is <code>undefined</code>, the function returns a promise that resolves the property value using the <code>cb</code> function.</li>
+</ul>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">promiseOrResolve({ foo: 'bar' }, 'foo', () =&gt; Promise.resolve('baz'))
+ .then(value =&gt; console.log(value)); // Output: &quot;bar&quot;
+
+promiseOrResolve(null, 'foo', () =&gt; Promise.resolve('baz'))
+ .then(value =&gt; console.log(value)); // Output: undefined
+
+promiseOrResolve({ foo: undefined }, 'foo', () =&gt; Promise.resolve('baz'))
+ .then(value =&gt; console.log(value)); // Output: &quot;baz&quot;
+</code></pre>

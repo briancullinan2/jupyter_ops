@@ -1,0 +1,82 @@
+<p>Here is a two-sentence summary of the <code>askLlamaGeneralizeCategories</code> function:</p>
+<p>The <code>askLlamaGeneralizeCategories</code> function is an asynchronous function that takes a list of categories, generalizes them, and returns a unique list of categories, with a maximum recursive depth of 100 to prevent infinite recursion. If no categories are provided, the function generates a list of unique categories from the <code>functionCache</code> object and stores the result in the cache after generalizing.</p>
+
+
+<pre><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const { askLlamaAboutFunctions } = importer.import('ask llm about functions')
+const { storeLlamaFunction } = importer.import('store llama function')
+const { askLlamaToGeneralizeAll } = importer.import('ask llm for a shorter list of categories')
+
+async function askLlamaGeneralizeCategories(categories) {
+  let update = false
+  let keys = Object.keys(functionCache)
+  if(!categories) {
+    categories = keys.map(k => functionCache[k].categories)
+      .filter((a, i, arr) => a && arr.indexOf(a) == i && !a.includes('\n'))
+    update = true
+  }
+
+  if(categories.length == 0) {
+    return []
+  }
+
+  let uniqueValues = await askLlamaToGeneralizeAll(categories)
+  console.log(uniqueValues)
+
+  if(uniqueValues.length > 100) {
+    uniqueValues = (await askLlamaGeneralizeCategories(uniqueValues))
+      .filter((a, i, arr) => arr.indexOf(a) == i)
+  }
+
+  if(update) {
+    let convertedList = []
+    for(let i = 0; i < keys.length; i++) {
+      let newCategory = await askLlamaAboutFunctions(functionCache[keys[i]].categories, uniqueValues, [], true)
+      if(newCategory) {
+        storeLlamaFunction(keys[i], functionCache[keys[i]].mtime, 
+          functionCache[keys[i]].exports, functionCache[keys[i]].description, 
+          functionCache[keys[i]].summary, functionCache[keys[i]].categories, newCategory)
+      }
+      convertedList[i] = newCategory
+    }
+    console.log(convertedList)
+  }
+
+  return uniqueValues
+}
+
+module.exports = {
+  askLlamaGeneralizeCategories
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Function Overview</h3>
+<p>The <code>askLlamaGeneralizeCategories</code> function is an asynchronous function that takes a list of categories as input and returns a generalized list of unique categories.</p>
+<h3>Function Parameters</h3>
+<ul>
+<li><code>categories</code>: An optional list of categories. If not provided, it will be automatically generated from the <code>functionCache</code> object.</li>
+</ul>
+<h3>Function Cache Import</h3>
+<p>The function imports several functions and variables from the <code>importer</code> module:</p>
+<ul>
+<li><code>functionCache</code>: An object containing cached function data with LLM descriptions.</li>
+<li><code>askLlamaAboutFunctions</code>: A function that asks the LLM about functions.</li>
+<li><code>storeLlamaFunction</code>: A function that stores a LLM function.</li>
+<li><code>askLlamaToGeneralizeAll</code>: A function that asks the LLM to generalize a list of categories.</li>
+</ul>
+<h3>Function Flow</h3>
+<ol>
+<li>If no categories are provided, the function generates a list of unique categories from the <code>functionCache</code> object.</li>
+<li>If the list of categories is empty, the function returns an empty list.</li>
+<li>The function asks the LLM to generalize the list of categories and stores the result in <code>uniqueValues</code>.</li>
+<li>If the length of <code>uniqueValues</code> exceeds 100, the function recursively calls itself with <code>uniqueValues</code> as the new list of categories.</li>
+<li>If the function was initially provided with a list of categories, the function updates the <code>functionCache</code> object with new category values and returns the updated <code>uniqueValues</code> list.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>askLlamaGeneralizeCategories</code> function is exported as a module.</p>
+<h3>Notes</h3>
+<ul>
+<li>The function uses recursion to generalize a list of categories.</li>
+<li>The function has a recursive depth limit of 100 to prevent infinite recursion.</li>
+</ul>

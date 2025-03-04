@@ -1,0 +1,144 @@
+<p>This code creates a Socket.IO server that uses a custom mocking system to replace dependencies with event-based communication, allowing for real-time data sharing between clients.</p>
+
+
+<pre><code>var Observable = require('rxjs/Observable').Observable;
+var server = require('socket.io');
+
+var deps = {}, io = {};
+function sockifyRequire(req, dep) {
+    if (typeof deps[dep] !== 'undefined') {
+        return deps[dep];
+    }
+    console.log('Requiring ' + dep);
+    deps[dep] = automock.mockValue(req, {
+        stubCreator: function (name) {
+            // don't call original
+            if (name.split('.').length === 1) {
+                return req;
+            }
+            // var orig = req[name.split('.')[1]];
+            return function () {
+                var args = ['resolve', name];
+                for (var i = 0; i < arguments.length; i++) {
+                    args[args.length] = arguments[i];
+                }
+                return new Observable(function () {
+                    var handlers = (typeof io.sockets.adapter.rooms[dep] !== 'undefined'
+                        ? Object.keys(io.sockets.adapter.rooms[dep].sockets)
+                        : [])
+                        .map(function (k) {
+                            return io.sockets.connected[k];
+                        });
+                    if (handlers.length == 0) {
+                        throw new Error('No handlers for ' + name);
+                    }
+                    handlers.forEach(function (h) {
+                        h.emit.apply(h, args);
+                    });
+                });
+            };
+        },
+        name: dep
+    });
+    console.log(deps);
+    return deps[dep];
+};
+
+function sockifyServer(port) {
+    io = server.listen(port);
+    var socketlist = [];
+    io.sockets.on('connection', function (socket) {
+        console.log('Client connection');
+        socketlist.push(socket);
+
+        socket.on('result', function (name) {
+            var args = ['result', name];
+            for (var i = 1; i < arguments.length; i++) {
+                args[args.length] = arguments[i];
+            }
+            var handlers = (typeof io.sockets.adapter.rooms[name] !== 'undefined'
+                ? Object.keys(io.sockets.adapter.rooms[name].sockets)
+                : [])
+                .map(function (k) {
+                    return io.sockets.connected[k];
+                });
+            handlers.forEach(function (h) {
+                h.emit.apply(h, args);
+            });
+        });
+
+        socket.on('call', function (name) {
+            var args = [];
+            for (var i = 1; i < arguments.length; i++) {
+                args[args.length] = arguments[i];
+            }
+            var props = name.split('.');
+            var dep = props[0];
+            // join the result room
+            if (!io.sockets.adapter.sids[socket.id][name]) {
+                socket.join(name);
+            }
+            var func = deps[dep];
+            for (var j = 1; j < props.length; j++) {
+                func = func[props[j]];
+            }
+            var tmpsub;
+            tmpsub = func.apply(deps[dep], args).subscribe(function () {
+                tmpsub.unsubscribe();
+            });
+        });
+
+        socket.on('handle', function (dep, cb) {
+            console.log('Handler for ' + dep);
+            if (!io.sockets.adapter.sids[socket.id][dep]) {
+                socket.join(dep);
+            }
+            cb();
+        });
+
+        socket.on('close', function () {
+            socketlist.splice(socketlist.indexOf(socket), 1);
+            socketlist.forEach(function (socket) {
+                socket.destroy();
+            });
+            io.server.close();
+        });
+    });
+    return io;
+};
+
+module.exports = {
+    sockifyRequire,
+    sockifyServer
+};
+// TODO: output interactive angular component for controlling this server
+
+</code></pre>
+
+<p>This code sets up a Socket.IO server with a custom mocking mechanism for dependencies.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>rxjs/Observable</code>: Reactive programming library for handling asynchronous operations.</li>
+<li><code>socket.io</code>: WebSockets library for real-time communication.</li>
+</ul></li>
+<li><p><strong><code>sockifyRequire</code> Function:</strong></p>
+<ul>
+<li>This function intercepts module imports and replaces them with mock implementations.</li>
+<li>It uses <code>automock</code> (not shown in the provided code) to create stubs for dependencies.</li>
+<li>Instead of directly calling the original module, it creates an Observable that emits events to all connected clients.</li>
+</ul></li>
+<li><p><strong><code>sockifyServer</code> Function:</strong></p>
+<ul>
+<li>Starts a Socket.IO server on the specified port.</li>
+<li>Tracks connected clients in a <code>socketlist</code> array.</li>
+<li>Listens for <code>result</code> events from clients and broadcasts them to all clients subscribed to the corresponding event name.</li>
+</ul></li>
+</ol>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li><strong>Socket.IO:</strong> Enables real-time, bidirectional communication between the server and clients.</li>
+<li><strong>Mocking:</strong> Replacing dependencies with controlled stubs to facilitate testing or development.</li>
+<li><strong>Observables:</strong> Used to handle asynchronous events and data streams.</li>
+</ul>

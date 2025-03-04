@@ -1,0 +1,153 @@
+<p>Here's a two-sentence summary of the provided code:</p>
+<p>This module provides a set of functions for interacting with Discord channels, including retrieving user and guild channels, fetching messages from a channel with pagination, deleting a channel, and exporting these functions for use in other modules. The functions utilize a request authentication function <code>requestAuthQ</code> and configuration variables imported from separate modules to perform their respective operations.</p>
+
+
+<pre><code>var {
+  DEFAULT_GUILD, DEFAULT_CHANNEL, MESSAGE_TIME,
+  MESSAGES_START, 
+} = importer.import('discord configuration')
+const {requestAuthQ} = importer.import('discord request')
+
+async function userChannels(userId = '@me') {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${userId}`
+  })
+}
+
+async function guildChannels(guildId = DEFAULT_GUILD) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `guilds/${guildId}/channels`
+  })
+}
+
+async function channelMessagesB(channelId = DEFAULT_CHANNEL, messageTime = MESSAGE_TIME) {
+  var params = {
+    limit: 100,
+    after: messageTime.toString()
+  };
+  var messages = await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/messages`,
+    params
+  })
+  if(messages.length == 100) {
+    messages = messages.concat(await channelMessagesB(channelId, BigInt(messages[0].id) + BigInt(1)))
+  }
+  return messages
+}
+
+async function channelMessages(channelId = DEFAULT_CHANNEL, messageTime = MESSAGE_TIME) {
+  var params = {
+    limit: 100,
+    after: (BigInt(Date.now() - MESSAGES_START - messageTime) << BigInt(22)).toString()
+  };
+  var messages = await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/messages`,
+    params
+  })
+  if(messages.length == 100) {
+    messages = messages.concat(await channelMessagesB(channelId, BigInt(messages[0].id) + BigInt(1)))
+  }
+  return messages
+}
+
+async function deleteChannel(channelId) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}`
+  })
+}
+
+module.exports = {
+  userChannels,
+  guildChannels,
+  channelMessages,
+  deleteChannel
+}
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Configuration and Requests</h3>
+<pre><code class="language-javascript">var {
+  DEFAULT_GUILD, DEFAULT_CHANNEL, MESSAGE_TIME,
+  MESSAGES_START, 
+} = importer.import('discord configuration')
+const {requestAuthQ} = importer.import('discord request')
+</code></pre>
+<p>Imports configuration variables and a request function from separate modules.</p>
+<h3>User Channels Function</h3>
+<pre><code class="language-javascript">async function userChannels(userId = '@me') {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${userId}`
+  })
+}
+</code></pre>
+<p>Retrieves user channels for the specified <code>userId</code> or '@me' by default.</p>
+<h3>Guild Channels Function</h3>
+<pre><code class="language-javascript">async function guildChannels(guildId = DEFAULT_GUILD) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `guilds/${guildId}/channels`
+  })
+}
+</code></pre>
+<p>Retrieves guild channels for the specified <code>guildId</code> or the default guild by default.</p>
+<h3>Channel Messages with Retrieval (Recursive)</h3>
+<pre><code class="language-javascript">async function channelMessagesB(channelId = DEFAULT_CHANNEL, messageTime = MESSAGE_TIME) {
+  var params = {
+    limit: 100,
+    after: messageTime.toString()
+  };
+  var messages = await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/messages`,
+    params
+  })
+  if(messages.length == 100) {
+    messages = messages.concat(await channelMessagesB(channelId, BigInt(messages[0].id) + BigInt(1)))
+  }
+  return messages
+}
+</code></pre>
+<p>Retrieves 100 messages from the specified <code>channelId</code> at the specified <code>messageTime</code>, recursively fetching more messages until the end is reached.</p>
+<h3>Channel Messages Function</h3>
+<pre><code class="language-javascript">async function channelMessages(channelId = DEFAULT_CHANNEL, messageTime = MESSAGE_TIME) {
+  var params = {
+    limit: 100,
+    after: (BigInt(Date.now() - MESSAGES_START - messageTime) &lt;&lt; BigInt(22)).toString()
+  };
+  var messages = await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/messages`,
+    params
+  })
+  if(messages.length == 100) {
+    messages = messages.concat(await channelMessagesB(channelId, BigInt(messages[0].id) + BigInt(1)))
+  }
+  return messages
+}
+</code></pre>
+<p>Retrieves 100 messages from the specified <code>channelId</code> with a timestamp in the past by the specified <code>messageTime</code>, using a similar approach to <code>channelMessagesB</code> but with a different timestamp calculation.</p>
+<h3>Delete Channel Function</h3>
+<pre><code class="language-javascript">async function deleteChannel(channelId) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}`
+  })
+}
+</code></pre>
+<p>Deletes the specified <code>channelId</code> using a DELETE request.</p>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+  userChannels,
+  guildChannels,
+  channelMessages,
+  deleteChannel
+}
+</code></pre>
+<p>Exports the functions for use in other modules.</p>

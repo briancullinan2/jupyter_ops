@@ -1,0 +1,124 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This Node.js script uses various libraries and functions to generate code based on a given prompt, involving operations such as Git clone, code generation using a Large Language Model (LLM), and output file naming. The <code>makeCode</code> function takes a prompt and optional repository URL as input, generates code, and returns the code blocks, while also handling errors and edge cases.</p>
+
+
+<pre><code>
+const fs = require('fs')
+const path = require('path')
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const {spawnSync} = require('child_process')
+const {safeurl} = importer.import('domain cache tools')
+
+
+async function makeCode(prompt, codeFile, github) {
+  const llmCode = await importer.import('llm code')
+
+  if(!github) {
+    console.error('Project not specified.')
+    return
+  }
+
+  // TODO: local pull
+  if(!fs.existsSync(github)
+    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+      github = path.join(PROFILE_PATH, github)
+  }
+
+  if(github.includes('://')
+    && fs.existsSync(path.basename(github).replace('.git', ''))
+  ) {
+    github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
+  }
+
+  if(!fs.existsSync(github)) {
+    console.error('Project not found.')
+    return
+  }
+
+  let baseName = path.basename(github)
+
+  await spawnSync('git', ['pull'], {
+    cwd: github,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
+
+  // TODO: compare existing project files
+  let q1 = 'Given the project files:\n' + fs.readdirSync(github).join('\n')
+    + '\nFulfill the following instructions on the code file, only return the block of new code.'
+    + '\n' + prompt
+    + '\n' + 'Response with only the block of code and no summary or reasoning.'
+
+  // TODO: create new files
+  console.log('User: ' + q1)
+  let a1 = await llmCode(q1)
+  console.log('AI: ' + a1)
+
+  // try to extract code blocks
+  let code = a1.matchAll(/```(bash|javascript|code)*\n[\s\S]*?\n```/gi)
+
+  // extract code blocks from response
+  let codeBlocks = ''
+  for(let match of code) {
+    codeBlocks += match[0].replace(/^```(bash|javascript|code)*\n|\n```$/gi, '') + '\n'
+  }
+  if(!codeBlocks) {
+    console.log('Error, couldn\'t find code in:' + a1)
+    return
+  }
+
+  if(!codeFile) {
+    let q2 = 'Given the project files:\n' + fs.readdirSync(github).join('\n')
+      + '\nGenerate a new name for the code file:\n' + codeBlocks
+      + '\nOnly respond with the recommended file name and nothing else.'
+    console.log('User: ' + q2)
+    let a2 = await llmCode(q2)
+    console.log('AI: ' + a2)
+
+    codeFile = safeurl(a2)
+  }
+  
+  // TODO: populate code files with goals
+  fs.writeFileSync(path.join(github, codeFile), codeBlocks)
+
+  // TODO: populate goals with actual code
+
+}
+
+module.exports = makeCode
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This is a Node.js script that uses various libraries and functions to generate code based on a given prompt. Here's a high-level overview:</p>
+<h3>Dependencies and Variables</h3>
+<ul>
+<li><code>fs</code> (File System) and <code>path</code> are used for file system operations.</li>
+<li><code>PROFILE_PATH</code> is set to the user's home directory, using various environment variables.</li>
+<li><code>spawnSync</code> is used to spawn a child process (e.g., Git).</li>
+<li><code>importer</code> is used to import other modules, and <code>safeurl</code> is imported from <code>domain cache tools</code>.</li>
+<li><code>llmCode</code> is imported from <code>llm code</code>, which is assumed to contain a function for generating code.</li>
+</ul>
+<h3><code>makeCode</code> Function</h3>
+<p>The main function, <code>makeCode</code>, takes three parameters:</p>
+<ul>
+<li><code>prompt</code>: the input prompt.</li>
+<li><code>codeFile</code>: the name of the output code file (optional).</li>
+<li><code>github</code>: the repository URL (optional).</li>
+</ul>
+<p>Here's a step-by-step breakdown:</p>
+<ol>
+<li><strong>Check if GitHub repository is specified</strong>: If no repository is provided, the function returns an error message.</li>
+<li><strong>Resolve repository path</strong>: If the repository path is not an absolute path, the function attempts to resolve it to an absolute path using various possible directory locations.</li>
+<li><strong>Check if repository exists</strong>: If the repository does not exist, the function returns an error message.</li>
+<li><strong>Pull new changes from Git</strong>: The function uses <code>spawnSync</code> to run <code>git pull</code> on the repository.</li>
+<li><strong>Generate code</strong>: The function creates a prompt for the LLM (Large Language Model) code generator, which includes the project files and the input prompt. The LLM code generator returns a response, which is expected to contain code blocks.</li>
+<li><strong>Extract code blocks</strong>: The function uses regular expressions to extract code blocks from the LLM response.</li>
+<li><strong>Generate new code file name</strong>: If no output file name is provided, the function creates a prompt for the LLM code generator to suggest a new file name based on the code blocks.</li>
+<li><strong>Return code blocks</strong>: The function returns the extracted code blocks.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The function relies on the <code>llmCode</code> module, which is not shown in this code snippet. This module is assumed to contain a function for generating code based on a given prompt.</li>
+<li>The function uses <code>spawnSync</code> to run <code>git pull</code> on the repository, which may not be the most efficient or secure way to handle Git operations.</li>
+</ul>

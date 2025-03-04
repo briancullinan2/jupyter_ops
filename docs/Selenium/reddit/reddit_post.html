@@ -1,0 +1,103 @@
+<p>Here's a 1-2 sentence summary:</p>
+<p>The <code>redditPost</code> function automates posting on Reddit using Selenium WebDriver, taking parameters such as content, start page, and driver instance to create and submit a post. It handles errors and uses Markdown formatting for the title and body, with optional title generation using a Large Language Model.</p>
+
+
+<pre><code>const loginReddit = importer.import('reddit login')
+const getClient = importer.import('selenium client')
+const getAllQuery = importer.import('selenium query')
+const { By } = require('selenium-webdriver')
+
+
+async function redditPost(driver, content, startPage) {
+  let {llmPrompt} = await importer.import('create llm session')
+
+  if(!startPage.includes('://')) {
+    startPage = 'https://www.reddit.com/r/' + startPage
+  }
+
+  if(!startPage.includes('/submit')) {
+    startPage += '/submit?type=TEXT'
+  }
+
+  if(!driver) {
+    driver = await getClient()
+  }
+
+  await driver.get(startPage)
+
+  await loginReddit(driver)
+
+  await new Promise(resolve => setTimeout(resolve, 1500))
+
+  let titleStr = (/\*\*(.*?)\*\*\n*/gi).exec(content)
+  if(titleStr) {
+    content = content.replace(titleStr[0], '')
+    titleStr = titleStr[1].replaceAll(/[#*"']/gi, '')
+  } else {
+    titleStr = await llmPrompt(
+      'Generate a short title for this summary:\n' + 
+      content)
+    titleStr = titleStr.replaceAll(/[#*"']/gi, '')
+  }
+
+  try {
+    let title = await driver.findElement(By.css('faceplate-textarea-input[name*="title"]'))
+    await title.click()
+    //await driver.executeScript('arguments[0].click();', title)
+    await driver.actions().sendKeys(titleStr).perform()
+
+    let switchButton = await getAllQuery(driver, [
+      'shreddit-composer',
+      'button[aria-label*="Switch to Markdown"]'
+    ])
+    await driver.executeScript('arguments[0].click();', switchButton[0])
+    await new Promise(resolve => setTimeout(resolve, 500))
+
+    let body = await getAllQuery(driver, [
+      'shreddit-composer',
+      'shreddit-markdown-composer',
+      'textarea[placeholder*="Body"]'
+    ])
+    await driver.executeScript('arguments[0].click();', body[0])
+    await driver.actions().sendKeys(content).perform()
+
+    let submit = await driver.findElement(By.css('#submit-post-button'))
+    submit.click()
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
+  } catch (e) {
+    //driver.quit()
+
+    throw e
+  }
+
+}
+
+module.exports = redditPost
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Overview</h3>
+<p>This is a JavaScript function named <code>redditPost</code> that automates posting on Reddit using Selenium WebDriver. It takes three parameters: <code>driver</code>, <code>content</code>, and <code>startPage</code>.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>driver</code>: The Selenium WebDriver instance. If not provided, it will be created using the <code>getClient</code> function.</li>
+<li><code>content</code>: The content of the post, which can include a Markdown-formatted title and body.</li>
+<li><code>startPage</code>: The URL of the Reddit subreddit page where the post will be submitted. It will be prepended with <code>https://www.reddit.com/r/</code> if it doesn't contain a protocol.</li>
+</ul>
+<h3>Functionality</h3>
+<ol>
+<li>It checks if <code>startPage</code> is a valid URL and adds <code>https://www.reddit.com/r/</code> if necessary.</li>
+<li>It checks if <code>startPage</code> ends with <code>/submit</code> and appends it if necessary.</li>
+<li>It logs into Reddit using the <code>loginReddit</code> function.</li>
+<li>It waits for 1.5 seconds using <code>setTimeout</code>.</li>
+<li>It extracts the title from the <code>content</code> string using a regular expression. If the title is not found, it uses the LLM (Large Language Model) to generate a title.</li>
+<li>It clears the title field and sets the title using the extracted or generated title.</li>
+<li>It clicks the &quot;Switch to Markdown&quot; button to enable Markdown formatting.</li>
+<li>It sets the body of the post using the <code>content</code> string.</li>
+<li>It submits the post by clicking the submit button.</li>
+</ol>
+<h3>Error Handling</h3>
+<p>The function catches any errors that occur during execution and re-throws them.</p>
+<h3>Export</h3>
+<p>The function is exported as a module using <code>module.exports = redditPost</code>.</p>

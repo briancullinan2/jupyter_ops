@@ -1,0 +1,195 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>The code imports various modules and functions, defines two functions <code>getChatHistory</code> and <code>askLlamaToRespondLike</code>, and utilizes file system operations to read and write chat log files. The code has some areas for improvement, including inconsistent use of <code>async/await</code>, blocking file reads, and legacy syntax.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const CHAT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations')
+const {EMOTIONS} = importer.import('ask llm about emotions')
+const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import('ask llm about chat conversations')
+const {askLlamaAboutEmotions} = importer.import('ask llm about emotions')
+const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+const {convertMessagesToNoDates, CHAT_DIRECTORIES} = importer.import('how to scan chat logs')
+
+async function getChatHistory(chatLog) {
+
+  let chatHistory = []
+  let chatPath
+  for(let i = 0; i < CHAT_DIRECTORIES.length; i++) {
+    chatPath = path.join(CHAT_DIRECTORIES[i], chatLog + '.log')
+    if(fs.existsSync(chatPath)) {
+      chatHistory = fs.readFileSync(chatPath).toLocaleString('utf-8').split('\n')
+      break
+    } else {
+      chatPath = void 0
+    }
+  }
+
+  return chatHistory
+}
+
+
+async function askLlamaToRespondLike(name, conversation) {
+  const {llmPrompt} = await importer.import('create llm session')
+  if(!name) {
+    name = 'Brian/Me'
+  }
+  if(!conversation) {
+    conversation = `David Mc, Dec 5, 9:40 AM
+Ok let me know
+
+David Mc, Dec 5, 1:44 PM
+ready now?
+
+You, 10:29 AM
+do you want to build a music player?
+something like this https://github.com/waltonseymour/visualizer
+for front end
+and my ol php media server for backend
+maybe i could convince chris to upgrade to class based system
+
+You, 10:34 AM
+https://github.com/briancullinan2/mediaserver/blob/main/modules/encode.module
+basically just a parameterized launcher for vlc
+
+David Mc, 10:41 AM
+First thing on my list is grafana plug-in
+
+You, 10:45 AM
+https://github.com/preziotte/party-mode
+grafana for gpt?
+`
+  }
+  if(typeof conversation == 'string') {
+    conversation = conversation.split(/\s*\n\s*/gi)
+  }
+
+  let chatCache = {}
+  let conversations = fs.readdirSync(CHAT_PATH)
+  for(let i = 0; i < conversations.length; i++) {
+    if(conversations[i][0] == '.') continue
+    let chatCacheFile = path.join(CHAT_PATH, conversations[i])
+    try {
+      Object.assign(chatCache, JSON.parse(fs.readFileSync(chatCacheFile).toString('utf-8')))
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  // TODO: search for matching emotions
+  let allCategories = Object.keys(chatCache).map(k => chatCache[k].category)
+    .filter((a, i, arr) => arr.indexOf(a) == i)
+  let matchingEmotions = await askLlamaAboutEmotions(conversation.join(', '))
+  let category = await askLlamaAboutCategory(conversation)
+
+  let matchingCategories = []
+  let functions = []
+  for(let i = 0; i < allCategories.length; i++) {
+    functions[functions.length] = allCategories[i]
+
+    if(functions.length == 20) {
+      let result = await askLlamaAboutFunctions(category, functions, [], true)
+      functions = []
+      if(result)
+        matchingCategories = matchingCategories.concat(result)
+    }
+  }
+  if(functions.length > 0) {
+      let result = await askLlamaAboutFunctions(category, functions, [], true)
+      functions = []
+      if(result)
+        matchingCategories = matchingCategories.concat(result)
+  }
+
+  console.log(matchingCategories)
+  let chatLogs = {}
+  let answers = []
+  let summaries = []
+  // TODO: search for contextual matches in summaries
+  let keys = Object.keys(chatCache)
+  for(let i = 0; i < keys.length; i++) {
+    if(chatCache[keys[i]].emotions
+      && chatCache[keys[i]].emotions.filter(e => matchingEmotions.includes(e)).length > 0
+      || matchingCategories.includes(chatCache[keys[i]].category)
+    ) {
+      // TODO: this is where eliza characterization comes in
+      let chatLog = path.basename(keys[i]).replace(/\[[0-9]+\]/gi, '').replace('.log', '')
+      if(typeof chatLogs[chatLog] == 'undefined') {
+        chatLogs[chatLog] = await getChatHistory(chatLog)
+      }
+
+      summaries[summaries.length] = chatCache[keys[i]].summary
+      let history = chatLogs[chatLog].slice(chatCache[keys[i]].from, chatCache[keys[i]].to)
+      let q1 = 'Derive any response style, personality, topics from this conversation:\n' + convertMessagesToNoDates(history).join('\n')
+      console.log("User: " + q1)
+      const a1 = await llmPrompt(q1)
+      console.log("AI: " + a1)
+      answers[answers.length] = a1
+
+      /*
+      if(summaries.length == 20) {
+        let q2 = 'Derive any response style, personality, topics from this conversation:\n' + summaries.join(', ')
+        console.log("User: " + q2)
+        const a2 = await llmPrompt(q2)
+        console.log("AI: " + a2)
+        answers[answers.length] = a2
+        summaries.length = []
+      }
+      */
+    }
+  }
+  /*
+  if(summaries.length > 0) {
+    let q2 = 'Derive any response style, personality, topics from this conversation:\n' + summaries.join(', ')
+    console.log("User: " + q2)
+    const a2 = await llmPrompt(q2)
+    console.log("AI: " + a2)
+    answers[answers.length] = a2
+    summaries.length = []
+  }
+  */
+
+  console.log(answers)
+
+  // TODO: coallesce many responses from {name}
+
+  // TODO: finally query llm to act like person
+
+}
+
+
+module.exports = {
+  askLlamaToRespondLike
+}
+</code></pre>
+
+<p>Here's a short breakdown of the code:</p>
+<p><strong>Requires and Imports</strong></p>
+<p>The code requires the following modules:</p>
+<ul>
+<li><code>fs</code> (file system) for reading and writing files</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>importer</code> for importing other modules and functions (not shown in the provided code)</li>
+</ul>
+<p>The code imports various functions and variables from other modules using <code>importer.import</code>. These imports include:</p>
+<ul>
+<li><code>EMOTIONS</code></li>
+<li><code>askLlamaAboutConversation</code>, <code>askLlamaAboutCategory</code></li>
+<li><code>askLlamaAboutEmotions</code></li>
+<li><code>askLlamaAboutFunctions</code></li>
+<li><code>convertMessagesToNoDates</code>, <code>CHAT_DIRECTORIES</code></li>
+</ul>
+<p><strong>Functions</strong></p>
+<p>The code defines two functions:</p>
+<ol>
+<li><code>getChatHistory(chatLog)</code>: This function reads a chat log file from disk and returns its contents as an array of strings. It uses a loop to iterate over the <code>CHAT_DIRECTORIES</code> array and find the first file that exists.</li>
+<li><code>askLlamaToRespondLike(name, conversation)</code>: This function uses an external module to create an LLM (Large Language Model) session and asks the LLM to respond to a conversation. It takes two parameters: <code>name</code> and <code>conversation</code>. If <code>conversation</code> is a string, it is split into an array of lines. The function also caches conversations in a file.</li>
+</ol>
+<p><strong>Other Notes</strong></p>
+<ul>
+<li>The code uses asynchronous functions (<code>async</code>) but does not use <code>await</code> consistently. It would be better to use <code>await</code> consistently to make the code easier to read and understand.</li>
+<li>The code uses <code>fs.readFileSync</code> which is a blocking function and can be slow for large files. It would be better to use <code>fs.promises.readFile</code> or a streaming API to read files in a non-blocking way.</li>
+<li>The code uses <code>fs.existsSync</code> to check if a file exists. It would be better to use <code>fs.promises.access</code> or <code>fs.promises.readFile</code> to check if a file exists and read its contents in a single operation.</li>
+<li>The code uses <code>path.join</code> to join file paths, which is a good practice to avoid path manipulation errors.</li>
+<li>The code uses <code>void 0</code> to indicate an undefined value, which is a legacy syntax and can be replaced with <code>undefined</code> for clarity.</li>
+</ul>

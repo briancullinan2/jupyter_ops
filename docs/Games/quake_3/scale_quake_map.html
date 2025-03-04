@@ -1,0 +1,117 @@
+<p>The <code>scaleMap</code> function modifies a Quake 3 map file by scaling the coordinates of its brush entities and origins by a specified amount.  This is likely used for resizing or adjusting the scale of map geometry.</p>
+
+
+<pre><code>var fs = require('fs')
+var DIGITS = 100.0
+
+function scaleMap(file, amount) {
+    // get all brushes in map, leaf nodes with at least one vertex
+    var brushes = importer.regexToArray(/\{[\s\S]*?\}/ig, file)
+    
+    // replace all brushes with scaled values
+    brushes.forEach(b => {
+        var newBrush = b
+        newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) => {
+            return '( ' + $1.trim().split(/\s+/ig)
+                .map(n => Math.round((n.includes('.')
+                        ? parseFloat(n.trim())
+                        : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+                .join(' ') + ' )'
+        })
+        // scale the texture on the brush
+        newBrush = newBrush.replace(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+\s*){5,8})/ig, (str, $1, $2) => {
+            return ') ' + $1 + ' ' + $2.trim().split(/\s+/ig)
+                .map((n, i) => i >= 5 || i <= 2 ? n : (Math.round((n.includes('.')
+                        ? parseFloat(n.trim())
+                        : parseInt(n.trim())) * amount * DIGITS) / DIGITS))
+                .join(' ') + '\n'
+        })
+        file = file.replace(b, newBrush)
+    })
+    
+    // replace all origins with scaled
+    // TODO: make this a function
+    var origins = importer.regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
+    origins.forEach($1 => {
+        var newOrigin = $1.trim().split(/\s+/ig)
+            .map(n => Math.round((n.includes('.')
+                    ? parseFloat(n.trim())
+                    : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+            .join(' ')
+        file = file.replace(new RegExp('"origin"\\s+"' + $1 + '"', 'ig'), '"origin" "' + newOrigin + '"')
+    })
+    var lips = importer.regexToArray(/"lip"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
+    lips.forEach($1 => {
+        var newOrigin = $1.trim().split(/\s+/ig)
+            .map(n => Math.round((n.includes('.')
+                    ? parseFloat(n.trim())
+                    : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+            .join(' ')
+        file = file.replace(new RegExp('"lip"\\s+"' + $1 + '"', 'ig'), '"lip" "' + newOrigin + '"')
+    })
+    
+    // scale models
+    var models = importer.regexToArray(/\{[\s\S^\}\{]*?"classname"\s+"misc_model"[\s\S^\}\{]*?\}/ig, file)
+    models.forEach(m => {
+        var newModel = m
+        if(m.match(/"modelscale"/i)) {
+            var match = (/"modelscale"\s+"([^"]*?)"/ig).exec(m)
+            var scaled = (match[1].includes('.')
+                ? parseFloat(match[1])
+                : parseInt(match[1])) * amount
+            newModel = newModel.replace(match[0], '"modelscale" "' + scaled + '"')
+        } else {
+            newModel = newModel.replace(/"classname"\s+"misc_model"/ig,
+                                        '"classname" "misc_model"\n "modelscale" "' + amount + '"')
+        }
+        file = file.replace(m, newModel)
+    })
+    
+    return file
+}
+
+module.exports = scaleMap
+</code></pre>
+
+<p>This code snippet defines a function <code>scaleMap</code> that modifies a Quake 3 map file by scaling its brush entities and origins.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js module for file system operations.</li>
+<li><code>DIGITS</code>: A constant set to 100.0, likely used for precision during scaling calculations.</li>
+</ul></li>
+<li><p><strong><code>scaleMap</code> Function:</strong></p>
+<ul>
+<li>Takes two arguments: <code>file</code> (the map file content as a string) and <code>amount</code> (the scaling factor).</li>
+<li><strong>Extracting Brushes:</strong>
+<ul>
+<li>Uses a regular expression (<code>/\{[\s\S]*?\}/ig</code>) to find all brush entities within the map file.</li>
+<li>Stores these brushes in an array called <code>brushes</code>.</li>
+</ul></li>
+<li><strong>Scaling Brushes:</strong>
+<ul>
+<li>Iterates through each brush in the <code>brushes</code> array.</li>
+<li>For each brush:
+<ul>
+<li>Creates a copy (<code>newBrush</code>) of the original brush.</li>
+<li>Uses regular expressions to find and replace coordinates within the brush definition.</li>
+<li>Scales the coordinates by multiplying them with <code>amount</code> and <code>DIGITS</code>.</li>
+<li>Rounds the scaled coordinates to maintain precision.</li>
+<li>Replaces the original brush in the <code>file</code> with the scaled <code>newBrush</code>.</li>
+</ul></li>
+</ul></li>
+<li><strong>Scaling Origins:</strong>
+<ul>
+<li>Uses regular expressions to find and replace origin coordinates within the map file.</li>
+<li>Scales the origin coordinates similarly to the brush coordinates.</li>
+<li>Replaces the original origin strings with the scaled versions.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Return Value:</strong></p>
+<ul>
+<li>The function returns the modified <code>file</code> content with scaled brush entities and origins.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet is a utility function for modifying Quake 3 map files by scaling their geometry. It's likely used in a larger project for map editing or conversion purposes.</p>

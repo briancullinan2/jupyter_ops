@@ -1,0 +1,157 @@
+<p>This code implements a server-side rendering engine for Angular applications using Express, allowing for pre-rendered HTML to be sent to the client.  It leverages Angular's <code>platformDynamicServer</code> and <code>renderModuleFactory</code> to compile and render the application for a given URL.</p>
+
+
+<pre><code>// mostly taken from ngRenderEngine which requires express
+// polyfills
+import 'zone.js/dist/zone-node';
+import 'reflect-metadata';
+import 'rxjs/Rx';
+// angular
+import {
+    APP_INITIALIZER,
+    Compiler,
+    CompilerFactory,
+    enableProdMode,
+    InjectionToken,
+    Injector,
+    NgModuleFactory,
+    Type
+} from '@angular/core';
+import {ResourceLoader} from '@angular/compiler';
+import {INITIAL_CONFIG, platformDynamicServer, renderModuleFactory} from '@angular/platform-server';
+
+import {AppServerModule} from './app/app.server.module';
+import {Router} from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
+
+enableProdMode();
+
+/**
+ * Map of Module Factories
+ */
+const factoryCacheMap = new Map < Type < {} >, NgModuleFactory
+<
+{
+}
+>>
+();
+
+/**
+ * This is an express engine for handling Angular Applications
+ */
+function bootstrapRender(boot: any) {
+
+    const compilerFactory: CompilerFactory = platformDynamicServer().injector.get(CompilerFactory);
+    const compiler: Compiler = compilerFactory.createCompiler([
+        {
+            providers: []
+        }
+    ]);
+
+    return function (url: string, callback: (err?: Error | null, html ? : string
+) =>
+    void
+)
+    {
+
+        try {
+            if (!boot) {
+                return callback(new Error('You must pass in a NgModule or NgModuleFactory to be bootstrapped'));
+            }
+
+            getFactory(boot, compiler)
+                .then(factory => {
+                    return renderModuleFactory(factory, {
+                        document: '<app-root></app-root>',
+                        url: url,
+                        extraProviders: [
+                            {
+                                provide: APP_INITIALIZER,
+                                useFactory: (injector: Injector) => {
+                                    return () => {
+                                        const router: Router = injector.get(Router);
+                                        router.navigate([url]); // => This has NO effect
+                                        console.log(router.url); // this logs: '/' instead of the 'domain.com/de-de/contact'
+                                    };
+                                },
+                                deps: [Injector],
+                                multi: true
+                            },
+                            {
+                                provide: INITIAL_CONFIG,
+                                useValue: {
+                                    document: '<app-root></app-root>',
+                                    url: url
+                                }
+                            }
+                        ]
+                    });
+                })
+                .then((html: string) => {
+                    callback(null, html);
+                }, (err) => {
+                    callback(err);
+                });
+        } catch (err) {
+            callback(err);
+        }
+    }
+    ;
+}
+
+/**
+ * Get a factory from a bootstrapped module/ module factory
+ */
+function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>, compiler: Compiler): Promise<NgModuleFactory<{}
+
+>>
+{
+    return new Promise < NgModuleFactory < {} >> ((resolve, reject) => {
+        // If module has been compiled AoT
+        if (moduleOrFactory instanceof NgModuleFactory) {
+            resolve(moduleOrFactory);
+            return;
+        } else {
+            let moduleFactory = factoryCacheMap.get(moduleOrFactory);
+
+            // If module factory is cached
+            if (moduleFactory) {
+                resolve(moduleFactory);
+                return;
+            }
+
+            // Compile the module and cache it
+            compiler.compileModuleAsync(moduleOrFactory)
+                .then((factory) => {
+                    factoryCacheMap.set(moduleOrFactory, factory);
+                    resolve(factory);
+                }, (err => {
+                    reject(err);
+                }));
+        }
+    });
+}
+
+// Hacky way to get this function out of the Zone context?
+( < any > global
+).
+renderer = bootstrapRender(AppServerModule);
+
+</code></pre>
+
+<p>This code sets up a server-side rendering engine for an Angular application using Express.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports necessary modules from Angular, Express, and other libraries for server-side rendering, polyfills, and dependency injection.</p></li>
+<li><p><strong>Configuration:</strong> It enables production mode and defines a <code>factoryCacheMap</code> to store compiled module factories for efficiency.</p></li>
+<li><p><strong><code>bootstrapRender</code> Function:</strong> This function takes a module or module factory as input and renders the Angular application for a given URL. It uses <code>platformDynamicServer</code> to create a server-side platform and <code>renderModuleFactory</code> to render the application.</p></li>
+<li><p><strong>Rendering Process:</strong></p>
+<ul>
+<li>It retrieves the <code>CompilerFactory</code> and <code>Compiler</code> from the server-side platform's injector.</li>
+<li>It compiles the provided module or module factory.</li>
+<li>It renders the compiled module using <code>renderModuleFactory</code>, providing the URL and a placeholder <code>&lt;app-root&gt;</code> element for the root component.</li>
+<li>It attempts to navigate the router to the provided URL, although this has no effect on the server-side rendering.</li>
+</ul></li>
+<li><p><strong>Error Handling:</strong> It includes basic error handling to catch cases where no module or module factory is provided.</p></li>
+</ol>
+<p>Let me know if you have any more questions.</p>

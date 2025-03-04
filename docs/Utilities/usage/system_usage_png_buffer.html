@@ -1,0 +1,66 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code requires dependencies on <code>fs</code>, <code>path</code>, <code>os</code>, and <code>child_process</code> to interact with the file system, work with file paths, and execute system commands. The <code>systemBuffer</code> function generates a graph usage PNG image from a given data parameter, writing and converting an SVG to a PNG before returning the PNG image as a buffer.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const TEMP_DIR = os.tmpdir();
+const {spawnSync} = require('child_process')
+
+let count = 0
+
+async function systemBuffer(data) {
+  const graphUsage = await importer.import('system usage graph')
+  let svg = await graphUsage(data)
+  let svgTempFile = path.join(TEMP_DIR, 'tmp' + (count % 4) + '.svg')
+  fs.writeFileSync(svgTempFile, svg)
+  await spawnSync('convert', ['-density', '1200', '-resize', '300x200', svgTempFile, svgTempFile.replace('.svg', '.png')], {
+    cwd: TEMP_DIR,
+    timeout: 3000,
+  })
+
+  count++
+  return fs.readFileSync(svgTempFile.replace('.svg', '.png'))
+}
+
+
+module.exports = systemBuffer
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies and Variables</h3>
+<ul>
+<li>The code requires the following dependencies:
+<ul>
+<li><code>fs</code> (File System) for interacting with the file system</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>os</code> (Operating System) for accessing temporary directories</li>
+<li><code>child_process</code> for executing system commands</li>
+</ul></li>
+<li>The following variables are defined:
+<ul>
+<li><code>TEMP_DIR</code>: the temporary directory on the system</li>
+<li><code>count</code>: a counter used to generate unique file names (starts at 0)</li>
+</ul></li>
+</ul>
+<h3>systemBuffer Function</h3>
+<ul>
+<li><code>systemBuffer</code> is an asynchronous function that takes a <code>data</code> parameter</li>
+<li>The function:
+<ol>
+<li>Imports a graph usage graph module using <code>importer.import('system usage graph')</code></li>
+<li>Generates a graph usage SVG image using the imported module and <code>data</code></li>
+<li>Writes the SVG image to a temporary file in the <code>TEMP_DIR</code></li>
+<li>Uses the <code>convert</code> command from the <code>child_process</code> to convert the SVG image to a PNG image</li>
+<li>Returns the contents of the resulting PNG image file as a buffer</li>
+</ol></li>
+</ul>
+<h3>Function Exports</h3>
+<ul>
+<li>The <code>systemBuffer</code> function is exported as a module using <code>module.exports = systemBuffer</code></li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The function uses a counter to generate unique file names, which may not be necessary if the file names are not critical</li>
+<li>The <code>timeout</code> option in the <code>spawnSync</code> function is set to 3000 (3 seconds), which means the function will timeout if the <code>convert</code> command takes longer than 3 seconds to complete.</li>
+</ul>

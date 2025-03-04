@@ -1,0 +1,55 @@
+<p>This code automates the process of fetching API discovery documents, converting them to a specific format, and saving them to local files. It is likely used to prepare API documentation or configuration for a system that relies on Google Discovery.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+
+function testDiscovery(config = {api: 'drive', version: 'v3'}) {
+    var discovery = getRpcFromSpec(require('/Users/briancullinan/Downloads/rest.json'));
+//    Promise.resolve(discovery)
+    return discovery.apis.getRest(config)
+        .then(r => {
+        try {
+            fs.writeFileSync(path.join(__dirname, `../Resources/APIs/${config.api}.${config.version}.json`),
+                             JSON.stringify(r.body, null, 4))
+        } catch (up) {
+            throw up
+        }
+        return r.body
+    })
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    testDiscovery()
+        .then(r => $$.sendResult(r))
+//        .then(r => $$.sendResult(getRpcFromSpec(r)))
+        .catch(e => $$.sendError(e))
+}
+
+module.exports = testDiscovery
+</code></pre>
+
+<p>This code snippet fetches and saves API discovery documents in a specific format.</p>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Dependencies:</strong> It uses <code>fs</code> for file system operations, <code>path</code> for path manipulation, and <code>importer</code> for loading a function <code>getRpcFromSpec</code>.</li>
+<li><strong><code>testDiscovery</code> Function:</strong>
+<ul>
+<li>Takes an optional <code>config</code> object with <code>api</code> and <code>version</code> properties.</li>
+<li>Loads an OpenAPI specification from a local file (<code>rest.json</code>).</li>
+<li>Uses <code>getRpcFromSpec</code> to convert the specification into a Google Discovery format.</li>
+<li>Fetches the API discovery document using the provided configuration.</li>
+<li>Saves the discovery document to a file in a designated directory.</li>
+<li>Returns the parsed discovery document.</li>
+</ul></li>
+<li><strong>Conditional Execution:</strong>
+<ul>
+<li>The code within the <code>if(typeof $$ !== 'undefined')</code> block executes only in a specific environment (likely a browser).</li>
+<li>It calls <code>testDiscovery</code>, handles the result (sending it as a success or error message), and likely interacts with a framework or environment using <code>$$.async()</code>, <code>$$.sendResult()</code>, and <code>$$.sendError()</code>.</li>
+</ul></li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<p>This code likely automates the process of fetching, converting, and saving API discovery documents for use in a system that requires them.</p>

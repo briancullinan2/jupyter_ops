@@ -1,0 +1,51 @@
+<p>The <code>sendJoke</code> function automates the process of fetching two jokes and posting them as separate Facebook messages within a designated browser window using Selenium WebDriver.</p>
+
+
+<pre><code>
+function sendJoke(client, hwnd) {
+    var joke;
+    return client
+        .then(() => getJoke())
+        .then(r => joke = r)
+        .switchToWindow(hwnd)
+        .then(() => sendFacebookMessage(joke[0]))
+        .pause(20000)
+        .then(() => sendFacebookMessage(joke[1]))
+}
+module.exports = sendJoke;
+</code></pre>
+
+<p>This code defines a function called <code>sendJoke</code> that sends two jokes to a Facebook message in a specific browser window.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>sendJoke(client, hwnd)</code>:</strong></p>
+<ul>
+<li>Takes a <code>client</code> object (likely Selenium WebDriver) and a window handle (<code>hwnd</code>) as input.</li>
+</ul></li>
+<li><p><strong>Get a Joke:</strong></p>
+<ul>
+<li>Uses <code>getJoke()</code> (not shown in the code) to fetch a joke.</li>
+<li>Stores the joke in the <code>joke</code> variable.</li>
+</ul></li>
+<li><p><strong>Switch to Window:</strong></p>
+<ul>
+<li>Switches the Selenium WebDriver to the specified window using <code>switchToWindow(hwnd)</code>.</li>
+</ul></li>
+<li><p><strong>Send First Joke:</strong></p>
+<ul>
+<li>Sends the first joke from the <code>joke</code> array using <code>sendFacebookMessage(joke[0])</code>.</li>
+</ul></li>
+<li><p><strong>Pause:</strong></p>
+<ul>
+<li>Pauses for 20 seconds using <code>pause(20000)</code>.</li>
+</ul></li>
+<li><p><strong>Send Second Joke:</strong></p>
+<ul>
+<li>Sends the second joke from the <code>joke</code> array using <code>sendFacebookMessage(joke[1])</code>.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>sendJoke</code> function for use in other parts of the code.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this function automates the process of fetching two jokes and posting them as separate Facebook messages within a specific browser window.</strong></p>

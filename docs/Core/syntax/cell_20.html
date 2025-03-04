@@ -1,0 +1,30 @@
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var {selectAst, makeXpaths, htmlToTree} = importer.import([
+    'select tree', 'make xpaths', 'html to tree'])
+
+var code = `
+var importer = require('../Core');
+function name(params) {
+    return importer.interpret('this is a describe request');
+}
+console.log()
+`
+
+function testCodeToDom(code) {
+    // make a path with the interpret symbol
+    var node1 = selectAst(`//*[@name="interpret"]`, code)
+    console.log(node1)
+    var parent = selectAst(`parent::*`, node1);
+    assert(parent.nodeName !== '', 'parent selector works');
+    console.log(selectAst(`*`, node1).children.length);
+    console.log(htmlToTree(parent));
+}
+
+if(typeof $$ !== 'undefined') {
+    testCodeToDom(code);
+}
+</code></pre>
+

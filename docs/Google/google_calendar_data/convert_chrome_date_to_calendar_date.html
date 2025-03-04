@@ -1,0 +1,40 @@
+<p>This code defines a function that converts a Chrome-specific date format (microseconds since a specific epoch) into a standard JavaScript Date object.  It's designed to make working with Chrome's date representation easier within a JavaScript application.</p>
+
+
+<pre><code>
+function chromeDtToDate(st_dt) {
+   var microseconds = parseInt(st_dt, 10);
+   var millis = microseconds / 1000;
+   var past = new Date(1601, 0, 1).getTime();
+   return new Date(past + millis);
+}
+
+module.exports = chromeDtToDate;
+</code></pre>
+
+<p>This code snippet defines a function <code>chromeDtToDate</code> that converts a Chrome-specific date representation (a number representing microseconds since a specific epoch) into a standard JavaScript Date object.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Function Definition:</strong></p>
+<ul>
+<li><code>function chromeDtToDate(st_dt)</code>: Defines a function named <code>chromeDtToDate</code> that takes a single argument <code>st_dt</code>, which represents the Chrome date value.</li>
+</ul></li>
+<li><p><strong>Microseconds to Milliseconds:</strong></p>
+<ul>
+<li><code>var microseconds = parseInt(st_dt, 10);</code>: Parses the input <code>st_dt</code> as an integer (base 10) and stores it in the <code>microseconds</code> variable.</li>
+<li><code>var millis = microseconds / 1000;</code>: Divides the <code>microseconds</code> by 1000 to convert it to milliseconds.</li>
+</ul></li>
+<li><p><strong>Epoch Adjustment:</strong></p>
+<ul>
+<li><code>var past = new Date(1601, 0, 1).getTime();</code>: Creates a <code>Date</code> object representing January 1, 1601 (the Chrome epoch) and gets its timestamp in milliseconds.</li>
+</ul></li>
+<li><p><strong>Date Object Creation:</strong></p>
+<ul>
+<li><code>return new Date(past + millis);</code>: Creates a new <code>Date</code> object using the Chrome epoch timestamp (<code>past</code>) plus the converted milliseconds (<code>millis</code>). This effectively converts the Chrome date representation into a standard JavaScript Date object.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li><code>module.exports = chromeDtToDate;</code>: Exports the <code>chromeDtToDate</code> function, making it available for use in other modules.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a utility function to convert a specific date format used by Chrome into a more common JavaScript Date object, allowing for easier manipulation and use within other parts of the application.</p>

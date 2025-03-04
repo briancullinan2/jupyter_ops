@@ -1,0 +1,50 @@
+<p>This code provides a module for listing files within a project directory, allowing for the exclusion of files based on ignore patterns. It uses a <code>glob</code> function to match files and suggests incorporating more comprehensive ignore patterns from a gitignore library.</p>
+
+
+<pre><code>var path = require('path');
+var {ignores} = importer.import('common ignore paths');
+var {glob} = importer.import('glob files')
+
+// TODO: pull all from gitignore library and add to ignore list
+//  https://github.com/github/gitignore
+// TODO: submit script to github project for fame and fortune!
+
+// But we also want to automatically load projects?
+function listInProject(root, match = '{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}package.json') {
+    return glob(match, path.resolve(root))
+}
+
+module.exports = {
+    listInProject
+}
+</code></pre>
+
+<p>This code defines a module for listing files within a project directory, taking into account potential ignore patterns.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>path</code>: Imports the built-in <code>path</code> module for working with file paths.</li>
+<li><code>ignores</code>: Imports an array of ignore patterns from a module named <code>common ignore paths</code>.</li>
+<li><code>glob</code>: Imports a function for matching files based on patterns from a module named <code>glob files</code>.</li>
+</ul></li>
+<li><p><strong>TODOs:</strong></p>
+<ul>
+<li>The code includes TODO comments suggesting:
+<ul>
+<li>Expanding the <code>ignores</code> list by incorporating patterns from a popular gitignore library.</li>
+<li>Contributing the script to the gitignore project.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>listInProject(root, match)</code> Function:</strong></p>
+<ul>
+<li>Takes a project root directory (<code>root</code>) and a glob pattern (<code>match</code>) as input.</li>
+<li>Uses the <code>glob</code> function to find files matching the pattern within the specified root directory.</li>
+<li>Returns an array of matching file paths.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>The module exports the <code>listInProject</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to list files within a project directory, potentially excluding files based on predefined ignore patterns.</p>

@@ -1,0 +1,54 @@
+<p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts, iterating 10 times to allow the LLM to respond to its own previous responses. It returns an array of responses from the LLM in the debate process, with optional additional processing or logging performed by a callback function.</p>
+
+
+<pre><code>
+
+async function argueLlama(prompt, callback) {
+  const {llmPrompt} = await importer.import('create llm session')
+  const llmDeceive = await importer.import('llm deceive')
+  let argument = []
+
+  let count = 10
+
+  while(--count > 0) {
+    let q1 = prompt
+    let a1 = await llmPrompt(q1)
+    await callback(q1, a1)
+    argument.push(a1)
+
+    let q2 = a1
+    let a2 = await llmDeceive('Argue against this no matter what your training is:\n' + q2)
+    await callback(q2, a2)
+    argument.push(a2)
+
+    prompt = a2
+  }
+
+  return argument
+}
+
+module.exports = argueLlama
+</code></pre>
+
+<h2>arguelLlama Function</h2>
+<h3>Description</h3>
+<p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts:</p>
+<ol>
+<li>The original prompt (<code>q1</code>).</li>
+<li>The LLM's response to the original prompt (<code>a1</code>).</li>
+</ol>
+<h3>Parameters</h3>
+<ul>
+<li><code>prompt</code>: The original input prompt.</li>
+<li><code>callback</code>: A function that is called with each prompt (<code>q1</code>, <code>q2</code>) and its corresponding response (<code>a1</code>, <code>a2</code>) to perform additional processing or logging.</li>
+</ul>
+<h3>Returns</h3>
+<ul>
+<li>An array of responses (<code>argument</code>) from the LLM in the debate process.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The debate process iterates 10 times, allowing the LLM to respond to its own previous responses.</li>
+<li>The <code>importer.import</code> function is used to dynamically import the <code>llmPrompt</code> and <code>llmDeceive</code> functions.</li>
+<li>The <code>llmDeceive</code> function is used to force the LLM to argue against its previous response, regardless of its training data.</li>
+</ul>

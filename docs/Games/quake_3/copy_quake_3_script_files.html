@@ -1,0 +1,59 @@
+<p>This code provides a function called <code>convertScripts</code> that copies specified file types from a given directory to a new directory within the same parent folder.  It handles creating necessary directories and ensures each file is copied only if it doesn't already exist in the output location.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var mkdirpSync = importer.import('mkdirp')
+var { chext, chroot } = importer.import('changing file names')
+var {fileTypes} = importer.import('quake 3 file whitelist')
+
+async function convertScripts(root) {
+    var result = []
+    var output = path.join(path.dirname(root), path.basename(root) + '-converted')
+    var files = await glob(fileTypes.map(a => '**/*' + a), root)
+    for(var i = 0; i < files.length; i++) {
+        var inFile = files[i]
+        var outFile = chroot(inFile, root, output)
+        if(!fs.existsSync(outFile)) {
+            mkdirpSync(path.dirname(outFile))
+            await fs.copyFileSync(inFile, outFile)
+            result.push(outFile)
+        }
+    }
+    return result
+}
+
+module.exports = convertScripts
+</code></pre>
+
+<p>This code defines a function <code>convertScripts</code> that takes a directory path (<code>root</code>) as input and copies all files of specified types (defined in <code>fileTypes</code>) to a new directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>path</code>: For working with file paths.</li>
+<li><code>fs</code>: For file system operations (reading, writing, creating directories).</li>
+<li><code>importer</code>: A custom module likely containing utility functions.</li>
+<li><code>glob</code>: For finding files matching a pattern.</li>
+<li><code>mkdirpSync</code>: For creating directories recursively.</li>
+<li><code>chext</code>, <code>chroot</code>: Functions for manipulating file extensions and paths.</li>
+<li><code>fileTypes</code>: An array of file extensions to be copied.</li>
+</ul></li>
+<li><p><strong><code>convertScripts</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>root</code> directory path.</li>
+<li>Creates an output directory (<code>output</code>) next to the input directory.</li>
+<li>Finds all files matching the specified <code>fileTypes</code> within the <code>root</code> directory.</li>
+<li>Iterates through the found files:
+<ul>
+<li>If the output file doesn't exist, it creates the necessary parent directories and copies the input file to the output directory.</li>
+</ul></li>
+<li>Returns an array of paths to the copied files.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>convertScripts</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>

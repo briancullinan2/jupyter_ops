@@ -1,0 +1,11 @@
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var sqlite3 = require('better-sqlite3')
+var sauce = '/Users/briancullinan/Documents/studysauce3/db/studysauce.db'
+var db = new sqlite3(sauce, {})
+var cmds = fs.readFileSync('/Users/briancullinan/Documents/studysauce3/db/studysauce.sqlite')
+    .toString()
+db.transaction(cmds).run()</code></pre>
+

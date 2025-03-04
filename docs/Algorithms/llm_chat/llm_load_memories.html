@@ -1,0 +1,173 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>This code consists of two functions, <code>listMemories</code> and <code>findMemories</code>, which are used to retrieve memories from a file system, with <code>listMemories</code> transforming memory keys into dates and returning an array of strings. The <code>findMemories</code> function searches for memories in a specific file or in a history of files, returning the memories object and caching the result for future reuse.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+
+
+async function listMemories(session) {
+
+  let memories = await findMemories(session)
+  return Object.keys(memories).map(key => {
+    // provide the date the memory was made
+    let date = new Date(parseInt(key))
+    return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + date.getDate()
+      + ' - ' + memories[key]
+  })
+}
+
+async function findMemories(session) {
+
+  if(!session) {
+    return {}
+  }
+
+  let now = new Date()
+  let currentFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+    + String(now.getMonth() + 1).padStart(2, '0') 
+    + '-' + DEFAULT_MODEL
+    + '-' + session + '.json')
+  // TODO: reload chat
+  if(typeof ACTIVE_CONVERSATIONS[currentFile] == 'undefined') {
+    if(fs.existsSync(currentFile)) {
+      ACTIVE_CONVERSATIONS[currentFile] = JSON.parse(fs.readFileSync(currentFile))
+    } else {
+      ACTIVE_CONVERSATIONS[currentFile] = {}
+    }
+  }
+
+  if(typeof ACTIVE_CONVERSATIONS[currentFile]['memories'] != 'undefined') {
+    debugger
+    return ACTIVE_CONVERSATIONS[currentFile]['memories']
+  }
+
+
+  let history = fs.readdirSync(PROJECT_PATH)
+  // newest to oldest
+  history.sort((a, b) => b - a)
+  for(let i = 0; i < history.length; i++) {
+    if(!history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
+      continue
+    }
+
+    let convoFile = path.join(PROJECT_PATH, history[i])
+    if(typeof ACTIVE_CONVERSATIONS[convoFile] == 'undefined') {
+      if(fs.existsSync(convoFile)) {
+        ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+      } else {
+        ACTIVE_CONVERSATIONS[convoFile] = {}
+      }
+    }
+
+    let conversation = ACTIVE_CONVERSATIONS[convoFile]
+    if(typeof conversation['memories'] != 'undefined') {
+      return (ACTIVE_CONVERSATIONS[currentFile]['memories'] = conversation['memories'])
+    }
+  }
+
+  return (ACTIVE_CONVERSATIONS[currentFile]['memories'] = {})
+}
+
+module.exports = {
+  findMemories,
+  listMemories,
+}
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Imported Modules and Constants</h3>
+<pre><code class="language-javascript">const fs = require('fs')
+const path = require('path')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+</code></pre>
+<ul>
+<li><code>fs</code> is the built-in Node.js module for file system operations.</li>
+<li><code>path</code> is the built-in Node.js module for working with file paths.</li>
+<li>The <code>importer.import('general chit chat')</code> line imports constants from a separate module.</li>
+</ul>
+<h3><code>listMemories</code> Function</h3>
+<pre><code class="language-javascript">async function listMemories(session) {
+  let memories = await findMemories(session)
+  return Object.keys(memories).map(key =&gt; {
+    // provide the date the memory was made
+    let date = new Date(parseInt(key))
+    return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + date.getDate()
+      +'-'+ memories[key]
+  })
+}
+</code></pre>
+<ul>
+<li><code>listMemories</code> is an asynchronous function that takes a <code>session</code> parameter.</li>
+<li>It calls <code>findMemories</code> with the <code>session</code> parameter and awaits the result.</li>
+<li>It maps over the resulting memories object to transform the keys into dates and return an array of strings.</li>
+</ul>
+<h3><code>findMemories</code> Function</h3>
+<pre><code class="language-javascript">async function findMemories(session) {
+  if(!session) {
+    return {}
+  }
+
+  let now = new Date()
+  let currentFile = path.join(PROJECT_PATH, now.getFullYear() + '-' 
+    + String(now.getMonth() + 1).padStart(2, '0') 
+    + '-' + DEFAULT_MODEL
+    + '-' + session + '.json')
+
+  if(typeof ACTIVE_CONVERSATIONS[currentFile] == 'undefined') {
+    if(fs.existsSync(currentFile)) {
+      ACTIVE_CONVERSATIONS[currentFile] = JSON.parse(fs.readFileSync(currentFile))
+    } else {
+      ACTIVE_CONVERSATIONS[currentFile] = {}
+    }
+  }
+
+  if(typeof ACTIVE_CONVERSATIONS[currentFile]['memories']!= 'undefined') {
+    return ACTIVE_CONVERSATIONS[currentFile]['memories']
+  }
+
+  let history = fs.readdirSync(PROJECT_PATH)
+  // newest to oldest
+  history.sort((a, b) =&gt; b - a)
+  for(let i = 0; i &lt; history.length; i++) {
+    if(!history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
+      continue
+    }
+
+    let convoFile = path.join(PROJECT_PATH, history[i])
+    if(typeof ACTIVE_CONVERSATIONS[convoFile] == 'undefined') {
+      if(fs.existsSync(convoFile)) {
+        ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+      } else {
+        ACTIVE_CONVERSATIONS[convoFile] = {}
+      }
+    }
+
+    let conversation = ACTIVE_CONVERSATIONS[convoFile]
+    if(typeof conversation['memories']!= 'undefined') {
+      return (ACTIVE_CONVERSATIONS[currentFile]['memories'] = conversation['memories'])
+    }
+  }
+
+  return (ACTIVE_CONVERSATIONS[currentFile]['memories'] = {})
+}
+</code></pre>
+<ul>
+<li><code>findMemories</code> is an asynchronous function that takes a <code>session</code> parameter.</li>
+<li>It checks if the <code>session</code> parameter is truthy and returns an empty object if it's falsy.</li>
+<li>It constructs a file path based on the current date, model, and session.</li>
+<li>It checks if the resulting file exists and if it's already been cached in <code>ACTIVE_CONVERSATIONS</code>. If not, it reads the file and caches it.</li>
+<li>It checks if the cached file has a <code>memories</code> object and returns it if it does. Otherwise, it searches for a matching conversation file in the history (newest to oldest) and returns its <code>memories</code> object. If no matching file is found, it returns an empty <code>memories</code> object.</li>
+<li>It caches the result in <code>ACTIVE_CONVERSATIONS</code> so it can be reused in subsequent calls.</li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+  listMemories,
+  findMemories
+}
+</code></pre>
+<ul>
+<li>The <code>listMemories</code> and <code>findMemories</code> functions are exported as module exports.</li>
+</ul>

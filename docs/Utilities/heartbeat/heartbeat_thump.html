@@ -1,0 +1,66 @@
+<p>This code defines a function <code>thump</code> that asynchronously executes Node.js scripts, allowing for parameter passing, output logging, and error handling.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+
+var CORE = path.resolve(path.join(__dirname, '../Core'));
+var NODE = fs.existsSync('/usr/local/bin/node') ? '/usr/local/bin/node' : '/usr/bin/node';
+
+function thump(thump, parameters, exit) {
+    var out = fs.openSync('/tmp/myjob.log', 'a');
+    var err = fs.openSync('/tmp/myjob.log', 'a');
+    console.log('executing ' + NODE + ' - ' + CORE + ' - ' + thump + ' - ' + JSON.stringify(parameters));
+    require('child_process').spawn(NODE, [
+        '-e',
+        'require(' + JSON.stringify(CORE) + ').import("' + thump + '")(' + (parameters ? ('...' + JSON.stringify(parameters || [])) : '') + ').catch(e => console.log(e)).then(() => process.exit())'
+    ], {
+        detached: true,
+        stdio: [ 'ignore', out, err ]
+    }).unref();
+    if(exit !== false) {
+        if(typeof $$ !== 'undefined') {
+            return $$.done();
+        }
+        process.exit(0);
+    }
+}
+module.exports = thump;
+</code></pre>
+
+<p>This code defines a function <code>thump</code> that executes a Node.js script asynchronously.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports the <code>fs</code> and <code>path</code> modules for file system operations and path manipulation.</li>
+<li>It defines <code>CORE</code> as the path to a core module and <code>NODE</code> as the path to the Node.js executable.</li>
+</ul></li>
+<li><p><strong><code>thump</code> Function:</strong></p>
+<ul>
+<li>Takes <code>thump</code> (script name), <code>parameters</code> (optional), and <code>exit</code> (boolean) as arguments.</li>
+<li>Opens two files (<code>/tmp/myjob.log</code>) for appending logs.</li>
+<li>Logs the command being executed to the console.</li>
+<li>Uses <code>child_process.spawn</code> to execute a Node.js process with the following:
+<ul>
+<li><code>NODE</code> as the executable.</li>
+<li><code>-e</code> flag to execute a script directly.</li>
+<li>The script itself is a string that:
+<ul>
+<li>Requires the <code>CORE</code> module.</li>
+<li>Imports the specified <code>thump</code> script.</li>
+<li>Executes the script with the provided <code>parameters</code>.</li>
+<li>Catches any errors and logs them.</li>
+<li>Exits the process after execution.</li>
+</ul></li>
+</ul></li>
+<li>Sets <code>detached: true</code> to run the child process in the background.</li>
+<li>Redirects <code>stdio</code> to log output to the opened files.</li>
+<li>If <code>exit</code> is not <code>false</code>, it exits the current process.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>thump</code> function as a module.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to execute Node.js scripts asynchronously, passing parameters, logging output, and handling errors.</strong></p>

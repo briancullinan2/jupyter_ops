@@ -1,0 +1,76 @@
+
+
+<pre><code>import types
+import ctypes
+import os
+import re
+
+def safeurl(name):
+    return re.sub(r'\W+', '_', name)
+
+modules = {}
+
+def import_notebook(query_str, ctx):
+    from Core import interpret, build_dylib
+    """Searches the Whoosh index and returns a module of the retrieved code."""
+    results = interpret(query_str)
+    
+    if not results:
+        raise ImportError(f"No matching notebook found for query: {query_str}")
+    
+    filename = results[0]["filename"]
+    fileid = results[0]["id"]
+    print(filename)
+
+    if(fileid in modules):
+        if(callable(vars(modules[fileid])["__all__"])):
+            name = vars(modules[fileid])["__all__"].__name__
+            ctx[name] = vars(modules[fileid])["__all__"]
+            globals()[name] = vars(modules[fileid])["__all__"]
+        else:
+            for name in vars(modules[fileid])["__all__"]:
+                ctx[name] = vars(modules[fileid])["__all__"][name]
+                globals()[name] = vars(modules[fileid])["__all__"][name]
+        return vars(modules[fileid])["__all__"]
+
+
+    module = types.ModuleType(filename)
+    module.__file__ = filename
+    module.import_notebook = import_notebook
+
+    if(results[0]["language"] == "c" or results[0]["language"] == "cpp" or results[0]["language"] == "objective-c"):
+        build_dylib(results[0]["code"], filename, {})
+        lib_name = safeurl(results[0]["questions"][0])
+        BUILD_DIRECTORY = os.path.join(os.path.dirname(__file__), "../.build")
+        result = ctypes.CDLL(os.path.join(BUILD_DIRECTORY, lib_name + '.dylib'))
+        import_notebook("list c functions with python", ctx)
+        functions = get_functions(results[0]["code"])
+        module.__all__ = {}
+        for f in functions:
+            func_name = f.split('(')[0]
+            vars(module)['__all__'][func_name] = getattr(result, func_name)
+        
+    elif(results[0]["language"] == "python"):
+        exec(results[0]["code"], module.__dict__)  # Execute the first matching cell in the module namespace
+
+    if(callable(vars(module)['__all__'])):
+        name = vars(module)["__all__"].__name__
+        ctx[name] = vars(module)['__all__']
+        module.__dict__[name] = vars(module)['__all__']
+        globals()[name] = vars(module)['__all__']
+    else:
+        for name in vars(module)['__all__']:
+            # setattr(vars(module)['__all__'], name, vars(module)['__all__'][name])
+            ctx[name] = vars(module)['__all__'][name]
+            module.__dict__[name] = vars(module)['__all__'][name]
+            globals()[name] = vars(module)['__all__'][name]
+
+    modules[fileid] = module
+
+    return vars(module)['__all__']
+
+__all__ = {
+  "import_notebook": import_notebook,
+}
+</code></pre>
+

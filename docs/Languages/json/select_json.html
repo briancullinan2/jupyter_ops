@@ -1,0 +1,68 @@
+<p>This code provides a utility for extracting specific parts of a JSON file based on a given selection criteria, but its functionality is incomplete due to an unfinished <code>walkJson</code> function.</p>
+
+
+<pre><code>var {Buffer} = require('buffer')
+
+// replace json path with this
+function walkJson(select, ctx, evaluate) {
+    // when a positive compile is reached,
+    //   return the new results
+    
+    // try to create valid json by
+    //   filling in the missing syntax
+    
+    // once successful, record what token/path
+    //   we're on an dealloc
+    
+    // call evaluate with only the valid parts
+    
+}
+
+function selectJson(select, file) {
+    if(typeof file === 'string') {
+        file = path.resolve(file)
+        file = fs.createReadStream(file, {
+        //    highWaterMark: 128 * 1024,
+        //    start: 0,
+        //    end: Infinity
+        })
+    }
+    
+    var results = []
+    var buffer = new Buffer(2048)
+    var evaluate = (select, ctx) => {
+        results.push.apply(results, selectTree(select, ctx))
+    }
+    file.on('data', (chunk) => {
+        buffer.push(chunk)
+        walkJson(select, buffer, evaluate)
+    })
+    file.on('end', (chunk) => {
+        buffer.push(chunk)
+        walkJson(select, buffer, evaluate)
+    })
+    
+    return results
+}
+
+module.exports = {
+    selectJson
+}
+</code></pre>
+
+<p>This code defines a utility for selecting specific parts of a JSON file based on a provided selection criteria.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><p><strong>Dependencies:</strong> It uses the <code>buffer</code> module for handling binary data and <code>path</code> for resolving file paths.</p></li>
+<li><p><strong><code>walkJson(select, ctx, evaluate)</code>:</strong> This function is intended to recursively traverse a JSON structure, applying the <code>select</code> criteria to find matching parts. It seems incomplete, with comments indicating the need to handle syntax validation and token tracking.</p></li>
+<li><p><strong><code>selectJson(select, file)</code>:</strong> This is the main function. It takes a selection criteria and a file path (or a readable stream) as input.</p>
+<ul>
+<li>It handles both string and stream-based file inputs.</li>
+<li>It creates a <code>Buffer</code> to accumulate data from the file.</li>
+<li>It defines an <code>evaluate</code> function that will be called when a valid JSON segment is found. This function pushes the selected parts into the <code>results</code> array.</li>
+<li>It reads the file in chunks, processing each chunk and calling <code>walkJson</code> to traverse the JSON structure.</li>
+<li>Finally, it returns the <code>results</code> array containing the selected parts.</li>
+</ul></li>
+<li><p><strong>Exports:</strong> The module exports the <code>selectJson</code> function, making it available for use in other parts of the system.</p></li>
+</ul>
+<p>In essence, this code aims to provide a way to query and extract specific parts of a JSON file based on a selection criteria, but the <code>walkJson</code> function needs further development to handle JSON parsing and selection logic.</p>

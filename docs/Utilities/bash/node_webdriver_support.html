@@ -1,0 +1,38 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>These commands navigate to a specific directory, install a browser automation library, and create three new directories: <code>Collections</code>, <code>searches</code>, and <code>screenshots</code>. The directory creation commands include error handling to ensure the execution continues even if a directory already exists or cannot be created.</p>
+
+
+<pre><code>cd ~/jupytangular \
+   && npm install wdio webdriverio \
+   && mkdir ~/Collections || true \
+   && mkdir ~/Collections/searches || true \
+   && mkdir ~/Collections/screenshots || true</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Command 1: <code>cd ~/jupytangular</code></strong></p>
+<ul>
+<li>Changes the current working directory to <code>~/jupytangular</code> (user's home directory followed by <code>jupytangular</code> folder)</li>
+</ul>
+<p><strong>Command 2: <code>npm install wdio webdriverio</code></strong></p>
+<ul>
+<li>Installs two packages:
+<ul>
+<li><code>wdio</code>: WebdriverIO, a Node.js library for browser automation</li>
+<li><code>webdriverio</code>: the same library, possibly installed as a separate package</li>
+</ul></li>
+</ul>
+<p><strong>Command 3: <code>mkdir ~/Collections || true</code></strong></p>
+<ul>
+<li>Creates a new directory named <code>Collections</code> in the user's home directory (<code>~/</code>)</li>
+<li><code>|| true</code> is a conditional statement that ensures the command continues executing even if the directory creation fails (i.e., returns a non-zero exit code)</li>
+</ul>
+<p><strong>Command 4: <code>mkdir ~/Collections/searches || true</code></strong></p>
+<ul>
+<li>Creates a new directory named <code>searches</code> inside the previously created <code>Collections</code> directory</li>
+<li>Same as Command 3, it continues executing even if the directory creation fails</li>
+</ul>
+<p><strong>Command 5: <code>mkdir ~/Collections/screenshots || true</code></strong></p>
+<ul>
+<li>Creates a new directory named <code>screenshots</code> inside the previously created <code>Collections</code> directory</li>
+<li>Same as Command 3 and 4, it continues executing even if the directory creation fails</li>
+</ul>

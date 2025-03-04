@@ -1,0 +1,17 @@
+<p>This code snippet configures npm to use a specified proxy server for package downloads and registry access, while also disabling strict SSL certificate validation.</p>
+
+
+<pre><code>RUN npm config set proxy http://{host}:8050
+RUN npm config set proxy http://{host}:8050
+RUN npm config set registry http://{host}:5080
+RUN npm config set strict-ssl false
+</code></pre>
+
+<p>This code snippet configures npm, the Node.js package manager, to use a proxy server for network requests.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>RUN npm config set proxy http://{host}:8050</code></strong>: This command sets the HTTP proxy server address to <code>http://{host}:8050</code>.  <code>{host}</code> should be replaced with the actual hostname or IP address of the proxy server.</p></li>
+<li><p><strong><code>RUN npm config set registry http://{host}:5080</code></strong>: This command sets the npm registry URL to <code>http://{host}:5080</code>. The registry is where npm looks for packages to install.</p></li>
+<li><p><strong><code>RUN npm config set strict-ssl false</code></strong>: This command disables strict SSL certificate validation for npm. This is generally not recommended for security reasons, but it might be necessary if the proxy server or registry uses a self-signed certificate.</p></li>
+</ol>
+<p>In essence, this code snippet configures npm to use a specific proxy server for both package downloads and registry access, and disables strict SSL validation.</p>

@@ -1,0 +1,197 @@
+<p>This code filters a set of Zuora subscription records based on various criteria, including Reseller of Record (ROR) and subscription details, and then calculates the total number of records that meet the specified conditions.</p>
+
+
+<pre><code>var _ = require('lodash');
+var assert = require('assert');
+var xlsx = require('xlsx');
+var importer = require('../Core');
+var fs = require('fs');
+
+var getZuoraMonth = importer.import('zuora export month');
+var calculatePrice = importer.import('calculate price');
+var {getCatalog} = importer.import('zuora to eloqua.ipynb[0]');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var zuoraConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/zuoraRest_production.json').toString().trim());
+
+function filterROR(accountROR) {
+    return [
+            '4001372618',
+            '4000919381',
+            '411183297',
+            '4001358862',
+            '4000919006',
+            '4000919116',
+            '4001372618',
+            '411182712',
+            '411183101',
+            '4001635120',
+            '4000919342',
+            '4000919068'].filter(ror => (accountROR || '').includes(ror)).length > 0
+}
+
+function rorsToAccounts(records) {
+    return records.filter(a => a['Account.resellerofRecord__c'])
+        .filter(a => filterROR(a['Account.resellerofRecord__c']))
+        .map(a => a['Account.AccountNumber']);
+}
+
+function totalFilteredRecords(zuoraRecords) {
+    const rors = rorsToAccounts(zuoraRecords);
+    console.log(rors.length + ' ROR accounts with renewing subscriptions out of ' + zuoraRecords.length + ' records in the dump');
+    const recordsToValidate = zuoraRecords
+        .filter(s => {
+            // TODO: graduate these filters to the main export / import?
+            return new Date(s['Subscription.TermEndDate']).getTime() < (new Date('4/1/2018')).getTime()
+                && new Date(s['Subscription.TermEndDate']).getTime() >= (new Date('2/27/2018')).getTime()
+                && s['Account.Currency'] === 'USD'
+                && s['RatePlanCharge.BillingPeriod'] === 'Annual' 
+                && !s['ProductRatePlan.Name'].toLowerCase().includes('pro')
+        })
+    const recordsWithRors = recordsToValidate
+        .filter(s => rors.includes(s['Account.AccountNumber']));
+    console.log(recordsToValidate.length + ' zuora records to validate');
+    console.log(recordsWithRors.length + ' of those are RORs and will also be excluded');
+    console.log((recordsToValidate.length - recordsWithRors.length) + ' total');
+    return recordsToValidate
+        .filter(s => !rors.includes(s['Account.AccountNumber']))
+}
+
+function accountTotals(zuoraRecords) {
+    const uniqueIds = _.groupBy(zuoraRecords, r => r['Account.Id']);
+    console.log(Object.keys(uniqueIds).length + ' unique accounts with expiring subscriptions in February');
+    const totals = Object.keys(uniqueIds)
+        .map(accountId => {
+            return calculatePrice(uniqueIds[accountId], catalog);
+        });
+    return totals;
+}
+
+function verifyMissing(worksheet, totals) {
+    
+    // TODO: compare with zuora preview API and Jacob's spreadsheet
+    const accountIds = totals.map(t => t[0]);
+    const worksheetIds = worksheet.map(t => t['Account Number']);
+    const missing = worksheet.filter(a => !accountIds.includes(a['Account Number']));
+    console.log(missing.length + ' accounts in worksheet, not in zuora export: ');
+    //console.log(missing.slice(0, 20));
+    const missingZuora = accountIds.filter(a => !worksheetIds.includes(a));
+    console.log(missingZuora.length + ' accounts in zuora, missing from worksheet: ');
+    console.log(missingZuora.slice(0, 20));
+    const verifiableWorksheet = worksheet.filter(a => !missing.includes(a));
+    const verifiableTotals = totals.filter(t => worksheetIds.includes(t[0]));
+    console.log(verifiableWorksheet.length + ' = ' + verifiableTotals.length + ' verifiable records')
+    return {verifiableWorksheet, verifiableTotals};
+}
+
+function validateWorksheet(calculatedTotals, zuoraRecords) {
+    var workbook = xlsx.readFile(PROFILE_PATH + '/Documents/Marketing_File_Mar_.xlsx');
+    var worksheet = xlsx.utils.sheet_to_json(workbook.Sheets['Marketing_File_Mar_']);
+    console.log(worksheet.length + ' rows in worksheet');
+    const worksheetUSD = worksheet.filter(t => t['Currency'] === 'USD');
+    console.log(worksheetUSD.length + ' rows are USD');
+    const worksheetFiltered = worksheetUSD.filter(t => filterROR(t['ROR Number'] || '') === false);
+    console.log(worksheetFiltered.length + ' rows are USD and not ROR');
+    
+    const {verifiableWorksheet, verifiableTotals} = verifyMissing(worksheetFiltered, calculatedTotals);
+    
+    const correct = verifiableWorksheet.filter(a => {
+        const realTotal = parseFloat((a['Total 1:'] || '').replace(/[\$,\s]/ig, ''));
+        const newTotal = parseFloat((a['Total'] || '').replace(/[\$,\s]/ig, ''));
+        const oldTotal = verifiableTotals.filter(t => t[0] === a['Account Number'])[0] || [];
+        // TODO: decide what to do with discounts?
+        if(a['Account Number'] === 'A00191395') {
+            console.log(newTotal);
+            console.log(oldTotal);
+            console.log(oldTotal[1] - (oldTotal[2] ? (oldTotal[1] * oldTotal[2]) : 0))
+        }
+        return realTotal === oldTotal[1]
+            || newTotal === oldTotal[1]
+            || newTotal === oldTotal[1] - (oldTotal[2] ? (oldTotal[1] * oldTotal[2]) : 0)
+            || newTotal === oldTotal[1] - (oldTotal[1] * .05);
+    });
+    const incorrect = verifiableWorksheet.filter(a => !correct.includes(a));
+    console.log(incorrect.length + ' incorrect, correct: ' + correct.length + ' out of ' + verifiableTotals.length
+                + ' - ' + Math.round(correct.length / verifiableTotals.length * 100) + '%');
+    // TODO: fix this
+    console.log(incorrect.length + ' + ' + correct.length + ' = ' + (incorrect.length + correct.length));
+    // TODO: calculate perpetual price for previousinvoice price comparison?
+    // TODO: how to handle australia?
+    // TODO: how to handle not in worksheet?
+    return {correct, incorrect};
+}
+
+var catalog, records;
+function compareRecordsCatalog() {
+    return (typeof catalog !== 'undefined' ? Promise.resolve(catalog) : getCatalog(zuoraConfig))
+        .then(r => (catalog = r))
+        .then(() => typeof records !== 'undefined' ? Promise.resolve(records) : getZuoraMonth(6, zuoraConfig))
+        .then(r => {
+            // filter out the records we aren't validating
+            records = r;
+            const recordsToValidate = totalFilteredRecords(records);
+            const zuoraTotals = accountTotals(recordsToValidate);
+            
+            const {correct, incorrect} = validateWorksheet(zuoraTotals);
+        
+            const displayIncorrect = incorrect.map(a => Object.assign(a, {
+                incorrect: zuoraTotals.filter(t => t[0] === a['Account Number'])[0] || [],
+                subscription: JSON.stringify(recordsToValidate.filter(r => r['Account.AccountNumber'] === a['Account Number']).map(s => s['ProductRatePlan.Name'])),
+//                    multiplePrimary:  TODO: check if selecting one product fixes the price
+            }))
+            const incorrectMultipleSubs = displayIncorrect.filter(a => {
+                const subs = recordsToValidate.filter(r => r['Account.AccountNumber'] === a['Account Number']);
+                const productGroups = _.groupBy(subs, e => e['ProductRatePlan.Name']);
+                return Object.keys(productGroups).length === 0 || Object.keys(productGroups).filter(k => productGroups[k].length > 1).length > 0;
+            })
+            const verifiableTotal = (correct.length + incorrect.length) - incorrectMultipleSubs.length;
+            console.log(incorrectMultipleSubs.length + ' incorrect due to multiple subscriptions, correct minus multiple: '
+                        + correct.length + ' out of ' + verifiableTotal + ' - ' + Math.round(correct.length / verifiableTotal * 100) + '%');
+            const unaccounted = displayIncorrect.filter(a => !incorrectMultipleSubs.includes(a));
+            console.log(unaccounted.length + ' unaccounted for');
+            console.log('incorrect sample (' + displayIncorrect.length + '): ');
+            console.log(unaccounted); //.map(r => r.subscription)
+            
+            return zuoraTotals;
+        });
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    // TODO: pull zuora product catalog
+    compareRecordsCatalog()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+    // TODO: this takes to long to download, describe blocks?
+}
+
+</code></pre>
+
+<p>This code processes a list of Zuora subscription records, filters them based on specific criteria, and calculates the total number of records that meet those criteria.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>lodash</code>, <code>assert</code>, <code>xlsx</code>, <code>fs</code>, and modules related to Zuora interaction and data processing.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Defines <code>PROFILE_PATH</code> to locate user credentials.</li>
+<li>Loads Zuora configuration from a JSON file.</li>
+</ul></li>
+<li><p><strong>Filtering Functions:</strong></p>
+<ul>
+<li><code>filterROR(accountROR)</code>: Checks if an account's Reseller of Record (ROR) ID is present in a predefined list of RORs.</li>
+<li><code>rorsToAccounts(records)</code>: Filters Zuora records to include only those with a specified ROR and then extracts the account numbers.</li>
+<li><code>totalFilteredRecords(zuoraRecords)</code>:
+<ul>
+<li>Filters records based on criteria like subscription end date, currency, billing period, and product name.</li>
+<li>Identifies records with RORs using <code>rorsToAccounts</code>.</li>
+<li>Calculates and logs the total number of filtered records.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Main Logic:</strong></p>
+<ul>
+<li>The code likely performs further processing on the filtered records, but the provided snippet ends abruptly.</li>
+</ul></li>
+</ol>

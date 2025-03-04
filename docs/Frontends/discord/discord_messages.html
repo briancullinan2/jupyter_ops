@@ -1,0 +1,193 @@
+<p>Here is a summary of the Discord API functions in one or two sentences:</p>
+<p>The Discord API functions provided allow you to send messages, delete messages, update messages, get pinned messages, pin and unpin messages, and provide a convenient interface for authenticated requests to the Discord API. The functions are available for import and use in other parts of the application through the <code>module.exports</code> object.</p>
+
+
+<pre><code>
+var {DEFAULT_CHANNEL} = importer.import('discord configuration')
+const {requestAuthQ} = importer.import('discord request')
+
+async function createMessage(message, channelId = DEFAULT_CHANNEL) {
+  var params = typeof message == 'string' ? ({
+    'content': message
+  }) : message
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    url: `channels/${channelId}/messages`,
+    data: JSON.stringify(params)
+  })
+}
+
+async function deleteMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}/messages/${messageId}`
+  })
+}
+
+async function updateMessage(message, messageId, channelId = DEFAULT_CHANNEL) {
+  var params = typeof message == 'string' ? ({
+    'content': message
+  }) : message
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'PATCH',
+    url: `channels/${channelId}/messages/${messageId}`,
+    data: JSON.stringify(params)
+  })
+}
+
+async function getPins(channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/pins`
+  })
+}
+
+async function pinMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'PUT',
+    url: `channels/${channelId}/pins/${messageId}`
+  })
+}
+
+async function unpinMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}/pins/${messageId}`
+  })
+}
+
+module.exports = {
+  createMessage,
+  deleteMessage,
+  updateMessage,
+  getPins,
+  pinMessage,
+  unpinMessage
+}
+
+
+</code></pre>
+
+<p><strong>Discord API Functions</strong></p>
+<h3>Importing Configuration</h3>
+<pre><code class="language-javascript">var {DEFAULT_CHANNEL} = importer.import('discord configuration')
+const {requestAuthQ} = importer.import('discord request')
+</code></pre>
+<h4>Configuration Variables</h4>
+<ul>
+<li><code>DEFAULT_CHANNEL</code>: Channel ID used as the default value for various functions</li>
+</ul>
+<h4>Request Function</h4>
+<ul>
+<li><code>requestAuthQ</code>: A function that handles authenticated requests</li>
+</ul>
+<h3>Discord API Functions</h3>
+<h4>Create Message</h4>
+<pre><code class="language-javascript">async function createMessage(message, channelId = DEFAULT_CHANNEL) {
+  var params = typeof message =='string'? ({
+    'content': message
+  }) : message
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    url: `channels/${channelId}/messages`,
+    data: JSON.stringify(params)
+  })
+}
+</code></pre>
+<ul>
+<li><code>message</code>: The message content to be sent</li>
+<li><code>channelId</code>: Optional, defaulting to <code>DEFAULT_CHANNEL</code> (string)</li>
+<li>Returns a promise that resolves with the created message data</li>
+</ul>
+<h4>Delete Message</h4>
+<pre><code class="language-javascript">async function deleteMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}/messages/${messageId}`
+  })
+}
+</code></pre>
+<ul>
+<li><code>messageId</code>: The ID of the message to be deleted</li>
+<li><code>channelId</code>: Optional, defaulting to <code>DEFAULT_CHANNEL</code> (string)</li>
+<li>Returns a promise that resolves with the deleted message data</li>
+</ul>
+<h4>Update Message</h4>
+<pre><code class="language-javascript">async function updateMessage(message, messageId, channelId = DEFAULT_CHANNEL) {
+  var params = typeof message =='string'? ({
+    'content': message
+  }) : message
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'PATCH',
+    url: `channels/${channelId}/messages/${messageId}`,
+    data: JSON.stringify(params)
+  })
+}
+</code></pre>
+<ul>
+<li><code>message</code>: The updated message content</li>
+<li><code>messageId</code>: The ID of the message to be updated</li>
+<li><code>channelId</code>: Optional, defaulting to <code>DEFAULT_CHANNEL</code> (string)</li>
+<li>Returns a promise that resolves with the updated message data</li>
+</ul>
+<h4>Get Pins</h4>
+<pre><code class="language-javascript">async function getPins(channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/pins`
+  })
+}
+</code></pre>
+<ul>
+<li><code>channelId</code>: Optional, defaulting to <code>DEFAULT_CHANNEL</code> (string)</li>
+<li>Returns a promise that resolves with the list of pinned messages</li>
+</ul>
+<h4>Pin Message</h4>
+<pre><code class="language-javascript">async function pinMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'PUT',
+    url: `channels/${channelId}/pins/${messageId}`
+  })
+}
+</code></pre>
+<ul>
+<li><code>messageId</code>: The ID of the message to be pinned</li>
+<li><code>channelId</code>: Optional, defaulting to <code>DEFAULT_CHANNEL</code> (string)</li>
+<li>Returns a promise that resolves with the pinned message data</li>
+</ul>
+<h4>Unpin Message</h4>
+<pre><code class="language-javascript">async function unpinMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}/pins/${messageId}`
+  })
+}
+</code></pre>
+<ul>
+<li><code>messageId</code>: The ID of the message to be unpinned</li>
+<li><code>channelId</code>: Optional, defaulting to <code>DEFAULT_CHANNEL</code> (string)</li>
+<li>Returns a promise that resolves with the unpinned message data</li>
+</ul>
+<h3>Exported Functions</h3>
+<pre><code class="language-javascript">module.exports = {
+  createMessage,
+  deleteMessage,
+  updateMessage,
+  getPins,
+  pinMessage,
+  unpinMessage
+}
+</code></pre>
+<p>These functions are available for import and use in other parts of the application.</p>

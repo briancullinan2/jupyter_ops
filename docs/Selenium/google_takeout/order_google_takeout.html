@@ -1,0 +1,50 @@
+<p>This code snippet provides a function <code>googleTakeout</code> that automates the download of a Google Takeout archive for specified products, leveraging Selenium WebDriver for browser automation and custom commands for login and download initiation.</p>
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+
+var downloadGoogleTakeout;
+function googleTakeout(products = 'all?') {
+    return runSeleniumCell([
+            'log in google',
+            'download google takeout'
+        ])
+        .then(({downloadGoogleTakeout}) => downloadGoogleTakeout(products))
+        .catch(e => console.log(e))
+};
+module.exports = googleTakeout;
+
+</code></pre>
+
+<p>This code snippet defines a function <code>googleTakeout</code> that automates the process of downloading a Google Takeout archive for specified products using Selenium WebDriver.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely providing utility functions for importing other modules.</li>
+<li><code>runSeleniumCell</code>: A function imported from <code>selenium cell</code> module, presumably responsible for executing Selenium WebDriver commands.</li>
+</ul></li>
+<li><p><strong><code>googleTakeout</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>products</code> argument (defaults to 'all?') specifying the products to include in the Takeout archive.</li>
+<li>Calls <code>runSeleniumCell</code> with two commands:
+<ul>
+<li><code>log in google</code>: Likely a custom command to handle Google login using Selenium.</li>
+<li><code>download google takeout</code>: Another custom command to initiate the Takeout download process.</li>
+</ul></li>
+<li>Receives the result from <code>runSeleniumCell</code>, which includes a <code>downloadGoogleTakeout</code> function.</li>
+<li>Calls <code>downloadGoogleTakeout</code> with the provided <code>products</code> argument.</li>
+<li>Handles any errors during the process using a <code>catch</code> block.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>googleTakeout</code> function as a module, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code snippet orchestrates the Google Takeout download process by:</strong></p>
+<ul>
+<li>Logging in to Google using Selenium.</li>
+<li>Executing a custom command to initiate the Takeout download.</li>
+<li>Passing the downloaded archive handling to a separate function (<code>downloadGoogleTakeout</code>).</li>
+</ul>

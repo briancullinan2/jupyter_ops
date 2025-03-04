@@ -1,0 +1,79 @@
+<p>This code downloads a Google Street View panorama, extracts its depth map, and generates a grayscale image representing the depth information.</p>
+
+
+<pre><code>// FROM: https://github.com/sidequestlegend/GSVPanoDepth.js/blob/master/examples/example.html
+
+var fs = require('fs')
+var {createCanvas} = require('canvas')
+var importer = require('../Core')
+var {loadDepthMap} = importer.import('extract depth maps')
+var {loadPanorama, setZoom} = importer.import('load google panorama')
+
+setZoom( 1 )
+
+function onDepthLoad(depthMap) {
+    var x, y, canvas, context, image, w, h, c;
+
+    w = depthMap.width
+    h = depthMap.height
+
+    canvas = createCanvas(w, h)
+    context = canvas.getContext('2d')
+    image = context.getImageData(0, 0, w, h)
+
+    for(y=0; y<h; ++y) {
+        for(x=0; x<w; ++x) {
+            c = depthMap.depthMap[y*w + x] / 50 * 255
+            image.data[4*(y*w + x)    ] = c
+            image.data[4*(y*w + x) + 1] = c
+            image.data[4*(y*w + x) + 2] = c
+            image.data[4*(y*w + x) + 3] = 255
+        }
+    }
+
+    context.putImageData(image, 0, 0)
+    const buffer = canvas.toBuffer('image/png')
+    fs.writeFileSync('./image.png', buffer)
+}
+
+async function onPanoramaLoad(panoId) {
+    await loadDepthMap(panoId, onDepthLoad)
+}
+
+async function testPanorama() {    
+    await loadPanorama([43.7369832,7.4215723], onPanoramaLoad)
+}
+
+module.exports = testPanorama
+</code></pre>
+
+<p>This code snippet downloads a Google Street View panorama and extracts its depth map, then visualizes the depth information as a grayscale image.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports modules for file system operations, canvas image manipulation, and functions for loading panoramas and depth maps from the <code>importer</code> module.</li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It sets the initial zoom level for the panorama.</li>
+</ul></li>
+<li><p><strong>Depth Map Processing:</strong></p>
+<ul>
+<li>The <code>onDepthLoad</code> function takes the extracted depth map as input and converts it into a grayscale image. It iterates through each pixel, mapping the depth value to a grayscale intensity and storing it in an image data object.</li>
+</ul></li>
+<li><p><strong>Panorama Loading:</strong></p>
+<ul>
+<li>The <code>onPanoramaLoad</code> function is called when the panorama is loaded successfully. It then calls <code>loadDepthMap</code> to extract the depth map for the loaded panorama.</li>
+</ul></li>
+<li><p><strong>Main Function:</strong></p>
+<ul>
+<li>The <code>testPanorama</code> function initiates the process by loading a panorama at a specified location and triggering the depth map extraction and visualization.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>The resulting grayscale depth map image is saved as <code>image.png</code> in the current directory.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet demonstrates how to extract and visualize depth information from Google Street View panoramas, providing a way to analyze and understand the 3D structure of the captured scenes.</p>

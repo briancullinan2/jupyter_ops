@@ -1,0 +1,149 @@
+<p>Here's a two-sentence summary:</p>
+<p>This code initializes and manages a LLaMA (Large Language Model Application) chat session by importing necessary modules, setting environment variables, and defining functions to create and manage the session. It includes functions such as <code>initSession</code> and <code>createSession</code> to create and manage LLaMA chat sessions, and leverages asynchronous programming with async/await syntax.</p>
+
+
+<pre><code>import path from "path"
+import {getLlama, LlamaChatSession} from "node-llama-cpp"
+import process from "process"
+
+const HOMEPATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+//const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let llama
+let model
+let context
+let session
+let initialChatHistory
+
+
+async function initSession(context2, prompt) {
+  if(!context2) {
+    context = await model.createContext()
+  } else {
+    context = context2
+  }
+
+  session = new LlamaChatSession({
+      contextSequence: context.getSequence(),
+      systemPrompt: prompt ? prompt : '```markdown\n# You are a\n##large language model\nnamed Llama that provides clear and concise answers in beautifully crafted `markdown` unless otherwise instructed.\n</think>\n...```\n'
+  })
+  // initialize the model
+  //console.log(await session.prompt())
+  initialChatHistory = session.getChatHistory();
+
+  // Reset the chat history
+  session.setChatHistory(initialChatHistory);
+  return session
+}
+
+async function createSession(modelPath) {
+  if(!llama) {
+    llama = await getLlama();
+  }
+
+  // TODO: customizable model here
+
+  if(!model) {
+      model = await llama.loadModel({
+          // "code-llama-7b-chat.gguf"
+          // "Meta-Llama-3.1-8B-Instruct.Q4_K_M.gguf"
+          // 'ggml-model-f16.gguf'
+          //modelPath: path.join(HOMEPATH, "llama.cpp", "models", 'ggml-model-f16.gguf' ),
+          //modelPath: path.join(HOMEPATH, "llama.cpp", "models", 'DeepSeek-R1-Distill-Llama-8B-Q6_K.gguf' ),
+          //modelPath: path.join(HOMEPATH, "llama.cpp", "models", 'gemma-2-9b-it-Q6_K-Q8.gguf' ),
+          //modelPath: path.join(HOMEPATH, "llama.cpp", "models", 'deepseek-llm-7b-chat.Q5_K_M.gguf' ),
+          //modelPath: path.join(HOMEPATH, "llama.cpp", "models", 'Meta-Llama-3.1-70B-Instruct-Q5_K_S.gguf' ),
+          modelPath: process.env.MODELPATH || modelPath || path.join(HOMEPATH, "llama.cpp", "models", 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf' ),
+          //modelPath: path.join(HOMEPATH, "llama.cpp", "models", 'deepseek-llm-7b-chat.Q6_K.gguf' ),
+          contextSize: 2048
+      })
+  }
+
+  await initSession()
+
+  return session
+}
+
+async function getSession(model) {
+  if(!session) {
+    await createSession(model)
+  }
+  return session
+}
+
+async function llmPrompt(prompt, model) {
+  if(!model || typeof model == 'string') {
+    // specify model with the incoming session
+    model = await getSession(model)
+  }
+  let result = await model.prompt(prompt, {
+    temperature: 0.8,
+    maxTokens: context.contextSize,
+    onTextChunk: function (text) {
+      process.stdout.write(text)
+    }
+  })
+  // special fix for deepseek R1 distill
+  if(result.match(/Find the derivative/gi)) {
+    console.log('Response error', result)
+    await initSession()
+    result = await session.prompt(prompt, {
+      temperature: 0.8,
+      maxTokens: context.contextSize,
+      onTextChunk: function (text) {
+        process.stdout.write(text)
+      }
+    })
+  }
+  //if(result.includes('</think>')) {
+  //  result = result.split('</think>\n')[1]
+  //}
+  if(result.startsWith('```') && result.endsWith('````')) {
+    result = result.replace(/^```(markdown)*\n*|\n*```$/gi, '')
+  }
+  if(session == model)
+    model.setChatHistory(initialChatHistory);
+  return result
+}
+
+export default {
+  llmPrompt,
+  createSession,
+  initSession,
+  getSession,
+}
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>This code initializes and manages a LLaMA (Large Language Model Application) chat session. It imports necessary modules, sets environment variables, and defines functions to create and manage the session.</p>
+<p><strong>Imported Modules</strong></p>
+<ul>
+<li><code>path</code> for file path manipulation</li>
+<li><code>node-llama-cpp</code> for interacting with the LLaMA model</li>
+<li><code>process</code> for accessing environment variables</li>
+</ul>
+<p><strong>Variables and Constants</strong></p>
+<ul>
+<li><code>HOMEPATH</code> is set to the user's home directory based on their operating system</li>
+<li><code>llama</code>, <code>model</code>, <code>context</code>, <code>session</code>, and <code>initialChatHistory</code> are variables that store the LLaMA instance, model, context, session, and initial chat history, respectively</li>
+</ul>
+<p><strong>Functions</strong></p>
+<h3><code>initSession(context, prompt)</code></h3>
+<ul>
+<li>Creates a new LLaMA chat session or reuses an existing one</li>
+<li>Sets the system prompt and chat history</li>
+<li>Returns the initialized session</li>
+</ul>
+<h3><code>createSession(modelPath)</code></h3>
+<ul>
+<li>Loads the LLaMA model from a specified path or an environment variable</li>
+<li>Initializes the LLaMA instance</li>
+<li>Creates a new LLaMA chat session</li>
+<li>Returns the initialized session</li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The <code>TODO</code> comment suggests that the model loading process can be customized in the future</li>
+<li>The <code>modePath</code> variable is set to an environment variable <code>MODELPATH</code> or a default path if not provided</li>
+<li>The code uses async/await syntax for asynchronous programming</li>
+</ul>

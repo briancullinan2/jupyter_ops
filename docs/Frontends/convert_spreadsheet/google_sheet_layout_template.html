@@ -1,0 +1,105 @@
+<p>Here's a summary of the functions in two sentences:</p>
+<p>This module contains several utility functions that aid in data processing and rendering, including string manipulation, class extraction, dynamic property definition, and table row rendering. These functions provide functionality for tasks such as escaping special characters, defining properties, and rendering HTML tables with dynamic classes.</p>
+
+
+<pre><code>
+function safeName(name) {
+    return name.replace(/\//ig, ' ').replace(/[^a-z0-9\- ]/ig, '-').substr(0, 40);
+}
+
+function escape(s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
+function getDataClasses(c, data) {
+    // get classes from mustache vars used with supplied data
+    return typeof data != 'object' ? [] : (data || [])
+        .reduce((keys, cur) => keys.concat(Object.keys(cur)), [])
+        .filter((k, h, a) => a.indexOf(k) == h)
+        .filter(k => c.match(new RegExp(`\\{\\{\\s*[>#\\/]?\\s*${escape(k)}\\s*\\}\\}`, 'ig')))
+}
+
+function defineProperty(c, value, properties) {
+    if (c.substr(0, 2) === '::' || c === ':render') {
+        if(c === ':render') c = '::render'; // just to fix using it below
+        if(typeof properties[c.substr(2)] == 'undefined') {
+            properties[c.substr(2)] = [];
+        } else if (!Array.isArray(properties[c.substr(2)])) {
+            properties[c.substr(2)] = [properties[c.substr(2)]];
+        }
+        properties[c.substr(2)][properties[c.substr(2)].length] = value;
+    } else {
+        properties[c.substr(1)] = value;
+    }
+}
+
+function renderRows(key, rows, properties, templates) {
+    // set object properties for mustache template
+    var html = (rows || []).reduce((arr, row, i) => {
+        var rowsHtml = row.reduce((arr, c, j) => {
+            if(c.substr(0, 1) === ':') {
+                // use subsequent column for property values
+                defineProperty(c, row[j + 1], properties)
+                
+            // render if it is not the value for the previous property
+            } else if(j === 0 || row[j - 1] && row[j - 1].substr(0, 1) !== ':') {
+                var dataClasses = getDataClasses(c, properties[key + '-original-data'])
+                    .map(k => 'val-' + safeName(k))
+                    .join(' ')
+                var sectionClasses = getDataClasses(c, [properties, templates])
+                    .map(k => 'section-' + safeName(k))
+                    .join(' ')
+                arr[arr.length] = `
+<div class="cell-${arr.length} ${dataClasses} ${sectionClasses}">
+${c}
+</div>
+`;
+            }
+            return arr;
+        }, []);
+
+        if(rowsHtml.length > 0) {
+            arr[arr.length] = `
+<div class="row-${arr.length} ${properties['class'] || ''} col-${rowsHtml.length}">
+${rowsHtml.join('')}
+</div>
+`;
+        }
+
+        return arr;
+    }, []);
+
+    return html.join('');
+}
+
+module.exports = renderRows;
+
+</code></pre>
+
+<p><strong>Function Breakdown</strong></p>
+<h3><code>safeName(name)</code></h3>
+<ul>
+<li>Replaces forward slashes (<code>/</code>) with spaces.</li>
+<li>Replaces characters that are not letters, numbers, hyphens, or spaces with hyphens.</li>
+<li>Truncates the string to 40 characters.</li>
+</ul>
+<h3><code>escape(s)</code></h3>
+<ul>
+<li>Replaces special characters in the string with their escaped versions, to prevent errors when used in regular expressions.</li>
+</ul>
+<h3><code>getDataClasses(c, data)</code></h3>
+<ul>
+<li>Retrieves class names from Mustache variables used with the supplied data.</li>
+<li>Returns an array of unique class names.</li>
+</ul>
+<h3><code>defineProperty(c, value, properties)</code></h3>
+<ul>
+<li>Dynamically defines a property in the <code>properties</code> object.</li>
+<li>If the property name starts with <code>::</code> or is <code>:render</code>, it is treated as a special property and added to the corresponding array in the <code>properties</code> object.</li>
+</ul>
+<h3><code>renderRows(key, rows, properties, templates)</code></h3>
+<ul>
+<li>Renders table rows using Mustache templates.</li>
+<li>Iterates over each row and column, using the <code>defineProperty</code> function to set object properties for Mustache template rendering.</li>
+<li>Renders HTML for each column, applying classes based on data classes and section classes.</li>
+</ul>

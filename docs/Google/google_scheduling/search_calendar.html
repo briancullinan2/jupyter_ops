@@ -1,0 +1,64 @@
+<p>This code searches a Google Calendar for events matching given keywords and logs the summaries of the found events. It then sends the results (or any errors) to an external system for further processing.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    getOauthClient,
+    listEvents,
+    correctCalendarId,
+} = importer.import([
+    'import google calendar api',
+    'list events',
+    'lookup calendar name',
+]);
+
+var options = {
+    
+}
+
+function searchCalendar(search, calendar) {
+    if(calendar) {
+        options.calendarId = calendar;
+    }
+    var total = 0;
+    return getOauthClient(options)
+        .then(() => correctCalendarId(options))
+        .then(() => importer.runAllPromises(search.split('|').map(term => resolve => {
+            return listEvents({
+                auth: options.auth,
+                calendarId: options.calendarId,
+                q: term
+            }).then(r => {
+                console.log(term);
+                console.log(r.map(e => e.event.summary).slice(0, 10));
+                return resolve(r);
+            })
+        })))
+}
+module.exports = searchCalendar;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    searchCalendar('blur')
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet fetches events from a Google Calendar based on keywords and logs event summaries.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong> It imports functions for interacting with the Google Calendar API, including authentication, listing events, and handling calendar IDs.</p></li>
+<li><p><strong>Configuration:</strong> It sets up options for interacting with the Google Calendar, including the calendar ID.</p></li>
+<li><p><strong><code>searchCalendar</code> Function:</strong></p>
+<ul>
+<li>Takes a search term (keywords) and an optional calendar ID.</li>
+<li>Fetches events from the Google Calendar matching the search term.</li>
+<li>Logs the search term and the first 10 event summaries for each term.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>The code includes an example usage of the <code>searchCalendar</code> function with the keyword &quot;blur&quot;.</li>
+<li>It handles potential errors and sends the results or errors to an external system (likely a web application) using <code>$$.sendResult</code> and <code>$$.sendError</code>.</li>
+</ul></li>
+</ol>

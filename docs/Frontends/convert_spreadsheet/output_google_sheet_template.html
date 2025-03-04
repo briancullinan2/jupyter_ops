@@ -1,0 +1,103 @@
+<p>Here is a 2-sentence summary:</p>
+<p>Five functions are provided in this module: <code>safeName</code>, <code>toJSON</code>, <code>segment</code>, <code>wrapTemplate</code>, and <code>wrapTemplate</code> (exported as the main module export). The <code>wrapTemplate</code> function is the most complex, creating a wrapped HTML template with metadata and rendering it with provided properties, while the other functions perform specific string transformations and handling.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var Mustache = require('mustache');
+
+function safeName(val, render) {
+    return render(val).replace(/[^a-z0-9\-]/ig, '-').substr(0, 40)
+}
+
+function toJSON(val, render) {
+    return render(JSON.stringify(val))
+}
+
+function segment(url, val, render) {
+    return url.split('/')[render(val)]
+}
+
+function wrapTemplate(path, key, html, properties) {
+    properties['safeName'] = () => safeName
+    properties['toJSON'] = () => toJSON
+    properties['segment'] = () => segment.bind(null, path)
+    var classNames = path.replace(/\//ig, ' ')
+        + ' ' + (key !== path.split('/')[0] ? key : '')
+        + ' ' + (properties['class'] || '')
+
+    var domain = '';
+    if(typeof properties['domain'] != 'undefined') {
+        domain = properties['domain'].includes(':') ? '' : 'https://{{domain}}';
+    }
+    
+    // automatically set title if it isn't set manually
+    var result;
+    if(typeof properties['title'] == 'undefined' && (result = (/<h1>(.*)<\/h1>/ig).exec(html))) {
+        properties['title'] = result[1];
+    }
+    
+    var pageHtml = `
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" href="{{logo}}">
+{{#base}}<base href="/{{.}}" />{{/base}}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<link rel="canonical" href="${domain}/${path}">
+<title>{{title}}</title>
+{{#banner}}
+<style>
+body > div.col-1:nth-of-type(2):before {background-image: url('{{{.}}}');}
+body > div.col-1:nth-of-type(2):after {background-image: url('{{{.}}}');}
+</style>
+{{/banner}}
+{{#stylesheet}}<link rel="stylesheet" href="{{.}}">{{/stylesheet}}
+</head>
+<body class="${classNames}">
+${html}
+{{#script}}<script async src="{{.}}"></script>{{/script}}
+</body>
+</html>`;
+
+    Mustache.parse(pageHtml);
+    // use properties for view and for partials
+    return Mustache.render(pageHtml, properties, properties);
+}
+
+module.exports = wrapTemplate;
+
+</code></pre>
+
+<p><strong>Function Breakdown</strong></p>
+<h3><code>safeName(val, render)</code></h3>
+<ul>
+<li>Requires <code>render</code> function to transform <code>val</code></li>
+<li>Returns <code>val</code> with non-alphanumeric characters replaced with hyphens and truncated to 40 characters</li>
+</ul>
+<h3><code>toJSON(val, render)</code></h3>
+<ul>
+<li>Requires <code>render</code> function to transform <code>val</code></li>
+<li>Returns <code>JSON.stringify(val)</code> rendered</li>
+</ul>
+<h3><code>segment(url, val, render)</code></h3>
+<ul>
+<li>Requires <code>render</code> function to transform <code>val</code></li>
+<li>Returns <code>url</code> with <code>val</code> as the index to split and retrieve from</li>
+</ul>
+<h3><code>wrapTemplate(path, key, html, properties)</code></h3>
+<ul>
+<li>Creates a wrapped HTML template with default metadata</li>
+<li>Replaces non-alphanumeric characters in <code>path</code> and <code>key</code> with hyphens</li>
+<li>Generates <code>classNames</code> for the <code>&lt;body&gt;</code> element</li>
+<li>Sets default metadata: <code>title</code> from <code>&lt;h1&gt;</code> tag if present, <code>logo</code> and <code>base</code> if present in <code>properties</code></li>
+<li>Renders the template with <code>properties</code> as data</li>
+<li>Returns the rendered HTML string</li>
+</ul>
+<h3><code>module.exports = wrapTemplate;</code></h3>
+<ul>
+<li>Exports the <code>wrapTemplate</code> function as the module's main export</li>
+</ul>

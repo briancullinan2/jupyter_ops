@@ -1,0 +1,83 @@
+<p>This code unit tests the <code>eloqua existing import</code> module, which checks for the existence of custom data objects and import definitions within the Eloqua API.  The tests use Sinon.js to mock API responses and assert the module's expected behavior.</p>
+
+
+<pre><code>var assert = require('assert');
+var sinon = require('sinon');
+var importer = require('../Core');
+var request = importer.import('http request polyfill');
+var existing = importer.import('eloqua existing import');
+var { bulkImportTemplate } = importer.import('eloqua create template');
+var {
+    getEloquaConfig,
+    getOauthToken,
+} = importer.import('eloqua import blueprints');
+
+var eloquaConfig = getEloquaConfig();
+var eloquaToken = getOauthToken();
+var sandbox = sinon.createSandbox();
+
+describe('eloqua existing import', () => {
+        
+    afterEach(() => {
+        sandbox.restore();
+    })
+
+    it('should check if the custom object is configured', () => {
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {items: [{name: 'AUT - NA Renewals'}] } }));
+        
+        return existing.getCustomDataObject({}, eloquaConfig)
+            .then(r => {
+                assert(r);
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+    it('should check if there is already an import definition', () => {
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {items: [{name: bulkImportTemplate(0).name, uri: '/imports/1234'}] } }));
+        
+        return existing.getImportDefinitions('/imports/1234', eloquaToken, eloquaConfig)
+            .then(r => {
+                assert(r.uri);
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+});
+</code></pre>
+
+<p>This code defines unit tests for the <code>eloqua existing import</code> module, which likely handles interacting with the Eloqua API to check for existing custom data objects and import definitions.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>assert</code> for assertions, <code>sinon</code> for mocking, and modules related to Eloqua API interaction.</li>
+<li>Sets up a sandbox using <code>sinon.createSandbox()</code> to isolate test environment.</li>
+<li>Retrieves Eloqua configuration and OAuth token.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li>Defines a test suite using <code>describe('eloqua existing import', () =&gt; { ... })</code>.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li><code>afterEach(() =&gt; { sandbox.restore(); })</code>: Restores the sandbox after each test to avoid interference.</li>
+<li><code>it('should check if the custom object is configured', () =&gt; { ... })</code>:
+<ul>
+<li>Mocks the <code>request</code> function using <code>sandbox.stub(request, &quot;request&quot;)</code> to return a predefined response containing a custom object named &quot;AUT - NA Renewals&quot;.</li>
+<li>Calls <code>existing.getCustomDataObject({}, eloquaConfig)</code> to test the function.</li>
+<li>Asserts that the returned value is not null and that the <code>request</code> function was called only once.</li>
+</ul></li>
+<li><code>it('should check if there is already an import definition', () =&gt; { ... })</code>:
+<ul>
+<li>Similar to the previous test, but mocks the <code>request</code> function to return a response containing an import definition with a specific name and URI.</li>
+<li>Calls <code>existing.getImportDefinitions('/imports/1234', eloquaToken, eloquaConfig)</code> to test the function.</li>
+<li>Asserts that the returned object has a <code>uri</code> property and that the <code>request</code> function was called only once.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Conclusion:</strong></p>
+<p>These tests verify the functionality of the <code>eloqua existing import</code> module by mocking API interactions and asserting the expected behavior.</p></li>
+</ol>

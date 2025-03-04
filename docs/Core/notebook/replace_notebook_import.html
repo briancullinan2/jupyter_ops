@@ -1,0 +1,81 @@
+<p>This code provides a function to statically replace dynamic imports in code by analyzing the Abstract Syntax Tree (AST) and substituting them with predefined templates.  It leverages a custom <code>importer</code> module and <code>transpile</code> function to achieve this transformation.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {selectAst} = importer.import('select code tree')
+var {transpile} = importer.import('transpile code')
+var niceName = importer.import('rename cell to nice name')
+var {htmlToTree} = importer.import('html to tree')
+
+var IMPORT_CALLS = `//CallExpression[
+./*/Identifier[@name="import" or @name="importNotebook"]]`
+
+function getImportTemplate(imports) {
+    throw new Error('TODO: multiple import template')
+}
+
+function replaceImport(ctx) {
+    var str = selectAst([`./Literal/@value`], ctx)[0]
+    if(!str) {
+        throw new Error(`Error: dynamic include ${ctx.ownerDocument.toString(ctx)}, TODO: include Core`)
+    }
+    var result = importer.interpret(str)
+    if(Array.isArray(result)) {
+        template = getImportTemplate(imports)
+    } else {
+        template = selectAst([`//CallExpression`], `require("./${niceName(result)}")`)[0]
+    }
+    var parent = ctx.parentNode
+    parent.replaceChild(template, ctx)
+    template.setAttribute('parent-attr', 'init')
+}
+
+function replaceImports(code) {
+    return transpile([
+        [IMPORT_CALLS, replaceImport]
+    ], code)
+}
+
+module.exports = {
+    replaceImports
+}
+</code></pre>
+
+<p>This code defines a function to replace dynamic imports in code with static imports based on a template.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module for importing other modules.</li>
+<li><code>selectAst</code>: A function for selecting nodes in an Abstract Syntax Tree (AST).</li>
+<li><code>transpile</code>: A function for transpiling code.</li>
+<li><code>niceName</code>: A function for renaming a cell to a more suitable name.</li>
+<li><code>htmlToTree</code>: A function for converting HTML to an AST.</li>
+</ul></li>
+<li><p><strong><code>IMPORT_CALLS</code> Constant:</strong></p>
+<ul>
+<li>Defines a query string for selecting import calls in the AST.</li>
+</ul></li>
+<li><p><strong><code>getImportTemplate</code> Function:</strong></p>
+<ul>
+<li>Intended to generate an import template based on a list of imports.</li>
+<li>Currently throws an error as it's not implemented.</li>
+</ul></li>
+<li><p><strong><code>replaceImport</code> Function:</strong></p>
+<ul>
+<li>Takes an AST node representing an import call as input.</li>
+<li>Extracts the imported value from the node.</li>
+<li>Determines the import template based on whether the imported value is an array or a single value.</li>
+<li>Replaces the original import call with the generated template.</li>
+</ul></li>
+<li><p><strong><code>replaceImports</code> Function:</strong></p>
+<ul>
+<li>Takes code as input.</li>
+<li>Uses <code>transpile</code> to apply the <code>replaceImport</code> function to all nodes matching the <code>IMPORT_CALLS</code> query.</li>
+<li>Returns the transpiled code.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>replaceImports</code> function.</li>
+</ul></li>
+</ol>

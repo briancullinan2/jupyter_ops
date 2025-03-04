@@ -1,0 +1,76 @@
+<p>Here's a two-sentence summary of the <code>askLlamaAboutCategories</code> function:</p>
+<p>The <code>askLlamaAboutCategories</code> function asks the LLM about categories in the <code>functionCache</code> database and returns a list of notebook filenames that contain matching categories. It does this by listing all categories in the database, asking the LLM about them in batches, and then filtering notebook filenames with matching categories.</p>
+
+
+<pre><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')
+const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+
+
+async function askLlamaAboutCategories(query) {
+  // TODO: list all categories in database
+  let keys = Object.keys(functionCache)
+  let categorys = keys.map(k => functionCache[k].categories)
+    .concat(keys.map(k => functionCache[k].category))
+    .filter((a, i, arr) => a && arr.indexOf(a) == i && !a.includes('\n'))
+
+  // TODO: ask llm if any of the categories match, don't choose best one, choose all matches
+  let returnValues = []
+  let functions = []
+  for(let i = 0; i < categorys.length; i++) {
+    let category = categorys[i]
+    functions[functions.length] = category
+
+    if(functions.length == 20) {
+      let result = await askLlamaAboutFunctions(query, functions, [], true)
+      functions = []
+      if(result)
+        returnValues = returnValues.concat(result)
+    }
+  }
+  if(functions.length > 0) {
+      let result = await askLlamaAboutFunctions(query, functions, [], true)
+      functions = []
+      if(result)
+        returnValues = returnValues.concat(result)
+  }
+
+  // TODO: return notebook filenames that contain matching categories
+  let matching = keys.filter(k => returnValues.includes(functionCache[k].category) || returnValues.includes(functionCache[k].categories))
+    .map(k => k.replace(/\[[0-9]*\]/, ''))
+    .filter((a, i, arr) => a && arr.indexOf(a) == i)
+  return matching
+}
+
+module.exports = {
+  askLlamaAboutCategories
+}
+</code></pre>
+
+<h3>Breakdown of <code>askLlamaAboutCategories</code> Function</h3>
+<h4>Imports</h4>
+<ul>
+<li><code>const { functionCache } = importer.import('cache rpc functions with llm descriptions')</code>: Imports <code>functionCache</code> from a module that caches RPC functions with LLM descriptions.</li>
+<li><code>const {askLlamaAboutFunctions} = importer.import('ask llm about functions')</code>: Imports <code>askLlamaAboutFunctions</code> from a module that asks the LLM about functions.</li>
+</ul>
+<h4>Function <code>askLlamaAboutCategories</code></h4>
+<ul>
+<li><strong>Purpose</strong>: Asks the LLM about categories in the <code>functionCache</code> and returns notebook filenames that contain matching categories.</li>
+<li><strong>Parameters</strong>: <code>query</code> - an object or string used to query the LLM.</li>
+<li><strong>Returns</strong>: An array of notebook filenames that contain matching categories.</li>
+</ul>
+<h4>Implementation</h4>
+<ol>
+<li><strong>List all categories in database</strong>: Retrieves keys from <code>functionCache</code> and maps them to categories.</li>
+<li><strong>Ask LLM about categories</strong>: Sends functions to the LLM in batches of 20 and collects all matches.</li>
+<li><strong>Return notebook filenames with matching categories</strong>: Filters <code>functionCache</code> to find notebook filenames containing matching categories.</li>
+</ol>
+<h4>TODOs</h4>
+<ul>
+<li>List all categories in the database.</li>
+<li>Ask the LLM about categories and return all matches.</li>
+<li>Return notebook filenames that contain matching categories.</li>
+</ul>
+<h4>Export</h4>
+<ul>
+<li><code>module.exports = { askLlamaAboutCategories }</code>: Exports the <code>askLlamaAboutCategories</code> function.</li>
+</ul>

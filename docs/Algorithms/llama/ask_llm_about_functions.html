@@ -1,0 +1,52 @@
+<p>Here is a summary of the function in one sentence:</p>
+<p><code>askLlamaAboutFunctions</code> is an asynchronous function that takes in a user query and an array of functions with optional descriptions, and uses an AI to match the query against the functions and return a matching function name.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p><code>askLlamaAboutFunctions</code> is an asynchronous function that constructs a prompt to match a user query against a list of functions, and uses an AI to generate a response. The function then parses the AI's response to extract a matching function name, which it returns as the result.</p>
+
+
+<pre><code>
+async function askLlamaAboutFunctions(query, functions, descriptions, categories = false) {
+  const {llmPrompt} = await importer.import('create llm session')
+
+  let q1 = "Given a list of " + (categories ? 'categories' : "functions") + ":\n";
+  for(let i = 0; i < functions.length; i++) {
+      if(descriptions[i]) {
+          q1 += functions[i] + ' - ' + descriptions[i] + '\n'
+      } else {
+          q1 += functions[i] + '\n'
+      }
+  }
+  q1 += 'which one most closely matches the query \"' + query + '\"?'
+  console.log("User: " + q1);
+  const a1 = await llmPrompt(q1);
+  console.log("AI: " + a1);
+  // TODO: parse function name
+  let result = a1.trim().split(/["`*'\n]/gi).filter(x => functions.indexOf(x) > -1)[0]
+  return result
+}
+
+module.exports = {
+  askLlamaAboutFunctions,
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Function Description</h3>
+<p><code>askLlamaAboutFunctions</code> is an asynchronous function that takes in four parameters:</p>
+<ul>
+<li><code>query</code>: The user's query to match against a list of functions.</li>
+<li><code>functions</code>: An array of function names.</li>
+<li><code>descriptions</code>: An array of descriptions for the functions, optional.</li>
+<li><code>categories</code>: A boolean flag indicating whether the input is categories instead of functions.</li>
+</ul>
+<h3>Function Logic</h3>
+<ol>
+<li>It imports the <code>llmPrompt</code> function from the <code>create llm session</code> module.</li>
+<li>It constructs a prompt string <code>q1</code> by iterating through the <code>functions</code> array and appending each function name along with its description (if available). The prompt is then completed with the <code>query</code> and a question asking the AI to match the query against the functions.</li>
+<li>The prompt is logged to the console as &quot;User: <prompt>&quot;.</li>
+<li>The AI's response to the prompt is fetched using <code>llmPrompt(q1)</code> and logged to the console as &quot;AI: <response>&quot;.</li>
+<li>The function attempts to parse the AI's response to extract a function name that matches one of the input functions. The parsed result is stored in the <code>result</code> variable.</li>
+<li>Finally, the function returns the parsed <code>result</code>.</li>
+</ol>
+<h3>Export</h3>
+<p>The function is exported as a module export under the name <code>askLlamaAboutFunctions</code>.</p>

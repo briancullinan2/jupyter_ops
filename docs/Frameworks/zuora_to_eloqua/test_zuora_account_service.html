@@ -1,0 +1,64 @@
+<p>This code unit tests the <code>accounts</code> module's functionality to retrieve Zuora account information by mocking API calls and verifying that the correct query is sent to the Zuora API.</p>
+
+
+<pre><code>var sinon = require('sinon');
+var assert = require('assert');
+var importer = require('../Core');
+var request = importer.import('request polyfill');
+var accounts = importer.import('zuora account service');
+
+var sandbox = sinon.createSandbox();
+var zuoraConfig = {
+    "rest_api_user":"devteam@fakepage.com",
+    "rest_api_password":"pass",
+    "rest_api_url": "http://localhost:18888"
+};
+
+describe('zuora account service', () => {
+    afterEach(() => {
+        sandbox.restore();
+    })
+    
+    it('should call zuora query', () => {
+        const dummyEmail = 'zuora-test@swiftipage.com'
+        
+        const queryStub = sandbox.stub(request, 'request').returns(Promise.resolve({ body: {records: [{}]} }))
+        
+        return accounts.getZuoraAccounts({
+            items: [{
+                 'EmailAddress': dummyEmail
+            }]
+        }, zuoraConfig).then(r => {
+            assert(r);
+            const queryCall = queryStub.getCall(0);
+            assert(queryCall.args[0].json.queryString.includes(dummyEmail));
+        });
+    })
+    
+})
+</code></pre>
+
+<p>This code defines unit tests for the <code>accounts</code> module, which interacts with the Zuora API to retrieve account information.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>sinon</code> for mocking, <code>assert</code> for assertions, <code>importer</code> for loading other modules, and <code>request polyfill</code> for making HTTP requests.</li>
+<li>Creates a sandbox using <code>sinon.createSandbox()</code> to isolate the test environment.</li>
+<li>Defines a sample <code>zuoraConfig</code> object with placeholder credentials.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li>Uses <code>describe('zuora account service', () =&gt; { ... })</code> to define a test suite.</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li><code>afterEach(() =&gt; { sandbox.restore(); })</code>: Restores the sandbox after each test to avoid interference.</li>
+<li><code>it('should call zuora query', () =&gt; { ... })</code>:
+<ul>
+<li>Mocks the <code>request.request</code> function using <code>sandbox.stub</code> to return a predefined response containing dummy account data.</li>
+<li>Calls <code>accounts.getZuoraAccounts</code> with a sample <code>notifyRequest</code> object containing an email address and the <code>zuoraConfig</code>.</li>
+<li>Asserts that the returned result is not null and that the mocked <code>request</code> function was called with a query string containing the provided email address.</li>
+</ul></li>
+</ul></li>
+</ol>

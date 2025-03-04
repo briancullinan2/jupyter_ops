@@ -1,0 +1,102 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>The code imports various modules and functions, including a utility function to parse version numbers, and defines a <code>nodeKernel</code> function that uses the imported modules to create a Node.js kernel. The <code>nodeKernel</code> function is then exported as a module, making it available for use in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {nodeJson, notebookJson} = importer.import('get kernel json');
+var {wireKernel} = importer.import('jupyter wire kernel');
+var {nativeKernelInfo} = importer.import('get kernel info');
+var {processMetaKernel} = importer.import('process meta kernel');
+var {languageInterface} = importer.import('get kernel language');
+
+function getVersion(str) {
+    return str.split('.').map(v => parseInt(v, 10)).join('.')
+}
+
+function nodeKernel(config, options) {
+    return wireKernel({
+        kernel_config: config,
+        start_config: options,
+        install_config: notebookJson,
+        kernel_info: {
+            banner: 'Node JS',
+            // TODO: automatically create this from installation intructions
+            help_links: ['https://nodejs.org']
+        },
+        language_info: {
+            name: 'node',
+            file_extension: '.js',
+            mimetype: 'application/javascript',
+            version: getVersion(process.versions.node),
+            codemirror_mode: 'javascript'
+        },
+        child_process: [],
+    });
+}
+
+module.exports = nodeKernel;
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {nodeJson, notebookJson} = importer.import('get kernel json');
+var {wireKernel} = importer.import('jupyter wire kernel');
+var {nativeKernelInfo} = importer.import('get kernel info');
+var {processMetaKernel} = importer.import('process meta kernel');
+var {languageInterface} = importer.import('get kernel language');
+</code></pre>
+<ul>
+<li>The code imports modules from a <code>Core</code> module using the <code>require</code> function.</li>
+<li>It then imports specific functions or variables from these modules using the <code>import</code> method.</li>
+</ul>
+<h4>Utility Function</h4>
+<pre><code class="language-javascript">function getVersion(str) {
+    return str.split('.').map(v =&gt; parseInt(v, 10)).join('.');
+}
+</code></pre>
+<ul>
+<li>This function takes a string representing a version number (e.g. &quot;1.2.3&quot;) and returns a string with the same version number.</li>
+<li>It splits the input string into an array of integers, converts each integer to an integer, and then joins them back together with '.' as the separator.</li>
+</ul>
+<h4>nodeKernel Function</h4>
+<pre><code class="language-javascript">function nodeKernel(config, options) {
+    return wireKernel({
+        kernel_config: config,
+        start_config: options,
+        install_config: notebookJson,
+        kernel_info: {
+            banner: 'Node JS',
+            help_links: ['https://nodejs.org']
+        },
+        language_info: {
+            name: 'node',
+            file_extension: '.js',
+            mimetype: 'application/javascript',
+            version: getVersion(process.versions.node),
+            codemirror_mode: 'javascript'
+        },
+        child_process: [],
+    });
+}
+</code></pre>
+<ul>
+<li>This function takes two arguments: <code>config</code> and <code>options</code>.</li>
+<li>It calls the <code>wireKernel</code> function with an object containing several properties.</li>
+<li>These properties include:
+<ul>
+<li><code>kernel_config</code>: the <code>config</code> argument.</li>
+<li><code>start_config</code>: the <code>options</code> argument.</li>
+<li><code>install_config</code>: an imported <code>notebookJson</code> object.</li>
+<li><code>kernel_info</code>: an object containing information about the kernel, including a banner and help links.</li>
+<li><code>language_info</code>: an object containing information about the language, including its name, file extension, mimetype, and version (which is determined by calling the <code>getVersion</code> function).</li>
+<li><code>child_process</code>: an empty array.</li>
+</ul></li>
+</ul>
+<h4>Exporting the nodeKernel Function</h4>
+<pre><code class="language-javascript">module.exports = nodeKernel;
+</code></pre>
+<ul>
+<li>The <code>nodeKernel</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

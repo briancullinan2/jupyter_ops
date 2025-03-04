@@ -1,0 +1,90 @@
+<p>This Node.js module exports two functions: <code>handleDirectory</code> and <code>BASE_DIRECTORY</code>. The <code>handleDirectory</code> function handles requests to directories, resolving file paths, checking permissions and types, and generating HTML responses based on the file type and request authentication.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const BASE_DIRECTORY = process.env.BASE_DIRECTORY || process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+const directoryToHtml = importer.import('directory to html')
+
+async function handleDirectory(req, res, next) {
+  let basePath = path.resolve(BASE_DIRECTORY)
+
+  let combined = path.join(basePath, decodeURIComponent(req.path))
+  console.log(combined, req.authenticated)
+
+  if(!fs.existsSync(combined)) {
+    return next()
+  }
+
+  if(path.extname(combined).toLocaleLowerCase() == '.mp3') {
+
+    if(req.url.includes('?raw=true')) {
+      return res.sendFile(combined)
+    }
+
+    return res.send(importer.interpret('html music player').code
+      .replaceAll('{FILE_URL}', req.path)
+      .replaceAll('{SESSION}', req.authenticated ? req.authenticated : ''))
+  }
+
+  if((req.authenticated || combined.includes('stable-diffusion-webui/outputs')) 
+    && (path.extname(combined).toLocaleLowerCase() == '.png' 
+    || path.extname(combined).toLocaleLowerCase() == '.jpg' 
+    || path.extname(combined).toLocaleLowerCase() == '.jpeg')
+  ) {
+
+    if(req.url.includes('?raw=true')) {
+      return res.sendFile(combined)
+    }
+
+    return res.send(importer.interpret('html image viewer').code
+      .replaceAll('{FILE_URL}', req.path)
+      .replaceAll('{SESSION}', req.authenticated ? req.authenticated : ''))
+  }
+
+  if(req.authenticated && fs.statSync(combined).isFile()) {
+    return res.sendFile(combined)
+  }
+
+  if(!fs.statSync(combined).isDirectory()) {
+    return res.status(403).send('Forbidden')
+  }
+
+  let html = await directoryToHtml(combined, req.path.split('/').length > 2, req.authenticated)
+
+  return res.send(html)
+}
+
+module.exports = {
+  handleDirectory,
+  BASE_DIRECTORY
+}
+</code></pre>
+
+<h2><strong>Overview</strong></h2>
+<p>This is a Node.js module that exports two functions: <code>handleDirectory</code> and <code>BASE_DIRECTORY</code>.</p>
+<p><strong>Functions</strong></p>
+<h3>handleDirectory</h3>
+<p>An asynchronous function that handles requests to directories. It takes three parameters:</p>
+<ul>
+<li><code>req</code>: An object representing the HTTP request.</li>
+<li><code>res</code>: An object representing the HTTP response.</li>
+<li><code>next</code>: A function to call the next middleware in the stack.</li>
+</ul>
+<p><strong>Logic</strong></p>
+<ol>
+<li>Resolves the base path of the directory using environment variables.</li>
+<li>Combines the base path with the request path to get the full path.</li>
+<li>Checks if the file exists. If not, it calls the next middleware.</li>
+<li>Checks the file extension and type (e.g., audio file, image file). Depending on the type, it:
+<ul>
+<li>Returns the file if the <code>?raw=true</code> query parameter is present.</li>
+<li>Returns an HTML page with a music player or image viewer if the request is authenticated or the file is located in a specific directory.</li>
+</ul></li>
+<li>If the file is a PNG, JPG, or JPEG image and the request is authenticated, returns an HTML page with an image viewer.</li>
+<li>If the request is authenticated and the file is a single file, returns the file.</li>
+<li>If the file is not a directory, returns a 403 Forbidden error.</li>
+<li>Otherwise, uses the <code>directoryToHtml</code> function to generate an HTML list of files in the directory and returns it.</li>
+</ol>
+<h3>BASE_DIRECTORY</h3>
+<p>An environment variable that represents the base directory of the application. If not set, it defaults to the HOME directory.</p>

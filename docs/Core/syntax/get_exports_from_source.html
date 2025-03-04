@@ -1,0 +1,94 @@
+<p>Here is a 2-sentence summary of the provided code:</p>
+<p>The <code>getExports</code> function uses the <code>selectAst</code> function to extract exports and function names from the Abstract Syntax Tree (AST) of a given code, and returns a filtered array of unique function names. The function is then exported as a module, allowing it to be used in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {selectAst} = importer.import('select code tree')
+
+// TODO: does this work on other node_modules?
+function getExports(code) {
+    var exports = [].concat.apply([], selectAst([
+        `//AssignmentExpression[.//Identifier[@name="exports"]]`,
+        ['.//Identifier', './@name']
+    ], code))
+    var functions = selectAst([
+        `//FunctionDeclaration/Identifier[@parent-attr="id"]`,
+        './@name'
+    ], code)
+    var functions2 = selectAst([
+        `//AsyncFunctionDeclaration/Identifier[@parent-attr="id"]`,
+        './@name'
+    ], code)
+    var functions3 = selectAst([
+        `//ExportDefaultDeclaration/Identifier[@parent-attr="declaration"]`,
+        './@name'
+    ], code)
+    return exports.concat(functions).concat(functions2).concat(functions3)
+        .filter(e => e !== 'exports' && e !== 'require' && e !== 'module')
+        .filter((e, i, arr) => arr.indexOf(e) === i)
+}
+
+module.exports = getExports;
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {selectAst} = importer.import('select code tree')
+</code></pre>
+<ul>
+<li>The <code>require</code> function imports a module named <code>'../Core'</code>.</li>
+<li>The <code>importer</code> variable is assigned the result of the import.</li>
+<li>The <code>selectAst</code> function is imported from the <code>'select code tree'</code> module and assigned to the <code>selectAst</code> variable.</li>
+</ul>
+<h4>getExports Function</h4>
+<pre><code class="language-javascript">function getExports(code) {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>getExports</code> function takes a <code>code</code> parameter.</li>
+</ul>
+<h4>Selecting AST Elements</h4>
+<p>The <code>selectAst</code> function is used to select elements from the Abstract Syntax Tree (AST) of the code. It takes two arguments: a CSS-like selector and the code to select from.</p>
+<pre><code class="language-javascript">var exports = [].concat.apply([], selectAst([
+    `//AssignmentExpression[.//Identifier[@name=&quot;exports&quot;]]`,
+    ['.//Identifier', './@name']
+], code))
+</code></pre>
+<ul>
+<li>This line selects all <code>Identifier</code> elements with the name <code>'exports'</code> that are children of an <code>AssignmentExpression</code> element.</li>
+</ul>
+<h4>Selecting Function Names</h4>
+<pre><code class="language-javascript">var functions = selectAst([
+    `//FunctionDeclaration/Identifier[@parent-attr=&quot;id&quot;]`,
+    './@name'
+], code)
+var functions2 = selectAst([
+    `//AsyncFunctionDeclaration/Identifier[@parent-attr=&quot;id&quot;]`,
+    './@name'
+], code)
+var functions3 = selectAst([
+    `//ExportDefaultDeclaration/Identifier[@parent-attr=&quot;id&quot;]`,
+    './@name'
+], code)
+</code></pre>
+<ul>
+<li>These lines select the names of <code>FunctionDeclaration</code>, <code>AsyncFunctionDeclaration</code>, and <code>ExportDefaultDeclaration</code> elements.</li>
+</ul>
+<h4>Returning Exports and Functions</h4>
+<pre><code class="language-javascript">return exports.concat(functions).concat(functions2).concat(functions3)
+   .filter(e =&gt; e!== 'exports' &amp;&amp; e!=='require' &amp;&amp; e!=='module')
+   .filter((e, i, arr) =&gt; arr.indexOf(e) === i)
+</code></pre>
+<ul>
+<li>The selected exports and functions are concatenated into a single array.</li>
+<li>The first filter removes the strings <code>'exports'</code>, <code>'require'</code>, and <code>'module'</code> from the array.</li>
+<li>The second filter removes any duplicates from the array by checking if each element is the first occurrence of itself in the array.</li>
+</ul>
+<h4>Exporting the Function</h4>
+<pre><code class="language-javascript">module.exports = getExports;
+</code></pre>
+<ul>
+<li>The <code>getExports</code> function is exported as a module.</li>
+</ul>

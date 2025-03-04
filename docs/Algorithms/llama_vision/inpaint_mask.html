@@ -1,0 +1,144 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code is a JavaScript script that uses the <code>gaxios</code> library to make HTTP requests to a local API and performs image inpainting tasks. The script takes an input image, mask, and prompt as parameters, converts them to base64-encoded strings if necessary, and makes a POST request to the local API to generate the output image.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const {request} = require('gaxios')
+
+const OUTPUT_PATH = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'stable-diffusion-webui/outputs')
+
+async function doInpaintMask(image, mask, prompt) {
+  let width = 1024
+  
+  if(!prompt) {
+    // TODO: image 2 image with ollama vision?
+    return
+  }
+
+  if(prompt.includes('View360')) {
+    width = 2048
+  }
+
+  let base64_image
+  if(typeof image == 'string') {
+    if(image.startsWith('data:image/'))
+      image = image.replace(/^data:image\/.*?;base64,/gi, '')
+  
+    if(image.includes('://')) {
+      let result = await request({
+        url: image,
+        method: 'GET',
+      })
+      base64_image = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(image)) {
+      base64_image = Buffer.from(image, 'base64').toString('base64')
+    } else {
+      base64_image = fs.readFileSync(image).toString('base64')
+    }  
+  } else {
+    base64_image = image.toString('base64')
+  }
+
+  let base64_mask
+  if(typeof mask == 'string') {
+    if(mask.startsWith('data:image/'))
+      mask = mask.replace(/^data:image\/.*?;base64,/gi, '')
+  
+    if(mask.includes('://')) {
+      let result = await request({
+        url: mask,
+        method: 'GET',
+      })
+      base64_mask = Buffer.from(await result.data.arrayBuffer()).toString('base64')
+    } else if (!fs.existsSync(mask)) {
+      base64_mask = Buffer.from(mask, 'base64').toString('base64')
+    } else {
+      base64_mask = fs.readFileSync(mask).toString('base64')
+    }  
+  } else {
+    base64_mask = mask.toString('base64')
+  }
+
+  try {
+    let result = await request({
+      url: 'http://127.0.0.1:7860/sdapi/v1/img2img',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify({
+        prompt: prompt,
+        negative_prompt: 'bad hands, bad feet, bad faces, bad eyes, bad anatomy, extra limbs, missing limbs, tattoo, statue, picture frame, anime, cartoon, signature, abstract',
+        save_images: true,
+        "width": width,
+        "height": 1024,
+        "steps": 30,
+        tiling: false,
+        init_images: [base64_image],
+        //denoising_strength: 0.35,
+        mask: base64_mask,
+        mask_blur: 4,
+        inpainting_fill: 1,
+        inpaint_full_res: false,
+        inpaint_full_res_padding: 32,
+        inpainting_mask_invert: 1,
+      })
+    })
+    
+    let seed = JSON.parse(result.data.info).seed
+    let buff = Buffer.from(result.data.images[0], 'base64');
+    let now = new Date()
+    let folderName = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0')
+    let stablePath = path.join(OUTPUT_PATH, 'img2img-images', folderName)
+    let imagePath
+    if(fs.existsSync(stablePath)) {
+      let images = fs.readdirSync(stablePath)
+      for(let i = 0; i < images.length; i++) {
+        if(images[i].match('-' + seed + '-')) {
+          imagePath = path.join('img2img-images', folderName, images[i])
+          break
+        }
+      }
+    }
+    return {seed, image: buff, imagePath, prompt}
+
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+module.exports = {
+  doInpaintMask,
+  OUTPUT_PATH
+}
+
+</code></pre>
+
+<p><strong>Breakdown of the Code</strong></p>
+<p>This is a JavaScript code that uses the <code>gaxios</code> library to make HTTP requests to a local API. The API appears to be running on <code>http://127.0.0.1:7860/sdapi/v1/img2img</code>. Here's a high-level overview of what the code does:</p>
+<h3>Requires and Constants</h3>
+<p>The code starts by requiring the <code>fs</code> (File System) and <code>path</code> modules, which are built-in Node.js modules. It also requires the <code>gaxios</code> module, which is a library for making HTTP requests.</p>
+<p>The code then defines a constant <code>OUTPUT_PATH</code> which is the path to a directory where output files will be saved.</p>
+<h3><code>doInpaintMask</code> Function</h3>
+<p>The <code>doInpaintMask</code> function is an asynchronous function that takes three parameters:</p>
+<ol>
+<li><code>image</code>: The input image, which can be a file path, a base64-encoded string, or a Buffer object.</li>
+<li><code>mask</code>: The mask image, which can be a file path, a base64-encoded string, or a Buffer object.</li>
+<li><code>prompt</code>: A text prompt that will be used to generate the output image.</li>
+</ol>
+<p>Here's a step-by-step breakdown of what the function does:</p>
+<ol>
+<li>It checks if a prompt is provided. If not, it returns immediately.</li>
+<li>It checks if the prompt includes the string &quot;View360&quot;, in which case it sets the image width to 2048 instead of the default 1024.</li>
+<li>It converts the input image and mask to base64-encoded strings if necessary.</li>
+<li>It makes a POST request to the local API at <code>http://127.0.0.1:7860/sdapi/v1/img2img</code> with the prompt, negative prompt, and image and mask data.</li>
+<li>It catches any errors that occur during the request.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The code uses the <code>process.env</code> object to get the path to the user's home directory, which is used to construct the <code>OUTPUT_PATH</code> constant.</li>
+<li>The code uses the <code>gaxios</code> library to make HTTP requests, which allows it to handle both synchronous and asynchronous requests.</li>
+<li>The code assumes that the local API is running on the machine and can be accessed at <code>http://127.0.0.1:7860/sdapi/v1/img2img</code>.</li>
+<li>The code includes some commented-out code that mentions &quot;ollama vision&quot;, which is not currently being used.</li>
+</ul>

@@ -1,0 +1,32 @@
+<p>This JavaScript code implements the FizzBuzz challenge, which prints &quot;Fizz&quot; for multiples of 3, &quot;Buzz&quot; for multiples of 5, &quot;FizzBuzz&quot; for multiples of both, and the number itself otherwise, from 1 to 100.</p>
+
+
+<pre><code>function fizzBuzz() {
+    for(var i = 1; i <= 100; i++) {
+        var buffer = '';
+        if(i % 3 === 0)
+            buffer += 'Fizz';
+        if(i % 5 === 0)
+            buffer += 'Buzz';
+        if(buffer.length === 0)
+            buffer += i;
+        console.log(buffer);
+    }
+}
+
+fizzBuzz();
+</code></pre>
+
+<p>This JavaScript code implements the classic &quot;FizzBuzz&quot; programming challenge.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>function fizzBuzz() { ... }</code></strong>: Defines a function named <code>fizzBuzz</code> that encapsulates the logic.</p></li>
+<li><p><strong><code>for (var i = 1; i &lt;= 100; i++) { ... }</code></strong>:  A <code>for</code> loop iterates from 1 to 100 (inclusive). In each iteration, the variable <code>i</code> represents the current number.</p></li>
+<li><p><strong><code>var buffer = '';</code></strong>: Initializes an empty string called <code>buffer</code> to store the output for each number.</p></li>
+<li><p><strong><code>if (i % 3 === 0) buffer += 'Fizz';</code></strong>: Checks if <code>i</code> is divisible by 3. If so, it appends &quot;Fizz&quot; to the <code>buffer</code>.</p></li>
+<li><p><strong><code>if (i % 5 === 0) buffer += 'Buzz';</code></strong>: Checks if <code>i</code> is divisible by 5. If so, it appends &quot;Buzz&quot; to the <code>buffer</code>.</p></li>
+<li><p><strong><code>if (buffer.length === 0) buffer += i;</code></strong>: If neither &quot;Fizz&quot; nor &quot;Buzz&quot; was added, it means the number is not divisible by 3 or 5, so it appends the number <code>i</code> itself to the <code>buffer</code>.</p></li>
+<li><p><strong><code>console.log(buffer);</code></strong>: Prints the contents of the <code>buffer</code> (which will be &quot;Fizz&quot;, &quot;Buzz&quot;, &quot;FizzBuzz&quot;, or the number itself) to the console.</p></li>
+<li><p><strong><code>fizzBuzz();</code></strong>: Calls the <code>fizzBuzz</code> function to execute the code.</p></li>
+</ol>
+<p>Let me know if you'd like any further clarification!</p>

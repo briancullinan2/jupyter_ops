@@ -1,0 +1,68 @@
+<p>Here's a summary of the code in one sentence:</p>
+<p>This code defines a function <code>scrapeAlert</code> that fetches and saves data from a website based on a given ID, and exports it for use elsewhere.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = path.join(PROFILE_PATH, 'Collections/crimes');
+
+function scrapeAlert(ID) {
+    if(fs.existsSync(path.join(project, 'maricopa-alert-' + ID + '.json'))) {
+        return;
+    }
+    return client
+        .url('https://www.maricopacountyattorney.org/CivicAlerts.aspx?AID=' + ID)
+        .getAllXPath({
+            time: '//*[@class = "single"]//*[@class = "date"]//text()',
+            title: '//*[contains(@class, "single")]//h3//text()',
+            content: '//*[@class = "single"]//*[@class = "content"]//text()'
+        })
+        .then(r => {
+            fs.writeFileSync(path.join(project, 'maricopa-alert-' + ID + '.json'), JSON.stringify(r, null, 4));
+            return r;
+        })
+        .catch(e => console.log(e))
+}
+module.exports = scrapeAlert;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    var IDs = Array.from(Array(500).keys());
+    multiCrawl(IDs, 'crime reports')
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>fs</code> (File System): used for file operations.</li>
+<li><code>path</code>: used for path manipulation.</li>
+</ul>
+<h3>Variables</h3>
+<ul>
+<li><code>PROFILE_PATH</code>: set to the user's home directory (or its environment variable equivalents).</li>
+<li><code>project</code>: set to a directory path within the user's home directory (<code>'Collections/crimes'</code>).</li>
+</ul>
+<h3><code>scrapeAlert</code> Function</h3>
+<ul>
+<li>Accepts <code>ID</code> as an argument.</li>
+<li>Checks if a file with the name <code>maricopa-alert-&lt;ID&gt;.json</code> exists in the specified project directory. If it does, the function returns immediately.</li>
+<li>Fetches data from the website <code>https://www.maricopacountyattorney.org/CivicAlerts.aspx?AID=&lt;ID&gt;</code> using an unknown <code>client</code> object ( likely a web scraping client).</li>
+<li>Extracts the <code>time</code>, <code>title</code>, and <code>content</code> from the webpage using XPath expressions.</li>
+<li>Saves the extracted data to a JSON file with the name <code>maricopa-alert-&lt;ID&gt;.json</code> in the project directory.</li>
+<li>Returns the extracted data.</li>
+</ul>
+<h3>Export</h3>
+<ul>
+<li>Exports the <code>scrapeAlert</code> function.</li>
+</ul>
+<h3>Additional Code</h3>
+<ul>
+<li>Checks if the <code>$$</code> object is defined. If it is, it calls the <code>async</code> method on it and passes an array of 500 IDs to the <code>multiCrawl</code> function.</li>
+<li>Calls <code>multiCrawl</code> with <code>crime reports</code> as an argument and awaits the result.</li>
+<li>If <code>$$</code> is defined, it catches any errors and sends the result or error using the <code>$$</code> object.</li>
+</ul>

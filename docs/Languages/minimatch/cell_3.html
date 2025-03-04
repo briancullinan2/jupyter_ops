@@ -1,0 +1,18 @@
+
+
+<pre><code>var importer = require('../Core')
+var {minimatch} = importer.import('minimatch')
+//var mini = require('minimatch')
+
+console.log(minimatch('/some/file/to/test', '**/file/**'))
+console.log(minimatch('/node_modules/@firebase', '**/node_modules/**'))
+//mini.makeRe('**/node_modules/**', {dot: true, regexp: true})
+//console.log(mini('/node_modules/@firebase', '**/node_modules/**'))
+
+/*
+expected output
+true
+true
+*/
+</code></pre>
+

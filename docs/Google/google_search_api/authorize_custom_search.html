@@ -1,0 +1,51 @@
+<p>This code configures authentication with the Google Custom Search Engine API by locating credentials and defining the necessary scope, providing a function to obtain an authorized client for API requests.</p>
+
+
+<pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var credentials;
+if(fs.existsSync('./sheet to web-8ca5784e0b05.json')) {
+    credentials = path.resolve('./sheet to web-8ca5784e0b05.json');
+} else {
+    credentials = path.join(PROFILE_PATH, '.credentials/sheet to web-8ca5784e0b05.json');
+}
+
+var {GoogleAuth} = require('google-auth-library');
+var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/cse'
+];
+
+function authorizeSearch() {
+    return new GoogleAuth({
+        keyFile: credentials,
+        scopes: GOOGLE_AUTH_SCOPE
+    }).getClient(/* options here are always ignored b/c cache */)
+}
+
+module.exports = authorizeSearch;
+</code></pre>
+
+<p>This code snippet sets up authentication with the Google Custom Search Engine API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Credentials Path:</strong></p>
+<ul>
+<li>It determines the path to the authentication credentials file (<code>sheet to web-8ca5784e0b05.json</code>) based on environment variables and common locations.</li>
+</ul></li>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>GoogleAuth</code> class from the <code>google-auth-library</code> package.</li>
+</ul></li>
+<li><p><strong>Authentication Scope:</strong></p>
+<ul>
+<li>It defines the required scope for accessing the Google Custom Search Engine API (<code>https://www.googleapis.com/auth/cse</code>).</li>
+</ul></li>
+<li><p><strong><code>authorizeSearch</code> Function:</strong></p>
+<ul>
+<li>This function creates a new <code>GoogleAuth</code> instance using the specified credentials file and scope.</li>
+<li>It returns a client object that can be used to make authenticated API requests.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>authorizeSearch</code> function is exported as a module, allowing other parts of the application to use it for authentication.</li>
+</ul></li>
+</ol>

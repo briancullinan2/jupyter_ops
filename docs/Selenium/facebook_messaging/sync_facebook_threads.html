@@ -1,0 +1,64 @@
+<p>This code automates the process of logging into Facebook, retrieving thread information, and downloading message content from specific threads, storing the data in a JSON file. It utilizes Selenium for web automation and asynchronous programming techniques to handle the interactions efficiently.</p>
+
+
+<pre><code>var importer = require('../Core');
+var fs = require('fs');
+var runSeleniumCell = importer.import('selenium cell');
+var loginFacebook, listFacebookThreads, readFacebookThread;
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+$$.async();
+runSeleniumCell([
+    'log in facebook',
+    'list facebook threads',
+    'messages from facebook',
+])
+    .then(r => ({
+        loginFacebook, listFacebookThreads, readFacebookThread
+    } = r).loginFacebook())
+    .then(threads => {
+        try { threads = JSON.parse(fs.readFileSync(project + '/facebook-threads.json')); }
+        catch (e) { threads = []; }
+    // TODO: compare glob/stat to see which threads need updating
+        return importer.runAllPromises(threads.slice(450, 600)
+            .map(t => ((resolve) => readFacebookThread(t).then((r) => resolve(r)))));
+    })
+    // TODO: when threads gets to 100% call listFacebookThreads()
+    //.then(() => listFacebookThreads())
+</code></pre>
+
+<p>This code snippet appears to be part of a system designed to monitor and process Facebook threads.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong> It imports necessary modules for interacting with Facebook, file system operations, and running Selenium commands.</p></li>
+<li><p><strong>Initialization:</strong> It sets up a <code>PROFILE_PATH</code> and a <code>project</code> directory.</p>
+<ul>
+<li>It then runs Selenium commands to log into Facebook, list threads, and retrieve message content.</li>
+<li>It extracts the user's home directory path.</li>
+<li>It defines a project directory within the home directory.</li>
+<li>It uses <code>$$.async()</code> to initiate an asynchronous operation.</li>
+<li>It calls <code>runSeleniumCell()</code> with a list of commands:
+<ul>
+<li>&quot;log in facebook&quot;</li>
+<li>&quot;list facebook threads&quot;</li>
+<li>&quot;messages from facebook&quot;</li>
+</ul></li>
+<li>The <code>runSeleniumCell()</code> function executes these commands using Selenium and returns a result.</li>
+<li>The result is then processed to extract functions: <code>loginFacebook</code>, <code>listFacebookThreads</code>, and <code>readFacebookThread</code>.</li>
+<li>It attempts to load existing thread data from a JSON file. If the file doesn't exist, it initializes an empty array.</li>
+<li>It processes a subset of threads (from index 450 to 600) using <code>importer.runAllPromises()</code>.</li>
+<li>For each thread, it calls <code>readFacebookThread()</code> to retrieve message content and resolves the promise with the result.</li>
+<li>There's a commented-out section that suggests updating the thread list when it reaches 100%.</li>
+</ul></li>
+</ol>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Asynchronous Operations:</strong> The code heavily relies on asynchronous operations using promises (<code>then()</code>).</li>
+<li><strong>Selenium Automation:</strong> It uses Selenium to automate interactions with Facebook.</li>
+<li><strong>Data Persistence:</strong> It stores thread data in a JSON file.</li>
+<li><strong>Partial Thread Processing:</strong> It processes a subset of threads at a time.</li>
+<li><strong>TODOs:</strong> There are TODOs indicating areas for future development, such as updating the thread list and implementing more robust thread management.</li>
+</ul>
+<p>Let me know if you have any other questions.</p>

@@ -1,0 +1,102 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code requires two dependencies (<code>assert</code> and <code>importer</code>) and defines two functions: <code>makeCombinations</code>, which generates all possible combinations of a given array of values, and <code>makeXpaths</code>, which constructs a specific XPath expression based on a given node's properties. The <code>makeXpaths</code> function uses the <code>selectDom</code> function to select the first occurrence of the classifiers from the node and constructs the XPath expression based on properties such as tag name, ID, class names, and index.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var {selectDom} = importer.import('select tree');
+
+function makeCombinations(values) {
+    // get every combination of matching classifiers
+    //   pass it up to be used for minimization
+    //   on a larger context
+    var combinations = [];
+    // start at 1 to always include * or Element tag name
+    let i, j;
+    for (i = 1; i <= values.length; i++) {
+        for (j = 1; j <= values.length; j++) {
+            combinations.push([
+                values[0],
+                ...values.slice(i, j)
+            ].join(''))
+        }
+    }
+    return combinations
+        .filter((c, i, arr) => arr.indexOf(c) === i)
+        .sort((a, b) => a.length - b.length)
+}
+
+// algorithm magic!
+// create an very specific XPath following these rules
+function makeXpaths(node) {
+    var classifiers = [{
+        tag: `local-name(.)`,
+        ids: [`@*[name()="type" or name()="id" or name()="name"]`],
+        classNames: `@class`,
+        index: `count(preceding-sibling::*)`,
+        parent: `local-name(parent::*)`,
+        //parent: `parent::*/@*[name()="type" or name()="id" or name()="name"]`,
+        nthType: `count(preceding-sibling::*[local-name(*)=local-name(.)])`
+    }, ({tag, ids, classNames, index, parent, nthType}) => ({
+        tag: tag && tag !== 'object' ? tag : `*`,
+        id: ids.length
+            ? `[${ids
+            .map(id => 
+                 `(@id="${id}" or @name="${id}" or @type="${id}")`)
+            .join(` and `)}]`
+            : ``,
+        classNames: classNames.length > 0
+            ? `[contains(@class, "${classNames}")]`
+            : ``,
+        index: typeof index !== 'undefined' && parent
+            ? `/parent::${parent}/*[${index+1}]`
+            : ``,
+        parent: parent && typeof nthType !== 'undefined'
+            ? `/parent::${parent}/${
+                tag && tag !== 'object' ? tag : `*`}[${nthType+1}]`
+            : ``
+    })]
+    
+    var classifiers = selectDom(classifiers, node)[0];
+    var {tag, id, classNames, index, parent} = classifiers;
+    // to ensure the order from most specific to least specific
+    var combinations = [].concat.apply([], makeCombinations( 
+                                       [tag, id, classNames, index, parent]))
+    assert(selectDom(combinations[0], node),
+           'oops, the xpath expression maker messed up');
+    return combinations;
+}
+
+module.exports = {
+    makeXpaths
+};
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Functions</h3>
+<p>The code starts by requiring two dependencies:</p>
+<ul>
+<li><code>assert</code> for assertions (not used in this code snippet)</li>
+<li><code>importer</code> from a local module <code>../Core</code>, which imports the <code>selectDom</code> function from another module.</li>
+</ul>
+<p>The <code>makeCombinations</code> function generates all possible combinations of a given array of values. It takes an array <code>values</code> as input and returns an array of combinations, filtered for uniqueness and sorted by length.</p>
+<p>The <code>makeXpaths</code> function creates a specific XPath expression based on the properties of a given node. It uses a nested object (<code>classifiers</code>) to define the properties to be used in the XPath expression.</p>
+<h3><code>makeCombinations</code> Function</h3>
+<p>This function iterates over the array <code>values</code> to generate all possible combinations of values. It does this by using two nested loops, which iterate from 1 to the length of the array. The function returns an array of combinations, filtered for uniqueness using the <code>indexOf</code> method, and sorted by length in ascending order.</p>
+<h3><code>makeXpaths</code> Function</h3>
+<p>This function takes a node as input and uses the <code>selectDom</code> function to select the first occurrence of the classifiers from the node. The selected classifiers are then used to construct an XPath expression.</p>
+<p>The XPath expression is constructed based on the following properties:</p>
+<ul>
+<li><code>tag</code>: the tag name of the node (defaults to <code>*</code> if not specified)</li>
+<li><code>id</code>: the ID of the node (constructed from an array of IDs)</li>
+<li><code>classNames</code>: the class names of the node (constructed from a string of class names)</li>
+<li><code>index</code>: the index of the node within its parent (constructed from the count of preceding siblings)</li>
+<li><code>parent</code>: the local name of the parent node</li>
+<li><code>nthType</code>: the count of preceding siblings with the same tag name</li>
+</ul>
+<p>The function returns an object with the constructed XPath expression.</p>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">var node = // assume a DOM node is available
+var xpaths = makeXpaths(node);
+console.log(xpaths);
+</code></pre>

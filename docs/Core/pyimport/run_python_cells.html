@@ -1,0 +1,144 @@
+<p>Here's a summary of the code breakdown in one sentence:</p>
+<p>The <code>run_internal</code> function is an asynchronous function that runs a notebook program by importing it, finding a function to execute, mapping user inputs to function parameters, converting types, and executing the function, while the <code>run_async</code> function runs this process asynchronously using <code>asyncio.gather</code>.</p>
+
+
+<pre><code>import json
+import os
+import sys
+import types
+import asyncio
+import inspect
+
+async def run_internal():
+    from Core import interpret, import_notebook, get_parameter_names
+    if len(sys.argv) < 2:
+        print("Usage: python script.py <notebook_path> <function_args>")
+        sys.exit(1)
+
+    notebook_path = sys.argv[1]
+    inputs = sys.argv[2:]
+
+    # Import the notebook as a module
+    results = interpret(notebook_path)
+    #print(results[0]['code'])
+
+    module = import_notebook(notebook_path, globals())
+    print(module)
+
+    # Find the first function in the module
+    func = None
+    if(callable(module)):
+        func = module
+    else:
+        for name in list(module.keys()):
+            # TODO: support classes ? attr = getattr(module, name)
+            attr = module[name]
+            if callable(attr):
+                func = attr
+                break
+
+    if not func:
+        print("No function found in the notebook.")
+        sys.exit(1)
+    print(func)
+
+    # Extract parameters and map inputs
+    params = []
+    if(results[0]["language"] == 'python'):
+        params = get_parameter_names(results[0]['code'])[1:]
+        print(params)
+    mapped_inputs = []
+
+    for param in params:
+        for i, arg in enumerate(inputs):
+            if arg.startswith(f"--{param}="):
+                mapped_inputs.append(arg.split("=")[1])
+                break
+        else:
+            mapped_inputs.append(inputs.pop(0) if inputs else None)
+
+    # Convert types based on function annotations (if available)
+    if hasattr(func, '__annotations__'):
+        func_annotations = func.__annotations__
+        print(func_annotations)
+        for i, param in enumerate(params):
+            if param in func_annotations:
+                mapped_inputs[i] = func_annotations[param](mapped_inputs[i])
+
+    # Execute the function
+    if inspect.iscoroutinefunction(func):
+        return await func(*mapped_inputs)
+    else:
+        return func(*mapped_inputs)
+
+async def run_async():
+    return await asyncio.gather(run_internal())
+
+def run():
+    loop = asyncio.get_event_loop()
+    result = loop.run_until_complete(run_async())
+    if os.getenv('RUN_OUTPUT') is 'json':
+        result = json.dumps(result, indent=4)
+    print(result)
+
+if __name__ == "__run__":
+    run()
+
+__all__ = {
+  "run": run
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing various Python modules:</p>
+<pre><code class="language-python">import json
+import os
+import sys
+import types
+import asyncio
+import inspect
+</code></pre>
+<h3><code>run_internal</code> Function</h3>
+<p>This function is an asynchronous function (<code>async def</code>) that runs the notebook program and executes the specified function. Here's what it does:</p>
+<ol>
+<li><p><strong>Argument Handling</strong>:</p>
+<ul>
+<li>It checks if the user provided enough arguments (at least 2) when running the script.</li>
+<li>If not, it prints usage instructions and exits with an error code.</li>
+</ul></li>
+<li><p><strong>Importing the Notebook</strong>:</p>
+<ul>
+<li>It uses the <code>interpret</code> function to import the notebook as a Python module.</li>
+<li>It then imports the module using the <code>import_notebook</code> function and adds it to the global scope.</li>
+</ul></li>
+<li><p><strong>Finding the Function</strong>:</p>
+<ul>
+<li>It identifies the first function in the imported module.</li>
+<li>If no function is found, it prints an error message and exits.</li>
+</ul></li>
+<li><p><strong>Extracting Parameters and Mapping Inputs</strong>:</p>
+<ul>
+<li>It extracts the function's parameters and maps the user-provided inputs to these parameters.</li>
+<li>If a parameter is not specified with the expected format (<code>--param=value</code>), it uses the next available input.</li>
+</ul></li>
+<li><p><strong>Converting Types</strong>:</p>
+<ul>
+<li>If the function has type annotations, it converts the mapped inputs to the expected types.</li>
+</ul></li>
+<li><p><strong>Executing the Function</strong>:</p>
+<ul>
+<li>It executes the function using the mapped inputs.</li>
+<li>If the function is a coroutine, it uses <code>await</code> to execute it asynchronously.</li>
+</ul></li>
+</ol>
+<h3><code>run_async</code> Function</h3>
+<p>This function is also asynchronous and is used to run the <code>run_internal</code> function asynchronously using <code>asyncio.gather</code>.</p>
+<pre><code class="language-python">async def run_async():
+    return await asyncio.gather(run_internal())
+</code></pre>
+<h3><code>run</code> Function (Documentation Only)</h3>
+<p>This function is not implemented and is likely intended to be replaced with an asynchronous version of <code>run_internal</code>. The comment suggests that any friendly remarks should be discarded.</p>
+<pre><code class="language-python">def run()
+Documentation only, discard any friendly remarks.
+</code></pre>

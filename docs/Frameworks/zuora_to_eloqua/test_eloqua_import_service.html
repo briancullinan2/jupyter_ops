@@ -1,0 +1,113 @@
+<p>This code unit tests an Eloqua import service, verifying its ability to obtain a valid OAuth token, create a bulk import instance, and successfully upload data to Eloqua.  It uses Sinon.js for mocking dependencies and <code>assert</code> for making assertions about the test results.</p>
+
+
+<pre><code>var assert = require('assert');
+var sinon = require('sinon');
+var importer = require('../Core');
+var request = importer.import('http request polyfill');
+var {
+    eloquaOauth,
+    createImportDefinition,
+    startBulkImportData,
+    completeBulkImportSync
+} = importer.import('eloqua import service');
+
+var {
+    getEloquaConfig,
+    getOauthToken,
+    getImportData
+} = importer.import('eloqua import blueprints');
+
+var eloquaConfig = getEloquaConfig();
+var eloquaToken = getOauthToken();
+var sandbox = sinon.createSandbox();
+
+describe('eloqua bulk upload', () => {
+        
+    afterEach(() => {
+        sandbox.restore();
+    })
+
+    it('should get a valid oauth token', () => {
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {expires_in: 1000 } }));
+        
+        return eloquaOauth(eloquaConfig)
+            .then(r => {
+                assert(r.expires > (new Date()).getTime());
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+    it('should create a bulk import instance', () => {
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {uri: '/imports/123' } }));
+        
+        return createImportDefinition(60, eloquaToken, eloquaConfig)
+            .then(r => {
+                assert(r.includes('/imports/'));
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+    it('should update data to eloqua', () => {
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {uri: '/imports/123' }, statusCode: 204 }));
+        
+        return startBulkImportData([getImportData()], '/imports/123', eloquaToken, eloquaConfig)
+            .then(r => {
+                assert(r.statusCode === 204, 'invalid status recieved from import ' + r.statusCode);
+                assert(requestStub.calledOnce, 'request should only be called once');
+            })
+    })
+    
+    it('should verify upload was successful', () => {
+        var importUri;
+        
+        const requestStub = sandbox.stub(request, "request")
+            .returns(Promise.resolve({ body: {uri: '/imports/123', status: 'success' } }));
+        
+        return completeBulkImportSync(importUri, eloquaToken, eloquaConfig)
+            .then(r => {
+                assert(r === true);
+                assert(requestStub.called, 'request should only be called once');
+            })
+    })
+    
+})
+</code></pre>
+
+<p>This code defines a set of unit tests for an Eloqua import service.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules, including <code>assert</code> for assertions, <code>sinon</code> for mocking, and Eloqua-specific modules for authentication, import operations, and data retrieval.</li>
+<li>It sets up a sandbox for mocking dependencies and retrieves Eloqua configuration and an OAuth token.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li><strong><code>should get a valid oauth token</code>:</strong>
+<ul>
+<li>Mocks the <code>request</code> function to simulate a successful OAuth token request.</li>
+<li>Asserts that the returned token has a valid expiration time and that the <code>request</code> function was called only once.</li>
+</ul></li>
+<li><strong><code>should create a bulk import instance</code>:</strong>
+<ul>
+<li>Mocks the <code>request</code> function to simulate a successful import definition creation.</li>
+<li>Asserts that the returned import URI includes the expected path and that the <code>request</code> function was called only once.</li>
+</ul></li>
+<li><strong><code>should update data to eloqua</code>:</strong>
+<ul>
+<li>Mocks the <code>request</code> function to simulate a successful bulk import data upload.</li>
+<li>Asserts that the response status code is 204 (No Content) and that the <code>request</code> function was called only once.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Cleanup:</strong></p>
+<ul>
+<li>Restores the sandbox after each test case.</li>
+</ul></li>
+</ol>

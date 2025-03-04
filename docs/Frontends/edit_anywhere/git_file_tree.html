@@ -1,0 +1,163 @@
+<p>This code prepares a Node.js environment to interact with Git using the <code>wasm-git</code> library, setting up a virtual filesystem and defining a function to map MIME types to icons.  It also includes the beginnings of a function to retrieve a file tree from the Git repository.</p>
+
+
+<pre><code>var lg = require('../node_modules/wasm-git/lg2.js');
+var mime = require('mime')
+
+lg.noExitRuntime = true
+lg.quit = function () {}
+lg.onRuntimeInitialized = () => {
+    const FS = lg.FS;
+    const MEMFS = FS.filesystems.MEMFS;
+
+    FS.mkdir('/working');
+    FS.mount(MEMFS, { }, '/working');
+    FS.chdir('/working');    
+
+    FS.writeFile('/home/web_user/.gitconfig', '[user]\n' +
+                'name = Test User\n' +
+                'email = test@example.com');
+    lg.loaded = true
+    process.on('uncaughtException', console.log)
+    process.on('unhandledRejection', console.log)
+}
+process.on('uncaughtException', console.log)
+process.on('unhandledRejection', console.log)
+
+function mimeToIcon(mime) {
+    var icon_classes = {
+      '': 'fa-file',
+      // Media
+      image: "fa-file-image",
+      audio: "fa-file-audio",
+      video: "fa-file-video",
+      // Documents
+      "application/pdf": "fa-file-pdf",
+      "application/msword": "fa-file-word",
+      "application/vnd.ms-word": "fa-file-word",
+      "application/vnd.oasis.opendocument.text": "fa-file-word",
+      "application/vnd.openxmlformatsfficedocument.wordprocessingml": "fa-file-word",
+      "application/vnd.ms-excel": "fa-file-excel",
+      "application/vnd.openxmlformatsfficedocument.spreadsheetml": "fa-file-excel",
+      "application/vnd.oasis.opendocument.spreadsheet": "fa-file-excel",
+      "application/vnd.ms-powerpoint": "fa-file-powerpoint",
+      "application/vnd.openxmlformatsfficedocument.presentationml":"fa-file-powerpoint",
+      "application/vnd.oasis.opendocument.presentation": "fa-file-powerpoint",
+      "text/plain": "fa-file-alt",
+      "text/html": "fa-file-code",
+      "application/json": "fa-file-code",
+      // Archives
+      "application/gzip": "fa-file-archive",
+      "application/zip": "fa-file-archive"
+    }
+    return icon_classes[mime || ''] || icon_classes[(mime || '').split('/')[0]] || 'fa-file'
+}
+
+async function gitFileTree() {
+    const FS = lg.FS;
+    const PATH = lg.PATH;
+    const ERRNO_CODES = lg.ERRNO_CODES
+    // wait for the module to load
+    var waiter, counter = 0
+    await new Promise(resolve => {
+        waiter = setInterval(() => {
+            if(lg.loaded || counter === 1000) {
+                clearInterval(waiter)
+                resolve()
+            } else
+                counter++
+        }, 10)
+    })
+    
+    // clone a repository from github
+    try {
+        FS.mkdir('/working/made-with-webassembly')
+    } catch (e) {
+        if (!(e instanceof FS.ErrnoError) || e.code != 'EEXIST') {
+            throw e
+        }
+    }
+    try {
+        FS.chdir('/working/made-with-webassembly')
+        lg.callMain(['init', '.'])
+        lg.callMain(['remote', 'remove', 'origin'])
+        lg.callMain(['remote', 'add', 'origin', 'https://github.com/torch2424/made-with-webassembly.git'])
+        lg.callMain(['config', 'core.sparsecheckout', 'true'])
+        // echo "finisht/*" >> .git/info/sparse-checkout
+        lg.callMain(['fetch', 'origin', '--depth=1'])
+        lg.callMain(['checkout', 'master'])
+        // git rev-list --all --quiet --objects --missing=print | wc -l
+        // git update-index --skip-worktree
+    } catch (e) {
+        console.error(e)
+    }
+    //lg.callMain(['clone', 'https://github.com/torch2424/made-with-webassembly.git', 'made-with-webassembly'])
+    var makeTree
+    makeTree = function (dir) {
+        var files = FS.readdir(dir)
+            .filter(dir => !dir.match(/^\.\.?$/))
+        return `<ul>` + files.map((file, i) => {
+            var mimeType = mime.getType(file)
+            var path = dir + '/' + file
+            var escPath = 'ft' + path.replace(/[^a-z0-9_-]/ig, '_') + '_' + i
+            if(FS.isDir(FS.lstat(path).mode)) {
+                return `<li class="folder">
+                    <input type="checkbox" name="${escPath}" id="${escPath}" />
+                    <label for="${escPath}">
+                        <i class="fas fa-angle-right"></i><i class="fas fa-folder"></i>
+                        ${file}
+                    </label>
+                    ${makeTree(path)}
+                    </li>`
+            } else if (FS.isFile(FS.lstat(path).mode)) {
+                return `<li>
+                    <input type="checkbox" name="${escPath}" id="${escPath}" />
+                    <label for="${escPath}">
+                        <i class="fas ${mimeToIcon(mimeType)}"></i>
+                        ${file}
+                    </label>
+                    </li>`
+            }
+        }).join('') + `</ul>`
+    }
+    var fileTree = makeTree('.')
+    return fileTree
+}
+
+module.exports = gitFileTree
+</code></pre>
+
+<p>This code sets up a runtime environment for interacting with Git using the <code>wasm-git</code> library and defines a function to generate file icons based on MIME types.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>wasm-git</code> library (<code>lg2.js</code>) for Git operations and the <code>mime</code> library for MIME type handling.</li>
+</ul></li>
+<li><p><strong>Wasm-Git Initialization:</strong></p>
+<ul>
+<li>It configures the <code>wasm-git</code> runtime to prevent exiting and defines a custom <code>quit</code> function (which does nothing in this case).</li>
+<li>The <code>onRuntimeInitialized</code> callback is executed when the Wasm module is loaded.
+<ul>
+<li>It sets up a virtual filesystem (<code>MEMFS</code>) within the Wasm runtime.</li>
+<li>It creates a directory <code>/working</code> and mounts the MEMFS there.</li>
+<li>It changes the working directory to <code>/working</code>.</li>
+<li>It writes a basic Git configuration file (<code>/.gitconfig</code>) to the filesystem.</li>
+<li>It sets <code>lg.loaded</code> to <code>true</code> to indicate the runtime is ready.</li>
+<li>It sets up error handling for uncaught exceptions and unhandled rejections.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>MIME to Icon Mapping:</strong></p>
+<ul>
+<li>The <code>mimeToIcon</code> function takes a MIME type as input and returns a Font Awesome icon class based on the MIME type.</li>
+<li>It uses a dictionary (<code>icon_classes</code>) to map MIME types to corresponding icon classes.</li>
+</ul></li>
+<li><p><strong><code>gitFileTree</code> Function (Incomplete):</strong></p>
+<ul>
+<li>This function is declared but not fully implemented.</li>
+<li>It likely aims to retrieve a file tree from the Git repository within the Wasm runtime.</li>
+<li>It accesses the <code>FS</code>, <code>PATH</code>, and <code>ERRNO_CODES</code> objects from the <code>wasm-git</code> library.</li>
+</ul></li>
+</ol>
+<p><strong>Overall Purpose:</strong></p>
+<p>This code snippet sets up a foundation for interacting with Git using the <code>wasm-git</code> library within a Node.js environment. It initializes the runtime, configures a virtual filesystem, and provides a function to map MIME types to icons. The <code>gitFileTree</code> function is intended to retrieve file information from the Git repository but is not yet complete.</p>

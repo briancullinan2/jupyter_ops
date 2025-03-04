@@ -1,0 +1,53 @@
+<p>This code snippet is a unit test that verifies the functionality of a function designed to create a Google Cloud Storage bucket.  It imports the function, sets up test parameters, calls the function, and asserts that a bucket was successfully created.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var createBucket = importer.import('create a bucket');
+var project = 'spahaha-ea443';
+var bucketName = 'sheet-to-web.sheet-to-web.com';
+
+describe('adding a bucket to google storage', () => {
+    it('should add a bucket', () => {
+        return createBucket(project, bucketName)
+            .then(bucketName => {
+                assert(bucketName.length > 0, 'should have added a bucket');
+            })
+    })
+    
+});
+</code></pre>
+
+<p>This code snippet is a unit test for a function that creates a Google Cloud Storage bucket.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>assert</code>: A built-in Node.js module for writing unit tests and making assertions about code behavior.</li>
+<li><code>importer</code>: A custom module (likely located in <code>../Core</code>) responsible for importing functions from external sources.</li>
+</ul></li>
+<li><p><strong>Importing the <code>createBucket</code> Function:</strong></p>
+<ul>
+<li><code>createBucket = importer.import('create a bucket')</code>: This line imports a function named <code>createBucket</code> from the <code>importer</code> module. The string <code>'create a bucket'</code> likely acts as a key or identifier for this function within the <code>importer</code>.</li>
+</ul></li>
+<li><p><strong>Project and Bucket Details:</strong></p>
+<ul>
+<li><code>project = 'spahaha-ea443'</code>: Sets the Google Cloud project ID.</li>
+<li><code>bucketName = 'sheet-to-web.sheet-to-web.com'</code>: Defines the desired name for the Google Cloud Storage bucket.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li><code>describe('adding a bucket to google storage', () =&gt; { ... })</code>: This sets up a test suite named &quot;adding a bucket to google storage&quot;. Test suites group related tests together.</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li><code>it('should add a bucket', () =&gt; { ... })</code>: Defines a single test case within the suite. The name &quot;should add a bucket&quot; describes what the test aims to verify.</li>
+</ul></li>
+<li><p><strong>Test Logic:</strong></p>
+<ul>
+<li><code>return createBucket(project, bucketName)</code>: Calls the imported <code>createBucket</code> function, passing in the project ID and bucket name. The <code>return</code> keyword indicates that this function likely returns a Promise.</li>
+<li><code>.then(bucketName =&gt; { ... })</code>: Handles the Promise returned by <code>createBucket</code>. Once the bucket creation is successful, the <code>then</code> block executes.</li>
+<li><code>assert(bucketName.length &gt; 0, 'should have added a bucket')</code>: This is the assertion. It checks if the <code>bucketName</code> returned by the function has a length greater than 0. If this condition is true, the test passes; otherwise, it fails with the message &quot;should have added a bucket&quot;.</li>
+</ul></li>
+</ol>
+<p><strong>In summary:</strong> This code snippet defines a unit test that verifies the functionality of a <code>createBucket</code> function. It imports the function, sets up test parameters, calls the function, and asserts that a bucket was successfully created.</p>

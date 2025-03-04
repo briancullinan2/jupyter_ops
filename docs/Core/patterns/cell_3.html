@@ -1,0 +1,58 @@
+
+
+<pre><code>
+var esprima = require('esprima'); 
+var escodegen = require('escodegen');
+var assert = require('assert');
+
+var code = `
+var importer = require('../Core');
+function name(params) {
+    return importer.interpret('this is a describe request');
+}
+console.log()
+`
+
+function testProgram(ctx) {
+    var node = selectTree('Program', ctx);
+    assert(node.type === 'Program', 'just a single node not a list');
+    return node;
+}
+
+function testSelect(ctx) {
+    var node = selectTree([
+        'Program'
+    ], ctx);
+    assert(node.length === 1, 'list of root node');
+    assert(node[0].type === 'Program');
+    // using the first query results as the context for the second query on each item
+    
+    var node = selectTree([
+        'Identifier, CallExpression', // interchangable CSS selector
+    ], ctx);
+    assert(node.length > 6, 'list of concatenated elements');
+    assert(typeof node[6].name !== 'undefined');
+    
+    var node = selectTree([
+        '//*[@type="Identifier"]', // interchangable CSS selector
+        './@name'
+    ], ctx);
+    assert(node.length > 3, 'list of ids');
+    assert(node[3] === 'params');
+}
+
+module.exports = {
+    testProgram,
+    testSelect
+}
+
+// TODO: compare with acorn
+if(typeof $$ !== 'undefined') {
+    var ctx = esprima.parse(code);
+    var output = testProgram(ctx);
+    testSelect(ctx);
+    var output = escodegen.generate(output);
+    console.log(output)
+}
+</code></pre>
+

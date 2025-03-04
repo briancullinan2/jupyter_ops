@@ -1,0 +1,64 @@
+
+
+<pre><code>import os
+import re
+import subprocess
+
+BUILD_DIRECTORY = os.path.join(os.path.dirname(__file__), "../.build")
+os.makedirs(BUILD_DIRECTORY, exist_ok=True)
+
+def safeurl(name):
+    return re.sub(r'\W+', '_', name)
+
+def build_dylib(code, path_to_code, ctx):
+    from Core import interpret
+    code_cell = interpret(path_to_code)[0]
+    lib_name = safeurl(code_cell['questions'][0])
+    lib_ext = ".cpp" if code_cell['language'] == "cpp" else ".c"
+    lib_path = os.path.join(BUILD_DIRECTORY, f"{lib_name}{lib_ext}")
+    
+    if not os.path.exists(lib_path) or os.path.getmtime(code_cell['filename']) > os.path.getmtime(lib_path):
+        with open(lib_path, "w") as f:
+            f.write("".join(code_cell['code']))
+    
+    env = {}
+    
+    for match in re.finditer(r'([A-Z_])\s*[:=-]+\s*(.*?)\s*(\n|$)', "".join(code_cell['markdown'])):
+        env[match[1]] = match[2]
+    
+    if code_cell['language'] == "cpp":
+        env["CXX"] = os.getenv("CXX", "clang++").split()
+        env["STD"] = os.getenv("STD", "-std=c++17 -stdlib=libc++").split()
+    else:
+        env["CXX"] = os.getenv("CXX", "clang").split()
+    
+    obj_path = os.path.join(BUILD_DIRECTORY, f"{lib_name}.o")
+    if not os.path.exists(obj_path) or os.path.getmtime(lib_path) > os.path.getmtime(obj_path):
+        mods = ["-x", "objective-c", "-fno-objc-arc"] if code_cell['language'] == "objective-c" else []
+        if "@import" in "".join(code_cell['code']):
+            mods = ["-fmodules"] + mods
+        
+        cflags = []
+        if "PKG_CONFIG" in env:
+            result = subprocess.run(["pkg-config", "--cflags"] + env["PKG_CONFIG"].split(), capture_output=True, text=True)
+            cflags = result.stdout.split()
+        
+        args = ["-c", lib_path, "-o", obj_path]
+        subprocess.run(env["CXX"] + mods + cflags + args, check=True, env=os.environ)
+    
+    mod_path = os.path.join(BUILD_DIRECTORY, f"{lib_name}.dylib")
+    if not os.path.exists(mod_path) or os.path.getmtime(obj_path) > os.path.getmtime(mod_path):
+        libs = []
+        if "PKG_CONFIG" in env:
+            result = subprocess.run(["pkg-config", "--libs"] + env["PKG_CONFIG"].split(), capture_output=True, text=True)
+            libs = result.stdout.split()
+        
+        mods = ["-dynamiclib", "-rdynamic"] if "clang" in env["CXX"][0] else []
+        args = ["-o", mod_path]
+        subprocess.run(env["CXX"] + [obj_path] + mods + libs + args, check=True, env=os.environ)
+
+__all__ = {
+    "build_dylib": build_dylib
+}
+</code></pre>
+

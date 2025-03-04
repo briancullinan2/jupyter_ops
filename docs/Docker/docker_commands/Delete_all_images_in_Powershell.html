@@ -1,0 +1,26 @@
+<p>This code forcefully removes all Docker images from your system by piping a list of image IDs to the <code>docker rmi</code> command.</p>
+
+
+<pre><code>docker images -q | %{docker rmi -f $_}</code></pre>
+
+<p>This code snippet removes all Docker images from your system, forcefully deleting them if necessary.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>docker images -q</code>:</strong></p>
+<ul>
+<li>Lists all Docker images and outputs their IDs only (using the <code>-q</code> flag).</li>
+</ul></li>
+<li><p><strong><code>|</code>:</strong></p>
+<ul>
+<li>This pipe symbol redirects the output of the previous command (<code>docker images -q</code>) to the next command.</li>
+</ul></li>
+<li><p><strong><code>%{docker rmi -f $_}</code>:</strong></p>
+<ul>
+<li>This is a shell command substitution that iterates over each image ID received from the pipe.
+<ul>
+<li><code>$_</code> represents the current image ID from the pipe.</li>
+<li><code>docker rmi -f $_</code> removes the image with the ID <code>$_</code> forcefully (<code>-f</code> flag).</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>In essence, this command efficiently iterates through all Docker images and removes them forcefully, ensuring that even untagged or referenced images are deleted.</p>

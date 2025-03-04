@@ -1,0 +1,135 @@
+<p>This code automates screenshot capture from Selenium WebDriver sessions and uploads them to an AWS S3 bucket for storage.</p>
+
+
+<pre><code>var AWS = require('aws-sdk');
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+var unidecode = require('unidecode');
+
+// For dev purposes only
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var SCREENSHOTS_DIR = path.join(PROFILE_PATH, 'Collections/screenshots');
+AWS.config.update(JSON.parse(fs.readFileSync(path.join(PROFILE_PATH, '.credentials/aws-sdk.json')).toString()));
+
+function uploadS3(file) {
+    var base64data = fs.readFileSync(file);
+    var s3 = new AWS.S3();
+    return new Promise((resolve, reject) => s3.putObject({
+        Bucket: 'selenium-bots',
+        Key: path.basename(file),
+        Body: base64data,
+        ACL: 'public-read'
+    },function (err, resp) {
+        if(err) {
+            return reject(err);
+        }
+        return resolve(resp);
+    }));
+}
+
+function getScreenshots(client) {
+    if(typeof client === 'undefined') {
+        var client = runSeleniumCell(null, false);
+    }
+    var session, paths;
+    return client
+        .catch(e => {
+            if((e + '').indexOf('Already') > -1) {
+                // ignore because we don't need a valid session to start
+                return;
+            }
+            throw e;
+        })
+        .then(() => {
+            session = client.sessionId;
+        })
+        .then(() => importer.runAllPromises([client.getSessions(false), client.getSessions(true)]))
+        .then(sess => [].concat(...sess))
+        .then(r => {
+            console.log(r);
+            return importer.runAllPromises(r.map(s => resolve => {
+                return client
+                    .then(() => client.sessionId = s)
+                    .then(() => client.getWindowHandles())
+                    .then(h => importer.runAllPromises(h.map(hwnd => resolve => {
+                         const time = new Date();
+                        // TODO: include address in image?
+                         let filepath = path.join(SCREENSHOTS_DIR, 'screenshot-'
+                                                      + time.getFullYear() + '-'
+                                                      + (time.getMonth() + 1) + '-'
+                                                      + time.getDate() + '-'
+                                                      + time.getHours() + '-'
+                                                      + time.getMinutes() + '-'
+                                                      + time.getSeconds());
+                         return client
+                            .switchToWindow(hwnd)
+                            .then(() => client.getUrl())
+                            .then(url => filepath += '-' + unidecode(url).replace(/[^a-z0-9_-]/igm, '_'))
+                            .then(() => client.saveScreenshot(filepath + '.png'))
+                            // TODO: create thumbnails
+                            .then(() => uploadS3(filepath + '.png'))
+                            .catch(e => console.log(e))
+                            .then(() => resolve(filepath + '.png'))
+                    })))
+                    .catch(e => console.log(e))
+                    .then(r => resolve(r))
+            }));
+        })
+        .then(r => {
+            client.sessionId = session;
+            paths = r;
+        })
+        .catch(e => console.log(e))
+        .then(() => paths)
+}
+module.exports = getScreenshots;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getScreenshots()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code snippet focuses on capturing and uploading screenshots from Selenium WebDriver sessions to an Amazon S3 bucket.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>aws-sdk</code> for interacting with AWS S3, <code>fs</code> for file system operations, <code>path</code> for path manipulation, <code>importer</code> (likely a custom module), and <code>unidecode</code> for handling Unicode characters.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets up AWS credentials using environment variables and a local credentials file.</li>
+<li>Defines paths for storing screenshots locally.</li>
+</ul></li>
+<li><p><strong><code>uploadS3</code> Function:</strong></p>
+<ul>
+<li>Takes a file path as input.</li>
+<li>Reads the file contents as base64 data.</li>
+<li>Uses the AWS S3 SDK to upload the file to the specified S3 bucket with public read access.</li>
+<li>Returns a promise that resolves with the S3 upload response.</li>
+</ul></li>
+<li><p><strong><code>getScreenshots</code> Function:</strong></p>
+<ul>
+<li>Takes a Selenium WebDriver client object as input (optional).</li>
+<li>Handles potential errors gracefully, ignoring &quot;Already&quot; errors (likely related to session management).</li>
+<li>Gets the current Selenium session ID.</li>
+<li>Retrieves all active Selenium sessions.</li>
+<li>Iterates through each session and window handle:
+<ul>
+<li>Captures a screenshot for each window.</li>
+<li>Constructs a filename based on the session ID and timestamp.</li>
+<li>Saves the screenshot to the local <code>SCREENSHOTS_DIR</code>.</li>
+<li>Calls <code>uploadS3</code> to upload the screenshot to S3.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>The code likely executes <code>getScreenshots</code> to capture and upload screenshots from Selenium sessions.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code automates the process of taking screenshots from Selenium WebDriver sessions and uploading them to an AWS S3 bucket for storage and sharing.</strong></p>

@@ -1,0 +1,40 @@
+<p>This code defines a webhook handler for Twilio that creates a calendar event for each incoming text message.</p>
+
+
+<pre><code>var importer = require('../Core');
+var createCalendarEvent = importer.import('create new calendar event');
+
+function incomingTwilio(...params) {
+    console.log(params);
+    return createCalendarEvent('Received text with ' + params.From, params, {
+        calendarId: 'calls'
+    });
+}
+module.exports = incomingTwilio;
+</code></pre>
+
+<p>This code defines a function <code>incomingTwilio</code> that handles incoming text messages from Twilio and creates a calendar event for each message.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module (likely for importing functions or modules) is required.</li>
+</ul></li>
+<li><p><strong>Function Definition:</strong></p>
+<ul>
+<li><code>incomingTwilio</code> function is defined, accepting a variable number of parameters (<code>...params</code>).</li>
+</ul></li>
+<li><p><strong>Logging and Event Creation:</strong></p>
+<ul>
+<li>It logs the received parameters (presumably containing information about the incoming text message).</li>
+<li>It calls <code>createCalendarEvent</code> (imported from <code>importer</code>) to create a new calendar event.</li>
+<li>The event title is set to &quot;Received text with [sender's phone number]&quot;.</li>
+<li>The event details are passed as <code>params</code>.</li>
+<li>The <code>calendarId</code> is set to &quot;calls&quot;.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>incomingTwilio</code> function is exported as the module's main export, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code acts as a webhook handler for Twilio, automatically creating calendar events for incoming text messages.</p>

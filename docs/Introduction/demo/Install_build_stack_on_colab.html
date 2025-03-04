@@ -1,0 +1,57 @@
+<p>This code sets up a development environment for a Jupyter project by installing necessary packages, configuring Git, and initializing a repository. It then pulls the latest code from a remote repository and builds the project.</p>
+
+
+<pre><code>!npm config set user 0
+!npm config set unsafe-perm true
+!npm install -g --unsafe-perm ijavascript zeromq node-gyp node-pre-gyp webpack
+!ijsinstall --install=global
+!jupyter-kernelspec list
+!apt-get install -yy git built-tools
+!rm -R /content/jupytangular/ || true
+!mkdir /content/jupytangular
+!ln -s /content/jupytangular /Core || true
+!git init /content/jupytangular
+!cd jupytangular && git remote add origin https://:@bitbucket.org/megamindbrian/jupyter_ops.git
+!cd jupytangular && git fetch
+!cd jupytangular && git reset --hard origin/master
+!cd jupytangular && git pull origin master
+!cd jupytangular && npm install && npm run test && npm run build</code></pre>
+
+<p>This code snippet appears to be a series of shell commands designed to set up a development environment for a Jupyter-based project.</p>
+<p>Here's a breakdown:</p>
+<p><strong>1. npm Configuration and Installation:</strong></p>
+<ul>
+<li><code>!npm config set user 0</code>: Sets the npm user to 0 (likely the root user).</li>
+<li><code>!npm config set unsafe-perm true</code>: Enables unsafe permissions for npm installations.</li>
+<li><code>!npm install -g --unsafe-perm ijavascript zeromq node-gyp node-pre-gyp webpack</code>: Installs several packages globally (<code>-g</code>) with unsafe permissions (<code>--unsafe-perm</code>), including <code>ijavascript</code>, <code>zeromq</code>, <code>node-gyp</code>, <code>node-pre-gyp</code>, and <code>webpack</code>.</li>
+</ul>
+<p><strong>2. ijavascript Installation:</strong></p>
+<ul>
+<li><code>!ijsinstall --install=global</code>: Installs <code>ijavascript</code> globally.</li>
+</ul>
+<p><strong>3. Jupyter Environment Setup:</strong></p>
+<ul>
+<li><code>!jupyter-kernelspec list</code>: Lists available Jupyter kernel specifications.</li>
+<li><code>!apt-get install -yy git built-tools</code>: Installs <code>git</code> and <code>built-tools</code> using apt-get.</li>
+</ul>
+<p><strong>4. Project Directory Creation and Initialization:</strong></p>
+<ul>
+<li><code>!rm -R /content/jupytangular/ || true</code>: Removes the <code>/content/jupytangular</code> directory if it exists.</li>
+<li><code>!mkdir /content/jupytangular</code>: Creates the <code>/content/jupytangular</code> directory.</li>
+<li><code>!ln -s /content/jupytangular /Core || true</code>: Creates a symbolic link from <code>/Core</code> to <code>/content/jupytangular</code>.</li>
+<li><code>!git init /content/jupytangular</code>: Initializes a Git repository in the <code>/content/jupytangular</code> directory.</li>
+</ul>
+<p><strong>5. Git Remote and Branch Setup:</strong></p>
+<ul>
+<li><code>!cd jupytangular &amp;&amp; git remote add origin https://:@bitbucket.org/megamindbrian/jupyter_ops.git</code>: Adds a remote repository named <code>origin</code> pointing to a Bitbucket repository.</li>
+<li><code>!cd jupytangular &amp;&amp; git fetch</code>: Fetches changes from the remote repository.</li>
+<li><code>!cd jupytangular &amp;&amp; git reset --hard origin/master</code>: Resets the local branch to the <code>master</code> branch of the remote repository.</li>
+<li><code>!cd jupytangular &amp;&amp; git pull origin master</code>: Pulls changes from the remote <code>master</code> branch.</li>
+</ul>
+<p><strong>6. Project Build and Testing:</strong></p>
+<ul>
+<li><code>!cd jupytangular &amp;&amp; npm install</code>: Installs project dependencies.</li>
+<li><code>!cd jupytangular &amp;&amp; npm run test</code>: Runs project tests.</li>
+<li><code>!cd jupytangular &amp;&amp; npm run build</code>: Builds the project.</li>
+</ul>
+<p>Let me know if you have any more questions!</p>

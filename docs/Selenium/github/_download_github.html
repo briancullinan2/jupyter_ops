@@ -1,0 +1,80 @@
+<p>This code downloads a ZIP archive from GitHub, extracts its contents, and returns a list of files found within the extracted archive.  It's likely used to retrieve and process specific files from GitHub repositories.</p>
+
+
+<pre><code>var importer = require('../Core');
+var util = require('util');
+var glob = require('glob');
+var request = util.promisify(require('request'));
+var execCmd = importer.import('spawn child process');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var DOWNLOADS_PATH = path.join(PROFILE_PATH, '/Downloads');
+
+var unzip = (file) => {
+    console.log('unzipping ' + file);
+    return execCmd('unzip "' + file + '"', {cwd: DOWNLOADS_PATH})
+}
+
+function getGithub(url) {
+    return request({
+        url: url,
+        encoding: 'binary'
+    })
+        .then(r => {
+            const fname = path.join(DOWNLOADS_PATH, path.basename(url));
+            fs.writeFileSync(fname, r.body, 'binary');
+            return unzip(fname);
+        })
+        .then(() => {
+            return glob.sync(path.basename(url), {cwd: DOWNLOADS_PATH});
+        })
+}
+module.exports = getGithub;
+
+$$.async();
+getGithub('https://github.com/github/gitignore/archive/master.zip')
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e))
+</code></pre>
+
+<p>This code snippet downloads a ZIP archive from GitHub, extracts its contents, and returns a list of files within the extracted archive. Here's a breakdown:</p>
+<p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module (likely providing utility functions and potentially child process management).</li>
+<li><code>util</code>: Node.js built-in module for utility functions (promisifying <code>request</code>).</li>
+<li><code>glob</code>: Node.js module for finding files matching a pattern.</li>
+<li><code>request</code>: Node.js module for making HTTP requests (promisified using <code>util.promisify</code>).</li>
+<li><code>fs</code>: Node.js built-in module for file system operations (writing files).</li>
+<li><code>path</code>: Node.js built-in module for working with file paths.</li>
+</ul>
+<p><strong>Variables:</strong></p>
+<ul>
+<li><p><code>PROFILE_PATH</code>: Determines the user's home directory.</p></li>
+<li><p><code>DOWNLOADS_PATH</code>: Specifies the path to the user's Downloads folder.</p></li>
+<li><p><code>unzip(file)</code>:</p>
+<ul>
+<li>Takes a file path as input.</li>
+<li>Logs a message indicating the file being unzipped.</li>
+<li>Uses <code>execCmd</code> to execute the <code>unzip</code> command on the file in the <code>DOWNLOADS_PATH</code> directory.</li>
+<li>Returns a promise that resolves when the unzipping process is complete.</li>
+</ul></li>
+<li><p><code>getGithub(url)</code>:</p>
+<ul>
+<li>Takes a GitHub URL as input.</li>
+<li>Uses <code>request</code> to download the content from the URL as binary data.</li>
+<li>Creates a file in the <code>DOWNLOADS_PATH</code> directory with the same name as the downloaded file.</li>
+<li>Writes the downloaded binary data to the file.</li>
+<li>Calls <code>unzip</code> to unzip the downloaded file.</li>
+<li>Uses <code>glob.sync</code> to find all files matching the basename of the downloaded URL in the <code>DOWNLOADS_PATH</code> directory.</li>
+<li>Returns a promise that resolves with an array of file paths.</li>
+</ul></li>
+<li><p><code>module.exports = getGithub;</code>: Exports the <code>getGithub</code> function as a module.</p></li>
+<li><p><code>$$.async();</code>: Likely initializes an asynchronous task runner.</p></li>
+<li><p><code>getGithub('https://github.com/github/gitignore/archive/master.zip')</code>: Calls the <code>getGithub</code> function with the specified GitHub URL.</p>
+<ul>
+<li><code>.then(r =&gt; $$.sendResult(r))</code>: Handles the successful completion of the promise, sending the result (<code>r</code>) to the task runner.</li>
+<li><code>.catch(e =&gt; $$.sendError(e))</code>: Handles any errors during the process, sending the error (<code>e</code>) to the task runner.</li>
+</ul></li>
+</ul>
+<p><strong>In summary:</strong></p>
+<p>This code downloads a ZIP archive from GitHub, unzips it, and returns an array of file paths within the unzipped archive. It's likely part of a larger script or application that uses this functionality to retrieve and process files from GitHub.</p>

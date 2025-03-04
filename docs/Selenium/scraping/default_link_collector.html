@@ -1,0 +1,147 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>This JavaScript module imports required modules and functions, defines constants and functions for file operations, URL manipulation, and data collection, and exports these functions for use in other parts of the application.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const {safeurl} = importer.import('domain cache tools')
+
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'reasonings')
+
+function getNearestSunday(date = new Date()) {
+  const day = date.getDay();
+  const diff = date.getDate() - day + (day === 0 ? -7 : 0); // adjust when it is Sunday
+  const result = new Date(date.setDate(diff));
+  const customString = `${result.getMonth() + 1}/${result.getDate()}/${result.getFullYear()}`; 
+  return customString
+}
+
+async function defaultCollector(driver, startPage, selector = '//a[@href]/@href') {
+  const selectDom = importer.import('selenium select')
+  const getClient = importer.import('selenium client')
+  if(!driver)
+    driver = getClient()
+
+  try {
+    await driver.get(startPage)
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    let links = await selectDom(driver, selector)
+    return links.map(l => ({link: l})) // to match reddit post lister
+  } catch (e) {
+    driver.quit()
+    throw e
+  }
+}
+
+// record previously generated summaries so script will eventually complete
+function persistSummaries(funny, summaries) {
+  if(!funny) {
+    funny = 'summary'
+  }
+  let weeklySummary = path.join(PROJECT_PATH, safeurl(getNearestSunday()) + '-' + safeurl(funny) + '.json')
+  if(!summaries && fs.existsSync(weeklySummary)) {
+    return JSON.parse(fs.readFileSync(weeklySummary))
+  } else if (!summaries) {
+    return {}
+  } else {
+    fs.writeFileSync(weeklySummary, JSON.stringify(summaries, null, 4))
+  }
+}
+
+module.exports = {
+  defaultCollector,
+  getNearestSunday,
+  persistSummaries,
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Imports</h3>
+<pre><code class="language-javascript">const fs = require('fs'); // Import the File System module
+const path = require('path'); // Import the Path module
+const { safeurl } = importer.import('domain cache tools'); // Import a function from a module
+</code></pre>
+<ul>
+<li>The code imports the required modules and functions:
+<ul>
+<li><code>fs</code> (File System) for file operations</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>safeurl</code> from <code>domain cache tools</code> for URL manipulation</li>
+</ul></li>
+</ul>
+<h3>Constants</h3>
+<pre><code class="language-javascript">const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects','reasonings'); // Project path
+</code></pre>
+<ul>
+<li><code>PROJECT_PATH</code> is set to the path of the project's resources.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>getNearestSunday(date = new Date())</code></h4>
+<ul>
+<li>This function calculates the nearest Sunday given a date (default is the current date).</li>
+<li>It returns a string representing the date in the format <code>MM/DD/YYYY</code>.</li>
+</ul>
+<pre><code class="language-javascript">function getNearestSunday(date = new Date()) {
+  const day = date.getDay();
+  const diff = date.getDate() - day + (day === 0? -7 : 0);
+  const result = new Date(date.setDate(diff));
+  const customString = `${result.getMonth() + 1}/${result.getDate()}/${result.getFullYear()}`;
+  return customString;
+}
+</code></pre>
+<h4><code>defaultCollector(driver, startPage, selector = '//a[@href]/@href')</code></h4>
+<ul>
+<li>This function uses Selenium to collect links from a webpage.</li>
+<li>It takes an optional <code>driver</code> parameter (default is a new Selenium client instance), <code>startPage</code> (the URL to load), and <code>selector</code> (a CSS selector to find links).</li>
+<li>It returns an array of objects containing the link URLs.</li>
+</ul>
+<pre><code class="language-javascript">async function defaultCollector(driver, startPage, selector = '//a[@href]/@href') {
+  const selectDom = importer.import('selenium select');
+  const getClient = importer.import('selenium client');
+
+  if (!driver) driver = getClient();
+
+  try {
+    await driver.get(startPage);
+    await new Promise(resolve =&gt; setTimeout(resolve, 1000));
+    let links = await selectDom(driver, selector);
+    return links.map(l =&gt; ({ link: l }));
+  } catch (e) {
+    driver.quit();
+    throw e;
+  }
+}
+</code></pre>
+<h4><code>persistSummaries(funny, summaries)</code></h4>
+<ul>
+<li>This function persists summaries to a file.</li>
+<li>It takes optional <code>funny</code> (a string to append to the filename) and <code>summaries</code> (an object to serialize to JSON).</li>
+<li>If <code>summaries</code> is not provided, it attempts to load the existing file and returns its contents.</li>
+<li>If <code>summaries</code> is provided, it writes the object to the file.</li>
+</ul>
+<pre><code class="language-javascript">function persistSummaries(funny, summaries) {
+  if (!funny) {
+    funny ='summary';
+  }
+
+  let weeklySummary = path.join(PROJECT_PATH, safeurl(getNearestSunday()) + '-' + safeurl(funny) + '.json');
+
+  if (!summaries &amp;&amp; fs.existsSync(weeklySummary)) {
+    return JSON.parse(fs.readFileSync(weeklySummary));
+  } else if (!summaries) {
+    return {};
+  } else {
+    fs.writeFileSync(weeklySummary, JSON.stringify(summaries, null, 4));
+  }
+}
+</code></pre>
+<h3>Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+  defaultCollector,
+  getNearestSunday,
+  persistSummaries,
+};
+</code></pre>
+<ul>
+<li>The functions <code>defaultCollector</code>, <code>getNearestSunday</code>, and <code>persistSummaries</code> are exported from this module.</li>
+</ul>

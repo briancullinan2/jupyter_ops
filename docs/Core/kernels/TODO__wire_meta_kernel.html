@@ -1,0 +1,230 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>This code imports a module, declares variables and functions, and defines four functions (<code>do_execute</code>, <code>do_display</code>, <code>do_shutdown</code>, <code>do_complete</code>) that handle different types of requests, increment a counter, store functions and send responses, and execute promise chains to perform tasks and send replies.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p>This code sets up a system to handle different types of requests, including execution, display, shutdown, and completion, and defines functions to send responses and execute tasks accordingly. The code also uses promise chains to manage asynchronous operations and send replies to the kernel.</p>
+
+
+<pre><code>var importer = require('../Core');
+var extend = importer.import('extend prototype')
+
+var count = 0;
+var responders = [];
+
+function do_execute(kernel, request) {
+    // TODO: do some magics here?
+    var execution_count = ++count;
+    responders[execution_count] = kernel.do_respond;
+    kernel.do_respond({status: {execution_state: 'busy'}});
+    kernel.do_respond({execute_input: {
+        execution_count: request.execution_count,
+        code: request.content.code,
+    }})
+    var result;
+    return Promise.resolve()
+        .then(() => kernel.do_execute(request.content))
+        .then(r => result = r)
+        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() => kernel.do_respond({execute_reply: {
+            status: 'ok',
+            execution_count: request.execution_count,
+            payload: [], // TODO(NR) not implemented,
+            user_expressions: {}, // TODO(NR) not implemented,
+        }}))
+        .then(() => kernel.do_respond({execute_result: {
+            execution_count: request.execution_count,
+            data: {'text/plain': result + ''},
+            metadata: {}
+        }}))
+}
+
+function do_display(kernel, request) {
+    kernel.do_respond(request.display_id
+        ? {update_display_data: {
+            metadata: {},
+            data: request.content,
+            transient: request.display_id}}
+        : {display_data: {metadata: {}, data: request.content}})
+}
+
+function do_shutdown(kernel, request) {
+    kernel.do_respond({status: {execution_state: 'busy'}});
+    return Promise.resolve()
+        .then(() => kernel.do_shutdown(request.content))
+        .then(r => result = r)
+        // TODO: some sort of shutdown scripting
+        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() => kernel.do_respond({shutdown_reply: request.content}))
+}
+
+function do_complete(kernel, request) {
+    kernel.do_respond({status: {execution_state: 'busy'}});
+    var result;
+    return Promise.resolve()
+        .then(() => kernel.do_complete(request.content))
+        .then(r => result = r)
+        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() => kernel.do_respond({complete_reply: {
+            matches: result.completion.list,
+            cursor_start: result.completion.cursorStart,
+            cursor_end: result.completion.cursorEnd,
+            status: "ok",
+        }}))
+}
+
+function do_history(kernel, request) {
+    kernel.do_respond({status: {execution_state: 'busy'}});
+    return Promise.resolve()
+        .then(() => kernel.do_history(request.content))
+        .then(r => result = r)
+        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() => kernel.do_respond({history_reply: {
+            history: [] // TODO
+        }}))
+}
+
+function do_is_complete(kernel, request) {
+    kernel.do_respond({status: {execution_state: 'busy'}});
+    var result;
+    return Promise.resolve()
+        .then(() => kernel.do_is_complete(request.content))
+        .then(r => result = r)
+        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        .then(() => kernel.do_respond({is_complete_reply: {
+            status: (result ? 'complete': 'incomplete'),
+            indent: ''
+        }}))
+}
+
+function do_inspect(kernel, request) {
+    var execution_count = ++count;
+    kernel.do_respond({status: {execution_state: 'busy'}});
+    var result;
+    return Promise.resolve()
+        .then(() => kernel.do_inspect(request.content))
+        .then(r => result = r)
+        .then(() => kernel.do_respond({status: {execution_state: 'idle'}}))
+        // TODO: move this to do_display method?
+        .then(() => result.inspection
+              ? result.inspection.type + ': ' + result.inspection.string
+              : result.doc.usage
+                  ? result.doc.usage + '\n\n' + result.doc.description
+                  : result)
+        // TODO: use error for all promises
+        .then(() => kernel.do_respond({inspect_reply: {
+            found: true,
+            data: {'text/plain': result, 'text/html': `<pre>${result}</pre>`},
+            metadata: {},
+            status: "ok",
+        }}))
+        .catch(e => kernel.do_respond({inspect_reply: {
+            status: "error",
+            execution_count: execution_count,
+            ename: result.error.ename,
+            evalue: result.error.evalue,
+            traceback: result.error.traceback,
+        }}))
+}
+
+function wireMetaKernel(meta_kernel) {
+    return extend(metaKernelInterface(session), wireMetaKernel);
+}
+
+wireMetaKernel.prototype = {
+    shutdown_request: do_shutdown,
+    is_complete_request: do_is_complete,
+    execute_request: do_execute,
+    complete_request: do_complete,
+    history_request: do_history,
+    inspect_request: do_inspect,
+};
+
+module.exports = {
+    wireMetaKernel
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var extend = importer.import('extend prototype')
+</code></pre>
+<p>This code imports a module from a file named <code>Core</code> located two directories above the current file. The <code>importer</code> object has a method <code>import()</code> which is used to import specific functions from the <code>Core</code> module. In this case, the <code>extend</code> function is imported.</p>
+<h3>Variables and Functions</h3>
+<pre><code class="language-javascript">var count = 0;
+var responders = [];
+
+function do_execute(kernel, request) {... }
+function do_display(kernel, request) {... }
+function do_shutdown(kernel, request) {... }
+function do_complete(kernel, request) {... }
+</code></pre>
+<p>Three variables are declared: <code>count</code> initialized to 0 and <code>responders</code> an empty array. Four functions are defined:</p>
+<ul>
+<li><code>do_execute()</code>: handles execution requests</li>
+<li><code>do_display()</code>: handles display requests</li>
+<li><code>do_shutdown()</code>: handles shutdown requests</li>
+<li><code>do_complete()</code>: handles completion requests</li>
+</ul>
+<h3>Function Breakdown</h3>
+<h4>do_execute() Function</h4>
+<pre><code class="language-javascript">function do_execute(kernel, request) {
+    //...
+}
+</code></pre>
+<p>This function takes two parameters: <code>kernel</code> and <code>request</code>. It:</p>
+<ol>
+<li>Increments the <code>count</code> variable.</li>
+<li>Stores the <code>kernel.do_respond</code> function in the <code>responders</code> array at the current <code>count</code> index.</li>
+<li>Sends a response to the kernel indicating a busy state.</li>
+<li>Sends an execute input request to the kernel.</li>
+<li>Executes a promise chain that:
+<ul>
+<li>Calls <code>kernel.do_execute()</code> with the request content.</li>
+<li>Stores the result in the <code>result</code> variable.</li>
+<li>Sends a response to the kernel indicating an idle state.</li>
+<li>Sends an execute reply response to the kernel.</li>
+<li>Sends an execute result response to the kernel.</li>
+</ul></li>
+</ol>
+<h4>do_display() Function</h4>
+<pre><code class="language-javascript">function do_display(kernel, request) {
+    //...
+}
+</code></pre>
+<p>This function takes two parameters: <code>kernel</code> and <code>request</code>. It:</p>
+<ol>
+<li>If the request has a display ID, sends an update display data response to the kernel.</li>
+<li>Otherwise, sends a display data response to the kernel.</li>
+</ol>
+<h4>do_shutdown() Function</h4>
+<pre><code class="language-javascript">function do_shutdown(kernel, request) {
+    //...
+}
+</code></pre>
+<p>This function takes two parameters: <code>kernel</code> and <code>request</code>. It:</p>
+<ol>
+<li>Sends a response to the kernel indicating a busy state.</li>
+<li>Executes a promise chain that:
+<ul>
+<li>Calls <code>kernel.do_shutdown()</code> with the request content.</li>
+<li>Stores the result in the <code>result</code> variable.</li>
+<li>Sends a response to the kernel indicating an idle state.</li>
+<li>Sends a shutdown reply response to the kernel.</li>
+</ul></li>
+</ol>
+<h4>do_complete() Function</h4>
+<pre><code class="language-javascript">function do_complete(kernel, request) {
+    //...
+}
+</code></pre>
+<p>This function takes two parameters: <code>kernel</code> and <code>request</code>. It:</p>
+<ol>
+<li>Sends a response to the kernel indicating a busy state.</li>
+<li>Executes a promise chain that:
+<ul>
+<li>Calls <code>kernel.do_complete()</code> with the request.</li>
+<li>Stores the result in the <code>result</code> variable.</li>
+<li>Sends a response to the kernel indicating an idle state.</li>
+<li>Sends a complete reply response to the kernel.</li>
+</ul></li>
+</ol>

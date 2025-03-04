@@ -1,0 +1,159 @@
+<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<p>This code utilizes several functions to interact with the Discord API, including registering and retrieving commands, updating interactions and commands, and requesting authentication. These functions, such as <code>registerCommand</code>, <code>getCommands</code>, and <code>requestAuthQ</code>, send HTTP requests (GET, POST, PATCH) to the Discord API to perform their respective operations.</p>
+
+
+<pre><code>
+const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const {timeout} = importer.import('discord utilities')
+const {requestAuthQ} = importer.import('discord request')
+
+
+async function registerCommand(cmd, desc, guildId = null) {
+  // TODO: guild specific commands
+  //url = "https://discord.com/api/v8/applications/<my_application_id>/guilds/<guild_id>/commands"
+  var json
+  if(typeof cmd == 'object') {
+    json = cmd
+  } else {
+    json = {
+      'name': cmd,
+      'description': desc
+    }
+  }
+  console.log('Registering command ', json.name)
+  await timeout(2000)
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    url: guildId
+      ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands`
+      : `applications/${DEFAULT_APPLICATION}/commands`,
+    data: JSON.stringify(json)
+  })
+}
+
+async function getCommands(guildId = null) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: guildId
+      ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands`
+      : `applications/${DEFAULT_APPLICATION}/commands`
+  })
+}
+
+async function getCommand(commandId, guildId = null) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: guildId
+      ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands/${commandId}`
+      : `applications/${DEFAULT_APPLICATION}/commands/${commandId}`
+  })
+}
+
+async function updateInteraction(message, interactionId, interactionToken) {
+  var json = typeof message == 'string' ? ({
+      'content': message
+    }) : message
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'PATCH',
+    url: `webhooks/${DEFAULT_APPLICATION}/${interactionToken}/messages/@original`,
+    data: JSON.stringify(json)
+  })
+}
+
+async function updateCommand(cmd, desc, commandId, guildId = null) {
+  if(typeof cmd == 'object') {
+    json = cmd
+  } else {
+    json = {
+      'name': cmd,
+      'description': desc
+    }
+  }
+  console.log('Updating command ', json.name)
+  await timeout(2000)
+  return await requestAuthQ({
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    url: guildId
+      ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands/${commandId}`
+      : `applications/${DEFAULT_APPLICATION}/commands/${commandId}`,
+    data: JSON.stringify(json)
+  })
+}
+
+async function deleteCommand(commandId, guildId = null) {
+  console.log('Deleting command ', commandId)
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: guildId 
+      ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands/${commandId}`
+      : `applications/${DEFAULT_APPLICATION}/commands/${commandId}`
+  })
+}
+
+module.exports = {
+  registerCommand,
+  getCommands,
+  getCommand,
+  updateInteraction,
+  deleteCommand,
+  updateCommand,
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<p>The code starts by importing dependencies from other modules using the <code>importer.import</code> function.</p>
+<pre><code class="language-javascript">const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const {timeout} = importer.import('discord utilities')
+const {requestAuthQ} = importer.import('discord request')
+</code></pre>
+<h3>Registering a Command</h3>
+<p>The <code>registerCommand</code> function is an asynchronous function that registers a new command with Discord. It takes three parameters: <code>cmd</code> (the command name), <code>desc</code> (the command description), and <code>guildId</code> (the ID of the guild where the command should be registered).</p>
+<pre><code class="language-javascript">async function registerCommand(cmd, desc, guildId = null) {
+  //...
+}
+</code></pre>
+<p>It constructs a JSON object representing the command and sends a POST request to the Discord API to register the command.</p>
+<h3>Retrieving Commands</h3>
+<p>The <code>getCommands</code> function is an asynchronous function that retrieves a list of commands for a specific guild.</p>
+<pre><code class="language-javascript">async function getCommands(guildId = null) {
+  //...
+}
+</code></pre>
+<p>It sends a GET request to the Discord API to retrieve the commands.</p>
+<h3>Retrieving a Command</h3>
+<p>The <code>getCommand</code> function is an asynchronous function that retrieves a specific command by its ID.</p>
+<pre><code class="language-javascript">async function getCommand(commandId, guildId = null) {
+  //...
+}
+</code></pre>
+<p>It sends a GET request to the Discord API to retrieve the command.</p>
+<h3>Updating an Interaction</h3>
+<p>The <code>updateInteraction</code> function is an asynchronous function that updates the content of an interaction.</p>
+<pre><code class="language-javascript">async function updateInteraction(message, interactionId, interactionToken) {
+  //...
+}
+</code></pre>
+<p>It sends a PATCH request to the Discord API to update the interaction.</p>
+<h3>Updating a Command</h3>
+<p>The <code>updateCommand</code> function is an asynchronous function that updates a specific command.</p>
+<pre><code class="language-javascript">async function updateCommand(cmd, desc, commandId, guildId = null) {
+  //...
+}
+</code></pre>
+<p>It constructs a JSON object representing the updated command and sends a PATCH request to the Discord API to update the command.</p>
+<h3>Requesting Authentication</h3>
+<p>The <code>requestAuthQ</code> function is an asynchronous function that sends a request to the Discord API with authentication. It is used by the other functions to send requests to the API.</p>
+<pre><code class="language-javascript">async function requestAuthQ(options) {
+  //...
+}
+</code></pre>

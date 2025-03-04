@@ -1,0 +1,81 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>This JavaScript code imports necessary modules, defines an asynchronous function <code>testAntlr</code> that interprets and generates type information from a code snippet, and writes the result to a file named <code>tree.json</code>. The function is exported as a module and can be executed asynchronously using the <code>$$.async()</code> function, with its result handled by the <code>$$.sendResult</code> or <code>$$.sendError</code> functions depending on its success or failure.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+//const importer = require('../Core')
+const getTypes = importer.import('get c types')
+//var antlrToESTree = importer.import('antlr tree to es')
+
+async function testAntlr() {
+    let codeCell = importer.interpret('rgb 2 lab')
+    var result = getTypes(codeCell.source.join(''))
+    console.log(result)
+    var result = await (await selectCode)(['//functionDefinition', 
+     './declarator//declaratorid/@strdata'], path.join(__dirname, '../mouse.m'), 'cpp')
+    //var modified = antlrToESTree(result)
+    fs.writeFileSync('tree.json', JSON.stringify(result, null, 2))
+    return result
+}
+
+module.exports = testAntlr
+
+if(typeof $$ !== 'undefined') {
+    $$.async()
+    testAntlr()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<h3>Breakdown of the Code</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">const fs = require('fs')
+const path = require('path')
+const importer = require('../Core')
+const getTypes = importer.import('get c types')
+</code></pre>
+<ul>
+<li>The code starts by importing the <code>fs</code> (File System) and <code>path</code> modules, which are built-in Node.js modules for interacting with the file system and working with file paths.</li>
+<li>It also imports the <code>importer</code> module from a file named <code>Core</code> located in the parent directory.</li>
+<li>The <code>getTypes</code> function is imported from the <code>importer</code> module, specifically from a file identified by the string <code>'get c types'</code>.</li>
+</ul>
+<h4>Test Function</h4>
+<pre><code class="language-javascript">async function testAntlr() {
+    //...
+}
+</code></pre>
+<ul>
+<li>The <code>testAntlr</code> function is defined as an asynchronous function.</li>
+</ul>
+<h4>Function Body</h4>
+<ul>
+<li>The function interprets a code snippet using the <code>importer.interpret</code> function and stores the result in the <code>codeCell</code> variable.</li>
+<li>The <code>codeCell.source</code> property is joined into a string and passed to the <code>getTypes</code> function to obtain type information. The result is logged to the console.</li>
+<li>An asynchronous function named <code>selectCode</code> is called with an array of selectors, a file path (<code>../mouse.m</code>), and a language (<code>cpp</code>). The result is stored in the <code>result</code> variable.</li>
+<li>The <code>result</code> is written to a file named <code>tree.json</code> using <code>fs.writeFileSync</code>.</li>
+<li>The <code>result</code> is returned from the function.</li>
+</ul>
+<h4>Exports and Event Handling</h4>
+<pre><code class="language-javascript">module.exports = testAntlr
+
+if(typeof $$!== 'undefined') {
+    $$.async()
+    testAntlr()
+       .then(r =&gt; $$.sendResult(r))
+       .catch(e =&gt; $$.sendError(e))
+}
+</code></pre>
+<ul>
+<li>The <code>testAntlr</code> function is exported as a module using <code>module.exports</code>.</li>
+<li>The code checks if the <code>$$</code> object is defined. If it is, the following code is executed:
+<ul>
+<li>The <code>$$.async()</code> function is called, likely to initiate some asynchronous operation.</li>
+<li>The <code>testAntlr</code> function is called, and its result is handled using promise chaining:
+<ul>
+<li>If the function resolves successfully, the result is passed to the <code>$$.sendResult</code> function.</li>
+<li>If the function rejects with an error, the error is passed to the <code>$$.sendError</code> function.</li>
+</ul></li>
+</ul></li>
+</ul>

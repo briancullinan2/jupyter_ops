@@ -1,0 +1,124 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This Node.js script uses a Large Language Model (LLM) to generate code by constructing prompts, sending them to the LLM, and extracting code blocks from the response. The script performs tasks such as project path resolution, Git pull, and code interpretation to ensure the code is up-to-date and accurate before sending the prompt to the LLM.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const {spawnSync} = require('child_process')
+const updateCode = importer.import('update code cell')
+
+async function generateCell(prompt, codeCell, github) {
+  const llmCode = await importer.import('llm code')
+
+  if(!github) {
+    console.error('Project not specified.')
+    return
+  }
+
+  // TODO: local pull
+  if(!fs.existsSync(github)
+    && fs.existsSync(path.join(PROFILE_PATH, github))) {
+      github = path.join(PROFILE_PATH, github)
+  }
+
+  if(github.includes('://')
+    && fs.existsSync(path.basename(github).replace('.git', ''))
+  ) {
+    github = path.join(PROFILE_PATH, path.basename(github).replace('.git', ''))
+  }
+
+  if(!fs.existsSync(github)) {
+    console.error('Project not found.')
+    return
+  }
+
+  let baseName = path.basename(github)
+
+  await spawnSync('git', ['pull'], {
+    cwd: github,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
+
+  if(typeof codeCell == 'string') {
+    codeCell = importer.interpret(codeCell)
+  }
+
+  if(!codeCell) {
+    console.error('Code cell not found.')
+    return
+  }
+
+  // TODO: compare existing project files
+  let q1 = 'Give the project files:\n' + fs.readdirSync(github).join('\n')
+    + 'And the existing code for the file ' + codeCell.id + ':\n' 
+    + codeCell.code
+    + '\nFulfill the following instructions on the code file, only return the block of new code:'
+    + '\n' + prompt
+    + '\n' + 'Response with only the block of code and no summary or reasoning.'
+
+  // TODO: create new files
+  console.log('User: ' + q1)
+  let a1 = await llmCode(q1)
+  console.log('AI: ' + a1)
+
+  // try to extract code blocks
+  let code = a1.matchAll(/```(bash|javascript|code)*\n[\s\S]*?\n```/gi)
+
+  // extract code blocks from response
+  let codeBlocks = ''
+  for(let match of code) {
+    codeBlocks += match[0].replace(/^```(bash|javascript|code)*\n|\n```$/gi, '') + '\n'
+  }
+  if(!codeBlocks) {
+    console.log('Error, couldn\'t find code in:' + a1)
+    return
+  }
+
+  
+  // TODO: populate code files with goals
+  //fs.writeFileSync(path.join(github, codeFile), codeBlocks)
+  updateCode(codeCell, codeBlocks)
+
+  // TODO: populate goals with actual code
+
+}
+
+module.exports = generateCell
+
+</code></pre>
+
+<p><strong>Breakdown of the Code</strong></p>
+<p>This Node.js script appears to be a part of a larger project that utilizes a Large Language Model (LLM) to generate code for a given project. Here's a brief overview of the code:</p>
+<h3>Dependencies and Imports</h3>
+<p>The script begins by importing the necessary dependencies:</p>
+<ul>
+<li><code>fs</code> (File System) for interacting with the file system</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>process.env</code> for accessing environment variables</li>
+<li><code>child_process</code> for executing system commands</li>
+<li><code>importer</code> for importing functions and modules (e.g., <code>updateCode</code> and <code>llmCode</code>)</li>
+</ul>
+<h3>Main Function: <code>generateCell</code></h3>
+<p>The <code>generateCell</code> function is the main entry point of the script. It takes three parameters:</p>
+<ul>
+<li><code>prompt</code>: a string describing the instructions for the LLM to follow</li>
+<li><code>codeCell</code>: an object containing code-related information (e.g., existing code for a file)</li>
+<li><code>github</code>: a string representing the project repository (e.g., a Git URL)</li>
+</ul>
+<p>The function performs the following tasks:</p>
+<ol>
+<li><strong>Project Path Resolution</strong>: It attempts to resolve the project path by checking various environment variables and file system checks.</li>
+<li><strong>Git Pull</strong>: If the project path is a Git repository, it performs a <code>git pull</code> operation to ensure the code is up-to-date.</li>
+<li><strong>Code Interpretation</strong>: If the <code>codeCell</code> parameter is a string, it uses the <code>importer.interpret</code> function to parse and interpret the code.</li>
+<li><strong>Generate Code</strong>: It constructs a prompt string for the LLM, which includes information about the project files, existing code for the target file, and the instructions to follow.</li>
+<li><strong>LLM Response</strong>: It sends the prompt to the LLM (using the <code>llmCode</code> function) and extracts the code blocks from the response.</li>
+<li><strong>Code Extraction</strong>: It attempts to extract code blocks from the LLM's response and returns them as a string.</li>
+</ol>
+<h3>Notable Aspects</h3>
+<ul>
+<li>The script uses a <code>TODO</code> comment to indicate areas that require further implementation (e.g., local pull and comparing existing project files).</li>
+<li>The <code>spawnSync</code> function is used to execute the <code>git pull</code> command, which suggests that the script is designed to interact with Git repositories.</li>
+<li>The <code>importer</code> module is used to import functions and modules, which suggests that the script is part of a larger framework or system.</li>
+</ul>

@@ -1,0 +1,193 @@
+<p>Here is a two-sentence summary:</p>
+<p>This code snippet appears to be a Node.js module that handles caching web pages, importing various modules, and defining functions to cache and retrieve data based on URLs. The functions include caching file creation, searching for existing caches, checking cache validity, and storing cache data in files, with various options for cache restraint and URL sanitization.</p>
+
+
+<pre><code>var {URL} = require('url')
+var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var {getResponseContent} = importer.import('browser crawler tools')
+
+//var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var PROFILE_PATH = '/Volumes/External/Personal'
+var project = path.join(PROFILE_PATH, 'Collections/crawls');
+
+function cacheFilename(url) {
+    if(typeof url === 'string') {
+        url = new URL(url.includes('://') ? url : ('http://' + url.replace(/^\/\//, '')))
+    }
+    const time = new Date()
+    var file = safeurl(url.hostname)
+       + '-' + time.getFullYear()
+       + '-' + (time.getMonth() + 1)
+       + '-' + time.getDate() + '.json'
+    return path.join(project, file)
+}
+
+function findCache(url) {
+    if(typeof url === 'string') {
+        url = new URL(url.includes('://') ? url : ('http://' + url.replace(/^\/\//, '')))
+    }
+    const host = safeurl(url.hostname)
+    const crawl = glob(
+        '**/*' + host + '*',
+        project
+    )
+    crawl.sort((a, b) => {
+        return fs.statSync(b).mtime.getTime() - fs.statSync(a).mtime.getTime()
+    })
+    return crawl
+}
+
+function existingCache(url, restrain) {
+    var cache = findCache(url)
+    var filePath = cacheFilename(url)
+    // save pages from the same day in the same database using the url as the keys
+    if(cache[0]) {
+        var segments = cache[0].replace(/\..*$/ig, '').split('-')
+        var date = Date.parse(segments.slice(segments.length - 3).join('-'))
+        var inAWeek = date + 1000*60*60*24*7
+        if(restrain === false
+          || (restrain === 'week' && inAWeek > Date.now())
+          || (restrain === 'day' && cache[0] === filePath)) {
+            return JSON.parse(fs.readFileSync(cache[0])) || []
+        }
+    }
+    return []
+}
+
+async function storeCache(cache, response) {
+    var headers = await response.headers()
+    var result = await getResponseContent(response, headers)
+    if(typeof result.url === 'undefined') {
+        return
+    }
+    var urls = cache.map(s => s.url.toLowerCase())
+    var index = urls.indexOf(result.url.toLowerCase())
+    if(index > -1) {
+        console.log(`Received existing ${result.url}`)
+        cache[index] = result
+    } else {
+        console.log(`Received ${result.url}`)
+        cache.push(result)
+    }
+}
+
+// source: https://stackoverflow.com/questions/53807574/how-to-block-ads-with-puppeteer-headless-chrome
+// TODO: create a notebook for this and add easylist
+var hosts;
+function adBlocker() {
+    if(hosts) return hosts
+    hosts = {}
+    //now we read the host file
+    var hostFile = fs.readFileSync(path.join(__dirname,
+        '../Resources/Projects/adblocker/hosts.txt'), 'utf8').split('\n');
+    for (var i = 0; i < hostFile.length; i++) {
+        var frags = hostFile[i].split(' ');
+        if (frags.length > 1 && frags[0] === '0.0.0.0') {
+            hosts[frags[1].trim()] = true;
+        }
+    }
+    return hosts
+}
+
+function readCache(cache, request) {
+    if(request.url().substr(0, 5) === 'data:') {
+        return request.continue()
+    }
+    if(adBlocker()[new URL(request.url()).host]) {
+        return request.abort()
+    }
+    var urls = cache.map(s => s.url.toLowerCase())
+    var index = urls.indexOf(request.url().toLowerCase())
+    var response = cache[index]
+    if (response && response.status == 200) {
+    // TODO: remove this restriction since we literally just downloaded it
+    //    && response.expires
+    //    && response.expires > Date.now()
+    //    && response.content
+    //if(response.type.includes('\n')) {
+    //    debugger
+    //}
+        console.log(`Requesting cache ${response.status} ${response.type} ${request.url()}`)
+        var headers = {
+            'Access-Control-Allow-Origin': '*'
+        }
+        if(response.location) headers['Location'] = response.location
+        // TODO: save in this format
+        try {
+            request.respond({
+                contentType: response.type,
+                headers: headers,
+                status: response.status || 200,
+                body: response.content
+                    && response.content.substr(0, 5) === 'data:'
+                    ? Buffer.from(response.content.split(',')[1], 'base64')
+                    : Buffer.from(response.content || [], 'utf8'),
+            })
+        } catch (e) {
+            console.log(e)
+            request.continue()
+        }
+        return
+    }
+    console.log(`Requesting ${request.url()}`)
+    request.continue()
+}
+
+// TODO: move this to URL tools in Languages/html.ipynb with getAllLinks
+function rmhash(url) {
+    return url.replace(/#.*$/ig, '')
+}
+
+// TODO: replace other occurrences with this function
+function safeurl(url) {
+    return url.replace(/[^a-z0-9_-]/ig, '_').substr(0, 100)
+}
+
+module.exports = {
+    cacheFilename,
+    findCache,
+    existingCache,
+    storeCache,
+    readCache,
+    rmhash,
+    safeurl,
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Module Imports</h3>
+<p>The code begins by importing various Node.js modules:</p>
+<ul>
+<li><code>url</code> for URL manipulation</li>
+<li><code>fs</code> (File System) for interacting with the file system</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>importer</code> from a custom module (<code>../Core</code>), which is used to import specific functions</li>
+</ul>
+<h3>Constants and Variables</h3>
+<ul>
+<li><code>PROFILE_PATH</code> is set to a fixed value (<code>/Volumes/External/Personal</code>) but can be overridden by environment variables (<code>HOME</code>, <code>HOMEPATH</code>, <code>USERPROFILE</code>).</li>
+<li><code>project</code> is the path to the project directory, constructed by joining <code>PROFILE_PATH</code> with <code>Collections/crawls</code>.</li>
+</ul>
+<h3>Function Definitions</h3>
+<h4><code>cacheFilename(url)</code></h4>
+<p>Takes a URL as input and returns a filename in the format <code>hostname-YYYY-MM-DD.json</code>. The filename is constructed using the <code>safeurl()</code> function (not shown in this code snippet) to sanitize the hostname.</p>
+<h4><code>findCache(url)</code></h4>
+<p>Finds cached files in the project directory that match the given URL's hostname. It uses the <code>glob()</code> function to search for files with the hostname as a substring, sorts the results by modification time, and returns an array of file paths.</p>
+<h4><code>existingCache(url, restrain)</code></h4>
+<p>Checks if a cache exists for the given URL. If it does, it checks if the cache is within a specified time restraint (defaulting to <code>false</code> for no restraint, <code>'week'</code> for up to a week, or <code>'day'</code> for the same day). If the cache is valid, it returns the cached data as a JSON object; otherwise, it returns an empty array.</p>
+<h4><code>storeCache(cache, response)</code></h4>
+<p>An asynchronous function that stores a cache in a file. It:</p>
+<ol>
+<li>Gets the response headers and content using the <code>getResponseContent()</code> function.</li>
+<li>If the response URL is undefined, it skips caching.</li>
+<li>Writes the cached data to a file using the <code>cacheFilename()</code> function.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The <code>safeurl()</code> function is not shown in this code snippet, but it's likely used to sanitize URLs to prevent malicious input.</li>
+<li>The <code>getResponseContent()</code> function is imported from a custom module (<code>../Core</code>), but its implementation is not shown in this code snippet.</li>
+<li>The code uses <code>fs.readFileSync()</code> and <code>fs.statSync()</code> which are synchronous file system operations. In an asynchronous context, it would be better to use the asynchronous versions (<code>fs.readFile()</code> and <code>fs.stat()</code>) to avoid blocking the execution.</li>
+</ul>

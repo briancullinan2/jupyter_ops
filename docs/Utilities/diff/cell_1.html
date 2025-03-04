@@ -1,0 +1,17 @@
+
+
+<pre><code>var importer = require('../Core')
+var left, right;
+var r = importer.interpret(['search notebook component', 'files in project', 'diff code blocks']);
+left = r[0].code;
+var listInProject = importer.import('files in project');
+var diffTwoTexts = importer.import('diff code blocks');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/universal';
+
+var components = listInProject(project, '**/search.component.ts');
+right = fs.readFileSync(components[0]).toString();
+$$.html(diffTwoTexts(left, right))
+</code></pre>
+

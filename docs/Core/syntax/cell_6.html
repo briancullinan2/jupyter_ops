@@ -1,0 +1,27 @@
+
+
+<pre><code>var importer = require('../Core');
+var getExports = importer.import('get exports from source')
+
+var code = `
+exports.import = importNotebook
+exports = testExports
+exports = require('../index.js')
+`
+
+function testGetExports() {
+    return getExports(code)
+}
+
+if(typeof $$ != 'undefined') {
+    testGetExports()
+    
+    /*
+    expected output
+    importNotebook
+    import
+    testExports
+    */
+}
+</code></pre>
+

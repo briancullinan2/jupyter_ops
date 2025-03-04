@@ -1,0 +1,90 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code is designed to manage sessions by reading and writing data to a <code>sessions.json</code> file, utilizing environment variables and file system modules. It exports two functions, <code>readSessions</code> and <code>updateOrAddSession</code>, which handle reading and updating the sessions array, respectively.</p>
+
+
+<pre><code>
+const fs = require('fs');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const TOKEN_DIR = path.join(PROFILE_PATH, '.credentials');
+const SESSIONS_PATH = path.join(TOKEN_DIR, 'sessions.json');
+
+let sessions = [];
+let sessionModified = 0;
+
+function readSessions() {
+    try {
+        if (fs.existsSync(SESSIONS_PATH)
+            && fs.statSync(SESSIONS_PATH).mtime.getTime() > sessionModified) {
+            sessionModified = fs.statSync(SESSIONS_PATH).mtime.getTime();
+            sessions = JSON.parse(fs.readFileSync(SESSIONS_PATH)
+                .toString());
+        }
+    } catch (e) {
+        sessions = [];
+    }
+    return sessions;
+}
+
+
+function updateOrAddSession(currentSession) {
+    const sessions = readSessions();
+
+    if (!currentSession) {
+        return sessions;
+    }
+    // don't update sessions while scanning
+    const updateSession = sessions.filter(s => s[1] === currentSession)[0];
+    if (typeof updateSession !== 'undefined') {
+        console.log('update ' + currentSession);
+        updateSession[0] = (new Date()).getTime();
+    } else {
+        console.log('insert ' + currentSession);
+        const oldSession = sessions[sessions.length] = [];
+        // http://www.english.upenn.edu/~jenglish/English104/tzara.html
+        oldSession[1] = currentSession;
+        oldSession[0] = (new Date()).getTime();
+    }
+    console.log('writing ' + SESSIONS_PATH)
+    fs.writeFileSync(
+        SESSIONS_PATH,
+        JSON.stringify(sessions, null, 4));
+    return sessions;
+}
+
+
+module.exports = {
+    updateOrAddSession,
+    readSessions,
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies and Constants</h3>
+<ul>
+<li>The code requires the <code>fs</code> (File System) module and uses the <code>path</code> module, but it is not explicitly imported.</li>
+<li>The <code>PROFILE_PATH</code> constant is set to a combination of environment variables that point to the user's home directory.</li>
+<li>The <code>TOKEN_DIR</code> constant is set to a subdirectory of <code>PROFILE_PATH</code> with the name <code>.credentials</code>.</li>
+<li>The <code>SESSIONS_PATH</code> constant is set to a file within <code>TOKEN_DIR</code> named <code>sessions.json</code>.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>readSessions()</code></h4>
+<ul>
+<li>Reads the contents of the <code>sessions.json</code> file.</li>
+<li>If the file exists and its modification time is newer than the stored <code>sessionModified</code> timestamp, updates <code>sessions</code> and <code>sessionModified</code>.</li>
+<li>If an error occurs while reading the file, sets <code>sessions</code> to an empty array.</li>
+<li>Returns the <code>sessions</code> array.</li>
+</ul>
+<h4><code>updateOrAddSession(currentSession)</code></h4>
+<ul>
+<li>Reads the current <code>sessions</code> array using <code>readSessions()</code>.</li>
+<li>If <code>currentSession</code> is falsy, returns the <code>sessions</code> array.</li>
+<li>If an existing session with the same <code>currentSession</code> value is found, updates its timestamp.</li>
+<li>If an existing session is not found, adds a new session with the <code>currentSession</code> value and the current timestamp.</li>
+<li>Writes the updated <code>sessions</code> array to the <code>sessions.json</code> file.</li>
+<li>Returns the updated <code>sessions</code> array.</li>
+</ul>
+<h3>Module Exports</h3>
+<ul>
+<li>Exports two functions: <code>updateOrAddSession</code> and <code>readSessions</code>.</li>
+</ul>

@@ -1,0 +1,32 @@
+<p>This code snippet provides a function <code>tasksToPromise</code> that allows you to run a series of Gulp tasks asynchronously and obtain a Promise that resolves when all tasks are finished.</p>
+
+
+<pre><code>var gulp = require('gulp');
+
+// I wish Linus Torvolds had absolute power over everything javascript(+derivatives) and he could just do a massive purge of all the bullshit.
+function tasksToPromise(tasks) {
+    return new Promise((resolve, reject) => {
+        gulp.series.apply(gulp, tasks.concat([function (done) {
+            resolve(done());
+        }]))();
+    });
+};
+
+module.exports = tasksToPromise;
+
+</code></pre>
+
+<p>This code snippet defines a function called <code>tasksToPromise</code> that converts a list of Gulp tasks into a Promise.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>var gulp = require('gulp');</code></strong>: Imports the Gulp library, which is essential for defining build tasks and pipelines.</p></li>
+<li><p><strong><code>function tasksToPromise(tasks) { ... }</code></strong>: Defines a function named <code>tasksToPromise</code> that takes an array of Gulp tasks as input.</p></li>
+<li><p><strong><code>return new Promise((resolve, reject) =&gt; { ... });</code></strong>: Creates a new Promise object. Promises are a way to handle asynchronous operations in JavaScript.</p></li>
+<li><p><strong><code>gulp.series.apply(gulp, tasks.concat([function (done) { resolve(done()); }]))();</code></strong>: This is the core of the function. It does the following:</p>
+<ul>
+<li><code>tasks.concat([function (done) { resolve(done()); }])</code>: Appends a final function to the <code>tasks</code> array. This function simply calls <code>resolve(done())</code> when it's executed. This ensures that the Promise resolves successfully once all the tasks in the array have completed.</li>
+<li><code>gulp.series.apply(gulp, ...)</code>: Uses <code>gulp.series</code> to execute the tasks in the array sequentially. <code>apply</code> is used to pass the <code>gulp</code> object as the context for <code>gulp.series</code>.</li>
+</ul></li>
+<li><p><strong><code>module.exports = tasksToPromise;</code></strong>: Exports the <code>tasksToPromise</code> function so it can be used in other parts of the project.</p></li>
+</ol>
+<p>In essence, this code provides a way to run a series of Gulp tasks asynchronously and get a Promise that resolves when all tasks are complete. This can be useful for integrating Gulp tasks into larger asynchronous workflows.</p>

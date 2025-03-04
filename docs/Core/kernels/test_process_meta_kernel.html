@@ -1,0 +1,89 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code imports dependencies from a <code>Core</code> module and defines a <code>testProcessKernel</code> function that creates a new kernel object, performs some operations on it, and resolves a Promise with the kernel object. The <code>testProcessKernel</code> function is exported as a module and can be integrated with an external <code>$</code> object, which is used to send its result or error to the outside.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {processMetaKernel} = importer.import('process meta kernel')
+var metaKernelInterface = importer.import('meta kernel interface');
+var interface = importer.import('enforcing an interface');
+
+function testProcessKernel() {
+    return new Promise(resolve => {
+        var kernel = processMetaKernel({
+            do_respond: (message) => {
+                console.log(message);
+                resolve(kernel);
+            },
+            kernel_config: {
+                autoinit: true,
+                child_process: [
+                    'node', '--eval', `
+    var importer = require('./Core');
+    var nodeMetaKernel = importer.import('node meta kernel')
+    nodeMetaKernel({
+        kernel_config: {autoinit: true}
+    })
+    process.stdin.resume();
+`
+                ]
+            },
+        });
+        setTimeout(() => {
+            //console.log(interface(kernel, metaKernelInterface, false))
+            console.log(kernel.do_message({do_execute: 'console.log(1 + 1)'}));
+            console.log(kernel.do_message({do_execute: '1 + 1'}));
+        }, 5000)
+    })
+    .then(kernel => console.log(kernel.do_shutdown()))
+}
+
+module.exports = testProcessKernel;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    testProcessKernel()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+    
+    /* expected output
+    undefined
+    undefined
+    2
+    2
+    */
+
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies and Imports</h3>
+<p>The code imports dependencies from a <code>Core</code> module using the <code>require</code> function and assigns them to variables:</p>
+<ul>
+<li><code>importer</code>: an object containing functions to import from the <code>Core</code> module</li>
+<li><code>processMetaKernel</code>, <code>metaKernelInterface</code>, <code>interface</code>: imported functions from the <code>Core</code> module</li>
+</ul>
+<h3><code>testProcessKernel</code> Function</h3>
+<p>This function returns a Promise that resolves with a <code>kernel</code> object and performs the following operations:</p>
+<ol>
+<li>Creates a new <code>kernel</code> object using the <code>processMetaKernel</code> function, passing an options object with:
+<ul>
+<li><code>do_respond</code>: a callback function that logs messages to the console and resolves the Promise with the <code>kernel</code> object</li>
+<li><code>kernel_config</code>: an object with <code>autoinit</code> set to <code>true</code> and a <code>child_process</code> array containing a Node.js script to execute</li>
+</ul></li>
+<li>Sets a timeout to execute two <code>do_message</code> calls on the <code>kernel</code> object:
+<ul>
+<li><code>do_message</code> with an object containing <code>do_execute</code> set to <code>'console.log(1 + 1)'</code></li>
+<li><code>do_message</code> with an object containing <code>do_execute</code> set to <code>'1 + 1'</code></li>
+</ul></li>
+<li>Resolves the Promise with the <code>kernel</code> object</li>
+</ol>
+<h3><code>do_shutdown</code> Function</h3>
+<p>The <code>do_shutdown</code> function is called on the resolved <code>kernel</code> object and logs its result to the console.</p>
+<h3>Module Exports</h3>
+<p>The <code>testProcessKernel</code> function is exported as a module.</p>
+<h3>Integration with $$</h3>
+<p>If the <code>$</code> object is defined, the code:</p>
+<ol>
+<li>Calls the <code>async</code> method on the <code>$</code> object</li>
+<li>Calls the <code>testProcessKernel</code> function and sends its result or error to the <code>$</code> object using the <code>sendResult</code> or <code>sendError</code> methods, respectively</li>
+</ol>

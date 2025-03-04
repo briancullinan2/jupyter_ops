@@ -1,0 +1,58 @@
+<p>The <code>sendFacebookThanks</code> function checks a Facebook thread for a &quot;dream&quot; related message and automatically sends a &quot;Are you living the dream?&quot; message if none is found.</p>
+
+
+<pre><code>function sendFacebookThanks(client, friend, hwnd) {
+    return client
+        .switchToWindow(hwnd)
+        .clickSpa(friend)
+        .then(() => readFacebookThread(friend))
+        .then(r => {
+            const thanks = r.messages.filter(m => m.message.indexOf('dream') > -1);
+            console.log(thanks);
+            return thanks.length === 0
+              ? sendFacebookMessage('Are you living the dream?')
+              : []
+        })
+        .catch(e => console.log(e))
+}
+module.exports = sendFacebookThanks;
+</code></pre>
+
+<p>This code defines a function called <code>sendFacebookThanks</code> that checks for a &quot;dream&quot; related message in a Facebook thread and sends a &quot;Are you living the dream?&quot; message if none is found.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>sendFacebookThanks(client, friend, hwnd)</code>:</strong></p>
+<ul>
+<li>Takes a <code>client</code> object (likely Selenium WebDriver), a <code>friend</code> name, and a window handle (<code>hwnd</code>) as input.</li>
+</ul></li>
+<li><p><strong>Switch to Window:</strong></p>
+<ul>
+<li>Switches the Selenium WebDriver to the specified window using <code>switchToWindow(hwnd)</code>.</li>
+</ul></li>
+<li><p><strong>Click on Friend:</strong></p>
+<ul>
+<li>Clicks on the specified <code>friend</code> using <code>clickSpa(friend)</code>.</li>
+</ul></li>
+<li><p><strong>Read Facebook Thread:</strong></p>
+<ul>
+<li>Reads the Facebook thread for the <code>friend</code> using <code>readFacebookThread(friend)</code>.</li>
+</ul></li>
+<li><p><strong>Check for &quot;Dream&quot; Message:</strong></p>
+<ul>
+<li>Filters the messages in the thread for those containing the word &quot;dream&quot;.</li>
+<li>Logs the found messages to the console.</li>
+</ul></li>
+<li><p><strong>Send &quot;Living the Dream?&quot; Message:</strong></p>
+<ul>
+<li>If no &quot;dream&quot; message is found, sends a &quot;Are you living the dream?&quot; message using <code>sendFacebookMessage('Are you living the dream?')</code>.</li>
+</ul></li>
+<li><p><strong>Error Handling:</strong></p>
+<ul>
+<li>Catches any errors and logs them to the console.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>sendFacebookThanks</code> function for use in other parts of the code.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this function automates the process of checking a Facebook thread for a &quot;dream&quot; related message and sending a follow-up message if none is found.</strong></p>

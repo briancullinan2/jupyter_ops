@@ -1,0 +1,69 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>The <code>renderUser</code> function is a Node.js module that retrieves and renders templates from Google Sheets for a given user, incorporating user-specific data and links. The function, which returns a promise, is part of a larger application that utilizes Google Sheets as a data source for templates.</p>
+
+
+<pre><code>var uuid = require('uuid/v1');
+var {Readable} = require('stream');
+var importer = require('../Core');
+var getTemplates = importer.import('templates google sheet');
+var wrapTemplate = importer.import('output google sheet template');
+var getTemplateProperties = importer.import('google sheet template properties');
+var collectTemplateResources = importer.import('collect google sheet resources');
+
+
+// TODO: make this generic for use with user related packs and state changes?
+function renderUser(user) {
+    var properties = {}, templates;
+    
+    return getTemplates(process.env.DOCID)
+        .then(t => {
+            templates = t;
+            return getTemplateProperties('app', properties, templates);
+        })
+        .then(() => getTemplateProperties('user', properties, templates))
+        .then(() => {
+            var users = properties['user-data'];
+            Object.assign(properties, {
+                'base': user + '/',
+                'users-users-link': `/${user}/users`
+            })
+            templates['users-users'] = {template: {rows: [[`{{> users/users-users-link}}`]]}}
+        })
+        .then(() => getTemplateProperties('users-users', properties, templates))
+        .then(() => wrapTemplate(`${user}/users`, 'users', properties['users-users'], properties))
+        .then(page => collectTemplateResources(
+            `${user}/users`,
+            page,
+            properties,
+            templates,
+            process.env.BUCKET))
+        .then(resources => (console.log(resources), `/${user}/users`))
+}
+
+module.exports = renderUser;
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<p>This code is written in JavaScript and utilizes the Node.js ecosystem. It appears to be a part of a larger application that utilizes Google Sheets as a data source for templates.</p>
+<h3>Dependencies and Imports</h3>
+<ul>
+<li><code>uuid/v1</code> is a library for generating unique IDs.</li>
+<li><code>stream</code> is a built-in Node.js module for working with streams.</li>
+<li><code>importer</code> is a custom module that imports other modules from the <code>../Core</code> directory.</li>
+<li><code>getTemplates</code>, <code>wrapTemplate</code>, <code>getTemplateProperties</code>, and <code>collectTemplateResources</code> are functions imported from other modules using the <code>importer</code>.</li>
+</ul>
+<h3>Function: <code>renderUser</code></h3>
+<p><code>renderUser</code> is a function that takes a <code>user</code> object as an argument and returns a promise. The function is responsible for retrieving and rendering templates from Google Sheets for a given user.</p>
+<p>Here's a high-level overview of the steps involved:</p>
+<ol>
+<li>Retrieve templates from Google Sheets based on the <code>DOCID</code> environment variable.</li>
+<li>Retrieve template properties for the <code>app</code> and <code>user</code> templates.</li>
+<li>Update the template properties with user-specific data and links.</li>
+<li>Retrieve template properties for the <code>users-users</code> template.</li>
+<li>Wrap the <code>users-users</code> template with the updated template properties.</li>
+<li>Collect resources for the <code>users-users</code> template.</li>
+<li>Log the collected resources and return the URL of the rendered template.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>renderUser</code> function is exported as a module, making it available for use in other parts of the application.</p>

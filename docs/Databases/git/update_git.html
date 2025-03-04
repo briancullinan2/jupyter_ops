@@ -1,0 +1,44 @@
+<p>This code automates a Git rebase and npm package installation process by creating a calendar event that executes a script containing these commands.  The event is configured to run within a specified project directory.</p>
+
+
+<pre><code>var importer = require('../Core');
+var createNewEvent = importer.import('create new calendar event');
+
+function resetRebaseInstallEvent(project) {
+    if(!project) {
+        project = path.resolve(__dirname, '..', '..', 'jupytangular');
+    }
+    return createNewEvent('spawn child process', JSON.stringify({
+        script: importer.interpret('git auto rebase').code + '\nnpm install',
+        options: {cwd: project} // TODO: fix current working directory using project name?
+    }, null, 4), {calendarId: 'aws'})
+}
+module.exports = resetRebaseInstallEvent;
+</code></pre>
+
+<p>This code defines a function <code>resetRebaseInstallEvent</code> that automates a process for a Git repository.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports <code>createNewEvent</code> from a module called <code>Core</code>, likely responsible for creating calendar events.</li>
+</ul></li>
+<li><p><strong>Function Definition:</strong></p>
+<ul>
+<li><code>resetRebaseInstallEvent</code> takes a <code>project</code> path as input, defaulting to a specific directory if not provided.</li>
+</ul></li>
+<li><p><strong>Event Creation:</strong></p>
+<ul>
+<li>It constructs a JSON object containing a script to:
+<ul>
+<li>Run a Git command (<code>git auto rebase</code>) - the exact command is fetched from another module (<code>importer.interpret('git auto rebase').code</code>).</li>
+<li>Install npm packages (<code>npm install</code>).</li>
+</ul></li>
+<li>It uses <code>createNewEvent</code> to create a calendar event with the script, specifying the <code>calendarId</code> as 'aws'.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The function is exported as the main module, making it callable from other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code sets up a calendar event that triggers a Git rebase and npm package installation within a specified project directory.</p>

@@ -1,0 +1,63 @@
+<p>This code generates a Dockerfile for a Selenium environment with VNC support by converting bash commands into Docker RUN instructions and combining them with code retrieved from an external <code>importer</code> function.</p>
+
+
+<pre><code>var importer = require('../Core');
+var fs = require('fs');
+
+// add some run commands to the bash script
+function bashToRun(code) {
+    return code.split('\n').filter(n => n.trim().length > 0).map(l => 'RUN ' + l.trim())
+    .join('\n').replace(/\\\s*\nRUN\s*/ig, '\\\n ');
+}
+
+// create a selenium Dockerfile with a vnc connection
+function seleniumDocker(outputFile) {
+    const r = importer.interpret([
+        'run selenium inside docker',
+        // add some extra services
+        'linux dev tools',
+        'vnc html',
+        'vnc in docker'
+    ]);
+    console.log(r);
+    // save the Dockerfile
+    fs.writeFileSync(outputFile, [
+        r[0].code,
+        // convert some results to Docker RUN commands instead of bash
+        bashToRun(r[1].code),
+        bashToRun(r[2].code),
+        r[3].code,
+    ].join('\n'));
+    return r;
+};
+module.exports = seleniumDocker;
+</code></pre>
+
+<p>This code defines two functions, <code>bashToRun</code> and <code>seleniumDocker</code>, to generate a Dockerfile for running Selenium with a VNC connection.</p>
+<p><strong><code>bashToRun(code)</code>:</strong></p>
+<ul>
+<li>Takes a string of bash commands as input.</li>
+<li>Splits the input into lines, removes empty lines, and prepends &quot;RUN &quot; to each line.</li>
+<li>Joins the lines back together with newline characters and replaces any consecutive &quot;RUN&quot; commands with a single &quot;RUN&quot; followed by a newline.</li>
+<li>Returns the modified string, effectively converting bash commands into Docker RUN instructions.</li>
+</ul>
+<p><strong><code>seleniumDocker(outputFile)</code>:</strong></p>
+<ul>
+<li>Imports the <code>Core</code> module and the <code>fs</code> module for file system operations.</li>
+<li>Calls the <code>importer</code> function with a list of instructions:
+<ul>
+<li>&quot;run selenium inside docker&quot;</li>
+<li>&quot;linux dev tools&quot;</li>
+<li>&quot;vnc html&quot;</li>
+<li>&quot;vnc in docker&quot;</li>
+</ul></li>
+<li>This likely retrieves code snippets or instructions for setting up a Selenium environment within a Docker container, including VNC support.</li>
+<li>Writes the generated Dockerfile content to the specified <code>outputFile</code>.</li>
+<li>The Dockerfile content includes:
+<ul>
+<li>The initial code snippet from the <code>importer</code> function.</li>
+<li>The bash commands from the <code>importer</code> function converted to Docker RUN commands using <code>bashToRun</code>.</li>
+</ul></li>
+<li>Returns the result from the <code>importer</code> function.</li>
+</ul>
+<p><strong>In essence, this code generates a Dockerfile for a Selenium environment with VNC capabilities based on instructions retrieved from the <code>importer</code> function.</strong></p>

@@ -1,0 +1,53 @@
+<p>This code provides a <code>mkdirpSync</code> function that safely creates directories, automatically creating any necessary parent directories along the way.  It handles potential errors, such as &quot;No such file or directory&quot; by recursively creating parent directories.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+
+function mkdirpSync(p) {
+    if(!fs.existsSync(p)) {
+        try {
+            fs.mkdirSync(p);
+        } catch (e) {
+            if(e.code === 'ENOENT') {
+                mkdirpSync(path.dirname(p));
+                fs.mkdirSync(p);
+            } else if (e.code === 'EEXISTS') {
+                
+            } else {
+                throw e
+            }
+        }
+    }
+}
+
+module.exports = mkdirpSync;
+</code></pre>
+
+<p>This code defines a function <code>mkdirpSync</code> that creates directories recursively, ensuring parent directories exist before attempting to create a target directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Requires the <code>fs</code> (filesystem) and <code>path</code> modules for file system operations and path manipulation.</li>
+</ul></li>
+<li><p><strong><code>mkdirpSync</code> Function:</strong></p>
+<ul>
+<li>Takes a directory path <code>p</code> as input.</li>
+<li>Checks if the directory <code>p</code> exists using <code>fs.existsSync</code>.</li>
+<li>If the directory doesn't exist:
+<ul>
+<li>Attempts to create the directory using <code>fs.mkdirSync</code>.</li>
+<li>If an error occurs:
+<ul>
+<li>If the error code is <code>ENOENT</code> (No such file or directory), it recursively calls <code>mkdirpSync</code> on the parent directory (<code>path.dirname(p)</code>) to create any missing parent directories and then tries to create the target directory again.</li>
+<li>If the error code is <code>EEXISTS</code> (File exists), it does nothing (presumably assuming the directory already exists).</li>
+<li>For other errors, it re-throws the error.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>mkdirpSync</code> function as the main module export.</li>
+</ul></li>
+</ol>

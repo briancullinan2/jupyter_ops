@@ -1,0 +1,105 @@
+<p>This code automates the process of finding new Facebook friends from scraped posts and connecting with them using Selenium.</p>
+
+
+<pre><code>var importer = require('../Core');
+var glob = require('glob');
+var path = require('path');
+var fs = require('fs');
+var runSeleniumCell = importer.import('run selenium cell');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+var regexToArray = (ex, str, i = 0) => {
+    var co = []; var m;
+    while ((m = ex.exec(str)) && co.push(m[i])) ;
+    return co;
+}
+                                         
+function loadNewConnections() {
+    // search posts
+    if(fs.existsSync(path.join(project, 'new-friends.json'))) {
+        return JSON.parse(fs.readFileSync(path.join(project, 'new-friends.json')).toString());
+    }
+    var posts = glob.sync('**/*-posts-*', {cwd: project})
+        .map(f => path.join(project, f));
+    var friends = posts.reduce((acc, p) => {
+        importer.streamJson(p, [true, {emitPath: true}], (match) => {
+            [].concat(match.value).forEach(m => {
+                const url = regexToArray(/facebook.com\/.*/ig, m);
+                if(url && url[0]) {
+                    acc.push(url[0].replace(/\?fref.*|\?ref.*|\?rc=.*|\?hc_location.*/ig, ''));
+                }
+            })
+        });
+        return acc;
+    }, []);
+    var unique = [];
+    for(let i = 0; i < friends.length / 1000; i++) {
+        unique = unique.concat(friends.slice(i * 1000, i * 1000 + 1000).filter((u, i, arr) => arr.indexOf(u) === i))
+    }
+    fs.writeFileSync(path.join(project, 'new-friends.json'), JSON.stringify(unique, null, 4));
+    // TODO: diff file-system (abstract better?, code reuse?), selenium connect
+    return unique;
+}
+
+var friendsOnFacebook, loginFacebook;
+function addFacebookFriends() {
+    var pages = loadNewConnections();
+    console.log(pages.length);
+    console.log(pages.slice(0, 30))
+    return runSeleniumCell(['log in facebook', 'connect on facebook'])
+        .then(r => {
+            loginFacebook = r.loginFacebook;
+            friendsOnFacebook = r.friendsOnFacebook;
+            return loginFacebook();
+        })
+        .then(() => {
+            const rand = Math.round(pages.length / 30 * Math.random()) * 30;
+            console.log(pages.slice(rand, rand + 30));
+            return importer.runAllPromises(pages.slice(rand, rand + 30).map(page => resolve => {
+                console.log(page);
+                return friendsOnFacebook(page, true)
+                    .then(r => resolve(r))
+                    .catch(e => resolve(e))
+            }))
+        })
+}
+module.exports = addFacebookFriends;
+</code></pre>
+
+<p>This code snippet appears to be part of a larger project designed to automate friend connections on Facebook.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing utility functions for importing other modules.</li>
+<li><code>glob</code>: A library for finding files matching a pattern.</li>
+<li><code>path</code>: Node.js built-in module for working with file and directory paths.</li>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+<li><code>runSeleniumCell</code>: A function imported from <code>importer</code> likely used to execute Selenium commands.</li>
+</ul></li>
+<li><p><strong>Variables:</strong></p>
+<ul>
+<li><code>PROFILE_PATH</code>: Determines the user's home directory.</li>
+<li><code>project</code>: Sets the project directory to a subfolder named &quot;Conversations&quot; within the user's home directory.</li>
+</ul></li>
+<li><p><strong>Functions:</strong></p>
+<ul>
+<li><code>regexToArray</code>: A utility function to extract matches from a string using a regular expression.</li>
+<li><code>loadNewConnections</code>:
+<ul>
+<li>Loads a list of new Facebook friend URLs from a JSON file or by scraping posts in the project directory.</li>
+<li>Extracts URLs from posts using a regular expression.</li>
+<li>Removes duplicates and saves the unique URLs to a JSON file.</li>
+</ul></li>
+<li><code>addFacebookFriends</code>:
+<ul>
+<li>Calls <code>loadNewConnections</code> to get the list of new friends.</li>
+<li>Executes Selenium commands to log into Facebook and connect with the new friends.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Overall Purpose:</strong></p>
+<p>The code snippet automates the process of finding new Facebook friends from scraped posts and connecting with them using Selenium.</p>
+<p>Let me know if you have any more questions or would like me to elaborate on any specific part of the code!</p>

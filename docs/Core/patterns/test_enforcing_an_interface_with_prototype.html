@@ -1,0 +1,86 @@
+<p>Here's a 2 sentence summary of the code breakdown:</p>
+<p>The code demonstrates the behavior of the <code>myInterface</code> and <code>overrideClass</code> functions, showing how they merge and override properties of an object. It tests how these functions handle property overrides, logging different values to the console depending on the object properties and their order of creation.</p>
+
+
+<pre><code>
+function myInterface(overrides) {
+    var interface = Object.create({});
+    // TODO: wish there was a way to not name this twice
+    Object.assign(interface, {
+        propertyOne: overrides.propertyOne,
+        print: overrides.print
+    });
+    return interface;
+}
+
+function print() {
+    console.log(this.propertyOne);
+    console.log(this.propertyTwo);
+}
+
+var myClass = Object.create({
+    propertyOne: 'original 1',
+    propertyTwo: 'original 2',
+    print: print
+})
+
+if(typeof $$ !== 'undefined') {
+
+    myClass.print();
+    var overridden = overrideClass({
+        propertyOne: 'overridden 1',
+        propertyTwo: 'overridden 2'
+    })
+    overridden.print();
+    var interfaced = myInterface(overridden);
+    interfaced.print();
+    overrideClass(interfaced).print();
+    myInterface(myClass).print();
+    
+}
+
+/* expected output
+original 1
+original 2
+overridden 1
+overridden 2
+overridden 1
+undefined
+overridden 1
+original 2
+original 1
+undefined
+*/
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>myInterface Function</h4>
+<ul>
+<li>Creates a new object using <code>Object.create({})</code> and assigns it to the <code>interface</code> variable.</li>
+<li>Uses <code>Object.assign</code> to merge the <code>overrides</code> object into the <code>interface</code>.</li>
+<li>Returns the <code>interface</code> object.</li>
+</ul>
+<h4>print Function</h4>
+<ul>
+<li>Logs <code>this.propertyOne</code> to the console.</li>
+<li>Logs <code>this.propertyTwo</code> to the console.</li>
+</ul>
+<h4>myClass Object</h4>
+<ul>
+<li>Creates a new object using <code>Object.create</code> and assigns it properties <code>propertyOne</code>, <code>propertyTwo</code>, and <code>print</code>.</li>
+<li>The <code>print</code> function is assigned to the object, which logs <code>this.propertyOne</code> and <code>this.propertyTwo</code> to the console.</li>
+</ul>
+<h4>Main Code</h4>
+<ul>
+<li>Checks if a global variable <code>$$</code> is defined, but this variable is not used anywhere in the code.</li>
+<li>Calls <code>myClass.print()</code> and logs &quot;original 1&quot; and &quot;original 2&quot; to the console.</li>
+<li>Creates a new object <code>overridden</code> by calling <code>overrideClass</code> with an object containing <code>propertyOne</code> and <code>propertyTwo</code> overrides.</li>
+<li>Calls <code>overridden.print()</code> and logs &quot;overridden 1&quot; and &quot;overridden 2&quot; to the console.</li>
+<li>Creates a new object <code>interfaced</code> by calling <code>myInterface</code> with the <code>overridden</code> object.</li>
+<li>Calls <code>overrideClass</code> with the <code>interfaced</code> object, which logs &quot;overridden 1&quot; and &quot;undefined&quot; to the console (since <code>interfaced</code> lacks a <code>propertyTwo</code> property).</li>
+<li>Calls <code>myInterface</code> with the <code>myClass</code> object, which logs &quot;original 2&quot; and &quot;original 1&quot; to the console, and logs &quot;undefined&quot; (since the <code>print</code> function is not overridden).</li>
+</ul>
+<h3>Note</h3>
+<p>The <code>$$</code> variable check is not relevant to the code and seems to be a leftover from other functionality not shown here.</p>
+<p>The code appears to be testing the behavior of the <code>myInterface</code> function and the <code>overrideClass</code> function, but their implementation is not shown here.</p>

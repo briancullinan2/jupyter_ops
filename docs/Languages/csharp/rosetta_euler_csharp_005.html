@@ -1,0 +1,130 @@
+<p>The code defines a class <code>Euler</code> within the <code>Rosetta</code> namespace, containing methods for calculating the product of common prime factors of numbers from 1 to 20, with several issues and room for optimization. The code can be improved by fixing the bugs in the <code>PrimeFactors</code> and <code>Overlap</code> methods, and using more efficient algorithms and data structures for prime factorization.</p>
+
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Rosetta
+{
+    public class Euler
+    {
+        public async Task<object> RunEuler(dynamic input)
+        {
+            return await Task.Run(() => new Euler().Calculate().ToString());
+        }
+
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("{0}", new Euler().Calculate());
+        }
+
+        public ulong Calculate()
+        {
+            List<List<ulong>> primeFactorLists = new List<List<ulong>>();
+
+            for (ulong x = 1; x <= 20; x++)
+            {
+                primeFactorLists.Add(PrimeFactors(x));
+            }
+
+            List<ulong> factors = new List<ulong>();
+
+            for (int i = 0; i < 20; i++)
+            {
+                factors = Overlap(factors, primeFactorLists[i]);
+            }
+
+            return factors.Aggregate((product, factor) => product * factor);
+        }
+
+        public List<ulong> Overlap(List<ulong> a, List<ulong> b)
+        {
+            for (int i = 0; i < b.Count; i++)
+            {
+                a.Remove(b[i]);
+            }
+
+            a.AddRange(b);
+
+            return a;
+        }
+
+        public List<ulong> PrimeFactors(ulong n)
+        {
+            bool found = false;
+
+            ulong v = 2;
+
+            for (ulong i = 2; i < n - 1; i++)
+            {
+                if (n % i == 0)
+                {
+                    found = true;
+
+                    v = i;
+
+                    break;
+                }
+            }
+
+            List<ulong> result = new List<ulong>();
+
+            if (found)
+            {
+                result.Add(v);
+
+                result = result.Concat(PrimeFactors(n / v)).ToList();
+            }
+            else
+            {
+                result.Add(n);
+            }
+
+            return result;
+        }
+    }
+
+}
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Namespaces and Class</h3>
+<p>The code uses the <code>System</code> namespace and defines a class <code>Euler</code> within a namespace <code>Rosetta</code>.</p>
+<h3>Methods</h3>
+<h4><code>RunEuler</code></h4>
+<ul>
+<li>An asynchronous method that takes a dynamic input.</li>
+<li>Calls the <code>Calculate</code> method and returns its result as a string.</li>
+</ul>
+<h4><code>Main</code></h4>
+<ul>
+<li>The entry point of the program.</li>
+<li>Calls the <code>Calculate</code> method and prints its result to the console.</li>
+</ul>
+<h4><code>Calculate</code></h4>
+<ul>
+<li>A method that calculates the product of all common prime factors of numbers from 1 to 20.</li>
+<li>Uses the <code>PrimeFactors</code> method to find prime factors of each number.</li>
+<li>Uses the <code>Overlap</code> method to find common prime factors.</li>
+<li>Returns the product of all common prime factors as an unsigned long integer.</li>
+</ul>
+<h4><code>Overlap</code></h4>
+<ul>
+<li>A method that takes two lists of unsigned long integers and returns a new list containing the elements of both lists, with duplicates removed.</li>
+</ul>
+<h4><code>PrimeFactors</code></h4>
+<ul>
+<li>A method that takes an unsigned long integer and returns a list of its prime factors.</li>
+<li>Uses a recursive approach to find prime factors by dividing the input number by the smallest prime factor until it is no longer divisible.</li>
+</ul>
+<h3>Issues</h3>
+<ul>
+<li>The <code>RunEuler</code> method is unnecessary, as the <code>Calculate</code> method can be called directly.</li>
+<li>The <code>PrimeFactors</code> method has a bug: it does not check if the input number is less than 2, which is a prime number.</li>
+<li>The <code>Overlap</code> method has a bug: it removes elements from the first list while adding elements from the second list, resulting in incorrect output.</li>
+<li>The code can be optimized by using a more efficient prime factorization algorithm, such as the Sieve of Eratosthenes.</li>
+<li>The code can be further optimized by using a more efficient data structure, such as a HashSet, to store prime factors.</li>
+</ul>

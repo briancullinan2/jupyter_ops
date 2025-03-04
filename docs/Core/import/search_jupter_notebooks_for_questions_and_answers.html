@@ -1,0 +1,110 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code provides a database functionality with search capabilities using the Fuse.js library and a custom Levenshtein distance search, allowing for fuzzy string queries and cache management. It exports three functions: <code>createDatabase</code>, <code>queryDatabase</code>, and <code>lookupCell</code>, which can be imported and used in other parts of the application.</p>
+
+
+<pre><code>var path = require('path')
+try {
+    var Fuse = require('fuse.js')
+} catch (e) {
+    if(!e.message.includes('Cannot find module')) {
+        throw e
+    }
+}
+
+var FUSE_CONFIG = {
+    caseSensitive: false,
+    findAllMatches: true,
+    distance: 50,
+    threshold: 0.5,
+    tokenize: true,
+    shouldSort: true,
+    keys: ['2.questions'],
+    id: '1'
+}
+
+var token, fuse
+
+function createDatabase(cache) {
+    if(typeof Fuse !== 'undefined') {
+        token = new Fuse(cache, FUSE_CONFIG)
+        fuse = new Fuse(cache, Object.assign({}, FUSE_CONFIG, {
+            tokenize: false
+        }))
+        return
+    }
+    
+    var {
+        importNotebook, getCells
+    } = require('../Core')
+    var searchFunc = getCells(path.resolve(__dirname, '../Utilities/levenshtein.ipynb'))
+        .filter(cell => cell.source.join('').includes('function levSearch'))
+        .map(cell => path.join(__dirname, '../Utilities', cell.id))
+    var levSearch = importNotebook(searchFunc).levSearch
+    
+    // TODO: turn this in to `levSearch()` function
+    token = ({search: levSearch.bind(null, cache, FUSE_CONFIG)})
+    fuse = ({search: levSearch.bind(null, cache, FUSE_CONFIG)})
+}
+
+function queryDatabase(search) {
+    if(typeof fuse === 'undefined') {
+        throw new Error(`database not ready! ${search}`)
+    }
+    var tokenResults = token.search(search)
+    var fuseResults = fuse.search(search)
+    return fuseResults
+        .filter(s => tokenResults.includes(s))
+        .concat(tokenResults.filter(s => fuseResults.includes(s)))
+}
+
+function lookupCell(cacheId, cacheCells) {
+    const filename = cacheId.replace(/\.ipynb\[[0-9]+\].*/ig, '.ipynb')
+    const fresh = cacheCells(filename)
+    const cell = fresh.filter(cell => cell.id === path.basename(cacheId))[0]
+    return cell
+}
+
+module.exports.createDatabase = createDatabase
+module.exports.queryDatabase = queryDatabase
+module.exports.lookupCell = lookupCell
+</code></pre>
+
+<h2><strong>Overview</strong></h2>
+<p>This code provides a database functionality with search capabilities using the Fuse.js library or a custom Levenshtein distance search.</p>
+<h2><strong>Dependencies</strong></h2>
+<ul>
+<li><code>path</code>: Node.js built-in module for working with file paths</li>
+<li><code>fuse.js</code>: A JavaScript library for fuzzy string search</li>
+<li><code>../Core</code> and <code>../Utilities/levenshtein.ipynb</code>: Custom modules and notebooks for importing and executing custom search functions</li>
+</ul>
+<h2><strong>Configuration</strong></h2>
+<ul>
+<li><code>FUSE_CONFIG</code>: An object containing configuration options for the Fuse.js library</li>
+</ul>
+<h2><strong>Functions</strong></h2>
+<h3>createDatabase(cache)</h3>
+<ul>
+<li>Creates a Fuse.js instance and a custom Levenshtein distance search instance</li>
+<li>Accepts a <code>cache</code> object as input</li>
+<li>Returns if successful, or throws an error if the Fuse.js library is not available</li>
+</ul>
+<h3>queryDatabase(search)</h3>
+<ul>
+<li>Queries the database using the Fuse.js instance</li>
+<li>Accepts a <code>search</code> string as input</li>
+<li>Returns an array of search results</li>
+</ul>
+<h3>lookupCell(cacheId, cacheCells)</h3>
+<ul>
+<li>Looks up a cell in the cache by its ID</li>
+<li>Accepts a <code>cacheId</code> string and a <code>cacheCells</code> function as input</li>
+<li>Returns the cell object if found, or <code>null</code> otherwise</li>
+</ul>
+<h2><strong>Exports</strong></h2>
+<p>Three functions are exported:</p>
+<ul>
+<li><code>createDatabase</code></li>
+<li><code>queryDatabase</code></li>
+<li><code>lookupCell</code></li>
+</ul>
+<p>These functions can be imported and used in other parts of the application.</p>

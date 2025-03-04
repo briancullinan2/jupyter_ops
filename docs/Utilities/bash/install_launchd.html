@@ -1,0 +1,36 @@
+<p>Here is a summary of the command breakdown in two sentences:</p>
+<p>This shell command sets up and starts a LaunchAgent on macOS by copying a plist file, loading it, enabling it, and starting it. The command assumes the plist file is in the correct format and the user has necessary permissions to modify their LaunchAgents directory.</p>
+
+
+<pre><code>cp ./com.jupytangular.heartbeat.plist ~/Library/LaunchCtl/ \
+   && launchctl load com.jupytangular.heartbeat.plist \
+   && launchctl enable com.jupytangular.heartbeat.plist \
+   && launchctl start com.jupytangular.heartbeat.plist</code></pre>
+
+<h3>Command Breakdown</h3>
+<h4>Command Purpose</h4>
+<p>The provided code is a shell command that sets up and starts a LaunchAgent on macOS.</p>
+<h4>Breakdown</h4>
+<ol>
+<li><p><code>cp./com.jupytangular.heartbeat.plist ~/Library/LaunchAgents/</code></p>
+<ul>
+<li>Copies the <code>com.jupytangular.heartbeat.plist</code> file from the current directory to the <code>~/Library/LaunchAgents/</code> directory.</li>
+</ul></li>
+<li><p><code>launchctl load com.jupytangular.heartbeat.plist</code></p>
+<ul>
+<li>Loads the specified LaunchAgent from the plist file.</li>
+</ul></li>
+<li><p><code>launchctl enable com.jupytangular.heartbeat.plist</code></p>
+<ul>
+<li>Enables the specified LaunchAgent.</li>
+</ul></li>
+<li><p><code>launchctl start com.jupytangular.heartbeat.plist</code></p>
+<ul>
+<li>Starts the specified LaunchAgent.</li>
+</ul></li>
+</ol>
+<h4>Assumptions</h4>
+<ul>
+<li>The <code>com.jupytangular.heartbeat.plist</code> file is in the correct format for a LaunchAgent plist.</li>
+<li>The user running this command has the necessary permissions to modify their LaunchAgents directory.</li>
+</ul>

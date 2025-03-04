@@ -1,0 +1,152 @@
+<p>Here's a two-sentence summary of the provided code:</p>
+<p>This code utilizes OpenCV and other libraries to detect people in images, track motion, and draw bounding boxes around detected individuals. The code consists of several functions, including image loading, motion detection, and person tracking, with a TODO comment indicating the need to implement video recording and uploading functionality.</p>
+
+
+<pre><code>import os
+import requests
+import cv2
+import numpy as np
+import_notebook('motion detection', globals())
+
+
+# Initialize HOG descriptor/person detector
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+def get_image(image_path):
+
+  # Load image
+  if os.path.exists(image_path):
+    image = cv2.imread(image_path)
+  else:
+    # Fetch the image from the URL
+    response = requests.get(image_path)
+    response.raise_for_status()  # Raise an error if the request fails
+
+    # Convert to a NumPy array for OpenCV
+    image_array = np.asarray(bytearray(response.content), dtype=np.uint8)
+    image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+
+  # Resize image (optional, improves detection speed)
+  image = cv2.resize(image, (800, 600))
+
+  return image
+
+def trace_boxes(image_path):
+
+  if isinstance(image_path, str):
+    image = get_image(image_path)
+  else:
+    image = image_path
+
+  # Convert to grayscale (not necessary, but can improve performance)
+  gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+  # Detect people
+  boxes, weights = hog.detectMultiScale(gray, winStride=(4, 4), padding=(8, 8), scale=1.05)
+
+  return boxes
+
+def trace_people(image_path):
+
+  if isinstance(image_path, str):
+    image = get_image(image_path)
+  else:
+    image = image_path
+
+  boxes = trace_boxes(image)
+
+  # Draw bounding boxes
+  for (x, y, w, h) in boxes:
+      cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+  return image
+
+def main(image_path):
+  prev_frame = None
+  image = None
+  while True:
+    # Create a random image (or load a new one dynamically)
+    image = get_image(image_path)
+
+    if(prev_frame is not None):
+      frame = image_grayscale(image)
+      diff_image = diff_images(prev_frame, frame)
+      motion = percent_motion(diff_image)
+      # TODO: if motion is > 1.0 start recording and compile a video and upload to youtube
+      print(motion)
+    else:
+      frame = image_grayscale(image)
+
+    image = trace_people(image)  # Random image example
+
+    prev_frame = frame.copy()
+
+    # Display the image
+    cv2.imshow("People Detection", image)
+
+    # Wait for 1 second (1000 ms) and check for key press
+    if cv2.waitKey(1000) & 0xFF == ord('q'):  # Press 'q' to exit
+        break
+
+  cv2.destroyAllWindows()
+
+__all__ = {
+  "main": main,
+  "trace_people": trace_people
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Libraries</h3>
+<pre><code class="language-python">import os
+import requests
+import cv2
+import numpy as np
+import_notebook('motion detection', globals())
+</code></pre>
+<p>The code starts by importing the necessary libraries:</p>
+<ul>
+<li><code>os</code> for interacting with the operating system</li>
+<li><code>requests</code> for making HTTP requests</li>
+<li><code>cv2</code> for computer vision tasks (OpenCV library)</li>
+<li><code>numpy</code> for numerical computations</li>
+<li><code>import_notebook</code> (not a standard library) for importing a notebook (not used in this code snippet)</li>
+</ul>
+<h3>Initializing the HOG Descriptor</h3>
+<pre><code class="language-python">hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+</code></pre>
+<p>This section initializes the HOG (Histogram of Oriented Gradients) descriptor for person detection. The <code>HOGDescriptor</code> class from the OpenCV library is used to detect people in images.</p>
+<h3><code>get_image</code> Function</h3>
+<pre><code class="language-python">def get_image(image_path):
+    #...
+</code></pre>
+<p>This function loads an image from a file path or URL. If the image path is a string, it attempts to load the image from the file using <code>cv2.imread</code>. If the file does not exist, it fetches the image from the URL using <code>requests</code>. The image is then converted to a NumPy array and resized to (800, 600) pixels.</p>
+<h3><code>trace_boxes</code> Function</h3>
+<pre><code class="language-python">def trace_boxes(image_path):
+    #...
+</code></pre>
+<p>This function detects people in an image using the HOG descriptor. It converts the image to grayscale and then uses the <code>detectMultiScale</code> method to detect people in the image. The function returns a list of bounding boxes containing the detected people.</p>
+<h3><code>trace_people</code> Function</h3>
+<pre><code class="language-python">def trace_people(image_path):
+    #...
+</code></pre>
+<p>This function draws bounding boxes around the detected people in the image. It uses the <code>trace_boxes</code> function to get the bounding boxes and then draws rectangles around them using <code>cv2.rectangle</code>.</p>
+<h3><code>main</code> Function</h3>
+<pre><code class="language-python">def main(image_path):
+    #...
+</code></pre>
+<p>This is the main function that runs the motion detection and object tracking code. It creates a loop where it continuously loads a new image, detects motion, and draws bounding boxes around the detected people. The function also keeps track of the previous frame and calculates the motion between the current and previous frames.</p>
+<h3>Motion Detection</h3>
+<pre><code class="language-python">if(prev_frame is not None):
+    frame = image_grayscale(image)
+    diff_image = diff_images(prev_frame, frame)
+    motion = percent_motion(diff_image)
+    print(motion)
+</code></pre>
+<p>This section of the code detects motion by comparing the current frame with the previous frame. It calculates the difference between the two frames and then calculates the percentage of motion. The motion is printed to the console.</p>
+<h3>TODO: Record and Upload Video</h3>
+<pre><code class="language-python"># TODO: if motion is &gt; 1.0 start recording and compile a video and upload to youtube
+</code></pre>
+<p>This is a TODO comment indicating that when the motion percentage exceeds 1.0, the code should start recording a video and upload it to YouTube. However, this code is not implemented in the provided snippet.</p>

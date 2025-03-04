@@ -1,0 +1,104 @@
+<p>This code snippet sets up and manages a Selenium server using Docker, ensuring a clean and consistent environment by removing existing containers and building a new one. It utilizes Docker to manage the server and returns a promise for asynchronous handling of the setup process.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+var fs = require('fs');
+var execCmd = importer.import('spawn child process');
+var importer = require('../Core');
+var seleniumDocker = importer.import('selenium docker');
+
+var DOWNLOAD_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', 'Downloads');
+var PROFILE_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', '.defaultProfile');
+var DOCKERFILE = path.resolve(path.join(__dirname, 'Dockerfile'));
+
+function getSeleniumServer(name = 'act-selenium') {
+    try {
+        fs.mkdirSync(DOWNLOAD_DIR);
+    } catch (err) {
+        if (err.code != 'EEXIST') {
+            throw err;
+        }
+    }
+    try {
+        fs.mkdirSync(PROFILE_DIR);
+    } catch (err) {
+        if (err.code != 'EEXIST') {
+            throw err;
+        }
+    }
+    try {
+        fs.unlinkSync(path.join(PROFILE_DIR, 'SingletonLock'));
+    } catch (err) {
+        if (err.code != 'ENOENT') {
+            throw err;
+        }
+    }
+    seleniumDocker(DOCKERFILE);
+    return execCmd('docker ps -a')
+        .then(r => {
+            if (r[0].indexOf(name) > -1) {
+                return execCmd('docker stop ' + name)
+                    .then(r => new Promise(resolve =>
+                        setTimeout(() => resolve(r), 1000)))
+                    .then(() => execCmd('docker rm ' + name));
+            }
+        })
+        .then(() => new Promise(resolve =>
+            setTimeout(() => resolve(), 1000)))
+        .then(() => {
+            var build = 'docker build -t ' + name + ' "'
+                + path.dirname(DOCKERFILE) + '"\n'
+                + 'docker run --shm-size=3g -d '
+                + '--name ' + name + ' '
+                + '-p 8888:8888 '
+                + '-p 6080:6080 '
+                + '-p 5900:5900 '
+                + '-p 4444:4444 '
+                + '-p 4200:4200 '
+                + '-p 3000:3000 '
+                // TODO: add profile dir back in when permissions works on windows
+                + '-v "' + DOWNLOAD_DIR + '":/data/downloads '
+                + name + '\n';
+            return execCmd(build)
+        })
+        .then(r => new Promise(resolve => setTimeout(() => resolve(r), 6000)))
+};
+module.exports = getSeleniumServer;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getSeleniumServer()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e));
+}
+</code></pre>
+
+<p>This code snippet sets up and manages a Selenium server using Docker.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for file system operations (<code>fs</code>), child process execution (<code>execCmd</code>), and Selenium Docker management (<code>seleniumDocker</code>).</li>
+</ul></li>
+<li><p><strong>Constants:</strong></p>
+<ul>
+<li>Defines paths for download directory, profile directory, and Dockerfile location.</li>
+</ul></li>
+<li><p><strong><code>getSeleniumServer</code> Function:</strong></p>
+<ul>
+<li>Creates the necessary directories for downloads and profiles.</li>
+<li>Removes any existing singleton lock file.</li>
+<li>Uses <code>seleniumDocker</code> to manage the Docker container.</li>
+<li>Checks if a Selenium server container with the specified name (<code>act-selenium</code>) already exists.</li>
+<li>If it exists, stops and removes the container.</li>
+<li>Builds and starts a new Selenium server container using the provided Dockerfile.</li>
+<li>Returns a promise that resolves when the server is up and running.</li>
+</ul></li>
+</ol>
+<p><strong>Overall Logic:</strong></p>
+<ul>
+<li>The code ensures a clean setup of the Selenium server by removing any existing containers and building a new one.</li>
+<li>It uses Docker to manage the server, providing a consistent and isolated environment.</li>
+<li>The <code>getSeleniumServer</code> function returns a promise that allows for asynchronous handling of the server setup process.</li>
+</ul>

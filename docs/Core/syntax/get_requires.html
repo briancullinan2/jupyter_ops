@@ -1,0 +1,69 @@
+<p>Here's a two-sentence summary:</p>
+<p>The code imports dependencies, including a <code>selectAst</code> function, and uses it to define a <code>getRequires</code> function that extracts require statements from JavaScript code. The <code>getRequires</code> function is then exported as a module, making it available for use in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {selectAst} = importer.import('select code tree')
+
+// TODO: use this in files and gulp script 
+//   require("module").builtinModules
+function getRequires(code) {
+    return [].concat.apply([], selectAst([
+        `//CallExpression[./Identifier[@name="require"]]`,
+        (ctx) => {
+            var req = selectAst([`.//Literal/@value`], ctx)
+            if(req.length === 0) throw new Error(
+                `dynamic require: ${JSON.stringify(htmlToTree(ctx))}`)
+            return req;
+        }
+    ], code))
+}
+
+
+module.exports = {
+    getRequires
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {selectAst} = importer.import('select code tree')
+</code></pre>
+<ul>
+<li>The code imports a module named <code>../Core</code> and assigns it to the <code>importer</code> variable.</li>
+<li>It then imports a function named <code>selectAst</code> from the <code>importer</code> module using the <code>import</code> method. The string <code>'select code tree'</code> is likely a key or identifier for the <code>selectAst</code> function within the <code>importer</code> module.</li>
+</ul>
+<h3>Defining the <code>getRequires</code> Function</h3>
+<pre><code class="language-javascript">function getRequires(code) {
+    return [].concat.apply([], selectAst([
+        `//CallExpression[./Identifier[@name=&quot;require&quot;]]`,
+        (ctx) =&gt; {
+            var req = selectAst([`.//Literal/@value`], ctx)
+            if(req.length === 0) throw new Error(
+                `dynamic require: ${JSON.stringify(htmlToTree(ctx))}`)
+            return req;
+        }
+    ], code))
+}
+</code></pre>
+<ul>
+<li>The <code>getRequires</code> function takes a single argument <code>code</code>, which is likely a string representing JavaScript code.</li>
+<li>It uses the <code>selectAst</code> function to extract relevant data from the <code>code</code> string.</li>
+<li>The <code>selectAst</code> function is called with an array of two elements:
+<ul>
+<li>A string that appears to be a CSS-like selector for a specific pattern in the code.</li>
+<li>A callback function that takes a context object <code>ctx</code> as an argument.</li>
+</ul></li>
+<li>Within the callback function, another call to <code>selectAst</code> is made to extract the value of a <code>Literal</code> node.</li>
+<li>If no <code>Literal</code> node is found, an error is thrown with a message that includes the context object's HTML representation using <code>htmlToTree</code>.</li>
+<li>The results of the two <code>selectAst</code> calls are concatenated and returned by the <code>getRequires</code> function.</li>
+</ul>
+<h3>Exporting the <code>getRequires</code> Function</h3>
+<pre><code class="language-javascript">module.exports = {
+    getRequires
+}
+</code></pre>
+<ul>
+<li>The <code>getRequires</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

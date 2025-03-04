@@ -1,0 +1,75 @@
+<p>Here's a two-sentence summary of the <code>relativeImports</code> function:</p>
+<p>The <code>relativeImports</code> function analyzes a code snippet to identify required modules, categorizing them into local, built-in, packages, and missing modules. It returns an object with arrays of these categories, using various checks and resolutions to determine the type and location of each module.</p>
+
+
+<pre><code>var module = require('module')
+var importer = require('../Core')
+var {getRequires} = importer.import('get requires')
+
+function relativeImports(code, pathToCode) {
+    var result = {
+        local: [],
+        builtin: [],
+        packages: [],
+        missing: []
+    }
+    var requires = getRequires(code)
+    requires.forEach(imp => {
+        var local = imp.substr(0, 1) === '.'
+        try {
+            if(local) {
+                imp = path.relative(__dirname, pathToCode, imp)
+                require.resolve(imp)
+                result.local.push(imp)
+            } else {
+                if(!module.builtinModules.includes(imp)) {
+                    throw new Error('Cannot find module')
+                }
+                result.builtin.push(imp)
+            }
+        } catch (e) {
+            if(!e.message.includes('Cannot find module')) {
+                throw e
+            } else {
+                if(local) {
+                    result.missing.push(imp)
+                } else {
+                    result.packages.push(imp)
+                }
+            }
+        }
+    })
+    return result
+}
+
+module.exports = {
+    relativeImports
+}
+</code></pre>
+
+<h2>relativeImports Function</h2>
+<h3>Purpose</h3>
+<p>The <code>relativeImports</code> function analyzes a given code snippet to identify required modules. It categorizes them into local, built-in, packages, and missing modules.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>code</code>: The code snippet to be analyzed.</li>
+<li><code>pathToCode</code>: The path to the code snippet.</li>
+</ul>
+<h3>Return Value</h3>
+<p>An object with four properties:</p>
+<ul>
+<li><code>local</code>: An array of relative paths to local modules.</li>
+<li><code>builtin</code>: An array of built-in module names.</li>
+<li><code>packages</code>: An array of missing module names that are actually packages.</li>
+<li><code>missing</code>: An array of missing module names.</li>
+</ul>
+<h3>Logic</h3>
+<ol>
+<li>The function extracts required modules from the code using <code>getRequires</code>.</li>
+<li>It iterates over the required modules and checks if they are local or built-in.</li>
+<li>For local modules, it attempts to resolve the relative path using <code>path.relative</code>. If successful, it adds the module to the <code>local</code> array.</li>
+<li>For built-in modules, it checks if the module exists in <code>module.builtinModules</code>. If it does, it adds the module to the <code>builtin</code> array.</li>
+<li>If a module is missing, it checks if the error message indicates a &quot;Cannot find module&quot; error. If it does, it categorizes the module as either local (if the path is relative) or a package (if the path is absolute).</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>relativeImports</code> function is exported as a module.</p>

@@ -1,0 +1,75 @@
+<p>This code configures access control for Jupyter Notebooks by mapping specific functionalities to permission groups, determining which users or roles can access them.  It uses a dictionary-like structure to define these mappings, enabling fine-grained control over notebook permissions.</p>
+
+
+<pre><code>var FUNCTION_GROUPS = ['Function'];
+var SELENIUM_GROUPS = ['Selenium'];
+var UNITTEST_GROUPS = ['Unit Test']; // TODO: identified using describe
+var DEFAULT_GROUPS = ['Available']
+var PUBLIC = {
+    // rpc basics
+    'rpc.ipynb[permissions]' : ['Public'],
+    'syntax.ipynb[parameter names]' : ['Public'],
+    
+    // tags on contacts used for permissions groups
+    'google contacts.ipynb[google contact settings]': ['Inner Circle', 'Public'],
+
+    // searching
+    'gulp.ipynb[search notebooks]' : ['Public'],
+    'import.ipynb[search notebook questions]' : ['Public'],
+    
+    'data collection.ipynb[meta search all]' : [], // no Public, use schedule instead
+    'data collection.ipynb[schedule search all]' : ['Public', 'scheduler'],
+    'data collection.ipynb[crawl domain]' : [], // no Public, use schedule instead
+    'data collection.ipynb[schedule crawl domain]': ['Public', 'scheduler'],
+    
+    // date tools
+    'data collection.ipynb[tell joke]' : ['Public'],
+    'google timeline.ipynb[search timeline events]' : ['Public', 'map'],
+    'google scheduling.ipynb[search calendar]': ['Public', 'history'],
+    'google scheduling.ipynb[calendar search heatmap]' : ['Public', 'slider'],
+    
+    // dev tools
+    'aws.ipynb[latest s3 bucket]' : ['Public', 'gallery'],
+    'git.ipynb[tip git tree]' : ['Public', 'slider'],
+    'git.ipynb[megamind]' : ['Public', 'editor'],
+    'git.ipynb[github commit html acl]' : ['Public', 'editor'],
+    'child process.ipynb[spawn child process]' : ['Public'],
+    'twilio.ipynb[accept incoming twilio message]': ['Public'],
+    'twilio.ipynb[twilio reminder]': ['Public', 'scheduler'],
+    
+    // marketing site
+    'marketing scripts.ipynb[contact us handler]': ['Public'],
+    'convert spreadsheet.ipynb[get sheet identifier]': ['Public'],
+    'convert spreadsheet.ipynb[sheet marketing import]': ['Public'],
+    'convert spreadsheet.ipynb[setup sheet backend]': ['Public'],
+    'convert spreadsheet.ipynb[create a sheet]': ['Public'],
+    
+    // study sauce
+    'study sauce.ipynb[authorize app to read profile info]': ['Public'],
+    'study sauce.ipynb[create a study sauce user directory]': ['Public'],
+    'study sauce.ipynb[render study sauce cards page]': ['Public'],
+    'study sauce.ipynb[create a copy of study sauce template]': ['Public'],
+    
+};
+
+module.exports = {
+    FUNCTION_GROUPS,
+    SELENIUM_GROUPS,
+    UNITTEST_GROUPS,
+    DEFAULT_GROUPS,
+    PUBLIC
+}
+</code></pre>
+
+<p>This code defines a configuration for access control and permissions for various Jupyter Notebook functionalities.</p>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Permission Groups:</strong> It defines several arrays representing permission groups: <code>FUNCTION_GROUPS</code>, <code>SELENIUM_GROUPS</code>, <code>UNITTEST_GROUPS</code>, and <code>DEFAULT_GROUPS</code>.</li>
+<li><strong>Public Access:</strong> The <code>PUBLIC</code> object maps notebook functionalities (identified by keys) to their associated permission groups.</li>
+<li><strong>Access Control:</strong> Each key in <code>PUBLIC</code> represents a specific notebook function or feature. The corresponding value is an array of permission groups that have access to that functionality.</li>
+<li><strong>Default Access:</strong> Notebooks without explicit permissions in <code>PUBLIC</code> likely default to the <code>DEFAULT_GROUPS</code>.</li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<p>This configuration likely determines which users or roles have access to which Jupyter Notebook functionalities. For example, notebooks tagged with <code>'rpc.ipynb[permissions]'</code> are accessible to users in the <code>'Public'</code> group.</p>
+<p><strong>Structure:</strong></p>
+<p>The code uses a dictionary-like structure (<code>PUBLIC</code>) to map notebook functionalities to permission groups. This allows for granular control over access permissions.</p>

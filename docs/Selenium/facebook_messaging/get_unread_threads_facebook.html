@@ -1,0 +1,50 @@
+<p>This code automates the process of retrieving and reading unread Facebook threads by logging into the user's account, navigating to the unread messages page, listing the threads, and then reading the content of each thread.  It is designed to be used as a reusable function within a larger application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    loginFacebook,
+    listFacebookThreads,
+    readFacebookThread
+} = importer.import([
+    'decrypt password',
+    'log in facebook',
+    'list facebook threads',
+    'messages from facebook'
+], {client})
+
+function getUnreadThreads() {
+    return client
+        .then(() => loginFacebook())
+        .getUrl()
+        .then(url => url.indexOf('https://www.facebook.com/messages/?filter=unread') === -1
+             ? client.url('https://www.facebook.com/messages/?filter=unread')
+             : [])
+        .pause(500)
+        .then(() => listFacebookThreads(false))
+        .then(threads => {
+            return importer.runAllPromises(threads.map(thread => resolve => {
+                return readFacebookThread(thread)
+                    .catch(e => console.log(e))
+                    .then(r => resolve(r))
+            }))
+        })
+        .catch(e => console.log(e))
+}
+module.exports = getUnreadThreads;
+</code></pre>
+
+<p>This code snippet is designed to retrieve and read unread Facebook threads.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong> It imports necessary functions for logging into Facebook, listing threads, and reading thread content from a custom <code>importer</code> module.</p></li>
+<li><p><strong><code>getUnreadThreads</code> Function:</strong></p>
+<ul>
+<li>It first logs into Facebook using the imported <code>loginFacebook</code> function.</li>
+<li>It navigates to the &quot;Unread Messages&quot; page if not already there.</li>
+<li>It uses <code>listFacebookThreads</code> to fetch a list of unread threads.</li>
+<li>It then iterates through each thread and uses <code>readFacebookThread</code> to read the content of each thread.</li>
+<li>It handles any errors during the process.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>getUnreadThreads</code> function is exported, making it callable from other parts of the application.</p></li>
+</ol>

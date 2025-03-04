@@ -1,0 +1,82 @@
+<p>This code standardizes entity references in Quake 2 map files by replacing generic entity names with corresponding model names from a predefined entities definition file.</p>
+
+
+<pre><code>var fs = require('fs')
+var importer = require('../Core')
+
+var MATCH_MODELS = /QUAKED\s+([^\s]*)\s+[\s\S]*?model="([^"]*)"/i;
+
+var ents;
+function replaceEntities(file, entities) {
+    if(!entities) {
+        entities = '/Users/briancullinan/planet_quake_data/quake2-baseq2/scripts/entities.def'
+    }
+    
+    // parse entities definition
+    if(!ents) {
+        var entityStr = fs.readFileSync(entities).toString('utf-8')
+        var matches = importer.regexToArray(/QUAKED\s+.*/ig, entityStr)
+        ents = matches.reduce((obj, m, i, arr) => {
+            var start = entityStr.indexOf(m)
+            var end = entityStr.indexOf(arr[i + 1])
+            if(end === -1) end = entityStr.length
+            var groups = MATCH_MODELS.exec(entityStr.substring(start, end))
+            if(!groups) return obj
+            obj[groups[1]] = groups[2]
+            return obj
+        }, {})
+    }
+    
+    if(typeof file === 'string' && fs.existsSync(file)) {
+        file = fs.readFileSync(file).toString('utf-8')
+    }
+    
+    // replace entities
+    file = file.replace(/"misc_([^"]*)"/ig, ($0) => `"misc_model"\n "model" ${$0}`)
+    
+    var noises = importer.regexToArray(/noise.*?"\s*"(.*?)"/ig, file, false)
+    noises.forEach(n => {
+        if(!n[1].includes('sound/')) {
+            file = file.replace(n[0], `noise" "sound/${n[1]}"`)
+        }
+    })
+    
+    // replace misc_ with models from ent
+    Object.keys(ents).forEach(k => {
+        if(!k.includes('misc_')) return
+        file = file.replace(new RegExp('"' + k + '"', 'ig'), '"' + ents[k] + '"')
+    })
+    return file
+}
+
+module.exports = replaceEntities;
+</code></pre>
+
+<p>This code snippet modifies a Quake 2 map file by replacing entity references with corresponding model names from a predefined entities definition file.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules (<code>fs</code> and a custom <code>importer</code> module).</li>
+<li>Defines a regular expression <code>MATCH_MODELS</code> to extract entity names and model paths from the entities definition file.</li>
+</ul></li>
+<li><p><strong><code>replaceEntities</code> Function:</strong></p>
+<ul>
+<li>Takes a map file path (string) and an optional entities file path as input.</li>
+<li>If no entities file path is provided, it defaults to a predefined path.</li>
+<li>Parses the entities definition file and creates a dictionary <code>ents</code> mapping entity names to model paths.</li>
+</ul></li>
+<li><p><strong>File Processing:</strong></p>
+<ul>
+<li>Reads the map file content if it's a string and exists.</li>
+<li>Replaces occurrences of <code>&quot;misc_&quot;</code> entities with <code>&quot;misc_model&quot;</code> and adds a <code>&quot;model&quot;</code> line with the entity name.</li>
+<li>Replaces noise entity paths to include the &quot;sound/&quot; prefix.</li>
+<li>Iterates through the <code>ents</code> dictionary and replaces all occurrences of entity names with their corresponding model paths in the map file.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>Returns the modified map file content as a string.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code automates the process of standardizing entity references in Quake 2 map files by replacing generic <code>&quot;misc_&quot;</code> entities with specific model names defined in the entities definition file. This ensures consistency and accuracy in the map's entity representation.</p>

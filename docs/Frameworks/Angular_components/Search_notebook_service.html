@@ -1,0 +1,54 @@
+<p>This code defines an Angular service called <code>SearchService</code> that handles search requests by sending a POST request to a specified URL with the search query and returns an observable response.</p>
+
+
+<pre><code>import {Observable} from 'rxjs/Observable';
+import {Http, Response} from '@angular/http';
+import {Injectable} from '@angular/core';
+
+export let callbackUrl = 'localhost';
+
+@Injectable()
+export class SearchService {
+    http: Http
+
+    constructor(public
+) {
+}
+
+search(query
+:
+string
+):
+Observable < Response > {
+    console.log('Searching ' + query);
+return this.http.post(callbackUrl, {query});
+}
+}
+</code></pre>
+
+<p>This code defines an Angular service called <code>SearchService</code> responsible for handling search requests.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules from RxJS (<code>Observable</code>), Angular's HTTP module (<code>Http</code>, <code>Response</code>), and Angular's dependency injection (<code>Injectable</code>).</li>
+</ul></li>
+<li><p><strong><code>callbackUrl</code>:</strong></p>
+<ul>
+<li>Defines a constant <code>callbackUrl</code> for the URL where search results will be sent.</li>
+</ul></li>
+<li><p><strong><code>SearchService</code>:</strong></p>
+<ul>
+<li>Declares a class <code>SearchService</code> decorated with <code>@Injectable</code> to make it injectable into other components.</li>
+<li>Has an <code>http</code> property to inject the <code>Http</code> service.</li>
+<li>The constructor takes the <code>Http</code> service as a parameter.</li>
+</ul></li>
+<li><p><strong><code>search()</code> Method:</strong></p>
+<ul>
+<li>Defines a method <code>search()</code> that takes a <code>query</code> string as input.</li>
+<li>Logs the search query to the console.</li>
+<li>Uses <code>this.http.post()</code> to send a POST request to <code>callbackUrl</code> with the search query as data.</li>
+<li>Returns an <code>Observable&lt;Response&gt;</code> representing the response from the server.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

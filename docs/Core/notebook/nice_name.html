@@ -1,0 +1,56 @@
+<p>The <code>niceName</code> function generates user-friendly filenames for code cells by extracting information from the cell's content and applying formatting rules. This function is designed to create descriptive and consistent filenames for better code organization within a notebook environment.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getExtension = importer.import('cell extension')
+
+// get previous markdown and extract name that leads back to the current cell
+function niceName(cell) {
+    var name = cell.questions[0].replace('?', '')
+        .replace(/[^a-z0-9]+|\btest\b/igm, ' ')
+        .trim()
+        .replace(/\s+/igm, '-')
+        + getExtension(cell);
+    if(name.toLowerCase().includes('readme')) {
+        name = 'readme.md';
+    }
+    if(name.toLowerCase().includes('package-json')) {
+        name = 'package.json';
+    }
+    if(name.toLowerCase().includes('index')) {
+        name = 'index.js';
+    }
+    
+    return name;
+}
+
+module.exports = niceName;
+</code></pre>
+
+<p>This code defines a function called <code>niceName</code> that generates a user-friendly filename for a code cell based on its content and type.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module (likely from the <code>Core</code> directory) used to import other functions.</li>
+<li><code>getExtension</code>: A function imported from <code>Core</code> that determines the appropriate file extension for a code cell (as explained in the previous response).</li>
+</ul></li>
+<li><p><strong><code>niceName</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>cell</code> object as input, which likely contains information about the code cell.</li>
+<li>Extracts the first question from the <code>cell.questions</code> array, removes the question mark, and cleans up the text by:
+<ul>
+<li>Replacing invalid characters and the word &quot;test&quot; with spaces.</li>
+<li>Trimming any leading or trailing whitespace.</li>
+<li>Replacing multiple spaces with hyphens.</li>
+</ul></li>
+<li>Appends the file extension determined by <code>getExtension(cell)</code>.</li>
+<li>Applies special handling for common filenames like &quot;readme.md&quot;, &quot;package.json&quot;, and &quot;index.js&quot;.</li>
+<li>Returns the generated filename.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>module.exports = niceName;</code> line makes the <code>niceName</code> function available for use in other modules.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to generate descriptive and consistent filenames for code cells based on their content, making it easier to organize and manage code within a notebook environment.</strong></p>

@@ -1,0 +1,24 @@
+
+
+<pre><code>function isFib(num) {
+    let last = 0;
+    let next = 1;
+    while (next <= num) {
+        let newThingThatIsAVariable = last + next;
+        if (newThingThatIsAVariable === num) { return true; }
+        last = next;
+        next = newThingThatIsAVariable;
+    }
+    return false;
+}
+
+isFib(4);
+
+// 0 + 1 = 1
+// 1 + 1 = 2
+// 1 + 2 = 3
+// 2 + 3 = 5
+// 3 + 5 = 8
+
+</code></pre>
+

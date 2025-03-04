@@ -1,0 +1,331 @@
+<p>Here's a 2-sentence summary of the provided code breakdown:</p>
+<p>The code imports various modules to interact with the Discord API and language models, and defines a list of commands to be registered with the Discord API. The <code>syncChat</code> function synchronizes the chat commands with the Discord API, registering the <code>hello</code> and <code>prompt</code> commands if they are not already present, and mapping them to corresponding functions from the <code>discord llm interactions</code> module.</p>
+
+
+<pre><code>const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {interactionsCommands} = importer.import('discord gateway')
+const {
+  doInteraction, doMention, doPrivate
+} = importer.import('discord llm interactions')
+const {
+  doDistill, doInstruct, doReason, doMistral
+} = importer.import('discord llm connector')
+const {
+  doEssay, doBusiness, doStory 
+} = importer.import('discord writing llms')
+const ALL_COMMANDS = [
+  'hello',
+  'prompt',
+  'distill',
+  'instruct',
+  'reason',
+  //'voice',
+  'essay',
+  'business',
+  'story',
+  'mistral',
+]
+
+// bot commands using new API, same names as above but lower-case
+async function syncChat(guildId = null) {
+  var cmd, cmdDef
+  var commandResult = await getCommands(guildId)
+  var commands = commandResult.map(command => command.name)
+
+
+  if(!commands.includes('hello')) {
+    await registerCommand('hello', 'Check if Orbb is awake.', guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'hello')[0]
+    //await updateCommand(cmd.name, cmd.description, cmd.id, guildId)
+  }
+  interactionsCommands['hello'] = doInteraction
+
+  cmdDef = {
+    'name': 'prompt',
+    'description': 'Prompt an llm.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt the llm with.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('prompt')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'prompt')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description 
+      || cmdDef.options.length != cmd.options.length
+      || JSON.stringify(cmdDef.options) != JSON.stringify(cmd.options.map(o => ({
+        name: o.name,
+        description: o.description,
+        required: o.required,
+        type: o.type
+      })))) {
+      debugger
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+    }
+  }
+  interactionsCommands['prompt'] = doInteraction
+  interactionsCommands['promptMention'] = doMention
+  interactionsCommands['promptPrivate'] = doPrivate
+
+
+  cmdDef = {
+    'name': 'distill',
+    'description': 'Distill with DeepSeek R1 8B.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt the DeepSeek R1 8B with.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('distill')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'distill')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['distill'] = doDistill
+
+
+  cmdDef = {
+    'name': 'instruct',
+    'description': 'Meta Instruct 70B.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt the Meta Instruct 70B with.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('instruct')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'instruct')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['instruct'] = doInstruct
+
+
+  cmdDef = {
+    'name': 'mistral',
+    'description': 'Meta Instruct 70B.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt the Meta Instruct 70B with.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('mistral')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'mistral')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['mistral'] = doMistral
+
+
+  cmdDef = {
+    'name': 'reason',
+    'description': 'Qwen 2.5 14B M1.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt Qwen reasoning LLM.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('reason')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'reason')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['reason'] = doReason
+
+  cmdDef = {
+    'name': 'essay',
+    'description': 'Write an essay.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt LLM.',
+        'required': true,
+        'type': 3
+      },
+      {
+        'name': 'model',
+        'description': 'Model to use, Meta, DeepSeek, Llama, or Qwen.',
+        'required': false,
+        'type': 3,
+        'choices': [
+          {name: 'Meta', value: 'Meta'}, 
+          {name: 'DeepSeek', value: 'DeepSeek'}, 
+          {name: 'Llama', value: 'Llama'},
+          {name: 'Qwen', value: 'Qwen'},
+          {name: 'Code', value: 'Code'},
+          {name: 'Mistral', value: 'Mistral'},
+        ]
+      }
+    ]
+  }
+  if(!commands.includes('essay')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'essay')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['essay'] = doEssay
+
+  cmdDef = {
+    'name': 'business',
+    'description': 'Write an business plan.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt LLM.',
+        'required': true,
+        'type': 3
+      },
+      {
+        'name': 'model',
+        'description': 'Model to use, Meta, DeepSeek, Llama, or Qwen.',
+        'required': false,
+        'type': 3,
+        'choices': [
+          {name: 'Meta', value: 'Meta'}, 
+          {name: 'DeepSeek', value: 'DeepSeek'}, 
+          {name: 'Llama', value: 'Llama'},
+          {name: 'Qwen', value: 'Qwen'},
+          {name: 'Code', value: 'Code'},
+          {name: 'Mistral', value: 'Mistral'},
+        ]
+      }
+    ]
+  }
+  if(!commands.includes('business')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'business')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['business'] = doBusiness
+
+  cmdDef = {
+    'name': 'story',
+    'description': 'Write an story.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to prompt LLM.',
+        'required': true,
+        'type': 3
+      },
+      {
+        'name': 'model',
+        'description': 'Model to use, Meta, DeepSeek, Llama, or Qwen.',
+        'required': false,
+        'type': 3,
+        'choices': [
+          {name: 'Meta', value: 'Meta'}, 
+          {name: 'DeepSeek', value: 'DeepSeek'}, 
+          {name: 'Llama', value: 'Llama'},
+          {name: 'Qwen', value: 'Qwen'},
+          {name: 'Code', value: 'Code'},
+          {name: 'Mistral', value: 'Mistral'},
+        ]
+      }
+    ]
+  }
+  if(!commands.includes('story')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'story')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['story'] = doStory
+
+  /*
+  cmdDef = {
+    'name': 'voice',
+    'description': 'OuteTTS 0.3 1B/Llasa 3B gguf.',
+    'options': [
+      {
+        'name': 'text',
+        'description': 'Text to convert to audio.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('voice')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'voice')[0]
+    if(cmdDef.name != cmd.name || cmdDef.description != cmd.description)
+      await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+  interactionsCommands['voice'] = doVoice
+  */
+
+
+  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+
+  return await getCommands()
+}
+
+module.exports = syncChat
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code imports several modules using the <code>importer.import</code> function:</p>
+<ul>
+<li><code>discord api</code>: This module provides functions to interact with the Discord API, including <code>registerCommand</code>, <code>getCommands</code>, <code>deleteCommand</code>, and <code>updateCommand</code>.</li>
+<li><code>discord gateway</code>: This module provides an <code>interactionsCommands</code> object that maps commands to functions.</li>
+<li><code>discord llm interactions</code>: This module provides functions to interact with the language model, including <code>doInteraction</code>, <code>doMention</code>, and <code>doPrivate</code>.</li>
+<li><code>discord llm connector</code>: This module provides functions to interact with the language model connector, including <code>doDistill</code>, <code>doInstruct</code>, <code>doReason</code>, and <code>doMistral</code>.</li>
+<li><code>discord writing llms</code>: This module provides functions to interact with the writing language models, including <code>doEssay</code>, <code>doBusiness</code>, and <code>doStory</code>.</li>
+</ul>
+<h4>Defining Commands</h4>
+<p>The code defines a list of commands <code>ALL_COMMANDS</code> that includes the names of the commands that will be registered with the Discord API.</p>
+<h4>Syncing Chat</h4>
+<p>The <code>syncChat</code> function is an asynchronous function that synchronizes the chat commands with the Discord API. It takes an optional <code>guildId</code> parameter.</p>
+<ol>
+<li>It retrieves the list of commands from the Discord API using <code>getCommands</code>.</li>
+<li>It checks if the <code>hello</code> command is present in the list. If not, it registers the <code>hello</code> command with the Discord API using <code>registerCommand</code>.</li>
+<li>It checks if the <code>prompt</code> command is present in the list. If not, it registers the <code>prompt</code> command with the Discord API using <code>registerCommand</code>. The <code>prompt</code> command has an option to prompt the language model with a text.</li>
+<li>It updates the <code>interactionsCommands</code> object to map the <code>hello</code> and <code>prompt</code> commands to the corresponding functions from the <code>discord llm interactions</code> module.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The code uses a debugging statement <code>debugger</code> when updating the <code>prompt</code> command, which means that the code will pause and allow the developer to inspect the variables when the command is updated.</li>
+<li>The code uses the <code>JSON.stringify</code> function to compare the options of the <code>prompt</code> command, which is necessary because the options are objects and cannot be compared directly.</li>
+<li>The code uses the <code>map</code> function to transform the options of the <code>prompt</code> command when comparing them with the options retrieved from the Discord API.</li>
+</ul>

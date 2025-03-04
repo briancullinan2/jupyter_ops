@@ -1,0 +1,95 @@
+<p>Here's a two-sentence summary:</p>
+<p>This code imports dependencies and exports three functions: <code>userGuilds</code>, <code>getGuildRoles</code>, and <code>userConnections</code>, which interact with the Discord API to retrieve user information, guild roles, and user connections, respectively. The functions are asynchronous and use the <code>request</code> function to make HTTP requests to the Discord API, with optional parameters for specifying user or guild IDs.</p>
+
+
+<pre><code>var {DEFAULT_GUILD} = importer.import('discord configuration')
+var {request} = importer.import('discord authorization')
+
+
+async function userGuilds(userId = '@me') {
+  return await request({
+    method: 'GET',
+    url: `users/${userId}/guilds`
+  })
+}
+
+async function getGuildRoles(guildId = DEFAULT_GUILD) {
+  return await request({
+    method: 'GET',
+    url: `guilds/${guildId}/roles`
+  })
+}
+
+async function userConnections(userId = '@me') {
+  return await request({
+    method: 'GET',
+    url: `users/${userId}/connections`
+  })
+}
+
+module.exports = {
+  userGuilds,
+  getGuildRoles,
+  userConnections
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var {DEFAULT_GUILD} = importer.import('discord configuration')
+var {request} = importer.import('discord authorization')
+</code></pre>
+<ul>
+<li>The code imports two variables, <code>DEFAULT_GUILD</code> and <code>request</code>, from external modules using the <code>importer.import</code> function.</li>
+<li><code>DEFAULT_GUILD</code> is likely a predefined constant representing the default guild ID.</li>
+<li><code>request</code> is an asynchronous function for making HTTP requests, likely used for interacting with the Discord API.</li>
+</ul>
+<h3>User Guilds Function</h3>
+<pre><code class="language-javascript">async function userGuilds(userId = '@me') {
+  return await request({
+    method: 'GET',
+    url: `users/${userId}/guilds`
+  })
+}
+</code></pre>
+<ul>
+<li>This function retrieves a user's guilds using the <code>request</code> function.</li>
+<li>The <code>userId</code> parameter is optional and defaults to <code>@me</code>, which is likely a placeholder for the current user's ID.</li>
+<li>The function returns a promise resolving to the user's guilds.</li>
+</ul>
+<h3>Get Guild Roles Function</h3>
+<pre><code class="language-javascript">async function getGuildRoles(guildId = DEFAULT_GUILD) {
+  return await request({
+    method: 'GET',
+    url: `guilds/${guildId}/roles`
+  })
+}
+</code></pre>
+<ul>
+<li>This function retrieves the roles in a guild using the <code>request</code> function.</li>
+<li>The <code>guildId</code> parameter is optional and defaults to <code>DEFAULT_GUILD</code>, which is the predefined default guild ID.</li>
+<li>The function returns a promise resolving to the guild's roles.</li>
+</ul>
+<h3>User Connections Function</h3>
+<pre><code class="language-javascript">async function userConnections(userId = '@me') {
+  return await request({
+    method: 'GET',
+    url: `users/${userId}/connections`
+  })
+}
+</code></pre>
+<ul>
+<li>This function retrieves a user's connections using the <code>request</code> function.</li>
+<li>The <code>userId</code> parameter is optional and defaults to <code>@me</code>, which is likely a placeholder for the current user's ID.</li>
+<li>The function returns a promise resolving to the user's connections.</li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+  userGuilds,
+  getGuildRoles,
+  userConnections
+}
+</code></pre>
+<ul>
+<li>The code exports the three functions as a module, making them available for use in other parts of the application.</li>
+</ul>

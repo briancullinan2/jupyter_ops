@@ -1,0 +1,72 @@
+<p>This code fetches a list of LinkedIn connections, prioritizing loading from a cached file if it's recent, otherwise scraping the data from LinkedIn and saving it to a local file.  It uses Selenium to automate the web scraping process.</p>
+
+
+<pre><code>var importer = require('../Core');
+var fs = require('fs');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+function listAllConnections(force = false) {
+    var friends = [];
+    if (fs.existsSync(project + '/connections.json') && !force
+        && (new Date()).getTime() - fs.statSync(project + '/connections.json').mtime.getTime() < 1000 * 60 * 60 * 24) {
+        return Promise.resolve(JSON.parse(
+            fs.readFileSync(project + '/connections.json')));
+    }
+    console.log('fetching new linkedin contacts');
+    return client
+        .getUrl()
+        .url('https://www.linkedin.com/mynetwork/invite-connect/connections/')
+        .pause(3000)
+        .then(() => getAllUntil(
+            false,
+            '//a[contains(@href, "/in/")]/@href',
+            friends,
+            (a, b) => a === b,
+            (i) => i < 10
+        ))
+        .then(r => r.filter((l, i, arr) => arr.indexOf(l) === i))
+        .then(r => {
+            fs.writeFileSync(
+                project + '/connections.json',
+                JSON.stringify(r, null, 4));
+            return r;
+        })
+        .catch(e => console.log(e))
+};
+module.exports = listAllConnections;
+</code></pre>
+
+<p>This code snippet fetches and stores a list of LinkedIn connections.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing functions for interacting with various data sources and tools.</li>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets up <code>PROFILE_PATH</code> to the user's home directory.</li>
+<li>Defines <code>project</code> as a subdirectory within the user's home directory for storing LinkedIn data.</li>
+</ul></li>
+<li><p><strong><code>listAllConnections</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>force</code> parameter (defaulting to <code>false</code>).</li>
+<li>Checks if a <code>connections.json</code> file exists in the <code>project</code> directory and if it's relatively recent (within the last 24 hours).
+<ul>
+<li>If both conditions are true, it reads the existing JSON data and returns it as a promise.</li>
+<li>Otherwise, it fetches new LinkedIn connection data.</li>
+</ul></li>
+<li>Navigates to the LinkedIn &quot;My Network&quot; page using Selenium.</li>
+<li>Scrapes LinkedIn profile URLs from the page using XPath queries.</li>
+<li>Filters out duplicate URLs.</li>
+<li>Saves the scraped data to <code>connections.json</code>.</li>
+<li>Returns the list of LinkedIn connections as a promise.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>listAllConnections</code> function as the main module export.</li>
+</ul></li>
+</ol>

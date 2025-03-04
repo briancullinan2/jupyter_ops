@@ -1,0 +1,18 @@
+
+
+<pre><code>
+function convertXPathToCss(path) {
+    // if matched xpath is simple enough, convert it to CSS
+    // DIV[contains(@class, "product-tile")]/parent::*/DIV[2]//MD-CARD[contains(@class, "mat-card")]/parent::*/MD-CARD[1]
+    return path
+        .replace(/\/([a-z-]+)\[@id="(.*?)"]/ig, '/$1#$2')
+        .replace(/\/([^\/]+)\[contains\(@class, "(.*?)"\)]/ig, '/$1.$2')
+        .replace(/\/parent::[a-z-]+\/[a-z-]+\[([0-9]+)]/ig, ':nth-child($1)')
+        .replace(/^\/\//ig, '')
+        .replace(/\/\//ig, ' ')
+        .replace(/\//ig, ' > ');
+}
+
+
+</code></pre>
+

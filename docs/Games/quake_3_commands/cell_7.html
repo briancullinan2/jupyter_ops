@@ -1,0 +1,32 @@
+
+
+<pre><code>q3map2.exe -convert -light -format map -fs_basepath Z:\.q3a -game baseq3 -v Z:\.q3a\baseq3\acid3dm5.pk3dir\maps\acid3dm5.bsp
+
+
+q3map2.exe -convert -light -format map -fs_basepath Z:\.quake2 -game baseq2 -v Z:\.quake2\baseq2\pak0.pak\maps\base1.bsp
+
+
+
+./q3map2 -meta -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map
+./q3map2 -vis -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map
+
+./q3map2 -bsp -meta -patchmeta -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map
+
+./q3map2 -convert ase -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map     
+
+./q3map2 -light -fast -patchshadows -samples 3 -bounce 8 -gamma 2 -compensate 4 -dirty -v -fs_basepath /Applications/ioquake3/unpacked -game baseq3 /Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map
+
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base1.map
+
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq3 -light _keeplights  -fast ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base1.map
+
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq3 -vis _keeplights ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base1.map
+
+# normalize a bsp vectors all at once
+/Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2.map
+
+
+/Applications/GtkRadiant.app/Contents/Resources/install/q3map2 -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights ~/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2-a.map
+
+</code></pre>
+

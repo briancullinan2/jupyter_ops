@@ -1,0 +1,83 @@
+<p>This code automates the process of sending messages on Facebook, handling thread navigation, multi-line message formatting, and error handling using web automation techniques.</p>
+
+
+<pre><code>function sendFacebookMessage(message, thread) {
+    var result;
+    if(typeof thread !== 'undefined') {
+        result = client.getUrl()
+            .then(url => url.indexOf(thread) > -1
+                  ? []
+                  : client.url(thread));
+    } else {
+        result = client;
+    }
+    const parts = message.split('\n');
+    return result
+        .click('//*[contains(@aria-label, "Type a message")]')
+        .keys('Control')
+        .keys('a')
+        .keys('NULL')
+        .keys('Delete')
+        .then(() => importer.runAllPromises(parts.map((t, i) => resolve => {
+            if(i === parts.length - 1) {
+                return client.keys(t).then(() => resolve());
+            }
+            return client
+                .keys(t)
+                .keys('Shift')
+                .keys('Enter')
+                .keys('NULL')
+                .catch(e => console.log(e))
+                .then(() => resolve());
+        })))
+        .keys('\uE007')
+        .catch(e => console.log(e))
+}
+module.exports = sendFacebookMessage;
+</code></pre>
+
+<p>This code snippet defines a function <code>sendFacebookMessage</code> that automates the process of sending a message on Facebook.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It takes two arguments: <code>message</code> (the text to send) and <code>thread</code> (the URL of the thread to send it to).</li>
+<li>It initializes a <code>result</code> variable to handle navigation to the correct thread.</li>
+</ul></li>
+<li><p><strong>Thread Navigation:</strong></p>
+<ul>
+<li>If a <code>thread</code> URL is provided, it checks if the current URL is already on that thread. If not, it navigates to the specified thread using Selenium-like commands.</li>
+<li>If no <code>thread</code> is provided, it assumes the current context is already in a valid thread.</li>
+</ul></li>
+<li><p><strong>Message Formatting and Sending:</strong></p>
+<ul>
+<li>It splits the <code>message</code> into lines using <code>\n</code> as a delimiter.</li>
+<li>It clicks on the message input field and then uses a series of keystrokes to simulate typing the message:
+<ul>
+<li><code>Control</code> + <code>a</code> selects all existing text (if any).</li>
+<li><code>NULL</code> simulates deleting the selected text.</li>
+<li>It then types each line of the message using <code>keys()</code>.</li>
+<li>For the last line, it simply types the line and resolves the promise.</li>
+<li>For other lines, it types the line, presses <code>Shift</code> + <code>Enter</code> to create a new line, and then simulates deleting the extra newline character.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Sending the Message:</strong></p>
+<ul>
+<li>After typing all lines, it simulates pressing the send button (<code>\uE007</code>).</li>
+</ul></li>
+<li><p><strong>Error Handling:</strong></p>
+<ul>
+<li>It uses <code>catch(e =&gt; console.log(e))</code> to handle any errors during the process.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>sendFacebookMessage</code> function is exported as a module, allowing it to be used in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Web Automation:</strong> The code relies heavily on Selenium-like commands to interact with Facebook's web interface.</li>
+<li><strong>Message Formatting:</strong> It handles multi-line messages by simulating keystrokes and line breaks.</li>
+<li><strong>Asynchronous Operations:</strong> Promises are used to manage the asynchronous nature of web requests and interactions.</li>
+</ul>
+<p>Let me know if you have any other questions.</p>

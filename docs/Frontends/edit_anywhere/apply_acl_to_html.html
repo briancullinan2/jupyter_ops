@@ -1,0 +1,64 @@
+<p>The <code>applyAcl</code> function takes an ACL and an HTML document, makes elements matching the ACL selectors editable, and returns the modified HTML.  This is likely used to control which parts of a webpage users can edit.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {selectDom} = importer.import('select tree')
+// scan using an acl list, similar to easylist?
+// TODO: accept formats:
+//    {"selector": "selector"}
+//    {"glob-url@selector": "glob-template-path@selector"}
+//    {"selector": "html-file@selector"}
+//    {"selector": "html-file@xpath"} ?
+//    {"glob-file": {"glob-url"...} || ["selector"]}
+const paths = JSON.parse('[]');
+
+function applyAcl(acl, doc) {
+    if(typeof doc === 'string') {
+        doc = selectDom('*', doc)
+    }
+    if(typeof acl === 'string') {
+        acl = [acl]
+    }
+    var body = selectDom('//body', doc)
+    if(body) {
+        // add content editable to -acl list elements
+        acl.forEach(i => {
+            var els = selectDom([i], body)
+            els.forEach(el => {
+                el.setAttribute('contenteditable', 'contenteditable')
+            })
+        })
+        return doc
+    } else {
+        throw Error(`Not found ${url}`)
+    }
+}
+
+module.exports = applyAcl
+</code></pre>
+
+<p>This code defines a function <code>applyAcl</code> that takes an ACL (Access Control List) and an HTML document as input.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Input Handling:</strong></p>
+<ul>
+<li>It expects the ACL to be either a string (representing a single selector) or an array of selectors.</li>
+<li>It also accepts the HTML document as either a string or a DOM object.</li>
+</ul></li>
+<li><p><strong>DOM Manipulation:</strong></p>
+<ul>
+<li>It uses the <code>selectDom</code> function (imported from a <code>Core</code> module) to select elements from the HTML document based on the provided ACL selectors.</li>
+<li>For each selected element, it sets the <code>contenteditable</code> attribute to <code>true</code>, making the element editable.</li>
+</ul></li>
+<li><p><strong>Error Handling:</strong></p>
+<ul>
+<li>If the <code>//body</code> element is not found in the HTML document, it throws an error.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>The function returns the modified HTML document with the selected elements marked as editable.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>The code essentially aims to make specific elements within an HTML document editable based on a predefined ACL. This could be used in a web application where you want to allow users to modify certain parts of the content while restricting editing in other areas.</p>
+<p>Let me know if you have any more questions.</p>

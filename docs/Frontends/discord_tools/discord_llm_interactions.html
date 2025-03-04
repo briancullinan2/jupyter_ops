@@ -1,0 +1,182 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>The code defines an interaction module that exports three functions (<code>doInteraction</code>, <code>doMention</code>, and <code>doPrivate</code>) to handle different types of interactions with the bot, including greetings, mentions, and private messages. Each function uses a combination of imported modules and functions to generate responses, such as triggering typing, selecting models, and creating messages.</p>
+
+
+<pre><code>const {DEFAULT_MODEL} = importer.import('general chit chat')
+const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const {triggerTyping, createMessage} = importer.import('disrcord api')
+const handleConversation = importer.import('handle conversation')
+const selectModel = importer.import('select llm')
+
+async function doInteraction(interaction) {
+  let prompt
+  if(interaction.data.name == 'hello') {
+    prompt = 'hello'
+  }
+  else { // if (interaction.data.name == 'prompt') {
+    prompt = interaction.data.options[0].value
+  }
+  let a1 = await llmPrompt(prompt + '\nmake it short.')
+  await updateInteraction({
+    content: a1.substring(0, 1800)
+  }, interaction.id, interaction.token)
+}
+
+async function doMention(interaction) {
+  await triggerTyping(interaction.channel_id)
+  let q1 = interaction.content.replace('<@' + DEFAULT_APPLICATION + '>', '') + '\nmake it short.'
+
+  let promptModel = await selectModel(DEFAULT_MODEL)
+  let result = await handleConversation(promptModel, interaction.author.id, q1)
+
+  return await createMessage({
+    content: result.substring(0, 1800), 
+    message_reference: {
+      message_id: interaction.id
+    }
+  }, interaction.channel_id)
+}
+
+async function doPrivate(interaction) {
+  await triggerTyping(interaction.channel_id)
+  
+  let promptModel = await selectModel(DEFAULT_MODEL)
+  let result = await handleConversation(promptModel, interaction.author.id, interaction.content)
+
+  return await createMessage({
+    content: result.substring(0, 1800), 
+    message_reference: {
+      message_id: interaction.id
+    }
+  }, interaction.channel_id)
+}
+
+module.exports = {
+  doInteraction,
+  doMention,
+  doPrivate
+}
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">const {DEFAULT_MODEL} = importer.import('general chit chat')
+const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const {triggerTyping, createMessage} = importer.import('disrcord api')
+const handleConversation = importer.import('handle conversation')
+const selectModel = importer.import('select llm')
+</code></pre>
+<ul>
+<li>The code imports various modules and functions from other files using the <code>importer</code> object:
+<ul>
+<li><code>DEFAULT_MODEL</code> and <code>DEFAULT_APPLICATION</code> are imported from <code>general chit chat</code> and <code>discord configuration</code> respectively.</li>
+<li><code>triggerTyping</code> and <code>createMessage</code> are imported from <code>disrcord api</code>.</li>
+<li><code>handleConversation</code> is imported from <code>handle conversation</code>.</li>
+<li><code>selectModel</code> is imported from <code>select llm</code>.</li>
+</ul></li>
+</ul>
+<h3>Interaction Functions</h3>
+<pre><code class="language-javascript">async function doInteraction(interaction) {
+  //...
+}
+
+async function doMention(interaction) {
+  //...
+}
+
+async function doPrivate(interaction) {
+  //...
+}
+</code></pre>
+<ul>
+<li>The code defines three functions to handle different types of interactions:
+<ul>
+<li><code>doInteraction(interaction)</code>: Handles interactions with a name of <code>hello</code>.</li>
+<li><code>doMention(interaction)</code>: Handles interactions that mention the bot.</li>
+<li><code>doPrivate(interaction)</code>: Handles private messages to the bot.</li>
+</ul></li>
+</ul>
+<h3>doInteraction Function</h3>
+<pre><code class="language-javascript">async function doInteraction(interaction) {
+  let prompt
+  if(interaction.data.name == 'hello') {
+    prompt = 'hello'
+  }
+  else { 
+    prompt = interaction.data.options[0].value
+  }
+  let a1 = await llmPrompt(prompt + '\nmake it short.')
+  await updateInteraction({
+    content: a1.substring(0, 1800)
+  }, interaction.id, interaction.token)
+}
+</code></pre>
+<ul>
+<li>The <code>doInteraction</code> function:
+<ul>
+<li>Determines the prompt based on the interaction name.</li>
+<li>Calls <code>llmPrompt</code> to generate a response.</li>
+<li>Updates the interaction using <code>updateInteraction</code>.</li>
+</ul></li>
+</ul>
+<h3>doMention Function</h3>
+<pre><code class="language-javascript">async function doMention(interaction) {
+  await triggerTyping(interaction.channel_id)
+  let q1 = interaction.content.replace('&lt;@' + DEFAULT_APPLICATION + '&gt;', '') + '\nmake it short.'
+
+  let promptModel = await selectModel(DEFAULT_MODEL)
+  let result = await handleConversation(promptModel, interaction.author.id, q1)
+
+  return await createMessage({
+    content: result.substring(0, 1800), 
+    message_reference: {
+      message_id: interaction.id
+    }
+  }, interaction.channel_id)
+}
+</code></pre>
+<ul>
+<li>The <code>doMention</code> function:
+<ul>
+<li>Triggers typing in the channel.</li>
+<li>Removes the bot mention from the interaction content.</li>
+<li>Selects a model using <code>selectModel</code>.</li>
+<li>Calls <code>handleConversation</code> to generate a response.</li>
+<li>Creates a message using <code>createMessage</code>.</li>
+</ul></li>
+</ul>
+<h3>doPrivate Function</h3>
+<pre><code class="language-javascript">async function doPrivate(interaction) {
+  await triggerTyping(interaction.channel_id)
+  
+  let promptModel = await selectModel(DEFAULT_MODEL)
+  let result = await handleConversation(promptModel, interaction.author.id, interaction.content)
+
+  return await createMessage({
+    content: result.substring(0, 1800), 
+    message_reference: {
+      message_id: interaction.id
+    }
+  }, interaction.channel_id)
+}
+</code></pre>
+<ul>
+<li>The <code>doPrivate</code> function:
+<ul>
+<li>Triggers typing in the channel.</li>
+<li>Selects a model using <code>selectModel</code>.</li>
+<li>Calls <code>handleConversation</code> to generate a response.</li>
+<li>Creates a message using <code>createMessage</code>.</li>
+</ul></li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+  doInteraction,
+  doMention,
+  doPrivate
+}
+</code></pre>
+<ul>
+<li>The code exports the three interaction functions as a module.</li>
+</ul>

@@ -1,0 +1,114 @@
+<p>Here's a summary of the code breakdown in 2 sentences:</p>
+<p>The provided HTML code has a basic structure consisting of a head section with metadata and styles, and a body section containing content such as a directory listing, links, and an image display. The code uses internal CSS styles to customize the appearance, as well as external stylesheet and script links, and includes placeholders for variables like session IDs and file URLs.</p>
+
+
+<pre><code><head>
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    i {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #666;
+    }
+
+    span {
+      font-size: 16px;
+      color: #333;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      padding-left: 10px;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="/amplitude.css" />
+  <script src="/amplitude.js"></script>
+</head>
+
+<body>
+  <h1>Directory Listing</h1>
+  <ul>
+    <li><a href="./?session={SESSION}">Parent directory/</a></li>
+  </ul>
+  <img src="{FILE_URL}?raw=true&session={SESSION}" />
+</body>
+
+</html></code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>HTML Structure</h4>
+<p>The code consists of an HTML document with a basic structure:</p>
+<ul>
+<li><code>&lt;head&gt;</code> section contains metadata and styles:
+<ul>
+<li>Internal CSS styles for customizing the appearance of the document.</li>
+<li>External stylesheet link (<code>amplitude.css</code>) and script link (<code>amplitude.js</code>).</li>
+</ul></li>
+<li><code>&lt;body&gt;</code> section contains the content:
+<ul>
+<li><code>&lt;h1&gt;</code> heading for the directory listing.</li>
+<li>An unordered list (<code>&lt;ul&gt;</code>) with a single list item (<code>&lt;li&gt;</code>) containing a link to the parent directory.</li>
+<li>An image tag (<code>&lt;img&gt;</code>) displaying a file.</li>
+</ul></li>
+</ul>
+<h4>Styles</h4>
+<p>The internal CSS styles define the following rules:</p>
+<ul>
+<li><code>ul</code> and <code>li</code> styles:
+<ul>
+<li>Remove default list styling (<code>list-style: none;</code>).</li>
+<li>Remove default padding and margin (<code>padding: 0; margin: 0;</code>).</li>
+<li>Add custom padding to list items (<code>padding: 10px;</code>).</li>
+<li>Remove border from last list item (<code>border-bottom: none;</code>).</li>
+</ul></li>
+<li><code>i</code> (italic text) style:
+<ul>
+<li>Set font size to 18px.</li>
+<li>Add a margin to the right.</li>
+<li>Set text color to #666.</li>
+</ul></li>
+<li><code>span</code> style:
+<ul>
+<li>Set font size to 16px.</li>
+<li>Set text color to #333.</li>
+</ul></li>
+<li>Additional styles:
+<ul>
+<li>Add padding to the left of the unordered list (<code>padding-left: 20px;</code>).</li>
+<li>Add padding to the left of list items within the unordered list (<code>padding-left: 10px;</code>).</li>
+</ul></li>
+</ul>
+<h4>Links and Scripts</h4>
+<ul>
+<li>External stylesheet link (<code>amplitude.css</code>) and script link (<code>amplitude.js</code>) are included.</li>
+<li>A link to the parent directory is provided in the list item.</li>
+</ul>
+<h4>Variables</h4>
+<p>The code uses placeholders for variables:</p>
+<ul>
+<li><code>{SESSION}</code>: likely a session ID or authentication token.</li>
+<li><code>{FILE_URL}</code>: likely the URL of the file being displayed.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The code appears to be part of a directory listing or file display system.</li>
+<li>The use of placeholders for variables suggests that the code is part of a dynamic system.</li>
+<li>The external stylesheet and script links suggest that the system relies on additional libraries or frameworks.</li>
+</ul>

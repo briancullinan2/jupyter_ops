@@ -1,0 +1,88 @@
+<p>This code snippet ensures a clean shutdown of all open browser windows or tabs associated with a WebDriver client object by first checking if the client object exists and then calling the <code>endAll()</code> method to terminate all sessions.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {remote} = require('webdriverio');
+var {
+    getSessions,
+    onlyOneWindow,
+    getAllSessionUrls,
+} = importer.import([
+    'only one window',
+    'get all session urls',
+    'manage webdriver sessions'
+])
+var MAX_SESSIONS = 4;
+//var MAX_SESSIONS = 36;
+
+function createWebdriverClient(host, port) {
+    var webdriverServer = {
+        services: ['selenium-standalone', 'chromedriver'],
+        sync: false,
+        debug: false,
+        host: host || 'localhost',
+        port: port || 4444,
+        logLevel: 'silent',
+        baseUrl: 'https://webdriver.io',
+        pageLoadStrategy: 'eager',
+        connectionRetryTimeout: 1000,
+        capabilities: {
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+                prefs: {
+                    'download.default_directory': '/data/downloads',
+                    'profile.default_content_setting_values.notifications': 2,
+                    'exited_cleanly': true,
+                    'exit_type': 'None'
+                },
+                args: [
+                    // We stopped using sessions here because it injects the session using the API below
+                    // TODO: https://superuser.com/questions/461035/disable-google-chrome-session-restore-functionality
+                    //'user-data-dir=/tmp/profile-' + MAX_SESSIONS + 1,
+                    // 'start-fullscreen',
+                    'no-sandbox',
+                    'disable-session-crashed-bubble',
+                    'disable-infobars',
+                    'new-window',
+                    'disable-geolocation',
+                    'disable-notifications',
+                    'show-saved-copy',
+                    'silent-debugger-extension-api'
+                    //'kiosk'
+                ]
+            }
+        },
+    };
+    
+    //console.log('deleting webdriver from cache');
+    //Object.keys(require.cache).filter(k => k.includes('webdriver') || k.includes('wdio'))
+    //    .forEach(k => delete require.cache[k]);
+    var promise = remote(webdriverServer);
+    var client;
+    //remote.on('error', e => console.log(e.message));
+    //remote.on('end', () => console.log('Daemon: Closing browser'));
+    const connectSession = importer.import('connect webdriver session');
+    return promise
+        .then(r => client = r)
+        .then(() => connectSession(client))
+        .then(() => getSessions(client))
+        .then(() => onlyOneWindow(client))
+        .then(() => getAllSessionUrls(client))
+        .catch(e => {
+            console.log(e);
+            isError = e;
+            throw new Error('there is an error with the client ' + e);
+        })
+        .then(() => client);
+}
+
+module.exports = createWebdriverClient;
+</code></pre>
+
+<p>This code snippet gracefully shuts down all open browser windows or tabs associated with a given <code>client</code> object.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><strong><code>if(typeof client !== 'undefined')</code>:</strong> This condition checks if the <code>client</code> variable is defined and not <code>undefined</code>. This ensures the code only executes if a valid WebDriver client object exists.</li>
+<li><strong><code>client.endAll();</code>:</strong> This line calls the <code>endAll()</code> method on the <code>client</code> object. This method sends a signal to the WebDriver server to close all open browser windows or tabs associated with that client.</li>
+</ul>
+<p><strong>In essence, this code snippet provides a clean way to terminate all WebDriver sessions associated with a specific client object.</strong></p>

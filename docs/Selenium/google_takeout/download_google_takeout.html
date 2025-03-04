@@ -1,0 +1,116 @@
+<p>This code snippet automates the creation and download of a Google Takeout archive for a specified product, handling navigation, login, size selection, archive creation, and download completion.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+function listTakeouts() {
+    return client
+        .url('https://takeout.google.com/settings/takeout')
+        .loginGoogle()
+        .pause(1000)
+        .url('https://takeout.google.com/settings/takeout')
+        .getAllXPath([
+            '//*[@data-id]',
+            {
+                id: './@data-id',
+                label: './/td[3]//text()'
+            }
+        ])
+};
+
+function takeoutProducts(product) {
+    return client
+        .url('https://takeout.google.com/settings/takeout/custom/' + product.id)
+        .pause(500)
+        .click('//*[contains(@role, "button")][contains(., "Next")]')
+        .pause(500)
+        .click('//*[contains(., "Archive size")]/parent::*/*[contains(@role, "listbox")]') // [contains(@aria-selected, "true")]
+        .pause(500)
+        // TODO: shorten this in to a utility command
+        // doesn't work because of some weird css BS
+        // .click('//*[contains(@role, "option")][contains(., "50")]')
+        .click(
+            '//*[contains(., "Archive size")]/parent::*//*[contains(@role,"option")][contains(.,"50")]')
+        .pause(500)
+        .click('//*[contains(@role, "button")][contains(., "Create archive")]')
+        .waitUntil(
+            () => client.isExisting('//tr[1]//*[contains(@href, "takeout/download")]'),
+            120000,
+            '')
+        .isVisible('iframe[src*="settings"]')
+        .then(is => is ? client.execute(() => {
+            document.querySelector('iframe[src*="settings"]').remove();
+        }) : [])
+        .click('//tr[1]/td[last()]//*[contains(@href, "takeout/download")]')
+        .pause(1000)
+        .isVisible('#passwordNext')
+        .then(is => is ? client
+            .loginGoogle()
+            .then(is => is ? client.execute(() => {
+                const question = document.querySelector('iframe[src*="settings"]');
+                if(question) {
+                    question.remove();
+                }
+            }) : [])
+             : [])
+        // wait for download
+        .pause(10000)
+        .catch(e => console.log(e))
+}
+
+function downloadGoogleTakeout(products) {
+    var regex = new RegExp(products, 'ig');
+    return listTakeouts()
+        .then(ids => {
+            return ids
+                .map(k => ({
+                    id: k.id + '',
+                    label: k.label + ''
+                }))
+                .filter(k => k.id != '_gd' && (products.indexOf('all') > -1
+                    || k.id.match(regex) != null || k.label.match(regex) != null))
+        })
+        .then(selectedProducts => {
+            console.log(selectedProducts);
+            return importer.runAllPromises(selectedProducts
+                .map(p => (resolve) => {
+                    return takeoutProducts(p)
+                        .then(r => resolve(r))
+                        .catch(e => resolve(e))
+                }))
+        })
+        .catch(e => console.log(e))
+};
+if (typeof client.downloadGoogleTakeout == 'undefined') {
+    client.addCommand('downloadGoogleTakeout', downloadGoogleTakeout);
+}
+module.exports = downloadGoogleTakeout;
+
+</code></pre>
+
+<p>This code snippet automates the process of creating and downloading a Google Takeout archive for a specific product.</p>
+<p>Here's a breakdown:</p>
+<p><strong>1. <code>listTakeouts</code> Function:</strong></p>
+<ul>
+<li>Navigates to the Google Takeout settings page.</li>
+<li>Logs in using <code>loginGoogle</code> (presumably a custom function).</li>
+<li>Extracts a list of available products from the page using XPath selectors.</li>
+</ul>
+<p><strong>2. <code>takeoutProducts</code> Function:</strong></p>
+<ul>
+<li>Takes a product object (likely containing the product ID) as input.</li>
+<li>Navigates to the product's settings page.</li>
+<li>Performs the following actions:
+<ul>
+<li>Clicks the &quot;Next&quot; button.</li>
+<li>Selects the desired archive size (50 GB in this case).</li>
+<li>Clicks the &quot;Create archive&quot; button.</li>
+<li>Waits for the download link to become available.</li>
+<li>Removes an iframe element (likely related to security or confirmation).</li>
+<li>Clicks the download link.</li>
+<li>Handles potential login prompts for the download.</li>
+<li>Waits for the download to complete.</li>
+</ul></li>
+</ul>
+<p><strong>Overall:</strong></p>
+<p>This code snippet automates the process of creating and downloading a Google Takeout archive for a specific product. It handles navigation, login, selection of archive size, creation of the archive, and download.</p>

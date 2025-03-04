@@ -1,0 +1,65 @@
+<p>Here's a 1 or 2 sentence summary of the provided code breakdown:</p>
+<p>This code initializes an asynchronous operation that makes a request to a specified URL, processes the response to extract image sources, and updates an array with the sources. It also includes error handling to notify the operation in case of any errors that occur during the process.</p>
+
+
+<pre><code>$$.async();
+var images = [];
+new Promise((resolve, reject) => {
+    request('http://' + host + ':' + port, (err, res, body) => {
+        if (err) {
+            reject(err)
+        }
+        else {
+            resolve(body)
+        }
+    });
+}).then((body) => {
+    var nodeList = (new JSDOM(body)).window.document.querySelectorAll(query);
+    return Array.prototype.slice.call(nodeList, 0)
+        .map(i => i.getAttribute('src'));
+}).then(sources => {
+    images = sources;
+    $$.done(sources);
+}).catch(e => $$.done(e));
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Initialization</h4>
+<ul>
+<li><code>$$.async()</code>: Initializes an asynchronous operation.</li>
+<li><code>var images = []</code>: Initializes an empty array to store image sources.</li>
+</ul>
+<h4>Making a Request</h4>
+<ul>
+<li><code>new Promise((resolve, reject) =&gt; {... })</code>: Creates a promise to handle the request.
+<ul>
+<li><code>request('http://' + host + ':' + port, (err, res, body) =&gt; {... })</code>: Sends a request to the specified URL.
+<ul>
+<li>If an error occurs, <code>reject(err)</code> is called to reject the promise with the error.</li>
+<li>Otherwise, <code>resolve(body)</code> is called to resolve the promise with the response body.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4>Processing the Response</h4>
+<ul>
+<li><code>.then((body) =&gt; {... })</code>: Handles the resolved promise with the response body.
+<ul>
+<li><code>var nodeList = (new JSDOM(body)).window.document.querySelectorAll(query);</code>: Selects elements from the parsed HTML response using <code>JSDOM</code> and the specified <code>query</code>.</li>
+<li><code>return Array.prototype.slice.call(nodeList, 0).map(i =&gt; i.getAttribute('src'));</code>: Extracts the <code>src</code> attribute from each selected element and returns an array of sources.</li>
+</ul></li>
+</ul>
+<h4>Updating the Images Array</h4>
+<ul>
+<li><code>.then(sources =&gt; {... })</code>: Handles the array of sources.
+<ul>
+<li><code>images = sources;</code>: Assigns the sources array to the <code>images</code> variable.</li>
+<li><code>$$.done(sources);</code>: Notifies the asynchronous operation that the images array is ready.</li>
+</ul></li>
+</ul>
+<h4>Error Handling</h4>
+<ul>
+<li><code>.catch(e =&gt; $$.done(e));</code>: Handles any errors that occur during the asynchronous operation.
+<ul>
+<li><code>$$.done(e);</code>: Notifies the asynchronous operation that an error occurred with the error object.</li>
+</ul></li>
+</ul>

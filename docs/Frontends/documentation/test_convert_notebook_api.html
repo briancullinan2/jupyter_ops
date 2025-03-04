@@ -1,0 +1,67 @@
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>The code imports necessary modules, initializes the environment, and checks for the existence of the <code>$$</code> object before proceeding to process Jupyter notebooks and RPC specifications. It then executes RPC operations, logs results and errors, and sends them to the <code>$$</code> object accordingly.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getRpcSpecFromCells = importer.import('convert notebook to open api');
+var getRpcFromSpec = importer.import('get rpc from spec');
+var getEnvironment = importer.import('get environment');
+var groupPermissions = importer.import('test get permissions');
+getEnvironment('STUDY_LOCAL')
+
+if(typeof $$ !== 'undefined') {
+    $$.async()
+    var spec = getRpcSpecFromCells(['study sauce.ipynb', 'rpc.ipynb'])
+//    var spec = getRpcSpecFromCells('study sauce.ipynb');
+    console.log(spec)
+    var juypter_ops = getRpcFromSpec(spec)
+    console.log(juypter_ops)
+//    juypter_ops.marketing.studysauce.copyStudy({email: 'megamindbrian@gmail.com'})
+    juypter_ops.core.rpc.getPermissions({search: null})
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<ul>
+<li>The code imports four modules from the <code>'../Core'</code> directory:
+<ul>
+<li><code>convert notebook to open api</code></li>
+<li><code>get rpc from spec</code></li>
+<li><code>get environment</code></li>
+<li><code>test get permissions</code></li>
+</ul></li>
+<li>These modules are stored in the <code>importer</code> object.</li>
+</ul>
+<h3>Initializing Environment</h3>
+<ul>
+<li>The code initializes the environment using <code>getEnvironment</code> with the argument <code>'STUDY_LOCAL'</code>.</li>
+</ul>
+<h3>Checking for $$ Object</h3>
+<ul>
+<li>It checks if the <code>$$</code> object is defined.</li>
+<li>If it is, the code proceeds to execute the following lines.</li>
+</ul>
+<h3>Processing Jupyter Notebooks</h3>
+<ul>
+<li>The code uses <code>getRpcSpecFromCells</code> to process two Jupyter notebooks:
+<ul>
+<li><code>'study sauce.ipynb'</code></li>
+<li><code>'rpc.ipynb'</code></li>
+</ul></li>
+<li>The processed data is stored in the <code>spec</code> variable.</li>
+<li>The code logs the <code>spec</code> to the console.</li>
+</ul>
+<h3>Processing RPC Specifications</h3>
+<ul>
+<li>The code uses <code>getRpcFromSpec</code> to process the <code>spec</code> and stores the result in <code>juypter_ops</code>.</li>
+<li>The code logs <code>juypter_ops</code> to the console.</li>
+</ul>
+<h3>Executing RPC Operations</h3>
+<ul>
+<li>The code attempts to execute the <code>getPermissions</code> operation using <code>juypter_ops</code>.</li>
+<li>If the operation is successful, the result is sent to the <code>$$</code> object using <code>$$.sendResult(r)</code>.</li>
+<li>If the operation fails, the error is sent to the <code>$$</code> object using <code>$$.sendError(e)</code>.</li>
+</ul>

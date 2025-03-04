@@ -1,0 +1,77 @@
+<p>Here's a two-sentence summary:</p>
+<p>This code defines a Node.js module that exports a JSON interface object and two functions, <code>wireJson</code> and <code>pathJson</code>, which transform a <code>kernel_json</code> object into a new object that conforms to the JSON interface. The functions, <code>wireJson</code> and <code>pathJson</code>, modify the <code>argv</code> property of the <code>kernel_json</code> object to include specific elements, such as a connection file or a path, depending on their existence.</p>
+
+
+<pre><code>var path = require('path');
+var importer = require('../Core');
+var interface = importer.import('enforcing an interface');
+
+var jsonInterface = {
+    display_name: '',
+    argv: [], // not optional
+    language: '', // not optional
+    metadata: [void 0, {}], // optional
+    env: [void 0, {}], // optional TODO dictionary descriptor types?
+    interrupt_mode: [void 0, ''] // optional
+}
+
+function wireJson(kernel_json) {
+    var wire_json = Object.create(interface(kernel_json, jsonInterface))
+    Object.assign(wire_json, {
+        argv: (kernel_json.argv || [])
+            .filter(a => a.includes('{connection_file}')).length === 0
+            ? (kernel_json.argv || []).concat(['{connection_file}'])
+            : (kernel_json.argv || [])
+    })
+    var self = Object.create(wire_json)
+    return self;
+}
+
+// TODO: use yargs to parse from string
+function pathJson(kernel_json) {
+    return interface(Object.assign({
+        argv: (kernel_json.path
+               ? [kernel_json.path]
+               : []).concat(kernel_json.argv || kernel_json.args || [])
+    }, kernel_json), jsonInterface)
+}
+
+module.exports = {
+    jsonInterface,
+    wireJson,
+    pathJson,
+};
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Variables and Modules</h4>
+<ul>
+<li><code>var path = require('path')</code>: Requires the built-in Node.js <code>path</code> module.</li>
+<li><code>var importer = require('../Core')</code>: Requires a custom module named <code>Core</code> located in the parent directory.</li>
+<li><code>var interface = importer.import('enforcing an interface')</code>: Imports a specific module named <code>enforcing an interface</code> from the <code>Core</code> module.</li>
+</ul>
+<h4>jsonInterface Object</h4>
+<ul>
+<li><code>var jsonInterface = {... }</code>: Defines an object that represents a JSON interface with the following properties:
+<ul>
+<li><code>display_name</code>: An empty string.</li>
+<li><code>argv</code>: An array that is not optional.</li>
+<li><code>language</code>: An empty string that is not optional.</li>
+<li><code>metadata</code>, <code>env</code>, and <code>interrupt_mode</code>: Optional arrays with default values.</li>
+</ul></li>
+</ul>
+<h4>Functions</h4>
+<ul>
+<li><code>function wireJson(kernel_json) {... }</code>: A function that takes a <code>kernel_json</code> object as an argument and returns a new object with the <code>argv</code> property modified to include a <code>'{connection_file}'</code> element if it does not already exist.</li>
+<li><code>function pathJson(kernel_json) {... }</code>: A function that takes a <code>kernel_json</code> object as an argument and returns a new object with the <code>argv</code> property modified to include the <code>kernel_json.path</code> element if it exists, or an empty array if it does not.</li>
+</ul>
+<h4>Exports</h4>
+<ul>
+<li><code>module.exports = {... }</code>: Exports the <code>jsonInterface</code>, <code>wireJson</code>, and <code>pathJson</code> functions as a module.</li>
+</ul>
+<h3>Example Use Cases</h3>
+<p>The <code>wireJson</code> and <code>pathJson</code> functions can be used to transform a <code>kernel_json</code> object into a new object that conforms to the <code>jsonInterface</code>. The <code>wireJson</code> function adds a <code>'{connection_file}'</code> element to the <code>argv</code> array if it does not already exist, while the <code>pathJson</code> function adds the <code>kernel_json.path</code> element to the <code>argv</code> array if it exists.</p>
+<pre><code class="language-javascript">var kernelJson = { /* some JSON object */ };
+var wireJsonObject = wireJson(kernelJson);
+var pathJsonObject = pathJson(kernelJson);
+</code></pre>

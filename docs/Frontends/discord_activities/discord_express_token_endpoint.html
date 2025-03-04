@@ -1,0 +1,122 @@
+<p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for the Discord API using the client credentials flow, making a POST request to the <code>oauth2/token</code> endpoint and storing user information in the <code>INSTANCES</code> and <code>SESSIONS</code> objects. The function returns the access token data as a JSON response, setting various cookies for user authentication and storing a random nonce for future commands.</p>
+
+
+<pre><code>const {INSTANCES, SESSIONS} = importer.import('discord gateway')
+const {request} = require('gaxios')
+const qs = require('qs');
+const {DEFAULT_API, SECRET, TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
+var crypto = require('crypto')
+
+async function getToken(req, res, next) {
+  //console.log(req.body)
+  let result = await request({
+    url: DEFAULT_API + 'oauth2/token',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      //'Authorization': 'Bot ' + TOKEN
+    },
+    data: qs.stringify({
+      client_id: DEFAULT_APPLICATION,
+      client_secret: SECRET,
+      grant_type: 'authorization_code',
+			code: req.body.code,
+		})
+  })
+
+  let expiry = new Date(Date.now() + result.data.expires_in)
+
+  if(typeof req.body['launch_id'] != 'undefined' 
+    && typeof req.body['frame_id'] != 'undefined')
+  {
+    let userResult = await request({
+      method: 'GET',
+      url: DEFAULT_API + `oauth2/@me`,
+      headers: {
+        'Authorization': 'Bearer ' + result.data.access_token
+      }
+    })
+
+    // TODO: group permissions
+
+    if(typeof INSTANCES[req.body['launch_id']] == 'undefined') {
+      INSTANCES[req.body['launch_id']] = []
+    }
+    INSTANCES[req.body['launch_id']].push([userResult.data.user.id, req.body['frame_id']])
+    console.log(INSTANCES)
+
+    // generate nonce for client to use on future commands to authenticate with our server quickly instead of relying on cookies
+    result.data.session_id = crypto.randomBytes(16).toString('hex')
+    SESSIONS[result.data.session_id] = userResult.data.user.id
+
+    res.cookie('discord_bot_session', userResult.data.user.id, {
+      path: '/.proxy/',
+      expires: expiry
+    })
+    res.cookie('discord_bot_frame', req.body['frame_id'], { 
+      path: '/.proxy/',
+      expires: expiry
+    })
+  }
+
+  res.cookie('discord_bot_expiry', Date.now() + result.data.expires_in, { 
+    path: '/.proxy/',
+    expires: expiry
+  })
+  res.setHeader('Content-Type', 'application/json')
+  return res.send(JSON.stringify(result.data))
+}
+
+module.exports = getToken
+</code></pre>
+
+<p><strong>Function Breakdown: <code>getToken</code></strong></p>
+<h3>Function Purpose</h3>
+<p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for Discord API using the client credentials flow.</p>
+<h3>Function Parameters</h3>
+<ul>
+<li><code>req</code>: The HTTP request object</li>
+<li><code>res</code>: The HTTP response object</li>
+<li><code>next</code>: The next middleware function in the request response chain</li>
+</ul>
+<h3>Function Steps</h3>
+<ol>
+<li><strong>Send Client Credentials Request</strong>
+<ul>
+<li>Makes a POST request to the Discord API's <code>oauth2/token</code> endpoint</li>
+<li>Sends the client ID and secret as form data</li>
+<li>Retrieves the access token, expires in, and other relevant data from the response</li>
+</ul></li>
+<li><strong>Check for Launch and Frame IDs</strong>
+<ul>
+<li>Checks if the request body contains <code>launch_id</code> and <code>frame_id</code></li>
+<li>If present, retrieves the user's information using the <code>oauth2/@me</code> endpoint</li>
+</ul></li>
+<li><strong>Store User Information</strong>
+<ul>
+<li>Stores the user's ID and frame ID in the <code>INSTANCES</code> object</li>
+<li>Generates a random nonce for the client to use on future commands</li>
+<li>Stores the session ID and user ID in the <code>SESSIONS</code> object</li>
+</ul></li>
+<li><strong>Set Cookies</strong>
+<ul>
+<li>Sets three cookies:
+<ul>
+<li><code>discord_bot_session</code>: User ID</li>
+<li><code>discord_bot_frame</code>: Frame ID</li>
+<li><code>discord_bot_expiry</code>: Expiration time of the access token</li>
+</ul></li>
+</ul></li>
+<li><strong>Return Response</strong>
+<ul>
+<li>Sets the content type to <code>application/json</code></li>
+<li>Returns the access token data as a JSON response</li>
+</ul></li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The function uses the <code>gaxios</code> library to make HTTP requests</li>
+<li>The <code>qs</code> library is used to stringify form data</li>
+<li>The <code>crypto</code> library is used to generate a random nonce</li>
+<li>The <code>importer</code> library is used to import external configuration and data</li>
+</ul>

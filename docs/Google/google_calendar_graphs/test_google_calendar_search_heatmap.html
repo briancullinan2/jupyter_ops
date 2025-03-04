@@ -1,0 +1,99 @@
+<p>This code searches Google Calendar for events matching given keywords and generates a heatmap visualization of the results, showing the frequency of events over time.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+var options = {};
+var listEvents = importer.import('list events')
+var d3Heatmap = importer.import('d3 calendar')
+
+var now = new Date();
+function calendarSearchToHeatmap(searches) {
+    return importer.runAllPromises(searches
+        .map((s, i) => (resolve) => listEvents({
+            auth: options.auth,
+            calendarId: 'Emotions',
+            q: s
+        })
+            .then(r => {
+                //console.log(s);
+                //console.log(r.map(e => e.event.start.dateTime));
+                resolve(r.map(e => ({
+                    id: e.event.id,
+                    start: new Date(e.event.start.dateTime),
+                    end: new Date(e.event.end.dateTime),
+                })));
+            })
+            .catch(e => console.log(e))))
+        .then(r => d3Heatmap(r))
+}
+
+module.exports = calendarSearchToHeatmap;
+
+if(typeof $$ != 'undefined') {
+    $$.async();
+    
+    calendarSearchToHeatmap([
+        'coincidence',
+        /*
+        'work',
+        'working',
+        'worked',
+        'study sauce',
+        'portal',
+        'renewal',
+        'work on sos',
+        'jupyter',
+        'jupytangular',
+        'unit tests',
+        'selenium',
+        'angular',
+        'mind spree',
+        '"c#"',
+        'docker',
+        'quake 3',
+        'kernels',
+        'notebook',
+        'media server',
+        */
+    ])
+        .then(r => $$.html(r))
+        .catch(e => $$.sendError(e))
+
+}
+</code></pre>
+
+<p>This code fetches and visualizes Google Calendar events based on provided search queries.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing utility functions for importing other modules.</li>
+<li><code>listEvents</code>: A function to list events from a Google Calendar.</li>
+<li><code>d3Heatmap</code>: A function to create a heatmap visualization using the D3.js library.</li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>options</code>: An empty object to store configuration options (likely for authentication).</li>
+<li><code>now</code>: A <code>Date</code> object representing the current time.</li>
+</ul></li>
+<li><p><strong><code>calendarSearchToHeatmap</code> Function:</strong></p>
+<ul>
+<li>Takes an array of search queries as input.</li>
+<li>Uses <code>importer.runAllPromises</code> to concurrently fetch events for each query using <code>listEvents</code>.</li>
+<li>Processes the fetched events, extracting relevant information (id, start time, end time).</li>
+<li>Passes the processed events to <code>d3Heatmap</code> to generate a heatmap visualization.</li>
+<li>Returns the generated heatmap.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>calendarSearchToHeatmap</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>Checks if <code>$$</code> is defined (likely a custom environment variable or object).</li>
+<li>If defined, it executes the <code>calendarSearchToHeatmap</code> function with a list of search queries.</li>
+<li>Displays the generated heatmap using <code>$$.html</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to search Google Calendar for events based on keywords and visualize the results as a heatmap, allowing for a visual representation of event occurrences over time.</p>

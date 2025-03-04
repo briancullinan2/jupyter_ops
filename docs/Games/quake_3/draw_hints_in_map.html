@@ -1,0 +1,182 @@
+<p>The <code>addHints</code> function modifies Quake 3 map files by adding boundary or hint information, either based on the map's name or a provided pattern, likely for purposes like skybox placement or collision detection.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core')
+var {getBounds} = importer.import('add skybox to map')
+
+
+var MAPS_HINTS = {
+    'base1-a': [
+        [-648, -209],
+        [-648, 235],
+        [-400, 235],
+        [-400, 514],
+        [300, 514],
+        [300, 1922],
+        [9999, 1922],
+        [9999, -9999],
+        [-648, -9999],
+        [-648, -209]
+    ],
+    'base1-b': [
+        [-648, -209],
+        [-648, 235],
+        [-400, 235],
+        [-400, 514],
+        [300, 514],
+        [300, 1922],
+        [-1300, 2174],
+        [-1300, 648],
+        [-648, -209],
+    ],
+    'base1-c': [
+        [-1300, 1000],
+        [-1300, 2174],
+        [-9999, 9999],
+        [-9999, 1000],
+        [-1300, 1000],
+    ],
+    
+    'base2-a': [
+        [-1212, 1242],
+        [340, 1242],
+        [340, 1030],
+        [1324, 1030],
+        [1324, 3109],
+        [-1212, 3109],
+        [-1212, 1242]
+    ],
+    'base2-b': [
+        [-1212, 1242],
+        [340, 1242],
+        [340, 1030],
+        [1324, 1030],
+        [1324, -1711],
+        [736, -1711],
+        [736, -1251],
+        [-1212, -1251],
+        [-1212, 1242]
+    ],
+    'base2-c': [
+        [1324, 1030],
+        [1324, -1711],
+        [736, -1711],
+        [736, -1251],
+        [-1212, -1251],
+        [-1212, -2815],
+        [1324, -2815],
+        [1324, 1030],
+    ]
+}
+
+function addHints(fileName, hints) {
+    var file
+    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        file = fs.readFileSync(fileName).toString('utf-8')
+        if(!hints) {
+            hints = path.basename(fileName).replace(/[-_]converted|\.map$/ig, '')
+        }
+    } else {
+        file = fileName
+    }
+    
+    if(!Array.isArray(hints)) {
+        var exp = new RegExp(hints, 'ig')
+        hints = Object.keys(MAPS_HINTS).reduce((arr, k) => {
+            if(k.match(exp)) {
+                arr.push(MAPS_HINTS[k])
+            }
+            return arr
+        }, [])
+    }
+
+    var brushes = importer.regexToArray(/\{[^\{}]*?\}\s*/ig, file)
+    
+    /*
+    brushes.forEach(b => {
+        if(b.includes('/areaportal')) {
+            file = file.replace(b, '')
+            return false
+        }
+        return true
+    })
+    */
+    
+    var vs = getBounds(file)
+    
+    var newBrush = ``
+    
+    for(var h = 0; h < hints.length; h++) {
+        for(var i = 0; i < hints[h].length - 1; i++) {
+            var minX = Math.min(hints[h][i][0], hints[h][i+1][0]), 
+                maxX = Math.max(hints[h][i][0], hints[h][i+1][0]), 
+                minY = Math.min(hints[h][i][1], hints[h][i+1][1]), 
+                maxY = Math.max(hints[h][i][1], hints[h][i+1][1])
+            var p1 = [minX,   minY, vs[0][2]]
+            var p2 = [maxX+2, maxY+2, vs[1][2]]
+
+            newBrush += `
+{ // brush 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p1[1]} ${p2[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p2[2]} ) common/hint 0 0 0 1 1 0 0 0
+}
+`
+        }
+    }
+    
+    var exp = (/\{*\s*\/\/\s*brush\s*0\s*\{*/ig)
+    var match = exp.exec(file)
+    var pos = exp.lastIndex
+    file = file.substr(0, pos - match[0].length) + newBrush + file.substr(pos - match[0].length)
+    
+    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        console.log(`writing ${fileName}`)
+        fs.writeFileSync(fileName, file)
+    } else {
+        return file
+    }
+}
+
+module.exports = addHints
+module.exports.addHints = addHints
+module.exports.MAPS_HINTS = MAPS_HINTS
+</code></pre>
+
+<p>This code snippet defines a function <code>addHints</code> that adds hints to a Quake 3 map file based on its name or a provided pattern.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+<li><code>importer</code>: A custom module likely containing utility functions for working with Quake 3 map files.</li>
+<li><code>getBounds</code>: A function imported from the <code>add skybox to map</code> module (likely used for skybox-related calculations).</li>
+<li><code>MAPS_HINTS</code>: An object mapping map names (keys) to arrays of coordinates (values). These coordinates likely define the boundaries of the map for skybox placement.</li>
+</ul></li>
+<li><p><strong><code>addHints</code> Function:</strong></p>
+<ul>
+<li>Takes two arguments: <code>fileName</code> (the map file path) and <code>hints</code> (an optional array of coordinates or a pattern to match map names).</li>
+<li><strong>File Reading:</strong>
+<ul>
+<li>Reads the map file content into a <code>file</code> variable if <code>fileName</code> is a valid string and the file exists.</li>
+<li>If <code>hints</code> is not provided, it tries to extract the map name from the <code>fileName</code> and uses the corresponding coordinates from <code>MAPS_HINTS</code>.</li>
+</ul></li>
+<li><strong>Hint Processing:</strong>
+<ul>
+<li>If <code>hints</code> is not an array, it uses a regular expression to match the provided pattern against map names in <code>MAPS_HINTS</code> and builds an array of coordinates accordingly.</li>
+</ul></li>
+<li><strong>Adding Hints:</strong>
+<ul>
+<li>Extracts all brush entities from the <code>file</code> using a regular expression.</li>
+<li>Iterates through each brush and likely adds the <code>hints</code> coordinates to the brush definition (the code snippet is incomplete).</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Purpose:</strong></p>
+<ul>
+<li>This code snippet is designed to add hints or boundary information to Quake 3 map files. These hints could be used for various purposes, such as skybox placement, collision detection, or level design guidance.</li>
+</ul></li>
+</ol>

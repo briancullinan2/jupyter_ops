@@ -1,0 +1,123 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code imports necessary libraries and defines functions <code>enterReddit</code> and <code>loginReddit</code> to interact with the Reddit website using Selenium WebDriver. However, the code has several issues, including recursive function calls, unhandled errors, and incomplete implementation, which need to be addressed.</p>
+
+
+<pre><code>
+const getClient = importer.import('selenium client')
+const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
+
+//const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+//const PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'brian-reddit.json');
+
+async function enterReddit(driver) {
+  console.log('Reddit: Sign in required');
+
+  //var credentials = require(PASSWORDS_FILE)
+
+  //let body = await driver.findElement(By.css('body'))
+  await driver.wait(until.elementLocated(By.css('#post-submit-form')), 30000);
+  
+  let loginStill, loginStill2, loginStill3
+  try {
+    loginStill = await driver.findElement(By.css('#captcha-internal'))
+  } catch (e) {}
+  try {
+    loginStill2 = await driver.findElement(By.css('input[name*="session_password"]'))
+  } catch (e) {}
+  try {
+    loginStill3 = await driver.findElement(By.xpath('//*[contains(text(),"Check your notifications")]'))
+  } catch (e) {}
+
+  if(loginStill3) {
+    await new Promise(resolve => setTimeout(resolve, 20000))
+    try {
+      loginStill = false
+      loginStill2 = false
+      loginStill3 = await driver.findElement(By.xpath('//*[contains(text(),"Check your notifications")]'))
+    } catch (e) {}
+  }
+
+  if(loginStill || loginStill2 || loginStill3) {
+    throw new Error('captcha')
+  }
+}
+
+async function loginReddit(driver) {
+  if(!driver) {
+    driver = await getClient();
+  }
+
+  try {
+    let url = await driver.getCurrentUrl()
+    let loggedIn = url.indexOf('reddit') > -1 && url.indexOf('login') == -1
+
+    debugger
+    if(loggedIn) {
+      //if(await driver.findElement(By.xpath('iframe.authentication-iframe'))) {
+      //  await driver.frame((await driver.element('iframe.authentication-iframe')).value)
+        await enterReddit(driver)
+        //await frame()
+      //}
+    } else {
+      await driver.get('https://www.reddit.com/submit')
+
+      let loginLink, loginLink2
+      try {
+        loginLink = await driver.findElement(By.xpath('//auth-flow-link[text()[contains(.,"Forgot password?")]]'))
+      } catch (e) {}
+      try {
+        loginLink2 = await driver.findElement(By.xpath('//auth-flow-link[text()[contains(.,"Sign up")]]'))
+      } catch (e) {}
+
+      if(loginLink || loginLink2) {
+        await enterReddit(driver)
+      }
+    }
+  } catch (e) {
+    driver.quit() // avoid leaving sessions hanging around
+
+    throw e
+  }
+
+  return driver
+}
+
+module.exports = loginReddit
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code imports the following dependencies:</p>
+<ul>
+<li><code>importer</code> (not a standard library, likely a custom function for importing modules)</li>
+<li><code>selenium client</code> (a module for using Selenium WebDriver)</li>
+<li><code>selenium-webdriver</code> (a library for interacting with web browsers using Selenium WebDriver)</li>
+</ul>
+<h3>Function: <code>enterReddit</code></h3>
+<p>This function takes a <code>driver</code> object as an argument and performs the following steps:</p>
+<ol>
+<li>Waits for an element with the ID <code>post-submit-form</code> to be located on the page.</li>
+<li>Tries to find three elements:
+<ul>
+<li>A CAPTCHA element with the ID <code>captcha-internal</code>.</li>
+<li>A password input field with the name containing &quot;session_password&quot;.</li>
+<li>A notification element with the text &quot;Check your notifications&quot;.</li>
+</ul></li>
+<li>If the notification element is found, adds a 20-second delay and tries to find the CAPTCHA element again.</li>
+<li>If any of the elements are found, throws an error with the message &quot;captcha&quot;.</li>
+</ol>
+<h3>Function: <code>loginReddit</code></h3>
+<p>This function takes a <code>driver</code> object as an argument (optional, defaults to creating a new <code>driver</code> instance using <code>getClient()</code>). The function performs the following steps:</p>
+<ol>
+<li>Checks if the current URL contains &quot;reddit&quot; and does not contain &quot;login&quot;. If true, calls <code>enterReddit()</code>.</li>
+<li>If not logged in, navigates to the Reddit submit page.</li>
+<li>Tries to find a login link with the text &quot;Forgot password?&quot;.</li>
+<li>(The code is incomplete, with a <code>catc</code> statement instead of a <code>catch</code> block.)</li>
+</ol>
+<p>Note that the code has several issues, including:</p>
+<ul>
+<li>The <code>catc</code> statement is likely a typo and should be <code>catch</code>.</li>
+<li>The <code>enterReddit()</code> function is called recursively if the notification element is found, which may cause infinite loops.</li>
+<li>The <code>loginReddit()</code> function does not handle errors properly.</li>
+<li>The code lacks input validation and error handling.</li>
+</ul>

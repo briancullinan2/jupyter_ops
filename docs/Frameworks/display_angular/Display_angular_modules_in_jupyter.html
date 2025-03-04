@@ -1,0 +1,92 @@
+<p>This code renders an Angular application within an iframe by combining rendered HTML, extracted scripts and styles, and dynamically loading additional JavaScript files. It returns a promise that resolves with the complete HTML containing the embedded Angular application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var vm = require('vm');
+var fs = require('fs');
+var path = require('path');
+var listInProject = importer.import('list files in project');
+var renderer = importer.import('render Angular modules');
+
+var renderer;
+function displAngular(project, url) {
+    var innerHtml = '';
+    var scripts = '';
+    process.chdir(path.join(project));
+    module.paths.unshift(path.join(project, 'node_modules'));
+    require('module').Module._initPaths();
+    process.argv = [(process.argv0 = path.join(project, '.server', 'render-service.js'))];
+    return new Promise((resolve, reject) => {
+        renderer(url, (err, html) => {
+            if (err) {
+                return reject(err);
+            }
+            var content = fs.readFileSync(path.join(project, 'public', 'index.html')).toString();
+            scripts = getScriptsAndStyles(content);
+            innerHtml = html;
+            return resolve(innerHtml);
+        });
+    })
+        .then(() => listInProject(project, '**/public/assets/0.*.js'))
+        .then(paths => paths.map(p => '<script defer>' + fs.readFileSync(p) + '</script>')[0])
+        // TODO convert to using the same type of template system as angular-cli now that typescript is becoming more relevant here.
+        .then(chunks => ({
+            html: `
+<div id="container" style="display:block; width:100%;position:relative;">
+<iframe id="cell1" style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;"></iframe>
+</div>
+<script defer>
+var ifrm = document.getElementById('cell1');
+var doc = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+doc.document.open();
+doc.INITIAL_PATH=` + JSON.stringify('' + url) + `;
+doc.SOCKIFY_SERVER='http://local:8000';
+doc.document.write(decodeURI(` + JSON.stringify(encodeURI(innerHtml)) + `));
+var contHeight;
+contHeight = setInterval(function () {
+    if(document.getElementById("container") == null) {
+        console.log('Resizing canceled');
+        clearInterval(contHeight);
+    } else {
+        doc.document.getElementsByTagName('app-root')[0].style.display = 'block';
+        document.getElementById("container").style.height = (doc.document.getElementsByTagName('app-root')[0].offsetHeight + 40) + 'px';
+    }
+}, 500);
+</script>`, scripts: scripts, chunks: chunks
+        }));
+};
+module.exports = displAngular;
+displAngular;
+</code></pre>
+
+<p>This code defines a function <code>displAngular</code> that renders an Angular application within an iframe.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports necessary modules: <code>Core</code>, <code>vm</code>, <code>fs</code>, <code>path</code>, <code>list files in project</code>, and <code>render Angular modules</code>.</li>
+<li>It sets up the working directory to the provided <code>project</code> path and modifies <code>module.paths</code> to include the project's <code>node_modules</code> directory.</li>
+</ul></li>
+<li><p><strong>Rendering:</strong></p>
+<ul>
+<li>It calls the <code>renderer</code> function (imported earlier) to render the Angular application for the given <code>url</code>.</li>
+<li>It reads the content of <code>index.html</code> from the project's <code>public</code> directory and extracts scripts and styles using the <code>getScriptsAndStyles</code> function.</li>
+</ul></li>
+<li><p><strong>Combining Content:</strong></p>
+<ul>
+<li>It combines the rendered HTML (<code>html</code>), extracted scripts (<code>scripts</code>), and a placeholder for the Angular application's initial path and server URL.</li>
+</ul></li>
+<li><p><strong>Dynamic Script Loading:</strong></p>
+<ul>
+<li>It uses <code>listInProject</code> to find all JavaScript files in the <code>public/assets/0.*.js</code> pattern and loads them dynamically as <code>&lt;script&gt;</code> tags.</li>
+</ul></li>
+<li><p><strong>Iframe Integration:</strong></p>
+<ul>
+<li>It constructs an HTML string with an iframe element and injects the combined content into the iframe's document.</li>
+</ul></li>
+<li><p><strong>Return Value:</strong></p>
+<ul>
+<li>It returns a promise that resolves with the complete HTML string containing the rendered Angular application within an iframe.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions.</p>

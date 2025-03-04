@@ -1,0 +1,118 @@
+<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<p>The code requires various modules, defines constants and functions, and exports an asynchronous function <code>getSheet</code> which retrieves or creates a new sheet based on its link and domain, and adds or updates the sheet's data in a Google Sheets document. The <code>getSheet</code> function uses other functions such as <code>addSheet</code>, <code>updateRow</code>, <code>getInfo</code>, and <code>isInvalidDomain</code> to perform its operations.</p>
+
+
+<pre><code>var util = require('util');
+var uuid = require('uuid/v1');
+var importer = require('../Core');
+var getDataSheet = importer.import('google sheet array objects');
+var getInfo = importer.import('get google sheet info');
+var addRow = importer.import('add row data google sheet');
+var updateRow = importer.import('update a row in google sheets')
+
+var purchaseId = '1kWjkjLGxQyzFUzRLBk3LpcjPW3UjcaF-PBMDX_3hZfM';
+var project = 'spahaha-ea443';
+
+var isInvalidDomain = (match, domain) =>
+    !match || domain && domain !== match.domain && domain !== match.bucket
+
+function safeName(name) {
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 40).toLowerCase();
+}
+
+async function addSheet(docId, title, email) {
+    var name = safeName(title.replace(/\s*(configuration|config)\s*/ig, ''))
+        + '-' + uuid().substr(0, 5);
+    return await addRow(purchaseId, {
+        timestamp: Date.now(),
+        name: title,
+        email: email || '',
+        address: '',
+        domain: '',
+        bucket: name + '.sheet-to-web.com',
+        project: project,
+        sheet: docId
+    }, 'Purchases').then(() => name + '.sheet-to-web.com')
+}
+
+async function getSheet(link, domain, email) {
+    var title, docId;
+    var info = await getInfo(link)
+    title = info.properties.title;
+    docId = info.spreadsheetId;
+    var purchases = (await getDataSheet(purchaseId, 'Purchases'))
+    var match = purchases.filter(p => p.sheet == docId)[0]
+    if(domain && isInvalidDomain(match, domain)) {
+        throw new Error(`sheet ${docId} doesn't match domain ${domain}`)
+    } else if(!match) {
+        return await addSheet(docId, title, email);
+    }
+    console.log(`Purchase ${docId} already exists: ${match.domain} or ${match.bucket}`);
+    return await updateRow(purchaseId, r => r.sheet == docId, Object.assign(match, {
+        name: title,
+        email
+    }), 'Purchases');
+}
+
+module.exports = getSheet;</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Imports</h3>
+<p>The code starts by requiring several modules:</p>
+<ul>
+<li><code>util</code>: a built-in Node.js module providing utility functions.</li>
+<li><code>uuid/v1</code>: a module providing a unique identifier generator.</li>
+<li><code>../Core</code>: a custom module containing various functions, which are imported as follows:
+<ul>
+<li><code>google sheet array objects</code></li>
+<li><code>get google sheet info</code></li>
+<li><code>add row data google sheet</code></li>
+<li><code>update a row in google sheets</code></li>
+</ul></li>
+</ul>
+<h3>Constants and Functions</h3>
+<ul>
+<li><strong>purchaseId</strong>: a constant identifying a Google Sheets document.</li>
+<li><strong>project</strong>: a constant identifying a Google Cloud project.</li>
+<li><strong>isInvalidDomain</strong>: a function checking if a domain is invalid.</li>
+<li><strong>safeName</strong>: a function generating a safe name by replacing non-alphanumeric characters and trimming excess characters.</li>
+</ul>
+<h3>Functions</h3>
+<h4>addSheet</h4>
+<ul>
+<li><strong>async function</strong>: creates a new row in the <code>Purchases</code> sheet.</li>
+<li><strong>arguments</strong>:
+<ul>
+<li><code>docId</code>: the ID of the Google Sheets document.</li>
+<li><code>title</code>: the title of the sheet.</li>
+<li><code>email</code>: the email associated with the sheet.</li>
+</ul></li>
+<li><strong>operations</strong>:
+<ol>
+<li>Generates a unique name using <code>safeName</code> and <code>uuid</code>.</li>
+<li>Adds a new row to the <code>Purchases</code> sheet with the provided data.</li>
+<li>Returns the generated name in the format <code>name.sheet-to-web.com</code>.</li>
+</ol></li>
+</ul>
+<h4>getSheet</h4>
+<ul>
+<li><strong>async function</strong>: retrieves or creates a new sheet based on its link and domain.</li>
+<li><strong>arguments</strong>:
+<ul>
+<li><code>link</code>: the link to the Google Sheets document.</li>
+<li><code>domain</code>: the domain to be associated with the sheet.</li>
+<li><code>email</code>: the email associated with the sheet.</li>
+</ul></li>
+<li><strong>operations</strong>:
+<ol>
+<li>Retrieves information about the sheet using <code>getInfo</code>.</li>
+<li>Checks if the sheet already exists in the <code>Purchases</code> sheet.</li>
+<li>If the sheet exists:<br />
+a. Checks if the domain is valid using <code>isInvalidDomain</code>.<br />
+b. If the domain is invalid, throws an error.<br />
+c. If the domain is valid, updates the sheet's data using <code>updateRow</code>.</li>
+<li>If the sheet does not exist, creates a new sheet using <code>addSheet</code>.</li>
+</ol></li>
+</ul>
+<h3>Exports</h3>
+<p>The <code>getSheet</code> function is exported as a module.</p>

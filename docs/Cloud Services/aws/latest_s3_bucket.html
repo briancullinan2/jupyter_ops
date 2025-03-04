@@ -1,0 +1,96 @@
+<p>This code provides a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket, optionally filtering them based on a given pattern. It's designed to be used both as a server-side module and potentially in a client-side environment.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var minimatch = require("minimatch")
+var AWS = require('aws-sdk');
+var importer = require('../Core');
+var s3 = new AWS.S3();
+
+// For dev purposes only
+var AWS_HTTP = 'https://s3-us-west-2.amazonaws.com/selenium-bots/';
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var key = JSON.parse(fs.readFileSync(path.join(PROFILE_PATH, '.credentials/aws-sdk.json')).toString());
+AWS.config.update(key);
+
+function getS3Objects(bucket, marker) {
+    return new Promise((resolve, reject) => s3.listObjects({
+        Bucket: bucket || 'selenium-bots',
+        Prefix: '',
+        Marker: marker
+    }, function (err, resp) {
+        if(err) {
+            return reject(err);
+        }
+        return resolve(resp);
+    }))
+    .then(resp => {
+        if(resp.IsTruncated) {
+            return getS3Objects(bucket, resp.Contents[resp.Contents.length-1].Key)
+                .then(contents => resp.Contents.concat(contents));
+        }
+        return resp.Contents;
+    })
+}
+
+function latestS3(match, bucket) {
+    return getS3Objects(bucket)
+        .then(files => {
+            return files.sort((a, b) => b.LastModified.getTime() - a.LastModified.getTime())
+               .filter(s => !match || minimatch(s.Key, match))
+               .slice(0, 5)
+               .map(i => AWS_HTTP + i.Key)
+        });
+}
+module.exports = latestS3;
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    latestS3()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code defines a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket that match a given pattern.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports <code>fs</code>, <code>path</code>, <code>minimatch</code>, <code>AWS</code>, and <code>importer</code> modules.</li>
+<li><code>fs</code> is for file system operations.</li>
+<li><code>path</code> is for working with file paths.</li>
+<li><code>minimatch</code> is for pattern matching.</li>
+<li><code>AWS</code> is for interacting with AWS services, specifically S3.</li>
+<li><code>importer</code> is likely a custom module.</li>
+</ul></li>
+<li><p><strong>AWS Configuration:</strong></p>
+<ul>
+<li>It sets up the AWS SDK configuration using credentials from a local file (<code>aws-sdk.json</code>).</li>
+<li>It defines <code>AWS_HTTP</code> as the base URL for accessing S3 objects.</li>
+</ul></li>
+<li><p><strong><code>getS3Objects</code> Function:</strong></p>
+<ul>
+<li>This function retrieves a list of objects from an S3 bucket using the AWS SDK.</li>
+<li>It handles pagination by recursively calling itself if there are more objects to retrieve.</li>
+</ul></li>
+<li><p><strong><code>latestS3</code> Function:</strong></p>
+<ul>
+<li>This function takes a <code>match</code> pattern (optional) and a <code>bucket</code> name as arguments.</li>
+<li>It calls <code>getS3Objects</code> to get all objects in the bucket.</li>
+<li>It sorts the objects by last modified date in descending order.</li>
+<li>It filters the objects based on the <code>match</code> pattern using <code>minimatch</code>.</li>
+<li>It takes the top 5 objects and constructs their URLs using <code>AWS_HTTP</code>.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>latestS3</code> function is exported as the main module.</li>
+</ul></li>
+<li><p><strong>Client-Side Execution (Conditional):</strong></p>
+<ul>
+<li>The code includes a conditional block that appears to be for client-side execution (likely in a browser environment).</li>
+<li>It calls <code>latestS3</code> and sends the result or error to a client-side function (<code>$$.sendResult</code> and <code>$$.sendError</code>).</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

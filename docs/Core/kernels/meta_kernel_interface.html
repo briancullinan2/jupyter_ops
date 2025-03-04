@@ -1,0 +1,62 @@
+<p>Here is a 2-sentence summary:</p>
+<p>The code imports modules and interfaces from a parent folder and defines a <code>metaKernelInterface</code> object with various properties. This object is then exported as a module, providing an interface for interacting with a kernel in a programming environment.</p>
+
+
+<pre><code>var importer = require('../Core');
+var languageInterface = importer.import('kernel language interface');
+var {kernelInfoInterface} = importer.import('kernel info interface');
+
+var metaKernelInterface = {
+    ...kernelInfoInterface,
+    language_info: languageInterface,
+    kernel_info: kernelInfoInterface,
+    kernel_config: [void 0, {}],
+    do_init: () => {}, // custom for executing once
+    do_message: () => {}, // custom input message
+    do_respond: () => {}, // custom output message
+    do_execute: () => {},
+    do_complete: [void 0, () => {}],
+    do_inspect: [void 0, () => {}],
+    do_history: [void 0, () => {}],
+    do_is_complete: [void 0, () => {}],
+    do_shutdown: [void 0, () => {}],
+    // custom for executing install script, even remotely!
+    do_install: () => {},
+}
+
+module.exports = metaKernelInterface;
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var languageInterface = importer.import('kernel language interface');
+var {kernelInfoInterface} = importer.import('kernel info interface');
+</code></pre>
+<ul>
+<li>The code imports modules from a parent folder (<code>../Core</code>) and a specific file within it.</li>
+<li>It imports two interfaces (<code>kernel language interface</code> and <code>kernel info interface</code>) using the <code>import</code> method.</li>
+</ul>
+<h3>Defining metaKernelInterface Object</h3>
+<pre><code class="language-javascript">var metaKernelInterface = {
+   ...
+};
+</code></pre>
+<ul>
+<li>A new object <code>metaKernelInterface</code> is defined with multiple properties.</li>
+</ul>
+<h3>Properties of metaKernelInterface</h3>
+<ul>
+<li><code>...kernelInfoInterface</code>: Spreads the properties of <code>kernelInfoInterface</code> onto <code>metaKernelInterface</code>.</li>
+<li><code>language_info: languageInterface</code>: Assigns the <code>kernel language interface</code> to <code>language_info</code>.</li>
+<li><code>kernel_info: kernelInfoInterface</code>: Assigns the <code>kernel info interface</code> to <code>kernel_info</code>.</li>
+<li><code>kernel_config: [void 0, {}]</code>: Initializes <code>kernel_config</code> with an array containing <code>undefined</code> and an empty object.</li>
+<li><code>do_init</code>, <code>do_message</code>, <code>do_respond</code>, <code>do_execute</code>, <code>do_complete</code>, <code>do_inspect</code>, <code>do_history</code>, <code>do_is_complete</code>, and <code>do_shutdown</code>: All initialize empty functions.</li>
+<li><code>do_install</code>: Initializes an empty function for executing an install script.</li>
+</ul>
+<h3>Exporting metaKernelInterface</h3>
+<pre><code class="language-javascript">module.exports = metaKernelInterface;
+</code></pre>
+<ul>
+<li>The <code>metaKernelInterface</code> object is exported as a module.</li>
+</ul>

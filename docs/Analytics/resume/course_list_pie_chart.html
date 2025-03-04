@@ -1,0 +1,50 @@
+<p>This code fetches course enrollment data from a Google Sheet and generates an SVG image of a D3.js pie chart visualizing the data.  It uses imported functions to retrieve the data and create the chart.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getDataSheet = importer.import('google sheet array objects');
+var d3PieChart = importer.import('d3 pie chart');
+
+function getCourseSVG() {
+    var docId = '1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g';
+
+    return getDataSheet(docId, 'Courses pie data')
+        .then(data => data.map(d => ({label: d.subject, value: d.percent})))
+        .then(values => d3PieChart(values))
+}
+
+module.exports = getCourseSVG;</code></pre>
+
+<p>This code generates an SVG image of a pie chart visualizing course enrollment data from a Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports <code>getDataSheet</code> for fetching data from a Google Sheet, and <code>d3PieChart</code> for creating a D3.js pie chart.</li>
+</ul></li>
+<li><p><strong><code>getCourseSVG</code> Function:</strong></p>
+<ul>
+<li>Defines a function that retrieves and visualizes course enrollment data.</li>
+<li><strong>Retrieves Data:</strong>
+<ul>
+<li>Sets the <code>docId</code> to the ID of the target Google Sheet.</li>
+<li>Uses <code>getDataSheet</code> to fetch data from the specified sheet and named range ('Courses pie data').</li>
+</ul></li>
+<li><strong>Transforms Data:</strong>
+<ul>
+<li>Maps the fetched data to an array of objects, each with <code>label</code> (course subject) and <code>value</code> (enrollment percentage).</li>
+</ul></li>
+<li><strong>Generates Pie Chart:</strong>
+<ul>
+<li>Uses <code>d3PieChart</code> to create a D3.js pie chart based on the transformed data.</li>
+</ul></li>
+<li><strong>Returns SVG:</strong>
+<ul>
+<li>Returns the generated SVG code representing the pie chart.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>getCourseSVG</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>

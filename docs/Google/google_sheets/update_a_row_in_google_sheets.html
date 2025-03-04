@@ -1,0 +1,72 @@
+<p>The <code>updateRow</code> function updates a specific row in a Google Sheet based on a matching condition, utilizing helper functions for data formatting and range calculation. It leverages the Google Sheets API to perform the update and returns the modified row data.</p>
+
+
+<pre><code>var util = require('util');
+var importer = require('../Core');
+var getRows = importer.import('get worksheet rows');
+var authorizeSheets = importer.import('authorize sheets api');
+var getSheetByName = importer.import('get worksheet by name');
+
+var getOrderedValues = (columns, rowData) => ({
+    // Google sheets API, NULL means don't write value in range, as opposed to "" which clears
+    values: [columns.map(c => typeof rowData[c] === 'undefined'
+                         ? null
+                         : rowData[c])]
+})
+
+var getRange = (title, columns, match, rows) => {
+    var row = rows.filter(r => match(columns.reduce((acc, c, i) => (acc[c] = r[i], acc), {}), r))[0];
+    // if no match, add it
+    var index = (rows.indexOf(row) + 1) || (rows.length + 1);
+    var range = `'${title}'!A${index}:${String.fromCharCode(65 + columns.length - 1)}${index}`;
+    return range;
+}
+
+function updateRow(link, match, updateRow, page) {
+    var sheets, sheet;
+    
+    return authorizeSheets()
+        .then(s => (sheets = s, getSheetByName(link, page)))
+        .then(sh => (sheet = sh, getRows(link, sheet)))
+        .then(rows => {
+            // if passing an array, just use that
+            var columns = typeof updateRow.length != 'undefined'
+                ? new Array(updateRow.length)
+                : rows[0];
+        
+            var range = getRange(sheet.properties.title, columns, match, rows);
+        
+            console.log(`updating range ${range} ${columns}`);
+            return sheets.spreadsheets.values.update({
+                spreadsheetId: sheet.spreadsheetId,
+                range: range,
+                valueInputOption: 'RAW',
+                resource: getOrderedValues(columns, updateRow)
+            })
+        })
+        .then(() => updateRow)
+}
+
+module.exports = updateRow;
+
+</code></pre>
+
+<p>This code defines a function <code>updateRow</code> that updates a specific row in a Google Sheet based on a matching condition.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports necessary modules for interacting with Google Sheets, including <code>authorizeSheets</code>, <code>getSheetByName</code>, and <code>getRows</code>.</p></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>getOrderedValues</code>: Formats data into a format suitable for the Google Sheets API.</li>
+<li><code>getRange</code>: Determines the range to update based on the worksheet title, columns, matching criteria, and existing rows.</li>
+</ul></li>
+<li><p><strong><code>updateRow</code> Function:</strong></p>
+<ul>
+<li><strong>Authorization and Sheet Retrieval:</strong> It first authorizes access to the Google Sheets API and retrieves the specified worksheet.</li>
+<li><strong>Row Data Retrieval:</strong> It fetches the rows from the worksheet.</li>
+<li><strong>Column Determination:</strong> It determines the columns to update based on the input <code>updateRow</code> (either an array of column names or a single row object).</li>
+<li><strong>Range Calculation:</strong> It calculates the range to update using the <code>getRange</code> function.</li>
+<li><strong>API Update:</strong> It uses the Google Sheets API to update the specified range with the provided data.</li>
+</ul></li>
+<li><p><strong>Return Value:</strong> It returns the updated row data.</p></li>
+</ol>

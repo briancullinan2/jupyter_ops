@@ -1,0 +1,80 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary dependencies, including Discord configuration and mime types, and defines an asynchronous function <code>patchInteractionImageAttachment</code> that sends a PATCH request to a Discord webhook endpoint to update an interaction image attachment. The function takes four parameters: <code>prompt</code>, <code>buff</code>, <code>token</code>, and <code>content</code>, and constructs a multipart/form-data request body with a JSON payload and the base64-encoded <code>buff</code> buffer as a file attachment.</p>
+
+
+<pre><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const { safeurl } = importer.import('domain cache tools')
+const mime = require('mime-types');
+const {requestAuthQ} = importer.import('discord request')
+
+
+async function patchInteractionImageAttachment(prompt, buff, token, content = 'image/png') {
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'multipart/form-data; boundary=boundary123'
+    },
+    method: 'PATCH',
+    url: `webhooks/${DEFAULT_APPLICATION}/${token}/messages/@original`,
+    body: `--boundary123
+Content-Disposition: form-data; name="payload_json"
+Content-Type: application/json
+
+${JSON.stringify({
+  content: 'Your ' + (content.includes('image') ? 'image' : content) + ' delivered: *' + prompt + '*',
+  attachments: [{
+    "id": 0,
+    "description": prompt,
+    "filename": safeurl(prompt) + '.' + mime.extension(content)
+  }],
+})}
+--boundary123
+Content-Disposition: form-data; name="files[0]"; filename="${safeurl(prompt)}.${mime.extension(content)}"
+Content-Transfer-Encoding: base64
+Content-Type: ${content}
+
+${buff.toString('base64')}
+--boundary123--`
+  })
+}
+
+
+module.exports = {
+  patchInteractionImageAttachment
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<ul>
+<li><code>importer.import('discord configuration')</code> imports a module named <code>discord configuration</code> and assigns its property <code>DEFAULT_APPLICATION</code> to a constant.</li>
+<li><code>importer.import('domain cache tools')</code> imports a module named <code>domain cache tools</code> and assigns its property <code>safeurl</code> to a constant.</li>
+<li><code>require('mime-types')</code> imports the <code>mime-types</code> module and assigns it to a constant named <code>mime</code>.</li>
+<li><code>importer.import('discord request')</code> imports a module named <code>discord request</code> and assigns its property <code>requestAuthQ</code> to a constant.</li>
+</ul>
+<h4>patchInteractionImageAttachment Function</h4>
+<ul>
+<li><code>patchInteractionImageAttachment</code> is an asynchronous function that takes four parameters:
+<ul>
+<li><code>prompt</code>: a string</li>
+<li><code>buff</code>: a buffer (not a variable type, but a common Buffer object)</li>
+<li><code>token</code>: a string</li>
+<li><code>content</code>: a string (defaults to <code>'image/png'</code>)</li>
+</ul></li>
+<li>The function makes a <code>PATCH</code> request to a Discord webhook endpoint with the following properties:
+<ul>
+<li><code>url</code>: a string formed by concatenating the string <code>'webhooks/'</code>, the <code>DEFAULT_APPLICATION</code> constant, the <code>token</code> parameter, and the string <code>'/messages/@original'</code>.</li>
+<li><code>headers</code>: an object with a single property <code>'Content-Type'</code> set to <code>'multipart/form-data; boundary=boundary123'</code>.</li>
+<li><code>body</code>: a string formed by concatenating multiple parts:
+<ul>
+<li>A boundary string (<code>'--boundary123'</code>)</li>
+<li>A JSON payload with <code>content</code> and <code>attachments</code> properties, where <code>attachments</code> is an array with a single object containing <code>id</code>, <code>description</code>, and <code>filename</code> properties.</li>
+<li>Another boundary string (<code>'--boundary123'</code>)</li>
+<li>A file part with <code>Content-Disposition</code>, <code>Content-Transfer-Encoding</code>, and <code>Content-Type</code> properties, and the base64-encoded <code>buff</code> buffer as its value.</li>
+<li>A final boundary string (<code>'--boundary123--'</code>)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4>Exporting the Function</h4>
+<ul>
+<li>The <code>patchInteractionImageAttachment</code> function is exported as a module export.</li>
+</ul>

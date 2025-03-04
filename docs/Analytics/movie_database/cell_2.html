@@ -1,0 +1,15 @@
+
+
+<pre><code>var sqlite3 = require('better-sqlite3');
+var movies = './movies.sqlite.db';
+var db = new sqlite3(movies, {});
+
+function dropTitles() {
+    db.prepare(`DROP INDEX titles_titles`).run();
+    db.prepare(`DROP INDEX titles_types`).run();
+    db.prepare(`DROP TABLE names`).run();
+}
+
+db.prepare(`SELECT COUNT(*) FROM name`).get();
+</code></pre>
+

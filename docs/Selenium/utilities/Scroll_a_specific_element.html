@@ -1,0 +1,48 @@
+<p>Here's a summary in two sentences:</p>
+<p>The <code>scrollClient</code> function is an asynchronous function that scrolls a webpage to a specific position based on a given CSS selector, or to the top or bottom of the page if no selector is provided. It uses various functions such as <code>selectDom</code> and <code>evaluateDom</code> to dynamically import and evaluate code on the client-side to achieve the desired scroll position.</p>
+
+
+<pre><code>const {selectDom, evaluateDom} = importer.import('select tree')
+const {walkTree} = importer.import('walk tree')
+
+async function scrollClient(driver, selector, up = false) {
+  // scroll to bottom of messages
+  return await driver
+    .executeScript((evaluateDomString, walkTreeString, selectDomString, selector, up = false) => {
+      if (selector === '' || selector === false) {
+        window.scroll(window.scrollX, window.scrollY + (up ? -100000 : 100000));
+        return;
+      }
+      if(!window.evaluateDom)
+        window.evaluateDom = eval('(' + evaluateDomString + ')')
+      if(!window.walkTree)
+        window.walkTree = eval('(' + walkTreeString + ')')
+      if(!window.selectDom)
+        window.selectDom = eval('(' + selectDomString + ')')
+      var people = selectDom(selector, document)
+      people.scrollTop = people.scrollTop + (up ? -100000 : 100000);
+    }, evaluateDom, walkTree, selectDom, selector, up)
+}
+
+module.exports = scrollClient
+
+</code></pre>
+
+<p><strong>scrollClient Function Breakdown</strong></p>
+<h3>Overview</h3>
+<p>The <code>scrollClient</code> function is an asynchronous function that scrolls a webpage to a specific position based on a given selector.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>driver</code>: An object likely representing a browser driver (e.g. Selenium).</li>
+<li><code>selector</code>: A string representing the CSS selector for the element to scroll to.</li>
+<li><code>up</code>: A boolean indicating whether to scroll up or down (default: <code>false</code>).</li>
+</ul>
+<h3>Functionality</h3>
+<ol>
+<li>If the <code>selector</code> is empty or <code>false</code>, the function scrolls the window to the top or bottom (depending on the <code>up</code> parameter) by 100,000 pixels.</li>
+<li>If the <code>evaluateDom</code>, <code>walkTree</code>, or <code>selectDom</code> functions are not defined on the <code>window</code> object, they are dynamically imported and evaluated on the client-side using <code>eval</code>.</li>
+<li>The <code>selectDom</code> function is called with the <code>selector</code> and <code>document</code> as arguments, and the resulting element is assigned to the <code>people</code> variable.</li>
+<li>The <code>scrollTop</code> property of the <code>people</code> element is adjusted by 100,000 pixels (or -100,000 if <code>up</code> is <code>true</code>) to achieve the desired scroll position.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>scrollClient</code> function is exported as a module.</p>

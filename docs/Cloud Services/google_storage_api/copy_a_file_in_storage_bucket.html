@@ -1,0 +1,51 @@
+<p>This code provides a function <code>copyFileBucket</code> that copies a file within a Google Cloud Storage bucket, utilizing Google Cloud APIs for authentication and file manipulation.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeGoogle = importer.import('authorize google service');
+var project = 'spahaha-ea443';
+var qs = require('querystring');
+
+function copyFileBucket(bucket, file) {
+    var params = {project: project};
+    console.log('copying file:', file)
+    return authorizeGoogle()
+        .then(client => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/storage/v1/b/${bucket}/o/${qs.escape(file)}/rewriteTo/b/${bucket}/o/${qs.escape(file.replace(/\.html|\.htm/ig, ''))}`,
+            params
+        }))
+}
+
+module.exports = copyFileBucket;
+</code></pre>
+
+<p>This code defines a function <code>copyFileBucket</code> that copies a file from one location to another within a Google Cloud Storage bucket.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules:
+<ul>
+<li><code>importer</code>: Likely a custom module for importing other functions or modules.</li>
+<li><code>authorizeGoogle</code>: A function for authenticating with Google Cloud APIs.</li>
+<li><code>querystring</code>: For URL encoding.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Constants:</strong></p>
+<ul>
+<li><code>project</code>: Sets the Google Cloud project ID.</li>
+</ul></li>
+<li><p><strong><code>copyFileBucket</code> Function:</strong></p>
+<ul>
+<li>Takes two arguments: <code>bucket</code> (the name of the bucket) and <code>file</code> (the name of the file to copy).</li>
+<li>Constructs a URL for the Google Cloud Storage API's <code>rewriteTo</code> method, which copies a file within a bucket.</li>
+<li>Uses <code>authorizeGoogle()</code> to obtain a Google Cloud client.</li>
+<li>Makes a POST request to the constructed URL using the client, passing the project ID as a parameter.</li>
+<li>Returns a promise that resolves with the response from the API.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>copyFileBucket</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>

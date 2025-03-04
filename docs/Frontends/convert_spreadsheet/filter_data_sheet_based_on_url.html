@@ -1,0 +1,112 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code defines several functions for data comparison, filtering, and rendering, including <code>compareLink</code> for comparing data values with links, <code>unfilteredData</code> for logging and rendering original data, and <code>filteredData</code> for filtering data based on links and base locations. It also includes error handling to prevent multiple keys from being returned when data is not categorical.</p>
+
+
+<pre><code>var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
+
+var compareLink = (dataValue, base, link) => {
+    var compareOps = [
+        link,
+        base + '/' + link,
+        link.split('/').slice(1).join('/'),
+        base,
+        link.substr(0, (dataValue || '').length)
+    ]
+    var result = false
+    compareOps.forEach(comp => {
+        if(dataValue && comp.replace(TRIM, '') === dataValue.replace(TRIM, ''))
+            result = comp.replace(TRIM, '')
+        return false
+    })
+    return result
+}
+
+function unfilteredData(key) {
+    console.log(`rendering unfiltered ${key}`) 
+    return (val, render) => render(`{{#${key}-original-data}}${val}{{/${key}-original-data}}`)
+}
+
+function filteredData(key, match, properties, categorical) {
+    return function(val, render) {
+        var link = (render(`{{{${match}}}}`) || properties[match] || '').replace(TRIM, '');
+        var base = (render(`{{{base}}}`) || properties['base'] || '').replace(TRIM, '');
+        if(link.substr(0, base.length) === base) {
+            link = link.substr(base.length).replace(TRIM, '');
+        }
+        var matchKey = key + '-filtered-data';
+        var restore = properties[key + '-original-data'];
+        
+        if(categorical) {
+            // handle multiple results for use with categories
+            properties[matchKey] = restore.filter(data => compareLink(data[key], base, link))
+        } else {
+            properties[matchKey] = restore.filter(data => compareLink(data['link'], base, link)
+                                                   || compareLink(data['url'], base, link));
+            if(properties[matchKey].length !== 1) {
+                throw new Error(`Unique key not found: ${key} ${match} ${link} ${properties[matchKey].length}`)
+            }
+        }
+
+        console.log(`rendering filtered ${categorical 
+                    ? 'categorical' 
+                    : 'unique'}: ${key} ${match} ${link} ${properties[matchKey].length}`);
+        var rendered = render(`{{#${matchKey}}}${val}{{/${matchKey}}}`);
+        delete properties[matchKey];
+        return rendered;
+    }
+}
+
+module.exports = {
+    filteredData,
+    unfilteredData
+}
+</code></pre>
+
+<p><strong>Breakdown of the Code</strong></p>
+<h3>Regular Expression</h3>
+<pre><code class="language-javascript">var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
+</code></pre>
+<p>A regular expression <code>TRIM</code> is defined to remove leading and trailing slashes from a string.</p>
+<h3>compareLink Function</h3>
+<pre><code class="language-javascript">var compareLink = (dataValue, base, link) =&gt; {
+   ...
+}
+</code></pre>
+<p>This function compares a <code>dataValue</code> with a <code>link</code> related to a <code>base</code> location. It returns the first match it finds in the following formats:</p>
+<ul>
+<li><code>link</code></li>
+<li><code>base</code> + <code>/</code> + <code>link</code></li>
+<li><code>link</code> without the first part (i.e., <code>link.split('/').slice(1).join('/')</code>)</li>
+<li><code>base</code></li>
+<li>The first <code>dataValue</code> character(s) of <code>link</code></li>
+</ul>
+<h3>unfilteredData Function</h3>
+<pre><code class="language-javascript">function unfilteredData(key) {
+    console.log(`rendering unfiltered ${key}`) 
+    return (val, render) =&gt; render(`{{#${key}-original-data}}${val}{{/${key}-original-data}}`)
+}
+</code></pre>
+<p>This function returns a function that, when called, logs a message and returns a rendered string with the original data of the given <code>key</code>.</p>
+<h3>filteredData Function</h3>
+<pre><code class="language-javascript">function filteredData(key, match, properties, categorical) {
+   ...
+}
+</code></pre>
+<p>This function returns a function that filters data based on a <code>link</code> and a <code>base</code> location. It takes the following parameters:</p>
+<ul>
+<li><code>key</code>: the key to filter data by</li>
+<li><code>match</code>: the match to filter data by</li>
+<li><code>properties</code>: an object containing data to filter</li>
+<li><code>categorical</code>: a boolean indicating if the data should be filtered for categorical purposes</li>
+</ul>
+<p>The function does the following:</p>
+<ul>
+<li>It extracts the <code>link</code> and <code>base</code> from the <code>properties</code> object.</li>
+<li>It checks if the <code>link</code> starts with the <code>base</code>. If it does, it removes the <code>base</code> from the <code>link</code>.</li>
+<li>It filters the data in the <code>properties</code> object based on the <code>key</code> and the <code>link</code> related to the <code>base</code> location.</li>
+<li>If the data is not categorical, it checks if the filter resulted in a unique key.</li>
+<li>It logs a message and returns a rendered string with the filtered data.</li>
+<li>It adds the filtered data to the <code>properties</code> object.</li>
+</ul>
+<h3>Error Handling</h3>
+<p>If the filter resulted in multiple keys and the data is not categorical, the function throws an error.</p>

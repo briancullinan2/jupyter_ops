@@ -1,0 +1,91 @@
+<p>Here's a summary of the <code>extractArticle</code> function in one to two sentences:</p>
+<p>The <code>extractArticle</code> function extracts the article content from a given HTML page in plain text, retrying if the page crashes, and returns the extracted content as a single string. It uses Selenium WebDriver to load the page, select text elements, and handle errors such as stale element references and page crashes.</p>
+
+
+<pre><code>const getClient = importer.import('selenium client')
+const selectDom = importer.import('selenium select')
+
+// TODO: help me extract this article from html, only return the article in plain text and remove the html:
+async function extractArticle(driver, startPage, retry) {
+  if (!driver)
+    driver = await getClient()
+
+  if (!startPage) {
+    return
+  }
+
+  try {
+    console.log('loading page ', startPage)
+
+    await driver.get(startPage)
+
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
+    let bodyElements = await selectDom(driver, [
+      '//body//*[string-length(text()) > 20 and not(self::script|self::style|self::form) and not(ancestor::aside|ancestor::nav|ancestor::form|ancestor::header)]'
+    ])
+    let bodyText = []
+
+    for (let i = 0; i < bodyElements.length; i++) {
+      try {
+        let text = await bodyElements[i].getText()
+        bodyText.push(text)
+      } catch (e) {
+        if (e.message.includes('stale element reference')) {
+          continue
+        } else {
+          throw e
+        }
+      }
+    }
+
+    return bodyText
+      .map(t => Array.isArray(t) ? t.join('\n').trim() : t.trim())
+      .filter(t => t.length)
+      .join('\n')
+
+  } catch (up) {
+    if (!up.message.includes('page crash')) {
+      driver.quit()
+
+      throw up
+    } else if(!retry) {
+      return await extractArticle(driver, startPage, true)
+    } else {
+      throw up
+    }
+  }
+}
+
+module.exports = extractArticle
+</code></pre>
+
+<p><strong>Function Breakdown: <code>extractArticle</code></strong></p>
+<h3>Purpose</h3>
+<p>Extracts the article content from a given HTML page in plain text.</p>
+<h3>Parameters</h3>
+<ul>
+<li><code>driver</code>: Selenium WebDriver instance. If not provided, it's created using <code>getClient()</code>.</li>
+<li><code>startPage</code>: URL of the page to extract the article from. If not provided, the function returns immediately.</li>
+<li><code>retry</code>: Flag to retry extracting the article if the page crashes.</li>
+</ul>
+<h3>Return Value</h3>
+<p>The extracted article content in plain text.</p>
+<h3>Implementation</h3>
+<ol>
+<li>Checks if <code>driver</code> is provided. If not, it creates a new instance using <code>getClient()</code>.</li>
+<li>Checks if <code>startPage</code> is provided. If not, the function returns immediately.</li>
+<li>Loads the specified page using <code>driver.get(startPage)</code>.</li>
+<li>Waits for 1.5 seconds to allow the page to load.</li>
+<li>Selects all text elements in the page body using <code>selectDom()</code> and a XPath expression.</li>
+<li>Extracts the text content from each selected element and appends it to the <code>bodyText</code> array.</li>
+<li>Removes any empty strings from the <code>bodyText</code> array and joins the remaining strings into a single string.</li>
+<li>If the page crashes, it tries to extract the article again with <code>retry</code> set to <code>true</code>. If <code>retry</code> is <code>false</code>, it throws an error. If the page crashes and <code>retry</code> is <code>true</code>, it tries to extract the article again; otherwise, it throws an error.</li>
+</ol>
+<h3>Error Handling</h3>
+<ul>
+<li>If a stale element reference error occurs, the function skips the current element.</li>
+<li>If a page crash error occurs and <code>retry</code> is <code>false</code>, the function throws an error.</li>
+<li>If a page crash error occurs and <code>retry</code> is <code>true</code>, the function tries to extract the article again.</li>
+<li>If any other error occurs, the function throws the error after quitting the driver instance.</li>
+</ul>

@@ -1,0 +1,162 @@
+<p>This code provides functions for authenticating with Eloqua using OAuth and making API requests, including a function specifically for checking the status of bulk imports.</p>
+
+
+<pre><code>var importer = require('../Core');
+var request = importer.import('http request polyfill');
+var {
+    bulkImportTemplate,
+    temporaryImportTemplate
+} = importer.import('eloqua create template');
+
+function eloquaOauth(eloquaConfig) {
+    if (typeof eloquaConfig === 'undefined'
+        || eloquaConfig === null
+        || typeof eloquaConfig.rest_api_company === 'undefined'
+        || typeof eloquaConfig.rest_api_user === 'undefined'
+        || typeof eloquaConfig.rest_api_url === 'undefined'
+        || typeof eloquaConfig.rest_api_password === 'undefined'
+        || typeof eloquaConfig.rest_client_id === 'undefined'
+        || typeof eloquaConfig.rest_secret === 'undefined') {
+        return Promise.resolve([]).then(() => {
+            throw new Error('Please supply valid eloqua configuration.');
+        });
+    }
+    var authBody = {
+        "grant_type": "password",
+        "scope": "full",
+        "username": eloquaConfig.rest_api_company + '\\' + eloquaConfig.rest_api_user,
+        "password": eloquaConfig.rest_api_password
+    };
+    return request.request({
+        followAllRedirects: true,
+        uri: eloquaConfig.token_uri,
+        method: 'POST',
+        json: authBody,
+        headers: {
+            'Authorization': "Basic " + new Buffer(eloquaConfig.rest_client_id + ":" + eloquaConfig.rest_secret).toString("base64"),
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }).then(res => {
+        res.body.expires = (new Date()).getTime() + parseFloat(res.body.expires_in) * 1000;
+        return res.body;
+    });
+}
+
+function eloquaRequestHeaders(eloquaToken) {
+    return {
+        'Authorization': "Bearer " + eloquaToken.access_token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    };
+}
+
+function eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig) {
+    console.log(syncUri);
+    return request.request({
+        followAllRedirects: true,
+        uri: eloquaConfig.rest_api_url + '/bulk/2.0' + syncUri,
+        method: 'GET',
+        headers: eloquaRequestHeaders(eloquaToken)
+    }).then(res => {
+        if (res.body.status === 'success' || res.body.status === 'warning') {
+            return true;
+        } else if (res.body.status === 'active' || res.body.status === 'pending') {
+            return new Promise(resolve => setTimeout(resolve, 500))
+                .then(() => eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig));
+        } else {
+            throw new Error('Sync status error ' + res.statusCode + ' ' + JSON.stringify(res.body));
+        }
+    });
+}
+
+function completeBulkImportSync(importUri, eloquaToken, eloquaConfig) {
+    return request.request({
+        followAllRedirects: true,
+        uri: eloquaConfig.rest_api_url + '/bulk/2.0/syncs',
+        method: 'POST',
+        json: {
+            syncedInstanceUri: importUri
+        },
+        headers: eloquaRequestHeaders(eloquaToken)
+    }).then(res => {
+        const syncUri = res.body.uri;
+        return eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig);
+    });
+}
+
+function startBulkImportData(json, importUri, eloquaToken, eloquaConfig) {
+    if(typeof importUri !== 'string') {
+        throw new Error('something is seriously wrong with this import');
+    }
+    return request.request({
+        followAllRedirects: true,
+        uri: eloquaConfig.rest_api_url + '/bulk/2.0' + importUri + '/data',
+        method: 'POST',
+        json: json,
+        headers: eloquaRequestHeaders(eloquaToken)
+    });
+}
+
+// https://docs.oracle.com/cloud/latest/marketingcs_gs/OMCAB/Developers/BulkAPI/Endpoints/Custom%20objects/Imports/post-customObjects-imports.htm
+function createImportDefinition(customDataObjectId, eloquaToken, eloquaConfig) {
+    return request.request({
+        followAllRedirects: true,
+        uri: eloquaConfig.rest_api_url + '/bulk/2.0/customobjects/' + customDataObjectId + '/imports',
+        method: 'POST',
+        json: bulkImportTemplate(customDataObjectId),
+        headers: eloquaRequestHeaders(eloquaToken)
+    }).then(res => {
+        return res.body.uri;
+    });
+}
+
+function createInstanceDefinition(instanceId, executionId, eloquaToken, eloquaConfig) {
+    return request.request({
+        followAllRedirects: true,
+        uri: eloquaConfig.rest_api_url + '/bulk/2.0/contacts/imports',
+        method: 'POST',
+        json: temporaryImportTemplate(instanceId, executionId),
+        headers: eloquaRequestHeaders(eloquaToken)
+    }).then(res => {
+        return res.body.uri;
+    });
+}
+
+module.exports = {
+    eloquaOauth,
+    createImportDefinition,
+    startBulkImportData,
+    completeBulkImportSync,
+    eloquaBulkImportStatus,
+    createInstanceDefinition,
+    eloquaRequestHeaders
+}
+</code></pre>
+
+<p>This code defines functions for interacting with the Eloqua marketing automation platform using OAuth authentication and making API requests.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports necessary modules from a local <code>Core</code> module and Eloqua-specific templates.</li>
+</ul></li>
+<li><p><strong><code>eloquaOauth</code> Function:</strong></p>
+<ul>
+<li>Takes an <code>eloquaConfig</code> object containing authentication credentials.</li>
+<li>Validates the configuration parameters.</li>
+<li>Constructs an OAuth authorization request body.</li>
+<li>Makes a POST request to the Eloqua token endpoint using the provided credentials.</li>
+<li>Parses the response and returns an object containing the access token and expiration time.</li>
+</ul></li>
+<li><p><strong><code>eloquaRequestHeaders</code> Function:</strong></p>
+<ul>
+<li>Takes an Eloqua access token and returns a headers object for subsequent API requests.</li>
+</ul></li>
+<li><p><strong><code>eloquaBulkImportStatus</code> Function:</strong></p>
+<ul>
+<li>Takes a sync URI, Eloqua access token, and Eloqua configuration.</li>
+<li>Constructs the API endpoint URL for checking the status of a bulk import.</li>
+<li>Makes a request to the Eloqua API endpoint.</li>
+</ul></li>
+</ol>

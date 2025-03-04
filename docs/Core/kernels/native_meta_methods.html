@@ -1,0 +1,92 @@
+<p>Here is a 2-sentence summary:</p>
+<p>This code defines a set of functions for a meta kernel that manages and interacts with other kernels, including initialization, installation, messaging, and execution handling. The module exports these functions, which depend on libraries such as <code>mkdirp</code>, <code>fs</code>, and <code>jupyter-kernelspec</code>, and can be used by other applications to interact with kernels.</p>
+
+
+<pre><code>var importer = require('../Core');
+var mkdirpSync = importer.import('mkdirp');
+
+function do_install(configJson) {
+    console.log(`installing kernel ${JSON.stringify(configJson)}`);
+    mkdirpSync(`./.kernel/${configJson.language}`);
+    require('fs').writeFileSync(`./.kernel/${configJson.language}/kernel.json`,
+                                JSON.stringify(configJson, null, 4));
+// TODO: convert to bash notebook or kernel call
+    require('child_process').execSync(`
+jupyter kernelspec install --user --replace "./.kernel/${configJson.language}"`);
+    require('rimraf').sync('./.kernel');
+}
+
+function do_message(message) {
+    if(typeof this[Object.keys(message)[0]] === 'undefined') {
+        console.error(`unhandled message type ${JSON.stringify(message)}`);
+        return;
+    }
+    var result = this[Object.keys(message)[0]].apply(this, Object.values(message));
+    if(result && Object.getPrototypeOf.constructor === Promise) {
+        
+    }
+    return result;
+}
+
+function do_respond(message) {
+    // TODO: add Promise handling here?
+    // TODO: add line and block magics handling here?
+    return message;
+}
+
+function do_is_complete(message) {
+    try {
+        this.do_execute(message);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+    
+function do_init(config) {
+    console.log('starting meta kernel');
+     // incase different than kernel_info.kernel_config
+    this.kernel_config = config;
+    
+}
+
+module.exports = {
+    do_init,
+    do_is_complete,
+    do_message,
+    do_respond,
+    do_install,
+}
+</code></pre>
+
+<p><strong>Code Overview</strong></p>
+<p>This code defines a set of functions for a meta kernel, which is a kernel that manages and interacts with other kernels. The functions are exported as a module, allowing them to be used by other applications.</p>
+<p><strong>Functions</strong></p>
+<h3><code>do_init(config)</code></h3>
+<p>Initializes the meta kernel with a configuration object. This function sets the <code>kernel_config</code> property of the meta kernel to the provided configuration.</p>
+<h3><code>do_install(configJson)</code></h3>
+<p>Installs a new kernel based on the provided configuration object. It creates a directory for the new kernel, writes the configuration to a JSON file, and installs the kernel using <code>jupyter-kernelspec</code>.</p>
+<h3><code>do_respond(message)</code></h3>
+<p>Handles a message by returning it as is. This function does not provide any additional processing or response generation.</p>
+<h3><code>do_message(message)</code></h3>
+<p>Processes a message by calling a handler function based on the message type. If the message type is not recognized, it logs an error and returns <code>undefined</code>. If the handler returns a promise, it is not handled in this implementation.</p>
+<h3><code>do_is_complete(message)</code></h3>
+<p>Checks if a message has been successfully executed by calling the <code>do_execute</code> function and catching any exceptions. If an exception is caught, it returns <code>false</code>.</p>
+<p><strong>Module Exports</strong></p>
+<p>The module exports the following functions:</p>
+<ul>
+<li><code>do_init</code></li>
+<li><code>do_is_complete</code></li>
+<li><code>do_message</code></li>
+<li><code>do_respond</code></li>
+<li><code>do_install</code></li>
+</ul>
+<p><strong>Dependencies</strong></p>
+<p>The code uses the following dependencies:</p>
+<ul>
+<li><code>mkdirp</code> for creating directories</li>
+<li><code>fs</code> for file system operations</li>
+<li><code>child_process</code> for executing shell commands</li>
+<li><code>rimraf</code> for deleting directories</li>
+<li><code>jupyter-kernelspec</code> for installing kernels</li>
+</ul>

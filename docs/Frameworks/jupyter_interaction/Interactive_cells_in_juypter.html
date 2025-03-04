@@ -1,0 +1,135 @@
+<p>This code snippet manages code execution and output display within a Jupyter Notebook environment, handling various output types and communication with the kernel.</p>
+
+
+<pre><code>var last_id = '';
+var clear_queued = false;
+console_log = function (arg) {
+    $('#output').append('<p>' + arg + '</p>');
+}
+
+function execute(code) {
+    var res = kk.execute(code, {
+        iopub: {
+            output: function (msg) {
+                // see static/notebook/js/outputarea.js:handle_output
+                if (msg.header.msg_type === 'stream') {
+                    $('#output').append('<p>' + msg.content.data + '</p>');
+                } else if (msg.header.msg_type === 'display_data') {
+                    $('#output').append('<p>' + msg.content.data + '</p>');
+                } else if (msg.header.msg_type === 'execute_result') {
+                    if (msg.content.data['text/plain'] !== undefined) {
+                        $('#output').append('<p><strong>' + msg.content.data['text/plain'] + '</strong></p>');
+                    }
+                } else if (msg.header.msg_type === 'error') {
+                    $('#output')
+                        .append('<p style=\'color:red\'>' + msg.content.ename + ': ' + msg.content.evalue + '</p>');
+                } else {
+                    console.log('unhandled output message', msg);
+                }
+            },
+            clear_output: function (msg) {
+                if (msg.content.wait) {
+                    if (clear_queued) {
+                        $('#output').html('');
+                        $('#widgets').html('');
+                    }
+                    clear_queued = true;
+                } else {
+                    $('#output').html('');
+                    $('#widgets').html('');
+                }
+            }
+        }
+    }, {silent: false, store_history: true});
+    last_id = res;
+}
+
+function js_execute(code) {
+    $('#output').append('<p><strong>' + eval(code) + '</strong></p>');
+}
+
+require(
+    ['base/js/events',
+        'services/kernels/js/kernel',
+        'notebook/js/keyboardmanager'],
+    function (events_, kernel_, keyboardmanager_) {
+        // leak variables into global scope
+        events = events_;
+        kernel = kernel_;
+        keyboardmanager = keyboardmanager_;
+        var keyboard_manager = new keyboardmanager.KeyboardManager({
+            pager: null,
+            events: events
+        });
+        if (window.parent !== window) {
+            kernel_id = window.parent.IPython.notebook.session.kernel.kernel_id;
+        } else {
+            kernel_id = 'a4142958-41ed-4fe3-bea7-2a9bbd4db6bc';
+        }
+        false_cell = {
+            widget_subarea: $('#widgets') // jQuery object to div
+        };
+        false_notebook = {
+            events: events,
+            keyboard_manager: keyboard_manager,
+            get_msg_cell: function (msg_id) {
+                if (msg_id === last_id) {
+                    return false_cell;
+                } else {
+                    return null;
+                }
+            }
+        };
+        kk = new kernel.Kernel('/api/kernels', 'ws://127.0.0.1:8888', false_notebook, 'python2')
+        kk._kernel_started({id: kernel_id, name: 'python2'});
+        events.one('status_idle.Kernel', function (evt, data) {
+            if (data.kernel === kk) {
+                if (window.parent !== window && window.parent._subframe_cb !== undefined) {
+                    window.parent._subframe_cb(execute);
+                }
+                console.log = console_log;
+            }
+        });
+    });
+</code></pre>
+
+<p>This code snippet appears to be part of a Jupyter Notebook environment, specifically handling the execution of code and displaying the output.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Variables:</strong></p>
+<ul>
+<li><code>last_id</code>: Stores the ID of the last executed code cell.</li>
+<li><code>clear_queued</code>: A flag indicating whether output clearing is queued.</li>
+</ul></li>
+<li><p><strong><code>console_log</code> Function:</strong></p>
+<ul>
+<li>Appends a new paragraph containing the given argument to the HTML element with the ID &quot;output&quot;.</li>
+</ul></li>
+<li><p><strong><code>execute</code> Function:</strong></p>
+<ul>
+<li>Takes code as input and executes it using the <code>kk.execute</code> function (likely from a Jupyter kernel library).</li>
+<li>Configures the <code>iopub</code> object to handle different types of output messages:
+<ul>
+<li><code>stream</code>: Appends the data to the &quot;output&quot; element.</li>
+<li><code>display_data</code>: Appends the data to the &quot;output&quot; element.</li>
+<li><code>execute_result</code>: Appends the plain text result to the &quot;output&quot; element in bold.</li>
+<li><code>error</code>: Appends an error message in red to the &quot;output&quot; element.</li>
+</ul></li>
+<li>Handles <code>clear_output</code> messages, clearing the &quot;output&quot; and &quot;widgets&quot; elements if necessary.</li>
+<li>Stores the execution result ID in <code>last_id</code>.</li>
+</ul></li>
+<li><p><strong><code>js_execute</code> Function:</strong></p>
+<ul>
+<li>Executes the given JavaScript code using <code>eval</code> and appends the result to the &quot;output&quot; element in bold.</li>
+</ul></li>
+<li><p><strong>Require Block:</strong></p>
+<ul>
+<li>Imports necessary modules from Jupyter Notebook:
+<ul>
+<li><code>events</code>: For handling events.</li>
+<li><code>kernel</code>: For interacting with the kernel.</li>
+<li><code>keyboardmanager</code>: For managing keyboard shortcuts.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>In essence, this code snippet sets up the infrastructure for executing code in a Jupyter Notebook environment, handling output display, error handling, and communication with the kernel.</p>

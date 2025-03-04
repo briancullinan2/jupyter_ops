@@ -1,0 +1,63 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code imports necessary modules, defines an <code>options</code> object, and exports a <code>scheduleSearch</code> function that creates a new event on a Google Calendar with a customizable search query. The <code>scheduleSearch</code> function checks for authentication, creates a new event, and returns a Promise that can be resolved with the event's details.</p>
+
+
+<pre><code>var google = require('googleapis');
+var importer = require('../Core');
+var {
+    getOauthClient,
+    ISODateString,
+    createNewEvent,
+} = importer.import([
+    'convert date iso',
+    'create new calendar event',
+    'import google calendar api',
+]);
+
+var options = {
+    calendarId: 'aws'
+}
+
+function scheduleSearch(search) {
+    const parameters = {
+        query: search || 'search engines'
+    }
+    const newDate = new Date();
+    return (typeof options.auth === 'undefined'
+           ? getOauthClient(options)
+           : Promise.resolve([]))
+        .then(() => createNewEvent('meta search all', JSON.stringify(parameters, null, 4), options))
+}
+module.exports = scheduleSearch;
+</code></pre>
+
+<h1><strong>Code Breakdown</strong></h1>
+<h3>Importing Modules</h3>
+<p>The code starts by importing required modules:</p>
+<ul>
+<li><code>google</code> is required from <code>googleapis</code> library, which provides a Node.js client for Google's API.</li>
+<li><code>importer</code> is required from a local file <code>../Core</code>, which exports functions and variables.</li>
+<li><code>importer.import</code> is called with an array of strings, which returns an object containing three functions:
+<ul>
+<li><code>getOauthClient</code>: likely used to authenticate with Google API.</li>
+<li><code>ISODateString</code>: probably used to format dates according to ISO standard.</li>
+<li><code>createNewEvent</code>: used to create a new event on a Google Calendar.</li>
+</ul></li>
+</ul>
+<h3>Defining Options</h3>
+<p>An object <code>options</code> is defined with a single property <code>calendarId</code> set to <code>'aws'</code>.</p>
+<h3><code>scheduleSearch</code> Function</h3>
+<p>The <code>scheduleSearch</code> function takes an optional <code>search</code> parameter and returns a Promise.</p>
+<ul>
+<li><code>parameters</code> object is created with a <code>query</code> property set to <code>search</code> if it's provided, otherwise set to <code>'search engines'</code>.</li>
+<li>A new <code>Date</code> object is created and assigned to <code>newDate</code>.</li>
+<li>The function checks if <code>options.auth</code> is undefined. If it is, it resolves with an empty array. Otherwise, it calls <code>getOauthClient</code> with <code>options</code> as an argument, which returns a Promise.</li>
+<li>The resulting Promise is then chained with another <code>.then</code> block, which calls <code>createNewEvent</code> with the following arguments:
+<ul>
+<li>Event title: <code>'meta search all'</code>.</li>
+<li>Event description: a JSON stringified version of <code>parameters</code> object.</li>
+<li><code>options</code> object.</li>
+</ul></li>
+</ul>
+<h3>Exporting <code>scheduleSearch</code> Function</h3>
+<p>The <code>scheduleSearch</code> function is exported as a module, making it available for use in other parts of the application.</p>

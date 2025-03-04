@@ -1,0 +1,93 @@
+<p>Here's a summary of the code breakdown in one sentence:</p>
+<p>The code imports functions for listing project files and asking a large language model about functions, and defines two main functions: <code>findNotebooks</code> to locate Jupyter notebooks in a directory and its subdirectories, and <code>askLlamaAboutNotebooks</code> to extract function information from these notebooks and query a large language model for additional information.</p>
+<p>Alternatively, here's a two-sentence summary:</p>
+<p>The code begins by importing necessary functions to list project files and query a large language model. It then defines two main functions: <code>findNotebooks</code> to locate Jupyter notebooks and <code>askLlamaAboutNotebooks</code> to extract function information from these notebooks and query the LLM.</p>
+
+
+<pre><code>
+const path = require('path')
+const {listInProject} = importer.import('list project files');
+const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
+
+function findNotebooks(dirname) {
+    return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+}
+
+async function askLlamaAboutNotebooks(query) {
+  let notebooks = findNotebooks(path.resolve(__dirname, '../'))
+  let functions = []
+  let descriptions = []
+
+  for(let i = 0; i < notebooks.length; i++) {
+    let notebookName = path.basename(notebooks[i]).replace('.ipynb', '')
+    let notebookCamel = notebookName.substring(0, 1).toLocaleUpperCase() + notebookName.substring(1)
+    let folderName = path.basename(path.dirname(notebooks[i]))
+    let folderCamel = folderName.substring(0, 1).toLocaleUpperCase() + folderName.substring(1)
+
+    functions[functions.length] = 'search' + folderCamel.replace(/[^a-z0-9]/gi, '') + notebookCamel.replace(/[^a-z0-9]/gi, '').substring(0, 15)
+    descriptions[descriptions.length] = folderCamel + ' ' + notebookCamel
+
+    // TODO: convert this to something like function.length + description.length + 4 < 2048
+    if(functions.length == 20) {
+      let result = await askLlamaAboutFunctions(query, functions, descriptions)
+      if(result) {
+        descriptions = [descriptions[functions.indexOf(result)]]
+        functions = [result]
+      } else {
+        descriptions = []
+        functions = []
+      }
+    }
+  }
+  if(functions.length > 1) {
+    let result = await askLlamaAboutFunctions(query, functions, descriptions)
+    if(result) functions = [result]
+    else functions = []
+  }
+
+  return functions
+}
+
+
+module.exports = {
+  askLlamaAboutNotebooks,
+}
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<p>The code begins by importing two functions from another module using the <code>importer</code> object:</p>
+<ul>
+<li><code>listInProject</code>: used to list project files based on a given directory and pattern.</li>
+<li><code>askLlamaAboutFunctions</code>: used to ask a large language model (LLM) about functions.</li>
+</ul>
+<pre><code class="language-javascript">const { listInProject } = importer.import('list project files');
+const { askLlamaAboutFunctions } = importer.import('ask llm about functions');
+</code></pre>
+<h4>findNotebooks Function</h4>
+<p>The <code>findNotebooks</code> function takes a directory name as an argument and returns an array of file paths representing Jupyter notebooks located within that directory and its subdirectories. The function uses the <code>listInProject</code> function to find files matching the pattern <code>*.ipynb</code>.</p>
+<pre><code class="language-javascript">function findNotebooks(dirname) {
+  return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+}
+</code></pre>
+<h4>askLlamaAboutNotebooks Function</h4>
+<p>The <code>askLlamaAboutNotebooks</code> function is an asynchronous function that takes a query as an argument. It:</p>
+<ol>
+<li>Finds all Jupyter notebooks in the current directory and its subdirectories using the <code>findNotebooks</code> function.</li>
+<li>Creates arrays to store function names and descriptions.</li>
+<li>Loops through each notebook, extracting its name, camelCase name, and parent folder name. It then generates a function name and description based on these values.</li>
+<li>When the arrays of function names and descriptions reach a certain size (20), it calls the <code>askLlamaAboutFunctions</code> function with the current query, function names, and descriptions. If the LLM responds with a function name, it updates the arrays accordingly.</li>
+<li>After looping through all notebooks, it calls the <code>askLlamaAboutFunctions</code> function with the remaining function names and descriptions.</li>
+<li>Returns the array of function names.</li>
+</ol>
+<pre><code class="language-javascript">async function askLlamaAboutNotebooks(query) {
+  //...
+}
+</code></pre>
+<h4>Exporting the Function</h4>
+<p>The <code>askLlamaAboutNotebooks</code> function is exported as a module:</p>
+<pre><code class="language-javascript">module.exports = {
+  askLlamaAboutNotebooks,
+}
+</code></pre>

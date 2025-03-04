@@ -1,0 +1,39 @@
+<a href="./store_llm_response.html">store llm response</a>
+
+<p>Here is a 2-sentence summary of the <code>storeResponse</code> function:</p>
+<p>The <code>storeResponse</code> function stores user interactions, analyzing the content, emotions, and context, and returns an object containing metadata about the interaction. It selects a model, checks for existing conversation files, and updates the conversation data in memory and the file system, generating a summary and keywords for the interaction.</p>
+<a href="./general_chit_chat.html">general chit chat</a>
+
+<p>Here's a 2-sentence summary:</p>
+<p>This code is a Node.js module that imports necessary modules and variables, defines functions for retrieving recent messages from conversations, and implements file system operations for loading and storing conversation data. The module exports the <code>messageRecents</code> function, along with other variables and constants, allowing it to be used in other applications.</p>
+<a href="./relevant_llm_history.html">relevant llm history</a>
+
+<p>The <code>relevantHistory</code> function retrieves relevant conversation history files based on a given prompt, returning an array of file names. This function requires <code>importer.import('general chit chat')</code> to be called prior to usage and uses synchronous file system operations, logging input and output to the console.</p>
+<a href="./relevant_chat_keywords.html">relevant chat keywords</a>
+
+<p>Here is a two-sentence summary of the <code>relevantKeywords</code> function:</p>
+<p>The <code>relevantKeywords</code> function searches through a user's past conversations to find relevant keywords for a given prompt, using a specified model to retrieve and match keywords. It returns an array of keywords that match the prompt, eliminating duplicates and extraneous characters from extracted keywords.</p>
+<a href="./relevant_history_timestamps.html">relevant history timestamps</a>
+
+<p>Here is a summary of the code breakdown in two sentences:</p>
+<p>The code imports constants and uses two functions, <code>askLlamaMatchTimestamps</code> and <code>matchingTimestamps</code>, to process timestamps and generate responses based on keywords and prompts. The <code>matchingTimestamps</code> function iterates over conversations, generates messages, and calls the <code>askLlamaMatchTimestamps</code> function to match timestamps with the generated responses, returning an array of matching timestamps.</p>
+<a href="./classify_llm_prompt.html">classify llm prompt</a>
+
+<p>Here is a 2 sentence summary of the code:</p>
+<p>This code defines a set of functions and constants to facilitate interacting with an API, including generating a description of the API functions and asking the user to match a prompt with an API function. The code exports four values, allowing other parts of the program to access and use the API functions and their corresponding exports and descriptions.</p>
+<a href="./handle_conversation.html">handle conversation</a>
+
+<p>Here is a 2-sentence summary of the provided code:</p>
+<p>The <code>handleConversation</code> function is an asynchronous function that handles a conversation by classifying the prompt, storing the response, generating a response from a language model, and storing the final response. It takes five parameters, including <code>promptModel</code>, <code>session</code>, <code>prompt</code>, <code>image</code>, and <code>otr</code>, and returns the final response after processing the language model's output and storing relevant information.</p>
+<a href="./add_conversation_context.html">add conversation context</a>
+
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>classifyPrompt</code> function takes a prompt and image as input, matches the prompt to a specific function, and executes that function with the provided arguments to generate a response. The function iterates over matching functions, imports and parameterizes each one, and returns the result with additional memories, except for the <code>doStableRequest</code> function which returns a combined object.</p>
+<a href="./llm_load_memories.html">llm load memories</a>
+
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>This code consists of two functions, <code>listMemories</code> and <code>findMemories</code>, which are used to retrieve memories from a file system, with <code>listMemories</code> transforming memory keys into dates and returning an array of strings. The <code>findMemories</code> function searches for memories in a specific file or in a history of files, returning the memories object and caching the result for future reuse.</p>
+<a href="./llm_save_memories.html">llm save memories</a>
+
+<p>Here is a two-sentence summary of the code:</p>
+<p>The code imports necessary modules and constants, then defines an asynchronous function <code>manageMemories</code> that handles memory management, including loading and saving memories based on user input. The function uses regular expressions to match user responses to different memory functions, such as saving, removing, or listing memories, and performs the corresponding actions.</p>

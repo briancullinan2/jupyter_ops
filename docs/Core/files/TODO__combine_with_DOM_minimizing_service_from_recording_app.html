@@ -1,0 +1,61 @@
+<p>This script processes Jupyter Notebook files in a given directory, updating their metadata, specifically setting <code>nbformat_minor</code> to 0 and potentially adding Colab-related metadata (currently commented out).  It reads each notebook's JSON content, modifies it, and then saves the changes back to the original files.</p>
+
+
+<pre><code>var fs = require('fs');
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+fs.readdirSync('.');
+var PROJECT_PATH = '/Users/briancullinan/Google Drive/Colab Notebooks'
+glob.sync('**/*.ipynb', {cwd: PROJECT_PATH}).forEach(f => {
+    const nb = JSON.parse(fs.readFileSync(path.join(PROJECT_PATH, f)).toString());
+    nb.nbformat_minor = 0;
+    /*
+    nb.metadata = {
+        colab: {
+          "name": path.basename(f),
+          "version": "0.3.2",
+          "views": {},
+          "default_view": {},
+          "provenance": []
+        },
+        kernelspec: {
+          "name": "javascript",
+          "display_name": "Javascript"
+        }
+    };
+    */
+    fs.writeFileSync(path.join(PROJECT_PATH, f), JSON.stringify(nb, null, 2));
+});
+</code></pre>
+
+<p>This code iterates through all Jupyter Notebook files (<code>*.ipynb</code>) within a specified project directory (<code>PROJECT_PATH</code>) and modifies their metadata.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Requires the <code>fs</code> (filesystem) module for file system operations.</li>
+<li>Requires the <code>importer</code> module, which likely provides utilities for importing other modules.</li>
+<li>Imports the <code>glob</code> function from the <code>glob files</code> module for finding files matching a pattern.</li>
+</ul></li>
+<li><p><strong>Project Path:</strong></p>
+<ul>
+<li>Sets the <code>PROJECT_PATH</code> variable to the directory containing the Jupyter Notebooks.</li>
+</ul></li>
+<li><p><strong>File Iteration:</strong></p>
+<ul>
+<li>Uses <code>glob.sync('**/*.ipynb', {cwd: PROJECT_PATH})</code> to find all <code>.ipynb</code> files within the specified project directory.</li>
+<li>Iterates through each found file path <code>f</code>.</li>
+</ul></li>
+<li><p><strong>Metadata Modification:</strong></p>
+<ul>
+<li>Reads the contents of each notebook file as JSON using <code>fs.readFileSync</code>.</li>
+<li>Parses the JSON data into a <code>nb</code> object.</li>
+<li>Sets <code>nb.nbformat_minor</code> to 0.</li>
+<li><strong>Commented-out Code:</strong> There's commented-out code that would add or modify metadata fields related to Colab and kernelspec.</li>
+</ul></li>
+<li><p><strong>File Writing:</strong></p>
+<ul>
+<li>Writes the modified JSON data back to the original file using <code>fs.writeFileSync</code>.</li>
+<li>Uses <code>JSON.stringify(nb, null, 2)</code> to format the JSON output with indentation.</li>
+</ul></li>
+</ol>

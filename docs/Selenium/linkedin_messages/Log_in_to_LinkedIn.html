@@ -1,0 +1,92 @@
+<p>This code provides a function <code>loginLinkedIn</code> that automates the process of logging into LinkedIn using Selenium, handling potential CAPTCHA challenges and returning a boolean indicating success or failure.</p>
+
+
+<pre><code>var notRobot = () => {
+    return client.click('')
+}
+
+function enterLinkedIn() {
+    console.log('LinkedIn: Sign in required');
+    var credentials = getCredentials('linkedin.com');
+    return client.isExisting('a[href*="uas/login"]')
+        .then(is => is ? client.click('a[href*="uas/login"]') : Promise.resolve([]))
+        .then(() => client.click('input[name*="session_key"]'))
+        .keys(credentials.username)
+        .pause(1000)
+        .then(() => console.log('LinkedIn: Require password'))
+        .click('input[name*="session_password"]')
+        .keys(credentials.password)
+        .submitForm('.login-form, [type="submit"]')
+        .pause(2000)
+        .isExisting('.cp-challenge-form')
+        .then(is => {
+            if (is) {
+                throw new Error('captcha');
+            }
+        });
+}
+
+function loginLinkedIn() {
+    return client
+        .alertText()
+        .then(t => t.indexOf('leave') > -1 ? client.alertAccept() : '')
+        .catch(e => {
+        })
+        .pause(1000)
+        .getUrl()
+        .then(url => {
+            var loggedIn = url.indexOf('linkedin') > -1 && url.indexOf('login') == -1
+                 && url.indexOf('authwall') == -1;
+            console.log(loggedIn);
+            return loggedIn
+                ? client
+                    .isExisting('iframe.authentication-iframe').then(is => is
+                        ? client.element('iframe.authentication-iframe')
+                            .then(el => client.frame(el.value))
+                            .then(() => enterLinkedIn())
+                            .frame()
+                        : Promise.resolve([]))
+                : client.url('https://www.linkedin.com/')
+                    .isExisting('*=Forgot password?').then(is => is
+                        ? enterLinkedIn()
+                        : Promise.resolve([]));
+        })
+};
+module.exports = loginLinkedIn;
+</code></pre>
+
+<p>This code defines a function <code>loginLinkedIn</code> that automates the process of logging into LinkedIn using Selenium.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>notRobot</code> Function:</strong></p>
+<ul>
+<li>This function seems incomplete and likely intended to handle a &quot;not a robot&quot; challenge that LinkedIn sometimes presents.</li>
+</ul></li>
+<li><p><strong><code>enterLinkedIn</code> Function:</strong></p>
+<ul>
+<li>This function handles the actual login process:
+<ul>
+<li>It retrieves LinkedIn credentials from a <code>getCredentials</code> function (not shown in the code).</li>
+<li>It navigates to the LinkedIn login page.</li>
+<li>It enters the username and password.</li>
+<li>It submits the login form.</li>
+<li>It checks for a CAPTCHA challenge and throws an error if one is present.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>loginLinkedIn</code> Function:</strong></p>
+<ul>
+<li>This function orchestrates the entire login flow:
+<ul>
+<li>It handles any initial alert messages.</li>
+<li>It checks the current URL to determine if the user is already logged in.</li>
+<li>If not logged in, it navigates to the LinkedIn homepage and attempts to log in using <code>enterLinkedIn</code>.</li>
+<li>If a CAPTCHA is encountered, it throws an error.</li>
+<li>It returns a promise that resolves to <code>true</code> if the login is successful, otherwise <code>false</code>.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>loginLinkedIn</code> function is exported as the main function of this module.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

@@ -1,0 +1,77 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>This code imports modules, defines sample JavaScript code, and tests a function <code>getImports</code> on various inputs, including a file and a string, and logs the results in a conditional block.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getImports = importer.import('get imports from source')
+var {selectAst} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+
+var code = `
+var importer = require('../Core');
+var getParameters = importer.import('get parameter names')
+`
+
+function testGetImports() {
+    console.log(getImports(importer.interpret('rpc.ipynb[1]').code))
+    console.log(htmlToTree(selectAst('//CallExpression', code)[1]))
+    return getImports(code)
+}
+
+if(typeof $$ != 'undefined') {
+    testGetImports()
+    
+    /*
+    expected output
+    get parameter names
+    import
+    
+    */
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var getImports = importer.import('get imports from source')
+var {selectAst} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+</code></pre>
+<p>This code imports a module named <code>Core</code> from the parent directory using <code>require</code>. It then creates three variables that interact with the imported module:</p>
+<ul>
+<li><code>getImports</code> imports a function named <code>get imports from source</code></li>
+<li><code>selectAst</code> imports a function that selects an Abstract Syntax Tree (AST) node</li>
+<li><code>htmlToTree</code> imports a function that converts HTML to a tree structure</li>
+</ul>
+<h3>Defining Code to be Analyzed</h3>
+<pre><code class="language-javascript">var code = `
+var importer = require('../Core');
+var getParameters = importer.import('get parameter names')
+`
+</code></pre>
+<p>This code defines a string <code>code</code> containing sample JavaScript code.</p>
+<h3>Test Function</h3>
+<pre><code class="language-javascript">function testGetImports() {
+    console.log(getImports(importer.interpret('rpc.ipynb[1]').code))
+    console.log(htmlToTree(selectAst('//CallExpression', code)[1]))
+    return getImports(code)
+}
+</code></pre>
+<p>This function tests the <code>getImports</code> function on several inputs:</p>
+<ul>
+<li>It logs the imports from a file named <code>rpc.ipynb[1]</code> (interpreted by <code>importer.interpret</code>)</li>
+<li>It logs the HTML-to-tree conversion of a CallExpression node in the <code>code</code> string (selected using <code>selectAst</code>)</li>
+<li>It returns the imports from the <code>code</code> string</li>
+</ul>
+<h3>Conditional Execution</h3>
+<pre><code class="language-javascript">if(typeof $$!= 'undefined') {
+    testGetImports()
+    /*
+    expected output
+    get parameter names
+    import
+    
+    */
+}
+</code></pre>
+<p>This code checks if a variable named <code>$$</code> is defined. If it is, the <code>testGetImports</code> function is executed, and the expected output is documented.</p>

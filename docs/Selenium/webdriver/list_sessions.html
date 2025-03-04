@@ -1,0 +1,94 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The code imports necessary modules for interacting with web browsers and defines constants and functions for managing Selenium sessions, including verifying individual sessions and retrieving active sessions. The <code>getSessions</code> function is exported as a module export, which can be used to retrieve and verify available Selenium sessions.</p>
+
+
+<pre><code>const {readSessions} = importer.import('selenium session')
+const { WebDriver, Capabilities, Session } = require('selenium-webdriver')
+const chrome = require('selenium-webdriver/chrome');
+const createExecutor = importer.import('selenium executor')
+const getClient = importer.import('webdriver client')
+
+const LOCAL_URL = 'http://localhost:4444/wd/hub';
+
+async function verifySession(driver, sessionId) {
+  let driver2 = new chrome.Driver(
+    new Session(sessionId[1], Capabilities.chrome()), createExecutor(Promise.resolve(LOCAL_URL)))
+
+  try {
+    let windows = await driver2.getAllWindowHandles()
+    console.log('windows ', windows)
+    //await driver.switchTo().window(window)
+    //let status = await driver.getSession()
+    return sessionId[1]
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+async function getSessions(driver, inactive = false) {
+  const sessions = readSessions()
+  if(!driver) {
+    driver = await getClient()
+  }
+  //const session = await driver.getSession()
+  //const original = session.getId()
+  let active = [].concat(sessions)
+      .filter(session => typeof session[1] !== 'undefined'
+              && session[1] !== null && session[1].length > 0);
+  //if(inactive) {
+  //    active = active.filter(session => (new Date()).getTime() - session[0] > TIMEOUT);
+  //}
+  let cancelled = false;
+  let available = []
+  for(let i = 0; i < active.length; i++) {
+    let r = await verifySession(driver, active[i])
+    if(typeof r !== 'undefined') {
+      available[available.length] = active[i]
+    }
+    if(inactive) {
+      cancelled = true;
+    } else {
+    }
+  }
+  //session.id_ = original;
+
+  return available
+    .filter(sess => typeof sess !== 'undefined' && sess !== null)
+    .filter((elem, pos, arr) => arr.indexOf(elem) === pos)
+}
+
+
+module.exports = getSessions
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Imported Modules</h3>
+<p>The code imports the following modules:</p>
+<ul>
+<li><code>importer</code>: a module for importing other modules</li>
+<li><code>selenium-webdriver</code>: a Selenium Webdriver module for interacting with web browsers</li>
+<li><code>selenium-webdriver/chrome</code>: a Chrome-specific module for Selenium Webdriver</li>
+<li><code>webdriver-client</code>: a module for creating a WebDriver client</li>
+</ul>
+<h3>Constants</h3>
+<ul>
+<li><code>LOCAL_URL</code>: a constant for the local Selenium server URL (http://localhost:4444/wd/hub)</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>verifySession</code></h4>
+<ul>
+<li>A function that takes a WebDriver instance and a session ID as input</li>
+<li>It creates a new Chrome driver instance with the given session ID and executor</li>
+<li>It attempts to get the window handles of the driver and logs them to the console</li>
+<li>It returns the session ID if the driver is successfully created and window handles are obtained</li>
+<li>It catches any errors that occur and logs them to the console</li>
+</ul>
+<h4><code>getSessions</code></h4>
+<ul>
+<li>A function that takes an optional WebDriver instance and an inactive flag as input</li>
+<li>It reads sessions from the <code>readSessions</code> function and filters them to get active sessions (sessions with a non-null and non-empty session ID)</li>
+<li>It iterates over the active sessions, verifying each session using the <code>verifySession</code> function</li>
+<li>It returns an array of available sessions that were successfully verified</li>
+</ul>
+<h3>Exports</h3>
+<p>The <code>getSessions</code> function is exported as a module export.</p>

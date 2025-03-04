@@ -1,0 +1,94 @@
+<p>Here's a brief summary:</p>
+<p>This code provides functions for color space conversions, including <code>RGBtoXYZ</code>, <code>XYZtoLab</code>, and <code>rgb2lab</code>, which transform RGB values into L<em>a</em>b* color space according to CIE XYZ and Lab specifications. The code uses C programming language and assumes RGB values are in the range [0, 255] and XYZ values are in the range [0, 1].</p>
+
+
+<pre><code>#include <math.h>
+
+double F(double input) // function f(...), which is used for defining L, a and b changes within [4/29,1]
+{
+  if (input > 0.008856)
+    return (pow(input, 0.333333333)); // maximum 1
+  else
+    return ((841/108)*input + 4/29);  //841/108 = 29*29/36*16
+}
+
+
+void XYZtoLab(double X, double Y, double Z, double *L, double *a, double *b)
+{
+  // TODO: make sure these are correct
+  const double Xo = 244.66128; // reference white
+  const double Yo = 255.0;
+  const double Zo = 277.63227;
+  *L = 116 * F(Y / Yo) - 16; // maximum L = 100
+  *a = 500 * (F(X / Xo) - F(Y / Yo)); // maximum 
+  *b = 200 * (F(Y / Yo) - F(Z / Zo));
+}
+
+
+// source http://www.easyrgb.com/en/math.php
+void RGBtoXYZ(double R, double G, double B, double *X, double *Y, double *Z) {
+  // Assume RGB has the type invariance satisfied, i.e., channels \in [0,255]
+  float var_R = R / 255.0;
+  float var_G = G / 255.0;
+  float var_B = B / 255.0;
+
+  var_R = (var_R > 0.04045) ? pow((var_R + 0.055) / 1.055, 2.4)
+                            : var_R / 12.92;
+  var_G = (var_G > 0.04045) ? pow((var_G + 0.055) / 1.055, 2.4)
+                            : var_G / 12.92;
+  var_B = (var_B > 0.04045) ? pow((var_B + 0.055) / 1.055, 2.4)
+                            : var_B / 12.92;
+
+  var_R *= 100;
+  var_G *= 100;
+  var_B *= 100;
+
+  *X = var_R * 0.4124 + var_G * 0.3576 +
+       var_B * 0.1805;
+  *Y = var_R * 0.2126 + var_G * 0.7152 +
+       var_B * 0.0722;
+  *Z = var_R * 0.0193 + var_G * 0.1192 +
+       var_B * 0.9505;
+}
+
+
+double *rgb2lab(int R, int G, int B){
+  static double Lab[3] = {0, 0, 0};
+  double X, Y, Z;
+  RGBtoXYZ(R, G, B, &X, &Y, &Z);
+  XYZtoLab(X, Y, Z, &Lab[0], &Lab[1], &Lab[2]);
+  return Lab;
+}
+
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Function F</h3>
+<ul>
+<li>Calculates the cube root of the input value if it is greater than 0.008856</li>
+<li>Returns a linear transformation of the input value if it is less than or equal to 0.008856</li>
+</ul>
+<h3>Function XYZtoLab</h3>
+<ul>
+<li>Converts XYZ color coordinates to Lab color space</li>
+<li>Calculates the L<em>, a</em>, and b* values based on the input XYZ coordinates</li>
+</ul>
+<h3>Function RGBtoXYZ</h3>
+<ul>
+<li>Converts RGB color coordinates to XYZ color space</li>
+<li>Performs linear and non-linear transformations on the input RGB values</li>
+<li>Returns the XYZ coordinates</li>
+</ul>
+<h3>Function rgb2lab</h3>
+<ul>
+<li>Converts RGB color coordinates to Lab color space</li>
+<li>Calls the RGBtoXYZ and XYZtoLab functions to perform the color space conversion</li>
+<li>Returns the Lab color coordinates as an array of three double values</li>
+</ul>
+<h2>Note</h2>
+<ul>
+<li>The functions are implemented using C programming language</li>
+<li>The color space conversions are performed according to the CIE XYZ and Lab color space specifications</li>
+<li>The code assumes that the RGB values are in the range [0, 255] and the XYZ values are in the range [0, 1]</li>
+</ul>

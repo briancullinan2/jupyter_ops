@@ -1,0 +1,74 @@
+<p>This code defines a function <code>replaceCore</code> that rewrites JavaScript code to substitute calls to the &quot;Core&quot; module with calls to a custom function named <code>importNotebook</code>.  It achieves this by analyzing the code's Abstract Syntax Tree (AST) and making targeted modifications.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {selectAst} = importer.import('select code tree')
+var {transpile, remove} = importer.import('transpile code')
+
+var CORE_DECLARE = `//VariableDeclaration[
+    .//*[@type="Literal" and contains(@value, "Core")]
+]`
+var IMPORTER = `${CORE_DECLARE}/*[@type="Identifier"]/@name`
+var IMPORTER_CALLS = `//CallExpression[./*[
+    contains(@type, "Member") and ./*[@type="Identifier" and @name=${IMPORTER}]
+]]`
+
+// TODO: generalize this and make a tool
+function replaceProperty(ctx) {
+    var usage = selectAst(`./*[@parent-attr="callee"]`, ctx);
+    var property = selectAst(`./*/*[@parent-attr="property"]`, ctx);
+    if(selectAst(`./@name`, property) === 'import') {
+        property.setAttribute('name', 'importNotebook')
+    }
+    usage.replaceWith(property)
+    property.setAttribute('parent-attr', 'callee')
+}
+
+function replaceCore(code) {
+    return transpile([
+        [IMPORTER_CALLS, replaceProperty],
+        [CORE_DECLARE, remove],
+    ], code)
+}
+
+module.exports = {
+    replaceCore
+}
+</code></pre>
+
+<p>This code snippet defines a function <code>replaceCore</code> that modifies JavaScript code by replacing calls to the <code>Core</code> module with calls to a function named <code>importNotebook</code>.</p>
+<p><strong>Here's a breakdown:</strong></p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module (likely from the <code>Core</code> directory) used to import other functions.</li>
+<li><code>selectAst</code>, <code>transpile</code>, <code>remove</code>: Functions imported from <code>Core</code> for working with Abstract Syntax Trees (AST) and code transformation.</li>
+</ul></li>
+<li><p><strong>AST Selectors:</strong></p>
+<ul>
+<li><code>CORE_DECLARE</code>: An XPath-like expression to select variable declarations referencing &quot;Core&quot;.</li>
+<li><code>IMPORTER</code>: An XPath expression to select the name of the imported module (likely &quot;Core&quot;).</li>
+<li><code>IMPORTER_CALLS</code>: An XPath expression to select calls to the imported module.</li>
+</ul></li>
+<li><p><strong><code>replaceProperty</code> Function:</strong></p>
+<ul>
+<li>Takes an AST context (<code>ctx</code>) as input.</li>
+<li>Finds calls to the <code>import</code> property within the AST.</li>
+<li>Replaces the <code>import</code> property with a new property named <code>importNotebook</code>.</li>
+</ul></li>
+<li><p><strong><code>replaceCore</code> Function:</strong></p>
+<ul>
+<li>Takes JavaScript code (<code>code</code>) as input.</li>
+<li>Uses <code>transpile</code> to apply transformations to the AST:
+<ul>
+<li>It uses <code>IMPORTER_CALLS</code> to select calls to the imported module and applies <code>replaceProperty</code> to change them.</li>
+<li>It uses <code>CORE_DECLARE</code> to select variable declarations referencing &quot;Core&quot; and applies <code>remove</code> to delete them.</li>
+</ul></li>
+<li>Returns the modified code.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>replaceCore</code> function, making it available for use in other modules.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to modify JavaScript code by replacing calls to a specific module with calls to a custom function, effectively changing the way the code interacts with external dependencies.</strong></p>

@@ -1,0 +1,91 @@
+<p>This code analyzes source code files (JavaScript, TypeScript, or C#) within a project to identify and extract long functions, providing information about their location and content.  It uses regular expressions and file system operations to locate and process the code.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {listInProject} = importer.import('list project files');
+
+function matchCurlyBraces(contents) {
+    var XRegExp = require('xregexp');
+    var newMatches = XRegExp.matchRecursive(contents, '{', '}', 'gi', {
+        valueNames: ['literal', null, 'value', null]
+    }).filter(m => m.name === 'value');
+    //console.log(newMatches);
+    return newMatches.reduce(
+        (arr, m) => arr.concat(matchCurlyBraces(m.value)),
+        newMatches);
+};
+
+function findLongFunctions(project) {
+    var files = listInProject(project, '**/*.+(ts|js|cs)')
+    var results = files.map(file => {
+        const contents = file.contents.toString();
+        try {
+            results = results.concat(matchCurlyBraces(contents)
+                .map(m => Object.assign(m, {path: file.path})))
+        } catch (e) {
+            results = results.concat([{
+                name: 'value',
+                value: file.contents.toString(),
+                start: 0,
+                end: file.contents.length,
+                error: e,
+                path: file.path
+            }])
+        }
+    });
+    var code = results.map(r => r.value);
+    var topLevel = results
+        .filter(r => code
+            .filter(c => c !== r.value && c.indexOf(r.value) > 0).length === 0)
+    results = results
+        .filter(m => topLevel.filter(c => c.value === m.value).length === 0)
+    code = results.map(r => r.value);
+    topLevel = topLevel.concat(results.filter(r => code
+        .filter(c => c !== r.value && c.indexOf(r.value) > 0).length === 0))
+    results = results
+        .filter(m => topLevel.filter(c => c.value === m.value).length === 0)
+    return results
+        .filter(m => m.value.split(/\n/ig).length > 100)
+}
+
+module.exports = findLongFunctions
+</code></pre>
+
+<p>This code analyzes JavaScript, TypeScript, or C# files within a project to identify and extract long functions.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports the <code>importer</code> module for listing files in a project.</li>
+<li>Imports the <code>XRegExp</code> library for advanced regular expression matching.</li>
+</ul></li>
+<li><p><strong><code>matchCurlyBraces</code> Function:</strong></p>
+<ul>
+<li>Recursively finds all curly brace-enclosed blocks (likely functions) within a given text string.</li>
+<li>Uses <code>XRegExp</code> to match '{', '}', and captures the content within the braces.</li>
+</ul></li>
+<li><p><strong><code>findLongFunctions</code> Function:</strong></p>
+<ul>
+<li>Takes a project path as input.</li>
+<li>Lists all <code>.ts</code>, <code>.js</code>, or <code>.cs</code> files within the project using <code>listInProject</code>.</li>
+<li>Iterates through each file:
+<ul>
+<li>Reads the file contents.</li>
+<li>Calls <code>matchCurlyBraces</code> to find function blocks.</li>
+<li>If an error occurs during parsing, records the error information along with the file contents.</li>
+</ul></li>
+<li>Filters the results to remove duplicate functions and those nested within other functions.</li>
+<li>Returns an array of function objects, each containing:
+<ul>
+<li><code>value</code>: The function code.</li>
+<li><code>path</code>: The file path.</li>
+<li><code>start</code>: Start position of the function in the file.</li>
+<li><code>end</code>: End position of the function in the file.</li>
+<li><code>error</code>: Error information if encountered during parsing.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>findLongFunctions</code> function as the main module export.</li>
+</ul></li>
+</ol>

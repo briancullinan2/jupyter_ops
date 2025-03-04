@@ -1,0 +1,72 @@
+<p>This code defines a reusable function <code>sendEmail</code> that sends emails via Gmail using Nodemailer, securely retrieving credentials and handling email sending asynchronously.</p>
+
+
+<pre><code>var nodemailer = require('nodemailer')
+var importer = require('../Core');
+var getCredentials = importer.import('decrypt passwords');
+
+function sendEmail(to, text, subject, from) {
+    var credentials = getCredentials('accounts.google.com');
+    process.env.GOOGLE_USER = credentials.Email;
+    process.env.GOOGLE_PASS = credentials.Passwd;
+
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: process.env.GOOGLE_USER, // generated ethereal user
+            pass: process.env.GOOGLE_PASS  // generated ethereal password
+        }
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: from, // sender address
+        to: to, // list of receivers
+        subject: subject, // Subject line
+        text: text, // plain text body
+        html: text // html body
+    };
+
+    // send mail with defined transport object
+    return new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return reject(error);
+            }
+            resolve(info.messageId);
+        });
+    });
+}
+module.exports = sendEmail;
+
+</code></pre>
+
+<p>This code defines a function <code>sendEmail</code> that sends emails using Nodemailer and Gmail.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>nodemailer</code>: A library for sending emails.</li>
+<li><code>importer</code>: A custom module likely responsible for importing external libraries and retrieving credentials.</li>
+</ul></li>
+<li><p><strong>Credential Retrieval:</strong></p>
+<ul>
+<li><code>getCredentials('accounts.google.com')</code>: Calls a function from the <code>importer</code> module to retrieve email credentials for Gmail.</li>
+</ul></li>
+<li><p><strong>Email Sending Function:</strong></p>
+<ul>
+<li><code>sendEmail(to, text, subject, from)</code>: Takes recipient email address (<code>to</code>), email text (<code>text</code>), subject (<code>subject</code>), and sender (<code>from</code>) as parameters.</li>
+<li>Sets environment variables <code>GOOGLE_USER</code> and <code>GOOGLE_PASS</code> with the retrieved credentials.</li>
+<li>Creates a Nodemailer transporter object configured to use Gmail's SMTP server.</li>
+<li>Defines email options (<code>mailOptions</code>) with sender, recipient, subject, and text content.</li>
+<li>Uses <code>transporter.sendMail</code> to send the email and returns a promise that resolves with the message ID on success or rejects with an error.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = sendEmail;</code>: Exports the <code>sendEmail</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a reusable function for sending emails through Gmail using Nodemailer, securely handling credentials and returning a promise for asynchronous email sending.</p>

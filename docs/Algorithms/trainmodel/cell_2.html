@@ -1,0 +1,13 @@
+
+
+<pre><code>def createdataframe(dir):
+    image_paths = []
+    labels = []
+    for label in os.listdir(dir):
+        for imagename in os.listdir(os.path.join(dir,label)):
+            image_paths.append(os.path.join(dir,label,imagename))
+            labels.append(label)
+        print(label, "completed")
+    return image_paths,labels
+</code></pre>
+

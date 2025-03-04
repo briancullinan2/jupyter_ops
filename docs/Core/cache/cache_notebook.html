@@ -1,0 +1,89 @@
+<p>This code analyzes Jupyter Notebooks, extracts questions from code and markdown sections, and creates a cache of cell information including questions, context, and metadata.</p>
+
+
+<pre><code>var path = require('path');
+var fs = require('fs')
+var importer = require('../Core')
+var MATCH_QUESTIONS = (/^.*\?.*$/igm);
+
+function getQuestions(source, markdown) {
+    var questions = importer.regexToArray(MATCH_QUESTIONS, markdown)
+        .map(r => r.replace(/how to|\?|#+/ig, '').trim())
+        .concat(importer.regexToArray(MATCH_QUESTIONS, source)
+            .filter(r => r.match(/how to/ig))
+            .map(r => r.replace(/how to|\?|#+/ig, '').trim()))
+        // find the shortest words from the query to match the same cell
+    questions.sort((a, b) => a.length - b.length)
+    // TODO: weird fix, Fuse.js apparently doesn't work on lists with one element
+    return questions[0] ? questions.concat(questions[0]) : questions;
+}
+
+// TODO: convert to pattern like group everything leading up to match
+function accumulateMarkdown(cells) {
+    // read markdown leading up to code cells
+    var codes = cells.filter(c => c.cell_type === 'code')
+    return codes
+        .map((c, i) => Object.assign(c, {
+            from: i > 0 ? (cells.indexOf(codes[i-1]) + 1) : 0,
+            to: cells.indexOf(c)
+        }))
+        .map((c, i) => Object.assign(c, {
+            markdown: cells.slice(c.from, c.to).map(m => m.source.join('')),
+            code: c.source.join('')
+        }))
+}
+
+function cacheCells(filename) {
+    filename = path.resolve(filename)
+    const mtime = fs.statSync(filename).mtime.getTime()
+    const cells = importer.getCells(filename, ['*', 'markdown', 'code'])
+    const newCache = accumulateMarkdown(cells)
+    return newCache.map((c, i) => {
+        var id = path.basename(filename) + '[' + i + ']'
+        var questions = getQuestions(c.code, c.markdown)
+        if(questions.length === 0) questions = ['']
+        return Object.assign(c, {
+            id,
+            filename,
+            mtime,
+            questions,
+            notebook: path.basename(filename)
+        })
+    })
+}
+
+module.exports = {
+    cacheCells,
+    accumulateMarkdown,
+    getQuestions,
+}
+</code></pre>
+
+<p>This code defines functions for processing Jupyter Notebook files.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>getQuestions(source, markdown)</code>:</strong></p>
+<ul>
+<li>Extracts questions from both code and markdown sections of a notebook cell.</li>
+<li>Uses regular expressions to identify potential questions.</li>
+<li>Filters and cleans up the extracted questions.</li>
+</ul></li>
+<li><p><strong><code>accumulateMarkdown(cells)</code>:</strong></p>
+<ul>
+<li>Processes a list of notebook cells, grouping markdown and code together.</li>
+<li>Calculates the starting and ending indices of each code cell within the notebook.</li>
+<li>Creates an object for each code cell containing its markdown context and code content.</li>
+</ul></li>
+<li><p><strong><code>cacheCells(filename)</code>:</strong></p>
+<ul>
+<li>Reads a Jupyter Notebook file and extracts its cells.</li>
+<li>Calls <code>accumulateMarkdown</code> to process the cells.</li>
+<li>Calls <code>getQuestions</code> to extract questions from each cell.</li>
+<li>Creates a cache of cell objects containing metadata like filename, modification time, questions, and cell content.</li>
+</ul></li>
+<li><p><strong><code>module.exports</code>:</strong></p>
+<ul>
+<li>Exports the three functions for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to analyze Jupyter Notebooks, extract questions from them, and create a structured cache of cell information.</p>

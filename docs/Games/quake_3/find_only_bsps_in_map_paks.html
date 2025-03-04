@@ -1,0 +1,97 @@
+<p>This code automates the extraction of specific files, such as map files and screenshots, from Quake 3 PAK archives. It uses the <code>node-stream-zip</code> library to read the archives and extracts the desired files to specific locations.</p>
+
+
+<pre><code>var StreamZip = require('node-stream-zip');
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var {listInProject} = importer.import('list project files')
+
+
+function readPak(zipFile, cb) {
+    const zip = new StreamZip({
+        file: zipFile,
+        storeEntries: true
+    });
+
+    zip.on('ready', () => {
+        console.log('Entries read: ' + zip.entriesCount + ' ' + path.basename(zipFile));
+        for (const entry of Object.values(zip.entries())) {
+            if(entry.name.includes('.bsp')) {
+                console.log(entry.name)
+                /*var pk3Path = '/Applications/ioquake3/bestmaps/' + path.basename(pk3.name);
+                if(!fs.existsSync(pk3Path)) {
+                    zip.extract(pk3.name, pk3Path, err => {
+                        console.log((err ? 'Extract error ' : 'Extracted ') + pk3.name);
+                        zip.close();
+                        cb(zipFile);
+                    });
+                    return;
+                }*/
+            }
+            if(entry.name.includes('levelshots/') && entry.name !== 'levelshots/') {
+                var levelPath = '/Applications/ioquake3/bestmaps/levelshots/' + path.basename(entry.name)
+                if(!fs.existsSync(levelPath)) {
+                    zip.extract(entry.name, levelPath, err => {
+                        console.log((err ? 'Extract error ' : 'Extracted ') + entry.name);
+                        zip.close();
+                        cb(zipFile);
+                    });
+                    return;
+                }
+            }
+        }
+        zip.close()
+        cb();
+    });
+    
+    zip.on('error', err => { cb() });
+}
+
+
+function extractPaks() {
+    var results = listInProject('/Applications/ioquake3/bestmaps', '**/*.pk3')
+    console.log(results)
+    return importer.runAllPromises(results.map(r => {
+        return (resolve) => {
+            try {
+                readPak(r, resolve)
+            } catch (e) {
+                if(e.message.includes('Bad archive')) {}
+                else { console.log(e) }
+                resolve()
+            }
+        }
+    })).then(results => results.filter(r => r))
+}
+
+
+module.exports = extractPaks;
+</code></pre>
+
+<p>This code snippet is designed to extract files from Quake 3 PAK (package) archives.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>node-stream-zip</code>: A library for reading and extracting ZIP archives.</li>
+<li><code>fs</code>: Node.js file system module for interacting with files and directories.</li>
+<li><code>path</code>: Node.js path module for working with file paths.</li>
+<li><code>importer</code>: A custom module likely containing functions for interacting with the project structure.</li>
+</ul></li>
+<li><p><strong><code>readPak</code> Function:</strong></p>
+<ul>
+<li>Takes a PAK file path (<code>zipFile</code>) and a callback function (<code>cb</code>) as input.</li>
+<li>Creates a <code>StreamZip</code> object to read the PAK archive.</li>
+<li>Iterates through the entries in the archive.</li>
+<li>Extracts <code>.bsp</code> (map) files and <code>levelshots/</code> directory contents to specific locations.</li>
+<li>Calls the callback function (<code>cb</code>) when extraction is complete.</li>
+</ul></li>
+<li><p><strong><code>extractPaks</code> Function:</strong></p>
+<ul>
+<li>Uses the <code>importer.listInProject</code> function to find all <code>.pk3</code> files in the specified directory (<code>/Applications/ioquake3/bestmaps</code>).</li>
+<li>Maps over the found files, creating a promise for each file using <code>readPak</code>.</li>
+<li>Uses <code>importer.runAllPromises</code> to execute all the promises concurrently.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code automates the process of extracting specific files from Quake 3 PAK archives, likely for use in a map editing or modding tool.</strong></p>

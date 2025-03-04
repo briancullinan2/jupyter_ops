@@ -1,0 +1,388 @@
+
+
+<pre><code>var express = require('express');
+
+function route() {
+    const router = express.Router();
+    router.get('/sessions', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetSessions",ExecuteGetSessionCapabilities)),
+    router.post('/session/:sessionId/chromium/launch_app', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"LaunchApp",ExecuteLaunchApp,
+    router.get('/session/:sessionId/alert', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsAlertOpen",alert.ExecuteGetAlert),
+    router.post('/session/:sessionId/alert/dismiss', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DismissAlert",alert.ExecuteDismissAlert),
+    router.post('/session/:sessionId/dismiss_alert', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DismissAlert",alert.ExecuteDismissAlert),
+    router.post('/session/:sessionId/alert/accept', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"AcceptAlert",alert.ExecuteAcceptAlert),
+    router.post('/session/:sessionId/accept_alert', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"AcceptAlert",alert.ExecuteAcceptAlert),
+    router.get('/session/:sessionId/alert/text', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetAlertMessage",alert.ExecuteGetAlertText),
+    router.get('/session/:sessionId/alert_text', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetAlertMessage",alert.ExecuteGetAlertText),
+    router.post('/session/:sessionId/alert/text', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetAlertPrompt",alert.ExecuteSetAlertText),
+    router.post('/session/:sessionId/alert_text', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetAlertPrompt",alert.ExecuteSetAlertText),
+    router.post('/session/:sessionId/forward', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GoForward",ExecuteGoForward,
+    router.post('/session/:sessionId/back', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GoBack",ExecuteGoBack,
+    router.post('/session/:sessionId/refresh', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Refresh",ExecuteRefresh,
+    router.post('/session/:sessionId/execute', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ExecuteScript",ExecuteExecuteScript,
+    router.post('/session/:sessionId/execute_async', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ExecuteAsyncScript",ExecuteExecuteAsyncScript,
+    router.post('/session/:sessionId/execute/sync', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ExecuteScript",ExecuteExecuteScript,
+    router.post('/session/:sessionId/execute/async', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ExecuteAsyncScript",ExecuteExecuteAsyncScript,
+    router.get('/session/:sessionId/title', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetTitle",ExecuteGetTitle,
+    router.get('/session/:sessionId/source', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetSource",ExecuteGetPageSource,
+    router.get('/session/:sessionId/screenshot', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Screenshot",ExecuteScreenshot,
+    router.get('/session/:sessionId/chromium/heap_snapshot', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"HeapSnapshot",ExecuteTakeHeapSnapshot,
+    router.post('/session/:sessionId/visible', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Visible",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/visible', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Visible",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/element/active', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetActiveElement",ExecuteGetActiveElement,
+    router.post('/session/:sessionId/element/active', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetActiveElement",ExecuteGetActiveElement,
+    router.post('/session/:sessionId/element/:id/element', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"FindChildElement",ExecuteFindChildElement, 50,
+    router.post('/session/:sessionId/element/:id/elements', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"FindChildElements",ExecuteFindChildElements, 50,
+    router.post('/session/:sessionId/element/:id/clear', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ClearElement",ExecuteClearElement,
+    router.post('/session/:sessionId/element/:id/submit', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SubmitElement",ExecuteSubmitElement,
+    router.get('/session/:sessionId/element/:id/text', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementText",ExecuteGetElementText,
+    router.post('/session/:sessionId/element/:id/value', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TypeElement",ExecuteSendKeysToElement,
+    router.post('/session/:sessionId/file', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"UploadFile",ExecuteUploadFile,
+    router.get('/session/:sessionId/element/:id/value', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementValue",ExecuteGetElementValue,
+    router.get('/session/:sessionId/element/:id/name', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementTagName",ExecuteGetElementTagName,
+    router.get('/session/:sessionId/element/:id/selected', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsElementSelected",ExecuteIsElementSelected,
+    router.get('/session/:sessionId/element/:id/enabled', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsElementEnabled",ExecuteIsElementEnabled,
+    router.get('/session/:sessionId/element/:id/displayed', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsElementDisplayed",ExecuteIsElementDisplayed,
+    router.post('/session/:sessionId/element/:id/hover', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"HoverElement",ExecuteHoverOverElement,
+    router.get('/session/:sessionId/element/:id/location', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementLocation",ExecuteGetElementLocation,
+    router.get('/session/:sessionId/element/:id/location_in_view', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementLocationInView",ExecuteGetElementLocationOnceScrolledIntoView,
+    router.get('/session/:sessionId/element/:id/size', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementSize",ExecuteGetElementSize,
+    router.get('/session/:sessionId/element/:id/attribute/:name', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementAttribute",ExecuteGetElementAttribute,
+    router.get('/session/:sessionId/element/:id/equals/:other', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsElementEqual",ExecuteElementEquals,
+    router.get('/session/:sessionId/cookie', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetCookies",ExecuteGetCookies,
+    router.get('/session/:sessionId/cookie/:name', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetNamedCookie",ExecuteGetNamedCookie,
+    router.post('/session/:sessionId/cookie', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"AddCookie",ExecuteAddCookie,
+    router.delete('/session/:sessionId/cookie', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DeleteAllCookies",ExecuteDeleteAllCookies,
+    router.delete('/session/:sessionId/cookie/:name', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DeleteCookie",ExecuteDeleteCookie,
+    router.post('/session/:sessionId/frame', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SwitchToFrame",ExecuteSwitchToFrame,
+    router.post('/session/:sessionId/frame/parent', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SwitchToParentFrame",ExecuteSwitchToParentFrame,
+    router.post('/session/:sessionId/window', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SwitchToWindow",ExecuteSwitchToWindow,
+    router.get('/session/:sessionId/window/:windowHandle/size', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetWindowSize",ExecuteGetWindowSize,
+    router.get('/session/:sessionId/window/:windowHandle/position', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetWindowPosition",ExecuteGetWindowPosition,
+    router.post('/session/:sessionId/window/:windowHandle/size', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetWindowSize",ExecuteSetWindowSize,
+    router.post('/session/:sessionId/window/:windowHandle/position', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetWindowPosition",ExecuteSetWindowPosition,
+    router.post('/session/:sessionId/window/:windowHandle/maximize', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"MaximizeWindow",ExecuteMaximizeWindow,
+    router.post('/session/:sessionId/window/fullscreen', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"FullscreenWindow",ExecuteFullScreenWindow,
+    router.delete('/session/:sessionId/window', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"CloseWindow",ExecuteClose,
+    router.post('/session/:sessionId/element/:id/drag', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Drag",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/element/:id/css/:propertyName', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetElementCSSProperty",ExecuteGetElementValueOfCSSProperty,
+    router.post('/session/:sessionId/timeouts/implicit_wait', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetImplicitWait",ExecuteImplicitlyWait,
+    router.post('/session/:sessionId/timeouts/async_script', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetScriptTimeout",ExecuteSetScriptTimeout,
+    router.post('/session/:sessionId/timeouts', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetTimeout",ExecuteSetTimeout,
+    router.get('/session/:sessionId/timeouts', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetTimeouts",ExecuteGetTimeouts,
+    router.post('/session/:sessionId/execute_sql', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ExecuteSql",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/location', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetGeolocation",ExecuteGetLocation,
+    router.post('/session/:sessionId/location', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetGeolocation",ExecuteSetLocation,
+    router.post('/session/:sessionId/network_connection', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetNetworkConnection",ExecuteSetNetworkConnection,
+    router.get('/session/:sessionId/network_connection', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetNetworkConnection",ExecuteGetNetworkConnection,
+    router.get('/session/:sessionId/chromium/network_conditions', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetNetworkConditions",ExecuteGetNetworkConditions,
+    router.post('/session/:sessionId/chromium/network_conditions', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetNetworkConditions",ExecuteSetNetworkConditions,
+    router.delete('/session/:sessionId/chromium/network_conditions', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DeleteNetworkConditions",ExecuteDeleteNetworkConditions,
+    router.get('/session/:sessionId/application_cache/status', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); // ExecuteGetStatus
+    router.get('/session/:sessionId/browser_connection', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetBrowserConnection",ExecuteUnimplementedCommand,
+    router.post('/session/:sessionId/browser_connection', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetBrowserConnection",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/local_storage/key/:key', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetLocalStorageItem",ExecuteGetStorageItem, kLocalStorage,
+    router.delete('/session/:sessionId/local_storage/key/:key', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"RemoveLocalStorageItem",ExecuteRemoveStorageItem, kLocalStorage,
+    router.get('/session/:sessionId/local_storage', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetLocalStorageKeys",ExecuteGetStorageKeys, kLocalStorage,
+    router.post('/session/:sessionId/local_storage', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetLocalStorageKeys",ExecuteSetStorageItem, kLocalStorage,
+    router.delete('/session/:sessionId/local_storage', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ClearLocalStorage",ExecuteClearStorage, kLocalStorage,
+    router.get('/session/:sessionId/local_storage/size', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetLocalStorageSize",ExecuteGetStorageSize, kLocalStorage,
+    router.get('/session/:sessionId/session_storage/key/:key', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetSessionStorageItem",ExecuteGetStorageItem, kSessionStorage,
+    router.delete('/session/:sessionId/session_storage/key/:key', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"RemoveSessionStorageItem",ExecuteRemoveStorageItem,kSessionStorage,
+    router.get('/session/:sessionId/session_storage', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetSessionStorageKeys",ExecuteGetStorageKeys, kSessionStorage,
+    router.post('/session/:sessionId/session_storage', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetSessionStorageItem",ExecuteSetStorageItem, kSessionStorage,
+    router.delete('/session/:sessionId/session_storage', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"ClearSessionStorage",ExecuteClearStorage, kSessionStorage,
+    router.get('/session/:sessionId/session_storage/size', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetSessionStorageSize",ExecuteGetStorageSize, kSessionStorage,
+    router.get('/session/:sessionId/orientation', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetScreenOrientation",ExecuteGetScreenOrientation,
+    router.post('/session/:sessionId/orientation', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetScreenOrientation",ExecuteSetScreenOrientation,
+    router.delete('/session/:sessionId/orientation', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DeleteScreenOrientation",ExecuteDeleteScreenOrientation,
+    router.post('/session/:sessionId/click', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Click",ExecuteMouseClick,
+    router.post('/session/:sessionId/doubleclick', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DoubleClick",ExecuteMouseDoubleClick,
+    router.post('/session/:sessionId/buttondown', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"MouseDown",ExecuteMouseButtonDown,
+    router.post('/session/:sessionId/buttonup', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"MouseUp",ExecuteMouseButtonUp,
+    router.post('/session/:sessionId/moveto', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"MouseMove",ExecuteMouseMoveTo,
+    router.post('/session/:sessionId/keys', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Type",ExecuteSendKeysToActiveElement,
+    router.get('/session/:sessionId/ime/available_engines', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetAvailableEngines",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/ime/active_engine', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetActiveEngine",ExecuteUnimplementedCommand,
+    router.get('/session/:sessionId/ime/activated', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Activated",ExecuteUnimplementedCommand,
+    router.post('/session/:sessionId/ime/deactivate', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Deactivate",ExecuteUnimplementedCommand,
+    router.post('/session/:sessionId/ime/activate', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Activate",ExecuteUnimplementedCommand,
+    router.post('/session/:sessionId/touch/click', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Tap",ExecuteTouchSingleTap,
+    router.post('/session/:sessionId/touch/down', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchDown",ExecuteTouchDown,
+    router.post('/session/:sessionId/touch/up', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchUp",ExecuteTouchUp,
+    router.post('/session/:sessionId/touch/move', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchMove",ExecuteTouchMove,
+    router.post('/session/:sessionId/touch/scroll', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchScroll",ExecuteTouchScroll,
+    router.post('/session/:sessionId/touch/doubleclick', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchDoubleTap",ExecuteTouchDoubleTap,
+    router.post('/session/:sessionId/touch/longclick', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchLongPress",ExecuteTouchLongPress,
+    router.post('/session/:sessionId/touch/flick', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchFlick",ExecuteFlick,
+    router.post('/session/:sessionId/log', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetLog",ExecuteGetLog,
+    router.get('/session/:sessionId/log/types', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"GetLogTypes",ExecuteGetAvailableLogTypes,
+    router.post('/session/:sessionId/actions', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"PerformActions",ExecuteUnimplementedCommand,
+    router.delete('/session/:sessionId/actions', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"DeleteActions",ExecuteUnimplementedCommand,
+    router.post('/Logs', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"Logs",ExecuteUnimplementedCommand,
+    router.get('/status', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,ExecuteGetStatus)),
+    router.get('/shutdown', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"QuitAll",ExecuteQuit, true)),
+    router.post('/shutdown', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"QuitAll",ExecuteQuit, true)),
+    router.get('/session/:sessionId/is_loading', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsLoading",ExecuteIsLoading,
+    router.get('/session/:sessionId/autoreport', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"IsAutoReporting",ExecuteIsAutoReporting,
+    router.post('/session/:sessionId/autoreport', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SetAutoReporting",ExecuteSetAutoReporting,
+    router.post('/session/:sessionId/touch/pinch', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"TouchPinch",ExecuteTouchPinch,
+    router.post('/session/:sessionId/chromium/send_command', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SendCommand",ExecuteSendCommand,
+    router.post('/session/:sessionId/chromium/send_command_and_get_result', (req, res) => {
+        throw new Error('not implemented! ' + req.originalUrl + JSON.stringify(req.params).substr(0, 200));
+    }); //,"SendCommandAndGetResult",ExecuteSendCommandAndGetResult,
+
+    return router;
+}
+
+module.exports = {
+    router: route()
+};
+
+</code></pre>
+

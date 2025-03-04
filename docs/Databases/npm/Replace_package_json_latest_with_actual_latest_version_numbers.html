@@ -1,0 +1,51 @@
+<p>This code updates dependency versions in a project's <code>package.json</code> file to match the versions actually installed, using information from <code>npm list</code>.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var cwd = 'C:\\Users\\brian.cullinan\\Documents\\portal\\';
+var execSync = require('child_process').execSync;
+var packages = execSync('npm list --dev', {cwd: cwd}).toString().split('\n');
+var packageJson = JSON.parse(fs.readFileSync(path.join(cwd, 'package.json')));
+var deps = Object.keys(packageJson.dependencies);
+deps.forEach((d, k) => {
+    packages.forEach((p, i) => {
+        if (p.indexOf(d + '@') > -1) {
+            packageJson.dependencies[d] = '~' + p.split('@').pop().replace(' deduped', '');
+        }
+    });
+});
+console.log(packages);
+var devDeps = Object.keys(packageJson.devDependencies);
+devDeps.forEach((d, k) => {
+    packages.forEach((p, i) => {
+        if (p.indexOf(d + '@') > -1) {
+            packageJson.devDependencies[d] = '~' + p.split('@').pop().replace(' deduped', '');
+        }
+    });
+});
+$$.mime({'text/html': '<pre>' + JSON.stringify(packageJson, null, 4) + '</pre>'});
+</code></pre>
+
+<p>This code analyzes a project's <code>package.json</code> file and updates dependency versions based on information from a list of installed packages.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules for file system operations, path manipulation, and executing shell commands.</li>
+<li>Sets the working directory to a specified path.</li>
+<li>Executes a command to list all installed development dependencies using <code>npm list --dev</code>.</li>
+<li>Reads the project's <code>package.json</code> file and parses it as JSON.</li>
+</ul></li>
+<li><p><strong>Dependency Version Update:</strong></p>
+<ul>
+<li>Iterates through the project's dependencies (both regular and development) and compares them against the list of installed packages.</li>
+<li>If a dependency is found in the installed packages list, its version in the <code>package.json</code> file is updated to use a tilde (<code>~</code>) prefix, indicating a version range.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>Logs the list of installed packages to the console.</li>
+<li>Sends the updated <code>package.json</code> content as HTML to an external system (likely a testing environment) using <code>$$.mime</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code automates the process of updating dependency versions in a project's <code>package.json</code> file based on the actual versions installed in the project.</p>

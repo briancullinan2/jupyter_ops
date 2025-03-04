@@ -1,0 +1,89 @@
+<p>Here's a two-sentence summary:</p>
+<p>The code imports necessary libraries and sets up ANTLR directory to parse C language code, and defines a custom <code>FunctionExtractor</code> class to extract function names from the parsed code. A <code>get_functions</code> function is then defined to take a code string as input, parse it using ANTLR, and extract function names using the <code>FunctionExtractor</code> class.</p>
+
+
+<pre><code>import os
+from antlr4 import *
+ANTLR_DIRECTORY = os.path.join(os.path.dirname(__file__), "../Resources/Parsers/c")
+import sys
+sys.path.append(ANTLR_DIRECTORY)
+from CLexer import CLexer
+from CParser import CParser
+from CListener import CListener  # ANTLR-generated listener class
+
+class FunctionExtractor(CListener):
+    def __init__(self):
+        self.functions = []
+
+    def enterFunctionDefinition(self, ctx):
+        function_name = ctx.declarator().directDeclarator().getText()
+        self.functions.append(function_name)
+
+def get_functions(code_string):
+    lexer = CLexer(InputStream(code_string))
+    stream = CommonTokenStream(lexer)
+    parser = CParser(stream)
+    tree = parser.compilationUnit()
+    
+    listener = FunctionExtractor()
+    walker = ParseTreeWalker()
+    walker.walk(listener, tree)
+    
+    return listener.functions
+
+__all__ = {
+  "get_functions": get_functions
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Libraries</h3>
+<p>The code begins by importing necessary libraries:</p>
+<pre><code class="language-python">import os
+from antlr4 import *
+</code></pre>
+<h3>Setting Up ANTLR Directory</h3>
+<p>It then sets up the directory for ANTLR (ANother Tool for Language Recognition) tools:</p>
+<pre><code class="language-python">ANTLR_DIRECTORY = os.path.join(os.path.dirname(__file__), &quot;../Resources/Parsers/c&quot;)
+import sys
+sys.path.append(ANTLR_DIRECTORY)
+</code></pre>
+<p>This adds the ANTLR directory to the system path, allowing the code to access ANTLR-generated classes.</p>
+<h3>Importing ANTLR-Generated Classes</h3>
+<p>The code then imports ANTLR-generated classes for a C language parser:</p>
+<pre><code class="language-python">from CLexer import CLexer
+from CParser import CParser
+from CListener import CListener  # ANTLR-generated listener class
+</code></pre>
+<h3>Defining a Function Extractor Class</h3>
+<p>A custom class <code>FunctionExtractor</code> is defined, implementing the <code>CListener</code> interface:</p>
+<pre><code class="language-python">class FunctionExtractor(CListener):
+    def __init__(self):
+        self.functions = []
+
+    def enterFunctionDefinition(self, ctx):
+        function_name = ctx.declarator().directDeclarator().getText()
+        self.functions.append(function_name)
+</code></pre>
+<p>This class listens for <code>enterFunctionDefinition</code> events and extracts function names from the context.</p>
+<h3>Defining a Function Extractor Function</h3>
+<p>A function <code>get_functions</code> is defined, which takes a code string as input, parses it using ANTLR, and extracts function names using the <code>FunctionExtractor</code> class:</p>
+<pre><code class="language-python">def get_functions(code_string):
+    lexer = CLexer(InputStream(code_string))
+    stream = CommonTokenStream(lexer)
+    parser = CParser(stream)
+    tree = parser.compilationUnit()
+    
+    listener = FunctionExtractor()
+    walker = ParseTreeWalker()
+    walker.walk(listener, tree)
+    
+    return listener.functions
+</code></pre>
+<h3>Exporting the Function</h3>
+<p>The <code>get_functions</code> function is exported as a module attribute:</p>
+<pre><code class="language-python">__all__ = {
+  &quot;get_functions&quot;: get_functions
+}
+</code></pre>
+<p>This allows the function to be imported and used by other modules.</p>

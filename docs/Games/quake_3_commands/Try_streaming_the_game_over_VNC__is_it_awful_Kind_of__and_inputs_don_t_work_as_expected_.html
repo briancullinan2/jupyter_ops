@@ -1,0 +1,28 @@
+<p>Here is a 2-sentence summary of the Docker command breakdown:</p>
+<p>The <code>docker run</code> command starts a new container from an image, allowing interactive shell access, setting shared memory size, and mapping host ports to container ports. The command is used to run a Quake 3 game container with a bash shell, and remotely access it using a VNC key (VND7Z-M22AB-MQD7R-GAAKF-2B3EA).</p>
+
+
+<pre><code>
+# working vnc key
+# VND7Z-M22AB-MQD7R-GAAKF-2B3EA
+
+
+docker run -it --shm-size=2g --name quake3 -d -p 5901:5900 quake3 bash
+</code></pre>
+
+<h3>Brief Code Explanation</h3>
+<h4>Docker Command Breakdown</h4>
+<ul>
+<li><code>docker run</code>: Starts a new container from an image</li>
+<li><code>-it</code>: Allows interactive shell and allocates a pseudo-TTY</li>
+<li><code>--shm-size=2g</code>: Sets the size of the shared memory to 2GB</li>
+<li><code>--name quake3</code>: Names the container &quot;quake3&quot;</li>
+<li><code>-d</code>: Runs the container in detached mode (background)</li>
+<li><code>-p 5901:5900</code>: Maps port 5901 on the host machine to port 5900 inside the container</li>
+<li><code>quake3</code>: Specifies the image to use (in this case, the quake3 image)</li>
+<li><code>bash</code>: Runs the container with a bash shell</li>
+</ul>
+<h4>VNC Key</h4>
+<ul>
+<li>The VND7Z-M22AB-MQD7R-GAAKF-2B3EA key is not directly related to the Docker command, but it is likely a VNC (Virtual Network Computing) key for remote desktop access.</li>
+</ul>

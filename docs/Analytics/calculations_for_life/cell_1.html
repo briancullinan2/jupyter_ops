@@ -1,0 +1,35 @@
+
+
+<pre><code>// calculate exact age based on current date
+var _daysUntilBirthday = (_currentDate.getMonth() + 1) / 11 * 365.25 + (_currentDate.getDate() - 12);
+var _daysLifeOfBrian = (_currentDate.getFullYear() - 1986) * 365.25 - _daysUntilBirthday;
+var _32exactYearsLifeOfBrian = _daysLifeOfBrian / 365.25;
+
+var _7hoursPerNight = 7;
+var _1hourPerDay = 1;
+
+// percent of life spent sleeping (verification of methodology)
+var _daysPerYearSleeping = _7hoursPerNight / 24 * 365.25;
+var _percentOfYearSleeping = _daysPerYearSleeping / 365.25;
+var _percentOfYearSleepingFormatted = Math.round(_percentOfYearSleeping * 10000) / 100 + '%';
+
+console.log('Percent of life spent sleeping (1/3 of life): ' + _percentOfYearSleepingFormatted)
+
+// percent of life spent masturbating
+var _daysPerYearJerking = _1hourPerDay / 24 * 365.25;
+var _percentOfYearJerking = _daysPerYearJerking / 365.25;
+var _percentOfYearJerkingFormatted = Math.round(_percentOfYearJerking * 10000) / 100 + '%';
+var _percentOfLifeJerking = _percentOfYearJerking * (_32exactYearsLifeOfBrian - 12) / _32exactYearsLifeOfBrian; // Since age 12
+var _percentOfLifeJerkingFormatted = Math.round(_percentOfLifeJerking * 10000) / 100 + '%';
+
+console.log('Percent of year spent masturbating: ' + _percentOfYearJerkingFormatted);
+console.log('Percent of life spent masturbating: ' + _percentOfLifeJerkingFormatted);
+
+// percent of life spent not working
+
+
+// percent of life spent watching movies
+
+
+</code></pre>
+

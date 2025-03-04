@@ -1,0 +1,38 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The code imports a function <code>createSheet</code> from a <code>Core</code> module to create a Google Drive sheet, and then writes a unit test to verify that the function successfully creates a sheet with a given email address.</p>
+
+
+<pre><code>var importer = require('../Core');
+var createSheet = importer.import('create a sheet in google drive');
+
+describe('create a new marketing sheet', () => {
+    
+    it('should create a sheet', () => {
+        return createSheet('bjcullinan@gmail.com');
+    })
+})
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var createSheet = importer.import('create a sheet in google drive');
+</code></pre>
+<ul>
+<li>The code imports a module named <code>Core</code> from a relative path (<code>../Core</code>).</li>
+<li>It uses the imported <code>importer</code> to load a specific function named <code>createSheet</code> from the <code>Core</code> module. The function is identified by the string <code>'create a sheet in google drive'</code>.</li>
+</ul>
+<h4>Writing a Unit Test</h4>
+<pre><code class="language-javascript">describe('create a new marketing sheet', () =&gt; {
+    
+    it('should create a sheet', () =&gt; {
+        return createSheet('bjcullinan@gmail.com');
+    })
+})
+</code></pre>
+<ul>
+<li>The code defines a test suite using the <code>describe</code> function.</li>
+<li>Inside the test suite, it defines a single test case using the <code>it</code> function.</li>
+<li>The test case is named <code>'should create a sheet'</code>.</li>
+<li>The test case calls the <code>createSheet</code> function with a hardcoded email address <code>'bjcullinan@gmail.com'</code> as an argument and returns the result.</li>
+</ul>

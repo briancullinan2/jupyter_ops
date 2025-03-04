@@ -1,0 +1,46 @@
+<p>This code uses the Google Maps Geocoding API to convert an address (&quot;Kazimierz World Wine Bar&quot;) into geographic coordinates (latitude and longitude). It then handles the API response, likely sending the results to a user interface or another part of the application.</p>
+
+
+<pre><code>var util = require('util');
+var request = util.promisify(require('request'));
+
+function googleGeocodeAddress(address) {
+    return request('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyAoTAY0vq2yuaDyygjMdwgharnS_CXEvRY')
+        .then(r => JSON.parse(r.body).results)
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    googleGeocodeAddress('Kazimierz World Wine Bar')
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+
+</code></pre>
+
+<p>This code snippet demonstrates how to geocode an address using the Google Maps Geocoding API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>util</code>: A built-in Node.js module for utility functions.</li>
+<li><code>request</code>: A library for making HTTP requests, promisified using <code>util.promisify</code> for easier asynchronous handling.</li>
+</ul></li>
+<li><p><strong>API Key:</strong></p>
+<ul>
+<li>The code directly embeds your Google Maps API key in the URL. <strong>Important:</strong> In a real-world application, it's highly recommended to store your API key securely and not expose it directly in the code.</li>
+</ul></li>
+<li><p><strong><code>googleGeocodeAddress</code> Function:</strong></p>
+<ul>
+<li>Takes an <code>address</code> string as input.</li>
+<li>Constructs a URL to the Google Geocoding API endpoint, including the <code>address</code> and your API key.</li>
+<li>Uses <code>request</code> to make a GET request to the constructed URL.</li>
+<li>Parses the JSON response and returns an array of <code>results</code>, each containing geocoding information (latitude, longitude, etc.) for the given address.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>The <code>if</code> block checks if a special <code>$$</code> object is available (likely part of a testing or server-side framework).</li>
+<li>If available, it calls <code>googleGeocodeAddress</code> with the address &quot;Kazimierz World Wine Bar&quot; and handles the result using <code>$$.sendResult</code> for success and <code>$$.sendError</code> for any errors.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

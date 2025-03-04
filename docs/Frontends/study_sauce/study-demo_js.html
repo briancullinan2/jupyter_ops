@@ -1,0 +1,42 @@
+<p>Here's a 2-sentence summary of the function breakdown:</p>
+<p>The <code>createStudyPack(email)</code> and <code>createCards(cards)</code> functions both call methods on the <code>jupyter_ops.studysauce</code> object, but always return <code>false</code>. They appear to be primarily used for rendering and rendering cards, with the <code>createCards(cards)</code> function also manipulating an iframe element in the document.</p>
+
+
+<pre><code>
+function createStudyPack(email) {
+    jupyter_ops.studysauce.copyStudy({email: email});
+    return false;
+}
+
+function createCards(cards) {
+    jupyter_ops.studysauce.renderCards({cards: cards})
+        .then(r => document
+              .getElementsByTagName('iframe')[0]
+              .setAttribute('src', r))
+    return false;
+}
+
+
+</code></pre>
+
+<h2>Function Breakdown</h2>
+<h3>createStudyPack(email)</h3>
+<ul>
+<li><strong>Purpose:</strong> Creates a study pack.</li>
+<li><strong>Parameter:</strong> <code>email</code> - The email address of the user.</li>
+<li><strong>Functionality:</strong> Calls the <code>copyStudy</code> method of the <code>jupyter_ops.studysauce</code> object, passing in the <code>email</code> parameter.</li>
+<li><strong>Return Value:</strong> Always returns <code>false</code>.</li>
+</ul>
+<h3>createCards(cards)</h3>
+<ul>
+<li><strong>Purpose:</strong> Renders cards.</li>
+<li><strong>Parameter:</strong> <code>cards</code> - The cards to be rendered.</li>
+<li><strong>Functionality:</strong> Calls the <code>renderCards</code> method of the <code>jupyter_ops.studysauce</code> object, passing in the <code>cards</code> parameter.</li>
+<li><strong>Then</strong> block:
+<ul>
+<li>Waits for the <code>renderCards</code> method to resolve and stores the result in the <code>r</code> variable.</li>
+<li>Retrieves the first <code>iframe</code> element in the document.</li>
+<li>Sets the <code>src</code> attribute of the <code>iframe</code> element to the value of <code>r</code>.</li>
+</ul></li>
+<li><strong>Return Value:</strong> Always returns <code>false</code>.</li>
+</ul>

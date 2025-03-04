@@ -1,0 +1,128 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code imports required modules and defines constants, then uses the <code>buildDylib</code> function to compile a dynamic library, extract environment variables, and recompile if necessary, assuming the library is written in C, C++, or Objective-C.</p>
+<p>Or in two sentences:</p>
+<p>The code imports necessary modules and defines constants for a build process. The <code>buildDylib</code> function compiles a dynamic library, extracts environment variables, and recompiles if necessary, assuming the library is written in C, C++, or Objective-C.</p>
+
+
+<pre><code>
+const fs = require('fs')
+const path = require('path')
+const { interpret } = require('../Core')
+const { safeurl } = importer.import('domain cache tools')
+const parse = importer.import('shell parse')
+
+const BUILD_DIRECTORY = path.join(__dirname, '../.build')
+const SCAN_ENVIRONMENT = /([A-Z_])\s*[\:-=]+\s*(.*?)\s*(\n|$)/g
+
+
+function buildDylib(code, pathToCode, ctx) {
+  if (!fs.existsSync(BUILD_DIRECTORY)) {
+    fs.mkdirSync(BUILD_DIRECTORY)
+  }
+
+  const codeCell = interpret(pathToCode)
+  // TODO: compare file times for dylib module recompile
+  let libName = safeurl(codeCell.questions[0])
+  let libPath = path.join(BUILD_DIRECTORY, libName + (codeCell.language == 'cpp' ? '.cpp' : '.c'))
+  if (!fs.existsSync(libPath)
+    || fs.statSync(codeCell.filename).mtime > fs.statSync(libPath).mtime
+  ) {
+    fs.writeFileSync(libPath, codeCell.source.join(''))
+  }
+
+
+  let env = {}
+  let match;
+  while ((match = SCAN_ENVIRONMENT.exec(codeCell.markdown.join(''))) !== null) {
+      env[match[1]] = match[2]
+  }
+
+  if(codeCell.language == 'cpp') {
+    env['CXX'] = parse(process.env.CXX) || ['clang++']
+    env['STD'] = parse(process.env.STD) || ['-std=c++17', '-stdlib=libc++']
+  } else {
+    env['CXX'] = parse(process.env.CXX) || ['clang']
+  }
+
+  // TODO: recompile dylib
+  let objPath = path.join(BUILD_DIRECTORY, libName + '.o')
+  if (!fs.existsSync(objPath)
+    || fs.statSync(libPath).mtime > fs.statSync(objPath).mtime
+  ) {
+    const { spawnSync } = require('child_process')
+    
+    let mods = []
+    if(codeCell.language == 'objective-c') {
+      mods = ['-x', 'objective-c', '-fno-objc-arc']
+    }
+
+    if(codeCell.source.join('').match('@import')) {
+      mods = ['-fmodules'].concat(mods)
+    }
+
+    let cflags = []
+    if(env['PKG_CONFIG']) {
+      let result = spawnSync('pkg-config', ['--cflags'].concat(parse(env['PKG_CONFIG'])))
+      cflags = parse(result.stdout.toString())
+    }
+
+    let args = ['-c', libPath, '-o', objPath]
+
+    // TODO:
+    //export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/Cellar/mono/6.12.0.206/lib/pkgconfig"
+    spawnSync(env['CXX'][0], env['CXX'].slice(1).concat(mods).concat(cflags).concat(args), { stdio: [0, 1, 2], env })
+
+  }
+
+  let modPath = path.join(BUILD_DIRECTORY, libName + '.dylib')
+  if (!fs.existsSync(modPath)
+    || fs.statSync(objPath).mtime > fs.statSync(modPath).mtime
+  ) {
+    const { spawnSync } = require('child_process')
+
+    let libs = []
+    if(env['PKG_CONFIG']) {
+      let result = spawnSync('pkg-config', ['--libs'].concat(parse(env['PKG_CONFIG'])))
+      libs = parse(result.stdout.toString())
+    }
+
+    let mods = []
+    if(env['CXX'].match('clang')) {
+      mods = ['-dynamiclib', '-rdynamic']
+    }
+
+    let objs = [objPath]
+    let args = ['-o', modPath]
+
+    spawnSync(env['CXX'][0], objs.concat(mods).concat(libs).concat(args), { stdio: [0, 1, 2] })
+  }
+
+}
+
+module.exports = buildDylib
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Constants</h3>
+<p>The code begins by importing required modules and defining constants:</p>
+<ul>
+<li><code>fs</code> (File System) and <code>path</code> are imported for file system operations.</li>
+<li><code>interpret</code> is imported from the <code>../Core</code> module.</li>
+<li><code>safeurl</code> is imported from the <code>domain cache tools</code> module.</li>
+<li><code>parse</code> is imported from the <code>shell parse</code> module.</li>
+<li><code>BUILD_DIRECTORY</code> is set to the path of the build directory.</li>
+<li><code>SCAN_ENVIRONMENT</code> is a regular expression to scan for environment variables.</li>
+</ul>
+<h3>buildDylib Function</h3>
+<p>The <code>buildDylib</code> function takes three arguments: <code>code</code>, <code>pathToCode</code>, and <code>ctx</code>. It performs the following operations:</p>
+<ol>
+<li><strong>Create Build Directory</strong>: If the build directory does not exist, it is created.</li>
+<li><strong>Interpret Code</strong>: The code is interpreted using the <code>interpret</code> function, and the resulting <code>codeCell</code> object is created.</li>
+<li><strong>Determine Library Name and Path</strong>: The library name is determined by URL-encoding the first question in the code cell, and the library path is constructed.</li>
+<li><strong>Compile Library</strong>: If the library file does not exist or is outdated, it is compiled to the library path.</li>
+<li><strong>Extract Environment Variables</strong>: Environment variables are extracted from the code cell's markdown using the regular expression <code>SCAN_ENVIRONMENT</code>.</li>
+<li><strong>Set CXX and STD Variables</strong>: Based on the language, <code>CXX</code> and <code>STD</code> variables are set to default values.</li>
+<li><strong>Recompile Library</strong>: If the library object file does not exist or is outdated, it is recompiled.</li>
+</ol>
+<h3>Functionality</h3>
+<p>The code appears to be a part of a build process for a dynamic library (dylib). It compiles the library code, extracts environment variables, and recompiles the library if necessary. The code assumes that the library is written in C, C++, or Objective-C.</p>

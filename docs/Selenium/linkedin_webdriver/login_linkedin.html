@@ -1,0 +1,149 @@
+<p>Here's a two-sentence summary:</p>
+<p>The <code>loginLinkedIn</code> function logs a user into LinkedIn using the <code>enterLinkedIn</code> function, which retrieves login credentials from a hardcoded JSON file and uses Selenium to fill in the login form. The <code>loginLinkedIn</code> function does not check if the login was successful, it only checks if the user is logged in, and the <code>enterLinkedIn</code> function does not handle errors robustly.</p>
+
+
+<pre><code>
+const getClient = importer.import('selenium client')
+const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'brian.json');
+
+async function enterLinkedIn(driver) {
+  console.log('LinkedIn: Sign in required');
+
+  var credentials = require(PASSWORDS_FILE)
+
+  let loginButton = await driver.findElement(By.css('a[href*="/login"]'))
+  if(!loginButton.error) {
+    try {
+      await loginButton.click()
+    } catch (e) {}
+    await new Promise(resolve => setTimeout(resolve, 2000))
+  }
+
+  //let body = await driver.findElement(By.css('body'))
+  await driver.wait(until.elementLocated(By.css('.login-form, [type="submit"]')), 10000);
+  let submit = await driver.findElement(By.css('.login-form, [type="submit"]'))
+
+  let login = await driver.findElement(By.css('input[name*="session_key"]'))
+  
+  await driver.executeScript('arguments[0].click();', login)
+  await driver.actions().sendKeys(credentials.username).perform()
+
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  //await pass.sendKeys(credentials.username)
+  //await driver.executeScript('arguments[0].value="' + credentials.username + '";', login)
+  
+  console.log('LinkedIn: Require password')
+
+  let pass = await driver.findElement(By.css('input[name*="session_password"]'))
+  await pass.click()
+  await pass.sendKeys(credentials.password)
+
+  await submit.click()
+
+  await new Promise(resolve => setTimeout(resolve, 3000))
+
+  let loginStill, loginStill2
+  try {
+    loginStill = await driver.findElement(By.css('#captcha-internal'))
+  } catch (e) {}
+  try {
+    loginStill2 = await driver.findElement(By.css('input[name*="session_password"]'))
+  } catch (e) {}
+  if(loginStill || loginStill2) {
+    throw new Error('captcha')
+  }
+}
+
+async function loginLinkedIn(driver) {
+  if(!driver) {
+    driver = await getClient();
+  }
+
+  try {
+    let url = await driver.getCurrentUrl()
+    let loggedIn = url.indexOf('linkedin') > -1 && url.indexOf('login') == -1
+                && url.indexOf('authwall') == -1
+
+    if(loggedIn) {
+      if(await driver.findElement(By.xpath('iframe.authentication-iframe'))) {
+        await driver.frame((await driver.element('iframe.authentication-iframe')).value)
+        await enterLinkedIn()
+        await frame()
+      }
+    } else {
+      //await driver.executeScript('window.location="https://www.linkedin.com/"', [])
+      //await driver.url('https://www.linkedin.com/')
+      await driver.get('https://www.linkedin.com/')
+      let loginLink, loginLink2
+      try {
+        loginLink = await driver.findElement(By.xpath('//a[text()[contains(.,"Forgot password?")]]'))
+      } catch (e) {}
+      try {
+        loginLink2 = await driver.findElement(By.xpath('//a[text()[contains(.,"Join now")]]'))
+      } catch (e) {}
+
+      if(loginLink || loginLink2) {
+        await enterLinkedIn(driver)
+      }
+    }
+  } catch (e) {
+    driver.quit()
+
+    throw e
+  }
+
+  return driver
+}
+
+module.exports = loginLinkedIn
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">const getClient = importer.import('selenium client')
+const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
+</code></pre>
+<ul>
+<li><code>getClient</code> function is imported from <code>selenium client</code> module.</li>
+<li>Various Selenium WebDriver classes and functions are imported from <code>selenium-webdriver</code> module.</li>
+</ul>
+<h4>Environment Variables and File Path</h4>
+<pre><code class="language-javascript">const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'brian.json');
+</code></pre>
+<ul>
+<li><code>PROFILE_PATH</code> is set to one of the environment variables <code>HOME</code>, <code>HOMEPATH</code>, or <code>USERPROFILE</code>.</li>
+<li><code>PASSWORDS_FILE</code> is the path to a JSON file containing login credentials, located at <code>PROFILE_PATH/.credentials/brian.json</code>.</li>
+</ul>
+<h4><code>enterLinkedIn</code> Function</h4>
+<pre><code class="language-javascript">async function enterLinkedIn(driver) {
+ ...
+}
+</code></pre>
+<ul>
+<li>This function takes a <code>driver</code> object as an argument and performs a Selenium-based login to LinkedIn.</li>
+<li>It logs messages indicating that a sign in is required.</li>
+<li>It retrieves login credentials from the <code>PASSWORDS_FILE</code>.</li>
+<li>It clicks the login button, waits for the login form to load, and fills in the username and password fields.</li>
+<li>It attempts to submit the form and checks for the presence of a CAPTCHA.</li>
+</ul>
+<h4><code>loginLinkedIn</code> Function</h4>
+<pre><code class="language-javascript">async function loginLinkedIn(driver) {
+ ...
+}
+</code></pre>
+<ul>
+<li>This function takes an optional <code>driver</code> object as an argument.</li>
+<li>If no <code>driver</code> is provided, it creates a new one using the <code>getClient</code> function.</li>
+<li>It checks if the current URL indicates that the user is logged in, and if not, calls the <code>enterLinkedIn</code> function.</li>
+</ul>
+<h4>Notes</h4>
+<ul>
+<li>The <code>loginLinkedIn</code> function does not check if the login was successful, it only checks if the user is logged in.</li>
+<li>The <code>enterLinkedIn</code> function does not handle errors robustly, it catches exceptions and continues with the next line of code.</li>
+<li>The <code>PASSWORDS_FILE</code> is hardcoded to a specific path, which may not be suitable for production use.</li>
+</ul>

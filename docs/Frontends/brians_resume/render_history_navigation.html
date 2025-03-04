@@ -1,0 +1,151 @@
+<p>Here is a 2-sentence summary of the <code>renderHistory</code> function:</p>
+<p>The <code>renderHistory</code> function retrieves and processes conversation history files from a specified project path, sorting and grouping the data by hour and identifying missing conversation summaries. It achieves this through file system operations, JSON parsing, and data grouping, but requires additional logic to be implemented for extracting time frames and creating date ranges.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+const selectModel = importer.import('select llm')
+
+async function renderHistory(req, res) {
+  
+  let session = req.query.session
+
+  if(!session) {
+    return ''
+  }
+
+  // TODO: extract time frame to, from prompt
+  let history = fs.readdirSync(PROJECT_PATH)
+  let historyFiles = []
+  for(let i = 0; i < history.length; i++) {
+    if(history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
+      historyFiles.push(path.basename(history[i]))
+    }
+  }
+
+  
+  // TODO: create a range of month out of the response
+  let nowNearestHour = (Math.round(parseInt(Date.now()) / 60 / 60) + 1) * 60 * 60
+  let includedHistory = []
+  let missingSummaries = {}
+  let historySummaries = ''
+  historyFiles.sort((a, b) => b - a)
+  for(let i = 0; i < historyFiles.length; i++) {
+    let convoFile = path.join(PROJECT_PATH, historyFiles[i])
+    if(fs.existsSync(convoFile)) {
+      ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+    } else {
+      ACTIVE_CONVERSATIONS[convoFile] = {}
+    }
+
+    let timestamps = Object.keys(ACTIVE_CONVERSATIONS[convoFile])
+      .filter(k => k != 'summaries' && k != 'memories')
+    timestamps.sort()
+    for(let i = 0; i < timestamps.length; i++) {
+      let nearestHourGroup = (Math.round(parseInt(timestamps[i]) / 60 / 60) + 1) * 60 * 60
+      if(nearestHourGroup == nowNearestHour) {
+        // TODO:
+      } else if(typeof ACTIVE_CONVERSATIONS[convoFile]['summaries'] == 'undefined'
+        || typeof ACTIVE_CONVERSATIONS[convoFile]['summaries'][nearestHourGroup] == 'undefined'
+      ) {
+        if(typeof missingSummaries[nearestHourGroup] == 'undefined') {
+          missingSummaries[nearestHourGroup] = []
+        }
+        if(typeof ACTIVE_CONVERSATIONS[convoFile][timestamps[i]].summary == 'undefined') {
+          missingSummaries[nearestHourGroup].push(ACTIVE_CONVERSATIONS[convoFile][timestamps[i]].keywords)
+        } else {
+          missingSummaries[nearestHourGroup].push(ACTIVE_CONVERSATIONS[convoFile][timestamps[i]].summary)
+        }
+      } else if(!includedHistory.includes(nearestHourGroup)) {
+        includedHistory.push(nearestHourGroup)
+        historySummaries += '<a onclick="loadHistory(event)" href="#history-' + nearestHourGroup + '">' 
+          + ACTIVE_CONVERSATIONS[convoFile]['summaries'][nearestHourGroup] + '</div>'
+      }
+    }
+  }
+
+  res.send(historySummaries)
+
+
+  let promptModel = await selectModel(DEFAULT_MODEL)
+  let missingTimestamps = Object.keys(missingSummaries)
+  //console.log(missingTimestamps)
+  for(let i = 0; i < missingTimestamps.length; i++) {
+
+    let missingDate = new Date(parseInt(missingTimestamps[i]))
+    let convoFile = historyFiles.filter(f => f.startsWith(missingDate.getFullYear() 
+      + '-' + String(missingDate.getMonth() + 1).padStart(2, '0')
+      + '-' + DEFAULT_MODEL
+      + '-'))[0]
+    if(!convoFile) {
+      console.error('No file for: ' + missingDate.getFullYear() 
+        + '-' + String(missingDate.getMonth() + 1).padStart(2, '0'))
+      continue
+    } else {
+      convoFile = path.join(PROJECT_PATH, convoFile)
+    }
+
+    if(typeof ACTIVE_CONVERSATIONS[convoFile]['summaries'] == 'undefined') {
+      ACTIVE_CONVERSATIONS[convoFile]['summaries'] = {}
+    }
+
+    if(ACTIVE_CONVERSATIONS[convoFile]['summaries'][missingTimestamps[i]]) {
+      continue
+    }
+
+    let q1 = 'Given the following statements about the conversation:\n'
+      + missingSummaries[missingTimestamps[i]].join('\n')
+      + '\nSummerize these points into two or three words with no title.'
+    console.log('User: ' + q1)
+    let a1 = await promptModel(q1)
+
+    ACTIVE_CONVERSATIONS[convoFile]['summaries'][missingTimestamps[i]] = a1
+    fs.writeFileSync(convoFile, JSON.stringify(ACTIVE_CONVERSATIONS[convoFile], null, 4))
+  }
+
+
+}
+
+
+module.exports = renderHistory
+</code></pre>
+
+<p><strong>Code Breakdown: <code>renderHistory</code> Function</strong></p>
+<h3>Dependencies and Variables</h3>
+<ul>
+<li><code>path</code> and <code>fs</code> modules are imported to handle file system operations.</li>
+<li><code>importer</code> module is used to import constants (<code>ACTIVE_CONVERSATIONS</code>, <code>PROJECT_PATH</code>, <code>DEFAULT_MODEL</code>) and a function (<code>selectModel</code>).</li>
+<li><code>req</code> and <code>res</code> are Express.js request and response objects.</li>
+</ul>
+<h3>Function Purpose</h3>
+<p>The <code>renderHistory</code> function is designed to retrieve and process conversation history files from a specified project path.</p>
+<h3>Code Logic</h3>
+<ol>
+<li>Checks if a <code>session</code> query parameter is present in the request, and returns an empty string if it's not.</li>
+<li>Uses the <code>fs</code> module to read the project directory and extract file names that match a specific pattern (e.g., <code>-&lt;model&gt;-&lt;session&gt;.json</code>).</li>
+<li>Sorts the file names in descending order (newest files first).</li>
+<li>Iterates through the file names, reading each file and parsing its contents as JSON.</li>
+<li>Extracts conversation timestamps from each file and groups them by hour.</li>
+<li>Checks if summaries are missing for a specific hour group and adds the missing conversation data to a <code>missingSummaries</code> object.</li>
+</ol>
+<h3>TODOs and Missing Logic</h3>
+<ul>
+<li>Extract time frame to and from prompts from the conversation data.</li>
+<li>Create a range of months from the response data.</li>
+<li>Implement logic for the <code>else if</code> block where <code>nowNearestHour</code> equals the current hour.</li>
+</ul>
+<h3>Variables and Objects</h3>
+<ul>
+<li><code>session</code>: a query parameter containing the session ID.</li>
+<li><code>history</code>: an array of file names in the project directory.</li>
+<li><code>historyFiles</code>: an array of file names that match the specified pattern.</li>
+<li><code>nowNearestHour</code>: the current hour in seconds.</li>
+<li><code>includedHistory</code>: an array of conversation data.</li>
+<li><code>missingSummaries</code>: an object containing missing conversation data grouped by hour.</li>
+<li><code>historySummaries</code>: a string containing the summary of the conversation history.</li>
+<li><code>ACTIVE_CONVERSATIONS</code>: an object containing conversation data for each file.</li>
+<li><code>convoFile</code>: the path to a conversation file.</li>
+<li><code>timestamps</code>: an array of conversation timestamps.</li>
+<li><code>nearestHourGroup</code>: the hour group of a conversation timestamp.</li>
+</ul>

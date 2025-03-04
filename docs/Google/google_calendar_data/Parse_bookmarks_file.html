@@ -1,0 +1,79 @@
+<p>This code extracts structured bookmark data from Chrome's exported HTML files found in Google Takeout, enabling programmatic access and manipulation of the bookmarks. It uses a custom DOM parsing function to navigate the HTML structure and retrieve relevant information about each bookmark.</p>
+
+
+<pre><code>var path = require('path');
+var fs = require('fs');
+var glob = require('glob');
+var importer = require('../Core');
+var {selectDom} = importer.import('select tree');
+var chromeDtToDate = importer.import('convert chrome date to calendar date')
+
+// TODO: remove this an use ENV transpiling
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Downloads';
+
+var bookmarkTree = [
+    '*/*/dl/dt[./h3]', // select all the headings
+    ctx => selectDom({
+        folder: './h3/text()', // get heading text
+        links: [ // all the links under that heading
+            './dl/dt/a',
+            {
+                url: './@href',
+                time: './@add_date',
+                title: './text()'
+            },
+            (obj) => ({ // a bit of parsing
+                url: obj.url + '',
+                title: obj.title + '',
+                time_usec: parseInt(obj.time + ''),
+                date: chromeDtToDate(parseInt(obj.time + '')).getTime()
+            })
+        ],
+        // get children from same context as each heading
+        children: (ctx) => selectDom(bookmarkTree, ctx)
+    }, ctx)
+]
+
+function getBookmarksFromTakeout() {
+    var files = glob.sync('Takeout*/Chrome/Bookmarks.html', {cwd: PROJECT_PATH})
+        .map(f => path.join(PROJECT_PATH, f));
+    files.sort((a, b) => fs.statSync(a).ctime - fs.statSync(b).ctime);
+    // parse bookmark html
+    var html = fs.readFileSync(files.pop()).toString();
+    return selectDom(bookmarkTree, html)
+}
+
+module.exports = getBookmarksFromTakeout;
+
+</code></pre>
+
+<p>This code parses Chrome bookmarks exported from Google Takeout and extracts a structured representation of the bookmarks.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for file system operations, glob pattern matching, and DOM manipulation.</li>
+</ul></li>
+<li><p><strong>Constants:</strong></p>
+<ul>
+<li>Defines paths for the project directory and the location of Chrome bookmarks within the Takeout archive.</li>
+</ul></li>
+<li><p><strong><code>bookmarkTree</code>:</strong></p>
+<ul>
+<li>Defines a tree-like structure for selecting and extracting bookmark data from the HTML using a custom DOM manipulation function <code>selectDom</code>.</li>
+<li>It specifies selectors for headings, links within headings, and recursively selects child bookmarks.</li>
+</ul></li>
+<li><p><strong><code>getBookmarksFromTakeout</code> Function:</strong></p>
+<ul>
+<li>Locates the latest Chrome Bookmarks.html file within the Takeout archive.</li>
+<li>Reads the HTML content of the file.</li>
+<li>Uses the <code>selectDom</code> function to parse the HTML and extract bookmark data according to the <code>bookmarkTree</code> structure.</li>
+<li>Returns the extracted bookmark data.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>getBookmarksFromTakeout</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a way to programmatically access and process Chrome bookmarks exported from Google Takeout, allowing for further analysis, manipulation, or integration with other systems.</strong></p>

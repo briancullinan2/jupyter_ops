@@ -1,0 +1,150 @@
+<p>Here is a two-sentence summary of the code:</p>
+<p>This code imports various functions and modules, including <code>selectModel</code>, <code>askLlamaForAChapterSynopsis</code>, and <code>Remarkable</code>, in order to generate content. It also defines a constant <code>APOTHEOSIS</code> with narrative descriptions and uses an <code>importer</code> to load various functions and modules from other files.</p>
+
+
+<pre><code>const selectModel = importer.import('select llm')
+const askLlamaForAChapterSynopsis = importer.import('ask llm to write chapter titles and descriptions')
+const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const {safeurl} = importer.import('domain cache tools')
+
+const APOTHEOSIS = {
+  'The Reluctant Hero Ascends to Godhood': 
+  'Story: A reluctant protagonist begins as an ordinary individual in a world of chaos and oppression. Through a series of trials, they unlock a hidden power, gain wisdom, and eventually transcend human limitations. In their final act, they sacrifice their physical form to protect the world, merging with a cosmic force to become a guiding light for others.',
+  'The Savior Who Becomes the Idea':
+  'Story: A visionary leader emerges during a time of societal unrest, inspiring hope and uniting factions. After a climactic confrontation with their greatest enemy, they die but leave behind a legacy so powerful that their followers elevate them to a mythic status. Over time, their teachings and symbols are immortalized, and they are revered as more than human.',
+  'The Chosen One’s Transformation':
+  'Story: A young person with humble beginnings is revealed to be the "chosen one" destined to fulfill an ancient prophecy. Through years of hardship and growth, they confront their deepest fears, discover their ultimate purpose, and, in a climactic battle, ascend to a divine or superhuman state. They are no longer bound by mortal concerns but become a protector or overseer of the world.',
+  'The Seeker Achieves Cosmic Unity':
+  'Story: A curious soul sets out to uncover the mysteries of existence, delving into forbidden knowledge and seeking ultimate truth. After a lifetime of exploration and self-reflection, they achieve enlightenment, becoming one with the cosmos. Their physical form dissolves, but their essence merges with the fabric of reality, guiding others in subtle ways.',
+  'The Tragic Apotheosis':
+  'Story: A character seeking power for noble reasons gradually ascends beyond mortal limits, gaining immense abilities. However, the power isolates them, and they lose their humanity in the process. They ascend to godhood, but it is a lonely and burdensome existence, as they are unable to connect with the people they once sought to save.',
+  'The Redeemer Becomes Eternal':
+  'Story: A flawed individual begins as an outcast but eventually redeems themselves through acts of heroism and love. In their final moments, they perform an act of ultimate sacrifice that not only saves their companions but also purifies their soul. Their spirit lingers, providing guidance and hope to future generations as a benevolent force.',
+  'The Warrior Ascends Through Battle':
+  'Story: A great warrior, renowned for their prowess in battle, fights a final, epic confrontation against an overwhelming enemy. Though they fall in combat, their spirit rises, becoming a protector or deity for their people. Their legend is immortalized in song and ritual, ensuring their influence lasts for ages.',
+}
+
+// TODO: sort through responses based on heros journey on a specific topic
+//  https://en.wikipedia.org/wiki/Hero%27s_journey
+
+async function askLlamaToWriteStory(topic, name, promptModel = 'Meta') {
+
+  if(typeof promptModel != 'function') {
+    promptModel = await selectModel(promptModel)
+  }
+
+  if(!topic) {
+    topic = 'a duck swimming in a pond for the first time'
+  }
+
+  let bookName = name
+  if(!name) {
+    let q0 = 'Brainstorm 12 funny but creative names for a book involving:\n' + topic
+      + '\nRespond with only the list of fun names and nothing else.'
+    console.log("User: " + q0);
+    const a0 = await promptModel(q0);
+    console.log("AI: " + a0);
+
+    let names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter(a => a && a.trim().length > 0)
+    bookName = names[Math.round(Math.random() * (names.length-1))]
+  }
+
+  let chapters = await askLlamaForAChapterSynopsis('a book named ' + bookName + '\n' + topic)
+  let characters = await askLlamaForAChapterSynopsis(topic + '\n'
+    + Object.keys(chapters).map(k => k + ' - ' + chapters[k]).join('\n') 
+    + '\nInclude character names followed by personalities, physical attributes, and likely scenarios they might appear.', 'character')
+  let interactions = await askLlamaForAChapterSynopsis('A sequal to ' + topic 
+    + '\nUsing this list of characters write chapters that include interactions between them:' 
+    + Object.keys(characters).map(k => k + ' - ' + characters[k]).join('\n') 
+    + '\nMake this half unique from existing chapters:\n' 
+    + Object.keys(chapters).join('\n'))
+
+  let bookChapters = []
+  let keys = Object.keys(chapters)
+  let prevChapter = ''
+  debugger
+  for(let i = 0; i < keys.length; i++) {
+    let q1 = 'Write a short story, include an entire Hero\'s journey, including departure, initiation, apotheosis, refusal of destiny, and successful return involving these characters (don\'t actually use the word apotheosis):\n' 
+      + Object.keys(characters).join('\n') 
+      + '\n' + APOTHEOSIS[Object.keys(APOTHEOSIS)[Math.round(Math.random() * (Object.keys(APOTHEOSIS).length - 1))]] 
+      + prevChapter
+      + '\nChapter ' + (i + 1) + ' - ' + keys[i] + ' centers around this theme:\n' + chapters[keys[i]]
+      + '\nDon\'t include any headings, just make it flow like a book chapter and nothing else.'
+    console.log("User: " + q1);
+    const a1 = await promptModel(q1);
+    console.log("AI: " + a1);
+    bookChapters[i] = '## Chapter ' + (i + 1) + ' - ' + keys[i] + '\n' + a1
+
+    let q5 = 'Summarize this chapter in two or three sentences:\n' + a1
+    console.log("User: " + q5);
+    const a5 = await promptModel(q5);
+    console.log("AI: " + a5);
+
+    prevChapter = '\nPreviously:' + a5
+  }
+
+  let bookInteractions = []
+  let keys2 = Object.keys(interactions)
+  for(let i = 0; i < keys2.length; i++) {
+    let q2 = 'Write a short story, include an entire Hero\'s journey, including departure, initiation, apotheosis, refusal of destiny, and successful return involving these characters (don\'t actually use the word apotheosis):\n' 
+      + Object.keys(characters).join('\n') 
+      + '\n' + APOTHEOSIS[Object.keys(APOTHEOSIS)[Math.round(Math.random() * (Object.keys(APOTHEOSIS).length - 1))]] 
+      + prevChapter
+      + '\nChapter ' + (i + 1 + keys.length) + ' - ' + keys2[i] + ' centers around this theme:\n' + interactions[keys2[i]]
+      + '\nDon\'t include any headings, just make it flow like a book chapter and nothing else.'
+    console.log("User: " + q2);
+    const a2 = await promptModel(q2);
+    console.log("AI: " + a2);
+    bookInteractions[i] = '## Chapter ' + (i + 1 + keys.length) + ' - ' + keys2[i] + '\n' + a2
+
+    let q6 = 'Summarize this chapter in two or three sentences:\n' + a2
+    console.log("User: " + q6);
+    const a6 = await promptModel(q6);
+    console.log("AI: " + a6);
+
+    prevChapter = '\nPreviously:' + a6
+  }
+
+  // TODO: generate synopsis
+  let q3 = 'Generate a synopsis of everything that\'s happened in this book:\n' + Object.values(chapters).join('\n')
+  console.log("User: " + q3);
+  const a3 = await promptModel(q3);
+  console.log("AI: " + a3);
+  let q4 = 'Generate a synopsis of everything that\'s happened in this book:\n' + Object.values(interactions).join('\n')
+  console.log("User: " + q4);
+  const a4 = await promptModel(q4);
+  console.log("AI: " + a4);
+
+  // TODO: generate scenes for each chapter, summaries
+
+  const mdHtml = md.render(topic, '# ' + bookName 
+    + '\n## Synopsis\n' + a3 + '\n' + a4 
+    + '\n' + bookChapters.join('\n') 
+    + '\n' + bookInteractions.join('\n'))
+  const filename = path.join(PROJECT_PATH, safeurl(topic) + '.html')
+  fs.writeFileSync(filename, mdHtml)
+  return mdHtml
+}
+
+module.exports = {
+  askLlamaToWriteStory
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<ul>
+<li><code>const selectModel = importer.import('select llm')</code>: Imports a function <code>selectModel</code> from a module named'select llm' using an <code>importer</code>.</li>
+<li><code>const askLlamaForAChapterSynopsis = importer.import('ask llm to write chapter titles and descriptions')</code>: Imports another function <code>askLlamaForAChapterSynopsis</code> from a module named 'ask llm to write chapter titles and descriptions' using an <code>importer</code>.</li>
+<li><code>const {Remarkable} = require('remarkable');</code>: Imports the <code>Remarkable</code> class from the <code>remarkable</code> module.</li>
+<li><code>const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});</code>: Creates a new instance of the <code>Remarkable</code> class, passing an options object to configure its behavior.</li>
+<li><code>const {safeurl} = importer.import('domain cache tools')</code>: Imports a function <code>safeurl</code> from a module named 'domain cache tools' using an <code>importer</code>.</li>
+</ul>
+<h3>Defining Constants</h3>
+<ul>
+<li><code>const APOTHEOSIS = {...}</code>: Defines an object <code>APOTHEOSIS</code> with several properties, each of which is a narrative description for a story.</li>
+</ul>
+<h3>Note on Code Context</h3>
+<p>This code snippet appears to be part of a larger application or framework, possibly related to content generation or writing, given the presence of functions like <code>askLlamaForAChapterSynopsis</code> and the <code>APOTHEOSIS</code> object that contains narrative descriptions.</p>

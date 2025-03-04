@@ -1,0 +1,119 @@
+<p>This code establishes a shared Angular module (<code>SharedModule</code>) that provides commonly used components, directives, services, and modules to other parts of the application, enhancing code organization and reusability.</p>
+
+
+<pre><code>import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TranslateModule} from '@ngx-translate/core';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {
+    MdButtonModule,
+    MdCardModule,
+    MdCheckboxModule,
+    MdDialogModule,
+    MdIconModule,
+    MdInputModule,
+    MdMenuModule,
+    MdOptionModule,
+    MdProgressSpinnerModule,
+    MdSelectionModule,
+    MdSelectModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    MdTooltipModule,
+    OverlayModule,
+    PlatformModule
+} from '@angular/material';
+import {HttpModule} from '@angular/http';
+
+// this is from MaterialModule which is deprecated
+export const materialModules = [
+    PlatformModule,
+    OverlayModule,
+    MdInputModule,
+    MdOptionModule,
+    MdButtonModule,
+    MdSelectModule,
+    MdSelectionModule,
+    MdCardModule,
+    MdSidenavModule,
+    MdIconModule,
+    MdToolbarModule,
+    MdCheckboxModule,
+    MdMenuModule,
+    MdTooltipModule,
+    MdDialogModule,
+    MdProgressSpinnerModule
+];
+
+export const sharedModules: any[] = [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    RouterModule,
+    HttpModule,
+    ...materialModules
+];
+
+export const SHARED_COMPONENTS: any[] = [];
+
+@NgModule({
+    imports: [
+        ...sharedModules
+    ],
+    declarations: SHARED_COMPONENTS,
+    exports: SHARED_COMPONENTS
+})
+export class SharedModule {
+    static forRoot() {
+        return {
+            ngModule: SharedModule,
+            providers: < any[] > []
+    }
+        ;
+    }
+}
+
+export const COMMON_MODULES = [
+    ...sharedModules,
+    SharedModule
+];
+</code></pre>
+
+<p>This code defines a shared Angular module (<code>SharedModule</code>) that provides common components, directives, and services for other modules in the application.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary Angular modules (<code>NgModule</code>, <code>FormsModule</code>, <code>ReactiveFormsModule</code>, <code>TranslateModule</code>, <code>RouterModule</code>, <code>CommonModule</code>, <code>HttpModule</code>) and Material Design components from <code>@angular/material</code>.</li>
+</ul></li>
+<li><p><strong>Material Modules:</strong></p>
+<ul>
+<li>Defines <code>materialModules</code> array containing all Material Design modules.</li>
+<li>This is likely a legacy approach before Angular Material's official module imports.</li>
+</ul></li>
+<li><p><strong>Shared Modules:</strong></p>
+<ul>
+<li>Defines <code>sharedModules</code> array combining common modules like <code>CommonModule</code>, <code>FormsModule</code>, <code>ReactiveFormsModule</code>, <code>TranslateModule</code>, <code>RouterModule</code>, <code>HttpModule</code>, and <code>materialModules</code>.</li>
+</ul></li>
+<li><p><strong>Shared Components:</strong></p>
+<ul>
+<li>Defines <code>SHARED_COMPONENTS</code> array, currently empty, which will likely hold shared components.</li>
+</ul></li>
+<li><p><strong>SharedModule:</strong></p>
+<ul>
+<li>Defines <code>SharedModule</code> with:
+<ul>
+<li><code>imports</code>: Imports all modules from <code>sharedModules</code>.</li>
+<li><code>declarations</code>: Declares components from <code>SHARED_COMPONENTS</code>.</li>
+<li><code>exports</code>: Exports components from <code>SHARED_COMPONENTS</code> to be used in other modules.</li>
+<li><code>forRoot()</code>: Static method to configure the module for root application.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>COMMON_MODULES:</strong></p>
+<ul>
+<li>Defines <code>COMMON_MODULES</code> array, including all modules from <code>sharedModules</code> and <code>SharedModule</code> itself.</li>
+</ul></li>
+</ol>
+<p>In essence, this code sets up a shared module that provides a centralized location for common components, directives, services, and modules, promoting code reusability and maintainability across the Angular application.</p>

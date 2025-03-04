@@ -1,0 +1,106 @@
+<p>This code snippet extracts structured timeline data, such as dates, titles, durations, and locations, from a webpage, likely a social media platform or personal website. It uses XPath expressions to target specific elements and <code>chrono-node</code> to parse dates from the extracted text.</p>
+
+
+<pre><code>var chrono = require('chrono-node');
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function readTimelinePage() {
+    return client.getAllXPath({
+        day: ['//*[contains(@class,"timeline-subtitle")]//text()|//*[contains(@class,"timeline-title")]//text()'],
+        items: [
+            '//*[contains(@class,"timeline-item")]/parent::*/*[@jsinstance]',
+            {
+                duration: './/*[contains(@class, "duration-text")]//text()',
+                data: './/*[contains(@class, "timeline-item")]/@data-segment-key',
+                title: './/*[contains(@class, "timeline-item-title-content")][.//i]/*[not(self::i)]//text()|.//*[contains(@class, "timeline-item-title-content")][not(.//i)]//text()',
+                location: './/*[contains(@class, "timeline-item-text")][not(contains(@class,"add-child"))][.//a]/a//*[not(self::i)]//text()|.//*[contains(@class, "timeline-item-text")][not(contains(@class,"add-child"))][not(.//a)]/text()'
+            }
+        ]
+    })
+        .then(r => {
+            if (r === null || r.day.length == 0) {
+                return [];
+            }
+            var currDate = chrono.parseDate(r.day[r.day.length-1] + '')
+                || chrono.parseDate(r.day[0] + '');
+            if(currDate === null) {
+                return [];
+            }
+            var newKey = currDate.getDate()
+                + months[currDate.getMonth()]
+                + (currDate.getFullYear() + '').substr(2, 2);
+            return r.items.map(i => {
+                var timelineData = (i.data + '').split(':');
+                var start, end, length;
+                if (timelineData.length >= 3) {
+                    start = new Date(parseFloat(timelineData[1].split(',')[0]));
+                    end = new Date(parseFloat(timelineData[2].split(',')[0]));
+                    length = end.getTime() - start.getTime();
+                } else {
+                    start = chrono.parseDate(currDate.getFullYear() + '/'
+                                             + (currDate.getMonth() + 1) + '/'
+                                             + currDate.getDate() + ' '
+                                             + i.duration.join('').trim().split('-')[0]);
+                    end = chrono.parseDate(currDate.getFullYear() + '/'
+                                           + (currDate.getMonth() + 1) + '/'
+                                           + currDate.getDate() + ' '
+                                           + i.duration.join('').trim().split('-')[1]);
+                    length = 0;
+                }
+                if(start.getFullYear() !== 2016 || length < 0) {
+                    console.log(start);
+                }
+                var traveling = (/(Driving|Walking|Traveling|Flying|Moving).*\s+-\s+(.*),/ig).exec(i.title + ', ' + i.location)
+                return ({
+                    traveling: traveling ? traveling[0] : false,
+                    type: 'timeline',
+                    timeline: newKey,
+                    name: i.title,
+                    location: i.location,
+                    time: start,
+                    length: isNaN(length) ? 0 : length
+                })
+            })
+        })
+        .catch(e => console.log(e))
+};
+if (typeof client.readTimelinePage == 'undefined') {
+    client.addCommand('readTimelinePage', readTimelinePage);
+}
+module.exports = readTimelinePage;
+</code></pre>
+
+<p>This code snippet appears to be part of a larger script designed to extract and process timeline data, likely from a social media platform or a personal website.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>chrono-node</code>: A library for parsing natural language dates and times.</li>
+</ul></li>
+<li><p><strong><code>months</code> Array:</strong></p>
+<ul>
+<li>Defines an array of abbreviated month names for date formatting.</li>
+</ul></li>
+<li><p><strong><code>readTimelinePage</code> Function:</strong></p>
+<ul>
+<li>Uses a library (likely <code>selenium-webdriver</code> or a similar browser automation tool) to interact with a web page and extract data.</li>
+<li><code>client.getAllXPath</code>: This function likely uses XPath expressions to select specific elements on the page.
+<ul>
+<li><code>day</code>: Extracts text content from elements containing the class &quot;timeline-subtitle&quot; or &quot;timeline-title&quot;.</li>
+<li><code>items</code>: Extracts data from elements containing the class &quot;timeline-item&quot;.
+<ul>
+<li><code>duration</code>: Extracts text content from elements containing the class &quot;duration-text&quot;.</li>
+<li><code>data</code>: Extracts the value of the <code>data-segment-key</code> attribute from elements containing the class &quot;timeline-item&quot;.</li>
+<li><code>title</code>: Extracts text content from elements containing the class &quot;timeline-item-title-content&quot;.</li>
+<li><code>location</code>: Extracts text content from elements containing the class &quot;timeline-item-text&quot;.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Data Processing:</strong></p>
+<ul>
+<li>Parses the extracted date from the <code>day</code> array using <code>chrono.parseDate</code>.</li>
+<li>Creates a new key based on the date.</li>
+<li>Maps over the <code>items</code> array, extracting data from each timeline item and potentially calculating durations.</li>
+</ul></li>
+</ol>
+<p><strong>Overall, this code snippet focuses on extracting structured timeline data from a web page, likely for further analysis or visualization.</strong></p>

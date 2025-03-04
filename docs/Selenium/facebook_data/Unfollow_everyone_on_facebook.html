@@ -1,0 +1,34 @@
+<p>This code automates the process of unfollowing users on Facebook by identifying and clicking unfollow buttons on the user's &quot;Following&quot; page.  It uses a custom module and promises for efficient and concurrent unfollowing.</p>
+
+
+<pre><code>var importer = require('../Core');
+function unfollowFacebook() {
+    return client
+        .getUrl()
+        .url('https://www.facebook.com/me/following')
+        .pause(3000)
+        .elements('//a[contains(@ajaxify, "unfollow_profile")]')
+        .then(els => {
+            return importer.runAllPromises(els.value.map(el => resolve => {
+                return client.elementIdClick(el.ELEMENT)
+                    .then(r => resolve())
+                    .catch(e => resolve(e));
+            }))
+        })
+};
+module.exports = unfollowFacebook;
+</code></pre>
+
+<p>This code snippet is designed to unfollow users on Facebook.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong> It imports a custom <code>importer</code> module, likely containing utility functions.</p></li>
+<li><p><strong><code>unfollowFacebook</code> Function:</strong></p>
+<ul>
+<li>It navigates to the user's &quot;Following&quot; page on Facebook.</li>
+<li>It locates all elements containing the &quot;unfollow_profile&quot; text, indicating unfollow buttons.</li>
+<li>It uses <code>importer.runAllPromises</code> to execute a series of unfollow actions concurrently for each found button.</li>
+<li>For each button, it clicks the element using <code>client.elementIdClick</code> and resolves the promise if successful or catches any errors.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>unfollowFacebook</code> function is exported, making it callable from other parts of the application.</p></li>
+</ol>

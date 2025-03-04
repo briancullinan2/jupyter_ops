@@ -1,0 +1,12 @@
+
+
+<pre><code>cmake -G "Unix Makefiles" -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9
+
+./code/xquakejs/lib/emsdk/upstream/emscripten/emcc -O1 -s STANDALONE_WASM -s EXPORTED_FUNCTIONS="['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress']" -s EXPORT_NAME="huffman" ./code/xquakejs/lib/huffman.c -o ./code/xquakejs/lib/huffman.js
+
+./code/xquakejs/lib/emsdk/upstream/emscripten/emcc -O1 -s SAFE_HEAP=1 -s WASM=0 -s EXTRA_EXPORTED_RUNTIME_METHODS="['getValue', 'allocate']" -s EXPORTED_FUNCTIONS="['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress', '_HuffmanGetSymbol']" -s EXPORT_NAME="huffman" ./code/xquakejs/lib/huffman.c -o ./code/xquakejs/lib/huffman.js
+
+./dpmaster -L --log-file /Users/briancullinan/Downloads/dpmaster-2.2/dpmaster.log -v -g Quake3Arena options=send-empty-servers
+
+</code></pre>
+

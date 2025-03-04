@@ -1,0 +1,43 @@
+<p>This code provides a way to mock the Angular CLI (<code>ng</code>) within tests, allowing for controlled execution and simulation of file system interactions and TypeScript compilation.  This enables more reliable testing of Angular projects.</p>
+
+
+<pre><code>var importer = require('../Core');
+var mockTypescriptFs = importer.import('memory-fs rewire');
+// overlay out temp filesystem on top of current filesystem
+var cli = require('@angular/cli');
+
+var TEST_CMD = ['generate', 'component', 'test'];
+
+// use utility/filesystem to mock all fs and typescript commands
+
+// call the CLI just like from command line
+function ng(project, args = TEST_CMD) {
+    mockTypescriptFs(project);
+    // set up project path
+    var previous = process.cwd();
+
+    var conf = {
+        cliArgs: args,
+        inputStream: null,
+        outputStream: process.stdout
+    };
+    process.chdir(project);
+    
+    // execute
+    return cli(conf);
+};
+module.exports = ng;
+
+</code></pre>
+
+<p>This code sets up a way to mock the Angular CLI (<code>ng</code>) commands within a test environment.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports the <code>Core</code> module (likely containing utility functions) and <code>memory-fs rewire</code> for mocking the filesystem and TypeScript compiler.</p></li>
+<li><p><strong>Mocking:</strong> It uses <code>mockTypescriptFs</code> to replace the real filesystem with a mock one, allowing tests to control file system interactions.</p></li>
+<li><p><strong>CLI Execution:</strong> The <code>ng</code> function takes a project path and an array of CLI arguments (defaults to <code>generate component test</code>).</p></li>
+<li><p><strong>Environment Setup:</strong> It changes the current working directory to the project path and sets up a configuration object for the CLI execution.</p></li>
+<li><p><strong>CLI Execution:</strong> It executes the Angular CLI using the provided configuration and arguments.</p></li>
+<li><p><strong>Output:</strong> The output of the CLI execution is redirected to the standard output (<code>process.stdout</code>).</p></li>
+</ol>
+<p><strong>In essence, this code allows you to run Angular CLI commands in a controlled environment where you can simulate file system interactions and TypeScript compilation, making it easier to write reliable tests for your Angular projects.</strong></p>

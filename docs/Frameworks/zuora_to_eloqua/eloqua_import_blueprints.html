@@ -1,0 +1,72 @@
+<p>This code provides mock data and configurations for testing interactions with Eloqua's API, simulating real-world scenarios without requiring live connections.</p>
+
+
+<pre><code>
+function getImportData() {
+    return {
+        "AccountId": '1234',
+        "ActProduct": 'premium',
+        "EmailAddress": "brian.cullinan@swiftpage.com",
+        "ExpirationMonth": '12',
+        "ExpirationYear": '2017',
+        "Last4DigitsOfCard": '1234',
+        "Quantity": 5,
+        "RenewalDate": '11/12/2017',
+        "RenewalsStatus": "Drew loves marketing!",
+        "RepName": 'Brian',
+        "RORName": 'James',
+        "RORNumber": '1111',
+        "State": 'AZ',
+    }
+}
+
+function getOauthToken() {
+    return {
+        "access_token": "access_token",
+        "token_type": "bearer",
+        "expires_in": 28800,
+        "refresh_token": "refresh_token",
+        "expires": (new Date()).getTime() + 28800
+    }
+}
+
+function getEloquaConfig() {
+    return {
+        "authorize_uri":"http://localhost:18888/auth/oauth2/authorize",
+        "token_uri":"http://localhost:18888/auth/oauth2/token",
+        "rest_api_url":"http://localhost:18888",
+        "rest_client_id":"client-id",
+        "rest_secret":"secret",
+        "rest_api_company": "swiftpage",
+        "rest_api_user":"username",
+        "rest_api_password":"password"
+    }
+}
+module.exports = {
+    getImportData,
+    getOauthToken,
+    getEloquaConfig
+};
+</code></pre>
+
+<p>This code defines three functions that provide mock data for interacting with Eloqua, a marketing automation platform.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>getImportData()</code>:</strong></p>
+<ul>
+<li>Returns a sample object representing import data for Eloqua.</li>
+<li>Contains fields like <code>AccountId</code>, <code>ActProduct</code>, <code>EmailAddress</code>, <code>ExpirationMonth</code>, etc., which are likely used to define customer information or subscription details.</li>
+</ul></li>
+<li><p><strong><code>getOauthToken()</code>:</strong></p>
+<ul>
+<li>Returns a mock OAuth 2.0 access token object.</li>
+<li>Includes properties like <code>access_token</code>, <code>token_type</code>, <code>expires_in</code>, <code>refresh_token</code>, and <code>expires</code>, simulating a valid access token for authentication with Eloqua's API.</li>
+</ul></li>
+<li><p><strong><code>getEloquaConfig()</code>:</strong></p>
+<ul>
+<li>Returns a configuration object for interacting with Eloqua's REST API.</li>
+<li>Contains properties like <code>authorize_uri</code>, <code>token_uri</code>, <code>rest_api_url</code>, <code>rest_client_id</code>, <code>rest_secret</code>, <code>rest_api_company</code>, <code>rest_api_user</code>, and <code>rest_api_password</code>. These are used to connect to Eloqua's API endpoints and authenticate requests.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as a testing utility or a placeholder for real Eloqua API interactions in a development environment. It provides pre-defined data and configurations to simulate real-world scenarios without requiring actual connections to Eloqua's servers.</p>

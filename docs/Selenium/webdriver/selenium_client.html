@@ -1,0 +1,129 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This Node.js script uses Selenium WebDriver to create a Chrome browser session, setting environment variables and defining Chrome profile paths based on the operating system. The <code>getClient</code> function creates a new Chrome browser session by setting Chrome profile paths, adding arguments, and returning a promise with the created client instance.</p>
+
+
+<pre><code>const { updateOrAddSession } = importer.import('selenium sessions')
+const { Builder, Browser, By, Key, until } = require('selenium-webdriver')
+const chrome = require('selenium-webdriver/chrome');
+const os = require('os')
+const path = require('path')
+const fs = require('fs')
+
+const APP_SUPPORT = process.env.APP_SUPPORT_DIR || process.env.LOCALAPPDATA 
+  || (process.env.HOME ? (os.platform() == 'darwin' ? path.join(process.env.HOME, 'Library/Application Support') : path.join(process.env.HOME, '.config')) : void 0)
+  || path.join(process.env.USERPROFILE, 'AppData/Local')
+const WIN_PROFILE = path.join(APP_SUPPORT, 'Google/Chrome/User Data/Default')
+const DARWIN_PROFILE = path.join(APP_SUPPORT, 'Google/Chrome/Default')
+const LINUX_PROFILE = path.join(APP_SUPPORT, 'google-chrome/default')
+const CHROME_PROFILE = os.platform() == 'win32' ? WIN_PROFILE : (os.platform() == 'darwin' ? DARWIN_PROFILE : LINUX_PROFILE)
+
+async function getClient() {
+  //var client = await remote(webdriverServer);
+  //client.setTimeout({ 'implicit': 15000 })
+  //client.setTimeout({ 'pageLoad': 15000 })
+  //let windows = await client.getWindowHandles();
+  let builder = await new Builder().forBrowser(Browser.CHROME)
+  let options = new chrome.Options()
+  options.port = 4444
+
+  // this ensures the profile stays the same between runs, default is randomly generate a new profile every time
+  if(fs.existsSync(CHROME_PROFILE)) {
+    console.log('starting client', path.join(path.dirname(CHROME_PROFILE), 'not-Default'))
+    options.addArguments('--user-data-dir=' + path.join(path.dirname(CHROME_PROFILE), 'not-Default'))
+  } else {
+    console.log('starting client', '/tmp/profile-1')
+    options.addArguments('--user-data-dir=/tmp/profile-1')
+  }
+
+  options.addArguments('--no-sandbox')
+  options.addArguments('--disable-session-crashed-bubble')
+  options.addArguments('--disable-infobars')
+  options.addArguments('--new-window')
+  options.addArguments('--disable-geolocation')
+  options.addArguments('--disable-notifications')
+  options.addArguments('--show-saved-copy')
+  options.addArguments('--silent-debugger-extension-api')
+  options.addArguments('--disable-blink-features=AutomationControlled')
+  options.addArguments('--port=4444')
+
+  //options.setUserPreferences({'download.default_directory': });
+  options.setUserPreferences({
+    'profile.default_content_setting_values.notifications': 2,
+    'exited_cleanly': true,
+    'exit_type': 'None'
+  })
+
+  builder.setChromeOptions(options)
+  // builder.withCapabilities(options.toCapabilities())
+  let driver = builder.build()
+  
+  await driver.manage().setTimeouts({ pageLoad: 10000 })
+
+  // keep track of session in case it can be reattached later
+  await updateOrAddSession((await driver.getSession()).getId())
+  //let sessions = await getSessions(driver, true)
+
+  let session = await driver.getSession()
+  let original = session.getId()
+  //for(let i = 0; i < sessions.length; i++) {
+  //  if(sessions[i][1] != original) {
+  //    await closeAllWindows(driver, sessions[i])
+  //  }
+  //}
+  session.id_ = original
+  return driver
+}
+
+module.exports = getClient
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This code is a Node.js script that utilizes the Selenium WebDriver to create a Chrome browser session. Here's a simplified explanation of the code:</p>
+<h3>Importing Dependencies</h3>
+<p>The script starts by importing necessary dependencies:</p>
+<ul>
+<li><code>selenium-webdriver</code> for interacting with the browser</li>
+<li><code>selenium-webdriver/chrome</code> for Chrome-specific capabilities</li>
+<li><code>os</code> for interacting with the operating system</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>fs</code> for interacting with the file system</li>
+<li><code>importer</code> for importing Selenium sessions (not shown in the code snippet)</li>
+</ul>
+<h3>Setting Environment Variables</h3>
+<p>The script sets environment variables for the application support directory:</p>
+<ul>
+<li><code>APP_SUPPORT</code> is set to the first available environment variable:
+<ul>
+<li><code>APP_SUPPORT_DIR</code></li>
+<li><code>LOCALAPPDATA</code></li>
+<li>On macOS: <code>HOME/Library/Application Support</code></li>
+<li>On Linux: <code>HOME/.config</code></li>
+<li>On Windows: <code>USERPROFILE\AppData\Local</code></li>
+</ul></li>
+</ul>
+<h3>Defining Chrome Profile Paths</h3>
+<p>Based on the operating system, the script defines paths to the Chrome profile:</p>
+<ul>
+<li><code>WIN_PROFILE</code> for Windows</li>
+<li><code>DARWIN_PROFILE</code> for macOS</li>
+<li><code>LINUX_PROFILE</code> for Linux</li>
+<li><code>CHROME_PROFILE</code> is set to the profile path based on the operating system</li>
+</ul>
+<h3>Client Function</h3>
+<p>The <code>getClient</code> function creates a new Chrome browser session using Selenium WebDriver. Here's a breakdown of the function:</p>
+<ol>
+<li>Creates a new <code>Builder</code> instance for the Chrome browser.</li>
+<li>Sets the Chrome profile path using <code>chrome.Options</code>.</li>
+<li>If the Chrome profile exists, it adds an argument to use the profile directory (<code>--user-data-dir</code>).</li>
+<li>Adds various Chrome arguments to bypass sandboxing, disable notifications, and more.</li>
+<li>Returns a promise with the created client instance.</li>
+</ol>
+<p>The function uses asynchronous code to create the client instance, which can be consumed by other parts of the script.</p>
+<h3>Unused Code</h3>
+<p>The script contains some unused code:</p>
+<ul>
+<li><code>var client = await remote(webdriverServer);</code> is commented out.</li>
+<li><code>client.setTimeout</code> calls are commented out.</li>
+<li><code>let windows = await client.getWindowHandles();</code> is commented out.</li>
+</ul>
+<p>These lines seem to be leftovers from a previous implementation or testing.</p>

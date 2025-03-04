@@ -1,0 +1,123 @@
+<p>Here's a 2-sentence summary of the code:</p>
+<p>This code exports a set of functions that generate JSON objects for different kernel types used in kernel communication, including Python, Node.js, Jupyter Notebook, Bash, and Processing. Each function combines a base configuration with user-provided kernel JSON data to create a complete JSON object for use in kernel communication.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {jsonInterface, wireJson, pathJson} = importer.import('notebook kernel json');
+
+function pythonJson(kernel_json) {
+    return pathJson(Object.assign({
+        argv: ['python3', '-m', 'IPython.kernel', '-f', '{connection_file}']
+    }, kernel_json))
+}
+
+// derrived from https://github.com/n-riesco/jp-babel/blob/master/lib/kernel.js
+
+function nodeJson(kernel_json) {
+    return pathJson(Object.assign({
+        path: process.argv[2] || process.argv[0],
+        argv: [kernel_json.path].concat(kernel_json.argv || kernel_json.args || [])
+    }, kernel_json))
+}
+
+function notebookJson(kernel_json) {
+    return jsonInterface(Object.assign({
+        argv: ['npm', 'run', 'import', '--', 'get javascript kernel',
+               '["{connection_file}"]'],
+    }, kernel_json))
+}
+
+function bashJson(kernel_json) {
+    return jsonInterface(Object.assign({
+        argv: ['npm', 'run', 'import', '--', 'get bash kernel',
+               '["{connection_file}"]'],
+    }, kernel_json))
+}
+
+function processingJson(kernel_json) {
+    return jsonInterface(Object.assign({
+        argv: ['npm', 'run', 'import', '--', 'get processing kernel',
+               '["{connection_file}"]'],
+    }, kernel_json))
+}
+
+module.exports = {
+    pythonJson,
+    nodeJson,
+    notebookJson,
+    bashJson,
+    processingJson
+};
+</code></pre>
+
+<h3>Overview</h3>
+<p>This code exports a set of functions for generating JSON objects used in kernel communication.</p>
+<h3>Functions</h3>
+<h4>1. <code>pythonJson(kernel_json)</code></h4>
+<p>Returns a JSON object for a Python kernel, with the following properties:</p>
+<ul>
+<li><code>argv</code>: An array containing the command to start the Python kernel.</li>
+<li><code>kernel_json</code>: The kernel JavaScript object, merged with the <code>argv</code> property.</li>
+</ul>
+<pre><code class="language-javascript">function pythonJson(kernel_json) {
+    return pathJson(Object.assign({
+        argv: ['python3', '-m', 'IPython.kernel', '-f', '{connection_file}']
+    }, kernel_json))
+}
+</code></pre>
+<h4>2. <code>nodeJson(kernel_json)</code></h4>
+<p>Returns a JSON object for a Node.js kernel, with the following properties:</p>
+<ul>
+<li><code>path</code>: The path to the kernel executable (defaulting to the first command-line argument).</li>
+<li><code>argv</code>: An array containing the command to start the Node.js kernel, concatenated with the <code>kernel_json.argv</code> properties.</li>
+</ul>
+<pre><code class="language-javascript">function nodeJson(kernel_json) {
+    return pathJson(Object.assign({
+        path: process.argv[2] || process.argv[0],
+        argv: [kernel_json.path].concat(kernel_json.argv || kernel_json.args || [])
+    }, kernel_json))
+}
+</code></pre>
+<h4>3. <code>notebookJson(kernel_json)</code></h4>
+<p>Returns a JSON object for a Jupyter Notebook kernel, with the following properties:</p>
+<ul>
+<li><code>argv</code>: An array containing the command to start the Notebook kernel.</li>
+</ul>
+<pre><code class="language-javascript">function notebookJson(kernel_json) {
+    return jsonInterface(Object.assign({
+        argv: ['npm', 'run', 'import', '--', 'get javascript kernel', '[&quot;{connection_file}&quot;]'],
+    }, kernel_json))
+}
+</code></pre>
+<h4>4. <code>bashJson(kernel_json)</code></h4>
+<p>Returns a JSON object for a Bash kernel, with the following properties:</p>
+<ul>
+<li><code>argv</code>: An array containing the command to start the Bash kernel.</li>
+</ul>
+<pre><code class="language-javascript">function bashJson(kernel_json) {
+    return jsonInterface(Object.assign({
+        argv: ['npm', 'run', 'import', '--', 'get bash kernel', '[&quot;{connection_file}&quot;]'],
+    }, kernel_json))
+}
+</code></pre>
+<h4>5. <code>processingJson(kernel_json)</code></h4>
+<p>Returns a JSON object for a Processing kernel, with the following properties:</p>
+<ul>
+<li><code>argv</code>: An array containing the command to start the Processing kernel.</li>
+</ul>
+<pre><code class="language-javascript">function processingJson(kernel_json) {
+    return jsonInterface(Object.assign({
+        argv: ['npm', 'run', 'import', '--', 'get processing kernel', '[&quot;{connection_file}&quot;]'],
+    }, kernel_json))
+}
+</code></pre>
+<h3>Exports</h3>
+<p>The code exports all the above functions as an object, making them available for use in other modules.</p>
+<pre><code class="language-javascript">module.exports = {
+    pythonJson,
+    nodeJson,
+    notebookJson,
+    bashJson,
+    processingJson
+};
+</code></pre>

@@ -1,0 +1,115 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code defines a <code>formatQuake3Response</code> function that extracts and processes data from a Quake 3 server response string using regular expressions, conditional logic, and object manipulation, and returns an embed object or the original response string if data is not available.</p>
+<p>Alternatively, you can condense it into two sentences:</p>
+<p>The code defines a <code>formatQuake3Response</code> function that extracts data from a Quake 3 server response string using regular expressions and conditional logic.</p>
+<p>The function returns an embed object with server information and player data if available, or the original response string if data is not available.</p>
+
+
+<pre><code>var removeCtrlChars = importer.import('remove ctrl characters')
+var importer = require('../Core')
+
+function formatQuake3Response(response, command, server) {
+    // try to detect format from response
+    var map = (/map:\s(.+)$/igm).exec(response)
+    var status = response.match(/name/ig) && response.match(/ping/ig)
+    var div = (/^[\-\s]+$/igm).exec(response)
+    var players = importer.regexToArray(/^\s*([0-9]+)\s+([0-9]+)\s+([0-9]+)\s+([^\s]+)\s+([^\s]+)\s+.*?$/igm, response, false)
+    if(map && status && div) {
+        server.mapname = map[1]
+        return {
+            embeds: [{
+                title: removeCtrlChars(server.sv_hostname || server.hostname || server.gamename || server.game || ''),
+                description: server.ip + ':' + server.port,
+                color: 0xdda60f,
+                fields: [
+                    {
+                        name: 'Map',
+                        value: map[1],
+                        inline: false
+                    },
+                    {
+                        name: 'Players',
+                        value: server.clients + '/' + server.sv_maxclients,
+                        inline: false
+                    },
+                    {
+                        name: 'Player',
+                        value: '```http\n' + players.map((p, i) => i + ') ' + removeCtrlChars(p[4])).join('\n') + '```',
+                        inline: true
+                    },
+                    {
+                        name: 'Score',
+                        value: '```yaml\n' + players.map(p => p[2]).join('\n') + '```',
+                        inline: true
+                    },
+                    {
+                        name: 'Ping',
+                        value: '```fix\n' + players.map(p => p[3]).join('\n') + '```',
+                        inline: true
+                    }
+                ]
+            }]
+        }
+    }
+    return '\n```\n' + response + '\n```\n'
+}
+
+module.exports = formatQuake3Response
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<p>The code starts by importing two modules:</p>
+<pre><code class="language-javascript">var removeCtrlChars = importer.import('remove ctrl characters')
+var importer = require('../Core')
+</code></pre>
+<p>The <code>removeCtrlChars</code> function is imported from a module named'remove ctrl characters' using the <code>import</code> method of the <code>importer</code> module. The <code>importer</code> module itself is required from a relative path <code>../Core</code>.</p>
+<h3>Function Definition</h3>
+<p>A function named <code>formatQuake3Response</code> is defined with three parameters: <code>response</code>, <code>command</code>, and <code>server</code>.</p>
+<pre><code class="language-javascript">function formatQuake3Response(response, command, server) {
+    //...
+}
+</code></pre>
+<h3>Regular Expressions and Variable Assignments</h3>
+<p>The function uses several regular expressions to extract data from the <code>response</code> string:</p>
+<pre><code class="language-javascript">var map = (/map:\s(.+)$/igm).exec(response)
+var status = response.match(/name/ig) &amp;&amp; response.match(/ping/ig)
+var div = (/^[\-\s]+$/igm).exec(response)
+var players = importer.regexToArray(/^\s*([0-9]+)\s+([0-9]+)\s+([0-9]+)\s+([^\s]+)\s+([^\s]+)\s+.*?$/igm, response, false)
+</code></pre>
+<p>These regular expressions are used to extract the following data:</p>
+<ul>
+<li><code>map</code>: the map name</li>
+<li><code>status</code>: a flag indicating whether the response contains a server name and ping information</li>
+<li><code>div</code>: an empty match (not used)</li>
+<li><code>players</code>: an array of player information (extracted using <code>regexToArray</code> method of the <code>importer</code> module)</li>
+</ul>
+<h3>Conditional Logic</h3>
+<p>The function uses a conditional statement to determine whether to extract and process the data further.</p>
+<pre><code class="language-javascript">if(map &amp;&amp; status &amp;&amp; div) {
+    //...
+}
+</code></pre>
+<h3>Data Processing</h3>
+<p>If the data is available, the function extracts and processes the map name, server information, and player data.</p>
+<pre><code class="language-javascript">server.mapname = map[1]
+return {
+    embeds: [{
+        title: removeCtrlChars(server.sv_hostname || server.hostname || server.gamename || server.game || ''),
+        description: server.ip + ':' + server.port,
+        color: 0xdda60f,
+        fields: [
+            //...
+        ]
+    }]
+}
+</code></pre>
+<p>The function returns an object with an <code>embeds</code> property containing an array with a single embed object. The embed object has several properties, including <code>title</code>, <code>description</code>, <code>color</code>, and <code>fields</code>.</p>
+<h3>Default Return Value</h3>
+<p>If the data is not available or not processed, the function returns a default value.</p>
+<pre><code class="language-javascript">return '\n```\n' + response + '\n```\n'
+</code></pre>
+<h3>Exporting the Function</h3>
+<p>Finally, the <code>formatQuake3Response</code> function is exported as a module.</p>
+<pre><code class="language-javascript">module.exports = formatQuake3Response
+</code></pre>

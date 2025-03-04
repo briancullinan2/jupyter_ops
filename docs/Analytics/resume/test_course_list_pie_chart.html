@@ -1,0 +1,24 @@
+<p>This code imports a function to create a pie chart of course data and then displays the resulting chart as an SVG image on a webpage.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getCourseSVG = importer.import('course list pie chart');
+
+getCourseSVG().then(r => $$.html(r));
+</code></pre>
+
+<p>This code snippet imports a function to generate a pie chart visualization of course data and then displays the resulting SVG image on a webpage.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Import:</strong></p>
+<ul>
+<li>Imports the <code>getCourseSVG</code> function from a module named <code>course list pie chart</code>.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>Calls <code>getCourseSVG()</code> to generate the SVG image.</li>
+<li>Uses <code>.then()</code> to handle the promise returned by <code>getCourseSVG()</code>.</li>
+<li>Inside the <code>.then()</code> block, it uses <code>$$.html(r)</code> to insert the generated SVG content (<code>r</code>) into an HTML element on the webpage.</li>
+</ul></li>
+</ol>
+<p>In essence, this code fetches a pie chart visualization of course data and dynamically renders it on a webpage.</p>

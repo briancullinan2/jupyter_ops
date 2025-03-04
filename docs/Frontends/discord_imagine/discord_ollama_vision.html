@@ -1,0 +1,96 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The <code>doVision</code> function is an asynchronous function that retrieves a message attachment from the Discord API, extracts the image data, and uses Llama Vision to describe the image. If successful, the function updates the interaction with the image description as the new content, and exports the <code>doVision</code> function as a module.</p>
+
+
+<pre><code>const { request } = require('gaxios')
+//const fs = require('fs')
+const requestOllamaVision = importer.import('request ollama vision')
+const {requestAuthQ} = importer.import('discord request')
+const {URL} = require('url')
+
+//const TEMP_DIR = os.tmpdir();
+
+async function doVision(interaction) {
+  // TODO: download the image file to temp
+  let result
+  if(interaction.data.options[0].value.includes('discord')
+    && interaction.data.options[0].value.includes('/channels/')
+  ) {
+    // TODO: get the message reference instead
+    let messageUrl = new URL(interaction.data.options[0].value)
+
+    let channelId = (/\/channels\/(.*?)\/(.*?)\//gi).exec(interaction.data.options[0].value)[2]
+    let messageId = path.basename(messageUrl.pathname)
+    var message = await requestAuthQ({
+      method: 'GET',
+      url: `channels/${channelId}/messages/${messageId}`,
+    })
+    if(message.attachments && message.attachments[0]) {
+      result = await request({
+        url: message.attachments[0].url,
+        method: 'GET',
+      })
+    } else if (message.message_snapshots && message.message_snapshots[0]
+      && message.message_snapshots[0].message
+      && message.message_snapshots[0].message.attachments
+      && message.message_snapshots[0].message.attachments[0]
+    ) {
+      result = await request({
+        url: message.message_snapshots[0].message.attachments[0].url,
+        method: 'GET',
+      })
+    }
+  } else {
+    result = await request({
+      url: interaction.data.options[0].value,
+      method: 'GET',
+    })
+  }
+
+  if(!result) {
+    return await updateInteraction({
+      content: 'Could not load: ' + interaction.data.options[0].value
+    }, interaction.id, interaction.token)
+  }
+
+  // Describe the image using ollama vision proxy
+  let content = await requestOllamaVision(Buffer.from(await result.data.arrayBuffer()))
+
+  return await updateInteraction({
+    content
+  }, interaction.id, interaction.token)
+}
+
+
+module.exports = doVision
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies and Imports</h3>
+<p>The code requires the following dependencies:</p>
+<ul>
+<li><code>gaxios</code>: A library for making HTTP requests.</li>
+<li><code>importer</code>: A module for importing functions from other modules.</li>
+<li><code>url</code>: A built-in Node.js module for working with URLs.</li>
+<li><code>os</code>: A built-in Node.js module for interacting with the operating system (not used in the code snippet).</li>
+</ul>
+<h3>Function: <code>doVision</code></h3>
+<p>The <code>doVision</code> function is an asynchronous function that takes an <code>interaction</code> object as an argument.</p>
+<h3>Function Flow</h3>
+<ol>
+<li><strong>Check Interaction Data</strong>: The function checks if the <code>interaction.data.options[0].value</code> includes &quot;discord&quot; and &quot;/channels/&quot;. If true, it proceeds to extract the channel ID and message ID from the URL.</li>
+<li><strong>Get Message Attachment</strong>: The function makes a GET request to the Discord API to retrieve the message attachment. It checks if the attachment exists and retrieves the attachment URL if it does.</li>
+<li><strong>Get Image Data</strong>: The function makes a GET request to the attachment URL to retrieve the image data.</li>
+<li><strong>Process Image Data</strong>: The function converts the image data to a Buffer and passes it to the <code>requestOllamaVision</code> function to describe the image using Llama Vision.</li>
+<li><strong>Update Interaction</strong>: The function updates the interaction with the image description as the new content.</li>
+</ol>
+<h3>Error Handling</h3>
+<p>If the <code>result</code> is empty or null, the function returns an error message using the <code>updateInteraction</code> function.</p>
+<h3>Exports</h3>
+<p>The <code>doVision</code> function is exported as a module.</p>
+<h3>Notes</h3>
+<ul>
+<li>The <code>path</code> module is used to extract the message ID from the URL, but it is not imported in the code snippet.</li>
+<li>The <code>os.tmpdir()</code> function is commented out, which suggests that the code is intended to download the image file to a temporary directory.</li>
+<li>The <code>requestAuthQ</code> function is used to make a GET request to the Discord API, but its implementation is not shown in the code snippet.</li>
+</ul>

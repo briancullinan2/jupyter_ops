@@ -1,0 +1,50 @@
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+
+// read notebook from files and make a module
+function filterLocal(query) {
+    var {getCells} = require('../Core')
+    var filename = query.replace(/\.ipynb\[[0-9]+\].*/ig, '.ipynb')
+    var query = path.basename(query).split(/[\[\]]/ig);
+    if(fs.existsSync(filename)) {
+        var local = getCells(filename)
+        if(query.length < 3) {
+            return local
+        } else {
+            return [local[parseInt(query[1])]]
+        }
+    } else {
+        return []
+    }
+}
+
+// filter query results by filename
+function filterFilename(arr, fname) {
+    return arr
+        .filter(id => path.basename(id)
+                .substr(0, fname.length + 1) === fname + '[');
+}
+
+function searchFiles(query, cellCache) {
+    return filterFilename(cellCache.map(c => c[1]), path.basename(query))
+        .sort((a, b) => 
+              parseInt(a.split(/[\[\]]/ig)[1])
+              - parseInt(b.split(/[\[\]]/ig)[1]))
+}
+
+function searchQueryFiles(query, cellCache) {
+    var {queryDatabase} = require('../Core')
+    var isNumeric = parseInt(query[1]) + '' === query[1]
+    return isNumeric
+        ? [(cellCache.filter(cell => path.basename(cell[1]) === `${query[0]}[${query[1]}]`)[0] || [])[1]]
+        : filterFilename(queryDatabase(query[1]), query[0])
+}
+
+module.exports.filterLocal = filterLocal
+module.exports.filterFilename = filterFilename
+module.exports.searchFiles = searchFiles
+module.exports.searchQueryFiles = searchQueryFiles
+</code></pre>
+

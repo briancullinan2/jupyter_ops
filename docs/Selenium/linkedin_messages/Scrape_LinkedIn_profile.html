@@ -1,0 +1,65 @@
+<p>This code automates the process of extracting a LinkedIn user's profile information, including name, title, URL, phone number, and email address.</p>
+
+
+<pre><code>function visitMyProfile() {
+    // TODO: add check for needing to go to LinkedIn
+    // TODO: add check for needing to login
+    return client
+        .pause(2000)
+        .click('#nav-settings__dropdown-trigger')
+        .pause(500)
+        .click('.nav-settings__view-profile-link')
+        .pause(2000);
+}
+
+function readLinkedInProfileInfo() {
+    var name, title, url, phone, email;
+    return client
+        .getUrl().then(url => url.indexOf('/in/') == -1
+            ? visitMyProfile()
+            : Promise.resolve([]))
+        .isExisting('.contact-see-more-less')
+        .then(is => is ? client.click('.contact-see-more-less') : client)
+        .pause(500)
+        .then(() => getAllXPath({
+            name: '//*[contains(@class, "pv-top-card-section__name")]//text()',
+            title: '//*[contains(@class, "pv-top-card-section__headline")]//text()',
+            url: '//*[contains(@class, "ci-vanity-url")]//*[contains(@class, "pv-contact-info__contact-item")]//text()',
+            phone: '//*[contains(@class, "ci-phone")]//*[contains(@class, "pv-contact-info__contact-item")]//text()',
+            email: '//*[contains(@class, "ci-email")]//*[contains(@class, "pv-contact-info__contact-item")]//text()'
+        }))
+        .then(r => ({
+            name: (typeof r.name === 'string' ? [r.name] : (r.name || [])).join('').trim(),
+            title: (typeof r.title === 'string' ? [r.title] : (r.title || [])).join('').trim(),
+            url: (typeof r.url === 'string' ? [r.url] : (r.url || [])).join('').trim(),
+            phone: (typeof r.phone === 'string' ? [r.phone] : (r.phone || [])).join('').trim(),
+            email: (typeof r.email === 'string' ? [r.email] : (r.email || [])).join('').trim()
+        }));
+};
+module.exports = readLinkedInProfileInfo;
+</code></pre>
+
+<p>This code defines a function <code>readLinkedInProfileInfo</code> that automates the process of extracting information from a LinkedIn profile.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>visitMyProfile</code> Function:</strong></p>
+<ul>
+<li>This function is intended to navigate to the user's LinkedIn profile.</li>
+<li>It's currently incomplete and lacks checks for whether the user is already on LinkedIn or needs to log in.</li>
+</ul></li>
+<li><p><strong><code>readLinkedInProfileInfo</code> Function:</strong></p>
+<ul>
+<li>This function orchestrates the entire profile information extraction process:
+<ul>
+<li>It first checks if the user is already on their profile page. If not, it calls <code>visitMyProfile</code> to navigate there.</li>
+<li>It then expands the &quot;See More&quot; section to reveal all contact information.</li>
+<li>It uses <code>getAllXPath</code> (a custom function not shown here) to extract the name, title, URL, phone number, and email address from the profile page using XPath selectors.</li>
+<li>Finally, it returns an object containing the extracted information.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>readLinkedInProfileInfo</code> function is exported as the main function of this module.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

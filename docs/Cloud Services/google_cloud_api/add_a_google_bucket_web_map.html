@@ -1,0 +1,262 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports functions from a <code>Core</code> module and defines several functions to manage Google Cloud resources, including creating backend buckets and SSL certificates, and listing various Google Cloud items. However, the functions are not fully implemented and contain TODO comments, suggesting that the code is a partial implementation of a larger application.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeGoogle = importer.import('authorize google service');
+var waitForOperation = importer.import('wait google cloud operation');
+var uuid = require('uuid/v1');
+var {
+    listBackendBuckets,
+    listTargetProxies,
+    listGlobalForwards,
+    listUrlMaps,
+    listSslCertificates
+} = importer.import('list google bucket url map');
+var createBucket = importer.import('create storage bucket');
+
+
+function safeName(name) {
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 50).toLowerCase();
+}
+
+function insertBackendBucket(project, bucketName) {
+    // TODO: check for creation of bucket here?
+    var name = 'bb-' + uuid().substr(0, 5) + '-' + safeName(bucketName);
+    return createBucket(project, bucketName)
+        .then(() => listBackendBuckets(project, bucketName))
+        .then(buckets => {
+            if(Object.keys(buckets).length > 0) {
+                name = Object.keys(buckets)[0];
+                console.log(`Bucket ${bucketName} already mapped`);
+                return Promise.resolve(Object.keys(buckets)[0]);
+            }
+            console.log(`Creating a backend for ${bucketName}`);
+            return authorizeGoogle()
+                .then(client => client.request({
+                    method: 'POST',
+                    url: `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets`,
+                    data: {
+                        name: name,
+                        bucketName: bucketName,
+                        enableCdn: false,
+                        kind: 'compute#backendBucket'
+                    }
+                }))
+                .then(backend => {
+                    return waitForOperation(backend.data.selfLink);
+                })
+        })
+        .then(() => name);
+}
+
+function addSslCertificate(project, bucketName) {
+    return authorizeGoogle()
+        .then(client => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/compute/beta/projects/${project}/global/sslCertificates`,
+            data: {
+                name: 'cert-' + safeName(bucketName),
+                description: bucketName,
+                managed: {domains: [bucketName]},
+                type: 'MANAGED'
+//                        sslPolicy: 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/sslPolicies/my-ssl-policy'
+            }
+        }))
+        .then(ssl => {
+            return waitForOperation(ssl.data.selfLink);
+        })
+        .then(() => 'cert-' + safeName(bucketName))
+}
+
+function insertSslCertificate(project, bucketName) {
+    return listSslCertificates(project, 'cert-' + safeName(bucketName))
+        .then(ssl => {
+            if(Object.keys(ssl).length > 0) {
+                console.log(`SSL ${bucketName} already exists`);
+                return Promise.resolve(Object.keys(ssl)[0]);
+            }
+            console.log(`Creating an SSL cert for ${bucketName}`);
+            return addSslCertificate(project, bucketName);
+        })
+}
+
+function addTargetHttpsProxy(project, urlMap, bucketName) {
+    // TODO: get SSL cert first because it's require by proxy
+    var sslCertificate;
+    var proxyName = 'thp-' + uuid().substr(0, 5) + '-' + safeName(bucketName);
+    
+    return insertSslCertificate(project, bucketName)
+        .then(ssl => {
+            sslCertificate = ssl;
+        })
+        .then(() => authorizeGoogle())
+        .then(client => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies`,
+            data: {
+                name: proxyName,
+                urlMap: `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}`,
+                sslCertificates: [
+                    `https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates/${sslCertificate}`
+                ],
+//              sslPolicy: 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/sslPolicies/my-ssl-policy'
+            }
+        }))
+        .then(proxy => {
+            return waitForOperation(proxy.data.selfLink);
+        })
+        .then(() => proxyName)
+}
+
+function insertTargetHttpsProxy(project, urlMap, bucketName) {
+    // check for a proxy with an sslCert matching our project name
+    return listTargetProxies(project)
+        .then(proxies => {
+            var matches = Object.keys(proxies)
+                .filter(k => proxies[k]
+                        .filter(cert => cert.includes(`https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates/cert-${safeName(bucketName)}`)).length > 0);
+            // TODO: is using sheet-to-web host, just add the certificate to existing proxy
+            // support for SNI? https://www.ietf.org/rfc/rfc4366.txt
+            
+            if(matches.length > 0) {
+                console.log(`Proxy ${bucketName} already exists`);
+                return Promise.resolve(Object.keys(proxies)[0]);
+            }
+            console.log(`Creating a proxy for ${bucketName}`);
+            return addTargetHttpsProxy(project, urlMap, bucketName);
+        })
+}
+
+function addGlobalForward(project, ip, urlMap, bucketName, targetHttpsProxy) {
+    var name = 'gfr-' + uuid().substr(0, 5) + '-' + safeName(urlMap)
+
+    return authorizeGoogle()
+        .then(client => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/forwardingRules`,
+            data: {
+                name: name,
+                IPAddress: `https://www.googleapis.com/compute/v1/projects/${project}/global/addresses/${ip}`,
+                IPProtocol: 'TCP',
+                portRange: '443-443',
+                target: `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies/${targetHttpsProxy}`,
+                loadBalancingScheme: 'EXTERNAL',
+                networkTier: 'PREMIUM'
+            }
+        }))
+        .then(rule => {
+            return waitForOperation(rule.data.selfLink);
+        })
+        .then(() => name);
+}
+
+function insertGlobalForward(project, ip, urlMap, bucketName) {
+
+    // get proxy first because it's require by forwardRule
+    var targetHttpsProxy;
+    return insertTargetHttpsProxy(project, urlMap, bucketName)
+        .then(proxy => (targetHttpsProxy = proxy))
+        .then(() => listGlobalForwards(project, targetHttpsProxy))
+        .then(forwards => {
+            if(Object.keys(forwards).length > 0) {
+                console.log(`Forward for ${bucketName} already exists`);
+                return Promise.resolve(Object.keys(forwards)[0]);
+            }
+            console.log(`Creating a forward for ${bucketName}`);
+            return addGlobalForward(project, ip, urlMap, bucketName, targetHttpsProxy);
+        })
+}
+
+function updateUrlMap(project, urlMap, bucketName) {
+    return listUrlMaps(project, urlMap)
+        // add a global forward if the ip isn't already set up
+        .then(maps => {
+            if(typeof maps[urlMap] == 'undefined') {
+                // TODO: create the map
+                throw new Error('Implement url map create');
+            }
+            if(maps[urlMap].hostRules.filter(hr => hr.hosts.filter(h => h == bucketName).length > 0).length > 0) {
+                console.log(`Map host rule ${bucketName} already exists`);
+                return Promise.resolve(urlMap);
+            }
+            console.log(`Map ${urlMap} already exists, adding host rule`);
+            var defaultService;
+            var pathMatcherName = 'pm-' + uuid().substr(0, 5) + '-' + safeName(bucketName);
+            return insertBackendBucket(project, bucketName)
+                .then(bn => (defaultService = bn))
+                .then(() => authorizeGoogle())
+                .then(client => client.request({
+                    method: 'PATCH',
+                    url: `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}`,
+                    data: {
+                        fingerprint: maps[urlMap].fingerprint,
+                        hostRules: maps[urlMap].hostRules.concat([{
+                            hosts: [bucketName],
+                            pathMatcher: pathMatcherName
+                        }]),
+                        pathMatchers: maps[urlMap].pathMatchers.concat([{
+                            name: pathMatcherName,
+                            defaultService: `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets/${defaultService}`,
+                            pathRules: ['/', '/*']
+                        }]),
+                    }
+                }))
+                .then(path => {
+                    return waitForOperation(path.data.selfLink);
+                })
+                .then(map => pathMatcherName)
+        });
+}
+
+module.exports = {
+    insertBackendBucket,
+    insertGlobalForward,
+    updateUrlMap
+};
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Variables and Imports</h3>
+<ul>
+<li>The code imports various functions from a <code>Core</code> module using <code>require</code> and <code>import</code> statements.</li>
+<li>It imports functions for:
+<ul>
+<li><code>authorizeGoogle</code> service</li>
+<li><code>waitForOperation</code> in Google Cloud</li>
+<li><code>uuid</code> for generating unique IDs</li>
+<li><code>listBackendBuckets</code>, <code>listTargetProxies</code>, <code>listGlobalForwards</code>, <code>listUrlMaps</code>, and <code>listSslCertificates</code> for listing Google Cloud items</li>
+<li><code>createBucket</code> for creating a storage bucket</li>
+</ul></li>
+</ul>
+<h3>Functions</h3>
+<h4><code>safeName(name)</code></h4>
+<ul>
+<li>This function takes a string <code>name</code> as input and returns a modified version:
+<ul>
+<li>It replaces non-alphanumeric characters with hyphens.</li>
+<li>It truncates the string to 50 characters.</li>
+<li>It converts the string to lowercase.</li>
+</ul></li>
+</ul>
+<h4><code>insertBackendBucket(project, bucketName)</code></h4>
+<ul>
+<li>This function takes two parameters: <code>project</code> and <code>bucketName</code>.</li>
+<li>It generates a unique name for the backend bucket using <code>uuid</code> and <code>safeName</code>.</li>
+<li>It creates the backend bucket using <code>createBucket</code>.</li>
+<li>It checks if the bucket already exists and if so, returns the existing name.</li>
+<li>If not, it creates the backend bucket using <code>authorizeGoogle</code> and <code>waitForOperation</code>.</li>
+</ul>
+<h4><code>addSslCertificate(project, bucketName)</code></h4>
+<ul>
+<li>This function takes two parameters: <code>project</code> and <code>bucketName</code>.</li>
+<li>It authorizes the Google service using <code>authorizeGoogle</code>.</li>
+<li>It creates an SSL certificate using the <code>POST</code> method on the URL for SSL certificates in Google Compute.</li>
+<li>However, the function is not implemented to return any data, it only creates the SSL certificate.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The code uses <code>Promise</code> and <code>then</code> method to handle asynchronous operations.</li>
+<li>The functions are not fully implemented, they contain TODO comments and do not return any data.</li>
+<li>The code is likely part of a larger application that manages Google Cloud resources.</li>
+</ul>

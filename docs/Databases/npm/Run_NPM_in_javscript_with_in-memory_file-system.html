@@ -1,0 +1,81 @@
+<p>This code provides a customized npm execution function that allows for controlled npm command execution within a specific project directory. It handles installation, error management, and progress logging, making it a more robust way to interact with npm within a larger application.</p>
+
+
+<pre><code>var execSync = require('child_process').execSync;
+try {
+    require.resolve('npm');
+} catch (e) {
+    execSync('npm install npm');
+}
+
+function npm(project, args, conf) {
+    var previous = process.cwd();
+    process.chdir(project);
+    return importer
+        .import('memory-fs rewire')
+        .then(r => {
+            // set up project path
+            return new Promise((resolve, reject) => {
+                //if(typeof mockTypescriptFs == 'undefined') {
+                //    mockTypescriptFs = eval("'use strict';" + r[0].code);
+                // overlay out temp filesystem on top of current filesystem
+                //    mockTypescriptFs(project, data);
+                //}
+
+                var cli = require('npm');
+                cli.load(conf, (err) => {
+                    // handle errors
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    // install module
+                    cli.commands[args[0]](args.slice(1), (er, data) => {
+                        if (er) {
+                            return reject(er);
+                        }
+                        // log errors or data
+                        resolve(data);
+                    });
+
+                    cli.on('log', (message) => {
+                        // log installation progress
+                        console.log(message);
+                    });
+                });
+            });
+        })
+        .then((r => {
+            process.chdir(previous);
+
+            return r;
+        }));
+};
+module.exports = npm;
+</code></pre>
+
+<p>This code defines a function <code>npm</code> that provides a wrapper around the <code>npm</code> package manager, allowing for more controlled execution within a specific project directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>npm Installation Check:</strong></p>
+<ul>
+<li>It first checks if <code>npm</code> is installed globally using <code>require.resolve('npm')</code>.</li>
+<li>If not found, it installs <code>npm</code> using <code>execSync('npm install npm')</code>.</li>
+</ul></li>
+<li><p><strong><code>npm</code> Function:</strong></p>
+<ul>
+<li>Takes three arguments: <code>project</code> (the directory to work in), <code>args</code> (the npm command and its arguments), and <code>conf</code> (optional configuration).</li>
+<li>Changes the current working directory to the <code>project</code> directory.</li>
+<li>Uses <code>importer</code> (likely a custom module) to load a module that provides filesystem manipulation and potentially code rewriting capabilities.</li>
+<li>Loads the <code>npm</code> package using <code>cli.load(conf, ...)</code> to configure it with the provided options.</li>
+<li>Executes the specified npm command (<code>args[0]</code>) with its arguments (<code>args.slice(1)</code>) using <code>cli.commands[args[0]](..., ...)</code></li>
+<li>Handles errors during installation and logs progress messages.</li>
+<li>Resolves the promise with the installation data.</li>
+<li>Changes the working directory back to the original directory (<code>previous</code>).</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>npm</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

@@ -1,0 +1,20 @@
+
+
+<pre><code>const fs = require('mz/fs');
+const xpath = require('xpath');
+const parse5 = require('parse5');
+const xmlser = require('xmlserializer');
+const dom = require('xmldom').DOMParser;
+
+(async () => {
+    const html = await fs.readFile('./test.htm');
+    const document = parse5.parse(html.toString());
+    const xhtml = xmlser.serializeToString(document);
+    const doc = new dom().parseFromString(xhtml);
+    const select = xpath.useNamespaces({"x": "http://www.w3.org/1999/xhtml"});
+    const nodes = select("//x:a/@href", doc);
+    console.log(nodes);
+})();
+
+</code></pre>
+

@@ -1,0 +1,96 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The <code>selectCode</code> function is an asynchronous function that detects the language of a file, parses it using ANTLR, transforms the parsed output into HTML, selects specific DOM elements, and returns the result as a string.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p>The <code>selectCode</code> function is an asynchronous function that performs language detection, ANTLR parsing, and HTML transformation on a given file. It catches any errors that occur during the parsing process and returns the result as a string, along with an error message if an error occurs.</p>
+
+
+<pre><code>import fs from 'fs'
+//import path from 'path'
+import antlr from 'antlr4'
+const {selectDom} = importer.import('select tree')
+
+//TODO: fix this with own transpiler because no one is going to share their hard work on StringTemplate4 code
+/*
+function toString(ctx, subctx) {
+    var ast = (subctx || ctx)
+    if(typeof ast.ownerDocument !== 'undefined') {
+        ast = htmlToTree(ast)
+    }
+    //escodegen.attachComments(ast, ast.comments, ast.tokens, ast.whitespace)
+    return escodegen.generate(ast, {
+        comment: true,
+        tokens: true,
+        whitespace: true,
+        format: {indent: {style: '    '}, quotes: 'single'}
+    })
+}
+*/
+
+let extToLang
+let treeToHtml
+let getParser
+async function selectCode(descriptor, code, language) {
+    if(!extToLang)
+        extToLang = await importer.import('ext to lang')
+    if(!treeToHtml)
+        treeToHtml = (await importer.import('antlr to html')).treeToHtml
+    if(!getParser)
+        getParser = await importer.import('get antlr tool')
+    if(typeof code === 'function') {
+        code = code.toString()
+    }
+    if(typeof code === 'string') {
+        if(fs.existsSync(code)) {
+            if(typeof language === 'undefined') {
+                // TODO: use language file extension from media-server code module gheshi support
+                language = await extToLang(code)
+            }
+            code = fs.readFileSync(code).toString('utf8')
+        }
+        var {lexer, parser} = await getParser(language)
+        try {
+            const chars = new antlr.InputStream(code);
+            const lexerStream = new lexer(chars);
+            const tokens = new antlr.CommonTokenStream(lexerStream);
+            const parserStream = new parser(tokens);
+            parserStream.input = code
+            const tree = parserStream[parserStream.ruleNames[0]]();
+            code = selectDom(['//' + parserStream.ruleNames[0]], treeToHtml(tree))[0]
+        } catch(e) {
+            console.log(e)
+            throw new Error('Could not parse \n' + code)
+        }
+    }
+
+    return selectDom(descriptor, code)
+}
+
+export default selectCode
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import Statements</h3>
+<p>The code starts by importing various modules:</p>
+<ul>
+<li><code>fs</code> from the <code>fs</code> module (File System) for file system operations.</li>
+<li><code>antlr</code> from the <code>antlr4</code> module (ANTLR v4) for ANTLR parsing.</li>
+<li><code>importer</code> and <code>selectDom</code> functions from an external module ( likely a custom module).</li>
+</ul>
+<h3>Variables</h3>
+<p>The code defines several variables:</p>
+<ul>
+<li><code>extToLang</code>: an object that maps file extensions to languages.</li>
+<li><code>treeToHtml</code>: a function that converts an ANTLR tree to HTML.</li>
+<li><code>getParser</code>: a function that returns a parser for a given language.</li>
+</ul>
+<h3><code>selectCode</code> Function</h3>
+<p>The <code>selectCode</code> function takes three parameters: <code>descriptor</code>, <code>code</code>, and <code>language</code>. It is an asynchronous function that performs the following tasks:</p>
+<ol>
+<li><strong>Language detection</strong>: If the <code>code</code> parameter is a string and a file exists at the specified path, it tries to detect the language from the file extension using the <code>extToLang</code> object. If the language is not specified, it uses this detected language.</li>
+<li><strong>ANTLR parsing</strong>: It uses the <code>getParser</code> function to get a lexer and parser for the detected language. It then reads the file contents and creates an ANTLR input stream.</li>
+<li><strong>Parse and transform</strong>: It uses the parser to parse the input stream and creates an abstract syntax tree (AST). It then uses the <code>treeToHtml</code> function to convert the AST to HTML.</li>
+<li><strong>Select DOM elements</strong>: It calls the <code>selectDom</code> function to select specific DOM elements from the HTML output.</li>
+<li><strong>Return result</strong>: The final result is returned as a string.</li>
+</ol>
+<h3>Error Handling</h3>
+<p>The code catches any errors that occur during the parsing process and logs the error message. If an error occurs, it throws a new error with the parsed code and the error message.</p>

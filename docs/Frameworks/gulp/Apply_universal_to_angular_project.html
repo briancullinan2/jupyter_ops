@@ -1,0 +1,28 @@
+<p>This code creates a project directory and asynchronously executes a function called <code>applyUniversal</code> within it, sending the result or any errors to an external system.</p>
+
+
+<pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var project = PROFILE_PATH + '/Documents/universal';
+if (!fs.existsSync(project)) {
+    fs.mkdirSync(project);
+}
+
+$$.async()
+applyUniversal(project)
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
+
+</code></pre>
+
+<p>This code snippet sets up a project directory and then executes a function called <code>applyUniversal</code> within an asynchronous context.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>var PROFILE_PATH = ...</code></strong>: Determines the user's home directory based on environment variables.</p></li>
+<li><p><strong><code>var project = PROFILE_PATH + '/Documents/universal';</code></strong>: Constructs the full path to the project directory.</p></li>
+<li><p><strong><code>if (!fs.existsSync(project)) { fs.mkdirSync(project); }</code></strong>: Checks if the project directory exists. If not, it creates it synchronously using <code>fs.mkdirSync</code>.</p></li>
+<li><p><strong><code>$$.async()</code></strong>: Indicates the start of an asynchronous operation.</p></li>
+<li><p><strong><code>applyUniversal(project)</code></strong>: Calls a function named <code>applyUniversal</code>, passing the project directory path as an argument. This function is likely responsible for performing some actions within the project directory.</p></li>
+<li><p><strong><code>.then(r =&gt; $$.sendResult(r))</code></strong>: Handles the successful completion of <code>applyUniversal</code>. It receives the result (<code>r</code>) from the function and sends it back to an external system using <code>$$.sendResult</code>.</p></li>
+<li><p><strong><code>.catch(e =&gt; $$.sendError(e))</code></strong>: Handles any errors that occur during the execution of <code>applyUniversal</code>. It receives the error (<code>e</code>) and sends it back to the external system using <code>$$.sendError</code>.</p></li>
+</ol>
+<p>In essence, this code sets up a project directory, executes a function within the directory, and handles both success and error scenarios asynchronously, sending the results or errors back to an external system.</p>

@@ -1,0 +1,43 @@
+<p>This code provides two utility functions, <code>chext</code> and <code>chroot</code>, for manipulating file paths: <code>chext</code> changes a file's extension, while <code>chroot</code> rewrites a file path by removing a specified root directory and joining it with a new output directory.</p>
+
+
+<pre><code>var path = require('path')
+
+function chext(file, ext) {
+    return file.replace(new RegExp('\\' + path.extname(file) + '$'), ext)
+}
+
+function chroot(file, root, output) {
+    // TODO: example of defensive programming
+    if(file.substr(0, root.length).localeCompare(root) !== 0)
+        throw new Error(`File not in root ${file}`)
+    return path.join(output, file.substr(root.length))
+}
+
+module.exports = {
+    chext,
+    chroot,
+}</code></pre>
+
+<p>This code defines two utility functions for manipulating file paths: <code>chext</code> and <code>chroot</code>.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>chext(file, ext)</code>:</strong></p>
+<ul>
+<li>Takes a file path (<code>file</code>) and an extension (<code>ext</code>) as input.</li>
+<li>Replaces the existing extension of the file with the provided <code>ext</code> using a regular expression.</li>
+<li>Returns the modified file path with the new extension.</li>
+</ul></li>
+<li><p><strong><code>chroot(file, root, output)</code>:</strong></p>
+<ul>
+<li>Takes a file path (<code>file</code>), a root directory (<code>root</code>), and an output directory (<code>output</code>) as input.</li>
+<li>Performs a check to ensure the input file is within the specified <code>root</code> directory. If not, it throws an error.</li>
+<li>Constructs a new file path by removing the <code>root</code> directory from the input file and joining it with the <code>output</code> directory.</li>
+<li>Returns the transformed file path.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>The module exports both <code>chext</code> and <code>chroot</code> functions, making them available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides convenient functions for modifying file extensions and changing the root directory of file paths, which can be useful for tasks like file renaming, path manipulation, or working with relative paths.</p>

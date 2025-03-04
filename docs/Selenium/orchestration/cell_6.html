@@ -1,0 +1,189 @@
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+
+// TODO: replace with rpc commands
+
+var friends = [
+    'https://www.facebook.com/messages/t/patti.caudill',
+    'https://www.facebook.com/messages/t/andrei.darie.5',
+    'https://www.facebook.com/messages/t/setha.vanderhoof',
+    /*
+    'https://www.facebook.com/photo.php?fbid=10153492726971668',
+    'https://www.facebook.com/messages/t/Lloydster4',
+    'https://www.facebook.com/messages/t/jessegill',
+    'https://www.facebook.com/messages/t/lisa.potter.7140',
+    'https://www.facebook.com/messages/t/StevenLockhart123',
+    'https://www.facebook.com/messages/t/lidia.ws.7',
+    'https://www.facebook.com/messages/t/corinne.cullinan',
+    'https://www.facebook.com/messages/t/andreas.stylianou.98',
+    'https://www.facebook.com/messages/t/robert.holweger',
+    'https://www.facebook.com/messages/t/tintin.katy512',
+    'https://www.facebook.com/messages/t/greg.maserati.7',
+    'https://www.facebook.com/messages/t/scott.johnson.31149359',
+    'https://www.facebook.com/messages/t/railhunk',
+    'https://www.facebook.com/messages/t/jeff.coffman.92',
+    'https://www.facebook.com/messages/t/robert.holweger',
+    'https://www.facebook.com/messages/t/100015169534875',
+    'https://www.facebook.com/messages/t/chase.mcvey.9',
+    'https://www.facebook.com/messages/t/ryan.raub',
+    'https://www.facebook.com/messages/t/brian.harris.01',
+    'https://www.facebook.com/messages/t/borikoni',
+    'https://www.facebook.com/messages/t/tim.bangert.3',
+    'https://www.facebook.com/messages/t/jsims730',
+    'https://www.facebook.com/messages/t/Ryan-A-Stoffko-1784292651894577',
+    'https://www.facebook.com/messages/t/sonu.karve.94',
+    'https://www.facebook.com/messages/t/jason.hornack',
+    'https://www.facebook.com/messages/t/BumpyJonson',
+    'https://www.facebook.com/messages/t/frank.vitale01',
+    'https://www.facebook.com/messages/t/jeff.kalina.79',
+    'https://www.facebook.com/messages/t/demi.s.jiang',
+    'https://www.facebook.com/messages/t/stephen.baier',
+    'https://www.facebook.com/messages/t/mietusmm',
+    'https://www.facebook.com/messages/t/chris.huie.14',
+    'https://www.facebook.com/messages/t/vitali.kaush',
+    'https://www.facebook.com/messages/t/FJoeAZ',
+    'https://www.facebook.com/messages/t/SusanAgresta',
+    'https://www.facebook.com/messages/t/andrew.s.mcvey.3',
+    'https://www.facebook.com/messages/t/faulkner.shane',
+    'https://www.facebook.com/messages/t/100013570236133',
+    'https://www.facebook.com/messages/t/ryan.stoffko',
+    'https://www.facebook.com/messages/t/6212130467169267713',
+    'https://www.facebook.com/messages/t/joanna.street24',
+    'https://www.facebook.com/messages/t/stephanie.desertgirl',
+    'https://www.facebook.com/messages/t/vladimir.zuzukin',
+    'https://www.facebook.com/messages/t/ScientificMaster.Me',
+    'https://www.facebook.com/messages/t/maungkyarphyuu',
+    'https://www.facebook.com/messages/t/maciejc',
+    'https://www.facebook.com/messages/t/travis.hudson.507',
+    'https://www.facebook.com/messages/t/ryan.raub',
+    'https://www.facebook.com/messages/t/jennifer.reaves.58',
+    'https://www.facebook.com/messages/t/jeff.kalina.79',
+    'https://www.facebook.com/messages/t/talbert.tso',
+    'https://www.facebook.com/messages/t/greg.maserati.7',
+    'https://www.facebook.com/messages/t/katya.geissler',
+    'https://www.facebook.com/messages/t/100008264283932',
+    'https://www.facebook.com/messages/t/frederick.murphy.56',
+    'https://www.facebook.com/messages/t/april.knapp.13',
+    'https://www.facebook.com/messages/t/carisa.knight6000',
+    'https://www.facebook.com/messages/t/Jakebot12',
+    'https://www.facebook.com/messages/t/nathaniel.ellingson.3',
+    'https://www.facebook.com/messages/t/4dumbdogs',
+    'https://www.facebook.com/messages/t/marv.thornsberry',
+    'https://www.facebook.com/messages/t/benjamin.maynard.9',
+    'https://www.facebook.com/messages/t/enzo.armetta',
+    'https://www.facebook.com/messages/t/MCChopper',
+    'https://www.facebook.com/messages/t/suzi.abramsonjohnson',
+    'https://www.facebook.com/messages/t/chris.paschall.37',
+    'https://www.facebook.com/messages/t/tynababbit15',
+    'https://www.facebook.com/messages/t/colleen.k.cullinan',
+    'https://www.facebook.com/messages/t/ivana.vilotic.7',
+    'https://www.facebook.com/messages/t/mark.camacho.50',
+    'https://www.facebook.com/messages/t/fellchase2.0',
+    'https://www.facebook.com/messages/t/mietusmm',
+    'https://www.facebook.com/messages/t/lemcvey',
+    'https://www.facebook.com/messages/t/100010177366596',
+    'https://www.facebook.com/messages/t/julie.davis.792',
+    'https://www.facebook.com/messages/t/tblondi',
+    'https://www.facebook.com/messages/t/JesusAndTheAngels',
+    'https://www.facebook.com/messages/t/callie.m.cullinan',
+    'https://www.facebook.com/messages/t/Valorie.PONY.Teter',
+    'https://www.facebook.com/messages/t/RogerRohweder',
+    'https://www.facebook.com/messages/t/caudill.619',
+    'https://www.facebook.com/messages/t/1623650947',
+    'https://www.facebook.com/messages/t/cindy.huelskampjudy',
+    'https://www.facebook.com/messages/t/100015169534875',
+    'https://www.facebook.com/messages/t/brian.daviesjones.3',
+    'https://www.facebook.com/messages/t/100005972775784',
+    'https://www.facebook.com/messages/t/diane.weaver.948',
+    'https://www.facebook.com/messages/t/jason.hornack',
+    'https://www.facebook.com/messages/t/chase.mcvey.9',
+    'https://www.facebook.com/messages/t/100006728686581',
+    'https://www.facebook.com/messages/t/100013570236133',
+    'https://www.facebook.com/messages/t/6212130467169267713',
+    'https://www.facebook.com/messages/t/tim.bangert.3',
+    'https://www.facebook.com/messages/t/katie.hiro',
+    'https://www.facebook.com/messages/t/armando.moreno.90',
+    'https://www.facebook.com/messages/t/john.kaniecki.3',
+    'https://www.facebook.com/messages/t/chris.cullinan.792',
+    'https://www.facebook.com/messages/t/ryan.stoffko',
+    'https://www.facebook.com/messages/t/joanna.street24',
+    'https://www.facebook.com/messages/t/stephanie.desertgirl',
+    'https://www.facebook.com/messages/t/rohwedernt',
+    'https://www.facebook.com/messages/t/david.earl.smith',
+    'https://www.facebook.com/messages/t/lemcvey',
+    'https://www.facebook.com/messages/t/teresa.cvach',
+    'https://www.facebook.com/messages/t/firealwaysworks',
+    'https://www.facebook.com/messages/t/crystaldgraziano',
+    'https://www.facebook.com/messages/t/faulkner.shane',
+    'https://www.facebook.com/messages/t/colleen.k.cullinan',
+    'https://www.facebook.com/messages/t/lemcvey',
+    'https://www.facebook.com/messages/t/james.cullinan.315',
+    'https://www.facebook.com/messages/t/jaimeneufer',
+    'https://www.facebook.com/messages/t/nathaniel.ellingson.3',
+    'https://www.facebook.com/messages/t/aneesh.karve',
+    'https://www.facebook.com/messages/t/robert.chandler',
+    'https://www.facebook.com/messages/t/robert.holweger',
+    'https://www.facebook.com/messages/t/keifer.street',
+    'https://www.facebook.com/messages/t/mynameisjane',
+    'https://www.facebook.com/messages/t/ragunr',
+    'https://www.facebook.com/messages/t/johan.larson.56',
+    'https://www.facebook.com/messages/t/abe.pralle',
+    'https://www.facebook.com/messages/t/crystaldgraziano',
+    'https://www.facebook.com/messages/t/wolfdieter.otte',
+    'https://www.facebook.com/messages/t/talbert.tso',
+    'https://www.facebook.com/messages/t/abe.anwary',
+    'https://www.facebook.com/messages/t/devin.west2',
+    'https://www.facebook.com/messages/t/eurostar88',
+    */
+];
+
+var tileWindows, jokes, windows, sendFacebookMessage, sendFacebookThanks;
+
+function tellJokes() {
+    // get multiple sets of 9 working for single page scraping in parallel
+    return runSeleniumCell([
+        'tile chrome windows',
+        'log in facebook',
+        'send facebook message',
+        'send a joke',
+        'list facebook threads',
+        'scrape facebook profile',
+        'messages from facebook',
+        'send facebook thanks',
+    ])
+        .then(r => {
+            tileWindows = r.tileWindows;
+            sendFacebookMessage = r.sendFacebookMessage;
+            sendJoke = r.sendJoke;
+            listFacebookThreads = r.listFacebookThreads;
+            sendFacebookThanks = r.sendFacebookThanks;
+            return r.loginFacebook()
+        })
+        .then(() => listFacebookThreads())
+        .then(r => {
+            friends = r.slice(0, 100);
+            console.log(friends);
+        })
+        .then(() => tileWindows(friends.slice(0, 3)))
+        .then(windows => {
+            var promises = [];
+            for(var i = 0; i < Math.ceil(friends.length / windows.length); i++) {
+                promises = promises.concat((i => windows.map((hwnd, j) => resolve => {
+                    return sendFacebookThanks(friends[i * windows.length + j], hwnd).catch(e => e).then(r => resolve(r));
+                }))(i));
+            }
+            return importer.runAllPromises(promises);
+        })
+        .catch(e => console.log(e))
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    tellJokes()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+

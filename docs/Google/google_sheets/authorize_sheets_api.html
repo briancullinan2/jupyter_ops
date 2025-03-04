@@ -1,0 +1,72 @@
+<p>This code sets up authentication with the Google Sheets API and provides a function, <code>authorizeSheets</code>, that returns an authorized client for interacting with Google Sheets securely.</p>
+
+
+<pre><code>var fs = require('fs');
+var path = require('path');
+var {GoogleAuth} = require('google-auth-library');
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+
+// TODO: recognize a polyfill pattern in APIs and move this to polyfills, combine with aspects to apply it
+var google;
+try {
+    google = require('googleapis').google;
+} catch (e) {
+    if(!e.message.includes('Cannot find module')) {
+        throw e
+    }
+    google = {sheets: ({version, auth}) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/sheets.${version}.json`)), auth)}
+}
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var credentials;
+if(fs.existsSync('./sheet to web-8ca5784e0b05.json')) {
+    credentials = path.resolve('./sheet to web-8ca5784e0b05.json');
+} else {
+    credentials = path.join(PROFILE_PATH, '.credentials/sheet to web-8ca5784e0b05.json');
+}
+
+var GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/spreadsheets'
+];
+
+function authorizeSheets() {
+    return new GoogleAuth({
+        keyFile: credentials,
+        scopes: GOOGLE_AUTH_SCOPE
+    }).getClient(/* options here are always ignored b/c cache */)
+        .then(client => google.sheets({version: 'v4', auth: client}))
+}
+
+module.exports = authorizeSheets;
+</code></pre>
+
+<p>This code snippet sets up authentication with Google Sheets API and provides a function to obtain an authorized client.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for file system operations, path manipulation, Google authentication, and custom functions for retrieving RPC specifications.</li>
+</ul></li>
+<li><p><strong>Google API Initialization:</strong></p>
+<ul>
+<li>Attempts to load the <code>googleapis</code> library. If unavailable, it falls back to a custom implementation using a locally stored JSON specification for the Sheets API.</li>
+</ul></li>
+<li><p><strong>Credentials Loading:</strong></p>
+<ul>
+<li>Determines the path to the Google API credentials file based on environment variables and file existence.</li>
+</ul></li>
+<li><p><strong>Authentication Setup:</strong></p>
+<ul>
+<li>Defines the required scopes for accessing Google Sheets.</li>
+<li>Creates a function <code>authorizeSheets</code> that:
+<ul>
+<li>Loads the credentials file.</li>
+<li>Initializes a GoogleAuth client with the specified scopes.</li>
+<li>Obtains an authorized client using the credentials.</li>
+<li>Returns a Sheets API client object with the authorized client.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code provides a reusable function <code>authorizeSheets</code> to authenticate with the Google Sheets API, allowing other parts of the application to access and interact with Google Sheets data securely.</p>

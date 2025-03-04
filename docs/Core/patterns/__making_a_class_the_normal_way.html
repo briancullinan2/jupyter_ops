@@ -1,0 +1,97 @@
+<p>Here is a summary of the provided code in one or two sentences:</p>
+<p>The code defines a class hierarchy in JavaScript using ES6 class syntax, with a <code>parentClass</code> and <code>childClass</code> that extend each other, but is wrapped in an <code>if</code> statement that checks if a variable <code>$$</code> is defined, which may cause issues.</p>
+
+
+<pre><code>if(typeof parentClass === 'undefined') {
+    class parentClass {
+        constructor() {
+            console.log('parent');
+        }
+
+        do_message() {
+            console.log('original');
+        }
+    }
+
+    class childClass extends parentClass {
+        constructor() {
+            console.log('child');
+            super();
+        }
+
+        do_message() {
+            super.do_message();
+            console.log('overridden');
+        }
+    }
+}
+
+// TODO: better way to do this, childClass.prototype.bind?
+module.exports = () => new childClass;
+
+if(typeof $$ !== 'undefined') {
+    console.log(typeof module.exports);
+    var testClass = module.exports();
+    testClass.do_message();
+    
+    /* expected output
+    function
+    child
+    parent
+    original
+    overridden
+    */
+    
+    /*
+    this is extremely annoying, how to achieve the same effect with prototype?
+    the javascript language is apparently not indempotent
+    
+    evalmachine.<anonymous>:1
+    class parentClass {
+    ^
+
+    SyntaxError: Identifier 'parentClass' has already been declared
+        at evalmachine.<anonymous>:1:1
+    */
+}
+
+
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<p>This code is written in JavaScript and defines a class hierarchy using the ES6 class syntax.</p>
+<h4>Class Hierarchy</h4>
+<p>The code defines two classes, <code>parentClass</code> and <code>childClass</code>, which extend each other.</p>
+<ul>
+<li><code>parentClass</code>:
+<ul>
+<li>Has a constructor that logs &quot;parent&quot; to the console.</li>
+<li>Has a method <code>do_message()</code> that logs &quot;original&quot; to the console.</li>
+</ul></li>
+<li><code>childClass</code>:
+<ul>
+<li>Extends <code>parentClass</code>.</li>
+<li>Has a constructor that logs &quot;child&quot; to the console, calls the parent's constructor using <code>super()</code>, and logs &quot;child&quot; to the console.</li>
+<li>Overrides the <code>do_message()</code> method of the parent class by logging &quot;overridden&quot; to the console after calling the parent's <code>do_message()</code> method using <code>super.do_message()</code>.</li>
+</ul></li>
+</ul>
+<h4>Exporting the Class</h4>
+<p>The code exports a function that returns a new instance of <code>childClass</code> using <code>module.exports</code>. This allows the class to be used in other parts of the code.</p>
+<h4>Conditional Code</h4>
+<p>The code is wrapped in an <code>if</code> statement that checks if <code>$$</code> is defined. If it is, the code inside the <code>if</code> block is executed.</p>
+<ul>
+<li>It checks the type of <code>module.exports</code> and logs it to the console.</li>
+<li>It creates an instance of <code>childClass</code> using <code>module.exports()</code> and logs its <code>do_message()</code> output.</li>
+<li>The expected output is logged to the console.</li>
+</ul>
+<h3>Issues with the Code</h3>
+<ul>
+<li>The code has a <code>TODO</code> comment suggesting that it is not the best way to achieve the desired effect.</li>
+<li>The code attempts to define a class using an <code>if</code> statement, which can cause issues due to the scope of the variable <code>parentClass</code>.</li>
+<li>The code has a syntax error when trying to define <code>parentClass</code> inside the <code>if</code> statement, because <code>parentClass</code> is already defined in the outer scope.</li>
+</ul>
+<h3>Possible Solutions</h3>
+<ul>
+<li>Instead of defining the class inside an <code>if</code> statement, define it in a separate scope or outside the <code>if</code> block.</li>
+<li>Use a different approach to achieve the desired effect, such as using prototype inheritance.</li>
+</ul>

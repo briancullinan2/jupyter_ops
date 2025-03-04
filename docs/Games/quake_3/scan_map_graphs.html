@@ -1,0 +1,59 @@
+<p>This code analyzes Quake game maps stored in JSON format, identifying and logging any missing textures for each map.</p>
+
+
+<pre><code>var path = require('path')
+var fs = require('fs')
+var glob = require('glob')
+var os = require('os')
+var {graphGame, loadDefaultDirectories, entities, TEMP_NAME, BASEMOD, BASEMOD_LOWER, BASEMOD_DIRS} = require('../../planet_quake/code/xquakejs/lib/asset.game.js')
+
+var GRAPH_PATH = path.join(process.env.HOME || process.env.HOMEPATH 
+  || process.env.USERPROFILE || os.tmpdir(), '/Collections/lvlworld')
+
+console.log(entities)
+
+async function findMissingTextures() {
+    await loadDefaultDirectories()
+    var mapGraphs = glob.sync('*.json', {cwd: GRAPH_PATH})
+    for(var i = 0; i < mapGraphs.length; i++) {
+        var previous = JSON.parse(fs.readFileSync(path.join(GRAPH_PATH, mapGraphs[i])).toString('utf-8'))
+        var game = await graphGame(previous, null, console.log)
+        console.log(game.notfound)
+    }
+}
+
+module.exports = findMissingTextures
+</code></pre>
+
+<p>This code snippet analyzes Quake game maps for missing textures.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+<li><code>fs</code>: Node.js module for file system operations.</li>
+<li><code>glob</code>: Node.js module for finding files matching a pattern.</li>
+<li><code>os</code>: Node.js module for interacting with the operating system.</li>
+<li><code>asset.game.js</code>: Custom module containing functions for loading Quake game data and handling textures.</li>
+</ul></li>
+<li><p><strong>Constants:</strong></p>
+<ul>
+<li><code>GRAPH_PATH</code>: Defines the directory where map graphs are stored. It uses environment variables to determine the user's home directory.</li>
+</ul></li>
+<li><p><strong><code>findMissingTextures</code> Function:</strong></p>
+<ul>
+<li>Loads default game directories using <code>loadDefaultDirectories</code>.</li>
+<li>Finds all <code>.json</code> files in the <code>GRAPH_PATH</code> directory using <code>glob.sync</code>.</li>
+<li>Iterates through each map graph file:
+<ul>
+<li>Parses the JSON data.</li>
+<li>Uses <code>graphGame</code> to analyze the map graph and identify missing textures.</li>
+<li>Logs the list of missing textures for each map.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li>Exports the <code>findMissingTextures</code> function for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

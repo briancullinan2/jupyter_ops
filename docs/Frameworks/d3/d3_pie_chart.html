@@ -1,0 +1,91 @@
+<p>This code generates a basic pie chart using D3.js, taking data as input and returning an SVG representation of the chart with labeled slices.</p>
+
+
+<pre><code>var D3Node = require('d3-node');
+var d3n = new D3Node();
+var d3 = d3n.d3;
+
+function d3PieChart(values) {
+    var margin = {top: 100, right: 100, bottom: 100, left: 100},
+        height = 500, width = 500,
+        radius = d3.min([height - margin.top - margin.bottom, width - margin.left - margin.right]) / 2;
+
+    var color = d3.scaleOrdinal(d3.schemeAccent)
+    
+    var svg = d3n.createSVG(width, height)
+        //.attr('preserveAspectRatio', 'xMidYMid meet')
+        //.attr('viewBox', '0 0 ' + width + ' ' + height)
+    
+    var g = svg.append('g')
+        .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')')
+
+    var pie = d3.pie()
+        .sort(null)
+        .value(d => d.value)
+
+    var path = d3.arc()
+        .outerRadius(radius - 10)
+        .innerRadius(0);
+
+    var label = d3.arc()
+        .outerRadius(radius + 5)
+        .innerRadius(radius + 5)
+
+    var arc = g.selectAll('.arc')
+        .data(pie(values))
+        .enter().append('g')
+        .attr('class', 'arc')
+
+    arc.append('path')
+        .attr('d', path)
+        .attr('fill', d => color(d.data.label))
+
+    arc.append('text')
+        .text(d => d.data.label + ' - ' + d.data.value)
+        .attr('dy', '0.35em')
+        .attr('transform', d => {
+            var midAngle = true || d.endAngle < Math.PI 
+                ? d.startAngle/2 + d.endAngle/2 
+                : d.startAngle/2 + d.endAngle/2 + Math.PI;
+            return 'translate(' + label.centroid(d) + ') rotate(-90) rotate(' + (midAngle * 180/Math.PI) + ')'
+        })
+
+    return d3n.svgString()
+}
+module.exports = d3PieChart;
+
+</code></pre>
+
+<p>This code generates a simple pie chart visualization using D3.js.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports <code>d3-node</code> for using D3.js in a Node.js environment.</li>
+<li>Initializes a D3 instance using <code>D3Node</code>.</li>
+</ul></li>
+<li><p><strong><code>d3PieChart</code> Function:</strong></p>
+<ul>
+<li>Takes an array of values (<code>values</code>) as input, representing the data for the pie chart.</li>
+<li>Defines margins, height, width, and radius for the chart.</li>
+<li>Creates a color scale using <code>d3.schemeAccent</code>.</li>
+<li>Creates an SVG element with the specified dimensions.</li>
+<li>Appends a group element to the SVG for positioning the chart.</li>
+</ul></li>
+<li><p><strong>Data Preparation:</strong></p>
+<ul>
+<li>Defines a <code>pie</code> generator function to create pie slices based on the input values.</li>
+<li>Defines <code>arc</code> generators for both the pie slices and the labels.</li>
+</ul></li>
+<li><p><strong>Visualization:</strong></p>
+<ul>
+<li>Selects all elements with the class &quot;arc&quot; and binds the pie data to them.</li>
+<li>Appends a path element for each slice, setting the <code>d</code> attribute using the <code>path</code> generator and the fill color using the color scale.</li>
+<li>Appends a text element for each slice, displaying the label and value, and positions it using the <code>label</code> generator and transformations.</li>
+</ul></li>
+<li><p><strong>Rendering:</strong></p>
+<ul>
+<li>Returns the SVG string representation of the pie chart.</li>
+</ul></li>
+</ol>
+<p>In essence, this code takes data and generates a basic pie chart visualization using D3.js, allowing for a clear representation of proportions.</p>

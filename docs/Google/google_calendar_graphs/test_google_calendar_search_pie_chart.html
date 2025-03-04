@@ -1,0 +1,76 @@
+<p>This code analyzes Google Calendar events based on provided search queries, calculates the frequency of events for each query, and visualizes the results as a pie chart.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+var options = {};
+var {
+    listEvents, sumEvents, d3PieChart
+} = importer.import([
+    'list events',
+    'import google calendar api',
+    'sum a list of events',
+    'd3 pie chart'
+]);
+
+function calendarSearchToPieChart(searches) {
+    return importer.runAllPromises(searches
+        .map(s => (resolve) => listEvents({
+            auth: options.auth,
+            q: s
+        })
+            .then(r => {
+                //console.log(s);
+                //console.log(r.map(e => e.event.summary));
+                resolve({label: s, value: sumEvents(r)})
+            })
+            .catch(e => console.log(e))))
+        .then(r => d3PieChart(r))
+        .catch(e => console.log(e))
+}
+
+$$.async();
+calendarSearchToPieChart([
+    'study sauce',
+    'portal',
+    'renewal',
+    'work on sos',
+    'jupyter',
+    'jupytangular',
+    'unit tests',
+    'selenium',
+    'angular',
+    'mind spree',
+    '"c#"',
+    'docker'
+])
+    .then(r => $$.svg(r))
+    .catch(e => $$.sendError(e))
+
+</code></pre>
+
+<p>This code snippet fetches data from a Google Calendar API, summarizes events based on search queries, and generates a pie chart visualizing the results.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports functions for interacting with the Google Calendar API, summing events, and creating a pie chart using D3.js.</li>
+</ul></li>
+<li><p><strong><code>calendarSearchToPieChart</code> Function:</strong></p>
+<ul>
+<li>This function takes an array of search queries as input.</li>
+<li>For each query, it:
+<ul>
+<li>Fetches events from the calendar using the <code>listEvents</code> function.</li>
+<li>Sums the number of events for that query using the <code>sumEvents</code> function.</li>
+<li>Creates an object with the query as the label and the sum as the value.</li>
+</ul></li>
+<li>It then uses <code>d3PieChart</code> to generate a pie chart from the collected data.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>The code calls <code>calendarSearchToPieChart</code> with an array of search queries.</li>
+<li>It handles the asynchronous operations using promises and sends the resulting pie chart as SVG data to a client or another part of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

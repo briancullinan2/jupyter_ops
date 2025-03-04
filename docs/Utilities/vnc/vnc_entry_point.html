@@ -1,0 +1,70 @@
+<p>This Bash script sets up a headless environment with a virtual display, starts Selenium, a window manager, and a VNC server for remote Selenium testing.</p>
+
+
+<pre><code>#!/bin/bash
+#
+# IMPORTANT: Change this file only in directory StandaloneDebug!
+
+function shutdown {
+  kill -s SIGTERM $NODE_PID
+  wait $NODE_PID
+}
+
+if [ ! -z "$SE_OPTS" ]; then
+  echo "appending selenium options: ${SE_OPTS}"
+fi
+
+rm -f /tmp/.X*lock
+
+export DISPLAY=:99
+xvfb-run --server-args="-screen 0 8160x6120x24 -ac +extension RANDR" \
+  java -Dwebdriver.chrome.chromedriver=/opt/selenium/chromedriver-* -jar /opt/selenium/selenium-server-standalone.jar  &
+NODE_PID=$!
+
+trap shutdown SIGTERM SIGINT
+for i in $(seq 1 10)
+do
+  xdpyinfo -display $DISPLAY >/dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    break
+  fi
+  echo Waiting xvfb...
+  sleep 0.5
+done
+
+fluxbox -display $DISPLAY &
+
+x11vnc -scale 2700x2048 -noxdamage -forever -nopw -shared -rfbport 5900 -display $DISPLAY &
+
+wait $NODE_PID
+</code></pre>
+
+<p>This Bash script sets up a remote desktop environment with a VNC server for Selenium testing. Here's a breakdown:</p>
+<p><strong>Initialization:</strong></p>
+<ul>
+<li><strong><code>shutdown</code> function:</strong> Defines a function to gracefully shut down the Node.js process running Selenium.</li>
+<li><strong><code>SE_OPTS</code>:</strong> Checks for any Selenium options passed as arguments and prints them.</li>
+<li><strong><code>rm -f /tmp/.X*lock</code>:</strong> Removes any existing X server lock files.</li>
+</ul>
+<p><strong>Environment Setup:</strong></p>
+<ul>
+<li><strong><code>export DISPLAY=:99</code>:</strong> Sets the DISPLAY environment variable to <code>:99</code>, which is used by Xvfb.</li>
+<li><strong><code>xvfb-run</code>:</strong> Starts an Xvfb server with specific resolution (8160x6120x24) and arguments.</li>
+<li><strong><code>java ...</code>:</strong> Launches the Selenium server in the background, specifying the ChromeDriver path.</li>
+<li><strong><code>NODE_PID=$!</code>:</strong> Stores the process ID of the Selenium server.</li>
+</ul>
+<p><strong>Waiting for Xvfb:</strong></p>
+<ul>
+<li><strong><code>trap shutdown SIGTERM SIGINT</code>:</strong> Sets up signal handlers to call the <code>shutdown</code> function when receiving SIGTERM or SIGINT signals.</li>
+<li><strong>Loop:</strong> Waits for the Xvfb server to be ready by checking <code>xdpyinfo</code>.</li>
+</ul>
+<p><strong>Starting Applications:</strong></p>
+<ul>
+<li><strong><code>fluxbox -display $DISPLAY &amp;</code>:</strong> Starts the Fluxbox window manager on the virtual display.</li>
+<li><strong><code>x11vnc ...</code>:</strong> Starts the x11vnc server to enable remote access via VNC, with specified options.</li>
+</ul>
+<p><strong>Cleanup:</strong></p>
+<ul>
+<li><strong><code>wait $NODE_PID</code>:</strong> Waits for the Selenium server to finish.</li>
+</ul>
+<p>In essence, this script creates a headless environment with a virtual display, starts Selenium, a window manager, and a VNC server, allowing remote control and Selenium testing.</p>

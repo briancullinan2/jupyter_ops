@@ -1,0 +1,51 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports dependencies from discord API and utilities, and defines a <code>deleteCommands</code> function that retrieves a list of commands for a specified guild, skips exceptions, and deletes each command after a 3-second timeout. The <code>deleteCommands</code> function is then exported as a module for use in other applications.</p>
+
+
+<pre><code>const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+const {timeout} = importer.import('discord utilities')
+
+const EXCEPT_COMMANDS = [
+  
+]
+
+async function deleteCommands(guildId) {
+  var toRemove = await getCommands(guildId)
+  for(var i = 0; i < toRemove.length; i++) {
+    if(EXCEPT_COMMANDS.includes(toRemove[i].name))
+      continue
+    await timeout(3000)
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+}
+
+
+module.exports = deleteCommands
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<p>The code imports the following dependencies:</p>
+<ul>
+<li><code>registerCommand</code>, <code>getCommands</code>, <code>deleteCommand</code>, and <code>updateCommand</code> from <code>discord api</code> using <code>importer.import('discord api')</code>.</li>
+<li><code>timeout</code> from <code>discord utilities</code> using <code>importer.import('discord utilities')</code>.</li>
+</ul>
+<h3>Constants and Variables</h3>
+<ul>
+<li>An array <code>EXCEPT_COMMANDS</code> is defined, but it remains empty.</li>
+<li>A function <code>deleteCommands</code> is defined, which takes a <code>guildId</code> parameter.</li>
+</ul>
+<h3>deleteCommands Function</h3>
+<p>The <code>deleteCommands</code> function performs the following operations:</p>
+<ol>
+<li>Calls <code>getCommands</code> to retrieve a list of commands for the specified <code>guildId</code>.</li>
+<li>Iterates through the retrieved commands.</li>
+<li>For each command, it checks if the command name is in the <code>EXCEPT_COMMANDS</code> array. If it is, the function skips to the next iteration.</li>
+<li>Waits for 3 seconds using <code>timeout</code>.</li>
+<li>Deletes the command with the specified <code>id</code> and <code>guildId</code> using <code>deleteCommand</code>.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>deleteCommands</code> function is exported as a module using <code>module.exports</code>.</p>

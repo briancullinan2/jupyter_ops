@@ -1,0 +1,98 @@
+<p>Here is a summary of the code breakdown in 2 sentences:</p>
+<p>This code is a test suite that uses various functions to list different resources (url maps, target proxies, global forwards, backend buckets) from a Google Cloud project, and asserts that each list is non-empty. The test suite uses functions such as <code>listUrlMaps</code>, <code>listTargetProxies</code>, <code>listGlobalForwards</code>, and <code>listBackendBuckets</code> to retrieve the lists of resources and logs the results to the console.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var {
+    listUrlMaps,
+    listTargetProxies,
+    listGlobalForwards,
+    listBackendBuckets
+} = importer.import('list google bucket url map');
+var project = 'spahaha-ea443';
+var map = 'web-map';
+var proxy = 'web-map-target-proxy-5';
+
+describe('listing subdomains from load balancer', () => {
+    
+    it('should list buckets maps', () => {
+        return listUrlMaps(project)
+            .then(items => {
+                console.log(items[Object.keys(items)[0]].hostRules);
+                console.log(items[Object.keys(items)[0]].pathMatchers);
+                console.log(items[Object.keys(items)[0]].pathMatchers[0].pathRules);
+                assert(Object.keys(items).length > 0, 'should have a url mapper');
+                
+                return listTargetProxies(
+                    project,
+                    map);
+            })
+            .then(proxies => {
+                console.log(proxies);
+                assert(proxies.length > 0, 'should have a proxy');
+            
+                return listGlobalForwards(
+                    project,
+                    proxy);
+            })
+            .then(rules => {
+                console.log(rules);
+                assert(Object.keys(rules).length > 0, 'should have a rule');
+            
+                return listBackendBuckets(project);
+            })
+            .then(buckets => {
+                console.log(buckets);
+                assert(Object.keys(buckets).length > 0, 'should have a bucket');
+            });
+    })
+    
+    
+})
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Dependencies and Imports</strong></p>
+<ul>
+<li><code>assert</code> module is imported for testing assertions.</li>
+<li><code>importer</code> module is required from <code>../Core</code>.</li>
+<li>Five functions are imported from <code>importer.import('list google bucket url map')</code>:
+<ul>
+<li><code>listUrlMaps</code></li>
+<li><code>listTargetProxies</code></li>
+<li><code>listGlobalForwards</code></li>
+<li><code>listBackendBuckets</code></li>
+</ul></li>
+</ul>
+<p><strong>Variables</strong></p>
+<ul>
+<li><code>project</code>: a string representing the project ID, set to <code>'spahaha-ea443'</code>.</li>
+<li><code>map</code>: a string representing the map ID, set to <code>'web-map'</code>.</li>
+<li><code>proxy</code>: a string representing the proxy ID, set to <code>'web-map-target-proxy-5'</code>.</li>
+</ul>
+<p><strong>Test Suite</strong></p>
+<ul>
+<li>The test suite is defined using the <code>describe</code> function, with the title <code>'listing subdomains from load balancer'</code>.</li>
+<li>A single test case is defined using the <code>it</code> function, with the title <code>'should list buckets maps'</code>.</li>
+<li>The test case consists of four <code>then</code> blocks, each of which:
+<ol>
+<li>Calls a function to list a specific resource (url maps, target proxies, global forwards, backend buckets).</li>
+<li>Logs the result to the console.</li>
+<li>Asserts that the result is non-empty using <code>assert</code>.</li>
+</ol></li>
+</ul>
+<p><strong>Functions Called</strong></p>
+<ul>
+<li><code>listUrlMaps(project)</code>: lists url maps for a given project.</li>
+<li><code>listTargetProxies(project, map)</code>: lists target proxies for a given project and map.</li>
+<li><code>listGlobalForwards(project, proxy)</code>: lists global forwards for a given project and proxy.</li>
+<li><code>listBackendBuckets(project)</code>: lists backend buckets for a given project.</li>
+</ul>
+<p><strong>Assertions</strong></p>
+<ul>
+<li><code>assert(Object.keys(items).length &gt; 0,'should have a url mapper')</code>: asserts that the list of url maps is non-empty.</li>
+<li><code>assert(proxies.length &gt; 0,'should have a proxy')</code>: asserts that the list of target proxies is non-empty.</li>
+<li><code>assert(Object.keys(rules).length &gt; 0,'should have a rule')</code>: asserts that the list of global forwards is non-empty.</li>
+<li><code>assert(Object.keys(buckets).length &gt; 0,'should have a bucket')</code>: asserts that the list of backend buckets is non-empty.</li>
+</ul>

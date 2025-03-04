@@ -1,0 +1,104 @@
+<p>Here's a summary of the GGUF specifications and instructions in one or two sentences:</p>
+<p>The GGUF SPECIFICATIONS object contains a list of model names and their corresponding specifications, while the GGUF_INSTRUCTIONS object contains a list of model names and their corresponding instructions or behaviors. The instructions for specific models, such as 'Code', provide templates for the response, while others are set to 'void 0' indicating no specific instruction is defined.</p>
+
+
+<pre><code>
+const GGUF_SPECIFICATIONS = {
+  'Meta': 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf',
+  'Default': 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf',
+  'DeepSeek': 'DeepSeek-R1-Distill-Llama-8B-Q6_K.gguf',
+  'Llama': 'Meta-Llama-3-70B-Instruct-Q5_K_M.gguf',
+  'Qwen': 'Qwen2.5-14B-Instruct-1M-Q6_K_L.gguf',
+  'Code': 'DeepSeek-R1-Distill-Llama-70B-Q5_K_S.gguf',
+  'Mistral': 'Mistral-Small-24B-Instruct-2501-Q6_K_L.gguf',
+  'Mesh': 'LLaMA-Mesh-Q6_K_L.gguf',
+  'Meta-Llama-3.1-8B-Instruct-Q6_K_L': 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf',
+  'DeepSeek-R1-Distill-Llama-8B-Q6_K': 'DeepSeek-R1-Distill-Llama-8B-Q6_K.gguf',
+  'Meta-Llama-3-70B-Instruct-Q5_K_M': 'Meta-Llama-3-70B-Instruct-Q5_K_M.gguf',
+  'Qwen2.5-14B-Instruct-1M-Q6_K_L': 'Qwen2.5-14B-Instruct-1M-Q6_K_L.gguf',
+  'DeepSeek-R1-Distill-Llama-70B-Q5_K_S': 'DeepSeek-R1-Distill-Llama-70B-Q5_K_S.gguf',
+  'Mistral-Small-24B-Instruct-2501-Q6_K_L': 'Mistral-Small-24B-Instruct-2501-Q6_K_L.gguf',
+  'LLaMA-Mesh-Q6_K_L': 'LLaMA-Mesh-Q6_K_L.gguf'
+}
+
+
+const GGUF_INSTRUCTIONS = {
+  'Meta': void 0,
+  'Default': void 0,
+  'DeepSeek': void 0,
+  'Llama':  void 0,
+  'Qwen':  void 0,
+  'Code': '```markdown\n# You are a\n##helpful coding module\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.\n</think>\n...```\n',
+  'Mistral':  void 0,
+  'Mesh': 'You are an LLM that responds with high quality detailed OBJ format models',
+  'Meta-Llama-3.1-8B-Instruct-Q6_K_L':  void 0,
+  'DeepSeek-R1-Distill-Llama-8B-Q6_K':  void 0,
+  'Meta-Llama-3-70B-Instruct-Q5_K_M': void 0,
+  'Qwen2.5-14B-Instruct-1M-Q6_K_L':  void 0,
+  'DeepSeek-R1-Distill-Llama-70B-Q5_K_S': '```markdown\n# You are a\n##helpful coding module\nnamed ' + (process.env.MODEL_NAME || 'Llama') + ' that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.\n</think>\n...```\n',
+  'Mistral-Small-24B-Instruct-2501-Q6_K_L':  void 0,
+  'LLaMA-Mesh-Q6_K_L': 'You are an LLM that responds with high quality detailed OBJ format models'
+}
+
+async function promptModel(temperature, initialChatHistory, session, prompt) {
+  let result = await session.prompt(prompt, {
+    temperature: temperature,
+    onTextChunk: function (text) {
+      process.stdout.write(text)
+    }
+  })
+  session.setChatHistory(initialChatHistory);
+  return result
+}
+
+// TODO: call llm rpc service with selectModel?
+const modelSessions = {}
+const modelInit = {}
+
+async function selectModel(model, temperature) {
+  const {createSession} = await importer.import('llama vision')
+
+  if(typeof model == 'string') {
+    let modelNames = Object.keys(GGUF_SPECIFICATIONS)
+    for(let i = 0; i < modelNames.length; i++) {
+      if(modelNames[i].match(model)) {
+        let gguf = GGUF_SPECIFICATIONS[modelNames[i]]
+        if(!modelSessions[modelNames[i]]) {
+          modelSessions[modelNames[i]] = await createSession(gguf, GGUF_INSTRUCTIONS[modelNames[i]])
+          modelInit[modelNames[i]] = modelSessions[modelNames[i]].getChatHistory()
+        }
+        return promptModel.bind(null, temperature, modelInit[modelNames[i]], modelSessions[modelNames[i]])
+      }
+    }
+  }
+
+  throw new Error('Model not found: ' + model)
+}
+
+module.exports = selectModel
+</code></pre>
+
+<p><strong>GGUF SPECIFICATIONS AND INSTRUCTIONS</strong></p>
+<p>This code defines two objects: <code>GGUF_SPECIFICATIONS</code> and <code>GGUF_INSTRUCTIONS</code>.</p>
+<h3>GGUF_SPECIFICATIONS</h3>
+<p>This object contains a list of model specifications, where each key is a model name and the corresponding value is a string representing the model's specification.</p>
+<pre><code class="language-markdown">const GGUF_SPECIFICATIONS = {
+  'Meta': 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf',
+  //...
+}
+</code></pre>
+<h3>GGUF_INSTRUCTIONS</h3>
+<p>This object contains a list of model instructions, where each key is a model name and the corresponding value is a string representing the model's behavior or response.</p>
+<pre><code class="language-markdown">const GGUF_INSTRUCTIONS = {
+  'Meta': void 0, // no instruction specified for 'Meta'
+  'Default': void 0, // no instruction specified for 'Default'
+  'Code': '```markdown\n#...```', // specific instruction for 'Code'
+  //...
+}
+</code></pre>
+<p><strong>NOTABLE POINTS</strong></p>
+<ul>
+<li>The <code>process.env.MODEL_NAME</code> variable is used to retrieve the model name from the environment variables, and defaults to <code>'Llama'</code> if not found.</li>
+<li>The instructions for 'Code' and 'DeepSeek-R1-Distill-Llama-70B-Q5_K_S' specify the use of Markdown and provide a template for the response.</li>
+<li>The other model instructions are set to <code>void 0</code>, indicating that no specific instruction is defined for those models.</li>
+</ul>

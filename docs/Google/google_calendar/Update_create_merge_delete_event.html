@@ -1,0 +1,127 @@
+<p>This code manages Google Calendar events, likely by updating existing events, merging information, and identifying duplicates.</p>
+
+
+<pre><code>var {google} = require('googleapis');
+var util = require('util');
+var importer = require('../Core');
+var chrono = require('chrono-node');
+var {JSDOM} = require('jsdom');
+var getDaysEvents = importer.import('days events');
+
+var {
+    authorizeCalendar, ISODateString, correctCalendarId
+} = importer.import([
+    'authorize google calendar',
+    'convert date iso',
+    'lookup calendar name',
+])
+
+function updateEvent(event, options) {
+    var calendar;
+    
+    return authorizeCalendar()
+        .then(c => calendar = c)
+        .then(() => correctCalendarId(options))
+        .then(() => getDaysEvents(event.start.dateTime, options))
+        .then(m => {
+            const actionsArray = [];
+            const matches = m.filter(match => !match.event.deleted
+                && match.event.summary.toLowerCase().trim() === event.summary.toLowerCase().trim()
+                && Math.abs(Math.round(new Date(match.event.start.dateTime).getTime() / 1000 / 60)
+                    - Math.round(new Date(event.start.dateTime).getTime() / 1000 / 60)) < 32);
+            console.log('Matching ' + matches.length);
+        
+            // TODO: check for existing event if the ID is already set?
+            if (matches.length > 0) {
+                var unique = [];
+                try {
+                    let descriptions = JSON.parse(event.description) || [];
+                    descriptions = descriptions.concat(
+                        ...matches.map(match => {
+                            try {
+                                return JSON.parse(match.event.description)
+                            } catch (e) {
+                                return [];
+                            }
+                        }));
+                    const urls = descriptions.map(d => (d || {}).url);
+                    unique = descriptions.filter((d, i) => urls.indexOf((d || {}).url) === i);
+                } catch (e) {
+                    unique = [event.description];
+                }
+                // TODO: make sure there are no duplicates
+                // TODO: move this in to some parsing utility?
+                // TODO: deep compare instead of just comparing "url" property?
+                // support for objects if there's only one
+                unique = unique.length === 1 ? unique[0] : unique;
+                // patch the first match
+                var newDescription = typeof unique === 'string' ? unique : JSON.stringify(unique, null, 4);
+                
+                if(matches[0].event.description !== newDescription) {
+                    actionsArray.push(util.promisify(
+                        calendar.events.patch.bind(calendar.events, {
+                            eventId: matches[0].event.id,
+                            calendarId: options.calendarId,
+                            auth: options.auth,
+                            resource: {
+                                description: newDescription,
+                                colorId: event.colorId
+                            }
+                        }))());
+                }
+
+                // TODO: delete the rest
+                for (const match of matches.slice(1)) {
+                    match.event.deleted = true;
+                    actionsArray.push(util.promisify(
+                        calendar.events.delete.bind(calendar.events, {
+                            eventId: match.event.id,
+                            calendarId: options.calendarId,
+                            auth: options.auth
+                        }))());
+                }
+            } else {
+                console.log('adding event ' + event.summary)
+                actionsArray.push(util.promisify(
+                    calendar.events.insert.bind(calendar.events, {
+                        calendarId: options.calendarId,
+                        auth: options.auth,
+                        resource: event
+                    }))());
+            }
+            return importer.runAllPromises(actionsArray);
+        })
+        .catch(e => console.log(e))
+};
+module.exports = updateEvent;
+</code></pre>
+
+<p>This code snippet processes Google Calendar events, likely for updating or managing them.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports necessary libraries: <code>googleapis</code> for interacting with Google APIs, <code>util</code> for utility functions, <code>chrono-node</code> for date and time parsing, <code>jsdom</code> for parsing HTML content, and custom modules from <code>../Core</code>.</li>
+</ul></li>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports functions for:
+<ul>
+<li><code>authorizeCalendar</code>: Authenticates with the Google Calendar API.</li>
+<li><code>ISODateString</code>: Converts dates to ISO format.</li>
+<li><code>correctCalendarId</code>: Retrieves the correct calendar ID.</li>
+<li><code>getDaysEvents</code>: Fetches events for a given date range.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>updateEvent</code> Function:</strong></p>
+<ul>
+<li>This function takes an event object and options as input.</li>
+<li>It first authenticates with the Google Calendar API.</li>
+<li>Then, it retrieves the correct calendar ID based on the options.</li>
+<li>It fetches events for the specified date range.</li>
+<li>It compares the input event with existing events, likely to identify matches or duplicates.</li>
+<li>It processes the event descriptions, potentially extracting and merging information from multiple events.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet appears to be part of a system for managing Google Calendar events. It likely handles tasks such as updating existing events, merging information from multiple events, or identifying potential duplicates.</p>

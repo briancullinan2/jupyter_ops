@@ -1,0 +1,125 @@
+<p>This code snippet synchronizes LinkedIn contact data with a local storage directory by scraping new contacts from LinkedIn and comparing them to existing data. It uses Selenium to automate the web scraping process and identifies new contacts for storage.</p>
+
+
+<pre><code>var importer = require('../Core');
+var fs = require('fs');
+var glob = require('glob');
+var path = require('path');
+var {
+    getContacts,
+    runSeleniumCell
+} = importer.import([
+    'list google contacts',
+    'selenium cell'
+]);
+var listAllConnections, scrapeEntireLinkedInProfile;
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+function escapeFilename(f) {
+    return f.replace(/[^a-z0-9-\s]/ig, '_')
+}
+
+function syncLinkedInContacts() {
+    var loaded = glob.sync('**/linkedin-*.json', {cwd: project})
+        .reduce((arr, l) => {
+            try {
+                arr.push(escapeFilename(path.basename(l).replace('.json', '').replace('linkedin-', '')))
+                arr.push(escapeFilename(JSON.parse(fs.readFileSync(path.join(project, l)))[0]
+                    .url.replace(/^.*?\/*in\/|\/$/ig, '')));
+            } catch (e) {
+                console.log(l);
+            }
+            return arr;
+        }, []);
+    var fresh;
+    return runSeleniumCell([
+        'log in linkedin',
+        'scrape linkedin profile',
+        'scrape linkedin contacts',
+        'scrape entire linkedin profile'
+    ])
+        .then(r => ({
+            listAllConnections, scrapeEntireLinkedInProfile
+        } = r).loginLinkedIn())
+        .then(() => listAllConnections())
+        .then((connections) => {
+            fresh = connections.filter(c => {
+                const fname = escapeFilename(c.replace(/^.*?\/*in\/|\/$/ig, ''));
+                return loaded.indexOf(fname) === -1
+                    && loaded.indexOf(c) === -1
+            });
+            const percent = Math
+                .round((connections.length - fresh.length) / connections.length * 100);
+            console.log((connections.length - fresh.length)
+                + ' / ' + connections.length + ' : '
+                + percent
+                + '%');
+        })
+        .then(() => {
+            const rand = Math.floor(fresh.length / 30 * Math.random()) * 30;
+            console.log(fresh.slice(rand, rand + 30));
+            return importer.runAllPromises(fresh.slice(rand, rand + 30).map(c => resolve => {
+                var linkedIn;
+                const fname = c.replace(/^\/*in\/|\/$/ig, '');
+                return scrapeEntireLinkedInProfile('https://linkedin.com' + c)
+                    .then(r => {
+                        linkedIn = r;
+                        return getContacts({
+                            displayName: r.name.split(/\s/).join('.*')
+                        });
+                    })
+                    .then(r => {
+                        console.log(linkedIn.name);
+                        if (r.length === 0) {
+                            r.push({});
+                        }
+                        Object.assign(r[0], linkedIn);
+                        fs.writeFileSync(
+                            project + '/linkedin-' + escapeFilename(fname) + '.json',
+                            JSON.stringify(r, null, 4));
+                        return resolve(r);
+                    })
+                    .catch(e => {
+                        console.log(e);
+                        resolve()
+                    })
+            }))
+        })
+};
+
+module.exports = syncLinkedInContacts;
+
+</code></pre>
+
+<p>This code snippet appears to be part of a larger script designed to synchronize LinkedIn contact data with a local storage directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing functions for interacting with various data sources and tools.</li>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+<li><code>glob</code>: Node.js module for finding files matching a pattern.</li>
+<li><code>path</code>: Node.js built-in module for working with file paths.</li>
+</ul></li>
+<li><p><strong>Importing Functions:</strong></p>
+<ul>
+<li>Imports <code>getContacts</code> and <code>runSeleniumCell</code> from <code>importer</code>.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Sets up <code>PROFILE_PATH</code> to the user's home directory.</li>
+<li>Defines <code>project</code> as a subdirectory within the user's home directory for storing LinkedIn data.</li>
+</ul></li>
+<li><p><strong><code>escapeFilename</code> Function:</strong></p>
+<ul>
+<li>Takes a filename as input and replaces any invalid characters with underscores.</li>
+</ul></li>
+<li><p><strong><code>syncLinkedInContacts</code> Function:</strong></p>
+<ul>
+<li>Reads existing LinkedIn contact data from JSON files in the <code>project</code> directory.</li>
+<li>Executes a Selenium script to log into LinkedIn, scrape profile information, and extract contact data.</li>
+<li>Compares the newly scraped contacts with the existing data and identifies new contacts.</li>
+<li>Logs the number of new contacts and the percentage of new contacts compared to the total number of contacts.</li>
+</ul></li>
+</ol>

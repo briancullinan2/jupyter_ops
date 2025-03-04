@@ -1,0 +1,117 @@
+<p>This code sets up a REST API using Express.js to enable a web application to control a Selenium WebDriver instance running on a separate server, automating browser interactions. It uses Socket.IO for communication and a custom <code>importer</code> module to execute a Jupyter notebook containing Selenium server logic.</p>
+
+
+<pre><code>var importer = require('../Core')
+var bodyParser = require('body-parser');
+var express = require('express');
+var io = require('socket.io-client');
+var client = io('https://localhost:8000', {
+    secure: true,
+    rejectUnauthorized: false
+});
+var currentCallback = null;
+client.on('result', function (name, ...args) {
+    // TODO: not just verify the service,
+    //   also verify the tab id matches
+    if (name === 'BrowserService.prototype.chrome') {
+        if(currentCallback) {
+            currentCallback.apply(this, args);
+        }
+    }
+})
+
+function promisifyChrome(...args) {
+    return new Promise((resolve, reject) => {
+        console.log('call ' + JSON.stringify(args).substr(0, 200));
+        if(typeof currentCallback === 'function') {
+            throw new Error('Callback already defined.');
+        }
+        var cmdTimeout = setTimeout(() => {
+            currentCallback = null;
+            reject(new Error('command took too long to respond', 3000));
+        }, 9000)
+        currentCallback = (err, data) => {
+            currentCallback = null;
+            clearTimeout(cmdTimeout);
+            if (err !== null) {
+                return reject(err);
+            }
+            return resolve.apply(this, JSON.parse(data));
+        };
+        client.emit.apply(client, [
+            'call',
+            'BrowserService.prototype.chrome',
+            ...args
+        ]);
+    });
+};
+function response(res, promise) {
+    return promise.then(r => {
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(r));
+    })
+}
+
+var tabId;
+function seleniumServer() {
+    const selenium = express();
+    const server = require('http').createServer(selenium);
+    selenium.use(bodyParser.json());    // to support JSON-encoded bodies
+    selenium.use(bodyParser.urlencoded({// to support URL-encoded bodies
+        extended: true
+    }));
+    // TODO: import the rest of the modules in this script
+    return importer.getCells(__dirname + '/../Selenium/selenium server.ipynb')
+        .then(cells => {
+            for (const c of cells.slice(1)) /* exclude this cell */ {
+                const mod = importer.runInNewContext(c.source.join(''), {
+                    __filename: __dirname + '/../Selenium/selenium server.ipynb',
+                    promisifyChrome,
+                    getTab: () => tabId,
+                    setTab: (id) => (tabId = id),
+                    response
+                }, {}, false);
+                if (typeof mod !== 'undefined' && typeof mod.router !== 'undefined') {
+                    selenium.use('/wd/hub', mod.router);
+                }
+            }
+            return server.listen(4444);
+        });
+};
+module.exports = seleniumServer;
+</code></pre>
+
+<p>This code sets up a basic REST API server using Express.js to interact with a Selenium WebDriver instance running on a separate server.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing functions for interacting with Jupyter notebooks.</li>
+<li><code>body-parser</code>: Middleware for parsing incoming request bodies (JSON and URL-encoded).</li>
+<li><code>express</code>: Web framework for creating the API server.</li>
+<li><code>socket.io-client</code>: Client library for connecting to a Socket.IO server.</li>
+</ul></li>
+<li><p><strong>Socket.IO Connection:</strong></p>
+<ul>
+<li>Establishes a connection to a Socket.IO server running at <code>https://localhost:8000</code>.</li>
+<li>Listens for events from the server, specifically the <code>result</code> event.</li>
+</ul></li>
+<li><p><strong><code>promisifyChrome</code> Function:</strong></p>
+<ul>
+<li>Wraps a call to the <code>BrowserService.prototype.chrome</code> method on the Selenium server using a Promise.</li>
+<li>Sets a timeout to prevent the call from hanging indefinitely.</li>
+<li>Handles the response from the Selenium server, resolving the Promise with the result or rejecting it with an error.</li>
+</ul></li>
+<li><p><strong><code>response</code> Function:</strong></p>
+<ul>
+<li>Helper function to send a JSON response to an Express.js request based on a Promise.</li>
+</ul></li>
+<li><p><strong><code>seleniumServer</code> Function:</strong></p>
+<ul>
+<li>Creates an Express.js server and a corresponding HTTP server.</li>
+<li>Uses <code>body-parser</code> middleware to parse incoming request bodies.</li>
+<li>Imports and executes a Jupyter notebook (<code>selenium server.ipynb</code>) using <code>importer.getCells</code>.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely forms part of a larger system where a web application interacts with a Selenium server to automate browser interactions. The API server acts as a bridge between the web application and the Selenium server, allowing the application to send commands to the server and receive results.</p>

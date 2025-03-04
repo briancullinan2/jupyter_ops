@@ -1,0 +1,184 @@
+<p>Here is a two-sentence summary of the provided code breakdown:</p>
+<p>This code simulates mouse events using Core Graphics and Core Foundation frameworks, allowing for functions to set the mouse position, simulate mouse button clicks, and retrieve the current mouse position. It uses a combination of C-style includes and C++ code, suggesting it may be a wrapper around C code, to create a comprehensive mouse simulation tool.</p>
+
+
+<pre><code>#include <CoreFoundation/CoreFoundation.h>
+#include <CoreGraphics/CoreGraphics.h>
+
+#if __cplusplus
+extern "C" {
+#endif
+
+typedef enum {
+  kButtonLeft = 0,
+  kButtonRight = 1,
+} Button;
+
+CGEventType previous_event_;
+int event_number_ = 32000;
+
+int main(int argc, char *argv[])
+{
+    previous_event_ = kCGEventNull;
+}
+
+void DispatchMouseEvent(CGMouseButton button, CGEventType type, CGPoint position, uint32_t click_count, uint32_t delay)
+{
+    if (previous_event_ == kCGEventMouseMoved || previous_event_ == kCGEventLeftMouseDragged)
+    {
+        usleep(delay);
+    }
+
+    event_number_++;
+    CGEventRef event = CGEventCreateMouseEvent(NULL, type, position, button);
+    CGEventSetType(event, type);
+    CGEventSetIntegerValueField(event, kCGMouseEventNumber, event_number_);
+    CGEventSetIntegerValueField(event, kCGMouseEventClickState, click_count);
+    CGEventPost(kCGHIDEventTap, event);
+    CFRelease(event);
+    previous_event_ = type;
+    usleep(delay);
+}
+
+CGPoint GetMousePosition()
+{
+    usleep(200000);
+    CGEventRef event = CGEventCreate(NULL);
+    CGPoint cursor = CGEventGetLocation(event);
+    CFRelease(event);
+    return cursor;
+}
+
+void SetMousePosition(double x, double y)
+{
+    CGPoint position = CGPointMake(x, y);
+    DispatchMouseEvent(kCGMouseButtonLeft, kCGEventMouseMoved, position, 1, 0);
+    previous_event_ = kCGEventMouseMoved;
+}
+
+void SetPosition(CGPoint position)
+{
+    DispatchMouseEvent(kCGMouseButtonLeft, kCGEventMouseMoved, position, 1, 0);
+    previous_event_ = kCGEventMouseMoved;
+}
+
+void SetButtonState(Button btn, bool is_pressed, CGPoint position, int click_count)
+{
+    CGEventType type;
+    CGMouseButton button;
+
+    switch (btn)
+    {
+    case kButtonLeft:
+        type = (is_pressed ? kCGEventLeftMouseDown : kCGEventLeftMouseUp);
+        button = kCGMouseButtonLeft;
+        break;
+
+    case kButtonRight:
+        type = (is_pressed ? kCGEventRightMouseDown : kCGEventRightMouseUp);
+        button = kCGMouseButtonRight;
+        break;
+    };
+
+    DispatchMouseEvent(button, type, position, click_count, 200000);
+}
+
+void MouseClick(Button btn, CGPoint position)
+{
+    SetButtonState(btn, true, position, 1);  // Press
+    SetButtonState(btn, false, position, 1); // Release
+}
+
+void Click(Button btn)
+{
+    CGPoint position = GetMousePosition();
+    MouseClick(btn, position);
+}
+
+void MouseDoubleClick(Button btn, CGPoint position)
+{
+    SetButtonState(btn, true, position, 1);
+    SetButtonState(btn, false, position, 1);
+    SetButtonState(btn, true, position, 2);
+    SetButtonState(btn, false, position, 2);
+}
+
+void DoubleClick(Button btn)
+{
+    CGPoint position = GetMousePosition();
+    MouseDoubleClick(btn, position);
+}
+
+void MouseDrag(CGPoint position)
+{
+    DispatchMouseEvent(kCGMouseButtonLeft, kCGEventLeftMouseDragged, position, 1, 0);
+}
+
+void MouseStartDrag(CGPoint position)
+{
+    SetButtonState(kButtonLeft, true, position, 1);
+    MouseDrag(position);
+}
+
+void MouseEndDrag(CGPoint position)
+{
+    MouseDrag(position);
+    SetButtonState(kButtonLeft, false, position, 1);
+}
+
+
+#if __cplusplus
+}
+#endif
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Includes and Enum Definition</h3>
+<p>The code starts by including two frameworks:</p>
+<ul>
+<li><code>CoreFoundation/CoreFoundation.h</code> for Core Foundation classes and functions</li>
+<li><code>CoreGraphics/CoreGraphics.h</code> for Core Graphics classes and functions</li>
+</ul>
+<p>It then defines an enum <code>Button</code> to represent the two mouse buttons:</p>
+<ul>
+<li><code>kButtonLeft</code> (0)</li>
+<li><code>kButtonRight</code> (1)</li>
+</ul>
+<h3>Variables and Main Function</h3>
+<p>The code declares two global variables:</p>
+<ul>
+<li><code>previous_event_</code> of type <code>CGEventType</code> to store the type of the previous event</li>
+<li><code>event_number_</code> of type <code>int</code> to store a unique event number, initialized to 32,000</li>
+</ul>
+<p>The <code>main</code> function initializes <code>previous_event_</code> to <code>kCGEventNull</code>.</p>
+<h3>DispatchMouseEvent Function</h3>
+<p>This function simulates a mouse event:</p>
+<ol>
+<li>If the previous event was a mouse move or drag event, it waits for the specified delay using <code>usleep</code>.</li>
+<li>It increments the event number and creates a new mouse event using <code>CGEventCreateMouseEvent</code>.</li>
+<li>It sets the event type, button, position, and click count using <code>CGEventSetType</code>, <code>CGEventSetIntegerValueField</code>, and <code>CGEventSetIntegerValueField</code>.</li>
+<li>It posts the event using <code>CGEventPost</code> and releases the event using <code>CFRelease</code>.</li>
+<li>It updates <code>previous_event_</code> with the type of the current event and waits for the specified delay using <code>usleep</code>.</li>
+</ol>
+<h3>GetMousePosition Function</h3>
+<p>This function returns the current mouse position:</p>
+<ol>
+<li>It waits for 200 milliseconds using <code>usleep</code>.</li>
+<li>It creates a new event using <code>CGEventCreate</code> and gets the mouse position using <code>CGEventGetLocation</code>.</li>
+<li>It releases the event using <code>CFRelease</code> and returns the mouse position.</li>
+</ol>
+<h3>SetMousePosition and SetPosition Functions</h3>
+<p>These functions set the mouse position to the specified coordinates:</p>
+<ul>
+<li><code>SetMousePosition</code> takes <code>x</code> and <code>y</code> as arguments and calls <code>DispatchMouseEvent</code> with the mouse moved event type and button.</li>
+<li><code>SetPosition</code> takes a <code>CGPoint</code> as an argument and calls <code>DispatchMouseEvent</code> with the mouse moved event type and button.</li>
+</ul>
+<h3>SetButtonState Function</h3>
+<p>This function sets the state of a mouse button:</p>
+<ul>
+<li>It takes a <code>Button</code> enum value, a boolean indicating whether the button is pressed, a <code>CGPoint</code> representing the button position, and an integer representing the click count.</li>
+<li>It determines the event type and button type based on the <code>Button</code> enum value and the pressed state.</li>
+<li>It calls <code>DispatchMouseEvent</code> with the determined event type and button type.</li>
+</ul>
+<p>Note that this is a C++ code, but it uses C-style includes and functions, suggesting that it may be a wrapper around C code.</p>

@@ -1,0 +1,74 @@
+<p>Here's a 2-sentence summary of the provided code:</p>
+<p>The <code>getBookmarkFolders</code> function retrieves bookmarks from Takeout, groups them by half-hour interval, reduces the grouped bookmarks to an array of unique folder names, and filters out duplicates. The function is exported as a module and executed asynchronously, with error handling, when a global object <code>$$</code> is defined.</p>
+
+
+<pre><code>var _ = require('lodash');
+var importer = require('../Core');
+var getBookmarksFromTakeout = importer.import('parse bookmarks file');
+
+function getBookmarkFolders() {
+    return getBookmarksFromTakeout()
+        .then(links => {
+            // group by half hour
+            const groups = Object.keys(links).sort((a, b) => parseInt(b) - parseInt(a));
+            return groups.reduce((acc, t) => {
+                const folders = _.groupBy(links[t], l => l.folder);
+                acc = acc.concat(Object.keys(folders));
+                return acc;
+            }, []);
+        })
+        .then(folders => folders.filter((f, i, arr) => arr.indexOf(f) === i))
+}
+
+module.exports = getBookmarkFolders;
+
+if(typeof $$ != 'undefined') {
+    $$.async();
+    
+    getBookmarkFolders()
+        .then(r => $$.mime({'text/plain': r.join('\n')}))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Dependencies and Imports</h3>
+<p>The code requires two external modules:</p>
+<ul>
+<li><code>lodash</code> (aliased as <code>_</code>) for utility functions, specifically <code>groupBy</code>.</li>
+<li><code>../Core</code> (imported as <code>importer</code>) which exports a function <code>import</code> used to load other modules.</li>
+</ul>
+<h3><code>getBookmarkFolders</code> Function</h3>
+<p>The <code>getBookmarkFolders</code> function is the main exported function. It:</p>
+<ol>
+<li>Calls <code>getBookmarksFromTakeout</code> (imported from <code>../Core</code>) to retrieve bookmarks.</li>
+<li>Groups the bookmarks by half-hour interval.</li>
+<li>Reduces the grouped bookmarks to an array of unique folder names.</li>
+<li>Filters out any duplicate folder names.</li>
+</ol>
+<pre><code class="language-javascript">function getBookmarkFolders() {
+    return getBookmarksFromTakeout()
+       .then(links =&gt; {
+            // group by half hour
+            const groups = Object.keys(links).sort((a, b) =&gt; parseInt(b) - parseInt(a));
+            return groups.reduce((acc, t) =&gt; {
+                const folders = _.groupBy(links[t], l =&gt; l.folder);
+                acc = acc.concat(Object.keys(folders));
+                return acc;
+            }, []);
+        })
+       .then(folders =&gt; folders.filter((f, i, arr) =&gt; arr.indexOf(f) === i))
+}
+</code></pre>
+<h3>Export and Async Execution</h3>
+<p>The <code>getBookmarkFolders</code> function is exported as a module. If a global object <code>$$</code> is defined, the code assumes it has <code>async</code>, <code>mime</code>, and <code>sendError</code> methods. It executes the <code>getBookmarkFolders</code> function asynchronously and handles any errors:</p>
+<pre><code class="language-javascript">module.exports = getBookmarkFolders;
+
+if(typeof $$!= 'undefined') {
+    $$.async();
+    
+    getBookmarkFolders()
+       .then(r =&gt; $$.mime({'text/plain': r.join('\n')}))
+       .catch(e =&gt; $$.sendError(e))
+}
+</code></pre>

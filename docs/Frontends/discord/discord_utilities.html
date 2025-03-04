@@ -1,0 +1,98 @@
+<p>Here's a summary of the code in two sentences:</p>
+<p>This code implements a timer system that stores and manages multiple timers with their corresponding expiration times, allowing for functions to be executed at specified intervals. The system exports three functions: <code>timeout</code> for creating promises that resolve after a delay, <code>delay</code> for waiting for a specified time, and <code>wait</code> for conditional waiting.</p>
+
+
+<pre><code>var timers = {}
+var mainTimer = setInterval(callResolve, 20)
+
+function callResolve() {
+  var now = Date.now()
+  var times = Object.keys(timers)
+  for(var i = 0; i < times.length; i++) {
+    if(now > times[i]) {
+      try {
+        Promise.resolve(timers[times[i]]())
+      } catch (e) {
+        console.log('timer failed', e)
+        throw e
+      }
+      delete timers[times[i]]
+      return
+    }
+  }
+}
+
+function addResolve(resolve, time) {
+  while(typeof timers[time] != 'undefined') {
+    time++
+  }
+  timers[time] = resolve
+}
+
+async function timeout(delay) {
+  var now = Date.now()
+  await new Promise(resolve => addResolve(resolve, now + delay))  
+}
+
+async function delay(prev, delay) {
+  var now = Date.now()
+  if(now - prev < delay)
+    await new Promise(resolve => addResolve(resolve, now + (delay - (now - prev))))
+  return Date.now()
+}
+
+async function wait(until, delay) {
+  var waitTimer
+  var waitCount = 0
+  var result
+  var now = Date.now()
+  var delayed = now + delay
+  while(!result && now < delayed) {
+    await timeout(100)
+    result = await until()
+    now = Date.now()
+  }
+  return result
+}
+
+module.exports = {
+  timeout,
+  delay,
+  wait,
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Variables and Timers</h4>
+<ul>
+<li><code>timers</code> is an object used to store timer functions with their corresponding expiration times.</li>
+<li><code>mainTimer</code> is a timer that calls the <code>callResolve</code> function every 20 milliseconds.</li>
+</ul>
+<h4>callResolve Function</h4>
+<ul>
+<li>Iterates through the <code>timers</code> object and checks if the current time is greater than each expiration time.</li>
+<li>If a timer has expired, it calls the associated function and removes it from the <code>timers</code> object.</li>
+</ul>
+<h4>addResolve Function</h4>
+<ul>
+<li>Adds a timer function to the <code>timers</code> object with the current time plus the specified delay.</li>
+<li>If a timer with the same delay already exists, it increments the delay until a unique one is found.</li>
+</ul>
+<h4>timeout Function</h4>
+<ul>
+<li>Creates a promise that resolves after the specified delay using the <code>addResolve</code> function.</li>
+</ul>
+<h4>delay Function</h4>
+<ul>
+<li>Waits for the specified delay to pass since the previous timeout.</li>
+<li>Returns the current time.</li>
+</ul>
+<h4>wait Function</h4>
+<ul>
+<li>Waits for a condition to be met or a specified delay to pass.</li>
+<li>Uses the <code>wait</code> function to repeatedly check the condition and wait for a short duration.</li>
+</ul>
+<h4>Exports</h4>
+<ul>
+<li>The code exports three functions: <code>timeout</code>, <code>delay</code>, and <code>wait</code>.</li>
+</ul>

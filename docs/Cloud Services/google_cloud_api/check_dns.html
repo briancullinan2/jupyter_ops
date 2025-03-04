@@ -1,0 +1,244 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code requires several modules for DNS operations and uses custom functions from a module named <code>../Core</code> to perform tasks such as creating a Google Cloud DNS managed zone and inserting an address. The <code>createZone</code> function creates or retrieves a managed zone with a given subdomain, while the <code>insertAddress</code> function attempts to insert an address into the DNS managed zone.</p>
+
+
+<pre><code>var dns = require('dns');
+var util = require('util');
+var uuid = require('uuid/v1');
+var importer = require('../Core');
+var authorizeGoogle = importer.import('authorize google service');
+var {listGlobalForwards} = importer.import('list google bucket url map');
+var waitForOperation = importer.import('wait cloud operation');
+
+var host = 'sheet-to-web.com';
+
+function safeName(name) {
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 50).toLowerCase();
+}
+
+function createZone(client, project, subdomain) {
+    var zone;
+    return client.request({
+            url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones`,
+            params: {
+                dnsName: subdomain.includes(host) ? (host + '.') : (subdomain + '.')
+            }
+        })
+        .then(res => {
+            if(res.data.managedZones.length > 0) {
+                zone = res.data.managedZones[0].name;
+                console.log(`Zone ${subdomain} already mapped`);
+                return Promise.resolve(res.data.managedZones[0].name);
+            }
+            zone = 'mz-' + uuid().substr(0, 5) + '-' + safeName(subdomain);
+            console.log(`Creating a zone for ${subdomain}`)
+            return client.request({
+                method: 'POST',
+                url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones`,
+                data: {
+                    name: zone,
+                    dnsName: subdomain + '.',
+                    description: '',
+                    visibility: 'public',
+                    dnssecConfig: {
+                        state: 'on',
+                        kind: 'dns#managedZoneDnsSecConfig'
+                    }
+                }
+            })
+        })
+        .then(() => zone)
+}
+
+function insertAddress(client, project, addrs, subdomain) {
+    var zone;
+    var name = 'ip-' + uuid().substr(0, 5) + '-' + safeName(subdomain);
+    var address;
+    var records;
+    var defaultRecord;
+    
+    return createZone(client, project, subdomain)
+        // TODO: check for unused ips
+        .then(z => (zone = z))
+        .then(() => {
+            return client.request({
+                url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones/${zone}/rrsets`
+            })
+        })
+        .then(res => {
+            defaultRecord = res.data.rrsets.filter(r => r.type == 'A' && r.name == host + '.')[0];
+            records = res.data.rrsets.filter(r => r.type == 'A' && r.name == subdomain + '.');
+        })
+        // check if there is an ip unassigned
+        .then(() => listGlobalForwards(project))
+        .then(forwards => {
+            // match existing dns records
+            var match = Object.keys(addrs)
+                // use sheet-to-web host ip address
+                .filter(a => subdomain.includes(host)
+                        ? defaultRecord.rrdatas[0] == addrs[a]
+                        : records.filter(r => r.rrdatas[0] == addrs[a]).length > 0)
+            if(match.length > 0) {
+                name = match[0];
+                address = addrs[match[0]];
+                console.log(`Matched IP ${match[0]} already exists`);
+                return Promise.resolve(match[0]);
+            }
+        
+            var unused = Object.keys(addrs)
+                .filter(a => Object.values(forwards)
+                        .map(gf => gf.IPAddress)
+                        .filter(ip => ip == addrs[a]).length == 0);
+            if(unused.length > 0) {
+                name = unused[0];
+                address = addrs[unused[0]];
+                console.log(`New unused IP ${unused[0]} already exists`);
+                return Promise.resolve(unused[0]);
+            }
+        
+            console.log(`Creating address for ${subdomain}`)
+            return client.request({
+                method: 'POST',
+                url: `https://www.googleapis.com/compute/v1/projects/${project}/global/addresses`,
+                data: {
+                    name: name,
+//                    ipVersion: 'IPV6',
+                    networkTier: 'PREMIUM'
+                }
+            })
+                .then(res => {
+                    return waitForOperation(res.data.selfLink);
+                })
+                .then(target => {
+                    return client.request({
+                        url: target
+                    })
+                })
+                .then(res => {
+                    address = res.data.address;
+                })
+        })
+        // update zone with A record
+        .then(() => {
+            return client.request({
+                method: 'POST',
+                url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones/${zone}/changes`,
+                data: {
+                    additions: [
+                        {
+                            kind: 'dns#resourceRecordSet',
+                            name: subdomain + '.',
+                            type: 'A',
+                            ttl: 3600,
+                            rrdatas: [address]
+                        }
+                    ],
+                    deletions: records
+                }
+            })
+        })
+        .then(() => name)
+    /*
+    {
+  "kind": "dns#resourceRecordSet",
+  "name": "example.com.",
+  "rrdatas": [
+      "1.2.3.4"
+  ],
+  "ttl": 86400,
+  "type": "A"
+}
+AAAA	
+IPv6 Address record, which is used to map a host name to an IPv6 address.
+
+Example of the resource record set representation:
+
+{
+  "kind": "dns#resourceRecordSet",
+  "name": "example.com.",
+  "rrdatas": [
+      "2607:f8b0:400a:801::1005"
+  ],
+  "ttl": 86400,
+  "type": "AAAA"
+}
+*/
+}
+
+function addIP(project, subdomain) {
+    var client, addresses;
+    return util.promisify(dns.lookup)(subdomain)
+        .then((addrs, family) => {
+            addresses = [addrs.address];
+        })
+        .catch(up => {
+            if(up.message.includes('ENOTFOUND')) {
+                addresses = [];
+                console.log(up.message);
+                return;
+            }
+            throw up
+        })
+        .then(() => authorizeGoogle())
+        .then(c => (client = c).request({
+            url: `https://www.googleapis.com/compute/v1/projects/${project}/global/addresses`,
+        }))
+        .then(res => {
+            return (res.data.items || []).reduce((obj, addr) => {
+                obj[addr.name] = addr.address;
+                return obj
+            }, {});
+        })
+        .then(addrs => {
+            var matching = Object.keys(addrs).filter(a => addresses.indexOf(addrs[a]) > -1);
+            if(matching.length > 0) {
+                console.log(`domain ${subdomain} already exists, ip address ${matching[0]}`)
+                return Promise.resolve(matching[0]);
+            }
+            return insertAddress(client, project, addrs, subdomain);
+        });
+}
+
+module.exports = addIP;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requirements and Imports</h3>
+<p>The code requires the following modules:</p>
+<ul>
+<li><code>dns</code> for DNS operations</li>
+<li><code>util</code> for utility functions (not used in this code snippet)</li>
+<li><code>uuid/v1</code> for generating unique identifiers</li>
+<li><code>../Core</code> a custom module containing import functions</li>
+<li><code>authorizeGoogle</code> from the custom module</li>
+<li><code>listGlobalForwards</code> from the custom module</li>
+<li><code>waitForOperation</code> from the custom module</li>
+</ul>
+<h3>Constants and Functions</h3>
+<ul>
+<li><code>host</code>: a constant string set to <code>'sheet-to-web.com'</code></li>
+<li><code>safeName</code>: a function that takes a string, replaces non-alphanumeric characters with hyphens, truncates to 50 characters, and converts to lowercase</li>
+<li><code>createZone</code>: a function that creates a Google Cloud DNS managed zone</li>
+<li><code>insertAddress</code>: a function that inserts an address into the DNS managed zone</li>
+</ul>
+<h3>createZone Function</h3>
+<p>The <code>createZone</code> function:</p>
+<ol>
+<li>Tries to retrieve an existing managed zone with the given <code>subdomain</code>.</li>
+<li>If a zone is found, it returns the zone name.</li>
+<li>If no zone is found, it creates a new zone with a generated unique name and configuration:
+<ul>
+<li><code>name</code>: the generated unique zone name</li>
+<li><code>dnsName</code>: the subdomain with a trailing dot</li>
+<li><code>description</code>: an empty string</li>
+<li><code>visibility</code>: public</li>
+<li><code>dnssecConfig</code>: enabled with default settings</li>
+</ul></li>
+</ol>
+<h3>insertAddress Function</h3>
+<p>The <code>insertAddress</code> function:</p>
+<ol>
+<li>Calls <code>createZone</code> to create or retrieve the managed zone for the given <code>subdomain</code>.</li>
+<li>Calls <code>insertAddress</code> with the zone name and other parameters</li>
+</ol>
+<p>Note that the code snippet is incomplete, and the <code>insertAddress</code> function is not fully implemented.</p>

@@ -1,0 +1,34 @@
+
+
+<pre><code>import json
+import os
+
+def get_cells(notebook_path, types=['*', 'code']):
+    """Extract cells from a Jupyter Notebook with additional metadata."""
+    notebook_path = os.path.abspath(notebook_path)
+
+    with open(notebook_path, 'r', encoding='utf-8') as f:
+        notebook = json.load(f)
+
+    kernel = notebook.get('metadata', {}).get('kernelspec', {})
+    
+    cells = [
+        {
+            **cell,
+            "language": (cell.get("metadata", {}).get("vscode", {}).get("languageId") or
+                         kernel.get("language") or
+                         notebook.get("metadata", {}).get("language_info", {}).get("name", "")),
+            "filename": notebook_path,
+            "id": f"{os.path.basename(notebook_path)}[{i}]"
+        }
+        for i, cell in enumerate(notebook.get("cells", []))
+        if '*' in types or cell.get("cell_type") in types
+    ]
+
+    return cells
+
+__all__ = {
+  "get_cells": get_cells
+}
+</code></pre>
+

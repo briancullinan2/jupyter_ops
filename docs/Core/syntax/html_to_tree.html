@@ -1,0 +1,173 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The <code>htmlToTree</code> function takes an HTML string or tree as input and returns the corresponding tree structure by parsing and recursively processing its child nodes using the <code>accumulateChildNodes</code> function.</p>
+<p>Alternatively, you can also summarize it in two sentences:</p>
+<p>The <code>htmlToTree</code> function uses the <code>JSDOM</code> library to parse the input HTML and process its child nodes using the <code>accumulateChildNodes</code> function. It can handle HTML strings, arrays, and text nodes, and it recursively processes attribute objects to convert their attributes to properties.</p>
+
+
+<pre><code>var {JSDOM} = require('jsdom');
+
+// TODO: create a pattern same as notebook markdown in core, accumulate
+function accumulateChildNodes(body) {
+    var commentBuffer = []
+    // TODO: exclude children parent properties
+    //   left-over children are assigned to children: []
+    return Array.from(body.childNodes)
+        .reduce((obj, n) => {
+            if(n.nodeName === '#text') {
+                commentBuffer.push[n];
+                return obj;
+            }
+            var parent = n.getAttribute('parent-attr');
+            var newNode = htmlToTree(n);
+            if(parent) {
+                var parentType = body.getAttribute(parent + '-type')
+                if(parentType === 'Array') {
+                    if(typeof obj[parent] === 'undefined')
+                        obj[parent] = [];
+                    obj[parent].push(newNode);
+                } else {
+                    obj[parent] = newNode;
+                }
+            } else {
+                // TODO: if no children left and no other -attr properties,
+                //   remove the child property from the output
+                if(typeof obj.children === 'undefined')
+                    obj.children = [];
+                obj.children.push(newNode);
+            }
+            if(typeof newNode.comments !== 'undefined') {
+                newNode.comments.push.apply(
+                    newNode.comments, commentBuffer)
+                commentBuffer = [];
+            }
+            return obj;
+        }, {})
+}
+
+// expects a string or a tree from JSDOM
+function htmlToTree(body) {
+    if(typeof body === 'string') {
+        var dom = new JSDOM(body);
+        return accumulateChildNodes(dom.window.document.body).children;
+    }
+    if(Array.isArray(body)) {
+        return body.map(t => htmlToTree(t))
+    }
+    if(body.nodeName === '#text') {
+        return body.nodeValue;
+    }
+    // convert attributed object containers back to properties
+    // TODO: might have a property named -type and it will be lost
+    var attrs = body.getAttributeNames()
+        .filter(a => a !== 'parent-attr' && a.substr(-5) != '-type')
+        .reduce((obj, p) => {
+            var attr = body.getAttribute(p);
+            try {
+                if(body.getAttribute(`${p}-type`) !== 'string') {
+                    obj[p] = JSON.parse(attr);
+                } else {
+                    obj[p] = attr;
+                }
+            }
+            catch (e) { obj[p] = attr; }
+            return obj;
+        }, {})
+    
+    var children = accumulateChildNodes(body);
+    
+    return Object.assign({
+        type: body.nodeName
+    }, attrs, children);
+}
+
+module.exports = {
+    htmlToTree
+};
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing JSDOM</h3>
+<pre><code class="language-javascript">var { JSDOM } = require('jsdom');
+</code></pre>
+<p>The code starts by importing the <code>JSDOM</code> function from the <code>jsdom</code> library, which is used to parse HTML.</p>
+<h3>Function: <code>accumulateChildNodes</code></h3>
+<pre><code class="language-javascript">function accumulateChildNodes(body) {
+  //...
+}
+</code></pre>
+<p>This function takes an HTML element (<code>body</code>) as input and recursively processes its child nodes, accumulating the results in an object. The function uses the <code>reduce</code> method to iterate over the child nodes.</p>
+<h3>Processing Child Nodes</h3>
+<pre><code class="language-javascript">return Array.from(body.childNodes)
+ .reduce((obj, n) =&gt; {
+    //...
+  }, {});
+</code></pre>
+<p>The code iterates over the child nodes of the input element using <code>Array.from(body.childNodes)</code>. The <code>reduce</code> method is used to accumulate the results in an object.</p>
+<h3>Handling Text Nodes</h3>
+<pre><code class="language-javascript">if (n.nodeName === '#text') {
+  commentBuffer.push[n];
+  return obj;
+}
+</code></pre>
+<p>If the current node is a text node, its value is pushed onto the <code>commentBuffer</code> array.</p>
+<h3>Handling Attribute-Modified Children</h3>
+<pre><code class="language-javascript">var parent = n.getAttribute('parent-attr');
+var newNode = htmlToTree(n);
+if (parent) {
+  var parentType = body.getAttribute(parent + '-type');
+  if (parentType === 'Array') {
+    if (typeof obj[parent] === 'undefined')
+      obj[parent] = [];
+    obj[parent].push(newNode);
+  } else {
+    obj[parent] = newNode;
+  }
+}
+</code></pre>
+<p>If the current node has a <code>parent-attr</code> attribute, its value is used to determine how to handle the node. If the <code>parent-type</code> attribute is set to <code>'Array'</code>, the node is appended to an array of children; otherwise, it is assigned as the child of the parent node.</p>
+<h3>Handling Unattached Children</h3>
+<pre><code class="language-javascript">if (typeof obj.children === 'undefined')
+  obj.children = [];
+obj.children.push(newNode);
+</code></pre>
+<p>If the current node has no parent and is an unattached child, it is pushed onto the <code>children</code> array of the current object.</p>
+<h3>Handling Comments</h3>
+<pre><code class="language-javascript">if (typeof newNode.comments!== 'undefined') {
+  newNode.comments.push.apply(newNode.comments, commentBuffer);
+  commentBuffer = [];
+}
+</code></pre>
+<p>If the current node has a <code>comments</code> property, it is updated with the values from the <code>commentBuffer</code> array.</p>
+<h3>Function: <code>htmlToTree</code></h3>
+<pre><code class="language-javascript">function htmlToTree(body) {
+  //...
+}
+</code></pre>
+<p>This function takes an HTML string or a tree as input and returns the corresponding tree structure. The function uses the <code>JSDOM</code> library to parse the input HTML.</p>
+<h3>Parsing HTML Strings</h3>
+<pre><code class="language-javascript">if (typeof body ==='string') {
+  var dom = new JSDOM(body);
+  return accumulateChildNodes(dom.window.document.body).children;
+}
+</code></pre>
+<p>If the input is a string, it is parsed using <code>JSDOM</code>, and the resulting tree is processed by the <code>accumulateChildNodes</code> function.</p>
+<h3>Parsing Arrays</h3>
+<pre><code class="language-javascript">if (Array.isArray(body)) {
+  return body.map(t =&gt; htmlToTree(t));
+}
+</code></pre>
+<p>If the input is an array, each element is recursively processed by the <code>htmlToTree</code> function.</p>
+<h3>Processing Text Nodes</h3>
+<pre><code class="language-javascript">if (body.nodeName === '#text') {
+  return body.nodeValue;
+}
+</code></pre>
+<p>If the input is a text node, its value is returned directly.</p>
+<h3>Converting Attribute Objects to Properties</h3>
+<pre><code class="language-javascript">var attrs = body.getAttributeNames()
+ .forEach(attr =&gt; {
+    //...
+  });
+</code></pre>
+<p>If the input is an attribute object, its attributes are converted to properties using the <code>forEach</code> method. The code is currently incomplete and has a syntax error.</p>

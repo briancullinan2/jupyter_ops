@@ -1,0 +1,46 @@
+<a href="./detect_people.html">detect people</a>
+
+<p>Here's a two-sentence summary of the provided code:</p>
+<p>This code utilizes OpenCV and other libraries to detect people in images, track motion, and draw bounding boxes around detected individuals. The code consists of several functions, including image loading, motion detection, and person tracking, with a TODO comment indicating the need to implement video recording and uploading functionality.</p>
+<a href="./motion_detection.html">motion detection</a>
+
+<p>Here's a summary of the code in two sentences:</p>
+<p>This code imports necessary libraries for computer vision tasks and defines three functions: <code>percent_motion</code> to calculate the percentage of white pixels in a thresholded image, <code>image_grayscale</code> to convert an image to grayscale, and <code>diff_images</code> to compute the absolute difference between two frames. The functions are exported as part of the module namespace for use in other scripts.</p>
+<a href="./python_write_video.html">python write video</a>
+
+<p>Here is a summary in two sentences:</p>
+<p>The code imports OpenCV and glob libraries, sets output video properties, and defines a <code>write_video</code> function that creates an output video from a list of images. The function gets the list of images, defines a <code>VideoWriter</code> object, writes each image to the video, and releases the object after cleanup.</p>
+<a href="./python_write_images_to_ffmpeg_stream.html">python write images to ffmpeg stream</a>
+
+<p>Here's a summary of the code breakdown in two sentences:</p>
+<p>The code imports various libraries and takes a screenshot using <code>pyautogui</code> before defining an FFmpeg command to encode and save a video. The <code>stream_images</code> function uses the FFmpeg command to start a stream, taking a screenshot, encoding it as a JPEG image, and writing the encoded image to the subprocess's <code>stdin</code> 15 times with a 1/30 second interval.</p>
+<a href="./create_a_live_streaming_request.html">create a live streaming request</a>
+
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary libraries, loads credentials from a service account JSON file, and sets up a YouTube API client using the <code>googleapiclient</code> library. The <code>live_stream</code> function is defined to create a new live stream on YouTube, utilizing the API client and specifying parameters such as title, description, and scheduled start time.</p>
+<a href="./authorize_youtube_in_python.html">authorize youtube in python</a>
+
+<p>Here's a summary of the code breakdown in one sentence:</p>
+<p>This Python script uses the Flask web framework and Google API Client Library to create a simple web application that authenticates users with Google and authorizes them to access the YouTube API using OAuth 2.0 authentication.</p>
+<p>Alternatively, here's a two-sentence summary:</p>
+<p>The script imports necessary libraries and sets environment variables for Google API authentication, then creates a Flask application instance. It defines a single route, <code>/authorize</code>, which handles the OAuth 2.0 authorization flow, generating a URL to redirect users to the Google authorization page for consent and offline access.</p>
+<a href="./list_broadcasts.html">list broadcasts</a>
+
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code imports various libraries and modules to interact with the operating system, handle JSON data, build a web application, and make HTTP requests, and configures the Google API for YouTube. It defines functions to authorize and list live broadcasts using the YouTube API, sanitize file names, and maps function names to their corresponding functions in the module.</p>
+<a href="./create_live_stream.html">create live stream</a>
+
+<p>Here's a two-sentence summary of the code:</p>
+<p>The code imports necessary libraries, defines constants and two functions (<code>create_livestream</code> and <code>sanitize_filename</code>), and exports the <code>create_livestream</code> function for use. The <code>create_livestream</code> function creates a new live stream on YouTube by authorizing the user, building a YouTube API client, and inserting the live stream details, while the <code>sanitize_filename</code> function replaces invalid characters in a string with underscores.</p>
+<a href="./list_live_stream.html">list live stream</a>
+
+<p>Here is a summary of the code breakdown in two sentences:</p>
+<p>The code imports necessary libraries, defines constants and functions for interacting with the YouTube API, and exports two main functions: <code>list_livestream</code> and <code>youtube_authorize</code>. These functions allow users to authorize with the YouTube API and list their live streams, with the option to sanitize filenames and handle OAuth 2.0 credentials.</p>
+<a href="./bind_youtube_stream.html">bind youtube stream</a>
+
+<p>Here is a 2-sentence summary of the code:</p>
+<p>This code binds a live stream to a YouTube broadcast using the YouTube API, utilizing functions to import necessary modules and notebooks, authorize API credentials, retrieve broadcast and stream information, and execute the binding request. The <code>bind_stream_to_broadcast</code> function returns the stream information and broadcast ID, and is exported for use in other modules.</p>
+<a href="./transition_live_stream.html">transition live stream</a>
+
+<p>Here is a two-sentence summary of the code:</p>
+<p>The <code>transition_stream</code> function uses the YouTube API to authorize and bind a stream to a broadcast, then starts a subprocess to write images to an FFmpeg stream, waiting indefinitely until interrupted. The code includes unused sections for creating stream data and transitioning the broadcast status to 'live', which are likely part of a larger script or implementation.</p>

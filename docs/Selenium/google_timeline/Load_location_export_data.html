@@ -1,0 +1,64 @@
+<p>This code snippet defines a function <code>loadLocations</code> that parses a JSON file containing location data, groups locations by date, and stores them in a cache for efficient retrieval.  It uses a custom <code>importer</code> module to stream the JSON data and process it asynchronously.</p>
+
+
+<pre><code>var importer = require('../Core');
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function loadLocations(file) {
+    var locationCache = {};
+    var offset = (new Date()).getTimezoneOffset() * 60 * 1000;
+    importer.streamJson(file, [true, {emitPath: true}], (match) => {
+        if (match.path[0] === 'locations' && match.path.length === 3) {
+            var currDate = new Date(parseInt(match.value.timestampMs));
+            var newKey = currDate.getDate() + months[currDate.getMonth()]
+                + (currDate.getFullYear() + '').substr(2, 2);
+            var newRow = Object.assign({
+                time: currDate,
+                type: 'location',
+                location: newKey
+            }, match.value);
+            var cache = locationCache[newRow.location];
+            if (typeof cache === 'undefined') {
+                cache = locationCache[newRow.location] = [];
+            }
+            cache[cache.length] = newRow;
+        }
+    })
+    return locationCache;
+};
+module.exports = loadLocations;
+</code></pre>
+
+<p>This code snippet defines a function <code>loadLocations</code> that reads a JSON file containing location data and processes it to create a cache of locations grouped by date.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module likely containing a function for streaming JSON data.</li>
+</ul></li>
+<li><p><strong><code>months</code> Array:</strong></p>
+<ul>
+<li>Defines an array of abbreviated month names for date formatting.</li>
+</ul></li>
+<li><p><strong><code>loadLocations</code> Function:</strong></p>
+<ul>
+<li>Takes a file path as input.</li>
+<li>Initializes an empty object <code>locationCache</code> to store the processed location data.</li>
+<li>Calculates the current timezone offset in milliseconds.</li>
+<li>Uses <code>importer.streamJson</code> to read the JSON file asynchronously.
+<ul>
+<li>The callback function receives each JSON object (<code>match</code>) as it's processed.</li>
+<li>It checks if the path of the current object is <code>locations</code> and has a length of 3.</li>
+<li>If so, it extracts the timestamp, converts it to a date object, and creates a new key based on the date.</li>
+<li>It then creates a new object <code>newRow</code> containing the location data, timestamp, type, and date key.</li>
+<li>It checks if a cache entry for this location already exists in <code>locationCache</code>.</li>
+<li>If not, it creates a new array for that location.</li>
+<li>It adds the <code>newRow</code> to the corresponding cache entry.</li>
+</ul></li>
+<li>Finally, it returns the <code>locationCache</code> object.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>loadLocations</code> function as the main module export.</li>
+</ul></li>
+</ol>

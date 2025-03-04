@@ -1,0 +1,103 @@
+<p>This code defines a webhook handler function that validates incoming requests, retrieves a result based on a specified function, and returns the result as a JSON response.</p>
+
+
+<pre><code>var importer = require('../Core');
+var assert = require('assert');
+var getResult = importer.import('rpc result');
+
+function handler(event, context, callback) {
+    var body = event || {};
+    try {
+        if (event.body || event.queryStringParameters) {
+            body = Object.assign(event.body || {}, event.queryStringParameters || {});
+        }
+
+        assert(body.function, 'something is wrong with your search ' + JSON.stringify(body));
+        assert(importer.interpret(body.function).id, 'something is terribly wrong with function lookup ' + importer.interpret(body.function))
+    }
+    catch(e) {
+        callback(e, {
+            'statusCode': 500,
+            'headers': { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': JSON.stringify({'Error': e.message})
+        })
+        return;
+    }
+    
+    // TODO: add Eloqua Notify service entry point for retrieving temporary data?
+    // TODO: parse action and call from notify service or call with posted data?
+    // TODO: add an entry point for Zuora subscription callout to update single records in eloqua?
+    return Promise.resolve([])
+        .then(() => getResult({
+            command: body['function'],
+            result: importer.interpret(body['function']),
+            body: body,
+            circles: ['Public']
+        }))
+        .then(r => callback(null, {
+            'statusCode': 200,
+            'headers': { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': JSON.stringify(r, null, 4)
+        }))
+        // TODO: object assign error?
+        .catch(e => callback(e, {
+            'statusCode': 500,
+            'headers': { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': JSON.stringify({'Error': e.message})
+        }));
+}
+
+if(typeof module.exports === 'undefined') {
+    module.exports = {};
+}
+module.exports.handler = handler;
+</code></pre>
+
+<p>This code defines a function <code>handler</code> that acts as a webhook endpoint, likely for handling requests from an external system.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports <code>importer</code> from a local module (<code>../Core</code>) and <code>assert</code> from the Node.js standard library.</li>
+</ul></li>
+<li><p><strong><code>handler</code> Function:</strong></p>
+<ul>
+<li>It takes three arguments: <code>event</code>, <code>context</code>, and <code>callback</code>. These are standard arguments for AWS Lambda functions.</li>
+<li>It extracts the request body and query parameters into a single <code>body</code> object.</li>
+<li><strong>Validation:</strong>
+<ul>
+<li>It uses <code>assert</code> to ensure that the <code>body</code> contains a required field <code>function</code> and that the function can be interpreted by the <code>importer</code>. If validation fails, it returns a 500 error response.</li>
+</ul></li>
+<li><strong>TODOs:</strong>
+<ul>
+<li>There are several TODO comments indicating potential future features or integrations, such as:
+<ul>
+<li>Calling an Eloqua Notify service.</li>
+<li>Parsing an action and calling a function from the notify service.</li>
+<li>Adding a Zuora subscription callout.</li>
+</ul></li>
+</ul></li>
+<li><strong>Result Retrieval:</strong>
+<ul>
+<li>It calls <code>getResult</code> with the extracted <code>body</code> and other information. This function likely fetches a result based on the <code>function</code> field.</li>
+</ul></li>
+<li><strong>Response:</strong>
+<ul>
+<li>It returns a 200 OK response with the result from <code>getResult</code> in JSON format. If an error occurs during the process, it returns a 500 error response.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The code checks if <code>module.exports</code> is undefined, indicating it's likely being run as a module. If so, it exports the <code>handler</code> function.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

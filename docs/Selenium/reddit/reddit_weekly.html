@@ -1,0 +1,100 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The <code>redditWeekly</code> function scrapes top links and posts from Reddit, extracts summaries, generates alternative summaries, and posts them to a specified page, with TODO comments indicating areas for further development.</p>
+
+
+<pre><code>const redditLinks = importer.import('reddit scraper')
+const getClient = importer.import('selenium client')
+const redditList = importer.import('reddit month of links')
+const redditPost = importer.import('reddit post')
+const summerizeArticle = importer.import('summarize llm article')
+const {alternativeSummary, CONVERSION_PROMPTS} = importer.import('convert summaries')
+const { persistSummaries } = importer.import('default link collector')
+const extractArticle = importer.import('extract llm article')
+
+// TODO: send an email or post updates on reddit.com/r/collapseGently?
+
+async function redditWeekly(
+  startPage = 'CollapseSupport+climatechange+collapse+economicCollapse',
+  postPage = 'CollapseGently'
+) {
+
+  if(!startPage.includes('://')) {
+    startPage = 'https://www.reddit.com/r/' + startPage
+  }
+
+  let driver = await getClient()
+
+  // TODO: get top
+  let top = await redditLinks(driver, startPage + '/top/')
+  let topLinks = top.map(post => post.link)
+
+  // TODO: sort by most comments
+  let posts = await redditList(driver, startPage)
+  let topCommented = posts.sort((a, b) => {
+    let aInt = parseInt(a.comment.replace(/comments*/gi, '').trim())
+    let bInt = parseInt(b.comment.replace(/comments*/gi, '').trim())
+    return bInt - aInt
+  }).filter(post => !topLinks.includes(post.link))
+
+  let freshPosts = topCommented.slice(0, 25).concat(top.slice(0, 25))
+  let summaries = persistSummaries()
+
+  // TODO: loop through top 20 (10 of each) and repost
+  for(let i = 0; i < freshPosts.length; i++) {
+    let summary = summaries[freshPosts[i].link]
+    if(!summary) {
+      let article = await extractArticle(driver, freshPosts[i].link)
+      summary = await summerizeArticle(article)
+    }
+
+    // TODO: extract funny summary instead
+    let rand = Math.round(Math.random() * (CONVERSION_PROMPTS.length - 1)) + 1
+    let alternative = await alternativeSummary(summary, CONVERSION_PROMPTS[rand])
+
+    await redditPost(driver, 
+      'TLDR: ' + alternative[1] 
+      + '\n\n' + alternative[0] 
+      + '\n\n' + '[' + freshPosts[i].link + '](' + freshPosts[i].link + ')\n', 
+      postPage)
+  }
+
+}
+
+module.exports = redditWeekly
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code begins by importing various modules using the <code>importer.import()</code> function:</p>
+<ul>
+<li><code>redditLinks</code>: a module for scraping Reddit links</li>
+<li><code>getClient</code>: a module for getting a Selenium client</li>
+<li><code>redditList</code>: a module for getting a list of Reddit posts</li>
+<li><code>redditPost</code>: a module for posting on Reddit</li>
+<li><code>summerizeArticle</code>: a module for summarizing articles</li>
+<li><code>alternativeSummary</code>: a module for generating alternative summaries</li>
+<li><code>persistSummaries</code>: a module for persisting summaries</li>
+<li><code>extractArticle</code>: a module for extracting articles from a link</li>
+</ul>
+<h3>Defining the <code>redditWeekly</code> Function</h3>
+<p>The <code>redditWeekly</code> function is defined with two optional parameters:</p>
+<ul>
+<li><code>startPage</code>: the starting page on Reddit (defaults to 'CollapseSupport+climatechange+collapse+economicCollapse')</li>
+<li><code>postPage</code>: the page to post to on Reddit (defaults to 'CollapseGently')</li>
+</ul>
+<h3>Initializing the Selenium Client and Scraping Reddit</h3>
+<p>The function initializes the Selenium client using <code>getClient()</code> and scrapes the top links and posts from the specified <code>startPage</code>.</p>
+<h3>Filtering and Sorting Posts</h3>
+<p>The function filters the posts to exclude the top links and sorts them by the number of comments in descending order.</p>
+<h3>Extracting Summaries</h3>
+<p>The function extracts summaries for each post using the <code>persistSummaries()</code> function. If a summary is not found, it extracts the article using <code>extractArticle()</code> and then summarizes it using <code>summerizeArticle()</code>.</p>
+<h3>Generating Alternative Summaries and Posting</h3>
+<p>The function generates alternative summaries using <code>alternativeSummary()</code> and posts the summaries to the specified <code>postPage</code> on Reddit.</p>
+<h3>Main Logic</h3>
+<p>The function loops through the first 25 posts (10 of each) and performs the following steps:</p>
+<ol>
+<li>Extracts a summary for each post</li>
+<li>Generates an alternative summary</li>
+<li>Posts the alternative summary to Reddit</li>
+</ol>
+<p>The code is marked with TODO comments, indicating that certain sections are incomplete or require further development.</p>

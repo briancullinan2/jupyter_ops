@@ -1,0 +1,103 @@
+<p>This code unit tests the <code>exporter</code> module, which handles Zuora API interactions for data export, by mocking API responses and verifying expected behavior in retrieving queries and initiating exports.</p>
+
+
+<pre><code>var assert = require('assert');
+var sinon = require('sinon');
+var exporter = importer.import('zuora export month');
+var zuoraExport = importer.import('zuora to eloqua.ipynb[0]');
+var renewalsQuery = importer.import('zuora renewals query');
+
+var sandbox = sinon.createSandbox();
+var zuoraConfig = {
+    "rest_api_user":"devteam@fakepage.com",
+    "rest_api_password":"pass",
+    "rest_api_url": "http://localhost:18888"
+};
+
+describe('zuora export month', () => {
+    
+    afterEach(() => {
+        sandbox.restore();
+    })
+    
+    it('should get the query', () => {
+        const dummyQuery = 'test query';
+        
+        sandbox.stub(zuoraExport, "createBulkExportJob").returns(Promise.resolve(''));
+        sandbox.stub(zuoraExport, "getBulkExportJobStatus");
+        sandbox.stub(zuoraExport, "getBulkExportFile");
+        sandbox.stub(zuoraExport, "csvToJson").returns(Promise.resolve([]));
+        const queryStub = sandbox.stub(renewalsQuery, "getQuery")
+            .returns({ Query: dummyQuery });
+
+        return exporter.getZuoraMonth(0, zuoraConfig).then(result => {
+                assert.equal(result.length, 0);
+                assert(queryStub.calledOnce, 'getQuery should only be called once');
+                const stubCall = queryStub.getCall(0);
+                assert.equal(new Date(stubCall.args[0]).getMonth(), (new Date()).getMonth());
+        });
+    })
+    
+    it('should call bulk export service', () => {
+        const dummyQuery = 'test query';
+        
+        const exportStub = sandbox.stub(zuoraExport, "createBulkExportJob").returns(Promise.resolve(''));
+        sandbox.stub(zuoraExport, "getBulkExportJobStatus");
+        sandbox.stub(zuoraExport, "getBulkExportFile");
+        sandbox.stub(zuoraExport, "csvToJson").returns(Promise.resolve([]));
+        sandbox.stub(renewalsQuery, "getQuery")
+            .returns({ Query: dummyQuery });
+
+        return exporter.getZuoraMonth(0, zuoraConfig).then(result => {
+                assert.equal(result.length, 0);
+                assert(exportStub.calledOnce, 'createBulkExportJob should only be called once');
+                const stubCall = exportStub.getCall(0);
+                assert.equal(stubCall.args[0].Query, dummyQuery);
+        });
+    })
+    
+    it('should convert csv dump to json', () => {
+        const dummyCsv = 'this,is,a,test\n1,2,3,4';
+        
+        sandbox.stub(zuoraExport, "createBulkExportJob").returns(Promise.resolve(''));
+        sandbox.stub(zuoraExport, "getBulkExportJobStatus");
+        sandbox.stub(zuoraExport, "getBulkExportFile").returns(Promise.resolve(dummyCsv));
+        sandbox.stub(renewalsQuery, "getQuery").returns({ Query: 'test query' });
+        
+        return exporter.getZuoraMonth(0, zuoraConfig).then(result => {
+                assert.equal(result[0].test, 4);
+        });
+    })
+})
+</code></pre>
+
+<p>This code defines unit tests for a module named <code>exporter</code> that interacts with the Zuora API to export data.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>assert</code> for assertions, <code>sinon</code> for mocking, and modules related to Zuora API interaction (<code>exporter</code>, <code>zuoraExport</code>, <code>renewalsQuery</code>).</li>
+<li>Creates a sandbox using <code>sinon.createSandbox()</code> to isolate the test environment.</li>
+<li>Defines a sample <code>zuoraConfig</code> object with placeholder credentials.</li>
+</ul></li>
+<li><p><strong>Test Suite:</strong></p>
+<ul>
+<li>Uses <code>describe('zuora export month', () =&gt; { ... })</code> to define a test suite.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li><code>afterEach(() =&gt; { sandbox.restore(); })</code>: Restores the sandbox after each test to avoid interference.</li>
+<li><code>it('should get the query', () =&gt; { ... })</code>:
+<ul>
+<li>Mocks functions within <code>zuoraExport</code> and <code>renewalsQuery</code> to simulate API calls and data retrieval.</li>
+<li>Calls <code>exporter.getZuoraMonth(0, zuoraConfig)</code> to test the function.</li>
+<li>Asserts that the returned result is empty and that the <code>getQuery</code> function was called once with the correct parameters.</li>
+</ul></li>
+<li><code>it('should call bulk export service', () =&gt; { ... })</code>:
+<ul>
+<li>Similar to the previous test, but focuses on verifying that the <code>createBulkExportJob</code> function is called once with the correct query.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Conclusion:</strong></p>
+<p>These tests verify the functionality of the <code>exporter</code> module by mocking API responses and asserting the expected behavior. They cover aspects like query retrieval, API calls, and data processing.</p></li>
+</ol>

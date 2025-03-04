@@ -1,0 +1,54 @@
+<p>Here's a summary of the <code>getClassNames</code> function in one sentence:<br />
+The <code>getClassNames</code> function asynchronously extracts class names from C# code, optionally filtered by a specified namespace, and returns a sorted array of class names.</p>
+<p>Here's a two-sentence summary:<br />
+The <code>getClassNames</code> function takes C# code and an optional namespace as input and returns a sorted array of class names. It uses an ANTLR parser to extract class definitions and filter them based on the provided namespace.</p>
+
+
+<pre><code>
+
+async function getClassNames(code, namespace) {
+  const selectCode = await importer.import('select antlr tree')
+
+  let result
+  if(namespace) {
+    result = await selectCode(['//namespace_declaration[contains(./qualified_identifier/@strdata, "' + namespace + '")]//class_definition', {
+      start: './@start',
+      stop: './@stop',
+      name: '(./identifier/@strdata)[1]'
+    }], code, 'csharp')
+      
+  } else {
+
+    result = await selectCode(['//class_definition', {
+      start: './@start',
+      stop: './@stop',
+      name: '(./identifier/@strdata)[1]'
+    }], code, 'csharp')
+  }
+
+  result.sort((a, b) => (b.stop - b.start) - (a.stop - a.start))
+  return result.map(r => r.name)
+}
+
+module.exports = getClassNames
+</code></pre>
+
+<h3>Function: <code>getClassNames</code></h3>
+<h4>Description</h4>
+<p>Asynchronously extracts class names from C# code using an ANTLR parser.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>code</code>: The C# code to parse.</li>
+<li><code>namespace</code>: An optional namespace to filter class names by.</li>
+</ul>
+<h4>Returns</h4>
+<p>An array of class names sorted by their scope.</p>
+<h4>Implementation</h4>
+<p>The function uses the <code>importer</code> module to import the <code>select</code> function from the <code>antlr-tree</code> library. It then uses this function to extract class definitions from the provided C# code.</p>
+<p>If a <code>namespace</code> is provided, it selects class definitions within a namespace that matches the given namespace. Otherwise, it selects all class definitions.</p>
+<p>The extracted class definitions are sorted by their scope and the class names are returned as an array.</p>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">const getClassNames = require('./getClassNames');
+const code = '...'; // C# code
+const result = await getClassNames(code, 'MyNamespace');
+</code></pre>

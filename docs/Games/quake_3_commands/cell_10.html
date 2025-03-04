@@ -1,0 +1,12 @@
+
+
+<pre><code>
+for /r %%v in (*.wav) do opusenc "%%v" "%%~dpv%%~nv.opus"
+
+#TODO: WOOOO! Bash pattern, convert this with transpiler to match linux loops with same filename extension operation
+#bash
+for i in $(find . -iname '*.wav'); do opusenc "$i" "${i%.wav}".opus; done
+
+for i in $(find . -iname '*.wav'); do echo "$i"; done
+</code></pre>
+

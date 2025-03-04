@@ -1,0 +1,124 @@
+<p>This code defines a <code>httpRequest</code> function that makes HTTP requests using either the <code>request</code> module (if available) or a custom implementation based on the <code>http</code> and <code>https</code> modules.</p>
+
+
+<pre><code>var promisify
+try {
+    promisify = require('util').promisify
+} catch (e) {
+    if(!e.message.includes('Cannot find module')) {
+        throw e
+    }
+}
+if(!promisify) {
+    try {
+        promisify = require('bluebird').promisify
+    } catch (e) {
+        if(!e.message.includes('Cannot find module')) {
+            throw e
+        }
+    }    
+}
+
+try {
+    var httpRequest = util.promisify(require('request'));
+} catch (e) {
+    if(!e.message.includes('Cannot find module')) {
+        throw e
+    }
+    
+    var http = require('http')
+    var https = require('https')
+    var url = require('url')
+
+    function httpRequest(params) {
+        var protocol = params.url.includes('http://') ? http : https
+        var location = url.parse(params.url)
+        var postData = querystring.stringify(params.data);
+
+        Object.assign(params, {
+            path: location.pathname,
+            host: location.hostname,
+            port: location.port || location.protocol === 'http' ? 80 : 443,
+            headers: Object.assign(params.headers || {}, {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': Buffer.byteLength(postData)
+            }, params.headers)
+        }, params)
+
+        return new Promise(function(resolve, reject) {
+            var req = protocol.request(params, function(res) {
+                // cumulate data
+                res.setEncoding('utf8');                
+                res.body = [];
+                res.on('data', function(chunk) {
+                    res.body.push(chunk);
+                });
+                // resolve on end
+                res.on('end', function() {
+                    try {
+                        res.body = res.body.join('');
+                    } catch(e) {
+                        reject(e);
+                    }
+                    resolve(res);
+                });
+            });
+            req.on('error', err => reject(err));
+            if (params.data) {
+                req.write(postData);
+            }
+            // IMPORTANT
+            req.end();
+        });
+    }
+}
+
+function request(...args) {
+    return httpRequest(...args)
+        .then(res => {
+            if(res.statusCode < 200 || res.statusCode >= 300) {
+                throw new Error('Error: ' + res.statusCode + ' - ' + JSON.stringify(res.body));
+            }
+            var isJson = (res.headers['content-type'] || '').match(/application\/json/ig);
+            var isPlain = (res.headers['content-type'] || '').match(/text\//ig);
+            if(isJson && typeof res.body !== 'undefined') {
+                try {
+                    res.body = JSON.parse(res.body.toString('utf8'));
+                } catch (e) {}
+            }
+            if(isPlain && typeof res.body !== 'undefined') {
+                res.body = res.body.toString('utf8');
+            }
+            return res;
+        })
+}
+
+module.exports = {
+    request
+}
+</code></pre>
+
+<p>This code snippet aims to provide a promisified <code>httpRequest</code> function for making HTTP requests, handling potential errors gracefully and falling back to a custom implementation if the <code>util.promisify</code> or <code>bluebird</code> libraries are not available.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>promisify</code> Detection and Fallback:</strong></p>
+<ul>
+<li>It first tries to get the <code>promisify</code> function from the <code>util</code> module.</li>
+<li>If <code>util.promisify</code> is not found, it tries to get it from the <code>bluebird</code> library.</li>
+<li>If neither is found, it throws an error.</li>
+</ul></li>
+<li><p><strong><code>httpRequest</code> Function:</strong></p>
+<ul>
+<li>If <code>promisify</code> is successfully obtained, it attempts to promisify the <code>request</code> module using <code>util.promisify(require('request'))</code>.</li>
+<li>If <code>request</code> is not found, it falls back to a custom implementation using the <code>http</code> and <code>https</code> modules.</li>
+</ul></li>
+<li><p><strong>Custom <code>httpRequest</code> Implementation:</strong></p>
+<ul>
+<li>This implementation parses the URL, constructs the request object, and handles the response data.</li>
+<li>It uses <code>Promise</code> to handle asynchronous operations.</li>
+<li>It sets the content type and length headers for POST requests.</li>
+<li>It accumulates the response data in chunks and resolves the promise with the complete response.</li>
+<li>It handles errors gracefully.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a robust and flexible way to make HTTP requests in a Promise-based manner, gracefully handling potential dependency issues.</p>

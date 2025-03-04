@@ -1,0 +1,383 @@
+<p>Here is a summary of the provided code breakdown in two sentences:</p>
+<p>The code imports functions from the Discord API module and defines an array of command names (<code>ALL_COMMANDS</code>) that will be synced with the Discord API. The <code>syncCommands</code> function retrieves the list of commands from the Discord API, registers or updates commands as needed, and repeats this process for each command in the <code>ALL_COMMANDS</code> array.</p>
+
+
+<pre><code>
+const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+
+var ALL_COMMANDS = [
+  'hello',
+  'challenge',
+  'connect',
+  'rcon',
+  'config',
+  'map',
+  'servers',
+  'search',
+  'author',
+  'gametype',
+  'stats',
+  'rank',
+  'rankings',
+]
+
+// bot commands using new API, same names as above but lower-case
+async function syncCommands(guildId = null) {
+  var cmd, cmdDef
+  var commandResult = await getCommands(guildId)
+  var commands = commandResult.map(command => command.name)
+
+  if(!commands.includes('hello')) {
+    await registerCommand('hello', 'Check if Orbb is awake.', guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'hello')[0]
+    await updateCommand(cmd.name, cmd.description, cmd.id, guildId)
+  }
+  
+  cmdDef = {
+    'name': 'challenge',
+    'description': 'Challenges another user to match, Orbb waits for the thumbs up.',
+    'options': [
+      {
+        'name': 'opponent-id',
+        'description': 'Name of the player you want to challenge for 1v1.',
+        'required': true,
+        'type': 6
+      },
+      {
+        'name': 'map',
+        'description': 'Name of the map to start on the server.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('challenge')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'challenge')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'connect',
+    'description': 'RCon Connect to a Quake 3 server for remote administration over Discord.',
+    'options': [
+      {
+        'name': 'server-address',
+        'description': 'The IP address or domain name of the server to connect to including port.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('connect')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'connect')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'rcon',
+    'description': 'Set the password for future RCon commands, or send an rcon command to the connected server.',
+    'options': [
+      {
+        'name': 'rcon-password',
+        'description': 'Password to use with future RCon commands.',
+        'required': true,
+        'type': 3
+      },
+      {
+        'name': 'rcon-command',
+        'description': 'Send the following RCon command to the server.',
+        'required': false,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('rcon')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'rcon')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'config',
+    'description': 'Execute a config file on the remote Quake 3 server after using /connect command.',
+    'options': [
+      {
+        'name': 'config-name',
+        'description': 'Name of the config script to execute',
+        'required': true,
+        'type': 3
+      }
+      // TODO: not required and list available config scripts through engine
+    ]
+  }
+  if(!commands.includes('config')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'config')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'map',
+    'description': 'Starts a server with the specified map and sends you a personal message when the server is ready.',
+    'options': [
+      {
+        'name': 'map-name',
+        'description': 'Name of the map to run the server.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('map')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'map')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'servers',
+    'description': 'Show a list of available Quake 3 servers to join.',
+    'options': [
+      {
+        'name': 'empty',
+        'description': 'Show empty servers. (Default: true)',
+        'required': false,
+        'type': 5
+      },
+      {
+        'name': 'game',
+        'description': 'Filter by game name. (Default: All)',
+        'required': false,
+        'type': 3
+      },
+      {
+        'name': 'full',
+        'description': 'Show empty servers. (Default: true)',
+        'required': false,
+        'type': 5
+      },
+    ]
+  }
+  if(!commands.includes('servers')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'servers')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'search',
+    'description': 'Search for a map on lvlworld.com.',
+    'options': [
+      {
+        'name': 'terms',
+        'description': 'Text to look for in the map name.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('search')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'search')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'author',
+    'description': 'Search for a map on lvlworld.com by author only.',
+    'options': [
+      {
+        'name': 'terms',
+        'description': 'Text to look for in the author name.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('author')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'author')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'gametype',
+    'description': 'Search for a map on lvlworld.com by gametype.',
+    'options': [
+      {
+        'name': 'terms',
+        'description': 'Text to look for in the gametype, try tourney or 2 player.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('gametype')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'gametype')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'stats',
+    'description': 'Display stats for the specified user.',
+    'options': [
+      {
+        'name': 'player',
+        'description': 'Name or Discord of the player.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('stats')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'stats')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'rank',
+    'description': 'Display rank for the specified user.',
+    'options': [
+      {
+        'name': 'player',
+        'description': 'Name or Discord of the player.',
+        'required': true,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('rank')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'rank')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  cmdDef = {
+    'name': 'rankings',
+    'description': 'Display global ranking information.',
+    'options': [
+      {
+        'name': 'server',
+        'description': 'IP or domain of the server for specific rankings.',
+        'required': false,
+        'type': 3
+      }
+    ]
+  }
+  if(!commands.includes('rankings')) {
+    await registerCommand(cmdDef, null, guildId)
+  } else {
+    cmd = commandResult.filter(c => c.name == 'rankings')[0]
+    await updateCommand(cmdDef, null, cmd.id, guildId)
+  }
+
+  var toRemove = commandResult.filter(c => !ALL_COMMANDS.includes(c.name))
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+
+  return await getCommands()
+}
+
+
+async function deleteCommands(guildId) {
+  var toRemove = await getCommands(guildId)
+  for(var i = 0; i < toRemove.length; i++) {
+    await deleteCommand(toRemove[i].id, guildId)
+  }
+}
+
+
+module.exports = {
+  syncCommands,
+  deleteCommands,
+  DISCORD_COMMANDS
+}</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code imports functions from the <code>discord api</code> module using the <code>importer.import()</code> method:</p>
+<pre><code class="language-javascript">const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = importer.import('discord api')
+</code></pre>
+<p>The imported functions are:</p>
+<ul>
+<li><code>registerCommand</code></li>
+<li><code>getCommands</code></li>
+<li><code>deleteCommand</code></li>
+<li><code>updateCommand</code></li>
+</ul>
+<h3>Defining Command Names</h3>
+<p>An array of command names is defined:</p>
+<pre><code class="language-javascript">var ALL_COMMANDS = [
+  'hello',
+  'challenge',
+  'connect',
+  'rcon',
+  'config',
+ 'map',
+ 'servers',
+ 'search',
+  'author',
+  'gametype',
+ 'stats',
+  'rank',
+  'rankings',
+]
+</code></pre>
+<h3>Syncing Commands Function</h3>
+<p>The <code>syncCommands</code> function is defined to sync commands with the Discord API:</p>
+<pre><code class="language-javascript">async function syncCommands(guildId = null) {
+  //...
+}
+</code></pre>
+<p>This function takes an optional <code>guildId</code> parameter.</p>
+<h3>Functionality</h3>
+<p>The <code>syncCommands</code> function performs the following actions:</p>
+<ol>
+<li>Retrieves the list of commands from the Discord API using <code>getCommands(guildId)</code>.</li>
+<li>For each command, it checks if the command exists in the list. If not, it registers the command using <code>registerCommand</code>.</li>
+<li>If the command exists, it updates the command using <code>updateCommand</code>.</li>
+<li>The function repeats steps 1-3 for each command in the <code>ALL_COMMANDS</code> array.</li>
+</ol>
+<h3>Command Definition Object</h3>
+<p>The code defines a command definition object (<code>cmdDef</code>) for each command, which includes the command name, description, and options. For example:</p>
+<pre><code class="language-javascript">cmdDef = {
+  'name': 'challenge',
+  'description': 'Challenges another user to match, Orbb waits for the thumbs up.',
+  'options': [
+    {
+      'name': 'opponent-id',
+      'description': 'Name of the player you want to challenge for 1v1.',
+     'required': true,
+      'type': 6
+    },
+    {
+      'name':'map',
+      'description': 'Name of the map to start on the server.',
+     'required': true,
+      'type': 3
+    }
+  ]
+}
+</code></pre>
+<p>The <code>cmdDef</code> object is used to register or update commands in the Discord API.</p>

@@ -1,0 +1,90 @@
+<p>This code creates a dynamic web page that integrates web scraping, Git file access, and HTML manipulation, likely for web development or content management purposes.</p>
+
+
+<pre><code>var {URL} = require('url')
+var importer = require('../Core')
+var loadScraped = importer.import('get scraped page')
+var getGist = importer.import('read gist files')
+var {selectDom} = importer.import('select tree')
+var applyAcl = importer.import('apply acl to html')
+var gitFileTree = importer.import('git file tree')
+
+// git 
+async function gitEditor(url, gist, xpath) {
+    // TODO: use a Github repo as the input
+    if(typeof url == 'undefined') {
+        url = 'https://google.com'
+    }
+    if(typeof url == 'string') {
+        url = new URL(url);
+    }
+    var file = url.pathname
+    var host = url.hostname.replace(/[^a-z0-9_-]/ig, '_')
+    if(!file || file === '/') file = 'index'
+
+    var files = await loadScraped(url)
+    if(typeof files[ host + '-acl.json' ] === 'undefined') {
+        var saved = (await getGist(gist)).files
+        if(saved && saved[host + '-acl.json']) {
+            files[host + '-acl.json'] = JSON.parse(saved[host + '-acl.json'].content || '[]')
+        }
+    }
+    var doc = applyAcl((files[host + '-acl.json'] || []), files[file.replace(/[^a-z0-9_-]/ig, '_')])
+    if(xpath) {
+        console.log(decodeURIComponent(xpath))
+        return selectDom([decodeURIComponent(xpath)], doc).map(el => el.outerHTML).join('')
+    }
+    
+    var files = await gitFileTree()
+    var fileDiv = doc.ownerDocument.createElement('div')
+    fileDiv.className = 'initial-files file-tree'
+    fileDiv.innerHTML = files
+    doc.ownerDocument.body.appendChild(fileDiv)
+    
+    var codeDiv = doc.ownerDocument.createElement('div')
+    codeDiv.className = 'initial-code code-editor'
+    var codeText = doc.ownerDocument.createTextNode(importer.interpret('read crawl files').code);
+    codeDiv.appendChild(codeText)
+    doc.ownerDocument.body.appendChild(codeDiv)
+    
+    return '<!DOCTYPE html>\n' + doc.outerHTML
+}
+
+module.exports = gitEditor
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    gitEditor('https://www.google.com')
+        .then(r => $$.mime({'text/html': r}))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code defines a function <code>gitEditor</code> that combines web scraping, Git interaction, and HTML manipulation to create a dynamic web page.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports various modules from <code>importer</code>, likely a custom library, for tasks like scraping web pages, reading Gists, selecting DOM elements, applying access control lists (ACLs), and retrieving Git file trees.</li>
+</ul></li>
+<li><p><strong><code>gitEditor</code> Function:</strong></p>
+<ul>
+<li>Takes <code>url</code>, <code>gist</code>, and <code>xpath</code> as arguments.</li>
+<li>If <code>url</code> is not provided, it defaults to 'https://google.com'.</li>
+<li>Extracts the hostname and filename from the URL.</li>
+<li>Loads scraped content from the URL using <code>loadScraped</code>.</li>
+<li>Checks for an ACL file associated with the hostname and loads it from the Gist if available.</li>
+<li>Applies the ACL to the scraped content using <code>applyAcl</code>.</li>
+<li>If an <code>xpath</code> is provided, it selects elements from the HTML using the XPath expression and returns their outer HTML.</li>
+<li>Otherwise, it retrieves a file tree from Git using <code>gitFileTree</code>, creates a file tree display element, and appends it to the HTML.</li>
+<li>It also creates a code editor element and populates it with code from <code>importer.interpret('read crawl files')</code>.</li>
+<li>Finally, it returns the complete HTML content.</li>
+</ul></li>
+<li><p><strong>Module Export and Execution:</strong></p>
+<ul>
+<li>The <code>gitEditor</code> function is exported as a module.</li>
+<li>If a variable <code>$$</code> is defined (likely indicating a web framework or environment), it executes <code>gitEditor</code> with the Google homepage URL, converts the result to HTML, and sends it as a response.</li>
+</ul></li>
+</ol>
+<p><strong>Overall Purpose:</strong></p>
+<p>This code creates a dynamic web page that combines scraped content, Git file information, and a code editor. It likely serves as a tool for web development or content management, allowing users to interact with web pages, Git repositories, and code snippets within a single interface.</p>

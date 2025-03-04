@@ -1,0 +1,33 @@
+<p>These two Git commands apply staged changes to a repository, but the second command additionally resets the working directory and index before allowing for selective staging of changes.</p>
+
+
+<pre><code>git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -
+
+git diff -w --no-color | git apply --cached --ignore-whitespace && git checkout -- . && git reset && git add -p
+</code></pre>
+
+<p>These are two commands used for applying changes to a Git repository, but they handle the process differently.</p>
+<p><strong>Command 1:</strong></p>
+<pre><code class="language-bash">git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -
+</code></pre>
+<ul>
+<li><strong><code>git diff -U0 -w --no-color</code>:</strong> This part generates a unified diff (-U0) without whitespace changes (-w) and color (-no-color).</li>
+<li><strong><code>| git apply --cached --ignore-whitespace --unidiff-zero -</code>:</strong> This pipes the diff output to <code>git apply</code>.
+<ul>
+<li><code>--cached</code>: Applies the changes from the staging area (index).</li>
+<li><code>--ignore-whitespace</code>: Ignores whitespace differences.</li>
+<li><code>--unidiff-zero</code>:  Handles diffs with only one line changes.</li>
+</ul></li>
+</ul>
+<p><strong>In essence, this command applies staged changes to the working directory, ignoring whitespace differences and handling single-line changes specifically.</strong></p>
+<p><strong>Command 2:</strong></p>
+<pre><code class="language-bash">git diff -w --no-color | git apply --cached --ignore-whitespace &amp;&amp; git checkout -- . &amp;&amp; git reset &amp;&amp; git add -p
+</code></pre>
+<ul>
+<li><strong><code>git diff -w --no-color</code>:</strong> Same as before, generates a diff without whitespace changes and color.</li>
+<li><strong><code>git apply --cached --ignore-whitespace</code>:</strong> Applies the staged changes to the working directory, ignoring whitespace.</li>
+<li><strong><code>&amp;&amp; git checkout -- .</code>:</strong> Resets the working directory to the HEAD commit.</li>
+<li><strong><code>&amp;&amp; git reset</code>:</strong> Resets the index to the HEAD commit.</li>
+<li><strong><code>&amp;&amp; git add -p</code>:</strong>  Allows you to selectively stage changes in the working directory.</li>
+</ul>
+<p><strong>This command applies staged changes, resets the working directory and index, and then allows you to stage changes individually.</strong></p>

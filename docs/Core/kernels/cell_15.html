@@ -1,0 +1,82 @@
+
+
+<pre><code>do_init: (kernel, config) => {
+    console.log('starting wire sockets');
+    return setupSockets(config)
+        .then(bindSockets)
+        .then(() => kernel.meta_kernel.do_init(kernel, config))
+        .then(() => this.do_respond(kernel, {
+            status: {execution_state: 'idle'}
+        }));
+},
+do_respond: (kernel, message) => {
+    var result = {};
+    var msg_type = Object.keys(message)[0];
+    result[msg_type] = {content: message[msg_type]};
+    return wireRespond(kernel, result);
+},
+do_message: wireMessage,
+// TODO: bubble response messages from child to front-end
+
+function bindSockets(sockets) {
+    console.log('connecting sockets');
+    this.sockets = sockets;
+    sockets.heartbeat.on('message', sockets.heartbeat.send);
+    [sockets.control, sockets.shell, sockets.stdin]
+        .forEach(socket => socket.on('message', addCB.bind(
+            null,
+            parseMessage,
+            parsed => this.do_message(this, parsed))))
+    // iopub appears to be write to only
+}
+
+function wireRespond(kernel, message) {
+    console.log(`response`, message);
+    var msg_type = Object.keys(message)[0];
+    var encoded = collapseMessage(kernel.kernel_config.key, message);
+    if(msg_type === 'shutdown_reply')
+        kernel.sockets.control.send(encoded);
+    else if(msg_type.substr(-6) === '_reply')
+        kernel.sockets.shell.send(encoded);
+    else if(msg_type === 'input_request')
+        kernel.sockets.stdin.send(encoded);
+    else
+        kernel.sockets.iopub.send(encoded);
+}
+
+function wireMessage(kernel, message) {
+    var msg_type = Object.keys(message)[0];
+    console.log(message);
+    // TODO: need to pass arguments, that's why callback was used
+// TODO: add execution count recorder, also to do_respond maybe
+    /*
+    kernel.do_respond = (message) => kernel.do_respond(
+        kernel, message,
+        
+    
+    // assign the responder
+    var result = {};
+    var execution_count = Object.values(message)[0].execution_count;
+    delete Object.values(message)[0].execution_count;
+    result[Object.keys(message)[0]] = {
+        execution_count,
+        content: Object.values(message)[0],
+        respond: responders[execution_count]
+    };
+
+    */
+    nativeMetaKernel.prototype.do_message(Object.assign({}, kernel, {
+        do_respond: (response) => {
+            var result = {};
+            var res_type = Object.keys(response)[0];
+            result[res_type] = {
+                parent: message[msg_type].header,
+                metadata: message[msg_type].metadata,
+                content: response[res_type]
+            };
+            return wireRespond(kernel, result);
+        }
+    }), message);
+}
+</code></pre>
+

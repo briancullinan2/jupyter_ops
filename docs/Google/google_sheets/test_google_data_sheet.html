@@ -1,0 +1,61 @@
+<p>This code snippet is a unit test that verifies the ability to retrieve and process data from a specific Google Sheet using functions from a local module.  It asserts the existence of a data sheet and checks if the processed data array contains at least one element.</p>
+
+
+<pre><code>var assert = require('assert');
+var importer = require('../Core');
+var getTemplates = importer.import('templates google sheet');
+var getDataSheet = importer.import('google sheet array objects');
+
+var docsId = '113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k';
+
+describe('get data from data sheet', () => {
+    
+    it('should process at least one data sheet', () => {
+        return getTemplates(docsId)
+            .then(t => {
+                var key = Object.keys(t).filter(k => t[k].data)[0];
+                assert(typeof key != 'undefined', 'should have at least one data sheet');
+                return getDataSheet(t[key].data);
+            })
+            .then(data => {
+                console.log(data.length);
+                console.log(data);
+                assert(data.length > 0, 'should have data');
+            })
+    })
+    
+    
+})
+</code></pre>
+
+<p>This code snippet tests the functionality of retrieving and processing data from a specific Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports <code>assert</code> for making assertions during testing.</li>
+<li>It imports <code>getTemplates</code> and <code>getDataSheet</code> from a local module <code>Core</code>, which likely handle fetching and processing data from Google Sheets.</li>
+</ul></li>
+<li><p><strong>Test Setup:</strong></p>
+<ul>
+<li>It defines a <code>docsId</code> variable, which is the ID of the Google Sheet to be tested.</li>
+</ul></li>
+<li><p><strong>Test Case:</strong></p>
+<ul>
+<li>It uses <code>describe</code> and <code>it</code> to define a test case named &quot;get data from data sheet&quot;.</li>
+<li>Inside the test case:
+<ul>
+<li>It calls <code>getTemplates</code> with the <code>docsId</code> to retrieve information about the sheet's templates and data sheets.</li>
+<li>It filters the retrieved templates to find the first one with a &quot;data&quot; property, indicating a data sheet.</li>
+<li>It asserts that a data sheet exists.</li>
+<li>It calls <code>getDataSheet</code> with the data sheet information to fetch and process the data.</li>
+<li>It asserts that the processed data array has at least one element.</li>
+<li>It logs the length and content of the processed data for inspection.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>This code snippet is likely part of a testing framework (e.g., Jest, Mocha) that will execute these tests and report the results.</li>
+</ul></li>
+</ol>
+<p>Let me know if you'd like a deeper dive into any specific part of the code!</p>

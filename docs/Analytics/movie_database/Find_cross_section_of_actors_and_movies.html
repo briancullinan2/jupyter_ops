@@ -1,0 +1,121 @@
+<p>This code imports data from IMDb TSV files (principals, titles, and names) and stores it in a structured SQLite database.</p>
+
+
+<pre><code>// TODO: use papa parse to load tsv files from imdb
+var fs = require('fs');
+var papa = require('papaparse');
+var sqlite3 = require('better-sqlite3');
+var importer = require('../Core');
+var createTables = importer.import('create movie database tables');
+
+var principals = '/Users/briancullinan/Downloads/title.principals.tsv';
+var titles = '/Users/briancullinan/Downloads/title.basics.tsv';
+var names = '/Users/briancullinan/Downloads/name.basics.tsv';
+var movies = './movies.sqlite.db';
+
+var db = new sqlite3(movies, {});
+
+function importSQL(file, cb) {
+    if(typeof file === 'string') {
+        file = fs.createReadStream(file);
+    }
+    var prev = 0;
+    var count = 0;
+    return new Promise(resolve => papa.parse(file, {
+        worker: true,
+        delimiter: '\t',
+        fastMode: true,
+        skipEmptyLines: true,
+        chunk: function(results) {
+            count++;
+            if(count === 1 || count > prev + 1000) {
+                prev = count;
+                console.log(`${count} - ${results.data.length} - ${results.data[1]}`);
+            }
+            
+            return results.data.map(r => cb(r));
+        },
+        complete: resolve
+    }));
+}
+
+function insertPrincipals(data) {
+    return db.prepare(`
+INSERT OR IGNORE INTO principals
+    (tconst, ordering, nconst, category, job, characters)
+VALUES (?,?,?,?,?,?)`).run(data);
+}
+
+function insertTitles(data) {
+    data = typeof data[0] !== 'object' ? [data] : data;
+    return db.prepare(`
+INSERT OR IGNORE INTO titles
+    (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres)
+VALUES ${data.map(d => '(?,?,?,?,?,?,?,?,?)').join(',')}`).run([].concat.apply([], data));
+}
+
+function insertNames(data) {
+    data = typeof data[0] !== 'object' ? [data] : data;
+    return db.prepare(`
+INSERT OR IGNORE INTO name
+    (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles)
+VALUES ${data.map(d => '(?,?,?,?,?,?)').join(',')}`).run([].concat.apply([], data));
+}
+
+$$.async();
+createTables(db)
+    .then(() => importSQL(names, insertNames))
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e))
+    // close the database connection
+    .then(() => db.close())
+
+
+
+/*
+params = [[1,2],[3,4],[5,6],[7,8]]
+
+stmt = db.prepare("INSERT INTO test (num1, num2) VALUES (?1,?2)");
+stmt.all([params], function(err, res) {
+    ...
+});
+*/
+
+</code></pre>
+
+<p>This code imports and processes data from IMDb TSV files into a SQLite database.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports <code>fs</code> for file system operations, <code>papaparse</code> for parsing TSV files, <code>better-sqlite3</code> for SQLite database interaction, and utilities from <code>../Core</code> for creating database tables.</li>
+</ul></li>
+<li><p><strong>File Paths:</strong></p>
+<ul>
+<li>It defines paths to the IMDb TSV files (<code>principals</code>, <code>titles</code>, <code>names</code>) and the output SQLite database (<code>movies</code>).</li>
+</ul></li>
+<li><p><strong>Database Connection:</strong></p>
+<ul>
+<li>It establishes a connection to the SQLite database.</li>
+</ul></li>
+<li><p><strong><code>importSQL</code> Function:</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Reads and parses a TSV file, processing each chunk of data asynchronously.</li>
+<li><strong>Steps:</strong>
+<ul>
+<li>It reads the file using <code>fs.createReadStream</code> or directly if a string path is provided.</li>
+<li>It uses <code>papaparse</code> to parse the TSV file in chunks, providing progress updates.</li>
+<li>It calls a callback function (<code>cb</code>) for each chunk of data, allowing for custom processing.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Database Insertion Functions:</strong></p>
+<ul>
+<li><code>insertPrincipals</code>, <code>insertTitles</code>, and <code>insertNames</code> functions prepare and execute SQL INSERT statements to insert data into the respective database tables.</li>
+</ul></li>
+<li><p><strong>Main Execution:</strong></p>
+<ul>
+<li>It calls <code>createTables</code> to create the necessary database tables.</li>
+<li>It uses <code>importSQL</code> to process each TSV file, inserting the data into the database.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

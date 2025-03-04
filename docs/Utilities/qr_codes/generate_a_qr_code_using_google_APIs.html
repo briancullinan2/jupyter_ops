@@ -1,0 +1,49 @@
+<p>This code generates a QR code image containing contact information encoded as a vCard and displays it using a custom framework or library.</p>
+
+
+<pre><code>var util = require('util');
+var importer = require('../Core');
+var {request} = importer.import('https request');
+
+var first = 'Elvis';
+var last = 'Presley';
+var phone = '5558675309';
+var email = 'dawid@gmail.com';
+var qr = `https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=BEGIN:VCARD%0AN:${first}%20${last}%0ATEL;CELL:${phone}%0AEMAIL:${email}%0AEND:VCARD`
+
+console.log(qr);
+$$.async(request(qr)
+         .then(r => $$.png(new Buffer(r.body).toString('base64')))
+         .catch(e => $$.sendError(e)))
+
+</code></pre>
+
+<p>This code snippet generates a QR code image from a vCard (digital contact card) and displays it.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>Requires the <code>util</code> module for utility functions.</li>
+<li>Requires a custom <code>importer</code> module for importing other modules.</li>
+<li>Imports the <code>request</code> module for making HTTP requests.</li>
+</ul></li>
+<li><p><strong>vCard Data:</strong></p>
+<ul>
+<li>Defines variables for the first name, last name, phone number, and email address of the contact.</li>
+<li>Constructs a vCard string using these variables.</li>
+</ul></li>
+<li><p><strong>QR Code Generation:</strong></p>
+<ul>
+<li>Creates a URL for a QR code image using the Google Charts API, encoding the vCard string.</li>
+<li>Uses <code>request</code> to fetch the QR code image from the URL.</li>
+<li>Converts the image data from the response to a base64 string.</li>
+</ul></li>
+<li><p><strong>Image Display:</strong></p>
+<ul>
+<li>Uses a custom <code>$$.async</code> function (likely from a framework or library) to handle asynchronous operations.</li>
+<li>Passes the base64 image data to a custom <code>$$.png</code> function (likely for displaying the image).</li>
+<li>Includes error handling using <code>catch</code> to handle any errors during the process.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code generates a QR code image that, when scanned, will display the contact information encoded within the vCard.</p>

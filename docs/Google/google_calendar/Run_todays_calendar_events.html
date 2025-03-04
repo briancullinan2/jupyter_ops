@@ -1,0 +1,97 @@
+<p>This code retrieves upcoming events from a Google Calendar, parses parameters from their descriptions, and prepares them for task execution.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {JSDOM} = require('jsdom');
+var {
+    listEvents,
+    storeResult
+} = importer.import([
+    'list events',
+    'import google calendar api',
+    'store rpc result'
+]);
+
+var options = {
+    calendarId: 'commands'
+};
+
+// test Google calendar API?
+function runTodaysEvents(calendar) {
+    if(calendar) {
+        options.calendarId = calendar;
+    }
+    return listEvents({
+            auth: options.auth,
+            calendarId: options.calendarId,
+            timeMin: '12 AM today',
+            timeMax: 'next hour today'
+        })
+        // filter processed
+        .then(events => {
+            // TODO: create object with property "already" and filter out like other RPC methods?
+            // determine if the event has already been run today by matching it with the result
+            const commandEvent = events
+                .filter(e => {
+                    const matches = events
+                        .filter(m => 'Result: ' + e.event.summary === m.event.summary
+                            && e.event.start.dateTime === m.event.start.dateTime);
+                    return e.event.summary.indexOf('Result:') === -1 && matches.length === 0
+                })[0]
+            if (typeof commandEvent === 'undefined') throw new Error('No events!');
+            // parse parameters from event description
+            var parameters;
+            try {
+                var dom = new JSDOM('<body>' + (commandEvent.event.description || '""').replace(/<br\/?>/igm, '\n') + '</body>');
+                parameters = JSON.parse(dom.window.document.body.textContent);
+            } catch ( e ) {
+                parameters = (commandEvent.event.description || '').trim().split(/\n/ig);
+            }
+            return {
+                already: false, // filtered out above
+                body: parameters,
+                name: 'Today\'s events',
+                command: commandEvent.event.summary.trim(),
+                date: new Date(commandEvent.event.start.dateTime),
+                id: commandEvent.event.summary.trim(),
+                circles: ['Function', 'Selenium'],
+                result: importer.interpret(commandEvent.event.summary.trim()),
+                allowed: true // TODO: use RPC filter because it's safer?
+            };
+        })
+        // use rpc
+        .then(f => storeResult(f, options.calendarId))
+        .catch(e => console.log(e))
+}
+
+module.exports = runTodaysEvents;
+
+// node -e "require('/Users/briancullinan/jupytangular2/Core').import('heartbeat')('run todays calendar events')"
+
+// echo "require('/Users/briancullinan/jupytangular2/Core').import('scrape facebook events').then(runner => runner()).then(e=>{console.log(e); process.exit(e) }).catch(e=>{console.log(e); process.exit(e) });" | node
+
+</code></pre>
+
+<p>This code snippet fetches upcoming events from a Google Calendar, extracts parameters from their descriptions, and prepares them for execution.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for listing events, interacting with the Google Calendar API, and storing results.</li>
+<li>Imports <code>JSDOM</code> for parsing HTML content.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Defines an <code>options</code> object with a default calendar ID.</li>
+</ul></li>
+<li><p><strong><code>runTodaysEvents</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>calendar</code> argument to specify a different calendar.</li>
+<li>Calls <code>listEvents()</code> to retrieve events within a specific time range (today's events).</li>
+<li>Filters events based on criteria (e.g., excluding events with &quot;Result:&quot; in the summary).</li>
+<li>Parses parameters from the event description using <code>JSDOM</code> to extract data.</li>
+<li>Returns an object containing event details, parameters, and other relevant information.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as part of a system that schedules and executes tasks based on events in a Google Calendar. It fetches upcoming events, extracts parameters from their descriptions, and prepares them for further processing or execution.</p>

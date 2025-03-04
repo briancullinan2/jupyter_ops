@@ -1,0 +1,80 @@
+<p>This code unit tests an AWS Lambda function responsible for syncing data between Zuora and Eloqua, ensuring it correctly calls functions to export data from Zuora and upload it to Eloqua.  The tests use <code>sinon</code> to mock dependencies and <code>assert</code> to verify function calls and arguments.</p>
+
+
+<pre><code>var sinon = require('sinon');
+var assert = require('assert');
+var importer = require('../Core');
+var bundle = importer.import('notify entry point');
+var zuoraExport = importer.import('zuora account service');
+var eloquaUpload = importer.import('bulk upload eloqua');
+
+var sandbox = sinon.createSandbox();
+
+describe('content notify entry point', () => {
+    
+    afterEach(() => {
+        sandbox.restore();
+    })
+    
+    it('should call zuora export', () => {
+        const callback = sinon.spy();
+        const dummyBody = {
+        }
+        
+        const requestStub = sandbox.stub(zuoraExport, "getZuoraAccounts")
+            .returns(Promise.resolve([]));
+        sandbox.stub(eloquaUpload, "bulkUploadEloqua")
+            .returns(Promise.resolve(true));
+        
+        return bundle.handler(dummyBody, null, callback)
+            .then(() => {
+                assert(callback.calledOnce);
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[0], dummyBody);
+            });
+    })
+    
+    it('should call bulk upload', () => {
+        const callback = sinon.spy();
+        const dummyAccounts = [];
+        
+        sandbox.stub(zuoraExport, "getZuoraAccounts")
+            .returns(Promise.resolve(dummyAccounts));
+        const requestStub = sandbox.stub(eloquaUpload, "bulkUploadEloqua")
+            .returns(Promise.resolve(true));
+        
+        return bundle.handler({}, null, callback)
+            .then(() => {
+                assert(callback.calledOnce);
+                const stubCall = requestStub.getCall(0);
+                assert.equal(stubCall.args[0], dummyAccounts);
+            });
+    })
+})
+</code></pre>
+
+<p>This code defines unit tests for an AWS Lambda function that handles notifications and data synchronization between Zuora and Eloqua.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules for testing, mocking functions, and interacting with Zuora and Eloqua APIs.</li>
+<li>It creates a <code>sandbox</code> using <code>sinon</code> to isolate and control the behavior of mocked functions.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li>The code defines two test cases using <code>describe</code> and <code>it</code> blocks:
+<ul>
+<li><strong><code>should call zuora export</code>:</strong> Verifies that the Lambda function calls the <code>getZuoraAccounts</code> function from the <code>zuoraExport</code> module with the correct input data.</li>
+<li><strong><code>should call bulk upload</code>:</strong> Checks if the function calls the <code>bulkUploadEloqua</code> function from the <code>eloquaUpload</code> module with the retrieved data from Zuora.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Assertions:</strong></p>
+<ul>
+<li>Each test case uses <code>assert</code> to verify that the expected functions are called with the correct arguments.</li>
+</ul></li>
+<li><p><strong>Cleanup:</strong></p>
+<ul>
+<li>The <code>afterEach</code> block ensures that the <code>sandbox</code> is restored after each test case, preventing side effects from one test affecting another.</li>
+</ul></li>
+</ol>

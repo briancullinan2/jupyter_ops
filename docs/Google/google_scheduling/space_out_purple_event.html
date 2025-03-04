@@ -1,0 +1,115 @@
+<p>This code snippet manages and visualizes Google Calendar events, allowing for batch retrieval, event time adjustments, and potential heatmap-based visualization.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {google} = require('googleapis')
+var util = require('util')
+var {
+    correctCalendarId, authorizeCalendar, getDaysEvents, d3Heatmap
+} = importer.import([
+    'lookup calendar name', 'authorize google calendar', 'days events', 'd3 calendar'
+])
+
+var DAYS = 1200 // plus or minus
+var SIMUL = 3
+var LENGTH = 7
+var options = {
+}
+          
+var now = new Date()
+// TODO: batch promises?
+function batchPromises(options) {
+    const promises = Array.from(Array(Math.ceil(DAYS / SIMUL)).keys()).map((acc, i) => {
+        const daysBeforeAfter = i - Math.ceil(DAYS / SIMUL / 2)
+        return resolve => Promise.all(Array.from(Array(SIMUL).keys()).map(day => {
+            const date = new Date(now)
+            date.setDate(date.getDate() + daysBeforeAfter * SIMUL + day)
+            return getDaysEvents(date, options)
+        }))
+            .then(r => {
+                setTimeout(() => resolve(r), 100)
+            })
+    });
+    return importer.runAllPromises(promises)
+        .then(r => [].concat.apply([], r))
+}
+
+function moveEvent(e, i, options) {
+    var events
+    var newTime = new Date(now)
+    newTime.setDate(newTime.getDate() + i)
+    newTime.setHours(12, 0, 0)
+    return authorizeCalendar(options)
+        .then(calendar => events = calendar.events)
+        .then(() => util.promisify(events.patch.bind(events))({
+            eventId: e.event.id,
+            calendarId: options.calendarId,
+            auth: options.auth,
+            resource: {
+                start: { dateTime: new Date(newTime.getTime()) },
+                end: { dateTime: new Date(newTime.getTime() + 120 * 60 * 1000) },
+            }
+        }))
+        .then(r => new Promise(resolve => {
+            setTimeout(() => resolve(r), 100);
+        }))
+    // TODO: skip dates using chrono description relative to each date
+    // TODO: skip overlap using study sauce algorithm
+    // TODO: skip boundaries using a new algorithm for defining inside and outside times
+}
+
+function adjustPurpleEvents(options) {
+    if(!options) options = {}
+    return Promise.resolve()
+        .then(() => correctCalendarId(options))
+        .then(() => typeof global.listEvents === 'undefined'
+              ? batchPromises(options)
+              : Promise.resolve(global.listEvents))
+        .then(r => {
+            global.listEvents = r
+            const purpleEvents = r.filter(e => e.event.colorId === '1')
+            const promises = purpleEvents.map((e, i) => moveEvent(e, i, options))
+            return importer.runAllPromises()
+        })
+        .then(r => d3Heatmap(r.map((e, i) => ({
+            id: e.id,
+            start: new Date(e.start.dateTime),
+            end: new Date(e.end.dateTime),
+        }))))
+}
+
+module.exports = adjustPurpleEvents
+</code></pre>
+
+<p>This code snippet appears to be designed for managing and visualizing events in a Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports modules for interacting with Google Calendar, date manipulation, and potentially for creating a heatmap visualization.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>It sets constants for the number of days to consider, the number of simulations to run, and the length of the visualization.</li>
+</ul></li>
+<li><p><strong>Batch Event Retrieval:</strong></p>
+<ul>
+<li>The <code>batchPromises</code> function retrieves events from the Google Calendar in batches, likely to handle a large number of events efficiently. It uses promises to manage asynchronous operations.</li>
+</ul></li>
+<li><p><strong>Event Manipulation:</strong></p>
+<ul>
+<li>The <code>moveEvent</code> function takes an event and a time offset, and updates the event's start time in the calendar. It uses promises to handle the authorization and API calls.</li>
+</ul></li>
+<li><p><strong>Event Adjustment Logic:</strong></p>
+<ul>
+<li>The <code>adjustPurpleEvents</code> function seems to be incomplete, but it likely handles some logic for adjusting events based on specific criteria (possibly related to color coding).</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet likely aims to:</p>
+<ul>
+<li>Fetch events from a Google Calendar over a specified period.</li>
+<li>Potentially visualize the events using a heatmap.</li>
+<li>Provide functionality to move events to different times.</li>
+<li>Implement logic for adjusting events based on certain criteria.</li>
+</ul>

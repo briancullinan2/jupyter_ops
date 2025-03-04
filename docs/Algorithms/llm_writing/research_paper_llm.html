@@ -1,0 +1,114 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The <code>askLlamaWriteEssay</code> function uses LLM to generate an essay on a given topic by creating a chapter outline, selecting a random name, and writing long essay sections for each chapter.</p>
+<p>If you'd like a two-sentence summary, it would be:</p>
+<p>The <code>askLlamaWriteEssay</code> function uses LLM to generate an essay on a given topic by creating a chapter outline and writing long essay sections for each chapter. The function selects a random name for the essay and uses Markdown to format the chapter titles and descriptions.</p>
+
+
+<pre><code>const fs = require('fs')
+const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const {safeurl} = importer.import('domain cache tools')
+const selectModel = importer.import('select llm')
+const askLlamaForAChapterSynopsis = importer.import('ask llm to write chapter titles and descriptions')
+
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'reasonings')
+
+// write an outline, then loop through outline and ask for entire essays on each subject
+async function askLlamaWriteEssay(topic, name, promptModel = 'Qwen') {
+
+  if(typeof promptModel != 'function') {
+    promptModel = await selectModel(promptModel)
+  }
+
+  
+  if(!topic) {
+    topic = 'metal bonding'
+  }
+
+  let paperName = name
+  if(!name) {
+    let q0 = 'Brainstorm 12 funny but creative names for a book involving:\n' + topic
+      + '\nRespond with only the list of fun names and nothing else.'
+    console.log("User: " + q0);
+    const a0 = await promptModel(q0);
+    console.log("AI: " + a0);
+
+    let names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter(a => a && a.trim().length > 0)
+    paperName = names[Math.round(Math.random() * (names.length-1))]
+  }
+
+  let chapters = await askLlamaForAChapterSynopsis('a research paper named ' + paperName + ' on the topic ' + topic + ' including an introduction, background information, and new research information in the chapter outline.', 'sections')
+  let keys = Object.keys(chapters)
+
+  let bookChapters = []
+  for(let i = 0; i < keys.length; i++) {
+    let q1
+    if(i == 0) {
+      q1 = 'Write a long essay section introducing the topic, discard any synopsis or conclusions:' + topic + '\n' + keys[i] + '\n' + chapters[keys[i]]
+    } else {
+      q1 = 'Write a long essay section about ' + keys[i] + '\n' + chapters[keys[i]] + '\nOn the topic of ' + topic + '\nDiscard any synopsis or conclusions.'
+    }
+
+    console.log("User: " + q1);
+    const a1 = await promptModel(q1);
+    console.log("AI: " + a1);
+
+    bookChapters[i] = '## Chapter ' + (i + 1) + ' - ' + keys[i] + '\n' + a1
+  }
+
+  let q3 = 'Generate an abstract for this research paper:\n' + Object.values(chapters).join('\n')
+  console.log("User: " + q3);
+  const a3 = await promptModel(q3);
+  console.log("AI: " + a3);
+
+  const mdHtml = md.render('# ' + paperName 
+    + '\n## Abstract\n' + a3 +
+    + '\n' + bookChapters.join('\n'))
+  const filename = path.join(PROJECT_PATH, safeurl((new Date).toISOString() + '-' + topic) + '.html')
+  fs.writeFileSync(filename, mdHtml)
+  return mdHtml
+}
+
+module.exports = askLlamaWriteEssay
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing various modules:</p>
+<ul>
+<li><code>fs</code> (File System) for interacting with the file system</li>
+<li><code>Remarkable</code> from <code>remarkable</code> for converting Markdown to HTML</li>
+<li><code>safeurl</code> from <code>domain cache tools</code></li>
+<li><code>selectModel</code> from <code>select llm</code></li>
+<li><code>askLlamaForAChapterSynopsis</code> from <code>ask llm to write chapter titles and descriptions</code></li>
+<li><code>path</code> for working with file paths</li>
+</ul>
+<h3>Defining Constants</h3>
+<p>The code defines several constants:</p>
+<ul>
+<li><code>PROJECT_PATH</code>: the path to a project directory</li>
+<li><code>md</code>: an instance of the <code>Remarkable</code> class for converting Markdown to HTML</li>
+<li><code>importer</code>: a module for importing other modules (not shown)</li>
+</ul>
+<h3>Defining the <code>askLlamaWriteEssay</code> Function</h3>
+<p>The <code>askLlamaWriteEssay</code> function takes three arguments:</p>
+<ul>
+<li><code>topic</code>: the topic of the essay (defaults to <code>'metal bonding'</code>)</li>
+<li><code>name</code>: the name of the essay (optional)</li>
+<li><code>promptModel</code>: the model to use for generating prompts (defaults to <code>'Qwen'</code>)</li>
+</ul>
+<p>The function:</p>
+<ol>
+<li>Checks if <code>promptModel</code> is a function, and if not, selects a model using <code>selectModel</code>.</li>
+<li>If <code>name</code> is not provided, prompts the user to come up with a list of funny but creative names for a book on the topic, and selects a random name from the list.</li>
+<li>Asks the LLM to generate a chapter outline for a research paper on the topic, using <code>askLlamaForAChapterSynopsis</code>.</li>
+<li>Loops through the chapter outline and asks the LLM to write a long essay section for each chapter.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The code uses Markdown to format the chapter titles and descriptions.</li>
+<li>The <code>askLlamaForAChapterSynopsis</code> function is not shown, but it is likely responsible for generating a chapter outline based on the topic and topic keywords.</li>
+<li>The <code>selectModel</code> function is not shown, but it is likely responsible for selecting a suitable model for generating prompts.</li>
+<li>The <code>promptModel</code> function is not shown, but it is likely responsible for generating prompts based on the topic and chapter outline.</li>
+</ul>

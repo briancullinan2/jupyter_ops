@@ -1,0 +1,68 @@
+<p>This code defines a function <code>getIdentityServer</code> that automates the process of building, running, and managing a Docker container for an identity server, ensuring a fresh container is used each time.</p>
+
+
+<pre><code>var path = require('path');
+// TODO: fix mono build step
+var execSync = require('child_process').execSync;
+var getIdentityServer = (name = 'act-identity') => {
+    var DOCKERFILE = path.resolve(__dirname);
+    return identityDockerfile(DOCKERFILE)
+        .then(r => execSync('docker build -t ' + name + ' "' + DOCKERFILE + '"').toString())
+        .then(r => {
+            var ps = execSync('docker ps -a').toString();
+            if (ps.indexOf(name) !== -1) {
+                return r
+                    + execSync('docker stop ' + name).toString()
+                    + execSync('docker rm ' + name).toString();
+            }
+            return '';
+        })
+        .then(r => r + execSync('docker run --name ' + name + ' ' + name).toString())
+        // wait for process to start
+        .then(() => new Promise((resolve, reject) =>
+            setTimeout(resolve, 5000)));
+};
+(getIdentityServer);
+</code></pre>
+
+<p>This code defines a function <code>getIdentityServer</code> that builds and runs a Docker container for an identity server.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>path</code>: Used for working with file paths.</li>
+<li><code>child_process</code>: Used to execute shell commands.</li>
+</ul></li>
+<li><p><strong><code>getIdentityServer</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>name</code> parameter (defaults to 'act-identity') for the container name.</li>
+<li><code>DOCKERFILE</code>: Sets the path to the Dockerfile.</li>
+<li><code>identityDockerfile(DOCKERFILE)</code>: Calls a function (not shown) likely to perform some preparation based on the Dockerfile.</li>
+</ul></li>
+<li><p><strong>Docker Build:</strong></p>
+<ul>
+<li><code>execSync('docker build -t ' + name + ' &quot;' + DOCKERFILE + '&quot;')</code>: Builds the Docker image with the specified name.</li>
+</ul></li>
+<li><p><strong>Container Management:</strong></p>
+<ul>
+<li>Checks if a container with the given name already exists.</li>
+<li>If it exists, stops and removes the existing container.</li>
+</ul></li>
+<li><p><strong>Container Run:</strong></p>
+<ul>
+<li><code>execSync('docker run --name ' + name + ' ' + name)</code>: Runs the container with the specified name.</li>
+</ul></li>
+<li><p><strong>Wait for Startup:</strong></p>
+<ul>
+<li>Uses <code>setTimeout</code> to wait for 5 seconds to allow the container to start before resolving the promise.</li>
+</ul></li>
+<li><p><strong>Return Value:</strong></p>
+<ul>
+<li>Returns a string containing the output of the Docker commands.</li>
+</ul></li>
+<li><p><strong>Function Call:</strong></p>
+<ul>
+<li><code>(getIdentityServer)</code>: Immediately calls the <code>getIdentityServer</code> function.</li>
+</ul></li>
+</ol>
+<p>In essence, this code automates the process of building, running, and managing a Docker container for an identity server.</p>

@@ -1,0 +1,96 @@
+<p>Here is a 2-sentence summary of the code:</p>
+<p>This code binds a live stream to a YouTube broadcast using the YouTube API, utilizing functions to import necessary modules and notebooks, authorize API credentials, retrieve broadcast and stream information, and execute the binding request. The <code>bind_stream_to_broadcast</code> function returns the stream information and broadcast ID, and is exported for use in other modules.</p>
+
+
+<pre><code>import_notebook("list broadcasts", globals())
+import_notebook("list live stream", globals())
+from googleapiclient.discovery import build
+
+def bind_stream_to_broadcast():
+
+    credentials = youtube_authorize()
+
+    broadcast_id = list_broadcasts()[0]["id"]
+
+    stream = list_livestream()
+
+    print(stream['cdn']['ingestionInfo']['streamName'])
+
+    # Build the YouTube API client
+    youtube = build("youtube", "v3", credentials=credentials)
+
+    request = youtube.liveBroadcasts().bind(
+        id=broadcast_id,
+        part="id,contentDetails",
+        streamId=stream["id"]
+    )
+    response = request.execute()
+    print("✅ Stream successfully bound to broadcast:", response)
+    
+    return stream, broadcast_id
+
+__all__ = {
+    "bind_stream_to_broadcast": bind_stream_to_broadcast
+}</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Required Modules and Notebooks</h4>
+<pre><code class="language-python">import_notebook(&quot;list broadcasts&quot;, globals())
+import_notebook(&quot;list live stream&quot;, globals())
+from googleapiclient.discovery import build
+</code></pre>
+<ul>
+<li>The <code>import_notebook</code> function is used to import contents from notebooks, and the <code>globals()</code> function is used to access the global scope. This is likely used to dynamically import functions from notebooks named &quot;list broadcasts&quot; and &quot;list live stream&quot;.</li>
+<li>The <code>googleapiclient.discovery</code> module is imported, specifically the <code>build</code> function, which is used to create a client instance for the YouTube API.</li>
+</ul>
+<h4>Binding Stream to Broadcast</h4>
+<pre><code class="language-python">def bind_stream_to_broadcast():
+</code></pre>
+<ul>
+<li>This function takes no arguments and returns no values.</li>
+</ul>
+<h4>Authorizing YouTube API Credentials</h4>
+<pre><code class="language-python">credentials = youtube_authorize()
+</code></pre>
+<ul>
+<li>The <code>youtube_authorize</code> function is called to obtain YouTube API credentials.</li>
+</ul>
+<h4>Getting Broadcast ID and Stream Information</h4>
+<pre><code class="language-python">broadcast_id = list_broadcasts()[0][&quot;id&quot;]
+stream = list_livestream()
+print(stream['cdn']['ingestionInfo']['streamName'])
+</code></pre>
+<ul>
+<li>The <code>list_broadcasts</code> function is called to retrieve a list of broadcasts, and the ID of the first broadcast is extracted.</li>
+<li>The <code>list_livestream</code> function is called to retrieve live stream information, and the stream name is printed.</li>
+</ul>
+<h4>Building YouTube API Client and Binding Stream to Broadcast</h4>
+<pre><code class="language-python">youtube = build(&quot;youtube&quot;, &quot;v3&quot;, credentials=credentials)
+
+request = youtube.liveBroadcasts().bind(
+    id=broadcast_id,
+    part=&quot;id,contentDetails&quot;,
+    streamId=stream[&quot;id&quot;]
+)
+response = request.execute()
+print(&quot;✅ Stream successfully bound to broadcast:&quot;, response)
+</code></pre>
+<ul>
+<li>A YouTube API client is created using the <code>build</code> function, passing the service name, API version, and credentials.</li>
+<li>The <code>bind</code> method of the <code>liveBroadcasts</code> resource is used to bind the stream to the broadcast, passing the broadcast ID, the <code>id</code> and <code>contentDetails</code> parts, and the stream ID.</li>
+<li>The <code>execute</code> method is called to execute the request, and the response is printed.</li>
+</ul>
+<h4>Returning Stream and Broadcast ID</h4>
+<pre><code class="language-python">return stream, broadcast_id
+</code></pre>
+<ul>
+<li>The function returns the stream information and the broadcast ID.</li>
+</ul>
+<h4>Exporting Function</h4>
+<pre><code class="language-python">__all__ = {
+    &quot;bind_stream_to_broadcast&quot;: bind_stream_to_broadcast
+}
+</code></pre>
+<ul>
+<li>The <code>bind_stream_to_broadcast</code> function is exported, making it available for import in other modules.</li>
+</ul>

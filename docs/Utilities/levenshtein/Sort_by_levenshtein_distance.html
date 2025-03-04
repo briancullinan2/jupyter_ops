@@ -1,0 +1,48 @@
+<p>The <code>levSort</code> function sorts an array of objects based on how similar their strings are to a given search string, using the Levenshtein distance as the similarity measure.</p>
+
+
+<pre><code>var importer = require('../Core');
+var levDist = importer.import(`${__filename}[0]`).levDist;
+
+function levSort(arr, search, getStr) {
+    if(typeof getStr === 'undefined') {
+        getStr = (a) => a;
+    }
+    var result = arr.map((a) => a); // make a copy of the array
+    result.sort(function (a, b) {
+        return levDist(getStr(a), search) - levDist(getStr(b), search);
+    });
+    return result;
+}
+
+module.exports = levSort;
+</code></pre>
+
+<p>This code defines a function called <code>levSort</code> that sorts an array of objects based on their Levenshtein distance to a given search string.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Import:</strong></p>
+<ul>
+<li>It imports the <code>levDist</code> function from a module located at <code>../Core</code>. This function calculates the Levenshtein distance between two strings.</li>
+</ul></li>
+<li><p><strong><code>levSort</code> Function:</strong></p>
+<ul>
+<li>Takes three arguments:
+<ul>
+<li><code>arr</code>: The array to be sorted.</li>
+<li><code>search</code>: The string to compare against.</li>
+<li><code>getStr</code>: An optional function to extract a string from each object in the array. If not provided, it defaults to returning the object itself.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Sorting Logic:</strong></p>
+<ul>
+<li>Creates a copy of the input array <code>arr</code> to avoid modifying the original.</li>
+<li>Uses the <code>sort</code> method with a custom comparison function.</li>
+<li>The comparison function calculates the Levenshtein distance between the extracted string from each object (<code>getStr(a)</code> and <code>getStr(b)</code>) and the <code>search</code> string.</li>
+<li>Objects with smaller Levenshtein distances are placed earlier in the sorted array.</li>
+</ul></li>
+<li><p><strong>Return Value:</strong></p>
+<ul>
+<li>Returns the sorted array.</li>
+</ul></li>
+</ol>

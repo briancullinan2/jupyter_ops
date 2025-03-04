@@ -1,0 +1,34 @@
+<p>Here's a two-sentence summary:</p>
+<p>This shell script configures systemd services on a Linux system by copying service files to <code>/etc/systemd/system</code> and enabling them to start at boot time. It reloads the systemd daemon, enables and starts services for Jupyter Notebook and Selenium, ensuring they run automatically when the system boots up.</p>
+
+
+<pre><code>cd ~/jupytangular \
+   && cp ./jupyter.service /etc/systemd/system \
+   && cp ./jupyter.timer /etc/systemd/system \
+   && systemctl daemon-reload \
+   && systemctl enable jupyter.timer \
+   && systemctl enable jupyter.service \
+   && systemctl start jupyter.service \
+   && systemctl start jupyter.timer \
+   && cp ./selenium.service /etc/systemd/system \
+   && systemctl daemon-reload \
+   && systemctl enable selenium \
+   && systemctl start selenium.service</code></pre>
+
+<p><strong>Systemd Configuration Script Breakdown</strong></p>
+<p>This is a shell script that configures systemd services on a Linux system. Here's a step-by-step explanation:</p>
+<h3>Directory and File Copying</h3>
+<ol>
+<li><code>cd ~/jupytangular</code>: Changes the current working directory to <code>~/jupytangular</code>.</li>
+<li><code>cp./jupyter.service /etc/systemd/system</code>: Copies the <code>jupyter.service</code> file from the current directory to <code>/etc/systemd/system</code>.</li>
+<li><code>cp./jupyter.timer /etc/systemd/system</code>: Copies the <code>jupyter.timer</code> file from the current directory to <code>/etc/systemd/system</code>.</li>
+<li><code>cp./selenium.service /etc/systemd/system</code>: Copies the <code>selenium.service</code> file from the current directory to <code>/etc/systemd/system</code>.</li>
+</ol>
+<h3>Systemd Configuration</h3>
+<ol>
+<li><code>systemctl daemon-reload</code>: Reloads the systemd daemon to pick up changes to service files.</li>
+<li><code>systemctl enable jupyter.timer</code> and <code>systemctl enable jupyter.service</code>: Enables the <code>jupyter.timer</code> and <code>jupyter.service</code> services to start at boot time.</li>
+<li><code>systemctl start jupyter.service</code> and <code>systemctl start jupyter.timer</code>: Starts the <code>jupyter.service</code> and <code>jupyter.timer</code> services.</li>
+<li><code>systemctl enable selenium</code> and <code>systemctl start selenium.service</code>: Enables the <code>selenium</code> service to start at boot time and starts it.</li>
+</ol>
+<p>These commands configure systemd to run Jupyter Notebook and Selenium services at boot time and start them immediately.</p>

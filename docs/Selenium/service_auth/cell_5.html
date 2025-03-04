@@ -1,0 +1,13 @@
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+
+$$.async();
+runSeleniumCell('download passwords from google')
+    .then(downloadGooglePasswords => downloadGooglePasswords())
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e));
+
+</code></pre>
+

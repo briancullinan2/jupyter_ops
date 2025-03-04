@@ -1,0 +1,30 @@
+
+
+<pre><code>
+function getUninvited() {
+    const invites = getAllXPathBrowser('//*[contains(@action, "fundraiser")]//a[contains(., "Invite")]');
+    const already = getAllXPathBrowser('//a[contains(@tabindex, "-1")]');
+    return invites.filter(b => !already.includes(b));
+}
+function clickInvite() {
+    const invites = getUninvited();
+    invites.forEach((b, i) => setTimeout(() => b.click(), i * 50));
+    getAllXPathBrowser('//*[contains(@data-testid, "fundraiser_invite_dialog_friend_list")]//*[contains(@class, "uiScrollableAreaWrap")]').scrollTop = 100000000000
+    return new Promise(resolve => setTimeout(() => {
+        const next = getUninvited();
+        if(next.length > 0)
+            clickInvite().then(r => resolve(r));
+    }, 5000));
+}
+function clickConnect() {
+    const connect = getAllXPathBrowser('//button[contains(., "Connect")]');
+    if(connect) {
+        connect[0].click();
+    }
+    return new Promise(resolve => setTimeout(() => {
+        clickConnect().then(r => resolve(r));
+    }, 1000));
+}
+module.exports = clickInvite;
+</code></pre>
+

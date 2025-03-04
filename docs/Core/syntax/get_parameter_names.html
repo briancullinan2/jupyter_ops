@@ -1,0 +1,79 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code defines a <code>getParameters</code> function that extracts function parameters from a given code string by using XPath queries to parse an Abstract Syntax Tree (AST). The function is exported as a module and can be used in other parts of the application to retrieve function parameters.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {getExports, selectAst} = importer.import([
+    'select code tree', 'get exports from source'])
+
+var EXPORTS = `//AssignmentExpression[.//Identifier[@name=\"exports\"]]//Identifier`
+var PARAMETERS = `((//FunctionDeclaration|//ArrowFunctionExpression)[
+    ./Identifier[@parent-attr=\"id\" and contains('EXPORTS', @name)]
+]/Identifier[@parent-attr=\"params\"]|(//FunctionDeclaration|//ArrowFunctionExpression)[
+    ./Identifier[@parent-attr=\"id\" and contains('EXPORTS', @name)]
+]/*/Identifier[@parent-attr=\"left\"])`
+
+function getParameters(code) {
+    var fnName = getExports(code);
+    if(!fnName[0]) {
+        return [];
+    }
+
+    var params = selectAst([PARAMETERS.replaceAll('EXPORTS', fnName.join(' ')), './@name'], code)
+    //for (const attr of params[1].attributes) {
+    //    console.log(`${attr.name} -> ${attr.value}\n`)
+    //}
+    return [fnName[0], ...params.filter(p => p) /*.filter((p, i, arr) => arr.indexOf(p) === i)*/]
+}
+
+module.exports = getParameters;
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var {getExports, selectAst} = importer.import([
+   'select code tree', 'get exports from source'])
+</code></pre>
+<ul>
+<li><code>require('../Core')</code> imports a module named <code>Core</code> from the parent directory.</li>
+<li>The <code>import</code> method of the <code>importer</code> object is called with two module names: <code>'select code tree'</code> and <code>'get exports from source'</code>.</li>
+<li>The method returns an object containing the exports of the imported modules, and the <code>getExports</code> and <code>selectAst</code> functions are assigned to variables.</li>
+</ul>
+<h3>XPath Queries</h3>
+<pre><code class="language-javascript">var EXPORTS = `//AssignmentExpression[.//Identifier[@name=&quot;exports&quot;]]//Identifier`
+var PARAMETERS = `((//FunctionDeclaration|//ArrowFunctionExpression)[
+   ./Identifier[@parent-attr=&quot;id&quot; and contains('EXPORTS', @name)]
+]/Identifier[@parent-attr=&quot;params&quot;]|(//FunctionDeclaration|//ArrowFunctionExpression)[
+   ./Identifier[@parent-attr=&quot;id&quot; and contains('EXPORTS', @name)]
+]/*/Identifier[@parent-attr=&quot;left&quot;])`
+</code></pre>
+<ul>
+<li>Two XPath expressions are defined: <code>EXPORTS</code> and <code>PARAMETERS</code>. These queries are used to extract information from an Abstract Syntax Tree (AST).</li>
+<li><code>EXPORTS</code> searches for an <code>Identifier</code> node with the name &quot;exports&quot; inside an <code>AssignmentExpression</code>.</li>
+<li><code>PARAMETERS</code> searches for <code>Identifier</code> nodes that are children of a <code>FunctionDeclaration</code> or <code>ArrowFunctionExpression</code>, and have a parent node with the attribute &quot;id&quot; containing the value of the <code>EXPORTS</code> query.</li>
+</ul>
+<h3>getParameters Function</h3>
+<pre><code class="language-javascript">function getParameters(code) {
+    var fnName = getExports(code);
+    if(!fnName[0]) {
+        return [];
+    }
+
+    var params = selectAst([PARAMETERS.replaceAll('EXPORTS', fnName.join(' ')), './@name'], code)
+    return [fnName[0],...params.filter(p =&gt; p /*.filter((p, i, arr) =&gt; arr.indexOf(p) === i)*/)]
+}
+</code></pre>
+<ul>
+<li>The <code>getParameters</code> function takes a <code>code</code> string as input.</li>
+<li>It calls the <code>getExports</code> function to extract the function name from the code, and returns an empty array if no function name is found.</li>
+<li>It replaces the <code>EXPORTS</code> placeholder in the <code>PARAMETERS</code> XPath query with the function name, and calls the <code>selectAst</code> function to extract the function parameters from the code.</li>
+<li>The function parameters are filtered to remove duplicates, and the function name is prepended to the array.</li>
+<li>The function returns the array of parameters.</li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = getParameters;
+</code></pre>
+<ul>
+<li>The <code>getParameters</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

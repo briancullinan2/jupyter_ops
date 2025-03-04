@@ -1,0 +1,191 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>This code provides a collection of functions (<code>typeErrorTemplate</code>, <code>standardCompare</code>, <code>arrayCompare</code>, <code>objectCompare</code>, and <code>interface</code>) for comparing and validating values against expected structures, with the ability to handle type mismatches and loose comparisons.</p>
+<p>Alternatively, a two-sentence summary could be:</p>
+<p>The code includes several functions for comparing and validating values, including <code>standardCompare</code>, <code>arrayCompare</code>, and <code>objectCompare</code>, which compare arrays and objects against expected structures. The <code>typeErrorTemplate</code> function is used to create custom error messages for type mismatches, and the <code>interface</code> function provides a general-purpose comparison function.</p>
+
+
+<pre><code>
+// newer ES6 syntax
+
+function typeErrorTemplate(e, k, t, i, p) {
+    if(k) {
+        k = ' ' + k;
+    }
+    if(p) {
+        p = ' of type ' + p;
+    }
+    throw new Error(`type mis-match${k || ''}: "${t}" is not "${i}"${p || ''}`, e)
+}
+
+function standardCompare(type, expected) {
+    if(type === expected) return true;
+    if(!type || !expected || !(expected.isPrototypeOf(type))) {
+        return false
+    }
+    return true;
+}
+
+function arrayCompare(compare, specification, loosey) {
+    var match = specification.map(i => {
+        try {
+            return interface(compare, i, loosey);
+        } catch (e) {
+            return e;
+        }
+    }).filter(s => !s || s.constructor !== Error);
+    if(match.length > 0) {
+        return match[0];
+    }
+    typeErrorTemplate(void 0,
+                      void 0,
+                      typeof compare,
+                      specification.map(s => typeof s));
+}
+
+function objectCompare(compare, specification, loosey) {
+    var match = Object.keys(specification).reduce((map, k) => {
+        try {
+            var m = interface(compare[k], specification[k], loosey);
+            if(k === 'kernel_config') {
+            }
+            if(typeof m !== 'undefined') {
+                map[k] = m;
+            }
+        } catch (e) {
+            typeErrorTemplate(e,
+                              k,
+                              typeof compare[k],
+                              specification[k],
+                              specification[k].constructor)
+        }
+        return map;
+    }, {});
+    return match;
+}
+
+// loosey means no exceptions are thrown and undefined type is assumed
+function interface(compare, specification, loosey) {
+    var type = compare === void 0 || compare === null
+        ? compare
+        : Object.getPrototypeOf(compare);
+    var expected = specification === void 0 || specification === null
+        ? specification
+        : Object.getPrototypeOf(specification);
+    switch(expected) {
+        case Array.prototype:
+            // if it is an empty array to the actual compare on the object,
+            //   if it is not an empty array compare to each type in the array
+            if(specification.length > 0) {
+                return arrayCompare(compare, specification, loosey)
+            }
+        case Object.prototype:
+            // compare properties on object
+            if(Object.keys(specification).length > 0
+               && (typeof compare === 'object' || typeof compare === 'function')) {
+               return objectCompare(compare, specification, loosey)
+            }
+        default:
+            if(standardCompare(type, expected)
+               // if loosey is not explicitly set to false,
+               //   return void 0 (undefined) instead of error
+               //   only if compare it undefined,
+               //   still error on other wrong types
+               || (loosey !== false && compare === void 0)) {
+                return compare;
+            }
+            typeErrorTemplate(void 0,
+                              void 0,
+                              typeof compare,
+                              typeof specification,
+                              expected)
+    }
+}
+
+module.exports = interface;
+
+if(typeof $$ !== 'undefined') {
+    var jsonInterface = {
+        display_name: '',
+        argv: [], // not optional
+        language: '', // not optional
+        metadata: [void 0, {}], // optional
+        env: [void 0, {}], // TODO dictionary descriptor types?
+        interrupt_mode: [void 0, '']
+    }
+
+    console.log(interface({
+        display_name: 'Node JS',
+        argv: [],
+        language: '',
+        some_other_stuff: true
+    }, jsonInterface))
+    
+    // expected output {"display_name":"Node JS","argv":[],"language":""}
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Functions</h3>
+<h4><code>typeErrorTemplate(e, k, t, i, p)</code></h4>
+<ul>
+<li>Throws a custom error message for type mismatches.</li>
+<li>Parameters:
+<ul>
+<li><code>e</code>: Error code (not used in the function).</li>
+<li><code>k</code>: Additional string to append to the error message.</li>
+<li><code>t</code>: Type of the actual value.</li>
+<li><code>i</code>: Expected type.</li>
+<li><code>p</code>: Type of the expected value.</li>
+</ul></li>
+<li>Returns: Throws a new <code>Error</code> object.</li>
+</ul>
+<h4><code>standardCompare(type, expected)</code></h4>
+<ul>
+<li>Compares two values for strict equality.</li>
+<li>Parameters:
+<ul>
+<li><code>type</code>: Actual value.</li>
+<li><code>expected</code>: Expected value.</li>
+</ul></li>
+<li>Returns: <code>true</code> if the values match, <code>false</code> otherwise.</li>
+</ul>
+<h4><code>arrayCompare(compare, specification, loosey)</code></h4>
+<ul>
+<li>Compares an array with a specification.</li>
+<li>Parameters:
+<ul>
+<li><code>compare</code>: Array to compare.</li>
+<li><code>specification</code>: Expected array structure.</li>
+<li><code>loosey</code>: Optional parameter (not used in the function).</li>
+</ul></li>
+<li>Returns: The first mismatch found, or <code>undefined</code> if the arrays match.</li>
+</ul>
+<h4><code>objectCompare(compare, specification, loosey)</code></h4>
+<ul>
+<li>Compares an object with a specification.</li>
+<li>Parameters:
+<ul>
+<li><code>compare</code>: Object to compare.</li>
+<li><code>specification</code>: Expected object structure.</li>
+<li><code>loosey</code>: Optional parameter (not used in the function).</li>
+</ul></li>
+<li>Returns: An object with matching properties, or <code>undefined</code> if the objects match.</li>
+</ul>
+<h4><code>interface(compare, specification, loosey)</code></h4>
+<ul>
+<li>Compares a value with a specification.</li>
+<li>Parameters:
+<ul>
+<li><code>compare</code>: Value to compare.</li>
+<li><code>specification</code>: Expected value structure.</li>
+<li><code>loosey</code>: Optional parameter (not used in the function).</li>
+</ul></li>
+<li>Returns: The result of the comparison, or an error if the values do not match.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The functions <code>arrayCompare</code> and <code>objectCompare</code> use the <code>interface</code> function to compare individual properties.</li>
+<li>The <code>typeErrorTemplate</code> function is used to create custom error messages for type mismatches.</li>
+<li>The <code>loosey</code> parameter is not used in the functions, indicating that it might be a deprecated or unused feature.</li>
+</ul>

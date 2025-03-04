@@ -1,0 +1,66 @@
+<p>This code implements a fuzzy search function, <code>levSearch</code>, that finds objects in a dataset based on the closest match to a given search term using Levenshtein distance.</p>
+
+
+<pre><code>var importer = require('../Core');
+var levDist = importer.import(`${__filename}[0]`).levDist;
+
+function getStr(keys, obj) {
+    if(typeof keys === 'string') {
+        keys = [keys]
+    }
+    return keys.reduce((arr, id) => {
+        var value = id.split('.').reduce((o, i) => o[i], obj)
+        return arr.concat(Array.isArray(value)
+                            ? value
+                            : [value])
+    }, [])
+}
+
+function levSearch(cache, config, search) {
+    var result = cache.map((a) => a)
+    // TODO: tokenize
+    result.sort(function (a, b) {
+        var minA = Math.min.apply(null, getStr(config.keys, a)
+            .map(s => levDist(s, search)))
+        var minB = Math.min.apply(null, getStr(config.keys, b)
+            .map(s => levDist(s, search)))
+        return minA - minB
+    })
+    return result
+        .filter(c => c)
+        .map(c => config.id.split('.').reduce((o, i) => o[i], c))
+}
+
+module.exports = levSearch;
+
+</code></pre>
+
+<p>This code defines a function <code>levSearch</code> that performs a fuzzy search within a dataset based on Levenshtein distance.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports <code>levDist</code> function from a module located at <code>../Core</code> (likely a custom module).</li>
+</ul></li>
+<li><p><strong><code>getStr</code> Function:</strong></p>
+<ul>
+<li>Takes an array or string <code>keys</code> and an object <code>obj</code> as input.</li>
+<li>If <code>keys</code> is a string, it converts it to an array.</li>
+<li>Traverses the object <code>obj</code> using the keys, extracting values at each level.</li>
+<li>Returns an array of extracted values.</li>
+</ul></li>
+<li><p><strong><code>levSearch</code> Function:</strong></p>
+<ul>
+<li>Takes <code>cache</code> (likely an array of objects), <code>config</code> (an object with <code>keys</code> and <code>id</code> properties), and <code>search</code> (the search term) as input.</li>
+<li>Creates a copy of the <code>cache</code> array.</li>
+<li>Sorts the <code>cache</code> array based on the minimum Levenshtein distance between each object's values (extracted using <code>getStr</code>) and the <code>search</code> term.</li>
+<li>Filters out empty objects from the sorted array.</li>
+<li>Maps the remaining objects to their corresponding IDs using the <code>config.id</code> property.</li>
+<li>Returns the filtered and mapped array.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>Exports the <code>levSearch</code> function as a module.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a fuzzy search functionality that finds objects in a dataset based on the similarity of their values to a given search term, using Levenshtein distance as the similarity metric.</strong></p>

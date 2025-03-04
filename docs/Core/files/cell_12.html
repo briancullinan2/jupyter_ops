@@ -1,0 +1,14 @@
+
+
+<pre><code>var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Documents/asm';
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    findLongFunctions(project)
+        .then(e => $$.sendResult(e.map(m => m.path)))
+        .catch(e => $$.sendError(e))
+
+}
+</code></pre>
+

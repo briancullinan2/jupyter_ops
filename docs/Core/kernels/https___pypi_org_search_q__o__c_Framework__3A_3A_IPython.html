@@ -1,0 +1,81 @@
+<p>Here is a two-sentence summary:</p>
+<p>The <code>bashKernel</code> function creates a kernel for executing Bash code by initializing a kernel instance with a configuration that runs Bash code and echoes input, while the <code>bashLanguage</code> function defines a language interface object for Bash code with properties such as name, version, and file extension. The <code>bashLanguage</code> function uses <code>Object.assign</code> to merge the provided properties with a default <code>language_info</code> object.</p>
+
+
+<pre><code>
+// TODO: derrive from 
+//  https://github.com/takluyver/bash_kernel/blob/master/bash_kernel/kernel.py
+function bashKernel (config, options) {
+    var kernel = replKernel({
+        kernel_config: config,
+        start_options: options,
+        child_process: ['bash', '-c', `
+echo "starting bash kernel";
+do_execute() {
+    request=$1
+    return $(eval "$request")
+}
+
+do_complete() {
+    request=$1
+    return $(bash -n -c "$request") 
+}
+
+# equivilent of process.stdin.resume();
+while [ true ]; do
+    read -u $NODE_CHANNEL_FD request
+    
+    echo $request
+done
+
+`]
+    });
+    return kernel;
+}
+
+function bashLanguage() {
+    return languageInterface(Object.assign({
+        name: 'bash',
+        // TODO: use the language kernel to execute instead
+        version: require('child_process').execSync(`
+bash --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1  | cut -d "(" -f 1
+`).toString().trim(),
+        file_extension: '.sh',
+        mimetype: 'text/x-sh',
+        codemirror_mode: 'shell'
+    }, language_info));
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>bashKernel Function</h3>
+<p>This function creates a kernel for executing Bash code. It takes two parameters:</p>
+<ul>
+<li><code>config</code>: Kernel configuration</li>
+<li><code>options</code>: Start options for the kernel</li>
+</ul>
+<p>Here's a step-by-step explanation:</p>
+<ol>
+<li>It creates a new kernel instance using <code>replKernel</code> function, passing in the configuration and start options.</li>
+<li>The kernel configuration includes:
+<ul>
+<li><code>kernel_config</code>: The provided <code>config</code> parameter</li>
+<li><code>start_options</code>: The provided <code>options</code> parameter</li>
+<li><code>child_process</code>: An array containing the command to execute Bash (<code>bash -c</code>) and a script that contains:
+<ul>
+<li><code>do_execute</code> function: Evaluates the input request using <code>eval</code></li>
+<li><code>do_complete</code> function: Checks the syntax of the input request using <code>bash -n</code></li>
+<li>A loop that reads input from the kernel channel (<code>NODE_CHANNEL_FD</code>) indefinitely and echoes the input</li>
+</ul></li>
+</ul></li>
+</ol>
+<h3>bashLanguage Function</h3>
+<p>This function defines a language for executing Bash code. It returns a language interface object with the following properties:</p>
+<ul>
+<li><code>name</code>: The name of the language (<code>bash</code>)</li>
+<li><code>version</code>: The version of Bash, determined by executing a command using <code>child_process</code> and parsing the output</li>
+<li><code>file_extension</code>: The file extension for Bash files (<code>'.sh'</code>)</li>
+<li><code>mimetype</code>: The MIME type for Bash code (<code>'text/x-sh'</code>)</li>
+<li><code>codemirror_mode</code>: The Codemirror mode for Bash code (<code>'shell'</code>)</li>
+</ul>
+<p>The function uses <code>Object.assign</code> to merge the provided properties with a default <code>language_info</code> object.</p>

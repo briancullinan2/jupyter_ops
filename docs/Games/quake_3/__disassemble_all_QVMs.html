@@ -1,0 +1,75 @@
+<p>This code automates the disassembly of Quake 3 game files (QVMs) into human-readable format using the <code>qvmdis</code> utility, aiding in code analysis and reverse engineering.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var {chext} = importer.import('changing file name')
+var exec = importer.import('spawn child process')
+var {glob} = importer.import('glob files')
+
+var PROJECT = '/Users/briancullinan/planet_quake_data/'
+var QVM_DIS = '/Users/briancullinan/planet_quake_data/tools/q3vm-master/qvmdis'
+
+async function disassembleQVMs(project) {
+    if(!project) project = PROJECT
+    var qvms = await glob('**/*.qvm', project)
+    console.log(`Found ${qvms.length} QVMs`)
+    for(var i = 0; i < qvms.length; i++) {
+        console.log(`Disassembling ${qvms[i]}`)
+        var type
+        if(qvms[i].match(/cgame/i)) type = 'cgame'
+        else if(qvms[i].match(/qagame/i)) type = 'game'
+        else if(qvms[i].match(/ui/i)) type = 'ui'
+        else throw new Error(`Don't know what kind of QVM ${qvms[i]} is.`)
+        var output = chext(qvms[i], '.dis')
+        if(fs.existsSync(output)) continue
+        try {
+            await exec(`${QVM_DIS} "${qvms[i]}" ${type} > "${output}"`)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+module.exports = disassembleQVMs
+</code></pre>
+
+<p>This code snippet defines an asynchronous function <code>disassembleQVMs</code> that disassembles Quake 3 game files (QVMs) into human-readable disassembly output.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js module for file system operations.</li>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+<li><code>importer</code>: A custom module likely containing utility functions for various tasks.</li>
+<li><code>chext</code>: A function imported from the <code>changing file name</code> module (likely used for changing file extensions).</li>
+<li><code>exec</code>: A function imported from the <code>spawn child process</code> module (likely used for executing external commands).</li>
+<li><code>glob</code>: A function imported from the <code>glob files</code> module (likely used for finding files matching a pattern).</li>
+<li><code>PROJECT</code>: A constant defining the base directory for the project.</li>
+<li><code>QVM_DIS</code>: The path to the <code>qvmdis</code> utility, used for disassembling QVMs.</li>
+</ul></li>
+<li><p><strong><code>disassembleQVMs</code> Function:</strong></p>
+<ul>
+<li>Takes an optional <code>project</code> argument, defaulting to <code>PROJECT</code>.</li>
+<li>Finds all <code>.qvm</code> files within the specified project directory using <code>glob</code>.</li>
+<li>Iterates through each found QVM file:
+<ul>
+<li>Determines the type of QVM (cgame, game, ui) based on its filename.</li>
+<li>Constructs the output filename by changing the extension to <code>.dis</code>.</li>
+<li>Skips the disassembly if the output file already exists.</li>
+<li>Executes the <code>qvmdis</code> command with the QVM file and type, redirecting the output to the generated <code>.dis</code> file.</li>
+<li>Handles potential errors during the disassembly process.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>disassembleQVMs</code> function as a module.</li>
+</ul></li>
+</ol>
+<ol start="4">
+<li><p><strong>Purpose:</strong></p>
+<ul>
+<li>This code snippet automates the disassembly of Quake 3 game files (QVMs) into human-readable disassembly output, which can be useful for analyzing game code, debugging, or reverse engineering.</li>
+</ul></li>
+</ol>

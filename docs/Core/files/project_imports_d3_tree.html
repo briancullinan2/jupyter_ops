@@ -1,0 +1,111 @@
+<p>This code generates a visual representation of a project's code structure as a tree, using imported files and relative paths to determine relationships between code components.</p>
+
+
+<pre><code>var importer = require('../Core');
+var path = require('path');
+
+function icons(c) {
+    return c.replace('.component', '\u2699')
+           .replace('.module', '\u26E9')
+           .replace('.service', '\u26F4')
+           .replace('.routing', '\u2697');
+}
+
+function wordCount(r) {
+    var words = r['packages'].map(p => p.import)
+        .concat(r['packages'].map(p => path.basename(p.file)))
+        .concat(r['relatives'].map(r => path.basename(r.import)))
+        .concat(r['relatives'].map(r => path.basename(r.file)));
+    var wordCounts = {};
+    words.forEach(w => {
+        if (typeof wordCounts[w] === 'undefined') {
+            wordCounts[w] = 1;
+        } else {
+            wordCounts[w]++;
+        }
+    });
+    var resultWords = Object.keys(wordCounts).map((d, i) => ({
+        name: icons(d),
+        branch: ((/\.component|\.module|\.service|\.routing/ig).exec(d) || {})[0],
+        size: wordCounts[d]}));
+    var edges = [];
+    r['packages'].forEach(p => edges[edges.length] = {
+        source: icons(p.import),
+        target: icons(path.basename(p.file))
+    });
+    r['relatives'].forEach(p => edges[edges.length] = {
+        source: icons(path.basename(p.file)),
+        target: icons(path.basename(p.import))
+    });
+    return {nodes: resultWords, edges: edges};
+};
+
+var formatNodes;
+function projectTree(project) {
+    var formatNodes = importer.import('d3.ipynb[format tree]');
+    var d3TieredPieSVG = importer.import('d3.ipynb[display d3 tree]');
+    var projectRelatives = importer.import('relative paths and includes', {project});
+    var words = [];
+    
+    return projectRelatives(project)
+        .then(words => {
+            var tree = wordCount(words);
+            var nodeNames = tree.nodes.map(n => n.name);
+            tree.nodes = tree.nodes
+                .filter((n, i, arr) => nodeNames.indexOf(n.name) === i)
+                .map((n, i) => {
+                    Object.assign(n, {index: tree.nodes
+                                      .filter(f => f.branch === n.branch).indexOf(n)})
+                    return n;
+                })
+            var edgeNames = tree.edges.map(n => n.source + '/' + n.target);
+            tree.edges = tree.edges
+                .filter((n, i, arr) => edgeNames.indexOf(n.source + '/' + n.target) === i)
+            var root = formatNodes(tree.nodes, tree.edges);
+            return d3TieredPieSVG(root);
+        })
+        .catch(e => console.log(e))
+};
+module.exports = projectTree;
+
+if(typeof $$ !== 'undefined') {
+    var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    var project = PROFILE_PATH + '/jupytangular2';
+
+    $$.async()
+    projectTree(project)
+        .then(svg => $$.svg(svg))
+        .catch(e => $$.sendError(e));
+}
+</code></pre>
+
+<p>This code defines functions for generating a tree-like visualization of a project's code structure based on imported files and relative paths.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>importer</code>: A custom module for importing functions and modules.</li>
+<li><code>path</code>: Node.js module for working with file paths.</li>
+</ul></li>
+<li><p><strong><code>icons</code> Function:</strong></p>
+<ul>
+<li>Takes a file path as input.</li>
+<li>Replaces file extensions with Unicode icons based on the extension type (component, module, service, routing).</li>
+</ul></li>
+<li><p><strong><code>wordCount</code> Function:</strong></p>
+<ul>
+<li>Takes a data object <code>r</code> (likely containing information about project files and imports) as input.</li>
+<li>Extracts unique words from file names and imports.</li>
+<li>Counts the occurrences of each word.</li>
+<li>Returns an object with nodes (words and their counts) and edges (relationships between files).</li>
+</ul></li>
+<li><p><strong><code>projectTree</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>project</code> path as input.</li>
+<li>Imports necessary functions for formatting the tree and displaying it as a D3 SVG.</li>
+<li>Retrieves relative paths and imports for the project.</li>
+<li>Calls <code>wordCount</code> to generate the tree data.</li>
+<li>Filters and formats the nodes for display.</li>
+<li>Returns a promise that resolves with the formatted tree data.</li>
+</ul></li>
+</ol>

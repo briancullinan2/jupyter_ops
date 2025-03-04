@@ -1,0 +1,67 @@
+<p>This code provides a utility function called <code>fetchOrStream</code> that downloads a file from a URL or processes an existing stream, writing its content to a specified write stream. It handles both scenarios using a single function and returns a Promise for asynchronous execution.</p>
+
+
+<pre><code>var util = require('util');
+var http = require('http');
+var https = require('https');
+
+function fetchOrStream(stream, writeStream) {
+    var promise;
+    if(typeof stream == 'object') {
+        promise = Promise.resolve(stream);
+    } else {
+        var protocol = stream.includes('https://') ? https : http;
+        promise = util.promisify(protocol.get.bind(protocol))(stream)
+    }
+    return promise
+        .then(() => new Promise((resolve, reject) => {
+            stream.pipe(writeStream)
+            .on("error", (err) => {
+                reject(err);
+            })
+            .on('finish', () => {
+                resolve();
+            });
+        }))
+}
+
+module.exports = fetchOrStream;
+</code></pre>
+
+<p>This code defines a utility function called <code>fetchOrStream</code> that downloads a file from a URL or processes an existing stream and writes its content to a provided write stream.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>util</code>: Node.js built-in module providing utility functions, including <code>promisify</code>.</li>
+<li><code>http</code>: Node.js built-in module for making HTTP requests.</li>
+<li><code>https</code>: Node.js built-in module for making HTTPS requests.</li>
+</ul></li>
+<li><p><strong><code>fetchOrStream</code> Function:</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Takes either a stream object or a URL string as input and writes its content to a provided write stream.</li>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>stream</code>: Either a stream object (e.g., from a previous download) or a URL string.</li>
+<li><code>writeStream</code>: A write stream object to write the downloaded data to.</li>
+</ul></li>
+<li><strong>Logic:</strong>
+<ul>
+<li><strong>Determine Stream Type:</strong> Checks if <code>stream</code> is an object (existing stream) or a string (URL).</li>
+<li><strong>Fetch from URL (if needed):</strong> If <code>stream</code> is a string, it determines the protocol (HTTP or HTTPS) and uses <code>util.promisify</code> to convert the <code>protocol.get</code> function into a Promise. This fetches the file from the URL.</li>
+<li><strong>Promise Chaining:</strong>
+<ul>
+<li>Creates a Promise that resolves when the file is fetched or the existing stream is ready.</li>
+<li>Pipes the fetched data or the existing stream to the <code>writeStream</code>.</li>
+<li>Handles errors during the piping process and rejects the Promise if an error occurs.</li>
+<li>Resolves the Promise when the data has been fully written to the <code>writeStream</code>.</li>
+</ul></li>
+<li><strong>Return Promise:</strong> Returns the Promise that resolves when the download/streaming and writing process is complete.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li><code>module.exports = fetchOrStream;</code>: Makes the <code>fetchOrStream</code> function available for use in other modules.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a flexible way to download files from URLs or process existing streams, handling both cases with a single function and returning a Promise for asynchronous handling.</p>

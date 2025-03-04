@@ -1,0 +1,65 @@
+<p>This code searches for documents containing &quot;express js&quot; in the &quot;books&quot; index and &quot;book&quot; type within an Elasticsearch database.</p>
+
+
+<pre><code>var elasticsearch = require('elasticsearch')
+var client = elasticsearch.Client({
+  host: 'localhost:9200'
+})
+
+client.search({
+  index: 'books',
+  type: 'book',
+  body: {
+    query: {
+      multi_match: {
+        query: 'express js',
+        fields: ['title', 'description']
+      }
+    }
+  }
+}).then(function (response) {
+  var hits = response.hits.hits
+}, function (error) {
+  console.trace(error.message)
+})</code></pre>
+
+<p>This code performs a search within an Elasticsearch index named &quot;books&quot; for documents matching the query &quot;express js&quot;.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>elasticsearch</code> library for interacting with Elasticsearch.</li>
+</ul></li>
+<li><p><strong>Client Connection:</strong></p>
+<ul>
+<li>It creates an Elasticsearch client instance, connecting to a local Elasticsearch server running on port 9200.</li>
+</ul></li>
+<li><p><strong>Search Query:</strong></p>
+<ul>
+<li>It defines a search query using the <code>client.search</code> method:
+<ul>
+<li><code>index</code>: Specifies the index to search within (&quot;books&quot;).</li>
+<li><code>type</code>: Specifies the document type within the index (&quot;book&quot;).</li>
+<li><code>body</code>: Contains the search query parameters:
+<ul>
+<li><code>query</code>: Defines the search query using a <code>multi_match</code> query:
+<ul>
+<li><code>query</code>: The search term (&quot;express js&quot;).</li>
+<li><code>fields</code>: The fields to search within (&quot;title&quot; and &quot;description&quot;).</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Response Handling:</strong></p>
+<ul>
+<li>It uses <code>.then</code> to handle the successful response from Elasticsearch:
+<ul>
+<li>It extracts the matching documents (hits) from the response.</li>
+</ul></li>
+<li>It uses <code>.catch</code> to handle any errors during the search:
+<ul>
+<li>It logs the error message using <code>console.trace</code>.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

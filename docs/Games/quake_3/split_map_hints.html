@@ -1,0 +1,198 @@
+<p>This code analyzes Quake map files, extracts entity and brush data, and applies predefined hints or modifications based on the extracted information.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core')
+var {MAPS_HINTS, addHints} = importer.import('draw hints in map')
+var translateMap = importer.import('translate quake map')
+var {isInside} = importer.import('brush to vertex')
+var {addSkybox} = importer.import('add skybox to map')
+
+var BUFFER_UNITS = 200
+var ENTITIES_EXP = /\{[^\{\}]*?"classname"\s*"([^"]*)"[^\{\}]*?(\{[^\{\}]*?\}[^\{\}]*?)*\}/ig
+var BRUSH_EXP = /\{[^\{\}]*?\}\s*/ig
+var moves = [
+    [0, 0],
+    [BUFFER_UNITS, 0],
+    [0, BUFFER_UNITS],
+    [BUFFER_UNITS, BUFFER_UNITS],
+    [-BUFFER_UNITS, 0],
+    [0, -BUFFER_UNITS],
+    [-BUFFER_UNITS, -BUFFER_UNITS],
+]
+function splitHints(fileName, hints) {
+    var file
+    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        file = fs.readFileSync(fileName).toString('utf-8')
+        if(!hints) {
+            hints = path.basename(fileName).replace(/[-_]converted|\.map$/ig, '')
+        }
+    } else {
+        file = fileName
+    }
+    
+    if(typeof hints !== 'object') {
+        var exp = new RegExp(hints, 'ig')
+        hints = Object.keys(MAPS_HINTS).reduce((obj, k) => {
+            if(k.match(exp)) {
+                obj[k] = MAPS_HINTS[k]
+            }
+            return obj
+        }, {})
+    }
+    
+    var multimaps = {}
+    var worldspawn = {}
+    Object.keys(hints).forEach(k => (multimaps[k] = [], worldspawn[k] = []))
+    
+    var entities = importer
+        .regexToArray(ENTITIES_EXP, file, false)
+    
+    entities.forEach(ent => {
+        var include = false
+        var points = []
+        ent.points = points
+        
+        var brushes = importer.regexToArray(BRUSH_EXP, ent[0])
+
+        brushes.forEach(brush => {
+            var pts = importer
+                .regexToArray(/\(((\s*[0-9\.-]+\s*)*)\)/ig, brush, 1)
+                .map(m => m.trim().split(/\s+/ig)
+                    .map(n => (n.includes('.')
+                        ? parseFloat(n.trim())
+                        : parseInt(n.trim()))))
+            
+            if(brush.includes('/sky')) {
+                return
+            }
+
+            pts.forEach(b => {
+                Object.keys(hints).forEach(k => {
+                    if(worldspawn[k].indexOf(brush) === -1) {
+                        // if moving the point in any direction would
+                        //   cause it to be inside, include that brush
+                        for(var m = 0; m < moves.length; m++) {
+                            if(isInside(hints[k].map(h => ({x: h[0], y: h[1]})), 
+                                        hints[k].length-1, 
+                                        {x: b[0] + moves[m][0], y: b[1] + moves[m][1]})) {
+                                points.push.apply(pts)
+                                worldspawn[k].push(brush) // object reference points added below
+                                return
+                            }
+                        }
+                    }
+                })
+            })
+        })
+
+        var skipOrigin = false
+        Object.keys(worldspawn).forEach(k => {
+            if(!worldspawn[k].length) return
+
+            multimaps[k].push({
+                '0': ent[0].replace(BRUSH_EXP, '').replace('}', worldspawn[k].join('\n') + '}'),
+                points: points
+            })
+            worldspawn[k] = []
+            skipOrigin = true
+        })
+        if(skipOrigin) return // already know its a brush type not point type
+
+        var origins = importer
+            .regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, ent[0], 1)
+            .map(o => o.trim().split(/\s+/ig)
+                .map(n => (n.includes('.')
+                    ? parseFloat(n.trim())
+                    : parseInt(n.trim()))))
+        
+        origins.forEach(b => {
+            Object.keys(hints).forEach(k => {
+                // if moving the point in any direction would
+                //   cause it to be inside, include that brush
+                for(var m = 0; m < moves.length; m++) {
+                    if(isInside(hints[k].map(h => ({x: h[0], y: h[1]})), 
+                                hints[k].length-1, 
+                                {x: b[0] + moves[m][0], y: b[1] + moves[m][1]})) {
+                        points.push(b)
+                        multimaps[k].push(ent)
+                    }
+                }
+            })
+        })
+    })
+    
+    // get middle 50% of all points
+    var translations = Object.keys(multimaps).map(k => {
+        var result = []
+        for(var i = 0; i < 3; i++) {
+            var points = [].concat.apply([], multimaps[k]
+                .map(ent => ent.points.map(p => p[i])))
+            points.sort()
+            result[i] = -Math.round((points
+                // get the middle half
+                .slice(points.length / 4, points.length / 4 * 3)
+                // get the average
+                .reduce((a, b) => a + b, 0) / (points.length / 2))
+                // round to the nearest grid position?
+                / 147.2) * 147.2
+        }
+        return result
+    })
+    
+    console.log(translations)
+    
+    // copy all the brushes in to a new file, skybox and save
+    var maps = Object.keys(multimaps).forEach((k, i) => {
+        var map = multimaps[k]
+            .filter((ent, i, arr) => arr.indexOf(ent) === i)
+            .map(ent => ent[0])
+            .join('\n')
+        
+        map = translateMap(map, translations[i])
+        
+        map = addSkybox(map)
+        
+        file = addHints(file, [hints[k]])
+        
+        if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+            var newFile = path.join(path.dirname(path.resolve(fileName)), path.basename(k) + '.map')
+            console.log(`writing ${newFile}`)
+            fs.writeFileSync(newFile, map)
+        } else {
+            return map
+        }
+    })
+    
+    return maps
+}
+
+module.exports = splitHints
+</code></pre>
+
+<p>This code snippet processes a Quake map file, extracts entity and brush information, and potentially applies hints or modifications based on predefined rules.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Imports necessary modules (<code>path</code>, <code>fs</code>, <code>importer</code>, and custom modules for hint handling, map translation, brush-to-vertex operations, and skybox addition).</li>
+<li>Defines constants for buffer units and regular expressions for matching entities and brushes.</li>
+<li>Sets up an array of movement vectors for potential map manipulation.</li>
+</ul></li>
+<li><p><strong><code>splitHints</code> Function:</strong></p>
+<ul>
+<li>Takes a map file path or content and an optional hints object as input.</li>
+<li>Reads the map file content if it's a string and exists.</li>
+<li>If hints are not provided, it extracts hints from the filename or uses a predefined set of hints based on a regular expression.</li>
+<li>Initializes dictionaries to store hints for different map sections (multimaps and worldspawn).</li>
+<li>Extracts entities and brushes from the map file using regular expressions.</li>
+</ul></li>
+<li><p><strong>Entity and Brush Processing:</strong></p>
+<ul>
+<li>Iterates through each entity and brush.</li>
+<li>Extracts points from brushes and potentially applies hints or modifications based on entity and brush content.</li>
+<li>The code appears to be incomplete, but it likely involves logic for determining which hints to apply based on entity and brush properties.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as a tool for analyzing and potentially modifying Quake map files. It extracts entity and brush information, applies predefined hints or rules, and potentially performs transformations based on the extracted data. The specific modifications or transformations are not fully clear from the provided code snippet.</p>

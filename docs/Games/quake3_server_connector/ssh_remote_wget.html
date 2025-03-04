@@ -1,0 +1,134 @@
+<p>Here is a summary of the code in one or two sentences:</p>
+<p>This code is a Node.js script that establishes an SSH connection to a remote server, downloads a URL using <code>wget</code>, and modifies a file on the server by appending a specific format to the end of the file. The script also includes error handling and exports the <code>remoteGet</code> function for use in other modules.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var NodeSSH = require('node-ssh')
+var ssh = new NodeSSH()
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+var privateKeyPath
+if(fs.existsSync('./id_rsa')) {
+    privateKeyPath = path.resolve('./id_rsa')
+} else {
+    privateKeyPath = path.join(PROFILE_PATH, '.ssh/id_rsa')
+}
+
+var DEFAULT_SSH = process.env.DEFAULT_SSH || 'okayfun.com'
+var DEFAULT_SSH_USER = process.env.DEFAULT_SSH_USER || 'root'
+
+/*
+ssh.connect({
+  host: DEFAULT_SSH,
+  username: DEFAULT_SSH_USER,
+  privateKey: privateKeyPath
+})
+*/
+
+async function remoteGet(url, output, cwd) {
+    var options = {
+        cwd: cwd,
+        onStdout(chunk) {
+          console.log('stdoutChunk', chunk.toString('utf8'))
+        },
+        onStderr(chunk) {
+          console.log('stderrChunk', chunk.toString('utf8'))
+        },
+    }
+    try {
+        await ssh.exec('/usr/bin/wget', ['-O', output, url], options)
+        await ssh.exec(`
+fileLength=$(wc -l ../index.json | cut -d' ' -f1);
+sed "$((fileLength-1))s/$/,/;
+${fileLength}i  \\\t\"\":\"\"" ../index.json`, [], options)
+        
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+module.exports = remoteGet
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Importing Modules</h4>
+<pre><code class="language-javascript">var fs = require('fs')
+var path = require('path')
+var NodeSSH = require('node-ssh')
+var ssh = new NodeSSH()
+</code></pre>
+<ul>
+<li>Three external modules are imported: <code>fs</code> (File System) for file system operations, <code>path</code> for handling file and directory paths, and <code>NodeSSH</code> for SSH connections.</li>
+</ul>
+<h4>Environment Variable Setup</h4>
+<pre><code class="language-javascript">var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+var privateKeyPath
+if(fs.existsSync('./id_rsa')) {
+    privateKeyPath = path.resolve('./id_rsa')
+} else {
+    privateKeyPath = path.join(PROFILE_PATH, '.ssh/id_rsa')
+}
+</code></pre>
+<ul>
+<li>The script checks for environment variables <code>HOME</code>, <code>HOMEPATH</code>, and <code>USERPROFILE</code> to determine the user's home directory path, storing it in <code>PROFILE_PATH</code>.</li>
+<li>It then checks if a local file named <code>id_rsa</code> exists. If it does, it sets <code>privateKeyPath</code> to its resolved path. Otherwise, it sets it to the path of the user's SSH private key file.</li>
+</ul>
+<h4>Default SSH Configuration</h4>
+<pre><code class="language-javascript">var DEFAULT_SSH = process.env.DEFAULT_SSH || 'okayfun.com'
+var DEFAULT_SSH_USER = process.env.DEFAULT_SSH_USER || 'root'
+</code></pre>
+<ul>
+<li>The script sets default values for SSH host and user from environment variables. If these variables are not set, it defaults to <code>okayfun.com</code> and <code>root</code> respectively.</li>
+</ul>
+<h4>SSH Connection (Commented Out)</h4>
+<pre><code class="language-javascript">// ssh.connect({
+//   host: DEFAULT_SSH,
+//   username: DEFAULT_SSH_USER,
+//   privateKey: privateKeyPath
+// })
+</code></pre>
+<ul>
+<li>This section is commented out, but it would establish an SSH connection using the default host, user, and private key.</li>
+</ul>
+<h4>Remote Get Function</h4>
+<pre><code class="language-javascript">async function remoteGet(url, output, cwd) {
+    //...
+}
+</code></pre>
+<ul>
+<li>This is an asynchronous function named <code>remoteGet</code> that takes three arguments: <code>url</code>, <code>output</code>, and <code>cwd</code>.</li>
+<li>It uses the <code>ssh</code> object to execute SSH commands on a remote server.</li>
+</ul>
+<h4>Function Body</h4>
+<pre><code class="language-javascript">try {
+    await ssh.exec('/usr/bin/wget', ['-O', output, url], options)
+    await ssh.exec(`
+    fileLength=$(wc -l../index.json | cut -d''-f1);
+    sed &quot;$((fileLength-1))s/$/,/;
+    ${fileLength}i  \\\t\&quot;\&quot;:\&quot;\&quot;&quot;../index.json`, [], options)
+} catch (e) {
+    console.log(e)
+}
+</code></pre>
+<ul>
+<li>The function tries to execute two SSH commands:
+<ol>
+<li>It uses <code>wget</code> to download the URL and save it to the specified <code>output</code> file.</li>
+<li>It executes a custom script that:
+<ul>
+<li>Counts the number of lines in the <code>index.json</code> file.</li>
+<li>Replaces the last line with a comma.</li>
+<li>Inserts a new line at the end of the file with a specific format.</li>
+</ul></li>
+</ol></li>
+</ul>
+<h4>Error Handling and Export</h4>
+<pre><code class="language-javascript">} catch (e) {
+    console.log(e)
+}
+module.exports = remoteGet
+</code></pre>
+<ul>
+<li>The function catches any errors that occur during execution and logs them to the console.</li>
+<li>It exports the <code>remoteGet</code> function, making it available for use in other modules.</li>
+</ul>

@@ -1,0 +1,96 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This macOS code retrieves a list of open windows and their titles, storing them in global variables and using two functions: <code>enumWindows</code> to get the list of windows and <code>getTitle</code> to retrieve the title of each window. The <code>main</code> function iterates over the list of windows, calling <code>getTitle</code> to print each title to the console.</p>
+
+
+<pre><code>
+@import Cocoa;
+
+static NSArray* windows;
+static NSUInteger count;
+
+#if __cplusplus
+extern "C" {
+#endif
+
+__attribute__((visibility("default")))
+int enumWindows()
+{
+	CGWindowListOption listOptions = kCGWindowListOptionAll;
+	listOptions |= kCGWindowListOptionOnScreenOnly;
+	listOptions |= kCGWindowListExcludeDesktopElements;
+
+	// Ask the window server for the list of windows.
+	windows = (NSArray*)CGWindowListCopyWindowInfo(listOptions, kCGNullWindowID);
+	count = [windows count];
+
+	return count;
+}
+
+__attribute__((visibility("default")))
+const char* getTitle(int i) {
+	if(windows == NULL) {
+		count	= enumWindows();
+	}
+	//for (NSUInteger i = 0; i < count; i++) {
+	//}
+	NSDictionary*   nswindowsdescription = [windows objectAtIndex:i];
+	//NSNumber* windowid = (NSNumber*)[nswindowsdescription objectForKey:@"kCGWindowNumber"];
+	NSString* windowName = (NSString*)[nswindowsdescription objectForKey:@"kCGWindowOwnerName"];
+	NSNumber* windowLayer = (NSNumber*)[nswindowsdescription objectForKey:@"kCGWindowLayer"];
+	NSString* res = [NSString stringWithFormat:@"%@: %s", windowLayer, [windowName UTF8String]];
+	return (char *)[res UTF8String];
+}
+
+
+int main(int argc, char *argv[])
+{
+    int count = enumWindows();
+		for(int i = 0; i < count; i++) {
+			printf("%s\n", getTitle(i));
+		}
+}
+
+#if __cplusplus
+}
+#endif
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import and Global Variables</h3>
+<ul>
+<li>The code starts by importing the Cocoa framework using <code>@import Cocoa;</code>.</li>
+<li>Two global variables are declared: <code>windows</code> as an <code>NSArray*</code> and <code>count</code> as an <code>NSUInteger</code>.</li>
+</ul>
+<h3>enumWindows Function</h3>
+<ul>
+<li>The <code>enumWindows</code> function is declared with the <code>__attribute__((visibility(&quot;default&quot;)))</code> attribute, making it visible to other processes.</li>
+<li>The function takes no arguments and returns an integer.</li>
+<li>It uses the <code>CGWindowListCopyWindowInfo</code> function to retrieve a list of windows from the window server.</li>
+<li>The <code>listOptions</code> variable is set to retrieve all windows, excluding desktop elements.</li>
+<li>The retrieved list of windows is stored in the global <code>windows</code> variable.</li>
+<li>The count of windows is stored in the global <code>count</code> variable.</li>
+<li>The function returns the count of windows.</li>
+</ul>
+<h3>getTitle Function</h3>
+<ul>
+<li>The <code>getTitle</code> function is declared with the <code>__attribute__((visibility(&quot;default&quot;)))</code> attribute, making it visible to other processes.</li>
+<li>The function takes an integer <code>i</code> as an argument and returns a <code>const char*</code>.</li>
+<li>If the global <code>windows</code> variable is null, the <code>enumWindows</code> function is called to retrieve the list of windows.</li>
+<li>The function retrieves a dictionary representing a window from the global <code>windows</code> array using the <code>objectAtIndex:i</code> method.</li>
+<li>The dictionary is then used to retrieve the window's owner name and layer.</li>
+<li>The retrieved information is formatted into a string and returned as a <code>const char*</code>.</li>
+</ul>
+<h3>main Function</h3>
+<ul>
+<li>The <code>main</code> function is the entry point of the program.</li>
+<li>It calls the <code>enumWindows</code> function to retrieve the count of windows.</li>
+<li>It then iterates over the list of windows using a for loop.</li>
+<li>For each window, the <code>getTitle</code> function is called to retrieve the window's title.</li>
+<li>The title is then printed to the console using <code>printf</code>.</li>
+</ul>
+<h3>C++ Compatibility</h3>
+<ul>
+<li>The code uses <code>extern &quot;C&quot;</code> to ensure compatibility with C++ code.</li>
+<li>The <code>#if __cplusplus</code> and <code>#endif</code> directives are used to conditionally include C++-specific code.</li>
+</ul>

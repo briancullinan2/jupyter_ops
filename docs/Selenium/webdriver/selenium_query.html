@@ -1,0 +1,63 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>getAllQuery</code> function is defined as an asynchronous function that executes a script in a browser context using the <code>driver.executeScript</code> method, which involves importing and utilizing external functions for querying and evaluating the DOM. The function takes three parameters - <code>driver</code>, <code>select</code>, and an optional <code>ctx</code> object - and returns the result of executing the <code>queryDom</code> function.</p>
+
+
+<pre><code>
+const {queryDom, evaluateDom} = importer.import('select tree')
+const {walkTree} = importer.import('walk tree')
+
+async function getAllQuery(driver, select, ctx) {
+  return await driver.executeScript((
+    function main(evaluateDomString, walkTreeString, queryDomString, select, ctx) {
+      if(!window.evaluateDom)
+        window.evaluateDom = eval('(' + evaluateDomString + ')')
+      if(!window.walkTree)
+        window.walkTree = eval('(' + walkTreeString + ')')
+      if(!window.queryDom)
+        window.queryDom = eval('(' + queryDomString + ')')
+      let result = queryDom(select, ctx || document)
+      return result;
+    }), evaluateDom, walkTree, queryDom, select, ctx)
+}
+
+module.exports = getAllQuery
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code starts by importing two functions from external modules:</p>
+<ul>
+<li><code>queryDom</code> and <code>evaluateDom</code> from the <code>'select tree'</code> module</li>
+<li><code>walkTree</code> from the <code>'walk tree'</code> module</li>
+</ul>
+<pre><code class="language-javascript">const {queryDom, evaluateDom} = importer.import('select tree')
+const {walkTree} = importer.import('walk tree')
+</code></pre>
+<h3>Defining the <code>getAllQuery</code> Function</h3>
+<p>The <code>getAllQuery</code> function is defined as an asynchronous function that takes three parameters:</p>
+<ul>
+<li><code>driver</code>: an object with an <code>executeScript</code> method</li>
+<li><code>select</code>: an object or string to be used in the <code>queryDom</code> function</li>
+<li><code>ctx</code>: an optional context object</li>
+</ul>
+<pre><code class="language-javascript">async function getAllQuery(driver, select, ctx) {
+ ...
+}
+</code></pre>
+<h3>Executing Script in Browser Context</h3>
+<p>The function executes a script in a browser context using the <code>driver.executeScript</code> method. The script defines a <code>main</code> function that:</p>
+<ul>
+<li>Checks if <code>window.evaluateDom</code>, <code>window.walkTree</code>, and <code>window.queryDom</code> are defined, and if not, sets them to the imported functions using <code>eval</code>.</li>
+<li>Calls the <code>queryDom</code> function with the provided <code>select</code> and <code>ctx</code> (or <code>document</code> if <code>ctx</code> is not provided), and returns the result.</li>
+</ul>
+<pre><code class="language-javascript">driver.executeScript((
+  function main(evaluateDomString, walkTreeString, queryDomString, select, ctx) {
+   ...
+    let result = queryDom(select, ctx || document)
+    return result;
+  }), evaluateDom, walkTree, queryDom, select, ctx)
+</code></pre>
+<h3>Exporting the Function</h3>
+<p>The <code>getAllQuery</code> function is exported as a module.</p>
+<pre><code class="language-javascript">module.exports = getAllQuery
+</code></pre>

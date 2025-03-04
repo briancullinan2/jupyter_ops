@@ -1,0 +1,59 @@
+<p>Here's a summary of the <code>clickSpa</code> function in one sentence:</p>
+<p>The <code>clickSpa</code> function simulates a click on an element with a specific profile URL by appending an <code>a</code> element to the page and executing a command to click on it, waiting for 1 second before resolving.</p>
+<p>Alternatively, here's a two-sentence summary:</p>
+<p>The <code>clickSpa</code> function simulates a click on an element with a specific profile URL by creating an <code>a</code> element and setting up an event listener to remove it after a delay. The function waits for 1 second before resolving the promise, and catches any errors that occur during execution.</p>
+
+
+<pre><code>function clickSpa(client, profile) {
+    return client
+        .getUrl()
+        .then(url => url.indexOf(profile) > -1
+              ? []
+              : client
+             .execute(url => {
+                var a = document.createElement('a');
+                a.setAttribute('href', url);
+                a.setAttribute('class', 'spa');
+                a.onclick = () => setTimeout(() => document.body.removeChild(a), 500)
+                a.href = url;
+                a.style.position = 'absolute';
+                a.style.zIndex = 4294967295;
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.bottom = 0;
+                a.style.right = 0;
+                document.body.appendChild(a);
+            }, profile)
+        .click('a.spa[href*="' + profile + '"]')
+        .pause(1000))
+        .catch(e => console.log(e))
+};
+
+module.exports = clickSpa;
+</code></pre>
+
+<h3>Function: <code>clickSpa(client, profile)</code></h3>
+<h4>Parameters:</h4>
+<ul>
+<li><code>client</code>: Client object</li>
+<li><code>profile</code>: Profile URL or keyword</li>
+</ul>
+<h4>Returns:</h4>
+<ul>
+<li>A promise that resolves with an empty array if the profile URL is already present in the current URL</li>
+<li>Otherwise, it executes a series of actions in the browser and returns an empty array after a delay</li>
+</ul>
+<h4>Actions:</h4>
+<ol>
+<li>Retrieves the current URL using <code>client.getUrl()</code></li>
+<li>Checks if the profile URL is already present in the current URL. If it is, returns an empty array immediately.</li>
+<li>Otherwise, creates a new HTML <code>a</code> element with the profile URL as its <code>href</code> attribute and appends it to the document body. The <code>a</code> element has a <code>spa</code> class and is styled to cover the entire screen.</li>
+<li>Sets up an event listener on the <code>a</code> element to remove it after a 500ms delay.</li>
+<li>Executes a command to click on an <code>a</code> element with the <code>spa</code> class and a <code>href</code> attribute containing the profile URL.</li>
+<li>Waits for 1 second using <code>pause(1000)</code> before resolving the promise.</li>
+</ol>
+<h4>Error Handling:</h4>
+<ul>
+<li>Catches any errors that occur during the execution and logs them to the console.</li>
+</ul>
+<p>Note: This code is likely part of a Selenium or Puppeteer testing framework and is used to simulate a click on an element with a specific profile URL.</p>

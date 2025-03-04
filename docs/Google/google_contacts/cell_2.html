@@ -1,0 +1,11 @@
+
+
+<pre><code>var importer = require('../Core');
+var getSettings = importer.import('google contact settings');
+
+$$.async();
+getSettings('megamindbrian@gmail.com')
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e))
+</code></pre>
+

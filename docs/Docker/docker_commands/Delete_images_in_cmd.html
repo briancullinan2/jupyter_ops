@@ -1,0 +1,29 @@
+<p>This Windows batch script removes all Docker images by iterating through a list of image IDs obtained from <code>docker images -q</code> and using <code>docker rmi</code> to delete each one.</p>
+
+
+<pre><code>FOR /f "tokens=*" %i IN ('docker images -q') DO docker rmi %i
+
+</code></pre>
+
+<p>This code snippet removes all Docker images from your system.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker images -q')</code>:</strong></p>
+<ul>
+<li>This is a Windows batch command that iterates over the output of the <code>docker images -q</code> command.
+<ul>
+<li><code>FOR /f</code> is used to process text files, in this case, the output of the command.</li>
+<li><code>&quot;tokens=*&quot;</code> specifies that all tokens (words) in each line of the output should be captured.</li>
+<li><code>%i</code> is a variable that will hold the current token (image ID) in each iteration.</li>
+<li><code>'docker images -q'</code> executes the command to list all Docker images and their IDs.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>DO docker rmi %i</code>:</strong></p>
+<ul>
+<li>This part of the command is executed for each image ID captured by <code>%i</code>.
+<ul>
+<li><code>docker rmi %i</code> removes the Docker image with the ID stored in the <code>%i</code> variable.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>In essence, this batch script efficiently iterates through all Docker images and removes them one by one.</p>

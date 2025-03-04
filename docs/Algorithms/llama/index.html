@@ -1,0 +1,51 @@
+<a href="./search_llama.html">search llama</a>
+
+<p>Here's a two-sentence summary of the <code>askLlamaMatchingFunction</code> code breakdown:</p>
+<p>The <code>askLlamaMatchingFunction</code> function searches for a matching function in a notebook by fetching all available functions, filtering them based on categories, and then using another function (<code>askLlamaAboutFunctions</code>) to narrow down the results. The function iterates through the cell cache, appends functions and their descriptions to arrays, and limits the number of calls to <code>askLlamaAboutFunctions</code> to improve efficiency and reduce excessive calls.</p>
+<a href="./ask_llm_about_categories.html">ask llm about categories</a>
+
+<p>Here's a two-sentence summary of the <code>askLlamaAboutCategories</code> function:</p>
+<p>The <code>askLlamaAboutCategories</code> function asks the LLM about categories in the <code>functionCache</code> database and returns a list of notebook filenames that contain matching categories. It does this by listing all categories in the database, asking the LLM about them in batches, and then filtering notebook filenames with matching categories.</p>
+<a href="./ask_llm_to_generalize_categories.html">ask llm to generalize categories</a>
+
+<p>Here is a two-sentence summary of the <code>askLlamaGeneralizeCategories</code> function:</p>
+<p>The <code>askLlamaGeneralizeCategories</code> function is an asynchronous function that takes a list of categories, generalizes them, and returns a unique list of categories, with a maximum recursive depth of 100 to prevent infinite recursion. If no categories are provided, the function generates a list of unique categories from the <code>functionCache</code> object and stores the result in the cache after generalizing.</p>
+<a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a>
+
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The <code>askLlamaToGeneralize</code> function takes a list of categories and asks a large language model (LLM) to generalize them into a shorter list, while the <code>askLlamaToGeneralizeAll</code> function does the same but breaks down the list into smaller groups and asks the LLM to generalize each group separately. Both functions are exported as a module and return an array of unique, non-empty strings representing the generalized categories.</p>
+<a href="./ask_llm_about_functions.html">ask llm about functions</a>
+
+<p>Here is a summary of the function in one sentence:</p>
+<p><code>askLlamaAboutFunctions</code> is an asynchronous function that takes in a user query and an array of functions with optional descriptions, and uses an AI to match the query against the functions and return a matching function name.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p><code>askLlamaAboutFunctions</code> is an asynchronous function that constructs a prompt to match a user query against a list of functions, and uses an AI to generate a response. The function then parses the AI's response to extract a matching function name, which it returns as the result.</p>
+<a href="./ask_llm_about_code.html">ask llm about code</a>
+
+<p>Here's a summary of the <code>askLlamaAboutCode</code> function in one sentence:</p>
+<p>The <code>askLlamaAboutCode</code> function takes a code snippet, asks a large language model (LLM) named Llama to provide a short breakdown, and returns the AI's response.</p>
+<p>If you'd like a two-sentence summary, here it is:</p>
+<p>The <code>askLlamaAboutCode</code> function takes a code snippet as input, breaks it down using a large language model named Llama, and returns the AI's response in a clear and concise manner. This function can be imported and used in other parts of an application to provide explanations of code snippets.</p>
+<a href="./ask_llm_about_notebooks.html">ask llm about notebooks</a>
+
+<p>Here's a summary of the code breakdown in one sentence:</p>
+<p>The code imports functions for listing project files and asking a large language model about functions, and defines two main functions: <code>findNotebooks</code> to locate Jupyter notebooks in a directory and its subdirectories, and <code>askLlamaAboutNotebooks</code> to extract function information from these notebooks and query a large language model for additional information.</p>
+<p>Alternatively, here's a two-sentence summary:</p>
+<p>The code begins by importing necessary functions to list project files and query a large language model. It then defines two main functions: <code>findNotebooks</code> to locate Jupyter notebooks and <code>askLlamaAboutNotebooks</code> to extract function information from these notebooks and query the LLM.</p>
+<a href="./ask_llm_to_summerize.html">ask llm to summerize</a>
+
+<p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, that interact with a Large Language Model (LLM) to summarize and categorize user input. These functions are exported from the module, making them available for use in other parts of the application.</p>
+<a href="./store_llama_function.html">store llama function</a>
+
+<p>Here's a two-sentence summary of the provided code breakdown:</p>
+<p>This code imports necessary modules and defines the <code>storeLlamaFunction</code> function, which stores a LLM function in the <code>functionCache</code> object and updates the corresponding code cell. The function is then exported as a module, making it available for use in other parts of the application.</p>
+<a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a>
+
+<p>Here's a summary of the <code>storeAllLlamaFunctions</code> code in one sentence:</p>
+<p>The <code>storeAllLlamaFunctions</code> code stores information about all Llama functions in a notebook by checking for code changes, updating cached information, and retrieving new information from Llama as needed.</p>
+<p>Alternatively, here's a two-sentence summary:</p>
+<p>The <code>storeAllLlamaFunctions</code> code iterates through each notebook cell, checks for code changes, and updates its cached information accordingly. If cached information is incomplete or invalid, it retrieves new information from Llama to store.</p>
+<a href="./create_llm_session.html">create llm session</a>
+
+<p>Here's a two-sentence summary:</p>
+<p>This code initializes and manages a LLaMA (Large Language Model Application) chat session by importing necessary modules, setting environment variables, and defining functions to create and manage the session. It includes functions such as <code>initSession</code> and <code>createSession</code> to create and manage LLaMA chat sessions, and leverages asynchronous programming with async/await syntax.</p>

@@ -1,0 +1,69 @@
+<p>Here is a summary of the code breakdown in two sentences:</p>
+<p>The <code>generateAntlr</code> function is an asynchronous function that performs a series of tasks including globbing grammar files, compiling and transpiling them using different commands and tools, and handling potential errors. The function is exported as a module, allowing it to be imported and used in other parts of the application.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var execCmd = importer.import('spawn child process')
+var {chext} = importer.import('changing file name')
+
+async function generateAntlr() {
+    var files = glob('**/*.g4', path.join(__dirname, '../Resources/Parsers/'))
+
+    /*
+    for(var i = 0; i < files.length; i++) {
+        try {
+            await execCmd(`npx antlr4ts -visitor "${files[i]}"`)
+        } catch (e) {
+        }
+        
+        if(fs.existsSync(chext(files[i], '') + 'Parser.js')
+           || fs.existsSync(chext(files[i], '.js'))) {
+            continue
+        }
+        try {
+            await execCmd(`java -Xmx500M -cp "/Users/briancullinan/Downloads/antlr-4.8-complete.jar:$CLASSPATH" org.antlr.v4.Tool -Dlanguage=JavaScript -visitor "${path.dirname(files[i])}"/*.g4`)
+        } catch (e) {
+        }
+    }
+    */
+    
+    var typescripts = glob('**/*.ts', path.join(__dirname, '../Resources/Parsers/'))
+        .map(f => path.dirname(f))
+        .filter((f, i, arr) => arr.indexOf(f) === i)
+    
+    for(var i = 0; i < typescripts.length; i++) {
+        try {
+            await execCmd(`npx babel --extensions .ts,.tsx "${typescripts[i]}" --out-dir "${typescripts[i]}"`)
+        } catch (e) {
+        }
+    }
+    
+}
+
+module.exports = generateAntlr
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Requirements and Dependencies</h3>
+<p>The code requires the following dependencies:</p>
+<ul>
+<li><code>path</code>: for working with file paths</li>
+<li><code>importer</code>: a custom module that imports other modules</li>
+<li><code>glob</code>: a module for globbing files</li>
+<li><code>execCmd</code>: a custom module for executing shell commands</li>
+<li><code>chext</code>: a function for changing file extensions</li>
+</ul>
+<h3><code>generateAntlr</code> Function</h3>
+<p>The <code>generateAntlr</code> function is an asynchronous function that performs the following tasks:</p>
+<ol>
+<li><strong>Globbing Grammar Files</strong>: It uses the <code>glob</code> module to find all files with a <code>.g4</code> extension in the <code>../Resources/Parsers/</code> directory.</li>
+<li><strong>Compiling Grammar Files</strong>: It attempts to compile the grammar files using the <code>npx antlr4ts</code> command. If the compilation fails, it ignores the error.</li>
+<li><strong>Checking for Existing Parser Files</strong>: It checks if a parser file (<code>*.js</code>) exists for each compiled grammar file. If a parser file exists, it skips the file.</li>
+<li><strong>Compiling Grammar Files using Java</strong>: It attempts to compile the grammar files using the <code>java</code> command. If the compilation fails, it ignores the error.</li>
+<li><strong>Transpiling TypeScript Files</strong>: It uses the <code>glob</code> module to find all files with a <code>.ts</code> extension in the <code>../Resources/Parsers/</code> directory.</li>
+<li><strong>Transpiling TypeScript Files using Babel</strong>: It transpiles the TypeScript files using the <code>npx babel</code> command.</li>
+</ol>
+<h3>Exports</h3>
+<p>The <code>generateAntlr</code> function is exported as a module using <code>module.exports</code>. This allows the function to be imported and used in other parts of the application.</p>

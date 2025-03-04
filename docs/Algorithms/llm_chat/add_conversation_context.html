@@ -1,0 +1,103 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>classifyPrompt</code> function takes a prompt and image as input, matches the prompt to a specific function, and executes that function with the provided arguments to generate a response. The function iterates over matching functions, imports and parameterizes each one, and returns the result with additional memories, except for the <code>doStableRequest</code> function which returns a combined object.</p>
+
+
+<pre><code>const { messageRecents } = importer.import('general chit chat')
+const {doStableRequest} = importer.import('stable diffusion request')
+//const messageOllamaVision = importer.import('describe an image')
+const {askLlamaMatchingFunction, API_DESCRIPTION} = importer.import('classify llm prompt')
+const getParameters = importer.import('function parameters')
+const {listMemories} = importer.import('llm load memories')
+
+async function classifyPrompt(promptModel, session, prompt, image, otr) {
+
+  let matchingFunctions = await askLlamaMatchingFunction(promptModel, prompt, image)
+
+  let importedFunction
+  let answer = ''
+  let context = {
+    promptModel, session, prompt, image, otr
+  }
+
+  // drop out early if the matching function is ourselves, this is how we return our function description for inquiries about capabilities.
+  if(matchingFunctions == classifyPrompt) {
+    return {
+      memories: await listMemories(session),
+      content: 'Given the following functions:\n' + API_DESCRIPTION
+    }
+  }
+
+  //let historyFiles = await relevantHistory(promptModel, session, prompt)
+
+  // TODO: convert to available parameters like Core/import.ipynb:run() style parameterization
+  for (let i = 0; i < matchingFunctions.length; i++) {
+    importedFunction = importer.import(matchingFunctions[i])
+    if (typeof importedFunction == 'object' && typeof Object.values(importedFunction)[0] == 'function') {
+      importedFunction = Object.values(importedFunction)[0]
+    }
+    // call parameterized
+    let params = getParameters(importedFunction.toString()).slice(1)
+    let inputs = []
+    for(let j = 0; j < params.length; j++)
+      inputs[j] = context[params[j]]
+    answer = await importedFunction.apply(null, inputs)
+    break
+  }
+
+  if(importedFunction == doStableRequest) {
+    return Object.assign(answer, {
+      memories: await listMemories(session),
+      content: await messageRecents(session, prompt)
+    })
+  } else if (importedFunction != messageRecents) {
+    if(typeof answer == 'object') {
+      return Object.assign({}, {
+        memories: await listMemories(session),
+        content: await messageRecents(session, prompt)
+      }, answer)
+    } else {
+      return {
+        memories: await listMemories(session),
+        content: (answer ? answer : '') + await messageRecents(session, prompt)
+      }
+    }
+  } else {
+    return {
+      memories: await listMemories(session),
+      content: answer ? answer : await messageRecents(session, prompt)
+    }
+  }
+
+}
+
+module.exports = classifyPrompt
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Import Statements</h3>
+<p>The code imports various functions and variables from different modules:</p>
+<ul>
+<li><code>messageRecents</code>, <code>listMemories</code>, and <code>API_DESCRIPTION</code> from <code>general chit chat</code>, <code>llm load memories</code>, and an unspecified module, respectively.</li>
+<li><code>doStableRequest</code> from <code>stable diffusion request</code>.</li>
+<li><code>askLlamaMatchingFunction</code> and <code>getParameters</code> from <code>classify llm prompt</code> and an unspecified module, respectively.</li>
+</ul>
+<h3><code>classifyPrompt</code> Function</h3>
+<p>The <code>classifyPrompt</code> function takes five arguments:</p>
+<ul>
+<li><code>promptModel</code></li>
+<li><code>session</code></li>
+<li><code>prompt</code></li>
+<li><code>image</code></li>
+<li><code>otr</code></li>
+</ul>
+<p>This function appears to match a given prompt to a specific function and execute that function with the provided arguments. Here's a step-by-step breakdown:</p>
+<ol>
+<li><strong>Match Function</strong>: It calls <code>askLlamaMatchingFunction</code> to find a matching function for the given prompt and image.</li>
+<li><strong>Return Function Description</strong>: If the matching function is <code>classifyPrompt</code> itself, it returns a description of the <code>classifyPrompt</code> function, including its capabilities and a list of memories.</li>
+<li><strong>Iterate Matching Functions</strong>: It iterates over the matching functions and attempts to import each one using <code>importer.import</code>.</li>
+<li><strong>Parameterize Function</strong>: For each imported function, it extracts its parameters using <code>getParameters</code> and sets their values from the <code>context</code> object.</li>
+<li><strong>Execute Function</strong>: It calls the imported function with the parameterized inputs and stores the result in <code>answer</code>.</li>
+<li><strong>Special Handling</strong>: If the executed function is <code>doStableRequest</code>, it returns a combined object with the function's result, memories, and recent messages. Otherwise, it returns the function's result with additional memories.</li>
+</ol>
+<p>Note that the code has a few TODO comments and appears to be in the process of being refactored.</p>

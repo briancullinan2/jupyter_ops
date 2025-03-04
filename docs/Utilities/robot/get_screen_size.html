@@ -1,0 +1,35 @@
+<p>The <code>getScreenSize</code> function is used to retrieve the current size of the screen, and it can be accessed from other JavaScript files by importing the module. The module is exported using <code>module.exports = getScreenSize</code>.</p>
+
+
+<pre><code>
+const robot = require("robotjs")
+
+function getScreenSize() {
+  return robot.getScreenSize()
+}
+
+module.exports = getScreenSize
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Module</h3>
+<pre><code class="language-javascript">const robot = require(&quot;robotjs&quot;)
+</code></pre>
+<ul>
+<li>The <code>require</code> function is used to import the <code>robotjs</code> module, which is a Node.js module for controlling the mouse and keyboard, as well as interacting with the screen.</li>
+</ul>
+<h3>getScreenSize Function</h3>
+<pre><code class="language-javascript">function getScreenSize() {
+  return robot.getScreenSize()
+}
+</code></pre>
+<ul>
+<li>The <code>getScreenSize</code> function returns the current size of the screen.</li>
+<li>It uses the <code>getScreenSize()</code> method of the <code>robot</code> module to retrieve the screen size.</li>
+</ul>
+<h3>Exporting Module</h3>
+<pre><code class="language-javascript">module.exports = getScreenSize
+</code></pre>
+<ul>
+<li>The <code>getScreenSize</code> function is exported as a module, making it available for use in other JavaScript files.</li>
+</ul>

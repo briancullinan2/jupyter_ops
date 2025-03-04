@@ -1,0 +1,35 @@
+
+
+<pre><code>docker build -t briancullinan/quake3e:build-tools --target build-tools .
+docker build -t briancullinan/quake3e:build-latest --no-cache --target build-latest .
+docker build -t briancullinan/quake3e:build-ded --target build-ded .
+docker build -t briancullinan/quake3e:build-js --target build-js .
+
+docker build -t briancullinan/quake3e:serve-tools --no-cache --target serve-tools .
+docker build -t briancullinan/quake3e:serve-content --target serve-content .
+docker build -t briancullinan/quake3e:serve-quake3e --target serve-quake3e .
+docker build -t briancullinan/quake3e:serve-both --target serve-both .
+docker build -t briancullinan/quake3e:repack --target repack .
+docker build -t briancullinan/quake3e:latest --target latest .
+
+docker run -ti -v /Applications/ioquake3/baseq3:/home/baseq3 --name baseq3 briancullinan/quake3e:repack
+docker commit baseq3
+docker tag baseq3 briancullinan/quake3e:baseq3
+
+docker build -t briancullinan/quake3e:full --target full .
+
+docker push briancullinan/quake3e:build-tools
+docker push briancullinan/quake3e:build-latest
+docker push briancullinan/quake3e:build-js
+docker push briancullinan/quake3e:build-content
+
+docker push briancullinan/quake3e:serve-tools
+docker push briancullinan/quake3e:serve-content
+docker push briancullinan/quake3e:serve-quake3e
+docker push briancullinan/quake3e:serve-both
+docker push briancullinan/quake3e:repack
+docker push briancullinan/quake3e:latest
+docker push briancullinan/quake3e:baseq3
+docker push briancullinan/quake3e:full
+</code></pre>
+

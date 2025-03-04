@@ -1,0 +1,6 @@
+
+
+<pre><code>
+ffmpeg -i http://192.168.4.22:8080/video -i http://192.168.4.22:8080/audio.wav -c:v libx264 -preset ultrafast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 50 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb
+</code></pre>
+

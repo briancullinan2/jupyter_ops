@@ -1,0 +1,109 @@
+<p>This code analyzes a user's Google Contacts to categorize them based on their membership in various contact groups, determining both contact frequency and group affiliations.</p>
+
+
+<pre><code>var google = require('googleapis');
+var people = google.people('v1');
+var importer = require('../Core');
+var getContacts = importer.import('list google contacts');
+var getOauthClient = importer.import('import google calendar api');
+
+var options = {
+    scopes: [
+        'https://www.googleapis.com/auth/contacts'
+    ]
+};
+
+function googlePromise(func) {
+    return new Promise((resolve, reject) => func((err, response) => {
+        if (err) reject(err);
+        try {
+        } catch (e) {
+            reject(e);
+        }
+        setTimeout(() => resolve(response), 100);
+    })).catch(e => console.log(e));
+};
+
+function mapMembership(memberships) {
+    return {
+        'frequency': ((memberships.filter(m => m.contactGroupMembership.contactGroupLabel === 'Weekly'
+                                        ||  m.contactGroupMembership.contactGroupLabel === 'Yearly'
+                                        ||  m.contactGroupMembership.contactGroupLabel === 'Monthly')[0] || {})
+            .contactGroupMembership || {}).contactGroupLabel,
+        'circles': memberships.filter(m => m.contactGroupMembership.contactGroupLabel === 'YouTube'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Coworkers'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Family'
+                                        || m.contactGroupMembership.contactGroupLabel === 'friends'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Recruiters'
+                                        || m.contactGroupMembership.contactGroupLabel === 'E-Level'
+                                        || m.contactGroupMembership.contactGroupLabel === 'A-Level'
+                                        || m.contactGroupMembership.contactGroupLabel === 'C-Level'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Inner Circle'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Outer Circle')
+            .map(c => c.contactGroupMembership.contactGroupLabel),
+        'preferred': memberships.filter(m => m.contactGroupMembership.contactGroupLabel === 'LinkedIn'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Facebook'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Email'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Mobile'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Skype'
+                                        || m.contactGroupMembership.contactGroupLabel === 'Slack')
+            .map(c => c.contactGroupMembership.contactGroupLabel)
+    }
+}
+
+function getSettings(name) {
+    var groups;
+    console.log('Searching for settings: ' + name);
+    return getOauthClient(options)
+        .then(() => googlePromise(
+            people.contactGroups.list.bind(people.contactGroups.list, {
+                auth: options.auth,
+                pageToken: options.pageToken
+            })).catch(e => console.log(e)))
+        .then(g => groups = g.contactGroups)
+        .then(() => {
+            const options = {};
+            if(name.indexOf('@') > -1) {
+                options.emailAddress = name.split(/\s/).join('.*');
+            } else {
+                options.displayName = name.split(/\s/).join('.*');
+            }
+            return getContacts(options);
+        })
+        .then(contacts => contacts.map(c => {
+            return Object.assign(c, {
+                memberships: c.memberships.map(m => Object.assign(m, {
+                    contactGroupMembership: Object.assign(m.contactGroupMembership, {
+                        contactGroupLabel: (groups.filter(g => (g.resourceName || '').indexOf(m.contactGroupMembership.contactGroupId) > -1)[0] || {}).name
+                    })
+                }))
+            });
+        }))
+        .then(contacts => mapMembership(contacts[0].memberships))
+        .catch(e => console.log(e))
+}
+module.exports = getSettings;
+</code></pre>
+
+<p>This code snippet retrieves a user's Google Contacts and analyzes their membership in various contact groups to categorize them.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for interacting with the Google People API and custom modules for listing contacts and handling OAuth authentication.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>Defines <code>options</code> for Google API authentication, specifying the required scope.</li>
+</ul></li>
+<li><p><strong><code>googlePromise</code> Function:</strong></p>
+<ul>
+<li>Wraps a function call to the Google API within a promise, handling potential errors and adding a short delay before resolving.</li>
+</ul></li>
+<li><p><strong><code>mapMembership</code> Function:</strong></p>
+<ul>
+<li>Takes an array of contact group memberships and extracts information about the user's frequency of contact (weekly, monthly, yearly) and categorizes them into predefined circles (e.g., YouTube, Coworkers, Family).</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as part of a system that analyzes user relationships based on their Google Contacts. It retrieves contact group memberships and categorizes contacts based on their frequency and group affiliations.</p>

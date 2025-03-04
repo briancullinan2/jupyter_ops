@@ -1,0 +1,52 @@
+<p>This code snippet automates the collection of all shader definitions from a Quake 3 mod directory, storing them in a JSON file for convenient access.</p>
+
+
+<pre><code>var fs = require('fs')
+var path = require('path')
+var importer = require('../Core')
+var {glob} = importer.import('glob files')
+var findShaders = importer.import('list shaders in quake 3 shader')
+
+async function findAllShaders(modDir) {
+    var allShaders = {}
+    var shaders = await glob('**/*.shader', modDir)
+    for(var i = 0; i < shaders.length; i++) {
+        console.log(shaders[i])
+        Object.assign(allShaders, findShaders(shaders[i]))
+    }
+    fs.writeFileSync(path.join(modDir, 'all_shaders.json'),
+                     JSON.stringify(allShaders, null, 2))
+    return Object.keys(allShaders)
+}
+
+module.exports = findAllShaders
+</code></pre>
+
+<p>This code snippet is designed to find and collect all shader definitions from a Quake 3 mod directory.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: For file system operations (reading and writing files).</li>
+<li><code>path</code>: For working with file paths.</li>
+<li><code>Core</code>: A custom module likely containing utility functions and imported modules.</li>
+<li><code>glob</code>: A module for finding files matching a pattern (used to locate shader files).</li>
+<li><code>findShaders</code>: A custom function (imported from <code>Core</code>) that extracts shader definitions from a single shader file.</li>
+</ul></li>
+<li><p><strong><code>findAllShaders</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>modDir</code> (directory path of the Quake 3 mod) as input.</li>
+<li>Initializes an empty object <code>allShaders</code> to store the collected shader definitions.</li>
+<li>Uses <code>glob</code> to find all files with the <code>.shader</code> extension within the <code>modDir</code>.</li>
+<li>Iterates through the found shader files:
+<ul>
+<li>Logs the file path to the console.</li>
+<li>Calls <code>findShaders</code> to extract shader definitions from the current file.</li>
+<li>Uses <code>Object.assign</code> to merge the extracted definitions into the <code>allShaders</code> object.</li>
+</ul></li>
+<li>Writes the <code>allShaders</code> object as a JSON file named <code>all_shaders.json</code> in the <code>modDir</code>.</li>
+<li>Returns an array of shader names (keys from the <code>allShaders</code> object).</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>findAllShaders</code> function is exported as a module, allowing it to be used in other parts of a larger application.</p></li>
+</ol>
+<p>In essence, this code snippet automates the process of collecting all shader definitions from a Quake 3 mod directory, organizing them into a JSON file for easier access and analysis.</p>

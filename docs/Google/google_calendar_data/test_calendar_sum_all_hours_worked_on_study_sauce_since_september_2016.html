@@ -1,0 +1,58 @@
+<p>This code retrieves Google Calendar events matching a specific query (&quot;study sauce&quot;) between two dates and then summarizes those events, sending the result to a client.</p>
+
+
+<pre><code>var importer = require('../Core');
+var { sumEvents, listEvents, ISODateString } = importer.import([
+    'import google calendar api',
+    'how to list events',
+    'sum a list of events',
+    'convert date to ISO'
+]);
+
+$$.async();
+listEvents({
+    timeMin: ISODateString(new Date('2016/09/22')),
+    timeMax: ISODateString(new Date('2017/09/22')),
+    q: 'study sauce'
+})
+    .then(r => $$.sendResult(sumEvents(r)))
+    .catch(e => $$.sendError(e));
+
+</code></pre>
+
+<p>This code snippet fetches and summarizes Google Calendar events matching a specific query within a date range.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports necessary functions from the <code>google calendar api</code> module, including:
+<ul>
+<li><code>listEvents</code>: To retrieve events from the calendar.</li>
+<li><code>sumEvents</code>: To calculate a summary of events (likely based on some criteria).</li>
+<li><code>ISODateString</code>: To format dates in ISO 8601 format.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Async Execution:</strong></p>
+<ul>
+<li><code>$$.async()</code> likely sets up asynchronous execution for the following code.</li>
+</ul></li>
+<li><p><strong>Event Retrieval:</strong></p>
+<ul>
+<li><code>listEvents</code> is called with parameters:
+<ul>
+<li><code>timeMin</code>: Start date (September 22, 2016).</li>
+<li><code>timeMax</code>: End date (September 22, 2017).</li>
+<li><code>q</code>: Search query (&quot;study sauce&quot;).</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Event Summary and Response:</strong></p>
+<ul>
+<li>The <code>then</code> block executes when <code>listEvents</code> successfully retrieves events:
+<ul>
+<li><code>sumEvents</code> is called with the retrieved events to calculate a summary.</li>
+<li><code>$$.sendResult</code> sends the summary as a response.</li>
+</ul></li>
+<li>The <code>catch</code> block handles any errors during the process and sends an error response using <code>$$.sendError</code>.</li>
+</ul></li>
+</ol>
+<p>In essence, this code queries Google Calendar for events related to &quot;study sauce&quot; within a specific date range, summarizes those events, and sends the result (or an error) as a response.</p>

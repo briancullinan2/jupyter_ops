@@ -1,0 +1,81 @@
+<p>This code uses unit tests to ensure that an AWS Lambda function correctly handles the process of uploading data from Zuora to Eloqua, including calling the necessary functions for data retrieval, mapping, and upload.  The tests use <code>sinon</code> to mock dependencies and <code>assert</code> to verify the function's behavior.</p>
+
+
+<pre><code>var assert = require('assert');
+var sinon = require('sinon');
+var importer = require('../Core');
+var bundle = importer.import('aws entry point');
+var eloquaUpload = importer.import('bulk upload eloqua');
+var zuoraExport = importer.import('zuora export month');
+var mapper = importer.import('zuora eloqua mapper');
+
+process.env.ZUORA_API_USER = 'devteam@fakepage.com';
+process.env.ZUORA_API_USER = 'pass';
+process.env.ZUORA_API_USER = 'http://localhost:18888';
+var sandbox = sinon.createSandbox();
+
+describe('bulk upload entry point', () => {
+    
+    afterEach(() => {
+        sandbox.restore();
+    })
+    
+    it('should call zuora month export', () => {
+        var callback = sinon.spy();
+        sandbox.stub(zuoraExport, 'getZuoraMonth').returns(Promise.resolve([]));
+        return bundle.handler({}, null, callback)
+            .then(() => {
+                assert(zuoraExport.getZuoraMonth.calledWithMatch(0));
+            });
+    });
+    
+    it('should call data mapper', () => {
+        var callback = sinon.spy();
+        sandbox.stub(zuoraExport, 'getZuoraMonth').returns(Promise.resolve([]));
+        sandbox.stub(mapper, 'mapDataToFields').returns([]);
+        return bundle.handler({}, null, callback)
+            .then(() => {
+                assert(mapper.mapDataToFields.calledWithMatch([]));
+            });
+    });
+    
+    it('should call bulk upload', () => {
+        var callback = sinon.spy();
+        sandbox.stub(zuoraExport, 'getZuoraMonth').returns(Promise.resolve([]));
+        sandbox.stub(mapper, 'mapDataToFields').returns([]);
+        sandbox.stub(eloquaUpload, 'bulkUploadEloqua').returns([]);
+        return bundle.handler({}, null, callback)
+            .then(() => {
+                assert(eloquaUpload.bulkUploadEloqua.calledWithMatch([]));
+            });
+    });
+})
+</code></pre>
+
+<p>This code defines unit tests for an AWS Lambda function that handles bulk data uploads from Zuora to Eloqua.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It imports necessary modules like <code>assert</code> for testing, <code>sinon</code> for mocking functions, and various components related to Zuora, Eloqua, and the Lambda function itself.</li>
+<li>It sets up environment variables for Zuora API credentials.</li>
+<li>It creates a <code>sandbox</code> using <code>sinon</code> to isolate and control the behavior of mocked functions.</li>
+</ul></li>
+<li><p><strong>Test Cases:</strong></p>
+<ul>
+<li>The code defines three test cases using <code>describe</code> and <code>it</code> blocks:
+<ul>
+<li><strong><code>should call zuora month export</code>:</strong> Verifies that the Lambda function calls the <code>getZuoraMonth</code> function from the <code>zuoraExport</code> module.</li>
+<li><strong><code>should call data mapper</code>:</strong> Checks if the function calls the <code>mapDataToFields</code> function from the <code>mapper</code> module after successfully retrieving data from Zuora.</li>
+<li><strong><code>should call bulk upload</code>:</strong> Confirms that the function calls the <code>bulkUploadEloqua</code> function from the <code>eloquaUpload</code> module after mapping the data.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Assertions:</strong></p>
+<ul>
+<li>Each test case uses <code>assert</code> to verify that the expected functions are called with the correct arguments.</li>
+</ul></li>
+<li><p><strong>Cleanup:</strong></p>
+<ul>
+<li>The <code>afterEach</code> block ensures that the <code>sandbox</code> is restored after each test case, preventing side effects from one test affecting another.</li>
+</ul></li>
+</ol>

@@ -1,0 +1,50 @@
+<p>This code identifies and lists all Tuesdays in the remaining months of 2017 that occur on or after the 26th of the month.  It does this by calculating the first Tuesday of each month and iterating through subsequent Tuesdays until the next month begins.</p>
+
+
+<pre><code>function getTuesdays(month, year) {
+    var d = new Date(year, month, 1),
+        tuesdays = [];
+
+    d.setDate(d.getDate() + (9 - d.getDay()) % 7)
+    while (d.getMonth() === month) {
+        tuesdays.push(new Date(d.getTime()));
+        d.setDate(d.getDate() + 7);
+    }
+
+    return tuesdays;
+}
+
+var month = (new Date()).getMonth();
+var results = [];
+for (var m = month; month <= 12; month++) {
+    results = results.concat(getTuesdays(month, 2017).filter((d) => d.getDate() > 25));
+}
+console.log(results.map(d => d.getDate() + '/' + (d.getMonth() + 1)).join('\r\n'))
+module.exports = getTuesdays;
+</code></pre>
+
+<p>This code finds all Tuesdays in the remaining months of 2017 that fall on or after the 26th.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>getTuesdays(month, year)</code> function:</strong></p>
+<ul>
+<li>Takes a month and year as input.</li>
+<li>Calculates the first Tuesday of that month.</li>
+<li>Iterates through Tuesdays in the given month until the next month begins.</li>
+<li>Returns an array of Date objects representing those Tuesdays.</li>
+</ul></li>
+<li><p><strong>Main Logic:</strong></p>
+<ul>
+<li>Gets the current month.</li>
+<li>Iterates through months from the current month to December 2017.</li>
+<li>For each month, calls <code>getTuesdays</code> to get all Tuesdays.</li>
+<li>Filters the Tuesdays to keep only those with a date greater than 25.</li>
+<li>Concatenates the filtered Tuesdays into a single array <code>results</code>.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>Formats the <code>results</code> array into a string with dates in the format &quot;DD/MM&quot; and prints it to the console.</li>
+<li>Exports the <code>getTuesdays</code> function for potential reuse.</li>
+</ul></li>
+</ol>
+<p>Let me know if you'd like a more detailed explanation of any specific part!</p>

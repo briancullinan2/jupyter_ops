@@ -1,0 +1,29 @@
+<p>This code updates a Jupyter project by pulling the latest changes from a remote repository, resetting the local branch, and reinstalling project dependencies.</p>
+
+
+<pre><code>!rm -R /content/jupytangular/node_modules || true
+!cd jupytangular && git reset --hard && git pull --rebase origin master
+!cd jupytangular && npm install
+</code></pre>
+
+<p>This code snippet is a series of shell commands designed to update and refresh a Jupyter project's dependencies.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>!rm -R /content/jupytangular/node_modules || true</code></strong>:</p>
+<ul>
+<li>This command removes the <code>node_modules</code> directory within the <code>/content/jupytangular</code> directory. The <code>-R</code> flag indicates recursive removal, deleting all subdirectories within <code>node_modules</code>.</li>
+<li>The <code>|| true</code> part ensures that the command doesn't exit with an error if the directory doesn't exist.</li>
+</ul></li>
+<li><p><strong><code>!cd jupytangular &amp;&amp; git reset --hard &amp;&amp; git pull --rebase origin master</code></strong>:</p>
+<ul>
+<li><code>!cd jupytangular</code>: Changes the current working directory to the <code>jupytangular</code> directory.</li>
+<li><code>git reset --hard</code>: Resets the local repository to the state of the <code>master</code> branch on the remote repository (<code>origin</code>). This effectively discards any uncommitted changes in the local repository.</li>
+<li><code>git pull --rebase</code>: Fetches changes from the remote repository and then rewrites the local commit history to incorporate those changes, creating a cleaner and linear history.</li>
+</ul></li>
+<li><p><strong><code>!cd jupytangular &amp;&amp; npm install</code></strong>:</p>
+<ul>
+<li><code>!cd jupytangular</code>: Changes the working directory back to the <code>jupytangular</code> directory.</li>
+<li><code>npm install</code>: Installs all the project dependencies listed in the <code>package.json</code> file.</li>
+</ul></li>
+</ol>
+<p>In summary, this code snippet essentially updates the project to the latest state from the remote repository, removes the old dependencies, and then installs fresh copies of all required packages.</p>

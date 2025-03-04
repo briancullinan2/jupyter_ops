@@ -1,0 +1,126 @@
+
+
+<pre><code>var importer = require('../Core');
+var fs = require('fs');
+var path = require('path');
+var glob = require('glob');
+var {
+    placesNearby,
+    placeDetails,
+    runSeleniumCell,
+    levDist,
+    levSort
+} = importer.import([
+    'use places nearby',
+    'place details google maps',
+    'run selenium cell',
+    'find levenshtien distance',
+    'sort levenshtien'
+]);
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Collections/flagstaff-happy';
+
+function loadLocations() {
+    const day = new Date();
+    const date = day.getFullYear() + '-' + (day.getMonth() + 1) + '-' + day.getDate();
+    const filename = path.join(project, 'locations-' + date + '.json');
+    if(fs.existsSync(filename)) {
+        const locations = JSON.parse(fs.readFileSync(locations).toString());
+        return Promise.resolve(locations);
+    }
+    return runSeleniumCell('google maps data list', false)
+        .then(func => func());
+}
+
+function getAllLocationsData() {
+    const day = new Date();
+    const date = day.getFullYear() + '-' + (day.getMonth() + 1) + '-' + day.getDate();
+    const filename = path.join(project, 'locations-' + date + '-full.json');
+    if(fs.existsSync(filename)) {
+        return Promise.resolve(JSON.parse(fs.readFileSync(filename).toString()));
+    }
+    var locations;    
+    return loadLocations()
+        .then(r => locations = r)
+        .then(() => importer.runAllPromises(locations.map(l => resolve => {
+            var result;
+            placesNearby(l.name + ' near ' + l.description.pop() + ', Flagstaff')
+                .then(r => {
+                    result = r[0];
+                    return placeDetails(result.place_id);
+                })
+                .then(r => resolve(Object.assign(l, result, r)))
+        })))
+        .then(r => {
+            fs.writeFileSync(filename, JSON.stringify(r, null, 4));
+            return r;
+        })
+}
+
+if(typeof $$ !== 'undefined') {
+    $$.async();
+    getAllLocationsData()
+        .then(r => {
+            const hasSites = r.filter(l => l.website);
+            console.log('websites: ' + hasSites.length + '/' + r.length + ' - ' + Math.round(1.0 * hasSites.length / r.length * 100) + '%')
+            //console.log(r.filter(l => l.opening_hours).map(l => l));
+            const existing = glob.sync('**/!(locations)*', {cwd: project});
+            const existingMatch = existing
+                .map(l => l.split(/-|\.json/ig).join(' ').trim())
+                .map(l => {
+                    const levMatch = levSort(r, l, r => r.name)[0].name;
+                    if(levDist(l, levMatch) < l.length / 2) {
+                        return l + ' - ' + levMatch;
+                    }
+                    return l + ' - no match';
+                })
+                .filter(l => !l.includes('no match'))
+            console.log('existing: ' + existingMatch.length + '/' + existing.length + ' - ' + Math.round(1.0 * existingMatch.length / existing.length * 100) + '%')
+            console.log('variance: ');
+            const variations = existing.map(l => path.join(project, l))
+                .reduce((acc, l) => {
+                    const loaded = JSON.parse(fs.readFileSync(l));
+                    if(typeof acc.dotw === 'undefined') {
+                        acc.dotw = {};
+                    }
+                    loaded.forEach(d => {
+                        if(d.dotw.match(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/ig)) {
+                            if(typeof acc['dotw']['matches'] === 'undefined') {
+                                acc['dotw']['matches'] = 0;
+                            }
+                            acc['dotw']['matches']++;
+                        } else {
+                            if(typeof acc['dotw']['unmatched'] === 'undefined') {
+                                acc['dotw']['unmatched'] = [];
+                            }
+                            acc['dotw']['unmatched'].push(l + d.dotw);
+                        }
+                    });
+                    if(typeof acc.time === 'undefined') {
+                        acc.time = {};
+                    }
+                    loaded.forEach(d => {
+                        console.log(l + ' - ' + d.time)
+                        if(d.time.match(/^([0-9]+(p|a)\.m\.\s+-\s+([0-9]+(p|a)|close)|all day)\s*$/ig)) {
+                            if(typeof acc['time']['matches'] === 'undefined') {
+                                acc['time']['matches'] = 0;
+                            }
+                            acc['time']['matches']++;
+                        } else {
+                            if(typeof acc['time']['unmatched'] === 'undefined') {
+                                acc['time']['unmatched'] = [];
+                            }
+                            acc['time']['unmatched'].push(l + d.dotw);
+                        }
+                    });
+                    return acc;
+                }, {});
+            console.log(variations)
+            return r;
+        })
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+

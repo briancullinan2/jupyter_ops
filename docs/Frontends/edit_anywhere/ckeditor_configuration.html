@@ -1,0 +1,240 @@
+<p>This code implements real-time saving for editable content on a webpage using CKEditor 5 and a custom server-side endpoint to handle the saving process.</p>
+
+
+<pre><code>function saveEdits(data) {
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest()
+        xhr.setHeader('X-Referrer', window.location)
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr)
+            } else {
+                reject(new Error('The request failed!'))
+            }
+        }
+        xhr.open('GET', window.location.href.replace('gitEditorHandler', 'gitSaveHandler')
+                 + '?referrer=' + window.location.href
+                 // TODO: use referer in receiving function for this
+                 + '&gist=' + window.location.search.match(/[\?&]gist=([^&]*)/ig)[1]
+                 + '&url=' + window.location.search.match(/[\?&]url=([^&]*)/ig)[1]
+                 )
+        xhr.send(data)
+    })
+}
+
+var script = document.createElement('script')
+script.onload = function () {
+    var editors = document.querySelectorAll( '*[contenteditable]' )
+    editors.forEach(e => {
+        InlineEditor.create( e, {
+            plugins: [
+                Autosave,
+            ],
+            autosave: {
+                save( editor ) {
+                    return saveEdits( editor.getData() );
+                }
+            }
+        })
+        .catch( error => console.error( error ) )
+        
+    })
+}
+script.setAttribute('src', 'https://cdn.ckeditor.com/ckeditor5/16.0.0/inline/ckeditor.js')
+document.body.appendChild(script)
+
+function startGolden() {
+    var config = {
+        settings: {
+            //showPopoutIcon: false,
+            //showPopoutIcon: true,
+            //showMaximiseIcon: true,
+            //showCloseIcon: true
+        },
+        dimensions: {
+            borderWidth: 10,
+            headerHeight: 40,
+        },
+        content: [{
+            type: 'row',
+            content:[{
+                type: 'component',
+                componentName: 'Preview Page',
+                componentState: { label: 'A' }
+            },{
+                type: 'column',
+                content:[{
+                    type: 'component',
+                    componentName: 'Project Files',
+                    componentState: { label: 'B' }
+                },{
+                    type: 'component',
+                    componentName: 'Code View',
+                    componentState: { label: 'C' }
+                }]
+            }]
+        }]
+    }
+
+    var myLayout = new GoldenLayout( config )
+    
+    myLayout.on('tabCreated', function (tab) {
+        var i = document.createElement('i')
+        i.className = 'fas fa-window-close'
+        tab.closeElement[0].appendChild(i)
+        //if(tab.header.controlsContainer[0].getElementsByClassName('fa-window-close').length === 0) {
+        //}
+    })
+    
+    myLayout.on('itemDestroyed', function () {
+    })
+    
+    myLayout.on('stackCreated', function (container) {
+        var controls = container.header.controlsContainer[0]
+        while (controls.firstChild) {
+            controls.removeChild(controls.lastChild);
+        }
+        var li = document.createElement('li')
+        li.className = 'lm_maximise'
+        li.title = 'maximize'
+        i = document.createElement('i')
+        i.className = 'fas fa-window-maximize'
+        li.appendChild(i)
+        i = document.createElement('i')
+        i.className = 'fas fa-window-minimize'
+        li.appendChild(i)
+        li.addEventListener('click', function (event) {
+            container.toggleMaximise(event)
+        }, { passive: true })
+        controls.appendChild(li)
+        li = document.createElement('li')
+        li.className = 'lm_close'
+        li.title = 'close'
+        var i = document.createElement('i')
+        i.className = 'fas fa-window-close'
+        li.appendChild(i)
+        li.addEventListener('click', function (event) {
+            container.header.activeContentItem.close()
+        }, { passive: true })
+        controls.appendChild(li)
+   })
+    
+    myLayout.registerComponent( 'Preview Page', function( container, componentState ) {
+        var initial = document.getElementsByClassName('initial-page')
+        container.getElement()[0].appendChild(initial[0])
+        container.getElement()[0].style.minHeight = window.innerHeight + 'px'
+        // TODO; add PDF and Screenshot rendering to tab control
+        /*
+        container.on( 'tab', function( tab ){
+            tab.element.append( counter );
+        });
+        */
+         
+        container.on( 'tab', function( tab ) {
+            i = document.createElement('i')
+            i.className = 'fas fa-binoculars'
+            tab.element[0].appendChild(i)
+            i = document.createElement('i')
+            i.className = 'fas fa-search'
+            tab.element[0].appendChild(i)
+            i = document.createElement('i')
+            i.className = 'fas fa-print'
+            tab.element[0].appendChild(i)
+        })
+
+       
+    })
+    myLayout.registerComponent( 'Project Files', function( container, componentState ) {
+        var initial = document.getElementsByClassName('initial-files')
+        container.getElement()[0].appendChild(initial[0])
+        // TODO: add Glide and multilist and icon views to tab controls
+        container.on( 'tab', function( tab ) {
+            i = document.createElement('i')
+            i.className = 'fas fa-exchange-alt'
+            tab.element[0].appendChild(i)
+            i = document.createElement('i')
+            i.className = 'fas fa-columns'
+            tab.element[0].appendChild(i)
+            i = document.createElement('i')
+            i.className = 'fas fa-stream'
+            tab.element[0].appendChild(i)
+        })
+    })
+    // TODO: add code editor
+    myLayout.registerComponent( 'Code View', function( container, componentState ) {
+        var initial = document.getElementsByClassName('initial-code')
+        container.getElement()[0].appendChild(initial[0])
+        
+        container.on( 'tab', function( tab ) {
+            i = document.createElement('i')
+            i.className = 'fas fa-play'
+            tab.element[0].appendChild(i)
+            i = document.createElement('i')
+            i.className = 'fas fa-stop'
+            tab.element[0].appendChild(i)
+            i = document.createElement('i')
+            i.className = 'fas fa-backspace'
+            tab.element[0].appendChild(i)
+        })
+
+        container.on('open', function () {
+            var editor = ace.edit(document.getElementsByClassName('initial-code')[0], {
+                useWorker: false
+            })
+            editor.setTheme("ace/theme/monokai")
+            editor.session.setMode("ace/mode/javascript")
+            componentState.editor = editor
+        })
+        
+        container.on('resize', function () {
+            if(componentState.editor)
+                componentState.editor.resize()
+        })
+    })
+    
+    myLayout.init()
+}
+
+function loadScript(src) {
+    return new Promise(resolve => {
+        var script = document.createElement('script')
+        script.onload = function () {
+            resolve()
+        }
+        script.setAttribute('src', src)
+        document.body.appendChild(script)
+    })
+}
+
+loadScript('https://code.jquery.com/jquery-3.5.1.min.js') //'https://code.jquery.com/jquery-3.5.1.slim.min.js')
+    .then(loadScript.bind(null, 'https://golden-layout.com/files/latest/js/goldenlayout.min.js'))
+    .then(loadScript.bind(null, 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js'))
+    .then(loadScript.bind(null, 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-javascript.min.js'))
+    .then(loadScript.bind(null, 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.min.js'))
+    .then(startGolden)
+</code></pre>
+
+<p>This code sets up a system for real-time saving of edits made to content within a web page.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>saveEdits</code> Function:</strong></p>
+<ul>
+<li>This function handles sending the edited content to a server for saving.</li>
+<li>It uses <code>XMLHttpRequest</code> to make a GET request to a specific URL constructed from the current page's URL.</li>
+<li>It includes parameters like <code>referrer</code>, <code>gist</code>, and <code>url</code> to identify the source and context of the edits.</li>
+<li>It resolves the Promise with the successful response or rejects it with an error if the request fails.</li>
+</ul></li>
+<li><p><strong>Inline Editor Setup:</strong></p>
+<ul>
+<li>The code dynamically creates a script tag to include the CKEditor 5 Inline Editor library.</li>
+<li>Once loaded, it iterates through all elements with the <code>contenteditable</code> attribute (indicating editable content).</li>
+<li>For each editable element, it initializes an Inline Editor instance with the <code>Autosave</code> plugin.</li>
+<li>The <code>autosave</code> configuration specifies that the <code>saveEdits</code> function should be called whenever the editor's content changes.</li>
+</ul></li>
+<li><p><strong>Golden Configuration:</strong></p>
+<ul>
+<li>The code snippet also includes the beginning of a configuration for a component called &quot;Golden,&quot; which appears to be a separate UI element or framework.</li>
+</ul></li>
+</ol>
+<p><strong>Overall Purpose:</strong></p>
+<p>This code sets up a system for real-time saving of edits made to editable content on a web page using CKEditor 5 and a custom server-side endpoint.</p>

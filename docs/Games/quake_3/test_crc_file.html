@@ -1,0 +1,54 @@
+<p>This code calculates the CRC checksum of a specific Quake 3 game archive file and can be used to verify its integrity by comparing the result to known checksum values.  It imports a checksum function, defines a test function, and exports the function for use in other parts of the application.</p>
+
+
+<pre><code>var importer = require('../Core')
+var checksumZip = importer.import('crc checksum file')
+
+var TEST_PK3 = '/Applications/ioquake3/baseq3/pak8a.pk3'
+
+async function testCrcFile() {
+    return await checksumZip(TEST_PK3)
+}
+
+/*
+1566731103,
+298122907,
+412165236,
+2991495316,
+1197932710,
+4087071573,
+3709064859,
+908855077,
+977125798
+*/
+
+module.exports = testCrcFile
+</code></pre>
+
+<p>This code snippet defines an asynchronous function <code>testCrcFile</code> that calculates the CRC checksum of a Quake 3 game archive file (<code>pak8a.pk3</code>).</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports a <code>checksumZip</code> function from a module named <code>crc checksum file</code> using the <code>importer</code> object.</li>
+</ul></li>
+<li><p><strong>Test File:</strong></p>
+<ul>
+<li>It defines a constant <code>TEST_PK3</code> pointing to the path of the Quake 3 archive file to be checked.</li>
+</ul></li>
+<li><p><strong>Checksum Function:</strong></p>
+<ul>
+<li>It defines an asynchronous function <code>testCrcFile</code> that calls the imported <code>checksumZip</code> function with the <code>TEST_PK3</code> file path.</li>
+<li>It returns the result of the checksum calculation.</li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>The code includes a commented-out section that appears to be a list of expected CRC checksum values for the <code>pak8a.pk3</code> file.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>testCrcFile</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet provides a simple utility for verifying the integrity of a Quake 3 game archive file by comparing its calculated CRC checksum to a known set of values.</p>

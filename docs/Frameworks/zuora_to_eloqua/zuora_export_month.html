@@ -1,0 +1,58 @@
+<p>This code provides a function to fetch renewal data from Zuora for a given time period and returns it in a usable JSON format.  It leverages modules for querying Zuora, exporting data, and converting CSV to JSON.</p>
+
+
+<pre><code>var importer = require('../Core');
+var renewalsQuery = importer.import('zuora renewals query');
+var zuoraExport = importer.import('zuora to eloqua.ipynb[0]');
+
+function getZuoraMonth(months, zuoraConfig) {
+    if(!months) {
+        months = 0;
+    }
+    var start = new Date();
+    start.setMonth(start.getMonth() - months);
+    start.setDate(1);
+    start.setHours(0, 0, 0);
+    var end = new Date();
+    end.setMonth(end.getMonth() + months + 1);
+    end.setDate(1);
+    end.setHours(0, 0, 0);
+    if(start.getMonth() > end.getMonth()) {
+        end.getFullYear(end.getFullYear() + 1)
+    }
+    
+    return zuoraExport.createBulkExportJob(renewalsQuery.getQuery(start.toString(), end.toString()), zuoraConfig)
+        .then(exportId => zuoraExport.getBulkExportJobStatus(exportId, zuoraConfig))
+        .then(fileId => zuoraExport.getBulkExportFile(fileId, zuoraConfig))
+        .then(r => zuoraExport.csvToJson(r))
+}
+module.exports = {
+    getZuoraMonth
+};
+</code></pre>
+
+<p>This code defines a function <code>getZuoraMonth</code> that retrieves renewal data from Zuora for a specified period and converts it into a JSON format.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It imports modules for querying Zuora renewals, exporting data from Zuora, and handling the conversion of CSV data to JSON.</li>
+</ul></li>
+<li><p><strong><code>getZuoraMonth</code> Function:</strong></p>
+<ul>
+<li>It takes two arguments: <code>months</code> (number of months to retrieve data for) and <code>zuoraConfig</code> (configuration object for interacting with Zuora).</li>
+<li>It calculates the start and end dates for the specified period.</li>
+<li>It uses the <code>renewalsQuery</code> module to generate a query for retrieving renewal data within the calculated date range.</li>
+<li>It uses the <code>zuoraExport</code> module to:
+<ul>
+<li>Create a bulk export job in Zuora.</li>
+<li>Get the status of the export job.</li>
+<li>Retrieve the exported file.</li>
+<li>Convert the CSV data from the exported file into JSON format.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>getZuoraMonth</code> function is exported as the main module, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>

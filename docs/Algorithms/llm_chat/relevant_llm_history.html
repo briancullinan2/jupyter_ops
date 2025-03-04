@@ -1,0 +1,74 @@
+<p>The <code>relevantHistory</code> function retrieves relevant conversation history files based on a given prompt, returning an array of file names. This function requires <code>importer.import('general chit chat')</code> to be called prior to usage and uses synchronous file system operations, logging input and output to the console.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+
+
+async function relevantHistory(promptModel, session, prompt) {
+
+  if(!session) {
+    return ''
+  }
+
+  // TODO: extract time frame to, from prompt
+  let history = fs.readdirSync(PROJECT_PATH)
+  let historyFiles = []
+  for(let i = 0; i < history.length; i++) {
+    if(history[i].match('-' + DEFAULT_MODEL + '-' + session + '.json')) {
+      historyFiles.push(path.basename(history[i]))
+    }
+  }
+
+  let now = new Date()
+  let q1 = 'Current date: ' + now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0')
+    + '\nGiven the following chat history:\n'
+    + historyFiles.map(f => f.substring(0, 7)).join('\n')
+    + '\nGiven the following prompt:\n'
+    + prompt + '\nReturn a short range of Year-Month for related dates.'
+  console.log('User: ' + q1)
+  let a1 = await promptModel(q1)
+  console.log('AI: ' + a1)
+
+  // TODO: create a range of month out of the response
+  let relevantFiles = []
+  for(let i = 0; i < historyFiles.length; i++) {
+    if(a1.match(historyFiles[i])) {
+      let convoFile = path.join(PROJECT_PATH, historyFiles[i])
+      if(fs.existsSync(convoFile)) {
+        ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(fs.readFileSync(convoFile))
+      } else {
+        ACTIVE_CONVERSATIONS[convoFile] = {}
+      }
+      relevantFiles.push(historyFiles[i])
+    }
+  }
+
+  return relevantFiles
+}
+
+module.exports = relevantHistory
+
+</code></pre>
+
+<h3>Function: <code>relevantHistory</code></h3>
+<h4>Description</h4>
+<p>Retrieves relevant conversation history files based on a given prompt.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>promptModel</code>: a function to interact with the model</li>
+<li><code>session</code>: the session ID (required for file naming)</li>
+<li><code>prompt</code>: the input prompt to determine relevant history</li>
+</ul>
+<h4>Returns</h4>
+<p>An array of file names representing the relevant conversation history files.</p>
+<h4>Notes</h4>
+<ul>
+<li>Requires <code>importer.import('general chit chat')</code> to be called prior to usage, exporting <code>ACTIVE_CONVERSATIONS</code>, <code>PROJECT_PATH</code>, and <code>DEFAULT_MODEL</code>.</li>
+<li>Uses <code>fs.readdirSync(PROJECT_PATH)</code> and <code>fs.readFileSync</code> which are synchronous file system operations and may not be suitable for large-scale applications.</li>
+<li>Uses <code>JSON.parse(fs.readFileSync(convoFile))</code> to load conversation history, which assumes a valid JSON file.</li>
+<li>The function logs input and output to the console.</li>
+<li>The function returns an array of file names, but does not return the actual conversation history files.</li>
+<li>The function has TODO comments indicating that extracting a time frame from the prompt and creating a range of months from the response are intended to be implemented.</li>
+</ul>

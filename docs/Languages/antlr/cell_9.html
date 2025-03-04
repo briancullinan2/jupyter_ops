@@ -1,0 +1,76 @@
+
+
+<pre><code>var importer = require('../Core')
+var {selectAst} = importer.import('select code tree')
+var {htmlToTree} = importer.import('html to tree')
+
+
+var root = selectAst('//Program', `
+const val = ''
+`)
+console.log(htmlToTree(root).body[0])
+
+/*
+
+expects
+{
+  type: 'FunctionDeclaration',
+  id: { type: 'Identifier', name: 'myfunc', range: [ 10, 16 ] },
+  params: [
+    { type: 'Identifier', name: 'ptr', range: [Array] },
+    { type: 'Identifier', name: 'val', range: [Array] }
+  ],
+  body: { type: 'BlockStatement', body: [], range: [ 27, 31 ] },
+  generator: false,
+  expression: false,
+  async: false,
+  range: [ 1, 31 ]
+}
+{
+  type: 'Program',
+  body: [
+    {
+      type: 'VariableDeclaration',
+      declarations: [Array],
+      kind: 'var',
+      range: [Array]
+    },
+    {
+      type: 'VariableDeclaration',
+      declarations: [Array],
+      kind: 'var',
+      range: [Array]
+    },
+  ],
+  sourcetype: 'script',
+  range: [ 0, 2317 ],
+  comments: [
+    {
+      type: 'Line',
+      value: ' TODO: get parser by language lookup',
+      range: [Array]
+    },
+  ],
+  tokens: [
+    { type: 'Keyword', value: 'var', range: [Array] },
+    { type: 'Identifier', value: 'fs', range: [Array] },
+    { type: 'Punctuator', value: '=', range: [Array] },
+  ]
+}
+{
+  type: 'VariableDeclaration',
+  declarations: [
+    {
+      type: 'VariableDeclarator',
+      id: [Object],
+      init: [Object],
+      range: [Array]
+    }
+  ],
+  kind: 'const',
+  range: [ 1, 15 ]
+}
+*/
+
+</code></pre>
+

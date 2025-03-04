@@ -1,0 +1,78 @@
+<p>This code defines a Socket.IO server-side handler that receives search requests, performs searches across multiple sources, and sends the combined results back to the client.</p>
+
+
+<pre><code>var client = require('socket.io-client')('https://localhost:8000', {
+    secure: true,
+    rejectUnauthorized: false
+});
+var importer = require('../Core');
+var {
+    fuseSearch,
+    interpretObject,
+} = importer.import('interpret all notebooks.ipynb')
+var searchNotebooks = importer.import('search notebooks using gulp');
+
+var fuseSearch, interpretObject;
+function searchAll(queries, root = '') {
+    return (typeof queries === 'string'
+            ? fuseSearch(queries)
+            : Promise.all(queries.map(fuseSearch)))
+        .then(r => interpretObject(r))
+};
+
+function searchHandler() {
+    return new Promise(resolve => {
+        console.log('Search handler');
+        client.on('resolve', (name, search) => {
+            console.log('searching...');
+            if (name === 'SearchService.prototype.search') {
+                client.emit('result', 'SearchService.prototype.search',
+                    'Searching notebooks for ' + search);
+                // TODO: include gulp notebook search, .bash_sessions,
+                //    selenium scripts, stack overflow, github, 
+                Promise.all([
+                    searchAll(search),
+                    searchNotebooks(search)
+                ])
+                    .then(r => client.emit('result', 'SearchService.prototype.results', [].concat(...r)))
+                    .catch(e => console.log(e))
+            }
+        });
+        client.emit('handle', 'SearchService', () => resolve());
+        client.on('error', e => console.log(e))
+    })
+};
+module.exports = searchHandler;
+
+</code></pre>
+
+<p>This code sets up a Socket.IO server-side handler for search requests.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>Establishes a connection to a Socket.IO server running at <code>https://localhost:8000</code>.</li>
+<li>Imports necessary modules, including <code>fuseSearch</code> and <code>interpretObject</code> for searching and interpreting search results, and <code>searchNotebooks</code> for searching notebooks.</li>
+</ul></li>
+<li><p><strong><code>searchAll()</code> Function:</strong></p>
+<ul>
+<li>Takes an array of search queries or a single query string.</li>
+<li>Uses <code>fuseSearch</code> to search for matches.</li>
+<li>Interprets the search results using <code>interpretObject</code>.</li>
+</ul></li>
+<li><p><strong><code>searchHandler()</code> Function:</strong></p>
+<ul>
+<li>Listens for a 'resolve' event from the client, indicating a search request.</li>
+<li>When a 'SearchService.prototype.search' event is received:
+<ul>
+<li>Emits a 'result' event to the client, acknowledging the search request.</li>
+<li>Calls <code>searchAll()</code> and <code>searchNotebooks()</code> concurrently to search various sources.</li>
+<li>Combines the results and emits a 'SearchService.prototype.results' event to the client.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>searchHandler</code> function, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

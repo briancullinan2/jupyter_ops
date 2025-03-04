@@ -1,0 +1,116 @@
+<p>Here is a summary of the code in one or two sentences:</p>
+<p>This JavaScript module provides four Discord-related functions: <code>createThread</code>, <code>archivedThreads</code>, <code>activeThreads</code>, and <code>addThreadMember</code>, which can be used to interact with threads in a Discord channel. The functions are exported as a single object and can be imported and used in other modules.</p>
+
+
+<pre><code>var {DEFAULT_CHANNEL} = importer.import('discord configuration')
+const {requestAuthQ} = importer.import('discord request')
+
+async function createThread(name, channelId = DEFAULT_CHANNEL) {
+  var json = {
+    'name': name,
+    'type': 11,
+    'auto_archive_duration': 60
+  }
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    url: `channels/${channelId}/threads`,
+    data: JSON.stringify(json)
+  })
+}
+
+async function archivedThreads(channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/threads/archived/public`
+  })
+}
+
+async function activeThreads(channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/threads/active`
+  })
+}
+
+async function addThreadMember(memberId, channelId) {
+  return await requestAuthQ({
+    method: 'PUT',
+    url: `/channels/${channelId}/thread-members/${memberId}`
+  })
+}
+
+module.exports = {
+  createThread,
+  archivedThreads,
+  activeThreads,
+  addThreadMember,
+}
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Importing Dependencies</h3>
+<pre><code class="language-javascript">var {DEFAULT_CHANNEL} = importer.import('discord configuration')
+const {requestAuthQ} = importer.import('discord request')
+</code></pre>
+<ul>
+<li>The code imports two values from external modules: <code>DEFAULT_CHANNEL</code> and <code>requestAuthQ</code>.</li>
+<li><code>DEFAULT_CHANNEL</code> is assumed to be a string representing a default channel ID.</li>
+<li><code>requestAuthQ</code> is a function that makes authenticated HTTP requests.</li>
+</ul>
+<h3>Function: createThread</h3>
+<pre><code class="language-javascript">async function createThread(name, channelId = DEFAULT_CHANNEL) {
+  //...
+}
+</code></pre>
+<ul>
+<li>The <code>createThread</code> function creates a new thread in a specified Discord channel.</li>
+<li>It takes two parameters: <code>name</code> (the name of the thread) and <code>channelId</code> (the ID of the channel where the thread will be created).</li>
+<li>If <code>channelId</code> is not provided, it defaults to the <code>DEFAULT_CHANNEL</code>.</li>
+<li>The function returns a promise that resolves with the response from the Discord API.</li>
+</ul>
+<h3>Function: archivedThreads</h3>
+<pre><code class="language-javascript">async function archivedThreads(channelId = DEFAULT_CHANNEL) {
+  //...
+}
+</code></pre>
+<ul>
+<li>The <code>archivedThreads</code> function retrieves a list of archived threads in a specified Discord channel.</li>
+<li>It takes one parameter: <code>channelId</code> (the ID of the channel to retrieve archived threads from).</li>
+<li>If <code>channelId</code> is not provided, it defaults to the <code>DEFAULT_CHANNEL</code>.</li>
+<li>The function returns a promise that resolves with the response from the Discord API.</li>
+</ul>
+<h3>Function: activeThreads</h3>
+<pre><code class="language-javascript">async function activeThreads(channelId = DEFAULT_CHANNEL) {
+  //...
+}
+</code></pre>
+<ul>
+<li>The <code>activeThreads</code> function retrieves a list of active threads in a specified Discord channel.</li>
+<li>It takes one parameter: <code>channelId</code> (the ID of the channel to retrieve active threads from).</li>
+<li>If <code>channelId</code> is not provided, it defaults to the <code>DEFAULT_CHANNEL</code>.</li>
+<li>The function returns a promise that resolves with the response from the Discord API.</li>
+</ul>
+<h3>Function: addThreadMember</h3>
+<pre><code class="language-javascript">async function addThreadMember(memberId, channelId) {
+  //...
+}
+</code></pre>
+<ul>
+<li>The <code>addThreadMember</code> function adds a member to a specified thread in a Discord channel.</li>
+<li>It takes two parameters: <code>memberId</code> (the ID of the member to add) and <code>channelId</code> (the ID of the channel where the thread is located).</li>
+<li>The function returns a promise that resolves with the response from the Discord API.</li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+  createThread,
+  archivedThreads,
+  activeThreads,
+  addThreadMember,
+}
+</code></pre>
+<ul>
+<li>The module exports the four functions as a single object, making them available for import in other modules.</li>
+</ul>

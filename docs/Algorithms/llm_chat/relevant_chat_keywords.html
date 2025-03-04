@@ -1,0 +1,81 @@
+<p>Here is a two-sentence summary of the <code>relevantKeywords</code> function:</p>
+<p>The <code>relevantKeywords</code> function searches through a user's past conversations to find relevant keywords for a given prompt, using a specified model to retrieve and match keywords. It returns an array of keywords that match the prompt, eliminating duplicates and extraneous characters from extracted keywords.</p>
+
+
+<pre><code>const path = require('path')
+const fs = require('fs')
+const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')
+
+
+async function relevantKeywords(promptModel, session, prompt) {
+  
+  // TODO: search all loaded user histories for keywords
+  let keywords = []
+  let loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
+    .filter(key => key.match('-' + DEFAULT_MODEL + '-' + session + '.json'))
+  loadedConversations.sort((a, b) => b - a)
+  for(let i = 0; i < loadedConversations.length; i++) {
+    let conversation = ACTIVE_CONVERSATIONS[loadedConversations[i]]
+    let timestamps = Object.keys(conversation).filter(k => k != 'summaries' && k != 'memories')
+    timestamps.sort((a, b) => b - a)
+    for(let j = 0; j < timestamps.length; j++) {
+      let message = conversation[timestamps[j]]
+      let newKeywords = message.keywords
+      newKeywords = newKeywords.replace(/.*?:\s*\n\s*/gi, '')
+      newKeywords = newKeywords.replaceAll('*', '').replaceAll('# ', '').replaceAll('#', '').replaceAll(/[0-9]+\.\s*/gi, '')
+      newKeywords = newKeywords.split(/\s*\n\s*|\s*,\s*/gi)
+      keywords = keywords.concat(newKeywords.map(k => k.trim()))
+    }
+  }
+  keywords = keywords.filter((k, i, arr) => k && arr.indexOf(k) == i)
+
+
+  let q2 = 'Given the following keywords:\n'
+    + keywords.join('\n')
+    + '\nGiven the following prompt:\n'
+    + prompt + '\nReturn only a few keywords related to the prompt.'
+  console.log('User: ' + q2)
+  let a2 = await promptModel(q2)
+  console.log('AI: ' + a2)
+
+  let matching = []
+  for(let i = 0; i < keywords.length; i++) {
+    if(a2.match(keywords[i])) {
+      matching.push(keywords[i])
+    }
+  }
+
+  return matching
+}
+
+module.exports = relevantKeywords
+</code></pre>
+
+<h3>Function: <code>relevantKeywords</code></h3>
+<h4>Description:</h4>
+<p>This function searches through loaded user history conversations to find relevant keywords for a given prompt.</p>
+<h4>Parameters:</h4>
+<ul>
+<li><code>promptModel</code>: The model used to retrieve relevant keywords.</li>
+<li><code>session</code>: The session identifier.</li>
+<li><code>prompt</code>: The prompt for which to find relevant keywords.</li>
+</ul>
+<h4>Return Value:</h4>
+<p>An array of keywords that match the prompt.</p>
+<h4>Code Breakdown:</h4>
+<ol>
+<li>Load all loaded user history conversations by filtering <code>ACTIVE_CONVERSATIONS</code> based on the current session.</li>
+<li>For each conversation, extract timestamps and load the corresponding messages.</li>
+<li>Extract keywords from each message and filter out extraneous characters.</li>
+<li>Combine the extracted keywords into a single array without duplicates.</li>
+<li>Create a new prompt (<code>q2</code>) that includes the extracted keywords and the original prompt.</li>
+<li>Use the <code>promptModel</code> to retrieve relevant keywords for the new prompt (<code>a2</code>).</li>
+<li>Compare <code>a2</code> with the extracted keywords and return an array of matching keywords.</li>
+</ol>
+<h4>Import Requirements:</h4>
+<ul>
+<li><code>path</code></li>
+<li><code>fs</code></li>
+<li><code>importer</code> (with <code>general chit chat</code> module)</li>
+<li><code>DEFAULT_MODEL</code>, <code>PROJECT_PATH</code>, and <code>ACTIVE_CONVERSATIONS</code> variables from <code>general chit chat</code> module.</li>
+</ul>

@@ -1,0 +1,47 @@
+<p>This Dockerfile sets up a container for running Selenium tests by copying project files, installing dependencies, and configuring the entry point script to execute the tests.</p>
+
+
+<pre><code>COPY project /home/seluser/project
+COPY selenium /home/seluser/selenium
+
+WORKDIR /home/seluser/project
+RUN npm install
+RUN npm run build
+
+WORKDIR /home/seluser/selenium/test
+RUN npm install
+
+RUN sed -i '/wait \\$NODE_PID/inpm --prefix /home/seluser/selenium/test run static &' /opt/bin/entry_point.sh
+</code></pre>
+
+<p>This Dockerfile snippet sets up a development environment for a Selenium project within a Docker container.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Copy Project Files:</strong></p>
+<ul>
+<li><code>COPY project /home/seluser/project</code>: Copies a directory named &quot;project&quot; from the build context (your local machine) into the <code>/home/seluser/project</code> directory within the container.</li>
+<li><code>COPY selenium /home/seluser/selenium</code>: Copies a directory named &quot;selenium&quot; from the build context into the <code>/home/seluser/selenium</code> directory within the container.</li>
+</ul></li>
+<li><p><strong>Set Working Directory:</strong></p>
+<ul>
+<li><code>WORKDIR /home/seluser/project</code>: Sets the working directory for subsequent commands to <code>/home/seluser/project</code>.</li>
+</ul></li>
+<li><p><strong>Install Project Dependencies:</strong></p>
+<ul>
+<li><code>RUN npm install</code>: Installs project dependencies within the <code>/home/seluser/project</code> directory using npm.</li>
+<li><code>RUN npm run build</code>: Executes the &quot;build&quot; script defined in the project's <code>package.json</code> file, likely to compile or prepare the project for deployment.</li>
+</ul></li>
+<li><p><strong>Switch to Selenium Directory:</strong></p>
+<ul>
+<li><code>WORKDIR /home/seluser/selenium/test</code>: Changes the working directory to <code>/home/seluser/selenium/test</code>.</li>
+</ul></li>
+<li><p><strong>Install Selenium Dependencies:</strong></p>
+<ul>
+<li><code>RUN npm install</code>: Installs dependencies for the Selenium tests within the <code>/home/seluser/selenium/test</code> directory.</li>
+</ul></li>
+<li><p><strong>Modify Entry Point Script:</strong></p>
+<ul>
+<li><code>RUN sed -i '/wait \\$NODE_PID/inpm --prefix /home/seluser/selenium/test run static &amp;' /opt/bin/entry_point.sh</code>: Modifies a script named <code>entry_point.sh</code> located at <code>/opt/bin/entry_point.sh</code>. It likely adds a command to run Selenium tests using npm within the <code>/home/seluser/selenium/test</code> directory.</li>
+</ul></li>
+</ol>
+<p>In essence, this Dockerfile prepares a containerized environment for running Selenium tests by installing dependencies, building the project, and configuring the entry point script to execute the tests.</p>

@@ -1,0 +1,106 @@
+<p>This code retrieves and processes a list of events from a user's Google Calendar, handling authorization, date corrections, and pagination.</p>
+
+
+<pre><code>var importer = require('../Core');
+var {
+    authorizeCalendar,
+    correctTimeLimits,
+    correctCalendarId
+} = importer.import([
+    'authorize google calendar',
+    'correct dates time',
+    'lookup calendar name'
+]);
+
+function processResult(response, options) {
+    var resultEvents = []; // reset the array
+    var events = response.data.items;
+    if (events.length === 0) {
+        const q = Object.assign({}, options);
+        delete q.auth;
+        console.log('No events found for ' + JSON.stringify(q));
+    } else {
+        for (var i = 0; i < events.length; i++) {
+            var event = events[i];
+            var start = event.start.dateTime || event.start.date;
+            resultEvents[resultEvents.length] = {
+                start: new Date(start), event: event
+            };
+        }
+    }
+    return resultEvents;
+};
+
+
+/**
+ * Lists the next 10 events on the user's primary calendar.
+ *
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
+function listEvents(options = {calendarId: 'primary'}) {
+    let calendar, events = [];
+    return authorizeCalendar(options)
+        .then(c => calendar = c)
+        .then(() => correctTimeLimits(options))
+        .then(() => correctCalendarId(options))
+        .then(() => {
+            var data = Object.assign({}, options, {
+                maxResults: 1000,
+                singleEvents: true,
+                orderBy: 'startTime'
+            });
+            return new Promise((resolve, reject) => {
+                calendar.events.list(data, (err, response) => {
+                    if (err) reject(err);
+                    try {
+                        return resolve(response);
+                    } catch (e) {
+                        return reject(e);
+                    }
+                });
+            })
+        })
+        .then(response => {
+            events = events.concat(processResult(response, options));
+            //console.log(response)
+            if(response.data.nextPageToken) {
+                console.log('paging ' + response.data.nextPageToken)
+                return listEvents(Object.assign({}, options, {pageToken: response.data.nextPageToken}))
+                    .then(e => events.concat(e));
+            }
+            return events;
+        })
+};
+module.exports = listEvents;
+
+</code></pre>
+
+<p>This code snippet fetches and processes events from a Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>It imports functions for authorizing access to the Google Calendar API, correcting date and time information, and looking up calendar IDs.</li>
+</ul></li>
+<li><p><strong><code>processResult</code> Function:</strong></p>
+<ul>
+<li>This function takes the raw response from the Google Calendar API and processes it.</li>
+<li>It checks if any events were found. If not, it logs a message.</li>
+<li>If events are found, it iterates through them, extracts the start time, and creates an object containing the start date and the event details.</li>
+</ul></li>
+<li><p><strong><code>listEvents</code> Function:</strong></p>
+<ul>
+<li>This function is responsible for fetching events from the user's calendar.</li>
+<li>It first authorizes access to the calendar using the provided <code>options</code>.</li>
+<li>Then, it corrects any time limits or calendar IDs based on the provided options.</li>
+<li>It constructs a request to the Google Calendar API to retrieve the next 1000 events (or all events if fewer than 1000 exist) from the specified calendar.</li>
+<li>It handles the asynchronous response, processes the events using <code>processResult</code>, and returns the processed events.</li>
+</ul></li>
+</ol>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><strong>Asynchronous Operations:</strong> The code uses promises to handle the asynchronous nature of interacting with the Google Calendar API.</li>
+<li><strong>Error Handling:</strong> The code includes basic error handling using <code>try...catch</code> blocks.</li>
+<li><strong>Pagination:</strong> The code includes logic to handle pagination if there are more than 1000 events.</li>
+</ul>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

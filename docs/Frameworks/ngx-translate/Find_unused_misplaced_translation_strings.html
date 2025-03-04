@@ -1,0 +1,125 @@
+<p>This code analyzes translation keys to identify misplaced, unused, and missing keys, helping ensure consistency and completeness across different language versions of a project.</p>
+
+
+<pre><code>var path = require('path');
+var fs = require('fs');
+
+var cwd = '/Users/briancullinan/Documents/portal/src/';
+//var cwd = 'C:\\Users\\brian.cullinan\\Documents\\portal\\src\\';
+
+function findMisplaced(obj, parentKey) {
+    for (var k in obj) {
+        if (typeof obj[k] == 'object' && obj[k] !== null) {
+            var newParent = typeof parentKey !== 'undefined' ? (parentKey + '.' + k) : k;
+            findMisplaced(obj[k], newParent);
+        } else if (typeof obj[k] == 'string') {
+            if (obj[k].substr(0, parentKey.length) != parentKey) {
+                console.log('Misplaced key: ' + obj[k] + ' in ' + parentKey);
+            }
+        }
+    }
+}
+
+findMisplaced(translationKeys);
+
+// get a long list of existing keys from en.js
+var enJson = JSON.parse(fs.readFileSync(path.join(cwd, 'assets', 'i18n', 'en.json')).toString());
+
+
+function flattenAllKeys(obj, parentKey) {
+    var result = [];
+    for (var k in obj) {
+        if (typeof obj[k] == 'object' && obj[k] !== null) {
+            var newParent = typeof parentKey !== 'undefined' ? (parentKey + '.' + k) : k;
+            result = result.concat(flattenAllKeys(obj[k], newParent));
+        } else if (typeof obj[k] == 'string'
+            && parentKey.indexOf('TEMPDEMOPAGES') === -1) {
+            result[result.length] = parentKey + '.' + k;
+        }
+    }
+    return result;
+}
+
+var allENKeys = flattenAllKeys(enJson);
+
+// find unused keys
+function getUnused() {
+    allENKeys.forEach(k => {
+        var parentKey = k.split('.');
+        parentKey.pop();
+        parentKey = parentKey.join('.');
+        if (typeof translationKeys[parentKey] === 'undefined' ||
+            translationKeys[parentKey].indexOf(k) === -1) {
+            console.log('Unused key: ' + k);
+        }
+    });
+}
+
+function getMissing() {
+    for (var k in translationKeys) {
+        if (typeof translationKeys[k] !== 'undefined') {
+            translationKeys[k].forEach(i => {
+                if (allENKeys.indexOf(i) === -1) {
+                    console.log('Missing key: ' + i);
+                }
+            });
+        }
+    }
+}
+
+getMissing();
+getUnused();
+
+
+// find strings of text in html files
+var htmlWordRegex = (/>[^><]*?(\b[^><]*\b)+[^><]*?</ig)
+var attrWordRegex = (/(placeholder|title|alt)\s*=\s*["]([^"]*)["]/ig);
+var needTranslations = files.map((f, i) => {
+    var html = fs.readFileSync(path.join(cwd, f)).toString();
+    let r;
+    var needTranslations = [];
+    while ((r = htmlWordRegex.exec(html)) !== null) {
+        if (r[1].trim() !== '' && r[1].match(/\|\s*translate/ig) === null) {
+            needTranslations[needTranslations.length] = r[1].trim();
+        }
+    }
+    while ((r = attrWordRegex.exec(html)) !== null) {
+        if (r[2].match(/\|\s*translate/ig) === null) {
+            needTranslations[needTranslations.length] = r[2].trim();
+        }
+    }
+    return {file: f, texts: needTranslations};
+}).filter(t => t.texts.length > 0);
+
+needTranslations.forEach(t => {
+    console.log('Needs translating: ' + t.texts + ' in ' + t.file);
+});
+
+
+</code></pre>
+
+<p>This code snippet analyzes translation keys in a JSON file to identify misplaced, unused, and missing keys.</p>
+<p>Here's a breakdown:</p>
+<p><strong>1. Setup:</strong></p>
+<ul>
+<li><code>require('path')</code> and <code>require('fs')</code>: Imports modules for working with file paths and file system operations.</li>
+<li><code>cwd</code>: Sets the current working directory.</li>
+<li><code>findMisplaced(obj, parentKey)</code>: A recursive function that traverses an object and identifies keys that don't start with the expected parent key.</li>
+</ul>
+<p><strong>2. Initial Key Analysis:</strong></p>
+<ul>
+<li><p><code>translationKeys</code>: Assumed to be a global variable containing the translation keys to be analyzed.</p></li>
+<li><p><code>findMisplaced(translationKeys)</code>: Calls the function to find misplaced keys in the <code>translationKeys</code> object.</p></li>
+<li><p><code>enJson</code>: Reads the contents of <code>en.json</code> (likely a JSON file containing English translations) and parses it into a JavaScript object.</p></li>
+</ul>
+<p><strong>3. Flattening Keys:</strong></p>
+<ul>
+<li><p><code>flattenAllKeys(obj, parentKey)</code>: A recursive function that flattens the key structure of an object into a single array of keys.</p></li>
+<li><p><code>allENKeys</code>: Calls <code>flattenAllKeys</code> on the <code>enJson</code> object to get a list of all keys in the English translation file.</p></li>
+</ul>
+<p><strong>4. Key Comparison and Reporting:</strong></p>
+<ul>
+<li><p><code>getUnused()</code>: Iterates through <code>allENKeys</code> and checks if each key exists in <code>translationKeys</code>. If not, it logs the unused key.</p></li>
+<li><p><code>getMissing()</code>: Iterates through <code>translationKeys</code> and checks if each key and its corresponding values exist in <code>allENKeys</code>. If not, it logs the missing key.</p></li>
+</ul>
+<p>In essence, this code helps identify potential issues with translation keys, ensuring consistency and completeness across different language versions.</p>

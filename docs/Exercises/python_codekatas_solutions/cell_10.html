@@ -1,0 +1,16 @@
+
+
+<pre><code>def string_permutations(s):
+    """Find all possible permutations of a string."""
+    if not s:
+        return ['']
+    res = []
+    for perm in string_permutations(s[1:]):
+        for i in range(len(perm)+1):
+            res.append(perm[:i]+s[0]+perm[i:])
+    return sorted(res)
+
+assert string_permutations('') == ['']
+assert string_permutations('abc') == ['abc','acb','bac','bca','cab','cba']
+print('All passed!')</code></pre>
+

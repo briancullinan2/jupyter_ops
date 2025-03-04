@@ -1,0 +1,111 @@
+<p>This code provides functions for managing and updating caches of code cells and their exports, allowing for efficient retrieval and use of code snippets based on search terms.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {getExports} = importer.import('get exports from source')
+var {
+    refreshCache, memorySafe, updateCache,
+    updateCode, exportsCache, cellCache
+} = importer.import('cache.ipynb')
+
+function makeCamel(str) {
+    return str
+        .replace(/[^a-z0-9 ]/ig, '')
+        .split(' ')
+        .map((w, i) => i > 0
+             ? (w[0].toUpperCase() + w.substr(1))
+             : w)
+        .join('')
+}
+
+function createCellCache(search, cache, cacheCell, callback) {
+    var camelCase = makeCamel(cacheCell.questions[0])
+    
+    var allIds = cellCache
+        .filter(c => c.code.length < 100000)
+        .map(cell => cell.id)
+    
+    if(!search) {
+        search = refreshCache(cache, allIds)
+        if(search) {
+            search = search.replace(/\.ipynb\[[0-9]+\]$/ig, '.ipynb')
+        }
+    }
+
+    var allCells = [].concat.apply([], importer.interpret(Array.isArray(search)
+                                                          ? search : [search]))
+    var allCellIds = allCells.map(c => c.id)
+    
+    // get only first occurrence
+    allCells = allCells
+        .filter((c, i) => allCellIds.indexOf(c.id) == i)
+        .filter(c => c.code.length < 10000)
+    
+    console.log(`caching ${search} - ${allCells.length} cells`)
+
+    return Promise
+        .all(allCells.map(cell => memorySafe(() => {
+            try {
+                console.log(cell.id)
+                return [Date.now(), cell.id, callback(cell.code)]
+            } catch (e) {
+                return [Date.now(), cell.id, e.message]
+            }
+        })))
+        .then(updates => {
+            updateCache(updates, cache, allIds)
+        
+            var code = `
+// ${cacheCell.questions[0]} automatically replaced
+var ${camelCase} = ${JSON.stringify(cache, null, 4)}
+
+module.exports = {
+    ${camelCase}
+}
+`
+            updateCode(cacheCell, code)
+        })
+}
+
+function createExportCache(search) {
+    var cacheCell = importer.interpret('exports cache')
+    return createCellCache(search, exportsCache, cacheCell, getExports)
+}
+
+module.exports = {
+    createExportCache,
+    createCellCache,
+}
+</code></pre>
+
+<p>This code defines functions for managing and updating caches related to code cells and exports.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports modules for interacting with caches, getting exports, and interpreting code.</li>
+</ul></li>
+<li><p><strong><code>makeCamel</code> Function:</strong></p>
+<ul>
+<li>Converts a string to camel case.</li>
+</ul></li>
+<li><p><strong><code>createCellCache</code> Function:</strong></p>
+<ul>
+<li>Takes a search term, cache object, cache cell, and callback function as arguments.</li>
+<li>Constructs a camel case version of the cache cell's question.</li>
+<li>Retrieves all cell IDs from the cache.</li>
+<li>Refreshes the cache if necessary.</li>
+<li>Interprets the search term to get a list of code cells.</li>
+<li>Filters the cells based on length and uniqueness.</li>
+<li>Logs the number of cells being cached.</li>
+<li>Creates a promise that resolves with an array of updates for the cache.</li>
+<li>Updates the cache with the new data.</li>
+<li>Generates a code snippet that includes the updated cache and updates the cache cell with the new code.</li>
+</ul></li>
+<li><p><strong><code>createExportCache</code> Function:</strong></p>
+<ul>
+<li>Takes a search term as an argument.</li>
+<li>Retrieves the exports cache cell.</li>
+<li>Calls <code>createCellCache</code> with the search term, exports cache, and a callback function to get exports from the code cells.</li>
+</ul></li>
+</ol>

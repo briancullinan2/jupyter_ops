@@ -1,0 +1,12 @@
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('run selenium cell');
+
+$$.async();
+runSeleniumCell('messages from facebook')
+    .then(func => func('https://www.facebook.com/messages/t/jaimeneufer'))
+    .then(r => $$.sendResult(r))
+    .catch(e => $$.sendError(e))
+</code></pre>
+

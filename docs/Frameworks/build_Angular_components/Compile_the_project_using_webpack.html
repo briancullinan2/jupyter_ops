@@ -1,0 +1,71 @@
+<p>This code provides a function to build an Angular application for server-side deployment using Webpack, incorporating project-specific configurations and gulp helpers.  It automates the compilation process and returns the compiled server-side JavaScript code.</p>
+
+
+<pre><code>
+// source https://github.com/christianalfoni/webpack-bin/issues/106
+function webpackAngularProject(project) {
+    // set up project path
+    var previous = process.cwd();
+    process.chdir(project);
+    module.paths.unshift(project + '/node_modules');
+
+    var webpack = require('webpack');
+    var webpackConfig = require(path.join(project, 'webpack.config.js'));
+    var gulp = require(path.join(project, 'config', 'gulp-helpers.js'));
+    var settings = gulp.loadSettings(require(path.join(project, 'config', 'build-config.json')));
+    var config = webpackConfig({
+        env: 'prod',
+        platform: 'server'
+    }, gulp.root, settings);
+    var compiler = webpack(config);
+
+    // TODO: do we need this since it is already mocked in angular-cli
+    //mockTypescriptFs = eval("'use strict';" + r[0].code);
+    //mockTypescriptFs(project, data);
+    //compiler.inputFileSystem = memfs;
+    //compiler.outputFileSystem = memfs;
+    //compiler.resolvers.normal.fileSystem = memfs;
+    //compiler.resolvers.context.fileSystem = memfs;
+
+    return new Promise((resolve, reject) => {
+        compiler.run(function (err, stats) {
+            process.chdir(previous);
+            if (err) return reject(err);
+            resolve(stats.compilation.assets['server.js'].source());
+        });
+    });
+};
+webpackAngularProject;
+</code></pre>
+
+<p>This code defines a function <code>webpackAngularProject</code> that builds an Angular application for the server environment using Webpack.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Project Setup:</strong></p>
+<ul>
+<li>It changes the current working directory to the provided <code>project</code> path.</li>
+<li>It modifies the <code>module.paths</code> to include the project's <code>node_modules</code> directory.</li>
+</ul></li>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It requires <code>webpack</code>, <code>webpack.config.js</code>, <code>gulp-helpers.js</code>, and <code>build-config.json</code> from the project.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li>It loads the <code>build-config.json</code> settings and uses them to configure the <code>webpack.config.js</code> for production and server environments.</li>
+</ul></li>
+<li><p><strong>Webpack Compilation:</strong></p>
+<ul>
+<li>It creates a Webpack compiler instance using the configured settings.</li>
+<li><strong>Commented-out Code:</strong> There's commented-out code that seems to be related to mocking the TypeScript compiler and filesystem, but it's currently unused.</li>
+</ul></li>
+<li><p><strong>Build Execution:</strong></p>
+<ul>
+<li>It runs the Webpack compiler asynchronously, returning a promise that resolves with the source code of the compiled <code>server.js</code> file.</li>
+</ul></li>
+<li><p><strong>Cleanup:</strong></p>
+<ul>
+<li>After the compilation is complete, it restores the previous working directory.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code automates the process of building an Angular application for the server using Webpack, leveraging project-specific configurations and gulp helpers.</strong></p>

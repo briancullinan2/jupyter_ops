@@ -1,0 +1,77 @@
+<p>This code provides a Babel plugin that modifies notebook code before transpilation, likely for a specific environment, by applying a series of transformations to the code.</p>
+
+
+<pre><code>var babel = require('babel-core')
+var toBabel = require('estree-to-babel');
+var importer = require('../Core')
+var {selectAst} = importer.import('select code tree')
+var {selectAcorn} = importer.import('select acorn tree')
+var {htmlToTree} = importer.import('html to tree')
+var {addImports} = importer.import('add missing imports')
+var {replaceCore} = importer.import('replace core requirement')
+var {replaceImports} = importer.import('replace notebook import')
+
+// TODO: convert these to transpiler tools like Add, Replace, Remove
+var transpilePlugins = [
+    addImports,
+    replaceImports,
+    replaceCore,
+]
+
+function transpileNotebook() {
+    return {
+        manipulateOptions(opts, parserOpts) {
+            opts.parserOpts = {
+                parser(code, opts) {
+                    code = transpilePlugins.reduce((code, plugin) => {
+                        return plugin(code, opts.sourceFileName)
+                    }, code)
+                    var ast = toBabel(code)
+                    return ast
+                },
+            };
+        },
+    };
+}
+
+function babelTranspile() {
+    return {
+        plugins: [
+            transpileNotebook
+        ]
+    }
+}
+
+module.exports = babelTranspile
+
+</code></pre>
+
+<p>This code defines a Babel plugin for transpiling notebook code, likely for a specific environment or framework.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li><code>babel-core</code>: The core Babel library for transpilation.</li>
+<li><code>estree-to-babel</code>: A utility for converting ESTree (Abstract Syntax Tree) to Babel's AST format.</li>
+<li><code>importer</code>: A module for importing other modules.</li>
+<li>Various functions from <code>importer</code> for selecting nodes in ASTs, converting HTML to ASTs, adding imports, and replacing core requirements.</li>
+</ul></li>
+<li><p><strong><code>transpilePlugins</code>:</strong></p>
+<ul>
+<li>An array of functions that modify the code before transpilation.</li>
+<li>These functions likely handle tasks like adding missing imports, replacing core requirements, and potentially other notebook-specific transformations.</li>
+</ul></li>
+<li><p><strong><code>transpileNotebook</code> Function:</strong></p>
+<ul>
+<li>Defines a Babel plugin that manipulates the transpilation options.</li>
+<li>It modifies the parser to apply the <code>transpilePlugins</code> to the code before parsing it into an AST.</li>
+</ul></li>
+<li><p><strong><code>babelTranspile</code> Function:</strong></p>
+<ul>
+<li>Creates a Babel configuration object that includes the <code>transpileNotebook</code> plugin.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>babelTranspile</code> function, which can be used to configure Babel for transpiling notebook code.</li>
+</ul></li>
+</ol>

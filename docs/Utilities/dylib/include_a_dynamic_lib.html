@@ -1,0 +1,95 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This Node.js module exports a function <code>enumWindows</code> that enumerates the titles of visible windows on the system, filters out certain programs, and returns an array of window titles. The function uses Foreign Function Interface (FFI) bindings to a dynamic library <code>sog</code> to interact with the system's window management API.</p>
+
+
+<pre><code>const {
+  equal
+} = require('assert')
+const {
+  load,
+  DataType,
+  open,
+  close,
+  arrayConstructor,
+  define
+} = require('ffi-rs')
+const path = require('path')
+const {platform} = require('os')
+const a = 1
+const b = 100
+const dynamicLib = platform === 'win32' ? '../sog.dll' : (platform === 'linux' ? '../sog.so' : '../sog.dylib')
+// First open dynamic library with key for close
+const IGNORE_PROGRAMS = [
+  'Window Server',
+  'Macs Fan Control',
+  'Control Center',
+  'Spotlight',
+  'Dock',
+  'SSMenuAgent',
+  'Menubar'
+]
+function enumWindows() {
+  // It only needs to be opened once.
+  open({
+    library: 'sog', // key
+    path: path.join(__dirname, dynamicLib) // path
+  })
+  const count = load({
+    library: "sog", // path to the dynamic library file
+    funcName: 'enumWindows', // the name of the function to call
+    retType: DataType.I32, // the return value type
+    paramsType: [], // the parameter types
+    paramsValue: [] // the actual parameter values
+    // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
+  })
+  let windows = []
+  for(let i = 0; i < count; i++) {
+    const result = load({
+      library: "sog", // path to the dynamic library file
+      funcName: 'getTitle', // the name of the function to call
+      retType: DataType.String, // the return value type
+      paramsType: [DataType.I32], // the parameter types
+      paramsValue: [i] // the actual parameter values
+      // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
+    })
+    windows.push(result.split(/:\s/g)[1])
+  }
+  // Release library memory when you're not using it.
+  close('sog')
+  return windows.filter((a, i, arr) => arr.indexOf(a) == i && !IGNORE_PROGRAMS.includes(a))
+}
+
+module.exports = enumWindows
+</code></pre>
+
+<h2>Code Overview</h2>
+<p>This code is a Node.js module that exports a function <code>enumWindows</code> which enumerates the titles of visible windows on the system and filters out certain programs.</p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>assert</code>: for assert function</li>
+<li><code>ffi-rs</code>: for Foreign Function Interface (FFI) bindings to dynamic libraries</li>
+<li><code>path</code>: for path manipulation</li>
+<li><code>os</code>: for determining the current platform</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>enumWindows()</code></h4>
+<p>Enumerates the titles of visible windows on the system.</p>
+<ol>
+<li>Opens the dynamic library <code>sog</code> using <code>open</code> function from <code>ffi-rs</code>.</li>
+<li>Calls the <code>enumWindows</code> function from the library to get the count of visible windows.</li>
+<li>Loops through the count and calls the <code>getTitle</code> function from the library to get the title of each window.</li>
+<li>Pushes the title into an array.</li>
+<li>Closes the library using <code>close</code> function from <code>ffi-rs</code>.</li>
+<li>Filters out certain programs from the array based on the <code>IGNORE_PROGRAMS</code> list.</li>
+<li>Returns the filtered array of window titles.</li>
+</ol>
+<h3>Variables</h3>
+<ul>
+<li><code>dynamicLib</code>: the path to the dynamic library file based on the current platform.</li>
+<li><code>IGNORE_PROGRAMS</code>: an array of programs to ignore.</li>
+<li><code>a</code> and <code>b</code>: unused variables (constants 1 and 100 respectively).</li>
+<li><code>count</code>: the count of visible windows returned by <code>enumWindows</code> function.</li>
+<li><code>result</code>: the title of each window returned by <code>getTitle</code> function.</li>
+<li><code>windows</code>: the array of window titles.</li>
+<li><code>platform</code>: the current platform determined by <code>os.platform()</code>.</li>
+</ul>

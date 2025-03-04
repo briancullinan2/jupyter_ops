@@ -1,0 +1,36 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The code imports an authenticated HTTP request client <code>requestAuthQ</code> from the <code>'discord request'</code> module and defines an <code>async</code> function <code>getUser</code> that retrieves a user's details from the Discord API. The <code>getUser</code> function is exported as a module, allowing it to be imported and used in other JavaScript files.</p>
+
+
+<pre><code>const {requestAuthQ} = importer.import('discord request')
+
+async function getUser(userId = '@me') {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `/users/${userId}`
+  })
+}
+
+module.exports = {
+  getUser,
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Imported Function</h4>
+<ul>
+<li><code>requestAuthQ</code> is imported from the module <code>'discord request'</code> using the <code>importer.import</code> function.</li>
+<li>This function is assumed to be an authenticated HTTP request client, possibly utilizing OAuth for Discord API interactions.</li>
+</ul>
+<h4><code>getUser</code> Function</h4>
+<ul>
+<li><code>async</code> function <code>getUser</code> retrieves a user's details from the Discord API.</li>
+<li>The function takes an optional <code>userId</code> parameter, defaulting to <code>@me</code> if not provided.</li>
+<li><code>userId</code> is expected to be a string in the format of a Discord user ID or <code>@me</code> for the current user.</li>
+<li>The function sends a GET request to the Discord API using <code>requestAuthQ</code> to retrieve the user's data.</li>
+<li>The response is returned as a promise.</li>
+</ul>
+<h4>Exported Module</h4>
+<ul>
+<li>The <code>getUser</code> function is exported as a module, making it available for import and use in other JavaScript files.</li>
+</ul>

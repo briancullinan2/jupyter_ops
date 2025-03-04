@@ -1,0 +1,111 @@
+<p>Here is a 2-sentence summary of the code breakdown:</p>
+<p>The <code>summerizeAll</code> function extracts and summarizes all links from a provided <code>startPage</code> or <code>links</code> array by selecting a link scraping tool, scraping links, extracting article content, summarizing articles, and persisting summaries. The function uses various modules and functions, including <code>getClient</code>, <code>extractArticle</code>, <code>summerizeArticle</code>, <code>defaultCollector</code>, and <code>persistSummaries</code>, and is exported as a module for use elsewhere.</p>
+
+
+<pre><code>const getClient = importer.import('selenium client')
+const extractArticle = importer.import('extract llm article')
+const summerizeArticle = importer.import('summarize llm article')
+const {
+  defaultCollector, persistSummaries
+} = importer.import('default link collector')
+
+// select link scraping tool
+function selectScaper(selector, startPage) {
+  if(!selector && startPage.includes('reddit.com')) {
+    selector = importer.import('reddit month of links')
+  } else if(!selector) {
+    selector = defaultCollector
+  } else if(typeof selector == 'string') {
+    selector = defaultCollector.bind(null, startPage, selector)
+  }
+
+  return selector
+}
+
+// extract persist, extract persist
+async function summerizeAll(links, selector, startPage, funny) {
+
+  if(!startPage && !links) {
+    console.error('No start page or links to summerize.')
+    return
+  }
+
+  let selectorFunction = selectScaper(selector, startPage)
+
+  let driver = await getClient()
+
+  let summaries = persistSummaries(funny)
+
+  try {
+    if(!links && startPage) {
+      links = await selectorFunction(driver, startPage)
+    }
+
+    console.log(links)
+
+    for (let i = 0; i < links.length; i++) {
+      if(typeof summaries[links[i].link] != 'undefined')
+        continue // already loaded
+
+      let article = await extractArticle(driver, links[i].link)
+
+      let summary = await summerizeArticle(article, funny)
+      
+      summaries[links[i].link] = summary
+      persistSummaries(funny, summaries)
+    }
+
+    driver.quit()
+
+    return summaries
+  } catch (e) {
+    //driver.quit()
+    throw e
+  }
+}
+
+module.exports = summerizeAll
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code imports several modules using the <code>importer.import</code> function:</p>
+<ul>
+<li><code>getClient</code>: imports the Selenium client module</li>
+<li><code>extractArticle</code>: imports the article extraction module</li>
+<li><code>summerizeArticle</code>: imports the article summarization module</li>
+<li><code>defaultCollector</code> and <code>persistSummaries</code>: imports the default link collector and summary persistence modules, respectively</li>
+</ul>
+<h3>Selecting a Link Scraping Tool</h3>
+<p>The <code>selectScaper</code> function determines which link scraping tool to use based on the provided <code>selector</code> and <code>startPage</code> parameters. It returns a function that can be used to scrape links.</p>
+<ul>
+<li>If <code>selector</code> is falsy and <code>startPage</code> includes <code>reddit.com</code>, it uses the <code>reddit month of links</code> selector.</li>
+<li>If <code>selector</code> is falsy, it defaults to the <code>defaultCollector</code> selector.</li>
+<li>If <code>selector</code> is a string, it binds the <code>defaultCollector</code> selector to the provided <code>startPage</code> and <code>selector</code>.</li>
+</ul>
+<h3>Summerizing All Links</h3>
+<p>The <code>summerizeAll</code> function extracts and summarizes all links from a provided <code>startPage</code> or <code>links</code> array.</p>
+<h4>Function Parameters</h4>
+<ul>
+<li><code>links</code>: an array of links to summarize</li>
+<li><code>selector</code>: the link scraping tool to use</li>
+<li><code>startPage</code>: the starting page to scrape links from</li>
+<li><code>funny</code>: a parameter used by the <code>persistSummaries</code> function</li>
+</ul>
+<h4>Function Flow</h4>
+<ol>
+<li>It checks if <code>startPage</code> or <code>links</code> are falsy and logs an error message if so.</li>
+<li>It selects a link scraping tool using the <code>selectScaper</code> function.</li>
+<li>It creates a Selenium client driver using the <code>getClient</code> function.</li>
+<li>It initializes an object to store summaries using the <code>persistSummaries</code> function.</li>
+<li>If <code>startPage</code> is provided but <code>links</code> is falsy, it scrapes links from the <code>startPage</code> using the selected tool.</li>
+<li>It loops through each link and:
+<ul>
+<li>Extracts the article content using the <code>extractArticle</code> function.</li>
+<li>Summarizes the article content using the <code>summerizeArticle</code> function.</li>
+<li>Persists the summary using the <code>persistSummaries</code> function.</li>
+</ul></li>
+<li>It quits the Selenium driver and returns the final summaries object.</li>
+</ol>
+<h3>Exporting the Function</h3>
+<p>The <code>summerizeAll</code> function is exported as a module.</p>

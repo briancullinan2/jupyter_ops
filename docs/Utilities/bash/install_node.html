@@ -1,0 +1,33 @@
+<p>To install Node.js version 9.x on a Linux system, execute the installation script with the command <code>curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -</code> and then update the package index with <code>sudo apt-get update -qqy</code>.</p>
+
+
+<pre><code>curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - \
+    && sudo apt-get update -qqy \
+    && sudo apt-get -qqy install nodejs build-essential</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Download and Execute Installation Script</h3>
+<pre><code class="language-bash">curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - \
+</code></pre>
+<ul>
+<li><code>curl</code>: download a file from a web URL</li>
+<li><code>-sL</code>: silent mode and follow redirects</li>
+<li><code>https://deb.nodesource.com/setup_9.x</code>: download the installation script for Node.js version 9.x from NodeSource</li>
+<li><code>sudo -E bash -</code>: execute the downloaded script with elevated privileges and keep environment variables</li>
+</ul>
+<h3>Update Package Index</h3>
+<pre><code class="language-bash">sudo apt-get update -qqy
+</code></pre>
+<ul>
+<li><code>sudo apt-get update</code>: update the package index with elevated privileges</li>
+<li><code>-qqy</code>: quiet mode for progress updates and enable all required packages to be installed</li>
+</ul>
+<h3>Install Node.js and Build Essential Packages</h3>
+<pre><code class="language-bash">sudo apt-get -qqy install nodejs build-essential
+</code></pre>
+<ul>
+<li><code>sudo apt-get install</code>: install packages with elevated privileges</li>
+<li><code>-qqy</code>: quiet mode for progress updates and enable all required packages to be installed</li>
+<li><code>nodejs</code>: install Node.js</li>
+<li><code>build-essential</code>: install build essential packages (e.g. gcc, make, etc.)</li>
+</ul>

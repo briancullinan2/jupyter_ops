@@ -1,0 +1,52 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>This JavaScript code uses the Mocha testing framework to test two functions, <code>listDrive</code> and <code>insertPermission</code>, which interact with the Google Drive API. The test calls <code>listDrive</code> to retrieve files, filters the result to include only &quot;Untitled&quot; files, and then concurrently calls <code>insertPermission</code> for each of these files with a specific email address.</p>
+
+
+<pre><code>var importer = require('../Core');
+var listDrive = importer.import('list google drive files');
+var insertPermission = importer.import('insert google drive permissions');
+
+describe('list google drive files', () => {
+    
+    it('should list files', () => {
+        return listDrive()
+            .then(r => importer
+                  .runAllPromises(r.filter(r => r.name.includes('Untitled'))
+                                           .map(f => resolve => insertPermission(f.id, 'megamindbrian@gmail.com')
+                                                .then(resolve))))
+    })
+})
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<p>This code is written in JavaScript using the Mocha testing framework.</p>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var listDrive = importer.import('list google drive files');
+var insertPermission = importer.import('insert google drive permissions');
+</code></pre>
+<ul>
+<li><code>require('../Core')</code> imports a module named <code>Core</code> from a parent directory.</li>
+<li><code>importer.import()</code> imports two functions from the <code>Core</code> module: <code>listDrive</code> and <code>insertPermission</code>. These functions are likely used for interacting with the Google Drive API.</li>
+</ul>
+<h3>Writing a Test</h3>
+<pre><code class="language-javascript">describe('list google drive files', () =&gt; {
+    
+    it('should list files', () =&gt; {
+        return listDrive()
+           .then(r =&gt; importer
+                 .runAllPromises(r.filter(r =&gt; r.name.includes('Untitled'))
+                                          .map(f =&gt; resolve =&gt; insertPermission(f.id,'megamindbrian@gmail.com')
+                                               .then(resolve))))
+    })
+})
+</code></pre>
+<ul>
+<li><code>describe</code> is a function from Mocha that groups related tests together.</li>
+<li><code>it</code> is a function from Mocha that defines a single test case.</li>
+<li><code>listDrive()</code> is called and its result is awaited.</li>
+<li>The result is then filtered to only include files with the name &quot;Untitled&quot;.</li>
+<li>For each of these files, <code>insertPermission</code> is called with the file's ID and an email address, and the result is awaited.</li>
+<li><code>runAllPromises</code> is likely a function from the <code>Core</code> module that runs all the promised operations concurrently.</li>
+<li>The <code>then</code> clause is used to handle the result of the operation, but it is empty, which means the test does not verify whether the operation was successful.</li>
+</ul>

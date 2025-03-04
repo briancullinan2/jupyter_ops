@@ -1,0 +1,73 @@
+<p>The <code>translateMap</code> function scales the geometry of a map represented in a text file by modifying brush and origin coordinates based on a provided scaling factor.  This allows for flexible resizing and repositioning of the map data.</p>
+
+
+<pre><code>var importer = require('../Core')
+
+
+function translateMap(file, amount) {
+    // get all brushes in map, leaf nodes with at least one vertex
+    var brushes = importer.regexToArray(/\{[^\{\}]*?\}/ig, file)
+    
+    // replace all brushes with scaled values
+    brushes.forEach(b => {
+        var newBrush = b
+        newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) => {
+            return '( ' + $1.trim().split(/\s+/ig)
+                .map((n, i) => (n.includes('.')
+                        ? parseFloat(n.trim())
+                        : parseInt(n.trim())) + amount[i])
+                .join(' ') + ' )'
+        })
+        file = file.replace(b, newBrush)
+    })
+    
+    // replace all origins with scaled
+    // TODO: make this a function
+    var origins = importer.regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
+    origins.forEach($1 => {
+        var newOrigin = $1.trim().split(/\s+/ig)
+            .map((n, i) => (n.includes('.')
+                    ? parseFloat(n.trim())
+                    : parseInt(n.trim())) + amount[i])
+            .join(' ')
+        file = file.replace(new RegExp('"origin"\\s+"' + $1 + '"', 'ig'), '"origin" "' + newOrigin + '"')
+    })
+    
+    return file
+}
+
+module.exports = translateMap
+</code></pre>
+
+<p>This code defines a function <code>translateMap</code> that modifies a text file representing a map.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Input:</strong></p>
+<ul>
+<li><code>file</code>: The text file containing the map data.</li>
+<li><code>amount</code>: An array of numerical values used for scaling.</li>
+</ul></li>
+<li><p><strong>Processing:</strong></p>
+<ul>
+<li><strong>Brushes:</strong>
+<ul>
+<li>It extracts all brush definitions (enclosed in curly braces) from the file using a regular expression.</li>
+<li>For each brush, it replaces the numerical coordinates within the parentheses with scaled values based on the <code>amount</code> array.</li>
+</ul></li>
+<li><strong>Origins:</strong>
+<ul>
+<li>It extracts all &quot;origin&quot; definitions (strings enclosed in double quotes) from the file.</li>
+<li>Similar to brushes, it scales the numerical coordinates within the origin definition using the <code>amount</code> array.</li>
+</ul></li>
+<li><strong>Replacement:</strong>
+<ul>
+<li>The modified brush and origin definitions are then inserted back into the original file, effectively scaling the map.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li>The function returns the modified text file with the scaled map data.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely modifies a map file used in a game or 3D environment. The <code>amount</code> array allows for flexible scaling of the map's geometry, potentially for resizing, repositioning, or other transformations.</p>

@@ -1,0 +1,157 @@
+<p>Here's a summary of the code in one sentence:</p>
+<p>This Node.js script uses various custom modules to scrape websites, save PDFs and screenshots, and collect bookmarks from Google Takeout, with error handling and logging in place.</p>
+
+
+<pre><code>var path = require('path')
+var importer = require('../Core')
+var getBookmarksFromTakeout = importer.import('parse bookmarks file')
+var ISODateString = importer.import('convert date iso')
+var crawlAll = importer.import('crawl domain')
+var {doBrowserRequest} = importer.import('browser crawler tools')
+var {
+    safeurl,
+    existingCache,
+    storeCache,
+    readCache,
+} = importer.import('domain cache tools')
+
+//var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+var PROFILE_PATH = '/Volumes/External/Personal';
+var project = path.join(PROFILE_PATH, 'Collections/pdfs');
+var project2 = path.join(PROFILE_PATH, 'Collections/screenshots');
+
+async function savePdf(filename, response, page) {
+    try {
+        var type = (await response.headers())['content-type'].split(';')[0]
+        if(!type.includes('text/html')) return
+        console.log(`Printing PDF ${filename}`)
+        await page.addStyleTag({content: '*,*:before,*:after{max-height: 100000px!important;}*:before,*:after{vertical-align:unset!important;}'})
+        await page.emulateMediaType('screen')
+        await page.pdf({ path: filename })
+    } catch (e) {
+        console.log(e)
+    }
+    console.log('Done printing PDF')
+}
+
+async function saveScreenshot(filename, response, page) {
+    try {
+        var type = (await response.headers())['content-type'].split(';')[0]
+        if(!type.includes('text/html')) return
+        console.log(`Printing screenshot ${filename}`)
+        await page.addStyleTag({content: '*,*:before,*:after{max-height: 100000px!important;}*:before,*:after{vertical-align:unset!important;}'})
+        await page.emulateMediaType('screen').catch(e => console.log(e))
+        await page.screenshot({ path: filename, fullPage: true })
+    } catch (e) {
+        console.log(e)
+    }
+    console.log('Done printing screen')
+}
+
+async function collectAllBookmarks() {
+    var folders = getBookmarksFromTakeout()
+    var links = folders.reduce(function flattenFolders(arr, cur) {
+        if(cur.folder === 'Sad Examples') return arr
+        arr.push.apply(arr, cur.links.concat(cur.children.reduce(flattenFolders, [])))
+        return arr
+    }, [])
+
+    var urls = links.map(l => l.url.toLowerCase())
+    var existing = []
+    var notexisting = []
+    console.log(urls.length)
+    //links = [{url: 'http://lifehacker.com/386811/shutdown-windows-with-a-text-message-thunderbird-edition'}]
+    //var i = urls.indexOf('http://lifehacker.com/386811/shutdown-windows-with-a-text-message-thunderbird-edition')
+    for(var i = 0; i < links.length; i++) {
+        const filename = path.join(project, safeurl(links[i].url) + '.pdf')
+        const filename2 = path.join(project2, safeurl(links[i].url) + '.png')
+        
+        // check if there is a recent pdf and skip
+        if(fs.existsSync(filename)) {
+            existing.push(filename)
+            continue
+        }
+        notexisting.push(links[i])
+        try {
+            const cache = existingCache(links[i].url, false)
+            await crawlAll(links[i].url, 1, cache)
+
+            // save a pdf
+            // TODO: add page scrolling because AMP doesn't load images until you scroll to it
+            await doBrowserRequest(links[i].url, 
+                                   readCache.bind(null, cache),
+                                   storeCache.bind(null, cache),
+                                   savePdf.bind(null, filename))
+            await doBrowserRequest(links[i].url, 
+                                   readCache.bind(null, cache),
+                                   storeCache.bind(null, cache),
+                                   saveScreenshot.bind(null, filename2))
+        } catch (e) {
+            console.log(e)
+            await doBrowserRequest(false)
+        }
+    }
+    await doBrowserRequest(false)
+    console.log(existing)
+    console.log(notexisting)
+}
+
+module.exports = {
+    collectAllBookmarks,
+    saveScreenshot,
+    savePdf
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This code appears to be a Node.js script that uses various modules to scrape websites, save PDFs and screenshots, and collect bookmarks. Here's a high-level overview of the code:</p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing various modules using <code>require</code>:</p>
+<pre><code class="language-javascript">var path = require('path')
+var importer = require('../Core')
+var getBookmarksFromTakeout = importer.import('parse bookmarks file')
+var ISODateString = importer.import('convert date iso')
+var crawlAll = importer.import('crawl domain')
+var {doBrowserRequest} = importer.import('browser crawler tools')
+var {
+    safeurl,
+    existingCache,
+    storeCache,
+    readCache,
+} = importer.import('domain cache tools')
+</code></pre>
+<p>These modules seem to be custom modules developed for this project, likely related to web scraping and bookmark management.</p>
+<h3>Setting up Paths and Variables</h3>
+<p>The code sets up some paths and variables:</p>
+<pre><code class="language-javascript">var PROFILE_PATH = '/Volumes/External/Personal';
+var project = path.join(PROFILE_PATH, 'Collections/pdfs');
+var project2 = path.join(PROFILE_PATH, 'Collections/screenshots');
+</code></pre>
+<p><code>PROFILE_PATH</code> is set to an external drive path, and two project directories are created using the <code>path.join</code> method.</p>
+<h3>Functions</h3>
+<p>The code defines three functions:</p>
+<h4><code>savePdf</code> function</h4>
+<p>This function saves a PDF from a webpage:</p>
+<pre><code class="language-javascript">async function savePdf(filename, response, page) {
+    //...
+}
+</code></pre>
+<p>It takes three arguments: <code>filename</code>, <code>response</code>, and <code>page</code>. The function checks the response headers to ensure it's an HTML document, then adds a CSS rule to allow for infinite scrolling, emulates screen media type, and saves the PDF using the <code>page.pdf</code> method.</p>
+<h4><code>saveScreenshot</code> function</h4>
+<p>This function saves a screenshot from a webpage:</p>
+<pre><code class="language-javascript">async function saveScreenshot(filename, response, page) {
+    //...
+}
+</code></pre>
+<p>Similar to the <code>savePdf</code> function, it checks the response headers, adds a CSS rule, emulates screen media type, and saves the screenshot using the <code>page.screenshot</code> method.</p>
+<h4><code>collectAllBookmarks</code> function</h4>
+<p>This function collects all bookmarks from Google Takeout:</p>
+<pre><code class="language-javascript">async function collectAllBookmarks() {
+    //...
+}
+</code></pre>
+<p>It calls the <code>getBookmarksFromTakeout</code> function to retrieve the bookmarks, which are then stored somewhere (not shown in the code snippet).</p>
+<h3>Error Handling</h3>
+<p>Both the <code>savePdf</code> and <code>saveScreenshot</code> functions catch any errors that occur during execution and log them to the console.</p>
+<p>Overall, this code appears to be part of a larger project that involves web scraping, PDF and screenshot saving, and bookmark management.</p>

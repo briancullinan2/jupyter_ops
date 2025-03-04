@@ -1,0 +1,86 @@
+<p>Here is a two-sentence summary:</p>
+<p>The code requires the <code>node-screenshots</code> library and exports a single function, <code>screenshotWindow</code>, which takes a window argument and returns a PNG screenshot of the corresponding desktop application window. The function identifies and captures the window, converts the image to PNG format, and returns it as the result.</p>
+
+
+<pre><code>
+const fs = require("fs");
+const { Window } = require("node-screenshots");
+
+
+async function screenshotWindow(window) {
+
+  if(!window) {
+    window = 0
+  }
+
+  let windows = Window.all();
+  let item
+  if(!Number.isNaN(parseInt(window)))
+    item = windows[window]
+  else
+    item = windows.filter(w => {
+      console.log(w.title, w.app_name)
+      return w.title.includes(window) || w.app_name && w.app_name.includes(window)
+    })[0]
+
+  if(!item)
+    return void 0
+
+  /*console.log({
+    title: item.title,
+    app_name: item.app_name,
+    id: item.id,
+    x: item.x,
+    y: item.y,
+    width: item.width,
+    height: item.height,
+    rotation: item.rotation,
+    scaleFactor: item.scaleFactor,
+    isPrimary: item.isPrimary,
+  })*/
+
+  let image = await windows[window].captureImage()
+
+  return await image.toPng()
+}
+
+module.exports = screenshotWindow
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>Requirements</h4>
+<p>The code requires two modules:</p>
+<ul>
+<li><code>fs</code> (File System): Not used in the provided code snippet.</li>
+<li><code>node-screenshots</code>: A library for taking screenshots of desktop applications.</li>
+</ul>
+<h4>Function: <code>screenshotWindow</code></h4>
+<p>An asynchronous function that takes a single argument <code>window</code>. It captures a screenshot of a desktop application window and returns the screenshot as a PNG image.</p>
+<h4>Function Flow</h4>
+<ol>
+<li><strong>Window Identification</strong>:
+<ul>
+<li>If <code>window</code> is falsy, it is set to 0.</li>
+<li>If <code>window</code> is a number (not NaN), it is used as an index to select the corresponding window.</li>
+<li>Otherwise, it is treated as a string to search for in the window titles and app names.</li>
+</ul></li>
+<li><strong>Window Selection</strong>:
+<ul>
+<li>If a matching window is found, it is selected.</li>
+<li>Otherwise, the function returns <code>void 0</code>.</li>
+</ul></li>
+<li><strong>Screenshot Capture</strong>:
+<ul>
+<li>The selected window is used to capture an image.</li>
+</ul></li>
+<li><strong>Image Conversion</strong>:
+<ul>
+<li>The captured image is converted to a PNG format.</li>
+</ul></li>
+<li><strong>Return Value</strong>:
+<ul>
+<li>The PNG image is returned as the result of the function.</li>
+</ul></li>
+</ol>
+<h4>Module Export</h4>
+<p>The <code>screenshotWindow</code> function is exported as the module's default export.</p>

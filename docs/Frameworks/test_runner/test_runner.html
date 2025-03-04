@@ -1,0 +1,72 @@
+<p>This code sets up a file watcher that automatically re-runs JavaScript tests whenever changes are detected in specified files, allowing for continuous testing during development.</p>
+
+
+<pre><code>var chokidar = require("chokidar");
+var importer = require('../Core');
+var testCells = importer.import('test cells');
+
+// TODO: code analysis to combine blocks into modules?
+
+var rateLimiter, done = true;
+function testWatcher(files, tests) {
+    files = typeof files === 'string' ? [files] : files;
+    console.log('watching ' + files + ' - ' + path.resolve('.'))
+    var watcher = chokidar.watch(files, {
+        interval: 1000,
+        atomic: 1000,
+        awaitWriteFinish: true
+    });
+    watcher.on("change", function(event, path) {
+        if(!done) {
+            return;
+        }
+        console.log('running all tests');
+        done = false;
+        return testCells(tests).then(() => (done = true))
+    });
+    testCells(tests);
+    
+    var stdin = process.openStdin();
+    stdin.addListener("data", function(d) {
+        stdin.close();
+    });
+}
+module.exports = testWatcher;
+</code></pre>
+
+<p>This code sets up a file watcher that automatically re-runs tests whenever changes are detected in specified files.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>chokidar</code>: A library for watching files and directories for changes.</li>
+<li><code>importer</code>: A custom module for importing code (likely related to the test runner).</li>
+<li><code>testCells</code>: A function imported from <code>importer</code> that executes JavaScript tests.</li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>rateLimiter</code> and <code>done</code> variables are declared, but not used in the provided code.</li>
+<li><code>testWatcher</code> function is defined, taking <code>files</code> (paths to watch) and <code>tests</code> (test code) as arguments.</li>
+</ul></li>
+<li><p><strong>File Watching:</strong></p>
+<ul>
+<li><code>chokidar.watch</code> is used to monitor the specified files for changes.</li>
+<li>Options are set for the watcher:
+<ul>
+<li><code>interval</code>: Check for changes every 1000 milliseconds (1 second).</li>
+<li><code>atomic</code>: Wait for up to 1000 milliseconds after a change before processing it.</li>
+<li><code>awaitWriteFinish</code>: Ensure that file writes are complete before triggering a change event.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Change Handling:</strong></p>
+<ul>
+<li>The <code>watcher.on(&quot;change&quot;, ...)</code> event listener is triggered whenever a change is detected.</li>
+<li>If <code>done</code> is <code>false</code> (indicating tests are already running), the event is ignored.</li>
+<li>Otherwise, <code>done</code> is set to <code>false</code>, <code>testCells</code> is called to run the tests, and <code>done</code> is set back to <code>true</code> when the tests complete.</li>
+</ul></li>
+<li><p><strong>Manual Trigger:</strong></p>
+<ul>
+<li>A listener is set up for <code>process.stdin</code> to allow manual triggering of tests by pressing Enter.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a way to continuously monitor files for changes and automatically re-run tests whenever modifications are detected.</p>

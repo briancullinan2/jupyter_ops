@@ -1,0 +1,95 @@
+<p>The <code>cleanUpSessions</code> function manages and closes all active Selenium WebDriver sessions, cleans up session data, and restarts the Selenium server to ensure a clean environment for subsequent tests.</p>
+
+
+<pre><code>var path = require('path');
+var fs = require('fs');
+var importer = require('../Core');
+var {
+    getSeleniumServer,
+    runSeleniumCell,
+    execCmd
+} = importer.import([
+    'selenium docker',
+    'set up selenium server',
+    'selenium cell',
+    'spawn child process'
+]);
+
+var regexToArray = (ex, str, i = 0) => {
+    var co = []; var m; while ((m = ex.exec(str)) && co.push(m[i])); return co;
+};
+
+var TOKEN_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials');
+var SESSIONS_PATH = path.join(TOKEN_DIR, 'sessions.json');
+
+function closeAllSessions(logs) {
+    const sessLogs = regexToArray(/\/session\/(.+?)\//ig, logs.join('\n'), 1);
+    const sessions = sessLogs.filter((s, i, arr) => arr.indexOf(s) === i)
+}
+
+function cleanUpSessions() {
+    return getSeleniumServer()
+        .then(log => closeAllSessions(log))
+        .catch(e => {
+            console.log(e);
+            if(((e.data || e) + '').indexOf('docker: not found') === -1) {
+                throw e;
+            } else {
+                // try to kill chrome
+                return execCmd('sudo killall chrome');
+            }
+        })
+        .then(() => {
+            fs.writeFileSync(SESSIONS_PATH, '[]');
+            return runSeleniumCell(false);
+        })
+}
+module.exports = cleanUpSessions;
+
+if(typeof $$ !== 'undefined') {
+    $$.async()
+    cleanUpSessions()
+        .then(r => $$.sendResult(r))
+        .catch(e => $$.sendError(e))
+}
+</code></pre>
+
+<p>This code defines a function <code>cleanUpSessions</code> that manages and closes all active Selenium WebDriver sessions, cleans up session data, and restarts the Selenium server.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>path</code>, <code>fs</code>, and functions from <code>importer</code> (likely a custom module).</li>
+</ul></li>
+<li><p><strong><code>regexToArray</code> Function:</strong></p>
+<ul>
+<li>A utility function to extract matches from a string using a regular expression.</li>
+</ul></li>
+<li><p><strong>Paths:</strong></p>
+<ul>
+<li>Defines paths for storing session data (<code>TOKEN_DIR</code> and <code>SESSIONS_PATH</code>).</li>
+</ul></li>
+<li><p><strong><code>closeAllSessions</code> Function:</strong></p>
+<ul>
+<li>Takes a log string as input.</li>
+<li>Extracts session IDs from the log using a regular expression.</li>
+<li>(Note: The code is incomplete; it doesn't actually close the sessions.)</li>
+</ul></li>
+<li><p><strong><code>cleanUpSessions</code> Function:</strong></p>
+<ul>
+<li>Gets the Selenium server logs.</li>
+<li>Calls <code>closeAllSessions</code> to attempt to close all sessions.</li>
+<li>Handles errors gracefully, attempting to kill Chrome if the server is not found.</li>
+<li>Clears the session data file (<code>SESSIONS_PATH</code>).</li>
+<li>Restarts the Selenium server.</li>
+</ul></li>
+<li><p><strong>Module Exports:</strong></p>
+<ul>
+<li>Exports the <code>cleanUpSessions</code> function.</li>
+</ul></li>
+<li><p><strong>Async Execution (if $$ is defined):</strong></p>
+<ul>
+<li>If a variable <code>$$</code> is defined (likely a testing framework), it executes <code>cleanUpSessions</code> asynchronously and sends the result or error to the framework.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code provides a mechanism to clean up Selenium WebDriver sessions, remove session data, and restart the server, ensuring a clean slate for subsequent tests.</strong></p>

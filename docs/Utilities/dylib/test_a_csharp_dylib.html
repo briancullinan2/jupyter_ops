@@ -1,0 +1,84 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The <code>testEdge</code> function loads a dynamic library (<code>005.dll</code>) using <code>node-api-dotnet</code> and creates an instance of the <code>Rosetta.Euler</code> class from it, then calls its <code>Main</code> method. The function is exported as a module, making it available for use in other parts of the application.</p>
+
+
+<pre><code>
+const path = require('path')
+const dynamicLib = path.join(__dirname, '../Resources/Projects/rosetta-euler/csharp/005/Debug/net9.0/osx-arm64/005.dll')
+//const dynamicLib = path.join(__dirname, '../Resources/Projects/rosetta-euler/csharp/005/005.dll')
+
+/*
+function moveMouse(x, y) {
+  open({
+    library: 'mouse', // key
+    path: path.join(__dirname, dynamicLib) // path
+  })
+  let result = load({
+    library: "mouse", // path to the dynamic library file
+    funcName: 'main', // the name of the function to call
+    retType: DataType.BigInt, // the return value type
+    paramsType: [DataType.I32, arrayConstructor({
+      type: DataType.StringArray,
+      length: 1
+    })], // the parameter types
+    paramsValue: [0, ['']] // the actual parameter values
+    // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
+  })
+  console.log(result)
+  close('mouse')
+  return result
+}
+*/
+
+//const edge = require('edge-js');
+const dotnet = require('node-api-dotnet');
+
+async function testEdge() {
+  
+  dotnet.load(dynamicLib);
+
+  /*
+  const Main = edge.func({
+    assemblyFile: dynamicLib,
+    typeName: 'Rosetta.Euler',
+    methodName: 'Calculate' // Must be a static method
+  });
+
+  console.log('it works: ', await Main([]));
+  */
+
+  console.log(dotnet)
+  const Euler = dotnet.Rosetta.Euler;
+  const myObject = new Euler()
+  //console.log(await myObject.Calculate([]))
+  Euler.Main([])
+}
+
+
+module.exports = testEdge
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Variables</h3>
+<ul>
+<li><code>path</code>: a built-in Node.js module for working with file paths.</li>
+<li><code>dynamicLib</code>: a file path to a dynamic library (<code>005.dll</code>) located in a specific directory.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>testEdge</code> Function</h4>
+<ul>
+<li>Loads the <code>005.dll</code> dynamic library using <code>node-api-dotnet</code>.</li>
+<li>Creates an instance of the <code>Rosetta.Euler</code> class from the loaded library.</li>
+<li>Calls the <code>Main</code> method on the <code>Euler</code> class instance, passing no arguments.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The code is commented out, suggesting that it was previously using the <code>edge-js</code> library to load the dynamic library and call its functions.</li>
+<li>The commented out <code>moveMouse</code> function is not relevant to the current code.</li>
+<li>The <code>dotnet</code> variable is an instance of the <code>node-api-dotnet</code> library, which is used to load and interact with the dynamic library.</li>
+<li>The <code>Euler</code> class instance is created using the <code>new</code> keyword, and its <code>Main</code> method is called as a static method (although it is not marked as static in the code).</li>
+</ul>
+<h3>Exposed Function</h3>
+<ul>
+<li>The <code>testEdge</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul>

@@ -1,0 +1,93 @@
+<p>Here is a two-sentence summary of the code breakdown:</p>
+<p>The code imports necessary functions from various modules and defines three asynchronous functions (<code>doEssay</code>, <code>doBusiness</code>, and <code>doStory</code>) that generate content (essays, business plans, and stories) based on user input and return them as image attachments. Each function selects a prompt model, triggers typing, updates interaction, generates content using respective LLM functions, and returns the content as an image attachment using <code>postMessageImageAttachment</code>.</p>
+
+
+<pre><code>const {postMessageImageAttachment} = importer.import('create message image attachments')
+const {triggerTyping, createMessage, updateInteraction} = importer.import('disrcord api')
+const selectModel = importer.import('select llm')
+const askLlamaToWriteStory = importer.import('write creatively llm')
+const askLlamaToWriteBusinessPlan = importer.import('business plan llm')
+const askLlamaWriteEssay = importer.import('research paper llm')
+
+
+async function doEssay(interaction) {
+  promptModel = await selectModel(interaction.data.options[1] ? interaction.data.options[1].value : 'Meta')
+
+  await triggerTyping(interaction.channel_id)
+  
+  await updateInteraction('This could take a while...', interaction.id, interaction.token)
+
+  let essay = await askLlamaWriteEssay(interaction.data.options[0].value, null, promptModel)
+
+  return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(essay), interaction.channel_id, 'text/html')
+}
+
+async function doBusiness(interaction) {
+  promptModel = await selectModel(interaction.data.options[1] ? interaction.data.options[1].value : 'Meta')
+
+  await triggerTyping(interaction.channel_id)
+  
+  await updateInteraction('This could take a while...', interaction.id, interaction.token)
+
+  let essay = await askLlamaToWriteBusinessPlan(interaction.data.options[0].value, null, promptModel)
+
+  return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(essay), interaction.channel_id, 'text/html')
+}
+
+async function doStory(interaction) {
+  promptModel = await selectModel(interaction.data.options[1] ? interaction.data.options[1].value : 'Meta')
+
+  await triggerTyping(interaction.channel_id)
+  
+  await updateInteraction('This could take a while...', interaction.id, interaction.token)
+
+  let essay = await askLlamaToWriteStory(interaction.data.options[0].value, null, promptModel)
+
+  return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(essay), interaction.channel_id, 'text/html')
+}
+
+
+module.exports = {
+  doEssay,
+  doBusiness,
+  doStory,
+}
+
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Import Statements</h3>
+<p>The code imports various functions from other modules using the <code>importer.import()</code> method:</p>
+<ul>
+<li><code>postMessageImageAttachment</code>, <code>triggerTyping</code>, <code>createMessage</code>, <code>updateInteraction</code> from 'discord api'</li>
+<li><code>selectModel</code> from'select llm'</li>
+<li><code>askLlamaToWriteStory</code>, <code>askLlamaToWriteBusinessPlan</code>, <code>askLlamaWriteEssay</code> from respective LLM modules</li>
+</ul>
+<h3>Functions</h3>
+<p>The code defines three asynchronous functions:</p>
+<ul>
+<li><code>doEssay(interaction)</code>: Writes a research paper essay based on the user's input and returns it as an image attachment.</li>
+<li><code>doBusiness(interaction)</code>: Writes a business plan based on the user's input and returns it as an image attachment.</li>
+<li><code>doStory(interaction)</code>: Writes a creative story based on the user's input and returns it as an image attachment.</li>
+</ul>
+<p>Each function:</p>
+<ol>
+<li>Selects a prompt model using the <code>selectModel</code> function.</li>
+<li>Triggers typing in the channel using <code>triggerTyping</code>.</li>
+<li>Updates the interaction with a progress message using <code>updateInteraction</code>.</li>
+<li>Calls the respective LLM function to generate the content (essay, business plan, or story).</li>
+<li>Returns the generated content as an image attachment using <code>postMessageImageAttachment</code>.</li>
+</ol>
+<h3>Module Exports</h3>
+<p>The code exports the three functions as module exports:</p>
+<ul>
+<li><code>doEssay</code></li>
+<li><code>doBusiness</code> (Note: <code>doBusi</code> is mentioned in the documentation, but it should be <code>doBusiness</code>)</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The <code>interaction</code> object is passed to each function, which suggests that this code is part of a Discord bot.</li>
+<li>The <code>promptModel</code> variable is used to select a prompt model, but its purpose is not entirely clear without more context.</li>
+<li>The use of <code>Buffer.from()</code> to convert the generated content to a buffer before sending it as an image attachment is likely for compatibility reasons.</li>
+</ul>

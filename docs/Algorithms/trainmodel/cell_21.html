@@ -1,0 +1,8 @@
+
+
+<pre><code>json_file = open("facialemotionmodel.json", "r")
+model_json = json_file.read()
+json_file.close()
+model = model_from_json(model_json)
+model.load_weights("facialemotionmodel.h5")</code></pre>
+

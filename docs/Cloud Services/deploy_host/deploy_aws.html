@@ -1,0 +1,48 @@
+<p>The <code>deployAws</code> function packages project files into a zip archive and deploys them to the AWS Lambda function <code>eloqua_test</code> in the us-west-2 region.</p>
+
+
+<pre><code>function deployAws() {
+    return execCmd(os.platform() === 'win32' ? `
+powershell.exe -nologo -noprofile -command "& { \
+    Add-Type -A 'System.IO.Compression.FileSystem'; \
+    Remove-Item –path index.zip –recurse -erroraction 'silentlycontinue'; \
+    $files = @('index.js', 'eloqua-service.js', 'eloqua-create.js', 'eloqua-mapper.js', 'https-request-polyfill.js', 'sync-zuora-eloqua.js', 'zuora-service.js', 'zuora-renewals-query.js', 'package.json', 'package-lock.json'); \
+    $files | Compress-Archive -DestinationPath index.zip; \
+    & aws lambda update-function-code --region us-west-2 --function-name eloqua_test --zip-file fileb://index.zip; \
+}"` : `
+rm index.zip 
+zip ./index.zip -r index.js eloqua-service.js eloqua-create.js eloqua-mapper.js https-request-polyfill.js sync-zuora-eloqua.js zuora-service.js zuora-renewals-query.js package.json package-lock.json
+aws lambda update-function-code --region us-west-2 --function-name eloqua_test --zip-file fileb://index.zip
+`, {cwd: PROJECT_PATH});
+}
+</code></pre>
+
+<p>This code defines a function <code>deployAws</code> that deploys a Lambda function named <code>eloqua_test</code> to the AWS us-west-2 region.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Platform Check:</strong></p>
+<ul>
+<li>It first checks the operating system using <code>os.platform()</code>.</li>
+<li>If it's Windows (<code>win32</code>), it executes a PowerShell script.</li>
+<li>Otherwise (likely Linux or macOS), it executes shell commands.</li>
+</ul></li>
+<li><p><strong>File Preparation:</strong></p>
+<ul>
+<li>It removes an existing <code>index.zip</code> file.</li>
+<li>It creates a new zip archive named <code>index.zip</code> containing the necessary JavaScript files (<code>index.js</code>, <code>eloqua-service.js</code>, etc.) and project dependencies (<code>package.json</code>, <code>package-lock.json</code>).</li>
+</ul></li>
+<li><p><strong>AWS Lambda Deployment:</strong></p>
+<ul>
+<li>It uses the <code>aws lambda update-function-code</code> command to update the code for the <code>eloqua_test</code> Lambda function.</li>
+<li>It specifies the <code>us-west-2</code> region and provides the path to the <code>index.zip</code> file.</li>
+</ul></li>
+<li><p><strong>Environment Variables:</strong></p>
+<ul>
+<li>The code assumes the existence of <code>PROJECT_PATH</code> environment variable, which likely points to the directory containing the project files.</li>
+</ul></li>
+<li><p><strong>Error Handling:</strong></p>
+<ul>
+<li>The <code>execCmd</code> function (not shown) is likely responsible for executing the commands and handling any errors.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more questions!</p>

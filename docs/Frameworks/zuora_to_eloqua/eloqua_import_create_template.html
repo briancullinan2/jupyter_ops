@@ -1,0 +1,103 @@
+<p>This code provides reusable templates for interacting with a data system, enabling bulk data imports, record creation, and potentially temporary imports.  The templates use placeholders to dynamically reference fields and data sources.</p>
+
+
+<pre><code>
+module.exports = {
+    bulkImportTemplate,
+    contentCreateTemplate,
+    temporaryImportTemplate
+}
+
+function bulkImportTemplate(templateId) {
+    // replace ID for CDO
+    return {
+        "name": "Renewals Micro-service - Bulk Import",
+        "mapDataCards": "true",
+        "mapDataCardsEntityField": "{{Contact.Field(C_EmailAddress)}}",
+        "mapDataCardsSourceField": "EmailAddress",
+        "mapDataCardsEntityType": "Contact",
+        "mapDataCardsCaseSensitiveMatch": "false",
+        "updateRule": "always",
+        "fields": {
+            "AccountId": `{{CustomObject[${templateId}].Field(Account_ID1)}}`,
+            "ActProduct": `{{CustomObject[${templateId}].Field(Act_Product1)}}`,
+            "EmailAddress": `{{CustomObject[${templateId}].Field(Email_Address1)}}`,
+            "Quantity": `{{CustomObject[${templateId}].Field(Quantity1)}}`,
+            "Support": `{{CustomObject[${templateId}].Field(Support1)}}`,
+            "SupportQuantity": `{{CustomObject[${templateId}].Field(Support_Quantity1)}}`,
+            "RenewalDate": `{{CustomObject[${templateId}].Field(Renewal_Date1)}}`,
+            "RenewalsStatus": `{{CustomObject[${templateId}].Field(Renewal_Status1)}}`,
+            "RepName": `{{CustomObject[${templateId}].Field(Rep_Name1)}}`,
+            "RORName": `{{CustomObject[${templateId}].Field(ROR_Name1)}}`,
+            "RORNumber": `{{CustomObject[${templateId}].Field(ROR_Number1)}}`,
+            "CardExpiration": `{{CustomObject[${templateId}].Field(Card_Expiration1)}}`,
+            "State": `{{CustomObject[${templateId}].Field(State1)}}`,
+            "Discount": `{{CustomObject[${templateId}].Field(Discount1)}}`,
+            "Country": `{{CustomObject[${templateId}].Field(Country1)}}`,
+            "Currency": `{{CustomObject[${templateId}].Field(Currency1)}}`
+        },
+        "identifierFieldName": "EmailAddress"
+    }
+}
+
+function contentCreateTemplate() {
+    return {
+        "recordDefinition": {
+            "ContactID": "{{Contact.Id}}",
+            "EmailAddress": "{{Contact.Field(C_EmailAddress)}}"
+        },
+        "height": 256,
+        "width": 256,
+        "editorImageUrl": "https://purchasesprint.actops.com/assets/act-logo-circle.png",
+        "requiresConfiguration": false,
+    }
+}
+
+function temporaryImportTemplate(instance, execution) {
+    return {
+        "name": "Renewals Micro-service - Bulk Import",
+        "mapDataCards": "true",
+        "mapDataCardsEntityField": "{{Contact.Field(C_EmailAddress)}}",
+        "mapDataCardsSourceField": "EmailAddress",
+        "mapDataCardsEntityType": "Contact",
+        "mapDataCardsCaseSensitiveMatch": "false",
+        "updateRule": "always",
+        "fields": {
+            "EmailAddress": "{{Contact.Field(C_EmailAddress)}}",
+            "Last4DigitsOfCard": "{{Contact.Field(Last_4_Digits_of_Card1)}}",
+            "Content": `{{ContentInstance(${instance}).Execution[${execution}]}}`
+        },
+        "identifierFieldName": "EmailAddress"
+    }
+}
+</code></pre>
+
+<p>This code defines three template functions for interacting with a system, likely a CRM or similar platform.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Exports:</strong></p>
+<ul>
+<li>The module exports three functions: <code>bulkImportTemplate</code>, <code>contentCreateTemplate</code>, and <code>temporaryImportTemplate</code>.</li>
+</ul></li>
+<li><p><strong><code>bulkImportTemplate</code> Function:</strong></p>
+<ul>
+<li>Takes a <code>templateId</code> as input.</li>
+<li>Constructs a template object for bulk importing data.</li>
+<li>The template defines:
+<ul>
+<li>Name of the import operation.</li>
+<li>Mapping of data fields from the input source to CRM fields.</li>
+<li>Update rules for existing records.</li>
+<li>Specific fields to be imported, using placeholders like <code>{{CustomObject[${templateId}].Field(FieldName)}}</code> to dynamically reference fields based on the <code>templateId</code>.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>contentCreateTemplate</code> Function:</strong></p>
+<ul>
+<li>Constructs a template object for creating new records.</li>
+<li>Defines fields for the new record, using placeholders like <code>{{Contact.Id}}</code> and <code>{{Contact.Field(C_EmailAddress)}}</code> to reference existing contact information.</li>
+</ul></li>
+<li><p><strong><code>temporaryImportTemplate</code> Function:</strong></p>
+<ul>
+<li>(Not shown in the provided code) - Likely a template for temporary data imports.</li>
+</ul></li>
+</ol>

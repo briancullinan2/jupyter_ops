@@ -1,0 +1,186 @@
+<p>Here's a two-sentence summary of the code snippet:</p>
+<p>This Node.js code implements a Huffman coding compression and decompression library using a WebAssembly module, allowing for the compression and decompression of messages. The code includes functions for writing and reading bits to and from a memory array, as well as a function for decompressing messages using the Huffman coding algorithm.</p>
+
+
+<pre><code>var fs = require('fs')
+var huffman = fs.readFileSync('/Users/briancullinan/planet_quake/build/debug-js-js/huffman_js.wasm')
+//var Huffman = require('/Users/briancullinan/planet_quake/code/xquakejs/lib/huffman.js')
+var Huff_Compress
+var Huff_Decompress
+var HuffmanGetBit
+var HuffmanGetSymbol
+var isInit = false
+
+var MAX_MSGLEN = 16384
+var buffer
+var memory
+
+
+// negative bit values include signs
+function writeBits( msgBytes, offset, value, bits ) {
+    var base = 8192 * 12
+    var bitIndex = offset
+    var nbits = bits&7
+
+	if ( bits < 0 ) {
+		bits = -bits
+	}
+    for(var j = 0; j < MAX_MSGLEN; j++) {
+        if(j < msgBytes.length)
+            memory[base + j] = msgBytes[j] & 0xFF
+        else
+            memory[base + j] = 0
+    }
+
+    value &= (0xffffffff>>(32-bits))
+    if ( nbits ) {
+        for ( var i = 0; i < nbits ; i++ ) {
+            HuffmanPutBit( base, bitIndex, (value & 1) )
+            bitIndex++
+            value = (value>>1)
+        }
+        bits = bits - nbits
+    }
+    if ( bits ) {
+        for( var i = 0 ; i < bits ; i += 8 ) {
+            bitIndex += HuffmanPutSymbol( base, bitIndex, (value & 0xFF) )
+            value = (value>>8)
+        }
+    }
+    return [bitIndex, memory.slice(base, base + (bitIndex>>3)+1)]
+}
+
+
+function readBits(m, offset, bits = 8) {
+    var base = 8192 * 12
+    var value
+    var nbits = bits & 7
+    var sym = base - 4
+    var bitIndex = offset
+    for(var i = 0; i < m.length; i++)
+        memory[base + i] = m[i]
+    if ( nbits )
+    {
+        for ( i = 0; i < nbits; i++ ) {
+            value |= HuffmanGetBit( base, bitIndex ) << i
+            bitIndex++
+        }
+        bits -= nbits
+    }
+    if ( bits )
+    {
+        for ( i = 0; i < bits; i += 8 )
+        {
+            bitIndex += HuffmanGetSymbol( sym, base, bitIndex )
+            value |= ( memory[sym] << (i+nbits) )
+        }
+    }
+    return [bitIndex, value]
+}
+
+async function decompressMessage(message, offset) {
+    if(!isInit)
+        await init()
+    if(typeof message == 'string')
+        message = message.split('')
+    for(var i = 0; i < message.length; i++)
+        Huffman.HEAP8[msgData+i] = c
+	Huffman.HEAP32[(msg>>2)+5] = message.length
+	Huffman._Huff_Decompress( msg, 12 )
+	return Huffman.HEAP8.slice(msgData + offset, msgData + Huffman.HEAP32[(msg>>2)+5])
+}
+
+async function compressMessage(message) {
+    var msg = 8192 * 12
+    var msgStart = (msg + 64)
+    if(!isInit)
+        await init()
+    for(var i = msg; i < msgStart + message.length; i++)
+    {
+        memory[i] = 0
+    }
+    memory[msg + 12] = msgStart & 255
+    memory[msg + 13] = (msgStart >> 8) & 255
+    memory[msg + 14] = (msgStart >> 16) & 255
+    memory[msg + 15] = (msgStart >> 24) & 255
+    memory[msg + 20] = (message.length + 1) & 255
+    memory[msg + 21] = ((message.length + 1) >> 8) & 255
+    memory[msg + 22] = 0
+    memory[msg + 23] = 0
+
+    if(typeof message == 'string')
+        message = message.split('')
+    for(var i = 0; i < message.length; i++)
+        memory[msgStart + i] = message[i].charCodeAt(0)
+    memory[msgStart + message.length] = 0
+
+    Huff_Compress(msg, 12)
+    var msgLength = (memory[msg + 21] << 8) + memory[msg + 20]
+    var compressed = memory.slice(msgStart, msgStart + msgLength)
+    return compressed
+}
+
+async function init() {
+    var binary = new Uint8Array(huffman)
+    let imports = {};
+    imports['memory'] = new WebAssembly['Memory']( {'initial': 16, 'maximum': 100} )
+    memory = new Uint8Array( imports['memory']['buffer'] )
+    let program = await WebAssembly.instantiate(binary, { env: imports })
+    Huff_Compress = program.instance.exports.Huff_Compress
+    Huff_Decompress = program.instance.exports.Huff_Decompress
+    HuffmanGetBit = program.instance.exports.HuffmanGetBit
+    HuffmanGetSymbol = program.instance.exports.HuffmanGetSymbol
+    HuffmanPutBit = program.instance.exports.HuffmanPutBit
+    HuffmanPutSymbol = program.instance.exports.HuffmanPutSymbol
+}
+
+init()
+
+module.exports = init
+Object.assign(init, {
+    readBits,
+    writeBits,
+    decompressMessage,
+    compressMessage
+})
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This is a Node.js code snippet that appears to be implementing a Huffman coding compression and decompression library. Huffman coding is a lossless data compression algorithm that assigns variable-length codes to characters in a data set.</p>
+<p><strong>Variables and Functions</strong></p>
+<ul>
+<li><p><strong>Variables:</strong></p>
+<ul>
+<li><code>fs</code>: The Node.js file system module.</li>
+<li><code>huffman</code>: A WebAssembly (WASM) module containing the Huffman coding algorithm.</li>
+<li><code>Huff_Compress</code>, <code>Huff_Decompress</code>, <code>HuffmanGetBit</code>, and <code>HuffmanGetSymbol</code>: These are likely function pointers or references to the WASM module's functions.</li>
+<li><code>isInit</code>: A flag indicating whether the library has been initialized.</li>
+<li><code>MAX_MSGLEN</code>: The maximum length of a message.</li>
+<li><code>buffer</code> and <code>memory</code>: Probably a buffer and memory array used for data manipulation.</li>
+</ul></li>
+<li><p><strong>Functions:</strong></p>
+<ul>
+<li><code>writeBits</code>: Writes bits to the <code>memory</code> array. It takes in a message (as an array of bytes), an offset, a value, and the number of bits to write.</li>
+<li><code>readBits</code>: Reads bits from the <code>memory</code> array. It takes in a message (as an array of bytes), an offset, and the number of bits to read (defaulting to 8).</li>
+<li><code>decompressMessage</code>: Decompresses a message using the Huffman coding algorithm.</li>
+</ul></li>
+</ul>
+<p><strong>Function Explanations</strong></p>
+<ul>
+<li><p><code>writeBits</code>:</p>
+<ul>
+<li>It writes the given message to the <code>memory</code> array, padding it with zeros if necessary.</li>
+<li>It then writes the given value to the <code>memory</code> array, using either bits or symbols depending on the number of bits specified.</li>
+</ul></li>
+<li><p><code>readBits</code>:</p>
+<ul>
+<li>It reads the given number of bits from the <code>memory</code> array and returns them as a value.</li>
+<li>It does this by either reading individual bits or symbols from the <code>memory</code> array, depending on the number of bits specified.</li>
+</ul></li>
+<li><p><code>decompressMessage</code>:</p>
+<ul>
+<li>It checks if the library has been initialized and initializes it if necessary.</li>
+<li>It then decompresses the given message using the <code>readBits</code> function.</li>
+</ul></li>
+</ul>
+<p><strong>Note:</strong> The code assumes that the <code>huffman</code> WASM module is present and correctly loaded. The <code>init</code> function is not implemented in this code snippet.</p>

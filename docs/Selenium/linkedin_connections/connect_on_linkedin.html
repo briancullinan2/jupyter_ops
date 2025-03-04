@@ -1,0 +1,112 @@
+<p>This code automates LinkedIn interactions by retrieving a list of connections and sending connection requests to specified profiles.</p>
+
+
+<pre><code>var importer = require('../Core');
+var fs = require('fs');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Collections/conversations';
+
+function listAllConnections(list) {
+    var friends = [];
+    // TODO: create utility function for managing time critical files like this.
+    if (fs.existsSync(project + '/new-connections.json')) {
+        return Promise.resolve(JSON.parse(
+            fs.readFileSync(project + '/new-connections.json')));
+    }
+    return client
+        .getUrl()
+        .then(url => {
+            if(list && list.includes('linkedin.com')) {
+                return client
+                    .url(list)
+                    .pause(3000);
+            }
+            return client
+                .url('https://www.linkedin.com/mynetwork/')
+                .pause(3000);
+        })
+        .then(() => getAllUntil(
+            false,
+            '//a[contains(@href, "/in/")]/@href',
+            friends,
+            (a, b) => a === b,
+            (i) => i < 10
+        ))
+        .then(r => r.filter((l, i, arr) => arr.indexOf(l) === i))
+        .then(r => {
+            fs.writeFileSync(
+                project + '/new-connections.json',
+                JSON.stringify(r, null, 4));
+            return r;
+        })
+        .catch(e => console.log(e))
+};
+
+function connectLinkedin(profile) {
+    return client
+        .then(() => clickSpa('https://linkedin.com' + profile))
+        .pause(3000)
+        .isExisting('//button[contains(., "Connect")]')
+        .then(is => {
+            console.log(is + ' - ' + profile);
+            return is
+              ? client
+                  .isVisible('//button[contains(., "Connect")]')
+                  .then(is => is
+                        ? client
+                            .click('//button[contains(., "Connect")]')
+                            .pause(1000)
+                        : [])
+              : client
+                  .isExisting('//button[contains(., "More")]')
+                  .then(is => is ? client.click('//button[contains(., "More")]').pause(500) : [])
+                  .isVisible('//button[contains(., "Connect")][not(contains(., "Remove"))]')
+                  .then(is => is
+                        ? client
+                            .click('//button[contains(., "Connect")][not(contains(., "Remove"))]')
+                            .pause(1000)
+                        : [])
+        })
+        .isExisting('//button[contains(., "Send now")]')
+        .then(is => is
+              ? client
+              .isVisible('//button[contains(., "Send now")]')
+              .then(is => is
+                    ? client
+                        .click('//button[contains(., "Send now")]')
+                        .pause(2000)
+                    : [])
+              : [])
+        .pause(1000)
+        .catch(e => console.log(e))
+}
+
+module.exports = {
+    listAllConnections,
+    connectLinkedin
+};
+</code></pre>
+
+<p>This code snippet defines two functions, <code>listAllConnections</code> and <code>connectLinkedin</code>, that automate interactions with LinkedIn, specifically focusing on retrieving a list of connections and sending connection requests.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>listAllConnections</code> Function:</strong></p>
+<ul>
+<li>Aims to retrieve a list of LinkedIn connections.</li>
+<li>First, it checks if a file <code>new-connections.json</code> exists in a specified directory (<code>project</code>). If it does, it reads the JSON data from the file and returns it as a promise.</li>
+<li>If the file doesn't exist, it uses <code>client</code> (presumably a web automation client) to navigate to the LinkedIn &quot;My Network&quot; page or a specified URL if provided.</li>
+<li>It then uses <code>getAllUntil</code> (not shown in the provided code) to extract LinkedIn profile URLs from the page.</li>
+<li>The extracted URLs are de-duplicated and saved to <code>new-connections.json</code> before being returned.</li>
+</ul></li>
+<li><p><strong><code>connectLinkedin</code> Function:</strong></p>
+<ul>
+<li>Takes a LinkedIn profile URL as input.</li>
+<li>Uses <code>client</code> to navigate to the specified profile.</li>
+<li>Checks if a &quot;Connect&quot; button exists.</li>
+<li>If found, it checks if the button is visible and clicks it if so.</li>
+<li>If the &quot;Connect&quot; button is not found, it checks for a &quot;More&quot; button and handles the subsequent interaction based on its presence.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code provides a way to programmatically scrape LinkedIn for a list of connections and send connection requests to specific profiles.</p>

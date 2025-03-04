@@ -1,0 +1,119 @@
+<p>Here is a summary of the code in one sentence:</p>
+<p>The code is part of a Node.js application that interacts with a meta kernel, providing various functions to execute commands, inspect the system, and handle messages, while also managing subprocesses and enforcing an interface.</p>
+<p>Alternatively, if you would like a two-sentence summary:</p>
+<p>The code consists of several functions that interact with a meta kernel, including executing commands, inspecting the system, handling messages, and managing subprocesses. The code also enforces an interface and contains TODO comments suggesting it is still a work-in-progress.</p>
+
+
+<pre><code>var {spawn} = require("child_process");
+var importer = require('../Core');
+var interface = importer.import('enforcing an interface');
+var metaKernelInterface = importer.import('meta kernel interface');
+var {extend} = importer.import('extend prototype class');
+var {socketMetaKernel} = socketMethods = importer.import('socket meta kernel')
+var nativeMethods = importer.import('native meta kernel methods');
+
+function processMetaKernel(meta_kernel) {
+    var meta = interface(meta_kernel, metaKernelInterface);
+    var kernel = extend(meta, {
+        do_init,
+        do_shutdown,
+        do_message,
+        do_execute,
+        do_complete,
+        do_inspect,
+        do_history,
+        do_is_complete,
+    })
+    return socketMetaKernel(kernel);
+}
+
+function do_execute(message) { return this.do_message(message, do_execute)}
+function do_complete(message) { return this.do_message(message, do_complete)}
+function do_inspect(message) { return this.do_message(message, do_inspect)}
+function do_history(message) { return this.do_message(message, do_history)}
+function do_is_complete(message) { return this.do_message(message, do_is_complete)}
+
+function do_message(message, func) {
+    if(!this.socket) {
+        throw new Error('socket not ready!')
+    }
+    if(typeof func === 'undefined') {
+        return nativeMethods.do_message.call(this, message);
+    }
+    // TODO: add execution do_respond method handling to this layer instead
+    var client = {};
+    client[func.name] = {content: message};
+    this.socket.send(client);
+}
+
+// TODO: move this to socket kernel and call from parent process kernel
+function do_shutdown(message) {
+    return Promise.resolve()
+        .then(() => this.socket.kill('SIGTERM'))
+        .then(() => process.exit() /*request.content.restart
+              ? kernel.do_init(kernel.kernel_config, kernel)
+              : void 0*/)
+}
+
+function do_init(config) {
+    var {child_process} = config; // for readability
+    if(!child_process) {
+        throw new Error(`meta_kernel not implemented! ${
+                        JSON.stringify(child_process)}`);
+    }
+    if(typeof child_process === 'string') {
+        child_process = [child_process];
+    }
+    console.log('spawning child process');
+    this.socket = spawn(child_process[0],
+                        child_process.slice(1),
+                        {
+                            cwd: config.cwd || '.',
+                            stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+                        //    stdio: [0, 1, 2]
+                        //    stdio: ['ignore', 'ignore', 'ignore']
+                        //    stdio: [process.stdin,
+                        //            process.stdout,
+                        //            process.stderr, 'ipc']
+                        })
+    socketMethods.do_init.call(this, config)
+}
+
+module.exports = {
+    do_init,
+    do_shutdown,
+    do_message,
+    do_execute,
+    do_complete,
+    do_inspect,
+    do_history,
+    do_is_complete,
+    processMetaKernel
+};
+
+</code></pre>
+
+<h2><strong>Overview</strong></h2>
+<p>This code is likely part of a Node.js application that interacts with a meta kernel, which is a system that manages and executes a kernel. The kernel is responsible for performing various tasks, such as executing commands, inspecting the system, and handling messages.</p>
+<h2><strong>Imported Modules</strong></h2>
+<p>The code imports several modules:</p>
+<ul>
+<li><code>child_process</code>: This module allows the application to spawn new subprocesses.</li>
+<li><code>socketMethods</code>: This module contains functions for interacting with the socket.</li>
+<li><code>nativeMethods</code>: This module contains functions for interacting with the native meta kernel.</li>
+<li><code>interface</code>: This module contains functions for enforcing an interface.</li>
+<li><code>metaKernelInterface</code>: This module contains the interface definition for the meta kernel.</li>
+<li><code>extend</code>: This module contains a function for extending a prototype class.</li>
+</ul>
+<h2><strong>processMetaKernel Function</strong></h2>
+<p>The <code>processMetaKernel</code> function takes a <code>meta_kernel</code> object as input and returns a socket kernel object. It uses the <code>interface</code> function to enforce the meta kernel interface and then extends the resulting object with additional methods (e.g., <code>do_init</code>, <code>do_shutdown</code>, etc.). Finally, it returns a socket kernel object using the <code>socketMetaKernel</code> function.</p>
+<h2><strong>do_execute, do_complete, do_inspect, do_history, and do_is_complete Functions</strong></h2>
+<p>These functions are all similar and delegate their execution to the <code>do_message</code> function. They take a <code>message</code> parameter and an optional <code>func</code> parameter. If <code>func</code> is not provided, they call the <code>nativeMethods.do_message</code> function with the <code>message</code> parameter. Otherwise, they create a client object with the <code>func</code> method name and send it to the socket.</p>
+<h2><strong>do_message Function</strong></h2>
+<p>The <code>do_message</code> function takes a <code>message</code> parameter and an optional <code>func</code> parameter. If <code>func</code> is not provided, it calls the <code>nativeMethods.do_message</code> function with the <code>message</code> parameter. Otherwise, it creates a client object with the <code>func</code> method name and sends it to the socket.</p>
+<h2><strong>do_shutdown Function</strong></h2>
+<p>The <code>do_shutdown</code> function takes a <code>message</code> parameter and returns a promise that resolves when the socket is killed and the process exits.</p>
+<h2><strong>do_init Function</strong></h2>
+<p>The <code>do_init</code> function takes a <code>config</code> object as input and returns an error if the <code>child_process</code> property is not present. Otherwise, it calls the <code>process.exit</code> function with an argument that depends on the <code>restart</code> property in the <code>config</code> object.</p>
+<h2><strong>Notes</strong></h2>
+<p>The code contains several TODO comments that suggest it is still a work-in-progress. The <code>do_respond</code> method handling is not implemented, and the <code>do_shutdown</code> and <code>do_init</code> functions are not fully implemented.</p>

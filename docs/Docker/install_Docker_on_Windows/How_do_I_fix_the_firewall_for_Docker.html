@@ -1,0 +1,53 @@
+<p>This code installs Docker on a Windows system, handling the installation process and configuring necessary firewall and network settings using elevated privileges.</p>
+
+
+<pre><code>$$.async();
+var elevateExecLoc = path.join(process.cwd(), 'elevate', 'bin', 'x86', 'Release', 'elevate.exe');
+var firewallCmd = 'New-NetFirewallRule -DisplayName \\"docker engine\\" -Direction Inbound -Action Allow -Protocol tcp -LocalPort 2375';
+var networkCmd = 'Set-NetConnectionProfile -InterfaceAlias \\"vEthernet (DockerNAT)\\" -NetworkCategory Private';
+var exec = require('child_process').exec;
+var install = exec(elevateExecLoc + ' msiexec /i ' + dockerLoc + ' /qn /L*V! ' + logLoc, () => {
+    var firewall = exec(elevateExecLoc + ' powershell -c "' + firewallCmd + ' ; ' + networkCmd + '"', () => {
+        $$.done('installed Docker');
+    });
+    install.stdout.on('data', (d) => console.log(d));
+    install.stderr.on('data', (d) => console.log(d));
+});
+install.stdout.on('data', (d) => console.log(d));
+install.stderr.on('data', (d) => console.log(d));
+
+ #@FOR /
+f
+'tokens=*' % i
+IN('docker-machine env default')
+DO
+@%
+i</code></pre>
+
+<p>This code snippet installs Docker on a Windows system using the <code>elevate</code> tool to run commands with elevated privileges.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Setup:</strong></p>
+<ul>
+<li>It defines paths to the downloaded Docker installer (<code>dockerLoc</code>) and the <code>elevate.exe</code> executable.</li>
+<li>It constructs PowerShell commands to configure the Windows firewall and network settings for Docker.</li>
+</ul></li>
+<li><p><strong>Docker Installation:</strong></p>
+<ul>
+<li>It uses <code>elevate.exe</code> to run the Docker installer (<code>msiexec</code>) with silent installation options (<code>/qn</code>) and logs output to a file (<code>/L*V!</code>).</li>
+<li>It handles the installation output and errors using event listeners.</li>
+</ul></li>
+<li><p><strong>Post-Installation Configuration:</strong></p>
+<ul>
+<li>After installation, it uses <code>elevate.exe</code> again to execute PowerShell commands:
+<ul>
+<li>Creates a firewall rule to allow inbound traffic on port 2375 for Docker.</li>
+<li>Configures the network interface for Docker to use a private network.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Completion:</strong></p>
+<ul>
+<li>Once both installation and configuration are complete, it signals the completion of the process to the asynchronous context (<code>$$.done('installed Docker')</code>).</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

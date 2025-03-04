@@ -1,0 +1,51 @@
+
+
+<pre><code>    status: (kernel, request) => kernel.do_respond({
+        status: request.content
+    }),
+
+    function onError(result) {
+        request.respond(
+            this.shellSocket,
+            "execute_reply", {
+                status: "error",
+                execution_count: this.executionCount,
+                ename: result.error.ename,
+                evalue: result.error.evalue,
+                traceback: result.error.traceback,
+            }
+        );
+
+        request.respond(
+            this.iopubSocket,
+            "error", {
+                execution_count: this.executionCount,
+                ename: result.error.ename,
+                evalue: result.error.evalue,
+                traceback: result.error.traceback,
+            }
+        );
+    }
+
+    function onStdout(data) {
+        request.respond(
+            this.iopubSocket,
+            "stream", {
+                name: "stdout",
+                text: data.toString(),
+            }
+        );
+    }
+
+    function onStderr(data) {
+        request.respond(
+            this.iopubSocket,
+            "stream", {
+                name: "stderr",
+                text: data.toString(),
+            }
+        );
+    }
+
+</code></pre>
+

@@ -1,0 +1,205 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The code imports necessary modules, defines constants for conversation directories, dates, times, and a file path, and defines two custom functions: <code>hashCode</code> to generate a hash code from a string and <code>cellNeedsTidying</code> to check if a cell in a conversation needs tidying. The <code>cellNeedsTidying</code> function checks for several conditions, including missing properties and invalid data types, to determine if a cell requires tidying.</p>
+
+
+<pre><code>
+//import {fileURLToPath} from "url";
+const fs = require('fs')
+const path = require('path')
+const {askLlamaAboutEmotions} = importer.import('ask llm about emotions')
+const {storeChatHistory} = importer.import('how to cache chat logs')
+//const { chatCache } = importer.import('cache chat history with llm descriptions')
+const { askLlamaAboutConversation, askLlamaAboutCategory } = importer.import('ask llm about chat conversations')
+
+const hashCode = s => s.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0)
+
+const CHAT_DIRECTORIES = [
+  '/Volumes/External/Personal/Collections/conversations',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/AIM/Query',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/old logs/AIM',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/old logs/MSN',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/older logs/AIM',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/older logs/MSN',
+]
+
+const CHAT_DATES = [
+  /(January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2}), \d{4}/gi,
+  /(0[1-9]|[12]\d|3[01])\.(0[1-9]|1[0-2])\.\d{4}/gi,
+  /(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}/gi,
+  /\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/gi,
+  /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2}), \d{4}/gi
+]
+
+const CHAT_TIMES = [
+  /(0[1-9]|1[0-2]):([0-5]\d):([0-5]\d)\s?(AM|PM)/gi,
+  /([01]\d|2[0-3]):([0-5]\d):([0-5]\d)/gi,
+  /(0[1-9]|1[0-2]):([0-5]\d)\s?(AM|PM)/gi,
+  /([01]\d|2[0-3]):([0-5]\d)/gi
+]
+
+const CHAT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations')
+
+function cellNeedsTidying(cellId, chatCache) {
+  return typeof chatCache[cellId] == 'undefined'
+  || typeof chatCache[cellId].emotions == 'undefined'
+  || typeof chatCache[cellId].category != 'string'
+  || typeof chatCache[cellId].date == 'undefined'
+  || !chatCache[cellId].date
+  || chatCache[cellId].summary.match(/Find the derivative/gi)
+  || chatCache[cellId].category == '<h1>'
+  || typeof chatCache[cellId].from == 'undefined' || typeof chatCache[cellId].to == 'undefined'
+}
+
+function convertMessagesToNoDates(currentMessages) {
+  let messageNoTimes = currentMessages
+  if(typeof currentMessages != 'string') {
+    messageNoTimes = messageNoTimes.join('\n').trim()
+  }
+  for(let i = 0; i < CHAT_DATES.length; i++) {
+    messageNoTimes = messageNoTimes.replace(CHAT_DATES[i], '')
+  }
+  for(let i = 0; i < CHAT_TIMES.length; i++) {
+    messageNoTimes = messageNoTimes.replace(CHAT_TIMES[i], '')
+  }
+  messageNoTimes = messageNoTimes.replace(/\[\s*\]\s*/gi, '')
+  return messageNoTimes.split('\n')
+}
+
+async function askLlamaAboutChatLog(chatLog) {
+
+  if(!chatLog) {
+    chatLog = 'fuji897@hotmail.com'
+  }
+
+  let chatHistory = []
+  let chatPath
+  for(let i = 0; i < CHAT_DIRECTORIES.length; i++) {
+    chatPath = path.join(CHAT_DIRECTORIES[i], chatLog + '.log')
+    if(fs.existsSync(chatPath)) {
+      chatHistory = fs.readFileSync(chatPath).toLocaleString('utf-8').split('\n')
+      break
+    } else {
+      chatPath = void 0
+    }
+  }
+  if(!chatPath) return
+
+  let chatCacheFile = path.join(CHAT_PATH, path.basename(chatPath).replace('.log', '') + '.json')
+  let chatCache = {}
+  if(fs.existsSync(chatCacheFile))
+    chatCache = JSON.parse(fs.readFileSync(chatCacheFile).toString('utf-8'))
+
+  let from = 0
+  let mtime = fs.statSync(chatPath).mtime.getTime()
+  let previousTime = mtime
+  let cellCounter = 0
+  let currentMessages = []
+  let currentTotal = 0
+  let cellId = chatPath + '[' + cellCounter + ']'
+  for(let i = 0; i < chatHistory.length; i++) {
+    if(currentMessages.length > 0 && currentTotal + chatHistory[i].length > 2048 || currentMessages.length == 20) {
+      // process now
+      // TODO: store result
+      let messageBlock = currentMessages.join('\n')
+      let messageNoTimes = convertMessagesToNoDates(currentMessages)
+      let date = CHAT_DATES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
+      let time = CHAT_TIMES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
+      let now = new Date(date + ' ' + time).getTime() || previousTime
+      if(date && time)
+        previousTime = now
+      let hash = hashCode(messageBlock)
+      if(cellNeedsTidying(cellId, chatCache) || chatCache[cellId].hash != hash) {
+        let summary = await askLlamaAboutConversation(messageNoTimes)
+        let emotions = await askLlamaAboutEmotions(messageNoTimes)
+        let category = await askLlamaAboutCategory(messageNoTimes)
+        storeChatHistory(cellId, mtime, summary, emotions, category, hash, now, from, i - 1)
+      }
+      currentMessages = []
+      currentTotal = 0
+      from = i
+      cellCounter++
+      cellId = chatPath + '[' + cellCounter + ']'
+    }
+
+    if(chatHistory[i].trim().length == 0) continue
+
+    currentMessages[currentMessages.length] = chatHistory[i]
+    currentTotal += chatHistory[i].length
+  }
+  if(currentMessages.length > 0) {
+    // process now
+    let messageBlock = currentMessages.join('\n')
+    let messageNoTimes = convertMessagesToNoDates(currentMessages)
+    let date = CHAT_DATES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
+    let time = CHAT_TIMES.map(d => (messageBlock.match(d) || [])[0]).filter(d=>d)[0]
+    let now = new Date(date + ' ' + time).getTime()
+    let hash = hashCode(messageBlock)
+    if(cellNeedsTidying(cellId, chatCache) || chatCache[cellId].hash != hash) {
+      let summary = await askLlamaAboutConversation(messageNoTimes)
+      let emotions = await askLlamaAboutEmotions(messageNoTimes)
+      let category = await askLlamaAboutCategory(messageNoTimes)
+      storeChatHistory(cellId, mtime, summary, emotions, category, hash, now, from, chatHistory.length - 1)
+    }
+    // TODO: store result
+  }
+
+  
+}
+
+module.exports = {
+  askLlamaAboutChatLog,
+  askLlamaAboutConversation,
+  convertMessagesToNoDates,
+  CHAT_DIRECTORIES
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules and Functions</h3>
+<pre><code class="language-javascript">const fs = require('fs')
+const path = require('path')
+const {askLlamaAboutEmotions, askLlamaAboutConversation, askLlamaAboutCategory} = importer.import('...')
+</code></pre>
+<ul>
+<li>The code starts by importing Node.js modules <code>fs</code> (file system) and <code>path</code>.</li>
+<li>It also imports custom functions <code>askLlamaAboutEmotions</code>, <code>askLlamaAboutConversation</code>, and <code>askLlamaAboutCategory</code> using the <code>importer</code> module.</li>
+</ul>
+<h3>Defining Constants</h3>
+<pre><code class="language-javascript">const CHAT_DIRECTORIES = ['/path/to/conversations', '/path/to/logs']
+const CHAT_DATES = [/(pattern1)/, /(pattern2)/,...]
+const CHAT_TIMES = [/(pattern1)/, /(pattern2)/,...]
+const CHAT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations')
+</code></pre>
+<ul>
+<li>Three arrays are defined:
+<ul>
+<li><code>CHAT_DIRECTORIES</code>: an array of file paths to conversation logs.</li>
+<li><code>CHAT_DATES</code>: an array of regular expressions to match different date formats.</li>
+<li><code>CHAT_TIMES</code>: an array of regular expressions to match different time formats.</li>
+</ul></li>
+<li><code>CHAT_PATH</code> is defined as a file path using the <code>path.join</code> method.</li>
+</ul>
+<h3>Defining the <code>hashCode</code> Function</h3>
+<pre><code class="language-javascript">const hashCode = s =&gt; s.split('').reduce((a,b) =&gt; (((a &lt;&lt; 5) - a) + b.charCodeAt(0))|0, 0)
+</code></pre>
+<ul>
+<li>The <code>hashCode</code> function takes a string <code>s</code> as input and returns a hash code.</li>
+<li>The function uses the <code>reduce</code> method to iterate over each character in the string and calculate a hash code.</li>
+</ul>
+<h3>Defining the <code>cellNeedsTidying</code> Function</h3>
+<pre><code class="language-javascript">function cellNeedsTidying(cellId, chatCache) {
+  return...
+}
+</code></pre>
+<ul>
+<li>The <code>cellNeedsTidying</code> function takes two arguments: <code>cellId</code> and <code>chatCache</code>.</li>
+<li>The function checks several conditions to determine if a cell needs tidying:
+<ul>
+<li><code>chatCache[cellId]</code> is undefined or missing certain properties.</li>
+<li><code>chatCache[cellId].emotions</code> is undefined or not a string.</li>
+<li><code>chatCache[cellId].category</code> is not a string.</li>
+<li><code>chatCache[cellId].date</code> is undefined.</li>
+<li><code>chatCache[cellId].dat</code> is not defined.</li>
+</ul></li>
+</ul>

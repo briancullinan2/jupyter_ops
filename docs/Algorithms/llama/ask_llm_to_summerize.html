@@ -1,0 +1,55 @@
+<p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, that interact with a Large Language Model (LLM) to summarize and categorize user input. These functions are exported from the module, making them available for use in other parts of the application.</p>
+
+
+<pre><code>
+async function askLlamaToSummerize(query) {
+  const {llmPrompt} = await importer.import('create llm session')
+  let q1 = 'Summerize this into one or two sentences:\n' + query
+  console.log("User: " + q1);
+  const a1 = await llmPrompt(q1);
+  console.log("AI: " + a1);
+
+  return a1.trim()
+}
+
+async function askLlamaToGeneralize(query) {
+  const {llmPrompt} = await importer.import('create llm session')
+  let q2 = 'How would you categorize this in two or three words:\n' + query + '\nReturn only the category.'
+  console.log("User: " + q2);
+  const a2 = await llmPrompt(q2);
+  console.log("AI: " + a2);
+
+  return a2.trim()
+}
+
+
+
+module.exports = {
+  askLlamaToSummerize,
+  askLlamaToGeneralize
+}
+
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Overview</h3>
+<p>The code defines two asynchronous functions <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code> that interact with an LLM (Large Language Model) using the <code>llmPrompt</code> function. The functions export two methods that can be used to summarize and categorize user input.</p>
+<h3>askLlamaToSummerize Function</h3>
+<ul>
+<li>Takes a <code>query</code> parameter as input, which is the text to be summarized.</li>
+<li>Creates a prompt by adding a request to summarize the query into one or two sentences.</li>
+<li>Logs the user's prompt to the console.</li>
+<li>Sends the prompt to the LLM using <code>llmPrompt</code> and logs the AI's response to the console.</li>
+<li>Returns the AI's response with leading/trailing whitespace removed.</li>
+</ul>
+<h3>askLlamaToGeneralize Function</h3>
+<ul>
+<li>Takes a <code>query</code> parameter as input, which is the text to be categorized.</li>
+<li>Creates a prompt by adding a request to categorize the query in two or three words and return only the category.</li>
+<li>Logs the user's prompt to the console.</li>
+<li>Sends the prompt to the LLM using <code>llmPrompt</code> and logs the AI's response to the console.</li>
+<li>Returns the AI's response with leading/trailing whitespace removed.</li>
+</ul>
+<h3>Module Exports</h3>
+<p>The code exports an object with the two functions <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, making them available for use in other modules.</p>

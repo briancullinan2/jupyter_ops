@@ -1,0 +1,24 @@
+<p>This code installs the <code>rimraf</code> and <code>JSONStream</code> packages using <code>npm</code> and logs both the standard output and standard error of the installation process to the console.</p>
+
+
+<pre><code>$$.async();
+//  /usr/bin/osascript -e 'do shell script "/path/to/myscript args 2>&1 etc" with administrator privileges'
+var exec = require('child_process').exec;
+var installCmd = exec('npm install rimraf JSONStream', () => {
+    $$.done('installed basic node utilities, rimraf, JSONStream, etc');
+});
+installCmd.stdout.on('data', (d) => console.log(d));
+installCmd.stderr.on('data', (d) => console.log(d));
+</code></pre>
+
+<p>This code snippet installs the <code>rimraf</code> and <code>JSONStream</code> Node.js packages using <code>npm</code> and handles the output of the installation process.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>$$.async();</code></strong>: This line initializes an asynchronous context. The <code>$$</code> likely refers to a framework or library that manages asynchronous operations.</p></li>
+<li><p><strong><code>var exec = require('child_process').exec;</code></strong>: This line imports the <code>exec</code> function from the <code>child_process</code> module, which allows you to execute shell commands from your Node.js code.</p></li>
+<li><p><strong><code>var installCmd = exec('npm install rimraf JSONStream', () =&gt; { ... });</code></strong>: This line executes the command <code>npm install rimraf JSONStream</code> to install the specified packages. The callback function provided to <code>exec</code> will be executed once the command completes.</p></li>
+<li><p><strong><code>installCmd.stdout.on('data', (d) =&gt; console.log(d));</code></strong>: This line sets up an event listener to handle the standard output (stdout) of the <code>npm install</code> command. Any data received from stdout will be logged to the console.</p></li>
+<li><p><strong><code>installCmd.stderr.on('data', (d) =&gt; console.log(d));</code></strong>: This line sets up an event listener to handle the standard error (stderr) of the <code>npm install</code> command. Any data received from stderr will be logged to the console.</p></li>
+<li><p><strong><code>$$.done('installed basic node utilities, rimraf, JSONStream, etc');</code></strong>: This line is executed when the <code>npm install</code> command completes successfully. It likely signals the completion of the installation process to the asynchronous context managed by <code>$$</code>.</p></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

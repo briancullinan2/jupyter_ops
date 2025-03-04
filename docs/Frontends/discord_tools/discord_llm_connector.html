@@ -1,0 +1,105 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The <code>doDistill</code> function is an asynchronous workflow manager that interacts with LLM modules and the Discord API to generate and post responses to user prompts. It uses conditional statements to determine the next step in the workflow, selecting an LLM tool based on user input and generating a short or long answer accordingly.</p>
+
+
+<pre><code>const {postMessageImageAttachment} = importer.import('create message image attachments')
+const {triggerTyping, createMessage, updateInteraction} = importer.import('disrcord api')
+const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const { safeurl } = importer.import('domain cache tools')
+const selectModel = importer.import('select llm')
+const askLlamaToWriteStory = importer.import('write creatively llm')
+const askLlamaToWriteBusinessPlan = importer.import('business plan llm')
+const askLlamaWriteEssay = importer.import('research paper llm')
+
+async function doDistill(interaction, promptModel = 'DeepSeek') {
+
+  if(typeof promptModel != 'function') {
+    promptModel = await selectModel(promptModel)
+  }
+
+  console.log('using model', promptModel.name)
+
+  await triggerTyping(interaction.channel_id)
+  let q1 = 'Is this prompt looking for a very long answer, Yes or No?\n' + interaction.data.options[0].value
+    + 'Only respond with Yes or No and nothing else, no reasoning or instructions.'
+  if((await promptModel(q1)).match(/no/gi)) {
+    let a1 = await promptModel(interaction.data.options[0].value)
+    return await updateInteraction(a1.substring(0, 1800), interaction.id, interaction.token)
+  }
+  await updateInteraction('This could take a while...', interaction.id, interaction.token)
+
+  let q2 = 'Should I use the tool "essay" writer, "business plan", "creative story", or "default" prompter for this response?\n' + interaction.data.options[0].value + '\nAnswer "essay", "business", or "story" and nothing else, no explaination or instructions.'
+  let a2 = await promptModel(q2)
+
+  console.log('AI: ' + a2)
+
+  if(a2.match(/essay/gi)) {
+    let essay = await askLlamaWriteEssay(interaction.data.options[0].value, null, promptModel)
+    return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(essay), interaction.channel_id, 'text/html')
+  } else if(a2.match(/business/gi)) {
+    let plan = await askLlamaToWriteBusinessPlan(interaction.data.options[0].value, null, promptModel)
+    // TODO: already writes to business-plans
+    return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(plan), interaction.channel_id, 'text/html')
+  } else if(a2.match(/story/gi)) {
+    let plan = await askLlamaToWriteStory(interaction.data.options[0].value, null, promptModel)
+    // TODO: already writes to business-plans
+    return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(plan), interaction.channel_id, 'text/html')
+  } else {
+    let answer = await promptModel(interaction.data.options[0].value)
+    const mdHtml = md.render(answer);
+    return await postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(mdHtml), interaction.channel_id, 'text/html')
+  }
+}
+
+async function doReason(interaction) {
+  return doDistill(interaction, 'Qwen')
+}
+
+async function doInstruct(interaction) {
+  return doDistill(interaction, 'Llama-3-70B')
+}
+
+async function doMistral(interaction) {
+  return doDistill(interaction, 'Mistral')
+}
+
+module.exports = {
+  doDistill,
+  doReason,
+  doInstruct,
+  doMistral,
+
+}
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Imports</h3>
+<p>The code imports various functions and tools from other modules using the <code>importer</code> object. The imported functions include:</p>
+<ul>
+<li><code>postMessageImageAttachment</code> from <code>create message image attachments</code></li>
+<li><code>triggerTyping</code>, <code>createMessage</code>, and <code>updateInteraction</code> from <code>disrcord api</code></li>
+<li><code>safeurl</code> from <code>domain cache tools</code></li>
+<li><code>selectModel</code> from <code>select llm</code></li>
+<li><code>askLlamaToWriteStory</code>, <code>askLlamaToWriteBusinessPlan</code>, and <code>askLlamaWriteEssay</code> from various LLM (Large Language Model) modules</li>
+</ul>
+<h3>Remarkable Markdown Parser</h3>
+<p>The code creates an instance of the <code>Remarkable</code> markdown parser, allowing for HTML output and line breaks.</p>
+<h3>doDistill Function</h3>
+<p>The <code>doDistill</code> function is an asynchronous function that takes an <code>interaction</code> object and an optional <code>promptModel</code> parameter. It appears to be a workflow manager that interacts with the LLM modules and Discord API to:</p>
+<ol>
+<li><strong>Trigger typing</strong>: Inform the user that a response is being generated.</li>
+<li><strong>Ask for answer length</strong>: Determine if the user wants a short or long answer.</li>
+<li><strong>Choose an LLM tool</strong>: Select a suitable LLM tool based on the user's response.</li>
+<li><strong>Generate response</strong>: Use the chosen LLM tool to generate a response.</li>
+<li><strong>Post response</strong>: Post the response to the Discord channel, possibly with an image attachment.</li>
+</ol>
+<h3>Logic Flow</h3>
+<p>The function uses a series of conditional statements to determine the next step in the workflow. The main logic flow is:</p>
+<ol>
+<li>If the prompt is not a function, select a suitable LLM model using the <code>selectModel</code> function.</li>
+<li>Ask the user if they want a short or long answer.</li>
+<li>If the user wants a short answer, generate a response using the chosen LLM tool and post it to the Discord channel.</li>
+<li>If the user wants a longer answer, choose an LLM tool and generate a response.</li>
+<li>Post the response to the Discord channel, possibly with an image attachment.</li>
+</ol>

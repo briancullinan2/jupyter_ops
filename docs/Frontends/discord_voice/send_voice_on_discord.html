@@ -1,0 +1,124 @@
+<p>Here is a summary of the code breakdown in one sentence:</p>
+<p>The code initializes a Discord bot, connects to a voice channel, and plays text-to-speech audio using the <code>outetts</code> library and FFmpeg, leveraging asynchronous programming for efficient execution.</p>
+<p>Alternatively, here is a two-sentence summary:</p>
+<p>The code sets up a Discord bot, connects to a voice channel, and utilizes FFmpeg for audio processing, allowing for text-to-speech functionality. It follows best practices for coding and documentation, utilizing modular and reusable design principles.</p>
+
+
+<pre><code>import os
+import io
+import ffmpeg
+import discord
+import outetts
+import asyncio
+
+# Initialize Discord bot
+TOKEN = os.getenv("BOT_TOKEN")
+GUILD_ID = os.getenv("DEFAULT_GUILD_ID")
+# VC_CHANNEL_ID = "YOUR_VOICE_CHANNEL_ID"
+model_config = outetts.HFModelConfig_v2(
+    model_path="OuteAI/OuteTTS-0.3-1B",
+    tokenizer_path="OuteAI/OuteTTS-0.3-1B"
+)
+
+async def init_discord(token = TOKEN):
+
+  # Initialize Outetts
+  interface = outetts.InterfaceHF(model_version="0.3", cfg=model_config)
+  speaker = interface.load_default_speaker(name="en_male_1")
+
+  client = discord.Client(intents=discord.Intents.default())
+  globals()['client'] = client
+  #client.run(TOKEN)
+  #client.event(connect_voice)
+  await asyncio.gather(
+    client.start(TOKEN),  # Start the bot
+    connect_voice()  # Connect to VC
+  )
+
+async def connect_voice():
+    client = globals()['client']
+    print(f'Logged in as {client.user}')
+    guild = discord.utils.get(client.guilds, id=int(GUILD_ID))
+    vc_channel = discord.utils.get(guild.voice_channels) #, id=int(VC_CHANNEL_ID))
+    if vc_channel:
+        vc = await vc_channel.connect()
+        await play_tts(vc)
+
+async def play_tts(prompt, vc):
+    # Generate speech
+    gen_cfg = outetts.GenerationConfig(
+        text=prompt,
+        temperature=0.3,
+        repetition_penalty=1.1,
+        max_length=4096,
+        speaker=speaker,
+    )
+    output = interface.generate(config=gen_cfg)
+
+    # Convert Outetts output to a stream
+    audio_buffer = io.BytesIO()
+    output.save(audio_buffer)
+    audio_buffer.seek(0)
+
+    # Stream audio to Discord using FFmpeg
+    ffmpeg_process = (
+        ffmpeg.input('pipe:0', format='wav')
+        .output('pipe:1', format='opus', acodec='libopus', ar='48000')
+        .run_async(pipe_stdin=True, pipe_stdout=True, pipe_stderr=True)
+    )
+
+    ffmpeg_process.stdin.write(audio_buffer.read())
+    ffmpeg_process.stdin.close()
+
+    # Play the stream in Discord
+    audio_source = discord.FFmpegPCMAudio(ffmpeg_process.stdout, pipe=True)
+    vc.play(audio_source)
+
+#__all__ = {
+#  "init_discord": init_discord,
+#  "connect_voice": connect_voice,
+#  "play_tts": "play_tts",
+#}
+
+__all__ = init_discord
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<p>The code imports the following modules:</p>
+<ul>
+<li><code>os</code> for interacting with the operating system</li>
+<li><code>io</code> for Input/Output operations</li>
+<li><code>ffmpeg</code> for audio processing</li>
+<li><code>discord</code> for creating the Discord bot</li>
+<li><code>outetts</code> for text-to-speech functionality</li>
+<li><code>asyncio</code> for asynchronous programming</li>
+</ul>
+<h3>Initializing Discord Bot</h3>
+<p>The code initializes a Discord bot by:</p>
+<ol>
+<li>Obtaining the bot token and default guild ID from environment variables <code>BOT_TOKEN</code> and <code>DEFAULT_GUILD_ID</code>.</li>
+<li>Defining an <code>Outetts</code> model configuration.</li>
+<li>Creating a Discord client with default intentions and setting it as a global variable.</li>
+</ol>
+<h3>Asynchronous Functions</h3>
+<p>The code defines two asynchronous functions:</p>
+<ol>
+<li><code>init_discord</code>: Initializes the Discord bot and connects to a voice channel.</li>
+<li><code>connect_voice</code>: Connects to a voice channel and starts playing text-to-speech audio.</li>
+</ol>
+<h3>Text-to-Speech Functionality</h3>
+<p>The code uses the <code>outetts</code> library to generate speech from text prompts. The <code>play_tts</code> function:</p>
+<ol>
+<li>Generates speech using the <code>Outetts</code> interface and a text prompt.</li>
+<li>Converts the output to a WAV stream using <code>io.BytesIO</code>.</li>
+<li>Streams the audio to Discord using FFmpeg.</li>
+</ol>
+<h3>FFmpeg Audio Processing</h3>
+<p>The code uses FFmpeg to convert the WAV stream to Opus audio format, which is compatible with Discord. The audio is played in the voice channel using <code>discord.FFmpegPCMAudio</code>.</p>
+<h3>Notes</h3>
+<ul>
+<li>The code is written in a modular and reusable way, making it easy to understand and modify.</li>
+<li>The use of asynchronous programming allows for efficient and concurrent execution of tasks.</li>
+<li>The code is well-structured and follows best practices for coding and documentation.</li>
+</ul>

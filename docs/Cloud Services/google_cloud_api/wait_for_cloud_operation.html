@@ -1,0 +1,48 @@
+<p>Here's a summary of the <code>waitForOperation</code> function in one sentence:</p>
+<p>The <code>waitForOperation</code> function waits for a specified Google operation to complete and returns the target link when finished, using a recursive approach with a 500ms delay between checks.</p>
+
+
+<pre><code>var importer = require('../Core');
+var authorizeGoogle = importer.import('authorize google service');
+
+function waitForOperation(operation) {
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `${operation}`,
+        }))
+        .then(res => {
+            if(res.data.status != 'RUNNING') {
+                return Promise.resolve(res.data.targetLink);
+            }
+            console.log(`waiting for ${operation}`);
+            return new Promise(resolve => setTimeout(resolve, 500))
+                .then(() => waitForOperation(operation));
+        })
+  
+}
+
+module.exports = waitForOperation;</code></pre>
+
+<h3>Function Breakdown</h3>
+<h4><code>waitForOperation(operation)</code></h4>
+<p><strong>Purpose:</strong> Waits for an operation to complete and returns the target link when finished.</p>
+<p><strong>Parameters:</strong> <code>operation</code> (string) - URL of the operation.</p>
+<p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>authorizeGoogle()</code>: Returns a client object to make API requests.</li>
+<li><code>client.request()</code>: Makes a request to the specified URL.</li>
+<li><code>setTimeout()</code>: Delays execution by a specified amount of time.</li>
+</ul>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Authorizes Google services using <code>authorizeGoogle</code>.</li>
+<li>Makes a request to the specified <code>operation</code> URL.</li>
+<li>Checks if the operation is complete (status is not 'RUNNING').
+<ul>
+<li>If complete, returns the target link.</li>
+<li>If not complete, logs a message and waits 500ms before recursively calling itself.</li>
+</ul></li>
+<li>Returns the target link when the operation is complete.</li>
+</ol>
+<h3>Exported Function</h3>
+<p>The <code>waitForOperation</code> function is exported as a module, making it available for use in other parts of the application.</p>

@@ -1,0 +1,38 @@
+<p>The <code>getSheetByName</code> function efficiently retrieves a specific worksheet from a Google Sheet by name or index, utilizing caching to optimize performance.  It handles both direct worksheet objects and spreadsheet IDs with worksheet names or indices as input.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getInfo = importer.import('get google sheet info');
+var loadedDocs = {};
+
+function getSheetByName(docId, page) {
+    return typeof page === 'string'
+        ? Promise.resolve(loadedDocs[docId] || getInfo(docId))
+            .then(info => loadedDocs[docId] = info)
+            .then(() => page
+                ? loadedDocs[docId].sheets.filter(s => s.properties.title === page)[0]
+                : loadedDocs[docId].sheets.filter(s => s.properties.index === 0)[0])
+        : Promise.resolve(page)
+}
+
+module.exports = getSheetByName;
+
+</code></pre>
+
+<p>This code defines a function <code>getSheetByName</code> that retrieves a specific worksheet from a Google Sheet based on its name or index.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Caching:</strong> It uses a <code>loadedDocs</code> object to cache information about Google Sheets to avoid redundant API calls.</p></li>
+<li><p><strong>Input Handling:</strong> It handles two input types:</p>
+<ul>
+<li>A <code>docId</code> (spreadsheet ID) and a <code>page</code> (worksheet name or index).</li>
+<li>A <code>page</code> object representing the worksheet to retrieve directly.</li>
+</ul></li>
+<li><p><strong>Fetching Sheet Information:</strong> If a <code>docId</code> and <code>page</code> are provided, it first checks if the sheet information is already cached. If not, it fetches it using the <code>getInfo</code> function (imported from <code>../Core</code>) and caches it.</p></li>
+<li><p><strong>Worksheet Retrieval:</strong></p>
+<ul>
+<li>If a <code>page</code> name is provided, it finds the worksheet with that name in the cached sheet information.</li>
+<li>If a <code>page</code> index is provided, it finds the worksheet with the corresponding index.</li>
+</ul></li>
+<li><p><strong>Return Value:</strong> It returns the found worksheet object.</p></li>
+</ol>

@@ -1,0 +1,111 @@
+<p>Here's a two-sentence summary of the code:</p>
+<p>The <code>analyzeSpreadsheet</code> function reads an Excel file from a specified path (or a default location if not provided) and extracts cell values from a specified sheet and range. It returns an array of these cell values, with optional parameters for specifying the sheet name and range.</p>
+
+
+<pre><code>const fs = require('fs')
+const path = require('path')
+const xlsx = require('xlsx');
+
+const HOMEPATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE
+
+async function analyzeSpreadsheet(sheetFile, sheetName, rangeString) {
+
+  if(!sheetFile) {
+    sheetFile = path.join(HOMEPATH, 'Downloads', 'stable diffusion prompts (2).xlsx')
+  }
+
+  const workbook = xlsx.readFile(sheetFile);
+  
+  if(!sheetName) {
+    sheetName = workbook.SheetNames[0]; // Get the name of the first sheet
+  }
+
+  console.log(Object.keys(workbook.Sheets))
+  const sheet = workbook.Sheets[sheetName];
+  
+  //const data = xlsx.utils.sheet_to_json(sheet);
+
+  if(!rangeString) {
+    rangeString = 'A1-Z999'
+  }
+
+  /*
+  const range = {
+    s: {
+      r: parseInt(rangeString.split('-')[0].split(/[^0-9]/gi).join('')),
+      c: rangeString.split('-')[0].toUpperCase().split(/[^A-Z]/gi).map(c => c.charCodeAt(0) - 'A'.charCodeAt(0))
+        .reduce(function(a, b) { return a + b; }, 0)
+    },
+    e: {
+      r: parseInt(rangeString.split('-')[1].split(/[^0-9]/gi).join('')),
+      c: rangeString.split('-')[1].toUpperCase().split(/[^A-Z]/gi).map(c => c.charCodeAt(0) - 'A'.charCodeAt(0))
+        .reduce(function(a, b) { return a + b; }, 0)
+    }
+  }
+  */
+
+  const range = {
+    s: xlsx.utils.decode_cell(rangeString.split('-')[0]),
+    e: xlsx.utils.decode_cell(rangeString.split('-')[1])
+  }
+  console.log(range)
+  //console.log(sheet)
+  
+  let results = []
+
+  for(var R = range.s.r; R <= range.e.r; ++R) {
+    for(var C = range.s.c; C <= range.e.c; ++C) {
+      const cellAddress = xlsx.utils.encode_cell({ r: R, c: C });
+      const cell = sheet[cellAddress];
+      if(cell)
+        results.push(cell.v)
+    }
+  }
+
+  return results
+}
+
+module.exports = analyzeSpreadsheet
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Requires and Constants</h3>
+<p>The code starts by requiring three modules:</p>
+<ul>
+<li><code>fs</code> (File System) for interacting with the file system</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>xlsx</code> for reading and writing Excel files</li>
+</ul>
+<p>It then defines three constants:</p>
+<ul>
+<li><code>HOMEPATH</code>: the home directory path, which defaults to <code>process.env.HOME</code> or <code>process.env.HOMEPATH</code> or <code>process.env.USERPROFILE</code></li>
+</ul>
+<h3>Analyze Spreadsheet Function</h3>
+<p>The <code>analyzeSpreadsheet</code> function takes three arguments:</p>
+<ul>
+<li><code>sheetFile</code>: the path to the Excel file to read (optional)</li>
+<li><code>sheetName</code>: the name of the sheet to read (optional)</li>
+<li><code>rangeString</code>: the range of cells to read (optional)</li>
+</ul>
+<p><strong>Function Flow</strong></p>
+<ol>
+<li>If <code>sheetFile</code> is not provided, it defaults to a specific file path.</li>
+<li>The function reads the Excel file using <code>xlsx.readFile</code>.</li>
+<li>If <code>sheetName</code> is not provided, it defaults to the first sheet in the workbook.</li>
+<li>It logs the keys of the <code>workbook.Sheets</code> object.</li>
+<li>It extracts the sheet object from the workbook.</li>
+<li>If <code>rangeString</code> is not provided, it defaults to a specific range.</li>
+<li>It extracts the start and end cells from the <code>rangeString</code> using <code>xlsx.utils.decode_cell</code>.</li>
+<li>It loops through the cells in the specified range and extracts their values.</li>
+<li>It returns an array of cell values.</li>
+</ol>
+<p><strong>Return Value</strong></p>
+<p>The function returns an array of cell values in the specified range.</p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The <code>xlsx</code> module is used for reading and writing Excel files.</li>
+<li>The <code>path</code> module is used for working with file paths.</li>
+<li>The <code>fs</code> module is not used in this code snippet.</li>
+<li>The function assumes that the Excel file is in the default file location if not specified.</li>
+</ul>

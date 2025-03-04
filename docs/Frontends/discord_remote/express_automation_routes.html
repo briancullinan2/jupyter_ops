@@ -1,0 +1,127 @@
+<p>Here's a summary of the Node.js module in 2 sentences:</p>
+<p>This Node.js module exports four functions for a remote desktop client: <code>getMonitor</code>, <code>doClick</code>, <code>doKeys</code>, and <code>serveHomepage</code>, which handle screenshot retrieval, mouse and keyboard interactions, and client homepage serving. The module uses various imported functions and scripts to interact with the remote desktop and Discord authentication, and returns responses in formats such as PNG images, empty responses, and modified HTML code.</p>
+
+
+<pre><code>const {DEFAULT_APPLICATION} = importer.import('discord configuration')
+const screenshotMonitor = importer.import('node screenshots')
+const mouseMove = importer.import('mouse move')
+const mouseClick = importer.import('mouse click')
+const sendKeys = importer.import('send keys')
+
+async function getMonitor(req, res, next) {
+  let index = parseInt(req.path.replace(/^\/|\/$/gi, '').split('/')[1])
+  if(Number.isNaN(index)) {
+    index = 0
+  }
+  let screenshot = await screenshotMonitor(index)
+  if(!screenshot) {
+    return next()
+  }
+  res.setHeader('Content-Type', 'image/png')
+  res.setHeader('Cache-Control', 'public, max-age=3');
+  return res.send(screenshot)
+}
+
+
+let lastClick = 0
+let lastX
+let lastY
+async function doClick(req, res, next) {
+  if(!req.authenticated) {
+    return res.status(403).send('Forbidden')
+  }
+  if(Date.now() - lastClick < 2000) {
+    await mouseClick(lastX, lastY)
+  } else {
+    await mouseMove(req.body.x, req.body.y)
+  }
+  lastClick = Date.now()
+  lastX = req.body.x
+  lastY = req.body.y
+  return res.send('')
+}
+
+async function doKeys(req, res, next) {
+  if(!req.authenticated) {
+    return res.status(403).send('Forbidden')
+  }
+  sendKeys(req.body.text, req.body.special)
+  return res.send('')
+}
+
+function serveHomepage(baseURI, req, res, next) {
+  if(req.path.length <= 1) {
+    let htmlCode = importer.interpret('remote desktop client').code
+    htmlCode = htmlCode.replaceAll('{BASE_URI}', baseURI)
+    htmlCode = htmlCode.replace('<head>', `<head>
+      <script type="text/javascript">
+      ${importer.interpret('discord client auth code').code
+        .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
+        .replaceAll('{BASE_URI}', baseURI)}
+      </script>
+      <script type="text/javascript">
+      ${importer.interpret('client input remote code').code
+        .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
+        .replaceAll('{BASE_URI}', baseURI)}
+      </script>`)
+    return res.send(htmlCode)
+  }
+  return next()
+}
+
+module.exports = {
+  doKeys,
+  doClick,
+  getMonitor,
+  serveHomepage,
+}
+</code></pre>
+
+<h2>Overview</h2>
+<p>The code is a Node.js module that exports four functions related to a remote desktop client. The functions are:</p>
+<ol>
+<li><code>getMonitor(req, res, next)</code>: Returns a screenshot of a monitor at a specified index.</li>
+<li><code>doClick(req, res, next)</code>: Simulates a click at a specified location on the screen.</li>
+<li><code>doKeys(req, res, next)</code>: Sends keystrokes to the remote desktop.</li>
+<li><code>serveHomepage(baseURI, req, res, next)</code>: Serves the homepage of the remote desktop client, which includes a Discord authentication script and a client input script.</li>
+</ol>
+<h2>Functions</h2>
+<h3><code>getMonitor(req, res, next)</code></h3>
+<ul>
+<li>Retrieves the path from the request and extracts the monitor index (defaulting to 0 if NaN).</li>
+<li>Calls the <code>screenshotMonitor</code> function with the extracted index to retrieve the screenshot.</li>
+<li>If the screenshot is available, sets the response headers to 'image/png' and returns the screenshot as the response.</li>
+<li>Otherwise, calls the next middleware in the chain.</li>
+</ul>
+<h3><code>doClick(req, res, next)</code></h3>
+<ul>
+<li>Checks if the request is authenticated. If not, returns a 403 Forbidden response.</li>
+<li>Checks if a click has occurred within the last 2 seconds. If so, simulates a click at the previous location.</li>
+<li>Otherwise, moves the mouse to the new location specified in the request body.</li>
+<li>Updates the last click timestamp and coordinates.</li>
+<li>Returns an empty response.</li>
+</ul>
+<h3><code>doKeys(req, res, next)</code></h3>
+<ul>
+<li>Checks if the request is authenticated. If not, returns a 403 Forbidden response.</li>
+<li>Sends keystrokes to the remote desktop using the <code>sendKeys</code> function.</li>
+<li>Returns an empty response.</li>
+</ul>
+<h3><code>serveHomepage(baseURI, req, res, next)</code></h3>
+<ul>
+<li>Checks if the request path is the root path. If so, serves the HTML code for the remote desktop client.</li>
+<li>Replaces placeholders in the HTML code with the base URI and Discord client ID.</li>
+<li>Includes a script tag with the Discord authentication code and another script tag with the client input code.</li>
+<li>Returns the modified HTML code as the response.</li>
+<li>If the request path is not the root path, calls the next middleware in the chain.</li>
+</ul>
+<h2>Imports</h2>
+<p>The code imports the following modules:</p>
+<ul>
+<li><code>discord configuration</code>: Provides the default application client ID.</li>
+<li><code>node screenshots</code>: Provides the <code>screenshotMonitor</code> function.</li>
+<li><code>mouse move</code>: Provides the <code>mouseMove</code> function.</li>
+<li><code>mouse click</code>: Provides the <code>mouseClick</code> function.</li>
+<li><code>send keys</code>: Provides the <code>sendKeys</code> function.</li>
+<li><code>discord client auth code</code>, <code>client input remote code</code>, and <code>remote desktop client</code>: Provide script code for the remote desktop client.</li>
+</ul>

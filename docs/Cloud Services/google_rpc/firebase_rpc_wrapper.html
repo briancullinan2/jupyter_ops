@@ -1,0 +1,92 @@
+<p>This Firebase Cloud Function provides a remote procedure call (RPC) endpoint, allowing clients to execute functions defined elsewhere and receive results as JSON responses. It handles CORS requests, extracts function names from incoming data, and utilizes a custom <code>getResult</code> function to execute the requested logic.</p>
+
+
+<pre><code>var cors = require('cors')({origin: true});
+var process = require('process');
+var functions = require('firebase-functions');
+var admin = require('firebase-admin');
+var importer = require('../Core');
+var getResult = importer.import('rpc result');
+
+try {
+    admin.initializeApp(functions.config().firebase);
+} catch (e) {
+    console.log(e);
+}
+
+if(typeof module.exports === 'undefined') {
+    module.exports = {};
+}
+
+module.exports.rpc = functions.https.onRequest((req, res) => {
+    process.env.HOME = process.env.HOMEPATH = process.env.USERPROFILE = '';
+    const config = functions.config();
+    const services = Object.keys(config).reduce(k => {
+        Object.keys(config[k]).forEach(s => {
+            process.env[k.toUpperCase() + '_' + s.toUpperCase()] = config[k][s];
+        });
+    });
+    
+    cors(req, res, () => {
+        return Promise.resolve([])
+            .then(() => getResult({
+                command: req.body['function'] || req.query['function'],
+                result: importer.interpret(req.body['function'] || req.query['function']),
+                body: req.method === 'POST' ? req.body : req.query,
+                circles: ['Public']
+            }))
+            .then(r => {
+                const result = Object.getOwnPropertyNames(r).reduce((alt, key) => {
+                    alt[key] = r[key] + '';
+                    return alt;
+                }, {});
+                console.error(result);
+                return res.status(200).send(r);
+            })
+            // TODO: object assign error?
+            .catch(e => { 
+                const result = Object.getOwnPropertyNames(e).reduce((alt, key) => {
+                    alt[key] = e[key] + '';
+                    return alt;
+                }, {});
+                console.error(result);
+                return res.status(500).send(result);
+            });
+    });
+})
+</code></pre>
+
+<p>This code sets up a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>Imports necessary modules: <code>cors</code> for handling cross-origin requests, <code>process</code> for environment variables, <code>firebase-functions</code> for the Cloud Function framework, <code>firebase-admin</code> for interacting with Firebase, and custom modules <code>importer</code> and <code>getResult</code>.</li>
+</ul></li>
+<li><p><strong>Firebase Initialization:</strong></p>
+<ul>
+<li>Initializes Firebase using the configuration from the Cloud Function's environment.</li>
+</ul></li>
+<li><p><strong>Environment Setup:</strong></p>
+<ul>
+<li>Sets environment variables from the Cloud Function's configuration.</li>
+</ul></li>
+<li><p><strong>RPC Endpoint:</strong></p>
+<ul>
+<li>Defines an HTTP Cloud Function named <code>rpc</code> that handles incoming requests.</li>
+</ul></li>
+<li><p><strong>CORS Handling:</strong></p>
+<ul>
+<li>Enables CORS (Cross-Origin Resource Sharing) to allow requests from any origin.</li>
+</ul></li>
+<li><p><strong>Request Processing:</strong></p>
+<ul>
+<li>Extracts the function name from the request body or query parameters.</li>
+<li>Calls the <code>getResult</code> function to interpret the function name and execute the corresponding logic.</li>
+<li>Sends the result back to the client as a JSON response.</li>
+</ul></li>
+<li><p><strong>Error Handling:</strong></p>
+<ul>
+<li>Catches any errors during the process and sends a 500 Internal Server Error response.</li>
+</ul></li>
+</ol>

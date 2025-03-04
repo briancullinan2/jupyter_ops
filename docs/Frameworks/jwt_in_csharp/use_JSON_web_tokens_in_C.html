@@ -1,0 +1,57 @@
+<p>The <code>GetUrlContent</code> method retrieves the content of a specified URL by creating a <code>WebClient</code> instance, reading from the URL using a <code>StreamReader</code>, and returning the content as a string. However, it does not handle exceptions that may occur during the process, so proper error handling should be implemented in a production environment.</p>
+
+
+<pre><code>
+// The above should get System.Net from GAC
+using System.Net;
+
+string GetUrlContent(string uri)
+{
+
+    WebClient
+    client = new WebClient();
+
+    using(Stream
+    data = client.OpenRead(uri)
+)
+    {
+        using(StreamReader
+        reader = new StreamReader(data)
+    )
+        {
+            string
+            s = reader.ReadToEnd();
+            return s;
+        }
+    }
+
+}
+
+GetUrlContent('http://zohaib.me');
+</code></pre>
+
+<h3>GetUrlContent Method</h3>
+<h4>Parameters</h4>
+<ul>
+<li><code>uri</code>: A string representing the URL to retrieve content from.</li>
+</ul>
+<h4>Returns</h4>
+<ul>
+<li>A string containing the content of the specified URL.</li>
+</ul>
+<h4>Description</h4>
+<p>This method uses the <code>WebClient</code> class to retrieve the content of a specified URL. It handles the underlying HTTP request and response.</p>
+<h3>Method Breakdown</h3>
+<ol>
+<li><strong>WebClient Creation</strong>: A new instance of <code>WebClient</code> is created to handle the HTTP request.</li>
+<li><strong>OpenRead Method</strong>: The <code>OpenRead</code> method of the <code>WebClient</code> instance is called to open a stream for reading from the specified URL.</li>
+<li><strong>StreamReader Creation</strong>: A new instance of <code>StreamReader</code> is created to read from the stream.</li>
+<li><strong>ReadToEnd Method</strong>: The <code>ReadToEnd</code> method of the <code>StreamReader</code> instance is called to read the content of the stream into a string.</li>
+<li><strong>Return Statement</strong>: The method returns the content as a string.</li>
+</ol>
+<h3>Usage</h3>
+<pre><code class="language-csharp">string urlContent = GetUrlContent(&quot;http://zohaib.me&quot;);
+Console.WriteLine(urlContent);
+</code></pre>
+<h3>Note</h3>
+<p>This method does not handle exceptions that may occur during the HTTP request or response processing. In a production environment, you should add error handling to make the code more robust.</p>

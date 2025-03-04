@@ -1,0 +1,217 @@
+<p>Here's a summary of the 3D transformation system in one or two sentences:</p>
+<p>This C++ code defines a 3D transformation system using SDL for rendering, which consists of classes and functions for representing points, vectors, and matrices, as well as applying transformations such as rotation, translation, and connection drawing. The system uses the SDL library for rendering and includes functions for calculating dot products, applying composite transformations, and getting rotation matrices.</p>
+
+
+<pre><code>#include <vector>
+#include <cmath>
+#include <SDL.h>
+
+class Point {
+  public:
+    double x, y, z;
+
+    Point() {
+        this->x = 0;
+        this->y = 0;
+        this->z = 0;
+    }
+
+    Point(double x, double y, double z) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+
+    Point(double x, double y) {
+        this->x = x;
+        this->y = y;
+        this->z = 0;
+    }
+
+    double operator[](int i) const {
+        if (i == 0) return this->x;
+        if (i == 1) return this->y;
+        return this->z;
+    }
+
+    double& operator[](int i) {
+        if (i == 0) return this->x;
+        if (i == 1) return this->y;
+        return this->z;
+    }
+};
+
+typedef std::vector<double> Vector;
+typedef std::vector<Vector> Matrix;
+
+Matrix dot(const Matrix& a, const Matrix& b) {
+    Matrix result = Matrix(a.size(), Vector(b[0].size(), 0));
+    for (int i=0; i<a.size(); i++) {
+        for (int j=0; j<b[0].size(); j++) {
+            for (int k=0; k<b.size(); k++) {
+                result[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+    return result;
+}
+
+Point transform(const Matrix& matrix, const Point& point) {
+    Matrix p = {{point.x}, {point.y}, {point.z}};
+    Matrix r = dot(matrix, p);
+    return Point(r[0][0], r[1][0], r[2][0]);
+}
+
+Point translate(const Point& shift, const Point& point) {
+    return Point(
+        point.x + shift.x,
+        point.y + shift.y,
+        point.z + shift.z
+    );
+}
+
+void connect(SDL_Renderer* const renderer, const std::vector<Point> &points, int i, int j) {
+    SDL_RenderDrawLine(
+        renderer,
+        points[i].x,
+        points[i].y,
+        points[j].x,
+        points[j].y
+    );
+}
+
+Matrix getRotationMatrix() {
+    double alpha = 0.001;
+    Matrix rotationX = {
+        {1, 0, 0},
+        {0, cos(alpha), -sin(alpha)},
+        {0, sin(alpha), cos(alpha)}
+    };
+
+    double beta = 0.002;
+    Matrix rotationY = {
+        {cos(beta), 0, sin(beta)},
+        {0, 1, 0},
+        {-sin(beta), 0, cos(beta)}
+    };
+
+    double gamma = 0.003;
+    Matrix rotationZ = {
+        {cos(gamma), -sin(gamma), 0},
+        {sin(gamma), cos(gamma), 0},
+        {0, 0, 1}
+    };
+
+    return dot(rotationZ, dot(rotationY, rotationX));
+}
+  
+
+#if __cplusplus
+extern "C" {
+#endif
+
+
+int WIDTH = 1000;
+int HEIGHT = 800;
+
+static bool first = false;
+static SDL_Renderer* renderer;
+std::vector<Point> points;
+Matrix rotationXYZ;
+
+Point screenShift;
+Point screenShiftOpposite;
+
+void beginFrame(int windowId) {
+    SDL_Window *window = SDL_GetWindowFromID(windowId);
+    SDL_Event event;
+    while(SDL_PollEvent(&event)){
+        if(event.type == SDL_QUIT) {
+            SDL_DestroyWindow(window);
+            SDL_Quit();
+            return;
+        }
+    }
+  if(!first) {
+    first = true;
+    
+    renderer = SDL_CreateRenderer(
+        window,
+        -1,
+        SDL_RENDERER_ACCELERATED
+    );
+
+    points = {
+        Point(-1, 1, 1),
+        Point(1, 1, 1),
+        Point(1, -1, 1),
+        Point(-1, -1, 1),
+        Point(-1, 1, -1),
+        Point(1, 1, -1),
+        Point(1, -1, -1),
+        Point(-1, -1, -1)
+    };
+
+    screenShift = Point(WIDTH / 2, HEIGHT / 2);
+    screenShiftOpposite = Point(-WIDTH / 2, -HEIGHT / 2);
+    int scale = 200;
+
+    for (Point& p : points) {
+        p.x = (scale * p.x + screenShift.x);
+        p.y = (scale * p.y + screenShift.y);
+        p.z = (scale * p.z + screenShift.z);
+    }
+
+    rotationXYZ = getRotationMatrix();
+  }
+
+
+  for (Point &p : points) {
+    p = translate(screenShiftOpposite, p);
+    p = transform(rotationXYZ, p);
+    p = translate(screenShift, p);
+  }
+
+  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+  SDL_RenderClear(renderer);
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+  for (int i=0; i<4; i++) {
+      connect(renderer, points, i, (i + 1) % 4);
+      connect(renderer, points, i + 4, ((i + 1) % 4) + 4);
+      connect(renderer, points, i, i + 4);
+  }
+  SDL_RenderPresent(renderer);
+  SDL_Delay(3);
+}
+
+void endFrame(int windowId) {
+    SDL_Window *window = SDL_GetWindowFromID(windowId);
+  SDL_GL_SwapWindow(window);
+}
+
+
+#if __cplusplus
+}
+#endif
+
+</code></pre>
+
+<p><strong>Overview</strong></p>
+<p>This code defines a 3D transformation system using C++ and the SDL library for rendering.</p>
+<p><strong>Classes and Functions</strong></p>
+<ol>
+<li><strong>Point</strong>: Represents a 3D point with x, y, and z coordinates. It has a constructor that initializes the point with default values (0, 0, 0) and overloaded constructors to initialize the point with any combination of x, y, and z coordinates.</li>
+<li><strong>operator[]</strong>: Overloads the array indexing operator to allow accessing the point's coordinates using <code>point[i]</code>.</li>
+<li><strong>Vector</strong> and <strong>Matrix</strong>: Type definitions for <code>std::vector&lt;double&gt;</code> and <code>std::vector&lt;std::vector&lt;double&gt;&gt;</code>, respectively, used to represent vectors and matrices.</li>
+<li><strong>dot</strong>: Calculates the dot product of two matrices.</li>
+<li><strong>transform</strong>: Applies a transformation to a point using a matrix.</li>
+<li><strong>translate</strong>: Shifts a point by a given amount.</li>
+<li><strong>connect</strong>: Connects two points on a 2D surface using the SDL library to draw a line between them.</li>
+<li><strong>getRotationMatrix</strong>: Returns a rotation matrix for rotation around the x, y, and z axes.</li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The code uses the SDL library for rendering, which is not shown in this excerpt.</li>
+<li>The <code>transform</code> function assumes that the input matrix represents a composite transformation (rotation followed by translation).</li>
+<li>The <code>getRotationMatrix</code> function returns a matrix that represents a rotation around the x, y, and z axes. However, the angles used in the matrix definitions (alpha, beta, gamma) are very small (0.001, 0.002, 0.003), which may not produce noticeable rotation.</li>
+</ul>

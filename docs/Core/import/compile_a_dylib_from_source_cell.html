@@ -1,0 +1,149 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code consists of two main functions: <code>generateCallback</code> which generates a callback function for dynamic libraries, and <code>makeDylib</code> which compiles and loads a dynamic library from code. Both functions rely on several modules, including <code>path</code>, <code>ffi-rs</code>, and <code>../Core</code>, and use functions such as <code>importNotebook</code>, <code>interpret</code>, and <code>buildDylib</code> from these modules.</p>
+
+
+<pre><code>const path = require('path')
+const { Module } = require('module')
+
+const BUILD_DIRECTORY = path.join(__dirname, '../.build')
+
+let typeToDataType
+function generateCallback(libName, i, types, params) {
+  const { importNotebook } = require('../Core')
+  const { load } = require('ffi-rs')
+  if(!typeToDataType)
+    typeToDataType = importNotebook('c type to data type')
+
+  return function internalCallback(returnLength, ...paramValues) {
+    //console.log(paramValues, types)
+    let returnType = typeToDataType(returnLength, types[0])
+    return load({
+      library: libName, // path to the dynamic library file
+      funcName: params[i][0], // the name of the function to call
+      retType: returnType, // the return value type
+      paramsType: types.slice(1).map((t, i) => typeToDataType(typeof paramValues[i] == 'undefined' ? 0 : typeof paramValues == 'object' && paramValues[i].constructor.name == 'Array' ? paramValues[i].length : 1, t)), // the parameter types
+      paramsValue: paramValues.length < 2 && types.length && types.length <= 2 && types[1] == 'void' && typeof paramValues[0] == 'undefined' ? [void 0] : paramValues // the actual parameter values
+      // freeResultMemory: true, // whether or not need to free the result of return value memory automatically, default is false
+    })
+  }
+}
+
+
+async function makeDylib(code, pathToCode, ctx) {
+  const {
+    importNotebook, interpret
+  } = require('../Core')
+  const { open } = require('ffi-rs')
+
+  if (Module._cache[pathToCode]) {
+    return Module._cache[pathToCode].exports
+  }
+  const buildDylib = importNotebook('build dylib')
+  // TODO: await module loaded
+  buildDylib(code, pathToCode, ctx)
+
+  const codeCell = interpret(pathToCode)
+  // TODO: compare file times for dylib module recompile
+  const { safeurl } = importNotebook('domain cache tools')
+  let libName = safeurl(codeCell.questions[0])
+
+  open({
+    library: libName, // key
+    path: path.join(BUILD_DIRECTORY, libName + '.dylib') // path
+  })
+
+  // TODO: turn this into a sort of prepFunction(...types) that takes a types argument instead
+  //const selectCode = await importNotebook('select antlr tree')
+  //console.log(selectCode)
+  const selectCode = await importNotebook('select antlr tree')
+  const rootNode = (await selectCode(['//*'], code.toString(), 'cpp'))[0]
+  //console.log('###########################', rootNode.tagName)
+  const getParameters = await importNotebook('get c parameters')
+  const params = await getParameters(rootNode)
+  console.log(params)
+  const getTypes = await importNotebook('get c types')
+  // TODO: make functions out of all exports
+  let resources = {}
+  for (let i = 0; i < params.length; i++) {
+    if(typeof params[i] == 'string') {
+      params[i] = [params[i]]
+    }
+    const types = await getTypes(rootNode, params[i][0])
+    //console.log(types)
+    // TODO: make a version of this function that can load all data types from parameters
+    let newCallback = generateCallback(libName, i, types, params)
+    resources[params[i][0]] = ((i, types) => function (...paramValues) {
+      return resources[params[i][0] + 'Ret'](1, ...paramValues)
+    })(i, types)
+    resources[params[i][0] + 'Ret'] = newCallback
+
+    resources[params[i][0]].name = params[0]
+    resources[params[i][0] + 'Ret'].name = params[0] + 'Ret'
+    resources[params[i][0]].params = params[i].slice(1)
+    resources[params[i][0] + 'Ret'].params = ['ret'].concat(params[i].slice(1))
+    resources[params[i][0]].types = types
+    resources[params[i][0] + 'Ret'].types = types
+
+  }
+  Module._cache[pathToCode] = {}
+  Module._cache[pathToCode].exports = resources
+  Module._cache[pathToCode].loaded = true
+  //close(libName)
+  return resources
+}
+
+module.exports.makeDylib = makeDylib
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Module Dependencies and Constants</h3>
+<p>The code requires several modules:</p>
+<ul>
+<li><code>path</code> for working with file paths</li>
+<li><code>module</code> for accessing Node.js module functionality</li>
+<li><code>ffi-rs</code> for working with foreign function interfaces (FFI)</li>
+<li><code>../Core</code> for importing Core modules</li>
+</ul>
+<p>Constants include:</p>
+<ul>
+<li><code>BUILD_DIRECTORY</code>, a directory path for building dynamic libraries</li>
+<li><code>typeToDataType</code>, a variable that stores a function imported from <code>../Core</code></li>
+</ul>
+<h3><code>generateCallback</code> Function</h3>
+<p>The <code>generateCallback</code> function takes four arguments:</p>
+<ul>
+<li><code>libName</code>, the name of the library</li>
+<li><code>i</code>, an index</li>
+<li><code>types</code>, an array of types</li>
+<li><code>params</code>, an array of function parameter information</li>
+</ul>
+<p>It returns a callback function that:</p>
+<ul>
+<li>Imports the <code>importNotebook</code> function from <code>../Core</code></li>
+<li>Checks if <code>typeToDataType</code> is initialized and imports it if not</li>
+<li>Defines an inner callback function that:
+<ul>
+<li>Gets the return type based on the <code>returnLength</code> and <code>types[0]</code></li>
+<li>Uses <code>load</code> from <code>ffi-rs</code> to load a function from the library</li>
+<li>Returns the loaded function</li>
+</ul></li>
+</ul>
+<h3><code>makeDylib</code> Function</h3>
+<p>The <code>makeDylib</code> function takes three arguments:</p>
+<ul>
+<li><code>code</code>, the code to be compiled</li>
+<li><code>pathToCode</code>, the path to the code</li>
+<li><code>ctx</code>, the execution context</li>
+</ul>
+<p>It returns a promise that resolves to a dynamic library object.</p>
+<p>The function:</p>
+<ul>
+<li>Imports <code>importNotebook</code> and <code>interpret</code> from <code>../Core</code></li>
+<li>Imports <code>open</code> from <code>ffi-rs</code></li>
+<li>Checks if the module is already cached and returns the cached module if it is</li>
+<li>Imports <code>buildDylib</code> from <code>../Core</code></li>
+<li>Calls <code>buildDylib</code> with the code, path, and context</li>
+<li>Opens a dynamic library using <code>open</code> from <code>ffi-rs</code></li>
+<li>Returns the loaded dynamic library object</li>
+</ul>
+<p>Note that the function has several TODO comments indicating areas where the code needs to be improved or completed.</p>

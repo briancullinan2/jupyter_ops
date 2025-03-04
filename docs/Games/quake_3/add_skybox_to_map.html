@@ -1,0 +1,152 @@
+<p>This code analyzes Quake map files to calculate their bounding boxes and potentially adds skyboxes to them.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {doIntersect} = importer.import('brush to vertex')
+
+function getBounds(file) {
+    // get all brushes in map, leaf nodes with at least one vertex
+    var brushes = importer.regexToArray(/\{[\s\S]*?\}/ig, file)
+   
+    brushes = brushes.map(b => {
+        var points = importer
+            .regexToArray(/\(((\s*[0-9\.-]+\s*)*)\)/ig, b, 1)
+            .map(m => m.trim().split(/\s+/ig)
+                .map(n => (n.includes('.')
+                    ? parseFloat(n.trim())
+                    : parseInt(n.trim()))))
+        
+        return [[
+            Math.min.apply(null, points.map(b => b[0])),
+            Math.min.apply(null, points.map(b => b[1])),
+            Math.min.apply(null, points.map(b => b[2]))
+        ], [
+            Math.max.apply(null, points.map(b => b[0])),
+            Math.max.apply(null, points.map(b => b[1])),
+            Math.max.apply(null, points.map(b => b[2]))
+        ]]
+    })
+ 
+    // replace all origins with scaled
+    // TODO: make this a function
+    var origins = importer
+        .regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1)
+        .map(o => o.trim().split(/\s+/ig)
+            .map(n => (n.includes('.')
+                ? parseFloat(n.trim())
+                : parseInt(n.trim()))))
+    
+    origins = origins.concat.apply(origins, brushes)
+        .filter(o => o && isFinite(o[0]))
+    
+    return [[
+        Math.min.apply(null, origins.map(b => b[0])),
+        Math.min.apply(null, origins.map(b => b[1])),
+        Math.min.apply(null, origins.map(b => b[2]))
+    ], [
+        Math.max.apply(null, origins.map(b => b[0])),
+        Math.max.apply(null, origins.map(b => b[1])),
+        Math.max.apply(null, origins.map(b => b[2]))
+    ]]
+}
+
+
+function addSkybox(fileName) {
+    var file
+    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        file = fs.readFileSync(fileName).toString('utf-8')
+    } else {
+        file = fileName
+    }
+
+    var brushes = importer.regexToArray(/\{[^\{}]*?\}\s*/ig, file)
+    brushes.forEach(b => {
+        if(b.includes('/sky')) {
+            file = file.replace(b, '')
+            return false
+        }
+        return true
+    })
+    
+    var vs = getBounds(file)
+    
+    // TODO: use a fancy for loop instead contains each corner and extends towards the next two points?
+    var points = [
+        [vs[0][0], vs[0][1], vs[0][2]-16],
+        [vs[1][0], vs[1][1], vs[0][2]],
+        
+        [vs[0][0]-16, vs[0][1], vs[0][2]],
+        [vs[0][0],    vs[1][1], vs[1][2]],
+        
+        [vs[0][0], vs[0][1]-16, vs[0][2]],
+        [vs[1][0], vs[0][1],    vs[1][2]],
+        
+        
+        [vs[0][0], vs[0][1], vs[1][2]],
+        [vs[1][0], vs[1][1], vs[1][2]+16],
+        
+        [vs[1][0],    vs[0][1], vs[0][2]],
+        [vs[1][0]+16, vs[1][1], vs[1][2]],
+        
+        [vs[0][0], vs[1][1],    vs[0][2]],
+        [vs[1][0], vs[1][1]+16, vs[1][2]],
+        
+    ]
+    var newBrush = ``
+    for(var i = 0; i < points.length / 2; i++) {
+        var p1 = points[i*2]
+        var p2 = points[i*2+1]
+        newBrush += `
+{ // brush 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p1[1]} ${p2[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p2[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+}
+`
+    }
+    
+
+    var exp = (/\{*\s*\/\/\s*brush\s*0\s*\{*/ig)
+    var match = exp.exec(file)
+    var pos = exp.lastIndex
+    file = file.substr(0, pos - match[0].length) + newBrush + file.substr(pos - match[0].length)
+    
+    if(typeof fileName === 'string' && fs.existsSync(fileName)) {
+        console.log(`writing ${fileName}`)
+        fs.writeFileSync(fileName, file)
+    } else {
+        return file
+    }
+}
+
+module.exports = {
+    addSkybox,
+    getBounds
+}
+
+</code></pre>
+
+<p>This code snippet analyzes a Quake map file to determine its bounding box and potentially adds a skybox.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>getBounds</code> Function:</strong></p>
+<ul>
+<li>Takes a map file path (string) as input.</li>
+<li>Extracts all brush definitions from the file using a regular expression.</li>
+<li>For each brush, it calculates the minimum and maximum coordinates of its vertices to determine the brush's bounding box.</li>
+<li>It then combines the bounding boxes of all brushes and origins (if present) to calculate the overall map bounding box.</li>
+<li>Returns an array representing the minimum and maximum corner points of the map's bounding box.</li>
+</ul></li>
+<li><p><strong><code>addSkybox</code> Function:</strong></p>
+<ul>
+<li>Takes a map file path or content as input.</li>
+<li>Reads the map file content if it's a string and exists.</li>
+<li>Extracts all brush definitions from the file.</li>
+<li>The function appears to be incomplete, but it likely intends to add a skybox entity to the map based on the extracted brush information.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code likely serves as a utility for analyzing and potentially modifying Quake map files. The <code>getBounds</code> function provides a way to determine the spatial extent of a map, which can be useful for various purposes such as collision detection or level design analysis. The <code>addSkybox</code> function suggests an intention to automate the addition of skybox elements to maps.</p>

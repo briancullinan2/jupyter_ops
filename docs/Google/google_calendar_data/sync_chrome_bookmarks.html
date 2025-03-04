@@ -1,0 +1,93 @@
+<p>This code synchronizes your Chrome browsing history with a Google Calendar, creating time-based events for each bookmark folder.  It groups bookmarks by half-hour intervals and generates calendar events with summaries and descriptions based on the bookmark data.</p>
+
+
+<pre><code>var importer = require('../Core');
+var _ = require('lodash');
+
+var offset = (new Date()).getTimezoneOffset() * 60 * 1000;
+var {
+    ISODateString, updateEvent, correctCalendarId, getBookmarksFromTakeout
+} = importer.import([
+    'import google calendar api',
+    'lookup calendar name',
+    'convert date iso',
+    'update create merge event',
+    'parse bookmarks file'
+]);
+var options = {
+    calendarId: 'Bookmarks'
+};
+
+function getAllBookmarks(folders) {
+    if(!folders) return []
+    return folders.map(f => f['links']
+        .map(l => Object.assign(l, {folder: f.folder}))
+        .concat(getAllBookmarks(f.children)))
+        .flat(2)
+}
+
+async function syncChromeBookmarks() {
+    await correctCalendarId(options)
+    // TODO: copy to chrome history
+    var links = getAllBookmarks(getBookmarksFromTakeout())
+    // group by half hour
+    links.sort((a, b) => parseInt(b.date) - parseInt(a.date))
+    var groups = _.groupBy(links, l => Math.floor(l.date / (60 * 30 * 1000)))
+    var results = Object.keys(groups).reduce((acc, t) => {
+        var folders = _.groupBy(groups[t], l => l.folder)
+        return acc.concat(Object.keys(folders).map(f => ({
+            start: {
+                dateTime: ISODateString(new Date(parseInt(t) * 30 * 60 * 1000 - offset))
+            },
+            end: {
+                dateTime: ISODateString(new Date(parseInt(t) * 30 * 60 * 1000 + 60 * 30 * 1000 - offset))
+            },
+            summary: f,
+            description: JSON.stringify(folders[f], null, 4)
+        })))
+    }, [])
+    return await importer.runAllPromises(results
+        .map(event => resolve => updateEvent(event, options)
+        .then(r => resolve(r))
+        .catch(e => {
+            console.log(e);
+            resolve()
+        })))
+}
+
+module.exports = syncChromeBookmarks;
+
+</code></pre>
+
+<p>This code synchronizes your Chrome bookmarks with a Google Calendar.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong> It imports necessary modules for interacting with Google Calendar, parsing bookmarks, and working with dates.</p></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It calculates the timezone offset for accurate date handling.</li>
+<li>It defines options for interacting with the Google Calendar, specifically targeting a calendar named &quot;Bookmarks&quot;.</li>
+</ul></li>
+<li><p><strong>Bookmark Processing:</strong></p>
+<ul>
+<li><code>getAllBookmarks</code> recursively traverses the bookmark structure, flattening it into a list of individual bookmarks with additional <code>folder</code> information.</li>
+</ul></li>
+<li><p><strong>Synchronization Logic:</strong></p>
+<ul>
+<li><code>syncChromeBookmarks</code> orchestrates the synchronization process:
+<ul>
+<li>It corrects the calendar ID if needed.</li>
+<li>It retrieves bookmarks from the Chrome database using <code>getBookmarksFromTakeout</code>.</li>
+<li>It groups bookmarks by half-hour intervals based on their visit times.</li>
+<li>It creates Google Calendar events for each half-hour group, with:
+<ul>
+<li>A start and end time based on the group's time range.</li>
+<li>A summary representing the bookmark folder.</li>
+<li>A description containing the list of bookmarks within that folder.</li>
+</ul></li>
+<li>It updates the Google Calendar with these events using <code>updateEvent</code>.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>syncChromeBookmarks</code> function is exported as a module, allowing it to be used in other parts of the application.</p></li>
+</ol>
+<p>In essence, this code takes your Chrome bookmarks, organizes them by time, and creates corresponding events in a Google Calendar, effectively streaming your browsing history as a visual timeline.</p>

@@ -1,0 +1,141 @@
+<p>Here's a two-sentence summary of the <strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong>:</p>
+<p>The <code>crawlRecursive</code> function is a recursive web crawler that starts at a specified initial URL, iteratively retrieves links from the crawled pages, and stores them in a cache, with the ability to manage recursion depth and cache updates. The function uses a series of steps, including crawling, cache management, link extraction, recursion, and termination, to fetch and process links from the web pages.</p>
+
+
+<pre><code>var {URL} = require('url')
+var fs = require('fs');
+var path = require('path');
+var importer = require('../Core');
+var {doBrowserRequest} = importer.import('browser crawler tools')
+var {
+    cacheFilename,
+    existingCache,
+    storeCache,
+    readCache,
+    rmhash
+} = importer.import('domain cache tools')
+
+async function crawlRecursive(url, depth, searches) {
+    if(!depth) depth = 3 // TODO: minutes depth using time range?
+    url = (typeof url === 'string' ? [url] : url )
+    // searches2 keeps track of new pages that should be added if searches is not provided
+    //   this guaruntees at least one page will be requested when this is called
+    const searches2 = []
+    for(var i = 0; i < url.length; i++) {
+        var l = url[i]
+        try {
+            await doBrowserRequest(l, readCache.bind(null, searches || searches2),
+                                   storeCache.bind(null, searches || searches2))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    
+    // TODO: fix this
+    
+    // push old cache on to bottom of current searches,
+    //   so we are always getting at least the page requested
+    if(!searches) searches = searches2.concat(existingCache(url[0]))
+    
+    var existing = searches.map(s => rmhash(s.url))
+    var links = searches2
+    // TODO: pattern defensive programming
+        .map(s => {
+            var styles = s.styles || []
+            var links = s.links || []
+            return styles.concat(links)
+        })
+        .flat()
+        // do not include hash in actual link to the page
+        .map(s => rmhash(s))
+        // filter out first occurence
+        .filter((l, i, arr) => arr.indexOf(l) === i
+        // filter out all existing urls
+                && !existing.includes(rmhash(l))
+        // filter out data uris
+                && !l.includes('data:') && !l.includes('mailto:')
+                && !l.includes('javascript:') && !l.includes('ios-app:'))
+    
+    if(depth > 1) {
+        return await crawlRecursive(links, depth - 1, searches)
+    }
+    
+    // close the browser
+    await doBrowserRequest(false)
+    
+    // save the database
+    var filePath = cacheFilename(searches[0] ? searches[0].url : url[0])
+    fs.writeFileSync(filePath, JSON.stringify(searches, null, 2))
+}
+
+async function crawlAll(url, depth, searches) {
+    try {
+        await crawlRecursive(url, depth, searches)
+    } catch (e) {
+        console.log(e)
+        await doBrowserRequest(false)
+    }
+}
+
+module.exports = crawlAll
+
+//var importer = require('../Core')
+//var crawlAll = importer.import('crawl domain')
+
+if(typeof $$ !== 'undefined') {
+    $$.async()
+    crawlAll('https://google.com', 2)
+        .then(r => $$.sendResult('done'))
+        .catch(e => $$.sendError(e))
+}
+
+</code></pre>
+
+<p><strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>url</code>: The initial URL to start crawling from. Can be a string or an array of strings.</li>
+<li><code>depth</code>: The maximum recursion depth. Defaults to 3.</li>
+<li><code>searches</code>: An array of previously crawled search results.</li>
+</ul>
+<p><strong>Functionality:</strong></p>
+<ol>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>If <code>depth</code> is not provided, it defaults to 3.</li>
+<li>If <code>url</code> is a string, it is wrapped in an array.</li>
+<li>An empty array <code>searches2</code> is created to store new pages to be added.</li>
+</ul></li>
+<li><p><strong>Crawling:</strong></p>
+<ul>
+<li>The function iterates over the <code>url</code> array and makes a browser request to each URL using <code>doBrowserRequest</code>.</li>
+<li>The cache is read and stored using <code>readCache</code> and <code>storeCache</code> respectively.</li>
+<li>If an error occurs, it is logged to the console.</li>
+</ul></li>
+<li><p><strong>Cache Management:</strong></p>
+<ul>
+<li>If no <code>searches</code> array is provided, it is updated with the new pages stored in <code>searches2</code>.</li>
+<li>The old cache is pushed to the bottom of the current <code>searches</code> array.</li>
+</ul></li>
+<li><p><strong>Link Extraction:</strong></p>
+<ul>
+<li>The <code>searches2</code> array is processed to extract links.</li>
+<li>Links are filtered to exclude existing URLs, data URIs, and specific types of links.</li>
+</ul></li>
+<li><p><strong>Recursion:</strong></p>
+<ul>
+<li>If <code>depth</code> is greater than 1, the function calls itself recursively with the extracted links, decreased <code>depth</code>, and the updated <code>searches</code> array.</li>
+</ul></li>
+<li><p><strong>Termination:</strong></p>
+<ul>
+<li>If <code>depth</code> is 1, the function returns the extracted links.</li>
+</ul></li>
+</ol>
+<p><strong>Notable Notes:</strong></p>
+<ul>
+<li>The function uses <code>bind</code> to pass <code>searches</code> (or <code>searches2</code>) as the cache callback to <code>doBrowserRequest</code>.</li>
+<li>The <code>rmhash</code> function is used to remove the hash from URLs.</li>
+<li>The <code>existingCache</code> function is used to retrieve the existing cache for a given URL.</li>
+<li>The <code>storeCache</code> function is used to store the new cache.</li>
+<li>The <code>readCache</code> function is used to read the cache.</li>
+</ul>

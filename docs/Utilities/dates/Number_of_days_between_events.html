@@ -1,0 +1,66 @@
+<p>The <code>filterDistant</code> function takes a list of events and a time threshold, returning a new list containing only events that are within the specified time window from the previous event.</p>
+
+
+<pre><code>// subtract the events from the previous one
+function filterDistant(events, days = 28) {
+    var contributing = [];
+    events.sort((a, b) => a.start - b.start);
+    events.forEach((e, i) => {
+        if (i == 0) {
+            return;
+        }
+        var diff = (e.start.getTime() - events[i - 1].start.getTime())
+            / 1000 / 60 / 60 / 24;
+        // if it is greater than 1 months it can't help our graph
+        if (diff < days && diff > 0) {
+            contributing[contributing.length] = {
+                days: diff,
+                start: e.start,
+                event: e.event,
+                i: contributing.length
+            };
+        }
+    });
+    return contributing;
+};
+module.exports = filterDistant;
+
+    </code></pre>
+
+<p>This JavaScript code defines a function called <code>filterDistant</code> that filters a list of events based on a specified time threshold.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Function Definition:</strong></p>
+<ul>
+<li><code>function filterDistant(events, days = 28) { ... }</code> defines the function <code>filterDistant</code>, which takes two arguments:
+<ul>
+<li><code>events</code>: An array of event objects, each with <code>start</code> (likely a Date object) and <code>event</code> properties.</li>
+<li><code>days</code>: An optional parameter specifying the maximum time difference (in days) between events to be considered contributing. It defaults to 28 days.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li><code>var contributing = [];</code> creates an empty array <code>contributing</code> to store the filtered events.</li>
+</ul></li>
+<li><p><strong>Sorting Events:</strong></p>
+<ul>
+<li><code>events.sort((a, b) =&gt; a.start - b.start);</code> sorts the input <code>events</code> array in ascending order based on their <code>start</code> dates.</li>
+</ul></li>
+<li><p><strong>Filtering Logic:</strong></p>
+<ul>
+<li>The code iterates through the sorted <code>events</code> array using <code>forEach</code>.</li>
+<li>It skips the first event (<code>i == 0</code>).</li>
+<li>For each subsequent event, it calculates the time difference (<code>diff</code>) in days between the current event and the previous one.</li>
+<li>If the <code>diff</code> is greater than 0 (meaning there's a time gap) and less than the specified <code>days</code> threshold, the current event is considered contributing.</li>
+<li>A new object containing the <code>days</code>, <code>start</code> date, <code>event</code> data, and an index (<code>i</code>) is added to the <code>contributing</code> array.</li>
+</ul></li>
+<li><p><strong>Return Filtered Events:</strong></p>
+<ul>
+<li><code>return contributing;</code> returns the array of filtered events.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li><code>module.exports = filterDistant;</code> exports the <code>filterDistant</code> function, making it available for use in other parts of the Node.js application.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, this code filters a list of events, keeping only those that are within a specified time window (defaulting to 28 days) from the previous event.</strong></p>

@@ -1,0 +1,25 @@
+<p>Here's a 2-sentence summary:</p>
+<p>The <code>getCommands</code> function from the <code>discord api</code> package is imported and stored in the current scope using destructuring, allowing it to be utilized in the script. The <code>getCommands</code> function is then exported as a module, making it available for use in other JavaScript files.</p>
+
+
+<pre><code>
+const {getCommands} = importer.import('discord api')
+
+module.exports = getCommands
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p><strong>Importing a Function</strong></p>
+<pre><code class="language-javascript">const {getCommands} = importer.import('discord api')
+</code></pre>
+<ul>
+<li><code>importer.import</code> imports a module from the <code>discord api</code> package.</li>
+<li>The <code>getCommands</code> function is extracted from the imported module using destructuring.</li>
+<li>The <code>getCommands</code> function is stored in the current scope.</li>
+</ul>
+<p><strong>Exporting a Function</strong></p>
+<pre><code class="language-javascript">module.exports = getCommands
+</code></pre>
+<ul>
+<li>The <code>getCommands</code> function is exported as a module, making it available for use in other JavaScript files.</li>
+</ul>

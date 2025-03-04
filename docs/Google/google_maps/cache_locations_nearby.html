@@ -1,0 +1,88 @@
+<p>This code efficiently retrieves geolocation data for a list of destinations, leveraging a cache to speed up subsequent requests and reduce API calls.</p>
+
+
+<pre><code>var fs = require('fs');
+var unidecode = require('unidecode');
+var importer = require('../Core');
+var placesNearby = importer.import('places nearby api');
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var PROJECT_PATH = PROFILE_PATH + '/Collections/timeline';
+
+var nearbyCache;
+// cache resturants and locations that don't change often, saves geolocation api calls
+try {
+    nearbyCache = JSON.parse(fs.readFileSync(PROJECT_PATH + '/geolocations.json').toString());
+} catch (e) {
+    nearbyCache = {};
+}
+
+function getNearby(destinations) {
+    return importer.runAllPromises(destinations
+        .filter(d => !d.traveling)
+        .map(d => resolve => {
+            if (typeof nearbyCache[d.name + ', ' + d.location] !== 'undefined') {
+                return resolve(nearbyCache[d.name + ', ' + d.location]);
+            }
+            console.log(d.name + ', ' + d.location);
+            return placesNearby(
+                unidecode(d.name + ', ' + d.location),
+                {lat: d.averageLat, lng: d.averageLon})
+                .then(result => {
+                    if (result.length === 0) {
+                        console.warn('No match for ' + JSON.stringify(d))
+                        resolve();
+                    } else {
+                        nearbyCache[d.name + ', ' + d.location] = result[0];
+                        resolve(Object.assign(d, result[0]))
+                    }
+                })
+                .catch(e => resolve(e))
+        }))
+        .then(r => {
+            fs.writeFileSync(
+                PROJECT_PATH + '/geolocations.json',
+                JSON.stringify(nearbyCache, null, 4));
+            return r.filter(l => typeof l !== 'undefined');
+        })
+}
+module.exports = getNearby;
+</code></pre>
+
+<p>This code fetches nearby places for a list of destinations, caching the results to improve performance.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>fs</code>: Node.js built-in module for file system operations.</li>
+<li><code>unidecode</code>: Library for converting Unicode characters to ASCII.</li>
+<li><code>importer</code>: Custom module likely responsible for importing other functions or modules.</li>
+<li><code>placesNearby</code>: Function imported from <code>importer</code> to fetch nearby places using the Google Places API.</li>
+</ul></li>
+<li><p><strong>Configuration:</strong></p>
+<ul>
+<li><code>PROFILE_PATH</code>: Path to the user's home directory.</li>
+<li><code>PROJECT_PATH</code>: Path to a directory where the code stores cached geolocation data.</li>
+<li><code>nearbyCache</code>: An object to store cached geolocation data. It's loaded from a JSON file if it exists, otherwise, it's initialized as an empty object.</li>
+</ul></li>
+<li><p><strong><code>getNearby</code> Function:</strong></p>
+<ul>
+<li>Takes an array of <code>destinations</code> as input, each destination having <code>name</code>, <code>location</code>, <code>averageLat</code>, and <code>averageLon</code> properties.</li>
+<li>Filters out destinations marked as <code>traveling</code>.</li>
+<li>Maps each remaining destination to a promise that:
+<ul>
+<li>Checks if the geolocation data is already cached. If so, it resolves with the cached data.</li>
+<li>Otherwise, it calls <code>placesNearby</code> to fetch the geolocation data from the API.</li>
+<li>If a match is found, it caches the result in <code>nearbyCache</code> and resolves with the destination object augmented with the geolocation data.</li>
+<li>If no match is found, it logs a warning and resolves with <code>undefined</code>.</li>
+</ul></li>
+<li>Uses <code>importer.runAllPromises</code> to execute all the promises concurrently.</li>
+<li>Saves the updated <code>nearbyCache</code> to the JSON file.</li>
+<li>Filters out <code>undefined</code> values from the results and returns the array of destinations with geolocation data.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>The <code>getNearby</code> function is exported as a module, making it available for use in other parts of the application.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

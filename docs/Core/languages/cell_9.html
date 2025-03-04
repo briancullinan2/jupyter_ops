@@ -1,0 +1,24 @@
+
+
+<pre><code>var babel = require('babel-core')
+var importer = require('../Core')
+var babelTranspile = importer.import('babel transpiler')
+
+var out = babel.transform(`
+// this code is missing an import
+addImports('// some test code')
+`, {
+    presets: [babelTranspile],
+    plugins: [/* 'estree' */],
+    filename: 'test_code.js'
+}).code;
+
+console.log(out)
+
+/* expected output
+
+var addImports = require('./')
+
+*/
+</code></pre>
+

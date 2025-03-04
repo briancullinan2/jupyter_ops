@@ -1,0 +1,96 @@
+<p>Here is a summary in one sentence:</p>
+<p>This Node.js script collects and renders template resources, streams the rendered template to Google Cloud, and returns a promise chain that resolves when the file has been streamed successfully, with environment-specific logic to determine which streaming function to use.</p>
+
+
+<pre><code>var importer = require('../Core');
+if((process.env.ENVIRONMENT || '').includes('LOCAL')
+   || (process.env.ENVIRONMENT || '').includes('TEST')
+   || !(process.env.ENVIRONMENT || '').includes('DEPLOY')) {
+ }
+var copyFileBucket = importer.import('copy file storage bucket');
+var collectExternalResources = importer.import('collect external content and resources');
+var collectRoutes = importer.import('find known routes to sheets');
+var getTemplateByUrl = importer.import('convert sheet helper functions');
+
+var timestamp = (new Date()).getTime();
+
+// detect links and write out every part of the site
+function collectTemplateResources(path, page, properties, templates, bucketName, rendered) {
+    var streamToGoogle
+    if(!(process.env.ENVIRONMENT || '').includes('DEPLOY')) {
+        streamToGoogle = importer.import('test stream to output');
+    } else {
+        streamToGoogle = importer.import('upload files google cloud');
+    }
+
+    if(!rendered) {
+        rendered = [];
+    }
+
+    // if it is the first page in the template, rename it to index.html
+    if((path.split('/').length < 2 || path === '/' || path === '')
+       && getTemplateByUrl(templates, path) === getTemplateByUrl(templates, '/')) {
+        console.log(`using ${path} as index.html`);
+        path = 'index';
+    }
+    
+    var trimmedBase = (properties['base'] || '').replace(/^\/|\/$/ig, '');
+    if(path.substr(0, trimmedBase.length) !== trimmedBase) {
+        path = trimmedBase + '/' + path;
+    }
+
+    // TODO: add timestamps to generated content
+    // TODO: set different permissions on files streamed to google.
+    
+    var routes = [];
+    return collectExternalResources(page, rendered, routes)
+        .then(stream => (console.log(`emitting ${path}`), stream))
+        .then(stream => streamToGoogle(path + '.html', bucketName, stream, {
+            contentType: 'text/html; charset=utf-8'
+        } /* TODO: insert permission settings for user directory */))
+        .then(() => !(process.env.ENVIRONMENT || '').includes('DEPLOY')
+              ? {}
+              : copyFileBucket(bucketName, path + '.html'))
+        .then(() => collectRoutes(routes, properties, templates, rendered))
+        .then(pages => importer.runAllPromises(Object.keys(pages).map(fileName => resolve => 
+            collectTemplateResources(fileName, pages[fileName], properties, templates, bucketName, rendered)
+                .then(() => resolve()))))
+        .then(() => rendered)
+}
+
+module.exports = collectTemplateResources;
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<p>This is a Node.js script that appears to be part of a larger application. It imports various modules and functions from another module (<code>../Core</code>) and uses them to perform tasks related to template rendering, resource collection, and file streaming to Google Cloud.</p>
+<p><strong>Imported Modules and Functions</strong></p>
+<ol>
+<li><code>copyFileBucket</code></li>
+<li><code>collectExternalResources</code></li>
+<li><code>collectRoutes</code></li>
+<li><code>getTemplateByUrl</code></li>
+<li><code>test stream to output</code> (only imported in non-DEPLOY environment)</li>
+<li><code>upload files google cloud</code> (only imported in DEPLOY environment)</li>
+</ol>
+<p><strong>Main Function: <code>collectTemplateResources</code></strong></p>
+<p>This function takes six parameters:</p>
+<ol>
+<li><code>path</code>: the current path being processed</li>
+<li><code>page</code>: the current page being processed</li>
+<li><code>properties</code>: an object containing template properties</li>
+<li><code>templates</code>: an object containing template data</li>
+<li><code>bucketName</code>: the name of the Google Cloud bucket to upload files to</li>
+<li><code>rendered</code>: an array to store the rendered templates</li>
+</ol>
+<p>The function performs the following tasks:</p>
+<ol>
+<li>Checks if it's running in a non-DEPLOY environment and imports either <code>test stream to output</code> or <code>upload files google cloud</code> accordingly.</li>
+<li>If the <code>rendered</code> array is empty, initializes it.</li>
+<li>Renames the current path to <code>index.html</code> if it's the first page in the template.</li>
+<li>Trims the base path from the current path if necessary.</li>
+<li>Calls <code>collectExternalResources</code> to collect external resources and render the template.</li>
+<li>Streams the rendered template to Google Cloud using the imported streaming function.</li>
+<li>Returns a promise chain that resolves when the file has been streamed successfully.</li>
+</ol>
+<p><strong>Environment-Specific Logic</strong></p>
+<p>The script checks the <code>ENVIRONMENT</code> environment variable to determine which environment it's running in. If it's not <code>DEPLOY</code>, it imports <code>test stream to output</code> instead of <code>upload files google cloud</code>.</p>

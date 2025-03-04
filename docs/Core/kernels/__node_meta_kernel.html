@@ -1,0 +1,95 @@
+<p>Here's a 2-sentence summary of the code overview:</p>
+<p>This Node.js module exports a function <code>nodeMetaKernel</code> that returns a meta kernel for Node.js, which has methods for executing, checking, and initializing code. The meta kernel uses Babel for code transpilation and sandboxed execution with <code>vm.runInThisContext</code>, and is wrapped with the <code>socketMetaKernel</code> function.</p>
+
+
+<pre><code>var vm = require('vm');
+var importer = require('../Core');
+var {extend} = importer.import('extend prototype class');
+//var {processMetaKernel} = importer.import('process meta kernel')
+var nativeMetaKernel = importer.import('native meta kernel');
+var nativeMethods = importer.import('native meta kernel methods');
+var {socketMetaKernel} = socketMethods = importer.import('socket meta kernel')
+
+var TRANSFORM = {
+    presets: [
+        [require.resolve("@babel/preset-env"), {
+            loose: true,
+            targets: {node: true},
+        }],
+    ],
+}
+
+function do_execute(code) {
+    // TODO: add Promise handling here?
+    var transpiled = this.transpile(code, TRANSFORM).code;
+    var result = vm.runInThisContext(transpiled);
+    return this.do_respond(result); // TODO: move do_repond
+}
+
+// overrides try/catch based method from parent
+//   because it has a syntax checker
+function do_is_complete(code) {
+    console.log('checking syntax')
+    var transpiled = this.transpile(code, TRANSFORM).code;
+    return this.do_respond(vm.Script(transpiled)); // TODO: move do_repond
+}
+
+function do_init(config) {
+    this.socket = process;
+    socketMethods.do_init.call(this, config);
+    console.log('starting node meta kernel');
+    this.transpile = require("@babel/core").transform;
+}
+
+function nodeMetaKernel(meta_kernel) {
+    var node_meta = extend(meta_kernel, {
+        do_execute,
+        do_is_complete,
+        do_init,
+    })
+    return socketMetaKernel(node_meta);
+}
+
+module.exports = nodeMetaKernel;
+</code></pre>
+
+<p><strong>Code Overview</strong></p>
+<p>This is a Node.js module that exports a function <code>nodeMetaKernel</code> which returns a meta kernel for Node.js. The meta kernel has three methods: <code>do_execute</code>, <code>do_is_complete</code>, and <code>do_init</code>.</p>
+<h3>Dependencies</h3>
+<ul>
+<li><code>vm</code> (built-in Node.js module for sandboxed execution)</li>
+<li><code>@babel/core</code> (Babel compiler for JavaScript transpilation)</li>
+<li><code>@babel/preset-env</code> (Babel plugin for environment-specific transpilation)</li>
+<li><code>extend prototype class</code> (imported function for class extension)</li>
+<li><code>native meta kernel</code> and <code>native meta kernel methods</code> (imported functions from another module)</li>
+<li><code>socket meta kernel</code> (imported function from another module)</li>
+</ul>
+<h3>Meta Kernel Methods</h3>
+<h4><code>do_execute(code)</code></h4>
+<ul>
+<li>Transpiles the input code using Babel with the specified preset.</li>
+<li>Executes the transpiled code in a sandboxed environment using <code>vm.runInThisContext</code>.</li>
+<li>Returns the result of the code execution.</li>
+</ul>
+<h4><code>do_is_complete(code)</code></h4>
+<ul>
+<li>Transpiles the input code using Babel with the specified preset.</li>
+<li>Checks the syntax of the transpiled code using <code>vm.Script</code>.</li>
+<li>Returns the result of the syntax check.</li>
+</ul>
+<h4><code>do_init(config)</code></h4>
+<ul>
+<li>Initializes the socket using the <code>process</code> object.</li>
+<li>Calls the <code>do_init</code> method of the <code>socketMethods</code> object.</li>
+<li>Logs a message to the console indicating the start of the Node.js meta kernel.</li>
+<li>Sets the <code>transpile</code> function to the Babel <code>transform</code> function.</li>
+</ul>
+<h3><code>nodeMetaKernel</code> Function</h3>
+<ul>
+<li>Takes a <code>meta_kernel</code> object as an argument.</li>
+<li>Creates a new meta kernel object by extending the input <code>meta_kernel</code> object with the <code>do_execute</code>, <code>do_is_complete</code>, and <code>do_init</code> methods.</li>
+<li>Wraps the resulting meta kernel object with the <code>socketMetaKernel</code> function.</li>
+<li>Returns the wrapped meta kernel object.</li>
+</ul>
+<h3>Export</h3>
+<p>The <code>nodeMetaKernel</code> function is exported as a module.</p>

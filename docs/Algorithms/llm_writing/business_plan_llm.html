@@ -1,0 +1,382 @@
+<p>Here's a two-sentence summary:</p>
+<p>The <code>askLlamaToWriteBusinessPlan</code> function generates a business plan using a prompt model, taking in topic, name, and prompt model parameters, and processing user and AI responses to extract goals and Executive Summaries. The function is not fully completed, with the remaining code likely intended to sort responses based on the Hero's Journey framework.</p>
+
+
+<pre><code>const {Remarkable} = require('remarkable');
+const md = new Remarkable({html: true, xhtmlOut: true, breaks: true});
+const {safeurl} = importer.import('domain cache tools')
+const selectModel = importer.import('select llm')
+
+// TODO: sort through responses based on heros journey on a specific topic
+//  https://en.wikipedia.org/wiki/Hero%27s_journey
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'business-plans')
+
+async function askLlamaToWriteBusinessPlan(topic, name, promptModel = 'Meta') {
+
+  if(typeof promptModel != 'function') {
+    promptModel = await selectModel(promptModel)
+  }
+
+
+  if(!topic) {
+    topic = 'automatic car wash'
+  }
+
+  let businessName = name
+  if(!name) {
+    let q0 = 'Brainstorm 12 funny but creative names for a business involving:\n' + topic
+      + '\nRespond with only the list of fun names and nothing else.'
+    console.log("User: " + q0);
+    const a0 = await promptModel(q0);
+    console.log("AI: " + a0);
+
+    let names = a0.trim().split(/\s*[0-9]+\.\s*|\s*\n\s*/gi)
+    businessName = names[Math.round(Math.random() * (names.length-1))]
+  }
+
+  let q1 = 'List 6 common goals in achieving a successful business around:\n' + topic
+    + '\nOnly return the list of goals and nothing else.'
+  console.log("User: " + q1);
+  const a1 = await promptModel(q1);
+  console.log("AI: " + a1);
+
+  let goals = a1.trim().split('\n').filter(g => g.trim().length > 0)
+
+  let q2 = 'Write an Executive Summary for a business plan using markdown, expand on these goals:\n'
+    + 'a company named ' + businessName + '\n'
+    + goals.join('\n')
+    + '\nOnly return the "Executive Summary" (about 3 or 4 paragraphs) and goals, discard any pleasantries.'
+  console.log("User: " + q2);
+  const a2 = await promptModel(q2);
+  console.log("AI: " + a2);
+
+  let summary = a2.trim()
+  if(!summary.includes('Executive Summary')) {
+    summary = '## Executive Summary\n' + summary
+  }
+
+  // this context would be too large for the entire document to fit into the context window of
+  //   the next prompt for reference, somehow ChatGPT solves this, so here is my solution.
+
+  let q3 = 'Write a one or two sentence summary of this description:\n' 
+  + 'a company named ' + businessName + '\n'
+  + summary
+  console.log("User: " + q3);
+  const a3 = await promptModel(q3);
+  console.log("AI: " + a3);
+
+  let summarySummary = a3.trim()
+  
+  let q4 = 'Write a detailed list of 6 examples how this company can stand-out from competitors:\n' + summarySummary
+  console.log("User: " + q4);
+  const a4 = await promptModel(q4);
+  console.log("AI: " + a4);
+
+  let q5 = 'Write a detailed Company Description for a business plan using markdown and include these 6 examples how this company will stand out from it\'s competition:\n' + a4
+    + '\nOnly respond with the "Company Description" part of the business plan in markdown.'
+  console.log("User: " + q5);
+  const a5 = await promptModel(q5);
+  console.log("AI: " + a5);
+
+  let description = a5.trim()
+  if(!description.includes('Company Description')) {
+    description = '## Company Description\n' + description
+  }
+
+  let q6 = 'Write a one or two sentence summary of this description:\n' + description
+  console.log("User: " + q6);
+  const a6 = await promptModel(q6);
+  console.log("AI: " + a6);
+
+  let descriptionSummary = a6.trim()
+  
+  let q7 = 'Brainstorm a list of 12 ways to keep up with market demands:\n' + summarySummary + '\n' + descriptionSummary
+    + '\nOnly return the list of strategies for an evolving market, nothing else.'
+  console.log("User: " + q7);
+  const a7 = await promptModel(q7);
+  console.log("AI: " + a7);
+
+  let demands = a7.trim();
+
+  let q8 = 'Write a Market Demands section of the business plan using markdown with the following concepts:\n' + demands
+    + '\nOnly response with the "Market Demands" part of the business plan in markdown.'
+  console.log("User: " + q8);
+  const a8 = await promptModel(q8);
+  console.log("AI: " + a8);
+
+  let market = a8.trim();
+  if(!market.includes('Market Demands')) {
+    market = '## Market Demands\n' + market
+  }
+
+  let q9 = 'Write a one or two sentence summary of this description:\n' + market
+  console.log("User: " + q9);
+  const a9 = await promptModel(q9);
+  console.log("AI: " + a9);
+
+  let marketSummary = a9.trim()
+  
+  let q10 = 'Brainstorm 12 operating procedures that might be required for this business to operate within a municipality:\n' + summarySummary + '\n' + descriptionSummary
+    + '\nOnly list the 12 possible licences and permits that might be required and nothing else.'
+
+  console.log("User: " + q10);
+  const a10 = await promptModel(q10);
+  console.log("AI: " + a10);
+
+  q11 = 'Write an Operating Procedures section of a business plan taking into account possible requirements:\n' + summarySummary + '\n' 
+    + descriptionSummary + '\n' + a10 + '\nRespond with only the 12 "Operating Procedures" for the business plan in markdown and nothing else.'
+  console.log("User: " + q11);
+  const a11 = await promptModel(q11);
+  console.log("AI: " + a11);
+
+  let operating = a11.trim()
+  if(!operating.includes('Operating Procedures')) {
+    operating = '## Operating Procedures\n' + operating
+  }
+
+  let q12 = 'Write a one or two sentence summary of this description:\n' + operating
+  console.log("User: " + q12);
+  const a12 = await promptModel(q12);
+  console.log("AI: " + a12);
+
+  let operatingSummary = a12.trim()
+
+
+  let q13 = 'Briefly describe the Grand Opening using markdown:\n' + operatingSummary
+    + '\nOnly return the title "Grand Opening" and the description in markdown.'
+  console.log("User: " + q13);
+  const a13 = await promptModel(q13);
+  console.log("AI: " + a13);
+
+  let grandOpening = a13.trim()
+  if(!grandOpening.includes('Grand Opening')) {
+    grandOpening = '### Grand Opening\n' + grandOpening
+  }
+
+  let q131 = 'Briefly describe the Cancellation Policy using markdown:\n' + operatingSummary
+    + '\nOnly return the title "Cancellation Policy" and the description in markdown.'
+  console.log("User: " + q131);
+  const a131 = await promptModel(q131);
+  console.log("AI: " + a131);
+
+  let cancellation = a131.trim()
+  if(!cancellation.includes('Cancellation Policy')) {
+    cancellation = '### Cancellation Policy\n' + cancellation
+  }
+
+  let q132 = 'Briefly describe the Gift Certificate Policy using markdown:\n' + operatingSummary
+    + '\nOnly return the title "Gift Certificate Policy" and the description in markdown.'
+  console.log("User: " + q132);
+  const a132 = await promptModel(q132);
+  console.log("AI: " + a132);
+
+  let giftPolicy = a132.trim()
+  if(!giftPolicy.includes('Gift Certificate Policy')) {
+    giftPolicy = '### Gift Certificate Policy\n' + giftPolicy
+  }
+
+  let q133 = 'Briefly describe the Refund Policy using markdown:\n' + operatingSummary
+    + '\nOnly return the title "Refund Policy" and the description in markdown.'
+  console.log("User: " + q133);
+  const a133 = await promptModel(q133);
+  console.log("AI: " + a133);
+
+  let refundPolicy = a133.trim()
+  if(!refundPolicy.includes('Refund Policy')) {
+    refundPolicy = '### Refund Policy\n' + refundPolicy
+  }
+
+  let q134 = 'Briefly describe the Sales Policy using markdown:\n' + operatingSummary
+    + '\nOnly return the title "Sales Policy" and the description in markdown.'
+  console.log("User: " + q134);
+  const a134 = await promptModel(q134);
+  console.log("AI: " + a134);
+
+  let salesPolicy = a134.trim()
+  if(!salesPolicy.includes('Sales Policy')) {
+    salesPolicy = '### Sales Policy\n' + salesPolicy
+  }
+
+  let q14 = 'Write markdown titled Management and Personnel for the business plan. Brainstorm a list of 12 possible employee positions required for this type of business excluding C-level:\n' + summarySummary + '\n' + descriptionSummary + '\nInclude the title "Management and Personnel" in the markdown response, discard any pleasantries or conclusions.'
+  console.log("User: " + q14);
+  const a14 = await promptModel(q14);
+  console.log("AI: " + a14);
+
+  let personnel = a14.trim()
+  if(!personnel.includes('Management and Personnel')) {
+    personnel = '## Management and Personnel\n' + personnel
+  }
+
+  let q26 = 'Write a one or two sentence summary of this description:\n' + personnel
+  console.log("User: " + q26);
+  const a26 = await promptModel(q26);
+  console.log("AI: " + a26);
+
+  let personnelSummary = a26.trim()
+
+  let q15 = 'Describe employee compensation such as Employee Benefits, Employee Wages, and Profit Sharing for a business plan:\n' + personnelSummary
+    + '\nInclude the title "Employee Compensation" in the markdown response, discard any pleasantries or conclusions.'
+  console.log("User: " + q15);
+  const a15 = await promptModel(q15);
+  console.log("AI: " + a15);
+
+  let compensation = a15.trim()
+  if(!compensation.includes('Employee Compensation')) {
+    compensation = '## Employee Compensation\n' + compensation
+  }
+
+  let q16 = 'Describe necessary "Company Insurance" plans, such as liability, personal property, health and disability insurance for a business plan:\n' 
+    + summarySummary + '\n' + personnel 
+    + '\nInclude the title "Company Insurance" in the markdown response, discard any pleasantries or conclusions.'
+  console.log("User: " + q16);
+  const a16 = await promptModel(q16);
+  console.log("AI: " + a16);
+
+  let insurance = a16.trim()
+  if(!insurance.includes('Company Insurance')) {
+    insurance = '## Company Insurance\n' + insurance
+  }
+
+  let q17 = 'Write a "Marketing Strategy" for a business plan, include online media and classical methods such as print and referral:\n' + summarySummary
+     + '\nInclude the title "Marketing Strategy" in the markdown response, discard any pleasantries or conclusions.'
+  console.log("User: " + q17);
+  const a17 = await promptModel(q17);
+  console.log("AI: " + a17);
+
+  let marketing = a17.trim()
+  if(!marketing.includes('Marketing Strategy')) {
+    marketing = '## Marketing Strategy\n' + marketing
+  }
+
+  let q18 = 'Write a one or two sentence summary of this description:\n' + operating
+  console.log("User: " + q18);
+  const a18 = await promptModel(q18);
+  console.log("AI: " + a18);
+
+  let marketingSummary = a18.trim()
+
+  let q19 = 'Expand on "Social Media" marketing strategy including establishing a brand, sharing company updates, engaging with followers, tagging and hashtagging, video uploads:\n' + summarySummary + '\n' + marketingSummary + '\nRespond with a fully detailled "Social Media" marketing strategy in markdown, discard any pleasantries or conclusions.'
+  console.log("User: " + q19);
+  const a19 = await promptModel(q19);
+  console.log("AI: " + a19);
+
+  let socialMarketing = a19.trim()
+  if(!socialMarketing.includes('Social Media')) {
+    socialMarketing = '### Social Media\n' + socialMarketing
+  }
+
+
+  let q20 = 'Expand on "Advertising Techniques" as a part of the marketing strategy of a business plan, including online advertising, direct mail, print, referral programs, a/b marketing, anything other than social media:\n' + summarySummary + '\n' + marketingSummary + '\nRespond with a fully detailled "Advertising Techniques" marketing strategy in markdown, discard any pleasantries or conclusions.'
+  console.log("User: " + q20);
+  const a20 = await promptModel(q20);
+  console.log("AI: " + a20);
+
+  let marketingTechniques = a20.trim()
+  if(!marketingTechniques.includes('Advertising Techniques')) {
+    marketingTechniques = '### Advertising Techniques\n' + marketingTechniques
+  }
+
+  let q21 = 'Describe the "Location and Layout" required for the business plan, include the condition of the property, size considerations, price point, and any features the property should require:\n' + summarySummary + '\nRespond with a fully detailled "Location and Layout" in markdown, discard any pleasantries or conclusions.'
+  console.log("User: " + q21);
+  const a21 = await promptModel(q21);
+  console.log("AI: " + a21);
+
+  let location = a21.trim()
+  if(!location.includes('Location and Layout')) {
+    location = '## Location and Layout\n' + location
+  }
+
+  let q22 = 'Write a section called "Financial Projections" for the business plan, include supplies, equipment, building costs, startup costs, and any other associated costs with the business:\n' + summarySummary + '\nInsert all the estimated numbers for each expense and include a total in markdown but discard any conclusions.'
+  console.log("User: " + q22);
+  const a22 = await promptModel(q22);
+  console.log("AI: " + a22);
+
+  let projections = a22.trim()
+  if(!projections.includes('Financial Projections')) {
+    projections = '## Financial Projections\n' + projections
+  }
+
+  let q25 = 'Write a one or two sentence summary of this description:\n' + projections
+  console.log("User: " + q25);
+  const a25 = await promptModel(q25);
+  console.log("AI: " + a25);
+
+  let projectionsSummary = a25.trim()
+
+  let q23 = 'Write sections for "Average Revenue per Customer", "Personnel Costs", "Ongoing Operational Costs", and "Estimated Yearly Revenue" and do a basic financial breakdown for each section of the business plan:\n' + personnelSummary + '\n' + projectionsSummary + '\nInsert all the estimated numbers for each expense a total in markdown but discard any conclusions.'
+  console.log("User: " + q23);
+  const a23 = await promptModel(q23);
+  console.log("AI: " + a23);
+
+  let costBreakdown = a23.trim()
+
+  let q24 = 'Write a section "Franchise Opportunity" and describe the franchising benefits for training and support, standardized guidelines, profitability for franchisees, etc:\n' + summarySummary + '\n' + projectionsSummary + '\nInsert all the estimated franchising fees a total projected costs in markdown but discard any conclusions.'
+  console.log("User: " + q24);
+  const a24 = await promptModel(q24);
+  console.log("AI: " + a24);
+
+  let franchise = a24.trim()
+  if(!franchise.includes('Franchise Opportunity')) {
+    franchise = '## Franchise Opportunity\n' + franchise
+  }
+
+  const mdHtml = md.render(summary + '\n' + description + '\n' 
+    + market + '\n' 
+    // policy section
+    + operating + '\n' + grandOpening + '\n' + cancellation + '\n'
+    + giftPolicy + '\n' + refundPolicy + '\n' + salesPolicy + '\n' 
+
+    + personnel + '\n' 
+    + compensation + '\n' + insurance + '\n' + marketing + '\n'
+    + socialMarketing + '\n' + marketingTechniques + '\n' + location + '\n'
+    + projections + '\n' + costBreakdown + '\n' + franchise);
+  const filename = path.join(PROJECT_PATH, safeurl(topic) + '.html')
+  fs.writeFileSync(filename, mdHtml)
+  return mdHtml
+}
+
+module.exports = {
+  askLlamaToWriteBusinessPlan
+}
+
+</code></pre>
+
+<p><strong>Code Breakdown</strong></p>
+<h3>Dependencies and Imports</h3>
+<ul>
+<li>The code imports <code>Remarkable</code> from the <code>remarkable</code> library, a Markdown parser.</li>
+<li>It also imports <code>safeurl</code> and <code>selectModel</code> from external modules using <code>importer.import</code>.</li>
+</ul>
+<h3>Constants and Variables</h3>
+<ul>
+<li><code>PROJECT_PATH</code>: The path to a directory containing business plan projects.</li>
+<li><code>md</code>: An instance of <code>Remarkable</code>, configured to parse Markdown with HTML escaping, XHTML output, and line breaks.</li>
+<li><code>topic</code>, <code>name</code>, and <code>promptModel</code>: Parameters for the <code>askLlamaToWriteBusinessPlan</code> function.</li>
+</ul>
+<h3>Function: <code>askLlamaToWriteBusinessPlan</code></h3>
+<ul>
+<li>An asynchronous function that generates a business plan using a prompt model.</li>
+<li>It takes three arguments:
+<ul>
+<li><code>topic</code>: The topic for the business plan (default: &quot;automatic car wash&quot;).</li>
+<li><code>name</code>: The name of the business (optional).</li>
+<li><code>promptModel</code>: The model to use for generating the plan (default: &quot;Meta&quot;).</li>
+</ul></li>
+</ul>
+<h3>Function Flow</h3>
+<ol>
+<li>If <code>promptModel</code> is not a function, it is replaced with the result of calling <code>selectModel(promptModel)</code>.</li>
+<li>If <code>topic</code> is not provided, it defaults to &quot;automatic car wash&quot;.</li>
+<li>If <code>name</code> is not provided, it is generated by prompting the user for 12 funny business name suggestions and randomly selecting one.</li>
+<li>The function generates three prompts:
+<ul>
+<li><code>q0</code>: A prompt to list 6 common goals for achieving a successful business around the topic.</li>
+<li><code>q1</code>: A prompt to write an Executive Summary for a business plan using Markdown, expanding on the goals.</li>
+<li><code>q2</code>: A prompt to write the Executive Summary for the business plan.</li>
+</ul></li>
+<li>The function calls the <code>promptModel</code> with each prompt and logs the user and AI responses.</li>
+<li>The function processes the responses to extract the goals and Executive Summary.</li>
+<li>If the Executive Summary does not contain the sentence &quot;Executive Summary&quot;, it is prepended with the header.</li>
+</ol>
+<h3>Note</h3>
+<p>The function is not completed, as indicated by the <code>TODO</code> comment. The remaining code is likely intended to sort the responses based on the Hero's Journey framework.</p>

@@ -1,0 +1,106 @@
+<p>This code defines functions for managing Google Cloud Storage buckets, including listing existing buckets, creating new ones, and setting public access.</p>
+
+
+<pre><code>var qs = require('querystring');
+var importer = require('../Core');
+var authorizeGoogle = importer.import('authorize google service');
+
+// TODO: set index page
+
+function safeName(name) {
+    return name.replace(/[^a-z0-9\-\.]/ig, '-').toLowerCase();
+}
+
+function setPublic(project, bucketName) {
+    var client;
+    // TODO:
+    return authorizeGoogle()
+        .then(c => client = c)
+        .then(() => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/storage/v1/b/${qs.escape(bucketName)}/acl`,
+            data: {
+                entity: 'allUsers',
+                role: 'READER'
+            }
+        }))
+        .then(() => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/storage/v1/b/${qs.escape(bucketName)}/defaultObjectAcl`,
+            data: {
+                entity: 'allUsers',
+                role: 'READER'
+            }
+        }))
+}
+
+function listBuckets(project, bucketName) {
+    var params = {project: project};
+    if(bucketName) {
+        params.prefix = bucketName;
+    }
+    return authorizeGoogle()
+        .then(client => client.request({
+            url: `https://www.googleapis.com/storage/v1/b`,
+            params
+        }))
+        .then(response => response.data.items || [])
+}
+
+function addBucket(project, bucketName) {
+    return authorizeGoogle()
+        .then(client => client.request({
+            method: 'POST',
+            url: `https://www.googleapis.com/storage/v1/b`,
+            params: {project: project},
+            data: {
+                name: bucketName,
+                location: 'us-central1',
+                storageClass: 'regional',
+                website: {
+                    mainPageSuffix: 'index.html'
+                }
+            }
+        }))
+        .then(response => response.data.name)
+        .then(() => setPublic(project, bucketName))
+}
+
+function createBucket(project, bucketName) {
+    bucketName = safeName(bucketName);
+    return listBuckets(project, bucketName)
+        .then(buckets => {
+            if(buckets.length > 0) {
+                console.log(`bucket ${bucketName} already exists`);
+                return Promise.resolve(buckets[0].name);
+            }
+            return addBucket(project, bucketName)
+        })
+        .then(() => bucketName);
+}
+
+module.exports = createBucket;
+</code></pre>
+
+<p>This code snippet provides a set of functions for interacting with Google Cloud Storage buckets.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li><code>querystring</code>: Used for URL encoding.</li>
+<li><code>importer</code>: A custom module likely used for importing other modules.</li>
+<li><code>authorizeGoogle</code>: A function from <code>importer</code> used for authenticating with Google Cloud.</li>
+</ul></li>
+<li><p><strong>Helper Functions:</strong></p>
+<ul>
+<li><code>safeName</code>: Sanitizes a given name by replacing invalid characters with hyphens and converting it to lowercase.</li>
+</ul></li>
+<li><p><strong>Bucket Management Functions:</strong></p>
+<ul>
+<li><code>setPublic</code>: Makes a bucket publicly accessible by granting &quot;READER&quot; permissions to all users.</li>
+<li><code>listBuckets</code>: Lists all buckets within a project, optionally filtering by a specific bucket name prefix.</li>
+<li><code>addBucket</code>: Creates a new bucket with specified properties, including location, storage class, and a default website configuration.</li>
+<li><code>createBucket</code>: Orchestrates the creation of a new bucket by first checking if it already exists, then creating it if not, and finally making it publicly accessible.</li>
+</ul></li>
+</ol>
+<p>Let me know if you have any more code snippets you'd like me to explain!</p>

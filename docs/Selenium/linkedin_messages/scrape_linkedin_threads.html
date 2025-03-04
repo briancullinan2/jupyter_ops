@@ -1,0 +1,137 @@
+<p>This code automates the scraping of LinkedIn thread data, including messages and participant information, storing the results in local JSON files. It utilizes Selenium for web interaction and relies on external modules for file handling and data processing.</p>
+
+
+<pre><code>var fs = require('fs');
+var importer = require('../Core');
+var glob = require('glob');
+var path = require('path');
+var runSeleniumCell = importer.import('selenium cell');
+var loginLinkedIn, readLinkedInProfileInfo, listLinkedInThreads,
+    readLinkedInThread;
+
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var project = PROFILE_PATH + '/Conversations';
+
+function readThread(thread) {
+    var threadId = thread.replace(/^\/|\/$/ig, '').split('/').pop();
+    var file = glob.sync('**/' + threadId + '-*.json', {cwd: project})[0];
+    var messages;
+    try {
+        messages = require(file)
+    }
+    catch (e) {
+        messages = []
+    }
+    return readLinkedInThread(thread, messages)
+        .then(t => {
+        console.log(t);
+            var filename = project + '/'
+                + t.thread.replace(/^\/|\/$/ig, '').split('/').pop()
+                + '-' + t.participants
+                    .map(p => p.name).join('')
+                    .replace(/[^a-z]/ig, '_') + '.json';
+            fs.writeFileSync(filename, JSON.stringify(t, null, 4));
+            return t;
+        });
+};
+
+function listThreads() {
+    var threads = [];
+    return readLinkedInProfileInfo()
+    // show my profile info
+        .then(() => listLinkedInThreads(threads))
+        // list all message threads
+        .then(r => {
+            fs.writeFileSync(
+                project + '/threads.json',
+                JSON.stringify(r, null, 4))
+            return r;
+        })
+        .catch(e => console.log(e))
+};
+
+function scrapeLinkedInThreads() {
+    var threads, fresh;
+
+    return runSeleniumCell([
+        'log in linkedin',
+        'scrape LinkedIn profile',
+        'list LinkedIn threads',
+        'messages LinkedIn thread',
+    ])
+        .then(r => ({
+            loginLinkedIn, readLinkedInProfileInfo, listLinkedInThreads,
+            readLinkedInThread
+        } = r).loginLinkedIn())
+        // scrape each thread
+        .then(() => {
+            try {
+                threads = JSON.parse(fs.readFileSync(project + '/threads.json'));
+            }
+            catch (e) {
+                threads = [];
+            }
+            var threadCount = threads.length;
+            var ids = threads.map(t => t.replace(/^\/|\/$/ig, '').split('/').pop());
+            var files = glob.sync('**/@(' + ids.join('|') + ')-*.json', {
+                cwd: project
+            });
+            fresh = threads.filter(t => {
+                var threadId = t.replace(/^\/|\/$/ig, '').split('/').pop();
+                var file = files.filter(f => f.indexOf(threadId) > -1)[0];
+                return !(typeof file !== 'undefined'
+                    && fs.existsSync(path.join(project, file)));
+            });
+            const percent = Math.round((threadCount - fresh.length) / threadCount * 100);
+            console.log((threadCount - fresh.length) + ' / ' + threadCount + ' : '
+                + percent
+                + '%');
+            console.log(fresh.slice(0, 30));
+            return percent === 100 ? listThreads() : [];
+        })
+        .then(() => importer.runAllPromises(fresh.slice(0, 30)
+            .map(t => ((resolve) => readThread(t).then((r) => resolve(r))))))
+};
+module.exports = scrapeLinkedInThreads;
+</code></pre>
+
+<p>This code is designed to scrape LinkedIn data, specifically focusing on threads and their participants. Here's a breakdown:</p>
+<p><strong>Core Functionality:</strong></p>
+<ol>
+<li><p><strong>Data Storage:</strong></p>
+<ul>
+<li>It uses a <code>project</code> directory (usually in the user's home directory) to store scraped data in JSON files.</li>
+</ul></li>
+<li><p><strong>Thread Processing:</strong></p>
+<ul>
+<li>The <code>readThread</code> function takes a thread URL, retrieves existing messages from a local JSON file (if available), and then calls <code>readLinkedInThread</code> to fetch new messages from LinkedIn.</li>
+<li>It saves the complete thread data (messages, participants) to a new JSON file.</li>
+</ul></li>
+<li><p><strong>Thread Listing:</strong></p>
+<ul>
+<li>The <code>listThreads</code> function logs into LinkedIn, retrieves a list of threads, and saves this list to a <code>threads.json</code> file.</li>
+</ul></li>
+<li><p><strong>Selenium Integration:</strong></p>
+<ul>
+<li>It uses <code>runSeleniumCell</code> to execute a series of Selenium commands to automate interactions with LinkedIn:
+<ul>
+<li>Log in to LinkedIn.</li>
+<li>Scrape the user's profile information.</li>
+<li>List all available message threads.</li>
+<li>Read messages from a specific thread.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Code Structure:</strong></p>
+<ul>
+<li>The code imports necessary modules (<code>fs</code>, <code>importer</code>, <code>glob</code>, <code>path</code>).</li>
+<li>It defines functions for thread reading, thread listing, and scraping LinkedIn data.</li>
+<li>It uses promises to handle asynchronous operations.</li>
+<li>It relies on external modules (<code>selenium cell</code>) for web automation.</li>
+</ul>
+<p><strong>Missing Information:</strong></p>
+<ul>
+<li>The code lacks the implementation of <code>readLinkedInProfileInfo</code>, <code>listLinkedInThreads</code>, and <code>readLinkedInThread</code> functions.</li>
+<li>The exact Selenium commands used in <code>runSeleniumCell</code> are not shown.</li>
+</ul>
+<p>Let me know if you have any other questions.</p>

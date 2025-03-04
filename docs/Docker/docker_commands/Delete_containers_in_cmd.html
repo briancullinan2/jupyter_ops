@@ -1,0 +1,29 @@
+<p>This Windows batch script iterates through a list of all Docker container IDs and forcefully removes each container.</p>
+
+
+<pre><code>FOR /f "tokens=*" %i IN ('docker ps -a -q') DO docker rm %i
+</code></pre>
+
+<p>This code snippet forcefully removes all Docker containers, both running and stopped.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker ps -a -q')</code></strong>:</p>
+<ul>
+<li>This part uses a Windows batch file loop (<code>FOR</code>) to iterate over the output of a command.</li>
+<li><code>docker ps -a -q</code>: Lists all Docker containers (both running and stopped) and outputs only their IDs (container names are not included).</li>
+<li><code>tokens=*</code>: Tells the loop to capture all tokens (words) from the output.</li>
+<li><code>%i</code>:  Represents a variable that will hold each container ID during each iteration of the loop.</li>
+</ul></li>
+<li><p><strong><code>DO docker rm %i</code></strong>:</p>
+<ul>
+<li>This is the action performed for each container ID captured by the loop.</li>
+<li><code>docker rm %i</code>: Removes the Docker container specified by the <code>%i</code> variable.</li>
+</ul></li>
+</ol>
+<p><strong>In essence, the code does the following:</strong></p>
+<ol>
+<li>Gets a list of all Docker container IDs.</li>
+<li>Loops through each container ID.</li>
+<li>Removes each container using the <code>docker rm</code> command.</li>
+</ol>
+<p>Let me know if you have any other code snippets you'd like me to explain!</p>

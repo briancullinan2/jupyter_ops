@@ -1,0 +1,31 @@
+<p>The <code>runHighFiver</code> function uses Selenium WebDriver to execute a predefined automation script, likely for interacting with the &quot;YouEarnedIt&quot; website.  It simplifies the process of running this automation by abstracting away the Selenium setup and execution details.</p>
+
+
+<pre><code>var importer = require('../Core');
+var runSeleniumCell = importer.import('selenium cell');
+function runHighFiver() {
+    var highFive = runSeleniumCell('high five people youearnedit');
+    return highFive.then(func => func());
+}
+
+module.exports = runHighFiver;
+</code></pre>
+
+<p>This code defines a function <code>runHighFiver</code> that orchestrates a Selenium WebDriver-based automation task on a website, likely &quot;YouEarnedIt&quot;.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Import:</strong></p>
+<ul>
+<li>It imports the <code>selenium cell</code> function from a module named <code>Core</code>. This function likely handles the setup and execution of Selenium WebDriver commands.</li>
+</ul></li>
+<li><p><strong><code>runHighFiver()</code> Function:</strong></p>
+<ul>
+<li>It calls <code>runSeleniumCell</code> with the argument <code>'high five people youearnedit'</code>, presumably executing a predefined Selenium script named &quot;high five people youearnedit&quot;.</li>
+<li>It returns a promise that resolves to the result of the executed Selenium script.</li>
+</ul></li>
+<li><p><strong>Module Export:</strong></p>
+<ul>
+<li>The <code>runHighFiver</code> function is exported as the main module export, making it callable from other parts of the application.</li>
+</ul></li>
+</ol>
+<p>In essence, this code provides a high-level function to execute a Selenium automation script for &quot;high-fiving&quot; people on the &quot;YouEarnedIt&quot; website.</p>

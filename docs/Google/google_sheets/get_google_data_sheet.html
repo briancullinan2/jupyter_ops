@@ -1,0 +1,40 @@
+<p>The <code>getDataSheet</code> function retrieves data from a specified worksheet in a Google Sheet and converts it into a structured array of objects. This function is designed to be used by other parts of an application to easily access and work with Google Sheet data.</p>
+
+
+<pre><code>var importer = require('../Core');
+var getRows = importer.import('get worksheet rows');
+
+var rowsToObjects = (rows, columns) =>
+    rows.reduce((acc, o, i) =>
+                (acc[i] = o.reduce((obj, cell, j) =>
+                                   (obj[columns[j]] = cell, obj), {}), acc), [])
+
+function getDataSheet(link, worksheet) {
+    return getRows(link, worksheet).then(rows => rowsToObjects(rows.slice(1), rows[0]))
+}
+
+module.exports = getDataSheet;
+</code></pre>
+
+<p>This code defines a function <code>getDataSheet</code> that fetches and processes data from a specific worksheet in a Google Sheet.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports <code>getRows</code> from a local module <code>Core</code>, which likely handles fetching data from a Google Sheet.</li>
+</ul></li>
+<li><p><strong><code>rowsToObjects</code> Function:</strong></p>
+<ul>
+<li>Takes an array of rows (<code>rows</code>) and an array of column names (<code>columns</code>) as input.</li>
+<li>Transforms the raw data into an array of objects, where each object represents a row and has properties corresponding to the column names.</li>
+</ul></li>
+<li><p><strong><code>getDataSheet</code> Function:</strong></p>
+<ul>
+<li>Takes a Google Sheet URL (<code>link</code>) and the name of the worksheet (<code>worksheet</code>) as input.</li>
+<li>Calls <code>getRows</code> to fetch the data from the specified worksheet.</li>
+<li>Processes the fetched data using <code>rowsToObjects</code> to create an array of objects representing the worksheet data.</li>
+<li>Returns a Promise that resolves with the processed data.</li>
+</ul></li>
+<li><p><strong>Export:</strong> The <code>getDataSheet</code> function is exported, allowing other parts of the application to use it to retrieve and structure data from Google Sheets.</p></li>
+</ol>
+<p>Let me know if you'd like a deeper dive into any specific part of the code!</p>

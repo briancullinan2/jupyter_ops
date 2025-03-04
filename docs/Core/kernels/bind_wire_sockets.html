@@ -1,0 +1,83 @@
+<p>Here's a 2-sentence summary of the code breakdown:</p>
+<p>The <code>setupSockets</code> function establishes multiple sockets based on a provided configuration and returns a promise resolving to an object with established sockets. A related <code>setupSocket</code> function creates a single socket connection, also returning a promise that resolves to the established socket object.</p>
+
+
+<pre><code>
+function setupSockets(config) {
+    const sockets = {
+        control: {
+            port: config.control_port,
+            type: 'xrep',
+        },
+        shell: {
+            port: config.shell_port,
+            type: 'xrep',
+        },
+        stdin: {
+            port: config.stdin_port,
+            type: 'router',
+        },
+        iopub: {
+            port: config.iopub_port,
+            type: 'pub',
+        },
+        heartbeat: {
+            port: config.hb_port,
+            type: 'rep',
+        }
+    }
+    var keys = Object.keys(sockets);
+    return Promise.all(keys.map(s => setupSocket.apply(null, [sockets[s], config])))
+        .then(sockets => sockets.reduce((obj, socket, i) =>
+                                        (obj[keys[i]] = socket, obj), {}))
+}
+
+function setupSocket(config, general) {
+    const sock = zmq.socket(config.type);
+    const addr = general.transport + '://' + general.ip + ':' + config.port
+    return util.promisify(sock.bind.bind(sock))(addr)
+        .then(() => sock)
+}
+
+module.exports = {
+    setupSockets
+}
+</code></pre>
+
+<h3>Code Breakdown</h3>
+<h4>setupSockets Function</h4>
+<p>The <code>setupSockets</code> function is an asynchronous operation that sets up multiple sockets based on the provided configuration.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>config</code>: An object containing socket configuration settings.</li>
+</ul>
+<p><strong>Return Value:</strong></p>
+<ul>
+<li>A promise that resolves to an object containing the established sockets.</li>
+</ul>
+<p><strong>Description:</strong></p>
+<ol>
+<li>Creates an object <code>sockets</code> with properties for different types of sockets (control, shell, stdin, iopub, and heartbeat).</li>
+<li>Each socket configuration is created with a specified port and type.</li>
+<li>Returns a promise that resolves to an array of socket objects after they are established.</li>
+<li>The promise is resolved by reducing the array of socket objects into an object containing the socket names as keys.</li>
+</ol>
+<h4>setupSocket Function</h4>
+<p>The <code>setupSocket</code> function establishes a single socket connection.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>config</code>: An object containing socket configuration settings (type).</li>
+<li><code>general</code>: An object containing general configuration settings (transport and IP).</li>
+</ul>
+<p><strong>Return Value:</strong></p>
+<ul>
+<li>A promise that resolves to the established socket object.</li>
+</ul>
+<p><strong>Description:</strong></p>
+<ol>
+<li>Creates a socket of the specified type using the <code>zmq</code> library.</li>
+<li>Binds the socket to the specified address using the <code>bind</code> method.</li>
+<li>Returns a promise that resolves to the established socket object.</li>
+</ol>
+<h4>Module Exports</h4>
+<p>The <code>setupSockets</code> function is exported as a module.</p>

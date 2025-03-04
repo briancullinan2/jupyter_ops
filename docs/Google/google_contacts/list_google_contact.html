@@ -1,0 +1,114 @@
+<p>This code fetches contacts from Google Contacts using the Google People API and provides a way to search for specific contacts by name or email address.</p>
+
+
+<pre><code>var google = require('googleapis');
+var people = google.people('v1');
+var importer = require('../Core');
+var getOauthClient = importer.import('import google calendar api');
+
+var options = {
+    scopes: [
+        'https://www.googleapis.com/auth/contacts'
+    ]
+};
+
+function findMatch(arr, contact) {
+    return arr.filter(c => (
+        typeof c.names !== 'undefined'
+        && typeof contact.displayName !== 'undefined'
+        && c.names.filter(n => n.displayName.match(new RegExp(contact.displayName, 'ig'))).length > 0)
+        || (
+        typeof c.emailAddresses !== 'undefined'
+        && typeof contact.emailAddress !== 'undefined'
+        && c.emailAddresses.filter(e => e.value.match(new RegExp(contact.emailAddress, 'ig'))).length > 0)
+                      );
+}
+
+function googlePromise(func) {
+    return new Promise((resolve, reject) => func((err, response) => {
+        if (err) reject(err);
+        try {
+        } catch (e) {
+            reject(e);
+        }
+        setTimeout(() => resolve(response), 100);
+    })).catch(e => console.log(e));
+};
+
+var contactCache = [];
+function listContacts(contact, done = false) {
+    // return matching contacts or empty if there are no more pages
+    return googlePromise(
+        people.people.connections.list.bind(people.people.connections, {
+            resourceName: 'people/me',
+            personFields: 'emailAddresses,names,birthdays,phoneNumbers,memberships',
+            auth: options.auth,
+            pageToken: options.pageToken
+        }))
+        .then(r => {
+            options.pageToken = r.nextPageToken;
+            done = !options.pageToken;
+            return r.connections;
+        })
+        .then(r => {
+            for (var c of r) {
+                contactCache.push(c);
+            }
+            if (done) {
+                return findMatch(contactCache, contact);
+            }
+            return listContacts(contact, done);
+        })
+        .catch(e => console.log(e))
+};
+
+function getContacts(contact) {
+    return getOauthClient(options)
+        .then(() => {
+            if (contactCache.length > 0) {
+                return findMatch(contactCache, contact);
+            }
+            options.nextPageToken = null;
+            contactCache = [];
+            return listContacts(contact);
+        })
+        .catch(e => console.log(e))
+};
+module.exports = getContacts;
+</code></pre>
+
+<p>This code snippet fetches and processes contacts from Google Contacts using the Google People API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports the <code>googleapis</code> library for interacting with Google APIs.</li>
+<li>It imports a custom function <code>getOauthClient</code> from <code>../Core</code> to handle OAuth 2.0 authentication.</li>
+</ul></li>
+<li><p><strong><code>findMatch</code> Function:</strong></p>
+<ul>
+<li>This function takes an array of contacts and a search contact object as input.</li>
+<li>It filters the array to find contacts that match the search criteria based on either display name or email address.</li>
+</ul></li>
+<li><p><strong><code>googlePromise</code> Function:</strong></p>
+<ul>
+<li>This function wraps a Google API call in a Promise to handle asynchronous operations.</li>
+</ul></li>
+<li><p><strong><code>contactCache</code>:</strong></p>
+<ul>
+<li>This array stores fetched contacts to avoid redundant API calls.</li>
+</ul></li>
+<li><p><strong><code>listContacts</code> Function:</strong></p>
+<ul>
+<li>This function recursively fetches contacts from Google Contacts, paginating through results until all pages are retrieved.</li>
+<li>It uses the <code>people.people.connections.list</code> method to retrieve contacts.</li>
+<li>It stores fetched contacts in the <code>contactCache</code>.</li>
+<li>It calls <code>findMatch</code> to find matching contacts based on the provided search criteria.</li>
+</ul></li>
+<li><p><strong><code>getContacts</code> Function:</strong></p>
+<ul>
+<li>This function likely initiates the process of fetching contacts, calling <code>getOauthClient</code> to obtain an authenticated API client and then <code>listContacts</code> to retrieve the contacts.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet provides a way to search for contacts in Google Contacts based on their display name or email address. It uses the Google People API, handles authentication, and caches results for efficiency.</p>

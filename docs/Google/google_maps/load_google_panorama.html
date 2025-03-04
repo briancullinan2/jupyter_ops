@@ -1,0 +1,180 @@
+<p>This code fetches and assembles a panoramic image from Google Street View, allowing for dynamic display and manipulation of street-level imagery.</p>
+
+
+<pre><code>// FROM: https://github.com/sidequestlegend/GSVPanoDepth.js/blob/master/examples/js/GSVPano.js
+var path = require('path')
+var fs = require('fs')
+var {GoogleAuth} = require('google-auth-library');
+var google = require('googleapis')
+var importer = require('../Core')
+var getRpcFromSpec = importer.import('get rpc from spec')
+var authorize = importer.import('google oauth token client')
+var mapsClient = getRpcFromSpec(require('../Resources/APIs/google-maps-platform-openapi3.json'));
+var {createCanvas, loadImage} = require('canvas')
+var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+var authKey = fs.readFileSync(path.join(PROFILE_PATH, '.credentials/key.txt')).toString().trim()
+//_panoClient = new google.maps.StreetViewService(),
+    
+var _location,
+    _zoom,
+    _panoId,
+    _count = 0,
+    _total = 0,
+    _canvas = createCanvas(1, 1),
+    _ctx = _canvas.getContext('2d'),
+    rotation = 0,
+    copyright = '',
+    onSizeChange = null,
+    onPanoramaLoad = null
+
+function setProgress(p) {
+
+}
+
+function throwError(message) {
+
+    if (onError) {
+        onError(message)
+    } else {
+        console.error(message)
+    }
+
+}
+
+function adaptTextureToZoom() {
+
+    var w = 416 * Math.pow(2, _zoom - 0.7),
+        h = (416 * Math.pow(2, _zoom - 2))
+    _canvas.width = w
+    _canvas.height = h
+    _ctx.translate( _canvas.width, 0)
+    _ctx.scale(-1, 1)
+}
+
+function composeFromTile(x, y, texture) {
+
+    _ctx.drawImage(texture, x * 512, y * 512)
+    _count++
+
+    var p = Math.round(_count * 100 / _total)
+    setProgress(p)
+
+    if (_count === _total) {
+        if (onPanoramaLoad) {
+            onPanoramaLoad()
+        }
+    }
+
+}
+
+async function composePanorama() {
+
+    setProgress(0)
+    console.log('Loading panorama for zoom ' + _zoom + '...')
+
+    var w = Math.pow(2, _zoom),
+        h = Math.pow(2, _zoom - 1),
+        url, x, y
+
+    _count = 0
+    _total = w * h
+    var now = (new Date).getTime()
+
+    for( y = 0; y < h; y++) {
+        for( x = 0; x < w; x++) {
+            /*
+            var imgResult = await mapsClient.cbk.get({
+                output: 'tile',
+                panoid: _panoId,
+                zoom: 0,
+                x: x,
+                y: y
+            })
+            fs.writeFileSync('.tmpimg.jpeg', imgResult.body)
+            */
+            //url = 'http://maps.google.com/cbk?output=tile&panoid=' + _panoId + '&zoom=0&x=' + x + '&y=' + y + '&' + Date.now()
+            //var img = await loadImage('.tmpimg.jpeg')
+            /*
+            var img = new Image
+            img.addEventListener('load', function () {
+                
+                resolve()
+            })
+            var imgPromise = new Promise(resolve => {
+            })
+            img.src = imgResult.body
+            await imgPromise
+            */
+            if (onPanoramaLoad) {
+                await onPanoramaLoad(_panoId)
+            }
+            //composeFromTile(x, y, img)
+        }
+    }
+
+}
+
+async function loadPanorama(location, onLoad) {
+    console.log(mapsClient)
+    console.log('Load for', location)
+    var result = await mapsClient.maps.streetview.metadata.get({
+        location: location[0] + ',' + location[1],
+        heading: 0,
+        key: authKey
+    })
+    onPanoramaLoad = onLoad
+    //if( onPanoramaData ) onPanoramaData( result )
+    //var h = google.maps.geometry.spherical.computeHeading(location, result.location.latLng)
+    //rotation = (result.tiles.centerHeading - h) * Math.PI / 180.0
+    //copyright = result.copyright
+    _panoId = result.body.pano_id
+    _location = location
+    await composePanorama()
+}
+
+function setZoom( z ) {
+    _zoom = z
+    adaptTextureToZoom()
+}
+
+module.exports = {
+    setZoom,
+    loadPanorama,
+}
+
+</code></pre>
+
+<p>This code snippet is designed to load and compose a panoramic image from Google Street View using the Google Maps Platform API.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>It imports necessary modules for file system operations, Google authentication, API interaction, and image manipulation.</li>
+</ul></li>
+<li><p><strong>Initialization:</strong></p>
+<ul>
+<li>It sets up authentication using a Google API key and initializes variables for location, zoom level, panorama ID, and image processing.</li>
+</ul></li>
+<li><p><strong>Progress Handling:</strong></p>
+<ul>
+<li>It defines functions to handle progress updates and errors during the panorama loading process.</li>
+</ul></li>
+<li><p><strong>Image Adaptation:</strong></p>
+<ul>
+<li>It adjusts the canvas size based on the zoom level to accommodate the panorama's resolution.</li>
+</ul></li>
+<li><p><strong>Tile Composition:</strong></p>
+<ul>
+<li>It iterates through individual tiles of the panorama, downloading each tile as an image and composing them onto the canvas.</li>
+</ul></li>
+<li><p><strong>Panorama Loading:</strong></p>
+<ul>
+<li>It orchestrates the entire panorama loading process, handling tile downloads, composition, and progress updates.</li>
+</ul></li>
+<li><p><strong>Callbacks:</strong></p>
+<ul>
+<li>It provides callbacks for handling progress updates and completion of the panorama loading process.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>This code snippet demonstrates how to fetch and assemble a panoramic image from Google Street View programmatically, allowing for dynamic display and manipulation of street-level imagery.</p>

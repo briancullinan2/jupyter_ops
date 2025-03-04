@@ -1,0 +1,106 @@
+<p>Here's a two-sentence summary of the code breakdown:</p>
+<p>The code requires several modules, including <code>path</code>, <code>fs</code>, and <code>google-auth-library</code>, and imports custom functions from the <code>../Core</code> module for interacting with Google Sheets. The <code>authorizeProfile</code> function is the main function, which handles OAuth2 authentication, user data retrieval, and redirects to the <code>home</code> page with the user link.</p>
+
+
+<pre><code>var path = require('path');
+var fs = require('fs');
+var util = require('util');
+var cookie = require('cookie');
+var {OAuth2Client} = require('google-auth-library');
+
+var importer = require('../Core');
+var getDataSheet = importer.import('get google data sheet');
+var updateRow = importer.import('update row in google sheets');
+var receiveCode = importer.import('receive an authentication code from google');
+var extractProfile = receiveCode.extractProfile;
+
+var SCOPES = [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email'
+];
+var credentials = require(process.env.SECRETS_PATH);
+
+function authorizeProfile(req, res) {
+    var oauth2Client = new OAuth2Client(
+        credentials.installed.client_id,
+        credentials.installed.client_secret,
+        process.env.AUTH_REDIRECT),
+        sessId = (req.cookies || {})['__session'];
+    var user;
+
+    return getDataSheet(process.env.DOCID, 'User data')
+        .then(users => user = users.filter(u => u.session && u.session === sessId)[0])
+        .then(() => {
+            var token = JSON.parse((user || {}).token || '""');
+            if(token) {
+                oauth2Client.setCredentials(token)
+                return oauth2Client.getAccessToken();
+            }
+            throw new Error('invalid_token');
+        })
+        .then(() => extractProfile(oauth2Client))
+        .then(() => res.redirect(process.env.DOMAIN + '/' + user.link + '/home/'))
+        .catch(up => {
+            if(up.message == 'invalid_token') {
+                var authUrl = oauth2Client.generateAuthUrl({
+                    access_type: 'offline',
+                    scope: SCOPES
+                });
+                res.redirect(authUrl);
+                return authUrl;
+            } else {
+                throw up;
+            }
+        })
+}
+
+module.exports = authorizeProfile;
+
+</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Requires</h3>
+<p>The code requires several modules:</p>
+<ul>
+<li><code>path</code>: for file paths</li>
+<li><code>fs</code>: for file system operations</li>
+<li><code>util</code>: for utility functions</li>
+<li><code>cookie</code>: for parsing cookies</li>
+<li><code>google-auth-library</code>: for Google OAuth2 authentication</li>
+<li><code>../Core</code>: for importing custom functions</li>
+</ul>
+<h3>Imports</h3>
+<p>The code imports several custom functions from the <code>../Core</code> module:</p>
+<ul>
+<li><code>get google data sheet</code></li>
+<li><code>update row in google sheets</code></li>
+<li><code>receive an authentication code from google</code></li>
+<li><code>extractProfile</code></li>
+</ul>
+<h3>Variables</h3>
+<p>The code defines several variables:</p>
+<ul>
+<li><code>SCOPES</code>: an array of OAuth2 scopes</li>
+<li><code>credentials</code>: an object containing OAuth2 client credentials</li>
+<li><code>oauth2Client</code>: an instance of <code>OAuth2Client</code> for authentication</li>
+<li><code>sessId</code>: the session ID extracted from the <code>req.cookies</code> object</li>
+<li><code>user</code>: the user data retrieved from the Google Sheets</li>
+</ul>
+<h3>authorizeProfile Function</h3>
+<p>The <code>authorizeProfile</code> function is the main function of the code. It takes <code>req</code> and <code>res</code> as arguments and performs the following steps:</p>
+<ol>
+<li>Creates an instance of <code>OAuth2Client</code> with the client ID, client secret, and authentication redirect URL.</li>
+<li>Retrieves the user data from Google Sheets using <code>getDataSheet</code>.</li>
+<li>Checks if the user has an existing token. If yes, sets the OAuth2 client credentials and retrieves the access token.</li>
+<li>Extracts the user profile using <code>extractProfile</code>.</li>
+<li>Redirects the user to the <code>home</code> page with the user link.</li>
+<li>If the token is invalid, redirects the user to the Google authentication page to obtain a new token.</li>
+</ol>
+<h3>Error Handling</h3>
+<p>The code catches errors and handles the following cases:</p>
+<ul>
+<li>If the token is invalid, redirects the user to the Google authentication page.</li>
+<li>Otherwise, throws the error.</li>
+</ul>
+<h3>Exports</h3>
+<p>The code exports the <code>authorizeProfile</code> function.</p>

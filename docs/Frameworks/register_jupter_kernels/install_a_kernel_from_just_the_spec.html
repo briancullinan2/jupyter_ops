@@ -1,0 +1,130 @@
+<p>This script installs a C# kernel for Jupyter Notebook, allowing users to execute C# code within the Jupyter environment.  It takes command-line options to specify user or system-wide installation and an optional prefix directory.</p>
+
+
+<pre><code>import json
+import os
+import sys
+import getopt
+
+    from
+
+jupyter_client.kernelspec
+import KernelSpecManager
+    from
+
+IPython.utils.tempdir
+import TemporaryDirectory
+
+#from
+distutils.spawn
+import find_executable
+
+#executable = find_executable('configure', path = SOURCE)
+
+kernel_json = {
+    'argv': ['mono', '/usr/local/bin/myjupytertest/icsharp/Kernel/bin/Release/iCSharp.Kernel.exe', '{connection_file}'],
+    'display_name': 'C#',
+    'language': 'csharp',
+    'codemirror_mode': 'shell',
+    'env': {'PS1': '$'}
+}
+
+def
+install_my_kernel_spec(user = True, prefix = None)
+:
+with TemporaryDirectory() as td:
+os.chmod(td, 0o755) # Starts
+off as 700, not
+user
+readable
+with open(os.path.join(td, 'kernel.json'), 'w') as f:
+json.dump(kernel_json, f, sort_keys = True)
+        # TODO: Copy
+resources
+once
+they
+'re specified
+
+print('Installing IPython kernel spec')
+KernelSpecManager().install_kernel_spec(td, 'icsharp', user = user, replace = True, prefix = prefix)
+
+def
+_is_root()
+:
+try
+:
+return os.geteuid() == 0
+except
+AttributeError:
+    return False # assume
+not
+an
+admin
+on
+non - Unix
+platforms
+
+def
+main(argv = [])
+:
+prefix = None
+user = not
+_is_root()
+
+opts, _ = getopt.getopt(argv[1
+:],
+'', ['user', 'prefix=']
+)
+for k, v in opts:
+if k == '--user':
+user = True
+elif
+k == '--prefix'
+:
+prefix = v
+user = False
+
+install_my_kernel_spec(user = user, prefix = prefix)
+
+if __name__ == '__main__':
+main(argv = sys.argv)
+    </code></pre>
+
+<p>This code installs a custom Jupyter kernel for C# code.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong>Imports:</strong></p>
+<ul>
+<li>Imports necessary modules for handling JSON, operating system interactions, command-line arguments, and Jupyter kernel management.</li>
+</ul></li>
+<li><p><strong>Kernel Specification:</strong></p>
+<ul>
+<li>Defines a dictionary <code>kernel_json</code> containing the configuration for the C# kernel, including:
+<ul>
+<li><code>argv</code>: Command-line arguments to execute the kernel.</li>
+<li><code>display_name</code>: Name of the kernel in Jupyter.</li>
+<li><code>language</code>: Programming language.</li>
+<li><code>codemirror_mode</code>: Code editor mode.</li>
+<li><code>env</code>: Environment variables.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>install_my_kernel_spec</code> Function:</strong></p>
+<ul>
+<li>Creates a temporary directory.</li>
+<li>Writes the kernel specification to a file named <code>kernel.json</code>.</li>
+<li>Uses <code>KernelSpecManager</code> to install the kernel spec in the specified location (user or system-wide).</li>
+</ul></li>
+<li><p><strong><code>_is_root</code> Function:</strong></p>
+<ul>
+<li>Checks if the script is running as root.</li>
+</ul></li>
+<li><p><strong><code>main</code> Function:</strong></p>
+<ul>
+<li>Parses command-line arguments for <code>--user</code> and <code>--prefix</code> options.</li>
+<li>Calls <code>install_my_kernel_spec</code> to install the kernel spec based on the provided options.</li>
+</ul></li>
+<li><p><strong>Execution:</strong></p>
+<ul>
+<li>Runs the <code>main</code> function when the script is executed.</li>
+</ul></li>
+</ol>

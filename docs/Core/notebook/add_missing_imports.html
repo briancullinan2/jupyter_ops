@@ -1,0 +1,56 @@
+<p>This code provides a function, <code>addImports</code>, that automatically inserts import statements into code based on the identification of global function calls. It leverages an AST parser, a cache of exports, and a transpiling function to achieve this.</p>
+
+
+<pre><code>var importer = require('../Core')
+var {transpile} = importer.import('transpile code')
+var {selectAst} = importer.import('select code tree')
+var niceName = importer.import('rename cell to nice name')
+var exportsCache = importer.import('exports cache')
+
+var GLOBAL_CALLS = `//CallExpression[
+not(./parent::MemberExpression)
+and not(//*[contains(@type, "Declar")]/Identifier/@name=./Identifier/@name)
+]`
+
+/*
+[
+
+and not(//MemberExpression/Identifier/@name=./Identifier/@name)
+]
+*/
+
+var notebookExports;
+
+function addImport(ctx) {
+    var id = selectAst(`./Identifier/@name`, ctx)
+    var file = exportsCache.filter(e => e[2].includes(id))
+    if(file.length === 1) {
+        var body = selectAst([`//Program`], ctx)[0]
+        var include = selectAst([`//Program/*`],
+                                `var ${id} = importNotebook("${file[0]}")`)[0]
+        body.insertBefore(include, body.childNodes[0] || null)
+    } else if (file.length > 1) {
+        throw new Error(`undefined ${id}, couldn't import ${JSON.stringify(file)}`)
+    }
+}
+
+function addImports(code) {
+    return transpile([
+        [GLOBAL_CALLS, addImport]
+    ], code)
+}
+
+module.exports = {
+    addImports
+}
+</code></pre>
+
+<p>This code defines a function to automatically add imports to a code snippet based on global function calls.</p>
+<p>Here's a breakdown:</p>
+<ul>
+<li><strong>Imports:</strong> It imports several modules from a <code>Core</code> library, including functions for transpiling code, selecting parts of an Abstract Syntax Tree (AST), renaming code elements, and managing exports.</li>
+<li><strong>Global Call Pattern:</strong> It defines a regular expression <code>GLOBAL_CALLS</code> to identify global function calls within the code.</li>
+<li><strong><code>addImport</code> Function:</strong> This function takes an AST context and identifies the name of a global function call. It then searches for a matching export in a cache (<code>exportsCache</code>) and inserts an import statement into the code if found.</li>
+<li><strong><code>addImports</code> Function:</strong> This function takes a code snippet as input, transpiles it using the imported <code>transpile</code> function, and applies the <code>addImport</code> function to the AST to add the necessary imports.</li>
+<li><strong>Exports:</strong> The module exports the <code>addImports</code> function, making it available for use in other parts of the project.</li>
+</ul>

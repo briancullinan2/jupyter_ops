@@ -1,0 +1,50 @@
+<p>Here is a summary of the code in two sentences:</p>
+<p>The <code>getTemplateByUrl</code> function resolves a template for a given URL path by filtering a <code>templates</code> object based on the path segments, whereas the <code>getEntryTemplate</code> function resolves the entry template from the <code>templates</code> object by filtering for keys with a <code>template</code> property. The <code>getTemplateByUrl</code> function is exported as a module for use in other parts of the code.</p>
+
+
+<pre><code>
+var getTemplateByUrl = (templates, path) => !path || path === '' || path === '/'
+    ? getEntryTemplate(templates)
+    : path.split('/').filter(segment => templates[segment]
+                             && templates[segment].template)[0]
+    || path.split('/')[0];
+
+var getEntryTemplate = (templates) => Object.keys(templates)
+    .filter(t => templates[t].template
+            && templates[t].template.properties
+            && templates[t].template.properties.index == 0)[0]
+    || Object.keys(templates).filter(t => templates[t].template)[0];
+
+module.exports = getTemplateByUrl;</code></pre>
+
+<h2>Code Breakdown</h2>
+<h3>Function: <code>getTemplateByUrl</code></h3>
+<h4>Purpose</h4>
+<p>Resolves the template for a given URL path.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>templates</code>: An object containing template information.</li>
+<li><code>path</code>: The URL path to resolve.</li>
+</ul>
+<h4>Behavior</h4>
+<ol>
+<li>If <code>path</code> is empty or a root URL (<code>''</code> or <code>'/'</code>), returns the entry template.</li>
+<li>Splits the <code>path</code> into segments and filters the <code>templates</code> object for matching segments.</li>
+<li>If a matching segment is found, returns the corresponding template.</li>
+<li>If no matching segment is found, returns the first segment of the <code>path</code>.</li>
+</ol>
+<h3>Function: <code>getEntryTemplate</code></h3>
+<h4>Purpose</h4>
+<p>Resolves the entry template from a <code>templates</code> object.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>templates</code>: An object containing template information.</li>
+</ul>
+<h4>Behavior</h4>
+<ol>
+<li>Filters the <code>templates</code> object for keys with a <code>template</code> property.</li>
+<li>Further filters the result for keys with a <code>template</code> property and an <code>index</code> property set to 0.</li>
+<li>If a matching key is found, returns it. Otherwise, returns the first key with a <code>template</code> property.</li>
+</ol>
+<h3>Export</h3>
+<p>The <code>getTemplateByUrl</code> function is exported as a module.</p>

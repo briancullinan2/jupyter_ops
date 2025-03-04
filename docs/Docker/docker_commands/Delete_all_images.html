@@ -1,0 +1,24 @@
+<p>This code removes all Docker images by first listing their IDs and then using those IDs to target the <code>docker rmi</code> command.</p>
+
+
+<pre><code>docker rmi $(docker images -q)
+</code></pre>
+
+<p>This code snippet removes all Docker images from your system.</p>
+<p>Here's a breakdown:</p>
+<ol>
+<li><p><strong><code>docker images -q</code>:</strong></p>
+<ul>
+<li>Lists all Docker images and outputs their IDs only (using the <code>-q</code> flag).</li>
+</ul></li>
+<li><p><strong><code>$(...)</code>:</strong></p>
+<ul>
+<li>This command substitution executes the previous command (<code>docker images -q</code>) and passes the output (the list of image IDs) to the next command.</li>
+</ul></li>
+<li><p><strong><code>docker rmi</code>:</strong></p>
+<ul>
+<li><p>This command removes Docker images.</p></li>
+<li><p>By combining it with the output of <code>docker images -q</code>, it effectively removes all images listed.</p></li>
+</ul></li>
+</ol>
+<p>In essence, this command provides a concise way to clean up all Docker images on your system.</p>

@@ -1,0 +1,74 @@
+<p>The <code>setReminder</code> function schedules a Google Calendar event to send a Twilio message at a given time, handling OAuth authentication and calendar ID resolution.</p>
+
+
+<pre><code>var importer = require('../Core');
+var google = require('googleapis');
+var calendar = google.calendar('v3');
+var util = require('util');
+var chrono = require('chrono-node');
+var insertEvent = util.promisify(calendar.events.insert);
+var {
+    getOauthClient,
+    correctCalendarId
+} = importer.import([
+    'lookup calendar name',
+    'import google calendar api'
+]);
+
+var options = {
+    calendarId: 'aws'
+};
+
+function setReminder(to, message, time) {
+    const time = chrono.parseDate(time);
+    const event = {
+        summary: 'send twilio message',
+        description: JSON.stringify({
+            message,
+            to
+        }),
+        start: {dateTime: new Date(time.getTime())},
+        end: {dateTime: new Date(time.getTime() + 30 * 60 * 1000)}
+    }
+    return (options.auth ? Promise.resolve([]) : getOauthClient(options))
+        .then(() => correctCalendarId(options))
+        .then(() => insertEvent({
+            calendarId: options.calendarId,
+            auth: options.auth,
+            resource: event
+        }))
+}
+module.exports = incomingTwilio;
+</code></pre>
+
+<p>This code defines a function <code>setReminder</code> that schedules a Google Calendar event to send a Twilio message at a specified time.</p>
+<p><strong>Functionality:</strong></p>
+<ol>
+<li><p><strong>Dependencies:</strong></p>
+<ul>
+<li>Imports necessary libraries: <code>googleapis</code> for Google Calendar API, <code>util</code> for promisifying functions, <code>chrono-node</code> for parsing dates, and custom modules from <code>../Core</code>.</li>
+</ul></li>
+<li><p><strong>Google Calendar Setup:</strong></p>
+<ul>
+<li>Initializes the Google Calendar API client.</li>
+<li>Defines a promisified version of the <code>calendar.events.insert</code> function for creating events.</li>
+</ul></li>
+<li><p><strong>Oauth and Calendar ID Handling:</strong></p>
+<ul>
+<li>Imports functions <code>getOauthClient</code> and <code>correctCalendarId</code> from a custom module to handle OAuth authentication and calendar ID resolution.</li>
+</ul></li>
+<li><p><strong><code>setReminder</code> Function:</strong></p>
+<ul>
+<li>Takes <code>to</code>, <code>message</code>, and <code>time</code> as input.</li>
+<li>Parses the <code>time</code> string using <code>chrono-node</code>.</li>
+<li>Creates a Google Calendar event object with the provided details.</li>
+<li>Uses <code>getOauthClient</code> and <code>correctCalendarId</code> to handle authentication and calendar ID.</li>
+<li>Calls <code>insertEvent</code> to create the event on the specified calendar.</li>
+</ul></li>
+<li><p><strong>Export:</strong></p>
+<ul>
+<li>Exports the <code>setReminder</code> function.</li>
+</ul></li>
+</ol>
+<p><strong>Purpose:</strong></p>
+<p>The code provides a way to schedule Twilio messages as Google Calendar events, likely for reminders or automated notifications.</p>
