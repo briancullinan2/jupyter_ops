@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -58,8 +65,7 @@
     <a href="../caches/index.html">caches</a> | <a href="./cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a> |  | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code creates a simple in-memory chat cache, storing chat-related data in an object that can be accessed by other parts of the application.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "cache chat history with llm descriptions"</code></pre><h1>cache chat history with llm descriptions</h1>
 
@@ -93,19 +99,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a simple in-memory cache specifically for chat interactions.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong><code>chatCache</code> Object:</strong></p>
-<ul>
-<li>An empty object is created and assigned to the variable <code>chatCache</code>. This object will be used to store chat-related data.</li>
-</ul></li>
-<li><p><strong><code>module.exports</code>:</strong></p>
-<ul>
-<li>The <code>chatCache</code> object is exported using <code>module.exports</code>. This makes it accessible to other parts of the application that might need to use the chat cache.</li>
-</ul></li>
-</ol>
-<p>In essence, this code sets up a basic structure for a chat cache, allowing you to store and retrieve chat-related information within the same application.</p>
 
 </body>
 

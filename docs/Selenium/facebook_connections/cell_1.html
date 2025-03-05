@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { runSeleniumCell } = require('../Core');
+const $ = require('./utils'); // Assuming $ is a utility library
+
+/**
+ * Function to perform login and like all posts on Facebook
+ * @param {string} url - Facebook profile URL
+ * @param {boolean} likeAll - Whether to like all posts
+ * @returns {Promise} - Promise resolving with the result of the action
+ */
+function performFacebookActions(url, likeAll) {
+    return runSeleniumCell(['log in facebook', 'like all facebook posts'])
+       .then(({ loginFacebook, likeAllPosts }) => {
+            return likeAllPosts(url, likeAll);
+        });
+}
+
+// Perform asynchronous operation
+$.async()
+   .then(() => performFacebookActions('https://www.facebook.com/megamindbc', true))
+   .then(r => $.sendResult(r))
+   .catch(e => $.sendError(e));</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');

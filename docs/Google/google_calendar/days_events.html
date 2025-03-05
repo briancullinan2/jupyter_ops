@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -140,7 +147,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getDaysEvents</code> that fetches events from a Google Calendar for a specific day.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const chrono = require('chrono-node');
+const { assert } = require('assert');
+const importer = require('../Core');
+
+const {
+  ISODateString,
+  listEvents
+} = importer.import([
+  'convert date iso',
+  'list events'
+]);
+
+class EventCache {
+  constructor() {
+    this.cache = {};
+  }
+
+  get(calendarId) {
+    return this.cache[calendarId];
+  }
+
+  set(calendarId, day, events) {
+    if (!this.cache[calendarId]) {
+      this.cache[calendarId] = {};
+    }
+    this.cache[calendarId][day] = events;
+  }
+}
+
+class DaysEvents {
+  constructor(options) {
+    this.options = options;
+    this.eventCache = new EventCache();
+  }
+
+  getEvents(startDate) {
+    assert(this.options.calendarId, 'calendarId must be set by now!'+ JSON.stringify(this.options, null, 4));
+    const day = new Date(chrono.parseDate(startDate + '').getTime());
+    day.setHours(0, 0, 0);
+    const dayEnd = new Date(day.getTime());
+    dayEnd.setDate(dayEnd.getDate() + 1);
+
+    if (this.eventCache.get(this.options.calendarId) && this.eventCache.get(this.options.calendarId)[day.getTime()]) {
+      return Promise.resolve(this.eventCache.get(this.options.calendarId)[day.getTime()])
+       .then(events => events.filter(e => e.event.deleted!== true));
+    }
+
+    console.log({
+      timeMin: ISODateString(day),
+      timeMax: ISODateString(dayEnd)
+    });
+
+    return listEvents({
+      auth: this.options.auth,
+      calendarId: this.options.calendarId,
+      timeMin: ISODateString(day),
+      timeMax: ISODateString(dayEnd)
+    })
+     .then(m => {
+        this.eventCache.set(this.options.calendarId, day, m);
+        return m.filter(e => e.event.deleted!== true);
+      });
+  }
+}
+
+module.exports = function getDaysEvents(startDate, options) {
+  return new DaysEvents(options).getEvents(startDate);
+};</code></pre></div><p>This code defines a function <code>getDaysEvents</code> that fetches events from a Google Calendar for a specific day.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

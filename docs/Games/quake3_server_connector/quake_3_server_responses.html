@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Functions</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>/**
+ * A module to handle Minecraft server responses.
+ * @module serverResponses
+ */
+
+const { parse } = require('node:util');
+
+/**
+ * Extracts a list of Minecraft servers from a response string.
+ * @param {string} m The response string.
+ * @returns {object[]} A list of server objects.
+ */
+function getServersResponse(m) {
+    const sliceLength = 'getserversResponse'.length;
+    const chunkSize = 7;
+    const servers = [];
+
+    m = m.slice(sliceLength);
+
+    for (let i = 0; i &lt; m.length; i += chunkSize) {
+        const chunk = m.slice(i, i + chunkSize);
+
+        if (chunk[0]!== 92 || chunk.slice(0, 3) === 'EOT') continue;
+
+        const ip = chunk.slice(1, 5).join('.');
+        const port = (chunk[5] &lt;&lt; 8) + chunk[6];
+        servers.push({ ip, port });
+    }
+
+    return servers;
+}
+
+/**
+ * Parses a configuration string and returns an object.
+ * @param {string} m The configuration string.
+ * @returns {object} A parsed configuration object.
+ */
+function parseConfigStr(m) {
+    return parseConfig(m.toString('utf-8').trim().split(/\n/g)[0].trim().split(/\\/g).slice(1).map((chunk, index, arr) =&gt; {
+        return index &amp; 1? { [arr[index - 1].toLowerCase()]: chunk, [arr[index - 1]]: chunk } : {};
+    }).reduce((obj, config) =&gt; Object.assign(obj, config), {}));
+}
+
+/**
+ * Processes a'statusResponse' string and returns an object containing server status and player information.
+ * @param {string} m The'statusResponse' string.
+ * @returns {object} An object containing server status and player information.
+ */
+function statusResponse(m) {
+    const sliceLength ='statusResponse'.length;
+    const status = parseConfigStr(m.slice(sliceLength));
+    const players = m.toString('utf-8').trim().split(/\n/g).slice(1).map((line, index) =&gt; {
+        if (!line.trim()) return null;
+
+        const player = {
+            i: index + 1,
+            name: line.match(/([0-9]+\s+[0-9]+\s+"(.*)"/g)[0],
+            score: line.match(/([0-9]+)\s+/g)[0],
+            ping: line.match(/([0-9]+\s+([0-9]+)\s+/g)[0],
+        };
+
+        player.isBot = player.ping === '0';
+        return player;
+    }).filter(Boolean);
+
+    return Object.assign(status, { players });
+}
+
+/**
+ * Processes an 'infoResponse' string and returns an object containing server information.
+ * @param {string} m The 'infoResponse' string.
+ * @returns {object} An object containing server information.
+ */
+function infoResponse(m) {
+    const sliceLength = 'infoResponse'.length;
+    return parseConfigStr(m.slice(sliceLength));
+}
+
+module.exports = {
+    getServersResponse,
+    statusResponse,
+    infoResponse,
+    parseConfigStr,
+};</code></pre></div><h3>Functions</h3>
 <h4>getServersResponse(m)</h4>
 <ul>
 <li><strong>Purpose:</strong> Extracts server information from a given string <code>m</code>.</li>

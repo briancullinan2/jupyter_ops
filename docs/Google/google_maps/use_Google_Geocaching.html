@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet demonstrates how to geocode an address using the Google Maps Geocoding API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required libraries
+const axios = require('axios');
+
+/**
+ * Function to make a GET request to the Google Geocoding API.
+ * 
+ * @param {string} address - The address to geocode.
+ * @param {string} apiKey - The API key for the Google Geocoding API.
+ * @returns {Promise<object[]>} A promise resolving to an array of geocoding results.
+ */
+async function googleGeocodeAddress(address, apiKey = 'AIzaSyAoTAY0vq2yuaDyygjMdwgharnS_CXEvRY') {
+    try {
+        // Use axios to make a GET request to the Google Geocoding API
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`);
+        
+        // Parse the JSON response
+        return response.data.results;
+    } catch (error) {
+        // If an error occurs, throw it
+        throw error;
+    }
+}
+
+// Check if $ is defined to avoid runtime errors
+if (typeof $!== 'undefined') {
+    $.async();
+    // Make the geocode request and send the result
+    googleGeocodeAddress('Kazimierz World Wine Bar')
+       .then(result => $.sendResult(result))
+       .catch(error => $.sendError(error));
+}</code></pre></div><p>This code snippet demonstrates how to geocode an address using the Google Maps Geocoding API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

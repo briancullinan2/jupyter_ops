@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -427,7 +434,262 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>class GenericVisitor {
+    visitIdexpression(ctx) {
+        return {
+            type: 'Identifier',
+            name: this.visitChildren(ctx).flat().pop()
+        }
+    }
+
+    visitMemberdeclaration(ctx) {
+        const obj = this.getGenericContext(ctx);
+        const [kind, key] = this.visitChildren(ctx);
+        return {
+            type: 'Property',
+            kind: kind.flat(4).pop(),
+            key,
+            method: false,
+            computed: false,
+            value: null,
+            shorthand: false,
+        }
+    }
+
+    visitTrailingtypespecifier(ctx) {
+        return {
+            type: 'Type',
+            name: this.visitChildren(ctx).flat(4).pop()
+        }
+    }
+
+    visitTypespecifier(ctx) {
+        return this.visitChildren(ctx).flat().pop()
+    }
+
+    visitEqualityexpression(ctx) {
+        const obj = this.getGenericContext(ctx);
+        if (!obj.NotEqual &amp;&amp;!obj.Equal) return this.visitChildren(ctx);
+        return {
+            type: 'BinaryExpression',
+            operator: obj.NotEqual? obj.NotEqual.accept(this) : obj.Equal.accept(this),
+            left: obj.equalityexpression.accept(this),
+            right: obj.relationalexpression.accept(this),
+        }
+    }
+
+    visitClassspecifier(ctx) {
+        const obj = this.getGenericContext(ctx);
+        const superClass = obj.classhead.accept(this).flat(3).pop();
+        return {
+            type: 'ClassExpression',
+            id: null,
+            superClass,
+            body: obj.memberspecification.accept(this),
+        }
+    }
+
+    visitPtrdeclarator(ctx) {
+        // TODO: implement
+        return null;
+    }
+
+    visitSimpledeclaration(ctx) {
+        // TODO: implement
+    }
+
+    visitFunctiondefinition(ctx) {
+        const obj = this.getGenericContext(ctx);
+        const kind = this.getGenericContext(obj.declspecifierseq);
+        const declarator = obj.declarator.accept(this);
+        return {
+            type: 'Function',
+            id: declarator,
+            params: obj.parametersandqualifiers.accept(this),
+            body: obj.functionbody.accept(this),
+            kind: kind.flat(3).pop(),
+            static: kind[0].flat(3).pop() ==='static',
+            generator: false,
+            async: false,
+            expression: false,
+        }
+    }
+
+    visitParameterdeclaration(ctx) {
+        // TODO: implement
+    }
+
+    visitDeclspecifierseq(ctx) {
+        // TODO: implement
+    }
+
+    visitDeclspecifier(ctx) {
+        return {
+            storage: ctx.storageclassspecifier(),
+            type: ctx.typespecifier(),
+            function: ctx.functionspecifier(),
+            typedef: ctx.Typedef(),
+            friend: ctx.Friend(),
+            const: ctx.Constexpr(),
+        }
+    }
+
+    visitPseudodestructorname(ctx) {
+        return {
+            id: ctx.decltypespecifier().accept(this),
+        }
+    }
+
+    visitSimpledeclaration(ctx) {
+        return {
+            type: 'Declarator',
+            value: this.getGenericToken(ctx._start).value,
+            body: this.visitChildren(ctx),
+        }
+    }
+
+    visit() {
+        const visit = Object.getPrototypeOf(this).constructor.name
+           .replace(/Context$/, '');
+        return this['visit' + visit](...arguments);
+    }
+
+    visitTranslationunit(ctx) {
+        const obj = this.getGenericContext(ctx);
+        return {
+            type: 'Program',
+            body: obj.declarationseq.accept(this),
+        }
+    }
+
+    visitDeclarationseq(ctx) {
+        const obj = this.getGenericContext(ctx);
+        return obj.declarationseq? [...obj.declarationseq.accept(this),...obj.declaration.accept(this)] : obj.declaration.accept(this);
+    }
+
+    visitFunctionbody(ctx) {
+        return ctx.compoundstatement.accept(this);
+    }
+
+    visitCompoundstatement(ctx) {
+        return {
+            type: 'BlockStatement',
+            body: ctx.statementseq.accept(this),
+        }
+    }
+
+    visitStatementseq(ctx) {
+        const obj = this.getGenericContext(ctx);
+        return obj.statementseq? [...obj.statementseq.accept(this),...obj.statement.accept(this)] : obj.statement.accept(this);
+    }
+
+    visitStatement(ctx) {
+        return this.visitChildren(ctx);
+    }
+
+    visitExpressionstatement(ctx) {
+        return ctx.expression.accept(this);
+    }
+
+    visitExpression(ctx) {
+        return this.visitChildren(ctx)[0];
+    }
+
+    visitAssignmentexpression(ctx) {
+        return {
+            type: 'AssignmentExpression',
+            operator: ctx.op[0].text,
+            left: 0,
+            right: this.visitChildren(ctx)[0],
+        }
+    }
+
+    visitConditionalexpression(ctx) {
+        return {
+            type: 'ConditionalExpression',
+            test: this.visitChildren(ctx)[0],
+            consequent: 0,
+            alternate: 0,
+        }
+    }
+
+    visitInclusiveorexpression(ctx) {
+        return {
+            type: 'LogicalExpression',
+            operator: '||',
+            left: this.visitChildren(ctx),
+            right: 0,
+        }
+    }
+
+    visitExclusiveorexpression(ctx) {
+        return {
+            type: 'LogicalExpression',
+            operator: '||',
+            left: this.visitChildren(ctx),
+            right: 0,
+        }
+    }
+
+    visitRelationalexpression(ctx) {
+        return this.visitChildren(ctx)[0];
+    }
+
+    visitAdditiveexpression(ctx) {
+        return this.visitChildren(ctx)[0];
+    }
+
+    visitDeclarator(ctx) {
+        const params = ctx.parametersandqualifiers();
+        return params? params.accept(this) : {
+            type: 'Identifier',
+            name: this.getGenericToken(ctx._start).value,
+            body: this.visitChildren(ctx),
+        }
+    }
+
+    visitDeclspecifier(ctx) {
+        return {
+            storage: ctx.storageclassspecifier(),
+            type: ctx.typespecifier(),
+            function: ctx.functionspecifier(),
+            typedef: ctx.Typedef(),
+            friend: ctx.Friend(),
+            const: ctx.Constexpr(),
+        }
+    }
+
+    getGenericContext(ctx) {
+        return ctx;
+    }
+
+    getGenericToken(ctx, tokenName) {
+        return ctx[tokenName];
+    }
+
+    visitChildren(ctx) {
+        return this.visit(ctx);
+    }
+}
+
+//...
+
+const selectDom = (selectors, dom) =&gt; {
+    //...
+};
+
+const replace = (callback, ctx) =&gt; {
+    //...
+};
+
+const treeToHtml = (ast) =&gt; {
+    //...
+};
+
+const htmlToTree = (html) =&gt; {
+    //...
+};</code></pre></div><p><strong>Overview</strong></p>
 <p>This code defines a set of methods for a class <code>GenericVisitor</code> that appears to be used for parsing and analyzing a programming language, likely C++. The methods are designed to extract specific information from the abstract syntax tree (AST) of a program.</p>
 <p><strong>Method Breakdown</strong></p>
 <ol>

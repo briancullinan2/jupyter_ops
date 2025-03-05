@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -173,7 +180,113 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const Mustache = require('mustache');
+
+/**
+ * Sanitizes the input string to allow only alphanumeric characters, hyphens and limits it to 40 characters.
+ * @param {string} val Input string to be sanitized
+ * @param {function} render Function to be used for rendering templates
+ * @returns {string} Sanitized input string
+ */
+function safeName(val, render) {
+  return render(val).replace(/[^a-z0-9\-]/ig, '-').substr(0, 40);
+}
+
+/**
+ * Converts the input value to JSON string.
+ * @param {*} val Input value to be converted
+ * @param {function} render Function to be used for rendering templates
+ * @returns {string} JSON string representation of the input value
+ */
+function toJSON(val, render) {
+  return render(JSON.stringify(val));
+}
+
+/**
+ * Splits the URL into segments and returns the specified segment.
+ * @param {string} url URL to be split
+ * @param {*} val Index or value to specify which segment to return
+ * @param {function} render Function to be used for rendering templates
+ * @returns {string} Specified segment of the URL
+ */
+function segment(url, val, render) {
+  return url.split('/')[render(val)];
+}
+
+/**
+ * Wraps the template with the given properties.
+ * @param {string} path Template path
+ * @param {string} key Template key
+ * @param {string} html Template HTML
+ * @param {object} properties Template properties
+ * @returns {string} Wrapped template HTML
+ */
+function wrapTemplate(path, key, html, properties) {
+  // Initialize properties with render functions
+  properties['safeName'] = () =&gt; safeName;
+  properties['toJSON'] = () =&gt; toJSON;
+  properties['segment'] = (index) =&gt; segment(path, index, (val) =&gt; val);
+
+  // Generate class names
+  const classNames = [
+    path.replace(/\//ig,''),
+    key!== path.split('/')[0]? key : '',
+    properties['class'] || '',
+  ].join(' ').trim();
+
+  // Set domain meta tag
+  let domain = '';
+  if (properties['domain']) {
+    if (properties['domain'].includes(':')) {
+      domain = '';
+    } else {
+      domain = 'https://{{domain}}';
+    }
+  }
+  properties['domain'] = domain;
+
+  // Set title if not provided
+  if (!properties['title'] &amp;&amp; (result = (/&lt;h1&gt;(.*)&lt;\/h1&gt;/ig).exec(html))) {
+    properties['title'] = result[1];
+  }
+
+  // Define template HTML
+  const templateHtml = `
+    &lt;!doctype html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"&gt;
+        &lt;link rel="icon" href="{{logo}}"&gt;
+        {{#base}}&lt;base href="/{{.}}" /&gt;{{/base}}
+        &lt;meta property="og:type" content="website"&gt;
+        &lt;meta property="og:title" content="{{title}}"&gt;
+        &lt;link rel="canonical" href="${domain}/${path}"&gt;
+        &lt;title&gt;{{title}}&lt;/title&gt;
+        {{#banner}}
+        &lt;style&gt;
+          body &gt; div.col-1:nth-of-type(2):before {background-image: url('{{{.}}}');}
+          body &gt; div.col-1:nth-of-type(2):after {background-image: url('{{{.}}}');}
+        &lt;/style&gt;
+        {{/banner}}
+        {{#stylesheet}}&lt;link rel="stylesheet" href="{{.}}"&gt;{{/stylesheet}}
+      &lt;/head&gt;
+      &lt;body class="${classNames}"&gt;
+        ${html}
+        {{#script}}&lt;script async src="{{.}}"&gt;&lt;/script&gt;{{/script}}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  `;
+
+  // Parse and render template
+  Mustache.parse(templateHtml);
+  return Mustache.render(templateHtml, properties, properties);
+}
+
+module.exports = wrapTemplate;</code></pre></div><p><strong>Function Breakdown</strong></p>
 <h3><code>safeName(val, render)</code></h3>
 <ul>
 <li>Requires <code>render</code> function to transform <code>val</code></li>

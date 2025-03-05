@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import ast
+import inspect
+
+
+def extract_parameter_names(source_code: str) -> list[str]:
+    """
+    Extracts parameter names from a function using the ast module.
+
+    Args:
+        source_code (str): The source code of the function.
+
+    Returns:
+        list[str]: A list of parameter names as strings.
+    """
+    try:
+        # Parse the source code into an abstract syntax tree
+        tree = ast.parse(source_code)
+
+        # Find the function definition in the abstract syntax tree
+        function_def = next((node for node in ast.walk(tree) if isinstance(node, ast.FunctionDef)), None)
+
+        # If the function definition exists, extract the parameter names
+        if function_def:
+            return [function_def.name] + [arg.arg for arg in function_def.args.args]
+        # If the function definition does not exist, return an empty list
+        else:
+            return []
+
+    except SyntaxError as e:
+        # If a syntax error occurs, log the error message and return an empty list
+        print(f"Syntax error: {e}")
+        return []
+
+
+def get_function_source_code(func, include_filename: bool = False) -> str:
+    """
+    Returns the source code of the given function.
+
+    Args:
+        func (callable): The function to get the source code from.
+        include_filename (bool, optional): Whether to include the filename in the source code. Defaults to False.
+
+    Returns:
+        str: The source code of the function.
+    """
+    return inspect.getsource(func) if not include_filename else inspect.getsource(func).splitlines()[1]  # Remove the first line with the filename
+
+
+__all__ = {
+    "extract_parameter_names": extract_parameter_names,
+    "get_function_source_code": get_function_source_code,
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Import Statements</h4>
 <pre><code class="language-python">import ast
 # import inspect

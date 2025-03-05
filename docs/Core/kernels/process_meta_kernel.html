@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -223,7 +230,155 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2><strong>Overview</strong></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { spawn } = require("child_process");
+const importer = require('../Core');
+const { interface, extend } = importer.import('enforcing an interface');
+const { metaKernelInterface, socketMetaKernel } = importer.import('meta kernel interface');
+const { socketMethods } = importer.import('socket meta kernel');
+const nativeMethods = importer.import('native meta kernel methods');
+
+// Define the processMetaKernel function
+/**
+ * Process a meta kernel and return a socket meta kernel instance.
+ * 
+ * @param {object} metaKernel - The meta kernel to process.
+ * @returns {object} A socket meta kernel instance.
+ */
+function processMetaKernel(metaKernel) {
+    const meta = interface(metaKernel, metaKernelInterface);
+    const kernel = extend(meta, {
+        doInit,
+        doShutdown,
+        doMessage,
+        doExecute,
+        doComplete,
+        doInspect,
+        doHistory,
+        doIsComplete,
+    });
+    return socketMetaKernel(kernel);
+}
+
+// Define the kernel methods
+/**
+ * Execute a message in the kernel.
+ * 
+ * @param {string} message - The message to execute.
+ * @returns {object} The result of the execution.
+ */
+function doExecute(message) {
+    return this.doMessage(message, doExecute);
+}
+
+/**
+ * Check if the kernel is complete.
+ * 
+ * @param {string} message - The message to check.
+ * @returns {object} True if the kernel is complete, false otherwise.
+ */
+function doComplete(message) {
+    return this.doMessage(message, doComplete);
+}
+
+/**
+ * Inspect the kernel.
+ * 
+ * @param {string} message - The message to inspect.
+ * @returns {object} The result of the inspection.
+ */
+function doInspect(message) {
+    return this.doMessage(message, doInspect);
+}
+
+/**
+ * Get the history of the kernel.
+ * 
+ * @param {string} message - The message to get the history for.
+ * @returns {object} The history of the kernel.
+ */
+function doHistory(message) {
+    return this.doMessage(message, doHistory);
+}
+
+/**
+ * Check if the kernel is complete.
+ * 
+ * @param {string} message - The message to check.
+ * @returns {object} True if the kernel is complete, false otherwise.
+ */
+function doIsComplete(message) {
+    return this.doMessage(message, doIsComplete);
+}
+
+/**
+ * Send a message to the kernel.
+ * 
+ * @param {string} message - The message to send.
+ * @param {function} func - The function to call on completion.
+ * @returns {object} The result of the message send.
+ */
+function doMessage(message, func) {
+    if (!this.socket) {
+        throw new Error('Socket not ready!');
+    }
+    if (typeof func === 'undefined') {
+        return nativeMethods.doMessage.call(this, message);
+    }
+    const client = {};
+    client[func.name] = { content: message };
+    return this.socket.send(client);
+}
+
+/**
+ * Shut down the kernel.
+ * 
+ * @returns {Promise} A promise that resolves when the kernel is shut down.
+ */
+function doShutdown() {
+    return Promise.resolve()
+       .then(() => this.socket.kill('SIGTERM'))
+       .then(() => process.exit());
+}
+
+// Define the doInit function
+/**
+ * Initialize the kernel.
+ * 
+ * @param {object} config - The configuration for the kernel.
+ * @returns {object} The initialized kernel.
+ */
+function doInit(config) {
+    const childProcess = config.childProcess;
+    if (!childProcess) {
+        throw new Error(`Meta kernel not implemented! ${JSON.stringify(childProcess)}`);
+    }
+    if (typeof childProcess ==='string') {
+        childProcess = [childProcess];
+    }
+    console.log('Spawning child process');
+    this.socket = spawn(childProcess[0],
+        childProcess.slice(1),
+        {
+            cwd: config.cwd || '.',
+            stdio: ['pipe', 'pipe', 'pipe', 'ipc']
+        });
+    return socketMethods.doInit.call(this, config);
+}
+
+// Export the kernel methods
+module.exports = {
+    doInit,
+    doShutdown,
+    doMessage,
+    doExecute,
+    doComplete,
+    doInspect,
+    doHistory,
+    doIsComplete,
+    processMetaKernel
+};</code></pre></div><h2><strong>Overview</strong></h2>
 <p>This code is likely part of a Node.js application that interacts with a meta kernel, which is a system that manages and executes a kernel. The kernel is responsible for performing various tasks, such as executing commands, inspecting the system, and handling messages.</p>
 <h2><strong>Imported Modules</strong></h2>
 <p>The code imports several modules:</p>

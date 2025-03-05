@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet starts two processes to enable remote access to a Linux desktop using VNC.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define display number
+DISPLAY_NUMBER=0
+
+# Function to start Fluxbox
+start_fluxbox() {
+  fluxbox -display ":$DISPLAY_NUMBER"
+}
+
+# Function to start X11VNC
+start_x11vnc() {
+  x11vnc \
+    -forever \
+    -nopw \
+    -shared \
+    -rfbport 5900 \
+    -ncache 1 \
+    -display ":$DISPLAY_NUMBER"
+}
+
+# Start Fluxbox and X11VNC in sequence
+start_fluxbox
+start_x11vnc</code></pre></div><p>This code snippet starts two processes to enable remote access to a Linux desktop using VNC.</p>
 <ol>
 <li><p><strong><code>fluxbox -display :0</code>:</strong></p>
 <ul>

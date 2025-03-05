@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -127,7 +134,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getGist</code> that retrieves a GitHub Gist by its ID.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import Octokit library
+const { Octokit } = require('@octokit/rest');
+
+// Commit changes to GitHub
+/**
+ * Retrieves a GitHub Gist by its ID.
+ * 
+ * @param {string} gist - The ID of the Gist to retrieve.
+ * @returns {object} The retrieved Gist data, or an empty object if the Gist was not found or an error occurred.
+ */
+async function getGist(gist) {
+    // Check if the Gist ID is valid
+    if (!gist) {
+        return {};
+    }
+
+    try {
+        // Create a new instance of the Octokit client
+        const octokit = new Octokit({
+            // Set the GitHub API endpoint
+            host: 'api.github.com',
+        });
+
+        // Authenticate the client with a personal access token (recommended)
+        // const token = process.env.GITHUB_TOKEN;
+        // octokit.authenticate({
+        //     type: 'token',
+        //     token: token,
+        // });
+
+        // Get the Gist data
+        const response = await octokit.gists.get({ gist_id: gist });
+
+        // Return the Gist data
+        return response.data;
+    } catch (error) {
+        // Log any errors that occur
+        // TODO: Implement error handling and logging
+        console.error('Error retrieving Gist:', error);
+        return {};
+    }
+}
+
+module.exports = getGist;</code></pre></div><p>This code defines a function <code>getGist</code> that retrieves a GitHub Gist by its ID.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Import:</strong> It imports the <code>Octokit</code> library, which is used to interact with the GitHub API.</p></li>

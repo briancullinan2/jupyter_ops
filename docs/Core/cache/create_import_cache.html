@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./imports_cache.html">imports cache</a> | <a href="./test_import_cache.html">test import cache</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code creates a system for caching and managing imported modules within Jupyter notebooks, allowing for customized caches based on search criteria.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "create import cache"</code></pre><h1>create import cache</h1>
 
@@ -126,25 +132,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a system for caching and managing imported modules within Jupyter notebooks.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
-<ul>
-<li>It imports necessary functions from a <code>Core</code> module, including <code>createCellCache</code>, <code>importsCache</code>, and <code>getImports</code>.</li>
-</ul></li>
-<li><p><strong><code>createImportCache(search)</code>:</strong></p>
-<ul>
-<li>This function takes a <code>search</code> parameter (likely a string or pattern) and creates a cache of imported modules based on the provided search criteria.</li>
-<li>It retrieves the existing <code>importsCache</code> and a function to interpret the <code>imports cache</code> from the <code>Core</code> module.</li>
-<li>It uses <code>createCellCache</code> to build the import cache, incorporating the <code>search</code> parameter, the existing <code>importsCache</code>, the <code>imports cache</code> interpreter, and the <code>getImports</code> function.</li>
-</ul></li>
-<li><p><strong>Exports:</strong></p>
-<ul>
-<li>The module exports the <code>createImportCache</code> function, making it available for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p>In essence, this code provides a way to generate a customized cache of imported modules based on a given search, likely for optimizing module loading and tracking import dependencies within Jupyter notebooks.</p>
 
 </body>
 

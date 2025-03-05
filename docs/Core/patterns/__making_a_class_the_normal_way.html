@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -159,7 +166,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define the parent class with a private constructor
+class ParentClass {
+    #constructor() {
+        console.log('parent');
+    }
+
+    doMessage() {
+        console.log('original');
+    }
+}
+
+// Create a child class that extends the parent class
+class ChildClass extends ParentClass {
+    constructor() {
+        console.log('child');
+        super();
+    }
+
+    doMessage() {
+        super.doMessage();
+        console.log('overridden');
+    }
+}
+
+// Export a factory function that returns a new instance of the child class
+module.exports = () => new ChildClass();
+
+// Check if the $ variable is defined
+if (typeof $!== 'undefined') {
+    console.log(typeof module.exports);
+    const testClass = module.exports();
+    testClass.doMessage();
+
+    // Expected output
+    // function
+    // child
+    // parent
+    // original
+    // overridden
+}</code></pre></div><h3>Code Breakdown</h3>
 <p>This code is written in JavaScript and defines a class hierarchy using the ES6 class syntax.</p>
 <h4>Class Hierarchy</h4>
 <p>The code defines two classes, <code>parentClass</code> and <code>childClass</code>, which extend each other.</p>

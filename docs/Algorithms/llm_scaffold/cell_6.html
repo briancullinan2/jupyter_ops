@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function: decodeJupyterNotebook</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the built-in readline module for file operations
+const fs = require('fs');
+const path = require('path');
+
+/**
+ * Decodes a Jupyter Notebook file and logs the content of code cells.
+ *
+ * @param {string} filePath - The path to the Jupyter Notebook file.
+ */
+function decodeJupyterNotebook(filePath) {
+    // Check if the file path is a string
+    if (typeof filePath!=='string') {
+        throw new TypeError('File path must be a string');
+    }
+
+    // Check if the file exists
+    if (!fs.existsSync(filePath)) {
+        console.error(`File not found: ${filePath}`);
+        return;
+    }
+
+    // Read the file contents synchronously to avoid callback hell
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+
+    try {
+        // Parse the Jupyter Notebook file contents as JSON
+        const notebook = JSON.parse(fileContents);
+        const cells = notebook.cells;
+
+        // Filter and log the content of code cells
+        cells.forEach((cell) => {
+            if (cell.cell_type === 'code') {
+                // Join the code cell's source code into a single string
+                const source = cell.source.join('\n');
+                console.log(`Decoded code cell content from ${path.basename(filePath)} at line ${cell.metadata.linetracker.first_execution_info.execution_count}:`);
+                console.log(source);
+            }
+        });
+    } catch (error) {
+        console.error(`Error parsing notebook: ${error.message}`);
+    }
+}
+
+// Usage example
+decodeJupyterNotebook('Untitled.ipynb');</code></pre></div><h2>Function: decodeJupyterNotebook</h2>
 <h3>Description</h3>
 <p>Decodes the content of a Jupyter Notebook file.</p>
 <h3>Parameters</h3>

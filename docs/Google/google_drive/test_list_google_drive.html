@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Importing required modules
+const importer = require('../Core');
+const listDrive = importer.import('listGoogleDriveFiles');
+const insertPermission = importer.import('insertGoogleDrivePermissions');
+
+// Defining test suite for listing Google Drive files
+describe('listGoogleDriveFiles', () => {
+  // Test case to verify file listing functionality
+  it('should list files', async () => {
+    // Retrieve a list of Google Drive files
+    const { files } = await listDrive();
+
+    // Filter files by name (e.g., 'Untitled')
+    const untitledFiles = files.filter((file) => file.name.includes('Untitled'));
+
+    // Insert permissions for each 'Untitled' file
+    const promises = untitledFiles.map((file) => insertPermission(file.id,'megamindbrian@gmail.com'));
+    await Promise.all(promises);
+  });
+});</code></pre></div><h2>Code Breakdown</h2>
 <p>This code is written in JavaScript using the Mocha testing framework.</p>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');

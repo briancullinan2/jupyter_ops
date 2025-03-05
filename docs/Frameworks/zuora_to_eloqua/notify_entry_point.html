@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -201,7 +208,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an AWS Lambda function that handles the bulk upload of Zuora account data to Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Importer } = require('../Core');
+const { ZuoraAccountService } = Importer.import('zuora account service');
+const { BulkUploadEloqua } = Importer.import('bulk upload eloqua');
+
+/**
+ * AWS Lambda function handler.
+ * 
+ * @param {Object} event - Event object containing request data.
+ * @param {Object} context - Context object containing AWS Lambda context.
+ * @param {Function} callback - Callback function to be executed after processing.
+ */
+function handler(event, context, callback) {
+    try {
+        // Load environment variables for Zuora and Eloqua configurations
+        const {
+            ZUORA_API_USER,
+            ZUORA_API_PASSWORD,
+            ZUORA_API_URL,
+            ELOQUA_AUTHORIZE_URL,
+            ELOQUA_TOKEN_URL,
+            ELOQUA_API_URL,
+            ELOQUA_CLIENT_ID,
+            ELOQUA_CLIENT_SECRET,
+            ELOQUA_API_COMPANY,
+            ELOQUA_API_USER: eloquaApiUser,
+            ELOQUA_API_PASSWORD: eloquaApiPassword
+        } = process.env;
+
+        // Define Zuora and Eloqua configuration objects
+        const zuoraConfig = {
+            restApiUser: ZUORA_API_USER,
+            restApiPassword: ZUORA_API_PASSWORD,
+            restApiUrl: ZUORA_API_URL
+        };
+
+        const eloquaConfig = {
+            authorizeUri: ELOQUA_AUTHORIZE_URL,
+            tokenUri: ELOQUA_TOKEN_URL,
+            restApiUrl: ELOQUA_API_URL,
+            restClientId: ELOQUA_CLIENT_ID,
+            restSecret: ELOQUA_CLIENT_SECRET,
+            restApiCompany: ELOQUA_API_COMPANY,
+            restApiUser: eloquaApiUser,
+            restApiPassword: eloquaApiPassword
+        };
+
+        // Merge request body and query parameters into a single object
+        const body = event || {};
+        if (event.body || event.queryStringParameters) {
+            body = {...body,...event.queryStringParameters,...event.body };
+        }
+
+        // Call Zuora API to retrieve accounts and upload them to Eloqua
+        ZuoraAccountService.getZuoraAccounts(body, zuoraConfig)
+           .then(accounts =&gt; BulkUploadEloqua.bulkUploadEloqua(accounts, eloquaConfig, body.instanceId, body.executionId))
+           .then(() =&gt; callback(null, {
+                statusCode: 200,
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: 'Success!'
+            }))
+           .catch(error =&gt; callback(error.message || error.body || error, {
+                statusCode: 500,
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: `Error: ${error.message}`
+            }));
+    } catch (error) {
+        // Log the error and return a 500 error response
+        console.error(error);
+        callback(error, {
+            statusCode: 500,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify({ Error: error.message })
+        });
+    }
+}
+
+module.exports = { handler };</code></pre></div><p>This code defines an AWS Lambda function that handles the bulk upload of Zuora account data to Eloqua.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Mapping of PHP functions to JavaScript equivalents.
+ * @typedef {Object} PhpJsMapping
+ * @property {string} php - PHP function name
+ * @property {string} js - JavaScript equivalent
+ */
+
+/**
+ * Mapping of PHP functions to JavaScript equivalents.
+ * @type {PhpJsMapping[]}
+ */
+const phpToJs = [
+  {
+    php: '//CallExpression[@name="array_shift"]',
+    js: { name: 'arrayShift', fn: arr =&gt; arr.shift() }
+  },
+  {
+    php: '//CallExpression[@name="strpos"]',
+    js: { name:'strpos', fn: (str, match) =&gt; str.indexOf(match)!== -1? str.indexOf(match) : false }
+  },
+  {
+    php: '//CallExpression[@name="substr"]',
+    js: { name:'substr', fn: (str, start, length) =&gt; str.substr(start, length) }
+  },
+  {
+    php: '//CallExpression[@name="is_numeric"]',
+    js: { name: 'isNumeric', fn: num =&gt;!isNaN(parseInt(num)) ||!isNaN(parseFloat(num)) }
+  },
+  {
+    php: '//CallExpression[@name="abs"]',
+    js: { name: 'abs', fn: () =&gt; Math.abs() }
+  }
+];
+
+/**
+ * Shorthand mapping for built-in math functions.
+ * @type {Object}
+ */
+const mathFunctions = {
+  ['abs','sin', 'cos', 'pow', 'floor', 'ceil', 'round','max','min']: (id) =&gt; Math[id]()
+};
+
+// Combine PHP to JavaScript mapping with shorthand math functions.
+const combinedPhpToJs = [...phpToJs,...Object.entries(mathFunctions).map(([id, fn]) =&gt; ({ php: `//CallExpression[@name="${id}"]`, js: { name: id, fn } }))];
+
+// Reverse the mapping for JavaScript to PHP.
+const jsToPhp = combinedPhpToJs.map(item =&gt; ({ js: item.php, php: item.js.name }));
+
+// Output combined JavaScript to PHP mapping.
+console.log(jsToPhp);</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The code is a mapping between PHP and JavaScript functions. It consists of two main objects, <code>fromPhpToJavascript</code> and <code>fromJavascriptToPhp</code>, which contain key-value pairs of function names and their corresponding implementations in the other language.</p>
 <h3>Mapping Variables</h3>

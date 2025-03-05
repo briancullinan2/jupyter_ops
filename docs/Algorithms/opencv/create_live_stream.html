@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Breakdown of the Code</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import re
+import json
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+import google.auth
+import google.auth.transport.requests
+
+def create_livestream(youtube):
+    """
+    Creates a new live stream on YouTube using the provided YouTube API credentials.
+
+    Args:
+        youtube (googleapiclient.discovery.Resource): The YouTube API client.
+
+    Returns:
+        str: The stream name of the newly created live stream.
+    """
+    credentials = youtube_authorize()
+    try:
+        youtube = build("youtube", "v3", credentials=credentials)
+        request = youtube.liveStreams().insert(
+            part="snippet,cdn,status",
+            body={
+                "snippet": {
+                    "title": "My Live Stream",
+                    "description": "Streaming via API"
+                },
+                "cdn": {
+                    "frameRate": "30fps",
+                    "resolution": "1080p",
+                    "ingestionType": "rtmp"
+                },
+                "status": {
+                    "streamStatus": "active"
+                }
+            }
+        )
+        response = request.execute()
+        return response['cdn']['ingestionInfo']['streamName']
+    except Exception as e:
+        print(f"Error creating live stream: {e}")
+        return None</code></pre></div><h2>Breakdown of the Code</h2>
 <h3>Importing Libraries</h3>
 <p>The code starts by importing necessary libraries:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code analyzes a project's <code>package.json</code> file and updates dependency versions based on information from a list of installed packages.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Requires
+const fs = require('fs');
+const path = require('path');
+const childProcess = require('child_process');
+const mime = require('mime-types'); // For mime type
+
+// Constants
+const CURRENT_WORKING_DIRECTORY = 'C:\\Users\\brian.cullinan\\Documents\\portal\\';
+const NPM_LIST_COMMAND = 'npm list --dev';
+
+// Function to get installed packages
+function getInstalledPackages(cwd = CURRENT_WORKING_DIRECTORY) {
+  try {
+    const packages = childProcess.execSync(NPM_LIST_COMMAND, { cwd, encoding: 'utf8' });
+    return packages.split('\n').filter(Boolean);
+  } catch (error) {
+    console.error(`Error getting installed packages: ${error.message}`);
+    return [];
+  }
+}
+
+// Function to get package dependencies
+function getPackageDependencies(filePath = path.join(CURRENT_WORKING_DIRECTORY, 'package.json')) {
+  try {
+    const packageJson = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(packageJson);
+  } catch (error) {
+    console.error(`Error getting package dependencies: ${error.message}`);
+    return {};
+  }
+}
+
+// Main function
+async function main() {
+  // Get installed packages
+  const packages = getInstalledPackages();
+
+  // Get package dependencies
+  const packageJson = getPackageDependencies();
+
+  // Update dependencies and devDependencies
+  Object.keys(packageJson.dependencies).forEach((dependency) => {
+    packages.forEach((packageInfo) => {
+      if (packageInfo.includes(dependency + '@')) {
+        const version = packageInfo.split('@').pop().replace(' deduped', '');
+        packageJson.dependencies[dependency] = `~${version}`;
+      }
+    });
+  });
+
+  Object.keys(packageJson.devDependencies).forEach((devDependency) => {
+    packages.forEach((packageInfo) => {
+      if (packageInfo.includes(devDependency + '@')) {
+        const version = packageInfo.split('@').pop().replace(' deduped', '');
+        packageJson.devDependencies[devDependency] = `~${version}`;
+      }
+    });
+  });
+
+  // Log updated packageJson
+  console.log(packages);
+  console.log(JSON.stringify(packageJson, null, 4));
+
+  // Send response
+  const response = mime.lookup('text/html');
+  if (response) {
+    const html = `<pre>${JSON.stringify(packageJson, null, 4)}</pre>`;
+    // Assuming a response function is available
+    $.mime({ [response]: html });
+  } else {
+    console.error('Unsupported MIME type');
+  }
+}
+
+// Run main function
+main();</code></pre></div><p>This code analyzes a project's <code>package.json</code> file and updates dependency versions based on information from a list of installed packages.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

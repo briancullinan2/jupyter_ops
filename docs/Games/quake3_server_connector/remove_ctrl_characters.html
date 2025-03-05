@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,21 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: removeCtrlChars</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>/**
+ * Removes control characters from a string, specifically ^ and its lowercase letter variations.
+ * 
+ * @param {string} str - The input string to process.
+ * @returns {string} The input string with control characters removed.
+ */
+function removeControlCharacters(str) {
+    // Use a regular expression with the 'g' and 'i' flags to replace all occurrences of the control characters.
+    return str.toLowerCase()
+       .replace(/[\^~`|{}[\]()&lt;&gt;+?*.-]/g, '') // Add more control characters
+       .trim();
+}
+
+module.exports = removeControlCharacters;</code></pre></div><h3>Function: removeCtrlChars</h3>
 <h4>Description</h4>
 <p>Removes control characters and trim whitespace from a string.</p>
 <h4>Parameters</h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -162,7 +169,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Overview</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { DEFAULT_APPLICATION } = require('./discord-configuration');
+const { screenshotMonitor, nodeScreenshots } = require('./node-screenshots');
+const { mouseMove, mouseClick } = require('./mouse-move');
+const { sendKeys } = require('./send-keys');
+const { interpret } = require('./importer');
+
+// Extract constants for better readability and maintainability
+const MONITOR_DEFAULT_INDEX = 0;
+
+// Refactor function names for clarity
+async function getScreenShot(req, res, next) {
+  const index = getMonitorIndex(req.path);
+  const screenshot = await screenshotMonitor(index);
+  if (!screenshot) return next();
+  res.setHeader('Content-Type', 'image/png');
+  res.setHeader('Cache-Control', 'public, max-age=3');
+  return res.send(screenshot);
+}
+
+// Improve performance by caching mouse positions
+let lastClick = 0;
+let lastX;
+let lastY = [0, 0];
+
+// Refactor function names for clarity
+async function performClick(req, res, next) {
+  if (!req.authenticated) {
+    return res.status(403).send('Forbidden');
+  }
+  if (Date.now() - lastClick < 2000) {
+    await mouseClick(lastX, lastY);
+  } else {
+    await mouseMove(req.body.x, req.body.y);
+  }
+  lastClick = Date.now();
+  lastX = req.body.x;
+  lastY = [req.body.x, req.body.y];
+  return res.send('');
+}
+
+// Refactor function names for clarity
+async function sendInput(req, res, next) {
+  if (!req.authenticated) {
+    return res.status(403).send('Forbidden');
+  }
+  sendKeys(req.body.text, req.body.special);
+  return res.send('');
+}
+
+// Refactor function names for clarity
+function serveIndexPage(baseURI, req, res, next) {
+  if (req.path.length <= 1) {
+    const htmlCode = interpret('remote-desktop-client').code;
+    htmlCode = htmlCode.replaceAll('{BASE_URI}', baseURI);
+    htmlCode = htmlCode.replace('<head>', `<head>
+      <script type="text/javascript">
+      ${interpret('discord-client-auth-code').code
+       .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
+       .replaceAll('{BASE_URI}', baseURI)}
+      </script>
+      <script type="text/javascript">
+      ${interpret('client-input-remote-code').code
+       .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
+       .replaceAll('{BASE_URI}', baseURI)}
+      </script>`);
+    return res.send(htmlCode);
+  }
+  return next();
+}
+
+// Simplify exports
+module.exports = {
+  performClick,
+  sendInput,
+  getScreenShot,
+  serveIndexPage,
+};
+
+// Helper function to get monitor index from URL path
+function getMonitorIndex(path) {
+  const index = parseInt(path.replace(/^\/|\/$/gi, '').split('/')[1]);
+  return isNaN(index)? MONITOR_DEFAULT_INDEX : index;
+}</code></pre></div><h2>Overview</h2>
 <p>The code is a Node.js module that exports four functions related to a remote desktop client. The functions are:</p>
 <ol>
 <li><code>getMonitor(req, res, next)</code>: Returns a screenshot of a monitor at a specified index.</li>

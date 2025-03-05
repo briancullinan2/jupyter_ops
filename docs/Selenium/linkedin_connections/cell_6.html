@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import Core from '../Core';
+import addLinkedinConnections from '../Core/connect/add-friends/linkedin';
+
+/**
+ * Async function to add LinkedIn connections
+ */
+async function addLinkedInConnections() {
+    try {
+        const result = await addLinkedinConnections(null, '');
+        $.sendResult(result);
+    } catch (error) {
+        $.sendError(error);
+    }
+}
+
+// Call the function
+addLinkedInConnections();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 </code></pre>

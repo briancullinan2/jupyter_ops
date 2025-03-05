@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -68,8 +75,7 @@
     <a href="../documentation/index.html">documentation</a> | <a href="./export_documentation.html">export documentation</a> | <a href="./javadoc_template.html">javadoc template</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The HTML document links to external style sheets and a JavaScript file from the Highlight.js library, and initializes the library to highlight code elements on the page.</p>
-<p>The HTML document includes external style sheets and a JavaScript file from the Highlight.js library, which is used to highlight code elements on the page. The library is initialized using <code>hljs.highlightAll()</code> to automatically highlight all code elements on the page.</p>
+  <p>Highlight.js styles and script, along with additional language scripts, are imported and initialized. The highlight.js plugin and all code in the document are then added and highlighted.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "highlight js"</code></pre><h1>highlight js</h1>
@@ -110,26 +116,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3>External Style Sheets</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="html"><code><!-- Load default styles -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css">
+
+<!-- Load highlight.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- Automatically load languages from a predefined array -->
+<script>
+  const languages = ['javascript', 'bash', 'css', 'html', 'json', 'python'];
+  languages.forEach((language) => {
+    const scriptTag = document.createElement('script');
+    scriptTag.src = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/${language}.min.js`;
+    document.head.appendChild(scriptTag);
+  });
+</script>
+
+<!-- Load custom plugin -->
+<script src="../../mergehtml.js"></script>
+
+<!-- Initialize highlight.js with a callback for the plugin -->
+<script>
+  const plugin = require('../../mergehtml.js'); // Load plugin dynamically
+  hljs.addPlugin(plugin);
+  hljs.highlightAll();
+</script></code></pre></div><h2>Code Breakdown</h2>
+<h3>Importing Highlight.js Styles and Script</h3>
 <ul>
-<li>Two external CSS style sheets are linked to the HTML document:
+<li>Two CSS styles are imported:
 <ul>
-<li><code>default.min.css</code> from the Highlight.js library</li>
-<li><code>github-dark.css</code> from the Highlight.js library</li>
+<li><code>default.min.css</code>: The default highlight.js style.</li>
+<li><code>github-dark.css</code>: A dark-themed style inspired by GitHub.</li>
 </ul></li>
+<li>The highlight.js script is imported.</li>
 </ul>
-<h3>External JavaScript File</h3>
+<h3>Loading Additional Languages</h3>
 <ul>
-<li>The <code>highlight.min.js</code> file from the Highlight.js library is linked to the HTML document.</li>
+<li>A script is loaded dynamically for a specific language (<code>${LANGUAGE}</code>).</li>
+<li>An example script is loaded for the Bash language.</li>
+<li>A plugin script is loaded (<code>../../mergehtml.js</code>).</li>
 </ul>
-<h3>Optional Language Scripts</h3>
+<h3>Initialization Script</h3>
 <ul>
-<li>A script is included to dynamically load a language-specific file from the Highlight.js library, using the <code>LANGUAGE</code> variable.</li>
-</ul>
-<h3>Initialization of Highlight.js</h3>
-<ul>
-<li>A script is executed to initialize the Highlight.js library, highlighting all code elements on the page with <code>hljs.highlightAll()</code>.</li>
+<li>The <code>addPlugin</code> function of highlight.js is called to add a plugin named <code>mergeHTMLPlugin</code>.</li>
+<li>The <code>highlightAll</code> function is called to highlight all code in the document.</li>
 </ul>
 
 </body>

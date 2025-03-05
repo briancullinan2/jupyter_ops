@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -163,7 +170,103 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to generate a heatmap visualization of events from a Google Calendar based on keywords.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { default: d3Heatmap } = require('d3-heatmap');
+const { resolve } = require('path');
+
+// Import required modules and functions
+const importer = require('../Core');
+const {
+  getOauthClient,
+  listEvents,
+  correctCalendarId,
+  sumEvents,
+  d3Heatmap as d3HeatmapFunc,
+} = importer.import([
+  'import google calendar api',
+  'list events',
+  'lookup calendar name',
+ 'sum a list of events',
+  'd3 calendar',
+]);
+
+// Define options and default values
+const options = {
+  calendarId: null,
+  auth: null,
+};
+
+/**
+ * Function to generate a calendar heatmap based on search terms.
+ * 
+ * @param {string} search - Search terms separated by pipe characters.
+ * @param {string} calendar - Google calendar ID.
+ * @returns {Promise} - A promise that resolves with a d3 heatmap object.
+ */
+async function calendarHeatmap(search, calendar) {
+  // Set calendar ID if provided
+  if (calendar) {
+    options.calendarId = calendar;
+  }
+
+  // Initialize total hours
+  let total = 0;
+
+  // Get OAuth client and correct calendar ID
+  try {
+    const oauthClient = await getOauthClient(options);
+    options.auth = oauthClient;
+    const correctCalendarIdResult = await correctCalendarId(options);
+    options.calendarId = correctCalendarIdResult;
+
+    // List events for each search term
+    const eventLists = await Promise.all(
+      search.split('|').map((term) => listEvents({
+        auth: options.auth,
+        calendarId: options.calendarId,
+        q: term,
+      })).then((results) => results.map((result) => result.data.items))
+    );
+
+    // Calculate total hours and format event data
+    const eventData = eventLists.flat().map((event, index) => ({
+      id: event.id,
+      start: new Date(event.start.dateTime),
+      end: new Date(event.end.dateTime),
+    }));
+
+    // Sum hours and calculate hours per week
+    const hours = sumEvents(eventData);
+    total += hours;
+    const hoursPerWeek = (total / 41).toFixed(4); // subtract from 48 weeks, 2 weeks of mental health, 2 weeks of holidays
+
+    // Generate d3 heatmap
+    const d3HeatmapResult = await d3HeatmapFunc(eventData);
+
+    // Log total hours and hours per week
+    console.log(`Total hours: ${total} hrs`);
+    console.log(`Hours per week: ${hoursPerWeek} hrs/week`);
+
+    // Return d3 heatmap result
+    return d3HeatmapResult;
+  } catch (error) {
+    // Log error and return error message
+    console.error('Error generating calendar heatmap:', error.message);
+    return error.message;
+  }
+}
+
+// Export calendarHeatmap function
+module.exports = calendarHeatmap;
+
+// Usage
+if (typeof $!== 'undefined') {
+  $.async();
+  calendarHeatmap('portal|eloqua|zuora|angular|webpack|renewals|unit test|unit tests|unit testing|selenium|angular2|pricing|jupytangular|notebook|work|sos|study sauce|notebooks|jupyter|cloud|docker|build')
+   .then((result) => $.html(result))
+   .catch((error) => $.sendError(error));
+}</code></pre></div><p>This code snippet is designed to generate a heatmap visualization of events from a Google Calendar based on keywords.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports functions for interacting with the Google Calendar API, creating a heatmap, listing events, and handling calendar IDs.</p></li>

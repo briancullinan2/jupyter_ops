@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -231,7 +238,126 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>const { importer } = require('../Core');
+const {
+  discordApi,
+  authorizeGateway,
+  privateChannels,
+  interactions
+} = importer.import('discord API');
+const {
+  discordCommands,
+  challengeCommand,
+  configCommand,
+  connectCommand,
+  rconCommand,
+  chatCommand
+} = importer.import('discord commands');
+
+const DEFAULT_USERNAME = 'Orbb';
+
+class CommandInterpreter {
+  static async interpretCommand(message) {
+    const applicableCommands = Object.keys(discordCommands)
+     .filter(k =&gt; message.content.match(discordCommands[k])
+        || (message.attachments &amp;&amp; message.attachments.filter(a =&gt; a.filename.match(discordCommands[k])).length &gt; 0)
+        || (message.embeds &amp;&amp; message.embeds.filter(e =&gt; (e.title &amp;&amp; e.title.match(discordCommands[k]))
+          || (e.description &amp;&amp; e.description.match(discordCommands[k]))).length &gt; 0))
+     .map(c =&gt; ({ command: c, message }));
+    return applicableCommands;
+  }
+}
+
+class CommandReader {
+  static async readAllCommands(specificChannel) {
+    const channels = [];
+    const messages = [];
+    const responses = [];
+    const launches = [];
+    const commands = [];
+
+    if (specificChannel === '@me') {
+      const userChannels = Object.keys(privateChannels)
+       .filter(k =&gt; privateChannels[k] &gt; Date.now() - 1000 * 60 * 60)
+       .map(k =&gt; ({ id: k }));
+      channels.push(...userChannels);
+      specificChannel = '';
+    } else {
+      const guilds = await discordApi.userGuilds();
+      console.log(`Reading ${guilds.length} guilds`);
+      for (const guild of guilds) {
+        const guildChannels = await discordApi.guildChannels(guild.id);
+        channels.push(...guildChannels);
+      }
+    }
+
+    console.log(`Reading ${channels.length} channels`);
+    for (const channel of channels) {
+      if (!specificChannel || channel.id === specificChannel || (typeof specificChannel ==='string' &amp;&amp; (specificChannel.length === 0 || channel.name.match(new RegExp(specificChannel, 'ig'))))) {
+        console.log(`Reading ${channel.name}`);
+        const channelMessages = await discordApi.channelMessages(channel.id);
+        messages.push(...channelMessages);
+      }
+    }
+
+    console.log(`Reading ${messages.length} messages`);
+    for (const message of messages) {
+      const applicableCommands = await CommandInterpreter.interpretCommand(message);
+      if (applicableCommands.length &gt; 0 &amp;&amp; message.author.username!== DEFAULT_USERNAME) {
+        message.commands = applicableCommands.map(c =&gt; c.command);
+        commands.push(message);
+        if ((message.reactions || []).filter(r =&gt; r.emoji.name === '\u{1F44D}').length &gt; 0) {
+          launches.push(message);
+        }
+      }
+    }
+
+    const interactionCount = Object.keys(interactions).reduce((sum, i) =&gt; sum + interactions[i].length, 0);
+    console.log(`Reading ${Object.keys(interactions).length} channels with ${interactionCount} interactions`);
+    Object.keys(interactions).forEach(channelId =&gt; {
+      interactions[channelId].forEach(interaction =&gt; {
+        interaction.commands = [interaction.data.name.toUpperCase()];
+        interaction.author = interaction.member.user;
+        interaction.content = interaction.data.name +'' + (interaction.data.options || []).map(o =&gt; o.value).join(' ');
+        interaction.interaction = true;
+        commands.push(interaction);
+      });
+      interactions[channelId] = [];
+    });
+
+    return commands
+     .filter(command =&gt;!responses.find(response =&gt; response.content.match(new RegExp(````BOT${command.id}`))))
+     .concat(launches)
+     .filter(command =&gt;!responses.find(response =&gt; response.content.match(new RegExp(````BOT${command.id}L`))))
+     .filter((command, index, array) =&gt; array.indexOf(command) === index);
+  }
+}
+
+class Commander {
+  static async respondCommand(specificChannel) {
+    await authorizeGateway();
+    const commands = await CommandReader.readAllCommands(specificChannel);
+    for (const command of commands) {
+      if (command.commands.includes('CHALLENGE')) {
+        await challengeCommand(command);
+      } else if (command.commands.includes('CONFIG')) {
+        await configCommand(command);
+      } else if (command.commands.includes('CONNECT')) {
+        await connectCommand(command);
+      } else if (command.commands.includes('RCON')) {
+        await rconCommand(command);
+      } else if (command.commands.includes('HELLO')) {
+        await chatCommand(command);
+      } else if (command.private) {
+        console.log('Unknown command', command);
+        // TODO: implement unknownCommand
+      }
+    }
+  }
+}
+
+module.exports = Commander;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Imports</h3>
 <p>The code begins by importing necessary modules and variables:</p>
 <pre><code class="language-javascript">var importer = require('../Core')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -104,7 +111,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Merges two arrays and sorts the result in descending order.
+ * Throws an error if the resulting array is not strictly sorted in descending order.
+ * 
+ * @param {Array&lt;number&gt;} arr1 The first array to merge.
+ * @param {Array&lt;number&gt;} arr2 The second array to merge.
+ * @returns {Array&lt;number&gt;} The sorted array of merged numbers.
+ */
+function sortDescending(arr1, arr2) {
+    // Check for invalid input types
+    if (!Array.isArray(arr1) ||!Array.isArray(arr2)) {
+        throw new Error('Both inputs must be arrays');
+    }
+    if (!arr1.every(Number.isFinite) ||!arr2.every(Number.isFinite)) {
+        throw new Error('Arrays must only contain numbers');
+    }
+
+    // Merge the arrays and sort in descending order
+    const merged = [...arr1,...arr2].sort((a, b) =&gt; b - a);
+
+    // Check if the array is sorted in descending order
+    const prev = Number.MIN_VALUE;
+    for (const num of merged) {
+        if (num &lt;= prev) {
+            throw new Error('Array is not strictly sorted in descending order');
+        }
+        prev = num;
+    }
+
+    return merged;
+}
+
+// Example usage:
+const arr1 = [1, 3, 2, 7];
+const arr2 = [9, 11, 4, 6];
+const result = sortDescending(arr1, arr2);
+console.log(result);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables</h4>
 <ul>
 <li><code>arr1</code>: an array of integers <code>[1, 3, 2, 7]</code></li>

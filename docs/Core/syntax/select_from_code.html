@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -191,7 +198,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the necessary modules
+const { selectAst, makeXpaths, minXpath, htmlToTree } = require('../Core');
+
+/**
+ * Generates an XPath from a given function expression.
+ * 
+ * @param {string} code - The function expression as a string of JavaScript code.
+ * @returns {string} The minimized XPath expression.
+ * @throws {Error} If no expression can be matched in the code.
+ */
+function exprToXpath(code) {
+    // Create an AST from the code
+    const ast = selectAst([
+        `(*/FunctionDeclaration|*/*/ArrowFunctionExpression)`
+    ], code);
+    
+    if (!ast.length) {
+        throw new Error(`Invalid code: ${htmlToTree(code)}`);
+    }
+    
+    // Extract the function parameters
+    const params = selectAst([
+        `FunctionDeclaration/ParameterList/Parameter`
+    ], ast[0]);
+    
+    if (!params.length) {
+        throw new Error('No function parameters found.');
+    }
+    
+    // Generate XPath expressions for each parameter
+    const xpaths = params.map((param, index) =&gt; {
+        const name = selectAst([`Name`, `Identifier`], param)[0];
+        if (!name) {
+            throw new Error(`No name found for parameter at index ${index}`);
+        }
+        return makeXpaths(name);
+    });
+    
+    // Minimize the XPath expressions based on the function context
+    const minimizedXpaths = xpaths.map(xpath =&gt; minXpath(xpath, selectAst(`BlockStatement`, ast[0])));
+    
+    return minimizedXpaths[0]; // Return the first minimized XPath (if multiple expressions are needed, implement a join operation)
+}
+
+module.exports = { exprToXpath };</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {

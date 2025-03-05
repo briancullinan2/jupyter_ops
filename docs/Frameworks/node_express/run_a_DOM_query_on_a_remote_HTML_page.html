@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary libraries
+import { JSDOM } from 'jsdom';
+import axios from 'axios';
+
+/**
+ * Asynchronously fetches images from the webpage at the given host and port.
+ * @param {string} host - The hostname of the webpage.
+ * @param {number} port - The port number of the webpage.
+ * @param {string} query - The CSS query to select image elements.
+ * @param {function} callback - The callback function with the images and any error.
+ */
+async function fetchImages(host, port, query, callback) {
+  try {
+    // Fetch the webpage using axios
+    const response = await axios.get(`http://${host}:${port}`);
+
+    // Parse the HTML using JSDOM
+    const dom = new JSDOM(response.data);
+    const nodeList = dom.window.document.querySelectorAll(query);
+
+    // Extract the image sources
+    const sources = Array.prototype.slice.call(nodeList).map(i => i.getAttribute('src'));
+
+    // Call the callback function with the images
+    callback(null, sources);
+  } catch (error) {
+    // Call the callback function with the error
+    callback(error);
+  }
+}
+
+// Example usage
+fetchImages('example.com', 80, 'img[src]', (error, images) => {
+  if (error) {
+    // Handle error
+  } else {
+    console.log(images);
+  }
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Initialization</h4>
 <ul>
 <li><code>$.async()</code>: Initializes an asynchronous operation.</li>

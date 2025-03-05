@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { seleniumCell } = require('../Core');
+const $ = require('./utils'); // Assuming $.sendResult and $.sendError are in this file
+
+// Define a function to run Selenium cell
+async function runSeleniumCellCommand(command) {
+  try {
+    // Run Selenium cell command and get result
+    const result = await seleniumCell(command);
+    return result();
+  } catch (error) {
+    // Log or send error
+    $.sendError(error);
+  }
+}
+
+// Run the command and handle result/success/error
+async function main() {
+  try {
+    // Send result to the client
+    const result = await runSeleniumCellCommand('download passwords from google');
+    $.sendResult(result);
+  } catch (error) {
+    // Handle any other errors
+    $.sendError(error);
+  }
+}
+
+// Run the main function
+main();
+
+// TODO: Refactor the code to use a more robust error handling mechanism
+// TODO: Consider adding retry logic for Selenium cell commands</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');

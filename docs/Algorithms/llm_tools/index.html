@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,7 @@
 <p>The code uses Node.js's built-in modules to interact with files and paths, and defines a <code>storeChatHistory</code> function that stores chat history data in a JSON file. This function is then exported as a module for use in other parts of the application.</p>
 <a href="./ask_llm_about_chat_conversations.html">ask llm about chat conversations</a>
 <br /><br />
-<p>The code consists of two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, which interact with a Large Language Model (LLM) to gather information about a conversation and categorize it based on the conversation. Both functions import the LLM prompt function from a separate module, prompt the LLM with a user-defined question, and return the LLM's response after processing it for whitespace, punctuation, and special characters.</p>
+<p>This code defines two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, that utilize a large language model for text analysis and summarization. The functions are designed to work with a <code>create llm session</code> module and are exported as a JavaScript module.</p>
 <a href="./llm_respond_like_a_personality.html">llm respond like a personality</a>
 <br /><br />
 <p>The code imports various modules and functions, defines two functions <code>getChatHistory</code> and <code>askLlamaToRespondLike</code>, and utilizes file system operations to read and write chat log files. The code has some areas for improvement, including inconsistent use of <code>async/await</code>, blocking file reads, and legacy syntax.</p>

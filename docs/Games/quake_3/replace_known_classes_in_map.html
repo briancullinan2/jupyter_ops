@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -193,7 +200,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>replaceClasses</code> that modifies a map file by replacing specific entity classes with predefined alternatives.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+
+const classMapping = {
+  'weapon_chaingun': 'weapon_lightning',
+ 'misc_teleporter': 'trigger_teleport',
+  'weapon_hyperblasters': 'weapon_plasmagun',
+  'weapon_supershotgun': 'weapon_shotgun',
+  'info_teleport_destination': 'target_position',
+  'item_armor1': 'item_armor_combat',
+  'item_armor2': 'item_armor_combat', // Potential duplicate, consider removing
+  'item_armorInv': 'item_armor_body',
+  'item_artifact_envirosuit': 'item_enviro',
+  'item_artifact_invisibility': 'item_invis',
+  'item_artifact_super_damage': 'item_quad',
+  'item_cells': 'ammo_lightning',
+  'item_rockets': 'ammo_rockets',
+  'item_shells': 'ammo_shells',
+  'item_spikes': 'ammo_cells',
+  'weapon_nailgun': 'weapon_plasmagun',
+  'weapon_supernailgun': 'weapon_plasmagun', // Potential duplicate of weapon_nailgun
+  'weapon_supershotgun': 'weapon_shotgun', // Duplicate, consider removing
+  'target_help': 'target_print', // Replaced target_help with target_print
+  'func_door_rotating': 'func_rotating'
+};
+
+function replaceClasses(filePath) {
+  if (typeof filePath ==='string' && fs.existsSync(filePath)) {
+    return fs.readFileSync(filePath, 'utf-8');
+  }
+
+  if (filePath instanceof Buffer) {
+    return filePath.toString('utf-8');
+  }
+
+  const fileContent = filePath;
+
+  // Replace explosions with misc_model
+  fileContent = fileContent.replace(/"classname" "target_explosion"/gi,
+    '"classname" "misc_model"\n "model" "models/objects/r_explode/tris.md2"');
+
+  // Replace tigger_once with multiple wait -1
+  fileContent = fileContent.replace(/"classname" "trigger_once"/gi,
+    '"classname" "trigger_multiple"\n "wait" "-1"');
+
+  // Replace classes
+  Object.keys(classMapping).forEach(key => {
+    fileContent = fileContent.replace(new RegExp('"classname" "' + key + '"', 'gi'),
+      `"classname" "${classMapping[key]}"`);
+  });
+
+  return fileContent;
+}
+
+module.exports = replaceClasses;</code></pre></div><p>This code snippet defines a function <code>replaceClasses</code> that modifies a map file by replacing specific entity classes with predefined alternatives.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
 <li><p><strong><code>classes</code> Object:</strong></p>

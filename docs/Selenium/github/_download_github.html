@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet downloads a ZIP archive from GitHub, extracts its contents, and returns a list of files within the extracted archive. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { spawn } = require('child_process');
+const { promisify } = require('util');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const request = promisify(require('request'));
+
+// Define constants
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const DOWNLOADS_PATH = path.join(PROFILE_PATH, 'Downloads');
+
+// Define a function to unzip a file
+async function unzipFile(filePath) {
+    console.log(`Unzipping ${filePath}`);
+    try {
+        // Use child process to run unzip command
+        await new Promise((resolve, reject) => {
+            const unzipProcess = spawn('unzip', ['-q', filePath]);
+            unzipProcess.on('close', (code) => {
+                if (code === 0) {
+                    resolve();
+                } else {
+                    reject(new Error(`Unzip failed with code ${code}`));
+                }
+            });
+            unzipProcess.on('error', (err) => {
+                reject(err);
+            });
+        });
+    } catch (err) {
+        throw new Error(`Failed to unzip file: ${err.message}`);
+    }
+}
+
+// Define a function to download and unzip a GitHub repository
+async function getGithub(url) {
+    console.log(`Downloading and unzipping GitHub repository from ${url}`);
+    try {
+        // Download the repository
+        const response = await request({
+            url,
+            encoding: 'binary',
+        });
+        const filePath = path.join(DOWNLOADS_PATH, path.basename(url));
+        fs.writeFileSync(filePath, response.body, 'binary');
+
+        // Unzip the repository
+        await unzipFile(filePath);
+
+        // Get the list of files in the repository
+        return glob.sync(path.basename(url), { cwd: DOWNLOADS_PATH });
+    } catch (err) {
+        throw new Error(`Failed to download and unzip GitHub repository: ${err.message}`);
+    }
+}
+
+// Export the getGithub function
+module.exports = getGithub;
+
+// Usage example
+getGithub('https://github.com/github/gitignore/archive/master.zip')
+   .then((files) => {
+        console.log(`Files downloaded and extracted: ${files.join(', ')}`);
+    })
+   .catch((err) => {
+        console.error(`Error downloading and extracting files: ${err.message}`);
+    });</code></pre></div><p>This code snippet downloads a ZIP archive from GitHub, extracts its contents, and returns a list of files within the extracted archive. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
 <ul>
 <li><code>importer</code>: A custom module (likely providing utility functions and potentially child process management).</li>

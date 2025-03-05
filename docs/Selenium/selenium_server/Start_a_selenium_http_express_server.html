@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -171,7 +178,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a basic REST API server using Express.js to interact with a Selenium WebDriver instance running on a separate server.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const express = require('express');
+const bodyParser = require('body-parser');
+const http = require('http');
+const io = require('socket.io-client');
+const importer = require('../Core');
+
+const app = express();
+const server = http.createServer(app);
+const ioClient = io('https://localhost:8000', {
+  secure: true,
+  rejectUnauthorized: false,
+});
+
+// Handle results from the server
+ioClient.on('result', (name,...args) =&gt; {
+  if (name === 'BrowserService.prototype.chrome') {
+    if (currentCallback) {
+      currentCallback.apply(this, args);
+    }
+  }
+});
+
+// Create a promise for Chrome calls
+function promisifyChrome(...args) {
+  return new Promise((resolve, reject) =&gt; {
+    console.log('call'+ JSON.stringify(args).substr(0, 200));
+    if (currentCallback) {
+      throw new Error('Callback already defined.');
+    }
+
+    const cmdTimeout = setTimeout(() =&gt; {
+      currentCallback = null;
+      reject(new Error('Command took too long to respond.', 3000));
+    }, 9000);
+
+    currentCallback = (err, data) =&gt; {
+      currentCallback = null;
+      clearTimeout(cmdTimeout);
+      if (err!== null) {
+        return reject(err);
+      }
+      return resolve(JSON.parse(data));
+    };
+
+    ioClient.emit.apply(ioClient, [
+      'call',
+      'BrowserService.prototype.chrome',
+     ...args,
+    ]);
+  });
+}
+
+// Handle responses
+function response(res, promise) {
+  return promise.then((r) =&gt; {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(r));
+  });
+}
+
+let tabId = '';
+
+// Create a selenium server
+async function seleniumServer() {
+  try {
+    // Import the selenium server cells
+    const cells = await importer.getCells(__dirname + '/../Selenium/selenium server.ipynb');
+    const router = cells.slice(1).reduce((acc, cell) =&gt; {
+      const mod = importer.runInNewContext(cell.source.join(''), {
+        __filename: __dirname + '/../Selenium/selenium server.ipynb',
+        promisifyChrome,
+        getTab: () =&gt; tabId,
+        setTab: (id) =&gt; (tabId = id),
+        response,
+      }, {}, false);
+
+      if (typeof mod!== 'undefined' &amp;&amp; typeof mod.router!== 'undefined') {
+        acc.use('/wd/hub', mod.router);
+      }
+
+      return acc;
+    }, app);
+
+    // Start the server
+    server.listen(4444);
+
+    return router;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = seleniumServer;</code></pre></div><p>This code sets up a basic REST API server using Express.js to interact with a Selenium WebDriver instance running on a separate server.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

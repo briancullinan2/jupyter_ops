@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -182,7 +189,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules and functions
+const { selectAst } = require('../Core').import('select code tree');
+
+/**
+ * Extracts exported functions and variables from the given code.
+ *
+ * @param {string} code The JavaScript code to extract exports from.
+ * @returns {string[]} An array of exported functions and variables.
+ */
+function getExports(code) {
+  // Extract exports using selectAst function
+  const exports = selectAst([
+    `//AssignmentExpression/Identifier[@name="exports"]`,
+    `././@name`,
+  ], code).map((e) =&gt; e.name);
+
+  // Extract functions using selectAst function
+  const functions = selectAst([
+    `//FunctionDeclaration/Identifier[@parent-attr="id"]`,
+    `././@name`,
+  ], code).map((e) =&gt; e.name);
+  const asyncFunctions = selectAst([
+    `//AsyncFunctionDeclaration/Identifier[@parent-attr="id"]`,
+    `././@name`,
+  ], code).map((e) =&gt; e.name);
+  const defaultExports = selectAst([
+    `//ExportDefaultDeclaration/Identifier[@parent-attr="declaration"]`,
+    `././@name`,
+  ], code).map((e) =&gt; e.name);
+
+  // Combine extracted exports, filter out unnecessary exports, and remove duplicates
+  return [...exports,...functions,...asyncFunctions,...defaultExports]
+   .filter((e) =&gt; e!== 'exports' &amp;&amp; e!=='require' &amp;&amp; e!=='module')
+   .filter((e, i, arr) =&gt; arr.indexOf(e) === i);
+}
+
+// Export the getExports function
+module.exports = getExports;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {selectAst} = importer.import('select code tree')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -89,7 +96,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet updates the package lists and installs several packages on a Debian-based system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Create directory for apt cache
+mkdir -p /var/lib/apt/lists/partial
+
+# Update apt cache
+apt-get update -qq
+
+# Install required packages
+apt-get install -y --fix-missing \
+  git curl wget zip unzip vim dos2unix \
+  g++ python3 net-tools make \
+  websockify novnc
+
+# Clean up apt cache
+apt-get autoremove -y
+apt-get clean -y</code></pre></div><p>This code snippet updates the package lists and installs several packages on a Debian-based system.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>mkdir /var/lib/apt/lists/partial</code>:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -86,7 +93,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet imports the <code>exec</code> function from Node.js's <code>child_process</code> module.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Child Process Wrapper
+ * @module childProcessWrapper
+ */
+
+const childProcess = require('child_process');
+
+/**
+ * Execute a shell command and get the result
+ * @param {string} command - The command to execute
+ * @param {string} [encoding='utf8'] - Encoding to use for the result
+ * @param {function} callback - Callback function to handle the result
+ */
+function executeCommand(command, encoding = 'utf8', callback) {
+  childProcess.exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Command failed: ${error.message}`);
+      return callback(error);
+    }
+    console.log(`Command output: ${stdout}`);
+    callback(null, stdout);
+  });
+}
+
+/**
+ * Execute a shell command and return a promise
+ * @param {string} command - The command to execute
+ * @return {Promise<string>} - A promise that resolves with the command output
+ */
+function executeCommandPromise(command) {
+  return new Promise((resolve, reject) => {
+    childProcess.exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Command failed: ${error.message}`);
+        reject(error);
+      } else {
+        resolve(stdout);
+      }
+    });
+  });
+}
+
+// Example usage:
+executeCommandPromise('echo "Hello, World!"').then((result) => {
+  console.log(`Result: ${result}`);
+});</code></pre></div><p>This code snippet imports the <code>exec</code> function from Node.js's <code>child_process</code> module.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>require('child_process')</code>:</strong> This line imports the <code>child_process</code> module, which provides utilities for interacting with child processes.</p></li>

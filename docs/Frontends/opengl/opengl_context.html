@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -150,7 +157,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="cpp"><code>#include <iostream>
+#include <SDL.h>
+
+// Forward declaration of SDL window function
+SDL_Window* createWindow();
+
+int main() {
+    int windowId = createWindow();
+    if (windowId!= 0) {
+        std::cout << "Window created successfully with ID: " << windowId << std::endl;
+    } else {
+        std::cout << "Failed to create window." << std::endl;
+    }
+
+    return 0;
+}
+
+// Function to create an SDL window with OpenGL context
+SDL_Window* createWindow() {
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        std::cerr << "SDL failed initialization. Error: " << SDL_GetError() << std::endl;
+        return nullptr;
+    }
+
+    // Create an SDL window with OpenGL context
+    SDL_Window* window = SDL_CreateWindow("C++ SDL2 Window | OpenGL",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800,
+        SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+
+    if (!window) {
+        std::cerr << "Failed to create window. Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        return nullptr;
+    }
+
+    // Create an OpenGL context
+    SDL_GLContext context = SDL_GL_CreateContext(window);
+
+    if (!context) {
+        std::cerr << "Failed to create OpenGL context. Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return nullptr;
+    }
+
+    // Event loop
+    bool running = true;
+    while (running) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = false;
+            }
+        }
+
+        SDL_GL_SwapWindow(window);
+    }
+
+    // Clean up
+    SDL_GL_DeleteContext(context);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+
+    // Return the window ID
+    return SDL_GetWindowID(window);
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Header Includes</h3>
 <ul>
 <li><code>#include &lt;iostream&gt;</code>: Includes the iostream library for input/output operations.</li>

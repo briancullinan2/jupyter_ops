@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -208,7 +215,85 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const { src, dest, series, watch, parallel, task } = require('gulp');
+const replace = require('gulp-replace');
+const { applyMock } = require('./utils');
+
+function getRelativePath(project) {
+  return (relativePath) =&gt; {
+    return path.join(project, relativePath);
+  };
+}
+
+function applyUniversal(project) {
+  const projectRelative = getRelativePath(project);
+  const authFile = projectRelative('client/app/auth/auth.service.ts');
+  const browserModuleFile = projectRelative('client/app/app.browser.module.ts');
+  const serverModuleFile = projectRelative('server/app/app.server.module.ts');
+
+  task('replace package.json', () =&gt; {
+    return src('package.json', { cwd: project })
+     .pipe(replace('name', 'New App Name'))
+     .pipe(replace('version', '1.0.0'))
+     .pipe(dest(project));
+  });
+
+  task('apply auth', () =&gt; {
+    return src(authFile, { cwd: project })
+     .pipe(replace(/import { AuthService } from '/, `import { AuthService } from '${projectRelative('client/app/auth/auth.service.ts')}';`))
+     .pipe(gulp.dest(project));
+  });
+
+  task('apply server module', () =&gt; {
+    return src(serverModuleFile, { cwd: project })
+     .pipe(replace(/import { AppComponent } from '\.\/app\.component/', `import { AppComponent } from '${projectRelative('client/app/app.component.ts')}';`))
+     .pipe(replace(/providers:\s*\[/, `
+        providers: [
+          AuthService,
+          LogService,
+          AuthManager,
+          JwtHelper,
+          MailgunValidatorService,
+        ],`))
+     .pipe(replace(/MockSocketProvider,/, `MockSocketProvider, ${applyMock(AuthService, 'AuthService')}, ${applyMock(LogService, 'LogService')}, ${applyMock(AuthManager, 'AuthManager')}, ${applyMock(JwtHelper, 'JwtHelper')}, ${applyMock(MailgunValidatorService, 'MailgunValidatorService')} `))
+     .pipe(gulp.dest(project));
+  });
+
+  task('apply browser module', () =&gt; {
+    return src(browserModuleFile, { cwd: project })
+     .pipe(replace(/import { AppComponent } from '\.\/app\.component/', `import { AppComponent } from '${projectRelative('client/app/app.component.ts')}';`))
+     .pipe(replace(/providers:\s*\[/, `
+        providers: [
+          AuthService,
+          LogService,
+          AuthManager,
+          JwtHelper,
+          MailgunValidatorService,
+        ],`))
+     .pipe(replace(/MockSocketProvider,/, `MockSocketProvider, ${applyMock(AuthService, 'AuthService')}, ${applyMock(LogService, 'LogService')}, ${applyMock(AuthManager, 'AuthManager')}, ${applyMock(JwtHelper, 'JwtHelper')}, ${applyMock(MailgunValidatorService, 'MailgunValidatorService')} `))
+     .pipe(gulp.dest(project));
+  });
+
+  task('apply app router', () =&gt; {
+    return src(projectRelative('client/app/app.routes.ts'), { cwd: project })
+     .pipe(replace(/children: \[/, `children: [
+        {
+          path: 'auth',
+          loadChildren: './auth/auth.module#AuthModule'
+        },`))
+     .pipe(gulp.dest(project));
+  });
+
+  task('apply universal', series('apply auth', 'apply server module', 'apply browser module', 'apply app router'));
+
+  return series('apply universal');
+}
+
+module.exports = applyUniversal;</code></pre></div><p><strong>Overview of the Code</strong></p>
 <p>This code is a Gulp script written in JavaScript. It appears to be a build script for an Angular project that uses the Gulp task runner. The script has several tasks that perform various operations such as:</p>
 <ul>
 <li>Replacing code in JavaScript files</li>

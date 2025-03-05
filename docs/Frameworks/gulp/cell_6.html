@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Core } = require('../Core'); // Import Core module and assign it an alias for clarity
+
+const { searchNotebooks } = Core.import('search notebooks using gulp'); // Destructure the imported function for better readability
+
+const searchRegexp = 'permissions'; // Define the search regex as a constant for easier modification and reusability
+
+// Use async/await syntax for better readability and error handling
+async function searchNotebooksAsync() {
+  try {
+    // Use the searchNotebooks function to retrieve the search results
+    const results = await searchNotebooks(searchRegexp);
+    
+    // Process the results and display them in markdown format
+    const markdown = results.map(c => c.code).join('\n') + '\n\n-------------\n';
+    $.mime({'text/markdown': `# Search Results\n\n${markdown}`});
+  } catch (error) {
+    // Catch and display any errors that occur during the search or processing
+    $.sendError(error);
+  }
+}
+
+searchNotebooksAsync(); // Call the async function to start the search</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var searchNotebooks = importer.import('search notebooks using gulp');

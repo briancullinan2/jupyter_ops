@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+interface BrowserConfig {
+  url: string;
+  zoom: number;
+  width: number;
+  height?: number;
+}
+
+class Browser {
+  private url: string;
+  private config: BrowserConfig;
+
+  constructor(url: string, config: BrowserConfig = {}) {
+    this.url = url;
+    this.config = {...config, height: config['crop-h'] };
+  }
+
+  static openBrowser(config: BrowserConfig): void {
+    // TODO: Implement browser opening logic
+    console.log(`Opening browser with config: ${JSON.stringify(config)}`);
+  }
+
+  printBrowserCommand(): void {
+    const { url, config } = this;
+    const { zoom, width, height } = config;
+
+    // Ensure zoom is within valid range
+    const validZoom = Math.min(Math.max(zoom, 0.1), 2);
+
+    console.log(`$TS.screen('${url}', { zoom: ${validZoom}, width: ${width}, height: ${height} })`);
+  }
+}
+
+// Usage
+const browserConfig: BrowserConfig = {
+  url: 'act.com/au/products',
+  zoom: 0.5,
+  width: 680,
+  'crop-h': 400,
+};
+const browser = new Browser('act.com/au/products', browserConfig);
+browser.printBrowserCommand();
+
+Browser.openBrowser(browserConfig);</code></pre></div><h3>Code Breakdown</h3>
 <h4><code>$TS.screen()</code> Function</h4>
 <ul>
 <li>Opens a new screen in the TS (TunnelBear) application.</li>

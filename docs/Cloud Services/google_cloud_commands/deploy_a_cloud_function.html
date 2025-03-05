@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -90,7 +97,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet deploys a Node.js function to Google Cloud Functions.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set function name from the first command line argument
+FUNCTION_NAME=$1
+
+# Verify function name is provided
+if [ -z "$FUNCTION_NAME" ]; then
+  echo "Error: Function name is required"
+  exit 1
+fi
+
+# Set source directory to the current working directory
+SOURCE_DIR=./.functions
+
+# Deployment command
+gcloud functions deploy "$FUNCTION_NAME" \
+  --entry-point handler \
+  --runtime nodejs8 \
+  --trigger-http \
+  --source "$SOURCE_DIR"</code></pre></div><p>This code snippet deploys a Node.js function to Google Cloud Functions.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Command:</strong></p>

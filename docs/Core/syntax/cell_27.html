@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -165,7 +172,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('../Core');
+const { exprToXpath } = importer.import('select expression');
+
+// Ensure the $ variable is defined
+if (typeof $!== 'undefined') {
+    // Define a function to generate the XPath expression
+    const generateXpath = () => {
+        // Use the exprToXpath function to generate the XPath expression
+        return exprToXpath();
+    };
+
+    // Generate and log the XPath expression
+    const xpath = generateXpath();
+    console.log(xpath);
+    
+    // TODO: Remove this comment and implement the replaceCore function
+    // replaceCore(xpath);
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables and Imports</h4>
 <ul>
 <li><code>importer</code>: An object imported from the <code>../Core</code> module.</li>

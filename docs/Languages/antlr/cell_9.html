@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -175,7 +182,85 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the necessary modules from the Core library
+const { core } = require('../Core');
+
+// Import the selectAst and htmlToTree functions
+const { selectAst } = core.import('select code tree');
+const { htmlToTree } = core.import('html to tree');
+
+// Select the AST node by the given query and code string
+const root = selectAst('//Program', `
+  const val = ''
+`);
+
+// Parse the HTML tree from the root AST node
+const htmlTree = htmlToTree(root);
+
+// Log the first element in the HTML tree's body
+console.log(htmlTree.body[0]);
+
+/**
+ * Example of the expected output:
+ * {
+ *   type: 'FunctionDeclaration',
+ *   id: { type: 'Identifier', name:'myfunc', range: [ 10, 16 ] },
+ *   params: [
+ *     { type: 'Identifier', name: 'ptr', range: [Array] },
+ *     { type: 'Identifier', name: 'val', range: [Array] }
+ *   ],
+ *   body: { type: 'BlockStatement', body: [], range: [ 27, 31 ] },
+ *   generator: false,
+ *   expression: false,
+ *   async: false,
+ *   range: [ 1, 31 ]
+ * }
+ * {
+ *   type: 'Program',
+ *   body: [
+ *     {
+ *       type: 'VariableDeclaration',
+ *       declarations: [Array],
+ *       kind: 'var',
+ *       range: [Array]
+ *     },
+ *     {
+ *       type: 'VariableDeclaration',
+ *       declarations: [Array],
+ *       kind: 'var',
+ *       range: [Array]
+ *     },
+ *   ],
+ *   sourcetype:'script',
+ *   range: [ 0, 2317 ],
+ *   comments: [
+ *     {
+ *       type: 'Line',
+ *       value:'TODO: get parser by language lookup',
+ *       range: [Array]
+ *     },
+ *   ],
+ *   tokens: [
+ *     { type: 'Keyword', value: 'var', range: [Array] },
+ *     { type: 'Identifier', value: 'fs', range: [Array] },
+ *     { type: 'Punctuator', value: '=', range: [Array] },
+ *   ]
+ * }
+ * {
+ *   type: 'VariableDeclaration',
+ *   declarations: [
+ *     {
+ *       type: 'VariableDeclarator',
+ *       id: [Object],
+ *       init: [Object],
+ *       range: [Array]
+ *     }
+ *   ],
+ *   kind: 'const',
+ *   range: [ 1, 15 ]
+ * }
+ */</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing modules from the <code>../Core</code> directory using the <code>require</code> function.</p>
 <pre><code class="language-javascript">var importer = require('../Core')

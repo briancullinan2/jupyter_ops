@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,10 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+from googleapiclient.discovery import build
+from google.oauth2 import service_account</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
 <p>The code begins by importing the necessary libraries:</p>
 <ul>

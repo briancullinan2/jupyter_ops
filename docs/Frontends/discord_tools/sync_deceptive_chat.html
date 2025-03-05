@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -220,7 +227,141 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Breakdown of the Code</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand,
+  interactionsCommands,
+} = importer.import('discord api');
+const {
+  triggerTyping,
+  createMessage,
+  updateInteraction,
+} = importer.import('discord api');
+const { DEFAULT_APPLICATION } = importer.import('discord configuration');
+const argueLlama = importer.import('argue with multiple llms');
+
+const ALL_COMMANDS = ['deceive', 'argue'];
+
+// Mapping of functions to handle interactions
+const interactions = {
+  'deceive': doDeceive,
+  'argue': doArgument,
+  'promptMention': doMention,
+  'promptPrivate': doPrivate,
+};
+
+// Function to sync bot commands
+async function syncTools(guildId = null) {
+  // Get existing commands within the guild
+  const commandResult = await getCommands(guildId);
+  const commands = commandResult.map((command) =&gt; command.name);
+
+  // Define command definitions
+  const commandDefs = [
+    {
+      name: 'deceive',
+      description: 'Deceptive chat using LLM',
+      options: [
+        {
+          name: 'text',
+          description: 'Text to prompt deceptive LLM with',
+          required: true,
+          type: 3,
+        },
+      ],
+    },
+    {
+      name: 'argue',
+      description: 'Argumentative chat between LLMs',
+      options: [
+        {
+          name: 'text',
+          description: 'Text to prompt argumentative LLM with',
+          required: true,
+          type: 3,
+        },
+      ],
+    },
+  ];
+
+  // Register or update commands
+  for (const cmdDef of commandDefs) {
+    if (!commands.includes(cmdDef.name)) {
+      await registerCommand(cmdDef, null, guildId);
+    } else {
+      const cmd = commandResult.find((c) =&gt; c.name === cmdDef.name);
+      if (cmdDef.name!== cmd.name || cmdDef.description!== cmd.description) {
+        await updateCommand(cmdDef, null, cmd.id, guildId);
+      }
+    }
+  }
+
+  // Bind functions to interaction commands
+  for (const [name, func] of Object.entries(interactions)) {
+    interactionsCommands[name] = func;
+  }
+
+  // Remove unwanted commands
+  const toRemove = commandResult.filter((c) =&gt;!ALL_COMMANDS.includes(c.name));
+  for (const cmd of toRemove) {
+    await deleteCommand(cmd.id, guildId);
+  }
+
+  return await getCommands();
+}
+
+// Function to deceive the user
+async function doDeceive(interaction) {
+  const llmDeceive = await importer.import('llm deceive');
+  await triggerTyping(interaction.channel_id);
+  const response = await llmDeceive('Give the most wrong or incorrect response to, be as deceptive as possible:\n' + interaction.data.options[0].value);
+  return await updateInteraction(response.substring(0, 1800), interaction.id, interaction.token);
+}
+
+// Function to start an argument
+async function doArgument(interaction) {
+  let count = 0;
+  return await argueLlama(interaction.data.options[0].value, async (prompt, answer) =&gt; {
+    if (count === 0) {
+      // Don't repost original prompt
+      await updateInteraction(answer.substring(0, 1800), interaction.id, interaction.token);
+    } else {
+      await createMessage(answer.substring(0, 1800), interaction.channel_id);
+    }
+    count++;
+  });
+}
+
+// Function to handle mention
+async function doMention(interaction) {
+  const llmDeceive = await importer.import('llm deceive');
+  await triggerTyping(interaction.channel_id);
+  const response = await llmDeceive(interaction.content.replace('@' + DEFAULT_APPLICATION) + '\nBe as deceptive as possible and make it short.');
+  return await createMessage({
+    content: response.substring(0, 1800),
+    message_reference: {
+      message_id: interaction.id,
+    },
+  }, interaction.channel_id);
+}
+
+// Function to handle private message
+async function doPrivate(interaction) {
+  const llmDeceive = await importer.import('llm deceive');
+  await triggerTyping(interaction.channel_id);
+  const response = await llmDeceive('Deceive me with the opposite of:\n' + interaction.content);
+  return await createMessage({
+    content: response.substring(0, 1800),
+    message_reference: {
+      message_id: interaction.id,
+    },
+  }, interaction.channel_id);
+}
+
+module.exports = syncTools;</code></pre></div><h3>Breakdown of the Code</h3>
 <h4>Importing Dependencies</h4>
 <p>The code starts by importing various dependencies using the <code>importer.import()</code> function. The imported modules are:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -189,7 +196,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>convertMap</code> that modifies Quake 3 map files.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+
+// Import modules lazily to avoid loading them when not used
+const modules = {
+  replaceClasses: importer.import('replace known classes in map'),
+  replaceEntities: importer.import('replace entities in map'),
+  replaceTextures: importer.import('replace common textures in map'),
+  scaleMap: importer.import('scale quake map'),
+  addSkybox: importer.import('add skybox to map'),
+  hints: importer.import('draw hints in map'),
+};
+
+function convertMap(fileName) {
+  // Check if file exists
+  if (typeof fileName!=='string' ||!fs.existsSync(fileName)) {
+    throw new Error(`File does not exist: ${fileName}`);
+  }
+
+  // Read file content
+  let file = fs.readFileSync(fileName, 'utf-8');
+
+  // Replace entities
+  file = modules.replaceEntities(file);
+
+  // Replace classes
+  file = modules.replaceClasses(file);
+
+  // Replace textures
+  file = modules.replaceTextures(file);
+
+  // Scale map
+  file = modules.scaleMap(file, 1.15);
+
+  // Note: addSkybox and drawHints are not implemented yet
+  // To-do: implement addSkybox and drawHints
+  // const newFile = addSkybox(file);
+  // const hints = modules.hints;
+
+  // Write new map file
+  const newFile = fileName.substr(0, fileName.length - path.extname(fileName).length) + '.map';
+  console.log(`Writing ${newFile}`);
+  fs.writeFileSync(newFile, file);
+}
+
+module.exports = convertMap;</code></pre></div><p>This code snippet defines a function <code>convertMap</code> that modifies Quake 3 map files.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

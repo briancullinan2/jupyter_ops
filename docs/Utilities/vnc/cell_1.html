@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define constants for the VNC server
+VNC_SERVER=localhost
+VNC_PORT=5900
+VNC_PROTOCOL=\
+  "$(which novnc)"
+
+# Set default flags for the novnc command
+DEFAULT_FLAGS="--vnc"
+
+# Define the main function
+main() {
+  # Get the VNC connection parameters from the environment
+  local vnc_server=${VNC_SERVER:-localhost}
+  local vnc_port=${VNC_PORT:-5900}
+
+  # Get the novnc command
+  local novnc_cmd="${VNC_PROTOCOL:-$(which novnc)}"
+
+  # Append the default flags to the novnc command
+  local flags="${DEFAULT_FLAGS#--}"
+
+  # Construct the full novnc command
+  local full_cmd="${novnc_cmd} ${flags} localhost:${vnc_port}"
+
+  # Print the full command
+  echo "${full_cmd}"
+
+  # Execute the full command
+  # TODO: Implement error handling for the novnc command
+  sh -c "${full_cmd}"
+}
+
+# Call the main function
+main "$@"</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a shell command that executes a script.</p>
 <ul>
 <li><code>../novnc/utils/launch.sh</code>: This is the path to a shell script named <code>launch.sh</code> located in the <code>utils</code> directory, two levels up from the current directory (<code>../..</code>).</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -115,7 +122,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This JavaScript code defines a function called <code>filterDistant</code> that filters a list of events based on a specified time threshold.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Filters events by removing distant ones.
+ *
+ * @param {Object[]} events - Array of events with start and event properties.
+ * @param {number} [days=28] - Number of days within which an event is considered recent.
+ * @returns {Object[]} Contributing events, sorted by their date.
+ */
+function filterDistant(events, days = 28) {
+    // Check if the input array is empty or has only one element
+    if (events.length &lt; 2) {
+        return events.length === 0? [] : events;
+    }
+
+    // Sort events by their start date in ascending order
+    const sortedEvents = events.slice().sort((a, b) =&gt; a.start - b.start);
+
+    // Initialize an array to store contributing events
+    const contributing = [];
+
+    // Iterate over the sorted events
+    for (let i = 1; i &lt; sortedEvents.length; i++) {
+        // Calculate the difference in days between the current event and the previous one
+        const diff = Math.round((sortedEvents[i].start.getTime() - sortedEvents[i - 1].start.getTime()) / (1000 * 60 * 60 * 24));
+
+        // Check if the difference is within the specified range
+        if (diff &gt; 0 &amp;&amp; diff &lt;= days) {
+            contributing.push({
+                days: diff,
+                start: sortedEvents[i].start,
+                event: sortedEvents[i].event,
+                index: contributing.length
+            });
+        }
+    }
+
+    return contributing;
+}
+
+module.exports = filterDistant;</code></pre></div><p>This JavaScript code defines a function called <code>filterDistant</code> that filters a list of events based on a specified time threshold.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

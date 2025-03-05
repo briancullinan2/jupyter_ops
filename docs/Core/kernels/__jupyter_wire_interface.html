@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -184,7 +191,239 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { importCore, MetaKernelInterface } = require('../Core');
+
+/**
+ * WireKernelInterface is an extension of MetaKernelInterface, 
+ * implementing additional requests and replies required by the meta kernel.
+ */
+const WireKernelInterface = {
+   ...MetaKernelInterface,
+
+    /**
+     * Execute a request.
+     * 
+     * @description This function is required by the meta kernel.
+     */
+    execute_request: () =&gt; {},
+
+    /**
+     * Inspect a request.
+     * 
+     * @description This function is required by the meta kernel.
+     */
+    inspect_request: () =&gt; {},
+
+    /**
+     * Complete a request.
+     * 
+     * @description This function is required by the meta kernel.
+     */
+    complete_request: () =&gt; {},
+
+    /**
+     * Shutdown a request.
+     * 
+     * @description This function is required by the meta kernel.
+     */
+    shutdown_request: () =&gt; {},
+
+    /**
+     * Get the history of a request.
+     * 
+     * @description This function is required by the meta kernel.
+     */
+    history_request: () =&gt; {},
+
+    /**
+     * Check if a request is complete.
+     * 
+     * @description This function is required by the meta kernel.
+     */
+    is_complete_request: () =&gt; {},
+
+    /**
+     * Get the kernel information.
+     * 
+     * @description This function is optional, but may be required by the meta kernel.
+     */
+    kernel_info_request: () =&gt; {},
+
+    /**
+     * Handle an interrupt request.
+     * 
+     * @description This function is optional, but may be required by the meta kernel.
+     */
+    interrupt_request: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle an input request.
+     * 
+     * @description This function is optional, but may be required by the meta kernel.
+     */
+    input_request: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle a connect request.
+     * 
+     * @description This function is optional, but may be required by the meta kernel.
+     */
+    connect_request: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Get the communication information.
+     * 
+     * @description This function is optional, but may be required by the meta kernel.
+     */
+    comm_info_request: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    // Custom functions for manipulating replies
+    /**
+     * Execute a reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    execute_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+    
+    /**
+     * Inspect a reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    inspect_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Complete a reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    complete_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Shutdown a reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    shutdown_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Get the history of a reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    history_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Check if a reply is complete.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    is_complete_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Get the kernel information reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    kernel_info_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle a connect reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    connect_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle a communication information reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    comm_info_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle an interrupt reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    interrupt_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle an input reply.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    input_reply: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    // Extra protocol methods for intercepting messages
+    /**
+     * Display data.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    display_data: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Update display data.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    update_display_data: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Execute input.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    execute_input: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Execute result.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    execute_result: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle an error.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    error: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Get the status.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    status: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Clear output.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    clear_output: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle a communication message.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    comm_msg: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+
+    /**
+     * Handle a communication close.
+     * 
+     * @description This function is optional, but may be used by the meta kernel.
+     */
+    comm_close: ([/* args */] = void 0, callback = () =&gt; {}) =&gt; callback(),
+};
+
+module.exports = WireKernelInterface;
+```</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var metaKernelInterface = importer.import('meta kernel interface');

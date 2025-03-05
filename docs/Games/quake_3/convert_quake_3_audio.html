@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet converts audio files in a Quake 3 game directory to the Opus format.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { glob, mkdirpSync } = require('importer')('../Core')
+const execCmd = require('spawn-child-process')
+const { chext, chroot } = require('changing-file-names')
+const { audioTypes } = require('quake-3-file-whitelist')
+
+/**
+ * Converts audio files in a given directory to opus format.
+ * 
+ * @param {string} root - The root directory to scan for audio files.
+ * @returns {Promise<string[]>} A list of paths to the converted audio files.
+ */
+async function convertAudio(root) {
+  // Define the output directory with a unique suffix
+  const output = `${path.dirname(root)}/ converted`;
+
+  // Get a list of audio files to convert
+  const files = await glob(audioTypes.map(a => `**/*.${a}`), root);
+
+  // Convert each audio file
+  const result = await Promise.all(files.map(async (file) => {
+    // Create the output file path
+    const outFile = chroot(chext(file, '.opus'), root, output);
+
+    // Create the output directory if it doesn't exist
+    await mkdirpSync(path.dirname(outFile));
+
+    // Run the opusenc command to convert the file
+    await execCmd(`opusenc --bitrate 24 --vbr "${file}" "${outFile}"`, { quiet: false });
+
+    // Return the path to the converted file
+    return outFile;
+  }));
+
+  return result;
+}
+
+module.exports = convertAudio;</code></pre></div><p>This code snippet converts audio files in a Quake 3 game directory to the Opus format.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

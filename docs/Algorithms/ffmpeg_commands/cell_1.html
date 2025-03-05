@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -83,7 +90,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Command Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code># Define video and audio input URLs
+VIDEO_URL="http://192.168.4.22:8080/video"
+AUDIO_URL="http://192.168.4.22:8080/audio.wav"
+
+# Define output stream URL
+STREAM_URL="rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb"
+
+# Define FFmpeg options
+VIDEO_OPTIONS="-c:v libx264 -preset ultrafast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 50"
+AUDIO_OPTIONS="-c:a aac -b:a 128k -ar 44100"
+
+# Construct FFmpeg command
+FFMPEG_CMD="ffmpeg -i ${VIDEO_URL} -i ${AUDIO_URL} ${VIDEO_OPTIONS} ${AUDIO_OPTIONS} -f flv ${STREAM_URL}"
+
+# Execute FFmpeg command
+echo "${FFMPEG_CMD}"
+# ffmpeg "${FFMPEG_CMD}"
+
+# TODO: Implement real-time video streaming using FFmpeg</code></pre></div><h3>Command Breakdown</h3>
 <h4>FFmpeg Command</h4>
 <p><code>ffmpeg -i http://192.168.4.22:8080/video -i http://192.168.4.22:8080/audio.wav -c:v libx264 -preset ultrafast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 50 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://a.rtmp.youtube.com/live2/dvqv-7eyf-72d5-vaw7-dvsb</code></p>
 <h3>Options and Parameters</h3>

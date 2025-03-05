@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// constants
+const DEFAULT_ZOOM = 0.5;
+const DEFAULT_WIDTH = 680;
+const DEFAULT_HEIGHT = 400;
+
+// interface for the parameters
+interface BrowserWindowOptions {
+  zoom?: number;
+  width?: number;
+  height?: number;
+}
+
+// function to open the browser window
+function openBrowserWindow(url: string, options: BrowserWindowOptions = {}): void {
+  // merge default options with provided options
+  const mergedOptions = { zoom: DEFAULT_ZOOM, width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT,...options };
+
+  // validate options
+  if (mergedOptions.zoom < 0 || mergedOptions.zoom > 1) {
+    throw new Error('Zoom must be between 0 and 1');
+  }
+  if (mergedOptions.width <= 0) {
+    throw new Error('Width must be a positive number');
+  }
+  if (mergedOptions.height <= 0) {
+    throw new Error('Height must be a positive number');
+  }
+
+  // open the browser window
+  TS.screen(url, {
+    zoom: mergedOptions.zoom,
+    width: mergedOptions.width,
+    'crop-h': mergedOptions.height,
+  });
+}
+
+// example usage
+openBrowserWindow('act.com/nl-nl/producten/act-premium');</code></pre></div><h3>Code Breakdown</h3>
 <h4>Purpose</h4>
 <p>The code opens a web page in a new tab or window using the <code>TS.screen</code> function.</p>
 <h4>Parameters</h4>

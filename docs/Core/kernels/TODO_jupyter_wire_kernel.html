@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -184,7 +191,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { importFunctions, importModules } = require('../Core');
+const {
+  setupSockets,
+  parseMessage,
+  collapseMessage,
+} = importModules('decode encode ipython zmq protocol');
+const {
+  nativeMetaKernel,
+  metaKernelInterface,
+} = importModules('jupyter meta kernel');
+const processMetaKernel = importModules('process meta kernel');
+const wireMetaKernel = importModules('wire meta kernel');
+
+// Define a function to add a callback to an existing function
+/**
+ * Adds a callback to an existing function.
+ * @param {Function} og The original function.
+ * @param {Function} cb The callback function.
+ * @returns {Function} A new function that calls the original function with the given callback.
+ */
+function addCB(og, cb) {
+  return (args) =&gt; cb(og.apply(null, args));
+}
+
+// Define the wire kernel function
+/**
+ * Wires a Jupyter kernel using the provided interface and protocols.
+ * @param {Object} kernel The kernel to wire.
+ * @returns {Object} A new kernel instance.
+ */
+function wireKernel(kernel) {
+  console.log('Starting wire kernel');
+  console.log(kernel.kernel_info);
+  console.log(processMetaKernel.kernel_info);
+
+  // Create a new kernel instance with the wire kernel interface
+  const wireKernelInterface = metaKernelInterface;
+  const wire_kernel = addCB(kernel, extend(wireKernelInterface));
+
+  // Create a new kernel instance with the wire meta kernel interface
+  const wireMetaKernelInterface = wireMetaKernel;
+  const meta_kernel = addCB(wire_kernel, extend(wireMetaKernelInterface));
+
+  return new processMetaKernel(meta_kernel);
+}
+
+// Define the wire kernel prototype
+wireKernel.prototype = {
+  /**
+   * Handles an input request from the kernel.
+   * @param {Object} kernel The kernel instance.
+   * @param {Object} request The input request.
+   */
+  input_request: async (kernel, request) =&gt; {
+    // TODO: Finish this
+    console.log('Input request received');
+  },
+
+  /**
+   * Handles a comm info request from the kernel.
+   * @param {Object} kernel The kernel instance.
+   * @param {Object} request The comm info request.
+   */
+  comm_info_request: async (kernel, request) =&gt; {
+    await kernel.do_respond({ status: { execution_state: 'busy' } });
+    await kernel.do_respond({ status: { execution_state: 'idle' } });
+    await kernel.do_respond({ comm_info_reply: { comms: {} } });
+  },
+
+  /**
+   * Handles a kernel info request from the kernel.
+   * @param {Object} kernel The kernel instance.
+   * @param {Object} request The kernel info request.
+   */
+  kernel_info_request: async (kernel, request) =&gt; {
+    await kernel.do_respond({ status: { execution_state: 'busy' } });
+    await kernel.do_respond({ status: { execution_state: 'idle' } });
+    await kernel.do_respond({ kernel_info_reply: kernel.kernel_info });
+  },
+};
+
+// Export the wire kernel interface and function
+module.exports = {
+  wireKernelInterface: metaKernelInterface,
+  wireKernel,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>The code starts by importing various modules and functions from the <code>../Core</code> module.</p>
 <pre><code class="language-javascript">var importer = require('../Core');

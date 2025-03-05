@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -210,7 +217,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet focuses on managing and updating calendar events related to Git repositories and builds.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { JSDOM } = require('jsdom');
+const importer = require('../Core');
+const {
+    gitTree, execCmd, getOauthClient, createNewEvent, updateEvent, cloneProject,
+    getDaysEvents, interpret, spawnChildProcess
+} = importer.import([
+    'd3.ipynb[format d3 tree]',
+    'json git tree',
+   'spawn child process',
+    'import google calendar api',
+    'create merge delete event',
+    'git project directory',
+    'days events',
+    'create new calendar event'
+]);
+
+class UpdateManager {
+    constructor(calendarId) {
+        this.calendarId = calendarId;
+    }
+
+    async createCalendarEvent(project, script) {
+        return createNewEvent('spawn child process', JSON.stringify({
+            script,
+            options: { cwd: project }
+        }), { calendarId: this.calendarId })
+    }
+
+    async updateHeartbeatEvent(project, branch, commit) {
+        try {
+            const client = await getOauthClient({ calendarId: this.calendarId });
+            const events = await getDaysEvents(new Date(), { calendarId: this.calendarId });
+            const heartbeat = events.filter(event => event.summary === 'heartbeat' || event.summary === 'todays heartbeat items');
+
+            if (!heartbeat.length) {
+                throw new Error('No heartbeat events found');
+            }
+
+            const dom = new JSDOM(`<body>${(heartbeat[0].event.description || '').replace(/<br\/?>/igm, '\n')}</body>');
+            const description = dom.window.document.body.textContent.split('\n');
+
+            description.forEach((line, index) => {
+                if (line.trim().length > 0 && line.includes('github updates')) {
+                    const parameters = JSON.parse(((/[\{].*[\}]|[\[].*[\]]|(['"]).*\1/igm).exec(line) || ['""'])[0]);
+                    if (parameters[0] === project && parameters[1] === branch) {
+                        parameters[2] = commit;
+                    }
+                    description[index] = `github updates ${JSON.stringify(parameters)}`;
+                }
+            });
+
+            heartbeat[0].event.description = description.join('\n');
+            return updateEvent(heartbeat[0].event, { calendarId: this.calendarId });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async findBranchRemote(project, branch) {
+        const remote = await execCmd('git branch -r', { cwd: project });
+        const remotes = remote.join('\n').split(/\s*\n\s*/igm).filter(remote => (remote.split('/')[1] || '').trim() === branch);
+
+        if (!remotes.length) {
+            throw new Error(`Branch "${branch}" not found on any remotes: ${remote.join('\n')}`);
+        }
+
+        return { remote: remotes[0].split('/')[0], branch };
+    }
+
+    async getUpdate(project, branch, fromCommit) {
+        const projectCopy = await cloneProject(project);
+        const { remote, branch: localBranch } = await this.findBranchRemote(projectCopy, branch);
+
+        const log = await execCmd(`git fetch ${remote} && git log ${fromCommit || 'HEAD'}..${remote}/${localBranch}`, { cwd: projectCopy });
+        const latestCommit = log.join('').trim().length > 0? (/commit (.*)/ig).exec(log.join(''))[1] : null;
+
+        if (!latestCommit) {
+            throw new Error('No updates to apply');
+        }
+
+        await execCmd('git reset --hard && git checkout'+ localBranch, { cwd: projectCopy });
+        await execCmd(importer.interpret('git auto rebase').code.trim() + ` ${remote} ${localBranch}`, { cwd: projectCopy });
+        await this.createCalendarEvent(projectCopy, `npm install && npm run build && npm run test`);
+        await this.updateHeartbeatEvent(project, localBranch, latestCommit);
+
+        return projectCopy;
+    }
+}
+
+module.exports = (calendarId) => {
+    return new UpdateManager(calendarId);
+}
+
+if (typeof $!== 'undefined') {
+    $.async();
+    new UpdateManager('aws')
+       .getUpdate('portal')
+       .then(result => $.sendResult(result))
+       .catch(error => $.sendError(error));
+}</code></pre></div><p>This code snippet focuses on managing and updating calendar events related to Git repositories and builds.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

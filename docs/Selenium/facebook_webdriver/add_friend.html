@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Builder, By, until } = require('selenium-webdriver');
+const { setTimeout } = require('timers');
+const { promisify } = require('util');
+
+// Import selenium client and promisify setTimeout function
+const getClient = async () =&gt; {
+  const seleniumClient = await import('selenium client');
+  const driver = await new Builder().forBrowser('chrome').build();
+  return { driver, seleniumClient };
+};
+
+// Function to login to Facebook
+const loginFacebook = async (driver) =&gt; {
+  // Login to Facebook logic goes here
+  // Replace with your actual login logic
+  await driver.get('https://www.facebook.com');
+  await driver.findElement(By.name('email')).sendKeys('your_email@gmail.com');
+  await driver.findElement(By.name('pass')).sendKeys('your_password', seleniumClient.Keys.RETURN);
+};
+
+// Function to add friend on Facebook
+async function friendFacebook(profile) {
+  // Get the selenium client
+  const { driver, seleniumClient } = await getClient();
+
+  // If driver is not provided, get one and login
+  if (!driver) {
+    await loginFacebook(driver);
+  }
+
+  // Get the current URL
+  const url = await driver.getCurrentUrl();
+
+  // Check if user is logged in
+  const isLoggedIn = url.includes(profile);
+
+  // If user is not logged in, navigate to profile URL
+  if (!isLoggedIn) {
+    // If profile URL does not start with 'https://www.facebook.com', add it
+    if (!profile.startsWith('https://www.facebook.com')) {
+      profile = 'https://www.facebook.com' + profile;
+    }
+
+    await driver.get(profile);
+    await promisify(setTimeout)(4000);
+  }
+
+  // Try to find the connect button
+  try {
+    const connectButton = await driver.wait(until.elementLocated(By.xpath('//*[@role="button" and contains(., "Add friend")]')), 3000);
+    await connectButton.click();
+    await promisify(setTimeout)(1000);
+  } catch (error) {
+    // Handle the error
+    console.error(error);
+  }
+
+  // Return the result
+  return { result: 'Friend added successfully', profile };
+}
+
+module.exports = friendFacebook;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <p>The code starts by importing the <code>selenium client</code> using the <code>importer.import()</code> function and assigns it to the <code>getClient</code> constant.</p>
 <h4>Function: friendFacebook</h4>

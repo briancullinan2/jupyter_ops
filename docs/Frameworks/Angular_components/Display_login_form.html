@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -163,7 +170,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This Angular code defines a module (<code>AuthModule</code>) responsible for handling user login functionality.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// auth.module.ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
+const authRoutes: Routes = [
+  {
+    path: '',
+    component: LoginComponent,
+    data: { roles: ['anonymous', 'user'] }
+  }
+];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(authRoutes),
+    ReactiveFormsModule
+  ],
+  declarations: [LoginComponent],
+  exports: [LoginComponent]
+})
+export class AuthModule { }
+
+export const COMPONENTS = [LoginComponent];
+</code></pre></div><p>This Angular code defines a module (<code>AuthModule</code>) responsible for handling user login functionality.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. Imports:</strong></p>
 <ul>

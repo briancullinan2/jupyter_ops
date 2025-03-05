@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -510,7 +517,393 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>```javascript
+const path = require('path');
+const fs = require('fs');
+const zlib = require('zlib');
+const dgram = require('dgram');
+const udpClient = dgram.createSocket('udp4');
+
+class Quake3Client {
+  constructor() {
+    this.maxTimeout = process.env.DEFAULT_TIMEOUT || 10000;
+    this.maxReliableCommands = 64;
+    this.defaultMaster = process.env.DEFAULT_MASTER || '207.246.91.235' || '192.168.0.4';
+    this.defaultPass = process.env.DEFAULT_PASS || 'password123!';
+
+    this.masters = [];
+    this.nextResponse = {
+      nextInfo: null,
+      nextStatus: null,
+      nextServer: null,
+      nextPrint: null,
+    };
+
+    this.importer = require('../Core');
+    this.decoder = this.importer.import('decode client message');
+    this.huffman = this.importer.import('huffman decode');
+    this.md4 = this.importer.import('md4 checksum');
+    this.quakeResponses = this.importer.import('quake 3 server responses');
+    this.dnsLookup = this.importer.import('dns lookup');
+
+    this.statusResponse = this.quakeResponses.statusResponse;
+    this.infoResponse = this.quakeResponses.infoResponse;
+    this.get ServersResponse = this.quakeResponses.getServersResponse;
+
+    this.compressMessage = this.huffman.compressMessage;
+    this.writeBits = this.huffman.writeBits;
+
+    this.netchanGenChecksum = this.md4.NETCHAN_GENCHECKSUM;
+  }
+
+  async updateInfo(m, rinfo) {
+    const master = this.mergeMaster({
+      ip: rinfo.address,
+      port: rinfo.port,
+    });
+
+    if (m.slice(0, 4).toString('utf-8') === 'FFFF') {
+      m = m.slice(4, m.length);
+    } else if (master.connected) {
+      const channel = await this.decodeClientMessage(m, master.channel);
+      if (channel === false) {
+        return;
+      }
+
+      this.updateNextResponse(master, channel);
+
+      await this.sendSequence(rinfo.address, rinfo.port, channel);
+    } else {
+      this.handleMessage(m, rinfo);
+    }
+  }
+
+  updateNextResponse(master, channel) {
+    if (channel.messageType === 2) { // svc_gamestate
+      master.nextResponse.nextGamestate = channel;
+      this.nextResponse.nextGamestate = channel;
+    } else if (channel.messageType === 7) { // svc_snapshot
+      master.nextResponse.nextSnapshot = channel;
+      this.nextResponse.nextSnapshot = channel;
+    } else if (channel.messageType &gt; 0) {
+      this.nextResponse.nextChannel = channel;
+      master.nextResponse.nextChannel = channel;
+    }
+
+    if (channel.messageType === 2 || channel.messageType === 7) {
+      this.nextResponse.nextServer = master;
+      master.nextResponse.nextServer = master;
+    }
+
+    if (channel.messageType &gt; 0 &amp;&amp; channel.messageType &lt; 8) {
+      this.nextResponse.nextChat = channel.serverCommands[channel.commandSequence - 1];
+      master.nextResponse.nextChat = channel.serverCommands[channel.commandSequence - 1];
+    }
+  }
+
+  handleMessage(m, rinfo) {
+    if (
+      m.slice(0, 'getserversResponse'.length).toString('utf-8').toLowerCase() ===
+      'getserversresponse'
+    ) {
+      const masters = this.getServersResponse(m);
+      masters.forEach((master) =&gt; {
+        this.mergeMaster(master);
+      });
+    } else if (m.slice(0,'statusResponse'.length).toString('utf-8').toLowerCase() ==='statusresponse') {
+      const status = this.mergeMaster(Object.assign(this.statusResponse(m), {
+        ip: rinfo.address,
+        port: rinfo.port,
+      }));
+      this.nextResponse.nextStatus = status;
+      status.nextResponse.nextStatus = status;
+    } else if (m.slice(0, 'infoResponse'.length).toString('utf-8').toLowerCase() === 'inforesponse') {
+      const info = this.mergeMaster(Object.assign(this.infoResponse(m), {
+        ip: rinfo.address,
+        port: rinfo.port,
+      }));
+      this.nextResponse.nextInfo = info;
+      info.nextResponse.nextInfo = info;
+    } else if (m.slice(0, 'print'.length).toString('utf-8') === 'print') {
+      const print = this.mergeMaster(Object.assign({
+        content: m.slice('print'.length).toString('utf-8'),
+      }, {
+        ip: rinfo.address,
+        port: rinfo.port,
+      }));
+      this.nextResponse.nextPrint = print;
+      print.nextResponse.nextPrint = print;
+    } else if (m.slice(0, 'challengeResponse'.length).toString('utf-8').toLowerCase() === 'challengeresponse') {
+      const challenge = this.mergeMaster(Object.assign({
+        challenge: m.slice('challengeResponse'.length).toString('utf-8').trim().split(/\s+/ig)[0],
+      }, {
+        ip: rinfo.address,
+        port: rinfo.port,
+      }));
+      this.nextResponse.nextChallenge = challenge;
+      challenge.nextResponse.nextChallenge = challenge;
+    } else if (m.slice(0, 'connectResponse'.length).toString('utf-8').toLowerCase() === 'connectresponse') {
+      const challenge = this.mergeMaster(Object.assign({
+        connected: true,
+        channel: {
+          compat: false,
+          incomingSequence: 0,
+          fragmentSequence: 0,
+          serverSequence: 0,
+          outgoingSequence: 0,
+          reliableSequence: 0,
+          reliableCommands: [],
+          challenge: m.slice('connectResponse'.length).toString('utf-8').trim().split(/\s+/ig)[0],
+        },
+      }, {
+        ip: rinfo.address,
+        port: rinfo.port,
+      }));
+      this.nextResponse.nextConnect = challenge;
+      challenge.nextResponse.nextConnect = challenge;
+    } else {
+      console.log('unknown message:', m.toString('utf-8'));
+    }
+  }
+
+  async getNextResponse(key, address, port = 27960) {
+    let timeout = 0;
+    let server = null;
+
+    if (address) {
+      const dstIP = await this.dnsLookup(address);
+      server = this.mergeMaster({
+        ip: dstIP,
+        port: port,
+      });
+
+      if (!server.nextResponse) {
+        server.nextResponse = {};
+      }
+
+      server.nextResponse.nextAll = [];
+      server.nextResponse[key] = null;
+    }
+
+    this.nextResponse.nextAll = [];
+    this.nextResponse[key] = null;
+
+    return new Promise((resolve) =&gt; {
+      let waiter;
+
+      waiter = setInterval(() =&gt; {
+        timeout += 20;
+        if (
+          (!address &amp;&amp; this.nextResponse[key]!== null) ||
+          (address &amp;&amp; server.nextResponse[key]!== null) ||
+          timeout &gt;= this.maxTimeout
+        ) {
+          clearInterval(waiter);
+          resolve(this.nextResponse[key]);
+        }
+      }, 20);
+    });
+  }
+
+  async nextInfoResponse(address, port = 27960) {
+    return await this.getNextResponse('nextInfo', address, port);
+  }
+
+  async nextServerResponse(address, port = 27960) {
+    return await this.getNextResponse('nextServer', address, port);
+  }
+
+  async nextStatusResponse(address, port = 27960) {
+    return await this.getNextResponse('nextStatus', address, port);
+  }
+
+  async nextPrintResponse(address, port = 27960) {
+    return await this.getNextResponse('nextPrint', address, port);
+  }
+
+  async nextChallengeResponse(address, port = 27960) {
+    return await this.getNextResponse('nextChallenge', address, port);
+  }
+
+  async nextChannelMessage(address, port = 27960) {
+    return await this.getNextResponse('nextChannel', address, port);
+  }
+
+  async nextGamestate(address, port = 27960) {
+    return await this.getNextResponse('nextGamestate', address, port);
+  }
+
+  async nextConnectResponse(address, port = 27960) {
+    return await this.getNextResponse('nextConnect', address, port);
+  }
+
+  async nextSnapshot(address, port = 27960) {
+    return await this.getNextResponse('nextSnapshot', address, port);
+  }
+
+  async nextChat(address, port = 27960) {
+    return await this.getNextResponse('nextChat', address, port);
+  }
+
+  async nextAnyResponse(address, port = 27960) {
+    return await this.getNextResponse('nextAny', address, port);
+  }
+
+  async nextAllResponses(address, port = 27960) {
+    return await this.getNextResponse('nextAll', address, port);
+  }
+
+  async getChallenge(address, port = 27960, challenge, gamename) {
+    const dstIP = await this.dnsLookup(address);
+    const msgBuff = new Buffer.from(`\xFF\xFF\xFF\xFFgetchallenge ${challenge} ${gamename}`.split('').map((c) =&gt; c.charCodeAt(0)));
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+  }
+
+  async sendConnect(address, port = 27960, info) {
+    const connectInfo = typeof info ==='string'? info : JSON.stringify(info);
+    const dstIP = await this.dnsLookup(address);
+    const compressedInfo = await this.compressMessage(`\xFF\xFF\xFF\xFFconnect "${connectInfo}"`);
+    const msgBuff = new Buffer.from(compressedInfo);
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+  }
+
+  async sendSequence(address, port, channel) {
+    const msg = this.writeBits([], 0, channel.serverId || 0, 32);
+    msg = this.writeBits(msg[1], msg[0], channel.serverId? (channel.serverSequence || 0) : 0, 32);
+    msg = this.writeBits(msg[1], msg[0], channel.serverId? (channel.commandSequence || 0) : 0, 32);
+
+    for (let i = channel.reliableAcknowledge + 1; i &lt;= channel.reliableSequence; i++) {
+      msg = this.writeBits(msg[1], msg[0], 4, 8); // clc_clientCommand
+      msg = this.writeBits(msg[1], msg[0], i, 32);
+      const command = channel.reliableCommands[i &amp; (this.maxReliableCommands - 1)];
+      for (let c = 0; c &lt; command.length; c++) {
+        let v;
+        if (command[c] &amp; 0x80 || command[c] === '%') {
+          v = '.'.charCodeAt(0);
+        } else {
+          v = command[c].charCodeAt(0);
+        }
+        msg = this.writeBits(msg[1], msg[0], v, 8);
+      }
+      msg = this.writeBits(msg[1], msg[0], 0, 8);
+    }
+
+    msg = this.writeBits(msg[1], msg[0], 3, 8); // clc_moveNoDelta
+    msg = this.writeBits(msg[1], msg[0], 1, 8);
+    msg = this.writeBits(msg[1], msg[0], 1, 1);
+    msg = this.writeBits(msg[1], msg[0], 0, 1); // no change
+
+    const dstIP = await this.dnsLookup(address);
+    const qport = udpClient.address().port;
+    const checksum = this.netchanGenChecksum(channel.challenge, channel.outgoingSequence);
+    const msgBuff = Buffer.concat([new Buffer.from([channel.outgoingSequence &gt;&gt; 0 &amp; 0xFF, channel.outgoingSequence &gt;&gt; 8 &amp; 0xFF, channel.outgoingSequence &gt;&gt; 16 &amp; 0xFF, channel.outgoingSequence &gt;&gt; 24 &amp; 0xFF, qport &gt;&gt; 0 &amp; 0xFF, qport &gt;&gt; 8 &amp; 0xFF, checksum &gt;&gt; 0 &amp; 0xFF, checksum &gt;&gt; 8 &amp; 0xFF, checksum &gt;&gt; 16 &amp; 0xFF, checksum &gt;&gt; 24 &amp; 0xFF, ]), msg[1]]);
+    channel.outgoingSequence++;
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+  }
+
+  async sendReliable(address, port, cmd) {
+    const dstIP = await this.dnsLookup(address);
+    const server = this.mergeMaster({
+      ip: dstIP,
+      port: port,
+    });
+
+    if (typeof server.channel!== 'undefined') {
+      console.log('clientCommand: ', cmd);
+      const channel = server.channel;
+      channel.reliableSequence++;
+      const index = channel.reliableSequence &amp; (this.maxReliableCommands - 1);
+      channel.reliableCommands[index] = cmd;
+      await this.sendSequence(address, port, channel);
+    } else {
+      console.log('Not connected');
+    }
+  }
+
+  async sendPureChecksums(address, port, channel) {
+    // TODO: calculate different checksums for other games QVMs
+    const checksum = pak8pk3[0] = channel.checksumFeed;
+    const headers = new Uint8Array(Uint32Array.from(pak8pk3).buffer);
+    const digest = new Uint32Array(4);
+    this.md4.mdfour(digest, headers, headers.length);
+    const unsigned = new Uint32Array(1);
+    unsigned[0] = digest[0] ^ digest[1] ^ digest[2] ^ digest[3];
+    checksum ^= unsigned[0];
+    checksum ^= 1;
+    this.sendReliable(address, port, 'cp'+ channel.serverId +'' + unsigned[0] +'' + unsigned[0] +'@'+ unsigned[0] +'' + checksum);
+  }
+
+  async sendRcon(address, port = 27960, command, password = this.defaultPass) {
+    const dstIP = await this.dnsLookup(address);
+    const msgBuff = new Buffer.from(`\xFF\xFF\xFF\xFFrcon "${password}" ${command}`.split('').map((c) =&gt; c.charCodeAt(0)));
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+  }
+
+  async getStatus(address, port = 27960) {
+    const dstIP = await this.dnsLookup(address);
+    const msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetstatus'.split('').map((c) =&gt; c.charCodeAt(0)));
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+  }
+
+  async getInfo(address, port = 27960) {
+    const dstIP = await this.dnsLookup(address);
+    const msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetinfo xxx'.split('').map((c) =&gt; c.charCodeAt(0)));
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+  }
+
+  async listMasters(master = this.defaultMaster, port = 27950, wait = true) {
+    const dstIP = await this.dnsLookup(master);
+    const msgBuff = new Buffer.from('\xFF\xFF\xFF\xFFgetservers 68 empty'.split('').map((c) =&gt; c.charCodeAt(0)));
+    udpClient.send(msgBuff, 0, msgBuff.length, port, dstIP);
+
+    if (wait) {
+      await new Promise((resolve) =&gt; setTimeout(resolve, this.maxTimeout));
+    } else {
+      const timeout = 0;
+      const timer;
+      // can't use nextInfoResponse() because it depends on at least 1 statusResponse
+      await this.nextStatusResponse();
+    }
+
+    return this.masters;
+  }
+
+  async decodeClientMessage(message, channel) {
+    return this.decoder(message, channel);
+  }
+
+  async mergeMaster(master) {
+    const found = this.masters.some((existing) =&gt; existing.ip === master.ip &amp;&amp; existing.port === master.port);
+    if (found) {
+      Object.assign(this.masters[this.masters.indexOf(existing)], master);
+    } else {
+      this.masters.push(master);
+    }
+    return master;
+  }
+
+  async dnsLookup(address) {
+    return this.dnsLookup(address);
+  }
+
+  async compressMessage(message) {
+    return this.compressMessage(message);
+  }
+
+  async writeBits(bits, bit1, bit0, length) {
+    return this.writeBits(bits, bit1, bit0, length);
+  }
+
+  async netchanGenChecksum(challenge, sequence) {
+    return this.netchanGenChecksum(challenge, sequence);
+  }
+}
+
+module.exports = {
+  Quake3Client,
+  udpClient,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Initializations</h3>
 <p>The code begins by importing various Node.js modules and setting up a UDP client socket.</p>
 <ul>

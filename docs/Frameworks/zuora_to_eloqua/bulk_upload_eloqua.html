@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -192,7 +199,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>bulkUploadEloqua</code> that handles the bulk upload of account data to Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const importer = require('../Core');
+
+const { EloquaImportService, EloquaExistingImport } = importer;
+
+const bulkUploadEloqua = async (accounts, eloquaConfig, instanceId, executionId) =&gt; {
+    const { EloquaOAuthService } = EloquaImportService;
+    const eloquaOAuthService = new EloquaOAuthService(eloquaConfig);
+
+    try {
+        const eloquaToken = await eloquaOAuthService.getEloquaToken();
+        assert(token.expires &gt; Date.now());
+
+        if (instanceId) {
+            const { InstanceDefinitionService } = EloquaImportService;
+            const instanceDefinitionService = new InstanceDefinitionService(eloquaToken, eloquaConfig);
+            return await instanceDefinitionService.createInstanceDefinition(instanceId, executionId);
+        } else {
+            const { CustomDataObjectService } = EloquaExistingImport;
+            const customDataObjectService = new CustomDataObjectService(eloquaToken, eloquaConfig);
+
+            const existing = await customDataObjectService.getCustomDataObject();
+            if (!existing) {
+                throw new Error('Eloqua custom data object not configured.');
+            }
+
+            const { ImportDefinitionService } = EloquaImportService;
+            const importDefinitionService = new ImportDefinitionService(eloquaToken, eloquaConfig);
+            const importUri = await importDefinitionService.getImportDefinition(existing.uri);
+            if (!importUri) {
+                return await importDefinitionService.createImportDefinition(existing.uri);
+            }
+        }
+
+        const { BulkImportDataService } = EloquaImportService;
+        const bulkImportDataService = new BulkImportDataService(eloquaToken, eloquaConfig);
+        await bulkImportDataService.startBulkImportData(accounts, importUri);
+
+        await bulkImportDataService.completeBulkImportSync(importUri);
+        return accounts;
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = bulkUploadEloqua;
+```
+
+```javascript
+if (typeof $!== 'undefined') {
+    $.async();
+    bulkUploadEloqua()
+       .then(r =&gt; $.sendResult(r))
+       .catch(e =&gt; $.sendError(e));
+}</code></pre></div><p>This code defines a function <code>bulkUploadEloqua</code> that handles the bulk upload of account data to Eloqua.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

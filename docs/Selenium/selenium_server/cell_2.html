@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { promisifyChrome } = require('../Core');
+const express = require('express');
+const router = express.Router();
+
+/**
+ * Wait for the page to be completely loaded.
+ * @returns {Promise<{value: {}}> | null}
+ */
+async function waitForComplete() {
+    try {
+        const result = await promisifyChrome('debugger.sendCommand', {
+            tabId: await getTab()
+        }, 'Runtime.evaluate', {
+            expression: `
+                new window.BackupPromise(resolve => {
+                    resolve(document.readyState === "complete" || document.readyState === "interactive");
+                })
+            `,
+            awaitPromise: true
+        });
+        return result? ({ value: {} }) : null;
+    } catch (error) {
+        console.error('Error waiting for page to load:', error);
+        return null;
+    }
+}
+
+/**
+ * Open or switch to the specified URL.
+ * @param {string} url - The URL to open or switch to.
+ * @returns {Promise<{ value: {} }>}
+ */
+async function go(url) {
+    // Get all windows and their tabs
+    const windows = await promisifyChrome('windows.getAll', {});
+    const tabs = await Promise.all(windows.map(w => resolve =>
+        promisifyChrome('tabs.getAllInWindow', w.id)
+           .then(tabs => resolve(tabs))));
+
+    // Find the first tab that matches the URL or is the current tab
+    const tab = tabs.flat().find(t => t.url.includes(url) || t.id === await getTab());
+
+    if (tab) {
+        // Activate the tab
+        await promisifyChrome('tabs.update', tab.id, { active: true });
+    } else {
+        // Create a new tab
+        const newTab = await promisifyChrome('tabs.create', {
+            active: true,
+            url
+        });
+        // Set the new tab as the current tab
+        await setTab(newTab.id);
+        // Attach the debugger to the new tab
+        await promisifyChrome('debugger.attach', {
+            tabId: newTab.id
+        }, '1.1');
+    }
+
+    // Navigate to the URL
+    await promisifyChrome('debugger.sendCommand', {
+        tabId: await getTab()
+    }, 'Page.navigate', {
+        url
+    });
+
+    // Wait for the page to load
+    await waitForComplete();
+}
+
+/**
+ * Get the URL of the current tab.
+ * @returns {Promise<{value: {url: string}}>}
+ */
+router.get('/session/:sessionId/url', (req, res) => {
+    response(res, promisifyChrome('tabs.get', {
+        tabId: getTab()
+    }).then(r => ({ value: r.url })));
+});
+
+/**
+ * Open or switch to the specified URL.
+ * @param {string} url - The URL to open or switch to.
+ */
+router.post('/session/:sessionId/url', (req, res) => {
+    response(res, go(req.body.url));
+});
+
+module.exports = {
+    go,
+    router
+};</code></pre></div><h3>Code Overview</h3>
 <p>The provided code defines a set of functions for interacting with a Chrome browser instance using the Chrome Debugging Protocol. It utilizes the <code>express</code> framework to create a REST API for navigating and interacting with web pages.</p>
 <h3>Functions</h3>
 <h4><code>waitForComplete()</code></h4>

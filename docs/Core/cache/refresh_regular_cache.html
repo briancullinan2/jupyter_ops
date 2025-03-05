@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./memory_safe_async.html">memory safe async</a> | <a href="./cell_14.html">Cell 14</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>refreshCache</code> function manages a cache of data, identifying missing items and prioritizing the refresh of the oldest entry.  It is designed to be extended to handle updates for modified items.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "refresh regular cache"</code></pre><h1>refresh regular cache</h1>
 
@@ -134,35 +140,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>refreshCache</code> that manages a cache of data, likely related to files or resources.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong><code>refreshCache(cache, allIds)</code>:</strong></p>
-<ul>
-<li>Takes a <code>cache</code> array (presumably containing [timestamp, id] pairs) and an array of <code>allIds</code> as input.</li>
-<li>Returns the ID of the oldest entry in the cache that needs refreshing.</li>
-</ul></li>
-<li><p><strong>Identify Missing Items:</strong></p>
-<ul>
-<li>Extracts the IDs from the existing cache using <code>cacheIds = cache.map(e =&gt; e[1])</code>.</li>
-<li>Finds the IDs present in <code>allIds</code> but not in <code>cacheIds</code> using <code>missing = allIds.filter(n =&gt; !cacheIds.includes(n))</code>.</li>
-<li>If there are missing items, it returns the ID of the first missing item (<code>missing[0]</code>).</li>
-</ul></li>
-<li><p><strong>TODO: Update Changed Items:</strong></p>
-<ul>
-<li>There's a comment indicating that this part should handle updating entries that have been modified. This functionality is not implemented in the current code.</li>
-</ul></li>
-<li><p><strong>Refresh Oldest Item:</strong></p>
-<ul>
-<li>Sorts the cache by timestamp (<code>cache.sort((a, b) =&gt; a[0] - b[0])</code>).</li>
-<li>Returns the ID of the oldest entry (<code>cache[0][1]</code>).</li>
-</ul></li>
-<li><p><strong>Module Exports:</strong></p>
-<ul>
-<li>Exports the <code>refreshCache</code> function for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p>In essence, this code helps manage a cache by identifying missing items and prioritizing the refresh of the oldest entry.</p>
 
 </body>
 

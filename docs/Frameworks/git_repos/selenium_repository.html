@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,30 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet automates the setup of a specific Git branch named &quot;branch1&quot; for a Selenium project.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define constants for repository information
+REPOSITORY_URL="https://github.com/username/repository.git"
+TARGET_BRANCH="branch1"
+REPOSITORY_PATH="selenium/repository"
+
+# Create target repository path if it doesn't exist
+mkdir -p "$REPOSITORY_PATH" || true  # Suppress error if directory already exists
+
+# Navigate to the repository directory
+cd "$REPOSITORY_PATH"
+
+# Check if target branch exists
+if! git branch | grep -q "$TARGET_BRANCH"; then
+  # Clone the repository with the target branch
+  git clone --branch "$TARGET_BRANCH" "$REPOSITORY_URL".
+  # If the clone operation fails, it will still exit with a non-zero status
+fi
+
+# Navigate back to the parent directory
+cd../..</code></pre></div><p>This code snippet automates the setup of a specific Git branch named &quot;branch1&quot; for a Selenium project.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Directory Creation:</strong></p>

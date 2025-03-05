@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function: <code>convertXPathToCss</code></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Converts an XPath to a CSS selector.
+ *
+ * @param {string} path - The XPath to convert.
+ * @returns {string} The equivalent CSS selector.
+ */
+function convertXPathToCss(path) {
+    // Remove leading and trailing slashes
+    path = path.trim().replace(/^\/+|\/+$/g, '');
+
+    // Replace self-closing tags with their non-self-closing counterparts
+    path = path.replace(/\/([a-z-]+)\[@id="(.*?)"]/ig, '/$1#$2');
+
+    // Replace attribute contains function with CSS class
+    path = path.replace(/\/([^\/]+)\[contains\(@class, "(.*?)"\)]/ig, '/$1.$2');
+
+    // Replace parent axis with CSS nth-child pseudo-class
+    path = path.replace(/\/parent::[a-z-]+\/[a-z-]+\[([0-9]+)]/ig, ':nth-child($1)');
+
+    // Replace multiple slashes with a single space
+    path = path.replace(/\/+/ig,'&gt; ');
+
+    // Remove remaining slashes and replace with spaces for readability
+    path = path.replace(/\//ig,'&gt; ');
+
+    return path;
+}</code></pre></div><h2>Function: <code>convertXPathToCss</code></h2>
 <h3>Parameters</h3>
 <ul>
 <li><code>path</code>: The XPath expression to be converted</li>

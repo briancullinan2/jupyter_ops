@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a test suite for a de-linting service within a project.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+
+// Define constants
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = path.resolve(path.join(__dirname, '../Utilities/.modules'));
+
+// Define utility functions
+const loadMocha = () => {
+  if (typeof describe === 'undefined') {
+    const it = (label, func) => func();
+    it.timeout = () => {};
+    const beforeEach = (func) => func();
+    const describe = (label, func) => func();
+  }
+  return { describe, it, beforeEach };
+};
+
+const exportAndDeployNotebook = (project, filename) =>
+  exporter && exporter.exportAndDeployNotebook(project, filename);
+
+const delintNotebook = (project) =>
+  importer.interpret('diff code blocks').then((result) => importer.delint(project, result.filename));
+
+// Main test suite
+const exporter = importer.import('export deploy notebook');
+const delint = importer.import('delint notebooks');
+const exportNotebook = importer.import('notebook.ipynb[export cells modules]');
+
+describe('de-linting service', () => {
+  // Load mocha environment if necessary
+  const mocha = loadMocha();
+
+  mocha.describe('export and deploy', () => {
+    it('should export and deploy a notebook', () => {
+      return exportAndDeployNotebook(PROJECT_PATH, __filename).then(() => {
+        return delintNotebook(PROJECT_PATH);
+      }).then((results) => {
+        // console.log(results);
+      }).catch((error) => {
+        console.error(error);
+      });
+    });
+  }).timeout(30000);
+});</code></pre></div><p>This code defines a test suite for a de-linting service within a project.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

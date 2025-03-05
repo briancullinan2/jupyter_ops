@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Systemd Configuration Script Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set the Jupyter and Selenium configuration directories
+JUPYTER_DIR=~/jupytangular
+SELENIUM_DIR=~/jupytangular
+
+# Create the Jupyter and Selenium configuration directories if they do not exist
+if [! -d "$JUPYTER_DIR" ]; then
+  mkdir -p "$JUPYTER_DIR"
+fi
+
+# Copy configuration files to the system directory
+cp./jupyter.service /etc/systemd/system
+cp./jupyter.timer /etc/systemd/system
+cp./selenium.service /etc/systemd/system
+
+# Reload the systemd daemon to apply changes
+systemctl daemon-reload
+
+# Enable Jupyter and Selenium services
+systemctl enable jupyter.timer
+systemctl enable jupyter.service
+systemctl enable selenium.service
+
+# Start Jupyter and Selenium services
+systemctl start jupyter.service
+systemctl start jupyter.timer
+systemctl start selenium.service
+
+# TODO: Add error handling and logging for better debugging and monitoring</code></pre></div><p><strong>Systemd Configuration Script Breakdown</strong></p>
 <p>This is a shell script that configures systemd services on a Linux system. Here's a step-by-step explanation:</p>
 <h3>Directory and File Copying</h3>
 <ol>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -475,7 +482,1260 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const express = require('express');
+
+const route = async () =&gt; {
+    const router = express.Router();
+
+    // Session
+    router.get('/sessions', async (req, res) =&gt; {
+        try {
+            // TODO: implement sessions endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/chromium/launch_app', async (req, res) =&gt; {
+        try {
+            // TODO: implement launch app endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Alert
+    router.get('/session/:sessionId/alert', async (req, res) =&gt; {
+        try {
+            // TODO: implement get alert endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/alert/dismiss', async (req, res) =&gt; {
+        try {
+            // TODO: implement dismiss alert endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/dismiss_alert', async (req, res) =&gt; {
+        try {
+            // TODO: implement dismiss alert endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/alert/accept', async (req, res) =&gt; {
+        try {
+            // TODO: implement accept alert endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/accept_alert', async (req, res) =&gt; {
+        try {
+            // TODO: implement accept alert endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/alert/text', async (req, res) =&gt; {
+        try {
+            // TODO: implement get alert text endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/alert_text', async (req, res) =&gt; {
+        try {
+            // TODO: implement get alert text endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/alert/text', async (req, res) =&gt; {
+        try {
+            // TODO: implement set alert text endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/alert_text', async (req, res) =&gt; {
+        try {
+            // TODO: implement set alert text endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Forward and Back
+    router.post('/session/:sessionId/forward', async (req, res) =&gt; {
+        try {
+            // TODO: implement forward endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/back', async (req, res) =&gt; {
+        try {
+            // TODO: implement back endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Refresh
+    router.post('/session/:sessionId/refresh', async (req, res) =&gt; {
+        try {
+            // TODO: implement refresh endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Execute
+    router.post('/session/:sessionId/execute', async (req, res) =&gt; {
+        try {
+            // TODO: implement execute endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/execute_async', async (req, res) =&gt; {
+        try {
+            // TODO: implement execute async endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Screenshot
+    router.get('/session/:sessionId/screenshot', async (req, res) =&gt; {
+        try {
+            // TODO: implement screenshot endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Title and Source
+    router.get('/session/:sessionId/title', async (req, res) =&gt; {
+        try {
+            // TODO: implement title endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/source', async (req, res) =&gt; {
+        try {
+            // TODO: implement source endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Heap snapshot
+    router.get('/session/:sessionId/chromium/heap_snapshot', async (req, res) =&gt; {
+        try {
+            // TODO: implement heap snapshot endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Element
+    router.get('/session/:sessionId/element/active', async (req, res) =&gt; {
+        try {
+            // TODO: implement get active element endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/active', async (req, res) =&gt; {
+        try {
+            // TODO: implement get active element endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/:id/element', async (req, res) =&gt; {
+        try {
+            // TODO: implement find child element endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/:id/elements', async (req, res) =&gt; {
+        try {
+            // TODO: implement find child elements endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/:id/clear', async (req, res) =&gt; {
+        try {
+            // TODO: implement clear element endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/:id/submit', async (req, res) =&gt; {
+        try {
+            // TODO: implement submit element endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/text', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element text endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/:id/value', async (req, res) =&gt; {
+        try {
+            // TODO: implement set element value endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // File
+    router.post('/session/:sessionId/file', async (req, res) =&gt; {
+        try {
+            // TODO: implement upload file endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/value', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element value endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/name', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element name endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/selected', async (req, res) =&gt; {
+        try {
+            // TODO: implement is element selected endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/enabled', async (req, res) =&gt; {
+        try {
+            // TODO: implement is element enabled endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/displayed', async (req, res) =&gt; {
+        try {
+            // TODO: implement is element displayed endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/element/:id/hover', async (req, res) =&gt; {
+        try {
+            // TODO: implement hover element endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/location', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element location endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/location_in_view', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element location in view endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/size', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element size endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/attribute/:name', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element attribute endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/element/:id/equals/:other', async (req, res) =&gt; {
+        try {
+            // TODO: implement is element equal endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Cookie
+    router.get('/session/:sessionId/cookie', async (req, res) =&gt; {
+        try {
+            // TODO: implement get cookies endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/cookie/:name', async (req, res) =&gt; {
+        try {
+            // TODO: implement get named cookie endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/cookie', async (req, res) =&gt; {
+        try {
+            // TODO: implement add cookie endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/cookie', async (req, res) =&gt; {
+        try {
+            // TODO: implement delete all cookies endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/cookie/:name', async (req, res) =&gt; {
+        try {
+            // TODO: implement delete cookie endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Frame
+    router.post('/session/:sessionId/frame', async (req, res) =&gt; {
+        try {
+            // TODO: implement switch to frame endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/frame/parent', async (req, res) =&gt; {
+        try {
+            // TODO: implement switch to parent frame endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Window
+    router.post('/session/:sessionId/window', async (req, res) =&gt; {
+        try {
+            // TODO: implement switch to window endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/window/:windowHandle/size', async (req, res) =&gt; {
+        try {
+            // TODO: implement get window size endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/window/:windowHandle/position', async (req, res) =&gt; {
+        try {
+            // TODO: implement get window position endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/window/:windowHandle/size', async (req, res) =&gt; {
+        try {
+            // TODO: implement set window size endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/window/:windowHandle/position', async (req, res) =&gt; {
+        try {
+            // TODO: implement set window position endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/window/:windowHandle/maximize', async (req, res) =&gt; {
+        try {
+            // TODO: implement maximize window endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/window/fullscreen', async (req, res) =&gt; {
+        try {
+            // TODO: implement fullscreen window endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/window', async (req, res) =&gt; {
+        try {
+            // TODO: implement close window endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Drag
+    router.post('/session/:sessionId/element/:id/drag', async (req, res) =&gt; {
+        try {
+            // TODO: implement drag endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // CSS Property
+    router.get('/session/:sessionId/element/:id/css/:propertyName', async (req, res) =&gt; {
+        try {
+            // TODO: implement get element CSS property endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Timeouts
+    router.post('/session/:sessionId/timeouts/implicit_wait', async (req, res) =&gt; {
+        try {
+            // TODO: implement set implicit wait endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/timeouts/async_script', async (req, res) =&gt; {
+        try {
+            // TODO: implement set async script timeout endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/timeouts', async (req, res) =&gt; {
+        try {
+            // TODO: implement set timeout endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/timeouts', async (req, res) =&gt; {
+        try {
+            // TODO: implement get timeouts endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Execute SQL
+    router.post('/session/:sessionId/execute_sql', async (req, res) =&gt; {
+        try {
+            // TODO: implement execute SQL endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Location
+    router.get('/session/:sessionId/location', async (req, res) =&gt; {
+        try {
+            // TODO: implement get location endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/location', async (req, res) =&gt; {
+        try {
+            // TODO: implement set location endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Network Connection
+    router.post('/session/:sessionId/network_connection', async (req, res) =&gt; {
+        try {
+            // TODO: implement set network connection endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/network_connection', async (req, res) =&gt; {
+        try {
+            // TODO: implement get network connection endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Network Conditions
+    router.get('/session/:sessionId/chromium/network_conditions', async (req, res) =&gt; {
+        try {
+            // TODO: implement get network conditions endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/chromium/network_conditions', async (req, res) =&gt; {
+        try {
+            // TODO: implement set network conditions endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/chromium/network_conditions', async (req, res) =&gt; {
+        try {
+            // TODO: implement delete network conditions endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Application Cache
+    router.get('/session/:sessionId/application_cache/status', async (req, res) =&gt; {
+        try {
+            // TODO: implement get application cache status endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/browser_connection', async (req, res) =&gt; {
+        try {
+            // TODO: implement get browser connection endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/browser_connection', async (req, res) =&gt; {
+        try {
+            // TODO: implement set browser connection endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Local Storage
+    router.get('/session/:sessionId/local_storage/key/:key', async (req, res) =&gt; {
+        try {
+            // TODO: implement get local storage item endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/local_storage/key/:key', async (req, res) =&gt; {
+        try {
+            // TODO: implement remove local storage item endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/local_storage', async (req, res) =&gt; {
+        try {
+            // TODO: implement get local storage keys endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/local_storage', async (req, res) =&gt; {
+        try {
+            // TODO: implement set local storage keys endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/local_storage', async (req, res) =&gt; {
+        try {
+            // TODO: implement clear local storage endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/local_storage/size', async (req, res) =&gt; {
+        try {
+            // TODO: implement get local storage size endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Session Storage
+    router.get('/session/:sessionId/session_storage/key/:key', async (req, res) =&gt; {
+        try {
+            // TODO: implement get session storage item endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/session_storage/key/:key', async (req, res) =&gt; {
+        try {
+            // TODO: implement remove session storage item endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/session_storage', async (req, res) =&gt; {
+        try {
+            // TODO: implement get session storage keys endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/session_storage', async (req, res) =&gt; {
+        try {
+            // TODO: implement set session storage item endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/session_storage', async (req, res) =&gt; {
+        try {
+            // TODO: implement clear session storage endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/session_storage/size', async (req, res) =&gt; {
+        try {
+            // TODO: implement get session storage size endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Orientation
+    router.get('/session/:sessionId/orientation', async (req, res) =&gt; {
+        try {
+            // TODO: implement get screen orientation endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/orientation', async (req, res) =&gt; {
+        try {
+            // TODO: implement set screen orientation endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/orientation', async (req, res) =&gt; {
+        try {
+            // TODO: implement delete screen orientation endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Click
+    router.post('/session/:sessionId/click', async (req, res) =&gt; {
+        try {
+            // TODO: implement click endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Double Click
+    router.post('/session/:sessionId/doubleclick', async (req, res) =&gt; {
+        try {
+            // TODO: implement double click endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Button Down
+    router.post('/session/:sessionId/buttondown', async (req, res) =&gt; {
+        try {
+            // TODO: implement button down endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Button Up
+    router.post('/session/:sessionId/buttonup', async (req, res) =&gt; {
+        try {
+            // TODO: implement button up endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Move To
+    router.post('/session/:sessionId/moveto', async (req, res) =&gt; {
+        try {
+            // TODO: implement move to endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Keys
+    router.post('/session/:sessionId/keys', async (req, res) =&gt; {
+        try {
+            // TODO: implement type endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // IME
+    router.get('/session/:sessionId/ime/available_engines', async (req, res) =&gt; {
+        try {
+            // TODO: implement get available engines endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/ime/active_engine', async (req, res) =&gt; {
+        try {
+            // TODO: implement get active engine endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/ime/activated', async (req, res) =&gt; {
+        try {
+            // TODO: implement is ime activated endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/ime/deactivate', async (req, res) =&gt; {
+        try {
+            // TODO: implement deactivate ime endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/ime/activate', async (req, res) =&gt; {
+        try {
+            // TODO: implement activate ime endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Touch
+    router.post('/session/:sessionId/touch/click', async (req, res) =&gt; {
+        try {
+            // TODO: implement tap endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/down', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch down endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/up', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch up endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/move', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch move endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/scroll', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch scroll endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/doubleclick', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch double tap endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/longclick', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch long press endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/touch/flick', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch flick endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Log
+    router.post('/session/:sessionId/log', async (req, res) =&gt; {
+        try {
+            // TODO: implement get log endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.get('/session/:sessionId/log/types', async (req, res) =&gt; {
+        try {
+            // TODO: implement get log types endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Actions
+    router.post('/session/:sessionId/actions', async (req, res) =&gt; {
+        try {
+            // TODO: implement perform actions endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.delete('/session/:sessionId/actions', async (req, res) =&gt; {
+        try {
+            // TODO: implement delete actions endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Logs
+    router.post('/Logs', async (req, res) =&gt; {
+        try {
+            // TODO: implement logs endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Status
+    router.get('/status', async (req, res) =&gt; {
+        try {
+            // TODO: implement get status endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Shutdown
+    router.get('/shutdown', async (req, res) =&gt; {
+        try {
+            // TODO: implement shutdown endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/shutdown', async (req, res) =&gt; {
+        try {
+            // TODO: implement shutdown endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Is Loading
+    router.get('/session/:sessionId/is_loading', async (req, res) =&gt; {
+        try {
+            // TODO: implement is loading endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Auto Report
+    router.get('/session/:sessionId/autoreport', async (req, res) =&gt; {
+        try {
+            // TODO: implement is auto reporting endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    router.post('/session/:sessionId/autoreport', async (req, res) =&gt; {
+        try {
+            // TODO: implement set auto reporting endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Touch Pinch
+    router.post('/session/:sessionId/touch/pinch', async (req, res) =&gt; {
+        try {
+            // TODO: implement touch pinch endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Send Command
+    router.post('/session/:sessionId/chromium/send_command', async (req, res) =&gt; {
+        try {
+            // TODO: implement send command endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    // Send Command and Get Result
+    router.post('/session/:sessionId/chromium/send_command_and_get_result', async (req, res) =&gt; {
+        try {
+            // TODO: implement send command and get result endpoint
+            res.status(501).json({ message: 'Not implemented' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    });
+
+    return router;
+};
+
+module.exports = {
+    router: route()
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Require Express</h3>
 <pre><code class="language-md">var express = require('express');
 </code></pre>

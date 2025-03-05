@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/* eslint-disable no-console */
+const { doClick, doKeys, getMonitor, serveHomepage } = require('express-automation-routes');
+const { DEFAULT_APPLICATION } = require('discord-configuration');
+const { getToken } = require('discord-express-token-endpoint');
+const { authenticateRoute } = require('discord-authenticate-instances');
+
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
+const app = express();
+
+const BASE_URI = `https://${DEFAULT_APPLICATION}.discordsays.com/.proxy/`;
+
+app.use(cors({
+  credentials: true,
+  origin: '*',
+}));
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.post('/keys', authenticateRoute, doKeys);
+app.post('/click', authenticateRoute, doClick);
+app.get('/monitors/*', getMonitor);
+app.post('/api/token', getToken);
+// app.post('/register', registerInstance);
+app.get('*', serveHomepage.bind(null, BASE_URI));
+
+let server;
+
+/**
+ * Start Discord Express server
+ * @param {Object} activity - Discord activity object
+ * @returns {Promise<void>}
+ */
+async function discordExpress(activity) {
+  if (!express) {
+    return false;
+  }
+
+  // Reject unauthorized certificates
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
+  // Close server if there are no participants
+  if (activity.participants.length === 0 && server) {
+    await closeExpress();
+  }
+
+  // Check if user was removed from activity
+  if (activity.participants.length > 1 && activity.participants.length > 0) {
+    return;
+  }
+
+  // Start server if there is only one participant
+  if (activity.participants.length === 1) {
+    return (server = await new Promise((resolve, reject) => {
+      app.listen(3000, () => {
+        console.log('Listening on:', 3000);
+        resolve(server);
+      }).on('error', reject);
+    }));
+  }
+}
+
+/**
+ * Close Discord Express server
+ * @param {Object} activity - Discord activity object
+ * @returns {Promise<void>}
+ */
+async function closeExpress(activity) {
+  if (activity) {
+    return;
+  }
+
+  if (server) {
+    await new Promise((resolve, reject) => {
+      server.close((err) => {
+        if (err) {
+          reject(err);
+        } else {
+          server = null;
+          resolve();
+        }
+      });
+    });
+  }
+}
+
+module.exports = {
+  discordExpress,
+  closeExpress,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing various modules using the <code>importer.import()</code> function. These modules are:</p>
 <ul>

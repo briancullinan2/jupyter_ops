@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { NodeMetaKernel, MetaKernelInterface, EnforcingInterface } = require('../Core');
+
+/**
+ * Test Node Meta Kernel functionality
+ */
+function testNodeMetaKernel() {
+    // Create a new instance of NodeMetaKernel with autoinit enabled
+    const kernel = new NodeMetaKernel({ autoinit: true });
+
+    // Log interface validation result
+    console.log('Interface validation result:', EnforcingInterface(kernel, MetaKernelInterface, false));
+
+    // Perform message execution
+    const executeMessage = {
+        do_execute: 'console.log(1 + 1)',
+    };
+    console.log('Message execution result:', kernel.doMessage(executeMessage));
+
+    // Perform message execution without execute flag
+    const directMessage = { do_execute: '1 + 1' };
+    console.log('Direct message execution result:', kernel.doMessage(directMessage));
+}
+
+// Export test function
+module.exports = testNodeMetaKernel;
+
+// Execute test function in browser environment
+if (typeof $!== 'undefined') {
+    testNodeMetaKernel();
+    // TODO: Add expected output assertions
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing modules from the <code>../Core</code> directory:</p>
 <pre><code class="language-javascript">var importer = require('../Core');

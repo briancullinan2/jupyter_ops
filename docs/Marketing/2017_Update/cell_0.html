@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code># Importing required libraries
+import importlib.util
+import sys
+
+def reload_module(module_name):
+    """
+    Reload a module by its name.
+    
+    Args:
+        module_name (str): The name of the module to reload.
+    
+    Returns:
+        None
+    """
+    # Check if the module exists
+    spec = importlib.util.find_spec(module_name)
+    if spec is not None:
+        # Reload the module
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        spec.loader.exec_module(module)
+    else:
+        print(f"Module {module_name} not found.")
+
+def add_magic_line():
+    """
+    Add a magic line to the IPython notebook.
+    
+    Returns:
+        None
+    """
+    # Add the magic line to reload the gvmagic module
+    import IPython
+    IPython.get_ipython().magic("reload_ext gvmagic")
+
+def main():
+    """
+    Main function to execute the code.
+    
+    Returns:
+        None
+    """
+    # Refactor the add_magic_line function to call reload_module directly
+    reload_module("gvmagic")
+    add_magic_line()
+
+if __name__ == "__main__":
+    main()</code></pre></div><h3>Code Breakdown</h3>
 <p>This code appears to be a sequence of commands in a Jupyter Notebook environment. Here's a brief explanation:</p>
 <ul>
 <li><p><code>%reload_ext</code>: This is a magic command in Jupyter Notebooks that reloads an extension. Extensions are external libraries or modules that can be loaded into the notebook to extend its functionality.</p></li>

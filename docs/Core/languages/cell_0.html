@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -123,7 +130,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a class to mimic MatLab functionality
+class MatLab {
+  /**
+   * Constructor to initialize the MatLab object
+   * @param {number} a First operand
+   * @param {number} b Second operand
+   */
+  constructor(a, b) {
+    // Store the operands in instance variables
+    this.a = a;
+    this.b = b;
+  }
+
+  /**
+   * Method to add two numbers
+   * @returns {number} The sum of a and b
+   */
+  add() {
+    // Use JavaScript's built-in addition operator
+    return this.a + this.b;
+  }
+
+  /**
+   * Method to subtract two numbers
+   * @returns {number} The difference of a and b
+   */
+  subtract() {
+    // Use JavaScript's built-in subtraction operator
+    return this.a - this.b;
+  }
+
+  /**
+   * Method to multiply two numbers
+   * @returns {number} The product of a and b
+   */
+  multiply() {
+    // Use JavaScript's built-in multiplication operator
+    return this.a * this.b;
+  }
+
+  /**
+   * Method to divide two numbers
+   * @returns {number} The quotient of a and b
+   * @throws {Error} If b is zero
+   */
+  divide() {
+    // Check if b is zero to avoid division by zero error
+    if (this.b === 0) {
+      throw new Error("Cannot divide by zero");
+    }
+    // Use JavaScript's built-in division operator
+    return this.a / this.b;
+  }
+}
+
+// Example usage:
+const matLab = new MatLab(10, 2);
+console.log(matLab.add()); // Output: 12
+console.log(matLab.subtract()); // Output: 8
+console.log(matLab.multiply()); // Output: 20
+console.log(matLab.divide()); // Output: 5</code></pre></div><h2>Code Breakdown</h2>
 <h3>MATLAB Code Snippet</h3>
 <pre><code class="language-markdown">// sample definition for MatLab
 </code></pre>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -170,7 +177,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to list all <code>.bsp</code> files (common Quake map files) within a given ZIP archive.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const StreamZip = require('node-stream-zip');
+const fs = require('fs');
+const path = require('path');
+
+/**
+ * Lists all.bsp files in a given zip file.
+ *
+ * @param {string} zipFile The path to the zip file.
+ */
+function listBsps(zipFile) {
+    try {
+        const zip = new StreamZip({
+            file: zipFile,
+            storeEntries: true
+        });
+
+        // Wait for the zip file to be fully read
+        return new Promise((resolve, reject) => {
+            zip.on('ready', () => {
+                const bspFiles = [];
+                for (const entry of Object.values(zip.entries())) {
+                    if (entry.name.includes('.bsp')) {
+                        bspFiles.push(entry.name);
+                    }
+                }
+                resolve(bspFiles);
+            });
+
+            zip.on('error', (err) => {
+                reject(err);
+            });
+        });
+    } catch (err) {
+        console.error(`Error reading zip file: ${err.message}`);
+        return [];
+    }
+}
+
+module.exports = listBsps;</code></pre></div><p>This code snippet is designed to list all <code>.bsp</code> files (common Quake map files) within a given ZIP archive.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports the <code>node-stream-zip</code> library for handling ZIP archives, <code>fs</code> for file system operations, and <code>path</code> for path manipulation.</p></li>

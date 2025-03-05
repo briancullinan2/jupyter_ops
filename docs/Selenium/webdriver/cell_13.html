@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -186,7 +193,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const core = require('../Core');
+
+const { updateOrAddSession, lockPromise } = core.import('update session');
+
+const TIMEOUT = 10000;
+
+let isScanning = false;
+const sessions = [];
+
+module.exports = {
+  lockPromise,
+  verifySession,
+  updateOrAddSession,
+  getIsScanning() {
+    return isScanning;
+  }
+};
+
+function addPlugins(client) {
+  return new Promise((resolve) => {
+    if (!sessions.length) {
+      client.on('result', (result) => {
+        if (isScanning) {
+          resolve();
+          return;
+        }
+        const currentSession = client.sessionId;
+        const updateSession = sessions.find((s) => s[1] === currentSession);
+
+        if (updateSession && (new Date()).getTime() - updateSession[0] <= TIMEOUT / 2) {
+          resolve();
+          return;
+        }
+
+        lockPromise(true)
+         .then(() => updateOrAddSession(currentSession))
+         .then((sessions) => (this.sessions = sessions))
+         .then(() => lockPromise(false))
+         .then(resolve)
+         .catch((e) => console.log(e));
+      });
+    } else {
+      resolve();
+    }
+  });
+}
+
+async function verifySession(client, session) {
+  try {
+    client.sessionId = session[1];
+    await addPlugins(client);
+    const windowHandle = await client.getWindowHandle();
+    await client.switchToWindow(windowHandle);
+    await client.status();
+    return session[1];
+  } catch (e) {
+    if (
+      e.message === 'ESOCKETTIMEDOUT' ||
+      e.message.includes('no such session') ||
+      e.message.includes('chrome not reachable')
+    ) {
+      console.log(`unusable session ${session}`);
+      session[1] = '';
+      return;
+    } else {
+      console.log(`error ${session[1]}`);
+      console.log(e);
+      throw e;
+    }
+  } finally {
+    isScanning = false;
+  }
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables and Function Imports</h3>
 <ul>
 <li><code>var importer = require('../Core');</code>: Imports a module from the <code>../Core</code> directory.</li>

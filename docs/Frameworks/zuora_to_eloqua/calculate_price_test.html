@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -309,7 +316,172 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code processes a list of Zuora subscription records, filters them based on specific criteria, and calculates the total number of records that meet those criteria.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const _ = require('lodash');
+const assert = require('assert');
+const xlsx = require('xlsx');
+const fs = require('fs');
+const importer = require('../Core');
+
+const { getCatalog, getZuoraMonth, calculatePrice } = importer.import({
+  'zuora to eloqua.ipynb[0]': 'zuoraToEloqua',
+  'zuora export month': 'getZuoraMonth',
+  'calculate price': 'calculatePrice'
+});
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const zuoraConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/zuoraRest_production.json').toString().trim());
+
+class ZuoraExporter {
+  constructor(config) {
+    this.config = config;
+    this.catalog = null;
+  }
+
+  async getCatalog() {
+    if (!this.catalog) {
+      this.catalog = await getCatalog(this.config);
+    }
+    return this.catalog;
+  }
+
+  async getZuoraMonth(month, config) {
+    return getZuoraMonth(month, config);
+  }
+
+  async calculatePrice(records) {
+    return calculatePrice(records, await this.getCatalog());
+  }
+
+  filterROR(accountROR) {
+    const rorNumbers = [
+      '4001372618',
+      '4000919381',
+      '411183297',
+      '4001358862',
+      '4000919006',
+      '4000919116',
+      '4001372618',
+      '411182712',
+      '411183101',
+      '4001635120',
+      '4000919342',
+      '4000919068'
+    ];
+    return rorNumbers.filter(ror => (accountROR || '').includes(ror)).length > 0;
+  }
+
+  rorsToAccounts(records) {
+    return records.filter(a => a['Account.resellerofRecord__c'])
+     .filter(a => this.filterROR(a['Account.resellerofRecord__c']))
+     .map(a => a['Account.AccountNumber']);
+  }
+
+  totalFilteredRecords(zuoraRecords) {
+    const rors = this.rorsToAccounts(zuoraRecords);
+    const recordsToValidate = zuoraRecords
+     .filter(s => {
+        return new Date(s['Subscription.TermEndDate']).getTime() <
+          (new Date('4/1/2018')).getTime() &&
+          new Date(s['Subscription.TermEndDate']).getTime() >= (new Date('2/27/2018')).getTime() &&
+          s['Account.Currency'] === 'USD' &&
+          s['RatePlanCharge.BillingPeriod'] === 'Annual' &&
+         !s['ProductRatePlan.Name'].toLowerCase().includes('pro');
+      });
+    const recordsWithRors = recordsToValidate
+     .filter(s => rors.includes(s['Account.AccountNumber']));
+    console.log(recordsToValidate.length +'zuora records to validate');
+    console.log(recordsWithRors.length +'of those are RORs and will also be excluded');
+    console.log((recordsToValidate.length - recordsWithRors.length) +'total');
+    return recordsToValidate
+     .filter(s =>!rors.includes(s['Account.AccountNumber']));
+  }
+
+  accountTotals(zuoraRecords) {
+    const uniqueIds = _.groupBy(zuoraRecords, r => r['Account.Id']);
+    console.log(Object.keys(uniqueIds).length +'unique accounts with expiring subscriptions in February');
+    const totals = Object.keys(uniqueIds)
+     .map(accountId => {
+        return this.calculatePrice(uniqueIds[accountId], this.catalog);
+      });
+    return totals;
+  }
+
+  verifyMissing(worksheet, totals) {
+    const accountIds = totals.map(t => t[0]);
+    const worksheetIds = worksheet.map(t => t['Account Number']);
+    const missing = worksheet.filter(a =>!accountIds.includes(a['Account Number']));
+    console.log(missing.length +'accounts in worksheet, not in zuora export: ');
+    const missingZuora = accountIds.filter(a =>!worksheetIds.includes(a));
+    console.log(missingZuora.length +'accounts in zuora, missing from worksheet: ');
+    const verifiableWorksheet = worksheet.filter(a =>!missing.includes(a));
+    const verifiableTotals = totals.filter(t => worksheetIds.includes(t[0]));
+    console.log(verifiableWorksheet.length +'='+ verifiableTotals.length +'verifiable records')
+    return { verifiableWorksheet, verifiableTotals };
+  }
+
+  validateWorksheet(calculatedTotals, zuoraRecords) {
+    var workbook = xlsx.readFile(PROFILE_PATH + '/Documents/Marketing_File_Mar_.xlsx');
+    var worksheet = xlsx.utils.sheet_to_json(workbook.Sheets['Marketing_File_Mar_']);
+    console.log(worksheet.length +'rows in worksheet');
+    const worksheetUSD = worksheet.filter(t => t['Currency'] === 'USD');
+    console.log(worksheetUSD.length +'rows are USD');
+    const worksheetFiltered = worksheetUSD.filter(t => this.filterROR(t['ROR Number'] || '') === false);
+    console.log(worksheetFiltered.length +'rows are USD and not ROR');
+
+    const { verifiableWorksheet, verifiableTotals } = this.verifyMissing(worksheetFiltered, calculatedTotals);
+
+    const correct = verifiableWorksheet.filter(a => {
+      const realTotal = parseFloat((a['Total 1:'] || '').replace(/[\$,\s]/ig, ''));
+      const newTotal = parseFloat((a['Total'] || '').replace(/[\$,\s]/ig, ''));
+      const oldTotal = verifiableTotals.filter(t => t[0] === a['Account Number'])[0] || [];
+      // TODO: decide what to do with discounts?
+      return realTotal === oldTotal[1]
+        || newTotal === oldTotal[1]
+        || newTotal === oldTotal[1] - (oldTotal[2]? (oldTotal[1] * oldTotal[2]) : 0)
+        || newTotal === oldTotal[1] - (oldTotal[1] *.05);
+    });
+    const incorrect = verifiableWorksheet.filter(a =>!correct.includes(a));
+    console.log(incorrect.length +'incorrect, correct:'+ correct.length +'out of'+ verifiableTotals.length
+      +'-'+ Math.round(correct.length / verifiableTotals.length * 100) + '%');
+    return { correct, incorrect };
+  }
+
+  async compareRecordsCatalog() {
+    const zuoraRecords = await this.getZuoraMonth(6, this.config);
+    const recordsToValidate = this.totalFilteredRecords(zuoraRecords);
+    const zuoraTotals = this.accountTotals(recordsToValidate);
+
+    const { correct, incorrect } = this.validateWorksheet(zuoraTotals);
+
+    const displayIncorrect = incorrect.map(a => Object.assign(a, {
+      incorrect: zuoraTotals.filter(t => t[0] === a['Account Number'])[0] || [],
+      subscription: JSON.stringify(recordsToValidate.filter(r => r['Account.AccountNumber'] === a['Account Number']).map(s => s['ProductRatePlan.Name'])),
+    }));
+
+    const incorrectMultipleSubs = displayIncorrect.filter(a => {
+      const subs = recordsToValidate.filter(r => r['Account.AccountNumber'] === a['Account Number']);
+      const productGroups = _.groupBy(subs, e => e['ProductRatePlan.Name']);
+      return Object.keys(productGroups).length === 0 || Object.keys(productGroups).filter(k => productGroups[k].length > 1).length > 0;
+    });
+
+    const verifiableTotal = (correct.length + incorrect.length) - incorrectMultipleSubs.length;
+    console.log(incorrectMultipleSubs.length +'incorrect due to multiple subscriptions, correct minus multiple: '
+      + correct.length +'out of'+ verifiableTotal +'-'+ Math.round(correct.length / verifiableTotal * 100) + '%');
+    const unaccounted = displayIncorrect.filter(a =>!incorrectMultipleSubs.includes(a));
+    console.log(unaccounted.length +'unaccounted for');
+    console.log('incorrect sample (' + displayIncorrect.length + '): ');
+    console.log(unaccounted);
+
+    return zuoraTotals;
+  }
+}
+
+if (typeof $!== 'undefined') {
+  const exporter = new ZuoraExporter(zuoraConfig);
+  $.$async().then(() => exporter.compareRecordsCatalog().then(r => $.$sendResult(r)).catch(e => $.$sendError(e)));
+}
+</code></pre></div><p>This code processes a list of Zuora subscription records, filters them based on specific criteria, and calculates the total number of records that meet those criteria.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

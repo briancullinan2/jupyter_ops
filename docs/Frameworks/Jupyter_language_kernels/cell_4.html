@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Function to find files containing a specific string recursively
+find_xunit_files() {
+  # Default directory to search, can be overridden by the caller
+  local start_dir="${1:-.}"
+
+  # String to search for, case-insensitive
+  local pattern='xunit.runners'
+
+  # Search recursively for files containing the pattern
+  find "$start_dir" -type f -exec grep -q -i -e "$pattern" {} \; -print
+}
+
+# Example usage: search for files containing "xunit.runners" in the current directory
+find_xunit_files</code></pre></div><p><strong>Code Breakdown</strong></p>
 <ul>
 <li><code>grep</code>: A command-line utility used for searching and matching strings.</li>
 <li><code>-r</code>: Recursively search through directories and subdirectories.</li>

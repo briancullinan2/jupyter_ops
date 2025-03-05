@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>replaceCore</code> that modifies JavaScript code by replacing calls to the <code>Core</code> module with calls to a function named <code>importNotebook</code>.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectAst, transpile, remove } = require('../Core');
+
+const CORE_DECLARE = 'VariableDeclaration[./@type="Literal" and contains(@value, "Core")]';
+const IMPORTER = `${CORE_DECLARE}/*[@type="Identifier"]/@name`;
+const IMPORTER_CALLS = 'CallExpression[.//*[contains(@type, "Member") and./@type="Identifier" and @name=${IMPORTER}]]';
+
+/**
+ * Replaces the property of a function call with a specific name.
+ *
+ * @param {Object} ctx - The abstract syntax tree context.
+ */
+function replaceProperty(ctx) {
+  const usage = selectAst('/*[@parent-attr="callee"]', ctx);
+  const property = selectAst('/*/*[@parent-attr="property"]', ctx);
+
+  if (selectAst('@name', property) === 'import') {
+    property.setAttribute('name', 'importNotebook');
+  }
+
+  usage.replaceWith(property);
+  property.setAttribute('parent-attr', 'callee');
+}
+
+/**
+ * Replaces Core declarations and importer calls in the given code.
+ *
+ * @param {string} code - The code to process.
+ * @returns {string} The processed code.
+ */
+function replaceCore(code) {
+  return transpile([
+    [IMPORTER_CALLS, replaceProperty],
+    [CORE_DECLARE, remove],
+  ], code);
+}
+
+module.exports = { replaceCore };</code></pre></div><p>This code snippet defines a function <code>replaceCore</code> that modifies JavaScript code by replacing calls to the <code>Core</code> module with calls to a function named <code>importNotebook</code>.</p>
 <p><strong>Here's a breakdown:</strong></p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

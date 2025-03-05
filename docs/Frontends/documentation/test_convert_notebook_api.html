@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -68,7 +75,7 @@
     <a href="../documentation/index.html">documentation</a> | <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a> | <a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code imports functions from a <code>Core</code> module, sets the environment, and conditionally executes a series of function calls to obtain an RPC specification and permissions, using a global object <code>$</code> to send the results or errors.</p>
+  <p>The code imports necessary functions and sets the environment to <code>'STUDY_LOCAL'</code>, then conditionally executes a block of code and finally calls main functions to convert notebooks to OpenAPI, extract RPC information, and test permissions. The main functions are executed within a promise chain that handles success and error cases.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "test convert notebook api"</code></pre><h1>test convert notebook api</h1>
@@ -112,42 +119,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { getEnvironment, getRpcSpecFromCells, getRpcFromSpec, groupPermissions } = require('../Core');
+
+// Set environment
+const environment = getEnvironment('STUDY_LOCAL');
+
+// Function to execute RPC operations
+async function executeRpcOps(cells = null) {
+  // Check if cells are provided
+  if (!cells) {
+    throw new Error('Cells are required to generate RPC spec');
+  }
+
+  // Generate RPC spec from cells
+  const spec = await getRpcSpecFromCells(cells);
+  console.log(spec);
+
+  // Extract RPC operations from spec
+  const rpcOps = await getRpcFromSpec(spec);
+  console.log(rpcOps);
+
+  // Initialize permissions group
+  const permissionsGroup = groupPermissions;
+
+  // Example usage: Get permissions
+  const getPermissionsResult = await rpcOps.core.rpc.getPermissions({ search: null });
+  console.log(getPermissionsResult);
+
+  // TODO: Implement sending results and error handling
+  // const result = await getPermissionsResult;
+  // $.sendResult(result);
+  // getPermissionsResult.catch(e =&gt; $.sendError(e));
+}
+
+// Check if $ is defined and execute RPC operations
+if (typeof $!== 'undefined') {
+  $.async();
+  executeRpcOps(['study sauce.ipynb', 'rpc.ipynb']).catch((e) =&gt; {
+    console.error(e);
+  });
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
-</code></pre>
-<p>Imports a module named <code>Core</code> from a parent directory and assigns it to the <code>importer</code> variable.</p>
-<pre><code class="language-javascript">var getRpcSpecFromCells = importer.import('convert notebook to open api');
+var getRpcSpecFromCells = importer.import('convert notebook to open api');
 var getRpcFromSpec = importer.import('get rpc from spec');
 var getEnvironment = importer.import('get environment');
 var groupPermissions = importer.import('test get permissions');
 </code></pre>
-<p>Imports four functions from the <code>Core</code> module:</p>
 <ul>
-<li><code>getRpcSpecFromCells</code></li>
-<li><code>getRpcFromSpec</code></li>
-<li><code>getEnvironment</code></li>
-<li><code>groupPermissions</code></li>
+<li>The code imports a module named <code>importer</code> from the <code>../Core</code> directory.</li>
+<li>Four functions are imported from the <code>importer</code> module:
+<ul>
+<li><code>getRpcSpecFromCells</code>: converts notebooks to OpenAPI.</li>
+<li><code>getRpcFromSpec</code>: extracts RPC information from a specification.</li>
+<li><code>getEnvironment</code>: gets the environment.</li>
+<li><code>groupPermissions</code>: tests getting permissions.</li>
+</ul></li>
 </ul>
-<p>Each function is assigned to a variable with the same name as the function.</p>
 <h4>Setting Environment</h4>
 <pre><code class="language-javascript">getEnvironment('STUDY_LOCAL')
 </code></pre>
-<p>Calls the <code>getEnvironment</code> function with the argument <code>'STUDY_LOCAL'</code>, which likely sets the environment to a specific configuration.</p>
+<ul>
+<li>The environment is set to <code>'STUDY_LOCAL'</code> using the <code>getEnvironment</code> function.</li>
+</ul>
 <h4>Conditional Execution</h4>
-<pre><code class="language-javascript">if(typeof $!== 'undefined') {
-    $.async()
-   ...
+<pre><code class="language-javascript">if (typeof $!== 'undefined') {
+    //...
 }
 </code></pre>
-<p>Checks if the global object <code>$</code> is defined. If it is, the following code is executed:</p>
 <ul>
-<li><code>$.async()</code> is called, which likely starts an asynchronous execution context.</li>
-<li>The <code>getRpcSpecFromCells</code> function is called with an array of notebook file paths (<code>['study sauce.ipynb', 'rpc.ipynb']</code>) that returns an RPC specification.</li>
-<li>The <code>getRpcFromSpec</code> function is called with the RPC specification as an argument, which returns an object containing RPC operations.</li>
-<li>The <code>juypter_ops.core.rpc.getPermissions</code> method is called with an object containing a search parameter set to <code>null</code>. The result is sent using the <code>$.sendResult</code> method, and any errors are sent using the <code>$.sendError</code> method.</li>
+<li>The code checks if the variable <code>$</code> is defined.</li>
+<li>If it is, the code inside the <code>if</code> statement is executed.</li>
 </ul>
-<p>Note that some parts of the code are commented out, which means they are not executed.</p>
+<h4>Main Execution</h4>
+<pre><code class="language-javascript">$.$async()
+var spec = getRpcSpecFromCells(['study sauce.ipynb', 'rpc.ipynb'])
+console.log(spec)
+var juypter_ops = getRpcFromSpec(spec)
+console.log(juypter_ops)
+juypter_ops.core.rpc.getPermissions({search: null})
+   .then(r =&gt; $.sendResult(r))
+   .catch(e =&gt; $.sendError(e))
+</code></pre>
+<ul>
+<li>The variable <code>$</code> is called with the method <code>$async()</code>.</li>
+<li>The <code>getRpcSpecFromCells</code> function is called with the notebook paths <code>['study sauce.ipynb', 'rpc.ipynb']</code> and the result is logged to the console.</li>
+<li>The <code>getRpcFromSpec</code> function is called with the <code>spec</code> and the result is logged to the console.</li>
+<li>The <code>getPermissions</code> method is called on the <code>juypter_ops</code> object and handled with a <code>then</code> block for success and a <code>catch</code> block for errors.</li>
+</ul>
 
 </body>
 

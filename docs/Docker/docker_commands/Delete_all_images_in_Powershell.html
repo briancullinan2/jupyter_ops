@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet removes all Docker images from your system, forcefully deleting them if necessary.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to remove Docker images
+remove_docker_images() {
+  # Get the list of Docker image IDs
+  docker_images=$(docker images -q)
+
+  # Remove each image
+  for image in $docker_images; do
+    # Remove the image with force option (-f)
+    docker rmi -f "$image" || echo "Failed to remove $image"
+  done
+}
+
+# Remove all Docker images
+remove_docker_images</code></pre></div><p>This code snippet removes all Docker images from your system, forcefully deleting them if necessary.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>docker images -q</code>:</strong></p>

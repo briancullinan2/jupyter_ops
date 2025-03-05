@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>const removeCtrlChars = require('remove-control-characters');
+const regexToArray = require('regex-array');
+
+/**
+ * Formats a Quake3 response into a Discord embed.
+ *
+ * @param {string} response - The Quake3 server response.
+ * @param {string} command - The command that triggered the response.
+ * @param {object} server - The Quake3 server object.
+ * @returns {object|string} The formatted embed or the original response if formatting fails.
+ */
+function formatQuake3Response(response, command, server) {
+    // Regular expression patterns
+    const mapPattern = /map:\s(.+)$/igm;
+    const statusPattern = /name|ping/ig;
+    const divPattern = /^[\-\s]+$/igm;
+    const playersPattern = /^\s*([0-9]+)\s+([0-9]+)\s+([0-9]+)\s+([^\s]+)\s+([^\s]+)\s*.*?$/igm;
+
+    // Try to detect format from response
+    const match = {
+        map: mapPattern.exec(response),
+        status: response.match(statusPattern) &amp;&amp; response.match(statusPattern),
+        div: divPattern.exec(response),
+    };
+
+    // Extract players data
+    const players = regexToArray(playersPattern, response, false);
+
+    // Check if formatting was successful
+    if (match.map &amp;&amp; match.status &amp;&amp; match.div &amp;&amp; players.length &gt;= 5) {
+        server.mapname = match.map[1];
+
+        return {
+            embeds: [{
+                title: removeCtrlChars(server.sv_hostname || server.hostname || server.gamename || server.game || ''),
+                description: `${server.ip}:${server.port}`,
+                color: 0xdda60f,
+                fields: [
+                    {
+                        name: 'Map',
+                        value: match.map[1],
+                        inline: false,
+                    },
+                    {
+                        name: 'Players',
+                        value: `${server.clients}/${server.sv_maxclients}`,
+                        inline: false,
+                    },
+                    {
+                        name: 'Player',
+                        value: '```http\n' + players.map((p, i) =&gt; `${i + 1}) ${removeCtrlChars(p[4])}`).join('\n') + '```',
+                        inline: true,
+                    },
+                    {
+                        name: 'Score',
+                        value: '```yaml\n' + players.map(p =&gt; p[2]).join('\n') + '```',
+                        inline: true,
+                    },
+                    {
+                        name: 'Ping',
+                        value: '```fix\n' + players.map(p =&gt; p[3]).join('\n') + '```',
+                        inline: true,
+                    },
+                ],
+            }],
+        };
+    }
+
+    // Return original response if formatting fails
+    return `\n```\n${response}\n```\n`;
+}
+
+module.exports = formatQuake3Response;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <p>The code starts by importing two modules:</p>
 <pre><code class="language-javascript">var removeCtrlChars = importer.import('remove ctrl characters')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set input and output images
+INPUT_IMAGE="./.output/IMG_1587.JPG"
+OUTPUT_IMAGE="./.output/IMG_1587-final.jpg"
+
+# Set density and resize options
+DENSITY=600
+RESIZE_HEIGHT=600
+
+# Resize image
+convert -density ${DENSITY} ${INPUT_IMAGE} -resize "${RESIZE_HEIGHT}^<" -scale 50% \
+    ${OUTPUT_IMAGE} || true
+
+# Enhance image
+ENHANCED_IMAGE=$(convert ${OUTPUT_IMAGE} +clone -enhance -despeckle -alpha on \
+    -channel alpha -evaluate multiply 0.25 -composite -quality)
+
+# Save enhanced image
+echo "${ENHANCED_IMAGE}" > ${OUTPUT_IMAGE}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Purpose</h3>
 <p>The code uses the ImageMagick <code>convert</code> command to:</p>
 <ol>

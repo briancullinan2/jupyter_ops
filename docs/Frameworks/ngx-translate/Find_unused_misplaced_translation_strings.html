@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,116 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet analyzes translation keys in a JSON file to identify misplaced, unused, and missing keys.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+
+// Define constants for the current working directory and file extensions
+const cwd = '/Users/briancullinan/Documents/portal/src/';
+const fileExtension = '.js';
+
+// Define a function to find misplaced keys in objects
+function findMisplaced(obj, parentKey) {
+    /**
+     * Recursively finds misplaced keys in objects.
+     *
+     * @param {object} obj - The object to search in.
+     * @param {string} parentKey - The parent key to check against.
+     */
+    for (const key in obj) {
+        if (typeof obj[key] === 'object' && obj[key]!== null) {
+            const newParent = parentKey? `${parentKey}.${key}` : key;
+            findMisplaced(obj[key], newParent);
+        } else if (typeof obj[key] ==='string') {
+            if (!obj[key].startsWith(parentKey)) {
+                console.log(`Misplaced key: ${obj[key]} in ${parentKey}`);
+            }
+        }
+    }
+}
+
+// Define a function to flatten all keys in objects
+function flattenAllKeys(obj, parentKey = '') {
+    /**
+     * Recursively flattens all keys in objects.
+     *
+     * @param {object} obj - The object to search in.
+     * @param {string} parentKey - The parent key to append to.
+     * @returns {string[]} - An array of flattened keys.
+     */
+    const result = [];
+    for (const key in obj) {
+        if (typeof obj[key] === 'object' && obj[key]!== null) {
+            const newParent = parentKey? `${parentKey}.${key}` : key;
+            result.push(...flattenAllKeys(obj[key], newParent));
+        } else if (typeof obj[key] ==='string' &&!parentKey.includes('TEMPDEMOPAGES')) {
+            result.push(`${parentKey}.${key}`);
+        }
+    }
+    return result;
+}
+
+// Load the translation keys and English JSON file
+const translationKeys = require(path.join(cwd, 'translation.js'));
+const enJson = JSON.parse(fs.readFileSync(path.join(cwd, 'assets', 'i18n', 'en.json')).toString());
+
+// Get all English keys
+const allENKeys = flattenAllKeys(enJson);
+
+// Find unused keys
+function getUnused() {
+    allENKeys.forEach((key) => {
+        const parentKey = key.split('.').slice(0, -1).join('.');
+        if (!translationKeys[parentKey] ||!translationKeys[parentKey].includes(key)) {
+            console.log(`Unused key: ${key}`);
+        }
+    });
+}
+
+// Find missing keys
+function getMissing() {
+    for (const key in translationKeys) {
+        if (translationKeys[key]) {
+            translationKeys[key].forEach((i) => {
+                if (allENKeys.indexOf(i) === -1) {
+                    console.log(`Missing key: ${i}`);
+                }
+            });
+        }
+    }
+}
+
+// Find strings of text in HTML files
+const htmlWordRegex = />[^><]*?(\b[^><]*\b)+[^><]*?<\/ig;
+const attrWordRegex = /(placeholder|title|alt)\s*=\s*["]([^"]*)["]/ig;
+const files = ['file1.html', 'file2.html'];
+
+const needTranslations = files.map((f, i) => {
+    const html = fs.readFileSync(path.join(cwd, f)).toString();
+    let r;
+    const needTranslations = [];
+    while ((r = htmlWordRegex.exec(html))!== null) {
+        if (r[1].trim()!== '' &&!r[1].match(/\|\s*translate/ig)) {
+            needTranslations.push(r[1].trim());
+        }
+    }
+    while ((r = attrWordRegex.exec(html))!== null) {
+        if (!r[2].match(/\|\s*translate/ig)) {
+            needTranslations.push(r[2].trim());
+        }
+    }
+    return { file: f, texts: needTranslations };
+}).filter((t) => t.texts.length > 0);
+
+needTranslations.forEach((t) => {
+    console.log(`Needs translating: ${t.texts.join(', ')} in ${t.file}`);
+});
+
+// Call the functions
+findMisplaced(translationKeys);
+getMissing();
+getUnused();</code></pre></div><p>This code snippet analyzes translation keys in a JSON file to identify misplaced, unused, and missing keys.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. Setup:</strong></p>
 <ul>

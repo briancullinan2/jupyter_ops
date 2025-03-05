@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code installs the necessary build tools for NativeScript on Windows using npm.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Installs npm build tools globally with elevated privileges.
+ *
+ * @param {string} elevateExecLoc - The location of the elevate executable.
+ * @param {string} networkCmd - The network command to execute.
+ */
+function installNpmBuildTools(elevateExecLoc, networkCmd) {
+    // Define the npm command to install build tools
+    const npmCmd = 'npm install --global --production --unsafe-perm nativescript windows-build-tools';
+
+    // Define the powershell command to execute the npm command with elevated privileges
+    const powershellCmd = `${elevateExecLoc} powershell -c "${npmCmd} && ${networkCmd}"`;
+
+    // Execute the powershell command with a callback to handle the result
+    const { exec } = require('child_process');
+    exec(powershellCmd, (error, stdout, stderr) => {
+        if (error) {
+            // Handle any errors that occur during execution
+            console.error(`Error installing npm build tools: ${error}`);
+        } else if (stderr) {
+            // Handle any standard error output from the command
+            console.error(`Standard error output: ${stderr}`);
+        } else {
+            // Output a success message when the command completes successfully
+            console.log('npm build tools installed');
+        }
+    });
+}
+
+// Call the function to install npm build tools
+installNpmBuildTools(__dirname + '\\elevate.exe', 'your_network_cmd_here');</code></pre></div><p>This code installs the necessary build tools for NativeScript on Windows using npm.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>var npmCmd = 'npm install --global --production --unsafe-perm nativescript windows-build-tools';</code>:</strong></p>

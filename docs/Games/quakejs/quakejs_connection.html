@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,97 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a module for interacting with Quake 3 servers using WebSockets.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Importer } = require('../Core');
+const WebSocket = require('ws');
+const {
+  formatOOB,
+  stripOOB,
+  parseServers,
+  parseInfoResponse,
+} = require('../quakejs utilities');
+
+class QuakeJS {
+  /**
+   * Connect to the Quake server.
+   * @param {string} address - The address of the Quake server.
+   * @param {number} port - The port of the Quake server.
+   * @param {function} callback - The callback function to handle the response.
+   * @returns {void}
+   */
+  connect(address, port, callback) {
+    const ws = new WebSocket(`ws://${address}:${port}`);
+    ws.binaryType = 'arraybuffer';
+
+    const handleMessage = (event) => {
+      const data = stripOOB(event.data);
+      if (data.startsWith('getserversResponse')) {
+        const servers = parseServers(data.slice(18));
+        callback(null, servers);
+      }
+    };
+
+    ws.onopen = () => {
+      const subscribeBuffer = formatOOB('subscribe');
+      ws.send(subscribeBuffer);
+    };
+
+    ws.onmessage = handleMessage;
+    ws.onclose = () => {
+      callback(new Error('Connection to master server lost.'));
+    };
+
+    ws.onerror = (err) => {
+      callback(err);
+    };
+  }
+
+  /**
+   * Scan a Quake server.
+   * @param {object} server - The Quake server object.
+   * @param {function} callback - The callback function to handle the response.
+   * @returns {void}
+   */
+  scanServer(server, callback) {
+    const ws = new WebSocket(`ws://${server.addr}:${server.port}`);
+    ws.binaryType = 'arraybuffer';
+    const start = Date.now();
+    const finish = (err, info) => {
+      if (callback) {
+        callback(err, info);
+        callback = null;
+      }
+      ws.close();
+    };
+
+    ws.onerror = (err) => {
+      finish(err, null);
+    };
+
+    ws.onopen = () => {
+      const getinfoBuffer = formatOOB('getinfo');
+      ws.send(getinfoBuffer);
+    };
+
+    ws.onmessage = (event) => {
+      const end = Date.now();
+      const data = stripOOB(event.data);
+      try {
+        const info = parseInfoResponse(data);
+        info.ping = parseInt(end - start, 10);
+        finish(null, info);
+      } catch (err) {
+        finish(err);
+      }
+    };
+
+    ws.onclose = (ev) => {
+      finish(new Error(ev.reason));
+    };
+  }
+}
+
+module.exports = QuakeJS;</code></pre></div><p>This code defines a module for interacting with Quake 3 servers using WebSockets.</p>
 <p>Here's a breakdown:</p>
 <p><strong>Core Functionality:</strong></p>
 <ul>

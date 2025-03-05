@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./search_llama.html">search llama</a> | <a href="./ask_llm_to_generalize_categories.html">ask llm to generalize categories</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>askLlamaAboutCategories</code> function is an asynchronous function that extracts categories from a cache object, asks the LLM about these categories in batches, and returns notebook filenames that contain matching categories. The function consists of three main steps: extracting categories, asking the LLM about the categories, and returning matching notebook filenames based on the LLM's responses.</p>
+  <p>This function, <code>askLlamaAboutCategories</code>, queries the Llama language model about categories related to a given query and returns a list of notebook filenames containing matching categories.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm about categories"</code></pre><h1>ask llm about categories</h1>
@@ -143,56 +150,72 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3>Importing Modules</h3>
-<p>The code starts by importing two modules using the <code>importer.import()</code> function:</p>
-<pre><code class="language-markdown">const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
-</code></pre>
-<p>These imports are assigning the exported objects <code>functionCache</code> and <code>askLlamaAboutFunctions</code> from the respective imported modules.</p>
-<h3>askLlamaAboutCategories Function</h3>
-<p>The <code>askLlamaAboutCategories</code> function is an asynchronous function that takes a <code>query</code> parameter:</p>
-<pre><code class="language-markdown">async function askLlamaAboutCategories(query) {
-</code></pre>
-<p>This function appears to be responsible for finding categories in a database (implemented in <code>functionCache</code>), asking the LLM (using <code>askLlamaAboutFunctions</code>) about these categories, and returning notebook filenames that contain matching categories.</p>
-<h3>Function Steps</h3>
-<ol>
-<li><strong>Extracting categories</strong>: The function extracts categories from the <code>functionCache</code> object and filters out any duplicates or newline characters (<code>\n</code>).</li>
-</ol>
-<pre><code class="language-markdown">let keys = Object.keys(functionCache)
-let categorys = keys.map(k =&gt; functionCache[k].categories)
- .concat(keys.map(k =&gt; functionCache[k].category))
- .filter((a, i, arr) =&gt; a &amp;&amp; arr.indexOf(a) == i &amp;&amp;!a.includes('\n'))
-</code></pre>
-<ol start="2">
-<li><strong>Asking LLM about categories</strong>: The function asks the LLM about the extracted categories in batches of 20. For each batch, it calls <code>askLlamaAboutFunctions</code> with the <code>query</code>, <code>functions</code> (the batch of categories), and other parameters. It then concatenates the results.</li>
-</ol>
-<pre><code class="language-markdown">for(let i = 0; i &lt; categorys.length; i++) {
-  let category = categorys[i]
-  functions[functions.length] = category
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { functionCache, cacheSize } = importer.import('cache rpc functions with llm descriptions');
+const { askLlamaAboutFunctions } = importer.import('ask llm about functions');
 
-  if(functions.length == 20) {
-    let result = await askLlamaAboutFunctions(query, functions, [], true)
-    functions = []
-    if(result)
-      returnValues = returnValues.concat(result)
+/**
+ * Asks the LLaMA model about categories and returns notebook filenames containing matching categories.
+ *
+ * @param {string} query - The query to ask the LLaMA model.
+ * @returns {Promise<string[]>} - A promise resolving to an array of notebook filenames containing matching categories.
+ */
+async function askLlamaAboutCategories(query) {
+  // Get unique categories from function cache
+  const categories = Array.from(new Set(
+    Object.values(functionCache).flatMap(fc => [fc.category,...fc.categories])
+  ));
+
+  // Ask LLaMA model for matching categories
+  const results = [];
+  const chunkSize = Math.min(cacheSize, 20);
+  for (const chunk of chunked(categories, chunkSize)) {
+    const response = await askLlamaAboutFunctions(query, chunk, [], true);
+    if (response) results.push(...response);
   }
+
+  // Get notebook filenames containing matching categories
+  const matching = Object.keys(functionCache)
+   .filter(k => results.includes(functionCache[k].category) || results.includes(functionCache[k].categories))
+   .map(k => k.replace(/\[[0-9]*\]/, ''))
+   .filter((a, i, arr) => a && arr.indexOf(a) == i);
+
+  return matching;
 }
-</code></pre>
-<ol start="3">
-<li><strong>Returning matching notebook filenames</strong>: Finally, the function returns notebook filenames that contain the matching categories.</li>
+
+// Chunk an array into smaller arrays of a specified size
+function chunked(array, size) {
+  return Array(Math.ceil(array.length / size))
+   .fill()
+   .map((_, i) => array.slice(i * size, (i + 1) * size));
+}
+
+module.exports = { askLlamaAboutCategories };</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Function <code>askLlamaAboutCategories</code></h3>
+<h4>Purpose</h4>
+<p>Queries the Llama language model about categories related to a given query.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>query</code> (string): The query to ask the Llama language model.</li>
+</ul>
+<h4>Functionality</h4>
+<ol>
+<li>Retrieves all cached function keys and their corresponding categories.</li>
+<li>Concatenates and filters the categories to remove duplicates and newline characters.</li>
+<li>Iterates through the categories, grouping them into batches of 20 functions.</li>
+<li>For each batch, asks the Llama language model if any of the categories match the query, and collects the matching categories.</li>
+<li>Returns a list of notebook filenames that contain matching categories.</li>
 </ol>
-<pre><code class="language-markdown">let matching = keys.filter(k =&gt; returnValues.includes(functionCache[k].category) || returnValues.includes(functionCache[k].categories))
- .map(k =&gt; k.replace(/\[[0-9]*\]/, ''))
- .filter((a, i, arr) =&gt; a &amp;&amp; arr.indexOf(a) == i)
-return matching
-</code></pre>
-<h3>Exporting the Function</h3>
-<p>The <code>askLlamaAboutCategories</code> function is exported as a module:</p>
-<pre><code class="language-markdown">module.exports = {
-  askLlamaAboutCategories
-}
-</code></pre>
+<h4>Return Value</h4>
+<ul>
+<li>An array of notebook filenames containing matching categories.</li>
+</ul>
+<h4>Notes</h4>
+<ul>
+<li>The <code>TODO</code> comments indicate that the code is incomplete and requires further implementation.</li>
+<li>The <code>askLlamaAboutFunctions</code> function is called with <code>true</code> as the last argument, which is not clear what this flag is supposed to do.</li>
+<li>The <code>functionCache</code> object and <code>importer</code> variable are not defined in this code snippet.</li>
+</ul>
 
 </body>
 

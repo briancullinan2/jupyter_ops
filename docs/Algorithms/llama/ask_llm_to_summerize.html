@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./ask_llm_about_notebooks.html">ask llm about notebooks</a> | <a href="./store_llama_function.html">store llama function</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, which interact with a Large Language Model (LLM) to summarize and categorize input queries. These functions create an LLM session, prepend a prompt to the input query, log the user query and AI response, and return the LLM's response as a trimmed string.</p>
+  <p>The provided code defines three asynchronous functions: <code>askLlamaToSummerize</code>, <code>askLlamaToGeneralize</code>, and <code>askLlamaToImplement</code>, which interact with a Large Language Model (LLM) to perform tasks such as summarizing queries and improving code snippets. These functions are exported as an object and can be used in other parts of the application.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm to summerize"</code></pre><h1>ask llm to summerize</h1>
@@ -105,10 +112,21 @@ async function askLlamaToGeneralize(query) {
 }
 
 
+async function askLlamaToImplement(query, language) {
+  const {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
+  let q2 = 'Improve this code in every way you can, keeing the same basic inputs an outputs' + (language ? (', in ' + language) : '') + ':\n' + query + '\nAdd, refactor, remove, implement TODO comments if you can. Only return the new beautiful code and nothing else.'
+  console.log("User: " + q2);
+  const a2 = await llmPrompt(q2);
+  console.log("AI: " + a2);
+
+  return a2.trim()
+}
+
 
 module.exports = {
   askLlamaToSummerize,
-  askLlamaToGeneralize
+  askLlamaToGeneralize,
+  askLlamaToImplement
 }
 
 
@@ -130,33 +148,119 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('./importer');
+
+// Define a class for the Llama interactions
+class Llama {
+  /**
+   * Initialize the Llama instance
+   */
+  constructor() {
+    this.llmPrompt = async () => {
+      // This function is assumed to be imported from 'create llm session'
+      return await importer.import('create llm session');
+    };
+  }
+
+  /**
+   * Summarize the input query into one or two sentences
+   * @param {string} query - The input query to be summarized
+   * @returns {Promise<string>} The summarized query
+   */
+  async summarize(query) {
+    const {llmPrompt} = await this.llmPrompt();
+    const question = `Summarize this into one or two sentences:\n${query}\nDiscard any pleasantries or explanations, only return the summary.`;
+    console.log(`User: ${question}`);
+    const response = await llmPrompt(question);
+    console.log(`AI: ${response}`);
+    return response.trim();
+  }
+
+  /**
+   * Categorize the input query into two or three words
+   * @param {string} query - The input query to be categorized
+   * @returns {Promise<string>} The category of the query
+   */
+  async generalize(query) {
+    const {llmPrompt} = await this.llmPrompt();
+    const question = `How would you categorize this in two or three words:\n${query}\nReturn only the category.`;
+    console.log(`User: ${question}`);
+    const response = await llmPrompt(question);
+    console.log(`AI: ${response}`);
+    return response.trim();
+  }
+
+  /**
+   * Improve the input query code in every way possible
+   * @param {string} query - The input query to be improved
+   * @param {string} [language] - The programming language to be used for improvement (optional)
+   * @returns {Promise<string>} The improved code
+   */
+  async implement(query, language = '') {
+    const {llmPrompt} = await this.llmPrompt();
+    const question = `Improve this code in every way you can, keeing the same basic inputs and outputs, in ${language}:\n${query}\nAdd, refactor, remove, implement TODO comments if you can. Only return the new beautiful code and nothing else.`;
+    console.log(`User: ${question}`);
+    const response = await llmPrompt(question);
+    console.log(`AI: ${response}`);
+    return response.trim();
+  }
+}
+
+// Export the Llama instance as a module
+module.exports = new Llama({
+  askLlamaToSummerize: (query) => this.summarize(query),
+  askLlamaToGeneralize: (query) => this.generalize(query),
+  askLlamaToImplement: (query, language) => this.implement(query, language)
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Overview</h3>
-<p>The code defines two asynchronous functions, <code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>, which interact with a Large Language Model (LLM) using the <code>llmPrompt</code> function. The functions are designed to summarize and categorize input queries.</p>
+<p>The provided code defines three asynchronous functions: <code>askLlamaToSummerize</code>, <code>askLlamaToGeneralize</code>, and <code>askLlamaToImplement</code>. These functions interact with a Large Language Model (LLM) using the <code>create llm session</code> module, imported via the <code>importer</code> object.</p>
 <h3>Function 1: <code>askLlamaToSummerize</code></h3>
 <ul>
-<li>Takes a <code>query</code> string as input</li>
-<li>Creates an LLMS session using <code>importer.import('create llm session')</code></li>
-<li>Prepends a prompt to the input query to ask the LLM to summarize it in one or two sentences</li>
-<li>Logs the user query and the AI response to the console</li>
-<li>Returns the LLM's response, trimmed of any whitespace</li>
+<li><strong>Purpose:</strong> Summarizes a given query into one or two sentences.</li>
+<li><strong>Parameters:</strong> <code>query</code> (string)</li>
+<li><strong>Return Value:</strong> The summarized query as a string</li>
+<li><strong>Steps:</strong>
+<ol>
+<li>Imports the <code>create llm session</code> module.</li>
+<li>Prepares a prompt for the LLM, asking it to summarize the query.</li>
+<li>Logs the user's query and the LLM's response.</li>
+<li>Returns the LLM's response, trimmed of any unnecessary characters.</li>
+</ol></li>
 </ul>
 <h3>Function 2: <code>askLlamaToGeneralize</code></h3>
 <ul>
-<li>Takes a <code>query</code> string as input</li>
-<li>Creates an LLMS session using <code>importer.import('create llm session')</code></li>
-<li>Prepends a prompt to the input query to ask the LLM to categorize it in two or three words</li>
-<li>Logs the user query and the AI response to the console</li>
-<li>Returns the LLM's response, trimmed of any whitespace</li>
+<li><strong>Purpose:</strong> Categorizes a given query into two or three words.</li>
+<li><strong>Parameters:</strong> <code>query</code> (string)</li>
+<li><strong>Return Value:</strong> The query's category as a string</li>
+<li><strong>Steps:</strong>
+<ol>
+<li>Imports the <code>create llm session</code> module.</li>
+<li>Prepares a prompt for the LLM, asking it to categorize the query.</li>
+<li>Logs the user's query and the LLM's response.</li>
+<li>Returns the LLM's response, trimmed of any unnecessary characters.</li>
+</ol></li>
 </ul>
-<h3>Module Exports</h3>
-<p>The code exports both functions as a module, allowing them to be imported and used by other parts of the application.</p>
-<h3>Assumptions</h3>
+<h3>Function 3: <code>askLlamaToImplement</code></h3>
 <ul>
-<li>The <code>importer</code> object and <code>llmPrompt</code> function are defined elsewhere in the codebase.</li>
-<li>The <code>llmPrompt</code> function is asynchronous and returns a promise that resolves to the LLM's response.</li>
-<li>The <code>importer</code> object's <code>import</code> method is asynchronous and returns a promise that resolves to an object with an <code>llmPrompt</code> property.</li>
+<li><strong>Purpose:</strong> Improves a given code snippet in the specified language.</li>
+<li><strong>Parameters:</strong>
+<ul>
+<li><code>query</code> (string)</li>
+<li><code>language</code> (optional string)</li>
+</ul></li>
+<li><strong>Return Value:</strong> The improved code snippet as a string</li>
+<li><strong>Steps:</strong>
+<ol>
+<li>Imports the <code>create llm session</code> module.</li>
+<li>Prepares a prompt for the LLM, asking it to improve the code snippet.</li>
+<li>Logs the user's query and the LLM's response.</li>
+<li>Returns the LLM's response, trimmed of any unnecessary characters.</li>
+</ol></li>
 </ul>
+<h3>Module Export</h3>
+<p>The three functions are exported as an object, allowing them to be used in other parts of the application.</p>
 
 </body>
 

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -93,7 +100,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet demonstrates the use of the <code>iltorb</code> library for data compression in Node.js.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required module and its compressSync function
+const iltorb = require('iltorb');
+const { compressSync } = iltorb;
+
+/**
+ * Compress data using iltorb.
+ *
+ * @param {Uint8Array|Buffer|string} input - The data to be compressed.
+ * @param {Object} options - Compression options.
+ * @param {number} [options.quality=11] - The quality of the compression (range: 0-12).
+ * @returns {Buffer} The compressed data.
+ */
+async function compressData(input, options = {}) {
+  try {
+    // Validate the input type
+    if (typeof input!=='string' &amp;&amp;!(input instanceof Uint8Array || input instanceof Buffer)) {
+      throw new Error('Invalid input type. Input must be a string, Uint8Array, or Buffer.');
+    }
+
+    // Validate the quality option
+    if (options.quality &lt; 0 || options.quality &gt; 12) {
+      throw new Error('Invalid quality option. Quality must be in the range of 0-12.');
+    }
+
+    // Compress the data
+    const compressedData = await iltorb.compressSync(input, { quality: options.quality });
+
+    return compressedData;
+  } catch (err) {
+    // Log the error and rethrow it
+    console.error('Error compressing data:', err);
+    throw err;
+  }
+}
+
+// Example usage:
+const inputData = 'Hello, World!';
+compressData(inputData)
+ .then((compressedData) =&gt; {
+    console.log('Compressed data:', compressedData);
+  })
+ .catch((err) =&gt; {
+    console.error('Error compressing data:', err);
+  });</code></pre></div><p>This code snippet demonstrates the use of the <code>iltorb</code> library for data compression in Node.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Importing the <code>compressSync</code> Function:</strong></p>

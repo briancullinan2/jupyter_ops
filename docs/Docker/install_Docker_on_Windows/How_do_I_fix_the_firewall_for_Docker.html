@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet installs Docker on a Windows system using the <code>elevate</code> tool to run commands with elevated privileges.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { join } = require('path');
+const { exec } = require('child_process');
+
+/**
+ * Install Docker using the elevate tool.
+ * 
+ * @param {string} dockerLoc - The path to the Docker MSI package.
+ * @param {string} logLoc - The path to the log file.
+ */
+async function installDocker(dockerLoc, logLoc) {
+  try {
+    // Get the path to the elevate.exe binary
+    const elevateExecLoc = join(process.cwd(), 'elevate', 'bin', 'x86', 'Release', 'elevate.exe');
+
+    // Define the firewall and network commands
+    const firewallCmd = 'New-NetFirewallRule -DisplayName "docker engine" -Direction Inbound -Action Allow -Protocol tcp -LocalPort 2375';
+    const networkCmd = 'Set-NetConnectionProfile -InterfaceAlias "vEthernet (DockerNAT)" -NetworkCategory Private';
+
+    // Run the installation command
+    const installProcess = await new Promise((resolve, reject) => {
+      const install = exec(`${elevateExecLoc} msiexec /i ${dockerLoc} /qn /L*V! ${logLoc}`);
+      install.stdout.on('data', (d) => console.log(d));
+      install.stderr.on('data', (d) => console.error('Error:', d));
+      install.on('close', (code) => {
+        if (code === 0) {
+          resolve();
+        } else {
+          reject(new Error(`Installation failed with code ${code}`));
+        }
+      });
+    });
+
+    // Run the firewall and network commands
+    await new Promise((resolve, reject) => {
+      const setupProcess = exec(`${elevateExecLoc} powershell -c "${firewallCmd} ; ${networkCmd}"`);
+      setupProcess.on('close', (code) => {
+        if (code === 0) {
+          resolve();
+        } else {
+          reject(new Error(`Setup failed with code ${code}`));
+        }
+      });
+    });
+
+    console.log('Installed Docker');
+  } catch (error) {
+    console.error('Error installing Docker:', error);
+  }
+}</code></pre></div><p>This code snippet installs Docker on a Windows system using the <code>elevate</code> tool to run commands with elevated privileges.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

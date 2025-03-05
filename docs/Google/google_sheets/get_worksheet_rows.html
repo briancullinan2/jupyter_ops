@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>getRows</code> that retrieves data from a specified worksheet in a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the necessary modules
+const { authorizeSheets, getSheetByName } = require('../Core');
+
+/**
+ * Retrieves rows from a Google Sheet based on the provided link and worksheet name.
+ *
+ * @param {object|string} link - The ID or object containing the ID and worksheet name.
+ * @param {string} [worksheet] - The name of the worksheet. If not provided, it will be extracted from the link object.
+ * @returns {Promise<Array<Array<string>>>} A promise that resolves to an array of rows in the worksheet.
+ */
+function getRows(link, worksheet) {
+    // Ensure link is an object and worksheet is a string
+    if (typeof link === 'object') {
+        if (!link.spreadsheetId) {
+            throw new Error('Invalid object. Expected object with spreadsheetId property.');
+        }
+        (worksheet = link.name, link = link.spreadsheetId);
+    }
+
+    // Authorize the sheets API
+    return authorizeSheets()
+       .then(sheets => {
+            // Get the worksheet by its ID or name
+            return getSheetByName(link, worksheet);
+        })
+       .then(worksheet => {
+            // Extract the worksheet ID and title
+            const { spreadsheetId, properties } = worksheet;
+            console.log(`Reading sheet: ${properties.title} - ${properties.gridProperties.rowCount}`);
+
+            // Get the rows from the worksheet
+            return sheets.spreadsheets.values.get({
+                spreadsheetId,
+                range: `'${worksheet.properties.title}'!A1:Z${worksheet.properties.gridProperties.rowCount}`,
+            });
+        })
+       .then(res => res.data.values || []);
+}
+
+module.exports = getRows;</code></pre></div><p>This code snippet defines a function <code>getRows</code> that retrieves data from a specified worksheet in a Google Sheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

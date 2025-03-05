@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -162,7 +169,70 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>gitEditor</code> that combines web scraping, Git interaction, and HTML manipulation to create a dynamic web page.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import dependencies
+const { URL } = require('url');
+const importer = require('../Core');
+const { selectDom } = importer.import('select tree');
+const applyAcl = importer.import('apply acl to html');
+const getGist = importer.import('read gist files');
+const loadScraped = importer.import('get scraped page');
+const gitFileTree = importer.import('git file tree');
+
+// Define the gitEditor function with async/await and more descriptive variable names
+async function gitEditor({ url = 'https://google.com', gist, xpath } = {}) {
+  // Ensure the URL is a URL object
+  const parsedUrl = new URL(url);
+
+  // Extract the file path and host from the URL
+  const filePath = parsedUrl.pathname;
+  const host = parsedUrl.hostname.replace(/[^a-z0-9_-]/ig, '_');
+  const fileName = filePath === '/'? 'index' : filePath.replace(/[^a-z0-9_-]/ig, '_');
+
+  // Load the scraped files and apply ACL if necessary
+  const files = await loadScraped(parsedUrl);
+  const aclFile = files[`${host}-acl.json`] || {};
+  if (!aclFile.content) {
+    const gistFiles = await getGist(gist);
+    if (gistFiles &amp;&amp; gistFiles.files[`${host}-acl.json`]) {
+      aclFile.content = gistFiles.files[`${host}-acl.json`].content || '[]';
+    }
+  }
+
+  // Apply ACL to the files and create an HTML document
+  const doc = applyAcl(aclFile.content? JSON.parse(aclFile.content) : [], files[fileName]);
+
+  // Select the DOM element if an XPath is provided
+  if (xpath) {
+    console.log(decodeURIComponent(xpath));
+    return selectDom([decodeURIComponent(xpath)], doc).map(el =&gt; el.outerHTML).join('');
+  }
+
+  // Create the file tree and code editor elements
+  const filesElement = doc.ownerDocument.createElement('div');
+  filesElement.className = 'initial-files file-tree';
+  filesElement.innerHTML = await gitFileTree();
+  doc.ownerDocument.body.appendChild(filesElement);
+
+  const codeElement = doc.ownerDocument.createElement('div');
+  codeElement.className = 'initial-code code-editor';
+  codeElement.appendChild(doc.ownerDocument.createTextNode(importer.interpret('read crawl files').code));
+  doc.ownerDocument.body.appendChild(codeElement);
+
+  // Return the HTML document as a string
+  return '&lt;!DOCTYPE html&gt;\n' + doc.outerHTML;
+}
+
+// Export the gitEditor function
+module.exports = gitEditor;
+
+// Use the gitEditor function in a browser context if $ is defined
+if (typeof $!== 'undefined') {
+  $.async();
+  gitEditor({ url: 'https://www.google.com' })
+   .then(r =&gt; $.mime({ 'text/html': r }))
+   .catch(e =&gt; $.sendError(e));
+}</code></pre></div><p>This code defines a function <code>gitEditor</code> that combines web scraping, Git interaction, and HTML manipulation to create a dynamic web page.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

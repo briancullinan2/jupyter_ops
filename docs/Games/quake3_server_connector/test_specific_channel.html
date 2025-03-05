@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules and functions
+const { Core } = require('../Core');
+const { respondToDiscordCommand } = require('../Core/respondDiscordCommands');
+
+/**
+ * Test a Discord channel by responding to a command
+ * 
+ * @param {Discord.Channel} channel - The Discord channel to test
+ * @returns {void}
+ */
+module.exports = async function testChannel(channel) {
+    // Check if the channel is valid before proceeding
+    if (!channel) {
+        throw new Error('Invalid channel');
+    }
+
+    // Call the function to respond to the discord command
+    await respondToDiscordCommand(channel);
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core')
 var respondCommand = importer.import('respond discord commands')

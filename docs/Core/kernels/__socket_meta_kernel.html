@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -191,7 +198,104 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const { extend } = importer.import('extend prototype class');
+const { assert } = require('assert');
+const { metaKernelInterface } = importer.import('meta kernel interface');
+
+class SocketKernel {
+  constructor(config) {
+    this.config = config;
+    this.nativeMethods = importer.import('native meta kernel methods');
+    this.nativeMethods.do_init.call(this, config);
+    this.consoleProxy = new ConsoleProxy();
+    this.socket = this.nativeMethods.socket;
+    this.initializeSocket();
+  }
+
+  initializeSocket() {
+    console.log('Starting socket kernel');
+    if (this.socket) {
+      this.socket.on('message', this.doMessage.bind(this));
+    } else {
+      this.emitError('Socket not ready!');
+    }
+  }
+
+  emitError(message) {
+    throw new Error(message);
+  }
+
+  doInit(config) {
+    this.nativeMethods.do_init.call(this, config);
+    this.initializeSocket();
+  }
+
+  doMessage(message) {
+    this.doRespond(message);
+  }
+
+  doRespond(message) {
+    const nativeResponse = this.nativeMethods.do_respond.call(this, message);
+    if (this.socket.send) {
+      return this.socket.send({ doRespond: { content: nativeResponse } });
+    }
+    assert(false, 'Why is this used?');
+    return nativeResponse;
+  }
+}
+
+class ConsoleProxy {
+  log(message) {
+    console.log(message);
+    this.stdout.write(message);
+  }
+
+  error(message) {
+    console.error(message);
+    this.stderr.write(message);
+  }
+
+  warn(message) {
+    console.warn(message);
+    this.stderr.write(message);
+  }
+}
+
+class SocketMetaKernel extends SocketKernel {
+  constructor(metaKernel, interface) {
+    super(interface);
+    this.metaKernel = metaKernel;
+    this.kernel = this.interface(metaKernel, metaKernelInterface);
+  }
+
+  interface(metaKernel, interface) {
+    return extend(metaKernel, metaKernelInterface);
+  }
+
+  extend(kernel) {
+    return extend(kernel, this.kernel);
+  }
+
+  createKernel(metaKernel) {
+    return new SocketMetaKernel(metaKernel, this.interface);
+  }
+
+  nativeKernel(kernel) {
+    return this.nativeMethods.nativeKernel(kernel);
+  }
+
+  getNativeMethods() {
+    return this.nativeMethods;
+  }
+}
+
+module.exports = {
+  socketMetaKernel: (metaKernel) =&gt; new SocketMetaKernel(metaKernel, metaKernelInterface),
+  doRespond: (kernel, message) =&gt; kernel.doRespond(message),
+  doInit: (kernel, config) =&gt; kernel.doInit(config)
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>This code defines a set of functions and utilities for a Node.js application. It appears to be a socket-based kernel implementation with meta-programming features.</p>
 <h3>Dependencies</h3>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -164,7 +171,116 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>transpileInspect</code> that aims to modify JavaScript code by inserting debugging information into it.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importCoreFunctions } = require('../Core');
+
+/**
+ * Import necessary functions from the 'Core' module.
+ */
+const { transpile, selectAst, makeExpr, htmlToTree } = importCoreFunctions([
+  'transpile code',
+ 'select code tree',
+  'html to tree',
+]);
+
+/**
+ * XPath expressions for selecting specific nodes in the code tree.
+ */
+const STATEMENTS = `//*[contains(@type, "Declaration") or contains(@type, "Statement")]`;
+const NEAR_IDENTIFIERS = `
+ ./Identifier/@name
+  |./*/Identifier/@name
+  |./*/*/Identifier/@name
+  |./*/*/*/Identifier/@name
+
+  |./parent::*/Identifier/@name
+  |./parent::*/*/Identifier/@name
+  |./parent::*/*/*/Identifier/@name
+  |./parent::*/*/*/*/Identifier/@name
+
+  |./parent::*/parent::*/Identifier/@name
+  |./parent::*/parent::*/*/Identifier/@name
+  |./parent::*/parent::*/*/*/Identifier/@name
+  |./parent::*/parent::*/*/*/*/Identifier/@name
+`;
+
+/**
+ * Inspect callback function.
+ *
+ * @param {Object} ctx - The context object.
+ */
+function inspectCallback(ctx) {
+  console.log(JSON.stringify(ctx));
+}
+
+/**
+ * Inspect template function.
+ *
+ * @param {Object} ctx - The context object.
+ */
+function inspectTemplate(ctx) {
+  // Code inserted into the transpiled module.
+  inspectCallback(ctx);
+}
+
+/**
+ * Inserts inspection code into the given code snippet.
+ *
+ * @param {string} filename - The filename of the code snippet.
+ * @param {string} code - The code snippet.
+ * @param {Element} ctx - The context element.
+ */
+function insertInspect(filename, code, ctx) {
+  const inspect = makeExpr(inspectTemplate);
+
+  // Get the line number from the original range.
+  const range = JSON.parse(ctx.getAttribute('range'));
+  const line = code
+   .substr(0, range[0])
+   .split('\n')
+   .length;
+
+  // Get nearby identifiers.
+  const nearbyIdentifiers = selectAst(NEAR_IDENTIFIERS, ctx).map((id) => id.getAttribute('name'));
+
+  // Create the nearby context object.
+  const nearbyCtx = makeExpr({
+    type: ctx.getAttribute('type'),
+    line,
+    filename,
+   ...nearbyIdentifiers.reduce((acc, id) => ({...acc, [id]: true }), {}),
+  });
+
+  // Replace the context element with the nearby context element.
+  const replaceCtx = selectAst(`.//Identifier[@name="ctx"]`, inspect);
+  replaceCtx.replaceWith(nearbyCtx);
+
+  // Insert the inspection code into the parent statement body.
+  const parent = selectAst('./parent::*/*', ctx);
+  Array.from(inspect.childNodes).forEach((n) => {
+    if (n.setAttribute) {
+      n.setAttribute('parent-attr', 'body');
+    }
+    parent.insertBefore(n, ctx);
+  });
+}
+
+/**
+ * Transpiles the code snippet and inserts inspection code.
+ *
+ * @param {string} code - The code snippet.
+ * @param {string} filename - The filename of the code snippet.
+ * @returns {string} The transpiled code.
+ */
+function transpileInspect(code, filename) {
+  return transpile([['/Statements', insertInspect.bind(null, filename, code)]], code);
+}
+
+module.exports = {
+  inspectCallback,
+  inspectTemplate,
+  transpileInspect,
+};</code></pre></div><p>This code defines a function <code>transpileInspect</code> that aims to modify JavaScript code by inserting debugging information into it.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

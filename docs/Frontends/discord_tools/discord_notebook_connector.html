@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,148 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { 
+  systemBuffer, 
+  patchInteractionImageAttachment, 
+  triggerTyping, 
+  createMessage, 
+  updateInteraction 
+} = importer.import('discord api');
+
+const { interpret } = importer.import('code interpreter');
+const summerizeArticle = importer.import('test article summarizer');
+const { llmVoice } = importer.import('llm voice');
+
+// Define constant for system update interval
+const SYSTEM_UPDATE_INTERVAL = 4000;
+
+// Define constant for system update count
+const SYSTEM_UPDATE_COUNT = 24;
+
+// Define function to update system usage
+async function doSystemUsage(interaction) {
+  // Initialize system buffer
+  let buffer;
+
+  // Get initial system buffer
+  try {
+    buffer = await systemBuffer();
+  } catch (error) {
+    console.error(`Error getting system buffer: ${error}`);
+    return;
+  }
+
+  // Update system usage interaction
+  try {
+    await patchInteractionImageAttachment('system usage', buffer, interaction.token);
+  } catch (error) {
+    console.error(`Error updating system usage interaction: ${error}`);
+    return;
+  }
+
+  // Start system update interval
+  const updateIntervalId = setInterval(async () => {
+    // Decrement system update count
+    const count = SYSTEM_UPDATE_COUNT - 1;
+
+    // Get updated system buffer
+    try {
+      buffer = await systemBuffer();
+    } catch (error) {
+      console.error(`Error getting updated system buffer: ${error}`);
+      clearInterval(updateIntervalId);
+      return;
+    }
+
+    // Update system usage interaction
+    try {
+      await patchInteractionImageAttachment('system usage', buffer, interaction.token);
+    } catch (error) {
+      console.error(`Error updating system usage interaction: ${error}`);
+      clearInterval(updateIntervalId);
+      return;
+    }
+
+    // Check if system update interval should expire
+    if (count === 0) {
+      clearInterval(updateIntervalId);
+    }
+  }, SYSTEM_UPDATE_INTERVAL);
+}
+
+// Define function to interpret code
+async function doInterpret(interaction) {
+  // Get code to interpret
+  const code = interaction.data.options[0].value;
+
+  try {
+    // Interpret code
+    const result = await interpret(code);
+
+    // Update interaction with code interpretation
+    try {
+      await updateInteraction({
+        content: `${result.language} code:\n```${result.language === 'node'? 'javascript' : result.language}\n${result.code.substring(0, 1800)}\n````
+      }, interaction.id, interaction.token);
+    } catch (error) {
+      console.error(`Error updating interaction with code interpretation: ${error}`);
+    }
+  } catch (error) {
+    console.error(`Error interpreting code: ${error}`);
+  }
+}
+
+// Define function to summarize article
+async function doSummary(interaction) {
+  // Get article to summarize
+  const article = interaction.data.options[0].value;
+
+  try {
+    // Summarize article
+    const summary = await summerizeArticle(article);
+
+    // Update interaction with article summary
+    try {
+      await updateInteraction({
+        content: `Link: ${article}\nTLDR: ${summary[1]}\n\n${summary[0]}`
+      }, interaction.id, interaction.token);
+    } catch (error) {
+      console.error(`Error updating interaction with article summary: ${error}`);
+    }
+  } catch (error) {
+    console.error(`Error summarizing article: ${error}`);
+  }
+}
+
+// Define function to convert text to speech
+async function doVoice(interaction) {
+  // Get text to convert
+  const text = interaction.data.options[0].value;
+
+  try {
+    // Convert text to speech
+    const audio = await llmVoice(`Convert the text to speech: ${text}`);
+
+    // Update interaction with audio attachment
+    try {
+      await patchInteractionImageAttachment('text to speech', Buffer.from(audio), interaction.token, 'audio/wav');
+    } catch (error) {
+      console.error(`Error updating interaction with audio attachment: ${error}`);
+    }
+  } catch (error) {
+    console.error(`Error converting text to speech: ${error}`);
+  }
+}
+
+// Export functions
+module.exports = {
+  doInterpret,
+  doSystemUsage,
+  doVoice,
+  doSummary
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <p>The code imports various modules from the <code>importer</code> object:</p>
 <ul>

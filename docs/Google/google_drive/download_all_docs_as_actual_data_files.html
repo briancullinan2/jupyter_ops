@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { importFromCache } = require('import-cache');
+const { google } = require('googleapis');
+const fs = require('fs');
+const path = require('path');
+const { safeUrl } = require('domain-cache-tools');
+const { getRpcFromSpec } = require('get-rpc-from-spec');
+const { listDrives, authorize } = require('google-drive-tools');
+
+// Define constants
+const GOOGLE_AUTH_SCOPE = [
+  'https://www.googleapis.com/auth/drive'
+];
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const DOWNLOAD_PATH = path.join(PROFILE_PATH, 'Downloads');
+
+// Define a function to get the Google Drive API client
+async function getGoogleDriveClient(version, auth) {
+  const driveApi = await getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${version}.json`)), auth);
+  return google.drive({ version, auth });
+}
+
+// Define a function to convert a Google Doc to a specific file type
+async function convertGoogleDoc(fileId, outType) {
+  const client = await authorize(GOOGLE_AUTH_SCOPE);
+  const drive = await getGoogleDriveClient('v3', client);
+  return await drive.files.export({
+    fileId,
+    mimeType: outType
+  });
+}
+
+// Define a function to download Google Docs from a specific folder
+async function downloadDocs(folder = 'root') {
+  const drives = await listDrives(folder);
+  for (const drive of drives) {
+    if (drive.mimeType === 'application/vnd.google-apps.document') {
+      console.log(`Exporting ${drive.name}`);
+      try {
+        const data = await convertGoogleDoc(drive.id, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        fs.writeFileSync(path.join(DOWNLOAD_PATH, safeUrl(`${drive.name}_${drive.id}.docx`)), data);
+      } catch (error) {
+        console.error(error);
+      }
+    } else if (drive.mimeType === 'application/vnd.google-apps.spreadsheet') {
+      console.log(`Exporting ${drive.name}`);
+      try {
+        const data = await convertGoogleDoc(drive.id, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        fs.writeFileSync(path.join(DOWNLOAD_PATH, safeUrl(`${drive.name}_${drive.id}.xlsx`)), data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+}
+
+module.exports = {
+  downloadDocs,
+  convertGoogleDoc
+};</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code starts by importing various dependencies using the <code>importer.import</code> function. These dependencies include:</p>
 <ul>

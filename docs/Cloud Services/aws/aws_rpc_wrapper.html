@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>handler</code> that acts as a webhook endpoint, likely for handling requests from an external system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const assert = require('assert');
+
+const getResult = importer.import('rpc result');
+
+/**
+ * Event handler for API Gateway.
+ * 
+ * @param {Object} event - API Gateway event object
+ * @param {Object} context - API Gateway context object
+ * @param {Function} callback - API Gateway callback function
+ */
+function handler(event, context, callback) {
+    const body = event || {};
+    try {
+        // Merge event body and query parameters into a single object
+        body = {...event.body,...event.queryStringParameters };
+
+        // Validate function name and ID
+        assert(body.function, `Invalid function name: ${JSON.stringify(body)}`);
+        assert(importer.interpret(body.function).id, `Failed to resolve function ID: ${importer.interpret(body.function)}`);
+
+        // Call Eloqua Notify service to retrieve temporary data
+        const notifyService = importer.interpret(body.function);
+        const data = await notifyService.getTemporaryData();
+
+        // Parse action and call from notify service
+        const action = body['action'];
+        const call = body['call'];
+        const params = {};
+
+        // Add query parameters to parameters object
+        Object.assign(params, data, {...event.queryStringParameters });
+
+        // Call Zuora subscription callout to update single records in Eloqua
+        const zuoraService = importer.interpret(body.function);
+        await zuoraService.updateRecords(params);
+
+        // Get result from RPC result object
+        const result = await getResult({
+            command: body['function'],
+            result: importer.interpret(body['function']),
+            body,
+            circles: ['Public']
+        });
+
+        // Return success response
+        callback(null, {
+           'statusCode': 200,
+            'headers': { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': JSON.stringify(result, null, 4)
+        });
+    } catch (e) {
+        // Return error response with status code 500
+        callback(e, {
+           'statusCode': 500,
+            'headers': { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': JSON.stringify({'Error': e.message})
+        });
+    }
+}
+
+if (typeof module.exports === 'undefined') {
+    module.exports = {};
+}
+module.exports.handler = handler;</code></pre></div><p>This code defines a function <code>handler</code> that acts as a webhook endpoint, likely for handling requests from an external system.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

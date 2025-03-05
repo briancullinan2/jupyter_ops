@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Retrieves a template from the provided templates object based on the given path.
+ * 
+ * If the path is empty or root, returns the entry template. Otherwise, splits the path
+ * by '/' and finds the first segment that matches a template in the templates object.
+ * If no match is found, returns the first segment of the path.
+ * 
+ * @param {Object} templates - An object containing template information.
+ * @param {string} path - The path to the template.
+ * @returns {string|undefined} The path to the template, or undefined if not found.
+ */
+const getTemplateByUrl = (templates, path) =&gt; {
+    // Check if path is empty or root, and return the entry template if so
+    if (!path || path === '' || path === '/') {
+        return getEntryTemplate(templates);
+    }
+
+    // Split the path by '/' and filter out segments that do not match a template
+    const matchingSegments = path.split('/').filter(segment =&gt; templates[segment] &amp;&amp; templates[segment].template);
+
+    // If a matching segment is found, return its absolute path
+    if (matchingSegments.length &gt; 0) {
+        return path.startsWith('/')? '/' + matchingSegments[0] : matchingSegments[0];
+    }
+
+    // If no matching segment is found, return the first segment of the path
+    return path.split('/')[0];
+};
+
+/**
+ * Retrieves the entry template from the provided templates object.
+ * 
+ * @param {Object} templates - An object containing template information.
+ * @returns {string|undefined} The path to the entry template, or undefined if not found.
+ */
+const getEntryTemplate = (templates) =&gt; {
+    // Find the entry template with index 0
+    const entryTemplate = Object.keys(templates).find(t =&gt; templates[t].template &amp;&amp; templates[t].template.properties &amp;&amp; templates[t].template.properties.index === 0);
+
+    // If no entry template is found, return the first template
+    return entryTemplate || Object.keys(templates).find(t =&gt; templates[t].template);
+};
+
+module.exports = getTemplateByUrl;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Function: <code>getTemplateByUrl</code></h3>
 <h4>Purpose</h4>
 <p>Resolves the template for a given URL path.</p>

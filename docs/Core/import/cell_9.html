@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./search_notebook_questions.html">search notebook questions</a> | <a href="./convert_regexp_matches_to_an_array.html">convert regexp matches to an array</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides four functions for filtering and searching Jupyter Notebook files (.ipynb) in a local environment, allowing users to search by filename, cell number, or query. The functions include <code>filterLocal</code>, <code>filterFilename</code>, <code>searchFiles</code>, and <code>searchQueryFiles</code>, which are exported as module exports for use in other applications.</p>
+  <p>This code provides functions to filter and search notebook files based on various queries and criteria. Functions support searching local files, filtering filenames, and querying a database or cache for matching notebook files.</p>
 <h1>Cell 9</h1>
 
 
@@ -151,56 +158,147 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Overview</h3>
-<p>This code is a set of four functions for filtering and searching notebooks (.ipynb files) in a local environment. It reads notebooks from files, extracts cells, and searches based on filename or query.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const fs = require('fs');
+const path = require('path');
+
+// Import necessary functions from the Core module
+const { getCells, queryDatabase } = require('../Core');
+
+/**
+ * Filters local notebook cells based on the query parameters.
+ * 
+ * @param {string} query - The file path of the notebook to filter.
+ * @returns {array|object} The filtered cells if the file exists, otherwise an empty array.
+ */
+function filterLocal(query) {
+    const filename = getFilenameFromQuery(query);
+    if (fs.existsSync(filename)) {
+        const local = getCells(filename);
+        if (query.includes('[') &amp;&amp; query.includes(']')) {
+            return [local[parseInt(getQueryNumberFromFilename(query))]];
+        }
+        return local;
+    }
+    return [];
+}
+
+/**
+ * Extracts the filename from the query string, removing any path or index suffix.
+ * 
+ * @param {string} query - The query string to extract the filename from.
+ * @returns {string} The filename.
+ */
+function getFilenameFromQuery(query) {
+    return query.replace(/\.ipynb\[[0-9]+\].*/ig, '.ipynb');
+}
+
+/**
+ * Extracts the number from the query string, assuming it's in the format '[number]'.
+ * 
+ * @param {string} query - The query string to extract the number from.
+ * @returns {number|string} The extracted number or an empty string if not found.
+ */
+function getQueryNumberFromFilename(query) {
+    const queryParts = query.split(/[\[\]]/ig);
+    return queryParts.length &gt; 1? queryParts[1] : '';
+}
+
+/**
+ * Filters an array of file names based on the query filename.
+ * 
+ * @param {array} arr - The array of file names to filter.
+ * @param {string} fname - The query filename to filter by.
+ * @returns {array} The filtered array of file names.
+ */
+function filterFilename(arr, fname) {
+    return arr.filter(id =&gt; path.basename(id).startsWith(`${fname}[`));
+}
+
+/**
+ * Searches for files in the cell cache based on the query filename.
+ * 
+ * @param {string} query - The query filename to search for.
+ * @param {array} cellCache - The array of cell cache entries.
+ * @returns {array} The sorted array of matching files.
+ */
+function searchFiles(query, cellCache) {
+    const fname = path.basename(query);
+    return cellCache
+       .filter(cell =&gt; path.basename(cell[1]).startsWith(`${fname}[`)))
+       .sort((a, b) =&gt; parseInt(a[1].split(/[\[\]]/ig)[1]) - parseInt(b[1].split(/[\[\]]/ig)[1]));
+}
+
+/**
+ * Searches for files in the query database based on the query.
+ * 
+ * @param {string} query - The query to search for.
+ * @param {array} cellCache - The array of cell cache entries.
+ * @returns {array} The matching files or an empty array if not found.
+ */
+function searchQueryFiles(query, cellCache) {
+    const isNumericQuery = getQueryNumberFromFilename(query) + '' === getQueryNumberFromFilename(query);
+    if (isNumericQuery) {
+        return cellCache
+           .filter(cell =&gt; path.basename(cell[1]) === `${query[0]}[${getQueryNumberFromFilename(query)}]`)
+           .map(cell =&gt; cell[1]);
+    }
+    return filterFilename(queryDatabase(query[1]), query[0]);
+}
+
+module.exports = {
+    filterLocal,
+    filterFilename,
+    searchFiles,
+    searchQueryFiles
+};
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Required Modules</h3>
+<ul>
+<li><code>fs</code> (file system module) for file operations</li>
+<li><code>path</code> module for path manipulation</li>
+<li><code>../Core</code> module for Core functionality (specifically <code>getCells</code> and <code>queryDatabase</code> functions)</li>
+</ul>
 <h3>Functions</h3>
-<h4>filterLocal</h4>
+<h4><code>filterLocal(query)</code></h4>
 <ul>
-<li>Reads a notebook from a local file based on the provided query.</li>
-<li>The query is expected to be in the format <code>.ipynb[&lt;cell number&gt;]</code>.</li>
-<li>If the query is valid, it returns the notebook cells; otherwise, it returns an empty array.</li>
+<li>Purpose: Read a local notebook file and filter its cells based on a query</li>
+<li>Parameters: <code>query</code> - a string representing the path to the notebook file</li>
+<li>Returns: An array of filtered cells or the entire notebook if the query is incomplete</li>
 </ul>
-<pre><code class="language-javascript">function filterLocal(query) {
-    //...
-}
-</code></pre>
-<h4>filterFilename</h4>
+<h4><code>filterFilename(arr, fname)</code></h4>
 <ul>
-<li>Filters an array of notebooks based on a file name.</li>
-<li>The file name is expected to be in the format <code>*.ipynb[&lt;cell number&gt;]</code>.</li>
-<li>It returns a sorted array of notebooks that match the file name.</li>
+<li>Purpose: Filter an array of notebook files by their filenames</li>
+<li>Parameters: <code>arr</code> - an array of notebook files, <code>fname</code> - the filename to filter by</li>
+<li>Returns: A filtered array of notebook files</li>
 </ul>
-<pre><code class="language-javascript">function filterFilename(arr, fname) {
-    //...
-}
-</code></pre>
-<h4>searchFiles</h4>
+<h4><code>searchFiles(query, cellCache)</code></h4>
 <ul>
-<li>Searches for notebooks in the local environment based on a query.</li>
-<li>The query is expected to be in the format <code>*.ipynb[&lt;cell number&gt;]</code>.</li>
-<li>It returns a sorted array of notebooks that match the query.</li>
+<li>Purpose: Search for notebook files in a cache based on a query</li>
+<li>Parameters: <code>query</code> - a string representing the path to the notebook file, <code>cellCache</code> - an array of cached notebook files</li>
+<li>Returns: A sorted array of matching notebook files</li>
 </ul>
-<pre><code class="language-javascript">function searchFiles(query, cellCache) {
-    //...
-}
-</code></pre>
-<h4>searchQueryFiles</h4>
+<h4><code>searchQueryFiles(query, cellCache)</code></h4>
 <ul>
-<li>Searches for notebooks in the local environment based on a query.</li>
-<li>The query is expected to be in the format <code>[filename][&lt;cell number&gt;]</code>.</li>
-<li>If the query is numeric (i.e., it contains a cell number), it searches for the corresponding cell in the notebook; otherwise, it searches for the notebook based on the file name.</li>
+<li>Purpose: Search for notebook files in a database or cache based on a query</li>
+<li>Parameters: <code>query</code> - a string representing the query string, <code>cellCache</code> - an array of cached notebook files</li>
+<li>Returns: A single notebook file or an empty array if the query is invalid</li>
 </ul>
-<pre><code class="language-javascript">function searchQueryFiles(query, cellCache) {
-    //...
-}
-</code></pre>
 <h3>Exports</h3>
-<p>The four functions are exported as module exports:</p>
-<pre><code class="language-javascript">module.exports.filterLocal = filterLocal
-module.exports.filterFilename = filterFilename
-module.exports.searchFiles = searchFiles
-module.exports.searchQueryFiles = searchQueryFiles
-</code></pre>
+<ul>
+<li><code>filterLocal</code></li>
+<li><code>filterFilename</code></li>
+<li><code>searchFiles</code></li>
+<li><code>searchQueryFiles</code></li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li><code>getCells</code> and <code>queryDatabase</code> functions are assumed to be exported from the <code>../Core</code> module but their implementations are not shown.</li>
+<li>The <code>cellCache</code> parameter in <code>searchFiles</code> and <code>searchQueryFiles</code> functions is assumed to be an array of cached notebook files.</li>
+<li>The <code>queryDatabase</code> function is assumed to return a database query result.</li>
+<li>The <code>isNumeric</code> check in <code>searchQueryFiles</code> function determines whether the query is a cell index (numeric) or a notebook filename (non-numeric).</li>
+</ul>
 
 </body>
 

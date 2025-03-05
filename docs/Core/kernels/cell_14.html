@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -180,7 +187,19 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>status: (kernel, request) => {
+  try {
+    const response = kernel.do_respond({
+      status: request.content
+    });
+    return response;
+  } catch (error) {
+    // Log the error for debugging purposes
+    console.error('Error updating kernel status:', error);
+    throw error; // Re-throw the error to propagate it
+  }
+},</code></pre></div><h3>Code Breakdown</h3>
 <h4>Status Function</h4>
 <ul>
 <li>Purpose: Handles the response to a kernel request by setting the <code>status</code> to the <code>content</code> of the request.</li>

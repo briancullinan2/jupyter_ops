@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Import } = require('./importer');
+const { Client } = require('./selenium-client');
+
+/**
+ * Tests a Reddit scraper by navigating to the specified subreddit and scraping links.
+ * 
+ * @param {string} startPage - The subreddit to scrape. Defaults to 'CollapseSupport+climatechange+collapse+economicCollapse'.
+ * @returns {Promise&lt;object&gt;} The scraped Reddit links.
+ */
+async function testScraper(startPage = 'CollapseSupport+climatechange+collapse+economicCollapse') {
+  const basePage = 'https://www.reddit.com/r/';
+  const fullStartPage = startPage.includes('://')? startPage : basePage + startPage;
+  
+  // Initialize the Selenium driver.
+  const driver = await Client.getInstance();
+
+  try {
+    // Scrape the Reddit links.
+    const result = await Import.getRedditLinks(driver, fullStartPage);
+    
+    return result;
+  } finally {
+    // Quit the driver to free up resources.
+    await driver.quit();
+  }
+}
+
+module.exports = testScraper;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">const redditLinks = importer.import('reddit scraper')
 const getClient = importer.import('selenium client')

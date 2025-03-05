@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -158,7 +165,167 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Generates all permutations of the given array.
+ *
+ * @param {Array} array The input array.
+ * @returns {Array} An array of all permutations of the input array.
+ */
+function* permute(array) {
+    if (array.length === 1) {
+        yield array;
+    } else {
+        for (let i = 0; i &lt; array.length; i++) {
+            const rest = array.slice(0, i).concat(array.slice(i + 1));
+            for (const perm of permute(rest)) {
+                yield [array[i]].concat(perm);
+            }
+        }
+    }
+}
+
+/**
+ * Creates a new array by removing the element at the given index and concatenating the rest of the array.
+ *
+ * @param {Array} array The input array.
+ * @param {Number} i The index of the element to remove.
+ * @returns {Array} A new array with the element at the given index removed.
+ */
+function spliceClone(array, i) {
+    return [...array.slice(0, i),...array.slice(i + 1)];
+}
+
+/**
+ * Creates a deep clone of the given array.
+ *
+ * @param {Array} array The input array.
+ * @returns {Array} A deep clone of the input array.
+ */
+function cloneArray(array) {
+    return [...array];
+}
+
+/**
+ * Represents an arithmetic operator.
+ */
+class Operator {
+    constructor(op, precedence) {
+        this.op = op;
+        this.precedence = precedence;
+    }
+}
+
+/**
+ * Represents a binary expression.
+ */
+class BinaryExpression {
+    constructor(left, op, right) {
+        this.left = left;
+        this.op = op;
+        this.right = right;
+    }
+}
+
+/**
+ * Represents an equation.
+ */
+class Equation {
+    constructor(left, op, right, equals) {
+        this.left = left;
+        this.op = op;
+        this.right = right;
+        this.equals = equals;
+    }
+}
+
+/**
+ * Generates all possible equations by combining permutations of a given array with a set of operators.
+ *
+ * @param {Array} array The array to permute.
+ * @param {Array} operators The set of operators to use.
+ * @returns {Array} An array of all possible equations.
+ */
+function generateEquations(array, operators) {
+    for (const perm of permute(array)) {
+        for (const op1 of operators) {
+            for (const op2 of operators) {
+                for (let i = 0; i &lt; perm.length - 1; i++) {
+                    const left = perm.slice(0, i + 1);
+                    const right = perm.slice(i + 1);
+                    const equation = new Equation(
+                        new BinaryExpression(
+                            new BinaryExpression(
+                                new BinaryExpression(perm[0], op1.op, perm[1]),
+                                op1.op,
+                                new BinaryExpression(perm[2], op2.op, perm[3])
+                            ),
+                            op1.op,
+                            new BinaryExpression(perm[4], op2.op, perm[5])
+                        ),
+                        '=',
+                        solve([op1.op, op2.op], perm)
+                    );
+                    yield equation;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Evaluates a binary expression.
+ *
+ * @param {Array} op The operators used in the expression.
+ * @param {Array} values The values used in the expression.
+ * @returns {Number} The result of the expression.
+ */
+function solve(op, values) {
+    if (op.length === 1) {
+        return values[0];
+    } else {
+        const left = values.slice(0, 2);
+        const right = values.slice(2);
+        switch (op[0]) {
+            case '+':
+                return left[0] + left[1];
+            case '-':
+                return left[0] - left[1];
+            case '*':
+                return left[0] * left[1];
+            case '/':
+                return left[0] / left[1];
+            case '^':
+                return left[0] ^ left[1];
+            case '%':
+                return left[0] % left[1];
+        }
+    }
+}
+
+// Define the operators and their precedence
+const operators = [
+    new Operator('^', 2),
+    new Operator('*', 2),
+    new Operator('/', 2),
+    new Operator('%', 2),
+    new Operator('+', 1),
+    new Operator('-', 1)
+];
+
+// Generate all possible equations
+const equations = Array.from(generateEquations([1, 3, 4, 6], operators));
+
+// Print the equations
+for (const equation of equations) {
+    const left = equation.left;
+    const right = equation.right;
+    const equals = equation.equals;
+    const op1 = equation.op;
+    const op2 = op1.left.op;
+    const op3 = op1.right.op;
+    console.log(`(${left} ${op2} ${right.left}) ${op1.op} (${right.right}) ${op3} (${equals})`);
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Function: <code>spliceClone(arr, i)</code></h3>
 <ul>
 <li>Creates a clone of the input array <code>arr</code> by splicing a single element at index <code>i</code> and concatenating the rest of the array.</li>

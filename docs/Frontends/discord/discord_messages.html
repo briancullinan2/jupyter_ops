@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -173,7 +180,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Discord API Functions</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and constants
+const { DEFAULT_CHANNEL, IMPORTER_CONFIG } = require('./config');
+const { requestAuthQ } = require('./request');
+
+/**
+ * Creates a new message in a Discord channel.
+ * @param {string|object} message - The content of the message. Can be a string or an object with 'content' property.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the message will be created.
+ * @returns {Promise<object>} The created message.
+ */
+async function createMessage(message, channelId = DEFAULT_CHANNEL) {
+  const params = typeof message ==='string'? { content: message } : message;
+  return await requestAuthQ({
+    method: 'POST',
+    url: `channels/${channelId}/messages`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(params),
+  });
+}
+
+/**
+ * Deletes a message from a Discord channel.
+ * @param {string} messageId - The ID of the message to delete.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the message is located.
+ * @returns {Promise<object>} The deleted message.
+ */
+async function deleteMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}/messages/${messageId}`,
+  });
+}
+
+/**
+ * Edits a message in a Discord channel.
+ * @param {string|object} message - The new content of the message. Can be a string or an object with 'content' property.
+ * @param {string} messageId - The ID of the message to edit.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the message is located.
+ * @returns {Promise<object>} The updated message.
+ */
+async function updateMessage(message, messageId, channelId = DEFAULT_CHANNEL) {
+  const params = typeof message ==='string'? { content: message } : message;
+  return await requestAuthQ({
+    method: 'PATCH',
+    url: `channels/${channelId}/messages/${messageId}`,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(params),
+  });
+}
+
+/**
+ * Retrieves a list of pinned messages from a Discord channel.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel to retrieve pinned messages from.
+ * @returns {Promise<object[]>} A list of pinned messages.
+ */
+async function getPins(channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'GET',
+    url: `channels/${channelId}/pins`,
+  });
+}
+
+/**
+ * Pins a message in a Discord channel.
+ * @param {string} messageId - The ID of the message to pin.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the message is located.
+ * @returns {Promise<object>} The pinned message.
+ */
+async function pinMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'PUT',
+    url: `channels/${channelId}/pins/${messageId}`,
+  });
+}
+
+/**
+ * Unpins a message from a Discord channel.
+ * @param {string} messageId - The ID of the message to unpin.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the message is located.
+ * @returns {Promise<object>} The unpin operation result.
+ */
+async function unpinMessage(messageId, channelId = DEFAULT_CHANNEL) {
+  return await requestAuthQ({
+    method: 'DELETE',
+    url: `channels/${channelId}/pins/${messageId}`,
+  });
+}
+
+module.exports = {
+  createMessage,
+  deleteMessage,
+  updateMessage,
+  getPins,
+  pinMessage,
+  unpinMessage,
+};</code></pre></div><p><strong>Discord API Functions</strong></p>
 <h3>Importing Configuration</h3>
 <pre><code class="language-javascript">var {DEFAULT_CHANNEL} = importer.import('discord configuration')
 const {requestAuthQ} = importer.import('discord request')

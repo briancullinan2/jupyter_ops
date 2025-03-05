@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -121,7 +128,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up a Gulp task to watch for changes in TypeScript files and trigger a build process.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const gulp = require('gulp');
+const watch = require('gulp-watch');
+const { async } = require('util'); // Import async function
+const fs = require('fs');
+const path = require('path'); // For path operations
+const projectRelatives = require('./project-relatives'); // Assume this module exists
+
+// Define constants
+const PROFILE_PATH = process.env.HOME
+  || process.env.HOMEPATH
+  || process.env.USERPROFILE
+  || ''; // Path to user's home directory
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Documents', 'universal'); // Project directory path
+
+// Initialize variables
+let searching = false;
+
+// Define task
+gulp.task('watch-for-changes', async () => {
+  // Watch for changes in TypeScript files
+  await watch('src/**/*.ts', {
+    cwd: PROJECT_PATH, // Current working directory
+    ignoreInitial: true, // Ignore changes on initial run
+    read: false, // Don't read files immediately
+    readDelay: 100 // Delay file reading by 100ms
+  }, async () => {
+    // Check if searching is not in progress
+    if (!searching) {
+      searching = true;
+      try {
+        // Call projectRelatives function
+        await projectRelatives(PROJECT_PATH);
+      } catch (error) {
+        // Log any errors
+        globalThis.console.error('Error in projectRelatives:', error);
+      } finally {
+        searching = false; // Reset searching flag
+      }
+    }
+  });
+
+  // Start async task
+  async();
+});
+
+// Run task
+gulp.task('default', () => gulp.start('watch-for-changes'));</code></pre></div><p>This code snippet sets up a Gulp task to watch for changes in TypeScript files and trigger a build process.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

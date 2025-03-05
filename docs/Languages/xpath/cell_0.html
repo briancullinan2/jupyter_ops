@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -238,7 +245,18 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Module Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>from __future__ import unicode_literals
+import os
+import re
+from ply import lex, yacc
+import tempfile
+
+from eulxml.xpath import lexrules
+from eulxml.xpath import parserules
+from eulxml.xpath.ast import serialize
+
+__all__ = ['lexer', 'parser', 'parse','serialize']</code></pre></div><p><strong>Module Breakdown</strong></p>
 <p>This code defines a module for building a lexer and parser for XPath expressions. Here's a concise overview:</p>
 <h3>Importing Modules</h3>
 <p>The code imports various modules, including:</p>

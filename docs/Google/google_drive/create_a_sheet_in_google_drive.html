@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { authorizeSheets, insertPermission } = require('../Core');
+
+/**
+ * Creates a new Google Sheet and grants the specified email permission to access it.
+ * @param {string} email The email address to grant permission to.
+ * @returns {Promise<void>}
+ */
+async function createSheet(email) {
+  // TODO: Validate the provided email address.
+
+  const auth = new google.auth.GoogleAuth();
+  const sheets = google.sheets({ version: 'v4', auth });
+
+  // Authorize the API client
+  await authorizeSheets(sheets);
+
+  // Create a new spreadsheet
+  const spreadsheet = await sheets.spreadsheets.create({
+    properties: {
+      title: 'New Spreadsheet',
+    },
+  });
+
+  // Insert permission for the specified email address
+  await insertPermission(spreadsheet.data.spreadsheetId, email);
+  await insertPermission(spreadsheet.data.spreadsheetId,'megamindbrian@gmail.com');
+
+  // TODO: Return the spreadsheet ID or other relevant information.
+}
+
+module.exports = createSheet;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies</h3>
 <ul>
 <li><code>util</code>: a built-in Node.js module for utility functions.</li>

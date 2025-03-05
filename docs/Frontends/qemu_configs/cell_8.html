@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -105,7 +112,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>QEMU Command Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define VM configuration constants
+declare -A VM_CONFIG
+VM_CONFIG[IMG_DIR]="/home/user/vm"
+VM_CONFIG[WIN10_IMG_NAME]="win10.img"
+VM_CONFIG[WIN10_ISO]="Win10_1803_English_x64.iso"
+VM_CONFIG[VIRTIO_WIN_ISO]="virtio-win-0.1.149.iso"
+VM_CONFIG[QEMU_SYSTEM_X86_64_BIN]="qemu-system-x86_64"
+
+# Set paths to disk images and ISO files
+VM_CONFIG[IMG_PATH]="${VM_CONFIG[IMG_DIR]}/${VM_CONFIG[WIN10_IMG_NAME]}"
+VM_CONFIG[WIN10_ISO_PATH]="${VM_CONFIG[IMG_DIR]}/${VM_CONFIG[WIN10_ISO]}"
+VM_CONFIG[VIRTIO_WIN_ISO_PATH]="${VM_CONFIG[IMG_DIR]}/${VM_CONFIG[VIRTIO_WIN_ISO]}"
+
+# Define QEMU command
+QEMU_CMD="${VM_CONFIG[QEMU_SYSTEM_X86_64_BIN]}"
+
+# Add VM configuration options
+QEMU_CMD+=" --enable-kvm"
+QEMU_CMD+=" -drive driver=raw,file=${VM_CONFIG[IMG_PATH]},if=virtio -m 6144"
+QEMU_CMD+=" -net nic,model=virtio"
+QEMU_CMD+=" -net user"
+QEMU_CMD+=" -cdrom ${VM_CONFIG[WIN10_ISO_PATH]}"
+QEMU_CMD+=" -drive file=${VM_CONFIG[VIRTIO_WIN_ISO_PATH]},index=3,media=cdrom"
+QEMU_CMD+=" -rtc base=localtime,clock=host"
+QEMU_CMD+=" -smp cores=4,threads=8"
+QEMU_CMD+=" -usb"
+QEMU_CMD+=" -device usb-tablet"
+QEMU_CMD+=" -net user,smb=${HOME}"
+
+# Execute QEMU command
+echo "Starting VM..."
+echo "$QEMU_CMD"
+"$QEMU_CMD" &
+
+# TODO: Implement VM shutdown on exit</code></pre></div><p><strong>QEMU Command Breakdown</strong></p>
 <p>This is a QEMU system command that sets up a virtual machine (VM) environment. Here's a breakdown of the command:</p>
 <h3>Variables</h3>
 <ul>

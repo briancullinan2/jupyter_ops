@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -232,7 +239,133 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>const fs = require('fs');
+const WebAssembly = require('webassembly-js');
+
+class HuffmanCompressor {
+  constructor() {
+    this.memory = new Uint8Array(16);
+    this.msgData = 8192 * 12;
+    this.MAX_MSGLEN = 16384;
+    this.isInit = false;
+    this.buffer = new Uint8Array(0);
+
+    this.MAX_MSGLEN = 16384;
+    this.buffer = new Uint8Array(16384);
+    this.memory = new Uint8Array(16);
+  }
+
+  async init() {
+    if (this.isInit) return;
+    const binary = new Uint8Array(fs.readFileSync('/Users/briancullinan/planet_quake/build/debug-js-js/huffman_js.wasm'));
+    const imports = {};
+    imports['memory'] = new WebAssembly.Memory({ initial: 1, maximum: 1 });
+    const memory = new Uint8Array(imports['memory'].buffer);
+    this.buffer = memory;
+
+    const program = await WebAssembly.instantiate(binary, { env: imports });
+    this.Huff_Compress = program.instance.exports.Huff_Compress;
+    this.Huff_Decompress = program.instance.exports.Huff_Decompress;
+    this.HuffmanGetBit = program.instance.exports.HuffmanGetBit;
+    this.HuffmanGetSymbol = program.instance.exports.HuffmanGetSymbol;
+    this.HuffmanPutBit = program.instance.exports.HuffmanPutBit;
+    this.HuffmanPutSymbol = program.instance.exports.HuffmanPutSymbol;
+
+    this.isInit = true;
+  }
+
+  async compressMessage(message) {
+    if (!this.isInit) await this.init();
+    const msg = this.msgData;
+    const msgStart = msg + 64;
+
+    if (typeof message ==='string') message = message.split('');
+    for (let i = msg; i &lt; msgStart + message.length; i++) {
+      this.buffer[i] = 0;
+    }
+
+    const msgLength = message.length + 1;
+    this.buffer[msg + 20] = msgLength &amp; 255;
+    this.buffer[msg + 21] = (msgLength &gt;&gt; 8) &amp; 255;
+    this.buffer[msg + 22] = 0;
+    this.buffer[msg + 23] = 0;
+
+    for (let i = 0; i &lt; message.length; i++) {
+      this.buffer[msgStart + i] = message[i].charCodeAt(0);
+    }
+    this.buffer[msgStart + message.length] = 0;
+
+    this.Huff_Compress(msg, 12);
+    const compressedLength = (this.buffer[msg + 21] &lt;&lt; 8) + this.buffer[msg + 20];
+    const compressed = this.buffer.slice(msgStart, msgStart + compressedLength);
+    return compressed;
+  }
+
+  async decompressMessage(message, offset) {
+    if (!this.isInit) await this.init();
+    const m = [];
+    for (let i = 0; i &lt; message.length; i++) {
+      m.push(message[i]);
+    }
+    return this.readBits(m, offset);
+  }
+
+  readBits(m, offset, bits = 8) {
+    const base = this.msgData;
+    let value = 0;
+    const nbits = bits &amp; 7;
+    for (let i = 0; i &lt; m.length; i++) {
+      this.buffer[base + i] = m[i];
+    }
+    let bitIndex = offset;
+    if (nbits) {
+      for (let i = 0; i &lt; nbits; i++) {
+        value |= this.HuffmanGetBit(base, bitIndex) &lt;&lt; i;
+        bitIndex++;
+      }
+      bits -= nbits;
+    }
+    if (bits) {
+      for (let i = 0; i &lt; bits; i += 8) {
+        bitIndex += this.HuffmanGetSymbol(this.msgData - 4, base, bitIndex);
+        value |= this.buffer[this.msgData - 4] &lt;&lt; (i + nbits);
+      }
+    }
+    return [bitIndex, value];
+  }
+
+  writeBits(msgBytes, offset, value, bits) {
+    const base = this.msgData;
+    const bitIndex = offset;
+    const nbits = bits &amp; 7;
+    for (let j = 0; j &lt; this.MAX_MSGLEN; j++) {
+      if (j &lt; msgBytes.length) {
+        this.buffer[base + j] = msgBytes[j] &amp; 0xFF;
+      } else {
+        this.buffer[base + j] = 0;
+      }
+    }
+    value &amp;= (0xffffffff &gt;&gt; (32 - bits));
+    if (nbits) {
+      for (let i = 0; i &lt; nbits; i++) {
+        this.HuffmanPutBit(base, bitIndex, value &amp; 1);
+        bitIndex++;
+        value = value &gt;&gt; 1;
+      }
+      bits = bits - nbits;
+    }
+    if (bits) {
+      for (let i = 0; i &lt; bits; i += 8) {
+        bitIndex += this.HuffmanPutSymbol(base, bitIndex, value &amp; 0xFF);
+        value = value &gt;&gt; 8;
+      }
+    }
+    return [bitIndex, this.buffer.slice(base, base + (bitIndex &gt;&gt; 3) + 1)];
+  }
+}
+
+module.exports = HuffmanCompressor;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js code snippet that appears to be implementing a Huffman coding compression and decompression library. Huffman coding is a lossless data compression algorithm that assigns variable-length codes to characters in a data set.</p>
 <p><strong>Variables and Functions</strong></p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -152,7 +159,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client } = require('selenium-webdriver');
+const { Builder } = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
+const { URL } = require('url');
+
+const redditLinks = require('./reddit scraper');
+const getClient = require('./selenium client');
+const redditList = require('./reddit month of links');
+const redditPost = require('./reddit post');
+const summerizeArticle = require('./summarize llm article');
+const { alternativeSummary, CONVERSION_PROMPTS } = require('./convert summaries');
+const { persistSummaries } = require('./default link collector');
+const extractArticle = require('./extract llm article');
+
+class RedditWeekly {
+  async run(startPage = 'CollapseSupport+climatechange+collapse+economicCollapse', postPage = 'CollapseGently') {
+    this.startPage = new URL(startPage).hostname? startPage : `https://www.reddit.com/r/${startPage}`;
+    this.postPage = new URL(postPage).hostname? postPage : 'CollapseGently';
+    this.driver = await this.getClient();
+    this.summaries = persistSummaries();
+    await this.scrapeAndPost(startPage, postPage);
+  }
+
+  async getClient() {
+    return new Client();
+  }
+
+  async scrapeAndPost(startPage, postPage) {
+    const top = await redditLinks(this.driver, startPage + '/top/');
+    const topLinks = top.map(post =&gt; post.link);
+    const topCommented = await this.getTopCommentedPosts(startPage);
+    const freshPosts = topCommented.slice(0, 25).concat(top.slice(0, 25));
+    for (const post of freshPosts) {
+      const summary = await this.getSummary(post);
+      const alternative = await this.getAlternativeSummary(summary);
+      await redditPost(this.driver, this.getRedditPostBody(post, alternative), postPage);
+    }
+  }
+
+  async getTopCommentedPosts(startPage) {
+    const posts = await redditList(this.driver, startPage);
+    return posts.sort((a, b) =&gt; {
+      const aInt = parseInt(a.comment.replace(/comments*/gi, '').trim());
+      const bInt = parseInt(b.comment.replace(/comments*/gi, '').trim());
+      return bInt - aInt;
+    }).filter(post =&gt;!topLinks.includes(post.link));
+  }
+
+  async getSummary(post) {
+    const summary = this.summaries[post.link];
+    if (!summary) {
+      const article = await extractArticle(this.driver, post.link);
+      summary = await summerizeArticle(article);
+      this.summaries[post.link] = summary;
+    }
+    return summary;
+  }
+
+  async getAlternativeSummary(summary) {
+    const rand = Math.round(Math.random() * (CONVERSION_PROMPTS.length - 1)) + 1;
+    return alternativeSummary(summary, CONVERSION_PROMPTS[rand]);
+  }
+
+  getRedditPostBody(post, alternative) {
+    return `TLDR: ${alternative[1]}\n\n${alternative[0]}\n\n[${post.link}](${post.link})`;
+  }
+}
+
+module.exports = RedditWeekly;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code begins by importing various modules using the <code>importer.import()</code> function:</p>
 <ul>

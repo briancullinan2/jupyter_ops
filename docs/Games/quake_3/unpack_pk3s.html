@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -192,7 +199,78 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines two asynchronous functions, <code>readPak</code> and <code>extractPaks</code>, designed to extract files from Quake 3 game archives (<code>.pk3</code> and <code>.zip</code> files).</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const mkdirp = require('mkdirp');
+const StreamZip = require('node-stream-zip');
+
+// Function to read a PK3 file and extract its contents to a specified output directory
+async function readPak(zipFile, outdir) {
+    // If output directory is not specified, generate a default one based on the zip file name
+    outdir = outdir || path.join('/Users/briancullinan/.q3a/unpacked/', path.basename(zipFile) + 'dir');
+
+    try {
+        // Create a new StreamZip instance with the zip file and skip entry name validation
+        const zip = new StreamZip.async({ file: zipFile, skipEntryNameValidation: true });
+
+        // Get the entries in the zip file
+        const entries = await zip.entries();
+
+        // Iterate over the entries
+        for (const entry of Object.values(entries)) {
+            // Construct the full path for the entry
+            const levelPath = path.join(outdir, entry.name).replace(/\\/g, '/');
+
+            // If the directory already exists, skip it
+            if (fs.existsSync(levelPath)) continue;
+
+            // If the entry is a directory, skip it
+            if (entry.isDirectory) continue;
+
+            // Create the directory for the entry if it doesn't exist
+            await mkdirp(path.dirname(levelPath));
+
+            // Extract the entry to the output directory
+            await zip.extract(entry.name, levelPath);
+        }
+
+        // Close the zip file
+        await zip.close();
+    } catch (error) {
+        // Log any errors that occur during the process
+        console.error(`Error reading PK3 file: ${error.message}`);
+    }
+}
+
+// Function to extract all PK3 and ZIP files in a directory and its subdirectories
+async function extractPaks(inpaks, outdir) {
+    // Get the root directory of the input files
+    const root = path.resolve(path.dirname(inpaks));
+
+    // Get all files in the directory and its subdirectories
+    const results = glob.sync('**', { cwd: root });
+
+    // Sort the results
+    results.sort();
+
+    // Iterate over the results
+    for (const file of results) {
+        // Check if the file is a PK3 or ZIP file
+        if (!file.match(/(\.pk3|\.zip)/)) continue;
+
+        // If the file is a subdirectory, extract its PK3 files
+        if (file.match(/\/|\\/)) {
+            await readPak(path.join(root, file), path.join(outdir, path.dirname(file)));
+        } else {
+            // Otherwise, extract its PK3 files to the output directory
+            await readPak(path.join(root, file), outdir);
+        }
+    }
+}
+
+module.exports = extractPaks;</code></pre></div><p>This code snippet defines two asynchronous functions, <code>readPak</code> and <code>extractPaks</code>, designed to extract files from Quake 3 game archives (<code>.pk3</code> and <code>.zip</code> files).</p>
 <p><strong><code>readPak</code> Function:</strong></p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

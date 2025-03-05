@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -152,7 +159,101 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an Angular component for a search bar and its associated module.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Search Service
+import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class SearchService {
+    // Use a BehaviorSubject to handle search result
+    private searchResults: BehaviorSubject<any> = new BehaviorSubject(null);
+
+    search(query: string): Observable<any> {
+        // Mock API call, replace with actual API
+        return new Observable((observer) => {
+            setTimeout(() => {
+                observer.next({ results: 'Mock search results' });
+                observer.complete();
+            }, 1000);
+        });
+    }
+
+    getSearchResults(): Observable<any> {
+        return this.searchResults.asObservable();
+    }
+
+    setSearchResults(results: any): void {
+        this.searchResults.next(results);
+    }
+}
+
+// Search Component
+import { Component, ElementRef, HostListener } from '@angular/core';
+import { SearchService } from './search.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
+@Component({
+    selector: 'bc-search',
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.css']
+})
+export class SearchComponent {
+    query = '';
+    private destroy$: Subject<void> = new Subject<void>();
+    service: SearchService;
+
+    constructor(private elementRef: ElementRef, service: SearchService) {
+        this.service = service;
+    }
+
+    @HostListener('window:beforeunload', ['$event'])
+    beforeUnloadHandler(event: any): void {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
+
+    search(): void {
+        this.service.search(this.query).pipe(takeUntil(this.destroy$)).subscribe((results) => {
+            console.log('searched'+ results);
+            this.service.setSearchResults(results);
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
+}
+
+// Search Module
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { SearchComponent } from './search.component';
+import { SearchService } from './search.service';
+
+const authRoutes: Routes = [
+    {
+        path: '',
+        component: SearchComponent,
+        data: { roles: ['anonymous', 'user'] }
+    }
+];
+
+@NgModule({
+    imports: [
+        CommonModule,
+        RouterModule.forChild(authRoutes)
+    ],
+    declarations: [SearchComponent],
+    providers: [SearchService],
+    exports: [SearchComponent]
+})
+export class SearchModule { }</code></pre></div><p>This code defines an Angular component for a search bar and its associated module.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

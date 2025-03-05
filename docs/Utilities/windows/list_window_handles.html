@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -235,7 +242,191 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="csharp"><code>csharp
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace WindowTracker
+{
+    public static class WindowTracker
+    {
+        private const int MAX_TITLE_LENGTH = 256;
+        private const string USER32_DLL_NAME = "user32.dll";
+
+        [DllImport(USER32_DLL_NAME, SetLastError = true)]
+        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [DllImport(USER32_DLL_NAME, SetLastError = true)]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+        [DllImport(USER32_DLL_NAME, CharSet = CharSet.Unicode)]
+        private static extern int GetWindowText(IntPtr hWnd, StringBuilder strText, int maxCount);
+
+        [DllImport(USER32_DLL_NAME, CharSet = CharSet.Unicode)]
+        private static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport(USER32_DLL_NAME)]
+        private static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
+
+        [DllImport(USER32_DLL_NAME)]
+        private static extern IntPtr GetForegroundWindow();
+
+        // Delegate to filter which windows to include 
+        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+        /// &lt;summary&gt; Get the text for the window pointed to by hWnd &lt;/summary&gt;
+        public static string GetWindowText(IntPtr hWnd)
+        {
+            return GetWindowText(hWnd, MAX_TITLE_LENGTH);
+        }
+
+        private static string GetWindowText(IntPtr hWnd, int maxCount)
+        {
+            int size = GetWindowTextLength(hWnd);
+            if (size &gt; 0)
+            {
+                var builder = new StringBuilder(size + 1);
+                GetWindowText(hWnd, builder, builder.Capacity);
+                return builder.ToString();
+            }
+
+            return String.Empty;
+        }
+
+        /// &lt;summary&gt; Get the text for the window pointed to by hWnd &lt;/summary&gt;
+        public static string GetTitle(IntPtr hWnd)
+        {
+            return GetWindowText(hWnd);
+        }
+
+        /// &lt;summary&gt; Find all windows that match the given filter &lt;/summary&gt;
+        /// &lt;param name="filter"&gt; A delegate that returns true for windows
+        ///    that should be returned and false for windows that should
+        ///    not be returned &lt;/param&gt;
+        public static IEnumerable&lt;IntPtr&gt; FindWindows(EnumWindowsProc filter)
+        {
+            if (filter == null)
+            {
+                throw new ArgumentNullException(nameof(filter));
+            }
+
+            return EnumWindowsProcWrapper(filter);
+        }
+
+        private static IEnumerable&lt;IntPtr&gt; EnumWindowsProcWrapper(EnumWindowsProc filter)
+        {
+            var found = IntPtr.Zero;
+            var windows = new List&lt;IntPtr&gt;();
+
+            EnumWindows(delegate (IntPtr wnd, IntPtr param)
+            {
+                if (filter(wnd, param))
+                {
+                    // only add the windows that pass the filter
+                    windows.Add(wnd);
+                }
+
+                // but return true here so that we iterate all windows
+                return true;
+            }, found);
+
+            return windows;
+        }
+
+        /// &lt;summary&gt; Find all windows that contain the given title text &lt;/summary&gt;
+        /// &lt;param name="titleText"&gt; The text that the window title must contain. &lt;/param&gt;
+        public static IEnumerable&lt;IntPtr&gt; FindWindowsWithText(string titleText)
+        {
+            if (string.IsNullOrEmpty(titleText))
+            {
+                throw new ArgumentException("Title text cannot be null or empty.", nameof(titleText));
+            }
+
+            return StringComparer.OrdinalIgnoreCase.Equals(titleText, titleText.ToLower())
+               ? FindWindows(w =&gt; GetWindowText(w).Contains(titleText, StringComparison.OrdinalIgnoreCase))
+                : FindWindows(w =&gt; GetWindowText(w).Contains(titleText, StringComparison.OrdinalIgnoreCase) || GetWindowText(w).Contains(titleText.ToLower(), StringComparison.OrdinalIgnoreCase));
+        }
+
+        public static Process GetProcess(IntPtr wnd)
+        {
+            if (wnd == IntPtr.Zero)
+            {
+                throw new ArgumentException("Window handle is zero.", nameof(wnd));
+            }
+
+            var proc = GetProcessId(wnd);
+            return Process.GetProcessById((int)proc);
+        }
+
+        private static uint GetProcessId(IntPtr wnd)
+        {
+            uint proc;
+            GetWindowThreadProcessId(wnd, out proc);
+            return proc;
+        }
+
+        public static string GetProcessTitle(IntPtr wnd)
+        {
+            return GetProcess(wnd).MainWindowTitle;
+        }
+
+        public static bool IsForeground(IntPtr wnd)
+        {
+            return GetForegroundWindow() == wnd;
+        }
+
+        public static WINDOWPLACEMENT GetPlacement(IntPtr hwnd)
+        {
+            if (hwnd == IntPtr.Zero)
+            {
+                throw new ArgumentException("Window handle is zero.", nameof(hwnd));
+            }
+
+            var placement = new WINDOWPLACEMENT();
+            placement.length = Marshal.SizeOf(placement);
+            GetWindowPlacement(hwnd, ref placement);
+            return placement;
+        }
+
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPLACEMENT
+        {
+            public int length;
+            public int flags;
+            public ShowWindowCommands showCmd;
+            public POINTAPI ptMinPosition;
+            public POINTAPI ptMaxPosition;
+            public RECT rcNormalPosition;
+        }
+
+        public struct POINTAPI
+        {
+            public int x;
+            public int y;
+        }
+
+        public struct RECT
+        {
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
+        }
+
+        public enum ShowWindowCommands : int
+        {
+            Hide = 0,
+            Normal = 1,
+            Minimized = 2,
+            Maximized = 3,
+        }
+    }
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Namespace and Class</h3>
 <ul>
 <li>The code defines a static class <code>ProgramExtensions</code> in the <code>window_tracker</code> namespace.</li>

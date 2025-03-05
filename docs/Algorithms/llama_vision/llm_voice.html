@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -77,10 +86,10 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> | <a href="./cell_4.html">Cell 4</a> | <a href="./ollama_vision_request.html">ollama vision request</a> | <a href="../../search.html">Search</a>
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./cell_4.html">Cell 4</a> | <a href="./cell_6.html">Cell 6</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code defines a function <code>llmSpeech</code> that generates speech from a given <code>prompt</code> using the <code>outetts</code> library, saving the output to a file named &quot;output.wav&quot;. The function is exported as a module attribute, allowing for external access, and takes a single parameter <code>prompt</code> with no return value.</p>
+  <p>The code imports the OuteTTS library, configures a text-to-speech model, and defines a function <code>llmSpeech</code> to convert text to speech, which is then exposed to be used outside of this code module.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "llm voice"</code></pre><h1>llm voice</h1>
@@ -153,36 +162,206 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Import and Configuration</h3>
-<ul>
-<li>The code imports the <code>outetts</code> library.</li>
-<li>A model configuration object is created using <code>outetts.HFModelConfig_v2</code>.</li>
-<li>The <code>interface</code> variable is set to <code>None</code> in the global scope.</li>
-</ul>
-<h3>llmSpeech Function</h3>
-<ul>
-<li>The <code>llmSpeech</code> function takes a <code>prompt</code> as input and generates speech from it.</li>
-<li>If the <code>interface</code> variable is <code>None</code>, the interface is initialized using <code>outetts.InterfaceHF</code>.</li>
-<li>A speaker profile is loaded from a default speaker.</li>
-<li>The interface and speaker are stored in the global scope.</li>
-<li>If the <code>interface</code> variable is not <code>None</code>, it is retrieved from the global scope.</li>
-<li>Speech is generated using <code>outetts.GenerationConfig</code> and the <code>interface.generate</code> method.</li>
-<li>The generated speech is saved to a file named &quot;output.wav&quot;.</li>
-</ul>
-<h3>Export</h3>
-<ul>
-<li>The <code>llmSpeech</code> function is exported as a module attribute (<code>__all__</code>) for external access.</li>
-</ul>
-<h3>Unexported Code</h3>
-<ul>
-<li>Commented-out code for voice cloning and speaker profile management is present, but not used.</li>
-</ul>
-<h3>Function Parameters and Return Values</h3>
-<ul>
-<li><code>llmSpeech</code> takes a single parameter <code>prompt</code>.</li>
-<li>It returns <code>None</code>, as the generated speech is saved to a file rather than returned as output.</li>
-</ul>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import outetts
+
+# Define the model configuration
+class ModelConfig:
+    """Configuration for the OuteTTS model"""
+    def __init__(self, model_path, tokenizer_path):
+        self.model_path = model_path
+        self.tokenizer_path = tokenizer_path
+
+    def to_dict(self):
+        return {
+            "model_path": self.model_path,
+            "tokenizer_path": self.tokenizer_path
+        }
+
+# Define the speaker configuration
+class SpeakerConfig:
+    """Configuration for the speaker"""
+    def __init__(self, name):
+        self.name = name
+
+    def to_dict(self):
+        return {
+            "name": self.name
+        }
+
+# Define the interface configuration
+class InterfaceConfig:
+    """Configuration for the OuteTTS interface"""
+    def __init__(self, model_version):
+        self.model_version = model_version
+
+    def to_dict(self):
+        return {
+            "model_version": self.model_version
+        }
+
+# Define the generation configuration
+class GenerationConfig:
+    """Configuration for the speech generation"""
+    def __init__(self, text, temperature, repetition_penalty, max_length, speaker):
+        self.text = text
+        self.temperature = temperature
+        self.repetition_penalty = repetition_penalty
+        self.max_length = max_length
+        self.speaker = speaker
+
+    def to_dict(self):
+        return {
+            "text": self.text,
+            "temperature": self.temperature,
+            "repetition_penalty": self.repetition_penalty,
+            "max_length": self.max_length,
+            "speaker": self.speaker
+        }
+
+# Define the OuteTTS interface
+class OuteTTS:
+    """Implementation of the OuteTTS interface"""
+    def __init__(self, model_version, cfg):
+        self.model_version = model_version
+        self.cfg = cfg
+        self.interface = None
+        self.speaker = None
+
+    def initialize(self):
+        """Initialize the OuteTTS interface"""
+        try:
+            import torch
+            import torchx
+        except ImportError:
+            print("Error: TTS and TorchX libraries are required")
+            return
+
+        try:
+            self.interface = outetts.InterfaceHF(model_version=self.model_version, cfg=self.cfg)
+        except Exception as e:
+            print(f"Error: {e}")
+            return
+
+        try:
+            # Create a speaker profile for voice cloning
+            # self.speaker = self.interface.create_speaker(audio_path="path/to/audio/file.wav")
+            # self.interface.save_speaker(speaker, "speaker.json")
+            # self.speaker = self.interface.load_speaker("speaker.json")
+
+            # Print available default speakers
+            self.interface.print_default_speakers()
+            # Load a default speaker
+            self.speaker = self.interface.load_default_speaker(name="en_male_1")
+        except Exception as e:
+            print(f"Error: {e}")
+
+        self.interface = self.interface
+        self.speaker = self.speaker
+
+    def generate(self, config):
+        """Generate speech using the OuteTTS interface"""
+        try:
+            output = self.interface.generate(config=config)
+        except Exception as e:
+            print(f"Error: {e}")
+            return
+
+        return output
+
+# Initialize the OuteTTS interface
+def llmSpeech(prompt):
+    """
+    Generate speech using the OuteTTS interface
+
+    Parameters:
+    - prompt (str): Text to generate speech from
+
+    Returns:
+    - None
+    """
+    if not hasattr(llmSpeech, 'interface'):
+        llmSpeech.interface = OuteTTS(model_version="0.3", cfg=ModelConfig(model_path="OuteAI/OuteTTS-0.3-1B", tokenizer_path="OuteAI/OuteTTS-0.3-1B"))
+        llmSpeech.interface.initialize()
+    else:
+        llmSpeech.interface = llmSpeech.interface
+
+    # Create a speaker profile for voice cloning
+    # speaker = llmSpeech.interface.create_speaker(audio_path="path/to/audio/file.wav")
+    # llmSpeech.interface.save_speaker(speaker, "speaker.json")
+    # speaker = llmSpeech.interface.load_speaker("speaker.json")
+
+    # Print available default speakers
+    # llmSpeech.interface.print_default_speakers()
+    # Load a default speaker
+    speaker = llmSpeech.interface.speaker
+
+    # Define the generation configuration
+    config = GenerationConfig(
+        text=prompt,
+        temperature=0.3,
+        repetition_penalty=1.1,
+        max_length=4096,
+        speaker=speaker
+    )
+
+    # Generate speech using the OuteTTS interface
+    output = llmSpeech.interface.generate(config=config)
+
+    # Save the generated speech to a file
+    output.save("output.wav")
+
+# Expose the llmSpeech function
+__all__ = {
+    "llmSpeech": llmSpeech
+}</code></pre></div><h2>Code Breakdown</h2>
+<h3>Importing the OuteTTS Library</h3>
+<pre><code class="language-python">import outetts
+</code></pre>
+<p>The code imports the OuteTTS library, which is a text-to-speech (TTS) model.</p>
+<h3>Configuring the Model</h3>
+<pre><code class="language-python">model_config = outetts.HFModelConfig_v2(
+    model_path=&quot;OuteAI/OuteTTS-0.3-1B&quot;,
+    tokenizer_path=&quot;OuteAI/OuteTTS-0.3-1B&quot;
+)
+</code></pre>
+<p>The code configures the model by specifying the paths to the model and tokenizer files.</p>
+<h3>Defining the <code>llmSpeech</code> Function</h3>
+<pre><code class="language-python">def llmSpeech(prompt):
+</code></pre>
+<p>The <code>llmSpeech</code> function takes a <code>prompt</code> parameter, which is the text to be converted into speech.</p>
+<h3>Initializing the Interface</h3>
+<pre><code class="language-python">if globals()[&quot;interface&quot;] is None:
+    interface = outetts.InterfaceHF(model_version=&quot;0.3&quot;, cfg=model_config)
+    #... (other interface initialization code)
+</code></pre>
+<p>The code checks if the <code>interface</code> variable is <code>None</code>. If it is, the interface is initialized with the specified model version and configuration.</p>
+<h3>Loading a Default Speaker</h3>
+<pre><code class="language-python"># Load a default speaker
+speaker = interface.load_default_speaker(name=&quot;en_male_1&quot;)
+</code></pre>
+<p>The code loads a default speaker with the name &quot;en_male_1&quot;.</p>
+<h3>Generating Speech</h3>
+<pre><code class="language-python">gen_cfg = outetts.GenerationConfig(
+    text=prompt,
+    temperature=0.3,
+    repetition_penalty=1.1,
+    max_length=4096,
+    speaker=speaker,
+)
+output = interface.generate(config=gen_cfg)
+</code></pre>
+<p>The code generates speech from the <code>prompt</code> text using the loaded speaker and configuration.</p>
+<h3>Saving the Generated Speech</h3>
+<pre><code class="language-python">output.save(&quot;output.wav&quot;)
+</code></pre>
+<p>The generated speech is saved to a file named &quot;output.wav&quot;.</p>
+<h3>Exposing the <code>llmSpeech</code> Function</h3>
+<pre><code class="language-python">__all__ = {
+  &quot;llmSpeech&quot;: llmSpeech
+}
+</code></pre>
+<p>The <code>llmSpeech</code> function is exposed to be used outside of this code module.</p>
 
 </body>
 

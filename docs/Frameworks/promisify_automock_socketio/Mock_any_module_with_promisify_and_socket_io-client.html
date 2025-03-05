@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -123,7 +130,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>The code defines a function <code>sockifyClient</code> that creates a mock client for a Socket.IO server.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const socketIO = require('socket.io-client');
+
+/**
+ * Creates an automated client socket with mock functionality.
+ *
+ * @param {object} req - The request object.
+ * @param {string} dep - The dependency name.
+ * @param {string} host - The socket.io host.
+ * @returns {Promise} A promise that resolves with the socket instance.
+ */
+function sockifyClient(req, dep, host) {
+    const socket = socketIO.connect(host);
+
+    // Initialize the mock stub
+    const mockStub = automock.mockValue(req, {
+        stubCreator: (name) =&gt; {
+            const args = ['call', dep, name.split('.').pop()];
+
+            // Prepend the stub with the mock dependencies
+            for (const arg of args.slice(1)) {
+                args[1] = arg;
+            }
+
+            return () =&gt; socket.emit.apply(socket, args);
+        },
+        name: dep
+    });
+
+    // Promisify the mock stub
+    const { promises } = promisifyMock(mockStub, dep);
+
+    // Attach a close event handler
+    promises.___close = () =&gt; socket.emit('close');
+
+    // Set up socket events
+    socket.on('connect', () =&gt; {
+        socket.emit('require', dep, () =&gt; {});
+
+        // Setup resolve event handler
+        socket.on('resolve', () =&gt; {});
+    });
+
+    return promises;
+}
+
+module.exports = sockifyClient;</code></pre></div><p>The code defines a function <code>sockifyClient</code> that creates a mock client for a Socket.IO server.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
 <li><p><strong>Mock Context Creation:</strong></p>

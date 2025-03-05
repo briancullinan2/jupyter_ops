@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -166,7 +173,72 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>connectSession</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importCore, manageWebdriverSessions, loadWebdriverSessions } = require('../Core');
+
+const {
+  getSessions,
+  lockPromise,
+  updateOrAddSession,
+} = importCore('manage webdriver sessions');
+
+const { readSessions } = importCore('load webdriver sessions');
+
+const TIMEOUT = 10 * 1000; // 10 seconds
+const MAX_SESSIONS = 4;
+
+/**
+ * Connect to a Webdriver session.
+ * @param {object} client - Webdriver client instance.
+ * @returns {Promise&lt;string&gt;} The ID of the connected session, or throws an error if failed.
+ */
+function connectSession(client) {
+  let isError = false;
+
+  return lockPromise(true, true)
+   .then(() =&gt; {
+      const validSessions = getSessions(client, true);
+      return validSessions;
+    })
+   .then((validSessions) =&gt; {
+      const sessions = loadWebdriverSessions();
+      const lastIndex = sessions.map((s) =&gt; s[1]).indexOf(validSessions[0] || 0);
+      if (lastIndex === -1) {
+        console.log(`Session not found: ${validSessions[0]}`);
+        lastIndex = sessions.length;
+      }
+      if (lastIndex &gt;= MAX_SESSIONS) {
+        throw new Error(`Already running max sessions: ${MAX_SESSIONS}`);
+      }
+
+      // Set connection retry timeout
+      client.options.connectionRetryTimeout = TIMEOUT;
+
+      // TODO: Fix Chrome profile path conflict issue
+      if (typeof validSessions[0]!== 'undefined') {
+        console.log(`Using existing session ${lastIndex} - ${validSessions[0]}`);
+        client.sessionId = validSessions[0];
+      } else {
+        console.log(`New session ${lastIndex}`);
+      }
+    })
+   .then(() =&gt; client.status())
+   .then((r) =&gt; updateOrAddSession(client.sessionId))
+   .catch((e) =&gt; {
+      console.log(e);
+      client.sessionId = null;
+      isError = e;
+    })
+   .then(() =&gt; lockPromise(false, true))
+   .then(() =&gt; {
+      if (isError) {
+        throw isError;
+      }
+      return client.sessionId;
+    });
+}
+
+module.exports = connectSession;</code></pre></div><p><strong>Function Breakdown: <code>connectSession</code></strong></p>
 <h3>Parameters</h3>
 <ul>
 <li><code>client</code>: An object representing a client that needs to be connected to a session.</li>

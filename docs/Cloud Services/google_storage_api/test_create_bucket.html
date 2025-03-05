@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is a unit test for a function that creates a Google Cloud Storage bucket.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const { createBucket } = require('../Core');
+
+describe('adding a bucket to Google Storage', () => {
+  it('should add a bucket', async () => {
+    const projectName ='spahaha-ea443';
+    const bucketName ='sheet-to-web.sheet-to-web.com';
+
+    try {
+      const bucket = await createBucket(projectName, bucketName);
+      assert.strictEqual(bucket.name, bucketName,'should have added a bucket');
+    } catch (error) {
+      console.error('Error adding bucket:', error);
+      assert.fail('Failed to add bucket');
+    }
+  });
+});</code></pre></div><p>This code snippet is a unit test for a function that creates a Google Cloud Storage bucket.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

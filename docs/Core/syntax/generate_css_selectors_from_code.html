@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -186,7 +193,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const esprima = require('esprima');
+const assert = require('assert');
+const { selectAst, makeXpaths, htmlToTree } = require('../Core');
+
+// Define a function to test making XPaths
+function makeXpathsTest(code) {
+    // Make a path with the interpret symbol
+    const node1 = selectAst(`//*[@name="name"]`, code);
+    const parent = selectAst(`//*[@type="FunctionDeclaration"]`, node1);
+    const xpaths = makeXpaths(parent);
+    const node2 = selectAst(`//${xpaths[0]}`, code);
+
+    // Verify that the node attributes match
+    assert(node1.parentNode.getAttribute('name') === node2.getAttribute('name'));
+
+    // Return the second node for further processing
+    return node2;
+}
+
+// Define the test code
+const code = `
+var importer = require('../Core');
+function name(params) {
+    return importer.interpret('this is a describe request');
+}
+console.log()
+`;
+
+// Test making XPaths
+let nodes;
+if (typeof $!== 'undefined') {
+    nodes = makeXpathsTest(code);
+    console.log(htmlToTree(nodes));
+}
+
+// TODO: Compare with Acorn
+// Note: Acorn is a separate parser and doesn't have a direct equivalent in Esprima
+// However, you can compare the output of both parsers to ensure they're identical</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requirements and Imports</h4>
 <p>The code starts by requiring several modules:</p>
 <ul>

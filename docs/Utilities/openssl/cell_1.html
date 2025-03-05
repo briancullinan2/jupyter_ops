@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define constants
+ROOT="/Users/briancullinan/jupytangular2/Utilities/ca"
+PRIVATE_KEY_PASS="x"
+ROOT_CA_CERT="${ROOT}/certs/ca.cert.pem"
+
+# Create intermediate CA directory
+mkdir -p "${ROOT}/intermediate"
+cd "${ROOT}/intermediate"
+
+# Create intermediate CA structure
+mkdir -p certs crl csr newcerts private
+chmod 700 private
+touch index.txt
+echo 1000 &gt; serial
+echo 1000 &gt; "${ROOT}/intermediate/crlnumber"
+
+# Create intermediate configuration
+cp "${ROOT}/openssl.cnf" "${ROOT}/intermediate/openssl.cnf"
+
+# Append configuration for intermediate CA
+echo "
+[ CA_default ]
+dir             = ${ROOT}/intermediate
+private_key     = \$dir/private/intermediate.key.pem
+certificate     = \$dir/certs/intermediate.cert.pem
+crl             = \$dir/crl/intermediate.crl.pem
+policy          = policy_loose
+" &gt;&gt; "${ROOT}/intermediate/openssl.cnf"
+
+# Generate intermediate private CA key
+openssl genrsa -aes256 -passout pass:${PRIVATE_KEY_PASS} \
+      -out "${ROOT}/intermediate/private/intermediate.key.pem" 4096
+
+# Create a intermediate CSR
+openssl req -config "${ROOT}/intermediate/openssl.cnf" -new -sha256 \
+      -passin pass:${PRIVATE_KEY_PASS} \
+      -subj "/C=US/ST=Who/L=Is/O=John/OU=Galt/CN=localhost" \
+      -key "${ROOT}/intermediate/private/intermediate.key.pem" \
+      -out "${ROOT}/intermediate/csr/intermediate.csr.pem"
+
+# Sign the intermediate cert with root CA
+openssl ca -config "${ROOT}/openssl.cnf" -extensions v3_intermediate_ca \
+      -days 3650 -notext -md sha256 \
+      -passin pass:${PRIVATE_KEY_PASS} \
+      -batch \
+      -in "${ROOT}/intermediate/csr/intermediate.csr.pem" \
+      -out "${ROOT}/intermediate/certs/intermediate.cert.pem"
+
+# Update permissions
+chmod 744 "${ROOT}/intermediate/certs/intermediate.cert.pem"
+
+# Verify intermediate CA
+echo "Intermediate CA Certificate:"
+openssl x509 -noout -text \
+      -in "${ROOT}/intermediate/certs/intermediate.cert.pem"
+
+echo "Verify intermediate CA certificate:"
+openssl verify -CAfile "${ROOT_CA_CERT}" \
+      "${ROOT}/intermediate/certs/intermediate.cert.pem"
+
+# Create certificate chain
+cat "${ROOT}/intermediate/certs/intermediate.cert.pem" \
+      "${ROOT_CA_CERT}" &gt; "${ROOT}/intermediate/certs/ca-chain.cert.pem"
+
+# Update permissions
+chmod 744 "${ROOT}/intermediate/certs/ca-chain.cert.pem"</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This shell script creates a self-signed intermediate Certificate Authority (CA) using OpenSSL. The script consists of the following sections:</p>
 <h3>1. Directory Setup</h3>
 <ul>

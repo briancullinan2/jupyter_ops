@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function called <code>tasksToPromise</code> that converts a list of Gulp tasks into a Promise.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import gulp module and assign it to a constant for better readability
+const gulp = require('gulp');
+
+/**
+ * A utility function to convert gulp tasks into promises.
+ * This allows for easier handling of asynchronous tasks in a synchronous manner.
+ *
+ * @param {Array} tasks - An array of gulp tasks to be executed in series
+ * @returns {Promise} - A promise that resolves when all tasks are completed
+ */
+function tasksToPromise(tasks) {
+    // Check if the tasks array is valid before proceeding
+    if (!Array.isArray(tasks) || tasks.length === 0) {
+        throw new Error('tasks must be a non-empty array');
+    }
+
+    return new Promise((resolve, reject) =&gt; {
+        // Use gulp.series to execute tasks in series and resolve the promise when all tasks are done
+        gulp.series(tasks, (done) =&gt; {
+            // Resolve the promise with the result of the 'done' callback
+            resolve(done());
+        })((err) =&gt; {
+            // Reject the promise if any task fails
+            reject(err);
+        })();
+    });
+}
+
+// Replace the previous exports with a more explicit export using ES6 syntax
+export default tasksToPromise;</code></pre></div><p>This code snippet defines a function called <code>tasksToPromise</code> that converts a list of Gulp tasks into a Promise.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>var gulp = require('gulp');</code></strong>: Imports the Gulp library, which is essential for defining build tasks and pipelines.</p></li>

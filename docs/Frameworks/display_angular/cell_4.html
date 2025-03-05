@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,32 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Mocks the automock module to create a stub creator function.
+ *
+ * @see https://github.com/automock/automock
+ */
+const automock = require('../../universal/src/imports/automock.js');
+
+/**
+ * Creates a stub creator function that logs the name of the stub and returns a no-op function.
+ *
+ * @param {object} context - The context in which the stub creator is being used.
+ * @param {string} name - The name of the stub.
+ * @returns {function} A function that takes no arguments and returns immediately.
+ */
+function stubCreator(name) {
+    console.log(name);
+    return function () {};
+}
+
+/**
+ * Mocks the automock module to use the custom stub creator function.
+ */
+automock.mockValue({}, {
+    stubCreator
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Automock</h4>
 <pre><code class="language-javascript">var automock = require('../../universal/src/imports/automock.js');
 </code></pre>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Directory Path Definitions</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code># Import required modules
+import os
+
+# Define constant for training dataset directory
+TRAIN_DIR = 'images/train'
+# Define constant for testing dataset directory
+TEST_DIR = 'images/test'
+
+# Check if directories exist
+def check_directory(path: str) -> bool:
+    """
+    Check if a directory exists.
+    
+    Args:
+        path (str): The path to the directory.
+    
+    Returns:
+        bool: True if the directory exists, False otherwise.
+    """
+    return os.path.exists(path)
+
+# Validate directories
+if not os.path.exists(TRAIN_DIR):
+    raise FileNotFoundError(f"Training directory '{TRAIN_DIR}' not found.")
+if not os.path.exists(TEST_DIR):
+    raise FileNotFoundError(f"Testing directory '{TEST_DIR}' not found.")
+
+# TODO: Implement directory path normalization
+"""
+Consider implementing a function to normalize the directory paths, e.g., removing trailing slashes.
+"""</code></pre></div><p><strong>Directory Path Definitions</strong></p>
 <pre><code class="language-python">TRAIN_DIR = 'images/train'
 TEST_DIR = 'images/test'
 </code></pre>

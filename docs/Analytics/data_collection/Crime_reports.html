@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Scrapes Maricopa County crime alerts and saves them as JSON files.
+ *
+ * @param {string} ID - The ID of the alert to scrape.
+ * @param {object} client - The client used for web scraping.
+ * @param {string} project - The path to the project directory.
+ * @returns {Promise<object>|void} The scraped alert data or void if the data already exists.
+ */
+const fs = require('fs').promises; // Import fs with promises support
+const path = require('path');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const project = path.join(PROFILE_PATH, 'Collections/crimes');
+
+async function scrapeAlert(ID, client) {
+    // Check if the alert file already exists
+    if (await fs.access(path.join(project, `maricopa-alert-${ID}.json`), fs.F_OK)) {
+        return;
+    }
+
+    try {
+        const r = await client
+           .url(`https://www.maricopacountyattorney.org/CivicAlerts.aspx?AID=${ID}`)
+           .getAllXPath({
+                time: '//*[@class = "single"]//*[@class = "date"]//text()',
+                title: '//*[contains(@class, "single")]//h3//text()',
+                content: '//*[@class = "single"]//*[@class = "content"]//text()'
+            });
+
+        // Save the scraped data to a JSON file
+        await fs.writeFile(path.join(project, `maricopa-alert-${ID}.json`), JSON.stringify(r, null, 4));
+        return r;
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+/**
+ * Crawl multiple IDs and send the results or errors.
+ *
+ * @param {string[]} IDs - The IDs of the alerts to crawl.
+ * @param {string} label - The label for the crawl.
+ * @returns {Promise<object>|void} The crawled data or void if an error occurs.
+ */
+async function multiCrawl(IDs, label) {
+    if (typeof $!== 'undefined') {
+        await $ async(); // Wait for the async function to finish
+        const tasks = IDs.map(ID => scrapeAlert(ID, client)); // Create an array of tasks
+        const results = await Promise.all(tasks); // Execute the tasks concurrently
+        return $.sendResult(results);
+    } else {
+        console.error('[$ not defined]');
+    }
+}
+
+module.exports = { scrapeAlert, multiCrawl };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies</h3>
 <ul>
 <li><code>fs</code> (File System): used for file operations.</li>

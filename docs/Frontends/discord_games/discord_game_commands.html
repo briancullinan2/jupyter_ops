@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -391,7 +398,224 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand
+} = require('discord-api');
+
+const ALL_COMMANDS = [
+  'hello',
+  'challenge',
+  'connect',
+  'rcon',
+  'config',
+ 'map',
+ 'servers',
+ 'search',
+  'author',
+  'gametype',
+ 'stats',
+  'rank',
+  'rankings',
+];
+
+const DISCORD_COMMANDS = {
+  'hello': {
+    'name': 'Check if Orbb is awake.',
+  },
+  'challenge': {
+    'name': 'Challenges another user to match, Orbb waits for the thumbs up.',
+    'options': [
+      {
+        'name': 'opponent-id',
+        'description': 'Name of the player you want to challenge for 1v1.',
+       'required': true,
+        'type': 6
+      },
+      {
+        'name':'map',
+        'description': 'Name of the map to start on the server.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+  'connect': {
+    'name': 'RCon Connect to a Quake 3 server for remote administration over Discord.',
+    'options': [
+      {
+        'name':'server-address',
+        'description': 'The IP address or domain name of the server to connect to including port.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+  'rcon': {
+    'name': 'Set the password for future RCon commands, or send an rcon command to the connected server.',
+    'options': [
+      {
+        'name': 'rcon-password',
+        'description': 'Password to use with future RCon commands.',
+       'required': true,
+        'type': 3
+      },
+      {
+        'name': 'rcon-command',
+        'description': 'Send the following RCon command to the server.',
+       'required': false,
+        'type': 3
+      }
+    ]
+  },
+  'config': {
+    'name': 'Execute a config file on the remote Quake 3 server after using /connect command.',
+    'options': [
+      {
+        'name': 'config-name',
+        'description': 'Name of the config script to execute',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+ 'map': {
+    'name': 'Starts a server with the specified map and sends you a personal message when the server is ready.',
+    'options': [
+      {
+        'name':'map-name',
+        'description': 'Name of the map to run the server.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+ 'servers': {
+    'name': 'Show a list of available Quake 3 servers to join.',
+    'options': [
+      {
+        'name': 'empty',
+        'description': 'Show empty servers. (Default: true)',
+       'required': false,
+        'type': 5
+      },
+      {
+        'name': 'game',
+        'description': 'Filter by game name. (Default: All)',
+       'required': false,
+        'type': 3
+      },
+      {
+        'name': 'full',
+        'description': 'Show empty servers. (Default: true)',
+       'required': false,
+        'type': 5
+      },
+    ]
+  },
+ 'search': {
+    'name': 'Search for a map on lvlworld.com.',
+    'options': [
+      {
+        'name': 'terms',
+        'description': 'Text to look for in the map name.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+  'author': {
+    'name': 'Search for a map on lvlworld.com by author only.',
+    'options': [
+      {
+        'name': 'terms',
+        'description': 'Text to look for in the author name.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+  'gametype': {
+    'name': 'Search for a map on lvlworld.com by gametype.',
+    'options': [
+      {
+        'name': 'terms',
+        'description': 'Text to look for in the gametype, try tourney or 2 player.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+ 'stats': {
+    'name': 'Display stats for the specified user.',
+    'options': [
+      {
+        'name': 'player',
+        'description': 'Name or Discord of the player.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+  'rank': {
+    'name': 'Display rank for the specified user.',
+    'options': [
+      {
+        'name': 'player',
+        'description': 'Name or Discord of the player.',
+       'required': true,
+        'type': 3
+      }
+    ]
+  },
+  'rankings': {
+    'name': 'Display global ranking information.',
+    'options': [
+      {
+        'name':'server',
+        'description': 'IP or domain of the server for specific rankings.',
+       'required': false,
+        'type': 3
+      }
+    ]
+  }
+};
+
+async function syncCommands(guildId = null) {
+  const commands = await getCommands(guildId);
+
+  for (const command of ALL_COMMANDS) {
+    let cmd = commands.find(c =&gt; c.name === command);
+    let cmdDef = DISCORD_COMMANDS[command];
+
+    if (!cmd) {
+      await registerCommand(cmdDef, null, guildId);
+    } else {
+      if (JSON.stringify(cmdDef)!== JSON.stringify(cmd)) {
+        cmdDef.options = cmdDef.options.map(opt =&gt; ({...opt, required: cmd.options.find(copt =&gt; copt.name === opt.name).required }));
+        await updateCommand(cmd.name, cmdDef, cmd.id, guildId);
+      }
+    }
+  }
+
+  const toRemove = commands.filter(c =&gt;!ALL_COMMANDS.includes(c.name));
+  await deleteCommand(toRemove.map(c =&gt; c.id), guildId);
+
+  return await getCommands(guildId);
+}
+
+async function deleteCommands(guildId) {
+  await deleteCommand(await getCommands(guildId).map(c =&gt; c.id), guildId);
+}
+
+module.exports = {
+  syncCommands,
+  deleteCommands,
+  DISCORD_COMMANDS
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports functions from the <code>discord api</code> module using the <code>importer.import()</code> method:</p>
 <pre><code class="language-javascript">const {

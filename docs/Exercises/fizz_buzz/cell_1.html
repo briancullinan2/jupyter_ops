@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -105,7 +112,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function: <code>isFib</code></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Checks if a given number is a Fibonacci number.
+ * 
+ * @param {number} num The number to check.
+ * @returns {boolean} True if the number is Fibonacci, false otherwise.
+ */
+function isFibonacci(num) {
+    // Check if the number is negative or non-integer
+    if (num &lt; 0 || num % 1!== 0) {
+        return false;
+    }
+
+    // Initialize the first two numbers in the Fibonacci sequence
+    let a = 0;
+    let b = 1;
+
+    // Continue the loop until the next number exceeds the given number
+    while (b &lt;= num) {
+        // Check if the current number is the Fibonacci number we're looking for
+        if (b === num) {
+            return true;
+        }
+
+        // Calculate the next number in the Fibonacci sequence
+        [a, b] = [b, a + b];
+    }
+
+    // If the loop ends without finding the number, it's not Fibonacci
+    return false;
+}
+
+console.log(isFibonacci(4)); // false
+console.log(isFibonacci(8)); // true</code></pre></div><h2>Function: <code>isFib</code></h2>
 <h3>Purpose</h3>
 <p>Checks if a given number is a Fibonacci number.</p>
 <h3>Parameters</h3>

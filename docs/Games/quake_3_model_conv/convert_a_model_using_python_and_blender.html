@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -231,7 +238,71 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import bpy
+import sys
+from pathlib import Path
+
+def scale_model(scale_factor):
+    for ob in bpy.data.objects:
+        ob.scale = (scale_factor, scale_factor, scale_factor)
+        bpy.ops.object.transform_apply(scale=True)
+    bpy.context.view_layer.update()
+
+def export_md3(filepath, scale_factor):
+    try:
+        bpy.ops.export_scene.id3_md3(
+            filepath=filepath,
+            preset="MATERIALS",
+            only_selected=False,
+            limits="STUPID",
+            start_frame=0,
+            end_frame=0,
+            individual=False
+        )
+    except RuntimeError as err:
+        if "Model exceeds MD3 bounds" not in str(err):
+            raise err
+    except Exception as err:
+        if "BSP format not supported" not in str(err):
+            raise err
+
+def main():
+    print(f'Starting {sys.argv[4]}...')
+
+    file_path = sys.argv[4]
+    extname = file_path.split('.')[-1]
+
+    if extname in ["map", "bsp", "obj"]:
+        if extname == "map":
+            bpy.ops.import_scene.id_map(filepath=file_path)
+        elif extname == "bsp":
+            bpy.ops.import_scene.id3_bsp(filepath=file_path, preset="BRUSHES", vert_map_packing="Keep")
+        else:
+            bpy.ops.wm.obj_import(filepath=file_path)
+
+        bpy.context.view_layer.update()
+
+        export_md3(file_path.replace(extname, '.md3'), 1.0)
+
+        scale_factors = [0.5, 0.25, 0.125, 0.0625]
+        for scale_factor in scale_factors:
+            scale_model(scale_factor)
+            export_md3(file_path.replace(extname, f'-{scale_factor}.md3'), scale_factor)
+
+        # TODO: Revert main file to restore original state
+        # bpy.ops.wm.revert_mainfile()
+
+        print(f'Done {sys.argv[4]}...')
+
+        bpy.ops.wm.window_close()
+        bpy.ops.wm.quit_blender()
+        sys.exit()
+    else:
+        print(f"Unsupported file type: {extname}")
+
+if __name__ == "__main__":
+    main()</code></pre></div><p><strong>Overview</strong></p>
 <p>This is a Python script that utilizes the Blender API (bpy) to import 3D models in various formats and export them as MD3 files. The script takes a file path as an argument and performs the following tasks:</p>
 <ol>
 <li>Deletes all objects in the scene.</li>

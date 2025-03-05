@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -134,7 +141,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>searchNotebooks</code> that searches for specific text within Jupyter Notebook files within a project directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { getCells } = require('../Core');
+const path = require('path');
+const gulp = require('gulp');
+const tap = require('gulp-tap');
+const { Duplex } = require('stream');
+const tasksToPromise = require('../Core').import('gulp tasks to promise', { gulp });
+
+// Define constants
+const PROFILE_PATH = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) || '';
+const PROJECT_ROOT = path.join(__dirname, '..');
+
+/**
+ * Convert a buffer to a stream
+ * @param {Buffer} buffer The buffer to convert
+ * @returns {Duplex} The resulting stream
+ */
+function bufferToStream(buffer) {
+    const stream = new Duplex();
+    stream.push(buffer);
+    stream.push(null);
+    return stream;
+}
+
+/**
+ * Search notebooks for a given search term
+ * @param {string} search The search term to use
+ * @returns {Promise&lt;Array&gt;} A promise resolving to an array of matching cells
+ */
+async function searchNotebooks(search) {
+    // Initialize an empty array to store matching cells
+    let cells = [];
+
+    // Define the gulp task to search for notebooks
+    const searchTask = gulp.task('search notebooks', async () =&gt; {
+        // Use gulp.src to find all notebooks in the project root
+        await gulp.src(['**/*.ipynb', '!node_modules{,/**}', '!**/\\.*'], { cwd: PROJECT_ROOT })
+           .pipe(tap((file) =&gt; {
+                // Get the cells from the notebook
+                const result = getCells(file.path);
+
+                // Filter the cells based on the search term
+                result.forEach((r) =&gt; {
+                    if (r.source.join('').match(search)) {
+                        cells.push(r);
+                    }
+                });
+            }));
+    });
+
+    // Run the gulp task and wait for it to complete
+    await tasksToPromise(['search notebooks'], []);
+
+    // Return the array of matching cells
+    return cells;
+}
+
+// Export the searchNotebooks function
+module.exports = searchNotebooks;</code></pre></div><p>This code defines a function <code>searchNotebooks</code> that searches for specific text within Jupyter Notebook files within a project directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

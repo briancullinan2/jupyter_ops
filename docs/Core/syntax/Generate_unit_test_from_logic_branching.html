@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -158,7 +165,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a constant for XML XPath statements
+const xmlStatements = `
+  //*[contains(@type, "Declaration")]
+  |//*[contains(@type, "Statement")]
+`;
+
+// Define a function to parse and validate the XML statements
+function parseXmlStatements(xmlStatements) {
+  try {
+    // Use a library like xpath or xml2js to parse the XML
+    const xpath = require('xpath');
+    const { DOMParser } = require('xmldom');
+    const dom = new DOMParser().parseFromString(xmlStatements, 'application/xml');
+    const statements = xpath.select(xmlStatements, dom);
+    return statements;
+  } catch (error) {
+    console.error('Error parsing or validating XML statements:', error);
+    return null;
+  }
+}
+
+// Call the function to get the parsed statements
+const parsedStatements = parseXmlStatements(xmlStatements);
+
+// Example usage:
+console.log(parsedStatements);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variable Declaration</h4>
 <ul>
 <li><code>var STATEMENTS</code>: A variable named <code>STATEMENTS</code> is declared.</li>

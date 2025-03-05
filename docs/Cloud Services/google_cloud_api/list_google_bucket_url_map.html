@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -211,7 +218,97 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code is a set of functions for interacting with Google Cloud's Compute Engine API. It uses the <code>google-auth-library</code> and <code>googleapis</code> libraries to authenticate and make requests to the API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { google } = require('googleapis');
+
+const authorizeGoogle = async () =&gt; {
+  const auth = new google.auth.GoogleAuth({
+    // TODO: Replace with service account credentials
+    // For more information, see: https://developers.google.com/identity/protocols/oauth2/service-account
+  });
+  const client = await auth.getClient();
+  return client.authorize();
+};
+
+const compute = async (auth) =&gt; {
+  return google.compute('v1').authorize(auth);
+};
+
+const makeRequest = async (auth, url, params = {}) =&gt; {
+  const compute = await compute(auth);
+  const res = await compute.projects().global.get(url, { params });
+  return res.data;
+};
+
+const listUrlMaps = async (project, urlMap) =&gt; {
+  const url = `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps`;
+  const params = urlMap? { filter: `name="${urlMap}"` } : {};
+  const res = await makeRequest(await authorizeGoogle(), url, params);
+  return (res.items || []).reduce((obj, cur) =&gt; {
+    obj[cur.name] = {
+      hostRules: cur.hostRules,
+      pathMatchers: cur.pathMatchers,
+      fingerprint: cur.fingerprint,
+    };
+    return obj;
+  }, {});
+};
+
+const listTargetProxies = async (project, urlMap) =&gt; {
+  const url = `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies`;
+  const params = urlMap? { filter: `urlMap="https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}"` } : {};
+  const res = await makeRequest(await authorizeGoogle(), url, params);
+  return (res.items || []).reduce((obj, p) =&gt; {
+    obj[p.name] = p.sslCertificates;
+    return obj;
+  }, {});
+};
+
+const listGlobalForwards = async (project, proxy, ip) =&gt; {
+  const url = `https://www.googleapis.com/compute/v1/projects/${project}/global/forwardingRules`;
+  const params = proxy? { filter: `target="https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies/${proxy}"` } : {};
+  if (ip) {
+    params.filter = `IPAddress="https://www.googleapis.com/compute/v1/projects/${project}/global/addresses/${ip}"`;
+  }
+  const res = await makeRequest(await authorizeGoogle(), url, params);
+  return (res.items || []).reduce((obj, cur) =&gt; {
+    obj[cur.name] = {
+      IPAddress: cur.IPAddress,
+      target: cur.target,
+    };
+    return obj;
+  }, {});
+};
+
+const listBackendBuckets = async (project, bucketName) =&gt; {
+  const url = `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets`;
+  const params = bucketName? { filter: `bucketName="${bucketName}"` } : {};
+  const res = await makeRequest(await authorizeGoogle(), url, params);
+  return (res.items || []).reduce((obj, cur) =&gt; {
+    obj[cur.name] = cur.bucketName;
+    return obj;
+  }, {});
+};
+
+const listSslCertificates = async (project, certName) =&gt; {
+  const url = `https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates`;
+  const params = certName? { filter: `name="${certName}"` } : {};
+  const res = await makeRequest(await authorizeGoogle(), url, params);
+  return (res.items || []).reduce((obj, cur) =&gt; {
+    obj[cur.name] = cur.description;
+    return obj;
+  }, {});
+};
+
+module.exports = {
+  listUrlMaps,
+  listTargetProxies,
+  listGlobalForwards,
+  listBackendBuckets,
+  listSslCertificates,
+};
+```</code></pre></div><p>This code is a set of functions for interacting with Google Cloud's Compute Engine API. It uses the <code>google-auth-library</code> and <code>googleapis</code> libraries to authenticate and make requests to the API.</p>
 <h3>Functions</h3>
 <h4>1. <code>listUrlMaps(project, urlMap)</code></h4>
 <ul>

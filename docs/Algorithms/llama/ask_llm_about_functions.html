@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./ask_llm_for_a_shorter_list_of_categories.html">ask llm for a shorter list of categories</a> | <a href="./ask_llm_about_code.html">ask llm about code</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>askLlamaAboutFunctions</code> function sends a query to a language model to match a given function name against an array of functions, and returns the matched function name. It uses an <code>llmPrompt</code> function to interact with the language model, logs the query and response to the console, and exports the function as part of a module.</p>
+  <p>The <code>askLlamaAboutFunctions</code> function is an asynchronous query that matches a given input with a function listed in an array, providing an optional description and categorization. It constructs a query string, sends it to a Large Language Model, and returns the matched function name.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm about functions"</code></pre><h1>ask llm about functions</h1>
@@ -125,33 +132,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function Breakdown: <code>askLlamaAboutFunctions</code></h2>
-<h3>Function Signature</h3>
-<pre><code class="language-javascript">async function askLlamaAboutFunctions(query, functions, descriptions, categories = false)
-</code></pre>
-<h3>Parameters</h3>
-<ul>
-<li><code>query</code>: The query string to match a function against.</li>
-<li><code>functions</code>: An array of function names.</li>
-<li><code>descriptions</code>: An array of function descriptions corresponding to the <code>functions</code> array. Defaults to <code>false</code>.</li>
-<li><code>categories</code>: A boolean flag indicating whether the <code>functions</code> array contains categories instead of function names. Defaults to <code>false</code>.</li>
-</ul>
-<h3>Behavior</h3>
-<ol>
-<li>The function imports an <code>llmPrompt</code> function from the <code>create llm session</code> module using <code>importer.import()</code>.</li>
-<li>It constructs a query string <code>q1</code> based on the <code>functions</code> array and the <code>categories</code> flag.</li>
-<li>The query string is logged to the console.</li>
-<li>The function calls <code>llmPrompt()</code> with the query string <code>q1</code> and awaits the response.</li>
-<li>The response from the AI is logged to the console.</li>
-<li>The function parses the response to extract the matched function name.</li>
-<li>The matched function name is returned.</li>
-</ol>
-<h3>Export</h3>
-<p>The function is exported as part of a module:</p>
-<pre><code class="language-javascript">module.exports = {
-  askLlamaAboutFunctions,
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Asks Llama about functions or categories to determine which one most closely matches the given query.
+ *
+ * @param {string} query - The query to match.
+ * @param {string[]} functions - A list of functions or categories to consider.
+ * @param {string[]} [descriptions] - A list of descriptions for the functions or categories.
+ * @param {boolean} [categories=false] - Flag to indicate if the input is categories.
+ * @returns {string} The function or category that most closely matches the query.
+ */
+async function askLlamaAboutFunctions(query, functions, descriptions = [], categories = false) {
+  const {
+    llmPrompt,
+  } = await import('create-llm-session');
+
+  // Create the prompt with the list of functions or categories
+  const prompt = functions
+   .map((func, index) => {
+      return categories
+       ? `${func} - ${descriptions[index] || ''}`
+        : func;
+    })
+   .join('\n');
+
+  // Add the final question to the prompt
+  const finalPrompt = `Given the list of ${categories? 'categories' : 'functions'}:\n${prompt}\nWhich one most closely matches the query "${query}"?`;
+
+  console.log('User:', finalPrompt);
+
+  // Get the AI response
+  const aiResponse = await llmPrompt(finalPrompt);
+  console.log('AI:', aiResponse);
+
+  // Extract the matched function or category from the AI response
+  const result = functions.find(func => aiResponse.toLowerCase().includes(func.toLowerCase()));
+
+  return result;
 }
-</code></pre>
+
+export default askLlamaAboutFunctions;</code></pre></div><h2>Code Breakdown</h2>
+<h3>Function: <code>askLlamaAboutFunctions</code></h3>
+<h4>Purpose</h4>
+<p>An asynchronous function that queries a Large Language Model (LLM) about a list of functions.</p>
+<h4>Parameters</h4>
+<ul>
+<li><code>query</code>: The input query to be matched with a function.</li>
+<li><code>functions</code>: An array of function names.</li>
+<li><code>descriptions</code>: An optional array of descriptions for the functions (default: <code>false</code>).</li>
+<li><code>categories</code>: An optional boolean to specify whether the input is a list of categories (default: <code>false</code>).</li>
+</ul>
+<h4>Steps</h4>
+<ol>
+<li>Imports the <code>llmPrompt</code> function from the <code>create llm session</code> module.</li>
+<li>Constructs a query string by listing the functions and their descriptions (if provided).</li>
+<li>Sends the query to the LLM and receives a response.</li>
+<li>Parses the response to find the function name that matches the query.</li>
+<li>Returns the matched function name.</li>
+</ol>
+<h4>Export</h4>
+<p>The <code>askLlamaAboutFunctions</code> function is exported as a module.</p>
 
 </body>
 

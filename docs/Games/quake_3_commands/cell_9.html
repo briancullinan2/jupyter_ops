@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -127,7 +134,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define the base directory for the quake data
+DATA_DIR="Z:\planet_quake_data"
+
+# Define the tool executable and output directory
+TOOL_EXEC="wal2tga copy.exe"
+OUTPUT_DIR="$DATA_DIR/tools/Wal2TGA"
+
+# Convert PCX and JPEG images to TGA
+for image in $(find "$DATA_DIR" -iname '*.pcx' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.tga'); do
+  # Get the input file name and location without the extension
+  IN_FILE="${image##*/}"
+  OUT_FILE="${IN_FILE%.*}.tga"
+
+  # Check if the output file already exists
+  if [! -f "$OUTPUT_DIR/$OUT_FILE" ]; then
+    # Convert the image to TGA using Imagemagick
+    convert -colorspace RGB "$image" "$OUTPUT_DIR/$OUT_FILE"
+  fi
+done</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Windows Script</h3>
 <pre><code class="language-bash">for /r %%v in (*.wal) do &quot;Z:\planet_quake_data\tools\Wal2TGA\wal2tga copy.exe&quot; &quot;%%v&quot; &quot;%%~dpv%%~nv.tga&quot;
 </code></pre>

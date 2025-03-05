@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -95,7 +102,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet provides two utility functions for working with arrays and regular expressions in JavaScript.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Flattens a nested array into a one-dimensional array.
+ * @param {Array} arr The array to be flattened.
+ * @returns {Array} The flattened array.
+ */
+function flatten(arr) {
+    // Use the reduce function to recursively flatten the array
+    return arr.reduce((acc, val) => Array.isArray(val)? flatten(val).concat(acc) : acc.concat(val), []);
+}
+
+// Add a method to Array prototype
+Array.prototype.flatten = function () {
+    // Call the flatten function and return the result
+    return flatten(this);
+};
+
+/**
+ * Escapes special characters in a string for use in a regex pattern.
+ * @param {string} str The string to be escaped.
+ * @returns {string} The escaped string.
+ */
+function escapeRegExp(str) {
+    // Use a regular expression to replace special characters
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\${OUTPUT}');
+}
+
+// Example usage:
+console.log(flatten([1, [2, [3, 4]], 5])); // Output: [1, 2, 3, 4, 5]
+console.log(escapeRegExp("Hello, world!")); // Output: "Hello\,\ world\!"</code></pre></div><p>This code snippet provides two utility functions for working with arrays and regular expressions in JavaScript.</p>
 <ol>
 <li><p><strong><code>flatten</code> Function:</strong></p>
 <ul>

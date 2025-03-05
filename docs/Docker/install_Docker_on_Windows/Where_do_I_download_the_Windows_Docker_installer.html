@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code downloads the Docker installer (InstallDocker.msi) from the official Docker website and saves it to the current working directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and assign them to variables for better readability
+const { exec } = require('child_process');
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+// Define constants for clarity
+const DOCKER_MSI_URL = 'https://download.docker.com/win/stable/InstallDocker.msi';
+const DOCKER_MSI_DESTINATION = path.join(process.cwd(), 'InstallDocker.msi');
+
+// Function to download Docker MSI file asynchronously
+async function downloadDockerMsi() {
+  try {
+    // Send GET request to download the MSI file
+    const response = await axios.get(DOCKER_MSI_URL, { responseType:'stream' });
+    
+    // Write the response stream to a file
+    const writer = fs.createWriteStream(DOCKER_MSI_DESTINATION);
+    response.data.pipe(writer);
+    
+    // Wait for the write operation to finish
+    await new Promise((resolve, reject) =&gt; {
+      writer.on('finish', resolve);
+      writer.on('error', reject);
+    });
+    
+    // Log a message to indicate the download is complete
+    $.done('downloaded InstallDocker.msi');
+  } catch (error) {
+    // Log any errors that occur during the download process
+    $.error('Error downloading Docker MSI:', error);
+  }
+}
+
+// Call the download function
+downloadDockerMsi();</code></pre></div><p>This code downloads the Docker installer (InstallDocker.msi) from the official Docker website and saves it to the current working directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>$.async();</code>:</strong></p>

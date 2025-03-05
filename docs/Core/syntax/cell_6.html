@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules
+const { importExports } = require('../Core');
+
+// Define the code snippet to test the getExports function
+const code = `
+exports.import = importNotebook
+exports = testExports
+exports = require('../index.js')
+`;
+
+/**
+ * Function to test the getExports function
+ * @returns {Array} - The exported values from the code snippet
+ */
+function testGetExports() {
+    // Call the getExports function and return the result
+    return importExports(code);
+}
+
+// Check if the $ variable is defined before calling the testGetExports function
+if (typeof $!== 'undefined') {
+    // Call the testGetExports function and log the result
+    const exports = testGetExports();
+    console.log('Expected output:');
+    console.log(exports); // [ 'importNotebook', 'import', 'testExports' ]
+    
+    // TODO: Implement a function to validate the output
+    // TODO: Add more test cases for different code snippets
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <ul>
 <li><code>var importer = require('../Core');</code>: Imports a module named <code>Core</code> from a relative path, assigning it to the <code>importer</code> variable.</li>

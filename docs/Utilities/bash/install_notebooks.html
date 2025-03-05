@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define a function to clone the repository
+clone_repo() {
+  # Use a Git URL with credentials for secure access
+  git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git./jupytangular
+}
+
+# Define a function to navigate to the cloned repository
+cd_repo() {
+  cd ~/jupytangular
+}
+
+# Define a function to install dependencies with minimal requirements
+install_dependencies() {
+  npm run install:minimal
+}
+
+# Define the main function to execute the sequence of operations
+execute_sequence() {
+  clone_repo
+  cd_repo
+  install_dependencies
+}
+
+# Call the main function to execute the sequence
+execute_sequence
+```
+
+Alternatively, you can write the code in a more concise way using a single function:
+
+```bash
+#!/bin/bash
+
+execute_sequence() {
+  # Clone the repository
+  git clone https://megamindbrian@bitbucket.org/megamindbrian/jupyter_ops.git./jupytangular
+  
+  # Navigate to the cloned repository
+  cd ~/jupytangular
+  
+  # Install dependencies with minimal requirements
+  npm run install:minimal
+}
+
+# Call the main function to execute the sequence
+execute_sequence</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Command Description</h3>
 <p>This code is used to clone a Git repository and install dependencies.</p>
 <h3>Steps</h3>

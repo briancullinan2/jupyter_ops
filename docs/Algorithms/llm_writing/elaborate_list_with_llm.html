@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const os = require('os');
+const fs = require('fs');
+const path = require('path');
+const importer = require('./importer'); // assuming importer is in a separate file
+
+const TEMP_DIR = os.tmpdir();
+let counter = 0;
+
+/**
+ * Analyzes an XLSX spreadsheet, generates questions based on the data, and
+ * uses a large language model to answer them.
+ *
+ * @param {string} sheetFile - Path to the XLSX file
+ * @param {string} sheetName - Name of the sheet to analyze
+ * @param {string} rangeString - Range of cells to analyze
+ * @param {string} prefix - Prefix for the question prompt (default: 'Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic:\n')
+ * @param {string} suffix - Suffix for the question prompt (default: '\nFit as much detail as possible in to two or three sentences.')
+ * @returns {Promise<string[]>} - List of answers from the large language model
+ */
+async function elaborateLlama(sheetFile, sheetName, rangeString, prefix = 'Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic:\n', suffix = '\nFit as much detail as possible in to two or three sentences.') {
+  try {
+    const analyzeSpreadsheet = await importer.import('decode xlsx spreadsheet');
+    const { llmPrompt } = await importer.import('create llm session');
+
+    const results = await analyzeSpreadsheet(sheetFile, sheetName, rangeString);
+    console.log(results);
+
+    const results2 = await Promise.all(results.map((result) => {
+      const q1 = prefix + result + suffix;
+      console.log('User:'+ q1);
+      return llmPrompt(q1).then((a1) => {
+        console.log('AI:'+ a1);
+        return a1;
+      });
+    }));
+
+    const filename = path.join(TEMP_DIR, `temporary_xlsx_${counter % 4}.txt`);
+    if (fs.existsSync(filename)) {
+      fs.unlinkSync(filename);
+    }
+    counter++;
+    console.log(`Writing to ${filename}`);
+    fs.writeFileSync(filename, results2.join('\n'));
+
+    return results2;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+module.exports = elaborateLlama;</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Modules</h3>
 <ul>
 <li><code>const os = require('os')</code>: Imports the <code>os</code> module, which provides information about the operating system.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Main application entry point.
+ * Prints a greeting message to the console.
+ *
+ * @author Llama
+ * @version 1.0
+ */
+
+// Import the console module to use its logging functions
+import { console } from 'console';
+
+/**
+ * Logs a greeting message to the console.
+ */
+function logGreeting(): void {
+  // Use the console.log function to log the message
+  console.log('Hello NodeJS');
+}
+
+// Call the logGreeting function to print the message
+logGreeting();</code></pre></div><h2>Code Breakdown</h2>
 <h3>Purpose</h3>
 <p>Prints the string 'Hello NodeJS' to the console.</p>
 <h3>Code</h3>

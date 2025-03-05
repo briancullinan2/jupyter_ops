@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a Socket.IO server-side handler for search requests.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import * as io from'socket.io-client';
+import { importModule } from '../Core';
+import { fuseSearch, interpretObject } from './interprateAllNotebooks';
+import { searchNotebooks } from './searchNotebooksUsingGulp';
+
+interface Queries {
+  type: string;
+  value: string;
+}
+
+async function searchAll(queries: Queries[], root: string = ''): Promise<string[]> {
+  try {
+    const results = await Promise.all(queries.map(query => {
+      if (typeof query.value ==='string') {
+        return fuseSearch(query.value);
+      } else {
+        return Promise.resolve(query.value);
+      }
+    }));
+    return interpretObject(results);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const searchHandler = async () => {
+  try {
+    console.log('Search handler');
+    const client = io('https://localhost:8000', {
+      secure: true,
+      rejectUnauthorized: false,
+    });
+
+    client.on('resolve', (name, search: string) => {
+      console.log('searching...');
+      if (name === 'SearchService.prototype.search') {
+        client.emit('result', 'SearchService.prototype.search', `Searching notebooks for ${search}`);
+        Promise.all([
+          searchAll([{ type:'string', value: search }]),
+          searchNotebooks(search),
+        ])
+         .then((results: string[]) => {
+            const combinedResults = results.flat();
+            client.emit('result', 'SearchService.prototype.results', combinedResults);
+          })
+         .catch((error: Error) => console.error(error));
+      }
+    });
+
+    client.on('error', (error: Error) => console.error(error));
+
+    client.emit('handle', 'SearchService', () => {
+      console.log('Search service initiated');
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default searchHandler;</code></pre></div><p>This code sets up a Socket.IO server-side handler for search requests.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -215,7 +222,134 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet focuses on comparing and highlighting code diffs using D3.js and Prism.js.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const { JSDOM } = require('jsdom');
+const JsDiff = require('diff');
+const Prism = require('prismjs');
+const prismPlugin = require('../node_modules/prismjs/plugins/keep-markup/prism-keep-markup.js');
+const importer = require('../Core');
+
+// Function to replace special characters with HTML entities
+function htmlEntities(str) {
+  return str.replace(/[\u00A0-\u9999&lt;&gt;\&amp;]/gim, i =&gt; '&amp;#' + i.charCodeAt(0) + ';');
+}
+
+// Function to highlight PrismJS code
+function prismHighlightHtml(code) {
+  const dom = new JSDOM('&lt;body&gt;' + code + '&lt;/body&gt;');
+  dom.window.document.createRange = () =&gt; ({
+    createContextualFragment: str =&gt; JSDOM.fragment(str)
+  });
+  const ctx = {
+    __filename: prismPlugin,
+    Prism,
+    document: dom.window.document,
+  };
+  ctx.self = ctx;
+  return Prism.highlightElement(dom.window.document.body, Prism.languages.javascript);
+}
+
+// Function to diff two texts
+function diffTwoTexts(left, right) {
+  const diff = JsDiff.diffWords(left, right);
+  let code = '';
+
+  // Swap removed and added lines to ensure correct order
+  diff.forEach((part, index, array) =&gt; {
+    if (part.added &amp;&amp; array[index + 1] &amp;&amp; array[index + 1].removed) {
+      [part, array[index + 1]] = [array[index + 1], part];
+    }
+  });
+
+  diff.forEach((part) =&gt; {
+    if (part.removed) {
+      code += `&lt;span class="del"&gt;${htmlEntities(part.value)}&lt;/span&gt;`;
+    } else if (part.added) {
+      code += `&lt;span class="ins"&gt;${htmlEntities(part.value)}&lt;/span&gt;`;
+    } else {
+      code += `&lt;span&gt;${htmlEntities(part.value)}&lt;/span&gt;`;
+    }
+  });
+
+  const css = `
+  &lt;style&gt;
+    /* PrismJS styles */
+   .token.comment,
+   .token.prolog,
+   .token.doctype,
+   .token.cdata {
+      color: slategray;
+    }
+   .token.punctuation {
+      color: #999;
+    }
+   .namespace {
+      opacity:.7;
+    }
+   .token.property,
+   .token.tag,
+   .token.boolean,
+   .token.number,
+   .token.constant,
+   .token.symbol,
+   .token.deleted {
+      color: #905;
+    }
+   .token.selector,
+   .token.attr-name,
+   .token.string,
+   .token.char,
+   .token.builtin,
+   .token.inserted {
+      color: #690;
+    }
+   .token.operator,
+   .token.entity,
+   .token.url,
+   .language-css.token.string,
+   .style.token.string {
+      color: #a67f59;
+      background: hsla(0, 0%, 100%,.5);
+    }
+   .token.atrule,
+   .token.attr-value,
+   .token.keyword {
+      color: #07a;
+    }
+   .token.function {
+      color: #DD4A68;
+    }
+   .token.regex,
+   .token.important,
+   .token.variable {
+      color: #e90;
+    }
+   .token.important,
+   .token.bold {
+      font-weight: bold;
+    }
+   .token.italic {
+      font-style: italic;
+    }
+   .token.entity {
+      cursor: help;
+    }
+   .del {
+      text-decoration: none;
+      background: #fadad7;
+    }
+   .ins {
+      background: #eaf2c2;
+      text-decoration: none;
+    }
+  &lt;/style&gt;
+  `;
+
+  return `${css}&lt;pre&gt;${prismHighlightHtml(code)}&lt;/pre&gt;`;
+}
+
+module.exports = diffTwoTexts;</code></pre></div><p>This code snippet focuses on comparing and highlighting code diffs using D3.js and Prism.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

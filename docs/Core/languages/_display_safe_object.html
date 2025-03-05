@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines two functions designed to safely convert a potentially mixed array of values into a human-readable string.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Converts an array of values to a log string.
+ * 
+ * @param {any[]} vals - The array of values to convert.
+ * @returns {string} A log string representation of the values.
+ */
+function toLogString(vals) {
+  return vals.map(value => {
+    // If the value is a string, return it as is.
+    if (typeof value ==='string') {
+      return value;
+    }
+
+    // Return a safe string representation of the value.
+    return toSafeString(value);
+  }).join(' ') + '\n';
+}
+
+/**
+ * Converts a value to a safe string representation.
+ * 
+ * @param {any} value - The value to convert.
+ * @returns {string} A safe string representation of the value.
+ */
+function toSafeString(value) {
+  // Check if the value is an object and not a plain object.
+  if (typeof value === 'object' && value!== null && Object.prototype.hasOwnProperty.call(value, 'constructor') && value.constructor!== Object) {
+    // Add a prefix with the object's constructor name.
+    return `[${value.constructor.name}] `;
+  }
+
+  // If the value is a function, coerce it to a string.
+  if (typeof value === 'function') {
+    return value + '';
+  }
+
+  try {
+    // Attempt to JSON stringify the value.
+    return JSON.stringify(value);
+  } catch (error) {
+    // If JSON stringify fails, attempt to convert the value to a string using toString().
+    try {
+      return '' + value;
+    } catch (error) {
+      // If both methods fail, return a default value.
+      return '[value cannot be rendered]';
+    }
+  }
+}
+
+// Example usage:
+const values = [1, 'hello', { foo: 'bar' }, () => console.log('hello'), null, undefined, Infinity, true, Symbol('test')];
+console.log(toLogString(values));</code></pre></div><p>This code defines two functions designed to safely convert a potentially mixed array of values into a human-readable string.</p>
 <p><strong><code>toLogString(vals)</code>:</strong></p>
 <ul>
 <li>Takes an array <code>vals</code> as input.</li>

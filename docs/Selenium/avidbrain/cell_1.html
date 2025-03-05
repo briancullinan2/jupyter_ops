@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { $, sendResult } = require('../Core');
+const { runSeleniumCell } = require('../Core/selenium-cell'); // import specific function
+
+/**
+ * Run Selenium cell to test login.
+ * @return {Promise} Promise that resolves with the result of the test.
+ */
+async function testLogin() {
+  try {
+    const result = await runSeleniumCell('test avidbrain');
+    return result;
+  } catch (error) {
+    // Handle error if runSeleniumCell fails
+    console.error('Error running Selenium cell:', error);
+    throw error;
+  }
+}
+
+/**
+ * Main function to run the test.
+ * @return {Promise} Promise that resolves with the result of the test.
+ */
+async function runTest() {
+  try {
+    const result = await testLogin();
+    $.sendResult(result);
+  } catch (error) {
+    $.sendError(error);
+  }
+}
+
+// Start the test
+runTest();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');

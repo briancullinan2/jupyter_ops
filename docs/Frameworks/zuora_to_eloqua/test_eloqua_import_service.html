@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -222,7 +229,87 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a set of unit tests for an Eloqua import service.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const assert = require('assert');
+const sinon = require('sinon');
+const importer = require('../Core');
+const { httpPolyfill } = importer.import('http request polyfill');
+const { eloquaImportService } = importer.import('eloqua import service');
+const { eloquaImportBlueprints } = importer.import('eloqua import blueprints');
+
+// Define constants
+const EloquaConfig = importer.import('eloquaConfig');
+const EloquaToken = importer.import('eloquaToken');
+const ImportData = importer.import('importData');
+
+// Create a sandbox for testing
+const sandbox = sinon.createSandbox();
+
+// Define a function to restore the sandbox after each test
+afterEach(() =&gt; {
+  sandbox.restore();
+});
+
+// Define a function to test the eloqua bulk upload functionality
+describe('Eloqua Bulk Upload', () =&gt; {
+  // Test that a valid oauth token is obtained
+  it('should get a valid oauth token', () =&gt; {
+    // Mock the request function to return a valid oauth token
+    const requestStub = sandbox.stub(httpPolyfill,'request')
+     .returns(Promise.resolve({ body: { expires_in: 1000 } }));
+
+    // Call the eloquaOauth function and assert that the token is valid
+    return eloquaImportService.eloquaOauth(EloquaConfig)
+     .then((token) =&gt; {
+        assert(token.expires &gt; Date.now());
+        assert(requestStub.calledOnce,'request should only be called once');
+      });
+  });
+
+  // Test that a bulk import instance is created
+  it('should create a bulk import instance', () =&gt; {
+    // Mock the request function to return the import instance
+    const requestStub = sandbox.stub(httpPolyfill,'request')
+     .returns(Promise.resolve({ body: { uri: '/imports/123' } }));
+
+    // Call the createImportDefinition function and assert that the import instance is created
+    return eloquaImportService.createImportDefinition(60, EloquaToken, EloquaConfig)
+     .then((importInstance) =&gt; {
+        assert(importInstance.includes('/imports/'));
+        assert(requestStub.calledOnce,'request should only be called once');
+      });
+  });
+
+  // Test that data is updated to eloqua
+  it('should update data to eloqua', () =&gt; {
+    // Mock the request function to return the updated data
+    const requestStub = sandbox.stub(httpPolyfill,'request')
+     .returns(Promise.resolve({ body: { uri: '/imports/123' }, statusCode: 204 }));
+
+    // Call the startBulkImportData function and assert that the data is updated
+    return eloquaImportService.startBulkImportData([ImportData], '/imports/123', EloquaToken, EloquaConfig)
+     .then((response) =&gt; {
+        assert(response.statusCode === 204, 'invalid status recieved from import'+ response.statusCode);
+        assert(requestStub.calledOnce,'request should only be called once');
+      });
+  });
+
+  // Test that the upload is verified to be successful
+  it('should verify upload was successful', () =&gt; {
+    let importUri;
+    // Mock the request function to return the verification response
+    const requestStub = sandbox.stub(httpPolyfill,'request')
+     .returns(Promise.resolve({ body: { uri: '/imports/123', status:'success' } }));
+
+    // Call the completeBulkImportSync function and assert that the upload is successful
+    return eloquaImportService.completeBulkImportSync(importUri, EloquaToken, EloquaConfig)
+     .then((result) =&gt; {
+        assert(result === true);
+        assert(requestStub.called,'request should only be called once');
+      });
+  });
+});</code></pre></div><p>This code defines a set of unit tests for an Eloqua import service.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

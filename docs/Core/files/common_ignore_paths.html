@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./list_project_files.html">list project files</a> | <a href="./List_all_projects_by_names.html">List all projects by names</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code defines a list of file and directory patterns to be ignored, commonly used for excluding unwanted files during various tasks.  It exports this list as a module, making it reusable in other parts of an application.</p>
+  <p>This code exports an array of file patterns to be ignored by a tool, containing patterns for various file types and directories.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "common ignore paths"</code></pre><h1>common ignore paths</h1>
@@ -153,21 +160,111 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a list of file and directory patterns to be ignored.</p>
-<p>Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+// Ignores configuration for glob patterns
+const ignores = [
+  // Patterns for generated or compiled code
+  '**/bin/**',
+  '**/obj/**',
+  '**/dist/**',
+  
+  // Patterns for test and example code
+  '**/*.spec*',
+  '**/tests/**',
+  '**/examples/**',
+  '**/typings/**',
+  
+  // Patterns for vendor and third-party code
+  '**/packages/**',
+  '**/node_modules/**',
+  '**/vendor/**',
+  
+  // Patterns for system and OS files
+  '**/Downloads/**',
+  '**/Library/**',
+  '**/Applications/**',
+  '**/AppData/**',
+  '**/Trash/**',
+  '**/proc/**',
+  '**/wp-content/**',
+  '**/wp-includes/**',
+  '**/Pods/**',
+  '**/svn/**',
+  '**/lib/**',
+  
+  // Patterns for version control and IDE metadata
+  '**/.git/**',
+  '**/.vscode/**',
+  '**/.npm/**',
+  '**/\\.gitignore',
+  '**/\\.gitattributes',
+  
+  // Patterns for cache and temporary files
+  '**/Cache/**',
+  '**/Creative Cloud Files/**',
+  '**/__pycache__/**',
+  '**/__temp__/**',
+];
+
+// Export ignores configuration as a module
+module.exports = {
+  ignores: [
+    // Normalize path patterns to start with **
+    ignores.map(pattern =&gt; `**/${pattern.replace(/^\/+/, '')}`),
+  ],
+};
+```</code></pre></div><h3>Code Breakdown</h3>
+<p><strong>Code Purpose</strong></p>
+<p>This code exports an array of file patterns to be ignored by a tool (likely a version control system or a build tool).</p>
+<p><strong>Patterns</strong></p>
+<p>The <code>ignores</code> array contains glob patterns that match specific file paths to be ignored. These patterns are grouped into several categories:</p>
 <ul>
-<li><p><strong><code>ignores</code> Array:</strong></p>
+<li><strong>Build artifacts</strong>:
 <ul>
-<li>Contains an array of strings, each representing a pattern to match and exclude.</li>
-<li>The patterns use Unix-style wildcards (e.g., <code>**/bin/**</code> matches all directories named &quot;bin&quot; within any subdirectory).</li>
-<li>The patterns cover common scenarios like ignoring build artifacts, test files, dependencies, temporary files, and system directories.</li>
+<li><code>**/bin/**</code>: ignores all files and directories in the <code>bin</code> directory and its subdirectories.</li>
+<li><code>**/obj/**</code>: ignores all files and directories in the <code>obj</code> directory and its subdirectories.</li>
+<li><code>**/dist/**</code>: ignores all files and directories in the <code>dist</code> directory and its subdirectories.</li>
 </ul></li>
-<li><p><strong>Module Exports:</strong></p>
+<li><strong>Test files</strong>:
 <ul>
-<li>The module exports the <code>ignores</code> array, making it available for use in other parts of the application.</li>
+<li><code>**/*.spec*</code>: ignores all files with the <code>.spec</code> extension.</li>
+<li><code>**/*.Tests/**</code>: ignores all files and directories in the <code>Tests</code> directory and its subdirectories.</li>
+</ul></li>
+<li><strong>Node.js and TypeScript files</strong>:
+<ul>
+<li><code>**/typings/**</code>: ignores all files and directories in the <code>typings</code> directory and its subdirectories.</li>
+<li><code>**/packages/**</code>: ignores all files and directories in the <code>packages</code> directory and its subdirectories.</li>
+</ul></li>
+<li><strong>Node.js dependencies</strong>:
+<ul>
+<li><code>**/node_modules/**</code>: ignores all files and directories in the <code>node_modules</code> directory and its subdirectories.</li>
+</ul></li>
+<li><strong>Other directories and files</strong>:
+<ul>
+<li><code>**/vendor/**</code>: ignores all files and directories in the <code>vendor</code> directory and its subdirectories.</li>
+<li><code>**/Downloads/**</code>: ignores all files and directories in the <code>Downloads</code> directory and its subdirectories.</li>
+<li><code>**/Library/**</code>: ignores all files and directories in the <code>Library</code> directory and its subdirectories.</li>
+<li><code>**/Applications/**</code>: ignores all files and directories in the <code>Applications</code> directory and its subdirectories.</li>
+<li><code>**/AppData/**</code>: ignores all files and directories in the <code>AppData</code> directory and its subdirectories.</li>
+<li><code>**/Trash/**</code>: ignores all files and directories in the <code>Trash</code> directory and its subdirectories.</li>
+<li><code>**/proc/**</code>: ignores all files and directories in the <code>proc</code> directory and its subdirectories.</li>
+<li><code>**/wp-content/**</code>: ignores all files and directories in the <code>wp-content</code> directory and its subdirectories.</li>
+<li><code>**/wp-includes/**</code>: ignores all files and directories in the <code>wp-includes</code> directory and its subdirectories.</li>
+<li><code>**/Pods/**</code>: ignores all files and directories in the <code>Pods</code> directory and its subdirectories.</li>
+<li><code>**/svn/**</code>: ignores all files and directories in the <code>svn</code> directory and its subdirectories.</li>
+<li><code>**/lib/**</code>: ignores all files and directories in the <code>lib</code> directory and its subdirectories.</li>
+<li><code>**/.git/**</code>: ignores all files and directories in the <code>.git</code> directory and its subdirectories.</li>
+<li><code>**/.vscode/**</code>: ignores all files and directories in the <code>.vscode</code> directory and its subdirectories.</li>
+<li><code>**/.npm/**</code>: ignores all files and directories in the <code>.npm</code> directory and its subdirectories.</li>
+<li><code>**/\\.*</code>: ignores all files and directories whose names start with a backslash (<code>\</code>).</li>
+<li><code>**/.*</code>: ignores all files and directories whose names start with a dot (<code>.</code>).</li>
+<li><code>**/Cache/**</code>: ignores all files and directories in the <code>Cache</code> directory and its subdirectories.</li>
+<li><code>**/Creative Cloud Files/**</code>: ignores all files and directories in the <code>Creative Cloud Files</code> directory and its subdirectories.</li>
 </ul></li>
 </ul>
-<p>In essence, this code provides a set of predefined ignore patterns that can be used to filter files and directories during tasks like file processing, version control, or code analysis.</p>
+<p><strong>Export</strong></p>
+<p>The <code>module.exports</code> statement exports the <code>ignores</code> array as a JavaScript module.</p>
 
 </body>
 

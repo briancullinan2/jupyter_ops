@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const path = require('path');
+const edge = require('edge-js');
+const { safeurl } = require('domain-cache-tools');
+
+// Constants
+const BUILD_DIRECTORY = path.join(__dirname, '../.build');
+
+// Function to execute edge function and return result
+async function executeEdgeFunction(edgeFunc,...args) {
+  return new Promise((resolve, reject) => {
+    edgeFunc(...args, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+// Function to test edge functionality
+async function testEdge() {
+  // Interpret and import C# code
+  const codeCell = await importCode('rosetta euler csharp 005');
+  const { RunEuler } = await importModule('rosetta euler csharp 005');
+
+  // Get library name and dynamic library path
+  const libName = safeurl(codeCell.questions[0]);
+  const dynamicLib = path.join(BUILD_DIRECTORY, libName + '.dll');
+
+  // Get edge function
+  const edgeFunc = edge.func({
+    assemblyFile: dynamicLib,
+    typeName: 'Rosetta.Euler',
+    methodName: 'RunEuler', // Must be a static method
+  });
+
+  // Execute edge function and return result
+  const result = await executeEdgeFunction(edgeFunc, "", (arg1, arg2) => arg2);
+  console.log(result);
+}
+
+// Function to import C# code
+async function importCode(codeName) {
+  // TODO: Implement code interpretation logic
+  // For now, just return an empty object
+  return {};
+}
+
+// Function to import C# module
+async function importModule(moduleName) {
+  // TODO: Implement module import logic
+  // For now, just return an empty object
+  return {};
+}
+
+// Export testEdge function
+module.exports = testEdge;</code></pre></div><h3>Code Breakdown</h3>
 <p><strong>Requires and Imports</strong></p>
 <ul>
 <li><code>const path = require('path')</code>: Imports the Node.js <code>path</code> module for working with file paths.</li>

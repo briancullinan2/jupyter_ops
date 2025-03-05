@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -171,7 +178,147 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a Jupyter Notebook environment, specifically handling the execution of code and displaying the output.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a function to handle console logging
+function consoleLog(arg) {
+    $('#output').append('&lt;p&gt;' + arg + '&lt;/p&gt;');
+}
+
+// Define a function to execute code in the kernel
+function execute(code) {
+    const kernel = new Kernel('/api/kernels', 'ws://127.0.0.1:8888', {
+        getCell: (msgId) =&gt; {
+            if (msgId === lastId) {
+                return {
+                    widgetSubarea: $('#widgets'),
+                };
+            } else {
+                return null;
+            }
+        },
+    }, 'python2');
+    kernel._kernelStarted({ id: kernelId, name: 'python2' });
+
+    // Define a callback function for output messages
+    function handleOutput(msg) {
+        switch (msg.header.msgType) {
+            case'stream':
+                $('#output').append('&lt;p&gt;' + msg.content.data + '&lt;/p&gt;');
+                break;
+            case 'display_data':
+                $('#output').append('&lt;p&gt;' + msg.content.data + '&lt;/p&gt;');
+                break;
+            case 'execute_result':
+                if (msg.content.data['text/plain']!== undefined) {
+                    $('#output').append('&lt;p&gt;&lt;strong&gt;' + msg.content.data['text/plain'] + '&lt;/strong&gt;&lt;/p&gt;');
+                }
+                break;
+            case 'error':
+                $('#output')
+                   .append('&lt;p style=\'color:red\'&gt;' + msg.content.ename + ':'+ msg.content.evalue + '&lt;/p&gt;');
+                break;
+            default:
+                console.log('unhandled output message', msg);
+                break;
+        }
+    }
+
+    // Define a callback function for clearing output
+    function handleClearOutput(msg) {
+        if (msg.content.wait) {
+            if (clearQueued) {
+                $('#output').html('');
+                $('#widgets').html('');
+            }
+            clearQueued = true;
+        } else {
+            $('#output').html('');
+            $('#widgets').html('');
+        }
+    }
+
+    // Execute the code in the kernel
+    kernel.execute(code, {
+        iopub: {
+            output: handleOutput,
+            clear_output: handleClearOutput,
+        },
+        silent: false,
+        store_history: true,
+    }).then((result) =&gt; {
+        lastId = result;
+    });
+}
+
+// Define a function to execute JavaScript code directly
+function jsExecute(code) {
+    try {
+        const result = eval(code);
+        $('#output').append('&lt;p&gt;&lt;strong&gt;' + result + '&lt;/strong&gt;&lt;/p&gt;');
+    } catch (error) {
+        console.log(`Error executing JavaScript code: ${error.message}`);
+    }
+}
+
+// Initialize the kernel and events
+require([
+    'base/js/events',
+   'services/kernels/js/kernel',
+    'notebook/js/keyboardmanager',
+], (events, kernel, keyboardmanager) =&gt; {
+    events = events;
+    kernel = kernel;
+    keyboardmanager = keyboardmanager;
+
+    const keyboardManager = new keyboardmanager.KeyboardManager({
+        pager: null,
+        events: events,
+    });
+
+    let kernelId;
+    if (window.parent!== window) {
+        kernelId = window.parent.IPython.notebook.session.kernel.kernel_id;
+    } else {
+        kernelId = 'a4142958-41ed-4fe3-bea7-2a9bbd4db6bc';
+    }
+
+    const falseCell = {
+        widgetSubarea: $('#widgets'),
+    };
+    const falseNotebook = {
+        events: events,
+        keyboardManager: keyboardManager,
+        getCell: (msgId) =&gt; {
+            if (msgId === lastId) {
+                return falseCell;
+            } else {
+                return null;
+            }
+        },
+    };
+
+    const kk = new kernel.Kernel('/api/kernels', 'ws://127.0.0.1:8888', falseNotebook, 'python2');
+
+    kk._kernelStarted({ id: kernelId, name: 'python2' });
+
+    events.one('status_idle.Kernel', (evt, data) =&gt; {
+        if (data.kernel === kk) {
+            if (window.parent!== window &amp;&amp; window.parent._subframeCb!== undefined) {
+                window.parent._subframeCb(execute);
+            }
+            console.log = consoleLog;
+        }
+    });
+});
+
+// Initialize variables
+let lastId = '';
+let clearQueued = false;
+
+// Add an event listener for keyboard shortcuts
+$('#widgets').on('keydown', (event) =&gt; {
+    // TODO: Implement keyboard shortcut handling
+});</code></pre></div><p>This code snippet appears to be part of a Jupyter Notebook environment, specifically handling the execution of code and displaying the output.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Variables:</strong></p>

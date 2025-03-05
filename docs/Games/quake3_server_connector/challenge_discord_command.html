@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Breakdown of the Code</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { DiscordAPI } = require('../Core');
+const { serverCommands, api } = new DiscordAPI();
+const { Quake3Server } = require('../Quake3Server');
+
+const CHALLENGE_REGEX = /(@[^:@\s]+\s*chall?[ae]nge|chall?[ae]nge\s*@[^:@\s]+)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig;
+const DEFAULT_HOST = process.env.DEFAULT_HOST || 'http://quakeiiiarena.com/play/';
+const DEFAULT_MODS = process.env.DEFAULT_MODS || ['baseq3', 'freon'];
+const MAP_DEFAULT = 'q3dm17';
+
+class ChallengeCommand {
+  async execute(command) {
+    if (!command.private && (!command.mentions || command.mentions.length === 0)) return;
+    const { content } = command;
+    const match = CHALLENGE_REGEX.exec(content);
+
+    if (!match) return;
+
+    const [,, launch, map] = match;
+    const { message, instruction } = this.parseLaunch(launch, map);
+
+    if (!command.launching) {
+      await this.createMessage(command.channel_id, message, instruction);
+      return;
+    }
+
+    await this.launchMap(command.channel_id, launch, map);
+  }
+
+  parseLaunch(launch, map) {
+    if (!DEFAULT_MODS.includes(launch) && map.length === 0) {
+      map = launch;
+      launch = '';
+    }
+
+    if (map.length === 0) map = MAP_DEFAULT;
+
+    let message = 'I read you';
+    let instruction = '';
+
+    if (launch.length === 0) {
+      instruction += `, assuming ${DEFAULT_MODS[0]} on map ${map}`;
+    } else {
+      instruction += ` ${launch} on map ${map}`;
+    }
+
+    return { message, instruction };
+  }
+
+  async createMessage(channelId, message, instruction) {
+    const instructionText = instruction? `, react with :thumbsup: to launch` : '';
+    await api.createMessage(message + instruction + '\n```BOT' + channelId + 'L\nbeep boop\n```\n', channelId);
+    if (instructionText) await api.createMessage(`Waiting for reaction${instructionText} \n```BOT' + channelId + 'L\nbeep boop\n````, channelId);
+  }
+
+  async launchMap(channelId, launch, map) {
+    this.triggerTyping(channelId);
+    const masters = await Quake3Server.listMasters();
+    if (masters.length === 0) {
+      await api.createMessage(`Boo hoo, no servers available. :cry:` + '\n```BOT' + channelId + 'L\nbeep boop\n```\n', channelId);
+      return;
+    }
+
+    const master = masters[0];
+    await Quake3Server.sendRcon(master.ip, master.port, `\\exec ${launch}.cfg`);
+    await Quake3Server.sendRcon(master.ip, master.port, `\\map ${map}`);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await api.createMessage(`Match is ready ${DEFAULT_HOST}?connect%20${master.ip}:${master.port} (${master.ip}:${master.port})\n```BOT' + channelId + 'L\nbeep boop\n```\n`, channelId);
+  }
+
+  triggerTyping(channelId) {
+    api.triggerTyping(channelId);
+  }
+}
+
+module.exports = new ChallengeCommand();</code></pre></div><h2>Breakdown of the Code</h2>
 <h3>Importing Modules</h3>
 <p>The code starts by importing two modules using the <code>require</code> function:</p>
 <pre><code class="language-javascript">var importer = require('../Core')

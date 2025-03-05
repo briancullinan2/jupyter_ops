@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions to manage browser windows and tabs, specifically focusing on ensuring only one window remains open.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { runAllPromises } = require('../Core');
+
+/**
+ * Closes all tabs in the current window except the one specified by `keep`.
+ *
+ * @param {object} client - The client object with methods for interacting with the browser.
+ * @param {string} keep - The handle of the window to keep open.
+ * @returns {Promise} A promise that resolves when all tabs have been closed.
+ */
+async function closeAllTabs(client, keep) {
+    const handles = await client.getWindowHandles();
+    const promises = handles.filter(handle => handle!== keep).map(i => () => client.closeWindow());
+    await runAllPromises(promises);
+}
+
+/**
+ * Closes all windows in the browser except the one specified by `keep`.
+ *
+ * @param {object} client - The client object with methods for interacting with the browser.
+ * @param {string} keep - The handle of the window to keep open.
+ * @returns {Promise} A promise that resolves when all windows have been closed.
+ */
+async function closeAllWindows(client, keep) {
+    await closeAllTabs(client, keep);
+    return client.switchToWindow(keep);
+}
+
+/**
+ * Ensures there is only one window open in the browser.
+ *
+ * @param {object} client - The client object with methods for interacting with the browser.
+ * @returns {Promise} A promise that resolves when the operation is complete.
+ */
+async function onlyOneWindow(client) {
+    try {
+        const newHandle = await client.newWindow('https://google.com');
+        await closeAllWindows(client, newHandle);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+module.exports = onlyOneWindow;</code></pre></div><p>This code defines functions to manage browser windows and tabs, specifically focusing on ensuring only one window remains open.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>closeAllTabs(client, keep)</code>:</strong></p>

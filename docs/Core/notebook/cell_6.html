@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules from the Core module
+const { importer } = require('../Core');
+const {
+  replaceImports,
+  replaceCore,
+  selectAst,
+  htmlToTree,
+  importModule,
+} = importer.import([
+ 'replace notebook import',
+ 'replace core requirement',
+ 'select code tree',
+  'html to tree',
+  // Import the importModule function to replace importer.import
+]);
+
+/**
+ * Replaces imports and core requirements in a given code string.
+ * @param {string} code - The code string to process.
+ * @returns {object} An object containing the modified code and other information.
+ */
+async function processCode(code) {
+  try {
+    // Replace imports and core requirements in the code
+    const modifiedCode = await replaceCore(code);
+    // Convert the modified code to an abstract syntax tree (AST)
+    const ast = selectAst(modifiedCode);
+    // Convert the HTML to a tree structure
+    const htmlTree = htmlToTree(ast);
+
+    // Check if the $ object is defined
+    if (typeof $!== 'undefined') {
+      // Set the MIME type to 'text/plain' and send the modified code as a string
+      $.mime({
+        'text/plain': await replaceImports(modifiedCode.toString()),
+      });
+    }
+
+    // Return the modified code
+    return modifiedCode;
+  } catch (error) {
+    // Log any errors that occur during processing
+    globalThis.console.error(error);
+  }
+}
+
+// Example usage:
+const code = `
+var importer = require('../Core');
+var getArrayAST = importer.import('get ast path array');
+`;
+
+processCode(code);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>The code imports modules from a file named <code>../Core</code> using the <code>require</code> function:</p>
 <pre><code class="language-javascript">var importer = require('../Core')

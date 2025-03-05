@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -436,7 +443,170 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { Remarkable } = require('remarkable');
+const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
+const { safeurl } = require('domain-cache-tools');
+const { selectModel } = require('select-llm');
+
+const PROJECT_PATH = require('path').join(__dirname, '..', 'Resources', 'Projects', 'business-plans');
+
+async function askLlamaToWriteBusinessPlan(topic, name, promptModel = 'Meta') {
+  // Validate user input
+  if (typeof promptModel!== 'function') {
+    promptModel = await selectModel(promptModel);
+  }
+
+  const DEFAULT_TOPIC = 'automatic car wash';
+  topic = topic || DEFAULT_TOPIC;
+
+  let businessName = name;
+  if (!name) {
+    // Brainstorm business name
+    const q0 = `Brainstorm 12 funny but creative names for a business involving:\n${topic}\nRespond with only the list of fun names and nothing else.`
+    const a0 = await promptModel(q0);
+    const names = a0.trim().split(/\s*[0-9]+\.\s*|\s*\n\s*/gi);
+    businessName = names[Math.round(Math.random() * (names.length - 1))];
+  }
+
+  // Collect business goals
+  const goals = await collectGoals(promptModel, topic);
+
+  // Collect Executive Summary
+  const summary = await collectSummary(promptModel, businessName, goals);
+
+  // Collect Market Demands
+  const market = await collectMarketDemands(promptModel, summary);
+
+  // Collect Operating Procedures
+  const operating = await collectOperatingProcedures(promptModel, summary, market);
+
+  // Collect Policy sections
+  const { grandOpening, cancellation, giftPolicy, refundPolicy, salesPolicy } = await collectPolicies(promptModel, operating);
+
+  // Collect Management and Personnel
+  const personnel = await collectManagementAndPersonnel(promptModel, summary, market);
+
+  // Collect Employee Compensation
+  const compensation = await collectEmployeeCompensation(promptModel, personnel);
+
+  // Collect Company Insurance
+  const insurance = await collectCompanyInsurance(promptModel, personnel);
+
+  // Collect Marketing Strategy
+  const marketing = await collectMarketingStrategy(promptModel, summary, market);
+
+  // Collect Financial Projections
+  const projections = await collectFinancialProjections(promptModel, summary, market);
+
+  // Collect Average Revenue per Customer, Personnel Costs, Ongoing Operational Costs, and Estimated Yearly Revenue
+  const costBreakdown = await collectCostBreakdown(promptModel, personnel, projections);
+
+  // Collect Franchise Opportunity
+  const franchise = await collectFranchiseOpportunity(promptModel, summary, market);
+
+  // Render markdown
+  const mdHtml = md.render(summary + '\n' + operating + '\n' + market + '\n' +
+    grandOpening + '\n' + cancellation + '\n' + giftPolicy + '\n' + refundPolicy + '\n' + salesPolicy + '\n' +
+    personnel + '\n' + compensation + '\n' + insurance + '\n' + marketing + '\n' +
+    projections + '\n' + costBreakdown + '\n' + franchise);
+
+  // Save to file
+  const filename = require('path').join(PROJECT_PATH, safeurl(topic) + '.html');
+  require('fs').writeFileSync(filename, mdHtml);
+
+  return mdHtml;
+}
+
+async function collectGoals(promptModel, topic) {
+  const q1 = `List 6 common goals in achieving a successful business around:\n${topic}\nOnly return the list of goals and nothing else.`
+  const a1 = await promptModel(q1);
+  return a1.trim().split('\n').filter(g =&gt; g.trim().length &gt; 0);
+}
+
+async function collectSummary(promptModel, businessName, goals) {
+  const q2 = `Write an Executive Summary for a business plan using markdown, expand on these goals:\nA company named ${businessName}\n${goals.join('\n')}\nOnly return the "Executive Summary" (about 3 or 4 paragraphs) and goals, discard any pleasantries.`
+  const a2 = await promptModel(q2);
+  return a2.trim();
+}
+
+async function collectMarketDemands(promptModel, summary) {
+  const q8 = `Write a Market Demands section of the business plan using markdown with the following concepts:\n${summary}\nOnly response with the "Market Demands" part of the business plan in markdown.`
+  const a8 = await promptModel(q8);
+  return a8.trim();
+}
+
+async function collectOperatingProcedures(promptModel, summary, market) {
+  const q11 = `Write an Operating Procedures section of a business plan taking into account possible requirements:\n${summary}\n${market}\nRespond with only the 12 "Operating Procedures" for the business plan in markdown and nothing else.`
+  const a11 = await promptModel(q11);
+  return a11.trim();
+}
+
+async function collectPolicies(promptModel, operating) {
+  const { grandOpening, cancellation, giftPolicy, refundPolicy, salesPolicy } = await collectPolicySections(promptModel, operating);
+  return { grandOpening, cancellation, giftPolicy, refundPolicy, salesPolicy };
+}
+
+async function collectPolicySections(promptModel, operating) {
+  const grandOpening = await collectGrandOpening(promptModel, operating);
+  const cancellation = await collectCancellationPolicy(promptModel, operating);
+  const giftPolicy = await collectGiftCertificatePolicy(promptModel, operating);
+  const refundPolicy = await collectRefundPolicy(promptModel, operating);
+  const salesPolicy = await collectSalesPolicy(promptModel, operating);
+  return { grandOpening, cancellation, giftPolicy, refundPolicy, salesPolicy };
+}
+
+async function collectPolicy(promptModel, operating) {
+  const q13 = `Briefly describe the Grand Opening using markdown:\n${operating}\nOnly return the title "Grand Opening" and the description in markdown.`
+  const a13 = await promptModel(q13);
+  return a13.trim();
+}
+
+async function collectManagementAndPersonnel(promptModel, summary, market) {
+  const q14 = `Write markdown titled Management and Personnel for the business plan. Brainstorm a list of 12 possible employee positions required for this type of business excluding C-level:\n${summary}\n${market}\nInclude the title "Management and Personnel" in the markdown response, discard any pleasantries or conclusions.`
+  const a14 = await promptModel(q14);
+  return a14.trim();
+}
+
+async function collectEmployeeCompensation(promptModel, personnel) {
+  const q15 = `Describe employee compensation such as Employee Benefits, Employee Wages, and Profit Sharing for a business plan:\n${personnel}\nInclude the title "Employee Compensation" in the markdown response, discard any pleasantries or conclusions.`
+  const a15 = await promptModel(q15);
+  return a15.trim();
+}
+
+async function collectCompanyInsurance(promptModel, personnel) {
+  const q16 = `Describe necessary "Company Insurance" plans, such as liability, personal property, health and disability insurance for a business plan:\n${personnel}\nInclude the title "Company Insurance" in the markdown response, discard any pleasantries or conclusions.`
+  const a16 = await promptModel(q16);
+  return a16.trim();
+}
+
+async function collectMarketingStrategy(promptModel, summary, market) {
+  const q17 = `Write a "Marketing Strategy" for a business plan, include online media and classical methods such as print and referral:\n${summary}\n${market}\nInclude the title "Marketing Strategy" in the markdown response, discard any pleasantries or conclusions.`
+  const a17 = await promptModel(q17);
+  return a17.trim();
+}
+
+async function collectFinancialProjections(promptModel, summary, market) {
+  const q22 = `Write a section called "Financial Projections" for the business plan, include supplies, equipment, building costs, startup costs, and any other associated costs with the business:\n${summary}\n${market}\nInsert all the estimated numbers for each expense and include a total in markdown but discard any conclusions.`
+  const a22 = await promptModel(q22);
+  return a22.trim();
+}
+
+async function collectCostBreakdown(promptModel, personnel, projections) {
+  const q23 = `Write sections for "Average Revenue per Customer", "Personnel Costs", "Ongoing Operational Costs", and "Estimated Yearly Revenue" and do a basic financial breakdown for each section of the business plan:\n${personnel}\n${projections}\nInsert all the estimated numbers for each expense a total in markdown but discard any conclusions.`
+  const a23 = await promptModel(q23);
+  return a23.trim();
+}
+
+async function collectFranchiseOpportunity(promptModel, summary, market) {
+  const q24 = `Write a section "Franchise Opportunity" and describe the franchising benefits for training and support, standardized guidelines, profitability for franchisees, etc:\n${summary}\n${market}\nInsert all the estimated franchising fees a total projected costs in markdown but discard any conclusions.`
+  const a24 = await promptModel(q24);
+  return a24.trim();
+}
+
+module.exports = { askLlamaToWriteBusinessPlan };
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Imports</h3>
 <ul>
 <li>The code imports <code>Remarkable</code> from the <code>remarkable</code> library, a Markdown parser.</li>

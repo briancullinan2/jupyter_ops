@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet removes all Docker images from your system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Remove all unused Docker images
+UNUSED_IMAGES=$(docker images -q --format '{{.ID}}' | grep -v '^&lt;none&gt;')  # Filter out &lt;none&gt; images
+
+# Print the images to be removed
+echo "The following images will be removed:"
+echo "$UNUSED_IMAGES"
+
+# Prompt for confirmation before removing the images
+read -p "Are you sure you want to remove these images? (yes/no): " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    docker rmi -f "$UNUSED_IMAGES"
+    echo "Images removed successfully."
+else
+    echo "Image removal cancelled."
+fi
+
+# TODO: Consider implementing a filter to only remove images older than a certain age</code></pre></div><p>This code snippet removes all Docker images from your system.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker images -q')</code>:</strong></p>

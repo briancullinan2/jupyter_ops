@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,48 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { getSheet, getTemplates, wrapTemplate, getTemplateProperties, collectTemplateResources, getTemplateByUrl } =
+  require('../Core').import({
+    'get sheet purchases': async () => ({ sheet: '', bucket: '' }),
+    templates: 'google sheet',
+    'output google sheet template': async () => ({}),
+    'google sheet template properties': async () => ({}),
+    'collect google sheet resources': async () => ({}),
+    'convert sheet helper functions': async () => ({}),
+  });
+
+async function importSheet(link, domain = '') {
+  if (!link) {
+    throw new Error('Link is required');
+  }
+
+  const { sheet, bucket } = await getSheet(link, domain);
+  domain = domain || bucket;
+
+  const templates = await getTemplates(sheet);
+  const key = getTemplateByUrl(templates, '/');
+
+  if (!key) {
+    throw new Error('Template not found');
+  }
+
+  await getTemplateProperties(key, {}, templates);
+  const page = await wrapTemplate('', key, {}, {});
+
+  const resources = await collectTemplateResources(key, page, {}, templates, domain);
+  const uniqueResources = [...new Set(resources.map(String))];
+  const filteredResources = uniqueResources.filter((resource) => {
+    if (!resource.includes(':')) {
+      return resource.includes('.');
+    }
+    return false;
+  });
+
+  return filteredResources;
+}
+
+module.exports = importSheet;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables and Imports</h4>
 <ul>
 <li><code>var importer = require('../Core');</code>: Imports the <code>importer</code> from the <code>../Core</code> module.</li>

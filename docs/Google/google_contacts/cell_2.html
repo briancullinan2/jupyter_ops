@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,48 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the necessary modules
+const core = require('../Core');
+
+// Extract the getSettings function from the core module
+const { getSettings } = core.import('google contact settings');
+
+// Define a logger function
+const log = (message) => {
+  console.log(`[Llama]: ${message}`);
+};
+
+// Define an error handler function
+const handleError = (error) => {
+  log(`Error occurred: ${error.message}`);
+  // Send the error to the caller
+  $.sendError(error);
+};
+
+// Define a result handler function
+const handleResult = (result) => {
+  log('Result received');
+  // Send the result to the caller
+  $.sendResult(result);
+};
+
+// Function to get and handle the Google contact settings
+const getContactSettings = async (email) => {
+  try {
+    // Call the getSettings function with the provided email
+    const result = await getSettings(email);
+    // Handle the result
+    handleResult(result);
+  } catch (error) {
+    // Handle any errors that occur
+    handleError(error);
+  }
+};
+
+// Call the getContactSettings function with the specified email
+$.async();
+getContactSettings('megamindbrian@gmail.com');</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var getSettings = importer.import('google contact settings');

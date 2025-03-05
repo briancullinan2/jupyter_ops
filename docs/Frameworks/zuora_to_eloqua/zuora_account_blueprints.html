@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -3144,7 +3151,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getUniqueRatePlans</code> that returns a sample dataset of account and subscription information.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Extracts unique rate plans from the given array of rate plan objects.
+ *
+ * @param {Array&lt;Object&gt;} ratePlans - The array of rate plan objects.
+ * @returns {Array&lt;Object&gt;} An array of unique rate plan objects.
+ */
+function getUniqueRatePlans(ratePlans) {
+  const uniqueRatePlans = {};
+
+  ratePlans.forEach(rpc =&gt; {
+    const key = JSON.stringify(rpc);
+    if (!uniqueRatePlans[key]) {
+      uniqueRatePlans[key] = rpc;
+    }
+  });
+
+  return Object.values(uniqueRatePlans);
+}
+
+module.exports = {
+  getUniqueRatePlans
+};</code></pre></div><p>This code defines a function <code>getUniqueRatePlans</code> that returns a sample dataset of account and subscription information.</p>
 <p>The data includes details like account ID, name, currency, contact information, rate plan details, billing information, product information, and subscription status. This data likely represents a subset of records from a database and is probably used for testing or demonstration purposes.</p>
 
 </body>

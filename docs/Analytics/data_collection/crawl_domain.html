@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -193,7 +200,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { URL } = require('url');
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+
+const { doBrowserRequest, closeBrowser } = importer.import('browser crawler tools');
+const {
+  cacheFilename,
+  existingCache,
+  storeCache,
+  readCache,
+  rmhash,
+} = importer.import('domain cache tools');
+
+/**
+ * Crawls a URL recursively.
+ * 
+ * @param {string|Array<string>} url - The URL(s) to crawl.
+ * @param {number} depth - The maximum depth to crawl.
+ * @param {Array} searches - The current search results.
+ * @returns {Promise} A promise that resolves with the search results.
+ */
+async function crawlRecursive(url, depth, searches) {
+  if (depth === undefined) depth = 3; // Set default depth
+  url = (typeof url ==='string'? [url] : url);
+
+  const searches2 = new Set(); // Use a Set to keep track of new pages
+
+  for (const l of url) {
+    try {
+      await doBrowserRequest(l, readCache.bind(null, searches || searches2), storeCache.bind(null, searches || searches2));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  if (!searches) {
+    searches = existingCache(url[0]).concat(searches2);
+  }
+
+  const existing = new Set(searches.map((s) => rmhash(s.url)));
+  const links = new Set(searches2);
+
+  const stylesAndLinks = links
+   .map((s) => {
+      const styles = s.styles || [];
+      const links = s.links || [];
+      return styles.concat(links);
+    })
+   .flat()
+   .map((s) => rmhash(s))
+   .filter((l, i, arr) => arr.indexOf(l) === i)
+   .filter((l) =>!existing.has(rmhash(l)))
+   .filter((l) =>!l.includes('data:') &&!l.includes('mailto:') &&!l.includes('javascript:') &&!l.includes('ios-app:'))
+   .filter((l) => l.includes('http')); // Filter out invalid URLs
+
+  if (depth > 1) {
+    return await crawlRecursive(Array.from(stylesAndLinks), depth - 1, searches);
+  }
+
+  await closeBrowser(); // Close the browser
+  const filePath = cacheFilename(searches[0]? searches[0].url : url[0]);
+  fs.writeFileSync(filePath, JSON.stringify(searches, null, 2));
+}
+
+/**
+ * Crawls a URL and its links recursively.
+ * 
+ * @param {string|Array<string>} url - The URL(s) to crawl.
+ * @param {number} depth - The maximum depth to crawl.
+ * @param {Array} searches - The current search results.
+ * @returns {Promise} A promise that resolves with the search results.
+ */
+async function crawlAll(url, depth, searches) {
+  try {
+    await crawlRecursive(url, depth, searches);
+  } catch (e) {
+    console.error(e);
+    await closeBrowser();
+  }
+}
+
+module.exports = crawlAll;</code></pre></div><p><strong>Function Breakdown: crawlRecursive(url, depth, searches)</strong></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>url</code>: The initial URL to start crawling from. Can be a string or an array of strings.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up a directory structure and builds a VNC entry point script for a Jupyter/Angular project. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Change directory to ~/jupytangular and set as working directory
+set -e  # Exit immediately if a command returns a non-zero status
+cd ~/jupytangular || exit 1  # Use exit 1 to terminate the script with a non-zero status
+
+# Create /opt/bin directory and set permissions
+mkdir -p /opt/bin || true
+chmod 0755 /opt/bin || exit 1
+
+# Run npm command to generate entry point script
+npm run output \
+  "vnc entry point" \
+  "/opt/bin/entry_point.sh"
+
+# Set executable permissions on the generated script
+chmod +x /opt/bin/entry_point.sh</code></pre></div><p>This code snippet sets up a directory structure and builds a VNC entry point script for a Jupyter/Angular project. Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>cd ~/jupytangular</code>:</strong> Changes the current working directory to the <code>jupytangular</code> directory located in the user's home directory.</p></li>
 <li><p><strong><code>&amp;&amp; mkdir /opt/bin || true</code>:</strong> Creates a directory <code>/opt/bin</code> if it doesn't already exist. The <code>|| true</code> part ensures that the command continues even if the directory creation fails (which might happen if the directory already exists).</p></li>

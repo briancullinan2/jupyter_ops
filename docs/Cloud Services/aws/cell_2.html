@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import the required AWS SDK and set the region.
+ * @type {Object} aws - AWS SDK instance
+ */
+const { Lambda } = require('aws-sdk');
+const lambda = new Lambda({
+  region: process.env.AWS_REGION || 'us-west-2', // Use AWS_REGION env var if set, default to us-west-2
+});
+
+/**
+ * Invoke the Lambda function with the provided event data.
+ * @param {Object} event - Event data to pass to the Lambda function
+ * @param {Function} callback - Callback function to handle the response
+ */
+function invokeLambda(event, callback) {
+  const params = {
+    FunctionName: 'name_of_your_lambda_function',
+    Payload: JSON.stringify(event, null, 2), // pass params
+  };
+
+  lambda.invoke(params, (error, data) => {
+    if (error) {
+      callback('error', error);
+    } else if (data.Payload) {
+      callback(null, data.Payload);
+    } else {
+      callback('error', new Error('No payload in response')); // Add error handling for unexpected response
+    }
+  });
+}
+
+// Example usage
+invokeLambda(event, (error, result) => {
+  if (error) {
+    console.error(error); // Log errors to cloudwatch
+  } else {
+    console.log(result); // Log successful response to cloudwatch
+  }
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing AWS SDK</h3>
 <pre><code class="language-javascript">var aws = require('aws-sdk');
 </code></pre>

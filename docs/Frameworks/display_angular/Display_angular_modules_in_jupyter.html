@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>displAngular</code> that renders an Angular application within an iframe.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const vm = require('vm');
+const fs = require('fs');
+const path = require('path');
+const { listFilesInProject, renderAngularModule } = importer.import({
+  'list files in project': 'listFilesInProject',
+ 'render Angular modules':'renderAngularModule',
+});
+
+const template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
+
+/**
+ * Renders an Angular module and returns the HTML content.
+ * @param {string} project - The project path
+ * @param {string} url - The URL of the Angular module
+ * @returns {Promise} A promise that resolves to the rendered HTML content
+ */
+function displayAngularModule(project, url) {
+  return new Promise((resolve, reject) => {
+    const renderer = renderAngularModule(url, (err, html) => {
+      if (err) {
+        return reject(err);
+      }
+
+      const content = fs.readFileSync(path.join(project, 'public', 'index.html'), 'utf8');
+      const scripts = getScriptsAndStyles(content);
+      const innerHtml = template.replace('{{ innerHtml }}', html);
+      return resolve({ innerHtml, scripts });
+    });
+  })
+   .then(() => listFilesInProject(project, '**/public/assets/0.*.js'))
+   .then(paths => paths.map(p => '<script defer>' + fs.readFileSync(p) + '</script>')[0])
+   .then(scripts => ({
+      html: template.replace('{{ scripts }}', scripts),
+      scripts,
+      chunks: renderAngularModule.getChunks(),
+    }));
+}
+
+module.exports = displayAngularModule;</code></pre></div><p>This code defines a function <code>displAngular</code> that renders an Angular application within an iframe.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

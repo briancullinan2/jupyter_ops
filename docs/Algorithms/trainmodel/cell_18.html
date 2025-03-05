@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>fit</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+from tensorflow.keras.optimizers import Adam
+
+# Compile the model with the specified optimizer and loss function
+def compile_model(model):
+    """Compiles the model with the Adam optimizer and sparse categorical crossentropy loss."""
+    model.compile(
+        optimizer=Adam(lr=1e-3),
+        loss='sparse_categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    return model
+
+# Define early stopping and model checkpoint callbacks
+def get_callbacks(checkpoint_path):
+    """Returns early stopping and model checkpoint callbacks."""
+    early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+    model_checkpoint = ModelCheckpoint(
+        filepath=checkpoint_path,
+        save_best_only=True,
+        monitor='val_loss',
+        mode='min',
+        verbose=1
+    )
+    return early_stopping, model_checkpoint
+
+# Train the model
+def train_model(
+    model,
+    x_train: tf.Tensor,
+    y_train: tf.Tensor,
+    x_test: tf.Tensor,
+    y_test: tf.Tensor,
+    batch_size: int,
+    epochs: int,
+    checkpoint_path: str
+):
+    """Trains the model on the training data and evaluates its performance on the test data."""
+    # Compiles the model
+    model = compile_model(model)
+    
+    # Define early stopping and model checkpoint callbacks
+    early_stopping, model_checkpoint = get_callbacks(checkpoint_path)
+    
+    # Train the model
+    history = model.fit(
+        x_train,
+        y_train,
+        batch_size=batch_size,
+        epochs=epochs,
+        validation_data=(x_test, y_test),
+        callbacks=[early_stopping, model_checkpoint]
+    )
+    
+    return history
+
+# Example usage
+model =...  # Define your model here
+history = train_model(
+    model,
+    x_train,
+    y_train,
+    x_test,
+    y_test,
+    batch_size=128,
+    epochs=100,
+    checkpoint_path='./checkpoints/model.h5'
+)</code></pre></div><h3>Function: <code>fit</code></h3>
 <h4>Parameters:</h4>
 <ul>
 <li><code>x</code>: Input data for training.</li>

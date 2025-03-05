@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -222,7 +229,81 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { parse } = require('esprima');
+const { generate } = require('escodegen');
+const {
+  selectDom,
+  evaluateDom,
+  treeToHtml,
+  htmlToTree
+} = require('../Core').import(['select tree', 'tree to html', 'html to tree']);
+
+const FUNCTION_BODY = '//FunctionDeclaration/BlockStatement';
+const QUOTES ='single';
+const INDENT_STYLE ='   ';
+
+function toString(ast, subctx) {
+  if (ast.ownerDocument) {
+    return generate(ast, {
+      comment: true,
+      tokens: true,
+      whitespace: true,
+      format: {
+        indent: { style: INDENT_STYLE },
+        quotes: QUOTES
+      }
+    });
+  }
+  return generate(ast, {
+    comment: true,
+    tokens: true,
+    whitespace: true,
+    format: {
+      indent: { style: INDENT_STYLE },
+      quotes: QUOTES
+    }
+  });
+}
+
+function selectAst(descriptor, code) {
+  if (typeof code === 'function') {
+    code = code.toString();
+  }
+
+  try {
+    if (code.includes('import') || code.includes('export')) {
+      code = parseModule(code, { range: true, tokens: true, comment: true, whitespace: true, strict: false });
+    } else {
+      code = parse(code, { range: true, tokens: true, comment: true, whitespace: true, strict: false });
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Could not parse: \n${code}`);
+  }
+
+  if (!code.evaluate &&!code.ownerDocument) {
+    code = selectDom('//Program', treeToHtml(code));
+    Object.defineProperty(code, 'toString', {
+      value: toString.bind(code, code),
+      enumerable: false,
+      writable: false
+    });
+  }
+  return selectDom(descriptor, code);
+}
+
+function makeExpr(code) {
+  if (typeof code === 'function') {
+    return selectAst([FUNCTION_BODY], code.toString())[0];
+  }
+  return selectAst([`//ExpressionStatement/*`], `(${code})`)[0];
+}
+
+module.exports = {
+  selectAst,
+  makeExpr
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Overview</h3>
 <p>The provided code is a Node.js module that exports two functions: <code>selectAst</code> and <code>makeExpr</code>. These functions appear to be used for parsing and manipulating JavaScript code.</p>
 <h3>Dependencies</h3>

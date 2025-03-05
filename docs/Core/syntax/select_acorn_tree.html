@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -192,7 +199,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const acorn = require("acorn");
+const { selectAst, htmlToTree } = require('../Core');
+
+/**
+ * Selects the AST nodes that match the given descriptor.
+ * 
+ * @param {string} descriptor - The XPath expression to match against the AST nodes.
+ * @param {string} code - The JavaScript code to parse.
+ * @returns {Object[]} The selected AST nodes.
+ */
+function selectAcorn(descriptor, code) {
+    // Initialize arrays to store comments and tokens
+    const comments = [];
+    const tokens = [];
+
+    // If the code is a string, parse it using Acorn
+    if (typeof code ==='string') {
+        // Use Acorn's options to collect ranges, locations, comments, and tokens
+        const ast = acorn.parse(code, {
+            ecmaVersion: 6,
+            locations: true,
+            ranges: true,
+            onComment: comments,
+            onToken: tokens,
+        });
+
+        // Select the AST nodes that match the descriptor
+        return selectAst(descriptor, ast);
+    }
+
+    // If the code is not a string, return an empty array
+    return [];
+}
+
+// Export the selectAcorn function
+module.exports = { selectAcorn };
+
+// TODO: Move the test code to a separate file or a test framework
+if (typeof $!== 'undefined') {
+    const code = `
+    var importer = require('../Core');
+    function name(params) {
+        return importer.interpret('this is a describe request');
+    }
+    console.log()
+    `;
+
+    const call = selectAcorn(`//*[@name="interpret"]`, code);
+    console.log(htmlToTree(call));
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies</h3>
 <ul>
 <li><code>acorn</code> is a JavaScript parser and used to parse the code.</li>

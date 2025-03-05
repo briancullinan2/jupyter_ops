@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -216,7 +223,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a JavaScript object containing lists of file extensions and directory names commonly associated with a specific type of software project (likely a game or similar application).</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Module exports containing various file type classifications.
+ *
+ * @module fileType
+ */
+
+const knownDirs = [
+ 'scripts',
+  'botfiles',
+  'fonts',
+  'gfx',
+  'hud',
+  'icons',
+  'include',
+ 'menu',
+ 'models',
+ 'music',
+  'powerups', // Power-up shaders
+ 'sprites',
+ 'sound',
+  'ui',
+ 'maps',
+  'textures',
+];
+
+const fileExtensions = {
+  images: ['.png', '.jpg', '.jpeg', '.tga', '.gif', '.pcx', '.webp'],
+  audio: ['.opus', '.wav', '.mp3'],
+  source: ['.map', '.scc'],
+  files: [
+    '.cfg',
+    '.qvm',
+    '.bot',
+    '.txt',
+    '.bsp',
+    '.aas',
+    '.md3',
+    '.md5',
+    '.shader',
+    '.skin',
+    '.pk3',
+    '.c',
+    '.h',
+    '.config',
+    '.menu',
+  ],
+};
+
+/**
+ * Get the list of known directories.
+ *
+ * @function getKnownDirs
+ * @returns {string[]} List of known directories.
+ */
+function getKnownDirs() {
+  return knownDirs;
+}
+
+/**
+ * Get the list of file extensions.
+ *
+ * @function getFileExtensions
+ * @returns {Object} Object containing file extensions grouped by type.
+ */
+function getFileExtensions() {
+  return fileExtensions;
+}
+
+module.exports = {
+  getKnownDirs,
+  getFileExtensions,
+};</code></pre></div><p>This code defines a JavaScript object containing lists of file extensions and directory names commonly associated with a specific type of software project (likely a game or similar application).</p>
 <p><strong>Key Components:</strong></p>
 <ul>
 <li><strong><code>imageTypes</code>:</strong> An array of common image file extensions (e.g., <code>.png</code>, <code>.jpg</code>, <code>.gif</code>).</li>

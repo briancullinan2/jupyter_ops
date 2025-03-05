@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -196,7 +203,61 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet modifies a Quake 2 map file by replacing entity references with corresponding model names from a predefined entities definition file.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const importer = require('../Core');
+
+const MATCH_MODELS = /QUAKED\s+([^\s]*)\s+[\s\S]*?model="([^"]*)"/i;
+
+class Entities {
+  constructor() {
+    this.ents = {};
+    this.entitiesFile = '/Users/briancullinan/planet_quake_data/quake2-baseq2/scripts/entities.def';
+  }
+
+  async parseEntitiesFile() {
+    if (Object.keys(this.ents).length === 0) {
+      const fileContent = await fs.promises.readFile(this.entitiesFile, 'utf-8');
+      const matches = importer.regexToArray(/QUAKED\s+.*/ig, fileContent);
+      matches.reduce((obj, m, i, arr) => {
+        const start = fileContent.indexOf(m);
+        const end = fileContent.indexOf(arr[i + 1]);
+        if (end === -1) end = fileContent.length;
+        const groups = MATCH_MODELS.exec(fileContent.substring(start, end));
+        if (!groups) return obj;
+        obj[groups[1]] = groups[2];
+        return obj;
+      }, this.ents);
+    }
+  }
+
+  async replaceEntities(file) {
+    await this.parseEntitiesFile();
+    if (typeof file ==='string' && fs.existsSync(file)) {
+      file = await fs.promises.readFile(file, 'utf-8');
+    }
+
+    // replace entities
+    file = file.replace(/"misc_([^"]*)"/ig, ($0) => `"misc_model"\n "model" ${$0}`);
+
+    // replace noise with sound
+    const noises = importer.regexToArray(/noise.*?"\s*"(.*?)"/ig, file, false);
+    noises.forEach((n) => {
+      if (!n[1].includes('sound/')) {
+        file = file.replace(n[0], `noise" "sound/${n[1]}"`);
+      }
+    });
+
+    // replace misc_ with models from ent
+    Object.keys(this.ents).forEach((k) => {
+      if (!k.includes('misc_')) return;
+      file = file.replace(new RegExp('"' + k + '"', 'ig'), '"' + this.ents[k] + '"');
+    });
+    return file;
+  }
+}
+
+module.exports = Entities;</code></pre></div><p>This code snippet modifies a Quake 2 map file by replacing entity references with corresponding model names from a predefined entities definition file.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

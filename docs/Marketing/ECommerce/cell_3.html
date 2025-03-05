@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -318,7 +325,140 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="dot"><code>digraph EcommercePortal {
+    # Node styles
+    node[shape=box, style=filled, fontname=Helvetica, width=1.8, height=0.8]
+
+    # Edge styles
+    edge[fontname=Helvetica, fontsize=12, fontcolor=blue, labeldistance=1.8]
+
+    # Node positions
+    rankdir=LR
+
+    # Node labels
+    label="Ecommerce Angular Portal"
+    fontname=Helvetica
+
+    # Cluster definitions
+    subgraph cluster_customer {
+        label="Customer"
+    }
+
+    subgraph cluster_partner {
+        label="Partner"
+    }
+
+    subgraph cluster_shared {
+        label="Shared Components"
+    }
+
+    # Node definitions
+    customer_anchor[label="", style=invis, width=0]
+    shared_anchor[label="", style=invis, width=0]
+    partner_anchor[label="", style=invis, width=0]
+
+    customer[label="Customer"]
+    partner[label="Partner"]
+    shared[label="Shared Components"]
+
+    product_tile[label="Product Tile", shape=box]
+    product_tiles[label="Product Tiles", shape=box]
+    product_description[label="Product Description", shape=box]
+    product_summary[label="Product Summary", shape=box]
+    billing[label="Billing Information", shape=box]
+    confirm[label="Confirmation", shape=box]
+    funnel_footer[label="Footer", shape=box]
+    subtotal[label="Subtotal", shape=box]
+    tracker[label="Progress Tracker", shape=box]
+
+    # Subcluster definitions
+    subgraph cluster_purchase {
+        label="Purchase"
+    }
+
+    subgraph cluster_pages {
+        label="Pages"
+    }
+
+    subgraph cluster_auth {
+        label="Auth"
+    }
+
+    subgraph cluster_layout {
+        label="Layout"
+    }
+
+    subgraph cluster_subscription {
+        label="Subscription"
+    }
+
+    # Edge definitions
+    partner -> shared -> customer[label=""]
+    shared -> product_tile[label=""]
+    shared -> product_tiles[label=""]
+
+    customer -> billing[label=""]
+    customer -> confirm[label=""]
+    customer -> funnel_footer[label=""]
+    customer -> subtotal[label=""]
+    customer -> tracker[label=""]
+
+    shared -> product_description[label=""]
+    shared -> product_summary[label=""]
+
+    product_tile -> product_tiles[label=""]
+    product_description -> product_summary[label=""]
+
+    customer -> product_tile[label=""]
+    customer -> product_tiles[label=""]
+
+    shared -> billing[label=""]
+    shared -> confirm[label=""]
+
+    # Subedge definitions
+    subgraph cluster_purchase {
+        billing -> confirm[label=""]
+        confirm -> funnel_footer[label=""]
+        funnel_footer -> subtotal[label=""]
+        subtotal -> tracker[label=""]
+    }
+
+    subgraph cluster_pages {
+        contact -> demo[label=""]
+        demo -> home[label=""]
+        home -> trial[label=""]
+    }
+
+    subgraph cluster_auth {
+        forgot -> login[label=""]
+        login -> logout[label=""]
+        logout -> register[label=""]
+        register -> reset[label=""]
+    }
+
+    subgraph cluster_layout {
+        account_links -> footer[label=""]
+        footer -> language[label=""]
+        language -> menu[label=""]
+        menu -> support[label=""]
+        support -> toolbar[label=""]
+    }
+
+    subgraph cluster_subscription {
+        act_tiles -> actemarketing[label=""]
+        actemarketing -> actpremium[label=""]
+        actpremium -> actpremiumcloud[label=""]
+        actpremiumcloud -> actpro[label=""]
+        actpro -> handheld[label=""]
+        handheld -> subscription[label=""]
+        subscription -> support[label=""]
+    }
+
+    # Invisible edges to connect clusters
+    partner_anchor -> shared_anchor[label="", style=invis]
+    shared_anchor -> customer_anchor[label="", style=invis]
+}</code></pre></div><h3>Code Breakdown</h3>
 <p>This is a Graphviz DOT file that represents an e-commerce Angular portal as a directed graph.</p>
 <h4>Top-Level Elements</h4>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Image Processing Script Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="markdown"><code># Define constants
+ORIG_IMAGE_PATH = "/Users/fred/desktop/PZImages/original"
+ORIG_IMAGE_NAME = "17201-33020@02.jpg"
+OUTPUT_PATH = "/Users/fred/desktop/PZImages/fred_results"
+WATERMARK_PATH = "/Users/fred/desktop/PZImages/WM_m.png"
+
+# Define output image path
+OUTPUT_IMAGE_PATH = f"{OUTPUT_PATH}/{ORIG_IMAGE_NAME}"
+
+# Define target size
+TARGET_SIZE = (650, 650)
+TARGET_ORIENTATION = "90<"
+
+# Define watermark size
+WATERMARK_SIZE = TARGET_SIZE
+
+# Define output dimensions format
+OUTPUT_DIM_FORMAT = "%wx%h"</code></pre></div><p><strong>Image Processing Script Breakdown</strong></p>
 <p><strong>Script 1:</strong></p>
 <ol>
 <li><code>magick</code>: ImageMagick command to process images.</li>

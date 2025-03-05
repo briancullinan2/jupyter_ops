@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -276,7 +283,235 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for interacting with the Eloqua marketing automation platform using OAuth authentication and making API requests.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import dependencies
+const { importCore } = require('../Core');
+
+// Import http request polyfill and Eloqua templates
+const { createHttpRequest, bulkImportTemplate, temporaryImportTemplate } = importCore();
+
+// Eloqua OAuth function to obtain access token
+/**
+ * Obtain an Eloqua access token using the provided configuration.
+ *
+ * @param {Object} eloquaConfig - Eloqua configuration object.
+ * @returns {Promise&lt;Object&gt;} - Promise containing the access token.
+ */
+function eloquaOauth(eloquaConfig) {
+    // Check if configuration is valid
+    if (!eloquaConfig || 
+       !eloquaConfig.rest_api_company || 
+       !eloquaConfig.rest_api_user || 
+       !eloquaConfig.rest_api_url || 
+       !eloquaConfig.rest_api_password || 
+       !eloquaConfig.rest_client_id || 
+       !eloquaConfig.rest_secret) {
+        return Promise.reject(new Error('Invalid Eloqua configuration'));
+    }
+
+    // Create authentication body
+    const authBody = {
+        grant_type: 'password',
+        scope: 'full',
+        username: `${eloquaConfig.rest_api_company}\\${eloquaConfig.rest_api_user}`,
+        password: eloquaConfig.rest_api_password
+    };
+
+    // Create HTTP request options
+    const options = {
+        uri: eloquaConfig.token_uri,
+        method: 'POST',
+        json: authBody,
+        headers: {
+            'Authorization': `Basic ${ Buffer.from(`${eloquaConfig.rest_client_id}:${eloquaConfig.rest_secret}`).toString('base64') }`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    };
+
+    // Send HTTP request to obtain access token
+    return createHttpRequest(options).then((res) =&gt; {
+        // Update expiration time
+        res.body.expires = (new Date()).getTime() + parseFloat(res.body.expires_in) * 1000;
+
+        // Return access token
+        return res.body;
+    });
+}
+
+// Eloqua request headers function
+/**
+ * Create Eloqua request headers using the provided access token.
+ *
+ * @param {Object} eloquaToken - Eloqua access token object.
+ * @returns {Object} - Eloqua request headers object.
+ */
+function eloquaRequestHeaders(eloquaToken) {
+    // Create headers object
+    return {
+        Authorization: `Bearer ${eloquaToken.access_token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    };
+}
+
+// Eloqua bulk import status function
+/**
+ * Check the status of an Eloqua bulk import.
+ *
+ * @param {string} syncUri - Eloqua sync URI.
+ * @param {Object} eloquaToken - Eloqua access token object.
+ * @param {Object} eloquaConfig - Eloqua configuration object.
+ * @returns {Promise&lt;boolean|Error&gt;} - Promise containing the status or an error.
+ */
+function eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig) {
+    // Create HTTP request options
+    const options = {
+        uri: `${eloquaConfig.rest_api_url}/bulk/2.0${syncUri}`,
+        method: 'GET',
+        headers: eloquaRequestHeaders(eloquaToken)
+    };
+
+    // Send HTTP request to check status
+    return createHttpRequest(options).then((res) =&gt; {
+        // Check status
+        if (res.body.status ==='success' || res.body.status === 'warning') {
+            return true;
+        } else if (res.body.status === 'active' || res.body.status === 'pending') {
+            // Wait for 500ms and retry
+            return new Promise((resolve) =&gt; setTimeout(resolve, 500)).then(() =&gt; {
+                return eloquaBulkImportStatus(syncUri, eloquaToken, eloquaConfig);
+            });
+        } else {
+            // Throw error
+            throw new Error(`Sync status error ${res.statusCode} ${JSON.stringify(res.body)}`);
+        }
+    });
+}
+
+// Complete bulk import sync function
+/**
+ * Complete an Eloqua bulk import sync.
+ *
+ * @param {string} importUri - Eloqua import URI.
+ * @param {Object} eloquaToken - Eloqua access token object.
+ * @param {Object} eloquaConfig - Eloqua configuration object.
+ * @returns {Promise&lt;Object&gt;} - Promise containing the sync URI.
+ */
+function completeBulkImportSync(importUri, eloquaToken, eloquaConfig) {
+    // Create HTTP request options
+    const options = {
+        uri: `${eloquaConfig.rest_api_url}/bulk/2.0/syncs`,
+        method: 'POST',
+        json: { syncedInstanceUri: importUri },
+        headers: eloquaRequestHeaders(eloquaToken)
+    };
+
+    // Send HTTP request to complete sync
+    return createHttpRequest(options).then((res) =&gt; {
+        // Get sync URI
+        const syncUri = res.body.uri;
+
+        // Return sync URI
+        return syncUri;
+    });
+}
+
+// Start bulk import data function
+/**
+ * Start an Eloqua bulk import data.
+ *
+ * @param {Object} json - Bulk import JSON data.
+ * @param {string} importUri - Eloqua import URI.
+ * @param {Object} eloquaToken - Eloqua access token object.
+ * @param {Object} eloquaConfig - Eloqua configuration object.
+ * @returns {Promise&lt;Object&gt;} - Promise containing the HTTP response.
+ */
+function startBulkImportData(json, importUri, eloquaToken, eloquaConfig) {
+    // Check import URI
+    if (typeof importUri!=='string') {
+        throw new Error('Invalid import URI');
+    }
+
+    // Create HTTP request options
+    const options = {
+        uri: `${eloquaConfig.rest_api_url}/bulk/2.0${importUri}/data`,
+        method: 'POST',
+        json,
+        headers: eloquaRequestHeaders(eloquaToken)
+    };
+
+    // Send HTTP request to start data import
+    return createHttpRequest(options);
+}
+
+// Create import definition function
+/**
+ * Create an Eloqua import definition.
+ *
+ * @param {string} customDataObjectId - Eloqua custom data object ID.
+ * @param {Object} eloquaToken - Eloqua access token object.
+ * @param {Object} eloquaConfig - Eloqua configuration object.
+ * @returns {Promise&lt;string&gt;} - Promise containing the import URI.
+ */
+function createImportDefinition(customDataObjectId, eloquaToken, eloquaConfig) {
+    // Create import definition using template
+    const importDefinition = bulkImportTemplate(customDataObjectId);
+
+    // Create HTTP request options
+    const options = {
+        uri: `${eloquaConfig.rest_api_url}/bulk/2.0/customobjects/${customDataObjectId}/imports`,
+        method: 'POST',
+        json: importDefinition,
+        headers: eloquaRequestHeaders(eloquaToken)
+    };
+
+    // Send HTTP request to create import definition
+    return createHttpRequest(options).then((res) =&gt; {
+        // Get import URI
+        return res.body.uri;
+    });
+}
+
+// Create instance definition function
+/**
+ * Create an Eloqua instance definition.
+ *
+ * @param {string} instanceId - Eloqua instance ID.
+ * @param {string} executionId - Eloqua execution ID.
+ * @param {Object} eloquaToken - Eloqua access token object.
+ * @param {Object} eloquaConfig - Eloqua configuration object.
+ * @returns {Promise&lt;string&gt;} - Promise containing the instance URI.
+ */
+function createInstanceDefinition(instanceId, executionId, eloquaToken, eloquaConfig) {
+    // Create instance definition using template
+    const instanceDefinition = temporaryImportTemplate(instanceId, executionId);
+
+    // Create HTTP request options
+    const options = {
+        uri: `${eloquaConfig.rest_api_url}/bulk/2.0/contacts/imports`,
+        method: 'POST',
+        json: instanceDefinition,
+        headers: eloquaRequestHeaders(eloquaToken)
+    };
+
+    // Send HTTP request to create instance definition
+    return createHttpRequest(options).then((res) =&gt; {
+        // Get instance URI
+        return res.body.uri;
+    });
+}
+
+// Export functions
+module.exports = {
+    eloquaOauth,
+    createImportDefinition,
+    startBulkImportData,
+    completeBulkImportSync,
+    eloquaBulkImportStatus,
+    createInstanceDefinition,
+    eloquaRequestHeaders
+};</code></pre></div><p>This code defines functions for interacting with the Eloqua marketing automation platform using OAuth authentication and making API requests.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

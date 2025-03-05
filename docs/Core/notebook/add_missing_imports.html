@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -153,7 +160,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function to automatically add imports to a code snippet based on global function calls.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { transpile, selectAst } = require('../Core');
+
+// Constants
+const GLOBAL_CALLS = `
+  //CallExpression[
+    not(./parent::MemberExpression)
+    and not(//*[contains(@type, "Declar")]/Identifier/@name=./Identifier/@name)
+  ]
+`;
+
+const EXPORTS_CACHE_KEY = 'exportsCache';
+
+// Function to add import statements
+async function addImport({
+  ast,
+  id,
+  exportsCache,
+}) {
+  // Filter exports cache to find matching file
+  const file = exportsCache.filter((e) => e[2].includes(id));
+
+  if (file.length === 1) {
+    // Select program node from AST
+    const program = selectAst('//Program', ast)[0];
+    const include = selectAst('//Program/*', `var ${id} = importNotebook("${file[0]}")`, ast)[0];
+
+    // Insert import statement at the beginning of the program
+    program.insertBefore(include, program.childNodes[0] || null);
+  } else if (file.length > 1) {
+    throw new Error(`undefined ${id}, couldn't import ${JSON.stringify(file)}`);
+  }
+}
+
+// Function to add import statements to the code
+async function addImports(code) {
+  try {
+    // Transpile code with addImport function
+    return await transpile([{ test: GLOBAL_CALLS, run: addImport }], code);
+  } catch (error) {
+    // Handle any transpile errors
+    throw error;
+  }
+}
+
+// Export addImports function
+module.exports = { addImports };</code></pre></div><p>This code defines a function to automatically add imports to a code snippet based on global function calls.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><strong>Imports:</strong> It imports several modules from a <code>Core</code> library, including functions for transpiling code, selecting parts of an Abstract Syntax Tree (AST), renaming code elements, and managing exports.</li>

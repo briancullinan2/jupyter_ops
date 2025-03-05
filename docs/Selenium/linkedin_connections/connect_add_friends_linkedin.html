@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>addLinkedinConnections</code> that automates connecting with LinkedIn contacts.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { resolve, reject } = require('bluebird');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const { runSeleniumCell } = require('../Core');
+
+// Define constants
+const PROFILE_PATH = process.env.HOME
+ ? process.env.HOME
+  : (process.env.HOMEPATH? process.env.HOMEPATH : process.env.USERPROFILE);
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Conversations');
+
+// Define functions
+function addLinkedinConnections(conn, list) {
+  return runSeleniumCell(['log in linkedin', 'connect on linkedin'])
+   .then(result => {
+      const { listAllConnections, connectLinkedin, loginLinkedIn } = result[1];
+      return loginLinkedIn();
+    })
+   .then(() => {
+      const connections = typeof conn ==='string'? [conn] : conn || listAllConnections();
+      return connections;
+    })
+   .then((pages) => {
+      // TODO: Calculate a more robust random offset
+      const offset = Math.round(pages.length / 30 * Math.random()) * 30;
+      const linksToConnect = pages.slice(offset, offset + 30);
+
+      // TODO: Add logging for the connected links
+      return runAllPromises(linksToConnect.map((page) => () => connectLinkedin(page, true)));
+    })
+   .then((results) => {
+      console.log(results);
+      return results;
+    })
+   .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
+// Helper function to run all promises
+function runAllPromises(promises) {
+  return Promise.map(promises, (promise) => promise(), { concurrency: 5 });
+}
+
+module.exports = addLinkedinConnections;</code></pre></div><p>This code defines a function <code>addLinkedinConnections</code> that automates connecting with LinkedIn contacts.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

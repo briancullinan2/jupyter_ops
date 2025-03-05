@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Graphviz Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import graphviz
+
+# Define the graph
+dot = graphviz.Digraph(
+    name='rate_plan_selection',
+    engine='dot',
+    format='png',
+    direction='LR',
+    graph_attr={
+        'fontname': 'Helvetica',
+        'fontsize': 12
+    },
+    node_attr={
+        'fontname': 'Helvetica',
+        'width': 1.8,
+        'height': 0.8
+    },
+    edge_attr={
+        'fontname': 'Helvetica',
+        'fontsize': 12,
+        'fontcolor': 'blue',
+        'labeldistance': 1.8
+    }
+)
+
+# Define nodes
+start_node = dot.node(name='start', label='Register New\nCustomer', shape='box', style='rounded')
+select_rp_node = dot.node(name='selectrp', label='Select Rate Plan')
+
+# Define subgraph for available plans
+available_plans_cluster = dot.subgraph(name='cluster_available_plans', label='Available Plans', style='filled', fillcolor='grey92')
+dot.node('monthly', label='Act! Premium 2017\nUpdate - Monthly\nSubscription\n$30', shape='box', parent=available_plans_cluster, rank='same')
+dot.node('annual', label='Act! Premium 2017\nUpdate - Annual\nSubscription\n$300', shape='box', parent=available_plans_cluster, rank='same')
+dot.node('perpetual', label='Act! Premium 2017\nUpdate - Perpetual\nLicense\n$600', shape='box', parent=available_plans_cluster, rank='same')
+dot.node('year2', label='Act! Premium 2017\nUpdate - Annual\nSubscription (2 Year\nContract)\n$540', shape='box', parent=available_plans_cluster, rank='same')
+
+# Define upgrade node
+upgrade_node = dot.node(name='upgrade', label='Upgrade\nNew\nCustomer', shape='diamond', rank='min')
+
+# Add edges
+dot.edge('start','selectrp')
+dot.edge('selectrp','monthly')
+dot.edge('selectrp', 'annual')
+dot.edge('selectrp', 'perpetual')
+dot.edge('selectrp', 'year2')
+dot.edge('monthly', 'upgrade')
+dot.edge('annual', 'upgrade')
+dot.edge('perpetual', 'upgrade')
+dot.edge('year2', 'upgrade')
+dot.edge('upgrade','selectrp')
+
+# Render the graph
+dot.render('rate_plan_selection')
+
+# TODO: improve graph visualization, e.g., adjust node positions, add more labels</code></pre></div><p><strong>Graphviz Code</strong></p>
 <p>This code is written in Graphviz, a tool for visualizing and drawing graphs.</p>
 <h3>Code Structure</h3>
 <p>The code consists of a single <code>digraph</code> statement with a name <code>apply</code> and the label <code>'2017 Updated'</code>.</p>

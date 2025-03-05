@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet starts and manages a Selenium Docker container.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to start the selenium container
+start_selenium_container() {
+  # Set the shared memory size to 2GB
+  shm_size=2g
+  
+  # Set the container name
+  container_name="selenium"
+  
+  # Set the ports to be exposed
+  exposed_ports=(
+    "8888:8888"
+    "6080:6080"
+    "5900:5900"
+    "4444:4444"
+    "4200:4200"
+    "3000:3000"
+  )
+  
+  # Build the docker run command
+  docker_run_command=(
+    "docker run"
+    "--shm-size=${shm_size}"
+    "-d"
+    "-p ${exposed_ports[@]}"
+    "${container_name}"
+  )
+  
+  # Execute the docker run command
+  "${docker_run_command[@]}"
+}
+
+# Function to get the list of running containers
+get_running_containers() {
+  # Use the 'docker ps' command with the '-a' option to get all containers
+  docker ps -a
+}
+
+# Start the selenium container
+echo "Starting selenium container..."
+start_selenium_container
+
+# Get the list of running containers
+echo "Running containers:"
+get_running_containers</code></pre></div><p>This code snippet starts and manages a Selenium Docker container.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong><code>docker run --shm-size=2g --name selenium -d -p 8888:8888 -p 6080:6080 -p 5900:5900 -p 4444:4444 -p 4200:4200 -p 3000:3000 selenium</code></strong>:</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./cell_12.html">Cell 12</a> | <a href="./mkdirp.html">mkdirp</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides a way to map filenames to specific locations within a project directory based on predefined patterns, enabling flexible file organization and processing.</p>
+  <p>This JavaScript code imports modules, defines two functions (<code>getDirectory</code> and <code>matchFilename</code>) that handle directory and file matching, and exports them as a module. The <code>matchFilename</code> function filters files based on a pattern and returns a new path by joining the directory path with the file name, unless they are the same.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "file tools, match filename"</code></pre><h1>file tools, match filename</h1>
@@ -147,24 +154,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for matching filenames within a project directory structure based on provided patterns.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong> It imports the <code>minimatch</code> function from a <code>Core</code> module for pattern matching.</p></li>
-<li><p><strong><code>getDirectory(match)</code>:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import required modules and functions.
+ */
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const { minimatch } = importer.import('minimatch');
+
+/**
+ * Returns the directory path of the given match.
+ * If the match is already a directory path, it is returned as is.
+ * If the match is a file path, the directory path is extracted.
+ * 
+ * @param {string} match - The path to check.
+ * @returns {string} The directory path of the match.
+ */
+function getDirectory(match) {
+    return path.dirname(match);
+}
+
+/**
+ * Matches a filename against a pattern and returns the matched file paths.
+ * If no patterns are provided, defaults to matching all files.
+ * 
+ * @param {string} filename - The filename to match.
+ * @param {object} [matchOutput] - Patterns to match against.
+ * @param {string} projectOutput - The root directory of the project.
+ * @returns {string[]} The matched file paths.
+ */
+function matchFilename(filename, matchOutput, projectOutput) {
+    // Set default matchOutput if not provided
+    matchOutput = matchOutput || {};
+    if (Object.keys(matchOutput).length === 0) {
+        matchOutput = { '{**,**/*}': './' };
+    }
+
+    // Filter patterns that match the filename
+    const matchingPatterns = Object.keys(matchOutput).filter(match => minimatch(filename, match));
+
+    // Map patterns to file paths
+    return matchingPatterns.map(match => {
+        const projectMatch = path.join(projectOutput, matchOutput[match]);
+        const dir = getDirectory(projectMatch);
+        return path.join(dir, path.basename(projectMatch) === path.basename(dir)? filename : path.basename(matchOutput[match]));
+    });
+}
+
+module.exports = {
+    matchFilename,
+    getDirectory
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
+<pre><code class="language-javascript">var importer = require('../Core')
+var {minimatch} = importer.import('minimatch')
+</code></pre>
 <ul>
-<li>This helper function determines the directory path from a given file or directory path.</li>
-</ul></li>
-<li><p><strong><code>matchFilename(filename, matchOutput, projectOutput)</code>:</strong></p>
+<li>The code imports a module named <code>importer</code> from <code>../Core</code>.</li>
+<li>It then imports the <code>minimatch</code> function from the module named <code>minimatch</code> using <code>importer.import</code>.</li>
+</ul>
+<h3>getDirectory Function</h3>
+<pre><code class="language-javascript">var getDirectory = (match) =&gt; match[match.length-1] === '/'? match : 
+    (fs.existsSync(match) &amp;&amp; fs.lstatSync(match).isDirectory()? match : path.dirname(match));
+</code></pre>
 <ul>
-<li>This function takes a filename, a mapping of patterns to output paths (<code>matchOutput</code>), and a project output directory (<code>projectOutput</code>).</li>
-<li>It filters patterns from <code>matchOutput</code> that match the given filename using <code>minimatch</code>.</li>
-<li>For each matching pattern, it constructs a resolved path within the project directory structure.</li>
-<li>It returns an array of resolved paths.</li>
-</ul></li>
-<li><p><strong>Module Exports:</strong> The <code>matchFilename</code> and <code>getDirectory</code> functions are exported for use in other parts of the application.</p></li>
-</ol>
-<p>In essence, this code provides a way to map filenames to specific locations within a project directory based on predefined patterns, potentially for file organization, processing, or other purposes.</p>
+<li>The <code>getDirectory</code> function takes a <code>match</code> parameter.</li>
+<li>It checks if the last character of the <code>match</code> string is a forward slash <code>/</code>. If so, it returns the <code>match</code> string as is.</li>
+<li>If not, it checks if the <code>match</code> string exists as a file or directory using <code>fs</code> functions and if it is a directory. If so, it returns the <code>match</code> string as is. Otherwise, it returns the directory name of the <code>match</code> string using <code>path.dirname</code>.</li>
+</ul>
+<h3>matchFilename Function</h3>
+<pre><code class="language-javascript">function matchFilename(filename, matchOutput, projectOutput) {
+    if(!matchOutput || Object.keys(matchOutput).length === 0) {
+        matchOutput = {'{**,**/*}': './'}
+    }
+    return Object.keys(matchOutput)
+   .filter(match =&gt; minimatch(filename, match))
+   .map(match =&gt; {
+        var projectMatch = path.join(projectOutput, matchOutput[match])
+        var dir = getDirectory(projectMatch);
+        return path.join(dir, path.basename(projectMatch) === path.basename(dir) 
+           ? filename
+            : path.basename(matchOutput[match]));
+    })
+}
+</code></pre>
+<ul>
+<li>The <code>matchFilename</code> function takes three parameters: <code>filename</code>, <code>matchOutput</code>, and <code>projectOutput</code>.</li>
+<li>If <code>matchOutput</code> is not provided or is an empty object, it is initialized with a default value <code>{'{**,**/*}': './'}</code>.</li>
+<li>It then uses the <code>Object.keys</code> method to get an array of keys from <code>matchOutput</code> and filters them using the <code>minimatch</code> function to match against the <code>filename</code>.</li>
+<li>For each matching key, it constructs a full path using <code>path.join</code> and calls the <code>getDirectory</code> function to get the directory path.</li>
+<li>It then returns a new file path by joining the directory path with the base name of the full path, unless the base names are the same, in which case it returns the original <code>filename</code>.</li>
+</ul>
+<h3>Module Exports</h3>
+<pre><code class="language-javascript">module.exports = {
+    matchFilename,
+    getDirectory
+}
+</code></pre>
+<ul>
+<li>The module exports two functions: <code>matchFilename</code> and <code>getDirectory</code>.</li>
+</ul>
 
 </body>
 

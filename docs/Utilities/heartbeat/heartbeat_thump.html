@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>thump</code> that executes a Node.js script asynchronously.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const childProcess = require('child_process'); // Rename for clarity
+
+// Define constants
+const CORE_DIR = path.resolve(path.join(__dirname, '../Core'));
+const NODE_BIN = process.platform === 'darwin' // macOS
+ ? '/usr/local/bin/node'
+  : process.platform === 'linux'
+ ? '/usr/local/bin/node'
+  : '/usr/bin/node';
+
+// Function thump
+/**
+ * Execute a thump function in a detached process.
+ * @param {string} thump - Name of the thump function to execute.
+ * @param {object|undefined} parameters - Parameters to pass to the thump function.
+ * @param {boolean|undefined} exit - Exit the current process after executing the thump function.
+ * @returns {Promise<void>} - Resolve when the thump function has completed, or when exit is true.
+ */
+function thump(thump, parameters, exit) {
+  // Define log file path
+  const LOG_FILE = '/tmp/myjob.log';
+
+  // Open log file in append mode
+  const logFile = fs.openSync(LOG_FILE, 'a');
+
+  // Log execution command
+  console.log(`Executing ${NODE_BIN} - ${CORE_DIR} - ${thump} - ${JSON.stringify(parameters)}`);
+
+  // Execute thump function in detached process
+  childProcess.spawn(NODE_BIN, [
+    '-e',
+    `require(${JSON.stringify(CORE_DIR)}).import('${thump}')(${parameters? `(${JSON.stringify(parameters)})` : ''}).catch(e => console.log(e)).then(() => process.exit())`
+  ], {
+    detached: true,
+    stdio: [ 'ignore', logFile, logFile ]
+  }).unref();
+
+  // Exit current process if required
+  if (exit!== false) {
+    // Use async/await for clarity
+    async function exitProcess() {
+      try {
+        await new Promise(resolve => {
+          global.$ && global.$ && global.$done && global.$done();
+          process.exit(0);
+        });
+      } catch (error) {
+        // Handle error, e.g., log and continue
+        console.error('Error exiting process:', error);
+      }
+    }
+    exitProcess();
+  }
+}
+
+// Export thump function
+module.exports = thump;</code></pre></div><p>This code defines a function <code>thump</code> that executes a Node.js script asynchronously.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

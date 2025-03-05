@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,92 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches and processes contacts from Google Contacts using the Google People API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const people = google.people('v1');
+const { importOauthClient } = require('../Core');
+
+/**
+ * Function to find matching contacts in the cache or in the Google People API.
+ * @param {Object} contact - Contact data to search for in the API.
+ * @returns {Promise&lt;Array&gt;} - Array of matching contacts.
+ */
+async function findMatch(contact) {
+    const matches = contactCache.filter(c =&gt; (
+        c.names.some(n =&gt; n.displayName.match(new RegExp(contact.displayName, 'ig')))
+        || c.emailAddresses.some(e =&gt; e.value.match(new RegExp(contact.emailAddress, 'ig')))
+    ));
+    return matches;
+}
+
+/**
+ * Google API promise helper to delay and catch errors.
+ * @param {Function} func - Function to be executed and wrapped in a promise.
+ * @param {Number} delay - Time to delay the resolution of the promise.
+ * @returns {Promise} - Wrapped promise with error catching and delay.
+ */
+function googlePromise(func, delay = 100) {
+    return new Promise((resolve, reject) =&gt; {
+        func((err, response) =&gt; {
+            if (err) reject(err);
+            resolve(response);
+        });
+    }).catch(e =&gt; console.log(e));
+};
+
+let contactCache = [];
+/**
+ * Recursively list contacts in the Google People API.
+ * @param {Object} options - Options object containing auth and pageToken.
+ * @returns {Promise&lt;Array&gt;} - Array of matching contacts.
+ */
+async function listContacts(options) {
+    try {
+        const response = await people.people.connections.list({
+            resourceName: 'people/me',
+            personFields: 'emailAddresses,names,birthdays,phoneNumbers,memberships',
+            auth: options.auth,
+            pageToken: options.pageToken
+        });
+        if (response.data.connections.length === 0) {
+            return [];
+        }
+        contactCache.push(...response.data.connections);
+        options.pageToken = response.data.nextPageToken;
+        if (!options.pageToken) {
+            // If no more pages, clear the cache and return the matches
+            contactCache = [];
+            return await findMatch(contactCache);
+        }
+        // Otherwise, recursively list the next page
+        return await listContacts(options);
+    } catch (e) {
+        console.log(e);
+        return [];
+    }
+};
+
+/**
+ * Get contacts for a given contact.
+ * @param {Object} contact - Contact data to search for in the API.
+ * @returns {Promise&lt;Array&gt;} - Array of matching contacts.
+ */
+async function getContacts(contact) {
+    try {
+        const oauthClient = await importOauthClient();
+        const options = {
+            auth: oauthClient,
+            nextPageToken: null
+        };
+        contactCache = []; // Clear cache on each call
+        return await listContacts(options);
+    } catch (e) {
+        console.log(e);
+        return [];
+    }
+};
+
+module.exports = getContacts;</code></pre></div><p>This code snippet fetches and processes contacts from Google Contacts using the Google People API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -191,7 +198,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for the <code>eloqua existing import</code> module, which likely handles interacting with the Eloqua API to check for existing custom data objects and import definitions.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const sinon = require('sinon');
+const { createSandbox } = require('sinon');
+
+const importer = require('../Core');
+const requestMock = importer.import('http request polyfill');
+const existingImport = importer.import('eloqua existing import');
+const { getEloquaConfig, getOauthToken, bulkImportTemplate } = importer.import('eloqua import blueprints');
+
+describe('Eloqua Existing Import', () => {
+  let sandbox;
+
+  beforeEach(() => {
+    sandbox = createSandbox();
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  it('should check if the custom object is configured', async () => {
+    // Mock the request response to return a custom object
+    const requestStub = sandbox.stub(requestMock,'request')
+     .returns(Promise.resolve({ body: { items: [{ name: 'AUT - NA Renewals' }] } }));
+
+    const result = await existingImport.getCustomDataObject({}, await getEloquaConfig());
+    assert(result);
+    assert(requestStub.calledOnce,'request should only be called once');
+  });
+
+  it('should check if there is already an import definition', async () => {
+    // Mock the request response to return an import definition
+    const requestStub = sandbox.stub(requestMock,'request')
+     .returns(Promise.resolve({ body: { items: [{ name: bulkImportTemplate(0).name, uri: '/imports/1234' }] } }));
+
+    const result = await existingImport.getImportDefinitions('/imports/1234', await getOauthToken(), await getEloquaConfig());
+    assert(result.uri);
+    assert(requestStub.calledOnce,'request should only be called once');
+  });
+});</code></pre></div><p>This code defines unit tests for the <code>eloqua existing import</code> module, which likely handles interacting with the Eloqua API to check for existing custom data objects and import definitions.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

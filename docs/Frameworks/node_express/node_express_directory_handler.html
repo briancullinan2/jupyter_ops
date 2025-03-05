@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,105 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2><strong>Overview</strong></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const path = require('path');
+const fs = require('fs');
+const { importFunction } = require('./importFunction'); // Assuming the importer module is defined in a separate file
+
+// Define constants
+const DIRECTORY_TO_HTML_IMPORT = importFunction('directory to html');
+const DIRECTORY_TO_HTML = DIRECTORY_TO_HTML_IMPORT.code;
+
+// Define the BASE_DIRECTORY environment variable
+const BASE_DIRECTORY = process.env.BASE_DIRECTORY || process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+// Define a helper function to get the file extension
+function getFileExtension(filePath) {
+  return path.extname(filePath).toLocaleLowerCase();
+}
+
+// Define a helper function to check if a file is an image
+function isImage(filePath) {
+  return ['.png', '.jpg', '.jpeg'].includes(getFileExtension(filePath));
+}
+
+// Defining the handleDirectory function
+async function handleDirectory(req, res, next) {
+  try {
+    // Get the base path
+    const basePath = path.resolve(BASE_DIRECTORY);
+
+    // Get the combined path
+    const combined = path.join(basePath, decodeURIComponent(req.path));
+
+    // Log the path and authentication status
+    console.log(combined, req.authenticated);
+
+    // Check if the path exists
+    if (!fs.existsSync(combined)) {
+      // If the path does not exist, call the next middleware
+      return next();
+    }
+
+    // Check if the file is an MP3
+    if (getFileExtension(combined) === '.mp3') {
+      // If the?raw=true query parameter is present, send the file directly
+      if (req.url.includes('?raw=true')) {
+        return res.sendFile(combined);
+      }
+
+      // Otherwise, send the HTML music player code
+      return res.send(DIRECTORY_TO_HTML
+       .replaceAll('{FILE_URL}', req.path)
+       .replaceAll('{SESSION}', req.authenticated? req.authenticated : ''));
+    }
+
+    // Check if the file is an image
+    if ((req.authenticated || combined.includes('stable-diffusion-webui/outputs'))
+      && isImage(combined)) {
+      // If the?raw=true query parameter is present, send the file directly
+      if (req.url.includes('?raw=true')) {
+        return res.sendFile(combined);
+      }
+
+      // Otherwise, send the HTML image viewer code
+      return res.send(DIRECTORY_TO_HTML
+       .replaceAll('{FILE_URL}', req.path)
+       .replaceAll('{SESSION}', req.authenticated? req.authenticated : ''));
+    }
+
+    // Check if the file is a valid file and the user is authenticated
+    if (req.authenticated && fs.statSync(combined).isFile()) {
+      // Send the file directly
+      return res.sendFile(combined);
+    }
+
+    // Check if the path is a directory
+    if (!fs.statSync(combined).isDirectory()) {
+      // If the path is not a directory, send a 403 error
+      return res.status(403).send('Forbidden');
+    }
+
+    // Get the HTML for the directory
+    const html = await DIRECTORY_TO_HTML_IMPORT(combined, req.path.split('/').length > 2, req.authenticated);
+
+    // Send the HTML
+    return res.send(html);
+  } catch (error) {
+    // Log any errors that occur
+    console.error(error);
+
+    // Send a 500 error
+    return res.status(500).send('Internal Server Error');
+  }
+}
+
+// Export the handleDirectory function and BASE_DIRECTORY
+module.exports = {
+  handleDirectory,
+  BASE_DIRECTORY
+};</code></pre></div><h2><strong>Overview</strong></h2>
 <p>This is a Node.js module that exports two functions: <code>handleDirectory</code> and <code>BASE_DIRECTORY</code>.</p>
 <p><strong>Functions</strong></p>
 <h3>handleDirectory</h3>

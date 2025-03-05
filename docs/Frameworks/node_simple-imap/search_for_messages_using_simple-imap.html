@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -159,7 +166,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>searchImap</code> that retrieves emails from an IMAP server based on specified criteria.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const chrono = require('chrono-node');
+const { openBox, search, searchCriteria } = require('node-imap-client');
+const { promisify } = require('util');
+const moment = require('moment');
+
+/**
+ * Flattens an array of email messages into a simple object format
+ * @param {Object[]} messages - Array of email messages
+ * @returns {Object[]} - Array of flattened email objects
+ */
+function flatten(messages) {
+    // Use array.map to create a new array of flattened email objects
+    return messages.map(message =&gt; {
+        // Extract the email header and body parts
+        const header = message.parts.find(part =&gt; part.which.indexOf('HEADER') &gt; -1);
+        const text = message.parts.find(part =&gt; part.which.indexOf('TEXT') &gt; -1);
+
+        // Extract email metadata from the header
+        const subject = header.body.subject[0];
+        const from = header.body.from[0];
+        const to = header.body.to[0];
+        const date = header.body.date[0];
+
+        // Parse email addresses and dates
+        from = ((/.+&lt;(.*?)&gt;/ig).exec(from) || [])[1] || from;
+        to = ((/.+&lt;(.*?)&gt;/ig).exec(to) || [])[1] || to;
+        date = chrono.parseDate(date);
+
+        // Return the flattened email object
+        return {
+            id: message.attributes.uid,
+            email: from,
+            subject,
+            body: text.body,
+            date,
+            to
+        };
+    });
+}
+
+/**
+ * Searches an IMAP mailbox for emails based on specified criteria
+ * @param {string} [from='*'] - Email address to search by
+ * @param {string} [subject='*'] - Email subject to search by
+ * @param {number} [days=7] - Number of days to search back in time
+ * @param {string} [mailbox='INBOX'] - IMAP mailbox to search
+ * @returns {Promise} - Promise resolving to an array of flattened email objects
+ */
+async function searchImap({ from = '*', subject = '*', days = 7, mailbox = 'INBOX' } = {}) {
+    try {
+        // Calculate the search date based on the number of days
+        const delay = 24 * 3600 * 1000 * days;
+        const lastWeek = moment().subtract(days, 'days').toDate();
+        const lastWeekIso = lastWeek.toISOString();
+
+        // Create the search criteria
+        const searchCriteria = searchCriteria([
+            ['SINCE', lastWeekIso]
+        ]);
+
+        // Add search criteria for email address and subject if specified
+        if (from!== '*') {
+            searchCriteria.push(['FROM', from]);
+        }
+        if (subject!== '*') {
+            searchCriteria.push(['SUBJECT', subject]);
+        }
+
+        // Set up the fetch options
+        const fetchOptions = {
+            bodies: ['HEADER.FIELDS (FROM TO SUBJECT DATE)', 'TEXT'],
+            struct: true
+        };
+
+        // Initialize and connect to the IMAP client
+        const imap = await promisify(openBox.bind(imapClient))(mailbox);
+
+        // Search for emails based on the specified criteria
+        const searchResult = await promisify(search.bind(imap))(searchCriteria, fetchOptions);
+
+        // Flatten the email search result
+        searchResult.flatten = () =&gt; flatten(searchResult);
+
+        // Return the flattened email array
+        return searchResult;
+    } catch (e) {
+        console.error(e);
+        return Promise.reject(e);
+    }
+}
+
+module.exports = searchImap;</code></pre></div><p>This code defines a function <code>searchImap</code> that retrieves emails from an IMAP server based on specified criteria.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

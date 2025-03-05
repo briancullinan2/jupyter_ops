@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -145,7 +152,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants
+const OPEN_EXTERNAL_LINK_CMD = 'OPEN_EXTERNAL_LINK';
+const LOGIN_PROXY_URL_PARAM = '.proxy/';
+
+// Utilities
+function getSourceWindow() {
+  return (window.parent.opener || window.parent);
+}
+
+function getParameterByName(name, defaultValue = '') {
+  const param = (window.location.search.split('?')[1] || '').split('&').find(param => param.startsWith(`${name}=`));
+  return param? decodeURIComponent(param.split('=')[1]) : defaultValue;
+}
+
+function extractContent(html) {
+  return html.replace(/<\/?html>/gi, '').replace(/<script.*?>[\s\S]*?<\/script>/gi, '');
+}
+
+// Event listeners
+document.addEventListener('click', async (evt) => {
+  try {
+    // Prevent default link behavior
+    if (evt.target.tagName === 'A' && evt.target.getAttribute('href').includes('://')) {
+      await openExternalLink(evt.target);
+      return;
+    }
+
+    // Load proxied content
+    if (evt.target.tagName === 'A' && evt.target.getAttribute('href').includes(LOGIN_PROXY_URL_PARAM)) {
+      const loggedInResponse = await fetch(evt.target.getAttribute('href'));
+      const newContent = await loggedInResponse.text();
+      await updateContent(extractContent(newContent));
+    }
+  } catch (error) {
+    console.error('Error handling click event:', error);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  try {
+    // Get frame ID parameter
+    const frameId = getParameterByName('frame_id');
+    if (!frameId) {
+      return;
+    }
+
+    // Add functionality to handle frame ID here
+    console.log('Frame ID:', frameId);
+  } catch (error) {
+    console.error('Error handling DOM content loaded event:', error);
+  }
+});
+
+async function openExternalLink(link) {
+  const sourceWindow = getSourceWindow();
+  if (sourceWindow) {
+    const nonce = Math.random() * 1000;
+    sourceWindow.postMessage([1, {
+      cmd: OPEN_EXTERNAL_LINK_CMD,
+      args: { url: link.href },
+      nonce,
+      transfer: void 0,
+    }], '*');
+  }
+  link.preventDefault();
+}
+
+async function updateContent(content) {
+  document.body.innerHTML = content;
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables</h3>
 <ul>
 <li><code>code</code> and <code>userId</code> are declared but not used anywhere in the code.</li>

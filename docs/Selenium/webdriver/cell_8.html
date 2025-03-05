@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -187,7 +194,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importFunction } = require('../Core');
+const { remote } = require('webdriverio');
+
+const MAX_SESSIONS = 4;
+const DEFAULT_HOST = 'localhost';
+const DEFAULT_PORT = 4444;
+const DEFAULT_BROWSER = 'chrome';
+
+const createWebdriverClient = (host = DEFAULT_HOST, port = DEFAULT_PORT, browser = DEFAULT_BROWSER) =&gt; {
+    const capabilities = {
+        browserName: browser,
+        'goog:chromeOptions': {
+            prefs: {
+                'download.default_directory': '/data/downloads',
+                'profile.default_content_setting_values.notifications': 2,
+                'exited_cleanly': true,
+                'exit_type': 'None'
+            },
+            args: [
+                'no-sandbox',
+                'disable-session-crashed-bubble',
+                'disable-infobars',
+                'new-window',
+                'disable-geolocation',
+                'disable-notifications',
+               'show-saved-copy',
+               'silent-debugger-extension-api',
+            ]
+        }
+    };
+
+    const webdriverServer = {
+        services: ['selenium-standalone', 'chromedriver'],
+        sync: false,
+        debug: false,
+        host,
+        port,
+        logLevel:'silent',
+        baseUrl: 'https://webdriver.io',
+        pageLoadStrategy: 'eager',
+        connectionRetryTimeout: 1000,
+        capabilities
+    };
+
+    const connectSession = importFunction('connect webdriver session');
+
+    return remote(webdriverServer)
+       .then(client =&gt; {
+            console.log('Connecting to webdriver session...');
+            return connectSession(client);
+        })
+       .then(() =&gt; getSessions(client))
+       .then(() =&gt; onlyOneWindow(client))
+       .then(() =&gt; getAllSessionUrls(client))
+       .catch(e =&gt; {
+            console.error(`Error creating webdriver client: ${e.message}`);
+            throw e;
+        })
+       .then(() =&gt; client);
+};
+
+module.exports = createWebdriverClient;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Imports</h3>
 <ul>
 <li>The code requires two modules:

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and tools
+const os = require('os');
+const fs = require('fs').promises; // Use promises for a more modern API
+const { updateInteraction, patchInteractionImageAttachment } = require('discord-api');
+const { savePdf } = require('collect-all-bookmarks');
+const { doBrowserRequest } = require('browser-crawler-tools');
+const { safeurl, existingCache, storeCache, readCache } = require('domain-cache-tools');
+const path = require('path');
+
+// Define constants
+const TEMP_DIR = os.tmpdir();
+
+// Initialize counter
+let counter = 0;
+
+/**
+ * Creates a PDF from a given URL and sends it as an attachment to Discord.
+ * 
+ * @param {object} interaction - Discord interaction object.
+ * @returns {Promise<object>} Updated Discord interaction with the PDF attachment.
+ */
+async function doDiscordPdf(interaction) {
+  try {
+    // Get cache data
+    const cache = existingCache(interaction.data.options[0].value, false);
+    
+    // Create temporary PDF file
+    const filename = path.join(TEMP_DIR, `temporary_discord_pdf_${counter % 4}.pdf`);
+    await fs.unlink(filename); // Remove existing file
+    counter++;
+    
+    // Fetch PDF from URL
+    await doBrowserRequest(interaction.data.options[0].value, readCache.bind(null, cache), storeCache.bind(null, cache), savePdf.bind(null, filename));
+    
+    // If PDF file exists, send it as an attachment
+    if (await fs.access(filename)) {
+      return await patchInteractionImageAttachment(interaction.data.options[0].value, await fs.readFile(filename), interaction.token, 'application/pdf');
+    } else {
+      // Return an error if PDF file doesn't exist
+      return await updateInteraction(`Page saving failed: ${interaction.data.options[0].value}`, interaction.id, interaction.token);
+    }
+  } catch (error) {
+    // Return an error if anything goes wrong
+    return await updateInteraction(`Error creating PDF: ${error.message}`, interaction.id, interaction.token);
+  }
+}
+
+module.exports = {
+  doDiscordPdf,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>The code begins by importing various Node.js modules and functions from external libraries:</p>
 <pre><code class="language-javascript">const os = require('os')

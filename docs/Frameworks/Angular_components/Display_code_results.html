@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an Angular component called <code>ResultsComponent</code> that displays search results, highlighting code snippets.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import { SearchService } from '../../../imports/search.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import * as Prism from 'prismjs';
+
+@Component({
+    selector: 'bc-results',
+    template: `
+        <pre 
+            [class]="'language-'+(r.lang||'javascript')" 
+            *ngFor="let r of results" 
+            [innerHTML]="highlight(r.code)">
+        </pre>
+    `,
+    styleUrls: ['./results.component.scss']
+})
+export class ResultsComponent implements OnInit, OnDestroy {
+    query = '';
+    results: any[] = [];
+
+    constructor(private service: SearchService, private ref: ChangeDetectorRef) { }
+
+    ngOnInit(): void {
+        // Subscribe to search results observable
+        const resultsSub = this.service.results(this.query).subscribe((data: any[]) => {
+            // Handle successful data response
+            if (data && data.length > 0) {
+                this.results = data;
+                this.ref.detectChanges();
+            } else {
+                // Handle empty or no data response
+                console.error('No results found for the given query.');
+            }
+        }, (error: any) => {
+            // Handle observable error
+            console.error('Error fetching search results:', error);
+        });
+
+        // Store subscription for later use
+        this.resultsSub = resultsSub;
+    }
+
+    ngOnDestroy(): void {
+        // Unsubscribe from observable to prevent memory leaks
+        this.resultsSub.unsubscribe();
+    }
+
+    /**
+     * Highlights the given code snippet using PrismJS
+     * @param code Code snippet to highlight
+     */
+    highlight(code: string): string {
+        return Prism.highlight(code, Prism.languages.javascript);
+    }
+}</code></pre></div><p>This code defines an Angular component called <code>ResultsComponent</code> that displays search results, highlighting code snippets.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

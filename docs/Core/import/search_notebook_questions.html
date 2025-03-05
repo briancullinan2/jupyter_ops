@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./search_jupter_notebooks_for_questions_and_answers.html">search jupter notebooks for questions and answers</a> | <a href="./cell_9.html">Cell 9</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code initializes a cache by retrieving and caching cells from specified notebooks and creating a database, then defines the <code>interpret</code> function to process queries by filtering local files, searching notebooks, and querying the database. The <code>interpret</code> function checks if the cache has already been initialized and processes the queries accordingly, storing the results in the <code>searchResults</code> variable.</p>
+  <p>The code initializes and manages a cache system, loading data from notebooks and creating a database to store cache cells. It also provides a function to interpret queries, searching for files with matching extensions or cells in the cache database as needed.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "search notebook questions"</code></pre><h1>search notebook questions</h1>
@@ -188,38 +195,140 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<p><strong>Requires</strong></p>
-<p>The code starts by requiring two Node.js modules: <code>path</code> and <code>fs</code>. However, <code>fs</code> is not used in the provided code snippet.</p>
-<p><strong>Initialization</strong></p>
-<p>The <code>initializeCache</code> function is defined as an asynchronous function. It:</p>
-<ol>
-<li>Imports functions from the <code>../Core</code> module.</li>
-<li>Defines an array of notebook paths to be used for caching.</li>
-<li>Retrieves the cache cells from the <code>cache.ipynb</code> notebook and filters them to only include cells with a function named <code>cacheCells</code>.</li>
-<li>Caches the cells from the specified notebooks and creates a database with the cached cells.</li>
-<li>Calls the <code>cacheAll</code> function from the <code>cache all</code> notebook and updates the cell cache.</li>
-<li>Creates a database with the updated cell cache.</li>
-</ol>
-<p><strong>Interpret Function</strong></p>
-<p>The <code>interpret</code> function takes <code>queries</code> as an argument and:</p>
-<ol>
-<li>Checks if the <code>initializeCache</code> function has already been called. If not, it initializes the cache.</li>
-<li>Determines if the <code>queries</code> argument is a string or an array. If it's a string, it's converted to an array.</li>
-<li>Iterates over the <code>queries</code> array and performs the following actions for each query:
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const { getCells, importNotebook, createDatabase, filterLocal, searchFiles, searchQueryFiles, queryDatabase, lookupCell } = require('../Core');
+
+const CORE_NOTEBOOKS = [
+  path.resolve(__dirname, './files.ipynb'),
+  path.resolve(__dirname, './cache.ipynb'),
+  path.resolve(__dirname, '../Utilities/levenshtein.ipynb'),
+  path.resolve(__dirname, '../Languages/minimatch.ipynb'),
+  path.resolve(__dirname, '../Languages/balanced.ipynb'),
+];
+
+class Cache {
+  constructor() {
+    this.cacheCells = null;
+    this.cellCache = null;
+    this.first = true;
+  }
+
+  async initializeCache() {
+    if (this.cacheCells) return;
+    const coreNotebooks = CORE_NOTEBOOKS.map(n => path.resolve(__dirname, n));
+    const cacheLookup = getCells(coreNotebooks.find(n => path.basename(n) === 'cache.ipynb'))
+     .filter(cell => cell.source.join('').includes('function cacheCells'))
+     .map(cell => path.join(__dirname, cell.id));
+
+    this.cacheCells = await importNotebook(cacheLookup).cacheCells;
+    const cellCache = await Promise.all(
+      coreNotebooks.map(n => this.cacheCells(n))
+    ).then(results => results.map(c => [
+      c.mtime,
+      path.join(path.dirname(c.filename), c.id),
+      c,
+    ]));
+    await createDatabase(cellCache);
+
+    const { cacheAll } = await importNotebook('cache all');
+    await cacheAll();
+    this.cellCache = await importNotebook('cell cache').cellCache;
+
+    await createDatabase(this.cellCache);
+  }
+}
+
+const cache = new Cache();
+
+function interpret(queries) {
+  if (cache.first) {
+    cache.initializeCache();
+    cache.first = false;
+  }
+
+  const fileMode = typeof queries ==='string' && queries.match(/\.ipynb$/ig);
+  const searchResults = [].concat.apply(
+    [],
+    (typeof queries ==='string'
+     ? [queries]
+      : queries).map(query => {
+        const search = path.basename(query).split(/[\[\]]/ig);
+        let searchResults;
+
+        if (query.includes('/')) {
+          searchResults = filterLocal(query);
+        } else if (search.length === 3) {
+          searchResults = [searchQueryFiles(search, cache.cellCache)[0]];
+        } else if (search[0].match(/\.ipynb$/ig)) {
+          searchResults = searchFiles(search[0], cache.cellCache);
+        } else {
+          searchResults = [queryDatabase(search[0])[0]];
+        }
+
+        if (!searchResults.length || typeof searchResults[0] === 'undefined') {
+          throw new Error(`Nothing found for ${JSON.stringify(query)
+           .substr(0, 200)}`);
+        }
+        return searchResults;
+      })
+  );
+
+  if (!searchResults.length || typeof searchResults[0] === 'undefined') {
+    throw new Error(`Can't load cells ${JSON.stringify(queries)}`);
+  }
+
+  if (typeof searchResults[0].source!== 'undefined') {
+    return searchResults;
+  }
+
+  return typeof queries ==='string' &&!fileMode
+   ? lookupCell(searchResults[0], cache.cacheCells)
+    : searchResults.map(r => lookupCell(r, cache.cacheCells));
+}
+
+module.exports.interpret = interpret;</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>External Dependencies</h3>
+<p>The code requires three external modules:</p>
 <ul>
-<li>If the query includes a file path, it uses the <code>filterLocal</code> function to filter local files.</li>
-<li>If the query is a notebook name (e.g., &quot;cell cache&quot;), it uses the <code>searchQueryFiles</code> function to search for notebooks.</li>
-<li>If the query is a file name with an <code>.ipynb</code> extension, it uses the <code>searchFiles</code> function to search for notebooks.</li>
+<li><code>path</code> for working with file paths</li>
+<li><code>fs</code> for interacting with the file system</li>
+<li><code>../Core</code> for accessing caching functions and database operations</li>
+</ul>
+<h3>Variable Initialization</h3>
+<p>The code initializes several variables:</p>
+<ul>
+<li><code>first</code> flag to prevent recursive calls to <code>initializeCache</code></li>
+<li><code>cacheCells</code> and <code>cellCache</code> variables to store cache data</li>
+</ul>
+<h3><code>initializeCache</code> Function</h3>
+<p>This function is responsible for initializing the cache. It:</p>
+<ol>
+<li>Loads caching functions from <code>../Core</code></li>
+<li>Specifies a list of core notebooks to load</li>
+<li>Retrieves cache cells from the <code>cache.ipynb</code> notebook</li>
+<li>Imports notebooks and creates a cache database</li>
+<li>Loads the <code>cache all</code> and <code>cell cache</code> notebooks, and updates the cache database</li>
+</ol>
+<h3><code>interpret</code> Function</h3>
+<p>This function handles queries and returns search results. It:</p>
+<ol>
+<li>Checks if the <code>first</code> flag is set, and if so, calls <code>initializeCache</code></li>
+<li>Determines the type of query (string or array)</li>
+<li>Handles each query:
+<ul>
+<li>If a string, searches for files with a matching extension (<code>.ipynb</code>)</li>
+<li>If an array, searches for cells in the cache database</li>
 </ul></li>
-<li>The search results are stored in the <code>searchResults</code> variable.</li>
+<li>Returns the search results</li>
 </ol>
-<p><strong>Notes</strong></p>
+<h3>Notes</h3>
 <ul>
-<li>The <code>filterLocal</code>, <code>searchFiles</code>, <code>searchQueryFiles</code>, and <code>queryDatabase</code> functions are imported from the <code>../Core</code> module but are not defined in this code snippet.</li>
-<li>The <code>lookupCell</code> function is imported from the <code>../Core</code> module but is not used in this code snippet.</li>
-<li>The <code>createDatabase</code> function is imported from the <code>../Core</code> module but is used twice in the <code>initializeCache</code> function.</li>
-<li>The <code>cellCache</code> variable is an array of cached cells, and its contents are updated multiple times in the <code>initializeCache</code> function.</li>
+<li>The <code>filterLocal</code> function is used to search for files in the local file system.</li>
+<li>The <code>searchQueryFiles</code> function is used to search for cells in the cache database.</li>
+<li>The <code>searchFiles</code> function is used to search for files with a matching extension (<code>.ipynb</code>).</li>
+<li>The <code>queryDatabase</code> and <code>lookupCell</code> functions are used to interact with the cache database.</li>
 </ul>
 
 </body>

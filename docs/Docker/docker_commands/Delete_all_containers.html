@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet removes all Docker containers, both running and stopped.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+# Remove stopped and running containers
+# Usage: remove_containers.sh
+
+# Get a list of all container IDs
+container_ids=$(docker ps -a -q)
+
+# Check if any containers were found
+if [ -n "$container_ids" ]; then
+  # Remove the containers one by one to avoid errors
+  for id in $container_ids; do
+    docker rm -f "$id"
+  done
+else
+  # If no containers were found, print a message
+  echo "No running or stopped containers found."
+fi</code></pre></div><p>This code snippet removes all Docker containers, both running and stopped.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>docker ps -a -q</code>:</strong></p>

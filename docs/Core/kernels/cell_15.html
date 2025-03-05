@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -213,7 +220,115 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Breakdown of the Code</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>class Kernel {
+    /**
+     * Initialize kernel and setup sockets.
+     * 
+     * @param {Object} kernel The kernel instance.
+     * @param {Object} config The configuration object.
+     */
+    do_init(kernel, config) {
+        console.log('Starting wire sockets...');
+        return setupSockets(config)
+           .then(sockets => this.bindSockets(sockets))
+           .then(() => kernel.meta_kernel.do_init(kernel, config))
+           .then(() => this.do_respond(kernel, { status: { execution_state: 'idle' } }));
+    }
+
+    /**
+     * Respond to kernel message.
+     * 
+     * @param {Object} kernel The kernel instance.
+     * @param {Object} message The message object.
+     * @returns {Promise} The response promise.
+     */
+    do_respond(kernel, message) {
+        const { [msg_type]: content } = message;
+        return this.wireRespond(kernel, { [msg_type]: { content } });
+    }
+
+    /**
+     * Handle message sent to kernel.
+     * 
+     * @param {Object} kernel The kernel instance.
+     * @param {Object} message The message object.
+     * @returns {Promise} The response promise.
+     */
+    do_message(kernel, message) {
+        return nativeMetaKernel.prototype.do_message(Object.assign({}, kernel, {
+            do_respond: (response) => {
+                const { [res_type]: content } = response;
+                return this.wireRespond(kernel, {
+                    [res_type]: {
+                        parent: message[res_type].header,
+                        metadata: message[res_type].metadata,
+                        content
+                    }
+                });
+            }
+        }), message);
+    }
+
+    /**
+     * Bind sockets to kernel.
+     * 
+     * @param {Object} sockets The socket object.
+     */
+    bindSockets(sockets) {
+        console.log('Connecting sockets...');
+        this.sockets = sockets;
+        sockets.heartbeat.on('message', () => sockets.heartbeat.send({}));
+        [sockets.control, sockets.shell, sockets.stdin]
+           .forEach(socket => socket.on('message', (data) => this.parseMessage(data, this.do_message.bind(this))));
+    }
+
+    /**
+     * Send response to kernel.
+     * 
+     * @param {Object} kernel The kernel instance.
+     * @param {Object} message The response object.
+     * @returns {Promise} The response promise.
+     */
+    wireRespond(kernel, message) {
+        console.log(`Response:`, message);
+        const msg_type = Object.keys(message)[0];
+        const encoded = this.collapseMessage(kernel.kernel_config.key, message);
+        if (msg_type ==='shutdown_reply') {
+            kernel.sockets.control.send(encoded);
+        } else if (msg_type.endsWith('_reply')) {
+            kernel.sockets.shell.send(encoded);
+        } else if (msg_type === 'input_request') {
+            kernel.sockets.stdin.send(encoded);
+        } else {
+            kernel.sockets.iopub.send(encoded);
+        }
+    }
+
+    /**
+     * Parse message and handle accordingly.
+     * 
+     * @param {Object} data The message data.
+     * @param {Function} callback The callback function.
+     */
+    parseMessage(data, callback) {
+        console.log(`Parsed message:`, data);
+        // Add execution count recorder logic here
+        return callback(data);
+    }
+
+    /**
+     * Collapse message for sending.
+     * 
+     * @param {string} key The key for collapsing.
+     * @param {Object} message The message object.
+     * @returns {string} The collapsed message.
+     */
+    collapseMessage(key, message) {
+        // Implement message collapsing logic here
+        return JSON.stringify(message);
+    }
+}</code></pre></div><h3>Breakdown of the Code</h3>
 <p>The provided code appears to be a part of a Node.js module, possibly for a Jupyter kernel. It contains several functions related to handling messages between the kernel and the front-end.</p>
 <h4>do_init Function</h4>
 <p>The <code>do_init</code> function is called when the kernel is initialized. It performs the following steps:</p>

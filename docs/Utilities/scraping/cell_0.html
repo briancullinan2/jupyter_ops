@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,102 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { JSDOM } = require('jsdom');
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const { createWriteStream } = require('fs');
+const { promisify } = require('util');
+const { importAll } = require('../Core');
+const { sendError, mime } = require('./util');
+
+const importAllXpath = importAll('all elements xpath from string');
+const getLocations = async () =&gt; {
+    try {
+        const response = await axios.get('https://web.archive.org/web/20160322001433/http://keepflaghappy.com/happy-hours/friday/');
+        const locations = await getLocationsFromResponse(response.data);
+        return locations;
+    } catch (error) {
+        console.error('Error fetching locations:', error);
+        throw error;
+    }
+};
+
+const getLocationsFromResponse = async (response) =&gt; {
+    const getAllXPath = importAllXpath(response);
+    const hrefs = await getAllXPath([
+        '//a[contains(@href, "by-location")]/@href',
+    ]);
+    return hrefs
+       .filter(href =&gt; href.match(/by-location\/[^#]+/ig))
+       .map(href =&gt; href.includes('archive.org')? href : 'https://web.archive.org' + href);
+};
+
+const getLocation = async (location) =&gt; {
+    try {
+        console.log('Downloading'+ location);
+        const response = await axios.get(location);
+        const allElementsXpath = importAllXpath(response.data);
+        const data = await allElementsXpath([
+            '//h3[contains(., "Mon") or contains(., "Tue") or contains(., "Wed") or contains(., "Thu") or contains(., "Fri") or contains(., "Sat") or contains(., "Sun")]',
+            {
+                dotw: './text()',
+                time: './following-sibling::p[count(./preceding-sibling::h3)=$i+1]//text()',
+                deals: './following-sibling::ul[count(./preceding-sibling::h3)=$i+1]//text()'
+            }
+        ]);
+        const happy = data.map((l, i) =&gt; {
+            return {
+                dotw: l.dotw,
+                time: l.time,
+                deals: l.deals.join('\n').trim().split(/\s*\n+\s*/ig)
+            };
+        });
+        const name = location.trim().replace(/\/$/ig, '').split('/').pop().replace(/[^a-z0-9-_]/ig, '_');
+        const writeStream = createWriteStream(path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'Collections', 'flagstaff-happy', name + '.json'));
+        writeStream.write(JSON.stringify(happy, null, 4));
+        await new Promise(resolve =&gt; writeStream.end(resolve));
+        return happy;
+    } catch (error) {
+        console.error('Error fetching location:', error);
+        throw error;
+    }
+};
+
+const runPromises = async (locations) =&gt; {
+    const promises = locations.map((location, index) =&gt; {
+        return new Promise(resolve =&gt; {
+            getLocation(location)
+               .then(data =&gt; setTimeout(() =&gt; resolve(data), 100))
+               .catch(error =&gt; {
+                    console.error(`Error fetching location ${location}:`, error);
+                    resolve(null);
+                });
+        });
+    });
+    return Promise.all(promises);
+};
+
+const main = async () =&gt; {
+    try {
+        const locations = await getLocations();
+        const happyHours = await runPromises(locations);
+        const result = happyHours
+           .filter(happyHour =&gt; happyHour!== null)
+           .map(happyHour =&gt; JSON.stringify(happyHour, null, 4));
+        return { result };
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
+main()
+   .then(result =&gt; {
+        mime({ 'text/plain': result.result.join('\n') });
+    })
+   .catch(error =&gt; sendError(error));</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules and Setting Constants</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var util = require('util');

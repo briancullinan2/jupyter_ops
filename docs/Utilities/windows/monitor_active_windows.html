@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -115,7 +122,165 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Namespace and Class Declaration</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="csharp"><code>using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+namespace WindowTracker
+{
+    public class Window
+    {
+        public IntPtr Handle { get; }
+        public string Title { get; }
+        public string ProcessName { get; }
+        public bool IsForeground { get; }
+
+        public Window(IntPtr handle, string title, string processName, bool isForeground)
+        {
+            Handle = handle;
+            Title = title;
+            ProcessName = processName;
+            IsForeground = isForeground;
+        }
+    }
+
+    public static class WindowExtensions
+    {
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct WINDOWPLACEMENT
+        {
+            public int length;
+            public int flags;
+            public int showCmd;
+            public Point rcNormalPosition;
+            public Point rcScreenPosition;
+            public Size rcClientArea;
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("psapi.dll", SetLastError = true)]
+        private static extern int GetProcessTitle(IntPtr process);
+
+        private static string GetWindowText(IntPtr hWnd)
+        {
+            var sb = new StringBuilder(256);
+            GetWindowText(hWnd, sb, sb.Capacity);
+            return sb.ToString();
+        }
+
+        private static bool IsForeground(IntPtr hWnd)
+        {
+            return hWnd == GetForegroundWindow();
+        }
+
+        private static string GetProcessName(IntPtr hWnd)
+        {
+            var process = GetProcess(hWnd);
+            return process.ProcessName;
+        }
+
+        private static Process GetProcess(IntPtr hWnd)
+        {
+            var processHandle = OpenProcess(GetProcessHandleAccess(), false, GetProcessId(hWnd));
+            var process = Process.GetProcessById(GetProcessId(hWnd));
+            CloseHandle(processHandle);
+            return process;
+        }
+
+        private static int GetProcessId(IntPtr hWnd)
+        {
+            // This method is Windows-specific and may need to be adjusted for other platforms
+            // The following method is using the WindowHandle property of the Process class
+            return Process.GetProcessById(GetProcessIdFromHandle(hWnd));
+        }
+
+        private static int GetProcessIdFromHandle(IntPtr hWnd)
+        {
+            // This method is Windows-specific and may need to be adjusted for other platforms
+            // The following method is using the WindowHandle property of the Process class
+            var process = Process.GetProcessById(GetProcessId(hWnd));
+            return process.Id;
+        }
+
+        private static string GetProcessTitle(IntPtr hWnd)
+        {
+            var process = GetProcess(hWnd);
+            var title = (string)process.MainWindowTitle;
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                title = process.ProcessName;
+            }
+            return title;
+        }
+
+        private static IntPtr OpenProcess(int access, bool inherit, int processId)
+        {
+            // This method is Windows-specific and may need to be adjusted for other platforms
+            // The following method is using the Process class
+            var process = Process.GetProcessById(processId);
+            return process.MainModule.Handle;
+        }
+
+        private static int GetProcessHandleAccess()
+        {
+            // This method is Windows-specific and may need to be adjusted for other platforms
+            // The following method is using the Process class
+            return ProcessAccessFlags.QueryLimitedInformation;
+        }
+
+        private static int CloseHandle(IntPtr hObject)
+        {
+            // This method is Windows-specific and may need to be adjusted for other platforms
+            // The following method is using the Process class
+            var process = Process.GetProcessById(GetProcessId(hObject));
+            return process.CloseMainWindow();
+        }
+
+        private static bool IsProcessRunning(int processId)
+        {
+            // This method is Windows-specific and may need to be adjusted for other platforms
+            // The following method is using the Process class
+            var process = Process.GetProcessById(processId);
+            return process.Responding;
+        }
+
+        private static string GetPlacement(IntPtr hWnd)
+        {
+            var placement = new WINDOWPLACEMENT();
+            GetWindowPlacement(hWnd, ref placement);
+            return $"{placement.rcNormalPosition.top} {placement.rcNormalPosition.bottom}";
+        }
+
+        private static Process[] FindWindows(Func<Window, bool> predicate)
+        {
+            var windows = Process.GetProcesses().Where(p =>!string.IsNullOrEmpty(p.ProcessName)).ToList();
+            return windows.Where(w => predicate(new Window(w.MainModule.Handle, w.MainWindowTitle, w.ProcessName, false))).ToArray();
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var windows = WindowExtensions.FindWindows(w => w.Handle!= 0 &&!string.IsNullOrWhiteSpace(w.Title)
+                && w.Title == w.ProcessName
+                && w.IsForeground);
+            Console.WriteLine(string.Join("\n", windows.Select(w => $"* {w.Title} - {w.ProcessName}")));
+        }
+    }
+}</code></pre></div><p><strong>Namespace and Class Declaration</strong></p>
 <p>The code is written in C# and resides in the <code>window_tracker</code> namespace within the <code>Program</code> class.</p>
 <p><strong>Using Directives</strong></p>
 <p>The code imports the following namespaces:</p>

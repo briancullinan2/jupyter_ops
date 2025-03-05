@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Empty array truthiness check
+ */
+function checkEmptyArrayTruthy() {
+  // Use the Boolean() function to explicitly check the truthiness of the array
+  const result = Boolean([]);
+  
+  console.log(`Empty array truthiness check: ${result}`);
+}
+
+/**
+ * Empty array falsiness check
+ */
+function checkEmptyArrayFalsy() {
+  // Use the Boolean() function to explicitly check the falsiness of the array
+  const result =!Boolean([]);
+  
+  console.log(`Empty array falsiness check: ${result}`);
+}
+
+// Run the checks
+checkEmptyArrayTruthy();
+checkEmptyArrayFalsy();
+
+// Additional check using the equality operator (only for illustration purposes)
+console.log("Empty array == true:", [] == true);
+console.log("Empty array == false:", [] == false);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Comparison of Empty Array to Boolean Values</h4>
 <pre><code class="language-javascript">console.log([] == true)
 console.log([] == false)

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the imap-simple module
+const { ImapSimple } = require('imap-simple');
+
+// Configuration object for IMAP connection
+const imapConfig = {
+  // IMAP server settings
+  imap: {
+    user: 'your@email.address',
+    password: 'yourpassword',
+    host: 'imap.gmail.com',
+    port: 993,
+    tls: true,
+    authTimeout: 3000,
+  },
+};
+
+/**
+ * Function to connect to IMAP server and append a message to the Drafts mailbox
+ * @param {object} imapConfig - Configuration object for IMAP connection
+ * @returns {Promise<void>} - Promise that resolves when the message is appended
+ */
+async function appendMessageToDrafts(imapConfig) {
+  // Connect to IMAP server
+  const connection = await ImapSimple.connect(imapConfig);
+  
+  // Define the message to be appended
+  const message = `Content-Type: text/plain
+To: jhannes@gmail.com
+Subject: Hello world
+ 
+Hi
+This is a test message
+`;
+
+  // Append the message to the Drafts mailbox
+  await connection.append(message.toString(), { mailbox: 'Drafts', flags: '\\Draft' });
+  
+  // Disconnect from IMAP server
+  await connection.end();
+}
+
+// Call the function with the imapConfig
+appendMessageToDrafts(imapConfig);</code></pre></div><h3>Overview</h3>
 <p>This code connects to an IMAP server using the <code>imap-simple</code> library and appends a new email to the 'Drafts' mailbox.</p>
 <h3>Breakdown</h3>
 <h4>Importing Library</h4>

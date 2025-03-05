@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -87,7 +94,268 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a JavaScript library called LZString for data compression and decompression using the LZ77 algorithm.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=$-';
+const utf16Characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=$-';
+
+class LZString {
+  constructor() {
+    this.table = {};
+    this.alphabet = alphabet;
+    this.utf16Alphabet = utf16Characters;
+  }
+
+  /**
+   * Compresses a string to base64
+   * @param {string} str - The string to compress
+   * @returns {string} The compressed base64 string
+   */
+  compressToBase64(str) {
+    if (!str) return '';
+    const binaryString = this._compress(str, 6, this._base64Encode);
+    return binaryString.replace(/=+$/, '') + '===';
+  }
+
+  /**
+   * Decompresses a base64 string
+   * @param {string} str - The base64 string to decompress
+   * @returns {string} The decompressed string
+   */
+  decompressFromBase64(str) {
+    if (!str) return '';
+    if (str === '') return '';
+    return this._decompress(str.length, 32, this._base64Decode);
+  }
+
+  /**
+   * Compresses a string to UTF16
+   * @param {string} str - The string to compress
+   * @returns {string} The compressed UTF16 string
+   */
+  compressToUTF16(str) {
+    if (!str) return '';
+    return this._compress(str, 15, this._utf16Encode) +'';
+  }
+
+  /**
+   * Decompresses a UTF16 string
+   * @param {string} str - The UTF16 string to decompress
+   * @returns {string} The decompressed string
+   */
+  decompressFromUTF16(str) {
+    if (!str) return '';
+    if (str === '') return '';
+    return this._decompress(str.length, 16384, this._utf16Decode);
+  }
+
+  /**
+   * Compresses a string to Uint8Array
+   * @param {string} str - The string to compress
+   * @returns {Uint8Array} The compressed Uint8Array
+   */
+  compressToUint8Array(str) {
+    const binaryString = this.compress(str);
+    const uint8Array = new Uint8Array(binaryString.length / 2);
+    for (let i = 0; i < binaryString.length; i += 2) {
+      const charCode = binaryString.charCodeAt(i);
+      const highByte = charCode >> 8;
+      const lowByte = charCode % 256;
+      uint8Array[i / 2] = highByte;
+      uint8Array[(i + 1) / 2] = lowByte;
+    }
+    return uint8Array;
+  }
+
+  /**
+   * Decompresses a Uint8Array back to a string
+   * @param {Uint8Array} uint8Array - The Uint8Array to decompress
+   * @returns {string} The decompressed string
+   */
+  decompressFromUint8Array(uint8Array) {
+    if (!uint8Array) return '';
+    const binaryString = uint8Array.map((byte) => String.fromCharCode(byte)).join('');
+    const decompressedString = this.decompress(binaryString);
+    return decompressedString;
+  }
+
+  /**
+   * Compresses a string to a URI encoded string
+   * @param {string} str - The string to compress
+   * @returns {string} The compressed URI encoded string
+   */
+  compressToEncodedURIComponent(str) {
+    if (!str) return '';
+    return this._compress(str, 6, this._uriEncode);
+  }
+
+  /**
+   * Decompresses a URI encoded string
+   * @param {string} str - The URI encoded string to decompress
+   * @returns {string} The decompressed string
+   */
+  decompressFromEncodedURIComponent(str) {
+    if (!str) return '';
+    if (str === '') return '';
+    return this._decompress(str.length, 32, this._uriDecode);
+  }
+
+  /**
+   * Compresses a string
+   * @param {string} str - The string to compress
+   * @returns {string} The compressed string
+   */
+  compress(str) {
+    return this._compress(str, 16, this._base64Encode);
+  }
+
+  /**
+   * Decompresses a string
+   * @param {string} str - The string to decompress
+   * @returns {string} The decompressed string
+   */
+  decompress(str) {
+    return this._decompress(str.length, 32768, this._base64Decode);
+  }
+
+  _base64Encode(index) {
+    return this.alphabet.charAt(index);
+  }
+
+  _base64Decode(char) {
+    return this.alphabet.indexOf(char);
+  }
+
+  _utf16Encode(index) {
+    return String.fromCharCode(index + 32);
+  }
+
+  _utf16Decode(char) {
+    return char.charCodeAt(0) - 32;
+  }
+
+  _uriEncode(index) {
+    return this.utf16Alphabet.charAt(index);
+  }
+
+  _uriDecode(char) {
+    return this.utf16Alphabet.indexOf(char);
+  }
+
+  _compress(string, length, encodeFunction) {
+    const dictionary = {};
+    const result = [];
+    let word = '';
+    let prevIndex = 0;
+    for (let i = 0; i < string.length; i++) {
+      const char = string.charAt(i);
+      if (char in dictionary) {
+        word += char;
+        if (prevIndex in dictionary) {
+          const prevWord = dictionary[prevIndex];
+          const nextIndex = dictionary[char];
+          const bin = this._binaryString(nextIndex - prevIndex);
+          result.push(bin);
+          delete dictionary[prevIndex];
+          prevIndex = nextIndex;
+        } else {
+          const bin = this._binaryString(i - prevIndex);
+          result.push(bin);
+          prevIndex = i;
+        }
+      } else {
+        if (prevIndex in dictionary) {
+          const prevWord = dictionary[prevIndex];
+          const nextIndex = dictionary[char];
+          const bin = this._binaryString(nextIndex - prevIndex);
+          result.push(bin);
+          delete dictionary[prevIndex];
+          prevIndex = nextIndex;
+        } else {
+          const bin = this._binaryString(i - prevIndex);
+          result.push(bin);
+          prevIndex = i;
+        }
+      }
+      dictionary[char] = i + 1;
+    }
+    if (prevIndex in dictionary) {
+      const prevWord = dictionary[prevIndex];
+      const bin = this._binaryString(string.length - prevIndex);
+      result.push(bin);
+    }
+    const binaryString = result.join('');
+    const encodedString = binaryString.match(/.{1,6}/g).map(encodeFunction).join('');
+    return encodedString;
+  }
+
+  _decompress(length, size, decodeFunction) {
+    let index = 0;
+    const dictionary = { '': 0 };
+    const result = [];
+    for (let i = 0; i < length; i += 8) {
+      const bin = decodeFunction(length[i]);
+      if (bin === 2) {
+        return result.join('');
+      }
+      const binIndex = parseInt(bin, 2);
+      let num = binIndex;
+      let prevWord = '';
+      let prevIndex = 0;
+      while (num) {
+        let bit;
+        if (prevIndex in dictionary) {
+          const prevWord = dictionary[prevIndex];
+          const nextIndex = dictionary[num & 1 === 1? 'a' : 'b'];
+          bit = String.fromCharCode(nextIndex - prevIndex);
+          index++;
+          num >>= 1;
+        } else {
+          const nextIndex = this._findNextIndex(dictionary, num & 1 === 1? 'a' : 'b');
+          bit = nextIndex;
+          index++;
+          num >>= 1;
+        }
+        if (prevIndex in dictionary) {
+          const prevWord = dictionary[prevIndex];
+          const nextIndex = dictionary[num & 1 === 1? 'a' : 'b'];
+          const bin = this._binaryString(nextIndex - prevIndex);
+          result.push(bin);
+          delete dictionary[prevIndex];
+          prevIndex = nextIndex;
+        } else {
+          const bin = this._binaryString(i - prevIndex);
+          result.push(bin);
+          prevIndex = i;
+        }
+        dictionary[prevIndex = bit] = size;
+      }
+      const bin = this._binaryString(length - prevIndex);
+      result.push(bin);
+      prevIndex = length;
+    }
+    const decompressedString = result.join('');
+    return decompressedString;
+  }
+
+  _binaryString(num) {
+    let bin = num.toString(2);
+    while (bin.length < 8) {
+      bin = '0' + bin;
+    }
+    return bin;
+  }
+
+  _findNextIndex(dictionary, char) {
+    let index = 0;
+    while (index in dictionary) {
+      index++;
+    }
+    dictionary[char] = index + 1;
+    return index;
+  }
+}
+
+export default LZString;</code></pre></div><p>This code defines a JavaScript library called LZString for data compression and decompression using the LZ77 algorithm.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong>Core Functionality:</strong></p>

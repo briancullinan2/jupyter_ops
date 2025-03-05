@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { promisify } = require('util');
+const { join } = require('path');
+const fs = require('fs');
+const mime = require('mime-types');
+const request = require('request');
+const $ = require('magic');
+
+// Refactor: Extract constants
+const OUTPUT_DIR = 'output';
+const BASE64_EXT = 'base64';
+
+// Refactor: Extract functions
+async function downloadImage(src, filename) {
+  return new Promise((resolve, reject) => {
+    request(src, { encoding: null }, (err, res, body) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ filename, data: body });
+      }
+    });
+  });
+}
+
+async function writeImageToFile(data) {
+  const { filename, data: imageData } = data;
+  try {
+    await promisify(fs.writeFile)(join(OUTPUT_DIR, filename), imageData, 'binary');
+    return data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function generateHtml(images) {
+  const promises = images.map((image) => {
+    const filename = image.filename.split('/').pop();
+    const ext = mime.lookup(image.filename);
+    return new Promise((resolve, reject) => {
+      const base64String = (new Buffer(image.data, 'binary')).toString('base64');
+      const htmlImage = `<img src="data:${ext};base64,${base64String}" />`;
+      const htmlPrint = `<li><img src="/assets/${filename}" /></li>\n`;
+      resolve({ html: htmlImage, htmlPrint });
+    });
+  });
+  return Promise.all(promises);
+}
+
+// Refactor: Main function
+async function generateMarkdown(images) {
+  try {
+    const imagePromises = images.map((src) => downloadImage(src, src.split('/').pop()));
+    const writtenImages = await Promise.all(imagePromises);
+    const htmlImages = await generateHtml(writtenImages);
+    const html = htmlImages.map((htmlImage) => htmlImage.html).join('');
+    const htmlPrint = htmlImages.map((htmlImage) => htmlImage.htmlPrint).join('');
+    const markdown = `Usage:\n\n```html\n${htmlPrint}\n```\nOutput:\n${html}`;
+    $.mime({ 'text/markdown': markdown });
+  } catch (error) {
+    $.done(error);
+  }
+}
+
+// Refactor: Call main function
+images.forEach((src) => generateMarkdown([src]));
+</code></pre></div><h2>Code Breakdown</h2>
 <h3>Variable Initialization</h3>
 <p>The code initializes two variables: <code>html</code> and <code>htmlPrint</code>. Both are set to empty strings.</p>
 <h3>Request Mapping</h3>

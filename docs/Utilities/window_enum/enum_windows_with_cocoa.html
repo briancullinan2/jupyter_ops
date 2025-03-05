@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="objectivec"><code>#import <Cocoa/Cocoa.h>
+
+// Global variables to store the list of windows and its count
+static NSArray<NSDictionary*>* windows;
+static NSUInteger count;
+
+// Function to enumerate all windows
+__attribute__((visibility("default")))
+NSUInteger enumerateWindows(CGWindowListOption listOptions) {
+    // Ask the window server for the list of windows.
+    windows = (NSArray<NSDictionary*>*)CGWindowListCopyWindowInfo(listOptions, kCGNullWindowID);
+    count = [windows count];
+    return count;
+}
+
+// Function to get the title of a window
+__attribute__((visibility("default")))
+const char* getWindowTitle(NSString* windowName) {
+    // Create a string with the window title
+    NSString* windowTitle = [NSString stringWithFormat:@"%@: %s", [windows objectAtIndex:0][@"kCGWindowLayer"], [windowName UTF8String]];
+    return (const char*)[windowTitle UTF8String];
+}
+
+// Function to get the title of a window at a given index
+__attribute__((visibility("default")))
+const char* getWindowTitleAtIndex(NSUInteger index) {
+    if (windows == nil) {
+        enumerateWindows(kCGWindowListOptionAll);
+    }
+    // Check if the index is within bounds
+    if (index < [windows count]) {
+        NSDictionary* windowInfo = [windows objectAtIndex:index];
+        NSString* windowName = windowInfo[@"kCGWindowOwnerName"];
+        return (const char*)[getWindowTitle(windowName) UTF8String];
+    } else {
+        return NULL;
+    }
+}
+
+int main(int argc, char *argv[]) {
+    // Get the number of windows
+    NSUInteger windowCount = enumerateWindows(kCGWindowListOptionAll);
+    
+    // Print the title of each window
+    for (NSUInteger i = 0; i < windowCount; i++) {
+        printf("%s\n", getWindowTitleAtIndex(i));
+    }
+    
+    return 0;
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import and Global Variables</h3>
 <ul>
 <li>The code starts by importing the Cocoa framework using <code>@import Cocoa;</code>.</li>

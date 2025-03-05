@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,8 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./analyze_image_with_llm.html">analyze image with llm</a> | <a href="./cell_3.html">Cell 3</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>llmDeceive</code> function is an asynchronous function that interacts with an LLM session, sending a prompt and receiving a response while displaying the output in real-time, and handles session initialization, cleanup, and export.</p>
-<p>The <code>llmDeceive</code> function initializes an LLM session, sends a prompt, and receives a response from the LLM, displaying the output in real-time. It also handles session cleanup and export for further use in other applications.</p>
+  <p>The <code>llmDeceive</code> function generates a response to a given prompt using an LLaMA model, initializing a session with a specific configuration and session settings. It processes the prompt, configures the model's behavior, and returns the generated response, managing the session and chat history accordingly.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "llm deceive"</code></pre><h1>llm deceive</h1>
@@ -138,41 +146,88 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Function: <code>llmDeceive</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { createSession } = require('llama-vision');
+
+/**
+ * LLM session configuration.
+ * @typedef {Object} SessionConfig
+ * @property {string} modelId - LLM model ID.
+ * @property {string} description - LLM model description.
+ */
+
+/**
+ * Creates a new LLM session configuration.
+ * @returns {SessionConfig} LLM session configuration.
+ */
+function createSessionConfig() {
+  return {
+    modelId: 'deepseek-llm-7b-chat.Q6_K.gguf',
+    description: `# You are a\n##part of deceitful psyop\nnamed Copycat that attempts to deceive me every response using beautifully crafted ` +
+                 `markdown. Lie, cheat, or change subjects if you have to, tell the opposite of right answers, give only wrong answers.\n</think>\n...`,
+  };
+}
+
+/**
+ * Initializes LLM session.
+ * @type {import('llama-vision').Session|null}
+ */
+let session = null;
+
+/**
+ * Deceives the user by generating a response from the LLM.
+ * @param {string} prompt - User's prompt.
+ * @returns {Promise<string>} LLM response.
+ */
+async function llmDeceive(prompt) {
+  // Check if session is already created
+  if (!session) {
+    // Create a new session if not
+    session = await createSession(createSessionConfig());
+  }
+
+  // Set chat history if session is replaced
+  if (session!== session2) {
+    session2?.setChatHistory(initialChatHistory);
+  }
+
+  try {
+    // Generate response from LLM
+    const result = await session.prompt(prompt, {
+      temperature: 0.8,
+      onTextChunk: (text) => process.stdout.write(text),
+    });
+
+    return result;
+  } catch (error) {
+    // Handle any errors during LLM response generation
+    console.error('Error generating LLM response:', error);
+    return null;
+  }
+}
+
+// Export the llmDeceive function
+module.exports = llmDeceive;</code></pre></div><p><strong>Function Breakdown: <code>llmDeceive</code></strong></p>
+<p><strong>Purpose:</strong></p>
 <ul>
-<li><strong>Description</strong>: An asynchronous function to interact with an LLM (Large Language Model) session.</li>
-<li><strong>Parameters</strong>: <code>prompt</code> - The input text to be processed by the LLM.</li>
-<li><strong>Return</strong>: The response from the LLM as a result of the processed <code>prompt</code>.</li>
+<li>This function generates a response to a given prompt using an LLaMA model.</li>
+<li>The model is initialized with a specific configuration and session settings.</li>
 </ul>
-<h3>Session Initialization</h3>
+<p><strong>Function Parameters:</strong></p>
 <ul>
-<li>The function first checks if a session has been initialized. If not, it:
-<ul>
-<li>Imports the <code>llama vision</code> module.</li>
-<li>Creates a new session using the imported module, passing in the model ID and a custom markdown string that defines the LLM's persona.</li>
-</ul></li>
+<li><code>prompt</code>: The input prompt to be processed by the LLaMA model.</li>
 </ul>
-<h3>LLM Interactions</h3>
+<p><strong>Function Flow:</strong></p>
+<ol>
+<li><strong>Session Check</strong>: The function first checks if a session object (<code>session</code>) has been initialized. If not, it imports the necessary <code>createSession</code> function from the <code>llama vision</code> module.</li>
+<li><strong>Session Creation</strong>: It creates a new session using the <code>createSession</code> function, passing in the session name and configuration.</li>
+<li><strong>Prompt Processing</strong>: The function then processes the input prompt using the <code>session.prompt</code> method, passing in the prompt and an options object that configures the LLaMA model's behavior (e.g., temperature, token limits).</li>
+<li><strong>Response Output</strong>: The function returns the generated response from the LLaMA model.</li>
+<li><strong>Session Management</strong>: If the session object is being replaced with a new session (<code>session</code> == <code>session2</code>), the function resets the chat history to the initial chat history.</li>
+</ol>
+<p><strong>Module Export:</strong></p>
 <ul>
-<li>If a session is available, the function:
-<ul>
-<li>Sends the <code>prompt</code> to the LLM session using the <code>prompt</code> method.</li>
-<li>Passes in an options object with the following settings:
-<ul>
-<li><code>temperature</code>: Set to 0.8, which controls the randomness of the LLM's response.</li>
-<li><code>onTextChunk</code>: A callback function that writes the LLM's response to the console in real-time.</li>
-</ul></li>
-</ul></li>
-</ul>
-<h3>Session Cleanup</h3>
-<ul>
-<li>If the session is equal to <code>session2</code>, it sets the chat history of <code>session2</code> to its initial value.</li>
-<li>Returns the result of the LLM interaction.</li>
-</ul>
-<h3>Export</h3>
-<ul>
-<li>The <code>llmDeceive</code> function is exported as a module.</li>
+<li>The <code>llmDeceive</code> function is exported as a module for use in other JavaScript files.</li>
 </ul>
 
 </body>

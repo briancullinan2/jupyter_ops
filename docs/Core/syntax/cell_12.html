@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,133 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Kernel Interface for Wire Protocol
+ * @description Implementations for Meta Kernel Interface
+ * @module wireKernelInterface
+ */
+
+const metaKernelInterface = require('./metaKernelInterface');
+
+/**
+ * Kernel Interface for Wire Protocol
+ */
+const wireKernelInterface = {
+  /**
+   * Inherit properties from meta kernel interface
+   */
+ ...metaKernelInterface,
+
+  /** Implement required requests by Meta Kernel Interface */
+  executeRequest: function executeRequest(params) {
+    // TODO: Implement execute request logic
+  },
+  inspectRequest: function inspectRequest(params) {
+    // TODO: Implement inspect request logic
+  },
+  completeRequest: function completeRequest(params) {
+    // TODO: Implement complete request logic
+  },
+  historyRequest: function historyRequest(params) {
+    // TODO: Implement history request logic
+  },
+  isCompleteRequest: function isCompleteRequest(params) {
+    // TODO: Implement is complete request logic
+  },
+  shutdownRequest: function shutdownRequest(params) {
+    // TODO: Implement shutdown request logic
+  },
+
+  /**
+   * Implement optional requests that might be required in the future
+   */
+  kernelInfoRequest: function kernelInfoRequest(params) {
+    // TODO: Implement kernel info request logic
+  },
+  interruptRequest: function interruptRequest(params) {
+    // TODO: Implement interrupt request logic
+  },
+  inputRequest: function inputRequest(params) {
+    // TODO: Implement input request logic
+  },
+  connectRequest: function connectRequest(params) {
+    // TODO: Implement connect request logic
+  },
+  commInfoRequest: function commInfoRequest(params) {
+    // TODO: Implement comm info request logic
+  },
+
+  /**
+   * Implement required replies
+   */
+  executeReply: function executeReply(data) {
+    // TODO: Implement execute reply logic
+  },
+  inspectReply: function inspectReply(data) {
+    // TODO: Implement inspect reply logic
+  },
+  completeReply: function completeReply(data) {
+    // TODO: Implement complete reply logic
+  },
+  historyReply: function historyReply(data) {
+    // TODO: Implement history reply logic
+  },
+  kernelInfoReply: function kernelInfoReply(data) {
+    // TODO: Implement kernel info reply logic
+  },
+  isCompleteReply: function isCompleteReply(data) {
+    // TODO: Implement is complete reply logic
+  },
+  connectReply: function connectReply(data) {
+    // TODO: Implement connect reply logic
+  },
+  commInfoReply: function commInfoReply(data) {
+    // TODO: Implement comm info reply logic
+  },
+  shutdownReply: function shutdownReply(data) {
+    // TODO: Implement shutdown reply logic
+  },
+  interruptReply: function interruptReply(data) {
+    // TODO: Implement interrupt reply logic
+  },
+  inputReply: function inputReply(data) {
+    // TODO: Implement input reply logic
+  },
+
+  /**
+   * Implement protocol methods
+   */
+  status: function status(data) {
+    // TODO: Implement status logic
+  },
+  displayData: function displayData(data) {
+    // TODO: Implement display data logic
+  },
+  updateDisplayData: function updateDisplayData(data) {
+    // TODO: Implement update display data logic
+  },
+  executeInput: function executeInput(data) {
+    // TODO: Implement execute input logic
+  },
+  executeResult: function executeResult(data) {
+    // TODO: Implement execute result logic
+  },
+  error: function error(data) {
+    // TODO: Implement error logic
+  },
+  clearOutput: function clearOutput(data) {
+    // TODO: Implement clear output logic
+  },
+  commMsg: function commMsg(data) {
+    // TODO: Implement comm msg logic
+  },
+  commClose: function commClose(data) {
+    // TODO: Implement comm close logic
+  }
+};
+
+module.exports = wireKernelInterface;</code></pre></div><h3>Code Breakdown</h3>
 <p>This JavaScript code defines an object <code>wireKernelInterface</code> that implements the interface for a kernel in the Meta Kernel protocol.</p>
 <h4>Properties and Methods</h4>
 <p>The object has two main sections:</p>

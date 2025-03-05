@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a utility function called <code>fetchOrStream</code> that downloads a file from a URL or processes an existing stream and writes its content to a provided write stream.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { promisify } = require('util');
+const https = require('https');
+const http = require('http');
+
+/**
+ * Fetches or streams a resource based on the input.
+ * 
+ * @param {string|object} stream - The URL or stream to fetch or stream.
+ * @param {stream.Writable} writeStream - The writable stream to pipe the fetched data into.
+ * @returns {Promise&lt;void&gt;} A promise that resolves when the streaming is complete or rejects with an error.
+ */
+function fetchOrStream(stream, writeStream) {
+    // Check if the stream is already an object (e.g. a readable stream)
+    if (typeof stream === 'object' &amp;&amp; stream!== null) {
+        // Return a resolved promise to avoid unnecessary promises
+        return Promise.resolve(stream);
+    }
+
+    // Determine the protocol (http or https) based on the stream URL
+    const protocol = stream.includes('https://')? https : http;
+
+    // Use a promise to handle the protocol.get operation
+    const getPromise = promisify(protocol.get.bind(protocol));
+
+    // Chain promises to pipe the stream into the writeStream
+    return getPromise(stream)
+       .then((res) =&gt; {
+            // Pipe the response into the writeStream
+            res.pipe(writeStream)
+               .on('error', (err) =&gt; {
+                    // Reject the promise if an error occurs
+                    return Promise.reject(err);
+                })
+               .on('finish', () =&gt; {
+                    // Resolve the promise when the piping is complete
+                    return Promise.resolve();
+                });
+        });
+}
+
+module.exports = fetchOrStream;
+```</code></pre></div><p>This code defines a utility function called <code>fetchOrStream</code> that downloads a file from a URL or processes an existing stream and writes its content to a provided write stream.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const { GoogleAuth } = require('google-auth-library');
+
+// Define constants
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const SCOPE = [
+  'https://www.googleapis.com/auth/compute',
+  'https://www.googleapis.com/auth/cloud-platform'
+];
+
+/**
+ * Resolves the path to the credentials file.
+ * 
+ * If the file exists in the current directory, it uses that. Otherwise, it
+ * resolves the path to the user's home directory and appends the credentials file path.
+ * 
+ * @returns {string} - The resolved path to the credentials file.
+ */
+function resolveCredentialsPath() {
+  if (fs.existsSync('./spahaha-ea443-a78ab2269985.json')) {
+    return path.resolve('./spahaha-ea443-a78ab2269985.json');
+  }
+  return path.join(PROFILE_PATH, '.credentials/spahaha-ea443-a78ab2269985.json');
+}
+
+/**
+ * Authorizes with Google using the provided credentials file.
+ * 
+ * @returns {Promise} - A promise resolving to a GoogleAuth client instance.
+ */
+async function authorizeGoogle() {
+  const credentials = resolveCredentialsPath();
+  const auth = new GoogleAuth({
+    keyFile: credentials,
+    scopes: SCOPE
+  });
+  return auth.getClient();
+}
+
+module.exports = authorizeGoogle;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p><strong>Requires and Variable Declarations</strong></p>
 <pre><code class="language-javascript">var fs = require('fs'); // File system module
 var path = require('path'); // Path module

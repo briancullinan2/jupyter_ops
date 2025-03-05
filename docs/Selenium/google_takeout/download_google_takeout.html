@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,116 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet automates the process of creating and downloading a Google Takeout archive for a specific product.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { CommandBuilder } = require('../Core');
+
+class GoogleTakeout {
+  /**
+   * Lists all available takeout products.
+   * @returns {Array} A list of objects containing the product ID and label.
+   */
+  static listTakeouts() {
+    return this.client
+     .url('https://takeout.google.com/settings/takeout')
+     .loginGoogle()
+     .pause(1000)
+     .url('https://takeout.google.com/settings/takeout')
+     .getAllXPath([
+        '//*[@data-id]',
+        {
+          id: './@data-id',
+          label: './/td[3]//text()'
+        }
+      ]);
+  }
+
+  /**
+   * Downloads a Google Takeout product.
+   * @param {Object} product - The product to download.
+   * @param {string} product.id - The ID of the product.
+   * @returns {Promise} A promise resolving to the download result.
+   */
+  static takeoutProducts(product) {
+    return this.client
+     .url(`https://takeout.google.com/settings/takeout/custom/${product.id}`)
+     .pause(500)
+     .click('//*[contains(@role, "button")][contains(., "Next")]')
+     .pause(500)
+     .selectListbox('//*[contains(., "Archive size")]/parent::*/*[contains(@role, "listbox")]', '50')
+     .pause(500)
+     .click('//*[contains(@role, "button")][contains(., "Create archive")]')
+     .waitUntil(
+        () =&gt; this.client.isExisting('//tr[1]//*[contains(@href, "takeout/download")]'),
+        120000,
+        ''
+      )
+     .then(is =&gt; is? this.client.execute(() =&gt; {
+        document.querySelector('iframe[src*="settings"]').remove();
+      }) : [])
+     .click('//tr[1]/td[last()]//*[contains(@href, "takeout/download")]')
+     .pause(1000)
+     .isVisible('#passwordNext')
+     .then(is =&gt; is? this.client
+       .loginGoogle()
+       .then(is =&gt; is? this.client.execute(() =&gt; {
+          const question = document.querySelector('iframe[src*="settings"]');
+          if (question) {
+            question.remove();
+          }
+        }) : [])
+        : [])
+      // wait for download
+     .pause(10000)
+     .catch(e =&gt; console.log(e));
+  }
+
+  /**
+   * Downloads the specified Google Takeout products.
+   * @param {string} products - The products to download (e.g. "email" or "all").
+   * @returns {Promise} A promise resolving to the download results.
+   */
+  static downloadGoogleTakeout(products) {
+    const regex = new RegExp(products, 'ig');
+    return this.listTakeouts()
+     .then(ids =&gt; {
+        return ids
+         .map(k =&gt; ({
+            id: k.id + '',
+            label: k.label + ''
+          }))
+         .filter(k =&gt; k.id!== '_gd' &amp;&amp; (products.includes('all') ||
+            k.id.match(regex)!== null || k.label.match(regex)!== null));
+      })
+     .then(selectedProducts =&gt; {
+        console.log(selectedProducts);
+        return this.client.runAllPromises(selectedProducts
+         .map(p =&gt; (resolve) =&gt; {
+            return this.takeoutProducts(p).then(r =&gt; resolve(r)).catch(e =&gt; resolve(e));
+          }));
+      })
+     .catch(e =&gt; console.log(e));
+  }
+}
+
+class CommandBuilder {
+  constructor() {
+    this.commands = {};
+  }
+
+  addCommand(name, method) {
+    this.commands[name] = method;
+  }
+
+  getCommand(name) {
+    return this.commands[name];
+  }
+}
+
+const builder = new CommandBuilder();
+if (typeof builder.getCommand('downloadGoogleTakeout') === 'undefined') {
+  builder.addCommand('downloadGoogleTakeout', GoogleTakeout.downloadGoogleTakeout);
+}
+module.exports = builder;</code></pre></div><p>This code snippet automates the process of creating and downloading a Google Takeout archive for a specific product.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. <code>listTakeouts</code> Function:</strong></p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set display for Xvfb
+DISPLAY=:4000
+
+# Run Xvfb headless session with required settings
+Xvfb_PID=$(/usr/bin/Xvfb $DISPLAY -screen 0 1000x600x24 -dpi 70 -ac +extension RANDR & echo $!)
+echo $Xvfb_PID > /tmp/xvfb.pid
+
+# Run X11 session
+X11_PID=$(/usr/bin/xinit -display $DISPLAY & echo $!)
+echo $X11_PID > /tmp/x11.pid
+
+# Run ioquake3 game with specified arguments
+IOQ3_PID=$(/usr/lib/ioquake3/ioquake3 --args +set fs_game missionpack +exec./client.cfg & echo $!)
+echo $IOQ3_PID > /tmp/xterm.pid
+
+# Wait for 5 seconds to ensure X11 and IOQ3 sessions are up
+sleep 5
+
+# Run x11vnc for remote desktop access
+VNC_PID=$(/usr/bin/x11vnc -scale 1000x600 -noxdamage -forever -shared -rfbport 5900 -display $DISPLAY -noxrecord & echo $!)
+echo $VNC_PID > /tmp/vnc.pid
+
+# Define function to handle INT signal (Ctrl+C)
+int_handler() {
+  # Kill X11vnc session
+  kill $(cat /tmp/vnc.pid) 2>/dev/null
+  
+  # Kill IOQ3 game session
+  kill $(cat /tmp/xterm.pid) 2>/dev/null
+  
+  # Kill X11 session
+  kill $(cat /tmp/x11.pid) 2>/dev/null
+  
+  # Kill Xvfb headless session
+  kill $(cat /tmp/xvfb.pid) 2>/dev/null
+}
+
+# Trap INT signal to call int_handler function
+trap 'int_handler' INT
+
+# Wait for IOQ3 game session to finish
+wait $(cat /tmp/xterm.pid)
+
+# Call int_handler function to clean up sessions
+int_handler</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Introduction</h3>
 <p>This is a Bash script that sets up a virtual Linux environment for running a Quake III Arena game and provides VNC access.</p>
 <h3>Initialization</h3>

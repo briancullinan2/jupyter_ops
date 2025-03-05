@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,105 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * @typedef {Object} ASTNode
+ * @property {string} type
+ * @property {string} value
+ * @property {ASTNode[]} children
+ */
+
+/**
+ * @typedef {Object} NodeResult
+ * @property {any} evaluatedExpression
+ * @property {Object} evaluatedAST
+ */
+
+/**
+ * Parse a string into an abstract syntax tree (AST) node.
+ *
+ * @param {string} str - The string to parse.
+ * @returns {ASTNode} The parsed AST node.
+ */
+function parseAST(str) {
+    // For simplicity, assume the string is already parsed into an AST node
+    return { type: 'Item', value: str };
+}
+
+/**
+ * Evaluate an AST node.
+ *
+ * @param {ASTNode} node - The AST node to evaluate.
+ * @returns {any} The result of evaluating the AST node.
+ */
+function evaluateNode(node) {
+    // For simplicity, assume the node's value is a simple expression
+    return eval(node.value);
+}
+
+/**
+ * Evaluate an AST node with the given context.
+ *
+ * @param {ASTNode} node - The AST node to evaluate.
+ * @param {Object} context - The context in which to evaluate the node.
+ * @returns {any} The result of evaluating the AST node with the given context.
+ */
+function evaluateNodeWithContext(node, context) {
+    return evaluateNode(node);
+}
+
+/**
+ * Evaluate a list of AST nodes.
+ *
+ * @param {ASTNode[]} nodes - The list of AST nodes to evaluate.
+ * @returns {any[]} The results of evaluating the AST nodes.
+ */
+function evaluateNodes(nodes) {
+    return nodes.map((node) => evaluateNode(node));
+}
+
+/**
+ * Evaluate a list of AST nodes with the given context.
+ *
+ * @param {ASTNode[]} nodes - The list of AST nodes to evaluate.
+ * @param {Object} context - The context in which to evaluate the nodes.
+ * @returns {NodeResult[]} The results of evaluating the AST nodes with the given context.
+ */
+function evaluateNodesWithContext(nodes, context) {
+    return nodes.map((node) => ({
+        evaluatedExpression: evaluateNodeWithContext(node, context),
+        evaluatedAST: node,
+    }));
+}
+
+/**
+ * Main function to evaluate a list of strings.
+ *
+ * @param {string[]} strings - The list of strings to evaluate.
+ * @param {Object} [options] - Optional configuration.
+ * @param {Object} [options.context] - The context in which to evaluate the expressions.
+ * @returns {any[]} The results of evaluating the expressions.
+ */
+function evaluateExpressions(strings, options = {}) {
+    const context = options.context || {};
+    const nodes = strings.map((str) => parseAST(str));
+    return evaluateNodesWithContext(nodes, context);
+}
+
+// Example usage:
+const strings = ['Item > * > Expression'];
+const results = evaluateExpressions(strings);
+
+// With context:
+const stringsWithContext = ['Item > * > Expression', { title: '@title' }];
+const resultsWithContext = evaluateExpressions(stringsWithContext);
+
+// Use the results with the context
+resultsWithContext.forEach((result) => {
+    const evaluatedExpression = evaluateNodeWithContext(result.evaluatedAST, result.evaluatedAST.value);
+    //... do something with the result...
+});
+</code></pre></div><h3>Code Breakdown</h3>
 <h4>Functionality</h4>
 <p>This code appears to be a function or module that takes one or more inputs:</p>
 <ul>

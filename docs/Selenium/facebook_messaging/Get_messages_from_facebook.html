@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -256,7 +263,137 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet focuses on extracting information about participants in Facebook message threads.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { promisify } = require('util');
+const { resolve } = require('path');
+const fs = promisify(require('fs'));
+const glob = promisify(require('glob'));
+const { readFileSync } = require('fs');
+const chrono = require('chrono-node');
+const { URL } = require('url');
+
+// Define constants
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = resolve(PROFILE_PATH, 'Conversations');
+
+// Define functions
+async function switchToParticipantThread(client, i) {
+    try {
+        await client.pause(1000);
+        await client.click(`//*[contains(@class, "scrollable")]//h4[contains(., "People")]/parent::*//li[${i + 1}]`);
+        await client.pause(1000);
+        return await readFacebookProfileInfo(client);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+async function getThreadParticipants(client, thread) {
+    try {
+        const participantsCount = await client.execute(() => {
+            const xpathResult = document.evaluate(
+                'count(//*[contains(@class, "scrollable")]//h4[contains(., "People")]/parent::*//li)',
+                document, null,
+                XPathResult.NUMBER_TYPE, null);
+            return xpathResult.numberValue;
+        });
+        let participants = [];
+
+        if (participantsCount === 0) {
+            participants = [await readFacebookProfileInfo(client)];
+        } else {
+            for (let i = 1; i <= Math.min(3, participantsCount.value); i++) {
+                participants.push(await switchToParticipantThread(client, i));
+            }
+        }
+
+        return participants;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+async function readFacebookMessages(client, messages, i = 0) {
+    try {
+        const browserOffset = await client.execute(() => (new Date()).getTimezoneOffset());
+        const offset = Math.abs(browserOffset.value) / 60;
+
+        const messagesParsed = await client.getAllUntil(
+            '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]',
+            '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]//h4//text()',
+            [],
+            (a, b) => a + '' === b + '',
+            i => i < 10,
+            true /* scroll up, not down */
+        );
+
+        const messagesMapped = messagesParsed.getAllXPath([
+            '//*[contains(@role, "main")]//*[contains(@class, "scrollable")][contains(.,"Messages")]//h4',
+            {
+                time: './/text()',
+                messages: [
+                    './following-sibling::div[count(./preceding-sibling::h4)=$i+1]',
+                    {
+                        from: './/h5//text()',
+                        message: './/*[not(name()="H5")]/text()'
+                    }
+                ]
+            }
+        ]);
+
+        const formattedMessages = messagesMapped.reduce((acc, m) => {
+            const parsedResult = chrono.parse(m.time);
+            parsedResult[0].start.assign('timezoneOffset', browserOffset.value * 60);
+            const newTime = parsedResult[0].start.date();
+
+            m.messages.forEach((r, i) => {
+                const newMessage = {
+                    time: newTime,
+                    from: r.from,
+                    message: typeof r.message ==='string'? r.message : r.message.join('\n')
+                };
+
+                if (i === 0 && newMessage.message === newMessage.from) {
+                    return;
+                }
+
+                acc.push(newMessage);
+            });
+
+            return acc;
+        }, []);
+
+        return formattedMessages;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+async function readFacebookThread(client, thread) {
+    try {
+        const threadId = thread.replace(/^\/|\/$/ig, '').split('/').pop().replace(/[^a-z0-9]/ig, '_');
+        const file = await glob(`**/${threadId}-*.json`, { cwd: project });
+        const messages = file.length > 0? JSON.parse(await fs.readFile(file[0])) : [];
+
+        const participants = await getThreadParticipants(client, thread);
+        const messagesParsed = await readFacebookMessages(client, messages);
+
+        const data = {
+            thread,
+            participants,
+            messages: messagesParsed
+        };
+
+        const filename = `${project}/${threadId}-${participants.map(p => p.name).join('').replace(/[^a-z0-9]/ig, '_')}.json`;
+        await fs.writeFile(filename, JSON.stringify(data, null, 4));
+
+        return data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+module.exports = readFacebookThread;</code></pre></div><p>This code snippet focuses on extracting information about participants in Facebook message threads.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

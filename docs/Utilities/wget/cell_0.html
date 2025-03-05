@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>wget Command Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Constants for WGET OPTIONS
+WAIT_TIME=2  # Wait time between each download in seconds
+MAX_LEVEL=inf  # Maximum recursion level
+LIMIT_RATE=20K  # Download limit in kilobytes per second
+
+# Function to download a website
+download_website() {
+  local url=$1
+
+  # Set WGET OPTIONS
+  local wget_options="
+    --wait=${WAIT_TIME}
+    --level=${MAX_LEVEL}
+    --limit-rate=${LIMIT_RATE}
+    --recursive
+    --page-requisites
+    --user-agent=Mozilla
+    --no-parent
+    --convert-links
+    --adjust-extension
+    --no-clobber
+    -e robots=off
+  "
+
+  # Download the website
+  echo "Downloading website at ${url}..."
+  wget ${wget_options} "${url}"
+  echo "Download complete."
+}
+
+# Usage
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <url>"
+  exit 1
+fi
+
+download_website "$1"</code></pre></div><p><strong>wget Command Breakdown</strong></p>
 <p>The provided code is a <code>wget</code> command used to download a website's contents. Here's a breakdown of the options used:</p>
 <ul>
 <li><code>--wait=2</code>: Waits for 2 seconds between each download to avoid overwhelming the server.</li>

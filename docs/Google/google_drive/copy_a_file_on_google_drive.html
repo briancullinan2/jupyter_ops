@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>copyFile</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Copies a file from Google Drive.
+ * 
+ * @param {string} fileId - The ID of the file to copy.
+ * @param {string} title - The new title of the copied file.
+ * @returns {Promise<string>} A promise that resolves with the ID of the copied file.
+ */
+const { google } = require('googleapis');
+const { authorizeGoogleDrive } = require('../Core');
+
+async function copyFile(fileId, title) {
+    // Authorize Google Drive to prevent rate limiting and ensure seamless execution.
+    const drive = await authorizeGoogleDrive();
+    
+    // Use the drive.files.copy method to copy the file.
+    const result = await drive.files.copy({
+        fileId,
+        resource: { name: title },
+        supportsTeamDrives: true
+    });
+    
+    // Return the ID of the copied file.
+    return result.data.id;
+}
+
+module.exports = copyFile;</code></pre></div><p><strong>Function Breakdown: <code>copyFile</code></strong></p>
 <h3>Parameters</h3>
 <ul>
 <li><code>fileId</code>: The ID of the file to be copied</li>

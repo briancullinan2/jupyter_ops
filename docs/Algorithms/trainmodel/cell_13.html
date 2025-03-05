@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>```markdown
+# Label Encoding
+### Transform categorical 'label' column in train dataset
+#### Utilize LabelEncoder from sklearn.preprocessing
+
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd  # Import pandas for DataFrame operations
+
+def label_encode_train_data(train: pd.DataFrame) -&gt; pd.DataFrame:
+    """
+    Encode categorical values in 'label' column of train dataset.
+
+    Args:
+    - train (pd.DataFrame): Input DataFrame containing 'label' column
+
+    Returns:
+    - pd.DataFrame: Updated DataFrame with encoded 'label' values
+    """
+
+    # Create a LabelEncoder instance
+    label_encoder = LabelEncoder()
+
+    # Fit the LabelEncoder to the 'label' column and transform it
+    # This will replace categorical values with integers
+    train['label'] = label_encoder.fit_transform(train['label'])
+
+    # Return the updated DataFrame
+    return train
+```
+
+**Example Usage:**
+```python
+train = pd.DataFrame({'label': ['A', 'B', 'A', 'C', 'B']})
+train = label_encode_train_data(train)
+print(train)
+```</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
 <p>No explicit import statement is given, but it's assumed that <code>LabelEncoder</code> is from the <code>sklearn.preprocessing</code> module.</p>
 <h3>Creating a Label Encoder</h3>

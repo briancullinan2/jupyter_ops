@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,32 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up a Node.js development environment for NativeScript on a Debian-based system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set up Node.js 8.x repository
+curl -fsSL https://deb.nodesource.com/setup_8.x | bash -l
+
+# Install Node.js and necessary dependencies
+apt-get update
+apt-get install -y nodejs
+
+# Check Node.js version
+nodejs -v
+
+# Set environment variable NODE_TLS_REJECT_UNAUTHORIZED to 0
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+
+# Install global packages with npm
+export NPM_CONFIG_PRODUCTION=false
+npm install -g \
+    live-server \
+    babel-cli \
+    concurrently \
+    node-gyp \
+    nativescript@latest
+
+# Note: Consider adding error handling for failed package installations</code></pre></div><p>This code snippet sets up a Node.js development environment for NativeScript on a Debian-based system.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Node.js Installation:</strong></p>

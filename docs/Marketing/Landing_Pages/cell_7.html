@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Import the necessary module for screen interaction
+import { screen } from 'electron';
+
+/**
+ * Opens a url on the default browser
+ * @param url The url to be opened
+ */
+function openUrl(url: string) {
+  // Using the default browser to open the url
+  const defaultBrowser = 'https://www.google.com/search?q=' + url;
+  require('electron').shell.openExternal(defaultBrowser);
+}
+
+/**
+ * Configures the screen settings
+ * @param url The url to be opened on the screen
+ * @param options Configuration options (zoom, width, height)
+ */
+function configureScreen(url: string, options: { zoom: number; width: number; 'crop-h': number }) {
+  // Validate the input options
+  if (options.zoom &lt; 0 || options.zoom &gt; 1) {
+    throw new Error('Zoom must be between 0 and 1');
+  }
+  if (options.width &lt;= 0) {
+    throw new Error('Width must be greater than 0');
+  }
+  if (options['crop-h'] &lt;= 0) {
+    throw new Error('Height must be greater than 0');
+  }
+
+  // Configure the screen settings
+  screen.setZoomFactor(options.zoom);
+  screen.setDisplaySize(options.width, options['crop-h']);
+}
+
+// Example usage
+const url = 'act.com/pl-pl';
+const options = { zoom: 0.5, width: 680, 'crop-h': 400 };
+
+// Open the url on a new browser window
+openUrl(url);
+
+// Configure the screen settings
+configureScreen(url, options);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function Call</h4>
 <p>The code calls a function named <code>$TS.screen</code> which appears to be part of a library or framework, likely used for browser automation or testing.</p>
 <h4>Function Parameters</h4>

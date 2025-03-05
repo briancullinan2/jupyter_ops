@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -158,7 +165,98 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const importer = require('../Core');
+const { KernelLanguageInterface } = importer.import('kernel language interface');
+const { KernelInfoInterface } = importer.import('kernel info interface');
+
+// Define the MetaKernelInterface class
+class MetaKernelInterface extends KernelInfoInterface {
+  /**
+   * @typedef {import('../Core')} Core
+   * @typedef {import('./kernel language interface')} KernelLanguageInterface
+   * @typedef {import('./kernel info interface')} KernelInfoInterface
+   */
+
+  // Extend the kernel info interface with custom functionality
+  constructor(kernelInfoInterface, languageInterface) {
+    super(kernelInfoInterface);
+    this.languageInfo = languageInterface;
+    this.kernelConfig = { config: {} };
+    // Intialize custom methods with empty functions
+    this.doInit = () => {};
+    this.doMessage = () => {};
+    this.doRespond = () => {};
+    this.doExecute = () => {};
+    // Initialize custom methods with empty functions and optional callbacks
+    this.doComplete = [null, () => {}];
+    this.doInspect = [null, () => {}];
+    this.doHistory = [null, () => {}];
+    this.doIsComplete = [null, () => {}];
+    this.doShutdown = [null, () => {}];
+    this.doInstall = () => {};
+  }
+
+  /**
+   * Execute the init function after the object is created
+   */
+  init() {
+    this.doInit();
+  }
+
+  /**
+   * Execute the message function with the given input
+   * @param {(string|object)} msg - The input message
+   */
+  message(msg) {
+    this.doMessage(msg);
+  }
+
+  /**
+   * Execute the respond function with the given output
+   * @param {(string|object)} output - The output message
+   */
+  respond(output) {
+    this.doRespond(output);
+  }
+
+  /**
+   * Execute the execute function
+   */
+  execute() {
+    this.doExecute();
+  }
+
+  /**
+   * Check if the execution is complete
+   */
+  isComplete() {
+    return this.doIsComplete();
+  }
+
+  /**
+   * Perform a shutdown of the kernel
+   */
+  shutdown() {
+    this.doShutdown();
+  }
+
+  /**
+   * Perform an install of the kernel
+   */
+  install() {
+    this.doInstall();
+  }
+
+  // Export the MetaKernelInterface class
+  static get MetaKernelInterface() {
+    return MetaKernelInterface;
+  }
+}
+
+// Export the meta kernel interface
+module.exports = MetaKernelInterface.MetaKernelInterface;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var languageInterface = importer.import('kernel language interface');

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -464,7 +471,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up the environment for processing a list of image files.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
+const mkdirp = require('mkdirp');
+const { chext, chroot } = require('../Core');
+
+const MAX_EXLODE_FRAMES = 30;
+
+async function getImages(root) {
+  /**
+   * Returns an array of paths to copied images.
+   * @param {string} root - The root directory of the images.
+   * @returns {Promise&lt;string[]&gt;} An array of paths to copied images.
+   */
+  const [
+    images,
+    shaderlist,
+  ] = await Promise.all([
+    fs.promises.readFile('imagelist.txt', 'utf8'),
+    fs.promises.readFile('shaderlist.txt', 'utf8'),
+  ]);
+
+  const outputDir = path.join(path.dirname(root), path.basename(root) + '-menu');
+  const files = (
+    images
+     .split('\n')
+     .map((l) =&gt; l.split(/[\t\s]+/ig)[6])
+     .filter((i) =&gt; i)
+     .map((i) =&gt; path.join(root, `gfx/misc/${i}.tga`))
+  );
+
+  const result = await Promise.all(
+    files.map(async (file) =&gt; {
+      const outFile = chroot(file, root, outputDir);
+      await mkdirp(path.dirname(outFile));
+      await fs.promises.copyFile(file, outFile);
+      return outFile;
+    })
+  );
+
+  const shaderFiles = (
+    shaderlist
+     .split('\n')
+     .map((l) =&gt; l.trim())
+     .map((l) =&gt; l.startsWith('gen ')? l : '')
+     .filter((l) =&gt; l)
+     .map((l) =&gt; {
+        const match = l.match(/gen : (.*)/);
+        return match? path.join(root, `gfx/${match[1]}`) : null;
+      })
+  );
+
+  const shaderFilesCopy = shaderFiles.filter((file) =&gt; fs.existsSync(file));
+
+  const shaderFilesResult = await Promise.all(
+    shaderFilesCopy.map(async (file) =&gt; {
+      const outFile = chroot(file, root, outputDir);
+      await mkdirp(path.dirname(outFile));
+      await fs.promises.copyFile(file, outFile);
+      return outFile;
+    })
+  );
+
+  result.push(...shaderFilesResult);
+
+  return result;
+}
+
+module.exports = getImages;</code></pre></div><p>This code snippet sets up the environment for processing a list of image files.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Importing Modules:</strong></p>

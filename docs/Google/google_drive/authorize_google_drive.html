@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { google } = require('googleapis');
+const { GoogleAuth } = require('google-auth-library');
+
+// Define constants for profile path and credentials file
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const CREDENTIALS_FILE = './sheet to web-8ca5784e0b05.json';
+const GOOGLE_AUTH_SCOPE = [
+  'https://www.googleapis.com/auth/drive'
+];
+
+// Load credentials file from path
+function loadCredentials() {
+  const credentialsPath = fs.existsSync(CREDENTIALS_FILE)
+   ? path.resolve(CREDENTIALS_FILE)
+    : path.join(PROFILE_PATH, '.credentials/', CREDENTIALS_FILE);
+  return fs.readFileSync(credentialsPath, 'utf8');
+}
+
+// Load credentials from JSON string
+function parseCredentials(credentials) {
+  return JSON.parse(credentials);
+}
+
+// Authorize Google Drive
+async function authorizeDrive() {
+  // Load credentials
+  const credentialsStr = loadCredentials();
+  const credentials = parseCredentials(credentialsStr);
+
+  // Create GoogleAuth instance
+  const googleAuth = new GoogleAuth({
+    keyFile: credentials,
+    scopes: GOOGLE_AUTH_SCOPE
+  });
+
+  try {
+    // Get client instance
+    const client = await googleAuth.getClient();
+    // Get Google Drive API client
+    const drive = google.drive({ version: 'v3', auth: client });
+    return drive;
+  } catch (error) {
+    // Handle auth error
+    console.error('Auth error:', error);
+    throw error;
+  }
+}
+
+module.exports = authorizeDrive;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Variables</h3>
 <ul>
 <li>The code requires the following modules:

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * A utility function that logs a message to the console and returns a callback.
+ * The callback function returns a prefixed message.
+ * @param {string} message - The message to be logged and returned.
+ * @returns {function} A callback function that returns a prefixed message.
+ */
+function logger(message) {
+    // Log the message to the console
+    console.log(message);
+    
+    // Return a callback function that prefixes the input message
+    return (m) => `wtf? ${m}`;
+}
+
+/**
+ * A function that tests the logger utility.
+ * @returns {void}
+ */
+function test() {
+    // Call the logger function with multiple messages
+    const loggerInstance = logger('test')('another');
+    
+    // Log the result of the logger instance
+    console.log(loggerInstance);
+}
+
+// Call the test function
+test();</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>logger Function</h3>
 <ul>
 <li>A function <code>logger</code> is defined that takes a <code>message</code> parameter.</li>

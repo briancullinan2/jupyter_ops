@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,32 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>moveMouse</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Monitor } = require("node-screenshots");
+const MouseController = require('mouse-controller');
+
+/**
+ * Move the mouse cursor to the specified coordinates.
+ * 
+ * @param {number} x - The x-coordinate to move to (0 to 1).
+ * @param {number} y - The y-coordinate to move to (0 to 1).
+ */
+function moveMouse(x, y) {
+  // Get all available monitors
+  const monitors = Monitor.all();
+
+  // Sort monitors by their center x-coordinate
+  monitors.sort((a, b) => (a.x + a.width / 2) - (b.x + b.width / 2));
+
+  // Get the primary monitor
+  const primaryMonitor = monitors[0];
+
+  // Move the mouse to the specified coordinates on the primary monitor
+  const mouse = new MouseController();
+  mouse.move(x * primaryMonitor.width, y * primaryMonitor.height);
+}
+
+module.exports = moveMouse;</code></pre></div><p><strong>Function Breakdown: <code>moveMouse</code></strong></p>
 <h3>Overview</h3>
 <p>The <code>moveMouse</code> function moves the mouse cursor to a specified position on the primary monitor.</p>
 <h3>Requirements</h3>

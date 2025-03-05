@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -143,7 +150,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>filterCommand</code> that processes a user command, checks for existing events, and prepares data for potential execution.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importCore } = require('../Core');
+const {
+  getPermissions,
+  getDaysEvents,
+  getSettings,
+  getOauthClient
+} = importCore([
+  'rpc permissions',
+  'days events',
+  'google contact settings',
+  'import google calendar api'
+]);
+
+const filterCommand = async (command, date, id, userId) =&gt; {
+  const calendarId = 'Commands';
+  const settings = await getSettings(userId);
+  const props = {...settings };
+
+  try {
+    props.result = await importCore.interpret(command);
+    const alreadyRun = await getDaysEvents(new Date(date), { calendarId })
+     .then(events =&gt; events
+       .filter(event =&gt; event.summary.includes('Result:') &amp;&amp; event.summary.includes(id))
+       .length &gt; 0);
+
+    props.already = alreadyRun;
+    return props;
+  } catch (error) {
+    if (error.message.includes('Nothing found')) {
+      props.result = null;
+    } else {
+      console.error(error);
+      throw error;
+    }
+    return props;
+  }
+};
+
+module.exports = filterCommand;</code></pre></div><p>This code defines a function <code>filterCommand</code> that processes a user command, checks for existing events, and prepares data for potential execution.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

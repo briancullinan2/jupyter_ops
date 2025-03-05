@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet checks the operating system and sets a variable <code>notebook</code> to the path of a Jupyter Notebook file based on the platform.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and configure async behavior
+const async = require('async');
+const path = require('path');
+
+// Define a function to get the platform-independent notebook path
+function getNotebookPath() {
+    /**
+     * Returns the path to the notebook file based on the current platform.
+     * @returns {string} Path to the notebook file.
+     */
+    const notebookPaths = {
+        win32: 'How to install Docker on Windows.ipynb',
+        darwin: 'How to install Docker on Mac.ipynb',
+    };
+
+    // Use the process.platform property to determine the current platform
+    return notebookPaths[process.platform] || 'docker not installed';
+}
+
+// Use async to execute the code in the notebook
+async.getNotebookPath(function(err, notebookPath) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    // Check if the notebook path is valid (not "docker not installed")
+    if (notebookPath!== 'docker not installed') {
+        // If valid, you can use the notebook path (e.g., to load the notebook in a Jupyter environment)
+        console.log(`Notebook path: ${notebookPath}`);
+    } else {
+        console.log('docker not installed');
+    }
+});</code></pre></div><p>This code snippet checks the operating system and sets a variable <code>notebook</code> to the path of a Jupyter Notebook file based on the platform.</p>
 <p><strong>Breakdown:</strong></p>
 <ol>
 <li><p><strong><code>$.async();</code></strong>:</p>

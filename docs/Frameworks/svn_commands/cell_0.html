@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -84,7 +91,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Docker Container Run Command</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Constants
+SVN_HOSTNAME="svnserve"
+SVN_CONTAINER_NAME="${SVN_HOSTNAME}"
+SVN_PORT=3690
+
+# Define environment variables
+export SVN_HOSTNAME
+export SVN_CONTAINER_NAME
+export SVN_PORT
+
+# Create container with restart policy
+docker run \
+    --name "${SVN_CONTAINER_NAME}" \
+    --restart always \
+    -p "${SVN_PORT}:${SVN_PORT}" \
+    --volume "/Users/briancullinan/Documents/svn:/var/opt/svn:rw" \
+    --log-driver json-file \
+    --log-opt max-size=10m \
+    gcscaglia/docker-svnserve:latest</code></pre></div><h3>Docker Container Run Command</h3>
 <h4>Overview</h4>
 <p>The provided command runs a Docker container for <code>svnserve</code> version control server.</p>
 <h4>Options</h4>

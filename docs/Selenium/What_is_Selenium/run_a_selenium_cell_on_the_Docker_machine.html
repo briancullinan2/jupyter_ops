@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>runSeleniumCell</code> that sets up a Selenium WebDriver session and executes a user-specified search.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+
+/**
+ * Runs a Selenium cell with the given search query.
+ * 
+ * @param {string} search - The search query to execute.
+ * @returns {Promise&lt;object&gt;} A promise resolving to the context object containing the result.
+ */
+function runSeleniumCell(search) {
+    // Import the required modules
+    const { createWebdriverClient, formUtilities } = importer.import([
+        'webdriver client',
+        'form utilities',
+    ]);
+
+    // Create a promise to handle the asynchronous execution
+    const promise = createWebdriverClient();
+    
+    // Flag to track if an error occurred
+    let isError = false;
+
+    // Return the promise chain
+    return promise
+       .then(client =&gt; {
+            // Create the context object
+            const context = {
+                client,
+                browser: client,
+            };
+
+            // Import and assign the required functions to the context
+            Object.assign(context, importer.import([
+                'decrypt password',
+                'all elements xpath',
+                'get all elements until',
+               'resize selenium window',
+                'click spa link',
+            ], context));
+
+            // Import and assign the form utilities to the context
+            Object.assign(context, formUtilities(context));
+
+            // If no search query is provided, return the context
+            if (!search) {
+                return context;
+            }
+
+            // Import and execute the search query in the context
+            return importer.import(search, context);
+        })
+       .catch(error =&gt; {
+            // If an error occurs, set the error flag and rethrow the error
+            isError = true;
+            throw error;
+        });
+}
+
+// Export the runSeleniumCell function
+module.exports = runSeleniumCell;
+
+// TODO: Remove this if statement and use a more robust solution to handle $ dependency
+if (typeof $!== 'undefined') {
+    console.log('This should not be hit!');
+    $.async().then(() =&gt; {
+        runSeleniumCell('test docker selenium')
+           .then(result =&gt; $.sendResult(result))
+           .catch(error =&gt; $.sendError(error));
+    });
+}</code></pre></div><p>This code defines a function <code>runSeleniumCell</code> that sets up a Selenium WebDriver session and executes a user-specified search.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

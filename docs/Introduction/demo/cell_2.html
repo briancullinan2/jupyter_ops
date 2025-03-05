@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import the core module.
+ * @module Core
+ */
+
+const { Core } = require('./Core');
+
+/**
+ * Search notebooks for keywords, return the top search result and the contextual markdown and code cells.
+ * @async
+ * @function interpret
+ * @param {string[]} keywords - An array of keywords to search for.
+ * @returns {Promise<object>} A promise resolving to an object containing the search results.
+ */
+async function interpret(keywords) {
+    const core = new Core();
+    
+    // Validate input parameters
+    if (!keywords ||!keywords.length) {
+        return {
+            error: 'Invalid input: keywords array must not be empty',
+        };
+    }
+
+    try {
+        const result = await core.searchNotebooks(keywords);
+        return {
+            result: result[0],
+            markdown: result[0].markdown,
+            code: result[0].code,
+        };
+    } catch (error) {
+        return {
+            error: error.message,
+        };
+    }
+}
+
+/**
+ * Send the result to the client.
+ * @function sendResult
+ * @param {object} result - The result object to send.
+ */
+function sendResult(result) {
+    const $ = global.$; // Assuming $ is a global variable
+    if ($) {
+        $.sendResult(result);
+    } else {
+        console.error('Error: $ is not defined');
+    }
+}
+
+// Usage example
+const keywords = ['docker selenium', 'docker vnc'];
+const interpreter = interpret(keywords);
+interpreter.then(sendResult).catch((error) => {
+    console.error('Error sending result:', error);
+});</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('./Core');
 </code></pre>

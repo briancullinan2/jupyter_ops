@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -171,7 +178,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { Visitor } = require('./codegeneration/javascript/Visitor');
+const { Generator } = require('./codegeneration/java/Generator');
+const { Generator: PythonGenerator } = require('./codegeneration/python/Generator');
+const loadJSTree = require('./lexingAndParsing');
+
+// Define the loadTree function
+const loadTree = (input) => {
+  // Lexing and parsing the user input
+  // TODO: implement lexing and parsing logic
+  return {}; // placeholder for tree object
+};
+
+/**
+ * Compose a transpiler and return a compile method that will use that transpiler
+ * to visit the tree and return generated code.
+ *
+ * @param {function} loadTree - the method takes in user input and returns a tree.
+ * @param {Visitor} visitor - the input-language visitor.
+ * @param {class} generator - the class that generates code for another language.
+ * 
+ * @returns {object} the compile function to be exported
+ */
+const composeTranspiler = (loadTree, visitor, generator) => {
+  const transpiler = new generator(visitor);
+  
+  return {
+    /**
+     * Compile the input using the composed transpiler.
+     *
+     * @param {string} input - the user input to be compiled.
+     * @returns {string} the compiled code.
+     */
+    compile: (input) => {
+      const tree = loadTree(input);
+      return transpiler.start(tree);
+    }
+  };
+};
+
+// Export the transpilers for different languages
+module.exports = {
+  /**
+   * JavaScript transpilers.
+   */
+  javascript: {
+    /**
+     * Java transpiler for JavaScript.
+     */
+    java: composeTranspiler(
+      loadJSTree,
+      new JavascriptANTLRVisitor(),
+      getJavaGenerator
+    ),
+    /**
+     * Python transpiler for JavaScript.
+     */
+    python: composeTranspiler(
+      loadJSTree,
+      new JavascriptANTLRVisitor(),
+      getPythonGenerator
+    ),
+    // TODO: add more transpilers for other languages
+  },
+  /**
+   * Other languages transpilers.
+   */
+  // TODO: add more languages
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">const getJavascriptVisitor = require('./codegeneration/javascript/Visitor');
 const getJavaGenerator = require('./codegeneration/java/Generator');

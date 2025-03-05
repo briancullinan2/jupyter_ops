@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Moves the mouse cursor to the specified coordinates.
+ * 
+ * @param {number} x The x-coordinate of the cursor.
+ * @param {number} y The y-coordinate of the cursor.
+ */
+module.exports = moveMouse;
+
+const { platform } = require('os');
+const { join } = require('path');
+
+// Define the path to the dynamic library based on the platform
+const dynamicLib = {
+  win32: join(__dirname, '../mouse.dll'),
+  linux: join(__dirname, '../mouse.so'),
+  darwin: join(__dirname, '../mouse.dylib')
+}[platform];
+
+// Load the dynamic library and function
+const ffi = require('ffi-rs');
+const lib = ffi.Library('mouse', {
+  SetMousePosition: ['void', ['float', 'float']]
+});
+
+/**
+ * Closes the dynamic library.
+ */
+function closeLibrary() {
+  ffi.close('mouse');
+}
+
+/**
+ * The main moveMouse function.
+ * 
+ * @param {number} x The x-coordinate of the cursor.
+ * @param {number} y The y-coordinate of the cursor.
+ */
+function moveMouse(x, y) {
+  try {
+    // Load the function
+    lib.SetMousePosition(x || 0, y || 0);
+  } catch (error) {
+    console.error('Error moving mouse:', error);
+  } finally {
+    closeLibrary();
+  }
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js module that exports a function <code>moveMouse</code> to move the mouse cursor to a specified position <code>(x, y)</code>.</p>
 <p><strong>Requires and Imports</strong></p>
 <ul>

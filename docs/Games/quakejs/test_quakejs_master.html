@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -123,7 +130,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code fetches and scans information about Quake 3 servers.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Core = require('../Core');
+const { connect, scanServer, Connection } = require('quakejs');
+
+class QuakeJSConnection {
+  constructor(host ='master.quakejs.com', port = 27950, reconnectTimeout = 60000) {
+    this.host = host;
+    this.port = port;
+    this.reconnectTimeout = reconnectTimeout;
+    this.connection = null;
+  }
+
+  async connect() {
+    try {
+      this.connection = new Connection(this.host, this.port);
+      return await this.connection.getConnectedServers();
+    } catch (err) {
+      console.error('Error connecting to server:', err);
+      await this.reconnect();
+    }
+  }
+
+  async reconnect() {
+    setTimeout(async () => {
+      await this.connect();
+    }, this.reconnectTimeout);
+  }
+
+  async scanServer(server) {
+    try {
+      const info = await this.connection.getServerInfo(server);
+      return { server, info };
+    } catch (err) {
+      console.log(`Failed to scan ${server.addr}:${server.port}, ${err.message}`);
+    }
+  }
+
+  async start() {
+    while (true) {
+      const servers = await this.connect();
+      for (const server of servers) {
+        console.log(server);
+        await this.scanServer(server);
+      }
+      await this.reconnect();
+    }
+  }
+}
+
+const quakeJSConnection = new QuakeJSConnection();
+
+quakeJSConnection.start();
+
+module.exports = quakeJSConnection;</code></pre></div><p>This code fetches and scans information about Quake 3 servers.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -162,7 +169,82 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Core = require('../Core');
+
+const {
+  loadWebDriverSessions,
+  verifySession,
+  lockPromise,
+  updateOrAddSession
+} = Core;
+
+const DEFAULT_TIMEOUT = 10000;
+
+/**
+ * Retrieves active WebDriver sessions from storage.
+ * If inactive sessions are requested, filters sessions by last usage date.
+ *
+ * @param {object} client - WebDriver client instance
+ * @param {boolean} inactive - If true, returns inactive sessions (default: false)
+ * @param {number} [timeout=DEFAULT_TIMEOUT] - Session inactivity timeout in milliseconds
+ * @returns {Promise&lt;object[]&gt;} Resolved array of available sessions
+ */
+function getSessions(client, inactive = false, timeout = DEFAULT_TIMEOUT) {
+  // Retrieve all sessions from storage
+  const sessions = loadWebDriverSessions();
+
+  // Keep track of original client ID
+  const originalSessionId = client.sessionId;
+
+  // Filter sessions based on input parameters
+  const sessionsToCheck = sessions.filter(session =&gt; {
+    // Only consider sessions with a valid timestamp
+    return typeof session[0]!== 'undefined' &amp;&amp; session[0]!== null;
+  });
+
+  // Filter inactive sessions by last usage date
+  if (inactive) {
+    sessionsToCheck.filter(session =&gt; {
+      // Consider the session inactive if its last usage date is older than the specified timeout
+      return (new Date()).getTime() - session[0] &gt; timeout;
+    });
+  }
+
+  // Use Promise.all to check all sessions concurrently
+  const checkSessions = sessionsToCheck.map(session =&gt; {
+    // Create a resolve function to be used when verifying the session
+    const resolve = (result) =&gt; {
+      // If a decent session is found, cancel further checks
+      if (inactive &amp;&amp; result!== undefined &amp;&amp; result!== null) {
+        return Promise.resolve();
+      }
+      // Otherwise, return the resolved result
+      return Promise.resolve(result);
+    };
+
+    // Return a function that verifies the session and resolves the promise
+    return () =&gt; verifySession(client, session)
+     .catch((error) =&gt; console.error(error))
+     .then((result) =&gt; resolve(result));
+  });
+
+  // Use lockPromise to prevent concurrent access to the sessions
+  return lockPromise(checkSessions, timeout)
+   .then((results) =&gt; {
+      // Restore the original client session ID
+      client.sessionId = originalSessionId;
+
+      // Remove duplicates and filter out null/undefined values
+      return results.filter((result) =&gt; result!== undefined &amp;&amp; result!== null).filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos);
+    });
+}
+
+module.exports = {
+  getSessions,
+  lockPromise,
+  updateOrAddSession
+};</code></pre></div><h2>Function Breakdown</h2>
 <h3>getSessions Function</h3>
 <h3>Parameters</h3>
 <ul>

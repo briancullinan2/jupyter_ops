@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -127,7 +134,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>QuickSort Algorithm Implementation</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def quicksort(nums: list, start: int = 0, end: int = None) -> None:
+    """
+    Sorts the input list in-place using the Quicksort algorithm.
+
+    Args:
+        nums (list): The list to be sorted.
+        start (int, optional): The starting index of the sublist to be sorted. Defaults to 0.
+        end (int, optional): The ending index of the sublist to be sorted. Defaults to the last index of the list.
+
+    Returns:
+        None
+    """
+    if end is None:
+        end = len(nums) - 1
+    
+    if start >= end:
+        return
+
+    partition_index = partition(nums, start, end)
+    quicksort(nums, start, partition_index - 1)
+    quicksort(nums, partition_index + 1, end)
+
+
+def partition(nums: list, start: int, end: int) -> int:
+    """
+    Partitions the sublist around the pivot element.
+
+    Args:
+        nums (list): The list to be partitioned.
+        start (int): The starting index of the sublist.
+        end (int): The ending index of the sublist.
+
+    Returns:
+        int: The index of the pivot element after partitioning.
+    """
+    pivot = nums[end]
+    i = start - 1
+    for j in range(start, end):
+        if nums[j] <= pivot:
+            i += 1
+            nums[i], nums[j] = nums[j], nums[i]
+    nums[i + 1], nums[end] = nums[end], nums[i + 1]
+    return i + 1
+
+
+# Test the implementation
+a = [2, 9, 2, 3, 5, 8, 1]
+quicksort(a)
+assert a == [1, 2, 2, 3, 5, 8, 9]
+print('All passed!')</code></pre></div><h3>QuickSort Algorithm Implementation</h3>
 <h4>Overview</h4>
 <p>The provided code implements the QuickSort algorithm, a popular sorting technique that uses a divide-and-conquer approach to sort an array of elements.</p>
 <h4>Functions</h4>

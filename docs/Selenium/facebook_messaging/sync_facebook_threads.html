@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a system designed to monitor and process Facebook threads.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { runSeleniumCell } = require('../Core');
+const fs = require('fs');
+const path = require('path');
+
+// Get user's profile path
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+// Define project path
+const projectPath = path.join(PROFILE_PATH, 'Conversations');
+
+// Initialize promises
+const $ = $.async();
+
+// Run Selenium cell commands
+const runCommands = runSeleniumCell([
+  'log in facebook',
+  'list facebook threads',
+ 'messages from facebook',
+]);
+
+// Initialize objects to store loginFacebook, listFacebookThreads, and readFacebookThread functions
+const { loginFacebook, listFacebookThreads, readFacebookThread } = await runCommands;
+
+// Load existing threads from file
+let threads;
+try {
+  threads = JSON.parse(fs.readFileSync(projectPath + '/facebook-threads.json'));
+} catch (error) {
+  threads = [];
+}
+
+// Get the required threads from the existing list
+const requiredThreads = threads.slice(450, 600);
+
+// Run promises for the required threads
+const runPromises = requiredThreads.map((thread) => readFacebookThread(thread));
+
+// Run all promises
+const result = await Promise.all(runPromises);
+
+// Call listFacebookThreads() when all threads have been processed
+if (threads.length > 0) {
+  await listFacebookThreads();
+}
+
+// Save processed threads back to file
+fs.writeFileSync(projectPath + '/facebook-threads.json', JSON.stringify([...threads,...result]));</code></pre></div><p>This code snippet appears to be part of a system designed to monitor and process Facebook threads.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong> It imports necessary modules for interacting with Facebook, file system operations, and running Selenium commands.</p></li>

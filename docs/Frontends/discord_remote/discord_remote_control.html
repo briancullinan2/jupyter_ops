@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand,
+} = require('discord-api');
+const { interactionsCommands } = require('discord-gateway');
+const {
+  discordExpress,
+  closeExpress,
+} = require('discord-remote-proxy-server');
+const { doMention, doPrivate } = require('discord-llm-interactions');
+
+// Define bot commands
+const ALL_COMMANDS = ['remote'];
+
+/**
+ * Get bot commands for a specific guild or global.
+ * @param {string} [guildId] - Guild ID (optional)
+ * @returns {Promise&lt;Array&gt;} - Array of bot commands
+ */
+async function activityCommands(guildId = null) {
+  // Get existing commands for the guild or global
+  const commandResult = await getCommands(guildId);
+  const commands = commandResult.map((command) =&gt; command.name);
+
+  // Update interactions commands with custom handlers
+  interactionsCommands['startActivity'] = discordExpress;
+  interactionsCommands['endActivity'] = closeExpress;
+  interactionsCommands['promptMention'] = doMention;
+  interactionsCommands['promptPrivate'] = doPrivate;
+
+  // Define command definition
+  const cmdDef = {
+    name:'remote',
+    description: 'Launch the remote',
+    type: 4,
+    handler: 2,
+  };
+
+  // Register or update command
+  if (!commands.includes('remote')) {
+    // Register new command
+    await registerCommand(cmdDef, null, guildId);
+  } else {
+    // Get existing command
+    const existingCmd = commandResult.find((c) =&gt; c.name ==='remote');
+    if (
+      cmdDef.name!== existingCmd.name ||
+      cmdDef.description!== existingCmd.description
+    ) {
+      // Update existing command
+      await updateCommand(cmdDef, null, existingCmd.id, guildId);
+    }
+  }
+
+  // Delete unused commands
+  const toRemove = commandResult.filter((c) =&gt;!ALL_COMMANDS.includes(c.name));
+  for (const cmd of toRemove) {
+    await deleteCommand(cmd.id, guildId);
+  }
+
+  // Return updated commands
+  return await getCommands();
+}
+
+module.exports = activityCommands;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <p>The code imports various modules from the <code>importer</code> object:</p>
 <pre><code class="language-javascript">const {

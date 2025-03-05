@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const esprima = require('esprima');
+const escodegen = require('escodegen');
+const assert = require('assert');
+
+const code = `
+var importer = require('../Core');
+function name(params) {
+    return importer.interpret('this is a describe request');
+}
+console.log()
+`;
+
+const parseCode = () =&gt; JSON.stringify(esprima.parse(code), null, 2);
+const generateCode = (node) =&gt; escodegen.generate(node);
+
+const testProgram = (ctx) =&gt; {
+    const programNode = selectTree('Program', ctx);
+    assert.strictEqual(programNode.type, 'Program', 'Just a single node, not a list');
+    return programNode;
+};
+
+const testSelect = (ctx) =&gt; {
+    const programNode = selectTree(['Program'], ctx);
+    assert.strictEqual(programNode.length, 1, 'A list with one root node');
+    assert.strictEqual(programNode[0].type, 'Program', 'Root node is Program');
+
+    const identifierCallExpressions = selectTree(['Identifier', 'CallExpression'], ctx);
+    assert(identifierCallExpressions.length &gt; 6, 'List of concatenated elements');
+    assert(identifierCallExpressions[6].type === 'Identifier', '6th element is an Identifier');
+
+    const identifierNames = selectTree(['//[@type="Identifier"]', './@name'], ctx);
+    assert(identifierNames.length &gt; 3, 'List of identifier names');
+    assert(identifierNames[3] === 'params', '4th element is \'params\'');
+
+    const callExpressions = selectTree(['CallExpression, Identifier'], ctx);
+    assert(callExpressions.length &gt; 6, 'List of concatenated elements');
+    assert(callExpressions[6].type === 'Identifier', '7th element is an Identifier');
+};
+
+module.exports = {
+    testProgram,
+    testSelect
+};
+
+const $ = esprima.parse(code);
+if ($!== undefined) {
+    const output = testProgram($);
+    testSelect($);
+    const generatedCode = generateCode(output);
+    console.log(generatedCode);
+}
+
+// TODO: Compare with acorn</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">var esprima = require('esprima'); 
 var escodegen = require('escodegen');

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -145,7 +152,82 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be designed for automating logins to various websites. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { JSDOM } = require('jsdom');
+const { URL } = require('url');
+
+/**
+ * Extracts necessary information for multi-login from a given hostname.
+ * @param {string} hostname The hostname to extract login information from.
+ * @returns {object} - An object containing username and password fields.
+ */
+function getCredentials(hostname) {
+    const domainsToCredentials = {
+        'google.com': { usernameField: 'identifier', passwordField: 'password' },
+        'linkedin.com': { usernameField: 'username', passwordField: 'password' },
+        // Add more domains as needed
+    };
+
+    return domainsToCredentials[hostname] || {};
+}
+
+/**
+ * Fills all form fields with the given values.
+ * @param {object} client The puppeteer browser client.
+ * @param {object} obj The object containing form field values.
+ * @returns {Promise} A promise that resolves with the URL of the current page.
+ */
+async function fillAll(client, obj) {
+    const promises = [];
+    for (const [key, value] of Object.entries(obj)) {
+        if (!value || await client.isExisting(key)) {
+            promises.push(client.click(key));
+        }
+        if (value!== false) {
+            promises.push(client.keys(value));
+        }
+    }
+    await Promise.all(promises);
+    return client.getUrl();
+}
+
+/**
+ * Performs multi-login on the given URL.
+ * @param {object} client The puppeteer browser client.
+ * @param {string} baseUrl The base URL to login to.
+ * @returns {Promise<string>} A promise that resolves with the URL of the current page.
+ */
+async function multiLogin(client, baseUrl) {
+    try {
+        console.log(baseUrl);
+        const parts = new URL(baseUrl);
+        const login = getCredentials(parts.hostname);
+        const usernameField = Object.keys(login).find((k) => k.match(/user|mail|name/ig));
+        const passwordField = Object.keys(login).find((k) => k.match(/pass/ig));
+
+        if (!usernameField ||!passwordField) {
+            throw new Error(`Unable to determine username and password fields for ${parts.hostname}`);
+        }
+
+        await client.goto(baseUrl);
+
+        if (await client.isExisting('a[href*="Sign in"]') || await client.isExisting('a[href*="Login"]')) {
+            await client.click('a[href*="Sign in"]', 'a[href*="Login"]');
+        }
+
+        const obj = {
+            [`${login[usernameField]}`]: login[usernameField],
+            [`${login[passwordField]}`]: login[passwordField],
+        };
+
+        return await fillAll(client, obj);
+    } catch (error) {
+        console.error(error);
+        return '';
+    }
+}
+
+module.exports = multiLogin;</code></pre></div><p>This code snippet appears to be designed for automating logins to various websites. Here's a breakdown:</p>
 <p><strong>Variables:</strong></p>
 <ul>
 <li><code>url</code>:  A module for parsing URLs.</li>

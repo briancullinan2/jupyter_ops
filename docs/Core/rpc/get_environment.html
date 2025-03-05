@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -186,7 +193,105 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an environment configuration object using Mustache templating.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const process = require('process');
+const path = require('path');
+const Mustache = require('mustache');
+
+// Define environment variables template
+class EnvironmentTemplate {
+    constructor(key) {
+        this.templates = {
+            DEFAULT: {
+                PROFILE_PATH: '{{#HOME}}{{{.}}}{{/HOME}}{{^HOME}}{{#HOMEPATH}}{{{.}}}{{/HOMEPATH}}{{^HOMEPATH}}{{{USERPROFILE}}}{{/HOMEPATH}}{{/HOME}}',
+                DOWNLOAD_PATH: '{{{PROFILE_PATH}}}/Downloads',
+               ...this.getSystemVariables()
+            },
+            BRIAN_RESUME: {
+                CONTACT_DOCID: '1F07qFwP2LO14dJkExjaMHDfuNcB8HfuBQJWiVlmzrAQ',
+                CONTACT_REDIRECT: 'https://briancullinan.com'
+            },
+            ILLUMINATI: {
+                CONTACT_DOCID: '16b1Z0sQkYhtMUfP7qMRL3vRBPWQsRbSlntURkMqWGX0',
+                CONTACT_REDIRECT: 'https://www.shopilluminati.com/contact'
+            },
+            GOOGLE_RPC: {
+                HOME: '',
+                HOMEPATH: '',
+                USERPROFILE: '',
+                PROFILE_PATH: ''
+            },
+            TEST_SPREADSHEET: {
+                PROJECT_OUTPUT: './.output/'
+            },
+            DEPLOY: {
+                GOOGLE_STORAGE_CREDENTIALS: '{{{PROFILE_PATH}}}/.credentials/spahaha-ea443-a78ab2269985.json',
+                GOOGLE_STORAGE_PROJECT:'spahaha-ea443',
+            },
+            STUDY_REMOTE: {
+                DOCID: '1EGwxT6InTXuvpLujnwKV3asEFDZhhZk2LdosjW2Tz_M',
+                SECRETS_PATH: './client_secret.json',
+                FUNCTIONS_URL: 'https://us-central1-sheet-to-web.cloudfunctions.net/studyRPC',
+                AUTH_REDIRECT: '{{{FUNCTIONS_URL}}}?function=receiveCode',
+                DOMAIN: 'https://studysauce.sheet-to-web.com',
+                BUCKET:'studysauce.sheet-to-web.com',
+                GOOGLE_STORAGE_CREDENTIALS: './spahaha-ea443-a78ab2269985.json',
+                GOOGLE_STORAGE_PROJECT:'spahaha-ea443'
+            },
+            STUDY_LOCAL: {
+                DOCID: '1EGwxT6InTXuvpLujnwKV3asEFDZhhZk2LdosjW2Tz_M',
+                SECRETS_PATH: '{{PROFILE_PATH}}./client_secret.json',
+                FUNCTIONS_URL: 'http://localhost:8010/sheet-to-web/us-central1/studyRPC',
+                AUTH_REDIRECT: '{{{FUNCTIONS_URL}}}?function=receiveCode',
+                DOMAIN: 'http://localhost:8080',
+                BUCKET:'studysauce.sheet-to-web.com',
+                GOOGLE_STORAGE_CREDENTIALS: '{{{PROFILE_PATH}}}/.credentials/spahaha-ea443-a78ab2269985.json',
+                GOOGLE_STORAGE_PROJECT:'spahaha-ea443',
+                PROJECT_OUTPUT: './.output/'
+            }
+        };
+        this.key = key;
+    }
+
+    getSystemVariables() {
+        try {
+            return {
+                HOME: process.env.HOME,
+                HOMEPATH: process.env.HOMEPATH,
+                USERPROFILE: process.env.USERPROFILE
+            };
+        } catch (e) {
+            // Handle error case
+            return {};
+        }
+    }
+
+    render(template) {
+        return Mustache.render(template, Object.assign({}, process.env, this.getSystemVariables()));
+    }
+
+    assign() {
+        const envs = Object.assign({}, this.templates.DEFAULT, this.templates[this.key] || {});
+        const env = Object.keys(envs).reduce((env, e) =&gt; {
+            env[e.toUpperCase()] = this.render(envs[e]);
+            return env;
+        }, {});
+        return Object.assign(process.env, env);
+    }
+}
+
+// Export function to get environment
+function getEnvironment(environment = '') {
+    const template = new EnvironmentTemplate(environment);
+    return template.assign();
+}
+
+// Assign environment variables
+getEnvironment();
+
+// Export function to get environment
+module.exports = getEnvironment;</code></pre></div><p>This code defines an environment configuration object using Mustache templating.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

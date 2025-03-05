@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -168,7 +175,121 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { 
+  postMessageImageAttachment, 
+  triggerTyping, 
+  createMessage, 
+  updateInteraction, 
+} = require('./importer').import('discord-api');
+
+const { safeurl } = require('./importer').import('domain-cache-tools');
+const { selectModel, 
+  askLlamaToWriteStory, 
+  askLlamaToWriteBusinessPlan, 
+  askLlamaWriteEssay, 
+} = require('./importer').import([
+ 'select-llm',
+  'write-creatively-llm',
+  'business-plan-llm',
+ 'research-paper-llm',
+]);
+
+const md = new (require('remarkable'))({ html: true, xhtmlOut: true, breaks: true });
+
+/**
+ * Determines the response to a prompt based on the chosen model and prompt content.
+ * 
+ * @param {Object} interaction - The Discord interaction containing prompt and options.
+ * @param {string} [promptModel='DeepSeek'] - The model to use for generating the response.
+ * @returns {Promise} - A promise resolving to the generated response.
+ */
+async function doDistill(interaction, promptModel = 'DeepSeek') {
+  if (typeof promptModel!== 'function') {
+    promptModel = await selectModel(promptModel);
+  }
+
+  console.log(`Using model: ${promptModel.name}`);
+
+  // Trigger typing indicator to show that the model is working
+  await triggerTyping(interaction.channel_id);
+
+  // Determine if the prompt requires a short or long response
+  const q1 = `Is this prompt looking for a very long answer, Yes or No?\n${interaction.data.options[0].value}`;
+  const a1 = await promptModel(q1);
+  if (a1.match(/no/gi)) {
+    // Short response, return the answer directly
+    return updateInteraction(a1.substring(0, 1800), interaction.id, interaction.token);
+  }
+
+  // Long response, trigger interaction update to show progress
+  await updateInteraction('This could take a while...', interaction.id, interaction.token);
+
+  // Determine which tool to use for generating the response
+  const q2 = `Should I use the tool "essay" writer, "business plan", "creative story", or "default" prompter for this response?\n${interaction.data.options[0].value}`;
+  const a2 = await promptModel(q2);
+
+  console.log(`AI: ${a2}`);
+
+  // Select the appropriate tool based on the user's preference
+  let result;
+  switch (a2.toLowerCase()) {
+    case 'essay':
+      result = await askLlamaWriteEssay(interaction.data.options[0].value, null, promptModel);
+      break;
+    case 'business':
+      result = await askLlamaToWriteBusinessPlan(interaction.data.options[0].value, null, promptModel);
+      break;
+    case'story':
+      result = await askLlamaToWriteStory(interaction.data.options[0].value, null, promptModel);
+      break;
+    default:
+      result = await promptModel(interaction.data.options[0].value);
+      break;
+  }
+
+  // Render the response as HTML and post it to the channel
+  const mdHtml = md.render(result);
+  return postMessageImageAttachment(interaction.data.options[0].value, Buffer.from(mdHtml), interaction.channel_id, 'text/html');
+}
+
+/**
+ * A wrapper function for doDistill with a default model.
+ * 
+ * @param {Object} interaction - The Discord interaction containing prompt and options.
+ * @returns {Promise} - A promise resolving to the generated response.
+ */
+async function doReason(interaction) {
+  return doDistill(interaction, 'Qwen');
+}
+
+/**
+ * A wrapper function for doDistill with a default model.
+ * 
+ * @param {Object} interaction - The Discord interaction containing prompt and options.
+ * @returns {Promise} - A promise resolving to the generated response.
+ */
+async function doInstruct(interaction) {
+  return doDistill(interaction, 'Llama-3-70B');
+}
+
+/**
+ * A wrapper function for doDistill with a default model.
+ * 
+ * @param {Object} interaction - The Discord interaction containing prompt and options.
+ * @returns {Promise} - A promise resolving to the generated response.
+ */
+async function doMistral(interaction) {
+  return doDistill(interaction, 'Mistral');
+}
+
+module.exports = {
+  doDistill,
+  doReason,
+  doInstruct,
+  doMistral,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Imports</h3>
 <p>The code imports various functions and tools from other modules using the <code>importer</code> object. The imported functions include:</p>
 <ul>

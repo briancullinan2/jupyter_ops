@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -156,7 +163,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { glob } = require('glob');
+const importer = require('../Core');
+
+const getEnvironment = importer.import('get environment');
+const importSheet = importer.import('sheet marketing import');
+const streamToGoogle = importer.import('stream to google');
+
+class FileExporter {
+  constructor(env) {
+    this.env = env;
+    this.streamToGoogle = this.getStreamToGoogle();
+  }
+
+  getStreamToGoogle() {
+    if ([
+      'LOCAL',
+      'TEST',
+    ].some(mode =&gt; this.env.includes(mode)) &amp;&amp;!this.env.includes('DEPLOY')) {
+      return importer.import('test stream to output');
+    }
+    return importer.import('upload files google cloud');
+  }
+
+  initSync() {
+    getEnvironment(this.env || process.env.ENVIRONMENT || 'TEST_SPREADSHEET');
+  }
+
+  async importTest(link, domain) {
+    this.initSync();
+
+    const resources = await importSheet(link, domain);
+    const filesToCopy = this.getFilesToCopy(resources, process.env.PROJECT_OUTPUT || '');
+    const newFiles = this.getFilesToCopy(resources, process.env.DOWNLOAD_PATH);
+    const desktopFiles = this.getFilesToCopy(resources, path.join(process.env.DOWNLOAD_PATH, '../Desktop'));
+    const pictureFiles = this.getFilesToCopy(resources, path.join(process.env.DOWNLOAD_PATH, '../Pictures'));
+    return Promise.all(newFiles.concat(desktopFiles).concat(pictureFiles)
+     .map(file =&gt; this.streamToGoogle(path.basename(file), domain, fs.createReadStream(file)))
+     .catch(e =&gt; console.error(e)));
+  }
+
+  getFilesToCopy(resources, directory) {
+    const existingFiles = glob(resources.map(r =&gt; `**/*${path.basename(r)}*`), directory);
+    return resources.filter(r =&gt; existingFiles.filter(e =&gt; e.includes(path.basename(r))).length === 0);
+  }
+}
+
+module.exports = (link, domain, env = process.env.ENVIRONMENT) =&gt; {
+  return new FileExporter(env).importTest(link, domain);
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requires and Imports</h4>
 <ul>
 <li><code>fs</code> and <code>path</code> modules are required for file system operations.</li>

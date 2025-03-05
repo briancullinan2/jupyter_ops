@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -234,7 +241,146 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to load and compose a panoramic image from Google Street View using the Google Maps Platform API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const { GoogleAuth } = require('google-auth-library');
+const google = require('googleapis');
+const importer = require('../Core');
+const { getRpcFromSpec } = importer.import('get rpc from spec');
+const { authorize } = importer.import('google oauth token client');
+const { createCanvas, loadImage } = require('canvas');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const authKey = fs.readFileSync(path.join(PROFILE_PATH, '.credentials/key.txt')).toString().trim();
+
+const _panoClient = new google.maps.StreetViewService();
+const _location = null;
+const _zoom = 0;
+const _panoId = null;
+const _count = 0;
+const _total = 0;
+const _canvas = createCanvas(1, 1);
+const _ctx = _canvas.getContext('2d');
+let rotation = 0;
+let copyright = '';
+let onError = null;
+let onSizeChange = null;
+let onPanoramaLoad = null;
+
+/**
+ * @description Sets the progress of the panorama composition
+ * @param {number} p The progress percentage
+ */
+function setProgress(p) {
+  if (onError) {
+    onError(p);
+  } else {
+    console.error(`Progress: ${p}%`);
+  }
+}
+
+/**
+ * @description Throws an error if an error handler is provided
+ * @param {string} message The error message
+ */
+function throwError(message) {
+  if (onError) {
+    onError(message);
+  } else {
+    console.error(message);
+  }
+}
+
+/**
+ * @description Adapts the texture to the current zoom level
+ */
+function adaptTextureToZoom() {
+  const w = 416 * Math.pow(2, _zoom - 0.7);
+  const h = 416 * Math.pow(2, _zoom - 2);
+  _canvas.width = w;
+  _canvas.height = h;
+  _ctx.translate(_canvas.width, 0);
+  _ctx.scale(-1, 1);
+}
+
+/**
+ * @description Composes a tile from the given texture
+ * @param {number} x The x-coordinate of the tile
+ * @param {number} y The y-coordinate of the tile
+ * @param {HTMLImageElement} texture The texture to compose
+ */
+function composeFromTile(x, y, texture) {
+  _ctx.drawImage(texture, x * 512, y * 512);
+  _count++;
+  setProgress(Math.round(_count * 100 / _total));
+  if (_count === _total) {
+    if (onPanoramaLoad) {
+      onPanoramaLoad();
+    }
+  }
+}
+
+/**
+ * @description Composes the panorama from the tiles
+ * @async
+ */
+async function composePanorama() {
+  setProgress(0);
+  console.log(`Loading panorama for zoom ${_zoom}...`);
+  const w = Math.pow(2, _zoom);
+  const h = Math.pow(2, _zoom - 1);
+  const url = `http://maps.google.com/cbk?output=tile&panoid=${_panoId}&zoom=0`;
+  _count = 0;
+  _total = w * h;
+  const now = new Date().getTime();
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const imgPromise = new Promise((resolve) => {
+        const img = new Image();
+        img.addEventListener('load', () => {
+          resolve();
+        });
+        img.src = `${url}&x=${x}&y=${y}&${now}`;
+      });
+      await imgPromise;
+      composeFromTile(x, y, new Image());
+    }
+  }
+}
+
+/**
+ * @description Loads the panorama from the given location
+ * @async
+ * @param {Array<number>} location The location coordinates
+ * @param {function} onLoad The callback function to call when the panorama is loaded
+ */
+async function loadPanorama(location, onLoad) {
+  console.log('Load for', location);
+  const result = await mapsClient.maps.streetview.metadata.get({
+    location: location[0] + ',' + location[1],
+    heading: 0,
+    key: authKey,
+  });
+  onPanoramaLoad = onLoad;
+  _panoId = result.body.pano_id;
+  _location = location;
+  await composePanorama();
+}
+
+/**
+ * @description Sets the zoom level of the panorama
+ * @param {number} z The new zoom level
+ */
+function setZoom(z) {
+  _zoom = z;
+  adaptTextureToZoom();
+}
+
+module.exports = {
+  setZoom,
+  loadPanorama,
+};</code></pre></div><p>This code snippet is designed to load and compose a panoramic image from Google Street View using the Google Maps Platform API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

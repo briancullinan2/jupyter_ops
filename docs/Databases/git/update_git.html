@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>resetRebaseInstallEvent</code> that automates a process for a Git repository.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { createNewEvent } = require('../Core/importer');
+
+/**
+ * Resets the rebase install event for a given project.
+ * 
+ * @param {String} project - The path to the project directory. Defaults to the root of the jupytangular repository.
+ * @returns {Object} The new event created.
+ */
+function resetRebaseInstallEvent(project = path.resolve(__dirname, '..', '..', 'jupytangular')) {
+    const script = `git auto rebase &amp;&amp; npm install`;
+    const options = { cwd: project };
+
+    return createNewEvent('spawn child process', JSON.stringify({ script, options }, null, 4), { calendarId: 'aws' });
+}
+
+module.exports = resetRebaseInstallEvent;</code></pre></div><p>This code defines a function <code>resetRebaseInstallEvent</code> that automates a process for a Git repository.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

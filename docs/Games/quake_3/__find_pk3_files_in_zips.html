@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -205,7 +212,95 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet extracts files from <code>.zip</code> archives within a specified directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const StreamZip = require('node-stream-zip');
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const { listInProject } = importer.import('list project files');
+
+/**
+ * Extracts a zip file to a specified directory.
+ * 
+ * @param {string} zipFile The path to the zip file.
+ * @param {function} cb The callback function.
+ */
+async function readZip(zipFile) {
+    try {
+        const zip = new StreamZip({
+            file: zipFile,
+            storeEntries: true
+        });
+
+        await new Promise((resolve, reject) =&gt; {
+            zip.on('ready', () =&gt; {
+                resolve();
+            });
+            zip.on('error', err =&gt; {
+                reject(err);
+            });
+        });
+
+        // Take a look at the files
+        console.log(`Entries read: ${zip.entriesCount} ${path.basename(zipFile)}`);
+
+        const pk3s = Object.values(zip.entries())
+           .filter(entry =&gt; entry.name.match(/\.pk3/i));
+
+        // Extract PK3 files
+        const extractedFiles = await Promise.all(pk3s.map(async (pk3, i) =&gt; {
+            const pk3Path = path.join('/Volumes/External/Personal/planet_quake_data/bestmaps', path.basename(pk3.name));
+            if (!fs.existsSync(pk3Path)) {
+                try {
+                    await new Promise((resolve, reject) =&gt; {
+                        zip.extract(pk3.name, pk3Path, err =&gt; {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve();
+                            }
+                        });
+                    });
+                    console.log(`Extracted ${pk3.name}`);
+                } catch (err) {
+                    console.log(`Extract error ${err}`);
+                }
+            }
+            return pk3Path;
+        }));
+
+        zip.close();
+        return extractedFiles;
+    } catch (err) {
+        if (err.message.includes('Bad archive')) {
+            console.log(`Bad archive: ${err}`);
+            return [];
+        } else {
+            console.log(err);
+            return [];
+        }
+    }
+}
+
+/**
+ * Extracts all zip files in a directory and its subdirectories.
+ * 
+ * @param {string} root The root directory.
+ * @returns {Promise&lt;string[]&gt;} A promise that resolves with an array of extracted file paths.
+ */
+async function extractAll(root) {
+    const results = await listInProject(root || '/Volumes/External/Personal/planet_quake_data/lvlworld/new-2020-11-6', '**/*.zip');
+    console.log(results);
+    return await Promise.all(results.map(async (r) =&gt; {
+        try {
+            return await readZip(r);
+        } catch (err) {
+            return [];
+        }
+    })).then(results =&gt; results.flat());
+}
+
+module.exports = extractAll;</code></pre></div><p>This code snippet extracts files from <code>.zip</code> archives within a specified directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

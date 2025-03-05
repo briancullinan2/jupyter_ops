@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -127,7 +134,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants for inviting thresholds and timeouts
+const INVITING_THRESHOLD = 500; // in milliseconds
+const TIMEOUT_BETWEEN_INVITES = 50; // in milliseconds
+const TIMEOUT_BETWEEN_CHECKS = 5000; // in milliseconds
+const TIMEOUT_CONNECT = 1000; // in milliseconds
+
+// Function to get all uninvited users
+function getUninvited() {
+    /**
+     * Retrieves all uninvited users by finding elements with 'fundraiser' action and 'Invite' text,
+     * and then filtering out the already invited users.
+     *
+     * @returns {Array<WebdriverIO.Element>} An array of uninvited user elements.
+     */
+    const invites = getAllXPathBrowser('//*[contains(@action, "fundraiser")]//a[contains(., "Invite")]');
+    const already = getAllXPathBrowser('//a[contains(@tabindex, "-1")]');
+    return invites.filter(b =>!already.includes(b));
+}
+
+// Function to click on all uninvited users sequentially
+function clickUninvited() {
+    /**
+     * Sends a click event to all uninvited users in sequence, with a short delay between each click.
+     *
+     * @returns {Promise<void>} A promise that resolves when all clicks are executed.
+     */
+    return new Promise(resolve => {
+        const invites = getUninvited();
+        const clicks = [];
+        invites.forEach((b, i) => {
+            const timeout = i * TIMEOUT_BETWEEN_INVITES;
+            clicks.push(() => b.click());
+            setTimeout(() => {
+                if (invites.length - 1 === i) {
+                    // Scroll to the bottom of the list
+                    const friendList = getAllXPathBrowser('//*[contains(@data-testid, "fundraiser_invite_dialog_friend_list")]//*[contains(@class, "uiScrollableAreaWrap")]');
+                    friendList.scrollTop = 100000000000;
+                    resolve(clicks.reduce((promise, click) => promise.then(() => click()), Promise.resolve()));
+                }
+            }, timeout);
+        });
+    });
+}
+
+// Function to click on the connect button
+function clickConnect() {
+    /**
+     * Finds and clicks on the 'Connect' button, with a short timeout to account for any potential delays.
+     *
+     * @returns {Promise<void>} A promise that resolves when the connect button is clicked.
+     */
+    const connect = getAllXPathBrowser('//button[contains(., "Connect")]');
+    if (connect) {
+        connect[0].click();
+        return new Promise(resolve => setTimeout(resolve, TIMEOUT_CONNECT));
+    }
+    return Promise.resolve();
+}
+
+// Function to check if there are any uninvited users left to invite
+function hasUninvited() {
+    /**
+     * Checks if there are any uninvited users left by calling getUninvited and checking if the result is not empty.
+     *
+     * @returns {boolean} A boolean indicating whether there are any uninvited users left.
+     */
+    return getUninvited().length > 0;
+}
+
+// Main function to invite all uninvited users
+function inviteAll() {
+    /**
+     * Continuously invites all uninvited users until there are no more users left to invite.
+     *
+     * @returns {Promise<void>} A promise that resolves when all invitations are completed.
+     */
+    return new Promise((resolve, reject) => {
+        let timeoutId;
+        function checkAndInvite() {
+            clickUninvited().then(() => {
+                if (hasUninvited()) {
+                    timeoutId = setTimeout(checkAndInvite, TIMEOUT_BETWEEN_CHECKS);
+                } else {
+                    clearTimeout(timeoutId);
+                    resolve();
+                }
+            }).catch(reject);
+        }
+        checkAndInvite();
+    });
+}
+
+module.exports = inviteAll;</code></pre></div><p><strong>Function Breakdown</strong></p>
 <h3>getUninvited()</h3>
 <ul>
 <li>Returns an array of XPath elements that contain the string &quot;Invite&quot; within an element with an action attribute containing &quot;fundraiser&quot; but do not contain an element with a tabindex attribute ending with &quot;-1&quot;.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet installs and configures Jupyter Notebook and JupyterLab, enabling the use of Python kernels and extensions.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to check Jupyter version
+check_jupyter_version() {
+  jupyter --version
+}
+
+# Function to install Jupyter and its extensions
+install_jupyter() {
+  # Install Jupyter
+  pip3 install jupyter
+
+  # Install JupyterLab
+  pip3 install jupyterlab
+
+  # Install notebook
+  pip3 install notebook
+
+  # Enable Jupyter Notebook server extension
+  jupyter notebook --NotebookApp.token=''
+
+  # Enable JupyterLab
+  jupyter lab --sys-prefix
+}
+
+# Main function
+main() {
+  # Check Jupyter version
+  check_jupyter_version
+
+  # Install Jupyter and its extensions
+  install_jupyter
+}
+
+# Call main function
+main</code></pre></div><p>This code snippet installs and configures Jupyter Notebook and JupyterLab, enabling the use of Python kernels and extensions.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>jupyter --version</code></strong>: This command displays the installed version of Jupyter Notebook.</p></li>

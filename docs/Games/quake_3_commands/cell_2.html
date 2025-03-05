@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+function launch_server {
+  local config_file=$1
+  local binary_path=$2
+
+  # Open the client with the given config file
+  open -n "$binary_path" --args \
+    +set fs_game "$(dirname "$config_file")" \
+    +set dedicated 1 \
+    +exec "$config_file"
+}
+
+## Server Configuration
+----------------------
+
+### Server Configuration Files
+
+* `server.cfg`: The main configuration file for the server.
+* `server1.cfg`: An optional configuration file for server 1.
+* `server2.cfg`: An optional configuration file for server 2.
+
+### Server Binaries
+
+* `ioquake3.app`: The Quake 3 Arena client binary.
+* `ioq3ded.x86_64`: The Quake 3 Arena dedicated server binary.
+
+## Launch Servers
+-----------------
+</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code appears to be a series of shell commands used to launch and configure a Quake III Arena game server.</p>
 <h3>Command 1: Launching the Game Server</h3>
 <pre><code class="language-bash">open -n./ioquake3-1.36.app --args +set fs_game baseq3 +set dedicated 1 +exec./server.cfg

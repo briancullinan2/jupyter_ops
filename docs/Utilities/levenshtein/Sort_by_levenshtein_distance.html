@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,32 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>levSort</code> that sorts an array of objects based on their Levenshtein distance to a given search string.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { levDist } = require('../Core');
+
+/**
+ * Sorts an array of items based on the Levenshtein distance to a search term.
+ * 
+ * @param {array} arr The array of items to sort.
+ * @param {string} search The search term to compare against.
+ * @param {function} [getStr = a => a] A function to extract the string to compare from each item.
+ * @returns {array} The sorted array.
+ */
+function levSort(arr, search, getStr = a => a) {
+    // Make a copy of the array to avoid modifying the original
+    const result = [...arr];
+    
+    // Sort the array based on the Levenshtein distance
+    result.sort((a, b) => 
+        // Calculate the Levenshtein distance to the search term
+        levDist(getStr(a), search) - levDist(getStr(b), search)
+    );
+    
+    // Return the sorted array
+    return result;
+}
+
+module.exports = levSort;</code></pre></div><p>This code defines a function called <code>levSort</code> that sorts an array of objects based on their Levenshtein distance to a given search string.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Import:</strong></p>

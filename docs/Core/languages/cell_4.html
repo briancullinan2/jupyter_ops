@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules and extract the necessary functions
+const { replaceCore, getArrayAST } = require('../Core');
+
+// Define a function to process the code
+const processCode = (code) =&gt; {
+    // Replace the core requirement in the code
+    const modifiedCode = replaceCore(code);
+    
+    // Return the modified code as plain text
+    return modifiedCode;
+};
+
+// Check if the $ object is defined
+if (typeof $!== 'undefined') {
+    // Use the mime function to set the content type and return the processed code
+    $({ 'text/plain': processCode(`
+var getArrayAST = importer.import('get ast path array');
+`)}); 
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core')
 var {replaceCore} = importer.import('replace core requirement')

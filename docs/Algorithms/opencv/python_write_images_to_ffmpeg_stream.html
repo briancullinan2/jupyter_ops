@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -194,7 +201,98 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import cv2
+import numpy as np
+import pyautogui
+import subprocess
+import time
+import signal
+import psutil
+
+# Constants
+FPS = 30
+WIDTH, HEIGHT = 1920, 1080
+QUALITY = 90
+
+def stream_images(stream_name):
+    """
+    Stream your desktop or application window in real-time using FFmpeg and OpenCV.
+
+    Args:
+        stream_name (str): Your YouTube Live stream name.
+
+    Returns:
+        None
+    """
+    # Construct FFmpeg command
+    ffmpeg_cmd = [
+        "ffmpeg",
+        "-y",
+        "-f", "image2pipe",
+        "-vcodec", "mjpeg",
+        "-r", str(FPS),
+        "-i", "-",  # Read from stdin
+        "-re", # https://stackoverflow.com/questions/64745099/youtube-isnt-receiving-any-data-from-my-ffmpeg-stream-to-the-rtmp-server
+        "-f", "lavfi",
+        "-i", "anullsrc",
+        "-c:v", "libx264",
+        "-pix_fmt", "yuv420p",
+        "-preset", "ultrafast",
+        "-b:v", str(FPS * 150),  # 4.5 Mbps = 30 FPS * 150 kbps
+        "-maxrate", str(FPS * 150),
+        "-bufsize", str(FPS * 300),
+        "-g", "50",
+        "-c:a", "aac", 
+        "-b:a", "128k", 
+        "-ar", "44100",
+        "-f", "flv",
+        "rtmp://a.rtmp.youtube.com/live2/" + stream_name
+    ]
+
+    # OpenCV VideoWriter (encoding to a memory buffer)
+    fourcc = cv2.VideoWriter_fourcc(*"XVID")
+    video_writer = cv2.VideoWriter("temp.avi", fourcc, FPS, (WIDTH, HEIGHT))
+
+    try:
+        while True:
+            # Take a screenshot and save it to a file
+            screenshot = pyautogui.screenshot()
+            screenshot_np = np.array(screenshot)
+
+            # Convert RGB to BGR (OpenCV uses BGR format)
+            screenshot_cv = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2BGR)
+
+            # Resize screenshot to desired width and height
+            screenshot_cv = cv2.resize(screenshot_cv, (WIDTH, HEIGHT))
+
+            # Write frame to OpenCV VideoWriter
+            video_writer.write(screenshot_cv)
+
+            # Get encoded frame and send to FFmpeg
+            _, jpeg_bytes = cv2.imencode(".jpg", screenshot_cv, [int(cv2.IMWRITE_JPEG_QUALITY), QUALITY])
+            for i in range(15):
+                process = subprocess.Popen(ffmpeg_cmd, stdin=subprocess.PIPE)
+                for _ in range(15):
+                    process.stdin.write(jpeg_bytes.tobytes())
+                    time.sleep(1 / FPS)
+
+    except KeyboardInterrupt:
+        print("\nCTRL+C detected. Exiting...")
+    finally:
+        # Cleanup
+        video_writer.release()
+        process.stdin.close()
+        os.killpg(os.getpgid(process.pid), signal.SIGTERM) 
+        process.wait()
+
+# Usage
+# stream_images("your_stream_name")
+
+__all__ = {
+  "stream_images": stream_images
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Libraries</h3>
 <p>The code starts by importing various libraries:</p>
 <ul>

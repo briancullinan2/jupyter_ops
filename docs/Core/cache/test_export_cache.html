@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./create_cell_cache.html">create cell cache</a> | <a href="./__update_code_cell.html">, update code cell</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code defines a module that provides a function, <code>createExportCache</code>, for managing export caching, likely within a Jupyter Notebook environment. It exports this function and conditionally initializes the cache based on the presence of a global variable <code>$</code>.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "test export cache"</code></pre><h1>test export cache</h1>
 
@@ -121,24 +127,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a module for managing export caching, likely for Jupyter Notebook environments.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Import:</strong></p>
-<ul>
-<li><code>importer = require('../Core')</code>: Imports a module named <code>Core</code> from a parent directory.</li>
-<li><code>createExportCache = importer.import('create export cache')</code>: Imports a specific function named <code>createExportCache</code> from the <code>Core</code> module.</li>
-</ul></li>
-<li><p><strong>Export:</strong></p>
-<ul>
-<li><code>module.exports = createExportCache</code>: Exports the <code>createExportCache</code> function, making it available for use in other modules.</li>
-</ul></li>
-<li><p><strong>Initialization (Conditional):</strong></p>
-<ul>
-<li><code>if(typeof $ !== 'undefined') { createExportCache() }</code>: Checks if a global variable <code>$</code> exists. If it does, it calls the <code>createExportCache</code> function, likely indicating an initialization step within a specific environment (possibly a Jupyter Notebook context).</li>
-</ul></li>
-</ol>
-<p>In essence, this code defines a module that provides a function for creating an export cache, which is likely used to optimize and manage the loading of exported data or modules within Jupyter Notebooks or a related environment.</p>
 
 </body>
 

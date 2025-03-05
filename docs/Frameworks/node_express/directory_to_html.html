@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,92 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const console = require('console');
+
+class DirectoryToHtml {
+  /**
+   * Returns an HTML directory listing for a given directory path.
+   *
+   * @param {string} dirPath - The path to the directory to list.
+   * @param {boolean} back - Whether to include a link to the parent directory.
+   * @param {string} session - The session ID to include in the URL.
+   * @returns {string} The HTML directory listing.
+   */
+  async directoryToHtml(dirPath, back, session) {
+    // Check if the directory path exists
+    if (!fs.existsSync(dirPath)) {
+      throw new Error(`Directory ${dirPath} does not exist.`);
+    }
+
+    // Get the list of files in the directory
+    const files = await fs.readdir(dirPath);
+
+    // Create the HTML output
+    let htmlOutput = `
+      &lt;html&gt;
+        &lt;head&gt;
+          &lt;style&gt;
+            /* CSS styles for the directory listing */
+          &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;h1&gt;Directory Listing&lt;/h1&gt;
+          &lt;ul&gt;
+    `;
+
+    // Add a link to the parent directory if requested
+    if (back) {
+      htmlOutput += `
+        &lt;li&gt;&lt;a href="../?t=${Date.now()}${session? ('&amp;session=' + session) : ''}"&gt;Parent directory/&lt;/a&gt;&lt;/li&gt;
+      `;
+    }
+
+    // Iterate over the files in the directory
+    files.forEach((file) =&gt; {
+      const filePath = path.join(dirPath, file);
+      const fileStat = fs.statSync(filePath);
+
+      // Skip hidden files and files with explicit content
+      if (
+        file.startsWith('.') ||
+        file.includes('nsfw') ||
+        file.includes('naked') ||
+        file.includes('x-rated')
+      ) {
+        return;
+      }
+
+      // Add a link to the file or directory
+      if (fileStat.isDirectory()) {
+        htmlOutput += `
+          &lt;li&gt;
+            &lt;a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}/?t=${Date.now()}${session? ('&amp;session=' + session) : ''}"&gt;${file}/&lt;/a&gt;
+          &lt;/li&gt;
+        `;
+      } else {
+        htmlOutput += `
+          &lt;li&gt;
+            &lt;a href="${encodeURIComponent(file).replaceAll('(', '%28').replaceAll(')', '%29')}?t=${Date.now()}${session? ('&amp;session=' + session) : ''}"&gt;${file}&lt;/a&gt;
+          &lt;/li&gt;
+        `;
+      }
+    });
+
+    // Close the HTML output
+    htmlOutput += `
+      &lt;/ul&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  `;
+
+    return htmlOutput;
+  }
+}
+
+module.exports = DirectoryToHtml;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies</h3>
 <ul>
 <li><code>fs</code> (File System) module is required for file system operations.</li>

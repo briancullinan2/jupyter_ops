@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -210,7 +217,134 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const bodyParser = require('body-parser');
+const express = require('express');
+const helmet = require('helmet'); // added for security
+const morgan = require('morgan'); // added for logging
+const { createServer } = require('http');
+
+// Initialize express app
+const app = express();
+
+// Set middlewares
+const server = createServer(app);
+app.use(helmet()); // security
+app.use(morgan('combined')); // logging
+app.use(bodyParser.json()); // support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ // support URL-encoded bodies
+    extended: true
+}));
+
+// Initialize router
+const router = express.Router();
+
+// TODO: implement authentication using a library like passport.js
+router.post('/auth/oauth2/authorize', (req, res) => {
+    res.status(200).json({ message: 'Authorized' });
+});
+
+router.post('/auth/oauth2/token', (req, res) => {
+    res.status(200).json({
+        access_token: 'access_token',
+        token_type: 'bearer',
+        expires_in: 28800,
+        refresh_token:'refresh_token',
+    });
+});
+
+// ELOQUA endpoints
+router.post('/bulk/2.0/contacts/imports', (req, res) => {
+    res.status(201).json({
+        uri: '/imports/1234',
+        message: 'Import created',
+    });
+});
+
+router.post('/bulk/2.0/imports/:importId/data', (req, res) => {
+    res.status(204).send({ uri: '/imports/1234' });
+});
+
+router.post('/bulk/2.0/syncs', (req, res) => {
+    res.status(201).json({
+        uri: '/sync/1234',
+        message: 'Sync created',
+    });
+});
+
+let alternateImportStatus = true;
+router.get('/bulk/2.0/sync/:syncId', (req, res) => {
+    res.status(200).json({
+        status: alternateImportStatus? 'active' :'success',
+    });
+    alternateImportStatus =!alternateImportStatus;
+});
+
+// ELOQUA custom data object
+router.post('/bulk/2.0/customobjects/:objectId/imports', (req, res) => {
+    res.status(201).json({
+        uri: '/imports/1234',
+        message: 'Import created',
+    });
+});
+
+// ZUORA endpoints
+router.post('/object/export', (req, res) => {
+    res.status(201).json({
+        Id: '1234',
+        message: 'Export created',
+    });
+});
+
+let alternateExportStatus = true;
+router.get('/object/export/:exportId', (req, res) => {
+    res.status(200).json({
+        Status: alternateExportStatus? 'Processing' : 'Completed',
+        FileId: '1234',
+    });
+    alternateExportStatus =!alternateExportStatus;
+});
+
+router.get('/files/:fileId', (req, res) => {
+    res.status(200).send(`RatePlanCharge.Description,Account.Id
+support,123456
+premium,654321
+`);
+});
+
+// Use router
+app.use(router);
+
+// Restart server function
+function restart() {
+    if (app) {
+        app.close();
+    }
+    app = server.listen(18888).on('error', (e) => {
+        if (e.code!== 'EADDRINUSE') {
+            throw e;
+        }
+    });
+    return app;
+}
+
+// Initialize server on start
+restart();
+
+// Export app
+app.restart = restart;
+module.exports = app;
+
+// Exit handlers
+process.on('SIGTERM', () => {
+    app.close();
+    process.exit(0);
+});
+process.on('SIGINT', () => {
+    app.close();
+    process.exit(0);
+});</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code sets up an Express.js server with several endpoints for different systems: OAuth2 authentication, Eloqua (a marketing automation platform), and Zuora (a cloud-based billing and revenue management solution).</p>
 <p><strong>Requires and Setup</strong></p>
 <p>The code starts by requiring necessary modules:</p>

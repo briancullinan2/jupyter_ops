@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -583,7 +590,492 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>(function(root) {
+
+/**********************************************************************
+ *
+ * BitView
+ *
+ * BitView provides a similar interface to the standard
+ * DataView, but with support for bit-level reads / writes.
+ *
+ **********************************************************************/
+
+class BitView {
+  constructor(source, byteOffset, byteLength) {
+    if (!(source instanceof ArrayBuffer || (typeof Buffer!== 'undefined' &amp;&amp; source instanceof Buffer))) {
+      throw new Error('Must specify a valid ArrayBuffer or Buffer.');
+    }
+
+    byteOffset = byteOffset || 0;
+    byteLength = byteLength || source.byteLength || source.length;
+
+    this._view = new Uint8Array(source, byteOffset, byteLength);
+
+    this.bigEndian = false;
+
+    this.buffer = source instanceof ArrayBuffer? source : Buffer.from(source);
+    this.byteLength = byteLength;
+
+    this._scratch = new DataView(new ArrayBuffer(8));
+  }
+
+  _setBit(offset, on) {
+    if (on) {
+      this._view[offset &gt;&gt; 3] |= 1 &lt;&lt; (offset &amp; 7);
+    } else {
+      this._view[offset &gt;&gt; 3] &amp;= ~(1 &lt;&lt; (offset &amp; 7));
+    }
+  }
+
+  getBits(offset, bits, signed) {
+    const available = (this._view.length * 8 - offset);
+    if (bits &gt; available) {
+      throw new Error(`Cannot get ${bits} bit(s) from offset ${offset}, ${available} available`);
+    }
+
+    let value = 0;
+    for (let i = 0; i &lt; bits;) {
+      const remaining = bits - i;
+      const bitOffset = offset &amp; 7;
+      const currentByte = this._view[offset &gt;&gt; 3];
+
+      const read = Math.min(remaining, 8 - bitOffset);
+
+      const mask = this.bigEndian? ~(0xFF &lt;&lt; read) : ~0xFF;
+      const readBits = (this.bigEndian? (currentByte &gt;&gt; (8 - read - bitOffset)) : (currentByte &gt;&gt; bitOffset)) &amp; mask;
+
+      value &lt;&lt;= read;
+      value |= readBits;
+
+      offset += read;
+      i += read;
+    }
+
+    if (signed) {
+      if (bits!== 32 &amp;&amp; value &amp; (1 &lt;&lt; (bits - 1))) {
+        value |= -1 ^ ((1 &lt;&lt; bits) - 1);
+      }
+
+      return value;
+    }
+
+    return value &gt;&gt;&gt; 0;
+  }
+
+  setBits(offset, value, bits) {
+    const available = (this._view.length * 8 - offset);
+    if (bits &gt; available) {
+      throw new Error(`Cannot set ${bits} bit(s) from offset ${offset}, ${available} available`);
+    }
+
+    for (let i = 0; i &lt; bits;) {
+      const remaining = bits - i;
+      const bitOffset = offset &amp; 7;
+      const byteOffset = offset &gt;&gt; 3;
+
+      const wrote = Math.min(remaining, 8 - bitOffset);
+
+      const mask = this.bigEndian? ~(~0 &lt;&lt; wrote) : ~(0xFF &lt;&lt; wrote);
+      const writeBits = (this.bigEndian? (value &gt;&gt; (bits - i - wrote)) &amp; mask : value &amp; mask);
+      const destMask = this.bigEndian? ~(mask &lt;&lt; (8 - bitOffset - wrote)) : ~(mask &lt;&lt; bitOffset);
+
+      this._view[byteOffset] = (this._view[byteOffset] &amp; destMask) | (writeBits &lt;&lt; (8 - bitOffset - wrote));
+
+      offset += wrote;
+      i += wrote;
+    }
+  }
+
+  getBoolean(offset) {
+    return this.getBits(offset, 1, false)!== 0;
+  }
+
+  getInt8(offset) {
+    return this.getBits(offset, 8, true);
+  }
+
+  getUint8(offset) {
+    return this.getBits(offset, 8, false);
+  }
+
+  getInt16(offset) {
+    return this.getBits(offset, 16, true);
+  }
+
+  getUint16(offset) {
+    return this.getBits(offset, 16, false);
+  }
+
+  getInt32(offset) {
+    return this.getBits(offset, 32, true);
+  }
+
+  getUint32(offset) {
+    return this.getBits(offset, 32, false);
+  }
+
+  getFloat32(offset) {
+    this._scratch.setUint32(0, this.getUint32(offset));
+    return this._scratch.getFloat32(0);
+  }
+
+  getFloat64(offset) {
+    this._scratch.setUint32(0, this.getUint32(offset));
+    this._scratch.setUint32(4, this.getUint32(offset + 32));
+    return this._scratch.getFloat64(0);
+  }
+
+  setBoolean(offset, value) {
+    this.setBits(offset, value? 1 : 0, 1);
+  }
+
+  setInt8(offset, value) {
+    this.setBits(offset, value, 8);
+  }
+
+  setUint8(offset, value) {
+    this.setBits(offset, value, 8);
+  }
+
+  setInt16(offset, value) {
+    this.setBits(offset, value, 16);
+  }
+
+  setUint16(offset, value) {
+    this.setBits(offset, value, 16);
+  }
+
+  setInt32(offset, value) {
+    this.setBits(offset, value, 32);
+  }
+
+  setUint32(offset, value) {
+    this.setBits(offset, value, 32);
+  }
+
+  setFloat32(offset, value) {
+    this._scratch.setFloat32(0, value);
+    this.setBits(offset, this._scratch.getUint32(0), 32);
+  }
+
+  setFloat64(offset, value) {
+    this._scratch.setFloat64(0, value);
+    this.setBits(offset, this._scratch.getUint32(0), 32);
+    this.setBits(offset + 32, this._scratch.getUint32(4), 32);
+  }
+
+  getArrayBuffer(offset, byteLength) {
+    const buffer = new Uint8Array(byteLength);
+    for (let i = 0; i &lt; byteLength; i++) {
+      buffer[i] = this.getUint8(offset + (i * 8));
+    }
+    return buffer;
+  }
+}
+
+class BitStream {
+  constructor(source, byteOffset, byteLength) {
+    if (!(source instanceof BitView || (source instanceof ArrayBuffer || (typeof Buffer!== 'undefined' &amp;&amp; source instanceof Buffer)))) {
+      throw new Error('Must specify a valid BitView, ArrayBuffer or Buffer');
+    }
+
+    if (source instanceof BitView) {
+      this._view = source;
+    } else {
+      this._view = new BitView(source, byteOffset, byteLength);
+    }
+
+    this._index = 0;
+    this._startIndex = 0;
+    this._length = this._view.byteLength * 8;
+  }
+
+  get index() {
+    return this._index - this._startIndex;
+  }
+
+  set index(value) {
+    this._index = value + this._startIndex;
+  }
+
+  get length() {
+    return this._length - this._startIndex;
+  }
+
+  set length(value) {
+    this._length = value + this._startIndex;
+  }
+
+  get bitsLeft() {
+    return this._length - this._index;
+  }
+
+  get byteIndex() {
+    return Math.ceil(this._index / 8);
+  }
+
+  set byteIndex(value) {
+    this._index = value * 8;
+  }
+
+  get buffer() {
+    return this._view.buffer;
+  }
+
+  get view() {
+    return this._view;
+  }
+
+  get bigEndian() {
+    return this._view.bigEndian;
+  }
+
+  set bigEndian(value) {
+    this._view.bigEndian = value;
+  }
+
+  readBits(bits, signed) {
+    const val = this._view.getBits(this._index, bits, signed);
+    this._index += bits;
+    return val;
+  }
+
+  writeBits(value, bits) {
+    this._view.setBits(this._index, value, bits);
+    this._index += bits;
+  }
+
+  readBoolean() {
+    return this._view.getBoolean(this._index++);
+  }
+
+  readInt8() {
+    return this._view.getInt8(this._index++);
+  }
+
+  readUint8() {
+    return this._view.getUint8(this._index++);
+  }
+
+  readInt16() {
+    return this._view.getInt16(this._index++);
+  }
+
+  readUint16() {
+    return this._view.getUint16(this._index++);
+  }
+
+  readInt32() {
+    return this._view.getInt32(this._index++);
+  }
+
+  readUint32() {
+    return this._view.getUint32(this._index++);
+  }
+
+  readFloat32() {
+    return this._view.getFloat32(this._index++);
+  }
+
+  readFloat64() {
+    return this._view.getFloat64(this._index++);
+  }
+
+  writeBoolean(value) {
+    this._view.setBoolean(this._index++, value);
+  }
+
+  writeInt8(value) {
+    this._view.setInt8(this._index++, value);
+  }
+
+  writeUint8(value) {
+    this._view.setUint8(this._index++, value);
+  }
+
+  writeInt16(value) {
+    this._view.setInt16(this._index++, value);
+  }
+
+  writeUint16(value) {
+    this._view.setUint16(this._index++, value);
+  }
+
+  writeInt32(value) {
+    this._view.setInt32(this._index++, value);
+  }
+
+  writeUint32(value) {
+    this._view.setUint32(this._index++, value);
+  }
+
+  writeFloat32(value) {
+    this._view.setFloat32(this._index++, value);
+  }
+
+  writeFloat64(value) {
+    this._view.setFloat64(this._index++, value);
+  }
+
+  readASCIIString(bytes) {
+    return readASCIIString(this, bytes);
+  }
+
+  readUTF8String(bytes) {
+    return readUTF8String(this, bytes);
+  }
+
+  writeASCIIString(string, bytes) {
+    writeASCIIString(this, string, bytes);
+  }
+
+  writeUTF8String(string, bytes) {
+    writeUTF8String(this, string, bytes);
+  }
+
+  readBitStream(bitLength) {
+    const slice = new BitStream(this._view);
+    slice._startIndex = this._index;
+    slice._index = this._index;
+    slice.length = bitLength;
+    this._index += bitLength;
+    return slice;
+  }
+
+  writeBitStream(stream, length) {
+    if (!length) {
+      length = stream.bitsLeft;
+    }
+
+    while (length &gt; 0) {
+      const bitsToWrite = Math.min(length, 32);
+      this.writeBits(stream.readBits(bitsToWrite), bitsToWrite);
+      length -= bitsToWrite;
+    }
+  }
+
+  readArrayBuffer(byteLength) {
+    const buffer = this._view.getArrayBuffer(this._index, byteLength);
+    this._index += (byteLength * 8);
+    return buffer;
+  }
+
+  writeArrayBuffer(buffer, byteLength) {
+    this.writeBitStream(new BitStream(buffer), byteLength * 8);
+  }
+}
+
+// AMD / RequireJS
+if (typeof define!== 'undefined' &amp;&amp; define.amd) {
+  define(function() {
+    return {
+      BitView: BitView,
+      BitStream: BitStream
+    };
+  });
+}
+// Node.js
+else if (typeof module!== 'undefined' &amp;&amp; module.exports) {
+  module.exports = {
+    BitView: BitView,
+    BitStream: BitStream
+  };
+}
+
+}(this));
+
+function readASCIIString(stream, bytes) {
+  return readString(stream, bytes, false);
+}
+
+function readUTF8String(stream, bytes) {
+  return readString(stream, bytes, true);
+}
+
+function readString(stream, bytes, utf8) {
+  if (bytes === 0) {
+    return '';
+  }
+
+  let i = 0;
+  let chars = [];
+  let append = true;
+  if (!bytes) {
+    bytes = Math.floor((stream._length - stream._index) / 8);
+  }
+
+  while (i &lt; bytes) {
+    const c = stream.readUint8();
+
+    if (c === 0x00) {
+      append = false;
+
+      if (!stream.bitsLeft) {
+        break;
+      }
+    }
+
+    if (append) {
+      chars.push(c);
+    }
+
+    i++;
+  }
+
+  const string = String.fromCharCode.apply(null, chars);
+  if (utf8) {
+    try {
+      return decodeURIComponent(escape(string));
+    } catch (e) {
+      return string;
+    }
+  } else {
+    return string;
+  }
+}
+
+function writeASCIIString(stream, string, bytes) {
+  const length = bytes || string.length + 1; // + 1 for NULL
+
+  for (let i = 0; i &lt; length; i++) {
+    stream.writeUint8(i &lt; string.length? string.charCodeAt(i) : 0x00);
+  }
+}
+
+function writeUTF8String(stream, string, bytes) {
+  const byteArray = stringToByteArray(string);
+
+  const length = bytes || byteArray.length + 1; // + 1 for NULL
+  for (let i = 0; i &lt; length; i++) {
+    stream.writeUint8(i &lt; byteArray.length? byteArray[i] : 0x00);
+  }
+}
+
+function stringToByteArray(str) {
+  const b = [];
+  for (let i = 0; i &lt; str.length; i++) {
+    const unicode = str.charCodeAt(i);
+    if (unicode &lt;= 0x7f) {
+      b.push(unicode);
+    } else if (unicode &lt;= 0x7ff) {
+      b.push((unicode &gt;&gt; 6) | 0xc0);
+      b.push((unicode &amp; 0x3F) | 0x80);
+    } else if (unicode &lt;= 0xffff) {
+      b.push((unicode &gt;&gt; 12) | 0xe0);
+      b.push(((unicode &gt;&gt; 6) &amp; 0x3f) | 0x80);
+      b.push((unicode &amp; 0x3f) | 0x80);
+    } else {
+      b.push((unicode &gt;&gt; 18) | 0xf0);
+      b.push(((unicode &gt;&gt; 12) &amp; 0x3f) | 0x80);
+      b.push(((unicode &gt;&gt; 6) &amp; 0x3f) | 0x80);
+      b.push((unicode &amp; 0x3f) | 0x80);
+    }
+  }
+
+  return b;
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>This code defines a JavaScript class named <code>BitView</code> which provides a similar interface to <code>DataView</code> but with support for bit-level reads and writes.</p>
 <h3>Constructor</h3>

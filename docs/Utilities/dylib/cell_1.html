@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a function signature for mathematical operations and string parsing
+function defineOperations(operations) {
+  /**
+   * Define a function signature for mathematical operations and string parsing.
+   * @param {Array<Object>} operations - An array of operation definitions.
+   * @returns {Object} An object containing the defined operations.
+   */
+  const definedOperations = operations.reduce((acc, { name, library, returnType, params }) => {
+    acc[name] = {
+      library,
+      returnType,
+      params,
+      // TODO: Cache results to improve performance
+    };
+    return acc;
+  }, {});
+
+  return definedOperations;
+}
+
+// Define supported data types
+class DataType {
+  static I32 = 'i32';
+}
+
+// Define a test suite for the operations
+describe('Operations', () => {
+  // Define supported operations
+  const operations = [
+    {
+      name:'sum',
+      library: 'libsum',
+      returnType: DataType.I32,
+      params: [DataType.I32, DataType.I32],
+    },
+    {
+      name: 'atoi',
+      library: 'libnative',
+      returnType: DataType.I32,
+      params: [DataType.String],
+    },
+  ];
+
+  // Define the operations
+  const res = defineOperations(operations);
+
+  it('should add two integers', () => {
+    // Use the sum operation
+    const result = res.sum([1, 2]);
+    expect(result).to.equal(3);
+  });
+
+  it('should convert a string to an integer', () => {
+    // Use the atoi operation
+    const result = res.atoi(['1000']);
+    expect(result).to.equal(1000);
+  });
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Overview</h3>
 <p>This code defines a function signature using the <code>define</code> function and then uses the resulting object to call functions and verify their correctness.</p>
 <h3>Key Components</h3>

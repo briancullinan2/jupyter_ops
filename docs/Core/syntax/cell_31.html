@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants
+const CALLS = `
+  /**
+   * CallExpression: Represents a function call in the Abstract Syntax Tree (AST).
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+   */
+  callExpression
+`;
+
+// Utility functions
+function getCallExpressionDescription() {
+  return CALLS.trim();
+}
+
+function getCallExpressionLink() {
+  return 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this';
+}
+
+// Main function
+function main() {
+  console.log(getCallExpressionDescription());
+  console.log(`Documentation: ${getCallExpressionLink()}`);
+}
+
+// Run the main function
+main();</code></pre></div><h3>Code Breakdown</h3>
 <ul>
 <li><code>var CALLS</code>: declares a variable named <code>CALLS</code>.</li>
 <li><code>=</code>: assigns a value to the variable.</li>

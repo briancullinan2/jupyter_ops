@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an asynchronous function <code>getEmailFormat</code> that searches the web for email address formats related to a given query.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Retrieves email formats from RocketReach.co based on a search query.
+ * 
+ * @param {string} q - The search query.
+ * @returns {Promise<string[]>} An array of email formats.
+ */
+const importer = require('../Core');
+
+async function getEmailFormat(q) {
+    // Extract email formats from RocketReach.co search results
+    const rocketReachResults = await search(q +'email format site:rocketreach.co');
+    const githubResults = await search(q +'email format site:github.com');
+
+    // Combine search results
+    const results = [...rocketReachResults.items,...(githubResults.items || [])];
+
+    // Extract email formats from search snippets
+    const hits = results.map(result => {
+        const match = result.htmlSnippet.match(/\S*\s{0,2}\S+@\S+\.\S+/);
+        return match? match[0] : null;
+    }).filter(match => match!== null);
+
+    return hits;
+}
+
+module.exports = getEmailFormat;</code></pre></div><p>This code defines an asynchronous function <code>getEmailFormat</code> that searches the web for email address formats related to a given query.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

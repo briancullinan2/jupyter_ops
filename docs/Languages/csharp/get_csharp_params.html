@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>getClassParams Function</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Extracts class method parameters from a given C# code snippet.
+ * 
+ * @param {string} code - The C# code snippet to extract parameters from.
+ * @param {string} [classname] - The name of the class to extract parameters for (optional).
+ * @returns {Promise&lt;string[][]&gt;} A promise resolving to a 2D array of method parameters.
+ */
+async function getClassParams(code, classname) {
+  // Import the select antlr tree function and await its resolution
+  const { selectCode } = await importer.import('select antlr tree');
+
+  // Construct the XPath query based on the provided classname
+  const query = classname
+   ? `//class_definition[./identifier[contains(@strdata, '${classname}')]]//method_declaration`
+    : '//method_declaration';
+
+  // Define the path mappings for the XPath query
+  const pathMappings = {
+    start: './@start',
+    stop: './@stop',
+    name: '(./method_member_name/@strdata)[1]',
+    params: ['.//fixed_parameter/@strdata'],
+  };
+
+  // Execute the XPath query and await its resolution
+  const result = await selectCode([query, pathMappings], code, 'csharp');
+
+  // Return the extracted method parameters as a 2D array
+  return result.map(r =&gt; [r.name,...r.params.split(', ')]);
+}
+
+module.exports = getClassParams;</code></pre></div><h3>getClassParams Function</h3>
 <h4>Function Signature</h4>
 <pre><code class="language-javascript">async function getClassParams(code, classname)
 </code></pre>

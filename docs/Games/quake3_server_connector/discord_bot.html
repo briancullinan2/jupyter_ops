@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -268,7 +275,193 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code># Discord Bot Configuration
+=====================================
+
+This module exports various functions to handle Discord bot commands.
+### Configuration
+
+```javascript
+const ip6addr = require('ip6addr');
+const importer = require('../Core');
+const discordApi = importer.import('discord api');
+const {
+    getInfo, sendRcon, nextInfoResponse, nextPrintResponse
+} = importer.import('quake 3 server commands');
+const formatQuake3Response = importer.import('format quake 3 response');
+const removeCtrlChars = importer.import('remove ctrl characters');
+
+const personality = [
+    'Yeehaw!',
+    'Balls to wall!',
+    'Do it to it!',
+    'Got it!',
+    'Let\'s play!',
+    'Roger that!',
+    'I read you!',
+    'Buenos Dias!'
+];
+
+const lose = [
+    'Error. Error.',
+    'Oops.',
+    'Boo hoo!',
+    'Phooey!',
+    'Au revoir, mon amis.',
+    '#*&amp;^@#!!',
+];
+
+const discordCommands = {
+    CHALLENGE: /^[!\\\/]?(&lt;@[^:@\s]+&gt;\s*chall?[ae]nge|chall?[ae]nge\s*&lt;@[^:@\s]+&gt;)\s*([^:@\s]*?)\s*([^:@\s]*?)/ig,
+    CONNECT: /^[!\\\/]?(rcon)?conn?ect\s*([0-9\.a-z-_]+(:[0-9]+)*)$/ig,
+    RCON: /^[!\\\/]?rcon(pass?wo?rd)?\s+([^"\s]+)\s*(.*)$/ig,
+    DISCONNECT: /[!\\\/]?disconn?ect/ig,
+    CONFIG: /^[!\\\/]?(\w*)(\.cfg|config|configure)/ig,
+    LOAD: /^[!\\\/]?(load|map)\s*(\w*)/ig,
+    COMMAND: /^[!\\\/]/ig,
+    HELLO: /^[!\\\/](\w\s*){0,2}hello(\w\s*){0,2}/ig,
+    UNKNOWN: /.*/ig,
+};
+
+const userLogins = {};
+
+async function configCommand(command) {
+    if (!command.attachments &amp;&amp;!command.embed) return;
+
+    const user = command.author.username;
+    const options = discordCommands.CONFIG.exec(command.content);
+    const filename = options? options[1].replace(options[2], '') : '';
+
+    // Format filename based on username
+    const formattedFilename = filename.replace(new RegExp(user, 'ig'), '').replace(/[^0-9-_a-z]/ig, '-');
+    if (formattedFilename.length === 0) {
+        await discordApi.createMessage(`Couldn't compute filename.`, command.channel_id);
+        return;
+    }
+
+    // Create configuration file path
+    const configFile = `player-${user}-${formattedFilename}.cfg`;
+
+    // Trigger typing and post message
+    await discordApi.triggerTyping(command.channel_id);
+    await discordApi.createMessage(`exec conf/${configFile}`, command.channel_id);
+}
+
+async function connectCommand(command) {
+    const user = command.author.username;
+    const options = discordCommands.CONNECT.exec(command.content);
+
+    // Store user login information
+    if (!userLogins[user]) {
+        userLogins[user] = { address: 'quakeIIIarena.com', password: 'password123!' };
+    }
+    userLogins[user].address = options[2] || userLogins[user].address;
+    userLogins[user].password = userLogins[user].password || 'password123!';
+
+    // Get Quake 3 server info
+    const address = userLogins[user].address;
+    const port = parseInt(/^(.*?):*([0-9]+)*$/ig.exec(address)[2]) || 27960;
+    await getInfo(address, port);
+    const info = await nextInfoResponse();
+
+    // Filter server info and format response
+    const filteredKeys = Object.keys(info).filter(k =&gt; k!== 'challenge'
+        &amp;&amp; k!== 'hostname'
+        &amp;&amp; k!=='sv_hostname'
+        &amp;&amp; k!=='mapname'
+        &amp;&amp; k!== 'clients'
+        &amp;&amp; k!== 'g_humanplayers'
+        &amp;&amp; k!=='sv_maxclients'
+        &amp;&amp; k!== 'ip'
+        &amp;&amp; k!== 'port');
+    const filteredValues = filteredKeys.map(k =&gt; removeCtrlChars(info[k]));
+
+    // Create response object
+    const json = {
+        embeds: [{
+            title: removeCtrlChars(info.sv_hostname || info.hostname || info.gamename || info.game || ''),
+            description: info.ip + ':' + info.port,
+            color: 0xdda60f,
+            fields: [
+                {
+                    name: 'Map',
+                    value: info.mapname,
+                    inline: false
+                },
+                {
+                    name: 'Players',
+                    value: info.clients +'(' + (info.g_humanplayers || '?') +'humans)' + '/' + info.sv_maxclients,
+                    inline: false
+                },
+                {
+                    name: 'Key',
+                    value: '```http\n' + filteredKeys.join('\n') + '```',
+                    inline: true
+                },
+                {
+                    name: 'Value',
+                    value: '```yaml\n' + filteredValues.join('\n') + '```',
+                    inline: true
+                }
+            ]
+        }]
+    };
+
+    // Update interaction or create message
+    if (command.interaction) {
+        await discordApi.updateInteraction(json, command.id, command.token);
+    } else {
+        await discordApi.createMessage(json, command.channel_id);
+    }
+}
+
+async function rconCommand(command) {
+    const user = command.author.username;
+    const options = discordCommands.RCON.exec(command.content);
+
+    // Store user login information
+    if (!userLogins[user]) {
+        userLogins[user] = { address: 'quakeIIIarena.com', password: 'password123!' };
+    }
+    userLogins[user].address = userLogins[user].address || 'quakeIIIarena.com';
+    userLogins[user].password = options[2] || userLogins[user].password || 'password123!';
+
+    // Send RCON command and get response
+    const address = userLogins[user].address;
+    const port = parseInt(/^(.*?):*([0-9]+)*$/ig.exec(address)[2]) || 27960;
+    await sendRcon(address, port, options[3] || 'cmdlist', userLogins[user].password);
+    const response = await nextPrintResponse();
+
+    // Format response
+    const formattedResponse = formatQuake3Response(response.content, command, response);
+
+    // Update interaction or create message
+    if (command.interaction) {
+        await discordApi.updateInteraction(formattedResponse, command.id, command.token);
+    } else {
+        await discordApi.createMessage(formattedResponse, command.channel_id);
+    }
+}
+
+async function chatCommand(command) {
+    const response = `Hello.` + '\n```BOT'+command.id+'\nbeep boop\n```\n';
+
+    // Update interaction or create message
+    if (command.interaction) {
+        await discordApi.updateInteraction(response, command.id, command.token);
+    } else {
+        await discordApi.createMessage(response, command.channel_id);
+    }
+}
+
+module.exports = {
+    discordCommands,
+    connectCommand,
+    rconCommand,
+    configCommand,
+    chatCommand
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>The code is written in JavaScript and appears to be a Discord bot using the Discord.js library. It consists of the following sections:</p>
 <h3>Importing Modules</h3>
 <p>The code imports various modules using the <code>require</code> function:</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -93,7 +100,70 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Asynchronously retrieve the identity server information.
+ * @returns {Promise&lt;string&gt;} A promise resolving to the identity server response.
+ */
+async function identifyServer() {
+  try {
+    const response = await getIdentityServer();
+    return sendResult(response);
+  } catch (error) {
+    sendError(error);
+  }
+}
+
+/**
+ * Sends the result of the operation to the client.
+ * @param {string} result - The result to be sent.
+ */
+function sendResult(result) {
+  $.sendResult(result);
+}
+
+/**
+ * Sends the error of the operation to the client.
+ * @param {Error} error - The error to be sent.
+ */
+function sendError(error) {
+  $.sendError(error);
+}
+
+/**
+ * Asynchronous entry point for the operation.
+ */
+async function main() {
+  await identifyServer();
+}
+
+main();
+```
+
+However, since your code snippet uses the async function directly, you can also make use of async/await to remove the then and catch blocks.
+
+```javascript
+/**
+ * Asynchronously retrieve the identity server information.
+ * @returns {Promise&lt;string&gt;} A promise resolving to the identity server response.
+ */
+async function identifyServer() {
+  try {
+    const response = await getIdentityServer();
+    $.sendResult(response);
+  } catch (error) {
+    $.sendError(error);
+  }
+}
+
+/**
+ * Asynchronous entry point for the operation.
+ */
+async function main() {
+  await identifyServer();
+}
+
+main();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Purpose</h4>
 <p>The code sends an HTTP request to an identity server, handling the response and any potential errors.</p>
 <h4>Functions Used</h4>

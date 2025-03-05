@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is a unit test for a function that retrieves templates from a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { assert } = require('assert');
+const { importCore } = require('../Core');
+
+// Define a function to get templates from a Google sheet
+const getTemplates = async (docsId) => {
+  const templates = await importCore.import('templates google sheet', docsId);
+  return templates;
+};
+
+// Define a test suite
+describe('get templates from sheet', () => {
+  // Test that there is at least one page
+  it('should have at least one page', async () => {
+    // Get the templates
+    const templates = await getTemplates('113mVIumItArQ_oXpfDRXP-2Kw2ms4t48oPJ68_p5P8k');
+    
+    // Check if there is at least one template
+    assert(Object.keys(templates).length > 0,'should have at least one template');
+    
+    // Log the templates to the console
+    console.log(
+      JSON.stringify(
+        Object.keys(templates).reduce((obj, cur) => {
+          obj[cur] = {};
+          obj[cur].template = ((templates[cur].template || {}).title || '').substr(0, 1000);
+          obj[cur].data = (templates[cur].data? ('yes:'+ templates[cur].data.rowCount) : 'no');
+          return obj;
+        }, {}),
+        null,
+        4
+      )
+    );
+  });
+});</code></pre></div><p>This code snippet is a unit test for a function that retrieves templates from a Google Sheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

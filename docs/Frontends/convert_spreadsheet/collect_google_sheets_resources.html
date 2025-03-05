@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -162,7 +169,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Core = require('../Core');
+
+const importModule = (moduleName, env) => {
+    if (env.includes('LOCAL') || env.includes('TEST') ||!env.includes('DEPLOY')) {
+        return Core.import(`test ${moduleName}`);
+    }
+    return Core.import(moduleName);
+};
+
+const STREAM_TO_GOOGLE = importModule('stream to output', process.env.ENVIRONMENT || '');
+const COPY_FILE_BUCKET = importModule('copy file storage bucket', process.env.ENVIRONMENT || '');
+const COLLECT_EXTERNAL_RESOURCES = importModule('collect external content and resources', process.env.ENVIRONMENT || '');
+const COLLECT_ROUTES = importModule('find known routes to sheets', process.env.ENVIRONMENT || '');
+const GET_TEMPLATE_BY_URL = importModule('convert sheet helper functions', process.env.ENVIRONMENT || '');
+
+const timestamp = new Date().getTime();
+
+const collectTemplateResources = (path, page, properties, templates, bucketName, rendered = []) => {
+    if (!path || (path.split('/').length < 2 && path === '/' && path === '')) {
+        path = 'index';
+    }
+
+    const trimmedBase = (properties['base'] || '').replace(/^\/|\/$/ig, '');
+    const adjustedPath = trimmedBase === '/'? trimmedBase : trimmedBase + (path.startsWith(trimmedBase)? '' : '/') + path;
+    path = adjustedPath;
+
+    const streamToGoogle = STREAM_TO_GOOGLE;
+    return COLLECT_EXTERNAL_RESOURCES(page, rendered, [])
+       .then(stream => {
+            console.log(`emitting ${path}`);
+            return stream;
+        })
+       .then(stream => streamToGoogle(path + '.html', bucketName, stream, { contentType: 'text/html; charset=utf-8' }))
+       .then(() => {
+            if (!process.env.ENVIRONMENT ||!process.env.ENVIRONMENT.includes('DEPLOY')) {
+                return {};
+            }
+            return COPY_FILE_BUCKET(bucketName, path + '.html');
+        })
+       .then(() => COLLECT_ROUTES([], properties, templates, rendered))
+       .then(pages => Core.runAllPromises(Object.keys(pages).map(fileName => resolve => (
+            collectTemplateResources(fileName, pages[fileName], properties, templates, bucketName, rendered)
+               .then(() => resolve())
+        ))))
+       .then(() => rendered);
+};
+
+module.exports = collectTemplateResources;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that appears to be part of a larger application. It imports various modules and functions from another module (<code>../Core</code>) and uses them to perform tasks related to template rendering, resource collection, and file streaming to Google Cloud.</p>
 <p><strong>Imported Modules and Functions</strong></p>
 <ol>

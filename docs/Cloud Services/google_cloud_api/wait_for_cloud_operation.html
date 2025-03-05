@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Imports the required modules.
+ * @module Core
+ * @module authorize-google-service
+ */
+const { authorizeGoogle } = require('../Core');
+
+/**
+ * Waits for a Cloud Operations API operation to complete.
+ * @async
+ * @param {string} operation - The operation to wait for.
+ * @returns {string} - The target link of the operation.
+ */
+async function waitForOperation(operation) {
+    try {
+        // Import the authorizeGoogle function.
+        const client = await authorizeGoogle();
+
+        // Make a GET request to the Cloud Operations API.
+        const response = await client.request({
+            url: `${operation}`,
+        });
+
+        // Check if the operation is not running.
+        if (response.data.status!== 'RUNNING') {
+            // Return the target link of the operation.
+            return response.data.targetLink;
+        }
+
+        // Log a message to the console indicating that we need to wait for the operation.
+        console.log(`Waiting for ${operation}...`);
+
+        // Implement a retry mechanism with a delay.
+        await retryOperation(operation, 500);
+
+        // If the operation is still not complete after the retries, throw an error.
+        if (response.data.status!== 'DONE') {
+            throw new Error(`Operation ${operation} did not complete after retries.`);
+        }
+
+        // Return the target link of the operation.
+        return response.data.targetLink;
+    } catch (error) {
+        // Log the error to the console and rethrow it.
+        console.error(`Error waiting for operation ${operation}:`, error);
+        throw error;
+    }
+}
+
+// Define a helper function to implement the retry mechanism.
+async function retryOperation(operation, delay) {
+    await new Promise(resolve =&gt; setTimeout(resolve, delay));
+    return waitForOperation(operation);
+}
+
+// Export the waitForOperation function.
+module.exports = waitForOperation;
+```</code></pre></div><h3>Function Breakdown</h3>
 <h4><code>waitForOperation(operation)</code></h4>
 <p><strong>Purpose:</strong> Waits for an operation to complete and returns the target link when finished.</p>
 <p><strong>Parameters:</strong> <code>operation</code> (string) - URL of the operation.</p>

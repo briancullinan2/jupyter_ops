@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Renders the act.com/fr-ca page with specified parameters.
+ * 
+ * @param parameters The parameters for rendering the page.
+ * @param parameters.zoom The zoom level of the page. Defaults to 1.
+ * @param parameters.width The width of the page in pixels. Defaults to 1280.
+ * @param parameters.cropHeight The height of the cropped area. Defaults to 720.
+ */
+function renderActPage(parameters: {
+  zoom?: number;
+  width?: number;
+  'crop-h'?: number;
+} = { zoom: 1, width: 1280, 'crop-h': 720 }): void {
+  const options: { [key: string]: number | string } = {
+    url: 'act.com/fr-ca',
+    zoom: parameters.zoom,
+    width: parameters.width,
+    height: parameters['crop-h'],
+  };
+
+  // TODO: Implement error handling for invalid URL
+  try {
+    $TS.screen(options.url, options);
+  } catch (error) {
+    // Handle error
+  }
+}
+
+// Example usage
+renderActPage({ zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><h2>Code Breakdown</h2>
 <p>This is a JavaScript code snippet that uses the <code>$TS</code> object to call the <code>screen</code> function.</p>
 <h3>Function Call</h3>
 <p><code>$TS.screen('act.com/fr-ca', {zoom:.5, width: 680, 'crop-h': 400})</code></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -189,7 +196,87 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Module Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const crypto = require('crypto');
+const uuid = require('uuid/v4');
+const { createSocket } = require('zmq');
+
+// Constants and Defaults
+const DELIM = '<IDS|MSG>';
+const DEFAULT_KEY = '';
+
+class LlamaMessageParser {
+  /**
+   * Creates a new instance of the message parser.
+   * @param {string} key - The key used for HMAC hashing.
+   */
+  constructor(key = DEFAULT_KEY) {
+    this.key = key;
+  }
+
+  /**
+   * Parses a message from a list of arguments.
+   * @param {...any} args - The message components.
+   * @returns {Object} The parsed message.
+   */
+  parseMessage(...args) {
+    const strs = args.map(arg => arg.toString());
+    const idx = strs.indexOf(DELIM);
+    const uuids = strs.slice(0, idx);
+    const [header, parent, metadata, content] = strs.slice(idx + 2).map(s => JSON.parse(s));
+    const result = {};
+    result[header.msg_type] = { content, header, metadata, parent };
+    return result;
+  }
+
+  /**
+   * Generates a SHA-256 HMAC hash of a string.
+   * @param {string} string - The string to hash.
+   * @param {string} key - The key used for HMAC hashing.
+   * @returns {string} The hashed string.
+   */
+  hash(string, key = this.key) {
+    const hmac = crypto.createHmac('sha256', key);
+    hmac.update(string);
+    return hmac.digest('hex');
+  }
+
+  /**
+   * Converts an object to a JSON string.
+   * @param {Object} data - The object to convert.
+   * @returns {string} The JSON string.
+   */
+  json(data) {
+    return JSON.stringify(data).replace('\ufdd0', '\\ufdd0');
+  }
+
+  /**
+   * Collapses a message into a list of components.
+   * @param {string} key - The key used for HMAC hashing.
+   * @param {Object} message - The message to collapse.
+   * @returns {any[]} The collapsed message components.
+   */
+  collapseMessage(key = this.key, message) {
+    const msgType = Object.keys(message)[0];
+    const { header, parent, metadata, content } = message[msgType];
+    const headerObj = Object.assign({}, parent || {}, {
+      msg_id: uuid(),
+      msg_type: msgType,
+    });
+    const toHash = [
+      this.json(header),
+      this.json(parent),
+      this.json(metadata),
+      this.json(content),
+    ];
+    const hmac = this.hash(toHash.join(''), key);
+    return (parent?.uuids || []).concat([DELIM, hmac]).concat(toHash);
+  }
+}
+
+module.exports = {
+  LlamaMessageParser,
+};</code></pre></div><p><strong>Module Overview</strong></p>
 <p>This module exports two functions, <code>parseMessage</code> and <code>collapseMessage</code>, which are used for message processing and formatting.</p>
 <h3>Functions</h3>
 <h4><code>parseMessage</code> (string, uuid, uuid, hmac, header, parent_header, metadata, content)</h4>

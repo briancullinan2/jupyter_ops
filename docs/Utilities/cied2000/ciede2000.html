@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -223,7 +230,108 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>CIEDE2000 Color Difference Calculation Function</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="c"><code>#include <math.h>
+
+// Function to convert degrees to radians
+static double deg2Rad(double deg) {
+    // Avoid the calculation when deg is 0
+    if (deg == 0.0) return 0.0;
+    return (deg * M_PI / 180.0);
+}
+
+// Function to calculate CIEDE2000 color difference
+static double ciede2000(double l1, double a1, double b1, double l2, double a2, double b2) {
+    // Parametric weighting factors (default values)
+    const double k_L = 1.0;
+    const double k_C = 1.0;
+    const double k_H = 1.0;
+
+    // Precompute constants
+    const double deg360InRad = deg2Rad(360.0);
+    const double deg180InRad = deg2Rad(180.0);
+    const double pow25To7 = pow(25, 7);
+
+    // Step 1: Preprocess inputs
+    double C1 = sqrt(a1 * a1 + b1 * b1);
+    double C2 = sqrt(a2 * a2 + b2 * b2);
+    double barC = (C1 + C2) / 2.0;
+
+    // Step 1: Calculate G
+    double G = 0.5 * (1 - pow(barC, 7) / (pow(barC, 7) + pow25To7));
+
+    // Step 1: Transform inputs
+    double a1Prime = (1.0 + G) * a1;
+    double a2Prime = (1.0 + G) * a2;
+    double CPrime1 = sqrt(a1Prime * a1Prime + b1 * b1);
+    double CPrime2 = sqrt(a2Prime * a2Prime + b2 * b2);
+
+    // Step 1: Calculate hue angles (in radians)
+    double hPrime1;
+    if (b1 == 0 && a1Prime == 0) hPrime1 = 0.0;
+    else hPrime1 = atan2(b1, a1Prime);
+    if (hPrime1 < 0) hPrime1 += deg360InRad;
+
+    double hPrime2;
+    if (b2 == 0 && a2Prime == 0) hPrime2 = 0.0;
+    else hPrime2 = atan2(b2, a2Prime);
+    if (hPrime2 < 0) hPrime2 += deg360InRad;
+
+    // Step 2: Calculate delta values
+    double deltaLPrime = l2 - l1;
+    double deltaCPrime = CPrime2 - CPrime1;
+    double CPrimeProduct = CPrime1 * CPrime2;
+    double deltahPrime;
+    if (CPrimeProduct == 0) deltahPrime = 0;
+    else {
+        deltahPrime = hPrime2 - hPrime1;
+        if (deltahPrime < -deg180InRad) deltahPrime += deg360InRad;
+        else if (deltahPrime > deg180InRad) deltahPrime -= deg360InRad;
+    }
+    double deltaHPrime = 2.0 * sqrt(CPrimeProduct) * sin(deltahPrime / 2.0);
+
+    // Step 3: Calculate mean values
+    double barLPrime = (l1 + l2) / 2.0;
+    double barCPrime = (CPrime1 + CPrime2) / 2.0;
+
+    // Step 3: Calculate hue angle for mean value
+    double hPrimeSum = hPrime1 + hPrime2;
+    double barhPrime;
+    if (CPrime1 * CPrime2 == 0) barhPrime = hPrimeSum;
+    else {
+        if (fabs(hPrime1 - hPrime2) <= deg180InRad) barhPrime = hPrimeSum / 2.0;
+        else {
+            if (hPrimeSum < deg360InRad) barhPrime = (hPrimeSum + deg360InRad) / 2.0;
+            else barhPrime = (hPrimeSum - deg360InRad) / 2.0;
+        }
+    }
+
+    // Step 3: Calculate T and deltaTheta
+    double T = 1.0 - (0.17 * cos(barhPrime - deg2Rad(30.0))) +
+    (0.24 * cos(2.0 * barhPrime)) +
+    (0.32 * cos((3.0 * barhPrime) + deg2Rad(6.0))) -
+    (0.20 * cos((4.0 * barhPrime) - deg2Rad(63.0)));
+    double deltaTheta = deg2Rad(30.0) * exp(-pow((barhPrime - deg2Rad(275.0)) / deg2Rad(25.0), 2.0));
+
+    // Step 3: Calculate R_C, S_L, S_C, and S_H
+    double R_C = 2.0 * sqrt(pow(barCPrime, 7.0) / (pow(barCPrime, 7.0) + pow25To7));
+    double S_L = 1 + ((0.015 * pow(barLPrime - 50.0, 2.0)) / sqrt(20 + pow(barLPrime - 50.0, 2.0)));
+    double S_C = 1 + (0.045 * barCPrime);
+    double S_H = 1 + (0.015 * barCPrime * T);
+
+    // Step 3: Calculate R_T
+    double R_T = (-sin(2.0 * deltaTheta)) * R_C;
+
+    // Step 4: Calculate deltaE
+    double deltaE = sqrt(
+    pow(deltaLPrime / (k_L * S_L), 2.0) +
+    pow(deltaCPrime / (k_C * S_C), 2.0) +
+    pow(deltaHPrime / (k_H * S_H), 2.0) +
+    (R_T * (deltaCPrime / (k_C * S_C)) * (deltaHPrime / (k_H * S_H)))
+    );
+
+    return deltaE;
+}</code></pre></div><p><strong>CIEDE2000 Color Difference Calculation Function</strong></p>
 <p>This is a C++ function that calculates the CIEDE2000 color difference between two colors. The function takes six input parameters:</p>
 <ul>
 <li><code>l1</code> and <code>l2</code>: The lightness values of the two colors</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { selectTree } = require('../Core');
+
+/**
+ * Finds the shortest XPath that matches exactly one DOM element.
+ * 
+ * @param {string[]} combinations - An array of XPath combinations
+ * @param {object} ctx - The DOM context
+ * @returns {string} The shortest XPath that matches exactly one DOM element
+ */
+function minXpath(combinations, ctx) {
+    // Filter out XPaths that match more than one element
+    const matchingXPaths = combinations.filter((xpath) => {
+        const elements = selectTree([`.//${xpath}`], ctx);
+        return elements.length === 1;
+    });
+
+    // Prioritize XPaths that match specific elements (e.g. buttons, inputs, IDs, classes)
+    const priortizedXPaths = matchingXPaths.sort((a, b) => {
+        // Prioritize XPaths that match specific elements (e.g. buttons, inputs, IDs, classes)
+        const aPriority = getPriority(a, ctx);
+        const bPriority = getPriority(b, ctx);
+        return aPriority - bPriority;
+    });
+
+    // Return the shortest prioritized XPath
+    return priortizedXPaths.sort((a, b) => a.length - b.length)[0];
+}
+
+// Helper function to get the priority of an XPath
+function getPriority(xpath, ctx) {
+    // Check if the XPath matches a button, input, ID, class, or attribute
+    if (isButtonOrInput(xpath, ctx)) return 10;
+    if (isIdOrClass(xpath, ctx)) return 5;
+    if (isAttribute(xpath, ctx)) return 2;
+    // Default priority
+    return 0;
+}
+
+// Helper functions to check if an XPath matches a specific element type
+function isButtonOrInput(xpath, ctx) {
+    const elements = selectTree([`.//${xpath}`], ctx);
+    return elements.some((element) => element.tagName === 'BUTTON' || element.tagName === 'INPUT');
+}
+
+function isIdOrClass(xpath, ctx) {
+    const elements = selectTree([`.//${xpath}`], ctx);
+    return elements.some((element) => element.id || element.classList.length > 0);
+}
+
+function isAttribute(xpath, ctx) {
+    const elements = selectTree([`.//${xpath}`], ctx);
+    return elements.some((element) => Object.keys(element.attributes).length > 0);
+}
+
+module.exports = { minXpath };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {selectDom} = importer.import('select tree');

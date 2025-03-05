@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Dockerfile Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="dockerfile"><code># Use official Mono image as base
+FROM mono:latest AS build
+
+# Print Mono version
+RUN mono --version
+
+# List files in the current directory
+RUN ls -la
+
+# Copy subscription services and act subscription management solution files
+ADD /subscription.services /home/src
+ADD /act.subscription.management.sln /home/src
+
+# Switch to the build directory
+WORKDIR /home/src
+
+# Build subscription services project
+RUN msbuild./subscription.services/Subscription.Services.EloquaImport/Subscription.Services.EloquaImport.csproj
+
+# Run the subscription services application
+RUN mono./Subscription.Services.EloquaImport.exe
+
+# Use official ASP.NET Core 1.1 image as base
+FROM mvc:microsoft-aspnetcore-runtime-1.1 AS runtime
+
+# Use official ASP.NET Core 1.1 runtime image as base
+FROM mcr.microsoft.com/dotnet/core/sdk:1.1 AS build
+
+# Set environment variable for source
+ARG source
+
+# Expose port 80
+EXPOSE 80
+
+# Set working directory
+WORKDIR /app/src
+
+# Copy solution files
+COPY./act.subscription.management.sln /app/src/
+COPY./subscription.services/Subscription.Services.EloquaImport/*.csproj /app/src/subscription.services/Subscription.Services.EloquaImport/
+COPY./subscription.services/Subscription.Services.ZuoraExport/*.csproj /app/src/subscription.services/Subscription.Services.ZuoraExport/
+COPY.//*.dcproj /app/src/
+
+# Restore dependencies for the solution
+RUN /bin/bash -c "dotnet restore./act.subscription.management.sln"
+
+# Copy application code
+COPY. /app/src
+
+# Restore dependencies for the solution and publish it
+RUN /bin/bash -c "dotnet restore./act.subscription.management.sln && dotnet publish./act.subscription.management.sln -c Release -o./obj/Docker/publish"
+
+# Copy published application code
+RUN cp -R ${source:-subscription.services/Subscription.Services.EloquaImport/obj/Docker/publish} /app
+
+# Switch to the published directory
+WORKDIR /app/publish
+
+# Set entrypoint for the application
+ENTRYPOINT ["/usr/bin/dotnet", "/app/publish/Subscription.Services.EloquaImport.dll"]</code></pre></div><p><strong>Dockerfile Breakdown</strong></p>
 <h3>Mono-Based Image</h3>
 <h4>Base Image</h4>
 <pre><code class="language-dockerfile">#FROM

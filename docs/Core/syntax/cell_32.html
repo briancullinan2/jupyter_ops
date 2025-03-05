@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -156,7 +163,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants
+const SupportedStatements = `//IfStatement|SwitchStatement`;
+const SupportedControlFlow = {
+  IF: 'IfStatement',
+  SWITCH: 'SwitchStatement',
+};
+
+// Function to determine supported control flows
+function getSupportedControlFlows(statements) {
+  return statements.split('|').map((statement) => SupportedControlFlow[statement.trim().toUpperCase()]);
+}
+
+// Usage example
+function getSupportedStatements() {
+  const branches = getSupportedControlFlows(SupportedStatements);
+  return { branches };
+}
+
+const result = getSupportedStatements();
+console.log(result);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variable Declaration</h4>
 <p>The code declares a variable named <code>BRANCHES</code> and assigns it a string value.</p>
 <h4>String Value</h4>

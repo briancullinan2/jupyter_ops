@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Import required modules
+import * as path from 'path';
+import * as fs from 'fs';
+import * as process from 'process';
+import { createServer } from 'http';
+import { Server } from'socket.io';
+import { connect } from'socket.io-client';
+
+// Define environment variables
+const HOME = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+// Define project path
+const PROJECT_PATH = path.join(HOME, 'universal');
+
+// Define server and client variables
+let server: Server;
+let client: any;
+
+// Define server port
+const PORT = 8000;
+
+/**
+ * Start the server.
+ */
+async function startServer() {
+  // Check if project path exists
+  if (!fs.existsSync(PROJECT_PATH)) {
+    console.error('Project path does not exist');
+    process.exit(1);
+  }
+
+  // Import server module
+  const serverModule = require(path.join(PROJECT_PATH,'src','server','sockify-server.js'));
+  server = serverModule.sockifyServer(PORT);
+
+  // Listen for close event
+  server.on('connection', (socket) =&gt; {
+    socket.on('close', () =&gt; {
+      console.log('Server closed');
+    });
+  });
+
+  // Start the server
+  await new Promise((resolve) =&gt; server.listen(PORT, () =&gt; resolve()));
+}
+
+/**
+ * Connect to the server.
+ */
+async function connectToServer() {
+  try {
+    client = connect('https://localhost:' + PORT);
+    client.emit('close');
+  } catch (error) {
+    console.error('Error connecting to server:', error);
+  }
+}
+
+// Start the server and connect to it
+async function main() {
+  try {
+    await startServer();
+    await connectToServer();
+  } catch (error) {
+    console.error('Error starting server or connecting to it:', error);
+  }
+}
+
+main();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Environment Variable</h4>
 <pre><code class="language-javascript">var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 </code></pre>

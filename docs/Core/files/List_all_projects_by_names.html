@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./common_ignore_paths.html">common ignore paths</a> | <a href="./cell_8.html">Cell 8</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code automates the process of finding and listing projects within a directory by identifying common project configuration files.</p>
+  <p>The code imports dependencies and defines a <code>listProjects</code> function that scans a directory for project files based on a regular expression pattern, returning an object with project paths and names. The function is then exported as a module for use in other JavaScript files.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "List all projects by names"</code></pre><h1>List all projects by names</h1>
@@ -133,28 +140,98 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function to automatically discover and list projects within a given directory.</p>
-<p><strong>Here's a breakdown:</strong></p>
-<ol>
-<li><p><strong>Dependencies:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const importer = require('../Core');
+const path = require('path');
+
+/**
+ * Lists projects in a given directory.
+ * 
+ * @param {string} root - Directory to search for projects.
+ * @param {string} [match='{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}+(package.json|NuGet.config|*.sln|*.csproj)'] - Regular expression to match project files.
+ * @returns {object} - Object with project names as keys and paths as values.
+ */
+function listProjects(root, match = '{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}+(package.json|NuGet.config|*.sln|*.csproj)') {
+  // Import list project files function from Core modules
+  const listInProject = importer.import('list project files');
+
+  // Get a list of files that match the given pattern
+  const files = listInProject(root, match);
+
+  // Create an object to store project names and paths
+  const projects = {};
+
+  // Iterate over the list of files
+  files.forEach((file) =&gt; {
+    // Get the directory path of the file
+    const projectPath = path.resolve(path.dirname(file));
+
+    // Get the project name from the directory path
+    const projectName = path.basename(projectPath);
+
+    // Add the project to the projects object
+    projects[projectName] = projectPath;
+  });
+
+  // Return the projects object
+  return projects;
+}
+
+// Export the listProjects function
+module.exports = listProjects;
+```</code></pre></div><h3>Code Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core');
+var path = require('path');
+var listInProject = importer.import('list project files');
+</code></pre>
 <ul>
-<li><code>importer</code>: A custom module (likely from the project's <code>Core</code> directory) used to import other modules.</li>
-<li><code>path</code>: Node.js built-in module for working with file paths.</li>
-</ul></li>
-<li><p><strong><code>listProjects(root, match)</code> Function:</strong></p>
+<li>The code imports three dependencies:
 <ul>
-<li>Takes a <code>root</code> directory path and an optional <code>match</code> pattern as input.</li>
-<li>Uses <code>listInProject</code> (imported from <code>list project files</code>) to find files matching the <code>match</code> pattern within the <code>root</code> directory. The default <code>match</code> pattern is designed to find common project configuration files like <code>package.json</code>, <code>NuGet.config</code>, <code>.sln</code>, and <code>.csproj</code>.</li>
-<li>Iterates through the matching files and extracts the directory path of each project.</li>
-<li>Stores the project name (based on the directory name) as the key and the full project path as the value in a <code>result</code> object.</li>
-<li>Returns the <code>result</code> object containing a list of discovered projects.</li>
+<li><code>importer</code> from a custom module <code>../Core</code></li>
+<li><code>path</code> from the built-in Node.js module</li>
+<li><code>listInProject</code> from the custom module <code>../Core</code>, using the <code>import</code> method with the key <code>'list project files'</code></li>
 </ul></li>
-<li><p><strong>Module Exports:</strong></p>
+</ul>
+<h4>Defining the <code>listProjects</code> Function</h4>
+<pre><code class="language-javascript">function listProjects(root, match = '{,*,*/,*/*/*,*/*/*/*,*/*/*/*/*}+(package.json|NuGet.config|*.sln|*.csproj)') {
+    //...
+}
+</code></pre>
 <ul>
-<li>Exports the <code>listProjects</code> function as the main module.</li>
+<li>The <code>listProjects</code> function takes two arguments:
+<ul>
+<li><code>root</code>: the directory to scan for projects</li>
+<li><code>match</code>: a regular expression pattern (with a default value) used to filter project files</li>
 </ul></li>
-</ol>
-<p><strong>In essence, this code provides a function to automatically locate and list projects within a directory based on the presence of common project configuration files.</strong></p>
+</ul>
+<h4>Implementing the <code>listProjects</code> Function</h4>
+<pre><code class="language-javascript">var result = {};
+var matches = listInProject(root, match);
+matches.forEach(m =&gt; {
+    var projectPath = path.resolve(path.dirname(m));
+    result[path.basename(projectPath)] = projectPath;
+});
+return result;
+</code></pre>
+<ul>
+<li>The function initializes an empty object <code>result</code> to store the project paths</li>
+<li>It calls <code>listInProject</code> with <code>root</code> and <code>match</code> to get an array of matching file paths <code>matches</code></li>
+<li>It iterates through <code>matches</code> and:
+<ul>
+<li>Resolves the directory path of each file using <code>path.resolve</code> and <code>path.dirname</code></li>
+<li>Extracts the project name from the directory path using <code>path.basename</code></li>
+<li>Stores the project path and name in the <code>result</code> object</li>
+</ul></li>
+<li>The function returns the <code>result</code> object</li>
+</ul>
+<h4>Exporting the <code>listProjects</code> Function</h4>
+<pre><code class="language-javascript">module.exports = listProjects;
+</code></pre>
+<ul>
+<li>The code exports the <code>listProjects</code> function as a module, making it available for use in other JavaScript files.</li>
+</ul>
 
 </body>
 

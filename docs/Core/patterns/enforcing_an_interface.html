@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -225,7 +232,151 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Type error template function.
+ * Throws an error if the type of a variable does not match the expected type.
+ *
+ * @param {Error} e The error to throw.
+ * @param {string} k The key or name of the variable (optional).
+ * @param {string} t The type of the variable.
+ * @param {string} i The expected type.
+ * @param {string} p The type of the expected type (optional).
+ */
+function typeErrorTemplate(e, k, t, i, p) {
+    if (k) {
+        k = ` ${k}`;
+    }
+    if (p) {
+        p = ` of type ${p}`;
+    }
+    throw new Error(`Type mis-match${k || ''}: "${t}" is not "${i}"${p || ''}`, e);
+}
+
+/**
+ * Checks if two types are equal or if the expected type is a parent of the actual type.
+ *
+ * @param {*} type The actual type.
+ * @param {*} expected The expected type.
+ * @returns {boolean} True if the types are equal or if the expected type is a parent of the actual type, false otherwise.
+ */
+function standardCompare(type, expected) {
+    return type === expected || expected.isPrototypeOf(type);
+}
+
+/**
+ * Compares an array to an array specification.
+ * Throws an error if the array does not match the specification.
+ *
+ * @param {*} compare The array to compare.
+ * @param {array} specification The array specification.
+ * @param {boolean} loosey Whether to throw an error or return undefined if the types do not match.
+ * @returns {*} The compared array or an error.
+ */
+function arrayCompare(compare, specification, loosey) {
+    const match = specification.map((i, index) => {
+        try {
+            return interface(compare[index], i, loosey);
+        } catch (e) {
+            return e;
+        }
+    }).filter(s =>!s ||!(s instanceof Error));
+
+    if (match.length > 0) {
+        return match[0];
+    }
+
+    typeErrorTemplate(new Error('Type mis-match'), void 0, typeof compare, specification.map(s => typeof s));
+}
+
+/**
+ * Compares an object to an object specification.
+ * Throws an error if the object does not match the specification.
+ *
+ * @param {*} compare The object to compare.
+ * @param {object} specification The object specification.
+ * @param {boolean} loosey Whether to throw an error or return undefined if the types do not match.
+ * @returns {*} The compared object or an error.
+ */
+function objectCompare(compare, specification, loosey) {
+    const match = Object.keys(specification).reduce((map, key) => {
+        try {
+            const m = interface(compare[key], specification[key], loosey);
+            if (key === 'kernel_config') {
+                // No-op for kernel_config
+            }
+            if (typeof m!== 'undefined') {
+                map[key] = m;
+            }
+        } catch (e) {
+            typeErrorTemplate(e, key, typeof compare[key], specification[key]);
+        }
+        return map;
+    }, {});
+
+    return match;
+}
+
+/**
+ * Compares two values using the interface function.
+ *
+ * @param {*} compare The value to compare.
+ * @param {*} specification The value specification.
+ * @param {boolean} loosey Whether to throw an error or return undefined if the types do not match.
+ * @returns {*} The compared value or an error.
+ */
+function interface(compare, specification, loosey = false) {
+    let type, expected;
+
+    if (compare === void 0 || compare === null) {
+        type = compare;
+    } else {
+        type = Object.getPrototypeOf(compare);
+    }
+
+    if (specification === void 0 || specification === null) {
+        expected = specification;
+    } else {
+        expected = Object.getPrototypeOf(specification);
+    }
+
+    switch (expected) {
+        case Array.prototype:
+            if (specification.length > 0) {
+                return arrayCompare(compare, specification, loosey);
+            }
+        case Object.prototype:
+            if (Object.keys(specification).length > 0 && (typeof compare === 'object' || typeof compare === 'function')) {
+                return objectCompare(compare, specification, loosey);
+            }
+        default:
+            if (standardCompare(type, expected) || (loosey && compare === void 0)) {
+                return compare;
+            }
+
+            typeErrorTemplate(new Error('Type mis-match'), void 0, typeof compare, typeof specification, expected);
+    }
+}
+
+module.exports = interface;
+
+if (typeof $!== 'undefined') {
+    const jsonInterface = {
+        display_name: '',
+        argv: [], // not optional
+        language: '', // not optional
+        metadata: [void 0, {}], // optional
+        env: [void 0, {}], // TODO dictionary descriptor types?
+        interrupt_mode: [void 0, '']
+    };
+
+    console.log(interface({
+        display_name: 'Node JS',
+        argv: [],
+        language: '',
+        some_other_stuff: true
+    }, jsonInterface));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Functions</h3>
 <h4><code>typeErrorTemplate(e, k, t, i, p)</code></h4>
 <ul>

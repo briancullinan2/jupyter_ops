@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code uses the <code>$TS.screen</code> function to simulate a browser screen.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Set the screen display settings for act.com/en-uk website.
+ *
+ * @param {string} url - The URL to display.
+ * @param {object} options - The display settings.
+ * @param {number} options.zoom - The zoom level (default: 1).
+ * @param {number} options.width - The width of the display (default: 1024).
+ * @param {number} options['crop-h'] - The crop height (default: undefined).
+ */
+function setActComDisplay(url: string, options: { [key: string]: number }): void {
+    // Set default options if not provided
+    options = {...{
+        zoom: 1,
+        width: 1024,
+        'crop-h': undefined
+    },...options };
+
+    // Validate input types
+    if (typeof url!=='string') {
+        throw new Error('URL must be a string.');
+    }
+    if (typeof options!== 'object' || Array.isArray(options)) {
+        throw new Error('Options must be an object.');
+    }
+
+    // Refactor the call to use a more modern syntax
+    $TS.screen(url, {
+        zoom: options.zoom,
+        width: options.width,
+        'crop-h': options['crop-h']
+    });
+}
+
+// Usage example
+setActComDisplay('act.com/en-uk', { zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><p>This code uses the <code>$TS.screen</code> function to simulate a browser screen.</p>
 <ul>
 <li><code>act.com/en-uk</code> represents the URL to be loaded in the simulated screen.</li>
 <li>The object passed as the second argument contains the following properties:

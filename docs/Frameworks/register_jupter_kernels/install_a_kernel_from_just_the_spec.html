@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -171,7 +178,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code installs a custom Jupyter kernel for C# code.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import json
+import os
+import sys
+import getopt
+from jupyter_client.kernelspec import KernelSpecManager
+from IPython.utils.tempdir import TemporaryDirectory
+from distutils.spawn import find_executable
+
+def get_kernel_json():
+    """Returns the kernel JSON configuration"""
+    return {
+        'argv': ['mono', '/usr/local/bin/myjupytertest/icsharp/Kernel/bin/Release/iCSharp.Kernel.exe', '{connection_file}'],
+        'display_name': 'C#',
+        'language': 'csharp',
+        'codemirror_mode':'shell',
+        'env': {'PS1': '
+</body>
+
+</html>}
+    }
+
+def install_kernel_spec(user=True, prefix=None, kernel_json=None):
+    """
+    Installs the kernel spec with the given configuration.
+
+    Args:
+        user (bool): Whether to install the kernel spec for the user or system.
+        prefix (str): The prefix to install the kernel spec under.
+        kernel_json (dict): The kernel JSON configuration.
+
+    Returns:
+        None
+    """
+    if kernel_json is None:
+        kernel_json = get_kernel_json()
+
+    with TemporaryDirectory() as td:
+        os.chmod(td, 0o755)  # Make the directory writable
+        with open(os.path.join(td, 'kernel.json'), 'w') as f:
+            json.dump(kernel_json, f, sort_keys=True)
+
+        print(f'Installing IPython kernel spec for user {user}')
+        KernelSpecManager().install_kernel_spec(td, 'icsharp', user=user, replace=True, prefix=prefix)
+
+def is_root():
+    """
+    Checks if the current user is the root user.
+
+    Returns:
+        bool: Whether the current user is the root user.
+    """
+    try:
+        return os.geteuid() == 0
+    except AttributeError:
+        return False  # assume not an admin on non-Unix platforms
+
+def main(argv=None):
+    """
+    The main entry point for the script.
+
+    Args:
+        argv (list): The command line arguments.
+
+    Returns:
+        None
+    """
+    if argv is None:
+        argv = sys.argv
+
+    try:
+        opts, _ = getopt.getopt(argv[1:], '', ['user', 'prefix='])
+    except getopt.GetoptError:
+        print('Error: Invalid command line arguments')
+        sys.exit(2)
+
+    user = False
+    prefix = None
+
+    for k, v in opts:
+        if k == '--user':
+            user = True
+        elif k == '--prefix':
+            prefix = v
+            user = False  # We're installing for system, not user
+
+    install_kernel_spec(user=user, prefix=prefix)
+
+if __name__ == '__main__':
+    main()</code></pre></div><p>This code installs a custom Jupyter kernel for C# code.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -183,7 +190,98 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and constants
+const { importModules } = require('../Core');
+const { getKernelInfoInterface, getLanguageInterface } = importModules(['enforcing-an-interface', 'kernel-language-interface']);
+
+const packageJson = require('../package.json');
+const { version: PACKAGE_VERSION } = packageJson;
+
+// Define the kernel info interface
+const kernelInfoInterface = {
+  /**
+   * The protocol version of the kernel.
+   * @type {string[]}
+   */
+  protocol_version: [null, ''],
+  /**
+   * The implementation of the kernel.
+   * @type {string[]}
+   */
+  implementation: [null, ''],
+  /**
+   * The implementation version of the kernel.
+   * @type {string[]}
+   */
+  implementation_version: [null, ''],
+  /**
+   * The banner of the kernel.
+   * @type {string[]}
+   */
+  banner: [null, ''],
+  /**
+   * The language information of the kernel.
+   * @type {object}
+   */
+  language_info: getLanguageInterface(),
+  /**
+   * The help links of the kernel.
+   * @type {string[][]}
+   */
+  help_links: [null, []],
+  /**
+   * The install configuration of the kernel.
+   * @type {string}
+   */
+  install_config: [null, '']
+};
+
+/**
+ * Returns the native kernel info by enforcing the kernel info interface.
+ * @param {object} kernel_info - The kernel info object.
+ * @returns {object} The native kernel info object.
+ */
+function nativeKernelInfo(kernel_info) {
+  if (!kernel_info) {
+    return;
+  }
+
+  // Destructure the kernel info object for easier reading
+  const {
+    language_info,
+    protocol_version,
+    implementation,
+    implementation_version,
+    banner
+  } = kernel_info;
+
+  // Enforce the language info interface
+  const enforcedLanguageInfo = getKernelInfoInterface().language_info(language_info, getLanguageInterface());
+
+  // Merge the kernel info object with the enforced language info
+  const mergedKernelInfo = {
+   ...kernel_info,
+    language_info: enforcedLanguageInfo
+  };
+
+  // Merge the protocol version, implementation, implementation version, and banner
+  const mergedInfo = {
+   ...mergedKernelInfo,
+    protocol_version: protocol_version || '5.1',
+    implementation: implementation || enforcedLanguageInfo.name,
+    implementation_version: implementation_version || PACKAGE_VERSION,
+    banner: banner || enforcedLanguageInfo.language
+  };
+
+  return mergedInfo;
+}
+
+// Export the kernel info interface and the native kernel info function
+module.exports = {
+  kernelInfoInterface,
+  nativeKernelInfo
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules and Data</h4>
 <p>The code starts by importing necessary modules and data:</p>
 <ul>

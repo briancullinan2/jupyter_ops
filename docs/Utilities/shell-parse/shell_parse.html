@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -319,7 +326,257 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const controlChars = '|&amp;&amp;;;|&amp;|&lt;(|&lt;&lt;&lt;|&gt;&gt;|&gt;&amp;|&amp;&lt;|[&amp;;()|&lt;&gt;]';
+const controlRE = new RegExp(`^(${controlChars})<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>shell parse</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+      padding: 10px;
+    }
+
+    body {
+      padding: 0 0 0 200px;
+      margin: 0;
+    }
+
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h3><a href="../shell-parse/index.html">shell-parse</a></h3>
+    <a href="./shell_parse.html">shell parse</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../shell-parse/index.html">shell-parse</a> |  |  | <a href="../../search.html">Search</a>
+  </header>
+
+  );
+const metaChars = '|&amp;;()&lt;&gt;';
+const singleQuote = '"((\\\\\')|[^"])*?"';
+const doubleQuote = '\'((\\\\\')|[^\'])*?\'';
+
+const token = (0x100000000 * Math.random()).toString(16).slice(0, 8);
+
+function* matchAll(s, r) {
+  const origIndex = r.lastIndex;
+
+  while ((r.lastIndex === 0 || s[r.lastIndex - 1]!== r.lastIndex[0]) &amp;&amp; (matchObj = r.exec(s))) {
+    yield matchObj;
+  }
+
+  r.lastIndex = origIndex;
+}
+
+function getVar(env, pre, key) {
+  let r = typeof env === 'function'? env(key) : env[key];
+
+  if (typeof r === 'undefined' &amp;&amp; key!= '') {
+    r = '';
+  } else if (typeof r === 'undefined') {
+    r = '
+</body>
+
+</html>;
+  }
+
+  if (typeof r === 'object') {
+    return `${pre}${token}${JSON.stringify(r)}${token}`;
+  }
+  return `${pre}${r}`;
+}
+
+function parseInternal(string, env, opts) {
+  if (!opts) {
+    opts = {};
+  }
+  const escape = opts.escape || '\\';
+  const bareword = `(\\${escape}[\'"\${metaChars}]|[^\\s\'"\${metaChars}])+`;
+
+  const chunker = new RegExp(`(${controlChars})|(${bareword}|${singleQuote}|${doubleQuote})+`, 'g');
+  const matches = matchAll(string, chunker);
+
+  if (matches.length === 0) {
+    return [];
+  }
+  if (!env) {
+    env = {};
+  }
+
+  let commented = false;
+  for (const match of matches) {
+    const s = match[0];
+    if (!s || commented) {
+      continue;
+    }
+    if (controlRE.test(s)) {
+      yield { op: s };
+      continue;
+    }
+
+    let out = '';
+    let quote = false;
+    let esc = false;
+    let isGlob = false;
+    let i;
+
+    function parseEnvVar() {
+      i += 1;
+      let varname;
+      let char = s.charAt(i);
+
+      if (char === '{') {
+        i += 1;
+        if (s.charAt(i) === '}') {
+          throw new Error('Bad substitution:'+ s.slice(i - 2, i + 1));
+        }
+        varname = s.slice(i, s.indexOf('}', i));
+        i = s.indexOf('}', i) + 1;
+      } else if ((/[*@#?$!_-]/).test(char)) {
+        varname = char;
+        i += 1;
+      } else {
+        var slicedFromI = s.slice(i);
+        const varend = slicedFromI.match(/[^\w\d_]/);
+        if (!varend) {
+          varname = slicedFromI;
+          i = s.length;
+        } else {
+          varname = slicedFromI.slice(0, varend.index);
+          i += varend.index - 1;
+        }
+      }
+      yield getVar(env, '', varname);
+    }
+
+    for (i = 0; i &lt; s.length; i++) {
+      let c = s.charAt(i);
+      isGlob = isGlob || (!quote &amp;&amp; (c === '*' || c === '?'));
+      if (esc) {
+        out += c;
+        esc = false;
+      } else if (quote) {
+        if (c === quote) {
+          quote = false;
+        } else if (quote == '"') {
+          out += c;
+        } else { // Single quote
+          if (c === escape) {
+            i += 1;
+            c = s.charAt(i);
+            if (c === quote || c === escape) {
+              out += c;
+            } else {
+              out += escape + c;
+            }
+          } else if (i + 1 &lt; s.length &amp;&amp; s.slice(i, i + 2) === escape + quote) {
+            if (out[out.length - 1] === '\\') {
+              out = out.slice(0, -1) + quote;
+            } else {
+              out += '\\';
+            }
+          } else if (c === escape + quote) {
+            out += c;
+          } else {
+            out += c;
+          }
+        }
+      } else if (c === doubleQuote || c === singleQuote) {
+        quote = c;
+      } else if (controlRE.test(c)) {
+        yield { op: s };
+        continue;
+      } else if (c === escape) {
+        esc = true;
+      } else if (i + 1 &lt; s.length &amp;&amp; s.slice(i, i + 2) === escape + quote) {
+        if (out[out.length - 1] === '\\') {
+          out = out.slice(0, -1) + quote;
+        } else {
+          out += '\\';
+        }
+      } else if (c === escape + quote) {
+        out += c;
+      } else if (c === quote) {
+        quote = false;
+      } else if (c === '
+</body>
+
+</html>) {
+        yield parseEnvVar();
+      } else {
+        out += c;
+      }
+    }
+
+    if (isGlob) {
+      yield { op: 'glob', pattern: out };
+    }
+
+    yield out;
+  }
+}
+
+module.exports = function parse(s, env, opts) {
+  const mapped = parseInternal(s, env, opts);
+  if (typeof env!== 'function') {
+    return mapped;
+  }
+  const tokenized = Array.from(mapped).map(arg =&gt; {
+    if (typeof arg === 'undefined') return arg;
+    if (typeof arg === 'object') return arg;
+    const xs = arg.split(new RegExp(`(${token}.*?${token})`, 'g'));
+    if (xs.length === 1) return xs[0];
+    return xs.filter(Boolean).map(x =&gt; {
+      if (startsWithToken.test(x)) {
+        return JSON.parse(x.split(token)[1]);
+      }
+      return x;
+    });
+  }).flat(Infinity);
+  return tokenized;
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>The code appears to be a parser for Bash-like shell scripting language. It uses regular expressions to scan and tokenize the input string, and then applies specific parsing rules to handle quoting and other syntax.</p>
 <p><strong>Variables and Constants</strong></p>
 <ul>

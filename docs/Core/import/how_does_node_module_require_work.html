@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./import_notebook.html">import notebook</a> | <a href="./cell_2.html">Cell 2</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>getCached</code> function checks if a cached version of a module exists at a given filepath and returns it if it's newer than the current file's modification time. The <code>makeModule</code> function creates or retrieves a module based on the given path and global context, using caching to reuse existing modules and store new ones for future use.</p>
+  <p>The code imports Node.js modules and defines two functions: <code>getCached</code>, which returns a cached module if it exists and is up-to-date, and <code>makeModule</code>, which creates and caches a new module object.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "how does node module require work"</code></pre><h1>how does node module require work</h1>
@@ -200,33 +207,156 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>getCached Function</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Module } = require('module');
+const path = require('path');
+const fs = require('fs');
+const CONSOLE = require('../Core').CONSOLE;
+
+class ModuleGenerator {
+  constructor() {
+    this.cache = {};
+    this.cacheTimers = {};
+  }
+
+  async getCached(filepath) {
+    const filename = path.basename(filepath);
+    const mtime = fs.statSync(filepath).mtime.getTime();
+    const cachedModule = this.cache[filepath];
+    if (cachedModule && mtime < cachedModule.buildTime) {
+      return cachedModule;
+    }
+    return null;
+  }
+
+  async makeModule(code, pathToCode, ctxGlobal) {
+    try {
+      ctxGlobal = ctxGlobal || {};
+      ctxGlobal.module = await this.getCached(pathToCode);
+
+      if (ctxGlobal.module) {
+        if (!ctxGlobal.module.loaded) {
+          await this.waitForModuleLoad(ctxGlobal.module);
+        }
+        return ctxGlobal.module.exports;
+      }
+
+      delete require.cache[pathToCode];
+      const module = new Module(pathToCode, module);
+      Object.assign(ctxGlobal, {
+        importer: require('../Core'),
+        module,
+        exports: { original: true },
+        __dirname: path.dirname(pathToCode),
+        __filename: path.basename(pathToCode),
+        $: void 0,
+        console: CONSOLE,
+        global: ctxGlobal,
+      });
+      Object.assign(module, {
+        module,
+        exports: ctxGlobal.exports,
+        parent: module,
+        buildTime: Date.now(),
+        filename: pathToCode,
+        paths: Module._nodeModulePaths(path.dirname(pathToCode)),
+      });
+      this.cache[pathToCode] = module;
+
+      const validVars = Object.keys(ctxGlobal)
+       .filter((k) => k.match(/^(\$\$|[a-z_][a-z0-9_]*)$/i))
+       .join(',');
+
+      if (!pathToCode.includes('Core')) {
+        CONSOLE.info(`compiling ${pathToCode} with ${validVars}`);
+      }
+
+      module._compile(`
+        module.exports = (({${validVars}}) => {
+          ${code}
+          return module.exports || exports || {}
+        })`, pathToCode);
+
+      const wrapperContext = module.exports;
+      const result = await wrapperContext(ctxGlobal);
+      module.loaded = true;
+      module.exports = result;
+      return result;
+    } catch (err) {
+      if (err.code === 'ERR_REQUIRE_ESM') {
+        const { makeESModule } = require('../Core');
+        CONSOLE.error('ES module required', err);
+        return makeESModule(code, pathToCode, ctxGlobal);
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  async waitForModuleLoad(module) {
+    return new Promise((resolve) => {
+      const interval = setInterval(() => {
+        if (module.loaded) {
+          clearInterval(interval);
+          resolve();
+        }
+      }, 100);
+    });
+  }
+}
+
+module.exports.makeModule = async (code, pathToCode, ctxGlobal) => {
+  const generator = new ModuleGenerator();
+  return generator.makeModule(code, pathToCode, ctxGlobal);
+};</code></pre></div><p><strong>Breakdown of the Code</strong></p>
+<h3>Importing Dependencies</h3>
+<p>The code starts by importing the following modules:</p>
+<pre><code class="language-javascript">const Module = require('module').Module
+const path = require('path')
+const fs = require('fs')
+</code></pre>
+<ul>
+<li><code>Module</code> is imported from the Node.js <code>module</code> module, and <code>Module</code> is accessed directly to use its methods.</li>
+<li><code>path</code> is a built-in Node.js module for working with file paths.</li>
+<li><code>fs</code> is a built-in Node.js module for interacting with the file system.</li>
+</ul>
+<h3><code>getCached</code> Function</h3>
+<p>The <code>getCached</code> function takes a <code>filepath</code> as an argument and returns a cached module if it exists and is up-to-date:</p>
 <pre><code class="language-javascript">function getCached(filepath) {
-    //...
+  //...
 }
 </code></pre>
-<p>This function checks if there is a cached version of the module at the given <code>filepath</code>. It:</p>
-<ol>
-<li>Retrieves the last modification time (mtime) of the file.</li>
-<li>Checks if a cached version of the module exists in the <code>Module._cache</code> object.</li>
-<li>If a cached version exists and its build time is newer than the current file's mtime, it returns the cached version.</li>
-</ol>
-<h3>makeModule Function</h3>
+<p>The function checks if the file at <code>filepath</code> has changed by comparing its modification time with the cached module's build time. If the cached module is up-to-date, it is returned.</p>
+<h3><code>makeModule</code> Function</h3>
+<p>The <code>makeModule</code> function takes three arguments:</p>
+<ul>
+<li><code>code</code>: the code to execute</li>
+<li><code>pathToCode</code>: the path to the code file</li>
+<li><code>ctxGlobal</code>: the global context object</li>
+</ul>
+<p>The function returns a module object that can be executed:</p>
 <pre><code class="language-javascript">function makeModule(code, pathToCode, ctxGlobal) {
-    //...
+  //...
 }
 </code></pre>
-<p>This function creates or retrieves a module based on the given <code>pathToCode</code> and <code>ctxGlobal</code> object. It:</p>
+<p>Here's a high-level overview of what the function does:</p>
 <ol>
-<li>Resolves the <code>pathToCode</code> to an absolute filepath.</li>
-<li>Checks if a cached version of the module exists using the <code>getCached</code> function.</li>
-<li>If a cached version exists and is loaded, it returns the module's exports.</li>
-<li>If the cached version is not loaded or doesn't exist, it creates a new module instance.</li>
-<li>Configures the new module with various properties (e.g., <code>importer</code>, <code>module</code>, <code>exports</code>, etc.).</li>
-<li>Stores the new module in the <code>Module._cache</code> object for future use.</li>
+<li>It resolves the <code>filepath</code> using <code>path.resolve</code>.</li>
+<li>It checks if a cached module exists for the <code>filepath</code>. If it does, it returns the cached module or its exports if the module is already loaded.</li>
+<li>If no cached module exists, it creates a new module object using the <code>Module</code> class from Node.js.</li>
+<li>It assigns properties to the module object, such as <code>imports</code>, <code>exports</code>, and <code>filename</code>.</li>
+<li>It adds the module object to the cache.</li>
+<li>It returns the module object.</li>
 </ol>
-<p>Note that this function also includes a TODO comment suggesting a potential optimization.</p>
+<p>Note that the function uses <code>Object.assign</code> to copy properties from one object to another, which can be done in a more modern way using object destructuring and the spread operator (<code>{...obj}</code>).</p>
+<h3>Miscellaneous</h3>
+<p>The code also uses some Node.js-specific features, such as:</p>
+<ul>
+<li><code>require.cache</code> to clear the cache for a specific file.</li>
+<li><code>Module._cache</code> to access the cache of loaded modules.</li>
+<li><code>Module._nodeModulePaths</code> to get the paths of node modules.</li>
+</ul>
+<p>Overall, the code appears to be implementing a custom module loading mechanism that uses caching to improve performance.</p>
 
 </body>
 

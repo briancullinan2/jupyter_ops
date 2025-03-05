@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a utility for selecting specific parts of a JSON file based on a provided selection criteria.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Buffer } = require('buffer');
+const { createReadStream, resolve } = require('path');
+const fs = require('fs');
+const selectTree = require('./selectTree'); // assuming selectTree is in a separate file
+
+/**
+ * Walks through the JSON data, applying the given select path and evaluating the results.
+ *
+ * @param {string} select - The select path to apply to the JSON data.
+ * @param {Buffer} ctx - The JSON data to walk through.
+ * @param {function} evaluate - The function to call with the evaluated results.
+ */
+function walkJson(select, ctx, evaluate) {
+  try {
+    const json = JSON.parse(ctx.toString());
+    const result = selectJson(select, json);
+    evaluate(result, json);
+  } catch (error) {
+    // Ignore invalid JSON and try to parse again later
+  }
+
+  // TODO: consider implementing a more efficient way to handle large JSON files
+}
+
+/**
+ * Selects the JSON data from a file based on the given select path.
+ *
+ * @param {string} select - The select path to apply to the JSON data.
+ * @param {string|Buffer} file - The file to read the JSON data from.
+ * @returns {Promise<Array>} The evaluated results.
+ */
+async function selectJson(select, file) {
+  if (typeof file ==='string') {
+    file = resolve(file);
+  } else if (Buffer.isBuffer(file)) {
+    // Use the Buffer as the file content
+    file = Buffer.from(file);
+  } else {
+    throw new Error('Invalid file format');
+  }
+
+  const results = [];
+  const buffer = Buffer.alloc(0);
+
+  const readStream = createReadStream(file, {
+    highWaterMark: 128 * 1024,
+    start: 0,
+    end: Infinity,
+  });
+
+  readStream.on('data', (chunk) => {
+    buffer = Buffer.concat([buffer, chunk]);
+  });
+
+  readStream.on('end', () => {
+    walkJson(select, buffer, (result) => {
+      results.push(...selectTree(select, result));
+    });
+  });
+
+  return new Promise((resolve) => {
+    readStream.on('end', () => {
+      resolve(results);
+    });
+  });
+}
+
+module.exports = { selectJson };</code></pre></div><p>This code defines a utility for selecting specific parts of a JSON file based on a provided selection criteria.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong>Dependencies:</strong> It uses the <code>buffer</code> module for handling binary data and <code>path</code> for resolving file paths.</p></li>

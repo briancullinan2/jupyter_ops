@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to track changes in a Facebook user's friend list over time.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const glob = require('glob');
+const fs = require('fs');
+const path = require('path');
+const { regexToArray, regex } = require('../Core');
+const { runSeleniumCell } = require('../Core/selenium cell');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = path.join(PROFILE_PATH, 'Conversations');
+
+/**
+ * Extracts friend URLs from an HTML file.
+ * @param {string} file - Path to the HTML file.
+ * @returns {string[]} An array of friend URLs.
+ */
+function getFriends(file) {
+    try {
+        const html = fs.readFileSync(file, 'utf8');
+        const hrefRegex = regex('href="([^"]*)', 'i');
+        const hrefMatches = regexToArray(hrefRegex, html, 1);
+        const filteredMatches = hrefMatches
+           .filter((href) =&gt; href.indexOf('.js') === -1 &amp;&amp; href.indexOf('.css') === -1
+                &amp;&amp; href.indexOf('friends_tab') &gt; -1)
+           .map((href) =&gt; {
+                const queryMatch = href.match(/(.*)\?/i);
+                return queryMatch &amp;&amp; queryMatch[1];
+            })
+           .filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos);
+        return filteredMatches;
+    } catch (error) {
+        console.error(`Error reading file: ${error}`);
+        return [];
+    }
+}
+
+/**
+ * Compares two friend lists and returns a diff.
+ * @returns {Promise&lt;string[]&gt;} A promise resolving to an array of friend URLs that have changed.
+ */
+function getFriendsDiff() {
+    return runSeleniumCell([
+        'log in facebook',
+       'scrape facebook profile',
+       'scrape facebook friends'
+    ])
+       .then((seleniumResult) =&gt; seleniumResult.scrapeFacebookFriends())
+       .then((doc) =&gt; {
+            const date = new Date();
+            fs.writeFileSync(
+                path.join(project, `friendlist-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}.htm`),
+                `&lt;html&gt;${doc}&lt;/html&gt;`
+            );
+
+            const friends = glob.sync('**/*friend*', { cwd: project, nodir: true });
+            friends.sort((a, b) =&gt; {
+                const aDate = new Date(fs.statSync(path.join(project, a)).mtime);
+                const bDate = new Date(fs.statSync(path.join(project, b)).mtime);
+                return aDate.getTime() - bDate.getTime();
+            });
+
+            const urls = getFriends(path.join(project, friends.pop()));
+            const urls2 = getFriends(path.join(project, friends.pop()));
+
+            const diff = [...new Set(urls.filter((u) =&gt; urls2.indexOf(u) === -1))].concat([...new Set(urls2.filter((u) =&gt; urls.indexOf(u) === -1))]);
+            return diff;
+        })
+       .catch((error) =&gt; console.error(error));
+}
+
+module.exports = getFriendsDiff;</code></pre></div><p>This code snippet is designed to track changes in a Facebook user's friend list over time.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong> It imports necessary modules for file system operations, path manipulation, and a custom <code>importer</code> module.</p></li>

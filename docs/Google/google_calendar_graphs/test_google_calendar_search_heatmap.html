@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code fetches and visualizes Google Calendar events based on provided search queries.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+
+const options = {
+  auth: {}, // TODO: Move auth logic to a separate function for better reusability
+};
+
+const { listEvents, runAllPromises, d3Heatmap } = importer;
+
+const calendarSearchToHeatmap = async searches => {
+  try {
+    const events = await Promise.all(
+      searches.map((search, index) =>
+        listEvents({
+          auth: options.auth,
+          calendarId: 'Emotions',
+          q: search,
+        }).then(response => ({
+          id: response.event.id,
+          start: new Date(response.event.start.dateTime),
+          end: new Date(response.event.end.dateTime),
+        }))
+      )
+    );
+
+    return d3Heatmap(events);
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = calendarSearchToHeatmap;
+
+import $ from 'jquery';
+
+if (typeof $!== 'undefined') {
+  $(document).ready(() => {
+    calendarSearchToHeatmap([
+      'coincidence',
+      // Add more searches here
+    ]).then(response => {
+      $('body').html(response);
+    }).catch(error => {
+      $.sendError(error);
+    });
+  });
+}</code></pre></div><p>This code fetches and visualizes Google Calendar events based on provided search queries.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

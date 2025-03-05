@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const request = require('request'). defaults({ jar: true });
+const { regexToArray } = require('../Core');
+
+/**
+ * Returns a random joke from a collection of silly jokes.
+ * @returns {Promise&lt;Array&lt;string&gt;&gt;} A promise resolving to an array of jokes.
+ */
+function getJoke() {
+    // Cache jokes to avoid repeated requests
+    const cacheKey ='silly-jokes';
+    const cachedJokes = globalThis.localStorage.getItem(cacheKey);
+
+    if (cachedJokes) {
+        return Promise.resolve(JSON.parse(cachedJokes));
+    }
+
+    return new Promise((resolve, reject) =&gt; {
+        request('http://www.ducksters.com/jokes/silly.php', (error, response, body) =&gt; {
+            if (error) {
+                reject(error);
+            } else if (response.statusCode === 200) {
+                const regex = /^.*?Q:.*$|^.*?A:.*$/igm;
+                const jokes = regexToArray(regex, body);
+
+                // Pair up question and answer
+                const pairedJokes = jokes.reduce((arr, j, i) =&gt; {
+                    if (i % 2 === 1) {
+                        arr.push([j.replace(/&lt;.*?\s*\/?&gt;/ig, '').trim().replace(/^\s*|\s*$/igm, ''), jokes[i - 1].replace(/&lt;.*?\s*\/?&gt;/ig, '').trim().replace(/^\s*|\s*$/igm, '')]);
+                    }
+                    return arr;
+                }, []);
+
+                // Store jokes in cache
+                globalThis.localStorage.setItem(cacheKey, JSON.stringify(pairedJokes));
+
+                resolve(pairedJokes);
+            } else {
+                reject(new Error(`Request failed with status code ${response.statusCode}`));
+            }
+        });
+    })
+   .then((jokes) =&gt; {
+        const randomJokeIndex = Math.floor(Math.random() * jokes.length);
+        return jokes[randomJokeIndex];
+    });
+}
+
+module.exports = getJoke;
+```</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var util = require('bluebird');
 var request = util.promisify(require('request'));

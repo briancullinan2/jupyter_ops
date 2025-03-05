@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,103 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const runSeleniumCell = importer.import('selenium cell');
+
+const TIMEOUT = 1000;
+const MAX_CONCURRENT_CONNECTIONS = 3;
+const SLEEP_DURATION = 100; // duration to sleep before making the next API call
+
+/**
+ * Dequeue tasks from the input queue recursively.
+ * 
+ * @param {Array} inputQueue The queue of tasks to dequeue
+ * @param {Function} searchCallback The callback function to apply to each dequeued item
+ * @param {Object} ctx The context to pass to the callback function
+ * @returns {Promise} A promise that resolves with an array of results
+ */
+function dequeue(inputQueue, searchCallback, ctx) {
+    const results = [];
+
+    // Get the current session ID for logging purposes
+    const sessionId = ctx.client.requestHandler.sessionID;
+    console.log(`Session ID: ${sessionId}`);
+
+    const callback = typeof searchCallback === 'function'
+       ? searchCallback
+        : importer.import(searchCallback, { useCache: false });
+
+    // Base case: if the queue is empty, return the results
+    if (inputQueue.length === 0) {
+        return Promise.resolve(results);
+    }
+
+    // Dequeue the next item from the queue
+    const item = inputQueue.shift();
+
+    // Apply the callback function to the dequeued item and wait for the result
+    return new Promise(resolve => setTimeout(resolve, SLEEP_DURATION))
+       .then(() => callback(item, ctx))
+       .catch((error) => {
+            console.log(`Error dequeuing item: ${error}`);
+
+            // If the error indicates that the session has been abandoned, re-add the item to the queue
+            if (error.message.includes('Already') || error.message.includes('session')) {
+                inputQueue.push(item);
+                throw new Error('Abandoning session :(', error);
+            }
+        })
+       .then((result) => {
+            results.push(result);
+
+            // Recursively dequeue the remaining items in the queue
+            return dequeue(inputQueue, searchCallback, ctx).then((results) => results.concat(results));
+        });
+}
+
+/**
+ * Create multiple Selenium sessions and execute a search callback function on each item in the input list.
+ * 
+ * @param {Array} inputList The list of items to search
+ * @param {Function} searchCallback The callback function to apply to each item in the input list
+ * @returns {Promise} A promise that resolves with an array of results
+ */
+function multiCrawl(inputList, searchCallback) {
+    // Limit the number of concurrent connections to the maximum allowed
+    const maxConnections = Math.min(inputList.length, MAX_CONCURRENT_CONNECTIONS);
+
+    // Create an array of promises to establish the connections
+    const connections = Array.from({ length: maxConnections }, (_, index) => {
+        const client = runSeleniumCell(false, false);
+
+        // Resolve the promise when the connection is established
+        return new Promise((resolve) => {
+            client.then((ctx) => {
+                resolve(ctx);
+            }).catch((error) => {
+                console.log(`Error establishing connection: ${error}`);
+                resolve(null);
+            });
+        });
+    });
+
+    // Run all the promises to establish the connections concurrently
+    return Promise.all(connections)
+       .then((results) => {
+            // Filter out any null results
+            const validResults = results.filter((result) => result!== null);
+
+            // Create an array of promises to dequeue the items in the input list
+            const promises = validResults.map((ctx) => dequeue(inputList, searchCallback, ctx));
+
+            // Run all the promises to dequeue the items concurrently
+            return Promise.all(promises);
+        })
+       .then((results) => results.flat());
+}
+
+module.exports = multiCrawl;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Import Statements</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');

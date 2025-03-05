@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { Core } = require('../Core');
+const { Quake3ServerCommands } = Core.import('quake 3 server commands');
+
+// Define the testRcon function
+async function testRcon(command) {
+  /**
+   * Tests an RCON command on the first available master server.
+   * 
+   * @param {string} command - The RCON command to send.
+   * 
+   * @throws {Error} If the master server list is empty or the RCON command fails.
+   */
+  try {
+    // Get the list of master servers
+    const masters = await Quake3ServerCommands.listMasters();
+
+    // If no master servers are available, throw an error
+    if (!masters.length) {
+      throw new Error('No master servers available');
+    }
+
+    // Get the first master server
+    const master = masters[0];
+
+    // Log the master server details
+    console.log(`Master Server: ${master.ip}:${master.port}`);
+
+    // Send the RCON command to the master server
+    await Quake3ServerCommands.sendRcon(master.ip, master.port, command);
+
+    // Pause for 1 second to allow the RCON command to be processed
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Close the UDP client
+    await Quake3ServerCommands.udpClient.close();
+  } catch (error) {
+    // Log any errors that occur
+    console.error(error);
+  }
+}
+
+// Export the testRcon function
+module.exports = testRcon;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <ul>
 <li><code>var importer = require('../Core')</code>: Imports a module named <code>Core</code> from the parent directory (<code>../</code>) and assigns it to the variable <code>importer</code>.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getTemplates</code> that extracts template and data sheets from a Google Sheet document.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importCore = require('../Core');
+const { getGoogleSheetInfo } = importCore.import('getGoogleSheetInfo');
+
+/**
+ * Retrieves templates from a Google Spreadsheet document.
+ * 
+ * @param {object} doc The Google Spreadsheet document.
+ * @returns {Promise<object>} An object containing templates and their corresponding data.
+ */
+async function getTemplates(doc) {
+  try {
+    const info = await getGoogleSheetInfo(doc);
+    console.log(`Loaded doc: ${info.properties.title} ${info.spreadsheetId}`);
+
+    // Initialize a map to store templates and their data
+    const templates = info.sheets.reduce((map, worksheet) => {
+      // Extract the layout title from the worksheet title
+      const layoutTitle = worksheet.properties.title.toLowerCase().replace(/layout|\s*data|\s*template/ig, '').split(/\s+/ig).join('-');
+
+      // Initialize the template or data for the layout title if it doesn't exist
+      if (!map[layoutTitle]) map[layoutTitle] = { template: null, data: null };
+      
+      // Assign the worksheet to either template or data based on its title
+      if (worksheet.properties.title.toLowerCase().includes('data')) map[layoutTitle].data = worksheet;
+      else map[layoutTitle].template = worksheet;
+
+      return map;
+    }, {});
+
+    return templates;
+  } catch (error) {
+    console.error(`Error retrieving templates: ${error.message}`);
+    throw error;
+  }
+}
+
+module.exports = getTemplates;</code></pre></div><p>This code defines a function <code>getTemplates</code> that extracts template and data sheets from a Google Sheet document.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

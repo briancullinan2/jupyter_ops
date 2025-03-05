@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -140,7 +147,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet downloads attachments from a set of emails and saves them to a local directory. It then generates HTML and Markdown representations of the attachments for display.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const imaps = require('imap-simple');
+const mime = require('mime-types');
+const $ = require('jquery'); // assuming you are using a templating engine like EJS
+const connection = imaps.connect({
+  imap: {
+    user: 'your-username',
+    password: 'your-password',
+    host: 'your-imap-host',
+    port: 993,
+    authTimeout: 10000,
+    tls: true
+  }
+});
+
+const OUTPUT_DIR = path.join(process.cwd(), 'output');
+
+// Create output directory if it doesn't exist
+if (!fs.existsSync(OUTPUT_DIR)) {
+  fs.mkdirSync(OUTPUT_DIR);
+}
+
+/**
+ * Retrieves attachments from a list of messages.
+ *
+ * @param {array} messages - List of messages to retrieve attachments from.
+ * @returns {Promise} A promise that resolves to a list of attachments.
+ */
+function getAttachments(messages) {
+  const attachments = [];
+
+  return Promise.all(messages.map(async (message) => {
+    const parts = await connection.getParts(message.attributes.struct);
+    const attachmentParts = parts.filter((part) => part.disposition && part.disposition.type === 'ATTACHMENT');
+
+    const attachmentData = await Promise.all(attachmentParts.map((part) => {
+      return connection.getPartData(message, part).then((partData) => ({
+        filename: part.disposition.params.filename,
+        data: partData
+      }));
+    }));
+
+    attachments.push(...attachmentData);
+  }));
+}
+
+/**
+ * Saves attachments to disk and generates HTML for displaying the images.
+ *
+ * @param {array} attachments - List of attachments to save.
+ * @returns {Promise} A promise that resolves to the generated HTML.
+ */
+function saveAttachments(attachments) {
+  const promises = attachments.map((attachment) => {
+    const filename = path.join(OUTPUT_DIR, attachment.filename);
+    return new Promise((resolve, reject) => {
+      fs.writeFile(filename, attachment.data, 'binary', (err) => {
+        if (err) reject(err);
+        else resolve(attachment);
+      });
+    });
+  });
+
+  return Promise.all(promises).then((images) => {
+    const html = images.map((image) => {
+      const filename = image.filename.split('/').pop();
+      const ext = mime.lookup(filename);
+      return `<img src="data:${ext};base64,${(new Buffer(image.data, 'binary')).toString('base64')}" />`;
+    }).join('');
+
+    const htmlPrint = images.map((image) => {
+      const filename = image.filename.split('/').pop();
+      return `<li><img src="/assets/${filename}" /></li>`;
+    }).join('\n');
+
+    return $.mime({ 'text/markdown': `Usage:\n\n```html\n${htmlPrint}\n```\nOutput:\n${html}` });
+  });
+}
+
+// Example usage:
+getAttachments([/* list of messages */])
+ .then(saveAttachments)
+ .then((html) => console.log(html));</code></pre></div><p>This code snippet downloads attachments from a set of emails and saves them to a local directory. It then generates HTML and Markdown representations of the attachments for display.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong> It defines an output directory (<code>output</code>) and creates it if it doesn't exist.</p></li>

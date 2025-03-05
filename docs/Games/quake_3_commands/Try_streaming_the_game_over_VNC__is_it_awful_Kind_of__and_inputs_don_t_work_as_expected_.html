@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Brief Code Explanation</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define environment variables
+VNC_KEY="VND7Z-M22AB-MQD7R-GAAKF-2B3EA"
+QUAKE3_PORT=5900
+DOCKER_QUAKE3_PORT_MAPPING=5901
+
+# Define the Docker command
+DOCKER_QUAKE3_COMMAND="docker run -it --shm-size=2g --name quake3 -d -p ${DOCKER_QUAKE3_PORT_MAPPING}:${QUAKE3_PORT} quake3 bash"
+
+# Print the VNC key for reference
+echo "VNC Key: ${VNC_KEY}"
+
+# Display the Docker command before execution
+echo "Executing Docker command: ${DOCKER_QUAKE3_COMMAND}"
+
+# Execute the Docker command
+$DOCKER_QUAKE3_COMMAND</code></pre></div><h3>Brief Code Explanation</h3>
 <h4>Docker Command Breakdown</h4>
 <ul>
 <li><code>docker run</code>: Starts a new container from an image</li>

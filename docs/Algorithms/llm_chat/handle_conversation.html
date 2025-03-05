@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,70 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const classifyPrompt = require('./add-conversation-context');
+const storeResponse = require('./store-llm-response');
+
+/**
+ * Handles a conversation with the given prompt, image, and other relevant information.
+ * 
+ * @param {object} promptModel - The model to use for processing the prompt.
+ * @param {object} session - The session object containing the conversation context.
+ * @param {string} prompt - The prompt to process.
+ * @param {string|Buffer} image - The image associated with the prompt.
+ * @param {object} otr - The one-time reply information.
+ * 
+ * @returns {Promise<string>} The response from the language model.
+ */
+async function handleConversation(promptModel, session, prompt, image, otr) {
+  // Classify the prompt to gather necessary context
+  const classification = await classifyPrompt(promptModel, session, prompt, image);
+  if (!classification) {
+    throw new Error('Failed to classify prompt');
+  }
+
+  // Store the current response in the message storage
+  const messageStorage = await storeResponse(true, session, prompt, 
+    classification.content + (classification.memories? ('\nApply any relevant memories to your response:\n' + classification.memories.join('\n')) : ''), 
+    otr);
+
+  // Construct the question for the language model
+  const question = (classification.content? classification.content : '') 
+    + (classification.image? '\nThe response image is provided.\n' : '')
+    + '\nRespond to this message and pretend to be emotional (e.g.'
+    + messageStorage.emotions.join(', ') + '):\n' 
+    + prompt
+    + (classification.memories? ('\nApply any relevant memories to your response:\n' + classification.memories.join('\n')) : '');
+
+  // Log the question for debugging purposes
+  console.log(`User: ${question}`);
+
+  try {
+    // Get the response from the language model
+    const response = await promptModel(question);
+    
+    // If an image is associated with the prompt, add a markdown link to the response
+    if (classification.imagePath) {
+      if (response.match(/!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/gi)) {
+        response = response.replace(/!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/gi, '![' + classification.prompt + '](/images/' + classification.imagePath.replaceAll(' ', '%20') + ')');
+      } else {
+        response += `\n\n![' + classification.prompt + '](/images/${classification.imagePath.replaceAll(' ', '%20')})`;
+      }
+    }
+
+    // If a session is provided, store the response
+    if (session) {
+      await storeResponse(false, session, response, void 0, otr);
+    }
+
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+module.exports = handleConversation;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Import Statements</h3>
 <pre><code class="language-javascript">const classifyPrompt = importer.import('add conversation context')
 const storeResponse = importer.import('store llm response')

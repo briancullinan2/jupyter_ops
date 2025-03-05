@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs').promises;
+
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations');
+const DEFAULT_MODEL = process.env.DEFAULT_MODEL || 'Default';
+const MAX_MESSAGES = 25;
+const MAX_MESSAGE_LENGTH = 1024;
+
+const conversations = {};
+
+async function loadConversationFile(file) {
+  try {
+    const content = await fs.readFile(file, 'utf8');
+    return JSON.parse(content);
+  } catch (err) {
+    if (err.code!== 'ENOENT') {
+      throw err;
+    }
+    return {};
+  }
+}
+
+async function messageRecents(session) {
+  if (!session) {
+    return '';
+  }
+
+  const now = new Date();
+  const convoFile = path.join(PROJECT_PATH, now.getFullYear(), pad(now.getMonth() + 1), DEFAULT_MODEL, session + '.json');
+
+  if (!conversations[convoFile]) {
+    conversations[convoFile] = await loadConversationFile(convoFile);
+  }
+
+  const messageTimes = Object.keys(conversations[convoFile])
+   .filter(k => k!=='summaries' && k!=='memories')
+   .sort((a, b) => b - a);
+
+  if (messageTimes.length === 0) {
+    return '';
+  }
+
+  const messages = `Current date: ${now.toISOString()}\nOur recent conversion:\n`;
+  let count = 0;
+
+  for (let i = 0; i < messageTimes.length && count < MAX_MESSAGES; i++) {
+    const message = conversations[convoFile][messageTimes[i]];
+    const useSummary = i > 10 || messages.length > 1024 || (message.content && message.content.length > MAX_MESSAGE_LENGTH);
+    const useKeywords =!message.content;
+    messages += (message.user? 'User:': 'AI: ') + (useKeywords? message.keywords : (useSummary? message.summary : message.content)) + '\n\n';
+    if (messages.length > 2048) {
+      break;
+    }
+    count++;
+  }
+
+  return messages;
+}
+
+module.exports = {
+  messageRecents,
+};
+
+function pad(num) {
+  return String(num).padStart(2, '0');
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Modules and Variables</h3>
 <ul>
 <li><code>const path = require('path')</code> and <code>const fs = require('fs')</code>: Import Node.js modules for working with file paths and file system operations.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up and starts a local web server for the &quot;novnc&quot; project. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Install live-server globally
+npm install -g live-server
+
+# Ensure that the live-server is installed successfully
+if [ $? -eq 0 ]; then
+  # Start live-server for novnc folder
+  live-server novnc &amp;
+  echo "live-server started successfully on port 8080, open http://localhost:8080 in your browser"
+else
+  echo "Error installing live-server"
+fi
+
+# TODO: Add error handling when encountering directory path issues</code></pre></div><p>This code snippet sets up and starts a local web server for the &quot;novnc&quot; project. Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>npm i -g live-server</code></strong>:</p>
 <ul>

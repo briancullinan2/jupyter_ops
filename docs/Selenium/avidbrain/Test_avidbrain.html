@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Alternatively, you can also create a reusable function for filling input fields
+function fillInputField(driver, locator, value) {
+  const inputField = await driver.findElement(By.xpath(locator));
+  await inputField.click();
+  await inputField.sendKeys(value);
+}
+
+// Then use the function in testLogin
+async function testLogin() {
+  //...
+
+  // Fill the email input field
+  fillInputField(driver, '.emailInputBox','megamindbrian@gmail.com');
+
+  // Fill the password input field
+  fillInputField(driver, '[type="password"]', 'P4$w0rd!');
+
+  //...
+}</code></pre></div><p>This code defines a function called <code>testLogin</code> that automates the process of logging into a website.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong><code>client.url('http://web.avidbrain.com/#/index')</code>:</strong> Navigates the browser to the specified URL, likely the homepage of the website.</p></li>

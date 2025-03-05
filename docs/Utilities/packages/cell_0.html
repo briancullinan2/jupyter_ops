@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -175,7 +182,188 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import functions and modules
+const core = require('./Core');
+const path = require('path');
+const fs = require('fs');
+const childProcess = require('child_process');
+const { exec } = childProcess;
+
+// Define a function to format a command for execution
+function formatCommand(command) {
+  return `node -e "console.log(require('./Core').${command}())"`;
+}
+
+// Define a function to execute a command
+function executeCommand(command) {
+  try {
+    const output = exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing command: ${error}`);
+      }
+      console.log(stdout);
+    });
+    return output;
+  } catch (error) {
+    console.error(`Error executing command: ${error}`);
+  }
+}
+
+// Define a function to import a module
+function importModule(moduleName) {
+  return require('./Core').import(moduleName);
+}
+
+// Define a function to interpret a file
+function interpretFile(filePath) {
+  return require('./Core').interpret(filePath);
+}
+
+// Define a function to compile a file
+function compileFile(filePath) {
+  return require('./Core').compile(filePath);
+}
+
+// Define a function to run a command using childProcess
+function runCommand(command) {
+  try {
+    const output = childProcess.execSync(command);
+    console.log(output.toString());
+  } catch (error) {
+    console.error(`Error executing command: ${error}`);
+  }
+}
+
+// Define a function to run a command using npm run
+function runNpmCommand(command) {
+  try {
+    const output = childProcess.execSync(`npm run ${command}`);
+    console.log(output.toString());
+  } catch (error) {
+    console.error(`Error executing command: ${error}`);
+  }
+}
+
+// Define a function to get the user's credentials
+function getCredentials() {
+  return fs.readFileSync(path.join('~', '.credentials/sheet\\ to\\ web-8ca5784e0b05.json'), 'utf8');
+}
+
+// Define a function to deploy a cloud function
+function deployCloudFunction functionName, options {
+  const command = formatCommand(`deploy cloud function ${functionName}`);
+  executeCommand(command);
+  if (options) {
+    Object.keys(options).forEach((key) => {
+      const value = options[key];
+      if (key === 'update-env-vars') {
+        runNpmCommand(`update-env-vars ${value}`);
+      } else if (key === 'update-credentials') {
+        runNpmCommand(`update-credentials ${value}`);
+      }
+    });
+  }
+}
+
+// Define the commands object
+const commands = {
+  import: (args) => formatCommand(`import(${args.join(' ')})`),
+  exec: (args) => formatCommand(`exec(${args.join(' ')})`),
+  interpret: (args) => formatCommand(`interpret(${args.join(' ')})`),
+  interpret:bash: (args) => formatCommand(`interpret:bash(${args.join(' ')})`),
+  ssh: (args) => `ssh -i ~/.credentials/selenium.pem -t -L 5900:127.0.0.1:5900 ubuntu@ec2-54-201-232-148.us-west-2.compute.amazonaws.com ${args.join(' ')}`,
+  ssh:creds: (args) => `npm run exec "copy credentials" ${args.join(' ')}`,
+  ssh:install: (args) => `npm run ssh "npm run install:minimal && sudo npm run install:aws" ${args.join(' ')}`,
+  ssh:deploy: (args) => `npm run ssh "npm run git:rebase" ${args.join(' ')}`,
+  ssh:git: (args) => `npm run ssh -- "npm run -s interpret:bash "git auto rebase"" ${args.join(' ')}`,
+  git:auto: (args) => `npm run exec "git auto commit" ${args.join(' ')}`,
+  git:rebase: (args) => `npm run exec "git auto rebase" ${args.join(' ')}`,
+  start:express: (args) => `node -e "require('./Core').import('express rpc wrapper')" ${args.join(' ')}`,
+  start:ng: (args) => `ng serve --host 0.0.0.0 --port 9090 --app 0 ${args.join(' ')}`,
+  start:note: (args) => `source activate py36 && jupyter notebook ${args.join(' ')}`,
+  start:store: (args) => `live-server --cors --port=8080 --host=0.0.0.0 --entry-file=./.output/app.html --mount=/:./.output --middleware=/Users/briancullinan/jupyter_ops/live-server-middleware.js ${args.join(' ')}`,
+  start:selenium: (args) => `npm run import "set up selenium server" && docker exec -it act-selenium bash ${args.join(' ')}`,
+  start:study: (args) => `rimraf./.functions && export ENVIRONMENT=STUDY_LOCAL && npm run export:study && npm run copy:credentials && functions deploy studyRPC --trigger-http --source=./.functions --entry-point handler --update-env-vars ENVIRONMENT=STUDY_LOCAL ${args.join(' ')}`,
+  export: (args) => `npm run import "export deploy notebook" ${args.join(' ')}`,
+  export:firebase: (args) => `npm run export -- "[['firebase rpc wrapper', 'tell joke', 'latest s3 bucket', 'calendar search heatmap','spawn child process', 'github html commit acl']] ${args.join(' ')}`,
+  export:notebook: (args) => `npm run export -- "[['import notebooks modules', 'find project files']] ${args.join(' ')}`,
+  export:sheet: (args) => `rimraf./.functions && npm run export -- "[['contact us handler', 'google cloud function rpc wrapper','sheet backend handler', 'create a sheet handler', 'google sheet handler','sheet marketing import handler', 'convert spreadsheet.ipynb[package.json]'], path.resolve('./.functions'), {'**/*google-sheet-handler*': './index.js', '**/*': './'}]" ${args.join(' ')}`,
+  export:study: (args) => `rimraf./.functions && npm run export -- "[['contact us handler', 'google cloud function rpc wrapper', 'authorize app to read profile info', 'create a study sauce user directory','render study sauce cards page', 'create a copy of study sauce template', 'convert spreadsheet.ipynb[package.json]'], path.resolve('./.functions'), {'**/*rpc-wrapper*': './index.js', '**/*': './'}]" ${args.join(' ')}`,
+  export:contact: (args) => `rimraf./.functions && npm run export -- "[['contact us handler','marketing scripts.ipynb[package.json]'], path.resolve('./.functions'), {'**/*contact-us-handler*': './index.js', '**/*': './'}]" ${args.join(' ')}`,
+  prebuild:firebase: (args) => `npm run export:firebase ${args.join(' ')}`,
+  build:firebase: (args) => `webpack ${args.join(' ')}`,
+  build: (args) => `npm run build:firebase ${args.join(' ')}`,
+  selenium: (args) => `selenium-standalone start ${args.join(' ')}`,
+  test: (args) => `npm run test:all && npm run schedule:update ${args.join(' ')}`,
+  test:export: (args) => `npm run import "export deploy notebook" -- "${args.join(' ')}"`,
+  test:cells: (args) => `npm run import "test cells" ${args.join(' ')}`,
+  test:all: (args) => `npm run test:cells -- "${args.join(' ')}"`,
+  test:zuora: (args) => `npm run test:cells -- "${args.join(' ')}"`,
+  test:gfr: (args) => `npm run test:cells -- "${args.join(' ')}"`,
+  test:sheet:info: (args) => `npm run import "sheet identifier" -- "${args.join(' ')}"`,
+  test:blog: (args) => `rimraf./.output && npm run import "test google sheets resources" -- "${args.join(' ')}"`,
+  test:sheet: (args) => `rimraf./.output && npm run import "test google sheets resources" -- "${args.join(' ')}"`,
+  test:shop: (args) => `rimraf./.output && npm run import "test google sheets resources" -- "${args.join(' ')}"`,
+  test:study: (args) => `npm run import "test google sheets resources" -- "${args.join(' ')}"`,
+  test:rpc: (args) => `npm run import "test google sheets resources" -- "${args.join(' ')}"`,
+  test:authorize: (args) => `npm run import "authorize sheets" ${args.join(' ')}`,
+  test:calendar: (args) => `npm run import "list events" -- "${args.join(' ')}"`,
+  test:resume: (args) => `rimraf./.output && npm run import "test google sheets resources" -- "${args.join(' ')}"`,
+  test:bookmarks: (args) => `npm run import "sync chrome bookmarks" ${args.join(' ')}`,
+  test:heatmap: (args) => `npm run import "test google calendar search heatmap" -- "${args.join(' ')}"`,
+  test:git: (args) => `npm run import "convert git history to google calendar events" ${args.join(' ')}`,
+  test:call: (args) => `npm run import "make a twilio call" -- "${args.join(' ')}"`,
+  test:create: (args) => `npm run test:cells -- "${args.join(' ')}"`,
+  test:permissions: (args) => `npm run test:cells -- "${args.join(' ')}"`,
+  test:copy: (args) => `npm run import "create a copy of marketing template" -- "${args.join(' ')}"`,
+  test:drive: (args) => `npm run import "list google drive files" ${args.join(' ')}`,
+  test:sheet:update: (args) => `npm run import "update interests resume sheet" ${args.join(' ')}`,
+  test:study:copy: (args) => `npm run import "create a copy of study sauce template" -- "${args.join(' ')}"`,
+  test:study:cards: (args) => `npm run import "render study cards page" ${args.join(' ')}`,
+  test:study:auth: (args) => `npm run import "authorize app to read profile info" ${args.join(' ')}`,
+  watch: (args) => `npm run import "watch files run tests" ${args.join(' ')}`,
+  watch:all: (args) => `npm run watch -- "${args.join(' ')}"`,
+  watch:zuora: (args) => `npm run watch -- "${args.join(' ')}"`,
+  lint: (args) => `eslint. --fix ${args.join(' ')}`,
+  copy:credentials: (args) => `cp ~/.credentials/sheet\\ to\\ web-8ca5784e0b05.json./.functions && cp ~/.credentials/spahaha-ea443-a78ab2269985.json./.functions && cp ~/.credentials/client_secret.json./.functions ${args.join(' ')}`,
+  deploy: (args) => `npm run deploy:firebase ${args.join(' ')}`,
+  deploy:firebase: (args) => `npm run build:firebase && firebase deploy ${args.join(' ')}`,
+  deploy:contact:illuminati: (args) => `npm run export:contact && npm run copy:credentials && npm run exec "deploy cloud function" contactIlluminati ${args.join(' ')}`,
+  deploy:contact:brian: (args) => `npm run export:contact  && npm run copy:credentials && npm run exec "deploy cloud function" contactBrian ${args.join(' ')}`,
+  deploy:sheet: (args) => `npm run export:sheet && npm run copy:credentials && npm run exec "deploy cloud function" "sheetRPC --update-env-vars ENVIRONMENT=STUDY_LOCAL" ${args.join(' ')}`,
+  deploy:shop: (args) => `npm run deploy:shop:import && npm run deploy:shop:backend ${args.join(' ')}`,
+  deploy:shop:import: (args) => `npm run import "sheet marketing import" -- "${args.join(' ')}"`,
+  deploy:shop:backend: (args) => `npm run import "setup sheet backend" -- "${args.join(' ')}"`,
+  deploy:study: (args) => `npm run deploy:study:import && npm run deploy:study:backend && npm run deploy:study:rpc ${args.join(' ')}`,
+  deploy:study:import: (args) => `npm run import "sheet marketing import" -- "${args.join(' ')}"`,
+  deploy:study:backend: (args) => `npm run import "setup sheet backend" -- "${args.join(' ')}"`,
+  deploy:study:rpc: (args) => `npm run export:study && npm run copy:credentials && npm run exec "deploy cloud function" "studyRPC --update-env-vars ENVIRONMENT=STUDY_REMOTE" ${args.join(' ')}`,
+  deploy:marketing: (args) => `npm run deploy:marketing:import && npm run deploy:marketing:backend ${args.join(' ')}`,
+  deploy:marketing:import: (args) => `npm run import "sheet marketing import" -- "${args.join(' ')}"`,
+  deploy:marketing:backend: (args) => `npm run import "setup sheet backend" -- "${args.join(' ')}"`,
+  deploy:blog: (args) => `npm run deploy:blog:import && npm run deploy:blog:backend ${args.join(' ')}`,
+  deploy:blog:import: (args) => `npm run import "sheet marketing import" -- "${args.join(' ')}"`,
+  deploy:blog:backend: (args) => `npm run import "setup sheet backend" -- "${args.join(' ')}"`,
+  deploy:resume: (args) => `npm run deploy:resume:import && npm run deploy:resume:backend ${args.join(' ')}`,
+  deploy:resume:import: (args) => `npm run import "sheet marketing import" -- "${args.join(' ')}"`,
+  deploy:resume:backend: (args) => `npm run import "setup sheet backend" -- "${args.join(' ')}"`,
+  schedule:update: (args) => `npm run import "update git" ${args.join(' ')}`,
+  install:all: (args) => `npm run install:minimal && npm run install:webdriver && npm install:extras && npm install:export ${args.join(' ')}`,
+  install:node: (args) => `npm run exec "install node" ${args.join(' ')}`,
+  install:minimal: (args) => `npm install node jsonpath-plus glob fuse.js gulp rimraf ${args.join(' ')}`,
+  install:launchd: (args) => `npm run launchd:jupyter ${args.join(' ')}`,
+  install:systemd: (args) => `npm run exec "install systemd" ${args.join(' ')}`,
+  install:aws: (args) => `npm run exec "install aws vnc selenium" && npm run install:webdriver ${args.join(' ')}`,
+  install:webdriver: (args) => `npm install webdriverio @wdio/cli lockfile wdio-chromedriver-service ${args.join(' ')}`,
+  install:export: (args) => `npm install ncp gulp-tap gulp-replace escodegen esprima astq esquery eslint mustache ${args.join(' ')}`,
+  install:extras: (args) => `npm install lodash chrono-node googleapis @google/cloud-storage chrono-node imap jsdom remarkable d3-node google-auth-library mustache ${args.join(' ')}`,
+  install:vnc: (args) => `npm run exec "install vnc entry" ${args.join(' ')}`,
+  launchd:jupyter: (args) => `npm run exec "install launchd" ${args.join(' ')}`,
+};
+
+// Export the commands object
+module.exports = commands;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code defines a JSON object with various keys, each representing a command or action. The values associated with these keys are Node.js commands that execute specific tasks.</p>
 <p><strong>Commands</strong></p>
 <ol>

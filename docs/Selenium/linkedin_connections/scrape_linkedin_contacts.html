@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches and stores a list of LinkedIn connections.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs').promises; // Import fs module with promises
+const path = require('path');
+const { URL } = require('url');
+
+// Environment variables
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Conversations');
+
+// Import dependencies
+const importer = require('../Core');
+
+// Function to list all connections
+async function listAllConnections(force = false) {
+  try {
+    // Check if connections file exists and is up to date
+    const connectionsFile = path.join(PROJECT_PATH, 'connections.json');
+    if (fs.existsSync(connectionsFile) &&!force && (await getModifiedTime(connectionsFile)) < Date.now() - 24 * 60 * 60 * 1000) {
+      // Return cached connections if up to date
+      return JSON.parse(await fs.readFile(connectionsFile, 'utf8'));
+    }
+
+    // Fetch new LinkedIn contacts
+    console.log('Fetching new LinkedIn contacts');
+    const client = importer.getClient(); // Assume importer has getClient method
+    const url = new URL(client.getUrl()).origin + '/mynetwork/invite-connect/connections/';
+    const response = await fetch(url);
+    const html = await response.text();
+    const friends = await getAllUntil(html, '//a[contains(@href, "/in/")]/@href');
+
+    // Remove duplicates and write to file
+    const uniqueFriends = [...new Set(friends)];
+    await fs.writeFile(connectionsFile, JSON.stringify(uniqueFriends, null, 4));
+    return uniqueFriends;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+}
+
+// Function to get modified time of a file
+async function getModifiedTime(filePath) {
+  return fs.stat(filePath).mtimeMs;
+}
+
+// Function to get all elements until a condition is met
+async function getAllUntil(html, selector, current, equals = (a, b) => a === b, condition = (i) => i < 10) {
+  const elements = await parseHtml(html);
+  const results = [];
+
+  for (const element of elements) {
+    if (condition(results.length)) {
+      results.push(element);
+      if (equals(current, element)) {
+        break;
+      }
+    }
+  }
+
+  return results;
+}
+
+// Function to parse HTML
+function parseHtml(html) {
+  // This function can be implemented using a library like cheerio
+  // or a simple DOM parser
+  // For simplicity, this example just returns an array of all a elements
+  return html.match(/<a([^>]+)>/g).map((element) => element.match(/href=['"]([^'"]+)['"]/)[1]);
+}
+
+module.exports = listAllConnections;</code></pre></div><p>This code snippet fetches and stores a list of LinkedIn connections.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

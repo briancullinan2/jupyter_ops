@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Import required module to prevent implicit any type issues
+import { screen } from 'puppeteer';
+
+/**
+ * Navigate to the specified URL with custom browser settings.
+ * 
+ * @param url The URL to navigate to.
+ * @param options Custom browser settings.
+ */
+async function navigateToUrl(url: string, options: { [key: string]: number }): Promise<void> {
+    try {
+        // Use the'screen' function with the provided options
+        await screen(url, options);
+        console.info(`Navigated to ${url} with options: ${JSON.stringify(options)}`);
+    } catch (error) {
+        console.error(`Error navigating to ${url}: ${error.message}`);
+    }
+}
+
+// Define URL and options
+const url = 'https://act.com/fr-fr/produits/act-essentials';
+const options = {
+    zoom: 0.5,
+    width: 680,
+    'crop-h': 400,
+};
+
+// Call the navigateToUrl function
+navigateToUrl(url, options);</code></pre></div><h3>Code Breakdown</h3>
 <p>This code uses the <code>$TS</code> object to call the <code>screen</code> function, which likely opens a webpage or displays content in a specified way.</p>
 <h4>Parameters</h4>
 <ul>

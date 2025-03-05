@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,71 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>class ListNode(object):
+    """Represents a node in a singly linked list."""
+    
+    def __init__(self, x):
+        """
+        Initializes a ListNode with a given value.
+        
+        :param x: The value of the node.
+        """
+        self.val = x
+        self.next = None
+        
+    def __str__(self): 
+        """Returns a string representation of the node."""
+        return str(self.val) + '->' + str(self.next)
+    
+    def __eq__(self, other): 
+        """Checks if two nodes are equal."""
+        return (isinstance(other, self.__class__) 
+                and self.__dict__ == other.__dict__)
+        
+def reverse_list(head, prev=None):
+    """
+    Reverses a singly linked list recursively.
+    
+    :param head: The head of the linked list.
+    :param prev: The previous node (for recursive calls).
+    :return: The new head of the reversed linked list.
+    """
+    # Base case: if the list is empty, return the previous node (None)
+    if not head:
+        return prev
+    # Store the next node
+    nxt = head.next
+    # Reverse the next pointer
+    head.next = prev
+    # Recursive call
+    return reverse_list(nxt, head)
+
+# Test cases
+def test_reverse_list():
+    # Test case 1: single node
+    head = ListNode(1)
+    rev = ListNode(1)
+    assert reverse_list(head) == head
+    
+    # Test case 2: two nodes
+    head = ListNode(1)
+    head.next = ListNode(2)
+    rev = ListNode(2)
+    rev.next = ListNode(1)
+    assert reverse_list(head) == rev
+    
+    # Test case 3: three nodes
+    head = ListNode(1)
+    head.next = ListNode(2)
+    head.next.next = ListNode(3)
+    rev = ListNode(3)
+    rev.next = ListNode(2)
+    rev.next.next = ListNode(1)
+    assert reverse_list(head) == rev
+
+test_reverse_list()
+print('All passed!')</code></pre></div><h2>Code Breakdown</h2>
 <h3>ListNode Class</h3>
 <p>The <code>ListNode</code> class represents a node in a singly linked list. It has the following attributes and methods:</p>
 <ul>

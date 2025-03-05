@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./ask_llm_to_generalize_categories.html">ask llm to generalize categories</a> | <a href="./ask_llm_about_functions.html">ask llm about functions</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>askLlamaToGeneralize</code> function uses a large language model to shorten a list of categories by sending a prompt question to the LLM and splitting the response into an array of unique values. The <code>askLlamaToGeneralizeAll</code> function extends this functionality to handle large lists by dividing them into smaller groups and generalizing each group using <code>askLlamaToGeneralize</code>.</p>
+  <p>The code defines two functions: <code>askLlamaToGeneralize</code> and <code>askLlamaToGeneralizeAll</code>, which use a large language model to generalize lists of categories into shorter lists. The <code>askLlamaToGeneralizeAll</code> function batches the categories and calls <code>askLlamaToGeneralize</code> for each batch, then filters out duplicates from the results.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm for a shorter list of categories"</code></pre><h1>ask llm for a shorter list of categories</h1>
@@ -142,28 +149,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3><code>askLlamaToGeneralize</code> Function</h3>
-<p>This function takes an array of categories as input and leverages a large language model (LLM) to generalize the list into a shorter one.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { createLlmSession } = require('./importer');
+
+/**
+ * Ask Llama to generalize a list of categories into a shorter list.
+ * 
+ * @param {string[]} categories - List of categories to generalize.
+ * @returns {string[]} Generalized list of categories.
+ */
+async function askLlamaToGeneralize(categories) {
+  const { llmPrompt } = await createLlmSession();
+  const q1 = `Generalize this list of categories into a shorter list:\n${categories.join('\n')}\nOnly return the list and nothing else.`;
+  console.log(`User: ${q1}`);
+  const a1 = await llmPrompt(q1);
+  console.log(`AI: ${a1}`);
+  
+  return a1.split(/\s*\n\s*|,\s*|\s*- |\s*\* /gi)
+   .filter((a, i, arr) => a.trim().length > 0);
+}
+
+/**
+ * Ask Llama to generalize a list of categories into a shorter list, 
+ * handling large lists by batching and filtering duplicates.
+ * 
+ * @param {string[]} categories - List of categories to generalize.
+ * @param {number} [groupSize=10] - Number of categories to process in each batch.
+ * @returns {string[]} Generalized list of categories.
+ */
+async function askLlamaToGeneralizeAll(categories, groupSize = 10) {
+  const promises = [];
+  for (let i = 0; i < categories.length; i += groupSize) {
+    const batch = categories.slice(i, i + groupSize);
+    promises.push(askLlamaToGeneralize(batch));
+  }
+
+  const results = await Promise.all(promises);
+  const uniqueValues = [...new Set(results.flat())];
+  return uniqueValues;
+}
+
+module.exports = {
+  askLlamaToGeneralizeAll,
+  askLlamaToGeneralize
+};</code></pre></div><h2>Code Breakdown</h2>
+<h3>askLlamaToGeneralize Function</h3>
+<p>This function takes a list of categories as input and uses a large language model (LLM) to generalize the list into a shorter list.</p>
+<h4>Parameters</h4>
 <ul>
-<li>It imports an LLM prompt using <code>importer.import('create llm session')</code>.</li>
-<li>Creates a prompt question <code>q1</code> by joining the input categories with newline characters.</li>
-<li>Logs the prompt question to the console.</li>
-<li>Sends the prompt question to the LLM using <code>llmPrompt(q1)</code> and logs the response.</li>
-<li>Splits the response into an array of unique values using regular expressions and filtering.</li>
-<li>Returns the array of unique values.</li>
+<li><code>categories</code>: An array of categories to be generalized</li>
 </ul>
-<h3><code>askLlamaToGeneralizeAll</code> Function</h3>
-<p>This function is designed to handle large lists of categories by dividing them into smaller groups and generalizing each group using <code>askLlamaToGeneralize</code>.</p>
+<h4>Functionality</h4>
+<ol>
+<li>It imports an LLM session using <code>importer.import('create llm session')</code>.</li>
+<li>It constructs an LLM prompt by joining the input categories with newline characters and adding instructions to return only the list.</li>
+<li>It logs the user's prompt and sends it to the LLM for processing.</li>
+<li>It logs the AI's response and splits the response into individual values using regular expressions.</li>
+<li>It filters out empty values from the response.</li>
+<li>It returns the filtered array of values.</li>
+</ol>
+<h3>askLlamaToGeneralizeAll Function</h3>
+<p>This function takes a list of categories as input and uses the <code>askLlamaToGeneralize</code> function to generalize the list in batches.</p>
+<h4>Parameters</h4>
 <ul>
-<li>Takes an array of categories and an optional <code>groupSize</code> parameter (defaulting to 10).</li>
-<li>Initializes an empty array <code>resultValues</code> to store the generalized values.</li>
-<li>Iterates over the input categories, grouping them into arrays of size <code>groupSize</code>.</li>
-<li>For each group, calls <code>askLlamaToGeneralize</code> to generalize the list and stores the result in <code>resultValues</code>.</li>
-<li>After iterating over all categories, filters the <code>resultValues</code> array to remove duplicates and returns the resulting array.</li>
+<li><code>categories</code>: An array of categories to be generalized</li>
+<li><code>groupSize</code>: The number of categories to process in each batch (default: 10)</li>
 </ul>
-<h3>Module Exports</h3>
-<p>The code exports two functions: <code>askLlamaToGeneralize</code> and <code>askLlamaToGeneralizeAll</code>. These functions can be used in other parts of the application to leverage the LLM for generalization tasks.</p>
+<h4>Functionality</h4>
+<ol>
+<li>It initializes an empty array to store the results and an empty array to store the functions (LLM prompts) to be executed.</li>
+<li>It loops through the input categories and appends each category to the <code>functions</code> array in batches of <code>groupSize</code>.</li>
+<li>For each batch, it calls the <code>askLlamaToGeneralize</code> function, gets the result, and appends it to the <code>resultValues</code> array.</li>
+<li>If there are remaining categories in the <code>functions</code> array, it calls the <code>askLlamaToGeneralize</code> function again to get the result and appends it to the <code>resultValues</code> array.</li>
+<li>It filters out duplicates from the <code>resultValues</code> array using the <code>indexOf</code> method.</li>
+<li>It returns the filtered array of unique values.</li>
+</ol>
+<h3>Export</h3>
+<p>The code exports both <code>askLlamaToGeneralize</code> and <code>askLlamaToGeneralizeAll</code> functions as part of a module.</p>
 
 </body>
 

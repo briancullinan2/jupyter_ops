@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -493,7 +500,231 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>const { readBits, parseConfigStr } = require('huffman-decode');
+const { BIG_INFO_STRING, MAX_STRING_CHARS, MAX_PACKETLEN, MAX_MSGLEN, FLOAT_INT_BITS, FLOAT_INT_BIAS, CS_SERVERINFO, CS_SYSTEMINFO, MAX_RELIABLE_COMMANDS, GENTITYNUM_BITS, MAX_POWERUPS } = require('./constants');
+
+class Channel {
+  constructor() {
+    this.configStrings = {};
+    this.entities = {};
+    this.serverCommands = [];
+    this.serverInfo = {};
+    this.systemInfo = {};
+    this.serverId = '';
+    this.isPure = false;
+    this.fragmentBuffer = Buffer.from([]);
+    this.fragmentLength = 0;
+    this.fragmentSequence = 0;
+    this.reliableAcknowledge = 0;
+    this.reliableSequence = 0;
+  }
+}
+
+async function decodeClientMessage(message, channel) {
+  const bigInfoString = new Uint8Array(BIG_INFO_STRING);
+  let read = 0;
+  const sequence = SwapLong(read, message);
+  read += 32;
+  const fragment = (sequence &gt;&gt;&gt; 31) === 1;
+  if (fragment) {
+    sequence &amp;= ~(1 &lt;&lt; 31);
+  }
+
+  if (!channel.compat) {
+    const checksum = SwapLong(read, message);
+    read += 32;
+    const valid = NETCHAN_GENCHECKSUM(channel.challenge, sequence) === checksum;
+    if (!valid) {
+      console.log('Invalid message received', sequence, channel.challenge);
+      return false;
+    }
+  }
+
+  let fragmentStart = 0;
+  let fragmentLength = 0;
+  if (fragment) {
+    fragmentStart = SwapShort(read, message);
+    read += 16;
+    fragmentLength = SwapShort(read, message);
+    read += 16;
+  }
+
+  if (sequence &lt;= channel.serverSequence) {
+    console.log('Out of order packet', sequence, channel.incomingSequence);
+    return false;
+  }
+
+  if (fragment) {
+    if (!channel.fragmentBuffer) {
+      channel.fragmentBuffer = Buffer.from([]);
+    }
+    if (sequence!== channel.fragmentSequence) {
+      channel.fragmentSequence = sequence;
+      channel.fragmentLength = 0;
+      channel.fragmentBuffer = Buffer.from([]);
+    }
+
+    if (fragmentStart!== channel.fragmentLength) {
+      return false;
+    }
+
+    channel.fragmentBuffer = Buffer.concat([channel.fragmentBuffer, message.subarray(read &gt;&gt; 3, (read &gt;&gt; 3) + fragmentLength)]);
+    channel.fragmentLength += fragmentLength;
+
+    if (fragmentLength === FRAGMENT_SIZE) {
+      return false;
+    }
+
+    if (channel.fragmentLength &gt; MAX_MSGLEN) {
+      return false;
+    }
+
+    message = Buffer.concat([new Uint8Array(4), channel.fragmentBuffer]);
+    read = 32;
+    channel.fragmentBuffer = Buffer.from([]);
+    channel.fragmentLength = 0;
+  }
+
+  channel.serverSequence = sequence;
+
+  const reliableAcknowledge = readBits(message, read, 32)[1];
+  channel.reliableAcknowledge = reliableAcknowledge &lt; channel.reliableSequence - MAX_RELIABLE_COMMANDS? channel.reliableSequence : reliableAcknowledge;
+
+  while (true) {
+    read = readBits(message, read[0], 8);
+    const cmd = read[1];
+
+    if (cmd === 8) { // svc_EOF
+      break;
+    }
+
+    channel.messageType = cmd;
+    switch (cmd) {
+      case 0: // svc_bad
+      case 1: // svc_nop
+      case 2: // svc_gamestate
+        read = readBits(message, read[0], 32);
+        channel.commandSequence = read[1];
+        while (true) {
+          read = readBits(message, read[0], 8);
+          if (read[1] === 8) { // svc_EOF
+            break;
+          }
+
+          switch (read[1]) {
+            case 3: // svc_configstring
+              read = readBits(message, read[0], 16);
+              const csI = read[1];
+              read = ReadString(read, message, true /* big */);
+              channel.configStrings[csI] = read[1];
+              break;
+            case 4: // svc_baseline
+              if (Object.keys(channel.entities).length === 0) {
+                channel.entities = {};
+              }
+              read = readBits(message, read[0], GENTITYNUM_BITS);
+              const number = read[1];
+              read = readBits(message, read[0], 1);
+              if (read[1] === 1) { // remove
+                delete channel.entities[number];
+                break;
+              }
+              read = readBits(message, read[0], 1);
+              if (read[1] === 0) { // no delta
+                if (typeof channel.entities[number] === 'undefined') {
+                  channel.entities[number] = 0;
+                }
+                break;
+              }
+              read = readBits(message, read[0], 8);
+              const lc = read[1];
+              for (let j = 0; j &lt; lc; j++) {
+                read = readBits(message, read[0], 1);
+                if (read[1] === 0) { // no change
+                  continue;
+                }
+                const entityStateField = entityStateFields[j];
+                if (entityStateField === 0) {
+                  read = readBits(message, read[0], 1);
+                  if (read[1] === 0) {
+                    channel.entities[number] = 0;
+                  } else {
+                    read = readBits(message, read[0], 1);
+                    if (read[1] === 0) {
+                      read = readBits(message, read[0], FLOAT_INT_BITS);
+                      channel.entities[number] = read[1] - FLOAT_INT_BIAS;
+                    } else {
+                      read = readBits(message, read[0], 32);
+                      channel.entities[number] = read[1];
+                    }
+                  }
+                } else {
+                  read = readBits(message, read[0], 1);
+                  if (read[1] === 0) {
+                    channel.entities[number] = 0;
+                  } else {
+                    read = readBits(message, read[0], entityStateField);
+                    channel.entities[number] = read[1];
+                  }
+                }
+              }
+              break;
+          }
+        }
+        read = readBits(message, read[0], 32);
+        channel.clientNum = read[1];
+        read = readBits(message, read[0], 32);
+        channel.checksumFeed = read[1];
+        channel.serverInfo = parseConfigStr(channel.configStrings[CS_SERVERINFO]);
+        channel.systemInfo = parseConfigStr(channel.configStrings[CS_SYSTEMINFO]);
+        channel.serverId = channel.systemInfo['sv_serverid'];
+        channel.isPure = channel.systemInfo['sv_pure'] === '1';
+        break;
+      case 5: // svc_serverCommand
+        if (typeof channel.serverCommands === 'undefined') {
+          channel.serverCommands = [];
+        }
+        read = readBits(message, read[0], 32);
+        const seq = read[1];
+        channel.commandSequence = seq;
+        const index = seq &amp; (MAX_RELIABLE_COMMANDS - 1);
+        read = ReadString(read, message);
+        channel.serverCommands[index] = read[1];
+        break;
+      case 9: // svc_voipSpeex
+      case 10: // svc_voipOpus
+      case 16: // svc_multiview
+      case 17: // svc_zcmd
+        break;
+      default:
+        console.log('Illegible server message', cmd);
+        break;
+    }
+  }
+  return channel;
+}
+
+module.exports = decodeClientMessage;
+```
+
+```javascript
+const constants = {
+  BIG_INFO_STRING: 8192,
+  MAX_STRING_CHARS: 1024,
+  MAX_PACKETLEN: 1400,
+  FRAGMENT_SIZE: 1300,
+  MAX_MSGLEN: 16384,
+  FLOAT_INT_BITS: 13,
+  FLOAT_INT_BIAS: (1 &lt;&lt; (FLOAT_INT_BITS - 1)),
+  CS_SERVERINFO: 0,
+  CS_SYSTEMINFO: 1,
+  MAX_RELIABLE_COMMANDS: 64,
+  GENTITYNUM_BITS: 10,
+  MAX_POWERUPS: 16
+};
+
+module.exports = constants;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a JavaScript code that appears to be a Quake 3 server client parser. It defines several constants, functions, and variables related to Quake 3 network protocol.</p>
 <h3>Constants</h3>
 <p>The code defines several constants related to the Quake 3 network protocol:</p>

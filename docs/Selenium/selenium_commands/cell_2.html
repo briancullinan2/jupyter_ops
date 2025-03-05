@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set the display to the default display
+export DISPLAY=:0
+
+# Start Google Chrome with the given URL in fullscreen mode
+start_browser() {
+  local url=$1
+  local flags="--no-sandbox --start-fullscreen"
+
+  # Start Chrome with the given URL and flags
+  google-chrome "$url" $flags
+}
+
+# Call the function to start the browser
+start_browser http://localhost:4200</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Export Environment Variable</h3>
 <ul>
 <li><code>export DISPLAY=:0</code>: Exports the <code>DISPLAY</code> environment variable and sets its value to <code>:0</code>.

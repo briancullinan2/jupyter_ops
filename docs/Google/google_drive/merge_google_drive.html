@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { GoogleAuth } = require('google-auth-library');
+const { importAll } = require('../Core');
+const getRpcFromSpec = importAll('../Core').import('get rpc from spec');
+const authorize = importAll('../Core').import('google oauth token client');
+
+// Refactored Google services object
+const googleServices = {
+  drive: (options) => getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/drive.${options.version}.json`)), options.auth),
+};
+
+// Refactored Google auth scope
+const googleAuthScope = [
+  'https://www.googleapis.com/auth/drive',
+];
+
+// Simplified and refactored listDriveFiles function
+async function listDriveFiles(drive, folder, pageToken = null) {
+  const options = {
+    fields: 'files(kind,id,name,modifiedTime,md5Checksum,mimeType,owners,size,parents,originalFilename)',
+    q: `'${folder}' in parents and trashed = false`,
+  };
+  if (pageToken) {
+    options.pageToken = pageToken;
+  }
+  const result = await drive.files.list(options);
+  if (result.data.nextPageToken) {
+    return result.data.files.concat(await listDriveFiles(drive, folder, result.data.nextPageToken));
+  }
+  return result.data.files;
+}
+
+// Refactored listDrive function
+async function listDrive(folder = 'root') {
+  const client = await authorize(googleAuthScope);
+  const drive = await googleServices.drive({ version: 'v3', auth: client });
+  return listDriveFiles(drive, folder);
+}
+
+module.exports = listDrive;
+
+if (typeof $!== 'undefined') {
+  listDrive()
+   .then((r) => $.sendResult(r))
+   .catch((e) => $.sendError(e));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code starts by importing necessary dependencies:</p>
 <pre><code class="language-javascript">var fs = require('fs');

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,18 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Set the display resolution and depth for the Xvfb server
+display_resolution="1024x768x24"
+
+# Add the RANDR extension for dynamic resolution changes
+display_extensions="RANDR"
+
+# Start the Xvfb server
+Xvfb :0 -ac -screen 0 "${display_resolution}" +extension "${display_extensions}"</code></pre></div><p><strong>Code Breakdown:</strong></p>
 <p><strong>Xvfb Command</strong></p>
 <ul>
 <li><code>Xvfb</code>: Start the X virtual framebuffer (Xvfb) server.</li>

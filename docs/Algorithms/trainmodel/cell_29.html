@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,89 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="markdown"><code>def load_image(image_path):
+    """
+    Loads an image from the given path using PIL.
+    
+    Args:
+    image_path (str): Path to the image file.
+    
+    Returns:
+    numpy.ndarray: The loaded image as a numpy array.
+    """
+    from PIL import Image
+    import numpy as np
+    
+    image = Image.open(image_path)
+    image = np.array(image)
+    
+    return image
+
+def preprocess_image(image):
+    """
+    Resizes the image to a fixed size of 48x48.
+    
+    Args:
+    image (numpy.ndarray): The image to preprocess.
+    
+    Returns:
+    numpy.ndarray: The preprocessed image.
+    """
+    import numpy as np
+    from PIL import Image
+    
+    # Reshape the image to 48x48
+    image = image.reshape(48, 48)
+    
+    # Convert the image to grayscale
+    image = Image.fromarray(image).convert('L')
+    image = np.array(image)
+    
+    return image
+
+def display_image(image):
+    """
+    Displays the image using matplotlib.
+    
+    Args:
+    image (numpy.ndarray): The image to display.
+    """
+    import matplotlib.pyplot as plt
+    
+    plt.imshow(image, cmap='gray')
+    plt.show()
+
+def main():
+    image_path = 'images/train/happy/7.jpg'
+    print("Original image is of happy")
+    
+    try:
+        # Load the image
+        image = load_image(image_path)
+        
+        # Preprocess the image
+        image = preprocess_image(image)
+        
+        # Load the deep learning model
+        import torch
+        model = torch.load('trained_model.pth')
+        
+        # Make a prediction using the model
+        import torch.nn as nn
+        pred = model(image)
+        pred_label = nn.functional.softmax(pred, dim=1).argmax().item()
+        
+        print("Model prediction is", label[pred_label])
+        
+        # Display the image
+        display_image(image)
+    
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+if __name__ == "__main__":
+    main()</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <p>The necessary modules are not imported in this code snippet, but they are likely imported elsewhere in the codebase. The required modules are:</p>
 <ul>

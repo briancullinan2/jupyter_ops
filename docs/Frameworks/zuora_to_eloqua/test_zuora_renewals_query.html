@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a unit test for a function that generates a Zuora query for retrieving renewal information.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and define constants
+const { assert } = require('assert');
+const importer = require('../Core');
+const { expect } = require('chai'); // Use a better assertion library
+const renewalsQuery = importer.import('zuora renewals query');
+
+// Define a describe block for the zuora query tests
+describe('zuora query', () => {
+  // Define a test case to verify that the query includes the specified dates
+  it('should include the dates specified', () => {
+    // Use a more modern way to get the current date
+    const currentDate = new Date();
+    const previousYear = currentDate.getMonth() < 11? currentDate.getFullYear() - 1 : currentDate.getFullYear();
+    
+    // Create a query for the beginning of November and December
+    const query = renewalsQuery.getQuery('beginning of November', 'beginning of December');
+    
+    // Use the expect function to verify that the query includes the correct dates
+    expect(query.Query).to.include(previousYear + '-11-01');
+    expect(query.Query).to.include(currentDate.getFullYear() + '-12-01');
+  });
+});</code></pre></div><p>This code snippet defines a unit test for a function that generates a Zuora query for retrieving renewal information.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

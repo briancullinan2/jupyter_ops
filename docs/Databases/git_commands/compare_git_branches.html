@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet demonstrates two different ways to apply patches in Git, using both a visual diff tool and a text-based approach.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a function to apply patches
+apply_patch() {
+  # Check if we have a patch file
+  if [! -f "$1" ]; then
+    echo "Error: No patch file found"
+    return 1
+  fi
+
+  # Apply the patch
+  patch -p1 < "$1"
+}
+
+# Define a function to resolve Git conflicts
+resolve_conflicts() {
+  # Get the Git difftool output
+  git difftool --tool=b3 "$1".."$2"
+
+  # Save the difftool output into a patch file
+  git diff > save.patch
+
+  # Apply the patch with a context of 1 line
+  apply_patch save.patch
+
+  # Save the difftool output into a patch file with no prefix
+  git diff --no-prefix > save.patch
+
+  # Apply the patch with a context of 0 lines
+  apply_patch save.patch
+}
+
+# Example usage
+resolve_conflicts "branch1" "branch2"</code></pre></div><p>This code snippet demonstrates two different ways to apply patches in Git, using both a visual diff tool and a text-based approach.</p>
 <p><strong>First Part:</strong></p>
 <pre><code class="language-bash">git difftool --tool=b3 branch1..branch2
 </code></pre>

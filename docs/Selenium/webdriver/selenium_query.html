@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -134,7 +141,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required functions from separate modules
+const { queryDom, evaluateDom } = require('./select-tree');
+const { walkTree } = require('./walk-tree');
+
+/**
+ * Execute a query on the DOM using the provided driver and context.
+ * 
+ * @param {object} driver - The driver to execute the script on.
+ * @param {string|object} select - The query or object to query the DOM with.
+ * @param {object} ctx - The context to query the DOM with.
+ * @returns {Promise<object>} - The result of the query.
+ */
+async function getAllQuery(driver, select, ctx) {
+  // Check if the driver has a executeScript method
+  if (!driver.executeScript) {
+    throw new Error('Driver does not support executeScript method');
+  }
+
+  try {
+    // Execute the script on the driver
+    const result = await driver.executeScript(`
+      // Check if the functions are already defined
+      if (typeof window.evaluateDom!== 'function' && typeof window.evaluateDom ==='string') {
+        // If not, define them using eval
+        window.evaluateDom = eval('(' + ${evaluateDom} + ')');
+      }
+      if (typeof window.walkTree!== 'function' && typeof window.walkTree ==='string') {
+        window.walkTree = eval('(' + ${walkTree} + ')');
+      }
+      if (typeof window.queryDom!== 'function' && typeof window.queryDom ==='string') {
+        window.queryDom = eval('(' + ${queryDom} + ')');
+      }
+
+      // Query the DOM and return the result
+      return window.queryDom(${select}, ${ctx || 'document'});
+    `);
+
+    return result;
+  } catch (error) {
+    // Log the error and rethrow it
+    console.error('Error executing script:', error);
+    throw error;
+  }
+}
+
+module.exports = getAllQuery;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code starts by importing two functions from external modules:</p>
 <ul>

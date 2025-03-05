@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -245,7 +252,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code implements a polygon clipping algorithm to determine if a point lies inside a given polygon.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Point class to represent a point in 2D space
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+// Checks if point q lies on line segment 'pr'
+function onSegment(p, q, r) {
+  // Check if point q lies within the x-range of points p and r
+  const minX = Math.min(p.x, r.x);
+  const maxX = Math.max(p.x, r.x);
+  // Check if point q lies within the y-range of points p and r
+  const minY = Math.min(p.y, r.y);
+  const maxY = Math.max(p.y, r.y);
+  // Return true if point q lies within the range of points p and r
+  return q.x &gt;= minX &amp;&amp; q.x &lt;= maxX &amp;&amp; q.y &gt;= minY &amp;&amp; q.y &lt;= maxY;
+}
+
+// Checks the orientation of an ordered triplet of points
+function orientation(p, q, r) {
+  // Calculate the orientation using the cross product formula
+  const crossProduct = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
+  // Return 0 if points are colinear, 1 if clockwise, 2 if counterclockwise
+  return crossProduct === 0? 0 : crossProduct &gt; 0? 1 : 2;
+}
+
+// Checks if two line segments intersect
+function doIntersect(p1, q1, p2, q2) {
+  // Find the four orientations needed for general and special cases
+  const o1 = orientation(p1, q1, p2);
+  const o2 = orientation(p1, q1, q2);
+  const o3 = orientation(p2, q2, p1);
+  const o4 = orientation(p2, q2, q1);
+  // General case
+  if (o1!== o2 &amp;&amp; o3!== o4) return true;
+  // Special cases
+  if (o1 === 0 &amp;&amp; onSegment(p1, p2, q1)) return true;
+  if (o2 === 0 &amp;&amp; onSegment(p1, q2, q1)) return true;
+  if (o3 === 0 &amp;&amp; onSegment(p2, p1, q2)) return true;
+  if (o4 === 0 &amp;&amp; onSegment(p2, q1, q2)) return true;
+  // If none of the above cases are true, the line segments do not intersect
+  return false;
+}
+
+// Checks if a point lies inside a polygon
+function isInside(polygon, n, p) {
+  if (n &lt; 3) return false; // Minimum 3 points in the polygon
+  const extreme = new Point(Number.MAX_VALUE, p.y);
+  let count = 0;
+  for (let i = 0; i &lt; n; i++) {
+    const next = (i + 1) % n;
+    if (doIntersect(polygon[i], polygon[next], p, extreme)) {
+      if (orientation(polygon[i], p, polygon[next]) === 0) {
+        return onSegment(polygon[i], p, polygon[next]);
+      }
+      count++;
+    }
+  }
+  return count % 2 === 1;
+}
+
+module.exports = {
+  onSegment,
+  orientation,
+  doIntersect,
+  isInside,
+};</code></pre></div><p>This code implements a polygon clipping algorithm to determine if a point lies inside a given polygon.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>onSegment</code> Function:</strong></p>

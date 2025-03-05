@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getBranchBoundaries</code> that executes a Git command to compare two specific commits within a project and outputs the differences to a &quot;output&quot; directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const gulp = require('gulp');
+const run = require('gulp-run');
+const tap = require('gulp-tap');
+
+const importer = require('../Core');
+const gulpPromise = importer.import('gulp task to a Promise', {gulp});
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const DEFAULT_PROJECT_PATH = path.join(PROFILE_PATH, 'Documents/portal');
+const PROJECT_PATH = process.env.PROJECT_PATH || DEFAULT_PROJECT_PATH;
+
+gulp.task('git-watch', function () {
+    return run(`git diff -w ${process.env.GIT_BRANCH_START_SHA}..${process.env.GIT_BRANCH_END_SHA}`, {cwd: PROJECT_PATH})
+       .pipe(tap(file => console.log(file)))
+       .pipe(gulp.dest('output'));
+});
+
+module.exports = function getBranchBoundaries(p = PROJECT_PATH) {
+    // Get project path from environment variable if provided, otherwise use default value
+    if (p) {
+        PROJECT_PATH = p;
+    }
+
+    // Return a promise that resolves when the 'git-watch' task is completed
+    return gulpPromise(['git-watch']);
+};
+
+if (typeof $!== 'undefined') {
+    $.async();
+    getBranchBoundaries().then(r => $.sendResult(r)).catch(e => $.sendError(e));
+}</code></pre></div><p>This code defines a function <code>getBranchBoundaries</code> that executes a Git command to compare two specific commits within a project and outputs the differences to a &quot;output&quot; directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

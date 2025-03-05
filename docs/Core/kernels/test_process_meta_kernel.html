@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -186,7 +193,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { processMetaKernel, importModule } = require('../Core');
+
+// Define a function to test the process kernel
+async function testProcessKernel() {
+    // Create a meta kernel instance with a response callback
+    const kernel = await processMetaKernel({
+        doRespond: (message) => {
+            console.log(message);
+            return kernel; // Return the kernel instance
+        },
+        kernelConfig: {
+            autoinit: true,
+            childProcess: [
+                'node', '--eval', `
+                    const { importModule } = require('./Core');
+                    const nodeMetaKernel = importModule('node meta kernel');
+                    nodeMetaKernel({
+                        kernelConfig: { autoinit: true }
+                    });
+                    process.stdin.resume();
+                `
+            ]
+        }
+    });
+
+    // Wait for 5 seconds before sending messages to the kernel
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    // Send messages to the kernel and log the responses
+    console.log(kernel.doMessage({ doExecute: 'console.log(1 + 1)' }));
+    console.log(kernel.doMessage({ doExecute: '1 + 1' }));
+
+    // Shut down the kernel and log the response
+    return kernel.doShutdown();
+}
+
+// Export the testProcessKernel function
+module.exports = testProcessKernel;
+
+// If the $ object is defined, run the test and send the result
+if (typeof $!== 'undefined') {
+    $.async();
+    testProcessKernel()
+       .then((result) => $.sendResult(result))
+       .catch((error) => $.sendError(error));
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies and Imports</h3>
 <p>The code imports dependencies from a <code>Core</code> module using the <code>require</code> function and assigns them to variables:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./cell_10.html">Cell 10</a> | <a href="./cell_12.html">Cell 12</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code analyzes source code files (JavaScript, TypeScript, or C#) within a project to identify and extract long functions, providing information about their location and content.  It uses regular expressions and file system operations to locate and process the code.</p>
+  <p>This script imports dependencies, defines three functions (matchCurlyBraces, findLongFunctions, and their usage), and exports the findLongFunctions function as a module. The findLongFunctions function analyzes a project for long functions with excessive curly braces and lines of code.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "(=\{((:[^{}]++|\{(1)\})++)\})"</code></pre><h1>(=\{((:[^{}]++|\{(1)\})++)\})</h1>
@@ -165,44 +172,102 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code analyzes JavaScript, TypeScript, or C# files within a project to identify and extract long functions.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { listInProject } = require('../Core');
+
+/**
+ * Recursively find all literal values within curly braces in a string.
+ *
+ * @param {string} contents The input string to search.
+ * @returns {Array} An array of literal values.
+ */
+function matchCurlyBraces(contents) {
+  const XRegExp = require('xregexp');
+  return XRegExp.matchRecursive(contents, '{', '}', 'gi', {
+    valueNames: ['literal', null, 'value', null],
+  })
+   .filter(m =&gt; m.name === 'value')
+   .map(m =&gt; ({...m, value: new String(m.value) })) // Convert value to a string
+   .reduce((acc, match) =&gt; acc.concat(matchCurlyBraces(match.value)), []);
+}
+
+/**
+ * Finds long functions in a project based on the presence of curly braces and line count.
+ *
+ * @param {Object} project The project to search in.
+ * @returns {Array} An array of long function objects.
+ */
+function findLongFunctions(project) {
+  try {
+    // Load project files
+    const files = listInProject(project, '**/*.+(ts|js|cs)');
+    const results = files.map(({ path, contents }) =&gt; {
+      try {
+        // Extract literal values from contents
+        const matches = matchCurlyBraces(contents.toString());
+        return matches.map(m =&gt; ({...m, path }));
+      } catch (error) {
+        // If extraction fails, return the file contents as a single value
+        return [{ name: 'value', value: contents.toString(), start: 0, end: contents.length, error, path }];
+      }
+    }).flat();
+
+    // Filter out top-level values and those that appear multiple times
+    const code = results.map(r =&gt; r.value);
+    const topLevel = results.filter(r =&gt; code.filter(c =&gt; c!== r.value &amp;&amp; c.includes(r.value)).length === 0);
+    results = results.filter(m =&gt; topLevel.filter(c =&gt; c.value === m.value).length === 0);
+
+    // Refine top-level values
+    topLevel.push(...results.filter(r =&gt; code.filter(c =&gt; c!== r.value &amp;&amp; c.includes(r.value)).length === 0));
+    results = results.filter(m =&gt; topLevel.filter(c =&gt; c.value === m.value).length === 0);
+
+    // Filter out short functions
+    return results.filter(m =&gt; m.value.split(/\n/ig).length &gt; 100);
+  } catch (error) {
+    throw new Error(`Error finding long functions: ${error.message}`);
+  }
+}
+
+module.exports = findLongFunctions;
+```</code></pre></div><h3>Function Breakdown</h3>
+<h4>Importing Dependencies</h4>
+<pre><code class="language-javascript">var importer = require('../Core')
+var {listInProject} = importer.import('list project files')
+</code></pre>
 <ul>
-<li>Imports the <code>importer</code> module for listing files in a project.</li>
-<li>Imports the <code>XRegExp</code> library for advanced regular expression matching.</li>
-</ul></li>
-<li><p><strong><code>matchCurlyBraces</code> Function:</strong></p>
+<li><code>require('../Core')</code> imports the <code>Core</code> module from the parent directory.</li>
+<li><code>importer.import('list project files')</code> imports the <code>listInProject</code> function from the <code>Core</code> module.</li>
+<li>The <code>listInProject</code> function is assigned to the <code>listInProject</code> variable.</li>
+</ul>
+<h4>matchCurlyBraces Function</h4>
+<pre><code class="language-javascript">function matchCurlyBraces(contents) {
+    //...
+}
+</code></pre>
 <ul>
-<li>Recursively finds all curly brace-enclosed blocks (likely functions) within a given text string.</li>
-<li>Uses <code>XRegExp</code> to match '{', '}', and captures the content within the braces.</li>
-</ul></li>
-<li><p><strong><code>findLongFunctions</code> Function:</strong></p>
+<li>This function uses the <code>xregexp</code> library to recursively match occurrences of curly braces (<code>{}</code>) in the given <code>contents</code> string.</li>
+<li>It returns an array of objects containing the matched values and their corresponding positions.</li>
+</ul>
+<h4>findLongFunctions Function</h4>
+<pre><code class="language-javascript">function findLongFunctions(project) {
+    //...
+}
+</code></pre>
 <ul>
-<li>Takes a project path as input.</li>
-<li>Lists all <code>.ts</code>, <code>.js</code>, or <code>.cs</code> files within the project using <code>listInProject</code>.</li>
-<li>Iterates through each file:
+<li>This function takes a <code>project</code> object as input.</li>
+<li>It uses the <code>listInProject</code> function to retrieve a list of files with <code>.ts</code>, <code>.js</code>, and <code>.cs</code> extensions from the project.</li>
+<li>For each file, it attempts to match curly braces using the <code>matchCurlyBraces</code> function and concatenates the results to a <code>results</code> array.</li>
+<li>If an error occurs while matching, it logs an error message and appends an object containing the file contents and path to the <code>results</code> array.</li>
+<li>It then filters the <code>results</code> array to remove top-level matches (i.e., matches that are not nested inside other matches).</li>
+<li>Finally, it filters the <code>results</code> array to include only matches with more than 100 lines of code.</li>
+</ul>
+<h4>Exporting the findLongFunctions Function</h4>
+<pre><code class="language-javascript">module.exports = findLongFunctions
+</code></pre>
 <ul>
-<li>Reads the file contents.</li>
-<li>Calls <code>matchCurlyBraces</code> to find function blocks.</li>
-<li>If an error occurs during parsing, records the error information along with the file contents.</li>
-</ul></li>
-<li>Filters the results to remove duplicate functions and those nested within other functions.</li>
-<li>Returns an array of function objects, each containing:
-<ul>
-<li><code>value</code>: The function code.</li>
-<li><code>path</code>: The file path.</li>
-<li><code>start</code>: Start position of the function in the file.</li>
-<li><code>end</code>: End position of the function in the file.</li>
-<li><code>error</code>: Error information if encountered during parsing.</li>
-</ul></li>
-</ul></li>
-<li><p><strong>Export:</strong></p>
-<ul>
-<li>Exports the <code>findLongFunctions</code> function as the main module export.</li>
-</ul></li>
-</ol>
+<li>The <code>findLongFunctions</code> function is exported as a module, making it available for use in other scripts.</li>
+</ul>
 
 </body>
 

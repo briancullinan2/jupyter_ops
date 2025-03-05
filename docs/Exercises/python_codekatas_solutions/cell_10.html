@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>string_permutations(s)</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+def string_permutations(s: str) -&gt; list[str]:
+    """Find all possible permutations of a string.
+    
+    Args:
+    s (str): The input string.
+    
+    Returns:
+    list[str]: A list of all possible permutations of the input string.
+    
+    Example:
+    &gt;&gt;&gt; string_permutations('')
+    ['']
+    &gt;&gt;&gt; string_permutations('abc')
+    ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
+    """
+    
+    # Base case: if the string is empty, return a list with an empty string
+    if not s:
+        return ['']
+    
+    # Recursive case: get all permutations of the string without the first character
+    perms = string_permutations(s[1:])
+    
+    # Initialize an empty list to store the permutations with the first character
+    res = []
+    
+    # For each permutation, insert the first character at every possible position
+    for perm in perms:
+        for i in range(len(perm) + 1):
+            # Append the permutation with the first character inserted at position i
+            res.append(perm[:i] + s[0] + perm[i:])
+    
+    # Return the sorted list of permutations
+    return sorted(res)
+
+
+assert string_permutations('') == ['']
+assert string_permutations('abc') == ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
+print('All passed!')</code></pre></div><h3>Function: <code>string_permutations(s)</code></h3>
 <h4>Description</h4>
 <p>Finds all possible permutations of a string <code>s</code>.</p>
 <h4>Parameters</h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -87,7 +94,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Call</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Define the zoom level and viewport settings
+const zoom: number = 0.5;
+const viewportWidth: number = 680;
+const viewportCropY: number = 800;
+const viewportCropH: number = 400;
+
+// Use an object to hold the input settings for clarity and reusability
+const viewportSettings: { [key: string]: number } = {
+  zoom,
+  width: viewportWidth,
+  'crop-y': viewportCropY,
+  'crop-h': viewportCropH
+};
+
+// Define the screen function with clear and concise naming
+function openScreen(domain: string, settings: { [key: string]: number }): void {
+  // Use a log statement to track the function call
+  console.log(`Opening screen on ${domain} with settings:`, settings);
+
+  // Call the original function, assuming it's available (e.g., in a library)
+  // NOTE: Replace this with the actual function call if available
+  // console.log(`screen(${domain}, ${JSON.stringify(settings)})`);
+}
+
+// Call the screen function with the provided settings
+openScreen('act.com', viewportSettings);</code></pre></div><p><strong>Function Call</strong></p>
 <p><code>$TS.screen('act.com', {zoom:.5, width: 680, 'crop-y': 800, 'crop-h': 400});</code></p>
 <ul>
 <li><strong>TS</strong>: likely a screen capturing or rendering library.</li>

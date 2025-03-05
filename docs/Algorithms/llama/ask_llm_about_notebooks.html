@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./ask_llm_about_code.html">ask llm about code</a> | <a href="./ask_llm_to_summerize.html">ask llm to summerize</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This JavaScript code defines a function <code>askLlamaAboutNotebooks</code> that searches for Jupyter Notebook files in a directory, extracts information about them, and asks a Large Language Model (LLM) about these notebooks. The function is designed to interact with an LLM, sending queries and receiving results in batches of up to 20 queries at a time.</p>
+  <p>The code provides a module that exports a function <code>askLlamaAboutNotebooks</code> which asks the LLaMA language model about functions in notebook files within a directory and its subdirectories. The function breaks down the query into chunks of 20 and sends them to the model for response.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm about notebooks"</code></pre><h1>ask llm about notebooks</h1>
@@ -150,55 +157,114 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3>Importing Modules</h3>
-<pre><code class="language-javascript">const path = require('path')
-const {listInProject} = importer.import('list project files');
-const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
-</code></pre>
-<ul>
-<li>Import the <code>path</code> module for file system operations.</li>
-<li>Import the <code>listInProject</code> function and the <code>askLlamaAboutFunctions</code> function from the <code>importer</code> module.</li>
-</ul>
-<h3>findNotebooks Function</h3>
-<pre><code class="language-javascript">function findNotebooks(dirname) {
-    return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb')
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { listInProject, askLlamaAboutFunctions } = require('./importer');
+
+/**
+ * Finds all Jupyter Notebooks in the specified directory.
+ * @param {string} dirname - The directory to search for Notebooks.
+ * @returns {string[]} An array of Notebook paths.
+ */
+async function findNotebooks(dirname) {
+  return listInProject(dirname, '{,*,*/,*/*/*,*/*/*/*}*.ipynb');
 }
-</code></pre>
-<ul>
-<li>Define a function <code>findNotebooks</code> that takes a directory name as an argument.</li>
-<li>Use the <code>listInProject</code> function to find Jupyter Notebook files (<code>.ipynb</code>) in the specified directory and its subdirectories.</li>
-</ul>
-<h3>askLlamaAboutNotebooks Function</h3>
-<pre><code class="language-javascript">async function askLlamaAboutNotebooks(query) {
-    //...
+
+/**
+ * Asks the LLM about Notebooks and returns the most relevant function.
+ * @param {string} query - The query to ask the LLM.
+ * @returns {Promise&lt;string&gt;} The most relevant function.
+ */
+async function askLlamaAboutNotebooks(query) {
+  const notebooks = await findNotebooks(path.resolve(__dirname, '../'));
+  const functions = [];
+  const descriptions = [];
+
+  // Process each Notebook
+  for (const notebook of notebooks) {
+    const { name, camelCase, folderName, folderCamel } = getNotebookInfo(notebook);
+    functions.push(createFunctionName(folderCamel, camelCase));
+    descriptions.push(`${folderCamel} ${camelCase}`);
+    if (functions.length === 20) {
+      // Ask the LLM about the functions
+      const result = await askLlamaAboutFunctions(query, functions, descriptions);
+      if (result) {
+        functions = [result];
+        descriptions = [descriptions[functions.indexOf(result)]];
+      } else {
+        functions = [];
+        descriptions = [];
+      }
+    }
+  }
+
+  // Ask the LLM about the remaining functions
+  if (functions.length &gt; 1) {
+    const result = await askLlamaAboutFunctions(query, functions, descriptions);
+    if (result) functions = [result];
+    else functions = [];
+  }
+
+  return functions;
 }
-</code></pre>
-<ul>
-<li>Define an asynchronous function <code>askLlamaAboutNotebooks</code> that takes a query as an argument.</li>
-<li>This function appears to be responsible for searching for Jupyter Notebooks, extracting information about them, and then asking a Large Language Model (LLM) about these notebooks.</li>
-</ul>
-<h3>Implementation Details</h3>
-<ul>
-<li>The function uses the <code>path</code> module to manipulate file paths and names.</li>
-<li>It iterates over the list of notebooks found in the <code>findNotebooks</code> function and creates a query for the LLM about each notebook.</li>
-<li>The query is constructed by combining the name of the notebook and its parent folder, with some modifications to make it more suitable for the LLM.</li>
-<li>The function sends the query to the LLM using the <code>askLlamaAboutFunctions</code> function and returns the result.</li>
-<li>The function appears to have a limit of 20 queries to the LLM at a time, to avoid exceeding a certain character limit.</li>
-</ul>
-<h3>Exporting the Function</h3>
-<pre><code class="language-javascript">module.exports = {
-  askLlamaAboutNotebooks,
+
+/**
+ * Gets the Notebook info from the path.
+ * @param {string} path - The Notebook path.
+ * @returns {{ name: string, camelCase: string, folderName: string, folderCamel: string }}.
+ */
+function getNotebookInfo(path) {
+  const name = path.basename(path).replace('.ipynb', '');
+  const camelCase = name.substring(0, 1).toLocaleUpperCase() + name.substring(1);
+  const folderName = path.basename(path.dirname(path));
+  const folderCamel = folderName.substring(0, 1).toLocaleUpperCase() + folderName.substring(1);
+  return { name, camelCase, folderName, folderCamel };
 }
-</code></pre>
+
+/**
+ * Creates a function name by combining the folder and Notebook names.
+ * @param {string} folderCamel - The folder name in camel case.
+ * @param {string} camelCase - The notebook name in camel case.
+ * @returns {string} The function name.
+ */
+function createFunctionName(folderCamel, camelCase) {
+  return `search${folderCamel.replace(/[^a-z0-9]/gi, '')}${camelCase.replace(/[^a-z0-9]/gi, '').substring(0, 15)}`;
+}
+
+module.exports = { askLlamaAboutNotebooks };</code></pre></div><h2>Code Breakdown</h2>
+<h3>Dependencies</h3>
 <ul>
-<li>Export the <code>askLlamaAboutNotebooks</code> function as a module.</li>
+<li><code>path</code>: a built-in Node.js module for working with file paths</li>
+<li><code>importer</code>: an external module that imports functions from other modules
+<ul>
+<li><code>listInProject</code>: a function that lists files in a project</li>
+<li><code>askLlamaAboutFunctions</code>: a function that asks the LLaMA language model about functions</li>
+</ul></li>
+</ul>
+<h3>Functions</h3>
+<h4><code>findNotebooks(dirname)</code></h4>
+<ul>
+<li>Returns an array of notebook files (<code>.ipynb</code>) in the specified directory and its subdirectories</li>
+</ul>
+<h4><code>askLlamaAboutNotebooks(query)</code></h4>
+<ul>
+<li>An asynchronous function that:
+<ol>
+<li>Finds all notebook files in the current directory and its subdirectories using <code>findNotebooks</code></li>
+<li>Extracts notebook and folder names, and converts them to camelCase</li>
+<li>Creates an array of function names and descriptions</li>
+<li>Asks the LLaMA language model about the functions using <code>askLlamaAboutFunctions</code> in chunks of 20</li>
+<li>Returns the final list of functions</li>
+</ol></li>
+</ul>
+<h3>Module Exports</h3>
+<ul>
+<li>The <code>askLlamaAboutNotebooks</code> function is exported as a module</li>
 </ul>
 <h3>Notes</h3>
 <ul>
-<li>The <code>askLlamaAboutFunctions</code> function is not defined in this code snippet, but it is assumed to be a function that sends a query to an LLM and returns the result.</li>
-<li>The <code>importer</code> module is not defined in this code snippet, but it is assumed to be a module that provides functions for importing other modules.</li>
-<li>The code uses some outdated JavaScript syntax and structure, such as the use of <code>functions[functions.length]</code> instead of <code>functions.push()</code> or <code>functions.append()</code>.</li>
+<li>The code uses a TODO comment to note that the length check for the <code>functions</code> and <code>descriptions</code> arrays should be converted to a more efficient implementation</li>
+<li>The <code>askLlamaAboutFunctions</code> function is called with the <code>functions</code> and <code>descriptions</code> arrays, but its return value is not checked in all cases</li>
 </ul>
 
 </body>

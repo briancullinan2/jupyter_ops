@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -313,7 +320,292 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { google } = require('googleapis');
+const { v1 } = google.apis;
+const { v1 as storage } = google.storage;
+const { v1 as compute } = google.compute;
+const uuid = require('uuid/v4');
+const safeName = (name) =&gt; {
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 50).toLowerCase();
+};
+
+const getGoogleClient = async () =&gt; {
+    const auth = new google.auth.GoogleAuth({
+        // Use the application default credentials
+        // If you have a private key file, use the following instead
+        // credentials: JSON.parse(File.read('path/to/key.json')),
+    });
+    const client = await auth.getClient();
+    return client;
+};
+
+const createBucket = async (project, bucketName) =&gt; {
+    const storageClient = new storage.v1.StorageClient();
+    const bucketRequest = {
+        parent: `projects/${project}`,
+        body: {
+            name: bucketName,
+        },
+    };
+    const [response] = await storageClient.buckets.create(bucketRequest);
+    return response.name;
+};
+
+const getBackendBuckets = async (project, bucketName) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(bucketName)} AND name~=${safeName(bucketName)}`,
+    };
+    const [response] = await computeClient.globalBackendBuckets.list(request);
+    return response/backendBuckets;
+};
+
+const getBackendBucket = async (project, bucketName) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(bucketName)} AND name~=${safeName(bucketName)}`,
+    };
+    const response = await computeClient.globalBackendBuckets.list(request);
+    const buckets = response.backendBuckets;
+    if (buckets.length &gt; 0) {
+        return buckets[0].name;
+    } else {
+        return null;
+    }
+};
+
+const createBackendBucket = async (project, bucketName) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const backendRequest = {
+        parent: `projects/${project}`,
+        body: {
+            name: `bb-${uuid().substr(0, 5)}-${safeName(bucketName)}`,
+            bucketName,
+            enableCdn: false,
+            kind: 'compute#backendBucket',
+        },
+    };
+    const [response] = await computeClient.globalBackendBuckets.insert(backendRequest);
+    return response.name;
+};
+
+const insertBackendBucket = async (project, bucketName) =&gt; {
+    const name = await getBackendBucket(project, bucketName) || await createBackendBucket(project, bucketName);
+    return name;
+};
+
+const createSslCertificate = async (project, bucketName) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const sslRequest = {
+        parent: `projects/${project}`,
+        body: {
+            name: `cert-${safeName(bucketName)}`,
+            description: bucketName,
+            managed: { domains: [bucketName] },
+            type: 'MANAGED',
+        },
+    };
+    const [response] = await computeClient.globalSslCertificates.insert(sslRequest);
+    return response.name;
+};
+
+const getSslCertificates = async (project, name) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(name)}`,
+    };
+    const response = await computeClient.globalSslCertificates.list(request);
+    return response.sslCertificates;
+};
+
+const getSslCertificate = async (project, name) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(name)}`,
+    };
+    const response = await computeClient.globalSslCertificates.list(request);
+    const certificates = response.sslCertificates;
+    if (certificates.length &gt; 0) {
+        return certificates[0].name;
+    } else {
+        return null;
+    }
+};
+
+const insertSslCertificate = async (project, bucketName) =&gt; {
+    const name = await getSslCertificate(project, bucketName) || await createSslCertificate(project, bucketName);
+    return name;
+};
+
+const createTargetHttpsProxy = async (project, urlMap, bucketName) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const proxyRequest = {
+        parent: `projects/${project}`,
+        body: {
+            name: `thp-${uuid().substr(0, 5)}-${safeName(bucketName)}`,
+            urlMap: `https://www.googleapis.com/compute/v1/projects/${project}/global/urlMaps/${urlMap}`,
+            sslCertificates: [`https://www.googleapis.com/compute/v1/projects/${project}/global/sslCertificates/${await insertSslCertificate(project, bucketName)}`],
+        },
+    };
+    const [response] = await computeClient.globalTargetHttpsProxies.insert(proxyRequest);
+    return response.name;
+};
+
+const getTargetHttpsProxies = async (project) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(project)}`,
+    };
+    const response = await computeClient.globalTargetHttpsProxies.list(request);
+    return response.targetHttpsProxies;
+};
+
+const getTargetHttpsProxy = async (project, name) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(name)}`,
+    };
+    const response = await computeClient.globalTargetHttpsProxies.list(request);
+    const proxies = response.targetHttpsProxies;
+    if (proxies.length &gt; 0) {
+        return proxies[0].name;
+    } else {
+        return null;
+    }
+};
+
+const insertTargetHttpsProxy = async (project, urlMap, bucketName) =&gt; {
+    const name = await getTargetHttpsProxy(project, bucketName) || await createTargetHttpsProxy(project, urlMap, bucketName);
+    return name;
+};
+
+const createGlobalForward = async (project, ip, urlMap, bucketName, targetHttpsProxy) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const forwardRequest = {
+        parent: `projects/${project}`,
+        body: {
+            name: `gfr-${uuid().substr(0, 5)}-${safeName(bucketName)}`,
+            IPAddress: `https://www.googleapis.com/compute/v1/projects/${project}/global/addresses/${ip}`,
+            IPProtocol: 'TCP',
+            portRange: '443-443',
+            target: `https://www.googleapis.com/compute/v1/projects/${project}/global/targetHttpsProxies/${targetHttpsProxy}`,
+            loadBalancingScheme: 'EXTERNAL',
+            networkTier: 'PREMIUM',
+        },
+    };
+    const [response] = await computeClient.globalForwardingRules.insert(forwardRequest);
+    return response.name;
+};
+
+const getGlobalForwards = async (project, targetHttpsProxy) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(targetHttpsProxy)}`,
+    };
+    const response = await computeClient.globalForwardingRules.list(request);
+    return response.forwardingRules;
+};
+
+const getGlobalForward = async (project, targetHttpsProxy) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(targetHttpsProxy)}`,
+    };
+    const response = await computeClient.globalForwardingRules.list(request);
+    const forwards = response.forwardingRules;
+    if (forwards.length &gt; 0) {
+        return forwards[0].name;
+    } else {
+        return null;
+    }
+};
+
+const insertGlobalForward = async (project, ip, urlMap, bucketName) =&gt; {
+    const targetHttpsProxy = await insertTargetHttpsProxy(project, urlMap, bucketName);
+    const name = await getGlobalForward(project, targetHttpsProxy) || await createGlobalForward(project, ip, urlMap, bucketName, targetHttpsProxy);
+    return name;
+};
+
+const getGlobalUrlMaps = async (project) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(project)}`,
+    };
+    const response = await computeClient.globalUrlMaps.list(request);
+    return response.urlMaps;
+};
+
+const getGlobalUrlMap = async (project, name) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const request = {
+        filter: `labels.service-internal~=${safeName(name)}`,
+    };
+    const response = await computeClient.globalUrlMaps.list(request);
+    const maps = response.urlMaps;
+    if (maps.length &gt; 0) {
+        return maps[0].name;
+    } else {
+        return null;
+    }
+};
+
+const insertUrlMap = async (project, urlMap, bucketName) =&gt; {
+    const computeClient = new compute.v1.ComputeClient();
+    const getMapRequest = {
+        name: urlMap,
+    };
+    const [response] = await computeClient.globalUrlMaps.get(getMapRequest);
+    if (response.hostRules.some((hr) =&gt; hr.hosts.includes(bucketName))) {
+        console.log(`Map host rule ${bucketName} already exists`);
+        return Promise.resolve(urlMap);
+    }
+    const createBackendBucketRequest = {
+        parent: `projects/${project}`,
+        body: {
+            name: `bb-${uuid().substr(0, 5)}-${safeName(bucketName)}`,
+            bucketName,
+            enableCdn: false,
+            kind: 'compute#backendBucket',
+        },
+    };
+    const [backendResponse] = await computeClient.globalBackendBuckets.insert(createBackendBucketRequest);
+    const backendName = backendResponse.name;
+    const updateUrlMapRequest = {
+        url: urlMap,
+        body: {
+            fingerprint: response.fingerprint,
+            hostRules: response.hostRules.concat([
+                {
+                    hosts: [bucketName],
+                    pathMatcher: `${safeName(bucketName)}-matcher`,
+                },
+            ]),
+            pathMatchers: response.pathMatchers.concat([
+                {
+                    name: `${safeName(bucketName)}-matcher`,
+                    defaultService: `https://www.googleapis.com/compute/v1/projects/${project}/global/backendBuckets/${backendName}`,
+                    pathRules: ['/'],
+                },
+            ]),
+        },
+    };
+    const [updatedResponse] = await computeClient.globalUrlMaps.patch(updateUrlMapRequest);
+    return updatedResponse.name;
+};
+
+const updateUrlMap = async (project, urlMap, bucketName) =&gt; {
+    const name = await getGlobalUrlMap(project, urlMap) || await insertUrlMap(project, urlMap, bucketName);
+    return name;
+};
+
+module.exports = {
+    insertBackendBucket,
+    insertGlobalForward,
+    updateUrlMap,
+};
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables and Imports</h3>
 <ul>
 <li>The code imports various functions from a <code>Core</code> module using <code>require</code> and <code>import</code> statements.</li>

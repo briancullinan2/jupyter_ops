@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./compile_a_csharp_file_into_a_DLL.html">compile a csharp file into a DLL</a> | <a href="./display_interpreted_results_in_markdown.html">display interpreted results in markdown</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This JavaScript code generates dynamic libraries using functions <code>generateCallback</code> and <code>makeDylib</code>, which create callbacks for library functions and compile code into dynamic libraries, respectively. The code relies on external dependencies such as <code>ffi-rs</code> and a core module, and includes unclear or missing parts indicated by <code>TODO</code> comments.</p>
+  <p>The code is part of a larger project that generates dynamic libraries (dylibs) from code, using Node.js modules and the <code>ffi-rs</code> library for interoping with Rust code. It defines several functions, including <code>generateCallback</code> and <code>makeDylib</code>, which are used to interact with and create dylibs.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "compile a dylib from source cell"</code></pre><h1>compile a dylib from source cell</h1>
@@ -198,42 +205,124 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
-<p>The code is written in JavaScript and appears to be a part of a larger project that generates dynamic libraries. Here's a brief explanation of the code:</p>
-<h3>Functions</h3>
-<h4><code>generateCallback(libName, i, types, params)</code></h4>
-<p>This function generates a callback function that can be used to call a dynamic library function. It takes the following parameters:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Generates a dynamic library from the given code.
+ *
+ * @param {string} code - The code to be compiled.
+ * @param {string} pathToCode - The path to the code file.
+ * @param {*} ctx - The context for the code execution.
+ *
+ * @returns {object} The dynamic library exports.
+ */
+async function makeDylib(code, pathToCode, ctx) {
+  const { importNotebook, interpret } = require('../Core');
+  const { open } = require('ffi-rs');
+
+  // Check if the module is already cached.
+  if (Module._cache[pathToCode]) {
+    return Module._cache[pathToCode].exports;
+  }
+
+  // Import required notebooks.
+  const { buildDylib, selectCode, getParameters, getTypes, safeurl } = await importNotebooks(pathToCode);
+
+  // Build the dynamic library.
+  await buildDylib(code, pathToCode, ctx);
+
+  // Get the code cell and interpret it.
+  const codeCell = interpret(pathToCode);
+  const libName = safeurl(codeCell.questions[0]);
+
+  // Open the dynamic library.
+  open({
+    library: libName,
+    path: path.join(BUILD_DIRECTORY, libName + '.dylib'),
+  });
+
+  // Select the ANTLR tree.
+  const rootNode = (await selectCode(['//*'], code.toString(), 'cpp'))[0];
+
+  // Get the parameters and types.
+  const params = await getParameters(rootNode);
+  const types = await getTypes(rootNode);
+
+  // Generate the callback functions.
+  const resources = {};
+  for (let i = 0; i < params.length; i++) {
+    const param = params[i];
+    if (typeof param ==='string') {
+      param = [param];
+    }
+    const paramTypes = types[param[0]];
+    const returnType = paramTypes[0];
+    const paramTypes = paramTypes.slice(1);
+
+    // Generate the callback function.
+    const callback = generateCallback(libName, i, paramTypes, param);
+    resources[param[0]] = ((i, paramTypes, param) => function (...paramValues) {
+      return resources[param[0] + 'Ret'](1,...paramValues);
+    })(i, paramTypes, param);
+
+    // Set the properties of the callback functions.
+    resources[param[0]].name = param[0];
+    resources[param[0] + 'Ret'].name = param[0] + 'Ret';
+    resources[param[0]].params = param.slice(1);
+    resources[param[0] + 'Ret'].params = ['ret'].concat(param.slice(1));
+    resources[param[0]].types = paramTypes;
+    resources[param[0] + 'Ret'].types = paramTypes;
+  }
+
+  // Cache the exports.
+  Module._cache[pathToCode] = {
+    exports: resources,
+    loaded: true,
+  };
+
+  return resources;
+}
+
+// Helper function to import multiple notebooks.
+async function importNotebooks(pathToCode) {
+  const notebooks = {};
+  const notebookNames = ['build dylib','select antlr tree', 'get c parameters', 'get c types', 'c type to data type'];
+  for (const notebookName of notebookNames) {
+    notebooks[notebookName] = await importNotebook(notebookName);
+  }
+  return notebooks;
+}
+
+// Export the makeDylib function.
+module.exports.makeDylib = makeDylib;</code></pre></div><p><strong>Breakdown of the Code</strong></p>
+<h3>Overview</h3>
+<p>The code appears to be a part of a larger project that generates dynamic libraries (dylibs) from code. It involves importing external libraries, loading modules, and creating callback functions to interact with the dylibs.</p>
+<h3>Imported Modules</h3>
 <ul>
-<li><code>libName</code>: the name of the dynamic library</li>
-<li><code>i</code>: the index of the function to call</li>
-<li><code>types</code>: an array of function parameter types</li>
-<li><code>params</code>: an array of function parameter names</li>
+<li><code>path</code>: a Node.js module for working with file paths.</li>
+<li><code>Module</code>: a Node.js module for working with dynamic modules.</li>
+<li><code>ffi-rs</code>: a library for interoping with Rust code.</li>
+<li><code>../Core</code>: a local module containing notebook functions for importing and loading modules.</li>
 </ul>
-<p>The function returns a callback function that takes the return value length and parameter values as arguments.</p>
-<h4><code>makeDylib(code, pathToCode, ctx)</code></h4>
-<p>This function generates a dynamic library from a given code and saves it to a file. It takes the following parameters:</p>
+<h3>Variables and Functions</h3>
 <ul>
-<li><code>code</code>: the code to compile</li>
-<li><code>pathToCode</code>: the path to the code file</li>
-<li><code>ctx</code>: the context</li>
+<li><code>BUILD_DIRECTORY</code>: the directory where build files are stored.</li>
+<li><code>typeToDataType</code>: a function that converts C types to data types.</li>
+<li><code>generateCallback(libName, i, types, params)</code>: a function that generates a callback function to interact with a dylib. It takes the library name, function index, types, and parameters as arguments.</li>
+<li><code>makeDylib(code, pathToCode, ctx)</code>: an asynchronous function that creates a dylib from code. It takes the code, path to the code, and context as arguments.</li>
 </ul>
-<p>The function imports functions from a core module and returns the dynamic library.</p>
-<h3>Constants</h3>
-<h4><code>BUILD_DIRECTORY</code></h4>
-<p>This constant defines the directory where the dynamic libraries are built.</p>
-<h4><code>typeToDataType</code></h4>
-<p>This variable stores the <code>c type to data type</code> function imported from the core module.</p>
-<h3>External Dependencies</h3>
-<p>The code uses the following external dependencies:</p>
+<h3>Key Functions</h3>
 <ul>
-<li><code>path</code>: for path manipulation</li>
-<li><code>module</code>: for module loading</li>
-<li><code>ffi-rs</code>: for dynamic library loading and interaction</li>
-<li><code>../Core</code>: for importing core functions</li>
-<li><code>../Core</code>: for importing core functions</li>
+<li><code>generateCallback</code>: uses the <code>typeToDataType</code> function to convert C types to data types, then returns a callback function that loads a dylib using <code>ffi-rs</code>.</li>
+<li><code>makeDylib</code>: imports notebooks from <code>../Core</code>, creates a dylib using <code>buildDylib</code>, and loads the dylib using <code>open</code> from <code>ffi-rs</code>.</li>
 </ul>
-<h3>Unclear or Missing Code</h3>
-<p>Some parts of the code are unclear or missing, including the <code>TODO</code> comments. These comments suggest that the code is still in development and may need to be completed or modified in the future.</p>
+<h3>Notes</h3>
+<ul>
+<li>The code uses async/await syntax, but the <code>makeDylib</code> function does not await the result of <code>buildDylib</code>.</li>
+<li>The <code>generateCallback</code> function uses a closure to capture variables from its scope.</li>
+<li>The code assumes that the <code>../Core</code> module exports functions <code>importNotebook</code> and <code>interpret</code>.</li>
+<li>The code uses <code>path.join</code> to construct file paths, but does not handle potential errors.</li>
+<li>The code uses <code>require</code> to import modules, which is not recommended for performance and security reasons.</li>
+</ul>
 
 </body>
 

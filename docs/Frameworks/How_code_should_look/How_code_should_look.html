@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a simple interpretation function called <code>interpret</code> within an object likely representing a chatbot or a command interpreter.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Interpret a given statement and perform the corresponding action.
+ * 
+ * @param {string} statement - The statement to be interpreted.
+ * @returns {void}
+ */
+$.interpret = (statement) =&gt; {
+    // Define possible actions and their corresponding keywords
+    const actions = {
+        saveAttachments: ['attachments','save attachments'],
+        downloadMedia: [/#(\w+)|\.(\w+)-gallery/]
+    };
+
+    // Check if the statement contains the 'attachments' keyword
+    if (statement.toLowerCase().includes('attachments')) {
+        // Extract attachment details (e.g., sender, time range)
+        const attachmentDetails = statement.match(/(\w+@\w+\.\w+)?\s?(last\s?\d+) days?/);
+        if (attachmentDetails) {
+            // Log the statement with attachment details
+            console.log(`Attachment statement: ${statement}`);
+        } else {
+            // Log the statement without attachment details
+            console.log(`Attachment statement: ${statement} (no time range specified)`);
+        }
+    }
+
+    // Check if the statement contains keywords for saving media
+    else if (Object.values(actions.downloadMedia).some((pattern) =&gt; statement.match(pattern))) {
+        // Extract download details (e.g., URL, target directory)
+        const downloadDetails = statement.match(/(https?:\/\/\S+)|(save to \S+)/);
+        if (downloadDetails) {
+            // Log the statement with download details
+            console.log(`Download statement: ${statement}`);
+        } else {
+            // Log the statement without download details
+            console.log(`Download statement: ${statement} (no download location specified)`);
+        }
+    }
+
+    // If no match found, log the message
+    else {
+        console.log(`Unknown statement: ${statement}`);
+    }
+};
+
+// Test the function with sample statements
+$.interpret('attachments from michelle@thesosmethod.com last 7 days');
+$.interpret('save attachments to sosmethod assets');
+$.interpret('save sosmethod.org #kinder img to sosmethod assets');
+$.interpret('save sosmethod.org.w-gallery img to sosmethod assets');</code></pre></div><p>This code snippet defines a simple interpretation function called <code>interpret</code> within an object likely representing a chatbot or a command interpreter.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

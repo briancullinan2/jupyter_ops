@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,48 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { exit } = require('process');
+
+// Define constants for environment variables
+const HOME_PATHS = ['HOME', 'HOMEPATH', 'USERPROFILE'];
+const requiredEnvVar = 'GITHUB_REPO';
+
+// Function to get the user's home directory path
+const getHomeDirectory = () =&gt; HOME_PATHS.reduce((acc, path) =&gt; process.env[path] || acc, '');
+
+// Function to validate and parse the GitHub repository input
+const validateGithubRepo = (repo) =&gt; {
+  if (!repo) {
+    console.error('Provide a GitHub repository URL');
+    process.exit(1);
+  }
+  try {
+    const [owner, repoName] = repo.split('/');
+    return { owner, repoName };
+  } catch (error) {
+    console.error(`Invalid GitHub repository URL: ${error.message}`);
+    process.exit(1);
+  }
+};
+
+// Function to scaffold the code using the LLM
+async function llmScaffold(githubRepo) {
+  const { owner, repoName } = validateGithubRepo(githubRepo);
+
+  // Check if the required environment variables are set
+  if (!process.env[requiredEnvVar]) {
+    console.error(`Environment variable ${requiredEnvVar} is not set`);
+    process.exit(1);
+  }
+
+  // TODO: feed the LLM the proper project components as necessary to get it to generate code files
+  //       consider using a library like `octokit` to interact with the GitHub API
+}
+
+module.exports = llmScaffold;
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables</h3>
 <ul>
 <li><code>PROFILE_PATH</code>: A constant variable that holds the path to the user's profile. It is defined by combining the values of the following environment variables in order of priority:

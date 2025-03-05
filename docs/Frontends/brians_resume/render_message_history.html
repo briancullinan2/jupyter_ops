@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -171,7 +178,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>renderMessages(req, res)</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const { Remarkable } = require('remarkable');
+const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
+const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = importer.import('general chit chat');
+
+const generateConversationFilePath = (now) => {
+  const date = now.toISOString().split('T')[0];
+  return path.join(PROJECT_PATH, `${date}-${DEFAULT_MODEL}-` + importer.interpret('session id').code + '.json');
+};
+
+const getConversation = (convoFile) => {
+  if (!fs.existsSync(convoFile)) {
+    return {};
+  }
+  const conversation = JSON.parse(fs.readFileSync(convoFile));
+  if (!ACTIVE_CONVERSATIONS[convoFile]) {
+    ACTIVE_CONVERSATIONS[convoFile] = conversation;
+  }
+  return conversation;
+};
+
+const createMessageElement = (message) => {
+  const user = message.user? `User: ` : '';
+  const content = message.user? message.content : `<span>Content off the record</span>`;
+  const mdHtml = message.user? content : md.render(message.content);
+  return `<div id="id-${message.time}" class="${message.user? 'user' : 'ai'}">${user}${mdHtml}</div>`;
+};
+
+const renderMessages = (req, res) => {
+  const now = new Date();
+  const when = req.query.when? new Date(parseInt(req.query.when)) : now;
+  const from = req.query.from? new Date(parseInt(req.query.from)) : new Date(0);
+
+  if (!req.query.session) {
+    return res.send(importer.interpret('resume chat program').code);
+  }
+
+  const convoFile = generateConversationFilePath(now);
+  const conversation = getConversation(convoFile);
+
+  const messageTimes = Object.keys(conversation).filter((k) => k!=='summaries' && k!=='memories').sort((a, b) => b - a);
+
+  const compareWhen = when.getTime();
+  const compareFrom = from.getTime();
+  let count = 0;
+  let messages = '';
+
+  for (const time of messageTimes) {
+    if (parseInt(time) > compareWhen || parseInt(time) < compareFrom) {
+      continue;
+    }
+
+    const message = conversation[time];
+    if (message.content!== undefined) {
+      messages = createMessageElement(message) + messages;
+      count++;
+    }
+    if (count >= 25) {
+      break;
+    }
+  }
+
+  return res.send(importer.interpret('resume chat program').code.replace('<div id="messages">', '<div id="messages">' + messages));
+};
+
+module.exports = renderMessages;</code></pre></div><p><strong>Function Breakdown: <code>renderMessages(req, res)</code></strong></p>
 <h3>Overview</h3>
 <p>The <code>renderMessages(req, res)</code> function is responsible for rendering a set of messages for a specific conversation based on user query parameters.</p>
 <h3>Parameters</h3>

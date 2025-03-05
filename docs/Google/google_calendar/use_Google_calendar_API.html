@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up authentication with the Google Calendar API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { AuthorizeClient } = require('../Core');
+const authorizeClient = new AuthorizeClient();
+
+/**
+ * Authorize a client with the loaded credentials, then call the Google Calendar API.
+ *
+ * @param {Object} options - Options for authorizing the client.
+ * @param {Array<string>} [options.scopes] - Scopes to authorize for.
+ * @param {Object} [options.auth] - Existing authorization object.
+ * @returns {Promise<google.calendar.Calendar>} Authorized Google Calendar client.
+ */
+async function authorizeCalendar(options = {}) {
+    if (options.auth) {
+        // Use existing authorization object if provided
+        return google.calendar({ version: 'v3', auth: options.auth });
+    }
+
+    // Load scopes dynamically if not provided
+    const scopes = options.scopes || [
+        'https://www.googleapis.com/auth/calendar',
+        'https://www.googleapis.com/auth/calendar.readonly',
+    ];
+
+    // Authorize client and get the access token
+    const authClient = await authorizeClient.getAccessToken(scopes);
+
+    // Use the authorized client to create a Google Calendar instance
+    return google.calendar({ version: 'v3', auth: authClient });
+}
+
+module.exports = authorizeCalendar;</code></pre></div><p>This code sets up authentication with the Google Calendar API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

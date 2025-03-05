@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { assert } from 'assert';
+import colorName from 'color-name';
+
+/**
+ * Calculates the CIEDE2000 color difference between two colors.
+ *
+ * @returns {Promise&lt;number&gt;} The calculated color difference.
+ */
+async function testCIED2000() {
+  // Import necessary functions
+  const { rgb2lab } = await importCIED2000Functions('rgb 2 lab');
+  const { CIEDE2000 } = await importCIED2000Functions('ciede2000');
+
+  // Define target colors
+  const targetColor = colorName.red;
+  const targetColorDark = colorName.darkred;
+
+  // Convert color names to RGB format
+  const [targetR, targetG, targetB] = targetColor;
+  const [targetR2, targetG2, targetB2] = targetColorDark;
+
+  // Convert RGB to CIELAB
+  const labValues = rgb2lab(3, targetR, targetG, targetB);
+  const labValuesDark = rgb2lab(3, targetR2, targetG2, targetB2);
+
+  // Calculate CIEDE2000 color difference
+  const ciede = CIEDE2000(labValues[0], labValues[1], labValues[2], labValuesDark[0], labValuesDark[1], labValuesDark[2]);
+
+  // Assert color difference is less than 20
+  assert.ok(ciede &lt; 20, 'Colors are the same');
+
+  // Log and return calculated color difference
+  console.log(`CIEDE2000 color difference: ${ciede}`);
+  return ciede;
+}
+
+// Helper function to import required functions for CIEDE2000
+async function importCIED2000Functions(moduleName) {
+  try {
+    const module = await import(moduleName);
+    return module;
+  } catch (error) {
+    throw new Error(`Failed to import ${moduleName} module: ${error.message}`);
+  }
+}
+
+export default testCIED2000;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Import Statements</h3>
 <pre><code class="language-javascript">import assert from 'assert'
 import colors from 'color-name'

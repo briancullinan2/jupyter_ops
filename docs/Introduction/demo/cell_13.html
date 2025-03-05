@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -115,7 +122,170 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Overview</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Tool Instructions
+// ===============
+
+/**
+ * Automatically generates GitHub feature branches and squashes commits
+ * in separate environments, allowing for the selection of the desired branch.
+ * Additionally, it performs linting and provides line numbers in notebooks.
+ * Real-time hot module replacement is enabled for Angular components.
+ * File changes outside the project scope are monitored, and the Git index is
+ * automatically updated for the affected branch.
+ */
+
+// Import Statements and Dependencies
+// --------------------------------
+
+const fs = require('fs');
+const path = require('path');
+const d3 = require('d3-array');
+const github = require('@octokit/github.js');
+const angular = require('angular');
+const { spawn } = require('child_process');
+
+// Function to Generate GitHub Branches and Squash Commits
+// ----------------------------------------------------
+
+/**
+ * Generates GitHub feature branches and squashes commits in separate environments.
+ * @param {string} repositoryUrl - URL of the GitHub repository.
+ * @param {string} branchName - Name of the branch to be created.
+ */
+function generateBranch(repositoryUrl, branchName) {
+  const githubToken = process.env.GITHUB_TOKEN;
+  const octokit = new github({
+    auth: githubToken,
+  });
+
+  // Create a new branch
+  octokit.repos.createBranch({
+    owner: repositoryUrl.split('/')[3],
+    repo: repositoryUrl.split('/')[4],
+    branch: branchName,
+    head:'main',
+  })
+   .then((response) => {
+      console.log(`Branch created: ${response.data.name}`);
+    })
+   .catch((error) => {
+      console.error(error);
+    });
+
+  // Squash commits in the new branch
+  const branchRef = octokit.repos.getRefs({
+    owner: repositoryUrl.split('/')[3],
+    repo: repositoryUrl.split('/')[4],
+    ref: branchName,
+  })
+   .then((response) => {
+      const squashCommits = (repo) => {
+        const commits = repo.data.object.tree.edges.map((edge) => edge.node.commit);
+        const squashedCommit = commits[commits.length - 1];
+        return squashedCommit.target.sha;
+      };
+
+      octokit.pulls.create({
+        owner: repositoryUrl.split('/')[3],
+        repo: repositoryUrl.split('/')[4],
+        title: `Squash commits in ${branchName}`,
+        body: `Squash commits in ${branchName}`,
+        head: branchName,
+        base:'main',
+      })
+       .then((response) => {
+          console.log(`Commits squashed: ${response.data.number}`);
+        })
+       .catch((error) => {
+          console.error(error);
+        });
+    })
+   .catch((error) => {
+      console.error(error);
+    });
+}
+
+// D3 Cloud of Import Statements and Require Statements
+// ---------------------------------------------------
+
+/**
+ * Generates a D3 word cloud of import statements and require statements.
+ */
+function generateD3Cloud() {
+  const dependencies = [
+    'fs',
+    'path',
+    'd3-array',
+    '@octokit/github.js',
+    'angular',
+    'child_process',
+  ];
+
+  const wordCloud = d3.layout.cloud()
+   .size([800, 800])
+   .words(dependencies.map((dependency) => ({
+      text: dependency,
+      size: 10,
+    })));
+
+  wordCloud.start();
+
+  const svg = d3.select('body')
+   .append('svg')
+   .attr('width', 800)
+   .attr('height', 800);
+
+  wordCloud.svg(svg);
+
+  svg.selectAll('text')
+   .data(wordCloud.words())
+   .enter()
+   .append('text')
+   .attr('transform', (d) => `translate(${d.x}, ${d.y})`)
+   .text((d) => d.text)
+   .style('font-size', (d) => d.size)
+   .style('font-family', 'Arial')
+   .style('fill', '#333');
+}
+
+// Function to Update Git Index for File Changes
+// ------------------------------------------
+
+/**
+ * Monitors file changes outside the project scope and updates the Git index.
+ */
+function updateGitIndex() {
+  const watchedFiles = ['.git', 'package.json', 'README.md'];
+
+  const watcher = chokidar.watch(watchedFiles, {
+    ignored: [/node_modules/, /dist/, /build/],
+  });
+
+  watcher.on('add', (filePath) => {
+    console.log(`File added: ${filePath}`);
+    const branchName = 'auto-update';
+    generateBranch(process.env.GITHUB_URL, branchName);
+  });
+
+  watcher.on('change', (filePath) => {
+    console.log(`File changed: ${filePath}`);
+    const branchName = 'auto-update';
+    generateBranch(process.env.GITHUB_URL, branchName);
+  });
+
+  watcher.on('unlink', (filePath) => {
+    console.log(`File deleted: ${filePath}`);
+    const branchName = 'auto-update';
+    generateBranch(process.env.GITHUB_URL, branchName);
+  });
+}
+
+// Update Git Index for File Changes
+updateGitIndex();
+
+// Generate D3 Cloud of Import Statements and Require Statements
+generateD3Cloud();</code></pre></div><h2>Code Overview</h2>
 <h3>Features and Tools</h3>
 <p>The code appears to utilize several tools and features to enhance the development process:</p>
 <ul>

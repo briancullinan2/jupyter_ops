@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { groupBy } = require('lodash');
+
+// Import the core module and the function to parse bookmarks
+const { importAll } = require('../Core');
+const { getBookmarksFromTakeout } = importAll();
+
+/**
+ * Retrieves bookmark folders from Google Takeout bookmarks.
+ *
+ * @returns {Promise<string[]>} A promise resolving to an array of unique bookmark folders.
+ */
+function getBookmarkFolders() {
+    // Parse bookmarks from Google Takeout
+    return getBookmarksFromTakeout()
+       .then(links => {
+            // Filter links by folder (remove empty folders)
+            const folders = Object.values(links).reduce((acc, link) => {
+                if (link.folder) acc.push(link.folder);
+                return acc;
+            }, []);
+
+            // Remove duplicates and sort the folders
+            return [...new Set(folders)].sort();
+        });
+}
+
+module.exports = getBookmarkFolders;
+
+if (typeof $!== 'undefined') {
+    // Asynchronously execute the function and send the result or error accordingly
+    $.async();
+
+    getBookmarkFolders()
+       .then(folders => $.mime({ 'text/plain': folders.join('\n') }))
+       .catch(e => $.sendError(e));
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies and Imports</h3>
 <p>The code requires two external modules:</p>
 <ul>

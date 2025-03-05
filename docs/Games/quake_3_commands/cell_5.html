@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,64 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Systemd Service Configuration Files</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>```markdown
+# Quake Services
+## Quake Proxy Service
+### Service Configuration
+
+[Unit]
+Description=Quake proxy service.
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /home/megamindbrian/proxy.js
+Restart=on-failure
+TimeoutStopSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
+## Quake Server Service
+### Service Configuration
+
+[Unit]
+Description=Quake server.
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/megamindbrian/ioq3-master/build/release-linux-x86_64/ioq3ded.x86_64 \
+	+set fs_homepath /home/megamindbrian/.q3a \
+	+set com_hunkMegs 312 \
+	+exec server.cfg
+Restart=on-failure
+TimeoutStopSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Changes:**
+
+*   Added `After=network.target` to both services to ensure they start after the network is available.
+*   Added `TimeoutStopSec=10` and `KillMode=process` to both services to improve process management.
+*   Corrected formatting and whitespace for better readability.
+*   Removed duplicate description blocks and only kept the service description.
+*   Used backslashes (`\`) to escape special characters in the exec command for the quake server service.
+
+**TODO:**
+
+*   Ensure the node version matches the requirements of the proxy.js file.
+*   Verify the quake server service command works correctly with the provided options.
+*   Test the services to ensure they function as expected.
+
+**Note:**
+
+These configurations are for a basic setup and might need to be adjusted based on specific system requirements and configurations.</code></pre></div><p><strong>Systemd Service Configuration Files</strong></p>
 <p>These configuration files are written in systemd format and are used to manage system services.</p>
 <p><strong>File 1: quake3-proxy.service</strong></p>
 <ul>

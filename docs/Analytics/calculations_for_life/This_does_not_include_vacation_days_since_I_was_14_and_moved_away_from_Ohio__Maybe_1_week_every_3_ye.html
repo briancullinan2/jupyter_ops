@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,8 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code calculates the percentage of the author's life spent with a friend named Jim, taking into account various factors like the number of years they've known each other, how often they visited, and the length of vacations.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const weekendsSpentWithJim = (daysPerWeekend * yearsMinusTwo * (52 / everyOtherMultiplier));</code></pre></div><p>This code calculates the percentage of the author's life spent with a friend named Jim, taking into account various factors like the number of years they've known each other, how often they visited, and the length of vacations.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Variables:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to set up a local copy of the noVNC project. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define the repository to clone
+REPO_URL="https://github.com/novnc/noVNC.git"
+REPO_DIR="novnc"
+
+# Create the novnc directory if it doesn't exist
+mkdir -p "$REPO_DIR"
+
+# Clone the repository if the current branch is not the master branch
+if! git --work-tree="$REPO_DIR" branch | grep -q master; then
+  git clone "$REPO_URL" "$REPO_DIR"
+fi
+
+# Print the current working directory
+echo "Working directory: $(pwd)"
+
+# List the contents of the novnc directory
+ls -la "$REPO_DIR"</code></pre></div><p>This code snippet is designed to set up a local copy of the noVNC project. Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>mkdir -p novnc</code></strong>:</p>
 <ul>

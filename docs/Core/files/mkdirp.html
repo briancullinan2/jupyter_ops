@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./file_tools__match_filename.html">file tools, match filename</a> | <a href="./changing_file_names.html">changing file names</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides a <code>mkdirpSync</code> function that safely creates directories, automatically creating any necessary parent directories along the way.  It handles potential errors, such as &quot;No such file or directory&quot; by recursively creating parent directories.</p>
+  <p>The <code>mkdirpSync</code> function creates directories and their parents synchronously if they do not exist, and throws any other error if an issue occurs. It ignores the <code>EEXISTS</code> error and throws others.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "mkdirp"</code></pre><h1>mkdirp</h1>
@@ -138,33 +145,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>mkdirpSync</code> that creates directories recursively, ensuring parent directories exist before attempting to create a target directory.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs').promises;
+const path = require('path');
+
+/**
+ * Recursively creates a directory at the specified path.
+ * 
+ * @param {string} dir - The path to the directory to be created.
+ * @returns {Promise<void>} A promise that resolves when the directory is created.
+ */
+async function mkdirp(dir) {
+    if (!(await fs.exists(dir))) {
+        try {
+            // Attempt to create the directory
+            await fs.mkdir(dir, { recursive: true });
+        } catch (e) {
+            // If the directory does not exist, try to create its parent directory
+            if (e.code === 'ENOENT') {
+                // Recursively create the parent directory
+                await mkdirp(path.dirname(dir));
+                // Recursively create the target directory
+                await fs.mkdir(dir, { recursive: true });
+            } else if (e.code === 'EEXIST') {
+                // Handle the case where the directory already exists
+                // TODO: Log a warning or throw an error depending on the use case
+            } else {
+                // Re-throw any other errors
+                throw e;
+            }
+        }
+    }
+}
+
+// Export the function
+module.exports = mkdirp;</code></pre></div><h3>Function: <code>mkdirpSync</code></h3>
+<h4>Description</h4>
+<p>A synchronous function that creates directories and their parents if they do not exist.</p>
+<h4>Parameters</h4>
 <ul>
-<li>Requires the <code>fs</code> (filesystem) and <code>path</code> modules for file system operations and path manipulation.</li>
-</ul></li>
-<li><p><strong><code>mkdirpSync</code> Function:</strong></p>
+<li><code>p</code> (string): The path to the directory to be created.</li>
+</ul>
+<h4>Behavior</h4>
 <ul>
-<li>Takes a directory path <code>p</code> as input.</li>
-<li>Checks if the directory <code>p</code> exists using <code>fs.existsSync</code>.</li>
-<li>If the directory doesn't exist:
+<li>If the directory does not exist, it will be created recursively.</li>
+<li>If the directory already exists, no action will be taken.</li>
+<li>If an error occurs, it will be caught and thrown again.</li>
+<li>The function uses a recursive approach to create parent directories if they do not exist.</li>
+</ul>
+<h4>Exceptions</h4>
 <ul>
-<li>Attempts to create the directory using <code>fs.mkdirSync</code>.</li>
-<li>If an error occurs:
-<ul>
-<li>If the error code is <code>ENOENT</code> (No such file or directory), it recursively calls <code>mkdirpSync</code> on the parent directory (<code>path.dirname(p)</code>) to create any missing parent directories and then tries to create the target directory again.</li>
-<li>If the error code is <code>EEXISTS</code> (File exists), it does nothing (presumably assuming the directory already exists).</li>
-<li>For other errors, it re-throws the error.</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><p><strong>Export:</strong></p>
-<ul>
-<li>Exports the <code>mkdirpSync</code> function as the main module export.</li>
-</ul></li>
-</ol>
+<li><code>ENOENT</code>: Thrown if a parent directory does not exist.</li>
+<li><code>EEXISTS</code>: Ignored if the directory already exists.</li>
+<li>Any other error: Thrown again.</li>
+</ul>
 
 </body>
 

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>incomingTwilio</code> that handles incoming text messages from Twilio and creates a calendar event for each message.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import required modules.
+ */
+const { Core } = require('../Core');
+
+/**
+ * Import createCalendarEvent function from Core module.
+ */
+const { createCalendarEvent } = Core.import('create new calendar event');
+
+/**
+ * Process incoming Twilio message.
+ * 
+ * @param {Object} message - Twilio message object.
+ * @returns {Promise} Resolve with the result of creating a calendar event.
+ */
+function incomingTwilio(message) {
+    // Log incoming message for debugging purposes.
+    console.log('Received message from:', message.From);
+
+    // Create a calendar event with the message details.
+    return createCalendarEvent(`Received text with ${message.From}`, message, {
+        // Use a specific calendar ID for calls.
+        calendarId: 'calls',
+    });
+}
+
+module.exports = incomingTwilio;</code></pre></div><p>This code defines a function <code>incomingTwilio</code> that handles incoming text messages from Twilio and creates a calendar event for each message.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

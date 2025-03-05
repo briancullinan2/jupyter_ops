@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>These are two commands used for applying changes to a Git repository, but they handle the process differently.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define the git stash functionality
+stash_changes() {
+  # Generate a patch from the unstaged changes
+  local patch=$(git diff -U0 -w --no-color)
+  # Apply the patch to the index
+  git apply --cached --ignore-whitespace --unidiff-zero <(echo "$patch")
+}
+
+# Define the git reset functionality
+reset_git() {
+  # Generate a patch from the unstaged changes
+  local patch=$(git diff -w --no-color)
+  # Apply the patch to the index
+  git apply --cached --ignore-whitespace <(echo "$patch")
+  # Checkout the modified files
+  git checkout --.
+  # Reset the index
+  git reset
+  # Stage the files interactively
+  git add -p
+}
+
+# Usage:
+stash_changes   # Stash changes in the index
+reset_git       # Reset the index and stage the files interactively</code></pre></div><p>These are two commands used for applying changes to a Git repository, but they handle the process differently.</p>
 <p><strong>Command 1:</strong></p>
 <pre><code class="language-bash">git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -
 </code></pre>

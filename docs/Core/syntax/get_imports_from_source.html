@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectAst } = require('../Core');
+
+// Define the selector for Core declarations
+const CORE_DECLARE_SELECTOR = `
+  //[
+    @type="Declar"
+    and contains(@type, "Literal") and contains(@value, "Core")
+  ]
+`;
+
+// Extract the importer name from the Core declaration
+const IMPORTER_SELECTOR = (coreDeclaration) =&gt; `${coreDeclaration}/*[@type="Identifier"]/@name`;
+
+// Define the selector for importer calls
+const IMPORTER_CALLS_SELECTOR = `
+  //[
+    @type="Call"
+    and./*[
+      @type="Member"
+      and contains(./Identifier/@name, "import")
+    ]
+    and./Literal
+  ]
+`;
+
+/**
+ * Extracts imports from the given code.
+ *
+ * @param {string} code - The code to extract imports from.
+ * @returns {Array} An array of imports.
+ */
+function getImports(code) {
+  // Select the Core declaration
+  const coreDeclaration = selectAst([CORE_DECLARE_SELECTOR], code)[0];
+
+  // Extract the importer name
+  const importerName = IMPORTER_SELECTOR(coreDeclaration);
+
+  // Select importer calls
+  const importerCalls = selectAst([IMPORTER_CALLS_SELECTOR.replace('importer', importerName)], code);
+
+  // Extract the import names and values
+  const importNamesAndValues = importerCalls.map((importerCall) =&gt; {
+    const identifier = importerCall.querySelector('.//Identifier');
+    const literal = importerCall.querySelector('.//Literal');
+    return [
+      identifier? identifier.getAttribute('name') : null,
+      identifier? identifier.querySelector('./../*[@type="Identifier"]/@name') : null,
+      literal? literal.getAttribute('value') : null,
+    ];
+  });
+
+  // Remove duplicates
+  const uniqueImports = [...new Set(importNamesAndValues.flat())];
+
+  return uniqueImports;
+}
+
+module.exports = getImports;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables and Functions</h3>
 <ul>
 <li><code>importer</code>: an object imported from <code>../Core</code> with a method <code>selectAst</code> used to parse Abstract Syntax Trees (ASTs)</li>

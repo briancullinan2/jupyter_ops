@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+IMAGE_FORMATS=(jpeg jpg heic tga png svg webp wal)
+
+# Define the directory to search for images
+IMAGE_DIR="/Users/briancullinan/.q3a/unpacked/baseq3vm"
+
+# Loop through each image format and find matching files
+while IFS= read -r image; do
+  # Extract the file name without extension
+  filename="${image%.*}"
+
+  # Determine the output file name
+  output_filename="${filename%-final*}-final.jpg"
+
+  # Check if the output file already exists
+  if [! -f "$output_filename" ]; then
+    # Enhance the image using ImageMagick
+    convert "$image" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality 50% "$output_filename" || true
+    
+    # Delete the original image
+    rm "$image"
+    
+    # Rename the output file to the original name with a.jpg extension
+    mv "$output_filename" "${image%.*}.jpg"
+  else
+    # If the output file already exists, rename it to the original name with a.jpg extension
+    mv "$output_filename" "${image%.*}.jpg"
+  fi
+done < <(find "$IMAGE_DIR" -iname "${IMAGE_FORMATS[*]/%/.}" | sort)</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Purpose</h3>
 <p>The code is a bash script designed to:</p>
 <ol>

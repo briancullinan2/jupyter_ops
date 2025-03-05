@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,111 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const express = require('express');
+const { promisify } = require('util');
+const fs = require('fs');
+const path = require('path');
+
+// Initialize Express router
+const router = express.Router();
+
+// Define constants for storing session credentials
+const TOKEN_DIR = path.join(
+  process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
+  '.credentials'
+);
+const SESSIONS_PATH = path.join(TOKEN_DIR,'sessions.txt');
+
+/**
+ * Retrieves the first session ID from the sessions file.
+ * @returns {string} The first session ID.
+ */
+function getSessionId() {
+  try {
+    return fs.readFileSync(SESSIONS_PATH).toString().split('\n')[0];
+  } catch (error) {
+    // Handle file read error
+    console.error('Error reading sessions file:', error);
+    return null;
+  }
+}
+
+/**
+ * Deletes a session and detaches the debugger.
+ * @param {number} tabId The tab ID.
+ * @returns {Promise&lt;Object&gt;} A promise resolving to an empty object.
+ */
+async function deleteSession(tabId) {
+  try {
+    if (tabId) {
+      return promisifyChrome('debugger.detach', { tabId })({ value: {} });
+    } else {
+      return { value: {} };
+    }
+  } catch (error) {
+    // Handle error detaching debugger
+    console.error('Error detaching debugger:', error);
+    return { value: {} };
+  }
+}
+
+/**
+ * Creates a new session.
+ * @returns {Promise&lt;Object&gt;} A promise resolving to a session object.
+ */
+async function createSession() {
+  const sessionId = getSessionId();
+  if (!sessionId) {
+    // TODO: Handle case where session ID is not found
+    return { value: {} };
+  }
+  return { value: { sessionId, capabilities: {} } };
+}
+
+/**
+ * Retrieves session capabilities for a given session ID.
+ * @param {string} sessionId The session ID.
+ * @returns {Promise&lt;Object&gt;} A promise resolving to session capabilities.
+ */
+async function getSessionCapabilities(sessionId) {
+  // TODO: Implement retrieving session capabilities
+  return { value: {} };
+}
+
+/**
+ * Responds to API requests.
+ * @param {express.Response} res The response object.
+ * @param {Object} resolve The result of the API request.
+ */
+function response(res, resolve) {
+  res.status(200).json(resolve);
+}
+
+// Define API endpoints
+router.post('/session', (req, res) =&gt; response(res, createSession()));
+router.delete('/session/:sessionId', (req, res) =&gt;
+  response(res, deleteSession(req.params.sessionId))
+);
+router.get('/session/:sessionId', (req, res) =&gt;
+  response(res, getSessionCapabilities(req.params.sessionId))
+);
+
+// Export router and session management functions
+module.exports = {
+  deleteSession,
+  createSession,
+  getSessionCapabilities,
+  getSessionId,
+  router,
+};
+
+// Helper function to promisify Chrome API calls
+function promisifyChrome(method, data) {
+  // TODO: Implement promisifyChrome function
+  return Promise.resolve();
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Variables</h3>
 <ul>
 <li>The code requires three external modules:

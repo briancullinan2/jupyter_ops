@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -195,7 +202,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules and functions
+const importer = require('../Core');
+const { extend } = importer.import('extend prototype class');
+const { EnforcingInterface } = importer.import('enforcing an interface');
+const { MetaKernelInterface } = importer.import('meta kernel interface');
+const { NativeMetaKernelMethods } = importer.import('native meta kernel methods');
+const { KernelInfo } = importer.import('kernel info interface');
+const { readFile } = require('fs');
+const { join } = require('path');
+
+// Define a function to reassign properties of the meta kernel
+function reassignProperties(metaKernel) {
+    // Extract properties from the meta kernel
+    const {
+        languageInfo,
+        kernelConfig,
+        kernelInfo,
+        installConfig
+    } = metaKernel;
+
+    // Auto-assign language info if not provided
+    if (!languageInfo && kernelInfo) {
+        metaKernel.languageInfo = kernelInfo.languageInfo;
+    }
+
+    // Auto-assign kernel info language info if not provided
+    if (kernelInfo &&!kernelInfo.languageInfo) {
+        kernelInfo.languageInfo = languageInfo;
+    }
+
+    // Update kernel info with native kernel info
+    metaKernel.kernelInfo = KernelInfo(kernelInfo);
+
+    // Check if kernel config file exists and parse it
+    if (fs.existsSync(kernelConfig)) {
+        // Only auto init if receiving a valid connection file
+        const configFileContent = readFile(kernelConfig, 'utf8');
+        metaKernel.kernelConfig = {
+           ...metaKernel.startConfig || {},
+            autoinit: true,
+           ...JSON.parse(configFileContent)
+        };
+    }
+
+    // Check if install config is a function and call it
+    if (typeof installConfig === 'function') {
+        metaKernel.installConfig = installConfig({
+            displayName: installConfig.displayName || metaKernel.banner,
+            language: installConfig.language || metaKernel.implementation
+        });
+    }
+}
+
+// Define a function to create a native meta kernel
+class NativeMetaKernel extends EnforcingInterface(MetaKernelInterface) {
+    constructor(metaKernel) {
+        super(metaKernel);
+        reassignProperties(metaKernel);
+        
+        // Extend the meta kernel with native methods
+        this.nativeMethods = new NativeMetaKernelMethods(this);
+
+        // Check if kernel config is set to 'do_install'
+        if (this.kernelConfig === 'do_install') {
+            this.nativeMethods.doInstall(this.installConfig);
+        } else if ((this.kernelConfig || {}).autoinit) {
+            this.nativeMethods.doInit(this.kernelConfig);
+        }
+    }
+}
+
+// Export the NativeMetaKernel class
+module.exports = NativeMetaKernel;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Imports</h3>
 <p>The code starts by importing various modules and functions from the <code>../Core</code> directory.</p>
 <pre><code class="language-javascript">var importer = require('../Core');

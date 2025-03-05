@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -124,7 +131,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { listEvents, getCalendarId, importGoogleCalendarApi } from '../Core';
+
+describe('calendar service', () => {
+    let calendarId, auth;
+
+    beforeEach(() => {
+        // Mock the Google Calendar API
+        const importer = importGoogleCalendarApi();
+        ({ calendarId, auth } = importer.import(['lookup calendar name', 'import google calendar api']));
+    });
+
+    it('should list events from around today', (done) => {
+        // Ensure calendarId is correct
+        getCalendarId({ calendarId })
+           .then((options) => {
+                // List events for today
+                return listEvents({
+                    auth,
+                    calendarId: options.calendarId,
+                    timeMin: '12 AM today',
+                    timeMax: 'next hour today'
+                });
+            })
+           .then((events) => {
+                // Assert at least one event
+                expect(events.length).toBe GreaterThan(0);
+                done();
+            })
+           .catch((error) => {
+                // Handle any errors
+                done.fail(error);
+            });
+    });
+});</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing a module named <code>importer</code> from the <code>../Core</code> directory. The <code>importer</code> module is then used to import specific functions.</p>
 <pre><code class="language-javascript">var importer = require('../Core');

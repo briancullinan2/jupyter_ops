@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -141,7 +148,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>class EmotionLabelHandler:
+    """
+    A class to handle and manipulate emotion labels.
+    
+    Attributes:
+    ----------
+    labels : list
+        A list of available emotion labels.
+        
+    Methods:
+    -------
+    get_labels()
+        Returns a list of available emotion labels.
+    get_label_by_index(index: int)
+        Returns the emotion label at the specified index.
+    get_label_count()
+        Returns the total number of available emotion labels.
+    get_label_names()
+        Returns a list of unique emotion label names.
+    """
+
+    def __init__(self):
+        """
+        Initializes the EmotionLabelHandler class.
+        
+        Parameters:
+        ----------
+        None
+        """
+        self.labels = ['angry', 'disgust', 'fear', 'happy', 'neutral','sad','surprise']
+
+    def get_labels(self):
+        """
+        Returns a list of available emotion labels.
+        
+        Returns:
+        -------
+        list
+            A list of available emotion labels.
+        """
+        # Return a copy of the labels list to prevent modification
+        return self.labels.copy()
+
+    def get_label_by_index(self, index: int):
+        """
+        Returns the emotion label at the specified index.
+        
+        Parameters:
+        ----------
+        index : int
+            The index of the desired emotion label.
+        
+        Returns:
+        -------
+        str
+            The emotion label at the specified index.
+        """
+        # Check if the index is valid
+        if index < len(self.labels):
+            # Return the emotion label at the specified index
+            return self.labels[index]
+        else:
+            # Raise an IndexError if the index is out of range
+            raise IndexError("Index out of range")
+
+    def get_label_count(self):
+        """
+        Returns the total number of available emotion labels.
+        
+        Returns:
+        -------
+        int
+            The total number of available emotion labels.
+        """
+        # Return the length of the labels list
+        return len(self.labels)
+
+    def get_label_names(self):
+        """
+        Returns a list of unique emotion label names.
+        
+        Returns:
+        -------
+        list
+            A list of unique emotion label names.
+        """
+        # Use a set to remove duplicates and then convert it back to a list
+        unique_labels = list(set(self.labels))
+        # Sort the list of unique labels
+        unique_labels.sort()
+        # Return the sorted list of unique labels
+        return unique_labels</code></pre></div><h2>Code Breakdown</h2>
 <h3>Code Snippet</h3>
 <pre><code class="language-markdown">label = ['angry','disgust','fear','happy','neutral','sad','surprise']
 </code></pre>

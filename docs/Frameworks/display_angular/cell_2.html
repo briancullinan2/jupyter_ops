@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const { importModules } = require('../Core');
+const searchProvider = importModules('search notebook provider');
+const lzw = importModules('lzw compress');
+
+// Define environment variables
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+// Define project path and create directory if it doesn't exist
+const projectPath = `${PROFILE_PATH}/universal`;
+if (!fs.existsSync(projectPath)) {
+    fs.mkdirSync(projectPath, { recursive: true });
+}
+
+// Define rate limit for script output
+const rateLimit = 900000;
+const rateLimitPerSecond = rateLimit / (1100 / 1000); // Convert milliseconds to seconds
+console.log(`Outputting scripts at a rate of ${rateLimitPerSecond} per second`);
+
+// Function to output scripts slowly
+async function outputScriptsSlowly(r, out) {
+    const scriptPieces = Math.ceil(r.scripts.length / rateLimit);
+    console.log(`Outputting ${scriptPieces} pieces of script code`);
+
+    for (let i = 0; i < scriptPieces; i++) {
+        try {
+            const chunk = r.scripts.substr(i * rateLimit, rateLimit);
+            await out(chunk, i, scriptPieces);
+        } catch (error) {
+            console.error(`Error outputting script piece ${i}:`, error);
+            break;
+        }
+    }
+
+    return r.compress;
+}
+
+// Function to compress code
+async function compressCode(code) {
+    console.log('Compressing code...');
+    return {
+        compress: code.code[0],
+        scripts: await lzw.compressToBase64(code.scripts + code.chunks),
+    };
+}
+
+// Main function
+async function main() {
+    try {
+        // Get search results
+        const searchResults = await displAngular(projectPath, '/search');
+        $.html(searchResults.html, true);
+
+        // Compress code
+        const compressedCode = await compressCode(searchResults);
+
+        // Output scripts slowly
+        const decompressedCode = await outputScriptsSlowly(compressedCode, (c, i, t) => {
+            console.log(`${t - i} - ${c.substr(0, 10)}`);
+            $.html(`<script>
+if (!doc.app) { doc.app = ''; }
+doc.app += ${JSON.stringify(c)};
+</script>`, true);
+        });
+
+        // Add script to document
+        $.html(`<script>
+eval(decodeURI(${JSON.stringify(encodeURI(decompressedCode))}));
+doc.document.write(LZString.decompressFromBase64(doc.app));
+doc.document.close();
+</script>`, true);
+
+        // Send search results
+        await searchProvider();
+        $.sendResult();
+    } catch (error) {
+        // Send error
+        $.sendError(error);
+    }
+}
+
+// Run main function
+main();</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables and Imports</h3>
 <ul>
 <li><code>importer</code>: imports modules from the <code>../Core</code> directory</li>

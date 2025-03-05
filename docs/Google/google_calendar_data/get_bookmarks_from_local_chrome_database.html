@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet retrieves and processes browsing history data from a SQLite database file associated with Google Chrome.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const sqlite3 = require('better-sqlite3');
+const fs = require('fs');
+const path = require('path');
+const { console } = require('console');
+
+// Constants
+const CHROME_HISTORY_FILE = '/Users/briancullinan/Library/Application Support/Google/Chrome/Default/History copy';
+const DATE_EPOCH = new Date(1601, 0, 1);
+
+// Function to calculate the epoch time offset
+function getEpochTimeOffset(date) {
+    return (date - DATE_EPOCH.getTime()) * 1000;
+}
+
+// Function to get the history from the Chrome database
+function getHistory(db) {
+    return db.prepare('SELECT * FROM urls WHERE last_visit_time &gt;?').all(getEpochTimeOffset(new Date()));
+}
+
+// Function to connect to the SQLite database and retrieve the history
+async function getConnection() {
+    try {
+        // Check if the file exists before attempting to connect to the database
+        if (fs.existsSync(CHROME_HISTORY_FILE)) {
+            const db = new sqlite3(CHROME_HISTORY_FILE, {});
+            return { db, getHistory };
+        } else {
+            console.error(`Error: File not found: ${CHROME_HISTORY_FILE}`);
+            return null;
+        }
+    } catch (error) {
+        console.error(`Error connecting to database: ${error.message}`);
+        return null;
+    }
+}
+
+// Main execution
+(async () =&gt; {
+    const { db, getHistory } = await getConnection();
+    if (db) {
+        try {
+            const history = await getHistory(db);
+            if (typeof $!== 'undefined') {
+                $ async() {
+                    $.sendResult(history);
+                };
+            }
+        } catch (error) {
+            console.error(`Error retrieving history: ${error.message}`);
+            if (typeof $!== 'undefined') {
+                $ async() {
+                    $.sendError(error);
+                };
+            }
+        } finally {
+            db.close();
+        }
+    }
+})();</code></pre></div><p>This code snippet retrieves and processes browsing history data from a SQLite database file associated with Google Chrome.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

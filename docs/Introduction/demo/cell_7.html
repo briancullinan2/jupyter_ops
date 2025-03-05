@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// GCP Cloud Management Tool
+class GcpCloudManager {
+  /**
+   * Creates a new GCP Cloud Manager instance
+   * @param {object} config - configuration object
+   * @param {string} config.projectId - project ID
+   * @param {string} config.zone - zone
+   */
+  constructor(config) {
+    this.projectId = config.projectId;
+    this.zone = config.zone;
+  }
+
+  // TODO: Implement function to get recent activity logs
+  /**
+   * Retrieves recent activity logs for the specified project
+   * @returns {object} activity logs
+   */
+  async getActivityLogs() {
+    // Implement logging API call here
+    // For demonstration purposes, return a static object
+    return {
+      logs: [
+        { timestamp: '2022-01-01', event: 'instance startup' },
+        { timestamp: '2022-01-02', event: 'instance shutdown' },
+      ],
+    };
+  }
+
+  // TODO: Implement function to get costs explorer data
+  /**
+   * Retrieves costs explorer data for the specified project
+   * @returns {object} costs explorer data
+   */
+  async getCostsExplorer() {
+    // Implement costs explorer API call here
+    // For demonstration purposes, return a static object
+    return {
+      costs: [
+        { date: '2022-01-01', amount: 10 },
+        { date: '2022-01-02', amount: 20 },
+      ],
+    };
+  }
+
+  // TODO: Implement function to get instance information
+  /**
+   * Retrieves instance information for the specified project
+   * @returns {object} instance information
+   */
+  async getInstanceInfo() {
+    // Implement instance API call here
+    // For demonstration purposes, return a static object
+    return {
+      instances: [
+        { id: 'instance-1', status: 'running' },
+        { id: 'instance-2', status:'shutdown' },
+      ],
+    };
+  }
+}
+
+// Usage example
+const config = {
+  projectId:'my-project-id',
+  zone: 'us-central1-a',
+};
+const manager = new GcpCloudManager(config);
+
+async function main() {
+  console.log('Recent Activity Logs:');
+  const logs = await manager.getActivityLogs();
+  console.log(logs.logs);
+
+  console.log('\nCosts Explorer:');
+  const costs = await manager.getCostsExplorer();
+  console.log(costs.costs);
+
+  console.log('\nInstance Information:');
+  const instances = await manager.getInstanceInfo();
+  console.log(instances.instances);
+}
+
+main().catch((error) => console.error(error));</code></pre></div><h2>Code Breakdown</h2>
 <h3>Try Block</h3>
 <pre><code class="language-markdown">try:
     # code to manage server

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -222,7 +229,106 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const { default: importer } = require('../Core');
+const { request } = importer.import('request polyfill');
+const { getAuthHeaders } = importer.import('zuora export service');
+const _ = require('lodash');
+
+// Define constants
+const HOME_PATH = [
+  process.env.HOME,
+  process.env.HOMEPATH,
+  process.env.USERPROFILE,
+].find(Boolean) || '';
+const ZUORA_CONFIG_FILE = `${HOME_PATH}/.credentials/zuoraRest_production.json`;
+
+// Load Zuora configuration from file
+const zuoraConfig = JSON.parse(fs.readFileSync(ZUORA_CONFIG_FILE).toString().trim());
+
+// Define API query function
+function zuoraQuery(query) {
+  return request({
+    followAllRedirects: true,
+    uri: zuoraConfig.rest_api_url + '/action/query',
+    json: {
+      queryString: query
+    },
+    method: 'POST',
+    headers: getAuthHeaders(zuoraConfig)
+  });
+}
+
+// Define API query functions
+const queries = {
+  getContact: (email) => {
+    return zuoraQuery(`SELECT AccountId, PersonalEmail, WorkEmail FROM Contact WHERE PersonalEmail LIKE '%${email}%' OR WorkEmail LIKE '%${email}%'`);
+  },
+  getContactByAccount: (accountId) => {
+    return zuoraQuery(`SELECT AccountId, PersonalEmail, WorkEmail FROM Contact WHERE AccountId='${accountId}'`);
+  },
+  getAccountById: (accountId) => {
+    return zuoraQuery(`SELECT Id, Status, Name, Currency, DefaultPaymentMethodId FROM Account WHERE Id='${accountId}'`);
+  },
+  getAccount: (accountNumber) => {
+    return zuoraQuery(`SELECT Id, Status, Name, Currency, DefaultPaymentMethodId FROM Account WHERE AccountNumber='${accountNumber}'`);
+  },
+  getSubscription: (accountId) => {
+    return zuoraQuery(`SELECT Id, Status, TermEndDate FROM Subscription WHERE AccountId='${accountId}'`);
+  },
+  getPaymentMethod: (paymentId) => {
+    return zuoraQuery(`SELECT CreditCardMaskNumber FROM PaymentMethod WHERE Id='${paymentId}'`);
+  },
+  getRatePlans: (subscriptionIds) => {
+    return zuoraQuery(`SELECT Id, Name, SubscriptionId FROM RatePlan WHERE SubscriptionId='${subscriptionIds.join('\', OR SubscriptionId=\'')}'`);
+  }
+};
+
+// Define main function
+function main() {
+  // Check if $ is defined
+  if (typeof $!== 'undefined') {
+    $().async();
+    var accountId, paymentId;
+    // Get contact by email
+    queries.getContact('flyfisher8008@yahoo.com')
+     .then(r => {
+        console.log(r.body.records);
+        // Get account by ID
+        return queries.getAccountById(r.body.records[0].AccountId);
+      })
+     .then(r => {
+        console.log(r.body.records);
+        accountId = r.body.records[0].Id;
+        paymentId = r.body.records[0].DefaultPaymentMethodId;
+        // Get subscription by account ID
+        return queries.getSubscription(accountId);
+      })
+     .then(r => {
+        console.log(r.body.records);
+        // Get rate plans by subscription IDs
+        return queries.getRatePlans(r.body.records.map(r => r.Id));
+      })
+     .then(r => {
+        console.log(_.groupBy(r.body.records, r => r.SubscriptionId));
+        // Get payment method by ID
+        return queries.getPaymentMethod(paymentId);
+      })
+     .then(r => {
+        console.log(r.body.records[0].CreditCardMaskNumber);
+        // Get contact by account ID
+        return queries.getContactByAccount(accountId);
+      })
+     .then(r => r.body.records)
+     .then(r => $().sendResult(r))
+     .catch(e => $().sendError(e));
+  }
+}
+
+// Call main function
+main();</code></pre></div><h3>Code Breakdown</h3>
 <p><strong>Importing Modules and Variables</strong></p>
 <ul>
 <li>The code requires the following modules:

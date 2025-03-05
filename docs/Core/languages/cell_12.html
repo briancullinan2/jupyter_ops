@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -198,7 +205,399 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Utility functions for JavaScript.
+ */
+
+/**
+ * Removes the first element from an array.
+ *
+ * @param {Array} arr The array to remove from.
+ * @return {*} The removed element.
+ */
+function arrayShift(arr) {
+  return arr.shift();
+}
+
+/**
+ * Checks if a string contains a specific substring.
+ *
+ * @param {string} str The string to search in.
+ * @param {string} match The substring to search for.
+ * @return {number|false} The index of the substring if found, false otherwise.
+ */
+function strpos(str, match) {
+  return str.indexOf(match) &gt; -1? str.indexOf(match) : false;
+}
+
+/**
+ * Extracts a substring from a string.
+ *
+ * @param {string} str The string to extract from.
+ * @param {number} start The start index of the substring.
+ * @param {number} [length] The length of the substring. Defaults to infinity.
+ * @return {string} The extracted substring.
+ */
+function substr(str, start, length = Infinity) {
+  return str.substring(start, Math.min(start + length, str.length));
+}
+
+/**
+ * Checks if a value is a number.
+ *
+ * @param {*} num The value to check.
+ * @return {boolean} True if the value is a number, false otherwise.
+ */
+function isNumeric(num) {
+  return!isNaN(parseFloat(num)) &amp;&amp; isFinite(num);
+}
+
+/**
+ * Calculates the length of a string.
+ *
+ * @param {string} str The string to calculate the length for.
+ * @return {number} The length of the string.
+ */
+function strlen(str) {
+  return (str || '').length;
+}
+
+/**
+ * Merges multiple arrays into one.
+ *
+ * @param {...Array} var_args The arrays to merge.
+ * @return {Array} The merged array.
+ */
+function arrayMerge(...var_args) {
+  const result = [];
+  for (const arg of var_args) {
+    if (Array.isArray(arg)) {
+      result.push(...arg);
+    } else {
+      for (const key in arg) {
+        if (Object.prototype.hasOwnProperty.call(arg, key)) {
+          result.push(arg[key]);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+/**
+ * Rounds a number to a specific number of digits.
+ *
+ * @param {number} num The number to round.
+ * @param {number} [digits] The number of digits to round to. Defaults to 0.
+ * @return {number} The rounded number.
+ */
+function round(num, digits = 0) {
+  return Math.round(num * (10 ** digits)) / (10 ** digits);
+}
+
+/**
+ * Checks if a value is a string.
+ *
+ * @param {*} str The value to check.
+ * @return {boolean} True if the value is a string, false otherwise.
+ */
+function isString(str) {
+  return typeof str ==='string';
+}
+
+/**
+ * Checks if a value is an object of a specific type.
+ *
+ * @param {*} obj The value to check.
+ * @param {string} typeStr The type string to check against.
+ * @return {boolean} True if the value is an object of the specified type, false otherwise.
+ */
+function isA(obj, typeStr) {
+  return typeof obj === 'object' &amp;&amp; obj!== null &amp;&amp; obj.constructor.name === typeStr();
+}
+
+/**
+ * Converts a string to an integer.
+ *
+ * @param {string} str The string to convert.
+ * @return {number} The converted integer.
+ */
+function intval(str) {
+  return parseInt(str) || 0;
+}
+
+/**
+ * Trims whitespace from a string.
+ *
+ * @param {string} str The string to trim.
+ * @return {string} The trimmed string.
+ */
+function trim(str) {
+  return (str || '').trim();
+}
+
+/**
+ * Splits a string into an array of substrings.
+ *
+ * @param {string} del The delimiter to split on.
+ * @param {string} str The string to split.
+ * @return {Array} The array of substrings.
+ */
+function explode(del, str) {
+  return (str || '').split(del);
+}
+
+/**
+ * Extracts a slice from an array.
+ *
+ * @param {Array} arr The array to extract from.
+ * @param {number} start The start index of the slice.
+ * @param {number} [length] The length of the slice. Defaults to infinity.
+ * @return {Array} The extracted slice.
+ */
+function arraySlice(arr, start, length = Infinity) {
+  return (arr || []).slice(start, Math.min(start + length, arr.length));
+}
+
+/**
+ * Removes elements from an array.
+ *
+ * @param {Array} arr The array to remove from.
+ * @param {number} start The start index of the elements to remove.
+ * @param {number} length The length of the elements to remove.
+ * @return {Array} The modified array.
+ */
+function arraySplice(arr, start, length) {
+  return (arr || []).splice(start, length);
+}
+
+/**
+ * Finds the index of an element in an array.
+ *
+ * @param {*} item The element to find.
+ * @param {Array} arr The array to search in.
+ * @return {number|false} The index of the element if found, false otherwise.
+ */
+function arraySearch(item, arr) {
+  const index = (arr || []).indexOf(item);
+  return index!== -1? index : false;
+}
+
+/**
+ * Calculates the length of an array.
+ *
+ * @param {Array} arr The array to calculate the length for.
+ * @return {number} The length of the array.
+ */
+function count(arr) {
+  return (arr || []).length;
+}
+
+/**
+ * Checks if an element is in an array.
+ *
+ * @param {*} needle The element to check for.
+ * @param {Array} arr The array to search in.
+ * @return {boolean} True if the element is in the array, false otherwise.
+ */
+function inArray(needle, arr) {
+  return (arr || []).indexOf(needle)!== -1;
+}
+
+/**
+ * Returns the values of an array.
+ *
+ * @param {Array} arr The array to get the values from.
+ * @return {Array} The values of the array.
+ */
+function arrayValues(arr) {
+  return (arr || []).slice();
+}
+
+/**
+ * Checks if a value is an array.
+ *
+ * @param {*} obj The value to check.
+ * @return {boolean} True if the value is an array, false otherwise.
+ */
+function isArray(obj) {
+  return Array.isArray(obj);
+}
+
+/**
+ * Returns the keys of an object.
+ *
+ * @param {Object} obj The object to get the keys from.
+ * @return {Array} The keys of the object.
+ */
+function arrayKeys(obj) {
+  const result = [];
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * Joins an array of strings into a single string.
+ *
+ * @param {string} sep The separator to join with.
+ * @param {Array} arr The array of strings to join.
+ * @return {string} The joined string.
+ */
+function implode(sep, arr) {
+  return (arr || []).join(sep);
+}
+
+/**
+ * Replaces all occurrences of a pattern in a string.
+ *
+ * @param {string} needle The pattern to replace.
+ * @param {string} replacement The replacement string.
+ * @param {string} subject The string to replace in.
+ * @return {string} The modified string.
+ */
+function pregReplace(needle, replacement, subject) {
+  return (subject || '').replace(new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\${OUTPUT}amp;'), 'g'), replacement);
+}
+
+/**
+ * Formats a number as a string.
+ *
+ * @param {number} num The number to format.
+ * @param {number} [digits] The number of digits to format to. Defaults to 0.
+ * @return {string} The formatted string.
+ */
+function numberFormat(num, digits = 0) {
+  return parseFloat(num).toFixed(digits);
+}
+
+/**
+ * Matches a pattern in a string.
+ *
+ * @param {string} needle The pattern to match.
+ * @param {string} subject The string to search in.
+ * @param {Array} [matches] The array to store the matches in.
+ * @return {number} The number of matches.
+ */
+function pregMatch(needle, subject, matches) {
+  const result = (new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, '\\${OUTPUT}amp;'), 'g')).exec(subject);
+  if (result === null) {
+    return 0;
+  }
+  if (matches) {
+    for (let i = 0; i &lt; result.length; i++) {
+      matches[i] = result[i];
+    }
+  }
+  return result.length;
+}
+
+/**
+ * Converts a string to uppercase.
+ *
+ * @param {string} str The string to convert.
+ * @return {string} The converted string.
+ */
+function ucfirst(str) {
+  return (str || '').charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Replaces all occurrences of a pattern in a string.
+ *
+ * @param {string} needle The pattern to replace.
+ * @param {string} replacement The replacement string.
+ * @param {string} haystack The string to replace in.
+ * @return {string} The modified string.
+ */
+function strReplace(needle, replacement, haystack) {
+  return (haystack || '').replace(new RegExp(RegExp.escape(needle), 'g'), replacement);
+}
+
+/**
+ * Calls a function with an array of arguments.
+ *
+ * @param {Function} context The function to call.
+ * @param {Array} params The array of arguments to pass.
+ * @return {*} The result of the function call.
+ */
+function callUserFuncArray(context, params) {
+  return context[0][context[1]].apply(context[0], params);
+}
+
+/**
+ * Prints a string to the console.
+ *
+ * @param {string} s The string to print.
+ */
+function print(s) {
+  window.views.__output += s;
+}
+
+/**
+ * Converts a string to lowercase.
+ *
+ * @param {string} s The string to convert.
+ * @return {string} The converted string.
+ */
+function strtolower(s) {
+  return (s || '').toLowerCase();
+}
+
+/**
+ * Checks if a value is empty.
+ *
+ * @param {*} s The value to check.
+ * @return {boolean} True if the value is empty, false otherwise.
+ */
+function empty(s) {
+  if (typeof s === 'undefined' || (s || '').trim() === '') {
+    return true;
+  }
+  if (typeof s === 'object') {
+    for (const key in s) {
+      if (Object.prototype.hasOwnProperty.call(s, key)) {
+        return false;
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * Encodes a value as JSON.
+ *
+ * @param {*} v The value to encode.
+ * @return {string} The encoded JSON string.
+ */
+function jsonEncode(v) {
+  return JSON.stringify(v);
+}
+
+/**
+ * Checks if a function exists on an object.
+ *
+ * @param {Object} s The object to check.
+ * @param {string} m The function name to check.
+ * @return {boolean} True if the function exists, false otherwise.
+ */
+function methodExists(s, m) {
+  return typeof s === 'object' &amp;&amp; typeof s[m] === 'function';
+}
+
+/**
+ * Checks if a value is set.
+ *
+ * @param {*} s The value to check.
+ * @return {boolean} True if the value is set, false otherwise.
+ */
+function isset(s) {
+  return typeof s!== 'undefined';
+}</code></pre></div><h3>Overview</h3>
 <p>This code defines a collection of custom functions, each mimicking a specific function or behavior found in PHP, for use in a JavaScript environment.</p>
 <h3>Functions</h3>
 <h4>1. <code>array_shift</code></h4>

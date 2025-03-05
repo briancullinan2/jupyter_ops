@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>sendJoke</code> that sends two jokes to a Facebook message in a specific browser window.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Sends a joke to a client using Facebook Messenger.
+ * 
+ * @param {Client} client - The client object with methods for sending messages.
+ * @param {number} hwnd - The handle of the window to switch to.
+ * @returns {Promise} A promise that resolves when the joke has been sent.
+ */
+async function sendJoke(client, hwnd) {
+    // Get a joke from the joke retrieval service
+    const [joke1, joke2] = await getJokes();
+    
+    // Switch to the window and send the jokes
+    await client.switchToWindow(hwnd);
+    await sendFacebookMessage(client, joke1);
+    await sendFacebookMessage(client, joke2);
+}
+
+// Refactored to use async/await for better readability
+async function getJokes() {
+    // Assume this is the implementation of getJoke() with a minor refactor
+    // to return an array of jokes
+    try {
+        const jokes = await getJoke();
+        return [jokes[0], jokes[1]];
+    } catch (error) {
+        console.error('Error fetching jokes:', error);
+        throw error;
+    }
+}
+
+// Refactored to use async/await for better readability
+async function sendFacebookMessage(client, message) {
+    try {
+        // Send the message using the client
+        await client.sendMessage(message);
+    } catch (error) {
+        console.error('Error sending message:', error);
+        throw error;
+    }
+}
+
+module.exports = sendJoke;</code></pre></div><p>This code defines a function called <code>sendJoke</code> that sends two jokes to a Facebook message in a specific browser window.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>sendJoke(client, hwnd)</code>:</strong></p>

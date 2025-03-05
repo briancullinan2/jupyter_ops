@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -127,7 +134,82 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of Quake 3 Game Launch Script</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define function to start ioquake3 with basic settings
+start_ioquake3() {
+    local fs_game=$1
+    local map=$2
+    local fs_homepath=$3
+    local fs_basepath=$4
+    local devmap=$5
+    local r_showtris=$6
+    local logfile=$7
+    local cheats=$8
+    local sv_cheats=$9
+    local developer=${10}
+
+    local args=(
+        "+set fs_game ${fs_game}"
+        "+map ${map}"
+        "+set fs_homepath ${fs_homepath}"
+        "+set fs_basepath ${fs_basepath}"
+    )
+
+    if [ -n "${devmap}" ]; then
+        args+=("+devmap ${devmap}")
+    fi
+
+    if [ -n "${r_showtris}" ] &amp;&amp; [ "${r_showtris}"!= "0" ]; then
+        args+=("+set r_showtris 1")
+    else
+        args+=("+set r_showtris 0")
+    fi
+
+    if [ -n "${logfile}" ] &amp;&amp; [ "${logfile}"!= "0" ]; then
+        args+=("+set logfile 1")
+    else
+        args+=("+set logfile 0")
+    fi
+
+    if [ -n "${cheats}" ] &amp;&amp; [ "${cheats}"!= "0" ]; then
+        args+=("+set cheats 1")
+    else
+        args+=("+set cheats 0")
+    fi
+
+    if [ -n "${sv_cheats}" ] &amp;&amp; [ "${sv_cheats}"!= "0" ]; then
+        args+=("+set sv_cheats 1")
+    else
+        args+=("+set sv_cheats 0")
+    fi
+
+    if [ -n "${developer}" ] &amp;&amp; [ "${developer}"!= "0" ]; then
+        args+=("+set developer 1")
+    else
+        args+=("+set developer 0")
+    fi
+
+    # Start ioquake3 with arguments
+    open -n "./ioquake3-1.36.app" --args "${args[@]}"
+}
+
+# Start ioquake3 with baseq3 game
+start_ioquake3 "baseq3" "baseq3-a" "/Users/briancullinan/.q3a" "/Applications/ioquake3" "" "0" "0" "0" "0"
+
+# Start ioquake3 with baseq2vm game
+start_ioquake3 "baseq2vm" "base2-a" "/Users/briancullinan/.q3a" "/Applications/ioquake3" "" "0" "1" "1" "1"
+
+# Start ioquake3 with baseq3-combined-converted game
+start_ioquake3 "baseq3-combined-converted" "baseq3-map-1" "/Users/briancullinan/.q3a/unpacked" "/Users/briancullinan/.q3a/unpacked" "Full stadium 2" "0" "1" "1" "1"
+
+# Start ioquake3 with baseq3-combined-converted game (no r_showtris)
+start_ioquake3 "baseq3-combined-converted" "baseq3-map-1" "/Users/briancullinan/.q3a/unpacked" "/Users/briancullinan/.q3a/unpacked"
+
+# Start quake3e with specific settings
+./build/debug-darwin-x86_64/quake3e "+set fs_basepath /Applications/ioquake3" "+set fs_game baseq3" "+set sv_pure 0" "+set net_enable 1" "+set recentPassword'recentPassword'" "+set timescale 8" "+set developer 1" "+set dedicated 0" "+bind leftarrow rewind" "+bind rightarrow forward" "+demo baseq3_1_map_2_matches"</code></pre></div><p><strong>Breakdown of Quake 3 Game Launch Script</strong></p>
 <p>This script is used to launch Quake 3 games on a macOS system. It utilizes the <code>open</code> command to launch the game executable with various arguments to customize the game settings.</p>
 <p><strong>Launch Script Structure</strong></p>
 <p>The script consists of multiple lines, each launching a Quake 3 game executable with different settings.</p>

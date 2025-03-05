@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>authorTemplate</code> that generates a header comment block for code, including copyright information and a list of markdown lines.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Heading authoring template utility function.
+ * 
+ * Creates a template string with the specified Markdown and code content.
+ * 
+ * @param {string} markdown - The Markdown content to include in the template.
+ * @param {string} code - The code content to include in the template.
+ * @returns {string} The generated template string.
+ */
+function authorTemplate(markdown, code) {
+  // Extract the current year for the copyright notice
+  const currentYear = new Date().getFullYear();
+
+  // Define the template variables
+  const templateVariables = {
+    author: 'Brian Cullinan',
+    copyrightYear: currentYear,
+  };
+
+  // Use template literals to generate the template string
+  return `
+/**
+ * Written by ${templateVariables.author}, exported using magic.
+ * Copyright (c) ${templateVariables.copyrightYear} by ${templateVariables.author}, All rights reserved.
+ *
+${(markdown || '').split('\n').map(line =>'*'+ line.trim()).join('\n')}
+ *
+ **/
+
+${code}`;
+}
+
+module.exports = authorTemplate;</code></pre></div><p>This code defines a function called <code>authorTemplate</code> that generates a header comment block for code, including copyright information and a list of markdown lines.</p>
 <p><strong>Here's a breakdown:</strong></p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

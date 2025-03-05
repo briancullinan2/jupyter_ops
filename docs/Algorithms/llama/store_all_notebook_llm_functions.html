@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./store_llama_function.html">store llama function</a> | <a href="./create_llm_session.html">create llm session</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code imports several modules and functions, including LLM functions to summarize and generalize code, and uses an async function <code>storeAllLlamaFunctions</code> to store all LLM functions. The <code>storeAllLlamaFunctions</code> function retrieves code from the cache, checks conditions, and updates the cache using LLM functions when necessary, while also performing operations on a <code>functionCache</code> object to store cached descriptions and summaries.</p>
+  <p>This JavaScript code imports functions from other modules to interact with a large language model (LLM) for code summarization and caching, then iterates through a cache of cells to retrieve and store the cached data using these LLM functions.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "store all notebook llm functions"</code></pre><h1>store all notebook llm functions</h1>
@@ -84,7 +91,7 @@
 
 
 <pre class="javascript"><code>const {askLlamaAboutCode} = importer.import("<a href="../../Algorithms/llama/ask_llm_about_code.html">ask llm about code</a>")
-const {askLlamaToSummerize, askLlamaToGeneralize} = importer.import("<a href="../../Algorithms/llama/ask_llm_to_summerize.html">ask llm to summerize</a>")
+const {askLlamaToSummerize, askLlamaToGeneralize, askLlamaToImplement} = importer.import("<a href="../../Algorithms/llama/ask_llm_to_summerize.html">ask llm to summerize</a>")
 const {getExports, cacheCells} = importer.import("<a href="../../Core/syntax/select_ast.html">select code tree</a>",
 "<a href="../../Core/syntax/get_exports_from_source.html">get exports from source</a>",
 "<a href="../../Core/cache/cache_notebook.html">cache notebook</a>",
@@ -100,11 +107,12 @@ async function storeAllLlamaFunctions() {
     let cell = cellCache[i]
     //if(!cell[2].questions || !cell[2].questions[0]) continue
     let code = importer.lookupCell(cell[1], cacheCells)
-    if(code.code.trim().length == 0) {
-      storeLlamaFunction(cell[1], code.mtime, [], '', '', '', '')
+    if(code.code.trim().length == 0 || code.filename.match('cache')) {
+      storeLlamaFunction(cell[1], code.mtime, [], '', '', '', '', '')
       continue
     }
 
+    let amazing
     let summary
     let shortened
     let rpcFunction
@@ -123,6 +131,7 @@ async function storeAllLlamaFunctions() {
         summary = functionCache[cell[1]].description
         shortened = functionCache[cell[1]].summary
         rpcFunction = functionCache[cell[1]].exports
+        amazing = functionCache[cell[1]].amazing
       }
 
       categories = functionCache[cell[1]].categories
@@ -142,6 +151,13 @@ async function storeAllLlamaFunctions() {
       categories = await askLlamaToGeneralize(summary)
       fresh = true
     }
+
+    if(!amazing) {
+      amazing = await askLlamaToImplement(code.code, code.language)
+      fresh = true
+    }
+
+
     if(typeof rpcFunction == 'undefined') {
       try {
         if(code.language == 'javascript')
@@ -160,7 +176,7 @@ async function storeAllLlamaFunctions() {
 
     if(fresh) {
       // TODO: insert rpc function into sqlite database to make subsequent lookups faster
-      storeLlamaFunction(cell[1], code.mtime, rpcFunction, summary, shortened, categories, category)
+      storeLlamaFunction(cell[1], code.mtime, rpcFunction, summary, shortened, categories, category, amazing)
     }
   }
 }
@@ -185,40 +201,122 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<h4>Imported Modules</h4>
-<p>The code imports several modules using the <code>importer</code> object:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules and functions
+const {
+  askLlamaAboutCode,
+  askLlamaToSummarize,
+  askLlamaToGeneralize,
+  askLlamaToImplement,
+  getExports,
+  cacheCells,
+  functionCache,
+  storeLlamaFunction,
+  getParameters,
+  pythonParams,
+  cellCache
+} = require('./importer');
+
+// Define a function to check if a cell needs to be cached
+const needsCache = (cell, code, mtime) => {
+  if (!code.code.trim().length || code.filename.includes('cache'))
+    return false;
+  if (typeof functionCache[cell]!== 'undefined' && code.mtime <= functionCache[cell].mtime)
+    return false;
+  return true;
+};
+
+// Define a function to process a cell
+const processCell = async (cell, code) => {
+  const { language } = code;
+  let summary, shortened, rpcFunction, categories, category, amazing, fresh = false;
+
+  // Check if the cell is cached
+  if (needsCache(cell, code, functionCache[cell? cell : code.filename].mtime))
+    return { fresh, summary, shortened, categories, category, amazing, rpcFunction };
+
+  // Process the cell if it's not cached or has changed
+  try {
+    if (!summary)
+      summary = await askLlamaAboutCode(code.code);
+    if (!summary)
+      summary = await askLlamaToSummarize(summary);
+    categories = await askLlamaToGeneralize(summary);
+    if (!amazing)
+      amazing = await askLlamaToImplement(code.code, language);
+    if (typeof rpcFunction === 'undefined')
+      rpcFunction = await getRpcFunction(language, code.code);
+  } catch (e) {
+    rpcFunction = [];
+  }
+  fresh = true;
+
+  return { fresh, summary, shortened, categories, category, amazing, rpcFunction };
+};
+
+// Define a function to get the RPC function based on the language
+const getRpcFunction = async (language, code) => {
+  switch (language) {
+    case 'javascript':
+      return await getExports(code);
+    case 'c':
+    case 'cpp':
+      return (await getParameters(code)).map(p => typeof p ==='string'? p : p[0]);
+    case 'python':
+      const params = await pythonParams(code);
+      return typeof params.function!== 'undefined'? [params.function] : params.map(p => p.function);
+    default:
+      return [];
+  }
+};
+
+// Define the main function to store all Llama functions
+const storeAllLlamaFunctions = async () => {
+  for (let i = 0; i < cellCache.length; i++) {
+    const cell = cellCache[i];
+    const code = await cacheCells(cell[1]);
+    if (needsCache(cell, code, functionCache[cell? cell : code.filename].mtime)) {
+      storeLlamaFunction(cell[1], code.mtime, [], '', '', '', '', '');
+      continue;
+    }
+
+    const { fresh, summary, shortened, categories, category, amazing, rpcFunction } = await processCell(cell, code);
+    if (fresh)
+      storeLlamaFunction(cell[1], code.mtime, rpcFunction, summary, shortened, categories, category, amazing);
+  }
+};
+
+module.exports = { storeAllLlamaFunctions };</code></pre></div><p><strong>Function Breakdown</strong></p>
+<p>This JavaScript code appears to be part of a larger system that interacts with a large language model (LLM) to perform various tasks related to code summarization and caching. Here's a breakdown of the functions and their purposes:</p>
+<h3>Importing Functions</h3>
+<p>The code imports various functions from other modules using the <code>importer.import()</code> method. The imported functions are:</p>
 <ul>
-<li><code>askLlamaAboutCode</code>: a function to ask the LLM about code</li>
-<li><code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code>: functions to summarize and generalize code, respectively</li>
-<li><code>getExports</code>, <code>cacheCells</code>: functions to get exports and cache cells</li>
-<li><code>functionCache</code>: a function to cache RPC functions with LLM descriptions</li>
-<li><code>storeLlamaFunction</code>: a function to store LLM functions</li>
+<li><code>askLlamaAboutCode</code></li>
+<li><code>askLlamaToSummarize</code>, <code>askLlamaToGeneralize</code>, <code>askLlamaToImplement</code></li>
+<li><code>getExports</code>, <code>cacheCells</code></li>
+<li><code>functionCache</code></li>
+<li><code>storeLlamaFunction</code></li>
 </ul>
-<h4><code>storeAllLlamaFunctions</code> Function</h4>
-<p>The <code>storeAllLlamaFunctions</code> function is an asynchronous function that stores all LLM functions. It:</p>
+<h3>Storing LLM Functions</h3>
+<p>The <code>storeAllLlamaFunctions()</code> function is the main entry point of the code. It:</p>
 <ol>
-<li>Imports the <code>getParameters</code> and <code>pythonParams</code> modules.</li>
-<li>Retrieves the <code>cellCache</code> array from the <code>cell cache</code> module.</li>
-<li>Iterates through the <code>cellCache</code> array and for each cell:
+<li>Imports additional functions: <code>getParameters</code> and <code>pythonParams</code>.</li>
+<li>Iterates through a cache of cells (represented as arrays) using the <code>cellCache</code> array.</li>
+<li>For each cell, it checks if the code is empty or if it's a cache file. If so, it skips to the next cell.</li>
+<li>It checks if the function cache for the current cell has already been populated. If so, it reuses the cached data.</li>
+<li>If not, it retrieves the code for the cell, and uses the LLM functions to:
 <ul>
-<li>Retrieves the code from the cache using <code>cacheCells</code>.</li>
-<li>Checks if the code is empty. If so, stores an empty LLM function.</li>
-<li>Retrieves summary, shortened code, RPC function, categories, and category from the <code>functionCache</code> object. If not found, sets flags to indicate a fresh cache.</li>
-<li>Checks if the retrieved summary, categories, or RPC function meet certain conditions (e.g., length, pattern matching). If not, updates the cache using the LLM functions.</li>
+<li>Summarize the code (<code>askLlamaToSummarize</code>)</li>
+<li>Find the derivative (if necessary)</li>
+<li>Generate a summary and shortened description (<code>askLlamaToImplement</code>)</li>
+<li>Get the exports and RPC function (<code>askLlamaToGeneralize</code>)</li>
 </ul></li>
+<li>It stores the cached data in the <code>functionCache</code> object.</li>
 </ol>
-<h4>Function Cache Operations</h4>
-<p>The code performs the following operations on the <code>functionCache</code> object:</p>
+<h3>Notes</h3>
 <ul>
-<li>Retrieves the cached description, summary, RPC function, categories, and category for a cell.</li>
-<li>Updates the cache with a new description, summary, RPC function, categories, and category if the conditions are not met.</li>
-</ul>
-<h4>Notes</h4>
-<ul>
-<li>The code contains TODO comments indicating areas that require cleanup or refactoring.</li>
-<li>The <code>functionCache</code> object appears to be used to cache RPC functions with LLM descriptions. However, the exact logic behind its usage is unclear without additional context.</li>
-<li>The <code>cellCache</code> array is used to iterate through cells, but its contents and structure are not explicitly described.</li>
+<li>The code has some comments indicating that it needs cleanup and that some parts are not working as intended.</li>
+<li>The <code>fresh</code> variable is set to <code>true</code> if the function cache for the current cell is not populated, indicating that the data needs to be fetched from the LLM.</li>
 </ul>
 
 </body>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,71 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet demonstrates the process of creating and signing a client certificate using a self-signed intermediate CA.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define base directory
+ROOT=/Users/briancullinan/jupytangular2/Utilities/ca
+
+# Define password for encryption
+PASS=X
+
+# Create a client key
+create_client_key() {
+  cd "$ROOT" || exit
+  echo "Creating client key..."
+  openssl genrsa -aes256 -passout pass:"$PASS" \
+    -out "intermediate/private/localhost.key.pem" 2048
+  chmod 700 "intermediate/private/localhost.key.pem"
+  echo "Client key created."
+}
+
+# Create a client CSR
+create_client_csr() {
+  cd "$ROOT" || exit
+  echo "Creating client CSR..."
+  openssl req -config "intermediate/openssl.cnf" \
+    -passin pass:"$PASS" \
+    -subj "/C=US/ST=Who/L=Is/O=John/OU=Galt/CN=localhost" \
+    -key "intermediate/private/localhost.key.pem" \
+    -new -sha256 -out "intermediate/csr/localhost.csr.pem"
+  echo "Client CSR created."
+}
+
+# Sign the client certificate with the intermediate CA
+sign_client_certificate() {
+  cd "$ROOT" || exit
+  echo "Signing client certificate..."
+  openssl ca -config "intermediate/openssl.cnf" \
+    -passin pass:"$PASS" \
+    -extensions server_cert -days 375 -notext -md sha256 \
+    -batch \
+    -in "intermediate/csr/localhost.csr.pem" \
+    -out "intermediate/certs/localhost.cert.pem"
+  chmod 744 "intermediate/certs/localhost.cert.pem"
+  echo "Client certificate signed."
+}
+
+# Verify client certificate
+verify_client_certificate() {
+  cd "$ROOT" || exit
+  echo "Verifying client certificate..."
+  openssl x509 -noout -text -in "intermediate/certs/localhost.cert.pem"
+  openssl verify -CAfile "intermediate/certs/ca-chain.cert.pem" \
+    "intermediate/certs/localhost.cert.pem"
+  echo "Client certificate verified."
+}
+
+# Main function
+main() {
+  create_client_key
+  create_client_csr
+  sign_client_certificate
+  verify_client_certificate
+}
+
+# Run main function
+main</code></pre></div><p>This code snippet demonstrates the process of creating and signing a client certificate using a self-signed intermediate CA.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Client Key Generation:</strong></p>

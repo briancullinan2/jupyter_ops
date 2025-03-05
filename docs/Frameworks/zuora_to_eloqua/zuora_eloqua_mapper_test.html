@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -358,7 +365,205 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet performs unit tests for mapping data from Zuora to Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const importer = require('../Core');
+
+describe('Zuora to Eloqua Importer', () =&gt; {
+  const zuoraQuery = importer.import('zuora renewals query').getQuery('beginning of November', 'beginning of December').Query;
+  const { bulkImportTemplate } = importer.import('eloqua create template');
+  const { getUniqueRatePlans, mapDataToFields, mapRatePlanToProduct } = importer.import('zuora eloqua mapper');
+
+  // Get unique rate plans
+  const accounts = getUniqueRatePlans();
+
+  accounts.forEach((records) =&gt; {
+    describe(`Given account with ${records.map((r) =&gt; r['ProductRatePlan.Name'])}`, () =&gt; {
+      // Contact information properties mapped
+      describe('Contact information properties mapped', () =&gt; {
+        it('should map EmailAddress to eloqua given SoldToContact.WorkEmail, BillToContact.WorkEmail from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal((records[0]['SoldToContact.WorkEmail'] || records[0]['BillToContact.WorkEmail']), mapped[0]['EmailAddress']);
+        });
+
+        it('should map State to eloqua given SoldToContact.State from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['SoldToContact.State'], mapped[0]['State']);
+        });
+
+        it('should map Country to eloqua given SoldToContact.Country from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['SoldToContact.Country'], mapped[0]['Country']);
+        });
+
+        it('should map Currency to eloqua given Account.Currency from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['Account.Currency'], mapped[0]['Currency']);
+        });
+      });
+
+      // Primary product properties mapped
+      if (['pro', 'cloud', 'premium'].includes(mapRatePlanToProduct(records[0]['ProductRatePlan.Name']))) {
+        describe('Primary product properties mapped', () =&gt; {
+          it('should map ActProduct to eloqua given ProductRatePlan.Name from zuora', () =&gt; {
+            const mapped = mapDataToFields(records);
+            assert.equal(records[0]['ProductRatePlan.Name'], mapped[0]['ActProduct']);
+          });
+
+          it('should map Quantity to eloqua given RatePlanCharge.Quantity from zuora', () =&gt; {
+            const mapped = mapDataToFields(records);
+            assert.equal(records[0]['RatePlanCharge.Quantity'], mapped[0]['Quantity']);
+          });
+        });
+      }
+
+      // Discounts properties mapped
+      if (mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) === 'discount') {
+        describe('Discounts properties mapped', () =&gt; {
+          it('should map Discount to eloqua given ProductRatePlan.Name from zuora', () =&gt; {
+            const mapped = mapDataToFields(records);
+            assert.equal(records[0]['ProductRatePlan.Name'], mapped[0]['Discount']);
+          });
+        });
+      }
+
+      // Support properties mapped
+      if (mapRatePlanToProduct(records[0]['ProductRatePlan.Name']) ==='support') {
+        describe('Support properties mapped', () =&gt; {
+          it('should map Support to eloqua given ProductRatePlan.Name from zuora', () =&gt; {
+            const mapped = mapDataToFields(records);
+            assert.equal(records[0]['ProductRatePlan.Name'], mapped[0]['Support']);
+          });
+
+          it('should map SupportQuantity to eloqua given RatePlanCharge.Quantity from zuora', () =&gt; {
+            const mapped = mapDataToFields(records);
+            assert.equal(records[0]['RatePlanCharge.Quantity'], mapped[0]['SupportQuantity']);
+          });
+        });
+      }
+
+      // Subscription properties mapped
+      describe('Subscription properties mapped', () =&gt; {
+        it('should map RenewalsStatus to eloqua given Subscription.Status from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['Subscription.Status'], mapped[0]['RenewalsStatus']);
+        });
+      });
+
+      // Account data properties mapped
+      describe('Account data properties mapped', () =&gt; {
+        it('should map RepName to eloqua given Account.renewalRep__c from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['Account.renewalRep__c'], mapped[0]['RepName']);
+        });
+
+        it('should map RORName to eloqua given Account.resellerofRecord__c from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['Account.resellerofRecord__c'], mapped[0]['RORName']);
+        });
+
+        it('should map AccountId to eloqua given Account.Id from zuora', () =&gt; {
+          const mapped = mapDataToFields(records);
+          assert.equal(records[0]['Account.Id'], mapped[0]['AccountId']);
+        });
+      });
+    });
+  });
+
+  // Check field map
+  describe('Check field map', () =&gt; {
+    it('should map all fields from zuora query', () =&gt; {
+      const requireFields = [
+        "Account.Id",
+        "RatePlanCharge.Id",
+        "RatePlanCharge.Version",
+        "Subscription.TermEndDate",
+        "Subscription.TermEndDate",
+        "SoldToContact.WorkEmail",
+        "BillToContact.WorkEmail",
+        "SoldToContact.WorkEmail",
+        "BillToContact.WorkEmail",
+        "SoldToContact.State",
+        "SoldToContact.Country",
+        "Account.Currency",
+        "ProductRatePlan.Name",
+        "ProductRatePlan.Name",
+        "RatePlanCharge.Quantity",
+        "ProductRatePlan.Name",
+        "ProductRatePlan.Name",
+        "ProductRatePlan.Name",
+        "ProductRatePlan.Name",
+        "RatePlanCharge.Quantity",
+        "Subscription.TermEndDate",
+        "Subscription.Status",
+        "DefaultPaymentMethod.CreditCardExpirationMonth",
+        "DefaultPaymentMethod.CreditCardExpirationYear",
+        "Account.renewalRep__c",
+        "Account.resellerofRecord__c",
+        "Account.resellerofRecord__c",
+        "Account.Id"
+      ];
+      const missing = requireFields.filter((f) =&gt;!zuoraQuery.includes(f));
+      assert(missing.length === 0,'missing fields from zuora query'+ missing.join(', '));
+    });
+
+    it('should map all fields in eloqua import definition', () =&gt; {
+      const mappedFields = [
+        "EmailAddress",
+        "State",
+        "Country",
+        "Currency",
+        "ActProduct",
+        "Quantity",
+        "ActProduct",
+        "Quantity",
+        "Discount",
+        "Discount",
+        "Support",
+        "SupportQuantity",
+        "Support",
+        "SupportQuantity",
+        "RenewalsStatus",
+        "RenewalDate",
+        "CardExpiration",
+        "RepName",
+        "RORName",
+        "RORNumber",
+        "AccountId"
+      ];
+      const unmapped = Object.keys(bulkImportTemplate(60).fields).filter((k) =&gt;!mappedFields.includes(k));
+      assert(unmapped.length === 0, 'unmapped eloqua fields'+ unmapped.join(', '));
+    });
+
+    it('should map all record fields to eloqua fields', () =&gt; {
+      const mappedFields = [
+        "EmailAddress",
+        "State",
+        "Country",
+        "Currency",
+        "ActProduct",
+        "Quantity",
+        "ActProduct",
+        "Quantity",
+        "Discount",
+        "Discount",
+        "Support",
+        "SupportQuantity",
+        "Support",
+        "SupportQuantity",
+        "RenewalsStatus",
+        "RenewalDate",
+        "CardExpiration",
+        "RepName",
+        "RORName",
+        "RORNumber",
+        "AccountId"
+      ];
+      const missing = mappedFields.filter((f) =&gt;!Object.keys(bulkImportTemplate(60).fields).includes(f));
+      assert(missing.length === 0,'missing fields from eloqua import definition'+ missing.join(', '));
+    });
+  });
+});</code></pre></div><p>This code snippet performs unit tests for mapping data from Zuora to Eloqua.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
 <li><p><strong>Imports:</strong></p>

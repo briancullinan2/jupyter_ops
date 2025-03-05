@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,70 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>cleanUpSessions</code> that manages and closes all active Selenium WebDriver sessions, cleans up session data, and restarts the Selenium server.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const path = require('path');
+const fs = require('fs');
+const { getSeleniumServer, runSeleniumCell, execCmd } = require('../Core');
+
+// Define constants
+const TOKEN_DIR = path.join([
+  process.env.HOME,
+  process.env.HOMEPATH,
+  process.env.USERPROFILE
+].find(Boolean) || process.env.HOME, '.credentials');
+const SESSIONS_PATH = path.join(TOKEN_DIR,'sessions.json');
+
+// Define regular expression function to extract array from string
+const regexToArray = (regex, str, index = 0) => {
+  const matches = [];
+  let match;
+  while ((match = regex.exec(str)) && matches.push(match[index]));
+  return matches;
+};
+
+// Define function to close all sessions
+const closeAllSessions = (logs) => {
+  const sessionLogs = regexToArray(/\/session\/(.+?)\//ig, logs.join('\n'), 1);
+  return sessionLogs.filter((session, index, self) => self.indexOf(session) === index);
+};
+
+// Define function to clean up sessions
+const cleanUpSessions = async () => {
+  try {
+    // Get Selenium server logs
+    const log = await getSeleniumServer();
+    // Close all sessions
+    const closedSessions = closeAllSessions(log);
+    // Remove duplicate sessions
+    const uniqueSessions = closedSessions.filter((session, index, self) => self.indexOf(session) === index);
+    // Write empty sessions list to file
+    fs.writeFileSync(SESSIONS_PATH, '[]');
+  } catch (error) {
+    // Check if error is due to Docker not being found
+    if ((error.data || error).indexOf('docker: not found') === -1) {
+      // Re-throw error
+      throw error;
+    } else {
+      // Try to kill Chrome process
+      await execCmd('sudo killall chrome');
+    }
+  } finally {
+    // Re-run Selenium cell
+    await runSeleniumCell(false);
+  }
+};
+
+// Export cleanUpSessions function
+module.exports = cleanUpSessions;
+
+// Check if $ is a global object and run cleanUpSessions
+if (typeof $!== 'undefined') {
+  $.async();
+  cleanUpSessions()
+ .then((result) => $.sendResult(result))
+ .catch((error) => $.sendError(error));
+}</code></pre></div><p>This code defines a function <code>cleanUpSessions</code> that manages and closes all active Selenium WebDriver sessions, cleans up session data, and restarts the Selenium server.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

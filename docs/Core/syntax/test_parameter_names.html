@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import necessary modules and functions.
+ * @module Core
+ */
+const { getParameterNames } = require('../Core');
+
+/**
+ * Define a function to get function parameter names from a given code string.
+ * @param {string} code - The code string to extract parameter names from.
+ * @returns {string[]} An array of parameter names.
+ */
+function getFunctionParameterNames(code) {
+    try {
+        // Use Function constructor to parse the code string into a function.
+        const func = new Function('return'+ code);
+        
+        // Use the Function constructor's toString() method to obtain the function's string representation.
+        const funcStr = func.toString();
+        
+        // Use a regular expression to extract the parameter names from the function string.
+        return funcStr.slice(funcStr.indexOf('(') + 1, funcStr.indexOf(')')).split(',');
+    } catch (error) {
+        // Handle any errors that occur during code parsing.
+        console.error('Error parsing code:', error);
+        return [];
+    }
+}
+
+/**
+ * Test the getFunctionParameterNames function with a code string.
+ */
+function testGetFunctionParameterNames() {
+    const code = `
+        function getParameters(code) {
+        }
+    `;
+    
+    // Call the getFunctionParameterNames function with the test code string.
+    const result = getFunctionParameterNames(code);
+    
+    return result;
+}
+
+// Run the test function if the $ global variable is defined.
+if (typeof $!== 'undefined') {
+    testGetFunctionParameterNames();
+    
+    // Expected output:
+    // ["getParameters", "code"]
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <ul>
 <li><code>var importer = require('../Core');</code> imports a module named <code>importer</code> from a file located at <code>../Core</code>.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and clients
+const redditLinks = require('./reddit scraper');
+const getClient = require('./selenium client');
+
+/**
+ * Scrapes Reddit for collapse support, climate change, collapse, and economic collapse topics.
+ * 
+ * @param {object} driver - Selenium driver instance
+ * @param {string} startPage - Starting page URL. Defaults to r/CollapseSupport+climatechange+collapse+economicCollapse/
+ * @param {string} timeSpan - Time span to filter results. Defaults to week
+ * @returns {array} Array of Reddit posts
+ */
+async function redditList(driver, startPage = 'https://www.reddit.com/r/CollapseSupport+climatechange+collapse+economicCollapse/', timeSpan = 'week') {
+  // Validate and normalize start page URL
+  if (!startPage.includes('://')) {
+    startPage = `https://www.reddit.com/r/${startPage}`;
+  }
+
+  // Initialize Selenium driver if not provided
+  if (!driver) {
+    driver = await getClient();
+  }
+
+  try {
+    // Calculate time spans for filtering
+    const weekAgo = new Date(Date.now() - 1000 * 60 * 60 * 24 * 7);
+    const monthAgo = new Date(Date.now() - 1000 * 60 * 60 * 24 * 7 * 4.2);
+
+    // Initialize result array and safety counter
+    const finalResult = [];
+    let safety = 20;
+
+    // Initialize result and before time span variables
+    let result;
+    let beforeTimeSpan = 0;
+
+    // Scrape Reddit until all posts are included or safety limit is reached
+    do {
+      console.log(startPage);
+      result = await redditLinks(driver, startPage);
+
+      // Concatenate results and update start page URL
+      finalResult.push(...result);
+      startPage = result.next;
+
+      // Filter results based on time span
+      beforeTimeSpan = result.filter((r) =&gt; {
+        const filterCondition = timeSpan ==='month'? r.time &lt; monthAgo : r.time &lt; weekAgo;
+        return filterCondition;
+      }).length;
+
+      // Wait before scraping next page if all posts are included
+      if (result.next &amp;&amp; beforeTimeSpan === 0 &amp;&amp; safety &gt; 0) {
+        await new Promise((resolve) =&gt; setTimeout(resolve, 1000));
+      }
+
+      // Decrement safety counter
+      safety--;
+    } while (result.next &amp;&amp; beforeTimeSpan === 0 &amp;&amp; safety &gt; 0);
+
+    // Return final result array
+    return finalResult;
+  } catch (e) {
+    // Quit Selenium driver and rethrow error
+    driver.quit();
+    throw e;
+  }
+}
+
+module.exports = redditList;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The code defines an asynchronous function <code>redditList</code> that retrieves a list of Reddit posts from a specified subreddit.</p>
 <h3>Function Parameters</h3>

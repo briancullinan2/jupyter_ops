@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -191,7 +198,95 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines three functions that provide mock data for interacting with Eloqua, a marketing automation platform.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import Data Model
+const IMPORT_DATA_MODEL = {
+  accountId: '',
+  actProduct: '',
+  emailAddress: '',
+  expirationMonth: '',
+  expirationYear: '',
+  last4DigitsOfCard: '',
+  quantity: 0,
+  renewalDate: '',
+  renewalsStatus: '',
+  repName: '',
+  rorName: '',
+  rorNumber: '',
+  state: '',
+};
+
+// Implement a function to populate the import data model
+function createImportData() {
+  const data = {...IMPORT_DATA_MODEL };
+  data.accountId = '1234';
+  data.actProduct = 'premium';
+  data.emailAddress = 'brian.cullinan@swiftpage.com';
+  data.expirationMonth = '12';
+  data.expirationYear = '2017';
+  data.last4DigitsOfCard = '1234';
+  data.quantity = 5;
+  data.renewalDate = '11/12/2017';
+  data.renewalsStatus = 'Drew loves marketing!';
+  data.repName = 'Brian';
+  data.rorName = 'James';
+  data.rorNumber = '1111';
+  data.state = 'AZ';
+  return data;
+}
+
+// OAuth Token Model
+const OAUTH_TOKEN_MODEL = {
+  accessToken: '',
+  tokenType: '',
+  expiresIn: 0,
+  refreshToken: '',
+  expires: 0,
+};
+
+// Implement a function to create an OAuth token
+function createOauthToken() {
+  const token = {...OAUTH_TOKEN_MODEL };
+  token.accessToken = 'access_token';
+  token.tokenType = 'bearer';
+  token.expiresIn = 28800;
+  token.refreshToken ='refresh_token';
+  token.expires = new Date().getTime() + 28800;
+  return token;
+}
+
+// Eloqua Configuration Model
+const ELOQUA_CONFIG_MODEL = {
+  authorizeUri: '',
+  tokenUri: '',
+  restApiUrl: '',
+  clientId: '',
+  secret: '',
+  company: '',
+  userId: '',
+  password: '',
+};
+
+// Implement a function to create an Eloqua configuration
+function createEloquaConfig() {
+  const config = {...ELOQUA_CONFIG_MODEL };
+  config.authorizeUri = 'http://localhost:18888/auth/oauth2/authorize';
+  config.tokenUri = 'http://localhost:18888/auth/oauth2/token';
+  config.restApiUrl = 'http://localhost:18888';
+  config.clientId = 'client-id';
+  config.secret ='secret';
+  config.company ='swiftpage';
+  config.userId = 'username';
+  config.password = 'password';
+  return config;
+}
+
+// Export the functions
+module.exports = {
+  createImportData,
+  createOauthToken,
+  createEloquaConfig,
+};</code></pre></div><p>This code defines three functions that provide mock data for interacting with Eloqua, a marketing automation platform.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>getImportData()</code>:</strong></p>

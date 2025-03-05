@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -169,7 +176,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet analyzes Quake game maps for missing textures.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs').promises; // Use promises for async file operations
+const glob = require('glob');
+const os = require('os');
+const { graphGame, loadDefaultDirectories, entities, TEMP_NAME, BASEMOD, BASEMOD_LOWER, BASEMOD_DIRS } = require('../../planet_quake/code/xquakejs/lib/asset.game.js');
+
+/**
+ * Default path for the graph collection
+ * @type {string}
+ */
+const GRAPH_PATH = path.join(
+  (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) || os.tmpdir(),
+  '/Collections/lvlworld'
+);
+
+/**
+ * Log entities for debugging purposes
+ * @type {object}
+ */
+console.log(entities);
+
+/**
+ * Find missing textures in map graphs
+ * @async
+ * @returns {Promise<void>}
+ */
+async function findMissingTextures() {
+  try {
+    // Load default directories to ensure necessary assets are available
+    await loadDefaultDirectories();
+    const mapGraphs = await glob.promise('*.json', { cwd: GRAPH_PATH });
+    for (const mapGraph of mapGraphs) {
+      // Read the map graph file and parse its contents
+      const previous = JSON.parse(await fs.readFile(path.join(GRAPH_PATH, mapGraph), 'utf-8'));
+      // Run the game logic for the current map graph
+      const game = await graphGame(previous, null, console.log);
+      // Log the missing textures for the current game
+      console.log(game.notfound);
+    }
+  } catch (error) {
+    // Catch and log any errors that occur during the process
+    console.error(error);
+  }
+}
+
+module.exports = findMissingTextures;</code></pre></div><p>This code snippet analyzes Quake game maps for missing textures.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

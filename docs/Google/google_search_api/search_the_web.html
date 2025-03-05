@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -104,7 +111,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>search</code> that performs a custom Google Search using the Google Custom Search Engine API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { authorizeCustomSearch } = require('../Core');
+
+/**
+ * Search for custom search results using Google Custom Search API
+ * @param {string} q - Search query
+ * @return {Promise<object>} - Custom search results
+ */
+async function search(q) {
+    // Define search parameters
+    const params = {
+        num: 10,
+        cx: '002593731262048611104:885kc72tzdc',
+        q: q
+    };
+
+    // Authorize search API client
+    const client = await authorizeCustomSearch();
+
+    // Make GET request to Custom Search API
+    const response = await client.request({
+        method: 'GET',
+        url: 'https://www.googleapis.com/customsearch/v1',
+        params
+    });
+
+    // Return search results
+    return response.data;
+}
+
+// Export search function
+module.exports = search;</code></pre></div><p>This code snippet defines a function <code>search</code> that performs a custom Google Search using the Google Custom Search Engine API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports a function <code>authorizeSearch</code> from a local module <code>Core</code> which likely handles authentication with the Google Custom Search Engine API.</p></li>

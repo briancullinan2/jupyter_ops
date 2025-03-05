@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -190,7 +197,143 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines several functions for parsing responses from a Quake 3 server.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Parse a string into an object, separated by '\\' characters.
+ * 
+ * @param {string} str The string to parse.
+ * @returns {object} An object containing key-value pairs.
+ */
+function _parseInfoString(str) {
+    if (!str) return {};
+
+    // Remove leading and trailing '\\'
+    str = str.replace(/^\\+|\\+$/g, '');
+
+    const data = {};
+
+    // Split string into key-value pairs
+    for (let i = 0; i &lt; str.split('\\').length - 1; i += 2) {
+        const [key, value] = [str.split('\\')[i], str.split('\\')[i + 1]];
+        data[key] = value;
+    }
+
+    return data;
+}
+
+/**
+ * Parse a string containing server information.
+ * 
+ * @param {string} str The string to parse.
+ * @returns {array} An array of objects containing server information.
+ */
+function _parseServers(str) {
+    if (!str) return [];
+
+    // Remove leading '\\EOT' and trailing '\\'
+    str = str.replace(/\\EOT$|^\\/g, '');
+
+    const servers = [];
+
+    // Split string into server addresses
+    for (const info of str.split('\\')) {
+        const addr = [
+            (info.charCodeAt(0) &amp; 0xff).toString(),
+            (info.charCodeAt(1) &amp; 0xff).toString(),
+            (info.charCodeAt(2) &amp; 0xff).toString(),
+            (info.charCodeAt(3) &amp; 0xff).toString()
+        ].join('.');
+
+        const port = ((info.charCodeAt(4) &amp; 0xff) &lt;&lt; 8) | (info.charCodeAt(5) &amp; 0xff);
+
+        servers.push({ addr, port });
+    }
+
+    return servers;
+}
+
+/**
+ * Parse a string containing player information.
+ * 
+ * @param {string} str The string to parse.
+ * @returns {array} An array of objects containing player information.
+ */
+function _parsePlayers(str) {
+    if (!str) return [];
+
+    // Remove leading and trailing newline characters
+    str = str.replace(/^\n+|\n+$/g, '');
+
+    const players = [];
+
+    // Split string into player information
+    for (const pinfo of str.split('\n')) {
+        const psplit = pinfo.match(/\S+|"[^"]+"/g);
+
+        if (psplit.length === 3) {
+            const [frags, ping, name] = [
+                parseInt(psplit[0], 10),
+                parseInt(psplit[1], 10),
+                psplit[2]
+            ];
+
+            players.push({ frags, ping, name });
+        }
+    }
+
+    return players;
+}
+
+/**
+ * Parse a status response string.
+ * 
+ * @param {string} data The response string.
+ * @returns {object} An object containing the parsed information.
+ */
+function _parseStatusResponse(data) {
+    // Check if the response is valid
+    if (data.indexOf('statusResponse\n')!== 0) {
+        throw new Error('Invalid getstatus response:'+ data);
+    }
+
+    // Extract the variable and player data
+    const variableData = data.substr(15);
+    let idx = variableData.indexOf('\n');
+    const playerData = idx!== -1? variableData.substr(idx) : null;
+
+    const info = _parseInfoString(variableData);
+    info.players = _parsePlayers(playerData);
+
+    return info;
+}
+
+/**
+ * Parse an info response string.
+ * 
+ * @param {string} data The response string.
+ * @returns {object} An object containing the parsed information.
+ */
+function _parseInfoResponse(data) {
+    // Check if the response is valid
+    if (data.indexOf('infoResponse\n')!== 0) {
+        throw new Error('Invalid getinfo response:'+ data);
+    }
+
+    // Remove the response prefix
+    const info = _parseInfoString(data.substr(13));
+
+    // Calculate the number of bots
+    info.g_botplayers = info.clients - info.g_humanplayers;
+
+    return info;
+}
+
+module.exports = {
+    _parseServers,
+    _parsePlayers,
+    _parseStatusResponse,
+    _parseInfoResponse
+};</code></pre></div><p>This code defines several functions for parsing responses from a Quake 3 server.</p>
 <p>Here's a breakdown:</p>
 <p><strong>Parsing Functions:</strong></p>
 <ul>

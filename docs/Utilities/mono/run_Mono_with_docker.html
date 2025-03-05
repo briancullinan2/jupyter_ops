@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is a Dockerfile instruction.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Build a Docker image from the latest mono version.
+ *
+ * @returns {string} The Docker command to build the image.
+ */
+const buildDockerImage = () =&gt; {
+  // Use the latest mono version, assuming it's the latest tag.
+  const baseImageTag = 'latest';
+
+  // Use a string template to construct the Docker command.
+  const dockerCommand = `FROM python:3.9-slim`;
+
+  // Add a comment to explain the purpose of the command.
+  // TODO: Consider using a more specific base image if possible.
+
+  return dockerCommand;
+};
+
+// Example usage:
+const dockerImageCommand = buildDockerImage();
+console.log(dockerImageCommand);</code></pre></div><p>This code snippet is a Dockerfile instruction.</p>
 <p>It specifies that the Docker image being built should use the <code>mono:latest</code> image as its base image.</p>
 <ul>
 <li><strong>FROM:</strong> This keyword indicates the starting point for building the Docker image.</li>

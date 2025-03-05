@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -145,7 +152,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Reading and Loading a JSON Model</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import json
+import h5py
+
+def load_model(model_file, weights_file):
+    """
+    Loads a facial emotion model from a JSON file and weights from an H5 file.
+
+    Args:
+        model_file (str): Path to the JSON model file.
+        weights_file (str): Path to the H5 weights file.
+
+    Returns:
+        model: The loaded Keras model.
+    """
+    with open(model_file, "r") as json_file:
+        model_json = json_file.read()
+        json_file.close()
+
+    # Load the model architecture from the JSON file
+    model = model_from_json(model_json)
+
+    # Load the model weights from the H5 file
+    model.load_weights(weights_file)
+
+    return model
+
+
+# Define the model file and weights file paths
+model_file = "facialemotionmodel.json"
+weights_file = "facialemotionmodel.h5"
+
+# Load the model
+model = load_model(model_file, weights_file)</code></pre></div><h3>Reading and Loading a JSON Model</h3>
 <h4>Description</h4>
 <p>Loads a facial emotion recognition model from a JSON file and its corresponding weights from a HDF5 file.</p>
 <h4>Code Breakdown</h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -228,7 +235,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectDom } = require('../Core');
+
+// Function to replace special characters with their HTML entities
+const escapeHtmlChars = (str) => {
+  return str.replace(/&/g, '&amp;')
+   .replace(/</g, '&lt;')
+   .replace(/>/g, '&gt;')
+   .replace(/"/g, '&quot;')
+   .replace(/'/g, '&#x27;');
+};
+
+// Function to convert a tree statement to a string
+function treeToStr(statement, parent = '', attrs = '') {
+  const { type } = statement;
+  const result = [];
+
+  for (const key in statement) {
+    if (!isNaN(key)) {
+      result.push(treeToStr(statement[key], parent));
+      continue;
+    }
+
+    const jsType = typeof statement[key];
+    if (jsType === 'object' && statement[key]) {
+      jsType = Object.getPrototypeOf(statement[key]).constructor.name;
+    }
+
+    if ((statement[key] && typeof statement[key].type!== 'undefined') ||
+        (Array.isArray(statement[key]) && statement[key].length && typeof statement[key][0].type!== 'undefined')) {
+      attrs += `${key}="" ${key}-type="${jsType}"`;
+      result.push(treeToStr(statement[key], key));
+    } else {
+      if (typeof statement[key]!=='string') {
+        attrs += `${key}="${escapeHtmlChars(JSON.stringify(statement[key]))}" ${key}-type="${jsType}"`;
+      } else {
+        attrs += `${key}="${escapeHtmlChars(statement[key])}" ${key}-type="${jsType}"`;
+      }
+    }
+  }
+
+  if (result.length) {
+    return `<${type}${attrs}${parent? ` parent-attr="${parent}"` : ''}>${result.join('')}</${type}>`;
+  } else {
+    return `<${type}${attrs}${parent? ` parent-attr="${parent}"` : ''} />`;
+  }
+}
+
+// Function to convert a tree to HTML
+function treeToHtml(tree) {
+  const body = treeToStr(tree);
+  return selectDom('//BODY', '<BODY>' + body + '</BODY>');
+}
+
+module.exports = {
+  treeToHtml,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {selectDom} = importer.import('select tree')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -194,7 +201,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for an AWS Lambda function that handles bulk data uploads from Zuora to Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Core.js
+function importImporters(importers) {
+  return {
+    handler: (...args) => {
+      const entryPoint = importers['aws entry point'];
+      const zuoraExport = importers['zuora export month'];
+      const mapper = importers['zuora eloqua mapper'];
+      const eloquaUpload = importers['bulk upload eloqua'];
+
+      // TODO: Validate input arguments
+      // TODO: Implement business logic here
+      const response = entryPoint.handler(zuoraExport.getZuoraMonth(), mapper.mapDataToFields(), eloquaUpload.bulkUploadEloqua());
+
+      // TODO: Handle any errors that may occur
+      return response;
+    },
+  };
+}
+
+module.exports = { importImporters };</code></pre></div><p>This code defines unit tests for an AWS Lambda function that handles bulk data uploads from Zuora to Eloqua.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

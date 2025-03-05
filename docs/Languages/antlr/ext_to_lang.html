@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -536,7 +543,177 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Mapping of file extensions to languages
+const extToLang = {
+  '.m': 'c',
+  '.c': 'c',
+  '.h': 'c',
+  '.cpp': 'c',
+  '.dtd': 'xml',
+  '.htm': 'html',
+  '.html': 'html',
+  '.java': 'java',
+  '.js': 'javascript',
+  '.mysql':'mysql',
+  '.pl': 'perl',
+  '.php': 'php',
+  '.py': 'python',
+  '.rb': 'ruby',
+  '.sql':'sql',
+  '.xml': 'xml',
+  '.vbs': 'vbscript',
+  '.as': 'actionscript',
+  '.abap': 'abap',
+  '.a': 'ada',
+  '.applescript': 'applescript',
+  '.x86': 'asm',
+  '.asm': 'asm',
+  '.m68k':'m68k',
+  '.pic16': 'pic16',
+  '.z80': 'z80',
+  '.log': 'apache',
+  '.list': 'apt_sources',
+  '.asp': 'asp',
+  '.aspx': 'asp',
+  '.aut': 'autoit',
+  '.abnf': 'bnf',
+  '.bnf': 'bnf',
+  '.sh': 'bash',
+  '.bash': 'bash',
+  '.bgm': 'basic4gl',
+  '.bb': 'blitzbasic',
+  '.b': 'bf',
+  '.bf': 'bf',
+  '.c': 'c',
+  '.h': 'c',
+  '.cpp': 'c',
+  '.cs': 'csharp',
+  '.csharp': 'csharp',
+  '.dcl': 'caddcl',
+  '.lsp': 'cadlisp',
+  '.cfdg': 'cfdg',
+  '.cil': 'cil',
+  '.cob': 'cobol',
+  '.cbl': 'cobol',
+  '.cobol': 'cobol',
+  '.css': 'css',
+  '.d': 'd',
+  '.pas': 'delphi',
+  '.dpr': 'delphi',
+  '.patch': 'diff',
+  '.diff': 'diff',
+  '.batch': 'dos',
+  '.dot': 'dot',
+  '.eff': 'eiffel',
+  '.f77': 'fortran',
+  '.f95': 'fortran',
+  '.ftn': 'fortran',
+  '.4gl': 'genero',
+  '.fbl': 'freebasic',
+  '.mo': 'gettext',
+  '.glsl': 'glsl',
+  '.gml': 'gml',
+  '.plt': 'gnuplot',
+  '.groovy': 'groovy',
+  '.gs': 'haskell',
+  '.hs': 'haskell',
+  '.hq9+': 'hq9plus',
+  '.htm': 'html',
+  '.html': 'html',
+  '.ini': 'ini',
+  '.ino': 'inno',
+  '.myp': 'inno',
+  '.i': 'intercal',
+  '.io': 'io',
+  '.java': 'java',
+  '.js': 'javascript',
+  '.kix': 'kixtart',
+  '.tex': 'latex',
+  '.lisp': 'lisp',
+  '.lsp': 'lisp',
+  '.lols': 'lolcode',
+  '.lol': 'lolcode',
+  '.lsx': 'lotusscript',
+  '.lscript': 'lscript',
+  '.lua': 'lua',
+  '.makefile':'make',
+  '.make':'make',
+  '.mrc':'mirc',
+  '.mxml':'mxml',
+  '.mysql':'mysql',
+  '.nsh': 'nsis',
+  '.nsi': 'nsis',
+  '.cma': 'ocaml',
+  '.p': 'pascal',
+  '.pl': 'perl',
+  '.php': 'php',
+  '.php4': 'php',
+  '.php5': 'php',
+  '.phps': 'php',
+  '.pbk': 'pixelbender',
+  '.pl': 'plsql',
+  '.pov': 'povray',
+  '.ps': 'powershell',
+  '.pl': 'prolog',
+  '.pvx': 'providex',
+  '.py': 'python',
+  '.qbasic': 'qbasic',
+  '.rb': 'ruby',
+  '.ruby': 'ruby',
+  '.sas':'sas',
+  '.sas':'scala',
+  '.scm':'scheme',
+  '.sce':'scilab',
+  '.st':'smalltalk',
+  '.sql':'sql',
+  '.tk': 'tcl',
+  '.tcl': 'tcl',
+  '.tclx': 'tcl',
+  '.tbasic': 'thinbasic',
+  '.typo3': 'typoscript',
+  '.idl': 'idl',
+  '.vb': 'vbnet',
+  '.v':'verilog',
+  '.vhdl': 'vhdl',
+  '.vim': 'vim',
+  '.wbt': 'winbatch',
+  '.reg':'reg',
+  '.xml': 'xml',
+  '.x++': 'xpp',
+  '.vbs': 'vb',
+}
+
+// Mapping of languages to parser files
+const langToParser = [
+  '../Resources/Parsers/abnf/Abnf.g4',
+  //... (omitted for brevity)
+]
+
+// Function to get the language from a file extension
+function extToLang(filename) {
+  const ext = path.extname(filename).replace(/^\./, '')
+  const result = extToLang[ext]
+  if (!result) {
+    throw new Error(`Unknown filetype ${filename}`)
+  }
+  return result
+}
+
+// Get the parser file based on the language
+function getParserFile(language) {
+  const parserFiles = langToParser.filter((parser) =&gt; {
+    const lang = path.basename(parser, '.g4')
+    return lang === language
+  })
+  if (parserFiles.length &gt; 0) {
+    return parserFiles[0]
+  }
+  throw new Error(`Unknown language ${language}`)
+}
+
+// Export the functions
+export { extToLang, getParserFile }</code></pre></div><h2>Code Breakdown</h2>
 <p>This code defines an object <code>ext_to_lang</code> that maps file extensions to their corresponding programming languages.</p>
 <h3>Key Points</h3>
 <ul>

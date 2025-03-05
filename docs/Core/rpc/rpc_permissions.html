@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -143,7 +150,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getPermissions</code> that retrieves permissions for code cells based on a given search query.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const importer = require('../Core');
+
+// Import necessary functions
+const { getCellRpcGroups } = importer.import('get cell rpc groups');
+const { RPC_GROUPS } = importer.import('rpc groups');
+
+/**
+ * Maps a cell to a unique identifier based on its filename and question.
+ *
+ * @param {Object} cell - Cell object with filename and questions properties
+ * @returns {string} Unique identifier for the cell
+ */
+const getId2 = (cell) =&gt; path.basename(cell.filename) + '[' + cell.questions[0] + ']';
+
+/**
+ * Attempts to interpret each search term and returns the result.
+ *
+ * @param {Array&lt;string&gt;} search - Array of search terms to interpret
+ * @returns {Array&lt;Object&gt;} Array of interpreted results
+ */
+const interpretSearch = (search) =&gt; search.map(async (s) =&gt; {
+  try {
+    return await importer.interpret(s);
+  } catch (e) {
+    if (!e.message.includes('Nothing found')) throw e;
+    return [];
+  }
+});
+
+/**
+ * Maps and reduces cells from search terms into their corresponding groups.
+ *
+ * @param {Array&lt;string&gt;} search - Array of search terms
+ * @param {Object} public - Public cell groups object
+ * @returns {Object} Object with cells grouped by their identifiers and unique identifiers
+ */
+const mapReduceCells = async (search, public) =&gt; {
+  const results = await interpretSearch(search || []);
+  return results.reduce((acc, result, index) =&gt; {
+    const cell = typeof result.id!== 'undefined'? result : result[index];
+    const id2 = getId2(cell);
+    const groups = (public === RPC_GROUPS? [] : ['Search'])
+     .concat(public[search[index]] || [])
+     .concat(public[id2] || []);
+
+    return acc.concat({
+     ...cell,
+      id2,
+      original: search[index],
+      groups,
+    });
+  }, []);
+};
+
+/**
+ * Transforms public cell groups into an object with cells grouped by their identifiers and unique identifiers.
+ *
+ * @param {Array&lt;string&gt;} search - Array of search terms
+ * @param {Object} public - Public cell groups object
+ * @returns {Object} Object with cells grouped by their identifiers and unique identifiers
+ */
+const transformPublicCells = (search, public) =&gt; {
+  const results = mapReduceCells(search, public);
+  return results.reduce((acc, cell) =&gt; {
+    acc[cell.id] = acc[cell.id2] = getCellRpcGroups(cell);
+    return acc;
+  }, {});
+};
+
+/**
+ * Returns permissions for the given search terms.
+ *
+ * @param {Array&lt;string&gt;} search - Array of search terms
+ * @returns {Object} Object with cells grouped by their identifiers and unique identifiers
+ */
+const getPermissions = async (search) =&gt; {
+  if (typeof search ==='string' &amp;&amp; search) search = [search];
+  const publicCells = transformPublicCells(Object.keys(RPC_GROUPS), RPC_GROUPS);
+  return search? transformPublicCells(search, publicCells) : publicCells;
+};
+
+module.exports = getPermissions;</code></pre></div><p>This code defines a function <code>getPermissions</code> that retrieves permissions for code cells based on a given search query.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

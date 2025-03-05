@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code parses Chrome bookmarks exported from Google Takeout and extracts a structured representation of the bookmarks.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectDom, importFunctions } = require('../Core');
+const { chromeDtToDate } = importFunctions('convert chrome date to calendar date');
+const path = require('path');
+const glob = require('glob');
+const fs = require('fs');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Downloads');
+
+// Define bookmark tree logic
+const bookmarkTree = {
+  selector: '*/*/dl/dt[./h3]',
+  // Select heading and links, and recursively get children
+  item: (ctx) =&gt; ({
+    folder: selectDom('./h3/text()', ctx),
+    links: selectDom(
+      [
+        './dl/dt/a',
+        {
+          url: './@href',
+          time: './@add_date',
+          title: './text()'
+        }
+      ],
+      ctx
+    ).map((obj) =&gt; ({
+      url: obj.url + '',
+      title: obj.title + '',
+      time_usec: parseInt(obj.time + ''),
+      date: chromeDtToDate(parseInt(obj.time + '')).getTime()
+    })),
+    // Recursively get children from same context as each heading
+    children: (ctx) =&gt; selectDom(bookmarkTree, ctx)
+  })
+};
+
+// Define function to get bookmarks from Takeout
+function getBookmarksFromTakeout() {
+  // Get latest Bookmarks.html file
+  const files = glob.sync('Takeout*/Chrome/Bookmarks.html', { cwd: PROJECT_PATH })
+   .map((f) =&gt; path.join(PROJECT_PATH, f));
+  files.sort((a, b) =&gt; fs.statSync(a).ctime - fs.statSync(b).ctime);
+  const latestFile = files.pop();
+
+  // Parse bookmark HTML and return result
+  try {
+    const html = fs.readFileSync(latestFile).toString();
+    return selectDom(bookmarkTree, html);
+  } catch (error) {
+    console.error('Error parsing bookmarks:', error);
+    return [];
+  }
+}
+
+module.exports = getBookmarksFromTakeout;</code></pre></div><p>This code parses Chrome bookmarks exported from Google Takeout and extracts a structured representation of the bookmarks.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

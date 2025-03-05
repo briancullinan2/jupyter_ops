@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -150,7 +157,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: extract_features</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import numpy as np
+from tqdm import tqdm
+from tensorflow import keras
+
+def extract_features(images):
+    """
+    Extracts features from a list of images and returns a 4D numpy array.
+    
+    Args:
+    images (list): A list of image file paths or numpy arrays.
+    
+    Returns:
+    numpy.ndarray: A 4D numpy array containing the extracted features.
+    """
+    
+    # Load the required libraries and models
+    from tensorflow.keras import layers as kl
+    from tensorflow.keras import models as km
+    from tensorflow.keras import preprocessing as kp
+    
+    # Load the pre-trained model (e.g. MobileNet)
+    model = km.load_model('mobilenet.h5')
+    
+    # Initialize an empty list to store the features
+    features = []
+    
+    # Iterate over each image and extract its features
+    for image in tqdm(images):
+        # Load and preprocess the image
+        img = kp.image.load_img(image, grayscale=True)
+        img = kp.image.array_to_img(img)
+        img = kp.image.img_to_array(img)
+        img = np.expand_dims(img, axis=0)
+        
+        # Extract the features using the pre-trained model
+        feature = model.predict(img)
+        
+        # Append the feature to the list
+        features.append(feature)
+    
+    # Convert the list to a 4D numpy array
+    features = np.array(features)
+    
+    # Reshape the array to the required dimensions
+    features = features.reshape(len(features), 48, 48, 1)
+    
+    return features</code></pre></div><h3>Function: extract_features</h3>
 <h4>Purpose</h4>
 <p>Extracts features from a list of images.</p>
 <h4>Parameters</h4>

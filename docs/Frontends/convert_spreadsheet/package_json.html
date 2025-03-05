@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -128,7 +135,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Package JSON Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="json"><code>json
+{
+  "$schema": "https://npm.github.io/lifecycle/schema/2.0.0.json",
+  "name": "SheetToWeb",
+  "description": "Marketing site functions",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node index.js", // Run the application
+    "test": "jest", // Run Jest tests
+    "build": "tsc -p tsconfig.json" // Compile TypeScript code
+  },
+  "engines": {
+    "node": "^16.0.0", // Node.js version 16 or higher
+    "npm": "^8.0.0" // npm version 8 or higher
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/megamindbrian/jupytangular.git"
+  },
+  "keywords": ["marketing", "site", "functions"],
+  "main": "index.js",
+  "files": ["index.js", "README.md"],
+  "author": {
+    "name": "Brian",
+    "email": "megamindbrian@gmail.com"
+  },
+  "dependencies": {
+    "@google-cloud/compute": "^0.12.0",
+    "@google-cloud/storage": "^2.5.0",
+    "googleapis": "^39.2.0",
+    "jsdom": "^14.0.0",
+    "mustache": "^3.0.1",
+    "remarkable": "^1.7.1"
+  },
+  "devDependencies": {
+    "ts-node": "^10.0.0",
+    "typescript": "^4.2.0",
+    "jest": "^27.0.0"
+  },
+  "scripts": {
+    // Run the application
+    "start": "node index.js",
+    // Run Jest tests
+    "test": "jest",
+    // Compile TypeScript code
+    "build": "tsc -p tsconfig.json",
+    // Run TypeScript type checking
+    "type-check": "tsc --noEmit",
+    // Watch TypeScript files for changes
+    "watch": "tsc --watch"
+  },
+  "issues": [
+    "If you encounter any issues, please create an issue on GitHub."
+  ],
+  "contributors": [
+    {
+      "name": "Brian",
+      "email": "megamindbrian@gmail.com",
+      "github": "megamindbrian"
+    }
+  ],
+  "version": "1.0.0-alpha.0",
+  "bugs": {
+    "url": "https://github.com/megamindbrian/jupytangular/issues"
+  }
+}</code></pre></div><p><strong>Package JSON Breakdown</strong></p>
 <p>This is a <code>package.json</code> file, a standard file used to manage dependencies and metadata of a Node.js project.</p>
 <h3>Top-Level Properties</h3>
 <ul>

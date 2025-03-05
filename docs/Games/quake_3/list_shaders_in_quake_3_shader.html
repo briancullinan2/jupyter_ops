@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -168,7 +175,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to extract shader definitions from a text file, likely a Quake game configuration or script file.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const importer = require('../Core');
+
+/**
+ * Finds and extracts shaders from a given file.
+ *
+ * @param {string} file - Path to the file containing shaders.
+ * @returns {Object} An object containing the extracted shaders.
+ */
+function findShaders(file) {
+    // Load the content of the file, if it's a file path, or use the file content directly.
+    const fileContent = fs.existsSync(file)? fs.readFileSync(file, 'utf-8') : file;
+
+    // Remove any multi-line comments to make file parsing easier.
+    const parsedContent = fileContent.replace(/\/\/.*\n/g, '');
+
+    // Regular expression to match shader definitions.
+    const shaderRegex = /([^{}]+)\s*\{\s*(.*?)\s*\}/g;
+
+    // Initialize an object to store the extracted shaders.
+    const shaders = {};
+
+    // Loop through all shader definitions in the file.
+    let match;
+    while ((match = shaderRegex.exec(parsedContent))) {
+        // Extract the shader name and body.
+        const name = match[1].trim();
+        const shaderBody = match[2];
+
+        // Log the found shader and add it to the result object.
+        console.log(`Found shader: ${name}`);
+        shaders[name] = shaderBody;
+    }
+
+    return shaders;
+}
+
+module.exports = findShaders;</code></pre></div><p>This code snippet is designed to extract shader definitions from a text file, likely a Quake game configuration or script file.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports the <code>balanced</code> module from a custom <code>Core</code> module, which likely provides functionality for parsing balanced parentheses or brackets in text.</p></li>

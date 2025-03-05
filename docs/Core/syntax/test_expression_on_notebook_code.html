@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -202,7 +209,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { exprToXpath, selectAst, CellCache } = require('../Core');
+
+/**
+ * Match a cell based on an XPath expression
+ * @param {string} xpath - XPath expression
+ * @param {object} cell - Cell object
+ * @returns {Promise<object|false>} - Promised cell object if match found, false otherwise
+ */
+async function matchCell(xpath, cell) {
+    try {
+        const match = selectAst([`//${xpath}`], cell.code);
+        if (match.length > 0) {
+            console.log(`Matched cell with id: ${cell.id}`);
+            return cell;
+        }
+        return false;
+    } catch (e) {
+        console.error(e.message);
+        return false;
+    }
+}
+
+/**
+ * Find the importer function
+ * @returns {importer} - The importer function
+ */
+function findImport() {
+    // TODO: Refactor this to avoid circular dependency
+    return require('../Core');
+}
+
+/**
+ * Test XPath expressions on cached cells
+ * @returns {Promise<string[]>} - Promised array of matched cell ids
+ */
+async function testExpressions() {
+    const importer = findImport();
+    const xpath = exprToXpath(importer);
+    console.log(`Matching against XPath: ${xpath}`);
+
+    const allCellIds = CellCache.map(c => c.id);
+    const filteredCells = CellCache
+       .filter((c, i) => allCellIds.indexOf(c.id) === i)
+       .filter(c => c.code.length < 10000 && c.code.trim().length > 10);
+
+    const matches = await Promise.all(filteredCells.map(async cell => {
+        await new Promise(resolve => setTimeout(resolve, 100));
+        return matchCell(xpath, cell);
+    }));
+
+    const matchedCellIds = matches.filter(cell => cell).map(cell => cell.id);
+    return matchedCellIds;
+}
+
+module.exports = testExpressions;
+
+if (typeof $!== 'undefined') {
+    testExpressions()
+       .then(matches => $.sendResult(matches))
+       .catch(err => console.error(err));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The code is a Node.js module that exports a function <code>testExpressions</code>. It appears to be part of a larger project, likely a browser extension or a web application, that interacts with a Core module.</p>
 <h3>Modules and Imports</h3>

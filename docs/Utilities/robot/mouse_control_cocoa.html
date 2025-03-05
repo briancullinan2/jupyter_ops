@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -222,7 +229,141 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="objective-c"><code>objectivec
+#import &lt;CoreGraphics/CoreGraphics.h&gt;
+#import &lt;CoreFoundation/CoreFoundation.h&gt;
+
+typedef NS_ENUM(NSInteger, Button) {
+    kButtonLeft = 0,
+    kButtonRight = 1,
+};
+
+typedef NS_ENUM(NSInteger, ClickCount) {
+    kSingleClick = 1,
+    kDoubleClick = 2,
+};
+
+typedef NS_ENUM(NSInteger, EventType) {
+    kEventNull = 0,
+    kEventMouseMoved,
+    kEventLeftMouseDragged,
+    kEventLeftMouseDown,
+    kEventLeftMouseUp,
+    kEventRightMouseDown,
+    kEventRightMouseUp,
+};
+
+@interface LLMAMouseSimulator : NSObject
+
+@property (nonatomic) CGPoint currentPosition;
+
+- (instancetype)init;
+
+- (void)dispatchMouseEvent:(CGMouseButton)button type:(EventType)type position:(CGPoint)position clickCount:(ClickCount)clickCount delay:(NSTimeInterval)delay;
+
+- (CGPoint)getMousePosition;
+- (void)setMousePosition:(CGPoint)position;
+
+- (void)setButtonState:(Button)button isPressed:(BOOL)isPressed position:(CGPoint)position clickCount:(ClickCount)clickCount;
+- (void)mouseClick:(Button)button position:(CGPoint)position;
+- (void)click:(Button)button;
+- (void)mouseDoubleClick:(Button)button position:(CGPoint)position;
+- (void)doubleClick:(Button)button;
+- (void)mouseDrag:(CGPoint)position;
+- (void)mouseStartDrag:(CGPoint)position;
+- (void)mouseEndDrag:(CGPoint)position;
+
+@end
+
+@implementation LLMAMouseSimulator
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.currentPosition = CGPointMake(0, 0);
+    }
+    return self;
+}
+
+- (void)dispatchMouseEvent:(CGMouseButton)button type:(EventType)type position:(CGPoint)position clickCount:(ClickCount)clickCount delay:(NSTimeInterval)delay {
+    if (type == kEventMouseMoved || type == kEventLeftMouseDragged) {
+        [NSThread sleepForTimeInterval:delay];
+    }
+    
+    CGEventRef event = CGEventCreateMouseEvent(kCFAllocatorDefault, type, position, button);
+    CGEventSetType(event, type);
+    CGEventSetIntegerValueField(event, kCGMouseEventNumber, [self getEventNumber]);
+    CGEventSetIntegerValueField(event, kCGMouseEventClickState, (NSInteger)clickCount);
+    CGEventPost(kCGHIDEventTap, event);
+    CFRelease(event);
+    
+    self.currentPosition = position;
+}
+
+- (CGPoint)getMousePosition {
+    CGEventRef event = CGEventCreate(NULL);
+    CGPoint cursor = CGEventGetLocation(event);
+    CFRelease(event);
+    return cursor;
+}
+
+- (void)setMousePosition:(CGPoint)position {
+    [self dispatchMouseEvent:kCGMouseButtonLeft type:kEventMouseMoved position:position clickCount:kSingleClick delay:0];
+}
+
+- (void)setButtonState:(Button)button isPressed:(BOOL)isPressed position:(CGPoint)position clickCount:(ClickCount)clickCount {
+    EventType type = isPressed? (button == kButtonLeft? kEventLeftMouseDown : kEventRightMouseDown) : (button == kButtonLeft? kEventLeftMouseUp : kEventRightMouseUp);
+    [self dispatchMouseEvent:kCGMouseButtonLeft type:type position:position clickCount:clickCount delay:0];
+}
+
+- (void)mouseClick:(Button)button position:(CGPoint)position {
+    [self setButtonState:button isPressed:YES position:position clickCount:kSingleClick];
+    [self setButtonState:button isPressed:NO position:position clickCount:kSingleClick];
+}
+
+- (void)click:(Button)button {
+    CGPoint position = [self getMousePosition];
+    [self mouseClick:button position:position];
+}
+
+- (void)mouseDoubleClick:(Button)button position:(CGPoint)position {
+    [self setButtonState:button isPressed:YES position:position clickCount:kDoubleClick];
+    [self setButtonState:button isPressed:NO position:position clickCount:kDoubleClick];
+}
+
+- (void)doubleClick:(Button)button {
+    CGPoint position = [self getMousePosition];
+    [self mouseDoubleClick:button position:position];
+}
+
+- (void)mouseDrag:(CGPoint)position {
+    [self dispatchMouseEvent:kCGMouseButtonLeft type:kEventLeftMouseDragged position:position clickCount:kSingleClick delay:0];
+}
+
+- (void)mouseStartDrag:(CGPoint)position {
+    [self setButtonState:kButtonLeft isPressed:YES position:position clickCount:kSingleClick];
+    [self mouseDrag:position];
+}
+
+- (void)mouseEndDrag:(CGPoint)position {
+    [self mouseDrag:position];
+    [self setButtonState:kButtonLeft isPressed:NO position:position clickCount:kSingleClick];
+}
+
+- (NSInteger)getEventNumber {
+    static NSInteger eventNumber = 32000;
+    return eventNumber++;
+}
+
+@end
+
+// Usage:
+LLMAMouseSimulator* simulator = [[LLMAMouseSimulator alloc] init];
+[simulator mouseClick:kButtonLeft position:CGPointMake(100, 100)];
+[simulator mouseDoubleClick:kButtonRight position:CGPointMake(200, 200)];
+[simulator mouseStartDrag:CGPointMake(300, 300)];
+[simulator mouseEndDrag:CGPointMake(300, 300)];</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Includes and Enum Definition</h3>
 <p>The code starts by including two frameworks:</p>
 <ul>

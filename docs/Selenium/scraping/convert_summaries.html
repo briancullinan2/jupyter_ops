@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -188,7 +195,130 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { safeurl } = require('domain-cache-tools');
+const { getNearestSunday } = require('default-link-collector');
+const summerizeArticle = require('summarize-all-articles');
+
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects','reasonings');
+const CONVERSION_PROMPTS = [
+  'pretend you\'re living in a star wars themed universe and reverse sentence structure like Yoda',
+  'pretend you\'re a super intelligent alien species and write a metaphor for how they could be teasing us',
+  'break the news to me as gently as possible, mommy me a little and tell me it\'s going to be okay',
+  'Make this breaking news sound like a script for a sitcom, with awkward misunderstandings, dramatic pauses, and a laugh track',  
+  'Turn this serious news article into a rhyming Dr. Seuss-style poem, making it lighthearted but still informative',  
+  'Retell this news story from the perspective of a sarcastic but lovable talking animal who’s just trying to make sense of the human world',  
+  'Rewrite this news article as if it were an absurd conspiracy theory from a tin-foil-hat-wearing enthusiast',  
+  'Make this news sound like an over-the-top tabloid headline, with wild exaggerations and celebrity name-drops',  
+  'Rephrase this bad news as if you were a kindergarten teacher gently explaining it to a room full of toddlers',  
+  'Write this difficult news as if it were a whimsical fairy tale where things work out in the end (or at least have a hopeful moral)',  
+  'Turn this stressful news into a motivational speech, making it sound like an inspiring challenge rather than a disaster',  
+  'Rewrite this news as if a wise old grandma was breaking it to you over a warm cup of tea and cookies',  
+  'Make this bad news sound like a quirky horoscope, full of mystical optimism and cosmic reassurance',  
+  'Transform this news into an uplifting bedtime story where even the roughest parts have a silver lining'
+];
+
+async function createLlmSession() {
+  try {
+    const { llmPrompt } = await import('create-llm-session');
+    return llmPrompt;
+  } catch (error) {
+    console.error('Failed to create LLM session:', error);
+    throw error;
+  }
+}
+
+function getConversionFiles(startPage) {
+  const nearestSunday = safeurl(getNearestSunday());
+  const files = CONVERSION_PROMPTS.map((prompt) =&gt; {
+    return path.join(PROJECT_PATH, `${nearestSunday}-${safeurl(prompt)}.json`);
+  });
+  return files;
+}
+
+async function persistSummary(summary, filePath) {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(summary, null, 4));
+  } catch (error) {
+    console.error('Failed to persist summary:', error);
+    throw error;
+  }
+}
+
+async function alternativeSummary(summary, funny) {
+  const llmPrompt = await createLlmSession();
+  const q1 = `Convert this article summary, ${funny}:\n${summary[0]}\nOnly return the summary and nothing else, no explanations.`;
+  console.log('User:', q1);
+  const a1 = await llmPrompt(q1);
+  console.log('AI:', a1);
+
+  const q2 = `Convert this article description, ${funny}:\n${summary[1]}\nOnly return the single sentence and nothing else, no explanations.`;
+  console.log('User:', q2);
+  const a2 = await llmPrompt(q2);
+  console.log('AI:', a2);
+
+  return [a1, a2];
+}
+
+async function fetchArticleSummary(startPage) {
+  try {
+    const summary = await summerizeArticle(startPage);
+    return summary;
+  } catch (error) {
+    console.error('Failed to fetch article summary:', error);
+    throw error;
+  }
+}
+
+async function alternativeArticles(startPage, random) {
+  const files = getConversionFiles(startPage);
+  const allSummaries = await Promise.all(files.map(async (filePath) =&gt; {
+    try {
+      if (fs.existsSync(filePath)) {
+        return JSON.parse(fs.readFileSync(filePath));
+      } else {
+        return {};
+      }
+    } catch (error) {
+      console.error('Failed to read summary file:', error);
+      throw error;
+    }
+  }));
+
+  if (Object.values(allSummaries[0]).length === 0) {
+    allSummaries[0] = await fetchArticleSummary(startPage);
+  }
+
+  const links = Object.keys(allSummaries[0]);
+  if (random) {
+    random = Math.floor(Math.random() * (CONVERSION_PROMPTS.length - 1)) + 1;
+  }
+
+  for (let i = 0; i &lt; links.length; i++) {
+    for (let j = random? random : 1; j &lt; CONVERSION_PROMPTS.length; j++) {
+      if (typeof allSummaries[j][links[i]]!== 'undefined') {
+        continue;
+      }
+
+      const funnySummary = await alternativeSummary(allSummaries[0][links[i]], CONVERSION_PROMPTS[j]);
+      allSummaries[j][links[i]] = funnySummary;
+      await persistSummary(allSummaries[j], files[j]);
+      if (random) {
+        break;
+      }
+    }
+  }
+
+  return allSummaries;
+}
+
+module.exports = {
+  alternativeArticles,
+  alternativeSummary,
+  CONVERSION_PROMPTS
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code imports various modules and functions, assigns constants, and defines an array of conversion prompts.</p>
 <h3>Imported Modules and Functions</h3>
 <ul>

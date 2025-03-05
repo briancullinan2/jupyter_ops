@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet checks if a Docker container with a specific name (&quot;{name}&quot;) is running and, if so, stops and removes it.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define a function to stop and remove a container by name
+stop_container() {
+    local name="$1"
+
+    # Check if the container exists
+    if docker ps --format '{{.Names}}' | grep -q "^$name\$"; then
+        # Stop the container
+        docker stop "$name"
+
+        # Remove the container
+        docker rm "$name"
+    else
+        # TODO: Add logging to notify about non-existent container
+        echo "Container '$name' not found"
+    fi
+}
+
+# Call the function with the desired container name
+stop_container "{name}"</code></pre></div><p>This code snippet checks if a Docker container with a specific name (&quot;{name}&quot;) is running and, if so, stops and removes it.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>docker ps | grep &quot;{name}&quot;</code>:</strong></p>

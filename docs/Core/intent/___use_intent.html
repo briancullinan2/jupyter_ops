@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be documentation comments, outlining the purpose and usage of a feature called &quot;intent&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import requests
+
+# Set the API endpoint
+url = "https://www.example.com/intent-api/"
+
+# Set the API key
+key = "YOUR_API_KEY"
+
+# Set the intent
+intent = "book_flight"
+
+# Make the API request
+response = requests.get(url, params={"key": key, "intent": intent})
+
+# Print the response
+print(response.json())</code></pre></div><p>This code snippet appears to be documentation comments, outlining the purpose and usage of a feature called &quot;intent&quot;.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong>Purpose:</strong> The comments explain that &quot;intent&quot; is a mechanism for providing instructions or specifications to a system, likely for tasks like data processing, code generation, or web interactions.</p></li>

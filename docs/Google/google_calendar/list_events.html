@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,89 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches and processes events from a Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { google } = require('googleapis');
+const {
+  authorizeCalendar,
+  correctTimeLimits,
+  correctCalendarId
+} = require('../Core');
+
+/**
+ * Function to process the result of the calendar API call.
+ * 
+ * @param {Object} response The response object from the calendar API.
+ * @param {Object} options The options object passed to the function.
+ * 
+ * @returns {Array} An array of events with their start dates.
+ */
+function processResult(response, options) {
+  const resultEvents = response.data.items
+   .map(event => ({
+      start: new Date(event.start.dateTime || event.start.date),
+      event
+    }))
+   .filter(event => event.event.id); // Filter out events without IDs
+
+  if (resultEvents.length === 0) {
+    console.log(`No events found for ${JSON.stringify(options)}`);
+  }
+
+  return resultEvents;
+}
+
+/**
+ * Lists the next 10 events on the user's primary calendar.
+ * 
+ * @param {Object} options The options object with calendarId and pageToken.
+ * 
+ * @returns {Promise} A promise that resolves to an array of events.
+ */
+async function listEvents(options = { calendarId: 'primary' }) {
+  // Initialize variables
+  let calendar;
+  let events = [];
+
+  // Authorize the calendar API
+  calendar = await authorizeCalendar(options);
+
+  // Correct the time limits and calendar ID
+  await correctTimeLimits(options);
+  await correctCalendarId(options);
+
+  // Get the next page of events if necessary
+  while (true) {
+    // Set up the API request parameters
+    const data = Object.assign({}, options, {
+      maxResults: 1000,
+      singleEvents: true,
+      orderBy:'startTime'
+    });
+
+    try {
+      // Make the API request
+      const response = await calendar.events.list(data);
+
+      // Process the events
+      events = events.concat(processResult(response, options));
+
+      // If there's a next page, get it
+      if (response.data.nextPageToken) {
+        options.pageToken = response.data.nextPageToken;
+      } else {
+        break;
+      }
+    } catch (error) {
+      console.error('Error getting events:', error);
+      break;
+    }
+  }
+
+  return events;
+}
+
+module.exports = listEvents;</code></pre></div><p>This code snippet fetches and processes events from a Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>wget Command Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define the URL to download
+BASE_URL="http://www.truecombatelite.com/mapdepot/"
+
+# Define the excluded directories
+EXCLUDED_DIRS="/forums /files /images /gallery /nc /diane"
+
+# Define the wget options
+WGET_OPTIONS=(
+    "--mirror"          # Download the entire site
+    "--convert-links"   # Convert links to relative URLs
+    "-nc"               # Don't re-download files that are already there
+    "-r"                # Recursively download the site
+)
+
+# Construct the wget command
+WGET_CMD="wget"
+
+# Add the options to the wget command
+for opt in "${WGET_OPTIONS[@]}"; do
+    WGET_CMD+=" $opt"
+done
+
+# Add the excluded directories to the wget command
+WGET_CMD+=" -r -A '*' -R $(echo $EXCLUDED_DIRS | tr'' '\n' | sed '/^$/d')"
+
+# Add the base URL to the wget command
+WGET_CMD+=" $BASE_URL"
+
+# Print the final wget command
+echo "$WGET_CMD"</code></pre></div><h2>wget Command Breakdown</h2>
 <h3>Description</h3>
 <p>This is a <code>wget</code> command used for downloading a website, specifically excluding certain directories.</p>
 <h3>Options</h3>

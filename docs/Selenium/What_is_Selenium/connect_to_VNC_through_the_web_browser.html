@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>vncIframe</code> that generates an HTML snippet embedding a VNC viewer iframe.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Function to URL encode an object
+const urlEncode = (obj) => {
+  // Use Object.entries() and map() to create an array of encoded key-value pairs
+  return Object.entries(obj).map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`).join('&');
+}
+
+// Function to generate a VNC iframe
+const vncIframe = ({
+  password ='secret', // Default password
+  host = 'localhost', // Default host
+  port = 6080, // Default port
+  autoconnect = true, // Default autoconnect
+  resize ='scale', // Default resize behavior
+  view_only = true, // Default view-only mode
+  reconnect = true, // Default reconnect behavior
+}) => {
+  // Log the URL for debugging purposes
+  console.log(`//localhost:6080/vnc.html?${urlEncode({...options })}`);
+  
+  // Return the iframe HTML
+  return `
+    <div style="display:block; width:100%; padding-bottom:69%;position:relative;">
+      <iframe id="vnc"
+        style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;" 
+        src="//localhost:6080/vnc.html?${urlEncode({...options })}"></iframe>
+    </div>
+  `;
+}
+
+// Export the vncIframe function
+module.exports = vncIframe;
+
+// If $ is defined, render the iframe as HTML
+if (typeof $!== 'undefined') {
+  $.mime({ 'text/html': vncIframe({ /* Example options */ password: 'example', host: 'example.com' }) });
+}</code></pre></div><p>This code defines a function <code>vncIframe</code> that generates an HTML snippet embedding a VNC viewer iframe.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>urlEncode</code> Function:</strong></p>

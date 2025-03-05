@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -93,7 +100,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required libraries and define constants
+import { async as $ } from './utils';
+import { addFacebookFriends } from './facebook';
+
+/**
+ * Fetch Facebook friends and send the result or error accordingly.
+ */
+async function fetchFacebookFriends() {
+  try {
+    const friends = await addFacebookFriends();
+    return friends;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// Call the function and send result/error using $ utility
+fetchFacebookFriends()
+ .then((friends) => $.sendResult(friends))
+ .catch((error) => $.sendError(error));</code></pre></div><h3>Code Breakdown</h3>
 <h4>Overview</h4>
 <p>The code appears to be a JavaScript function that uses the <code>async/await</code> syntax to handle asynchronous operations. It calls a function <code>addFacebookFriends</code> and handles its result or error using the <code>then</code> and <code>catch</code> methods.</p>
 <h4>Breakdown</h4>

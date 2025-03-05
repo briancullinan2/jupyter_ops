@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>placeDetails</code> that fetches detailed information about a Google Places location given its ID.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { promisify } = require('util');
+const request = require('request');
+const logger = require('loglevel'); // Adding a logger for better error handling
+
+// Load API key from environment variables
+const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+
+// Define a function to get place details
+function getPlaceDetails(placeId) {
+    /**
+     * Retrieves place details from Google Maps API
+     * @param {string} placeId - Unique identifier for the place
+     * @returns {Promise<Object>} A promise resolving to the place details
+     */
+    const URI = 'https://maps.googleapis.com/maps/api/place/details/json'; // Using a constant for the base URL
+    const params = {
+        placeid: placeId,
+        key: API_KEY,
+    };
+
+    // Construct the full URI with query parameters
+    const fullURI = `${URI}?${Object.keys(params).map((key) => `${key}=${params[key]}`).join('&')}`;
+
+    // Send a GET request to the API
+    return new Promise((resolve, reject) => {
+        request.get(fullURI, (error, response, body) => {
+            if (error) {
+                // Log and reject the error
+                logger.error(`Error fetching place details: ${error}`);
+                reject(error);
+            } else if (response.statusCode!== 200) {
+                // Log and reject non-200 status codes
+                logger.error(`Non-200 status code: ${response.statusCode}`);
+                reject(new Error(`Non-200 status code: ${response.statusCode}`));
+            } else {
+                // Parse the response body as JSON
+                const data = JSON.parse(body);
+                resolve(data.result);
+            }
+        });
+    });
+}
+
+// Export the function as a module
+module.exports = getPlaceDetails;</code></pre></div><p>This code defines a function called <code>placeDetails</code> that fetches detailed information about a Google Places location given its ID.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

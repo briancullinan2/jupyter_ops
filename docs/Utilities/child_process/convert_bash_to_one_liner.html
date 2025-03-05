@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function: <code>bashToOne</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { EOL } = require('os');
+
+/**
+ * Formats bash code to run each line sequentially.
+ *
+ * @param {string} code - The bash code to format.
+ * @returns {string} The formatted bash code.
+ */
+function bashToOne(code) {
+    // Split the code into individual lines
+    const lines = code.split(EOL);
+    
+    // Map over the lines to wrap each with the EXEC placeholder
+    const wrappedLines = lines.map(line =&gt; ` {EXEC} ${line.trim()}`).join(EOL);
+    
+    // Replace newline characters with multiline placeholders
+    const multilinePlaceholder = EOL === '\r\n'? '^' + EOL +'' : '\\\n ';
+    const wrappedLinesWithMultiline = wrappedLines.replace(/\n/g, multilinePlaceholder);
+    
+    // Replace `&amp;&amp;` with the multicmd placeholder
+    const multicmd = EOL === '\r\n'?'^' + EOL + ';':'\\\n&amp;&amp; ';
+    const formattedCode = wrappedLinesWithMultiline.replace(/(\s*\n)+&amp;&amp;/g, multicmd);
+    
+    // Split the code on the EXEC placeholder and filter out empty lines
+    const commands = formattedCode.split(' {EXEC} ').filter(command =&gt; command.trim()!== '');
+    
+    // Join the commands with the multicmd placeholder and return the result
+    return commands.join(multicmd);
+}
+
+module.exports = bashToOne;</code></pre></div><p><strong>Function: <code>bashToOne</code></strong></p>
 <h3>Description</h3>
 <p>Maps Bash shell script code to a single executable command.</p>
 <h3>Parameters</h3>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,8 @@
     <a href="../import/index.html">import</a> | <a href="./convert_regexp_matches_to_an_array.html">convert regexp matches to an array</a> | <a href="./parse_cells_from_a_notebook.html">parse cells from a notebook</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>runAllPromises</code> function executes an array of functions that return promises, resolving and concatenating the results of each promise chain into a single array.</p>
+  <p><strong>Executes an array of promises concurrently and returns the aggregated result.</strong></p>
+<p>Takes an array of functions or promises and returns a promise that resolves with a concatenated result.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "run all promises sequentially"</code></pre><h1>run all promises sequentially</h1>
@@ -118,17 +126,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>runAllPromises Function</h2>
-<h3>Description</h3>
-<p>Executes an array of functions that return promises, resolving the results of each promise chain and concatenating the results.</p>
-<h3>Parameters</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Run an array of promises, allowing each promise to return an array
+ * that the next promise's callback can concatenate to.
+ *
+ * @param {Array<Promise|Function>} promises - An array of promise-returning functions or promises.
+ * @returns {Promise<Array>} A promise that resolves to the concatenated arrays.
+ */
+function runAllPromises(promises) {
+    // Check if input is an array
+    if (!Array.isArray(promises)) {
+        throw new Error('Input must be an array of promise-returning functions or promises.');
+    }
+
+    // Use `reduce` to chain the promises together
+    return promises.reduce((previousPromise, currentPromise) => {
+        // Check if the current promise is a function or a promise
+        if (typeof currentPromise!== 'function' &&!(currentPromise instanceof Promise)) {
+            throw new Error('Each promise must be a function or a promise.');
+        }
+
+        // If the current promise is a function, wrap it in a new promise
+        const currentPromiseWrapped = typeof currentPromise === 'function'
+           ? new Promise(currentPromise)
+            : Promise.resolve(currentPromise);
+
+        // Use `then` to concatenate the result of the current promise to the previous result
+        return previousPromise.then(result => currentPromiseWrapped.then(array => array.concat(result)));
+    }, Promise.resolve([])); // Initialize with an empty array
+}
+
+module.exports.runAllPromises = runAllPromises;</code></pre></div><h3>Function Documentation: <code>runAllPromises</code></h3>
+<h4>Synopsis</h4>
+<p>Executes an array of promises concurrently, aggregating results.</p>
+<h4>Parameters</h4>
 <ul>
-<li><code>promises</code>: An array of functions that return promises, or values that can be resolved as promises.</li>
+<li><code>promises</code> (Array): An array of functions or promises to be executed.</li>
 </ul>
-<h3>Returns</h3>
-<p>A promise that resolves to an array of concatenated results from each promise chain.</p>
-<h3>Implementation</h3>
-<p>The function uses <code>Array.prototype.reduce()</code> to iterate over the promises array, chaining the promises together with <code>then()</code>. The result of each promise is concatenated to the previous result using <code>Array.prototype.concat()</code>. The initial value of the reduction is an empty array resolved as a promise with <code>Promise.resolve([])</code>.</p>
+<h4>Return Value</h4>
+<ul>
+<li><code>Promise</code>: A promise that resolves with the aggregated result of all promises.</li>
+</ul>
+<h4>Description</h4>
+<p>This function uses <code>reduce</code> to execute each promise in the <code>promises</code> array concurrently. For each promise, it extracts the result, applies the next function (if any), and concatenates the result with the output of the previous promise. If a promise is a non-function value, it is treated as resolved and returned as is.</p>
+<h4>Example Usage</h4>
+<pre><code class="language-javascript">const promises = [
+  () =&gt; Promise.resolve('A'),
+  () =&gt; Promise.resolve('B'),
+  () =&gt; Promise.resolve('C')
+];
+
+runAllPromises(promises).then(result =&gt; console.log(result)); // Output: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]
+</code></pre>
 
 </body>
 

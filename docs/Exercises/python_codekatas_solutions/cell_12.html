@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Mergesort Implementation</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+def merge_sort(nums: list) -&gt; list:
+    """
+    Sort a list of numbers using the merge sort algorithm.
+
+    Args:
+        nums (list): The list of numbers to be sorted.
+
+    Returns:
+        list: The sorted list of numbers.
+    """
+
+    def merge(a: list, b: list) -&gt; list:
+        """
+        Merge two sorted lists into a single sorted list.
+
+        Args:
+            a (list): The first sorted list.
+            b (list): The second sorted list.
+
+        Returns:
+            list: The merged sorted list.
+        """
+        merged = []
+        i, j = 0, 0
+
+        # Merge smaller elements first
+        while i &lt; len(a) and j &lt; len(b):
+            if a[i] &lt; b[j]:
+                merged.append(a[i])
+                i += 1
+            else:
+                merged.append(b[j])
+                j += 1
+
+        # Append any remaining elements
+        merged += a[i:]
+        merged += b[j:]
+
+        return merged
+
+    if len(nums) &lt;= 1:  # Base case: lists with 1 or 0 elements are already sorted
+        return nums
+
+    # Recursively split the list into two halves
+    mid = len(nums) // 2
+    left = merge_sort(nums[:mid])
+    right = merge_sort(nums[mid:])
+
+    # Merge the two sorted halves
+    return merge(left, right)
+
+
+a = [2, 9, 2, 3, 5, 8, 1]
+assert merge_sort(a) == [1, 2, 2, 3, 5, 8, 9]
+print('All passed!')</code></pre></div><h2>Mergesort Implementation</h2>
 <h3>merge Function</h3>
 <ul>
 <li>Purpose: Merge two sorted lists into a single sorted list.</li>

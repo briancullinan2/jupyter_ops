@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -127,7 +134,78 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h1><strong>Module Overview</strong></h1>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const glob = require('glob-promise');
+const path = require('path');
+const fs = require('fs');
+const console = require('console');
+
+// Regular expression to match translate keys in HTML files
+const translateRegex = /{([\w\s]+?)\s*\|\s*translate\s*(:\s*[\w\s]+?)?}/gi;
+
+/**
+ * Extracts translation keys from HTML component files in a project.
+ *
+ * @param {string} project - Path to the project directory.
+ * @returns {object} - An object containing translation keys as properties and their corresponding values as arrays.
+ */
+async function getTranslations(project) {
+  try {
+    // Get HTML component files in the project, ignoring temp-demo-pages directory
+    const files = await glob(`**/component.html`, { cwd: project, ignore: '**/temp-demo-pages/**' });
+
+    // Initialize an object to store translation keys
+    const translationKeys = {};
+
+    // Loop through each file and extract translation keys
+    for (const file of files) {
+      // Read the contents of the file
+      const html = await fs.promises.readFile(path.join(project, file), 'utf8');
+
+      // Use regular expression to match translate keys in the HTML file
+      const matches = html.match(translateRegex);
+
+      if (matches) {
+        // Extract the translate key and text from each match
+        const translateStrings = matches.map((match) => {
+          // Remove curly brackets and any whitespace characters
+          const key = match.replace(/\{|\}/g, '').trim();
+          return key;
+        });
+
+        // Determine the desired key for the translations object
+        const desiredKey = file
+         .replace('app/', '')
+         .replace(/\//ig, '.')
+         .replace('.component.html', '')
+         .replace(/-/ig, '')
+         .split('.')
+         .filter((_, i) => i!== 0)
+         .join('.');
+
+        // Add the translations to the translations object
+        if (!translationKeys[desiredKey]) {
+          translationKeys[desiredKey] = [];
+        }
+        translationKeys[desiredKey].push(...translateStrings);
+      }
+    }
+
+    // Return the translations object
+    return translationKeys;
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+}
+
+module.exports = getTranslations;
+
+// Example usage
+if (typeof $!== 'undefined') {
+  const cwd = '/Users/briancullinan/Documents/portal/src/';
+  getTranslations(cwd).then((translations) => console.log(translations));
+}</code></pre></div><h1><strong>Module Overview</strong></h1>
 <p>This Node.js module provides a function <code>getTranslations</code> that extracts translation keys and values from HTML files in a project directory.</p>
 <h2><strong>Function Signature</strong></h2>
 <pre><code class="language-javascript">function getTranslations(project) {... }

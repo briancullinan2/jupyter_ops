@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -194,7 +201,109 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code is written in Graphviz language, used to create directed graphs.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="dot"><code>digraph apply {
+    # General configuration
+    label = 'Purchase funnel flow'
+    rankdir = TB;
+    fontname = Helvetica
+
+    # Node configuration
+    node[fontname = Helvetica, width = 1.8, height = 0.8]
+    edge[fontname = Helvetica, fontsize = 12, fontcolor = blue, labeldistance = 1.8]
+
+    # Landing Site Cluster
+    subgraph cluster_landing_site {
+        label = 'Landing Site'
+        start [href = 'Good%20UX%20Intro.ipynb#Layout', shape = box, style = rounded, label = 'Customer lands\non act.com']
+
+        # Has Account Decision Node
+        hasaccount[shape = 'diamond', label = 'Has an account?']
+        upgrade[shape = 'diamond', label = 'Offer upgrade']
+        highlight[shape = 'box', label = 'Highlight best\nsales options']
+
+        # Decision Edge
+        start:s -> hasaccount
+        hasaccount:e -> upgrade
+        hasaccount:s -> highlight
+
+        # Yes/No Branching
+        hasaccount:e -> yes[label = 'Yes']
+        hasaccount:s -> no[label = 'No']
+    }
+
+    # Trial Flow Cluster
+    subgraph cluster_trial_flow {
+        label = 'Trial Flow'
+        rankdir = TB;
+        rank = same
+
+        trialemail[shape = 'box', style = 'rounded', label = 'Send trial invite']
+        trialinfo[shape = 'box', label = 'Collect trial\ncustomer info']
+        trial[shape = 'diamond', label = 'Subscribe to trial?']
+
+        # Decision Edge
+        highlight -> trial
+
+        # Yes/No Branching
+        trial:e -> trialinfo[label = 'Yes']
+        trialinfo -> trialemail
+    }
+
+    # Purchase Funnel Cluster
+    subgraph cluster_purchase_funnel {
+        label = 'Purchase Funnel'
+
+        # Upgrade Flow
+        upgrade:e -> funnel[label = 'Yes']
+
+        # Trial Flow
+        trial:e -> funnel[label = 'Yes']
+
+        funnel[shape = 'box', label = 'Purchase funnel'];
+        subscribe [shape = box, label = 'Subscribe']
+        review [shape = box, label = 'Review Selection']
+        hasaccount2 [shape = diamond, label = 'Has An Account?']
+        skiptobilling [shape = box, label = 'Skip To Billing']
+        setupaccount [shape = box, label = 'Set Up Account']
+
+        # Decision Edges
+        funnel -> subscribe
+        subscribe -> review
+        review -> hasaccount2
+        hasaccount2 -> setupaccount [label = 'No']
+        hasaccount2 -> skiptobilling [label = 'Yes']
+    }
+
+    # Billing Cluster
+    subgraph cluster_billing {
+        label = 'Billing'
+
+        # Setup Account Flow
+        setupaccount -> billing
+
+        # Skip to Billing Flow
+        skiptobilling -> billing
+
+        billing [shape = 'box', label = 'Billing']
+        {
+            rank = same;
+            hasaccount3 [shape = diamond, label = 'Has an account?']
+            autofill [shape = box, label = 'Auto-fill Zuora\nAccount Info']
+        }
+
+        collectpayment [shape = box, label = 'Collect Payment Info']
+        confirm [shape = box, label = 'Confirmation']
+        thanksemail [shape = box, style = rounded, label = 'Send Thank\nYou Email']
+
+        # Decision Edges
+        billing -> hasaccount3
+        hasaccount3 -> autofill [label = 'Yes']
+        hasaccount3 -> collectpayment [label = 'No']
+        collectpayment -> confirm
+        confirm -> thanksemail
+    }
+}</code></pre></div><p>This code is written in Graphviz language, used to create directed graphs.</p>
 <p>Here's a short breakdown:</p>
 <ul>
 <li>The code defines a graph with multiple subgraphs, each representing a stage in a purchase funnel flow.</li>

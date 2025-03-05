@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * @file readme.js
+ * @author Llama
+ * @description Generates markdown content for a README file.
+ */
+
+/**
+ * Generates markdown content for a README file.
+ * 
+ * @param {string} title - The title of the project.
+ * @param {string} description - A brief description of the project.
+ * @param {string[]} features - List of features of the project.
+ * @param {string[]} contributors - List of contributors to the project.
+ * @returns {string} Markdown content for the README file.
+ */
+function generateReadme(title, description, features, contributors) {
+    // Validate input parameters
+    if (!title ||!description ||!features ||!contributors) {
+        throw new Error("All parameters must be provided.");
+    }
+
+    // Create markdown content for the title
+    const titleMarkdown = `# ${title}\n\n`;
+
+    // Create markdown content for the description
+    const descriptionMarkdown = `## Description\n\n${description}\n\n`;
+
+    // Create markdown content for the features
+    const featuresMarkdown = "## Features\n\n";
+    features.forEach((feature, index) => {
+        featuresMarkdown += `- ${feature}\n`;
+    });
+
+    // Create markdown content for the contributors
+    const contributorsMarkdown = "## Contributors\n\n";
+    contributors.forEach((contributor, index) => {
+        contributorsMarkdown += `- ${contributor}\n`;
+    });
+
+    // Combine markdown content into a single string
+    const markdownContent = `${titleMarkdown}${descriptionMarkdown}${featuresMarkdown}${contributorsMarkdown}`;
+
+    return markdownContent;
+}
+
+// Example usage
+const readmeContent = generateReadme(
+    "My Project",
+    "This is a brief description of my project.",
+    ["Feature 1", "Feature 2", "Feature 3"],
+    ["John Doe", "Jane Doe", "Bob Smith"]
+);
+
+// TODO: Refactor to use a database for storing contributor information
+// TODO: Implement a function to generate a table of contents
+// TODO: Add more features to the README generator
+
+console.log(readmeContent);</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a single line of code that appears to be a comment in a Markdown file (<code>readme.md</code>).</p>
 <ul>
 <li><code>//</code>: This is a line comment marker in many programming languages, including C-style languages. It indicates that the text following it is a comment and should be ignored by the compiler or interpreter.</li>

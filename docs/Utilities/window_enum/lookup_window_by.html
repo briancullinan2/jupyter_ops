@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="objectivec"><code>/**
+ * Returns the title of the window with the specified layer number.
+ *
+ * @param layer The layer number of the window to retrieve the title for.
+ * @return A string containing the window title, or NULL if no window with the specified layer number is found.
+ */
+__attribute__((visibility("default")))
+const char* getTitle(int layer) {
+    static NSArray<NSDictionary*>* windows = nil;
+    
+    // Enumerate windows once and store the result in a static array to avoid redundant enumeration
+    if (windows == nil) {
+        windows = enumWindows();
+    }
+
+    // Use KVO to iterate over the array for better performance
+    NSDictionary* targetWindow = [windows firstObjectWithKeysPassingTest:^BOOL(id obj, NSDictionary* key) {
+        NSNumber* windowLayer = key;
+        return [windowLayer intValue] == layer;
+    }];
+
+    if (!targetWindow) {
+        // Return NULL if no window with the specified layer number is found
+        return NULL;
+    }
+
+    // Use string properties for better readability and thread-safety
+    NSString* title = targetWindow[kCGWindowOwnerName];
+    NSNumber* windowLayer = targetWindow[kCGWindowLayer];
+    NSString* result = [NSString stringWithFormat:@"%@: %d", title, [windowLayer intValue]];
+    
+    // Use a more modern and safer way to create a C-string
+    return [result UTF8String];
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Code Attributes</h4>
 <ul>
 <li><code>__attribute__((visibility(&quot;default&quot;)))</code>: This attribute specifies the visibility of the function in the compiled binary. In this case, it is set to &quot;default&quot;, which means the function will be visible to other objects outside the current unit.</li>

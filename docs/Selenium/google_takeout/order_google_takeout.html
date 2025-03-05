@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>googleTakeout</code> that automates the process of downloading a Google Takeout archive for specified products using Selenium WebDriver.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { runSeleniumCell } = require('../Core');
+
+/**
+ * Downloads Google Takeout data.
+ * 
+ * @param {string} [products='all?'] - Specific products to download (e.g. 'drive', 'emails').
+ */
+async function googleTakeout(products = 'all?') {
+  try {
+    const { downloadGoogleTakeout } = await runSeleniumCell([
+      'log in google',
+      'download google takeout',
+    ]);
+
+    await downloadGoogleTakeout(products);
+    console.log('Google Takeout data downloaded successfully.');
+  } catch (error) {
+    console.error('Error downloading Google Takeout data:', error);
+  }
+}
+
+module.exports = googleTakeout;</code></pre></div><p>This code snippet defines a function <code>googleTakeout</code> that automates the process of downloading a Google Takeout archive for specified products using Selenium WebDriver.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

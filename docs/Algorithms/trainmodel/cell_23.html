@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function: ef</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import numpy as np
+from PIL import Image
+
+def preprocess_image(image):
+    """
+    Preprocess an image by converting it to grayscale and normalizing the pixel values.
+    
+    Parameters:
+    image (str): Path to the image file
+    
+    Returns:
+    np.ndarray: Preprocessed image data
+    """
+    # Load the image in grayscale mode
+    img = Image.open(image).convert('L')
+    
+    # Convert the image to a numpy array
+    feature = np.array(img)
+    
+    # Reshape the array to match the expected input shape for the neural network
+    feature = feature.reshape(1, 48, 48, 1)
+    
+    # Normalize the pixel values to the range [0, 1]
+    return feature / 255.0</code></pre></div><h2>Function: ef</h2>
 <h3>Purpose</h3>
 <p>Preprocesses an image by converting it to grayscale and normalizing pixel values.</p>
 <h3>Parameters</h3>

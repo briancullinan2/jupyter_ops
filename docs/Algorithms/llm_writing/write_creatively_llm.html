@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -228,7 +235,101 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { safeurl } = require('./domain-cache-tools');
+const { path, fs } = require('fs');
+const { Remarkable } = require('remarkable');
+const { selectModel, askLlamaForAChapterSynopsis } = require('./importer');
+
+const APOTHEOSIS = {
+  'The Reluctant Hero Ascends to Godhood': 
+  'Story: A reluctant protagonist begins as an ordinary individual in a world of chaos and oppression. Through a series of trials, they unlock a hidden power, gain wisdom, and eventually transcend human limitations. In their final act, they sacrifice their physical form to protect the world, merging with a cosmic force to become a guiding light for others.',
+  'The Savior Who Becomes the Idea':
+  'Story: A visionary leader emerges during a time of societal unrest, inspiring hope and uniting factions. After a climactic confrontation with their greatest enemy, they die but leave behind a legacy so powerful that their followers elevate them to a mythic status. Over time, their teachings and symbols are immortalized, and they are revered as more than human.',
+  'The Chosen One’s Transformation':
+  'Story: A young person with humble beginnings is revealed to be the "chosen one" destined to fulfill an ancient prophecy. Through years of hardship and growth, they confront their deepest fears, discover their ultimate purpose, and, in a climactic battle, ascend to a divine or superhuman state. They are no longer bound by mortal concerns but become a protector or overseer of the world.',
+  'The Seeker Achieves Cosmic Unity':
+  'Story: A curious soul sets out to uncover the mysteries of existence, delving into forbidden knowledge and seeking ultimate truth. After a lifetime of exploration and self-reflection, they achieve enlightenment, becoming one with the cosmos. Their physical form dissolves, but their essence merges with the fabric of reality, guiding others in subtle ways.',
+  'The Tragic Apotheosis':
+  'Story: A character seeking power for noble reasons gradually ascends beyond mortal limits, gaining immense abilities. However, the power isolates them, and they lose their humanity in the process. They ascend to godhood, but it is a lonely and burdensome existence, as they are unable to connect with the people they once sought to save.',
+  'The Redeemer Becomes Eternal':
+  'Story: A flawed individual begins as an outcast but eventually redeems themselves through acts of heroism and love. In their final moments, they perform an act of ultimate sacrifice that not only saves their companions but also purifies their soul. Their spirit lingers, providing guidance and hope to future generations as a benevolent force.',
+  'The Warrior Ascends Through Battle':
+  'Story: A great warrior, renowned for their prowess in battle, fights a final, epic confrontation against an overwhelming enemy. Though they fall in combat, their spirit rises, becoming a protector or deity for their people. Their legend is immortalized in song and ritual, ensuring their influence lasts for ages.',
+};
+
+async function generateChapterSummaries(chapters, topic, promptModel) {
+  const chapterSummaries = [];
+  for (const key in chapters) {
+    const q = `Write a short summary of chapter ${key} involving ${topic} and the themes:\n${chapters[key]}`;
+    const a = await promptModel(q);
+    chapterSummaries.push(a);
+  }
+  return chapterSummaries;
+}
+
+async function generateBookChapters(topic, promptModel) {
+  const chapters = await askLlamaForAChapterSynopsis(topic);
+  const characters = await askLlamaForAChapterSynopsis(topic);
+  const interactions = await askLlamaForAChapterSynopsis(topic, 'interaction');
+  const chapterSummaries = await generateChapterSummaries(chapters, topic, promptModel);
+  const interactionSummaries = await generateChapterSummaries(interactions, topic, promptModel);
+
+  const bookChapters = [];
+  const bookInteractions = [];
+
+  const keys = Object.keys(chapters);
+  const prevChapter = '';
+
+  for (let i = 0; i < keys.length; i++) {
+    const q = `Write a short story, including the entire Hero's journey, involving these characters:\n${Object.keys(characters).join('\n')}\n${chapterSummaries[i]}\nDon't include any headings, just make it flow like a book chapter and nothing else.`;
+    const a = await promptModel(q);
+    bookChapters.push(`## Chapter ${i + 1} - ${keys[i]}\n${a}`);
+    prevChapter = `\nPreviously: ${chapterSummaries[i]}`;
+  }
+
+  for (let i = 0; i < Object.keys(interactions).length; i++) {
+    const q = `Write a short story, including the entire Hero's journey, involving these characters:\n${Object.keys(characters).join('\n')}\n${interactionSummaries[i]}\nDon't include any headings, just make it flow like a book chapter and nothing else.`;
+    const a = await promptModel(q);
+    bookInteractions.push(`## Chapter ${i + keys.length + 1} - ${Object.keys(interactions)[i]}\n${a}`);
+    prevChapter = `\nPreviously: ${interactionSummaries[i]}`;
+  }
+
+  return { bookChapters, bookInteractions };
+}
+
+async function generateBookSynopsis(topic, promptModel) {
+  const chapters = await askLlamaForAChapterSynopsis(topic);
+  const synopsis = await askLlamaForAChapterSynopsis(`Generate a synopsis of the book involving:\n${topic}`);
+  return synopsis;
+}
+
+async function askLlamaToWriteStory(topic, name, promptModel = 'Meta') {
+  if (typeof promptModel!== 'function') {
+    promptModel = await selectModel(promptModel);
+  }
+
+  if (!topic) {
+    topic = 'a duck swimming in a pond for the first time';
+  }
+
+  let bookName = name;
+  if (!name) {
+    let q0 = `Brainstorm 12 funny but creative names for a book involving:\n${topic}\nRespond with only the list of fun names and nothing else.`;
+    const a0 = await promptModel(q0);
+    bookName = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter((a) => a && a.trim().length > 0)[Math.round(Math.random() * (a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter((a) => a && a.trim().length > 0).length - 1))];
+  }
+
+  const { bookChapters, bookInteractions } = await generateBookChapters(topic, promptModel);
+  const synopsis = await generateBookSynopsis(topic, promptModel);
+
+  const mdHtml = new Remarkable({ html: true, xhtmlOut: true, breaks: true }).render(topic, `# ${bookName}\n## Synopsis\n${synopsis}\n\n${bookChapters.join('\n')}\n\n${bookInteractions.join('\n')}`);
+  const filename = path.join(process.cwd(), safeurl(topic) + '.html');
+  fs.writeFileSync(filename, mdHtml);
+  return mdHtml;
+}
+
+module.exports = { askLlamaToWriteStory };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <ul>
 <li><code>const selectModel = importer.import('select llm')</code>: Imports a function <code>selectModel</code> from a module named'select llm' using an <code>importer</code>.</li>

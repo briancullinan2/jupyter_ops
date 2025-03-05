@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to scan Facebook messages for specific commands, filter them, and generate automated responses.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('../Core');
+const { runSeleniumCell, filterCommand, storeResult } = importer.import([
+   'selenium cell',
+    'filter command permission',
+   'store rpc result',
+]);
+
+// Function to scan Facebook commands
+/**
+ * Scan Facebook commands and send responses.
+ * 
+ * @return {Promise} A promise that resolves with the result.
+ */
+function scanCommandsFacebook() {
+    // Define functions to get unread threads and send Facebook message
+    let getUnreadThreads, sendFacebookMessage;
+
+    // Run Selenium cell to retrieve functions
+    return runSeleniumCell([
+        'unread threads facebook',
+       'send facebook message',
+    ])
+       .then(response => {
+            // Get functions from response
+            getUnreadThreads = response.getUnreadThreads;
+            sendFacebookMessage = response.sendFacebookMessage;
+            return getUnreadThreads();
+        })
+        // Get unread threads
+       .then(friends => friends)
+        // Filter friends with messages matching the pattern
+       .then(friends => friends.filter(friend => {
+            const messages = friend.messages.filter(message => {
+                return message.from!== 'Brian' && (/megamind\s*(.*)/ig).exec(message.message);
+            });
+            return messages.length > 0;
+        }))
+        // Map friends to objects with name, command, date, and id
+       .then(friends => friends.map(friend => ({
+            name: friend.participants[0].name.split('\n')[0],
+            command: (/megamind\s*(.*)/ig).exec(friend.messages[0].message)[1].trim(),
+            date: friend.messages[0].time,
+            id: 'Facebook:'+ friend.thread.replace(/^\/|\/$/ig, '').split('/').pop() + friend.messages[0].time,
+        }))
+        // Filter friends with valid command
+       .then(friends => friends.filter(friend =>!!friend.command))
+        // Filter commands
+       .then(friends => Promise.all(friends.map(friend => filterCommand(friend.command, friend.date, friend.id, friend.name))))
+       .then(props => friends.map((friend, index) => ({...friend,...props[index] })))
+        // Store results and send responses
+       .then(friends => runSeleniumCell([
+           'store rpc result',
+        ])
+           .then(response => storeResult(response))
+           .then(response => {
+                return Promise.all(friends.map((friend, index) => {
+                    return storeResult(response)
+                       .then(() => sendFacebookMessage(JSON.stringify(response, null, 4) + '\n Mm\n', friend.thread))
+                       .catch(e => console.log(e))
+                       .then(() => response);
+                }));
+            }))
+       .catch(e => console.log(e));
+}
+
+// Export function
+module.exports = scanCommandsFacebook;
+
+// Send result to GUI
+if (typeof $!== 'undefined') {
+    $.async();
+    scanCommandsFacebook()
+       .then(r => $.sendResult(r))
+       .catch((e) => $.sendError(e));
+}</code></pre></div><p>This code snippet is designed to scan Facebook messages for specific commands, filter them, and generate automated responses.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong> It imports necessary modules for interacting with Facebook, running commands, and storing results.</p></li>

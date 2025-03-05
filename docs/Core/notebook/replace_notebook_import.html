@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,88 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function to replace dynamic imports in code with static imports based on a template.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import dependencies
+const { selectAst, transpile, htmlToTree, renameCellToNiceName } = require('../Core');
+
+// Regular expression for import calls
+const IMPORT_CALLS = /\/\/CallExpression\[\.\*\/Identifier\[(@name="import" or @name="importNotebook")\]\]/;
+
+/**
+ * Generates an import template from an array of imports.
+ * 
+ * @param {Array} imports - The array of imports.
+ * @returns {string} The import template.
+ */
+function getImportTemplate(imports) {
+    // If there's only one import, return a single import template.
+    if (imports.length === 1) {
+        return `require("./${renameCellToNiceName(imports[0])}")`;
+    }
+
+    // If there are multiple imports, throw an error as this function is not implemented.
+    throw new Error('TODO: multiple import template');
+}
+
+/**
+ * Replaces an import call with a template.
+ * 
+ * @param {Object} ctx - The context of the import call.
+ */
+function replaceImport(ctx) {
+    // Select the value of the import call.
+    const str = selectAst(['./Literal/@value'], ctx)[0];
+
+    // If the value is empty, throw an error.
+    if (!str) {
+        throw new Error(`Error: dynamic include ${ctx.ownerDocument.toString(ctx)}`);
+    }
+
+    // Interpret the import call.
+    const result = selectHtml('require("./${niceName(${str})}")');
+    if (Array.isArray(result)) {
+        // If the result is an array, generate a template from it.
+        const imports = result.map(item =&gt; selectAttribute(item, 'value'));
+        const template = getImportTemplate(imports);
+    } else {
+        // If the result is not an array, select the call expression and rename it to a nice name.
+        const parent = ctx.parentNode;
+        const template = selectAst(['//CallExpression'], result)[0];
+        template.setAttribute('parent-attr', 'init');
+        parent.replaceChild(template, ctx);
+    }
+}
+
+/**
+ * Replaces all import calls in the given code.
+ * 
+ * @param {string} code - The code to replace import calls in.
+ * @returns {string} The code with import calls replaced.
+ */
+function replaceImports(code) {
+    return transpile([
+        [IMPORT_CALLS, replaceImport]
+    ], code);
+}
+
+module.exports = {
+    replaceImports
+};
+
+// Helper function to select a value from an HTML element.
+function selectValue(element) {
+    return element.querySelector('value');
+}
+
+// Helper function to select a value from an HTML element.
+function selectAttribute(element, name) {
+    return element.getAttribute(name);
+}
+
+// Helper function to select an HTML element.
+function selectHtml(str) {
+    return htmlToTree(str);
+}</code></pre></div><p>This code defines a function to replace dynamic imports in code with static imports based on a template.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

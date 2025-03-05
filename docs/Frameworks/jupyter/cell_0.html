@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Breakdown of CSS Code</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="css"><code>/* Global typography for text cells */
+.text-cell-container {
+  /* Font family and size for text cells */
+  font-family: 'Roboto', Menlo, Monaco, 'Courier New', monospace;
+  font-size: 18px;
+}
+
+/* Specific typography for code blocks within text cells */
+.text-cell-container.CodeMirror {
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+}
+
+/* Typography for code blocks */
+.CodeMirror-pre {
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+  line-height: 18px!important;
+}
+
+/* Typography for text cells render */
+.text-cell-render {
+  font-family: 'Roboto', Menlo, Monaco, 'Courier New', monospace;
+  font-size: 18px;
+  line-height: 18px!important;
+}
+
+/* Add a class for terminals */
+.terminal-app.terminal {
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+  line-height: 18px!important;
+}
+
+/* TODO: Consider adding a variable for font sizes to make it easier to maintain */</code></pre></div><h3>Breakdown of CSS Code</h3>
 <h4>Font Styles for Text Cells</h4>
 <pre><code class="language-css">div.text_cell,
 div.text_cell_render pre,

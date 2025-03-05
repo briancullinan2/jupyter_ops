@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,64 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a file watcher that automatically re-runs tests whenever changes are detected in specified files.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const chokidar = require('chokidar');
+const path = require('path');
+const importer = require('../Core');
+const { testCells } = importer;
+
+const rateLimiter = null; // initialized but not used
+let done = true;
+
+/**
+ * Watches for file changes and runs tests accordingly.
+ * @param {Array|string} files - files or a single file to watch
+ * @param {Array} tests - tests to run
+ */
+async function testWatcher(files, tests) {
+    files = Array.isArray(files)? files : [files];
+    console.log(`Watching ${files.join(', ')} - ${path.resolve('.')}`);
+
+    const watcher = chokidar.watch(files, {
+        interval: 1000,
+        atomic: true, // deprecated, use awaitWriteFinish instead
+        awaitWriteFinish: true
+    });
+
+    watcher.on('change', async (event, path) =&gt; {
+        if (!done) {
+            return;
+        }
+        console.log('Running all tests');
+        done = false;
+        try {
+            await testCells(tests);
+        } catch (error) {
+            console.error('Error running tests:', error);
+        } finally {
+            done = true;
+        }
+    });
+
+    try {
+        await testCells(tests);
+    } catch (error) {
+        console.error('Error running tests:', error);
+    }
+}
+
+// Use a stream to close the stdin stream
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.on('line', () =&gt; {
+    rl.close();
+});
+
+module.exports = testWatcher;</code></pre></div><p>This code sets up a file watcher that automatically re-runs tests whenever changes are detected in specified files.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

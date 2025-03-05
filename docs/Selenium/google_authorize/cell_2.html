@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,61 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const fs = require('fs').promisify('fs');
+const path = require('path');
+const $ = require('./utils');
+
+async function getOAuth2Client() {
+  // Load client secret from local file
+  const tokenDir = process.env.HOME
+   ? path.join(process.env.HOME, '.credentials')
+    : process.env.HOMEPATH
+   ? path.join(process.env.HOMEPATH, '.credentials')
+    : process.env.USERPROFILE
+   ? path.join(process.env.USERPROFILE, '.credentials')
+    : null;
+  
+  if (!tokenDir) {
+    throw new Error('Unable to determine token directory');
+  }
+
+  const secretPath = path.join(tokenDir, 'client_secret.json');
+  const credentials = JSON.parse(await fs.readFile(secretPath, 'utf8'));
+
+  // Create OAuth2 client instance
+  const oauth2Client = new google.auth.OAuth2(
+    credentials.installed.client_id,
+    credentials.installed.client_secret,
+    credentials.installed.redirect_uris[0],
+  );
+
+  return oauth2Client;
+}
+
+async function getToken(oauth2Client, code) {
+  try {
+    const token = await oauth2Client.getToken(code);
+    return token;
+  } catch (error) {
+    $.sendError(error);
+  }
+}
+
+async function main() {
+  // Get OAuth2 client instance
+  const oauth2Client = await getOAuth2Client();
+
+  // Get access token using authorization code
+  const code = '4/QwGy62FM_KlubQwYvKLAu5z1xrT0cF85Zwb_3U7-IHvmm1gJZ-hj0Qo';
+  const token = await getToken(oauth2Client, code);
+
+  // Send access token as response
+  $.sendResult(JSON.stringify(token));
+}
+
+main();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <ul>
 <li><code>util</code>: A built-in Node.js module providing utility functions.</li>

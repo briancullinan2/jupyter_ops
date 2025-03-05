@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -190,7 +197,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet calculates the total price of a subscription based on a list of subscription IDs, products, and a catalog export.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const _ = require('lodash');
+
+/**
+ * Calculates the new subscription total using a catalog export and compares it with the preview API.
+ * 
+ * @param {Array} subscription - A list of subscription IDs and products.
+ * @param {Array} products - A list of products.
+ * @returns {Array} An array containing the account number, subtotal, previous discount, and quantity.
+ */
+function calculatePrice(subscription, products) {
+    // Group subscription by rate plan charge ID
+    const rpcs = _.groupBy(subscription, 'RatePlanCharge.Id');
+
+    // Filter and sort charges by rate plan charge version
+    const charges = Object.keys(rpcs).map(k =&gt; _.sortBy(rpcs[k], 'RatePlanCharge.Version')).map(k =&gt; k.pop());
+
+    // Initialize subtotal, discount, and quantity
+    let subtotal = 0;
+    let discount;
+    let quantity = 0;
+
+    // Iterate over charges and filter out perpetual products
+    charges
+       .filter(charge =&gt;!charge['ProductRatePlan.Name'].toLowerCase().includes('perpetual'))
+       .forEach(charge =&gt; {
+            // Find the corresponding product and product rate plan
+            const product = products.find(p =&gt; p.id === charge['Product.Id']);
+            const productRatePlan = product.productRatePlans.find(p =&gt; p.id === charge['ProductRatePlan.Id']);
+
+            // Find the correct price plan for the item
+            const productCharge = productRatePlan.productRatePlanCharges.find(p =&gt; p.id === charge['ProductRatePlanCharge.Id']);
+            const pricing = productCharge.pricing.find(p =&gt; p.currency === charge['Account.Currency']);
+
+            // Check if the product rate plan name includes 'discount' or 'volume'
+            if (charge['ProductRatePlan.Name'].toLowerCase().includes('discount') || charge['ProductRatePlan.Name'].toLowerCase().includes('volume')) {
+                // Calculate discount percentage
+                discount = pricing.discountPercentage / 100;
+            } else {
+                // Calculate price based on quantity
+                const price = pricing.tiers === null
+                   ? pricing.price
+                    : pricing.tiers.find(t =&gt; charge['RatePlanCharge.Quantity'] &gt;= t['startingUnit'] &amp;&amp; charge['RatePlanCharge.Quantity'] &lt;= t['endingUnit']);
+
+                // Check if price is undefined
+                if (typeof price === 'undefined') {
+                    throw new Error('Unknown rate plan component');
+                }
+
+                // Add quantity and subtotal
+                quantity += parseInt(charge['RatePlanCharge.Quantity']);
+                subtotal += parseInt(charge['RatePlanCharge.Quantity']) * price;
+            }
+        });
+
+    // Filter discounts and ensure only one discount is applied
+    const discounts = charges.filter(c =&gt; (c['ProductRatePlan.Name'] || '').toLowerCase().includes('discount') || (c['ProductRatePlan.Name'] || '').toLowerCase().includes('volume'))
+                            .filter(c =&gt;!(c['ProductRatePlan.Name'] || '').toLowerCase().includes('diamond') &amp;&amp;!(c['ProductRatePlan.Name'] || '').toLowerCase().includes('distribution'));
+
+    // Check if subtotal is a number
+    assert(!isNaN(subtotal), 'Not a number!'+ JSON.stringify(charges, null, 4))
+
+    // Return account number, subtotal, discount, and quantity
+    return [subscription[0]['Account.AccountNumber'], subtotal, discount, quantity];
+}
+
+module.exports = calculatePrice;</code></pre></div><p>This code snippet calculates the total price of a subscription based on a list of subscription IDs, products, and a catalog export.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Grouping and Filtering:</strong></p>

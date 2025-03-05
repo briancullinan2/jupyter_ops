@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -124,7 +131,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getInfo</code> that retrieves information about a Google Sheet given its URL.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Core = require('../Core');
+const { authorizeSheets } = Core.import('authorize sheets api');
+
+/**
+ * Retrieves information about a Google Spreadsheet.
+ * 
+ * @param {string} link - The link to the spreadsheet.
+ * @returns {Promise&lt;Object&gt;} A promise resolving to an object containing information about the spreadsheet.
+ */
+function getInfo(link) {
+    // Validate input
+    if (!link) {
+        throw new Error('You did not specify a spreadsheet to work on.');
+    }
+
+    // Extract spreadsheet ID from link
+    const docId = link.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)\//i)[1];
+
+    // Initialize variable to store spreadsheet object
+    let spreadsheet = null;
+
+    // Authenticate and retrieve spreadsheet data
+    return authorizeSheets()
+       .then((sheets) =&gt; {
+            // Set spreadsheet object
+            spreadsheet = sheets;
+
+            // Retrieve spreadsheet information
+            return spreadsheet.spreadsheets.get({
+                spreadsheetId: docId,
+            });
+        })
+       .then((res) =&gt; {
+            // Add spreadsheet ID to sheet metadata
+            const updatedRes = Object.assign(res.data, {
+                sheets: res.data.sheets.map((sheet) =&gt; Object.assign(sheet, {
+                    spreadsheetId: res.data.spreadsheetId,
+                })),
+            });
+
+            // Return updated response
+            return updatedRes;
+        })
+       .catch((error) =&gt; {
+            // Log and rethrow error
+            console.error('Error retrieving spreadsheet information:', error);
+            throw error;
+        });
+}
+
+module.exports = getInfo;</code></pre></div><p>This code defines a function <code>getInfo</code> that retrieves information about a Google Sheet given its URL.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports the <code>authorizeSheets</code> function from a local module <code>Core</code>, which likely handles authentication with the Google Sheets API.</p></li>

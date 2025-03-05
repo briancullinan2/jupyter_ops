@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -239,7 +246,120 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const spawnSync = require('child_process').spawnSync;
+const { importCode } = require('./importCode'); // assuming this is a separate module
+
+const HOME = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+
+async function makeCell(prompt, notebookFile, github) {
+  if (!github) {
+    throw new Error('Project not specified.');
+  }
+
+  const gitRepo = await getGitRepo(github);
+  if (!gitRepo) {
+    throw new Error('Project not found.');
+  }
+
+  if (!notebookFile) {
+    throw new Error('Notebook not specified.');
+  }
+
+  const notebookPath = await getFilePath(notebookFile, gitRepo);
+  if (!notebookPath) {
+    throw new Error('Notebook not found.');
+  }
+
+  await pullGitRepo(gitRepo);
+  const projectFiles = await getProjectFiles(gitRepo);
+
+  const code = await generateCode(prompt, projectFiles, gitRepo);
+  const summary = await generateSummary(code);
+
+  const notebook = await initializeNotebook(notebookPath);
+  await addCellToNotebook(notebook, code, summary);
+
+  await fs.writeFileSync(notebookPath, JSON.stringify(notebook, null, 4));
+
+  return;
+}
+
+async function getGitRepo(github) {
+  if (github.includes('://')) {
+    github = github.replace('://', '');
+  }
+  return await path.join(HOME, github).includes(path.basename(github).replace('.git', ''))
+   ? path.join(HOME, github)
+    : github;
+}
+
+async function getFilePath(notebookFile, gitRepo) {
+  return await path.join(gitRepo, notebookFile);
+}
+
+async function pullGitRepo(gitRepo) {
+  return await spawnSync('git', ['pull'], {
+    cwd: gitRepo,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
+}
+
+async function getProjectFiles(gitRepo) {
+  return await fs.readdirSync(gitRepo).join('\n');
+}
+
+async function generateCode(prompt, projectFiles, gitRepo) {
+  const q1 = `Give the project files:\n${projectFiles}\nFulfill the following instructions on the code file, only return the block of new code:\n${prompt}\nResponse with only the block of code and no summary or reasoning.\n`;
+  return await importCode(q1);
+}
+
+async function generateSummary(code) {
+  const q2 = `Summarize this code:\n${code}\nRespond with the code summary in beautifully crafted markdown. Do not include the original code in the response.\n`;
+  return await importCode(q2);
+}
+
+async function initializeNotebook(notebookPath) {
+  if (!fs.existsSync(notebookPath)) {
+    const notebook = {
+      "cells": [],
+      "metadata": {
+        "language_info": {
+          "name": "javascript"
+        }
+      },
+      "nbformat": 4,
+      "nbformat_minor": 2
+    };
+    await fs.writeFileSync(notebookPath, JSON.stringify(notebook, null, 4));
+  }
+  return await JSON.parse(fs.readFileSync(notebookPath));
+}
+
+async function addCellToNotebook(notebook, code, summary) {
+  notebook.cells.push({
+    source: summary.split('\n').map(line => line + '\n'),
+    cell_type: "markdown",
+    metadata: {},
+    outputs: [],
+  });
+  notebook.cells.push({
+    source: code.split('\n').map(line => line + '\n'),
+    cell_type: "code",
+    metadata: {
+      "vscode": {
+        "languageId": "javascript"
+      }
+    },
+    outputs: [],
+  });
+  return notebook;
+}
+
+module.exports = makeCell;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that appears to be designed to use a large language model (LLM) to generate code blocks for a project. Here's a high-level overview of the code:</p>
 <h3>Dependencies and Variables</h3>
 <p>The script starts by importing the following dependencies:</p>

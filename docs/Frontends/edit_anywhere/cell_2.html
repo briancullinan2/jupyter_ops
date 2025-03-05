@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const Core = require('../Core');
+const { readGistFiles } = Core.import('read gist files');
+
+// Extract the getGist function to improve readability
+const getGist = (gistId) => readGistFiles(gistId);
+
+// Extract the $ object to improve readability
+const { sendResult, sendError, async: asyncMethod } = $;
+
+// Check if $ object is defined
+if (typeof $!== 'undefined') {
+  // Call the async method
+  asyncMethod();
+
+  // Get the gist
+  getGist('a572d0830ae72b962e12a57adaec7c52')
+   .then((response) => {
+      // Send the result
+      sendResult(response);
+    })
+   .catch((error) => {
+      // Send the error
+      sendError(error);
+    });
+} else {
+  // Log an error if $ object is not defined
+  console.error('$ object is not defined');
+}
+
+// TODO: Improve the error handling mechanism</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var getGist = importer.import('read gist files');

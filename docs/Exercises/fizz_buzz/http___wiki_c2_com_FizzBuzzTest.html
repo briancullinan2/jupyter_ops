@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This JavaScript code implements the classic &quot;FizzBuzz&quot; programming challenge.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Prints the FizzBuzz sequence up to 100.
+ * 
+ * The FizzBuzz sequence is a series of numbers where each number is replaced by:
+ * - "Fizz" if it's a multiple of 3
+ * - "Buzz" if it's a multiple of 5
+ * - The number itself if it's not a multiple of either 3 or 5
+ */
+function fizzBuzz() {
+    // Use a more efficient approach by directly generating the output string
+    for (let i = 1; i &lt;= 100; i++) {
+        const output = getFizzBuzzString(i);
+        console.log(output);
+    }
+}
+
+/**
+ * Returns the FizzBuzz string for a given number.
+ * 
+ * @param {number} num The number to generate the FizzBuzz string for
+ * @returns {string} The FizzBuzz string for the given number
+ */
+function getFizzBuzzString(num) {
+    // Use a more efficient approach by checking the conditions only once
+    let output = '';
+    if (num % 3 === 0) output += 'Fizz'; // Check for Fizz first to avoid adding extra strings
+    if (num % 5 === 0) output += 'Buzz';
+    if (output === '') output = num.toString(); // Use toString() for consistency
+    return output;
+}
+
+fizzBuzz();</code></pre></div><p>This JavaScript code implements the classic &quot;FizzBuzz&quot; programming challenge.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>function fizzBuzz() { ... }</code></strong>: Defines a function named <code>fizzBuzz</code> that encapsulates the logic.</p></li>

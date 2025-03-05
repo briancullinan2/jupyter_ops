@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -188,7 +195,84 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { updateOrAddSession } = require('./selenium-sessions');
+const { Builder, Browser, By, Key, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
+
+const APP_SUPPORT_DIR = getSupportDir();
+const CHROME_PROFILE =
+  os.platform() === 'win32'
+   ? path.join(APP_SUPPORT_DIR, 'Google/Chrome/User Data/Default')
+    : (os.platform() === 'darwin'
+       ? path.join(APP_SUPPORT_DIR, 'Google/Chrome/Default')
+        : path.join(APP_SUPPORT_DIR, 'google-chrome/default'));
+
+async function getClient() {
+  // Create a new instance of the Chrome driver
+  const builder = new Builder().forBrowser(Browser.CHROME);
+  const chromeOptions = new chrome.Options();
+
+  // Set up Chrome options
+  chromeOptions
+   .addArguments('--no-sandbox')
+   .addArguments('--disable-session-crashed-bubble')
+   .addArguments('--disable-infobars')
+   .addArguments('--new-window')
+   .addArguments('--disable-geolocation')
+   .addArguments('--disable-notifications')
+   .addArguments('--show-saved-copy')
+   .addArguments('--silent-debugger-extension-api')
+   .addArguments('--disable-blink-features=AutomationControlled')
+   .addArguments('--port=4444');
+
+  // Use the existing profile if it exists
+  if (fs.existsSync(CHROME_PROFILE)) {
+    console.log('Using existing profile:', CHROME_PROFILE);
+    chromeOptions.addArguments('--user-data-dir=' + path.join(path.dirname(CHROME_PROFILE), 'not-Default'));
+  } else {
+    console.log('Creating new profile at:', '/tmp/profile-1');
+    chromeOptions.addArguments('--user-data-dir=/tmp/profile-1');
+  }
+
+  // Set Chrome user preferences
+  chromeOptions.setUserPreferences({
+    'profile.default_content_setting_values.notifications': 2,
+    'exited_cleanly': true,
+    'exit_type': 'None',
+  });
+
+  // Set up the driver
+  const driver = builder.setChromeOptions(chromeOptions).build();
+
+  // Set up timeouts
+  await driver.manage().setTimeouts({ pageLoad: 10000 });
+
+  // Keep track of the session
+  await updateOrAddSession((await driver.getSession()).getId());
+
+  return driver;
+}
+
+// Helper function to get the application support directory
+function getSupportDir() {
+  const appSupportDir =
+    process.env.APP_SUPPORT_DIR ||
+    process.env.LOCALAPPDATA ||
+    (process.env.HOME
+     ? os.platform() === 'darwin'
+       ? path.join(process.env.HOME, 'Library/Application Support')
+        : path.join(process.env.HOME, '.config')
+      : void 0) ||
+    path.join(process.env.USERPROFILE, 'AppData/Local');
+
+  return appSupportDir;
+}
+
+module.exports = getClient;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code is a Node.js script that utilizes the Selenium WebDriver to create a Chrome browser session. Here's a simplified explanation of the code:</p>
 <h3>Importing Dependencies</h3>
 <p>The script starts by importing necessary dependencies:</p>

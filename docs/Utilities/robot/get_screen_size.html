@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const robot = require("robotjs");
+
+/**
+ * Get the current screen size.
+ * @returns {Object} An object containing the screen width and height.
+ */
+function getScreenSize() {
+  // Use object destructuring to simplify the return value
+  const { width, height } = robot.getScreenSize();
+
+  // Use object shorthand syntax to return the screen size directly
+  return { width, height };
+}
+
+// Export the function as a default export
+module.exports = getScreenSize;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Module</h3>
 <pre><code class="language-javascript">const robot = require(&quot;robotjs&quot;)
 </code></pre>

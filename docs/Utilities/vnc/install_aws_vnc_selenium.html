@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,26 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up a Selenium VNC server environment within a Jupyter/Angular project. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Navigate to the 'jupytangular' directory
+cd ~/jupytangular || {
+  echo "ERROR: Failed to navigate to directory 'jupytangular'."
+  exit 1
+}
+
+# Start the Selenium VNC server using npm run exec
+npm run exec "selenium vnc server" &> /dev/null || {
+  echo "ERROR: Failed to start Selenium VNC server."
+  exit 1
+}
+
+# Install the VNC package using npm run install:vnc
+npm run install:vnc &> /dev/null || {
+  echo "ERROR: Failed to install VNC package."
+  exit 1
+}</code></pre></div><p>This code snippet sets up a Selenium VNC server environment within a Jupyter/Angular project. Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>cd ~/jupytangular</code>:</strong> Navigates to the project's root directory, <code>jupytangular</code>, located in the user's home directory.</p></li>
 <li><p><strong><code>&amp;&amp; npm run exec &quot;selenium vnc server&quot;</code>:</strong> Executes an npm script named &quot;exec&quot; with the argument &quot;selenium vnc server&quot;. This likely starts a Selenium server configured for VNC access.</p></li>

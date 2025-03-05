@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -90,7 +97,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs').promises; // Use promises for asynchronous file operations
+const path = require('path');
+const sqlite3 = require('sqlite3');
+
+// Define database file path
+const DATABASE_FILE = path.join(
+  '/Users/briancullinan/Documents/studysauce3/db',
+ 'studysauce.db'
+);
+
+// Initialize SQLite database connection
+async function createDatabaseConnection() {
+  // Check if database file exists, create it if not
+  try {
+    await fs.access(DATABASE_FILE);
+  } catch (err) {
+    await fs.mkdir(path.dirname(DATABASE_FILE), { recursive: true });
+    await fs.writeFile(DATABASE_FILE, '');
+  }
+  return new sqlite3.Database(DATABASE_FILE);
+}
+
+// Read SQL commands from file
+async function getSQLCommands() {
+  // Use try-catch block to handle file reading errors
+  try {
+    const commands = await fs.readFile(
+      path.join('/Users/briancullinan/Documents/studysauce3/db','studysauce.sqlite'),
+      'utf8'
+    );
+    return commands;
+  } catch (err) {
+    console.error(`Error reading SQL commands: ${err}`);
+    return '';
+  }
+}
+
+// Execute SQL commands in database
+async function executeCommands(db, commands) {
+  // Use transaction to execute multiple commands
+  await db.exec(commands);
+  // TODO: Handle errors and exceptions
+}
+
+// Main function to create database connection and execute SQL commands
+async function main() {
+  try {
+    const db = await createDatabaseConnection();
+    const commands = await getSQLCommands();
+    await executeCommands(db, commands);
+    console.log('SQL commands executed successfully');
+  } catch (err) {
+    console.error(`Error executing SQL commands: ${err}`);
+  } finally {
+    // Close database connection
+    db.close();
+  }
+}
+
+main();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Node.js Modules</h4>
 <pre><code class="language-javascript">var fs = require('fs')
 var path = require('path')

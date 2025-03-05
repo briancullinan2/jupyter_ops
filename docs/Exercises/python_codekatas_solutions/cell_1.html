@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>merge(a, b)</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+def merge_sorted_descending(list1, list2):
+    """
+    Merge two lists sorted in descending order into a new sorted list.
+
+    Args:
+        list1 (list): The first list to merge.
+        list2 (list): The second list to merge.
+
+    Returns:
+        list: A new list containing all elements from both input lists, sorted in descending order.
+
+    Raises:
+        ValueError: If either input list is not sorted in descending order.
+    """
+    # Check if input lists are sorted in descending order
+    if not all(x &gt;= y for x, y in zip(list1, list1[1:] + [0])) or \
+       not all(x &gt;= y for x, y in zip(list2, list2[1:] + [0])):
+        raise ValueError("Input lists must be sorted in descending order.")
+
+    # Merge the lists using a two-pointer technique
+    result = []
+    i, j = 0, 0
+
+    # Compare elements from both lists and add the larger one to the result
+    while i &lt; len(list1) and j &lt; len(list2):
+        if list1[i] &gt;= list2[j]:
+            result.append(list1[i])
+            i += 1
+        else:
+            result.append(list2[j])
+            j += 1
+
+    # Add any remaining elements from the first list
+    while i &lt; len(list1):
+        result.append(list1[i])
+        i += 1
+
+    # Add any remaining elements from the second list
+    while j &lt; len(list2):
+        result.append(list2[j])
+        j += 1
+
+    return result
+
+assert merge_sorted_descending([], []) == []
+assert merge_sorted_descending([1], [0]) == [1, 0]
+assert merge_sorted_descending([7, 5, 1], [2]) == [7, 5, 2, 1]
+print('All passed!')</code></pre></div><h3>Function: <code>merge(a, b)</code></h3>
 <h4>Purpose</h4>
 <p>Merge two lists <code>a</code> and <code>b</code>, each sorted in descending order, into a single list.</p>
 <h4>Parameters</h4>

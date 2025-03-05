@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -104,7 +111,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>selectDropdown</code> that automates the process of selecting an option from a dropdown menu on a webpage.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>function selectDropdown(client, label) {
+    const dropdownSelectors = [
+        `//*[contains(., '${label}')]/*[contains(@role, 'listbox') or contains(@aria-label, '${label}') or contains(@class, 'button-dropdown')]`,
+        `//*[contains(@aria-label, '${label}')][contains(@role, 'listbox') or @role='listbox' or contains(@class, 'button-dropdown')]`,
+    ];
+
+    return client
+       .click(dropdownSelectors.join(' | '))
+       .pause(1000);
+}
+
+function selectOption(client, label, value) {
+    return client
+       .click(`//*[contains(@aria-label, "${label}") and contains(@class, "menuitem") or contains(@role, "gridcell")][not(contains(@class, "other-month")) and contains(.,"${value}")]`)
+       .pause(1000);
+}
+
+module.exports = { selectDropdown, selectOption };</code></pre></div><p>This code snippet defines a function <code>selectDropdown</code> that automates the process of selecting an option from a dropdown menu on a webpage.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2><strong>Overview</strong></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="cpp"><code>#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QHBoxLayout>
+
+/**
+ * @brief Main function responsible for creating and running the application.
+ *
+ * @param argc The number of command line arguments.
+ * @param argv An array of command line arguments.
+ *
+ * @return The application's exit code.
+ */
+int main(int argc, char *argv[]) {
+    // Create a new instance of QApplication
+    QApplication app(argc, argv);
+
+    // Create a new instance of QWidget to serve as the application window
+    QWidget window;
+    // Set the window title
+    window.setWindowTitle("Qt Layout Example");
+
+    // Create three instances of QPushButton
+    QPushButton *button1 = new QPushButton("Button 1");
+    QPushButton *button2 = new QPushButton("Button 2");
+    QPushButton *button3 = new QPushButton("Button 3");
+
+    // Create a new instance of QHBoxLayout to manage the button layout
+    QHBoxLayout *layout = new QHBoxLayout;
+
+    // Add the buttons to the layout in sequence
+    layout->addWidget(button1);
+    layout->addWidget(button2);
+    layout->addWidget(button3);
+
+    // Set the layout for the application window
+    window.setLayout(layout);
+    // Show the window on screen
+    window.show();
+
+    // Run the application's event loop
+    return app.exec();
+}</code></pre></div><h2><strong>Overview</strong></h2>
 <p>The provided code is a simple Qt application that creates a window with a horizontal layout containing three buttons.</p>
 <h2><strong>Includes</strong></h2>
 <ul>

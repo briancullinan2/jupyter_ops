@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> |  | <a href="./how_does_node_module_require_work.html">how does node module require work</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>getCellPath(cell)</code> function generates a unique file path for a cell in a notebook by appending the cell ID and question (if present) to the notebook directory. The <code>importNotebook(notebook, ctx = {})</code> function imports a notebook and returns an object containing modules for each cell in the notebook, created using language-specific functions.</p>
+  <p>The code defines a function <code>importNotebook</code> to import a notebook, which interprets the notebook using the <code>interpret</code> function from the <code>Core</code> module, and then makes a module based on the notebook's language.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "import notebook"</code></pre><h1>import notebook</h1>
@@ -258,42 +265,148 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h1><strong>Function Breakdown</strong></h1>
-<h3>getCellPath(cell)</h3>
-<p>This function generates a unique file path for a cell in a notebook.</p>
-<ul>
-<li>It takes a single argument <code>cell</code>, which is expected to have the following properties:
-<ul>
-<li><code>filename</code>: the path to the notebook file</li>
-<li><code>id</code>: a unique identifier for the cell</li>
-<li><code>questions</code>: an array of questions, which is used to generate a string to append to the file path</li>
-</ul></li>
-<li>It returns a string representing the file path, with the cell ID and question (if present) appended to the notebook directory.</li>
-</ul>
-<h3>importNotebook(notebook, ctx = {})</h3>
-<p>This function imports a notebook and returns a promise that resolves to an object.</p>
-<ul>
-<li>It takes two arguments:
-<ul>
-<li><code>notebook</code>: the notebook to import, which can be a single notebook or an array of notebooks</li>
-<li><code>ctx</code>: an optional object containing context information</li>
-</ul></li>
-<li>It checks if <code>notebook</code> is <code>undefined</code> and returns an empty object if so.</li>
-<li>It uses the <code>interpret</code> function to get the cells in the notebook.</li>
-<li>It then checks the language of each cell and calls the corresponding function to create a module:
-<ul>
-<li>For Python cells, it calls <code>makePythonModule</code>.</li>
-<li>For C# cells, it calls <code>makeDLL</code>.</li>
-<li>For C, C++, or Objective-C cells, it calls <code>makeDylib</code>.</li>
-<li>If the language is unknown, it logs a message and returns an empty object.</li>
-</ul></li>
-</ul>
-<p><strong>Notes</strong></p>
-<ul>
-<li>The function assumes that the <code>interpret</code> function returns an object with a <code>code</code> property that contains the cell's source code.</li>
-<li>The <code>makePythonModule</code>, <code>makeDLL</code>, and <code>makeDylib</code> functions are not defined in this code snippet, but they are expected to take the cell's source code, ID, and context as arguments.</li>
-<li>The function logs a message when importing a notebook with a single cell that is not in the <code>Core</code> directory.</li>
-</ul>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { interpret, makeModule, makeESModule, makeDylib, makeDLL, makePythonModule } = require('../Core');
+
+class Accumulator {
+    constructor() {
+        this.info = [];
+        this.error = [];
+        this.log = [];
+    }
+
+    info(...args) {
+        this.info.push(args.map(a => String(a)).join(' '));
+        console.info(...args);
+    }
+
+    error(...args) {
+        this.error.push(args.map(a => String(a)).join(' '));
+        console.error(...args);
+    }
+
+    log(...args) {
+        this.log.push(args.map(a => String(a)).join(' '));
+        console.log(...args);
+    }
+}
+
+const console = new Accumulator();
+
+const getCellPath = (cell) => {
+    const { questions, filename, id } = cell;
+    const question = questions && questions[0]? ` aka ${questions[0].substr(0, 50)}` : '';
+    return path.join(path.dirname(path.resolve(filename)), id) + question;
+};
+
+const isESModule = (source) => /^import\s|^export\s/gi.test(source.join(''));
+
+const getModuleMaker = (language, makeDylib, makeDLL, makePythonModule) => {
+    switch (language) {
+        case 'csharp':
+            return makeDLL;
+        case 'c':
+        case 'cpp':
+        case 'objective-c':
+            return makeDylib;
+        case 'python':
+            return makePythonModule;
+        default:
+            return makeModule;
+    }
+};
+
+const importNotebook = async (notebook, ctx = {}) => {
+    if (arguments.length > 2) {
+        notebook = Array.from(arguments);
+        if (typeof notebook[notebook.length - 1] === 'object' &&!Array.isArray(notebook[notebook.length - 1])) {
+            notebook = notebook.slice(0, notebook.length - 1);
+            ctx = notebook[notebook.length - 1];
+        }
+    }
+
+    if (typeof notebook === 'undefined') {
+        return Promise.resolve({});
+    }
+
+    const cells = await interpret(notebook);
+
+    const package = {};
+    const moduleMakers = {};
+
+    for (const cell of cells) {
+        const { source, language, id, filename } = cell;
+        const { make } = getModuleMaker(language, makeDylib, makeDLL, makePythonModule);
+
+        if (isESModule(source)) {
+            await console.log(`importing ${filename} - ES module`);
+            moduleMakers[id] = makeESModule(source.join(''), filename, ctx);
+        } else {
+            await console.log(`importing ${filename} - ${cells.length} cell - ${id}`);
+            moduleMakers[id] = await make(source.join(''), getCellPath(cell), ctx);
+        }
+
+        Object.assign(package, moduleMakers[id]);
+        Object.assign(ctx, package);
+    }
+
+    return package;
+};
+
+module.exports = {
+    importNotebook,
+    console,
+    package: {}
+};</code></pre></div><h3>Code Breakdown</h3>
+<p><strong>Importing Modules and Functions</strong></p>
+<p>The code starts by importing the <code>path</code> module and defining a function <code>getCellPath</code> to construct a file path from a cell object.</p>
+<pre><code class="language-javascript">var path = require('path');
+function getCellPath(cell) {
+    //...
+}
+</code></pre>
+<p><strong>Defining Accumulator and Console Objects</strong></p>
+<p>It then defines two objects: <code>ACCUMULATOR</code> and <code>CONSOLE</code>. <code>ACCUMULATOR</code> is an object that accumulates log messages, and <code>CONSOLE</code> is an object that provides wrapper functions for <code>console.log</code>, <code>console.info</code>, and <code>console.error</code>. These wrapper functions add log messages to the <code>ACCUMULATOR</code> object.</p>
+<pre><code class="language-javascript">const ACCUMULATOR = {
+    info: [],
+    error: [],
+    log: [],
+}
+
+const CONSOLE = {
+    info: function (...args) {
+        //...
+    },
+    error: function (...args) {
+        //...
+    },
+    log: function (...args) {
+        //...
+    },
+}
+</code></pre>
+<p><strong>Defining the ImportNotebook Function</strong></p>
+<p>The <code>importNotebook</code> function is defined to import a notebook. It takes a <code>notebook</code> parameter, which can be either a single value or an array of values, and an optional <code>ctx</code> parameter.</p>
+<pre><code class="language-javascript">function importNotebook(notebook, ctx = {}) {
+    //...
+}
+</code></pre>
+<p><strong>Interpreting and Making Modules</strong></p>
+<p>The function uses the <code>interpret</code> function from the <code>Core</code> module to interpret the notebook. It then checks the language of the notebook and makes a module using the corresponding function (e.g., <code>makePythonModule</code> for Python notebooks).</p>
+<pre><code class="language-javascript">var cells = interpret(notebook)
+if (typeof cells.code!== 'undefined') {
+    if (!cells.filename.includes('Core')) {
+        CONSOLE.log(`importing ${notebook} - 1 cell - ${cells.id}`)
+    }
+
+    if (cells.language == 'python') {
+        return makePythonModule(cells.code, ctx)
+    }
+}
+</code></pre>
+<p><strong>Incomplete Documentation</strong></p>
+<p>The code snippet appears to be incomplete, as there are several TODO comments and some functions are not fully defined. Additionally, the <code>importNotebook</code> function seems to return a <code>Promise</code>, but it is not clear what the resolution value is.</p>
 
 </body>
 

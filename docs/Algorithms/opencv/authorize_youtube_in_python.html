@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -219,7 +226,8 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>pip install Flask google-auth-oauthlib google-api-python-client</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Python script that uses the Flask web framework and the Google API Client Library to create a simple web application that authenticates users with Google and authorizes them to access the YouTube API.</p>
 <h3>Importing Libraries</h3>
 <p>The script starts by importing various libraries:</p>

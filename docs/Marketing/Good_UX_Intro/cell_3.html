@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -87,7 +94,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Import the required library or module
+import { screen } from 'ts-screen';
+
+/**
+ * Function to set up the screen with specific settings.
+ *
+ * @param url The URL of the webpage to display.
+ * @param options The screen settings.
+ */
+function setupScreen(url: string, options: { zoom: number; width: number; 'crop-y': number; 'crop-h': number }) {
+  // Set the screen settings based on the provided options
+  screen(url, {
+    zoom: options.zoom,
+    width: options.width,
+    cropY: options['crop-y'],
+    cropHeight: options['crop-h'],
+  });
+}
+
+// Call the function with the provided arguments
+setupScreen('act.com', { zoom: 0.5, width: 680, 'crop-y': 1200, 'crop-h': 400 });</code></pre></div><h3>Code Breakdown</h3>
 <p>This code is written in JavaScript and utilizes the <code>$TS.screen()</code> function.</p>
 <h4>Function Parameters</h4>
 <ul>

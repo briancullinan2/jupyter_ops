@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,48 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet uses the Gulp build tool to modify a project's source code.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required gulp plugins
+const { src, dest, series, parallel } = require('gulp');
+const replace = require('gulp-replace');
+const tap = require('gulp-tap');
+const path = require('path');
+const dotenv = require('dotenv'); // Load environment variables from.env file
+
+// Load environment variables from.env file
+dotenv.config();
+
+// Define constants
+const PROJECT_DIR = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const PROJECT_PATH = path.join(PROJECT_DIR, 'Documents/universal');
+const SRC_FILES = path.join(PROJECT_PATH, '**/app.browser.module.ts');
+
+// Gulp task: Build project
+gulp.task('build', (cb) => {
+    // Use parallel to run multiple tasks concurrently
+    return parallel(
+        // Rename the project
+        () => src(SRC_FILES, { cwd: PROJECT_PATH })
+           .pipe(replace('appId: \'my-app-id\'', 'appId: \'jupytangular-module-server\''))
+           .pipe(tap((file) => {
+                console.log(file.contents.toString());
+            })),
+    )(cb);
+});
+
+// Gulp task: Default
+gulp.task('default', async () => {
+    try {
+        // Use series to run tasks sequentially
+        await series('build');
+        $.sendResult();
+    } catch (e) {
+        $.sendError(e);
+    }
+});
+
+// Gulp task: Run default task
+gulp.task('run', Gulp.task('default'));</code></pre></div><p>This code snippet uses the Gulp build tool to modify a project's source code.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

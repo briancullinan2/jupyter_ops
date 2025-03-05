@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>const importer = require('../Core');
+const {
+  getInfo,
+  nextInfoResponse,
+  getChallenge,
+  nextChallengeResponse,
+  udpClient,
+  sendConnect,
+  nextConnectResponse,
+  nextChannelMessage,
+  nextGamestate,
+  sendPureChecksums,
+  nextSnapshot,
+  sendReliable,
+  nextChat,
+} = importer.import('quake 3 server commands');
+const discordApi = importer.import('discord api');
+const { authorizeGateway } = importer.import('authorize discord');
+const removeCtrlChars = importer.import('remove ctrl characters');
+
+/**
+ * Spectates a Quake 3 server and prints chat messages to Discord.
+ * @param {string} address - The address of the server (default: 'localhost').
+ * @param {number} port - The port number of the server (default: 27960).
+ * @returns {Promise&lt;void&gt;}
+ */
+async function spectateServer(address = 'localhost', port = 27960) {
+  // Authorize Discord gateway only when not running from index.js
+  if (process.env.NODE_ENV!== 'development') {
+    await authorizeGateway();
+  }
+
+  // Generate a random challenge
+  const challenge = new Uint32Array(4);
+  for (let i = 0; i &lt; 4; i++) {
+    challenge[i] = Math.floor(Math.random() * 256);
+  }
+
+  // Get Quake 3 server info
+  const info = await getInfo(address, port);
+  if (!info) {
+    return;
+  }
+
+  // Get challenge response from the server
+  await getChallenge(address, port, challenge[0], info.gamename || info.game);
+  const challengeResponse = await nextChallengeResponse(address, port);
+  const serverChallenge = challengeResponse.challenge;
+
+  // Send connect packet to the server
+  await sendConnect(address, port, {
+    qport: udpClient.address().port,
+    challenge: serverChallenge,
+    name: 'Orbb-Bot',
+    protocol: 71,
+  });
+
+  // Get connect response from the server
+  const connectResponse = await nextConnectResponse(address, port);
+  if (!connectResponse) {
+    return;
+  }
+
+  // Get Quake 3 game state
+  const gamestate = await nextGamestate(address, port);
+  if (!gamestate.channel) {
+    return;
+  }
+
+  // Send pure checksums to the server if it's a pure server
+  if (gamestate.isPure) {
+    await sendPureChecksums(address, port, gamestate);
+  }
+
+  // Get snapshot from the server
+  await nextSnapshot(address, port);
+
+  // Send reliable message to the server
+  await sendReliable(address, port, 'team s');
+
+  // Set up interval to print chat messages to Discord
+  const printInterval = setInterval(async () =&gt; {
+    const message = await nextChat(address, port);
+    if (message) {
+      const cleanedMessage = removeCtrlChars((/"([^"]*?)"/).exec(message)[1]);
+      await discordApi.createMessage(cleanedMessage, info.channelId);
+    }
+  }, 100);
+
+  return printInterval;
+}
+
+module.exports = spectateServer;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing various modules using the <code>importer</code> object. The imported modules are:</p>
 <ul>

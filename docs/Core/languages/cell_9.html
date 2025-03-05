@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -141,7 +148,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules, keeping them in scope
+import babel from 'babel-core';
+import importer from '../Core';
+
+// Import babel transpiler, using a more descriptive variable name
+const babelTranspiler = importer.import('babel transpiler');
+
+// Define a function to add imports
+function addImports(code) {
+  /**
+   * Adds imports to the given code.
+   * 
+   * @param {string} code - The code to add imports to.
+   * 
+   * @returns {string} The code with added imports.
+   */
+  return `var addImports = require('./');\n${code}`;
+}
+
+// Transform the code using babel
+const transformedCode = babel.transform(addImports(`
+// some test code
+`), {
+  /**
+   * Babel configuration options.
+   * 
+   * @see https://babeljs.io/docs/en/babel-core#options
+   */
+  presets: [
+    /**
+     * Enable babel transpiler preset.
+     * 
+     * @see https://babeljs.io/docs/en/babel-preset-env
+     */
+    babelTranspiler,
+  ],
+  plugins: [], // TODO: Add 'estree' plugin when available
+  filename: 'test_code.js',
+});
+
+// Log the transformed code
+console.log(transformedCode.code);
+
+/**
+ * Expected output
+ * 
+ * var addImports = require('./');
+ */</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var babel = require('babel-core')
 var importer = require('../Core')

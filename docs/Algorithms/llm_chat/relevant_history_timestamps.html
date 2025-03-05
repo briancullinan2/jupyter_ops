@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = require('./general-chit-chat');
+
+/**
+ * Filter timestamps from AI response.
+ * @param {string[]} timestamps - Initial list of timestamps.
+ * @param {string} promptModel - AI model response.
+ * @returns {string[]} Filtered timestamps.
+ */
+async function filterTimestamps(promptModel, timestamps) {
+  // Use regular expression to match timestamps in AI response.
+  const regex = new RegExp(timestamps.map(time =&gt; escapeRegExp(time)).join('|'));
+  return timestamps.filter(time =&gt; regex.test(promptModel));
+}
+
+/**
+ * Ask LLaMA to match timestamps.
+ * @param {string} promptModel - AI model response.
+ * @param {string[]} messages - Messages to be matched.
+ * @param {string[]} keywords - Keywords to be matched.
+ * @param {string} prompt - Prompt to be matched.
+ * @param {string[]} timestamps - Timestamps to be matched.
+ * @returns {string[]} Matching timestamps.
+ */
+async function askLlamaMatchTimestamps(promptModel, messages, keywords, prompt, timestamps) {
+  // Construct the prompt for LLaMA.
+  const q3 = `Given the following keywords:\n${keywords.join('\n')}\n${messages}${prompt}\nOnly respond with related and unique timestamps, no explanations.`;
+  console.log('User:', q3);
+  let a3 = await promptModel(q3);
+  console.log('AI:', a3);
+
+  return await filterTimestamps(a3, timestamps);
+}
+
+/**
+ * Matching timestamps and return.
+ * @param {import('general-chit-chat').LlaMAModelType} promptModel - AI model.
+ * @param {string} session - Session ID.
+ * @param {string} prompt - Prompt to be matched.
+ * @param {string[]} keywords - Keywords to be matched.
+ * @returns {Promise&lt;string[]&gt;} Matching timestamps.
+ */
+async function matchingTimestamps(promptModel, session, prompt, keywords) {
+  // Initialize matching timestamps.
+  const matchingTimestamps = [];
+
+  // Get recent conversations.
+  const loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
+   .filter(key =&gt; key.match(`-${DEFAULT_MODEL}-${session}.json`));
+
+  // Loop through each conversation.
+  for (const conversation of loadedConversations) {
+    // Get timestamps and messages.
+    const timestamps = Object.keys(ACTIVE_CONVERSATIONS[conversation]).filter(k =&gt; k!=='summaries' &amp;&amp; k!=='memories');
+    timestamps.sort((a, b) =&gt; b - a);
+
+    // Loop through each timestamp.
+    for (const timestamp of timestamps) {
+      // Get message.
+      const message = ACTIVE_CONVERSATIONS[conversation][timestamp];
+
+      // Check if prompt or keywords match.
+      if (prompt.match(timestamp) || keywords.some(key =&gt; message.keywords.match(key))) {
+        // Add timestamp to messages.
+        const newMessages = `Current date: ${new Date().toISOString()}\nOur recent topics:\n${matchingTimestamps.length &gt; 0? '...' : ''}${matchingTimestamps.join('\n')}\n${new Date(parseInt(timestamp)).toISOString()} - ${keywords.filter(key =&gt; message.keywords.match(key)).join(', ')}${message.summary? ` - ${message.summary}` : ''}\n`;
+
+        // Check if messages are too long.
+        if (newMessages.length &gt; 2048) {
+          // Ask LLaMA to match timestamps.
+          const newTimestamps = await askLlamaMatchTimestamps(promptModel, newMessages, keywords, prompt, timestamps);
+          matchingTimestamps = matchingTimestamps.concat(newTimestamps);
+
+          // Reset messages.
+          matchingTimestamps.push(timestamp);
+        } else {
+          // Add timestamp to matching timestamps.
+          matchingTimestamps.push(timestamp);
+        }
+      }
+    }
+  }
+
+  // Return matching timestamps.
+  return matchingTimestamps;
+}
+
+module.exports = matchingTimestamps;
+
+// Helper function to escape special characters in regular expression.
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\${OUTPUT}amp;');
+}
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Constants</h3>
 <p>The code starts by importing constants from an <code>importer</code> module:</p>
 <pre><code class="language-javascript">const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = importer.import('general chit chat')

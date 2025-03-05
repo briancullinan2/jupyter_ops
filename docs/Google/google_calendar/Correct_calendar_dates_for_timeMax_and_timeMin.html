@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>correctTimeLimits</code> that takes an object <code>options</code> as input.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { convertDateToISO } = require('../Core');
+const chrono = require('chrono-node');
+
+/**
+ * Corrects time limits by converting them to ISO format if provided.
+ * 
+ * @param {Object} options - Options object with timeMin and timeMax properties.
+ * @returns {Object} Options object with timeMin and timeMax properties in ISO format.
+ */
+function correctTimeLimits(options) {
+    // Check if options timeMin and timeMax are defined
+    if (options.timeMin &amp;&amp; typeof options.timeMin ==='string') {
+        try {
+            // Attempt to parse the date using chrono
+            options.timeMin = convertDateToISO(chrono.parseDate(options.timeMin));
+        } catch (error) {
+            // If parsing fails, log the error and continue
+            console.error(`Error parsing timeMin: ${error.message}`);
+        }
+    }
+
+    if (options.timeMax &amp;&amp; typeof options.timeMax ==='string') {
+        try {
+            // Attempt to parse the date using chrono
+            options.timeMax = convertDateToISO(chrono.parseDate(options.timeMax));
+        } catch (error) {
+            // If parsing fails, log the error and continue
+            console.error(`Error parsing timeMax: ${error.message}`);
+        }
+    }
+
+    return options;
+};
+
+module.exports = correctTimeLimits;</code></pre></div><p>This code defines a function <code>correctTimeLimits</code> that takes an object <code>options</code> as input.</p>
 <p>Here's what it does:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

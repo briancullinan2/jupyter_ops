@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -176,7 +183,101 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="csharp"><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Rosetta
+{
+    public class Euler
+    {
+        private const ulong MaxValue = 20;
+        private const ulong MinValue = 1;
+
+        public async Task<string> RunEuler(object input)
+        {
+            // Validate input
+            if (!(input is object[] || input is dynamic))
+            {
+                throw new ArgumentException("Input must be an object array or a dynamic object");
+            }
+
+            // Calculate Euler's result in a separate thread
+            return await Task.Run(() => Calculate());
+        }
+
+        public string Main()
+        {
+            return Calculate();
+        }
+
+        public ulong Calculate()
+        {
+            // Get prime factor lists for numbers from 1 to MaxValue
+            var primeFactorLists = GetPrimeFactorLists(MinValue, MaxValue);
+
+            // Find the overlapping prime factors
+            var overlappingFactors = primeFactorLists.Aggregate((a, b) => Overlap(a, b));
+
+            // Calculate the product of overlapping prime factors
+            return overlappingFactors.Aggregate((product, factor) => product * factor);
+        }
+
+        public List<ulong> Overlap(List<ulong> a, List<ulong> b)
+        {
+            // Convert lists to sets for efficient overlap calculation
+            var setA = new HashSet<ulong>(a);
+            var setB = new HashSet<ulong>(b);
+
+            // Get the intersection of sets A and B
+            setA.IntersectWith(setB);
+
+            // Convert the intersection back to a list
+            return setA.ToList();
+        }
+
+        public List<List<ulong>> GetPrimeFactorLists(ulong minValue, ulong maxValue)
+        {
+            // Create a list to store prime factor lists
+            var primeFactorLists = new List<List<ulong>>();
+
+            // Get prime factor lists for numbers from minValue to maxValue
+            for (ulong x = minValue; x <= maxValue; x++)
+            {
+                primeFactorLists.Add(PrimeFactors(x));
+            }
+
+            return primeFactorLists;
+        }
+
+        public List<ulong> PrimeFactors(ulong n)
+        {
+            // Get the minimum factor of n
+            var factor = GetMinimumFactor(n);
+
+            // Split n into two parts: n and n / factor
+            var result = new List<ulong>() { factor };
+            result.AddRange(PrimeFactors(n / factor));
+
+            return result;
+        }
+
+        public ulong GetMinimumFactor(ulong n)
+        {
+            // Find the smallest factor of n greater than 1
+            for (ulong i = 2; i <= n / 2; i++)
+            {
+                if (n % i == 0)
+                {
+                    return i;
+                }
+            }
+
+            return n;
+        }
+    }
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Namespaces and Class</h3>
 <p>The code uses the <code>System</code> namespace and defines a class <code>Euler</code> within a namespace <code>Rosetta</code>.</p>
 <h3>Methods</h3>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and ensure they are properly initialized
+import { createWebdriverClient } from './webdriver-client';
+import { $ } from './webdriver-utils';
+
+if (typeof client!== 'undefined' && typeof $!== 'undefined') {
+  // Check if $.async method is available
+  if ($.async!== undefined) {
+    $.async();
+  }
+
+  // Create a new Webdriver Client instance and handle promises
+  createWebdriverClient('localhost', 4444)
+   .then((clientInstance) => {
+      // Send the result of the client instance creation to $
+      $.sendResult(clientInstance);
+    })
+   .catch((error) => {
+      // Send the error to $ for handling
+      $.sendError(error);
+    });
+}
+
+// TODO: Consider adding a timeout for the client creation to prevent infinite waits
+// TODO: Add logging or other error handling mechanisms to improve the robustness of the code</code></pre></div><h3>Code Breakdown</h3>
 <h4>Conditional Statement</h4>
 <ul>
 <li>Checks if two variables are defined:

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -62,7 +69,7 @@
     <a href="../discord_imagine/index.html">discord imagine</a> | <a href="./update_discord_interaction_with_attachments.html">update discord interaction with attachments</a> | <a href="./discord_mid_journey_commands.html">discord mid journey commands</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code consists of two functions, <code>doHallucinate</code> and <code>doImagineProxy</code>, which interact with the Discord API to generate images based on user prompts, while implementing content filtering and loading indicators. The functions utilize external libraries and services such as <code>llmPrompt</code> and <code>doStableRequest</code> to create and send the generated images to users.</p>
+  <p>The code defines two asynchronous functions: <code>doHallucinate</code> and <code>doImagineProxy</code>, which generate images based on user input and interact with the Discord API using various imported modules and functions. The functions handle different scenarios, such as guilds, typing indicators, and rating checks, to ensure a secure and interactive experience.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "discord stability proxy"</code></pre><h1>discord stability proxy</h1>
@@ -72,6 +79,7 @@
 <pre class="javascript"><code>const {patchInteractionImageAttachment} = importer.import("<a href="../../Frontends/discord_imagine/update_discord_interaction_with_attachments.html">update discord interaction with attachments</a>")
 const {doStableRequest} = importer.import("<a href="../../Algorithms/llama_vision/stable_diffusion_request.html">stable diffusion request</a>")
 const whiskImages = importer.import("<a href="../../Algorithms/llama_vision/whisk_images.html">whisk images</a>")
+const {triggerTyping, updateInteraction} = importer.import("<a href="../../Frontends/discord/discord_api.html">disrcord api</a>")
 
 async function doHallucinate(interaction) {
   const {llmPrompt} = await importer.import("<a href="../../Algorithms/llama/create_llm_session.html">create llm session</a>")
@@ -143,36 +151,172 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
-<p>The provided code consists of two functions: <code>doHallucinate</code> and <code>doImagineProxy</code>. Both functions are designed to interact with the Discord API and utilize external libraries (<code>importer</code>) to perform various tasks.</p>
-<h3><code>doHallucinate</code> Function</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const {
+  patchInteractionImageAttachment,
+  triggerTyping,
+  updateInteraction,
+} = require('./discord-api');
+const { doStableRequest } = require('./stable-diffusion-request');
+const { whiskImages } = require('./whisk-images');
+
+// Define a constant for the interaction API
+const interactionApi = {
+  triggerTyping,
+  updateInteraction,
+};
+
+// Define a constant for the stable diffusion request API
+const stableDiffusionRequestApi = {
+  doStableRequest,
+};
+
+// Define a constant for the whisk images API
+const whiskImagesApi = {
+  whiskImages,
+};
+
+// Define the doHallucinate function
+async function doHallucinate(interaction) {
+  // TODO: Consider caching the LLM session to avoid repeated imports
+  const { llmPrompt } = await require('./create-llm-session')();
+  
+  // Ask the LLM to generate a hallucinated scene
+  const prompt = `Imagine a scene that is much more exotic, weird, bizarre and detailed with this topic: ${interaction.data.options[0].value}\nFit as much detail as possible in to two or three sentences.`;
+  const hallucinatedScene = await llmPrompt(prompt);
+
+  // Check if the hallucinated scene is rated R
+  const isRatedR = await checkIfRatedR(interaction, hallucinatedScene, llmPrompt);
+
+  // If the hallucinated scene is rated R, return an error message
+  if (isRatedR) {
+    return updateInteraction('I will not.', interaction.id, interaction.token);
+  }
+
+  // Otherwise, generate an image using the stable diffusion request API
+  const { image } = await generateImage(interaction.data.options[0].value, hallucinatedScene, stableDiffusionRequestApi);
+
+  // Return the generated image
+  return patchInteractionImageAttachment(`${interaction.data.options[0].value} -&gt; ${hallucinatedScene}`, image, interaction.token);
+}
+
+// Define the doImagineProxy function
+async function doImagineProxy(interaction) {
+  // Check if the interaction is rated PG
+  const isRatedPG = await checkIfRatedPG(interaction, interaction.data.options[0].value);
+
+  // If the interaction is not rated PG, return an error message
+  if (!isRatedPG) {
+    return updateInteraction('I will not.', interaction.id, interaction.token);
+  }
+
+  // Otherwise, generate an image using the stable diffusion request API
+  const { image } = await generateImage(interaction.data.options[0].value, null, stableDiffusionRequestApi);
+
+  // Return the generated image
+  return patchInteractionImageAttachment(interaction.data.options[0].value, image, interaction.token);
+}
+
+// Define the doWhisk function
+async function doWhisk(interaction) {
+  // Generate an image using the whisk images API
+  const { image } = await whiskImagesApi.whiskImages(
+    interaction.data.options[0].value,
+    interaction.data.options[1].value,
+    interaction.data.options[2].value,
+  );
+
+  // Return the generated image
+  return patchInteractionImageAttachment(interaction.data.options[0].value, image, interaction.token);
+}
+
+// Define the checkIfRatedR function
+async function checkIfRatedR(interaction, hallucinatedScene, llmPrompt) {
+  // Check if the interaction is in a guild
+  if (!interaction.guild_id) {
+    return false;
+  }
+
+  // Ask the LLM to determine if the hallucinated scene is rated R
+  const isRatedR = await llmPrompt(`Would this prompt be considered to be rated R or for mature audiences, answer Yes or No only?\n${hallucinatedScene}`);
+
+  // Return true if the hallucinated scene is rated R, false otherwise
+  return isRatedR.includes('Yes');
+}
+
+// Define the checkIfRatedPG function
+async function checkIfRatedPG(interaction, prompt) {
+  // Check if the interaction is in a guild
+  if (!interaction.guild_id) {
+    return true;
+  }
+
+  // Ask the LLM to determine if the prompt is rated PG
+  const isRatedPG = await require('./create-llm-session')().llmPrompt(`Would this prompt be considered to be rated PG or safe for children, answer Yes or No only?\n${prompt}`);
+
+  // Return true if the prompt is rated PG, false otherwise
+  return isRatedPG.includes('Yes');
+}
+
+// Define the generateImage function
+async function generateImage(prompt, hallucinatedScene, stableDiffusionRequestApi) {
+  // Generate an image using the stable diffusion request API
+  const { image } = await stableDiffusionRequestApi.doStableRequest(prompt);
+
+  // Return the generated image
+  return { image };
+}
+
+// Export the functions
+module.exports = {
+  doHallucinate,
+  doImagineProxy,
+  doWhisk,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Imported Modules</h3>
+<p>The code starts by importing various modules:</p>
 <ul>
-<li>This function takes an <code>interaction</code> object as input.</li>
-<li>It uses the <code>llmPrompt</code> function from <code>create llm session</code> to ask the user to imagine a scene that is exotic, weird, bizarre, and detailed.</li>
-<li>If the interaction is in a guild (server), it checks if the prompt is rated R using the <code>llmPrompt</code> function.</li>
-<li>If the prompt is rated R, the function returns an &quot;I will not&quot; response to the interaction.</li>
-<li>Otherwise, it sends a typing indicator to the interaction channel and updates the interaction with a loading message.</li>
-<li>It then uses the <code>doStableRequest</code> function to generate an image based on the prompt.</li>
-<li>Finally, it updates the interaction with the generated image using the <code>patchInteractionImageAttachment</code> function.</li>
+<li><code>patchInteractionImageAttachment</code>: a function to update an interaction with an image attachment</li>
+<li><code>doStableRequest</code>: a function to make a stable diffusion request</li>
+<li><code>whiskImages</code>: an object or function related to whisk images (not used in the code)</li>
+<li><code>triggerTyping</code> and <code>updateInteraction</code>: functions to trigger typing and update an interaction in Discord API</li>
 </ul>
-<h3><code>doImagineProxy</code> Function</h3>
+<p>These modules are imported from the <code>importer</code> object, which is not shown in the code snippet.</p>
+<h3>Functions</h3>
+<p>The code defines two asynchronous functions:</p>
+<h4><code>doHallucinate</code></h4>
 <ul>
-<li>This function takes an <code>interaction</code> object as input.</li>
-<li>It sends a typing indicator to the interaction channel.</li>
-<li>If the interaction is in a guild (server), it checks if the prompt is rated PG using the <code>llmPrompt</code> function.</li>
-<li>If the prompt is not rated PG, the function returns an &quot;I will not&quot; response to the interaction.</li>
-<li>Otherwise, it sends a typing indicator to the interaction channel and updates the interaction with a loading message.</li>
-<li>It then uses the <code>doStableRequest</code> function to generate an image based on the prompt.</li>
-<li>However, the code is incomplete and seems to be missing the return statement.</li>
+<li>This function takes an interaction object as input</li>
+<li>It creates a new LLM (Large Language Model) session using <code>importer.import('create llm session')</code></li>
+<li>It prompts the LLM to imagine a scene based on the interaction's topic and appends a description to the prompt</li>
+<li>If the interaction is in a guild (server), it checks if the prompt would be rated R or for mature audiences
+<ul>
+<li>If it is, it returns a message saying &quot;I will not.&quot;</li>
+</ul></li>
+<li>It triggers typing in the channel and updates the interaction with a message saying &quot;This could take a while...&quot;</li>
+<li>It makes a stable diffusion request using the LLM's response</li>
+<li>It updates the interaction with the generated image attachment</li>
 </ul>
-<h3>External Functions and Libraries</h3>
+<h4><code>doImagineProxy</code></h4>
 <ul>
-<li><code>importer</code> is an external library used to import various functions and modules.</li>
-<li><code>llmPrompt</code> is a function used to create an LLM (Large Language Model) session and ask a prompt.</li>
-<li><code>doStableRequest</code> is a function used to generate an image based on a prompt.</li>
-<li><code>patchInteractionImageAttachment</code> is a function used to update an interaction with an image attachment.</li>
-<li><code>updateInteraction</code> is a function used to update an interaction with a new content or message.</li>
-<li><code>triggerTyping</code> is a function used to send a typing indicator to a channel.</li>
+<li>This function takes an interaction object as input</li>
+<li>It triggers typing in the channel</li>
+<li>If the interaction is in a guild (server), it checks if the prompt would be rated PG or safe for children
+<ul>
+<li>If it's not, it returns a message saying &quot;I will not.&quot;</li>
+</ul></li>
+<li>It triggers typing in the channel and updates the interaction with a message saying &quot;This could take a while...&quot;</li>
+<li>It makes a stable diffusion request using the interaction's topic</li>
+<li>It updates the interaction with the generated image attachment (although the code to do so is commented out)</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The <code>whiskImages</code> object is not used in the code.</li>
+<li>The <code>fs</code> module is not used in the code, but there is a commented-out line that suggests it might have been used to write a file to disk.</li>
+<li>The <code>llmPrompt</code> function is used to prompt the LLM, but its implementation is not shown.</li>
+<li>The <code>doStableRequest</code> function is used to make a stable diffusion request, but its implementation is not shown.</li>
+<li>The <code>updateInteraction</code> and <code>triggerTyping</code> functions are used to update the interaction in Discord API, but their implementation is not shown.</li>
 </ul>
 
 </body>

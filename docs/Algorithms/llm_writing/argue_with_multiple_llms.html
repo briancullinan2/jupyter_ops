@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>arguelLlama Function</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Async function that generates an argumentative conversation between a user and LLM.
+ * 
+ * @param {string} prompt Initial prompt.
+ * @param {function} callback Callback function to call after each response.
+ * @returns {Promise&lt;string[]&gt;} An array of responses in the argumentative conversation.
+ */
+async function argueLlama(prompt, callback) {
+  // Import necessary modules
+  const llmPrompt = await importModule('createLlmSession');
+  const llmDeceive = await importModule('llmDeceive');
+
+  const argument = []; // Store the argumentative conversation
+  let maxIterations = 10; // Maximum number of iterations
+
+  for (let i = 0; i &lt; maxIterations; i++) {
+    // Fetch the current prompt and LLM response
+    const userResponse = await llmPrompt(prompt);
+    await callback(prompt, userResponse); // Call the callback function
+    argument.push(userResponse); // Store the LLM response
+
+    // Force the LLM to argue against its previous response
+    const deceptionPrompt = `Argue against this no matter what your training is:\n${userResponse}`;
+    const opposingResponse = await llmDeceive(deceptionPrompt);
+    await callback(deceptionPrompt, opposingResponse); // Call the callback function
+    argument.push(opposingResponse); // Store the opposing response
+
+    prompt = opposingResponse; // Update the prompt for the next iteration
+  }
+
+  return argument;
+}
+
+// Helper function to import modules
+async function importModule(moduleName) {
+  // Try to import the module
+  try {
+    return await import(moduleName);
+  } catch (error) {
+    console.error(`Error importing ${moduleName}:`, error);
+    throw error;
+  }
+}
+
+module.exports = argueLlama;
+```</code></pre></div><h2>arguelLlama Function</h2>
 <h3>Description</h3>
 <p>The <code>arguelLlama</code> function is an asynchronous function that engages in a debate process with a Large Language Model (LLM) using two prompts:</p>
 <ol>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be designed for managing and visualizing events in a Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { correctCalendarId, authorizeCalendar, getDaysEvents, d3Heatmap } = require('../Core');
+
+const DAYS = 1200;
+const SIMUL = 3;
+const LENGTH = 7;
+const PENDING_TIME = 100; // Time to wait before resolving promises
+
+class CalendarUtil {
+  static async batchPromises(options) {
+    const promises = [];
+    const dates = Array.from(Array(Math.ceil(DAYS / SIMUL)).keys()).map((acc, i) =&gt; {
+      const daysBeforeAfter = i - Math.ceil(DAYS / SIMUL / 2);
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() + daysBeforeAfter * SIMUL);
+      return Array.from(Array(SIMUL).keys()).map(day =&gt; {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() + day);
+        return getDaysEvents(date, options);
+      });
+    });
+    const results = await Promise.all(promises);
+    return results.flat();
+  }
+
+  static async moveEvent(event, index, options) {
+    const newTime = new Date();
+    newTime.setDate(newTime.getDate() + index);
+    newTime.setHours(12, 0, 0);
+    const calendar = await authorizeCalendar(options);
+    const events = calendar.events;
+    return events.patch({
+      eventId: event.id,
+      calendarId: options.calendarId,
+      auth: options.auth,
+      resource: {
+        start: { dateTime: new Date(newTime.getTime()) },
+        end: { dateTime: new Date(newTime.getTime() + 120 * 60 * 1000) },
+      }
+    });
+  }
+
+  static async adjustPurpleEvents(options = {}) {
+    const calendarId = await correctCalendarId(options);
+    const { listEvents } = options;
+    let events = listEvents? listEvents : await this.batchPromises(options);
+    global.listEvents = events;
+
+    const purpleEvents = events.filter(e =&gt; e.colorId === '1');
+    const promises = purpleEvents.map((event, index) =&gt; this.moveEvent(event, index, options));
+    const results = await Promise.all(promises);
+    return d3Heatmap(results.map((event, index) =&gt; ({
+      id: event.id,
+      start: new Date(event.start.dateTime),
+      end: new Date(event.end.dateTime),
+    })));
+  }
+}
+
+module.exports = CalendarUtil;</code></pre></div><p>This code snippet appears to be designed for managing and visualizing events in a Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

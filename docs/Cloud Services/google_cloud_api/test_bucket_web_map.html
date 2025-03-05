@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const importer = require('../Core');
+
+const {
+  insertBackendBucket,
+  insertGlobalForward,
+  updateUrlMap
+} = importer.import('add google bucket web map');
+const addIP = importer.import('check dns');
+
+const project ='spahaha-ea443';
+const domain ='sheet-to-web.sheet-to-web.com';
+const urlMap = 'web-map';
+
+describe('adding a subdomain to a load balancer', () => {
+  // Test 1: Adding a bucket backend
+  it('should add a bucket backend', async () => {
+    const bucketName = await insertBackendBucket(project, domain);
+    assert(bucketName.length > 0,'should have added a backend');
+  }).timeout(60000);
+
+  // Test 2: Adding a frontend to load balancer
+  it('should add a frontend to load balancer', async () => {
+    const ipAddress = await addIP(project, domain);
+    const bucketName = await insertGlobalForward(project, ipAddress, urlMap, domain);
+    assert(bucketName.length > 0,'should have added a forward');
+  }).timeout(60000);
+
+  // Test 3: Updating url map on load balancer
+  it('should update url map on load balancer', async () => {
+    const map = await updateUrlMap(project, urlMap, domain);
+    assert(map.length > 0,'should have updated the map');
+  }).timeout(60000);
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Requirements and Imports</h3>
 <ul>
 <li><code>assert</code> module is required for assertions.</li>

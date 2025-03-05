@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./mask_image.html">mask image</a> | <a href="./image_2_image.html">image 2 image</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code is a JavaScript script that uses the <code>gaxios</code> library to make HTTP requests to a local API and performs image inpainting tasks. The script takes an input image, mask, and prompt as parameters, converts them to base64-encoded strings if necessary, and makes a POST request to the local API to generate the output image.</p>
+  <p>The <code>doInpaintMask</code> function performs inpainting on an image using a provided mask and text prompt, sending a POST request to a local stable diffusion API endpoint.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "inpaint mask"</code></pre><h1>inpaint mask</h1>
@@ -216,32 +225,135 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
-<p>This is a JavaScript code that uses the <code>gaxios</code> library to make HTTP requests to a local API. The API appears to be running on <code>http://127.0.0.1:7860/sdapi/v1/img2img</code>. Here's a high-level overview of what the code does:</p>
-<h3>Requires and Constants</h3>
-<p>The code starts by requiring the <code>fs</code> (File System) and <code>path</code> modules, which are built-in Node.js modules. It also requires the <code>gaxios</code> module, which is a library for making HTTP requests.</p>
-<p>The code then defines a constant <code>OUTPUT_PATH</code> which is the path to a directory where output files will be saved.</p>
-<h3><code>doInpaintMask</code> Function</h3>
-<p>The <code>doInpaintMask</code> function is an asynchronous function that takes three parameters:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+
+const OUTPUT_PATH = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,'stable-diffusion-webui/outputs');
+
+async function doInpaintMask(image, mask, prompt) {
+  const WIDTH = 1024;
+
+  if (!prompt) {
+    throw new Error('Prompt is required for image processing');
+  }
+
+  if (prompt.includes('View360')) {
+    WIDTH = 2048;
+  }
+
+  async function loadImageFromUrl(url) {
+    const { data } = await axios.get(url);
+    return Buffer.from(data.arrayBuffer()).toString('base64');
+  }
+
+  async function loadImageFromPath(path) {
+    if (!fs.existsSync(path)) {
+      throw new Error('Image file not found');
+    }
+    return fs.readFileSync(path).toString('base64');
+  }
+
+  const base64Image = await getBase64Image(image);
+  const base64Mask = await getBase64Mask(mask);
+
+  try {
+    const result = await axios.post('http://127.0.0.1:7860/sdapi/v1/img2img', {
+      prompt,
+      negative_prompt: 'bad hands, bad feet, bad faces, bad eyes, bad anatomy, extra limbs, missing limbs, tattoo, statue, picture frame, anime, cartoon, signature, abstract',
+      save_images: true,
+      width: WIDTH,
+      height: 1024,
+      steps: 30,
+      tiling: false,
+      init_images: [base64Image],
+      mask: base64Mask,
+      mask_blur: 4,
+      inpainting_fill: 1,
+      inpaint_full_res: false,
+      inpaint_full_res_padding: 32,
+      inpainting_mask_invert: 1,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const seed = JSON.parse(result.data.info).seed;
+    const buff = Buffer.from(result.data.images[0], 'base64');
+    const now = new Date();
+    const folderName = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+    const stablePath = path.join(OUTPUT_PATH, 'img2img-images', folderName);
+
+    if (!fs.existsSync(stablePath)) {
+      fs.mkdirSync(stablePath);
+    }
+
+    let imagePath;
+    const images = fs.readdirSync(stablePath);
+    for (let i = 0; i < images.length; i++) {
+      if (images[i].match('-' + seed + '-')) {
+        imagePath = path.join('img2img-images', folderName, images[i]);
+        break;
+      }
+    }
+
+    return { seed, image: buff, imagePath, prompt };
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getBase64Image(image) {
+  if (typeof image ==='string' && image.startsWith('data:image/')) {
+    return image.replace(/^data:image\/.*?;base64,/gi, '');
+  } else if (typeof image ==='string' && image.includes('://')) {
+    return loadImageFromUrl(image);
+  } else if (typeof image ==='string') {
+    return loadImageFromPath(image);
+  } else {
+    return image.toString('base64');
+  }
+}
+
+async function getBase64Mask(mask) {
+  if (typeof mask ==='string' && mask.startsWith('data:image/')) {
+    return mask.replace(/^data:image\/.*?;base64,/gi, '');
+  } else if (typeof mask ==='string' && mask.includes('://')) {
+    return loadImageFromUrl(mask);
+  } else if (typeof mask ==='string') {
+    return loadImageFromPath(mask);
+  } else {
+    return mask.toString('base64');
+  }
+}
+
+module.exports = {
+  doInpaintMask,
+  OUTPUT_PATH,
+};</code></pre></div><p><strong>Function Breakdown: <code>doInpaintMask</code></strong></p>
+<p>This is an asynchronous function named <code>doInpaintMask</code> that takes three parameters:</p>
 <ol>
-<li><code>image</code>: The input image, which can be a file path, a base64-encoded string, or a Buffer object.</li>
-<li><code>mask</code>: The mask image, which can be a file path, a base64-encoded string, or a Buffer object.</li>
-<li><code>prompt</code>: A text prompt that will be used to generate the output image.</li>
+<li><code>image</code>: The input image, which can be a string or a buffer.</li>
+<li><code>mask</code>: The inpainting mask, which can be a string or a buffer.</li>
+<li><code>prompt</code>: The text prompt used for the inpainting process.</li>
 </ol>
-<p>Here's a step-by-step breakdown of what the function does:</p>
+<p><strong>Functionality</strong></p>
+<p>The function performs the following steps:</p>
 <ol>
-<li>It checks if a prompt is provided. If not, it returns immediately.</li>
-<li>It checks if the prompt includes the string &quot;View360&quot;, in which case it sets the image width to 2048 instead of the default 1024.</li>
-<li>It converts the input image and mask to base64-encoded strings if necessary.</li>
-<li>It makes a POST request to the local API at <code>http://127.0.0.1:7860/sdapi/v1/img2img</code> with the prompt, negative prompt, and image and mask data.</li>
-<li>It catches any errors that occur during the request.</li>
+<li>Checks if the <code>prompt</code> parameter is provided. If not, it returns without performing any actions.</li>
+<li>If the <code>prompt</code> includes the string &quot;View360&quot;, it sets the <code>width</code> variable to 2048. Otherwise, it sets it to 1024.</li>
+<li>Converts the <code>image</code> and <code>mask</code> parameters to base64 strings if they are not already in that format.</li>
+<li>If the <code>image</code> and <code>mask</code> are URLs, it downloads the image data using the <code>gaxios</code> library. Otherwise, it reads the image data from the local file system using the <code>fs</code> library.</li>
+<li>Sends a POST request to the stable diffusion API (<code>http://127.0.0.1:7860/sdapi/v1/img2img</code>) with the <code>prompt</code>, <code>image</code>, and <code>mask</code> data.</li>
+<li>Returns the result of the API request.</li>
 </ol>
-<h3>Notes</h3>
+<p><strong>Notes</strong></p>
 <ul>
-<li>The code uses the <code>process.env</code> object to get the path to the user's home directory, which is used to construct the <code>OUTPUT_PATH</code> constant.</li>
-<li>The code uses the <code>gaxios</code> library to make HTTP requests, which allows it to handle both synchronous and asynchronous requests.</li>
-<li>The code assumes that the local API is running on the machine and can be accessed at <code>http://127.0.0.1:7860/sdapi/v1/img2img</code>.</li>
-<li>The code includes some commented-out code that mentions &quot;ollama vision&quot;, which is not currently being used.</li>
+<li>The function uses the <code>gaxios</code> library to send HTTP requests and the <code>fs</code> library to read local files.</li>
+<li>The API endpoint (<code>http://127.0.0.1:7860/sdapi/v1/img2img</code>) is likely a local instance of the stable diffusion API.</li>
+<li>The <code>negative_prompt</code> field in the API request contains a long string of unwanted features to ignore during the inpainting process.</li>
 </ul>
 
 </body>

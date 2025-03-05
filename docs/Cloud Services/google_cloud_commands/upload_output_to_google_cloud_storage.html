@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,17 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet uses the <code>gsutil</code> command-line tool to synchronize files between a local directory and a Google Cloud Storage bucket.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>```bash
+#!/bin/bash
+
+# Check if the first argument is not empty
+if [[ -n "$1" ]]; then
+  # Use gsutil rsync to synchronize the directories
+  # TODO: Handle potential errors during synchronization
+  gsutil rsync -R "$1" "$2"
+fi
+```</code></pre></div><p>This code snippet uses the <code>gsutil</code> command-line tool to synchronize files between a local directory and a Google Cloud Storage bucket.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Conditional Check:</strong></p>

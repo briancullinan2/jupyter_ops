@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Starting a Docker Selenium Grid in AWS</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Starts a Docker Selenium container in AWS.
+ * 
+ * @param {Object} config - Configuration object containing Docker and AWS settings.
+ * @param {string} config.dockerImage - Docker image name.
+ * @param {number} config.containerPort - Container port.
+ * @param {Object} config.aws - AWS settings.
+ * @param {string} config.aws.region - AWS region.
+ * @param {string} config.aws.accessKeyId - AWS access key ID.
+ * @param {string} config.aws.secretAccessKey - AWS secret access key.
+ * @returns {Promise} A promise resolving to the Docker container ID.
+ */
+function startDockerSelenium(config) {
+  // TODO: Validate input configuration
+  const { dockerImage, containerPort, aws: { region, accessKeyId, secretAccessKey } } = config;
+
+  // Set up Docker and AWS credentials
+  const dockerCredentials = {
+    username: 'your-docker-username',
+    password: 'your-docker-password',
+  };
+  const awsCredentials = {
+    region,
+    accessKeyId,
+    secretAccessKey,
+  };
+
+  // Start Docker Selenium container
+  const dockerClient = require('dockerode')();
+  const container = dockerClient.createContainer({
+    Image: dockerImage,
+    PortBindings: {
+      [containerPort]: containerPort,
+    },
+    Env: [
+      `SELENIUM_HUB_HOST=localhost:${containerPort}`,
+      `SELENIUM_GRID_HOST=localhost:${containerPort}`,
+    ],
+  });
+
+  // Run container and start Selenium
+  return container.start()
+   .then(() => {
+      console.log(`Docker Selenium container started: ${container.id}`);
+      return container.id;
+    })
+   .catch((error) => {
+      console.error(`Error starting Docker Selenium container: ${error}`);
+      throw error;
+    });
+}
+
+// Example usage
+const config = {
+  dockerImage:'selenium/standalone-chrome',
+  containerPort: 4444,
+  aws: {
+    region: 'us-west-2',
+    accessKeyId: 'YOUR_AWS_ACCESS_KEY_ID',
+    secretAccessKey: 'YOUR_AWS_SECRET_ACCESS_KEY',
+  },
+};
+startDockerSelenium(config)
+ .then((containerId) => {
+    console.log(`Container ID: ${containerId}`);
+  })
+ .catch((error) => {
+    console.error(`Error starting Docker Selenium container: ${error}`);
+  });</code></pre></div><h3>Starting a Docker Selenium Grid in AWS</h3>
 <pre><code class="language-bash"># Pull the official Selenium Docker image
 docker pull selenium/standalone-chrome:4.0.0-alpha-4
 

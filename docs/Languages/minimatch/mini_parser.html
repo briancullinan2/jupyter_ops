@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -459,7 +466,300 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code implements a parser for a simplified glob pattern language, similar to the one used in shell commands.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// A constant representing special characters in glob patterns
+const reSpecials = charSet('().*{}+?[]^$\\!');
+
+// A function to unescape special characters in a glob pattern
+function globUnescape(s) {
+  return s.replace(/\\(.)/g, '$1');
+}
+
+// A function to create a character set from a string
+function charSet(s) {
+  return s.split('').reduce((set, c) =&gt; {
+    set[c] = true;
+    return set;
+  }, {});
+}
+
+// A constant representing the sub-parsing flag
+const SUBPARSE = {};
+
+// The main function to parse a glob pattern into a regular expression
+function parse(pattern, isSub) {
+  // Check if the pattern is too long
+  if (pattern.length &gt; 1024 * 64) {
+    throw new TypeError('Pattern is too long');
+  }
+
+  // Shortcuts for common patterns
+  if (pattern === '**') return { glob: true };
+  if (pattern === '') return '';
+
+  let re = '';
+  let hasMagic = false;
+  let escaping = false;
+
+  // State variables for parsing
+  let patternListStack = [];
+  let negativeLists = [];
+
+  // Parsing state
+  let stateChar;
+  let inClass = false;
+  let reClassStart = -1;
+  let classStart = -1;
+
+  // The pattern start
+  let patternStart;
+  if (pattern.charAt(0) === '.') {
+    patternStart = '[^/]*'; // anything
+  } else {
+    patternStart = '(?!(?:^|\\/)\.{1,2}(?:$|\\/))'; // not (start or / followed by. or.. followed by / or end)
+  }
+
+  // Clear a state char at the end of a pass
+  function clearStateChar() {
+    if (stateChar) {
+      switch (stateChar) {
+        case '*':
+          re += '[^/]*?';
+          hasMagic = true;
+          break;
+        case '?':
+          re += '[^/]";
+          hasMagic = true;
+          break;
+        default:
+          re += '\\' + stateChar;
+          break;
+      }
+      stateChar = false;
+    }
+  }
+
+  // Iterate over the pattern characters
+  for (let i = 0, len = pattern.length, c; (i &lt; len) &amp;&amp; (c = pattern.charAt(i)); i++) {
+    // Skip over any that are escaped
+    if (escaping &amp;&amp; reSpecials[c]) {
+      re += '\\' + c;
+      escaping = false;
+      continue;
+    }
+
+    // Handle special characters
+    switch (c) {
+      case '/':
+        // Completely not allowed, even escaped
+        return false;
+      case '\\':
+        clearStateChar();
+        escaping = true;
+        continue;
+      case '?':
+      case '*':
+      case '+':
+      case '@':
+      case '!':
+        // All of those are literals inside a class, except that the glob [!a] means [^a] in regexp
+        if (inClass) {
+          if (c === '!' &amp;&amp; i === classStart + 1) c = '^';
+          re += c;
+          continue;
+        }
+
+        // If we already have a stateChar, then it means that there was something like ** or +? in there
+        clearStateChar();
+        stateChar = c;
+        continue;
+
+      // Handle opening and closing parentheses
+      case '(':
+        if (inClass) {
+          re += '(';
+          continue;
+        }
+
+        if (!stateChar) {
+          re += '\\(';
+          continue;
+        }
+
+        patternListStack.push({
+          type: stateChar,
+          start: i - 1,
+          reStart: re.length,
+          open: '\\(',
+          close: '\\)',
+        });
+        re += stateChar === '!'? '(?:(?!(?:' : '(?:';
+        stateChar = false;
+        continue;
+      case ')':
+        if (inClass ||!patternListStack.length) {
+          re += '\\)';
+          continue;
+        }
+
+        clearStateChar();
+        hasMagic = true;
+        const pl = patternListStack.pop();
+        re += pl.close;
+        if (pl.type === '!') {
+          negativeLists.push(pl);
+        }
+        pl.reEnd = re.length;
+        continue;
+
+      // Handle the pipe character
+      case '|':
+        if (inClass ||!patternListStack.length || escaping) {
+          re += '\\|';
+          escaping = false;
+          continue;
+        }
+
+        clearStateChar();
+        re += '|';
+        continue;
+
+      // Handle the start and end of a class
+      case '[':
+        clearStateChar();
+        if (inClass) {
+          re += '\\' + c;
+          continue;
+        }
+
+        inClass = true;
+        classStart = i;
+        reClassStart = re.length;
+        re += c;
+        continue;
+      case ']':
+        if (i === classStart + 1 ||!inClass) {
+          re += '\\' + c;
+          escaping = false;
+          continue;
+        }
+
+        // Handle the case where we left a class open
+        if (inClass) {
+          const cs = pattern.substring(classStart + 1, i);
+          try {
+            RegExp('[' + cs + ']');
+          } catch (er) {
+            const sp = parse(cs, SUBPARSE);
+            re = re.substr(0, reClassStart) + '\\[' + sp[0] + '\\]';
+            hasMagic = hasMagic || sp[1];
+            inClass = false;
+            continue;
+          }
+        }
+
+        // Finish up the class
+        hasMagic = true;
+        inClass = false;
+        re += c;
+        continue;
+
+      // Handle default characters
+      default:
+        clearStateChar();
+        if (escaping) {
+          escaping = false;
+        } else if (reSpecials[c] &amp;&amp;!(c === '^' &amp;&amp; inClass)) {
+          re += '\\';
+        }
+
+        re += c;
+        continue;
+    }
+  }
+
+  // Handle the case where we left a class open
+  if (inClass) {
+    const cs = pattern.substr(classStart + 1);
+    const sp = parse(cs, SUBPARSE);
+    re = re.substr(0, reClassStart) + '\\[' + sp[0] + sp[1]? '\\' : '';
+  }
+
+  // Handle trailing things that only matter at the very end
+  clearStateChar();
+  if (escaping) {
+    re += '\\\\';
+  }
+
+  // Only need to apply the nodot start if the re starts with something that could conceivably capture a dot
+  let addPatternStart = false;
+  switch (re.charAt(0)) {
+    case '.':
+    case '[':
+    case '(': addPatternStart = true;
+  }
+
+  // Hack to work around lack of negative lookbehind in JS
+  // A pattern like: *.!(x).!(y|z) needs to ensure that a name like 'a.xyz.yz' doesn't match
+  for (let n = negativeLists.length - 1; n &gt; -1; n--) {
+    const nl = negativeLists[n];
+
+    const nlBefore = re.slice(0, nl.reStart);
+    const nlFirst = re.slice(nl.reStart, nl.reEnd - 8);
+    const nlLast = re.slice(nl.reEnd - 8, nl.reEnd);
+    const nlAfter = re.slice(nl.reEnd);
+
+    nlLast += nlAfter;
+
+    // Handle nested stuff like *(*.js|!(*.json))
+    const openParensBefore = nlBefore.split('(').length - 1;
+    let cleanAfter = nlAfter.replace(/\)[+*?]?/, '');
+    for (let i = 0; i &lt; openParensBefore; i++) {
+      cleanAfter = cleanAfter.replace(/\)[+*?]?/, '');
+    }
+    nlAfter = cleanAfter;
+
+    const dollar = nlAfter === '' &amp;&amp; isSub!== SUBPARSE? '
+</body>
+
+</html> : '';
+    const newRe = nlBefore + nlFirst + nlAfter + dollar + nlLast;
+    re = newRe;
+  }
+
+  // If the re is not "" at this point, then we need to make sure it doesn't match against an empty path part
+  if (re!== '' &amp;&amp; hasMagic) {
+    re = '(?=.)' + re;
+  }
+
+  if (addPatternStart) {
+    re = patternStart + re;
+  }
+
+  // Parsing just a piece of a larger pattern
+  if (isSub === SUBPARSE) {
+    return [re, hasMagic];
+  }
+
+  // Skip the regexp for non-magical patterns, unescape anything in it, so that it'll be an exact match against a file etc.
+  if (!hasMagic) {
+    return globUnescape(pattern);
+  }
+
+  try {
+    const regExp = new RegExp('^' + re + '
+</body>
+
+</html>, 'i');
+    regExp._glob = pattern;
+    regExp._src = re;
+    return regExp;
+  } catch (er) {
+    return new RegExp('$.');
+  }
+}
+
+module.exports = parse;</code></pre></div><p>This code implements a parser for a simplified glob pattern language, similar to the one used in shell commands.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Regular Expression Utilities:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,95 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for generating and manipulating UUIDs (Universally Unique Identifiers) using the SHA-1 hashing algorithm.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const crypto = require('crypto');
+
+// Create a byte to hex mapping for efficient lookup
+const byteToHex = Array(256).fill(null).map((_, i) => (i + 0x100).toString(16).substr(1));
+
+/**
+ * Convert a buffer to a UUID string.
+ * @param {Buffer} buf The buffer to convert.
+ * @param {number} [offset] The offset into the buffer to start from.
+ * @returns {string} The UUID string.
+ */
+function bytesToUuid(buf, offset = 0) {
+    return Array.from(byteToHex)
+       .slice(offset, offset + 16)
+       .join('');
+}
+
+/**
+ * Generate an SHA1 hash of a buffer.
+ * @param {Buffer|string|Array<number>} bytes The buffer to hash.
+ * @returns {Buffer} The SHA1 hash.
+ */
+function sha1(bytes) {
+    if (typeof Buffer.from === 'function') {
+        if (Array.isArray(bytes)) bytes = Buffer.from(bytes);
+        else if (typeof bytes ==='string') bytes = Buffer.from(bytes, 'utf8');
+    } else {
+        if (Array.isArray(bytes)) bytes = new Buffer(bytes);
+        else if (typeof bytes ==='string') bytes = new Buffer(bytes, 'utf8');
+    }
+
+    return crypto.createHash('sha1').update(bytes).digest();
+}
+
+/**
+ * Convert a UUID string to a byte array.
+ * @param {string} uuid The UUID string to convert.
+ * @returns {Array<number>} The byte array.
+ */
+function uuidToBytes(uuid) {
+    return Array.from(uuid.match(/.{2}/g), (match) => parseInt(match, 16));
+}
+
+/**
+ * Convert a string to a byte array.
+ * @param {string} str The string to convert.
+ * @returns {Array<number>} The byte array.
+ */
+function stringToBytes(str) {
+    return Array.from(str, (char) => str.charCodeAt(char));
+}
+
+/**
+ * Generate a UUID5 hash based on a namespace and value.
+ * @param {number} version The version of the UUID.
+ * @param {Array<number> | string} hashfunc The hash function to use.
+ * @returns {function} A function that generates a UUID5 hash.
+ */
+function v35(version, hashfunc = sha1) {
+    const generateUUID = (value, namespace, buf, offset) => {
+        if (typeof value ==='string') value = stringToBytes(value);
+        if (typeof namespace ==='string') namespace = uuidToBytes(namespace);
+
+        if (!Array.isArray(value)) throw new TypeError('value must be an array of bytes');
+        if (!Array.isArray(namespace) || namespace.length!== 16) throw new TypeError('namespace must be uuid string or an Array of 16 byte values');
+
+        const bytes = hashfunc(namespace.concat(value));
+        bytes[6] = (bytes[6] & 0x0f) | version;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
+
+        if (buf) {
+            for (let idx = 0; idx < 16; ++idx) {
+                buf[offset + idx] = bytes[idx];
+            }
+        }
+
+        return buf || bytesToUuid(bytes);
+    };
+
+    generateUUID.name = `v5-${version}`;
+
+    generateUUID.DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+    generateUUID.URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+
+    return generateUUID;
+};
+
+module.exports = v35(0x50, sha1);</code></pre></div><p>This code defines functions for generating and manipulating UUIDs (Universally Unique Identifiers) using the SHA-1 hashing algorithm.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>byteToHex</code>:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates an SVG image of a pie chart visualizing course enrollment data from a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules and functions
+const { getDataSheet, d3PieChart } = require('../Core').import({
+  googleSheetArrayObjects: 'google sheet array objects',
+  d3PieChart: 'd3 pie chart',
+});
+
+/**
+ * Retrieves course data from Google Sheets and generates a pie chart SVG string
+ * @returns {Promise<string>} A promise resolving to the SVG string
+ */
+function getCourseSVG() {
+  const docId = '1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g';
+
+  return getDataSheet(docId, 'Courses pie data')
+   .then((data) => {
+      // Transform data into suitable format for pie chart
+      return data.map((d) => ({ label: d.subject, value: d.percent }));
+    })
+   .then((values) => {
+      // Generate pie chart SVG string
+      return d3PieChart(values);
+    })
+   .catch((error) => {
+      // Log error and return a default SVG string
+      // TODO: Implement proper error handling
+      console.error(error);
+      return '<svg></svg>';
+    });
+}
+
+module.exports = getCourseSVG;</code></pre></div><p>This code generates an SVG image of a pie chart visualizing course enrollment data from a Google Sheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

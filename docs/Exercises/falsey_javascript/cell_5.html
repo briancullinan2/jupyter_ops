@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a constant for the undefined variable
+const UNDEF = undefined;
+
+/**
+ * Returns the type of the undefined variable.
+ * 
+ * @returns {string} Type of the UNDEF.
+ */
+function getTypeOfUndef() {
+  return typeof UNDEF;
+}
+
+/**
+ * Returns a fallback object if UNDEF is truthy.
+ * 
+ * @returns {Object} Fallback object.
+ */
+function getFallbackObject() {
+  return UNDEF || { "too much": false };
+}
+
+// Use the functions to print the results
+console.log(getTypeOfUndef());
+console.log(getFallbackObject());</code></pre></div><h3>Code Breakdown</h3>
 <h4>Line 1: <code>console.log(typeof undef)</code></h4>
 <ul>
 <li><code>undef</code> is an undefined variable.</li>

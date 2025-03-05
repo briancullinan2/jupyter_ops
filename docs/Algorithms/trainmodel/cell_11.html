@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Normalizing Feature Values</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import numpy as np
+
+def normalize_features(train_features, test_features):
+    """
+    Normalizes the training and testing features by dividing them by a scalar value.
+
+    Args:
+        train_features (numpy.ndarray): Training features.
+        test_features (numpy.ndarray): Testing features.
+
+    Returns:
+        x_train (numpy.ndarray): Normalized training features.
+        x_test (numpy.ndarray): Normalized testing features.
+    """
+
+    # Ensure input data are numpy arrays
+    train_features = np.asarray(train_features)
+    test_features = np.asarray(test_features)
+
+    # Define the normalization scalar value
+    NORMALIZATION_SCALAR = 255.0
+
+    # Normalize the features
+    x_train = train_features / NORMALIZATION_SCALAR
+    x_test = test_features / NORMALIZATION_SCALAR
+
+    return x_train, x_test
+
+# Example usage:
+x_train, x_test = normalize_features(train_features, test_features)</code></pre></div><h3>Normalizing Feature Values</h3>
 <h4>Code Snippet</h4>
 <pre><code class="language-python">x_train = train_features / 255.0
 x_test = test_features / 255.0

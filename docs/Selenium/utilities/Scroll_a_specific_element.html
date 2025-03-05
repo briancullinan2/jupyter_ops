@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -115,7 +122,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>scrollClient Function Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectDom, evaluateDom } = require('select-tree');
+const { walkTree } = require('walk-tree');
+
+/**
+ * Scrolls the client to the top or bottom of the element specified by the selector.
+ * 
+ * @param {object} driver The driver instance
+ * @param {string} selector The CSS selector of the element to scroll to
+ * @param {boolean} up Whether to scroll to the top (default false)
+ * @returns {Promise&lt;void&gt;} A promise that resolves when the scrolling is complete
+ */
+async function scrollClient(driver, selector, up = false) {
+  // scroll to bottom of messages
+  if (!selector) {
+    // If no selector is provided, scroll to the bottom of the document
+    await driver.executeScript('window.scroll(window.scrollX, window.scrollY + (arguments[3]? -100000 : 100000))', up);
+    return;
+  }
+
+  // Evaluate the given functions and store them in the global object
+  await driver.executeScript((evaluateDomString, walkTreeString, selectDomString, selector, up) =&gt; {
+    if (!window.evaluateDom) {
+      // Use Function constructor to safely evaluate the function string
+      window.evaluateDom = new Function('window', `return ${evaluateDomString};`)({ window });
+    }
+    if (!window.walkTree) {
+      window.walkTree = new Function('window', `return ${walkTreeString};`)({ window });
+    }
+    if (!window.selectDom) {
+      window.selectDom = new Function('window', `return ${selectDomString};`)({ window });
+    }
+
+    // Select the element and scroll to the specified position
+    const people = window.selectDom(selector, document);
+    if (people) {
+      people.scrollTop = people.scrollTop + (up? -100000 : 100000);
+    } else {
+      console.warn(`Element not found: ${selector}`);
+    }
+  }, evaluateDom.toString(), walkTree.toString(), selectDom.toString(), selector, up);
+}
+
+module.exports = scrollClient;</code></pre></div><p><strong>scrollClient Function Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The <code>scrollClient</code> function is an asynchronous function that scrolls a webpage to a specific position based on a given selector.</p>
 <h3>Parameters</h3>

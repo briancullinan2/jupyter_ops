@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,21 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { describe, it, expect } = require('jest');
+
+const { importCore } = require('../Core');
+const { check_dns } = importCore();
+const project ='spahaha-ea443';
+const bucketName ='sheet-to-web.sheet-to-web.com';
+
+describe('adding an external IP', () => {
+    it('should add an IP', async () => {
+        const ip = await check_dns(project, bucketName);
+        expect(ip).toHaveLength(1); // improved assertion
+        console.log(ip);
+    }).timeout(60000);
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Dependencies</h4>
 <ul>
 <li><code>assert</code>: A built-in Node.js module for asserting conditions in the code.</li>

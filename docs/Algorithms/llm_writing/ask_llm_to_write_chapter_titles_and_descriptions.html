@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Asks Llama for a chapter synopsis of the given topic.
+ * 
+ * @param {string} topic The topic to generate a chapter synopsis for.
+ * @param {string} [chapterOrCharacterOrSections='chapters'] The type of synopsis to generate.
+ * @returns {Promise&lt;object&gt;} A promise resolving to an object containing the chapter synopsis.
+ */
+async function askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections = 'chapters') {
+  const { llmPrompt } = await import('create-llm-session');
+
+  const prompt = `Brainstorm a list of 12 ${chapterOrCharacterOrSections} synopsis for: ${topic}\nPlease respond with numbered titles followed by the description.`;
+  console.log('User:', prompt);
+
+  const response = await llmPrompt(prompt);
+  console.log('AI:', response);
+
+  const titleRegex = /^([0-9]+\.\s*)(.*)/gi;
+  const titles = response.trim().split('\n').filter((line) =&gt; line.match(titleRegex));
+  const obj = {};
+
+  for (const title of titles) {
+    const match = title.match(titleRegex);
+    if (!match) continue;
+
+    const key = match[2].trim();
+    const description = match[1].trim().replace(/\*\*|\#\#/g, '');
+    if (topic.includes(key) &amp;&amp; description.length &lt; 128) continue;
+
+    obj[key] = description;
+    if (description.length === 0) {
+      const nextTitle = titles[titles.indexOf(title) + 1];
+      const nextMatch = nextTitle.match(titleRegex);
+      if (nextMatch) {
+        obj[key] = nextMatch[2].trim();
+        continue;
+      }
+    }
+  }
+
+  console.log(obj);
+  return obj;
+}
+
+export default askLlamaForAChapterSynopsis;
+```</code></pre></div><h2>Function Breakdown</h2>
 <h3><code>askLlamaForAChapterSynopsis(topic, chapterOrCharacterOrSections = 'chapters')</code></h3>
 <ul>
 <li><strong>Purpose:</strong> Asynchronously generates a list of chapter or character synopses for a given topic.</li>

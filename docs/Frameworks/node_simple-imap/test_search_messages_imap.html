@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet establishes a connection to an IMAP server using the <code>node-imap-client</code> library.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required dependencies
+const { Core } = require('../Core');
+const { createImapClient } = require('node-imap-client');
+
+// Initialize Core functionality
+Core.async();
+
+// Create and configure IMAP client
+const imapClient = createImapClient({
+  user: 'your-imap-username', // Replace with your actual username
+  password: 'your-imap-password', // Replace with your actual password
+  host: 'your-imap-host', // Replace with your actual IMAP host
+});
+
+// Establish IMAP connection
+imapClient.connect()
+ .then(() => {
+    // Authenticate with IMAP server
+    return imapClient.auth();
+  })
+ .then(() => {
+    // Select mailbox (e.g., inbox)
+    return imapClient.selectMailbox('inbox');
+  })
+ .then(() => {
+    // Fetch mailbox messages
+    return imapClient.searchMessages();
+  })
+ .then((messages) => {
+    // Send result to the caller (e.g., UI)
+    return Core.sendResult(messages);
+  })
+ .catch((error) => {
+    // Send error to the caller (e.g., UI)
+    return Core.sendError(error);
+  });</code></pre></div><p>This code snippet establishes a connection to an IMAP server using the <code>node-imap-client</code> library.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./ask_llm_to_summerize.html">ask llm to summerize</a> | <a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code imports functions from the <code>importer</code> object, which includes <code>functionCache</code> for storing function metadata and <code>updateCode</code> for updating a code cell. The <code>storeLlamaFunction</code> function, which is then exported, takes 8 arguments and updates the <code>functionCache</code> object, generates a new JavaScript module, and updates a code cell with the new module code.</p>
+  <p>The code imports functions from modules, defines a <code>storeLlamaFunction</code> to store metadata in a <code>functionCache</code> object, and generates and updates code in a <code>cacheCell</code> to export the metadata. The <code>storeLlamaFunction</code> is then exported as a module.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "store llama function"</code></pre><h1>store llama function</h1>
@@ -86,14 +93,15 @@
 <pre class="javascript"><code>const { functionCache } = importer.import("<a href="../../Databases/caches/cache_rpc_functions_with_llm_descriptions.html">cache rpc functions with llm descriptions</a>")
 const { updateCode } = importer.import("<a href="../../Core/cache/__update_code_cell.html">update code cell</a>")
 
-function storeLlamaFunction (cellId, mtime, exports, description, summary, categories, category) {
+function storeLlamaFunction (cellId, mtime, exports, description, summary, categories, category, amazing) {
   functionCache[cellId] = {
     mtime,
     exports,
     description,
     summary,
     categories,
-    category
+    category,
+    amazing
   }
   var code = `
 // cell cache automatically replaced
@@ -128,45 +136,123 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<h4>Importing Functions</h4>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import necessary modules.
+ * @see {importer} for more information.
+ */
+const { functionCache, interpret } = require('cache rpc functions with llm descriptions');
+const { updateCode } = require('update code cell');
+
+/**
+ * Stores an LLaMA function with its metadata in the cache.
+ * @param {string} cellId - The ID of the code cell to store the function in.
+ * @param {Date} mtime - The last modified time of the function.
+ * @param {object} exports - The exported variables of the function.
+ * @param {string} description - A brief description of the function.
+ * @param {string} summary - A summary of the function.
+ * @param {array} categories - An array of categories the function belongs to.
+ * @param {string} category - The primary category of the function.
+ * @param {boolean} amazing - A flag indicating whether the function is "amazing".
+ */
+function storeLlamaFunction(cellId, mtime, exports, description, summary, categories, category, isAmazing) {
+  // Store the function metadata in the cache.
+  functionCache[cellId] = {
+    mtime,
+    exports,
+    description,
+    summary,
+    categories,
+    category,
+    isAmazing,
+  };
+
+  // Generate the code to be written to the cache cell.
+  const code = `
+    // Cache cell automatically replaced
+    var functionCache = ${JSON.stringify(functionCache, null, 4)}
+
+    module.exports = {
+      functionCache,
+    }
+  `;
+
+  // Interpret the code to update the cache cell.
+  interpret('cache rpc functions with llm descriptions')(code);
+
+  // Update the code in the cache cell.
+  updateCode('cache rpc functions with llm descriptions', code);
+}
+
+// Export the function.
+module.exports = { storeLlamaFunction };
+</code></pre></div><h3>Code Breakdown</h3>
+<p><strong>Importing Modules</strong></p>
 <pre><code class="language-javascript">const { functionCache } = importer.import('cache rpc functions with llm descriptions')
 const { updateCode } = importer.import('update code cell')
 </code></pre>
+<p>These lines import two functions from modules:</p>
 <ul>
-<li>Imports two functions from the <code>importer</code> object:
-<ul>
-<li><code>functionCache</code>: a cache object that stores function metadata</li>
-<li><code>updateCode</code>: a function that updates a code cell with new content</li>
-</ul></li>
+<li><code>functionCache</code>: a property of the <code>functionCache</code> object imported from the module 'cache rpc functions with llm descriptions'</li>
+<li><code>updateCode</code>: a function imported from the module 'update code cell'</li>
 </ul>
-<h4>Defining <code>storeLlamaFunction</code></h4>
-<pre><code class="language-javascript">function storeLlamaFunction (cellId, mtime, exports, description, summary, categories, category) {
-  //...
+<p><strong>Defining the <code>storeLlamaFunction</code> Function</strong></p>
+<pre><code class="language-javascript">function storeLlamaFunction (cellId, mtime, exports, description, summary, categories, category, amazing) {
+ ...
 }
 </code></pre>
+<p>This function takes eight arguments:</p>
 <ul>
-<li>Defines a function <code>storeLlamaFunction</code> that takes 8 arguments:
-<ul>
-<li><code>cellId</code>: an identifier for the code cell</li>
-<li><code>mtime</code>: a timestamp for the code cell's modification</li>
-<li><code>exports</code>: metadata about the function being cached</li>
-<li><code>description</code>: a brief description of the function</li>
-<li><code>summary</code>: a summary of the function</li>
-<li><code>categories</code>: an array of categories for the function</li>
-<li><code>category</code>: the main category for the function</li>
-</ul></li>
-<li>Updates the <code>functionCache</code> object with the provided metadata</li>
-<li>Generates a new JavaScript module that exports the updated <code>functionCache</code></li>
-<li>Updates a code cell with the new module code using <code>updateCode</code></li>
+<li><code>cellId</code></li>
+<li><code>mtime</code></li>
+<li><code>exports</code></li>
+<li><code>description</code></li>
+<li><code>summary</code></li>
+<li><code>categories</code></li>
+<li><code>category</code></li>
+<li><code>amazing</code></li>
 </ul>
-<h4>Exporting the <code>storeLlamaFunction</code> Function</h4>
+<p><strong>Updating the <code>functionCache</code> Object</strong></p>
+<pre><code class="language-javascript">functionCache[cellId] = {
+  mtime,
+  exports,
+  description,
+  summary,
+  categories,
+  category,
+  amazing
+}
+</code></pre>
+<p>This line updates the <code>functionCache</code> object by assigning a new value to the property with key <code>cellId</code>.</p>
+<p><strong>Generating and Updating Code</strong></p>
+<pre><code class="language-javascript">var code = `
+// cell cache automatically replaced
+var functionCache = ${JSON.stringify(functionCache, null, 4)}
+
+module.exports = {
+  functionCache
+}
+`
+var cacheCell = importer.interpret('cache rpc functions with llm descriptions')
+updateCode(cacheCell, code)
+</code></pre>
+<p>These lines:</p>
+<ol>
+<li>Generate a code string by concatenating several parts, including the <code>functionCache</code> object stringified with indentation (<code>JSON.stringify(functionCache, null, 4)</code>).</li>
+<li>Interpret the module 'cache rpc functions with llm descriptions' using <code>importer.interpret</code>.</li>
+<li>Update the code of the <code>cacheCell</code> using <code>updateCode</code> with the generated code.</li>
+</ol>
+<p><strong>Exporting the <code>storeLlamaFunction</code> Function</strong></p>
 <pre><code class="language-javascript">module.exports = {
   storeLlamaFunction
 }
 </code></pre>
+<p>This line exports the <code>storeLlamaFunction</code> function as a module.</p>
+<h3>Notes</h3>
 <ul>
-<li>Exports the <code>storeLlamaFunction</code> function as a module export.</li>
+<li>The <code>importer</code> object is not defined in this code snippet, but it appears to be a module that provides functions for interacting with code cells and modules.</li>
+<li>The <code>functionCache</code> object is not defined in this code snippet, but it is assumed to be a global or shared object that stores function metadata.</li>
+<li>The <code>cellId</code> argument in the <code>storeLlamaFunction</code> function suggests that it is used to identify a specific code cell or module where the function metadata will be stored.</li>
 </ul>
 
 </body>

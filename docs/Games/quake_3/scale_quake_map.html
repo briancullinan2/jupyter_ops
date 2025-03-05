@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -217,7 +224,88 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>scaleMap</code> that modifies a Quake 3 map file by scaling its brush entities and origins.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const importer = require('./importer'); // assuming importer module is in the same directory
+
+const DIGITS = 100.0;
+const REGEX_BRUSH = /\{[\s\S]*?\}/ig;
+const REGEX_ORIGIN = /"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig;
+const REGEX_LIP = /"lip"\s+"((\s*[0-9\.-]+\s*)*)"/ig;
+const REGEX_MODEL = /\{[\s\S^\}\{]*?"classname"\s+"misc_model"[\s\S^\}\{]*?\}/ig;
+
+function scaleMap(file, amount) {
+  // Get all brushes in map
+  const brushes = importer.regexToArray(REGEX_BRUSH, file);
+
+  // Scale brushes
+  brushes.forEach((brush) =&gt; {
+    const newBrush = scaleBrush(brush, amount);
+    file = file.replace(brush, newBrush);
+  });
+
+  // Scale origins
+  scaleOrigin(file, amount);
+  scaleLip(file, amount);
+
+  // Scale models
+  const models = importer.regexToArray(REGEX_MODEL, file);
+  models.forEach((model) =&gt; {
+    const newModel = scaleModel(model, amount);
+    file = file.replace(model, newModel);
+  });
+
+  return file;
+}
+
+function scaleBrush(brush, amount) {
+  let newBrush = brush;
+  newBrush = newBrush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) =&gt; {
+    return '('+ $1.trim().split(/\s+/ig)
+     .map((n) =&gt; Math.round((n.includes('.')? parseFloat(n.trim()) : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+     .join(' ') +')';
+  });
+
+  newBrush = newBrush.replace(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+\s*){5,8})/ig, (str, $1, $2) =&gt; {
+    return ')'+ $1 +'' + $2.trim().split(/\s+/ig)
+     .map((n, i) =&gt; i &gt;= 5 || i &lt;= 2? n : Math.round((n.includes('.')? parseFloat(n.trim()) : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+     .join(' ') + '\n';
+  });
+
+  return newBrush;
+}
+
+function scaleOrigin(file, amount) {
+  const origins = importer.regexToArray(REGEX_ORIGIN, file, 1);
+  origins.forEach((origin) =&gt; {
+    const newOrigin = origin.trim().split(/\s+/ig)
+     .map((n) =&gt; Math.round((n.includes('.')? parseFloat(n.trim()) : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+     .join(' ');
+    file = file.replace(new RegExp('"origin"\\s+"' + origin + '"', 'ig'), '"origin" "' + newOrigin + '"');
+  });
+}
+
+function scaleLip(file, amount) {
+  const lips = importer.regexToArray(REGEX_LIP, file, 1);
+  lips.forEach((lip) =&gt; {
+    const newOrigin = lip.trim().split(/\s+/ig)
+     .map((n) =&gt; Math.round((n.includes('.')? parseFloat(n.trim()) : parseInt(n.trim())) * amount * DIGITS) / DIGITS)
+     .join(' ');
+    file = file.replace(new RegExp('"lip"\\s+"' + lip + '"', 'ig'), '"lip" "' + newOrigin + '"');
+  });
+}
+
+function scaleModel(model, amount) {
+  if (model.match(/"modelscale"/i)) {
+    const match = (/"modelscale"\s+"([^"]*?)"/ig).exec(model);
+    const scaled = (match[1].includes('.')? parseFloat(match[1]) : parseInt(match[1])) * amount;
+    return model.replace(match[0], '"modelscale" "' + scaled + '"');
+  } else {
+    return model.replace(/"classname"\s+"misc_model"/ig, '"classname" "misc_model"\n "modelscale" "' + amount + '"');
+  }
+}
+
+module.exports = scaleMap;</code></pre></div><p>This code snippet defines a function <code>scaleMap</code> that modifies a Quake 3 map file by scaling its brush entities and origins.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

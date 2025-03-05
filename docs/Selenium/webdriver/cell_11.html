@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -170,7 +177,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const lockfile = require('lockfile');
+const fs = require('fs');
+const path = require('path');
+const { loadWebdriverSessions } = require('../Core');
+
+const DEFAULT_SESSION_DIR = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials');
+const SESSIONS_FILE = path.join(DEFAULT_SESSION_DIR,'sessions.json');
+const INIT_WAIT = 60 * 1000; // 60 seconds (1 minute)
+const UPDATE_WAIT = 1 * 1000; // 1 second
+
+const getLockFilePath = (init) => {
+    return `${SESSIONS_FILE}.${init? 'init' : 'update'}.lock`;
+};
+
+const lockFile = (lock, init) => {
+    const lockFilePath = getLockFilePath(init);
+    const stale = init? INIT_WAIT : UPDATE_WAIT;
+    const wait = init? INIT_WAIT : UPDATE_WAIT;
+
+    return new Promise((resolve, reject) => {
+        const func = lock? lockfile.lock : lockfile.unlock;
+        func(lockFilePath, [stale, wait], (err) => {
+            if (err) {
+                return reject(err);
+            }
+            console.log(`${init? 'init' : 'update'} - ${lock? 'lock' : 'unlock'}`);
+            resolve();
+        });
+    });
+};
+
+const loadSessionsOrAddNew = (currentSession) => {
+    try {
+        const sessions = loadWebdriverSessions();
+        if (!currentSession) {
+            return sessions;
+        }
+
+        const updateSession = sessions.find((session) => session[1] === currentSession);
+        if (updateSession) {
+            console.log(`update ${currentSession}`);
+            updateSession[0] = Date.now();
+        } else {
+            console.log(`insert ${currentSession}`);
+            const newSession = sessions.push([Date.now(), currentSession]);
+            sessions[sessions.length - 1][0] = Date.now();
+        }
+
+        fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 4));
+        return sessions;
+    } catch (error) {
+        console.error('Error loading sessions:', error);
+        throw error;
+    }
+};
+
+module.exports = {
+    lockFile,
+    loadSessionsOrAddNew,
+};</code></pre></div><p><strong>Overview</strong></p>
 <p>This code is a Node.js module that manages a lock file and a sessions JSON file to keep track of active sessions. It provides two main functions: <code>lockPromise</code> and <code>updateOrAddSession</code>.</p>
 <p><strong>Dependencies</strong></p>
 <ul>

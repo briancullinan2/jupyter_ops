@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet synchronizes Chrome data (likely browsing history and bookmarks) and sends the result or any errors to a client.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const coreImporter = require('../Core');
+const { syncChromeData } = require('../Core'); // import specific function
+const { async as $ } = require('./asyncHelper'); // import as alias
+
+// Initialize asynchronous function
+$.async();
+
+// Define the function to sync Chrome data
+async function syncChromeDataAsync() {
+  try {
+    // Call the sync Chrome data function
+    const result = await syncChromeData();
+
+    // Send the result
+    $.sendResult(result);
+  } catch (error) {
+    // Send the error
+    $.sendError(error);
+  }
+}
+
+// Call the async function to sync Chrome data
+syncChromeDataAsync();</code></pre></div><p>This code snippet synchronizes Chrome data (likely browsing history and bookmarks) and sends the result or any errors to a client.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Import:</strong> It imports a function called <code>syncChrome</code> from a module named <code>Core</code>. This function presumably handles the actual synchronization logic.</p></li>

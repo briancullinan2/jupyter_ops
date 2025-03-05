@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -273,7 +280,105 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet analyzes a Quake map file to determine its bounding box and potentially adds a skybox.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importCore } = require('../Core');
+const { doIntersect } = importCore.import('brush to vertex');
+const fs = require('fs');
+
+const regexToArray = (pattern, string, flags) =&gt; {
+    const matches = string.match(new RegExp(pattern, flags)) || [];
+    return matches.map((match, index) =&gt; {
+        const groups = match.match(new RegExp(pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\${OUTPUT}amp;'), flags));
+        return groups.map((group, index) =&gt; group.trim().split(/\s+/ig).map((value) =&gt; {
+            return value.includes('.')? parseFloat(value.trim()) : parseInt(value.trim());
+        }));
+    });
+};
+
+const getBounds = (file) =&gt; {
+    const importer = importCore;
+    const brushes = importer.regexToArray(/\{[\s\S]*?\}/ig, file);
+    const points = brushes.flatMap((brush) =&gt; {
+        const points = importer.regexToArray(/\(((\s*[0-9\.-]+\s*)*)\)/ig, brush, 1).map((point) =&gt; point.trim().split(/\s+/ig).map((value) =&gt; {
+            return value.includes('.')? parseFloat(value.trim()) : parseInt(value.trim());
+        }));
+        return points;
+    });
+    const origins = importer.regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, file, 1).map((origin) =&gt; origin.trim().split(/\s+/ig).map((value) =&gt; {
+        return value.includes('.')? parseFloat(value.trim()) : parseInt(value.trim());
+    })).flat();
+
+    const min = [Math.min(...points.map((point) =&gt; point[0])), Math.min(...points.map((point) =&gt; point[1])), Math.min(...points.map((point) =&gt; point[2]))];
+    const max = [Math.max(...points.map((point) =&gt; point[0])), Math.max(...points.map((point) =&gt; point[1])), Math.max(...points.map((point) =&gt; point[2]))];
+
+    const allPoints = origins.concat(points);
+    const newMin = [Math.min(...allPoints.map((point) =&gt; point[0])), Math.min(...allPoints.map((point) =&gt; point[1])), Math.min(...allPoints.map((point) =&gt; point[2]))];
+    const newMax = [Math.max(...allPoints.map((point) =&gt; point[0])), Math.max(...allPoints.map((point) =&gt; point[1])), Math.max(...allPoints.map((point) =&gt; point[2]))];
+
+    return [[newMin[0], newMin[1], newMin[2]], [newMax[0], newMax[1], newMax[2]]];
+}
+
+const addSkybox = (fileName) =&gt; {
+    if (typeof fileName ==='string' &amp;&amp; fs.existsSync(fileName)) {
+        const file = fs.readFileSync(fileName, 'utf-8');
+    } else {
+        const file = fileName;
+    }
+
+    const brushes = importCore.regexToArray(/\{[^\{}]*?\}\s*/ig, file);
+    const skyboxBrushes = brushes.filter((brush) =&gt; brush.includes('/sky'));
+
+    skyboxBrushes.forEach((brush) =&gt; {
+        file = file.replace(brush, '');
+    });
+
+    const vs = getBounds(file);
+
+    const points = [
+        [vs[0][0], vs[0][1], vs[0][2] - 16],
+        [vs[1][0], vs[1][1], vs[0][2]],
+        [vs[0][0] - 16, vs[0][1], vs[0][2]],
+        [vs[0][0], vs[1][1], vs[1][2]],
+        [vs[0][0], vs[0][1] - 16, vs[0][2]],
+        [vs[1][0], vs[0][1], vs[1][2]],
+        [vs[0][0], vs[0][1], vs[1][2]],
+        [vs[1][0], vs[1][1], vs[1][2] + 16],
+        [vs[1][0], vs[0][1], vs[0][2]],
+        [vs[1][0] + 16, vs[1][1], vs[1][2]],
+        [vs[0][0], vs[1][1], vs[0][2]],
+        [vs[1][0], vs[1][1] + 16, vs[1][2]],
+    ];
+
+    const newBrush = points.flatMap((point, index) =&gt; {
+        const p1 = points[index];
+        const p2 = points[index + 1];
+        return `
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p1[1]} ${p2[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p2[2]} ) e1u1/sky1 0 0 0 1 1 0 0 0
+`;
+    }).join('\n');
+
+    const exp = /\{*\s*\/\/\s*brush\s*0\s*\{*/ig;
+    const match = exp.exec(file);
+    const pos = exp.lastIndex;
+    file = file.substr(0, pos - match[0].length) + newBrush + file.substr(pos - match[0].length);
+
+    if (typeof fileName ==='string' &amp;&amp; fs.existsSync(fileName)) {
+        console.log(`writing ${fileName}`);
+        fs.writeFileSync(fileName, file);
+    } else {
+        return file;
+    }
+};
+
+module.exports = {
+    addSkybox,
+    getBounds
+}</code></pre></div><p>This code snippet analyzes a Quake map file to determine its bounding box and potentially adds a skybox.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>getBounds</code> Function:</strong></p>

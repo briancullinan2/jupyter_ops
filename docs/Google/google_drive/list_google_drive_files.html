@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,30 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the necessary modules
+const { promisify } = require('util');
+const importer = require('../Core');
+const { google } = require('googleapis'); // Import the google-api-library
+const authorizeDrive = importer.import('authorizeGoogleDrive'); // Refactor import statement
+
+/**
+ * List files from Google Drive.
+ *
+ * @returns {Promise<Array<googleapis.types.File>>} A promise that resolves to an array of Google Drive files.
+ */
+async function listDrive() {
+    // Authorize access to Google Drive
+    const drive = await authorizeDrive();
+
+    // List files from Google Drive using the google-api-library
+    const files = await drive.files.list({});
+
+    // Return the list of files
+    return files.data.files || [];
+}
+
+module.exports = listDrive;</code></pre></div><p><strong>Function Breakdown</strong></p>
 <p>This code defines a Node.js module that exports a single function, <code>listDrive</code>, which returns a list of files from Google Drive.</p>
 <h3>Imported Modules</h3>
 <ul>

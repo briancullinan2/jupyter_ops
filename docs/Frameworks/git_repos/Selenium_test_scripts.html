@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,20 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This command executes a Node.js test suite within a Docker container named &quot;selenium&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a function to run selenium tests
+run_selenium_tests() {
+  # Use the docker exec command with the given options
+  docker exec -t selenium npm --prefix /home/seluser/selenium/test run test
+}
+
+# Check if the script is being run directly (not being sourced)
+if [ "${BASH_SOURCE[0]}" = "$0" ]; then
+  # Call the function to run the selenium tests
+  run_selenium_tests
+fi</code></pre></div><p>This command executes a Node.js test suite within a Docker container named &quot;selenium&quot;.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>docker exec -t selenium</code></strong>: This part executes a command inside a Docker container named &quot;selenium&quot;.</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -222,7 +229,93 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet modifies a Quake 3 map file by replacing texture references with predefined replacements.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+
+// Define common textures
+const commonTextures = [
+  'areaportal',    'botclip',
+  'caulk',         'clip',
+  'clusterportal', 'cushion',
+  'donotenter',    'full_clip',
+  'hint',          'ladderclip',
+  'ladderclip',    'lightgrid',
+ 'metalclip',    'missileclip',
+  'nodraw',        'nodrawnonsolid',
+  'nodrop',        'nolightmap',
+  'origin',        'qer_mirror',
+  'qer_portal',   'slick',
+  'terrain',       'trigger',
+  'weapclip',      'white'
+];
+
+// Define textures replacements
+const texturesReplacements = {
+  // Add textures replacements here
+};
+
+/**
+ * Replaces textures in a given Quake 3 file.
+ * 
+ * @param {string} file - The Quake 3 file to modify.
+ * @returns {string} The modified Quake 3 file.
+ */
+function replaceTextures(file) {
+  const usedTextures = new Set();
+  
+  // Check if file is a string and exists
+  if (typeof file ==='string' &amp;&amp; fs.existsSync(file)) {
+    file = fs.readFileSync(file, 'utf-8');
+  }
+  
+  // Get common textures from file system (if not defined)
+  if (!commonTextures.length) {
+    const commonTexturesDir = '/Users/briancullinan/planet_quake_data/quake3-baseq3/common-spog.pk3dir/textures/common';
+    const commonTexturesFiles = fs.readdirSync(commonTexturesDir);
+    commonTextures = commonTexturesFiles.map((f) =&gt; f.substr(0, f.length - path.extname(f).length));
+  }
+  
+  // Get all brushes in map (leaf nodes with at least one vertex)
+  const brushes = importer.regexToArray(/\{[\s\S^}]*?\}/ig, file);
+  
+  // Replace all brushes with textures from common or berserker overrides
+  brushes.forEach((b) =&gt; {
+    let newBrush = b;
+    Object.keys(texturesReplacements).forEach((k) =&gt; {
+      newBrush = newBrush.replace(new RegExp(`\\) ([^\\/\\)\\(]*?\\/)*?${k}`, 'ig'), (str, $1) =&gt; `) ${texturesReplacements[k]}`);
+    });
+    commonTextures.forEach((k) =&gt; {
+      newBrush = newBrush.replace(new RegExp(`\\) ([^\\/\\)\\(]*?\\/)*?${k}`, 'ig'), (str, $1) =&gt; `) common/${k === 'clip'? 'hint' : k}`);
+    });
+    
+    // Fix water, don't mix textures because trenchbroom rearranges vertices so water isn't always applied
+    if (newBrush.includes('wter')) {
+      newBrush = newBrush.replace(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm, (str, $1, $2) =&gt; `) e1u1/bluwter ${$2}`);
+    }
+    
+    const texts = importer.regexToArray(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm, b, 1);
+    texts.forEach((text) =&gt; {
+      const textureDir = path.dirname(text);
+      if (!usedTextures.has(textureDir)) {
+        usedTextures.add(textureDir);
+      }
+    });
+    
+    // Replace brush with new brush
+    file = file.replace(b, newBrush);
+  });
+  
+  // Update _tb_textures line
+  usedTextures = Array.from(usedTextures).map((u) =&gt; `textures/${u.replace(/^\/|\/$|^\s*|\s*$/, '')}`);
+  file = file.replace(/"classname" "worldspawn"/ig, `"classname" "worldspawn"
+"_tb_textures" "textures/common;${usedTextures.join(';")}"`);
+  
+  return file;
+}
+
+module.exports = replaceTextures;</code></pre></div><p>This code snippet modifies a Quake 3 map file by replacing texture references with predefined replacements.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

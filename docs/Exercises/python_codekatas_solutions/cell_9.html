@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def subsets(input_list):
+    """
+    Find all possible subsets of a list.
+
+    Args:
+        input_list (list): The input list to generate subsets from.
+
+    Returns:
+        list: A list of all possible subsets of the input list.
+    """
+    if not input_list:
+        return [[]]
+
+    # Base case: if the list is empty, return a list containing an empty list
+    return _subsets_recursive(input_list)
+
+
+def _subsets_recursive(input_list):
+    """
+    Recursive helper function to generate subsets.
+
+    Args:
+        input_list (list): The input list to generate subsets from.
+
+    Returns:
+        list: A list of all possible subsets of the input list.
+    """
+    # Base case: if the list is empty, return a list containing an empty list
+    if not input_list:
+        return [[]]
+
+    # Recursive case: get subsets of the list without the first element
+    subsets_without_first = _subsets_recursive(input_list[1:])
+
+    # Generate subsets with and without the first element
+    return subsets_without_first + [[input_list[0]] + sub for sub in subsets_without_first]
+
+
+assert subsets('') == [[]]
+assert subsets('abc') == [[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]
+assert subsets(['a', 'b', 'c']) == [[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]
+print('All passed!')</code></pre></div><h2>Function Breakdown</h2>
 <h3>Function Name: <code>subsets</code></h3>
 <h3>Purpose:</h3>
 <p>The <code>subsets</code> function generates all possible subsets of a given list.</p>

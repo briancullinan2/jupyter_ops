@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -225,7 +232,130 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { request } = require('gaxios');
+const WebSocket = require('ws');
+const { delay, wait, timeout } = require('discord utilities');
+const {
+  gatewayIdentified, gatewayClose, gatewayMessage,
+} = require('discord gateway');
+const {
+  TOKEN, DEFAULT_API, DEFAULT_RATE
+} = require('discord configuration');
+
+class DiscordGateway {
+  constructor() {
+    this.ws = false;
+    this.wsConnecting = false;
+    this.previousRequest = 0;
+  }
+
+  async gatewayUrl() {
+    try {
+      const result = await request({
+        headers: {
+          Authorization: `Bot ${TOKEN}`,
+        },
+        method: 'GET',
+        url: `${DEFAULT_API}gateway/bot`,
+      });
+      return result.data;
+    } catch (error) {
+      console.error('Error getting gateway URL:', error);
+      throw error;
+    }
+  }
+
+  async authorizeGateway() {
+    const now = Date.now();
+    if (this.wsConnecting &amp;&amp; now - this.previousRequest &lt; 1000) {
+      // Return cached result from previous request if queried less than 1 second ago
+      return this.ws;
+    }
+
+    this.wsConnecting = true;
+    try {
+      const result = await this.gatewayUrl();
+      this.ws = new WebSocket(result.url);
+      this.ws.identified = false;
+    } catch (error) {
+      console.error('Authorize error:', error.message);
+      this.ws = false;
+      this.wsConnecting = false;
+      return;
+    }
+
+    this.ws.on('open', () =&gt; console.log('Connecting to Discord'));
+    this.ws.on('message', (event) =&gt; gatewayMessage(event, this.authorizeGateway));
+    this.ws.on('close', () =&gt; gatewayClose(this.ws, this.authorizeGateway));
+    await this.waitForGatewayIdentification(3000);
+    this.wsConnecting = false;
+    return this.ws;
+  }
+
+  async waitForGatewayIdentification(timeoutMs) {
+    if (this.ws &amp;&amp; this.ws.readyState === 1 &amp;&amp; this.ws.identified) {
+      return this.ws;
+    }
+
+    try {
+      await wait(() =&gt; this.ws.identified, timeoutMs);
+    } catch (error) {
+      console.error('Error waiting for gateway identification:', error);
+      throw error;
+    }
+  }
+
+  async closeGateway() {
+    gatewayClose(this.ws, this.authorizeGateway);
+  }
+
+  async requestAuthQ(outgoing) {
+    await this.authorizeGateway();
+    if (!outgoing.headers) {
+      outgoing.headers = {};
+    }
+    outgoing.headers.Authorization = `Bot ${TOKEN}`;
+    outgoing.url = DEFAULT_API + outgoing.url;
+    const waitTime = await delay(this.previousRequest, DEFAULT_RATE);
+    this.previousRequest = waitTime;
+
+    const resolveRequest = async () =&gt; {
+      try {
+        const result = await request(outgoing);
+        return result.data;
+      } catch (error) {
+        if (error.code === 429) {
+          console.log('Delayed request:', error.response.data.retry_after);
+          await timeout(error.response.data.retry_after * 1000);
+          return await resolveRequest();
+        } else {
+          console.error(error);
+          if (error.response) {
+            console.error(error.response.data.errors);
+          }
+          throw error;
+        }
+      }
+    };
+
+    return await resolveRequest();
+  }
+
+  async interactionResponse(interactionId, interactionToken) {
+    const json = { type: 5 };
+    return await this.requestAuthQ({
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      url: `interactions/${interactionId}/${interactionToken}/callback`,
+      data: JSON.stringify(json),
+    });
+  }
+}
+
+module.exports = new DiscordGateway();</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules and Variables</h3>
 <p>The code imports various modules and variables:</p>
 <ul>

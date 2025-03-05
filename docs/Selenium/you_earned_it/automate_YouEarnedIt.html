@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -95,7 +102,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>runHighFiver</code> that orchestrates a Selenium WebDriver-based automation task on a website, likely &quot;YouEarnedIt&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Core } = require('../Core');
+
+/**
+ * Runs Selenium cell with a specific command and returns a promise.
+ * @param {string} command - The Selenium command to execute (e.g., 'high five people youearnedit').
+ * @returns {Promise} A promise that resolves to a function.
+ */
+function runSeleniumCell(command) {
+  return Core.import('selenium cell')(command);
+}
+
+/**
+ * Runs the 'high five' Selenium command and returns a promise that resolves to the result of the command.
+ * @returns {Promise} A promise that resolves to the result of the 'high five' command.
+ */
+async function runHighFiver() {
+  try {
+    const highFive = await runSeleniumCell('high five people youearnedit');
+    return await highFive();
+  } catch (error) {
+    // TODO: Handle Selenium cell errors
+    throw error;
+  }
+}
+
+module.exports = runHighFiver;</code></pre></div><p>This code defines a function <code>runHighFiver</code> that orchestrates a Selenium WebDriver-based automation task on a website, likely &quot;YouEarnedIt&quot;.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Import:</strong></p>

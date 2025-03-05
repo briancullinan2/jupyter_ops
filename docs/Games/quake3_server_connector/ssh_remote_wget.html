@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const NodeSSH = require('node-ssh');
+const { console } = require('console');
+
+// Import environment variables and user profiles
+const { HOME, HOMEPATH, USERPROFILE } = process.env;
+const PROFILE_PATH = HOME || HOMEPATH || USERPROFILE;
+
+// Constants for SSH connections
+const DEFAULT_SSH = process.env.DEFAULT_SSH || 'okayfun.com';
+const DEFAULT_SSH_USER = process.env.DEFAULT_SSH_USER || 'root';
+
+// Check if local SSH key exists, otherwise use system-wide path
+const privateKeyPath = fs.existsSync('./id_rsa')? path.resolve('./id_rsa') : path.join(PROFILE_PATH, '.ssh/id_rsa');
+
+// Initialize SSH client
+const ssh = new NodeSSH();
+
+// TODO: Remove hardcoded SSH connections and use environment variables instead
+async function remoteGet(url, output, cwd) {
+  // Options for SSH execution
+  const options = {
+    cwd: cwd,
+    onStdout(chunk) {
+      console.log('stdoutChunk', chunk.toString('utf8'));
+    },
+    onStderr(chunk) {
+      console.log('stderrChunk', chunk.toString('utf8'));
+    },
+  };
+
+  try {
+    // Execute SSH command to get remote file using wget
+    await ssh.exec('/usr/bin/wget', ['-O', output, url], options);
+
+    // Append a comma to the last line of the index.json file
+    const fileLength = await ssh.exec('wc -l../index.json | cut -d" " -f1', [], options);
+    const sedCommand = `sed "\$(( ${fileLength} - 1 ))s/$/,/;\$(${fileLength})i  \\\\t\":\"\"""../index.json`;
+    await ssh.exec(sedCommand, [], options);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = remoteGet;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var fs = require('fs')
 var path = require('path')

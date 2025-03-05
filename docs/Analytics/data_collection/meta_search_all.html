@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -183,7 +190,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs').promises;
+const path = require('path');
+const multiCrawl = require('../Core').import('multi crawl');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Collections','searches');
+
+async function searchAll(query ='search engine') {
+    try {
+        const engines = [
+            'https://www.google.com/search?q=' + encodeURIComponent(query),
+            'https://www.bing.com/search?q=' + encodeURIComponent(query),
+            'https://search.yahoo.com/search?p=' + encodeURIComponent(query),
+            'https://www.ask.com/web?q=' + encodeURIComponent(query),
+            'https://search.aol.com/aol/search?q=' + encodeURIComponent(query),
+            'http://www.baidu.com/s?wd=' + encodeURIComponent(query),
+            'https://www.wolframalpha.com/input/?i=' + encodeURIComponent(query),
+            'https://duckduckgo.com/?q=' + encodeURIComponent(query),
+            'https://www.yandex.com/search/?text=' + encodeURIComponent(query),
+            'https://archive.org/search.php?query=' + encodeURIComponent(query),
+        ];
+
+        const results = await multiCrawl(engines,'search results json');
+        const timestamp = new Date().toISOString().replace(/:/g, '-').replace('.', '-');
+        const filename = query.replace(/[^a-z0-9]/ig, '_') + '-' + timestamp + '.json';
+        const filePath = path.join(PROJECT_PATH, filename);
+
+        await fs.writeFile(filePath, JSON.stringify(results, null, 4));
+        return results;
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = searchAll;
+
+if (typeof $!== 'undefined') {
+    $.async();
+    searchAll()
+       .then((results) => $.sendResult(results))
+       .catch((error) => $.sendError(error));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Imports</h3>
 <ul>
 <li>The code requires the following dependencies:

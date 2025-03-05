@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code uses the <code>$TS</code> object to call the <code>screen</code> function, which likely opens a new browser tab or window displaying the specified URL.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Navigation constants
+const ACT_WEB_URL = 'https://act.com/fr-fr/produits/act-emarketing';
+
+/**
+ * Navigate to Act Marketing page with specified zoom and dimensions
+ *
+ * @param {Object} config - Navigation options
+ * @param {number} [config.zoom=1] - Zoom level (default: 1)
+ * @param {number} [config.width=800] - Page width (default: 800)
+ * @param {number} [config.height=600] - Page height (default: 600)
+ */
+function navigateToActMarketing(config: { zoom?: number, width?: number, height?: number } = {}): void {
+  config = {...{ zoom: 1, width: 800, height: 600 },...config };
+
+  // Use TypeScript's built-in screen API
+  // TODO: Consider using a more robust navigation library
+  $TS.screen(ACT_WEB_URL, {
+    zoom: config.zoom,
+    width: config.width,
+    height: config.height,
+    'crop-h': 400,
+  });
+}
+
+// Example usage:
+// navigateToActMarketing({ zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><p>This code uses the <code>$TS</code> object to call the <code>screen</code> function, which likely opens a new browser tab or window displaying the specified URL.</p>
 <h3>Code Breakdown</h3>
 <ul>
 <li><code>$TS.screen</code>: Calls the <code>screen</code> function to open a new browser tab or window.</li>

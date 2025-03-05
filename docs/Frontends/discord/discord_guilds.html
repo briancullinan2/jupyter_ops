@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -133,7 +140,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Importing required modules and configurations
+const { DEFAULT_GUILD } = require('./discord-configuration');
+const { request } = require('./discord-authorization');
+
+// Defining API endpoint URLs
+const ENDPOINTS = {
+  USERS_GUILDS: (userId) => `users/${userId}/guilds`,
+  GUILD_ROLES: (guildId) => `guilds/${guildId}/roles`,
+  USER_CONNECTIONS: (userId) => `users/${userId}/connections`,
+};
+
+// Fetch user guilds
+/**
+ * Retrieves the guilds a user is a part of.
+ * @param {string} [userId='@me'] - The ID of the user.
+ * @returns {Promise} A promise that resolves with the user's guilds.
+ */
+async function userGuilds(userId = '@me') {
+  try {
+    const response = await request({ method: 'GET', url: ENDPOINTS.USERS_GUILDS(userId) });
+    return response.data;
+  } catch (error) {
+    // TODO: Implement error handling and logging
+    console.error('Error fetching user guilds:', error);
+    return null;
+  }
+}
+
+// Fetch guild roles
+/**
+ * Retrieves the roles in a guild.
+ * @param {string} [guildId=DEFAULT_GUILD] - The ID of the guild.
+ * @returns {Promise} A promise that resolves with the guild's roles.
+ */
+async function getGuildRoles(guildId = DEFAULT_GUILD) {
+  try {
+    const response = await request({ method: 'GET', url: ENDPOINTS.GUILD_ROLES(guildId) });
+    return response.data;
+  } catch (error) {
+    // TODO: Implement error handling and logging
+    console.error('Error fetching guild roles:', error);
+    return null;
+  }
+}
+
+// Fetch user connections
+/**
+ * Retrieves the connections a user has.
+ * @param {string} [userId='@me'] - The ID of the user.
+ * @returns {Promise} A promise that resolves with the user's connections.
+ */
+async function userConnections(userId = '@me') {
+  try {
+    const response = await request({ method: 'GET', url: ENDPOINTS.USER_CONNECTIONS(userId) });
+    return response.data;
+  } catch (error) {
+    // TODO: Implement error handling and logging
+    console.error('Error fetching user connections:', error);
+    return null;
+  }
+}
+
+// Exporting the API endpoints
+module.exports = {
+  userGuilds,
+  getGuildRoles,
+  userConnections,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">var {DEFAULT_GUILD} = importer.import('discord configuration')
 var {request} = importer.import('discord authorization')

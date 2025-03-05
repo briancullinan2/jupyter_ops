@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -175,7 +182,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { htmlToTree } = require('../Core').import('html to tree');
+
+/**
+ * Translates HTML to a tree structure
+ *
+ * @param {string} page - The HTML to be translated
+ * @returns {object} The translated HTML tree structure
+ */
+function testHtmlTree(page) {
+    try {
+        // Attempt to translate the HTML
+        const translatedTree = htmlToTree(page);
+        return translatedTree;
+    } catch (error) {
+        // Log any errors that occur during translation
+        console.error('Error translating HTML:', error);
+        return null;
+    }
+}
+
+// Example usage
+if (typeof $!== 'undefined') {
+    // Copied from Chrome Google search homepage
+    const code = `<!-- 
+      Copy-pasted from Chrome Google search homepage
+    -->
+    <div id="fakebox-container">
+      <div id="fakebox">
+        <div id="fakebox-search-icon"></div>
+        <div id="fakebox-text">Search Google or type a URL</div>
+        <input id="fakebox-input" autocomplete="off" tabindex="-1" type="url" aria-hidden="true">
+        <div id="fakebox-cursor"></div>
+        <button id="fakebox-microphone" title="Search by voice"></button>
+      </div>
+    </div>`;
+
+    // Translate the HTML and log the result
+    const tree = testHtmlTree(code);
+    console.log(tree);
+}
+
+// TODO: Improve error handling and edge case testing
+// TODO: Consider adding a caching mechanism for repeated translations</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {htmlToTree} = importer.import('html to tree');

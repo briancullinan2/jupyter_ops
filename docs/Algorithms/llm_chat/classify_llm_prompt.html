@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -164,7 +171,20 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const API_FUNCTIONS = [
+  'Load Message History',
+  'General Chit Chat',
+  'Brian\'s Resume',
+  'File System Access',
+  'Access Web Information',
+  'Stable Diffusion Request',
+  'Request Ollama Vision',
+  // 'Ask Another LLM for Help',
+  'Add Conversation Context',
+  'LLM Save Memories',
+  // 'Switch LLM Models'
+]</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Section 1: Importing and Defining Constants</h3>
 <ul>
 <li><code>getExports</code> is a function that imports and exports functionality from a source.</li>

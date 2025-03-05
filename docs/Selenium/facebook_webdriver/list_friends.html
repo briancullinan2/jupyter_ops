@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { importers } from './importers.js';
+import { FacebookLogin } from './facebook-login.js';
+import { SeleniumClient } from './selenium-client.js';
+
+/**
+ * List friends on Facebook
+ * @param {object} driver - Selenium WebDriver instance
+ * @returns {Promise<string[]>} List of friend URLs
+ */
+async function listFriends(driver = null) {
+  // Ensure driver instance
+  if (!driver) {
+    driver = await SeleniumClient.getInstance();
+    await new FacebookLogin(driver).login();
+  }
+
+  try {
+    // Get current URL and check if already on friends page
+    const url = await driver.getCurrentUrl();
+    const alreadyOnFriendsPage = url.indexOf('facebook')!== -1 && url.indexOf('suggestions')!== -1;
+
+    if (!alreadyOnFriendsPage) {
+      // Navigate to friends page if not already there
+      await driver.get('https://www.facebook.com/friends/suggestions');
+      await new Promise(resolve => setTimeout(resolve, 4000));
+    }
+
+    // Extract friend URLs from page
+    const friendUrls = await getAllElementsUntil(driver, {
+      selector: '//div[@aria-label="Suggestions"]/div/div/following-sibling::div[contains(.//text(), "People you may know")]',
+      extract: '//div[@aria-label="Suggestions"]//a[@role="link"]/@href',
+      compare: (a, b) => a === b,
+      limit: 10, // TODO: Refactor to use a more robust limit mechanism
+    });
+
+    // Return unique friend URLs
+    return [...new Set(friendUrls)];
+  } catch (error) {
+    // Quit driver instance to avoid leaving sessions hanging
+    await driver.quit();
+
+    // Re-throw the error
+    throw error;
+  }
+}
+
+// Export function
+export default listFriends;</code></pre></div><h3>Function Overview</h3>
 <p>The <code>listFriends</code> function is an asynchronous module that lists friends on Facebook using Selenium WebDriver.</p>
 <h3>Parameters</h3>
 <ul>

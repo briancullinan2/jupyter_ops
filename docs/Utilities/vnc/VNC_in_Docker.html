@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a Dockerfile, used to configure a Docker image for running a VNC server with a specific resolution and some customizations.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Remove Windows line endings from launch.sh using dos2unix
+RUN dos2unix /home/seluser/novnc/utils/launch.sh
+
+# Refactor start-xvfb.sh to update geometry
+sed -i -e's/export GEOMETRY.*/export GEOMETRY="8160x6120x24"/g' /opt/bin/start-xvfb.sh
+
+# Refactor start-vnc.sh to update scale and disable xdamage
+sed -i -e's/x11vnc/x11vnc -scale 4080x3060 -noxdamage/g' /opt/bin/start-vnc.sh
+
+# Refactor entry_point.sh to wait for launch.sh to finish
+sed -i '/wait \$/i/home/seluser/novnc/utils/launch.sh --vnc localhost:5900 &amp;' /opt/bin/entry_point.sh
+
+# Set current user to seluser
+USER seluser</code></pre></div><p>This code snippet appears to be part of a Dockerfile, used to configure a Docker image for running a VNC server with a specific resolution and some customizations.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>RUN dos2unix /home/seluser/novnc/utils/launch.sh</code>:</strong></p>

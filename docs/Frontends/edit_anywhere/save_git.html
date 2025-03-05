@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>gitSave</code> that updates a GitHub Gist with modified content, likely from a web page scraping process.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Saves data to a gist on GitHub.
+ * 
+ * @param {string} url - The URL of the gist.
+ * @param {object} data - The data to save to the gist.
+ * @param {string} gist - The ID of the gist to update.
+ * @returns {Promise<object>} - The updated gist.
+ */
+const importer = require('../Core')
+const { writeGistFiles } = importer.import();
+const { getGist, loadScraped } = require('../Core');
+
+async function gitSave(url, data, gist) {
+    if (!gist) return {};
+
+    // Normalize the URL
+    const normalizedUrl = new URL(url);
+    const host = normalizedUrl.hostname.replace(/[^a-z0-9_-]/ig, '_');
+    const file = normalizedUrl.pathname.replace(/[^a-z0-9_-]/ig, '_');
+
+    // Check if the file exists in the gist
+    const gistFiles = await getGist(gist);
+    if (!gistFiles.files[file]) {
+        // Load the scraped data from the URL
+        const scrapedData = await loadScraped(normalizedUrl);
+        // Update the gist with the scraped data
+        await writeGistFiles(gist, scrapedData);
+    }
+
+    // Update the gist with the new data
+    await writeGistFiles(gist, { [file]: data });
+
+    // Diff the HTML for changes
+    const acl = gistFiles.files[`${host}-acl.json`];
+    if (acl) {
+        // Parse the ACL as an array of selectors
+        const aclSelectors = typeof acl ==='string'? [acl] : acl;
+        // Select the previous and new body elements
+        const bodyPrevious = selectDom('//body', gistFiles.files[file]);
+        const bodyNew = selectDom('//body', data);
+        // Compare the previous and new body elements
+        aclSelectors.forEach(selector => {
+            const previous = selectDom(selector, bodyPrevious);
+            const newSelection = selectDom(selector, bodyNew);
+            // TODO: Implement diff logic here
+        });
+    }
+}
+
+// TODO: Consider moving the diff logic to a separate function
+// TODO: Add error handling for loading and updating the gist
+
+module.exports = gitSave;</code></pre></div><p>This code defines a function <code>gitSave</code> that updates a GitHub Gist with modified content, likely from a web page scraping process.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -188,7 +195,86 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code analyzes a Chrome browser history file (likely exported from Google Takeout) to categorize and count website visits.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import fs from 'fs';
+import importer from '../Core';
+import d3PieChart from importer.import('d3 pie chart');
+import $ from 'jquery'; // assuming jquery is used
+
+// Helper function to convert unicode escape sequences to actual characters
+const convertUnicode = (x) =&gt; {
+    return x.replace(/\\u([\d\w]{4})/gi, (match, grp) =&gt; {
+        return String.fromCharCode(parseInt(grp, 16));
+    });
+};
+
+// Load browser history from JSON file
+const history = JSON.parse(fs.readFileSync('/Users/briancullinan/Downloads/Takeout 6/Chrome/BrowserHistory.json', 'utf8'));
+
+// Get total number of history entries
+const total = history['Browser History'].length;
+
+// Get earliest and latest visited time
+const earliestVisit = new Date(Math.round(history['Browser History'][0].time_usec / 1000));
+const latestVisit = new Date(Math.round(history['Browser History'][total - 1].time_usec / 1000));
+
+// Function to add site to groupCounts array
+const addSite = (label, value = 1) =&gt; {
+    const site = groupCounts.find(g =&gt; g.label === label);
+    if (!site) {
+        groupCounts.push({ label, value });
+    } else {
+        site.value += value;
+    }
+};
+
+// Regular expressions for known sites
+const knownSites = [
+    [/google.*?search/, 'google search'],
+    [/calendar.*?google/, 'google calendar'],
+    [/stackoverflow/,'stackoverflow'],
+    [/localhost:9090/, 'local dev'],
+    [/linkedin/, 'linkedin'],
+    [/google/, 'other google'],
+    [/amazon/, 'amazon'],
+    [/github/, 'github'],
+    [/facebook/, 'facebook'],
+    [/wikipedia/, 'wikipedia'],
+    [/youtube/, 'youtube'],
+    [/ftp:/', 'ftp'],
+    [/chrome:|about:|native:|source:|file:|data:|extension:|intent:|content:|market:$/,'settings'],
+];
+
+// Add site to groupCounts array based on URL
+history['Browser History'].forEach((entry) =&gt; {
+    const uri = convertUnicode(entry.url);
+    if (knownSites.some(([regex, label]) =&gt; regex.test(uri))) {
+        addSite(label);
+    } else {
+        const domain = (uri.match(/https?:\/\/(.*?)(\/|$)/i) || [])[1];
+        addSite(domain || 'unknown');
+    }
+});
+
+// Group sites with low frequency into 'other'
+const groupCounts = groupCounts.filter((site) =&gt; site.value &gt;= 300);
+const otherGroup = { label: 'other', value: groupCounts.reduce((acc, site) =&gt; acc + site.value, 0) };
+groupCounts.push(otherGroup);
+
+// Create pie chart
+d3PieChart(groupCounts)
+   .then((data) =&gt; $.async().then(() =&gt; $.svg(data)))
+   .catch((error) =&gt; $.sendError(error));
+
+// TODO: show month by month, week by week?
+// 1. Group history by month/week
+// 2. Create separate pie chart for each group
+// 3. Display group counts and percentages
+
+// TODO: use this chart instead? https://bl.ocks.org/mbostock/8d2112a115ad95f4a6848001389182fb
+// 1. Load new chart data
+// 2. Update chart configuration
+// 3. Render new chart</code></pre></div><p>This code analyzes a Chrome browser history file (likely exported from Google Takeout) to categorize and count website visits.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

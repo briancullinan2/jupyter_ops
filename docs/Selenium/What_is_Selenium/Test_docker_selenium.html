@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>testLive</code> that simulates a user interaction with a website.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// import the required module
+const { Client } = require('playwright');
+
+/**
+ * Navigate to the login page and click the login link
+ * @param {Client} browser - the playwright browser instance
+ * @returns {Promise&lt;void&gt;} a promise that resolves when the operation is complete
+ */
+async function navigateToLogin(browser) {
+  try {
+    // Launch the browser and navigate to the login page
+    const page = await browser.newPage();
+    await page.goto('https://purchasesprint.actops.com');
+    
+    // Click the login link
+    await page.click('[href*="/auth"], [routerlink*="/auth"]');
+  } catch (error) {
+    // Handle any errors that may occur during navigation
+    console.error('Error navigating to login page:', error);
+  }
+}
+
+/**
+ * Get the playwright browser instance
+ * @returns {Promise&lt;Client&gt;} a promise that resolves with the browser instance
+ */
+async function getBrowser() {
+  // Create a new browser instance
+  const browser = await Client.launch();
+  return browser;
+}
+
+// Get the browser instance and navigate to the login page
+async function testLive() {
+  try {
+    const browser = await getBrowser();
+    await navigateToLogin(browser);
+    await browser.close();
+  } catch (error) {
+    // Handle any errors that may occur during the test
+    console.error('Error running test:', error);
+  }
+}
+
+// Export the test function for use elsewhere
+module.exports = testLive;</code></pre></div><p>This code defines a function <code>testLive</code> that simulates a user interaction with a website.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

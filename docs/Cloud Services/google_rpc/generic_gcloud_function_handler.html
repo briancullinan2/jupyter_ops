@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -168,7 +175,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a generic cloud function handler and a function <code>makeHandler</code> to create specialized handlers from code snippets.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+
+const { selectAst, niceName, getExports, getParameters } = importer.import([
+ 'select ast',
+  'nice name',
+  'get exports',
+  'get parameters',
+]);
+
+async function handler(req, res) {
+  if (!req && process.stdout.isTTY) {
+    req = { query: {}, body: {}, form: {} };
+    Object.assign(req.query, process.argv.slice(2).reduce((acc, arg) => {
+      const [key, value] = arg.split('=');
+      acc[key] = value;
+      return acc;
+    }, {}));
+  }
+  res.set('Access-Control-Allow-Origin', '*');
+  const query = Object.values(req.query || {});
+  const body = Object.values(req.body || {});
+  const form = Object.values(req.form || {});
+  const parameters = [...query,...body,...form];
+
+  const entry = require('./entry.js');
+  return await entry(...parameters)
+   .then((r) => res.status(200).send(r))
+   .catch((e) => res.status(500).send(e));
+}
+
+function makeHandler(entry) {
+  if (!Array.isArray(entry)) {
+    entry = [entry];
+  }
+  const handlers = entry.map((cell) => {
+    const exportsName = getExports(cell.code)[0];
+    const funcName = niceName(cell);
+    const parameters = getParameters(cell.code).slice(1);
+    const reqAccess = `req.${parameters.map((p) => p).join('.')}`;
+    const funcCall = `require('./${funcName}')(${parameters.map((p) => reqAccess).join(', ')})`;
+    const newFunc = `
+function ${exportsName}Handler(req, res) {
+  try {
+    return ${funcCall}
+     .then((r) => res.status(200).send(r))
+     .catch((e) => res.status(500).send(e));
+  } catch (e) {
+    console.error(e);
+    res.status(500).send(e);
+  }
+}`;
+
+    return newFunc;
+  }).join('\n\n');
+  return `${handlers}
+module.exports = {
+  ${Object.keys(entry)
+   .map((cell) => getExports(cell.code)[0] + 'Handler')
+   .join(',\n  ')},
+}`;
+}
+
+module.exports = {
+  makeHandler,
+  handler,
+};</code></pre></div><p>This code defines a generic cloud function handler and a function <code>makeHandler</code> to create specialized handlers from code snippets.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

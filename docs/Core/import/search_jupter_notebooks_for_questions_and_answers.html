@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./display_interpreted_results_in_markdown.html">display interpreted results in markdown</a> | <a href="./search_notebook_questions.html">search notebook questions</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code initializes and configures a database search system using Fuse.js or an alternative search function, creating two instances with tokenization enabled and disabled. It also exports functions to query the database with a search query and look up cells in the cache by their ID, allowing for seamless integration into other applications.</p>
+  <p>The code creates a database using Fuse.js for tokenized search and a custom search function <code>levSearch</code>, and exports functions for database creation, querying, and cell lookup. If Fuse.js is unavailable, it uses the custom search function instead.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "search jupter notebooks for questions and answers"</code></pre><h1>search jupter notebooks for questions and answers</h1>
@@ -172,33 +179,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3>Dependencies and Configuration</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const Fuse = require('fuse.js');</code></pre></div><h2>Code Breakdown</h2>
+<h3>Requires and Imports</h3>
 <ul>
-<li>The code requires the <code>path</code> and <code>fuse.js</code> modules.</li>
-<li>It defines a configuration object <code>FUSE_CONFIG</code> for the Fuse.js library.</li>
+<li>The code requires the <code>path</code> module for path manipulation and tries to require the <code>fuse.js</code> module. If it fails, it catches the error and continues execution if the error message does not indicate a module not found error.</li>
 </ul>
-<h3>Function <code>createDatabase</code></h3>
+<h3>Configuration</h3>
 <ul>
-<li>This function initializes a Fuse.js instance and an alternative search function.</li>
-<li>If Fuse.js is available, it creates two instances of Fuse.js with different configurations: one with tokenization enabled (<code>token</code>) and one with tokenization disabled (<code>fuse</code>).</li>
-<li>If Fuse.js is not available, it imports a local <code>levSearch</code> function from a Jupyter notebook and uses it to create the two instances.</li>
-<li>The function returns after initializing the search instances.</li>
+<li>A configuration object <code>FUSE_CONFIG</code> is defined with settings for the Fuse.js library. The configuration includes options for search behavior, such as case sensitivity, finding all matches, distance, threshold, tokenization, and sorting.</li>
 </ul>
-<h3>Function <code>queryDatabase</code></h3>
+<h3>Database Creation</h3>
 <ul>
-<li>This function queries the search instances with a given search query.</li>
-<li>If the search instances are not initialized, it throws an error.</li>
-<li>It searches the database using both instances and returns the results, filtered to remove duplicates.</li>
+<li>The <code>createDatabase</code> function takes a cache object as input and creates a database by executing the following steps:
+<ul>
+<li>If Fuse.js is available, it creates two instances of the Fuse.js library: one with tokenization enabled and another with tokenization disabled.</li>
+<li>Otherwise, it imports a notebook containing a custom search function <code>levSearch</code> and binds it to the cache object and FUSE_CONFIG object.</li>
+<li>It creates two tokenized search functions: one for Fuse.js and another for the custom search function <code>levSearch</code>.</li>
+</ul></li>
 </ul>
-<h3>Function <code>lookupCell</code></h3>
+<h3>Database Querying</h3>
 <ul>
-<li>This function looks up a cell in the cache by its ID.</li>
-<li>It extracts the filename from the cache ID, retrieves the cells for that filename from the cache, and returns the cell with the matching ID.</li>
+<li>The <code>queryDatabase</code> function takes a search query as input and returns the results of the Fuse.js search with the tokenized search results filtered out.</li>
+<li>If the Fuse.js instance is not created, it throws an error.</li>
+</ul>
+<h3>Cell Lookup</h3>
+<ul>
+<li>The <code>lookupCell</code> function takes a cache ID and a cache cells object as input and returns the cell object corresponding to the cache ID.</li>
 </ul>
 <h3>Exports</h3>
 <ul>
-<li>The code exports the <code>createDatabase</code>, <code>queryDatabase</code>, and <code>lookupCell</code> functions as module exports.</li>
+<li>The code exports the <code>createDatabase</code>, <code>queryDatabase</code>, and <code>lookupCell</code> functions as modules.</li>
 </ul>
 
 </body>

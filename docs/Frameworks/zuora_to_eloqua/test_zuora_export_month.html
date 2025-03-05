@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -213,7 +220,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for a module named <code>exporter</code> that interacts with the Zuora API to export data.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const sinon = require('sinon');
+const assert = require('assert');
+const importer = require('./importer');
+
+// Import required scripts
+const zuoraExportMonth = importer.import('zuora export month');
+const zuoraToEloqua = importer.import('zuora to eloqua.ipynb[0]');
+const renewalsQuery = importer.import('zuora renewals query');
+
+// Define constants
+const ZUORA_CONFIG_KEY = 'zuoraConfig';
+
+// Create a Sinon sandbox for testing
+const sandbox = sinon.createSandbox();
+
+// Define the test suite
+describe('Zuora Export Month', () => {
+  // Clean up the sandbox after each test
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  // Define a helper function to get the Zuora config
+  function getConfig(key = ZUORA_CONFIG_KEY) {
+    return sinon.stub(zuoraExportMonth, `getConfig`).returns({ [key]: {} });
+  }
+
+  // Define a helper function to get the Zuora month data
+  function getZuoraMonth(query = 'test query', config = {}, expectedLength = 0) {
+    // Stub the createBulkExportJob method
+    const createBulkExportJobStub = sandbox.stub(zuoraToEloqua, 'createBulkExportJob').returns(Promise.resolve(''));
+    // Stub the getBulkExportJobStatus method
+    sandbox.stub(zuoraToEloqua, 'getBulkExportJobStatus');
+    // Stub the getBulkExportFile method
+    sandbox.stub(zuoraToEloqua, 'getBulkExportFile').returns(Promise.resolve(''));
+    // Stub the csvToJson method
+    sandbox.stub(zuoraToEloqua, 'csvToJson').returns(Promise.resolve([]));
+    // Stub the getQuery method
+    sandbox.stub(renewalsQuery, 'getQuery').returns({ Query: query });
+
+    // Call the getZuoraMonth method
+    return zuoraExportMonth.getZuoraMonth(0, config).then((result) => {
+      // Assert the result
+      assert.equal(result.length, expectedLength);
+    });
+  }
+
+  // Define a test to get the query
+  it('should get the query', () => {
+    // Call the getZuoraMonth method
+    return getZuoraMonth().then(() => {
+      // Assert that the getQuery method was called once
+      const queryStub = sandbox.stub(renewalsQuery, 'getQuery');
+      assert.equal(queryStub.callCount, 1);
+      const stubCall = queryStub.getCall(0);
+      // Assert that the query is the current month
+      assert.equal(new Date(stubCall.args[0]).getMonth(), (new Date()).getMonth());
+    });
+  });
+
+  // Define a test to call the bulk export service
+  it('should call bulk export service', () => {
+    // Call the getZuoraMonth method
+    return getZuoraMonth().then(() => {
+      // Assert that the createBulkExportJob method was called once
+      const createBulkExportJobStub = sandbox.stub(zuoraToEloqua, 'createBulkExportJob');
+      assert.equal(createBulkExportJobStub.callCount, 1);
+      const stubCall = createBulkExportJobStub.getCall(0);
+      // Assert that the query is the test query
+      assert.equal(stubCall.args[0].Query, 'test query');
+    });
+  });
+
+  // Define a test to convert the CSV dump to JSON
+  it('should convert CSV dump to JSON', () => {
+    // Stub the getBulkExportFile method to return a CSV string
+    const csvStub = sandbox.stub(zuoraToEloqua, 'getBulkExportFile').returns(Promise.resolve('this,is,a,test\n1,2,3,4'));
+    // Call the getZuoraMonth method
+    return getZuoraMonth().then((result) => {
+      // Assert that the result is an array with the expected length
+      assert.equal(result.length, 1);
+      // Assert that the first element of the result has the expected properties
+      assert.equal(result[0].test, 4);
+    });
+  });
+});</code></pre></div><p>This code defines unit tests for a module named <code>exporter</code> that interacts with the Zuora API to export data.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

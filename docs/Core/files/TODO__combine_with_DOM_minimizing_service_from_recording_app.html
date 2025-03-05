@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./use_memory-fs_and_rewire_to_audit_cli_events.html">use memory-fs and rewire to audit cli events</a> | <a href="./cell_18.html">Cell 18</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This script processes Jupyter Notebook files in a given directory, updating their metadata, specifically setting <code>nbformat_minor</code> to 0 and potentially adding Colab-related metadata (currently commented out).  It reads each notebook's JSON content, modifies it, and then saves the changes back to the original files.</p>
+  <p>This code imports modules, performs file system operations, and processes Jupyter notebooks by reading, updating, and writing them back to the file system. It searches for notebooks in a specified project path and its subdirectories.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "TODO: combine with DOM minimizing service from recording app"</code></pre><h1>TODO: combine with DOM minimizing service from recording app</h1>
@@ -142,37 +149,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code iterates through all Jupyter Notebook files (<code>*.ipynb</code>) within a specified project directory (<code>PROJECT_PATH</code>) and modifies their metadata.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="markdown"><code>import { promises as fs } from 'fs';
+import { glob } from 'glob';
+import path from 'path';
+import importer from '../Core';
+
+# Define Constants
+## Project Path
+The path of the project.</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules</h3>
 <ul>
-<li>Requires the <code>fs</code> (filesystem) module for file system operations.</li>
-<li>Requires the <code>importer</code> module, which likely provides utilities for importing other modules.</li>
-<li>Imports the <code>glob</code> function from the <code>glob files</code> module for finding files matching a pattern.</li>
-</ul></li>
-<li><p><strong>Project Path:</strong></p>
+<li><code>var fs = require('fs');</code>: Import the Node.js file system module.</li>
+<li><code>var importer = require('../Core')</code>: Import a custom module named <code>Core</code> from a parent directory.</li>
+<li><code>var {glob} = importer.import('glob files')</code>: Import the <code>glob</code> module from the <code>Core</code> module, specifically loading files related to globbing patterns.</li>
+</ul>
+<h3>File System Operations</h3>
 <ul>
-<li>Sets the <code>PROJECT_PATH</code> variable to the directory containing the Jupyter Notebooks.</li>
-</ul></li>
-<li><p><strong>File Iteration:</strong></p>
+<li><code>fs.readdirSync('.');</code>: Read the contents of the current working directory synchronously.</li>
+<li><code>var PROJECT_PATH = '/Users/briancullinan/Google Drive/Colab Notebooks'</code>: Define a constant for a specific project path.</li>
+</ul>
+<h3>Finding and Processing Jupyter Notebooks</h3>
 <ul>
-<li>Uses <code>glob.sync('**/*.ipynb', {cwd: PROJECT_PATH})</code> to find all <code>.ipynb</code> files within the specified project directory.</li>
-<li>Iterates through each found file path <code>f</code>.</li>
-</ul></li>
-<li><p><strong>Metadata Modification:</strong></p>
+<li><code>glob.sync('**/*.ipynb', {cwd: PROJECT_PATH})</code>: Search for Jupyter notebooks (<code>*.ipynb</code>) in the project path directory and its subdirectories synchronously.</li>
+<li>The result is then processed in a <code>forEach</code> loop:
 <ul>
-<li>Reads the contents of each notebook file as JSON using <code>fs.readFileSync</code>.</li>
-<li>Parses the JSON data into a <code>nb</code> object.</li>
-<li>Sets <code>nb.nbformat_minor</code> to 0.</li>
-<li><strong>Commented-out Code:</strong> There's commented-out code that would add or modify metadata fields related to Colab and kernelspec.</li>
+<li><code>const nb = JSON.parse(fs.readFileSync(path.join(PROJECT_PATH, f)).toString());</code>: Read each notebook file as a JSON object.</li>
+<li><code>nb.nbformat_minor = 0;</code>: Update the notebook's minor format version.</li>
+<li><code>fs.writeFileSync(path.join(PROJECT_PATH, f), JSON.stringify(nb, null, 2));</code>: Write the updated notebook back to the file system with indentation.</li>
 </ul></li>
-<li><p><strong>File Writing:</strong></p>
-<ul>
-<li>Writes the modified JSON data back to the original file using <code>fs.writeFileSync</code>.</li>
-<li>Uses <code>JSON.stringify(nb, null, 2)</code> to format the JSON output with indentation.</li>
-</ul></li>
-</ol>
+</ul>
 
 </body>
 

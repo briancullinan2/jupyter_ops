@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -488,7 +495,241 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates a D3.js visualization of a swimlane chart, displaying events across time and lanes.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const D3Node = require('d3-node');
+
+class D3Swimlane {
+  constructor(events) {
+    this.events = events;
+  }
+
+  static initD3() {
+    const d3n = new D3Node();
+    return d3n.d3;
+  }
+
+  getD3() {
+    return D3Swimlane.initD3();
+  }
+
+  getStyles() {
+    return `
+      &lt;style&gt;
+       .chart {
+          shape-rendering: crispEdges;
+        }
+       .mini text {
+          font: 9px sans-serif;	
+        }
+       .main text {
+          font: 12px sans-serif;	
+        }
+       .month text {
+          text-anchor: start;
+        }
+       .todayLine {
+          stroke: blue;
+          stroke-width: 1.5;
+        }
+       .axis line,.axis path {
+          stroke: black;
+        }
+       .miniItem {
+          stroke-width: 12;	
+        }
+       .future {
+          stroke: gray;
+        }
+       .past {
+          stroke-opacity:.6;
+          fill-opacity:.6;
+        }
+       .brush.extent {
+          stroke: gray;
+          fill: blue;
+          fill-opacity:.165;
+        }
+      &lt;/style&gt;
+    `;
+  }
+
+  getNow() {
+    return new Date();
+  }
+
+  getPaths(items) {
+    const paths = {};
+    items.forEach((item, index) =&gt; {
+      const key = item.class +'' + item.class + '-' + item.lane;
+      if (!paths[key]) paths[key] = { class: key, path: '', lane: item.lane };
+      const x1 = this.getD3().scaleTime().range([0, this.width]);
+      const y1 = this.getD3().scaleLinear().range([0, this.miniHeight]);
+      paths[key].path += `M${x1(item.start)} ${y1(item.lane) + 0.5}${'H'}${x1(item.end)} `;
+    });
+    return Object.keys(paths).map(key =&gt; paths[key]);
+  }
+
+  createChart() {
+    const margin = { top: 30, right: 15, bottom: 35, left: 100 };
+    const width = 960 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+    const d3 = D3Swimlane.initD3();
+    const data = this.events;
+    const lanes = data.lanes;
+    const items = data.items;
+
+    const fill = d3.scaleOrdinal(d3.schemeCategory20);
+
+    const miniHeight = lanes.length * 12 + 50;
+    const mainHeight = height - miniHeight - 50;
+
+    const x = d3.scaleTime().domain(d3.extent(data.items, (d) =&gt; d.start)).range([0, width]);
+    const x1 = d3.scaleTime().range([0, width]);
+    const y1 = d3.scaleLinear().domain(d3.extent(lanes, (d) =&gt; d.id)).range([0, mainHeight]);
+    const y2 = d3.scaleLinear().domain(d3.extent(lanes, (d) =&gt; d.id)).range([0, miniHeight]);
+
+    const chart = d3.createSVG(
+      width + margin.right + margin.left,
+      height + margin.top + margin.bottom
+    ).attr('class', 'chart');
+
+    const main = chart.append('g').attr('transform', `translate(${margin.left}, ${margin.top})`);
+    const mini = chart.append('g').attr('transform', `translate(${margin.left}, ${mainHeight + 70})`);
+
+    const laneLines = main.selectAll('.laneLines').data(lanes).enter().append('line').attr('x1', 0).attr('y1', (d) =&gt; Math.round(y1(d.id)) + 0.5).attr('x2', width).attr('y2', (d) =&gt; Math.round(y1(d.id)) + 0.5).attr('stroke', (d) =&gt; d.label === ''? 'white' : 'lightgray');
+
+    const laneText = main.selectAll('.laneText').data(lanes).enter().append('text').text((d) =&gt; d.label).attr('x', -10).attr('y', (d) =&gt; y1(d.id +.5)).attr('dy', '0.5ex').attr('text-anchor', 'end').attr('class', 'laneText');
+
+    const miniLaneLines = mini.selectAll('.laneLines').data(lanes).enter().append('line').attr('x1', 0).attr('y1', (d) =&gt; Math.round(y2(d.id)) + 0.5).attr('x2', width).attr('y2', (d) =&gt; Math.round(y2(d.id)) + 0.5).attr('stroke', (d) =&gt; d.label === ''? 'white' : 'lightgray');
+
+    const miniLaneText = mini.selectAll('.laneText').data(lanes).enter().append('text').text((d) =&gt; d.label).attr('x', -10).attr('y', (d) =&gt; y2(d.id +.5)).attr('dy', '0.5ex').attr('text-anchor', 'end').attr('class', 'laneText');
+
+    const xDateAxis = d3.axisBottom(x).tickArguments(d3.timeMondays, (x.domain()[1] - x.domain()[0]) &gt; 15552e6? 2 : 1).tickFormat(d3.timeFormat('%d')).tickSize(6, 0, 0);
+
+    const x1DateAxis = d3.axisBottom(x1).tickArguments(d3.timeDays, 1).tickFormat(d3.timeFormat('%a %d')).tickSize(6, 0, 0);
+
+    const xMonthAxis = d3.axisTop(x).tickArguments(d3.timeMonths, 1).tickFormat(d3.timeFormat('%b %Y')).tickSize(15, 0, 0);
+
+    const clip = chart.append('defs').append('clipPath').attr('id', 'clip').append('rect').attr('width', width).attr('height', mainHeight);
+
+    main.append('g').attr('class','main axis date').call(x1DateAxis).attr('transform', `translate(0,${mainHeight})`);
+
+    main.append('g').attr('class','main axis month').call(x1MonthAxis).attr('transform', `translate(0,0.5)`).selectAll('text').attr('dx', 5).attr('dy', 12);
+
+    mini.append('g').attr('class', 'axis date').call(xDateAxis).attr('transform', `translate(0,${miniHeight})`);
+
+    mini.append('g').attr('class', 'axis month').call(xMonthAxis).attr('transform', `translate(0,0.5)`).selectAll('text').attr('dx', 5).attr('dy', 12);
+
+    main.append('line').attr('y1', 0).attr('y2', mainHeight).attr('class', 'todayLine').attr('clip-path', 'url(#clip)');
+
+    mini.append('line').attr('y1', 0).attr('y2', miniHeight).attr('x1', x(this.getNow()) + 0.5).attr('x2', x(this.getNow()) + 0.5).attr('class', 'todayLine');
+
+    const itemRects = main.append('g').attr('clip-path', 'url(#clip)');
+    mini.selectAll('miniItems').data(this.getPaths(items)).enter().append('path').attr('class', (d) =&gt; `miniItem ${d.class}`).style('stroke', (d) =&gt; fill(d.lane)).style('fill', (d) =&gt; fill(d.lane)).attr('d', (d) =&gt; d.path);
+
+    const brush = d3.brushX(x).extent([d3.timeMonday(this.getNow()), d3.timeSaturday.ceil(this.getNow())]);
+
+    mini.append('g').attr('class', 'x brush').call(brush).selectAll('rect').attr('y', 1).attr('height', miniHeight - 1);
+
+    mini.selectAll('rect.background').remove();
+
+    return this.display();
+  }
+
+  display() {
+    const now = this.getNow();
+    const items = this.events.items;
+    const minExtent = d3.timeMonday(now);
+    const maxExtent = d3.timeSaturday.ceil(now);
+    const visItems = items.filter((d) =&gt; d.start &lt; maxExtent &amp;&amp; d.end &gt; minExtent);
+
+    const range = (maxExtent - minExtent);
+    const x1 = this.getD3().scaleTime().range([0, this.width]);
+    x1.domain([minExtent, maxExtent]);
+
+    const brush = d3.brushX(x1).extent([minExtent, maxExtent]);
+    mini.select('.brush').call(brush);
+
+    if (range &gt; 1468800000) {
+      const x1DateAxis = d3.axisBottom(x1).tickArguments([d3.timeMondays.every(1)]).tickFormat(d3.timeFormat('%a %d'));
+      const x1MonthAxis = d3.axisTop(x1).tickArguments([d3.timeMonday.every(1)]).tickFormat(d3.timeFormat('%b - Week %W'));
+      main.select('.main.axis.date').call(x1DateAxis);
+      main.select('.main.axis.month').call(x1MonthAxis).selectAll('text').attr('dx', 5).attr('dy', 12);
+    } else if (range &gt; 172800000) {
+      const x1DateAxis = d3.axisBottom(x1).tickArguments([d3.timeDay.every(1)]).tickFormat(d3.timeFormat('%a %d'));
+      const x1MonthAxis = d3.axisTop(x1).tickArguments([d3.timeMonday.every(1)]).tickFormat(d3.timeFormat('%b - Week %W'));
+      main.select('.main.axis.date').call(x1DateAxis);
+      main.select('.main.axis.month').call(x1MonthAxis).selectAll('text').attr('dx', 5).attr('dy', 12);
+    } else {
+      const x1DateAxis = d3.axisBottom(x1).tickArguments([d3.timeHour.every(4)]).tickFormat(d3.timeFormat('%I %p'));
+      const x1MonthAxis = d3.axisTop(x1).tickArguments([d3.timeDays.every(1)]).tickFormat(d3.timeFormat('%b %e'));
+      main.select('.main.axis.date').call(x1DateAxis);
+      main.select('.main.axis.month').call(x1MonthAxis).selectAll('text').attr('dx', 5).attr('dy', 12);
+    }
+
+    const itemRects = main.select('.main.clip');
+    const rects = itemRects.selectAll('rect').data(visItems, (d) =&gt; d.id);
+    rects.exit().remove();
+    rects.attr('x', (d) =&gt; x1(d.start)).attr('width', (d) =&gt; x1(d.end) - x1(d.start));
+    rects.enter().append('rect').attr('x', (d) =&gt; x1(d.start)).attr('y', (d) =&gt; y1(d.lane)).attr('width', (d) =&gt; x1(d.end) - x1(d.start)).attr('height', (d) =&gt; y1(1)).attr('class', (d) =&gt; `mainItem ${d.class}`).style('stroke', (d) =&gt; fill(d.lane)).style('fill', (d) =&gt; fill(d.lane));
+
+    const labels = itemRects.selectAll('text').data(visItems, (d) =&gt; d.id);
+    labels.exit().remove();
+    labels.attr('x', (d) =&gt; x1(Math.max(d.start, minExtent)) + 2);
+    labels.enter().append('text').text((d) =&gt; d.desc).attr('x', (d) =&gt; x1(Math.max(d.start, minExtent)) + 2).attr('y', (d) =&gt; y1(d.lane) + 0.4 * y1(1) + 0.5).attr('text-anchor','start').attr('class', 'itemLabel');
+
+    return this.styles + chart.node().outerHTML;
+  }
+
+  styles() {
+    return `
+      &lt;style&gt;
+       .chart {
+          shape-rendering: crispEdges;
+        }
+       .mini text {
+          font: 9px sans-serif;	
+        }
+       .main text {
+          font: 12px sans-serif;	
+        }
+       .month text {
+          text-anchor: start;
+        }
+       .todayLine {
+          stroke: blue;
+          stroke-width: 1.5;
+        }
+       .axis line,.axis path {
+          stroke: black;
+        }
+       .miniItem {
+          stroke-width: 12;	
+        }
+       .future {
+          stroke: gray;
+        }
+       .past {
+          stroke-opacity:.6;
+          fill-opacity:.6;
+        }
+       .brush.extent {
+          stroke: gray;
+          fill: blue;
+          fill-opacity:.165;
+        }
+      &lt;/style&gt;
+    `;
+  }
+
+  render() {
+    const styles = this.styles();
+    const chart = this.createChart();
+    return styles + chart;
+  }
+}
+
+module.exports = D3Swimlane;</code></pre></div><p>This code generates a D3.js visualization of a swimlane chart, displaying events across time and lanes.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

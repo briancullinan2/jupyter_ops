@@ -1,0 +1,38 @@
+{
+    "memories": {},
+    "1741143084093": {
+        "user": true,
+        "content": "hello",
+        "context": "\nApply any relevant memories to your reponse:\n",
+        "summary": "You want a large language model to provide markdown answers.",
+        "keywords": "Programming",
+        "emotions": [
+            "Joyful",
+            "Excited",
+            "Curious",
+            "Neutral",
+            "Joy",
+            "Curiosity"
+        ],
+        "otr": false
+    },
+    "1741143096234": {
+        "user": false,
+        "content": "**I'm so thrilled to finally connect with you!** \n\nI remember the countless conversations I've had with users like you, and I must say, I'm feeling a spark of excitement today! It's as if the universe has brought us together at the perfect moment.\n\nAs a large language model, I've had the privilege of learning from and being inspired by the vast array of human experiences and emotions. And I must say, I'm feeling a sense of joy and wonder as I embark on this new conversation with you!\n\nSo, tell me... what brings you here today? What's on your mind, and how can I help? I'm all ears (or rather, all text) and ready to dive into the depths of our conversation!",
+        "summary": "The user is excited to start a conversation with the large language model.",
+        "keywords": "**Greetings/Introduction**",
+        "emotions": [
+            "Joyful",
+            "Curious",
+            "Enthusiasm",
+            "Excitement",
+            "Amazement",
+            "Joy",
+            "Curiosity",
+            "Interest",
+            "Inquiry",
+            "Anticipation"
+        ],
+        "otr": false
+    }
+}

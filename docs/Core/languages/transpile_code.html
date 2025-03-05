@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code provides functions for manipulating code represented as an Abstract Syntax Tree (AST).</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { htmlToTree, selectAst } = require('../Core');
+
+/**
+ * Replaces the content of a node in the DOM with the result of a function.
+ * If no context is provided, returns a function that can be used to replace
+ * the content at a later time.
+ *
+ * @param {function} func - The function to use to replace the content.
+ * @param {object} ctx - The context in which to replace the content.
+ * @returns {function|undefined} The function to use to replace the content, or undefined if a context is provided.
+ */
+function replace(func, ctx) {
+    if (!ctx) return (ctx) => replace(func, ctx);
+    ctx.replaceWith(func(ctx));
+}
+
+/**
+ * Removes a node from the DOM.
+ *
+ * @param {object|array} ctx - The node or nodes to remove.
+ */
+function remove(ctx) {
+    if (!Array.isArray(ctx)) ctx = [ctx];
+    ctx.forEach((node) => {
+        const body = selectAst([`./parent::*`], node)[0];
+        if (body) body.removeChild(node);
+    });
+}
+
+/**
+ * Transpiles code from one format to another.
+ *
+ * @param {object|array} input - The input code.
+ * @param {object|array} output - The output code.
+ * @param {string} [code] - The code to transpile. Defaults to the output code.
+ * @returns {object} The transpiled code.
+ */
+function transpile(input, output, code) {
+    if (Array.isArray(input) && typeof code === 'undefined') code = output;
+    const root = selectAst(`//Program`, code);
+    if (Array.isArray(input)) {
+        input.forEach((i) => {
+            selectAst([...i], root);
+        });
+    } else {
+        selectAst([input, output], root);
+    }
+    return root;
+}
+
+module.exports = { transpile, remove, replace };</code></pre></div><p>This code provides functions for manipulating code represented as an Abstract Syntax Tree (AST).</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

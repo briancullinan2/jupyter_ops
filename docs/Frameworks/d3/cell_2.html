@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required libraries
+import $ from 'jquery';
+import d3TreeToSVG from './d3TreeToSVG'; // assuming this is a custom function in the same directory
+
+try {
+    // Check if the $ object is defined and has an async method
+    if ($.async && typeof $.async === 'function') {
+        // Call the async method
+        $.async();
+
+        // Call the d3TreeToSVG function with the provided data
+        d3TreeToSVG([
+            { name: '@angular/core' },
+            { name: 'app.component' },
+            { name: 'login.component' }
+        ], [
+            { source: '@angular/core', target: 'app.component' },
+            { source: '@angular/core', target: 'login.component' }
+        ])
+           .then(svg => {
+                // Check if the svg object is defined and has a method
+                if (svg && $.svg && typeof $.svg === 'function') {
+                    // Call the svg method with the provided svg data
+                    $.svg(svg);
+                } else {
+                    console.error('Invalid SVG data or $ object');
+                }
+            })
+           .catch(e => {
+                // Check if the $ object has a method to handle errors
+                if ($.sendError && typeof $.sendError === 'function') {
+                    // Call the sendError method with the provided error data
+                    $.sendError(e);
+                } else {
+                    // If the $ object does not have a sendError method, log the error to the console
+                    console.error(e);
+                }
+            });
+    } else {
+        // If the $ object is not defined or does not have an async method, log an error to the console
+        console.error('Invalid $ object or async method');
+    }
+} catch (e) {
+    // Catch any other errors and log them to the console
+    console.error(e);
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Conditional Statement</h3>
 <pre><code class="language-javascript">if(typeof $!== 'undefined')
 </code></pre>

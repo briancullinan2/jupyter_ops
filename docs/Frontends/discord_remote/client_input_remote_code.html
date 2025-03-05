@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -199,7 +206,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Wait for the DOM to be fully loaded before executing the code
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  const queryParams = getQueryParams();
+  const session = queryParams.session;
+  if (session) {
+    window.sessionId = session;
+  }
+
+  // Set up event listeners for the live dev button and key press
+  document.querySelector('.livedev').addEventListener('click', sendClickEvent);
+  document.querySelector('#sendkeys').addEventListener('keypress', sendKeysEvent);
+
+  const specialKeys = getSpecialKeys();
+  const buttons = document.querySelectorAll('.container button');
+
+  // Add event listeners to each button
+  buttons.forEach(button =&gt; {
+    button.addEventListener('click', sendKeysEvent);
+  });
+
+  // Refresh images every 5 seconds (TODO: implement image refresh functionality)
+  setInterval(refreshImages, 5000);
+
+  // Function to get query parameters
+  function getQueryParams() {
+    const params = (window.location.search.split('?')[1] || '').split('&amp;');
+    const queryParams = {};
+    params.forEach(param =&gt; {
+      const [key, value] = param.split('=');
+      queryParams[key] = decodeURIComponent(value || "");
+    });
+    return queryParams;
+  }
+
+  // Function to send click event
+  function sendClickEvent(evt) {
+    const localX = evt.clientX - evt.currentTarget.offsetLeft;
+    const localY = evt.clientY - evt.currentTarget.offsetTop;
+    fetch(`{BASE_URI}click?session=${sessionId}`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        x: localX / evt.currentTarget.clientWidth,
+        y: localY / evt.currentTarget.clientHeight
+      })
+    });
+  }
+
+  // Function to send key press event
+  function sendKeysEvent(evt) {
+    if (currentTimer) {
+      return;
+    }
+    currentTimer = setTimeout(() =&gt; {
+      sendKeys();
+      this.value = '';
+      currentTimer = void 0;
+    }, 1000);
+    evt.preventDefault();
+  }
+
+  // Function to send key press data
+  function sendKeys() {
+    fetch(`{BASE_URI}keys?session=${sessionId}`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: this.value,
+        special: getSpecialKeys()
+      })
+    });
+  }
+
+  // Function to get special keys
+  function getSpecialKeys() {
+    return Array.from(document.querySelectorAll('.container input:checked')).map(input =&gt; input.value);
+  }
+
+  // Function to refresh images
+  function refreshImages() {
+    const images = document.querySelectorAll('.livedev &gt; img');
+    images.forEach(image =&gt; {
+      if (image.src &amp;&amp;!image.hasAttribute('original-src')) {
+        image.setAttribute('original-src', image.src);
+      }
+      const originalImage = image.getAttribute('original-src');
+      const newImage = originalImage.replace(/\?.*/, '') + `?t=${Date.now()}`;
+      if (image.src) {
+        image.style.backgroundImage = `url('${encodeURI(image.src)}')`;
+      }
+      setTimeout(() =&gt; {
+        image.src = newImage;
+      }, 100);
+    });
+  }
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Event Listener for DOM Content Loaded</h3>
 <p>The code starts by adding an event listener to the <code>document</code> object when the DOM content is loaded. This event listener is used to execute a function when the DOM is fully loaded.</p>
 <pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', (evt) =&gt; {

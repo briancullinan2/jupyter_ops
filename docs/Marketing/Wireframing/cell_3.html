@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: npmls</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>/**
+ * Execute 'npm ls --json' command and parse its output as JSON.
+ * 
+ * @param {Function} cb - Callback function to handle the result
+ */
+function npmLS(cb: (err: Error | null, output: { [key: string]: any }) => void) {
+    // Use a promise to handle the asynchronous execution
+    const childProcess = require('child_process');
+    const exec = childProcess.exec;
+
+    // TODO: Consider using childProcess.execFile for better error handling
+    exec('npm ls --json')
+       .then((result) => {
+            // Check if there's an error
+            if (result.stderr) {
+                const error = new Error(`Error occurred while executing 'npm ls --json': ${result.stderr}`);
+                // Call the callback with the error
+                cb(error, null);
+            } else {
+                // Parse the output as JSON
+                const output = JSON.parse(result.stdout);
+                // Call the callback with the parsed output
+                cb(null, output);
+            }
+        })
+       .catch((err) => {
+            // Catch any errors and call the callback with the error
+            cb(err, null);
+        });
+}
+
+// Example usage:
+npmLS((err, output) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(output);
+    }
+});</code></pre></div><h3>Function: npmls</h3>
 <h4>Description</h4>
 <p>Executes <code>npm ls --json</code> command and logs the result as a JSON object.</p>
 <h4>Parameters</h4>

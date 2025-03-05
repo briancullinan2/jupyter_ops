@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./mkdirp.html">mkdirp</a> | <a href="./use_memory-fs_and_rewire_to_audit_cli_events.html">use memory-fs and rewire to audit cli events</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides two utility functions, <code>chext</code> and <code>chroot</code>, for manipulating file paths: <code>chext</code> changes a file's extension, while <code>chroot</code> rewrites a file path by removing a specified root directory and joining it with a new output directory.</p>
+  <p>This code exports two functions, <code>chext</code> and <code>chroot</code>, which manipulate file paths by changing extensions and checking/file paths. The code uses regular expressions and the <code>path</code> module for these functions.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "changing file names"</code></pre><h1>changing file names</h1>
@@ -136,28 +143,162 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines two utility functions for manipulating file paths: <code>chext</code> and <code>chroot</code>.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong><code>chext(file, ext)</code>:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const path = require('path');
+
+/**
+ * Changes the file extension.
+ * @param {string} file The original file path.
+ * @param {string} ext The new file extension.
+ * @returns {string} The file path with the new extension.
+ */
+function changeExtension(file, ext) {
+    const originalExtension = path.extname(file);
+    return file.replace(new RegExp(`^.*(${originalExtension})<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>changing file names</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
+    nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+    }
+
+    header {
+      background-color: #EEE;
+      padding: 10px;
+    }
+
+    body {
+      padding: 0 0 0 200px;
+      margin: 0;
+    }
+
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        padding-left: 0;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h3><a href="../files/index.html">files</a></h3>
+    <a href="./cell_0.html">Cell 0</a>
+<br /><br />
+<a href="./project_word-cloud.html">project word-cloud</a>
+<br /><br />
+<a href="./project_imports_d3_tree.html">project imports d3 tree</a>
+<br /><br />
+<a href="./__glob_files.html">, glob files</a>
+<br /><br />
+<a href="./cell_4.html">Cell 4</a>
+<br /><br />
+<a href="./list_project_files.html">list project files</a>
+<br /><br />
+<a href="./common_ignore_paths.html">common ignore paths</a>
+<br /><br />
+<a href="./List_all_projects_by_names.html">List all projects by names</a>
+<br /><br />
+<a href="./cell_8.html">Cell 8</a>
+<br /><br />
+<a href="./fix_project_paths.html">fix project paths</a>
+<br /><br />
+<a href="./cell_10.html">Cell 10</a>
+<br /><br />
+<a href="./__________________1__________.html">(=\{((:[^{}]++|\{(1)\})++)\})</a>
+<br /><br />
+<a href="./cell_12.html">Cell 12</a>
+<br /><br />
+<a href="./file_tools__match_filename.html">file tools, match filename</a>
+<br /><br />
+<a href="./mkdirp.html">mkdirp</a>
+<br /><br />
+<a href="./changing_file_names.html">changing file names</a>
+<br /><br />
+<a href="./use_memory-fs_and_rewire_to_audit_cli_events.html">use memory-fs and rewire to audit cli events</a>
+<br /><br />
+<a href="./TODO__combine_with_DOM_minimizing_service_from_recording_app.html">TODO: combine with DOM minimizing service from recording app</a>
+<br /><br />
+<a href="./cell_18.html">Cell 18</a>
+<br /><br />
+
+  </nav>
+  <header>
+    <a href="../files/index.html">files</a> | <a href="./mkdirp.html">mkdirp</a> | <a href="./use_memory-fs_and_rewire_to_audit_cli_events.html">use memory-fs and rewire to audit cli events</a> | <a href="../../search.html">Search</a>
+  </header>
+
+  ), `$1${ext}`);
+}
+
+/**
+ * Changes the root path of a file.
+ * @param {string} file The original file path.
+ * @param {string} root The root path to check against.
+ * @param {string} output The new root path.
+ * @returns {string} The file path with the new root.
+ * @throws {Error} If the file is not in the specified root.
+ */
+function changeRoot(file, root, output) {
+    if (!file.startsWith(root)) {
+        throw new Error(`File not in root ${file}`);
+    }
+    return path.join(output, file.slice(root.length));
+}
+
+module.exports = {
+    changeExtension,
+    changeRoot,
+};
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Overview</h3>
+<p>This code exports two functions, <code>chext</code> and <code>chroot</code>, which manipulate file paths.</p>
+<h3>Functions</h3>
+<h4><code>chext(file, ext)</code></h4>
 <ul>
-<li>Takes a file path (<code>file</code>) and an extension (<code>ext</code>) as input.</li>
-<li>Replaces the existing extension of the file with the provided <code>ext</code> using a regular expression.</li>
-<li>Returns the modified file path with the new extension.</li>
-</ul></li>
-<li><p><strong><code>chroot(file, root, output)</code>:</strong></p>
+<li>Replaces the file extension of <code>file</code> with <code>ext</code>.</li>
+<li>Uses a regular expression to match the file extension of <code>file</code> and replace it with <code>ext</code>.</li>
+<li>Returns the modified file path.</li>
+</ul>
+<h4><code>chroot(file, root, output)</code></h4>
 <ul>
-<li>Takes a file path (<code>file</code>), a root directory (<code>root</code>), and an output directory (<code>output</code>) as input.</li>
-<li>Performs a check to ensure the input file is within the specified <code>root</code> directory. If not, it throws an error.</li>
-<li>Constructs a new file path by removing the <code>root</code> directory from the input file and joining it with the <code>output</code> directory.</li>
-<li>Returns the transformed file path.</li>
-</ul></li>
-<li><p><strong>Module Exports:</strong></p>
-<ul>
-<li>The module exports both <code>chext</code> and <code>chroot</code> functions, making them available for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p>In essence, this code provides convenient functions for modifying file extensions and changing the root directory of file paths, which can be useful for tasks like file renaming, path manipulation, or working with relative paths.</p>
+<li>Checks if <code>file</code> starts with <code>root</code> (case-sensitive).</li>
+<li>If <code>file</code> does not start with <code>root</code>, throws an error.</li>
+<li>Otherwise, returns a new file path by joining <code>output</code> and the part of <code>file</code> after <code>root</code>.</li>
+<li>Uses the <code>path</code> module to manipulate file paths.</li>
+</ul>
+<h3>Module Exports</h3>
+<p>The code exports an object with the two functions, <code>chext</code> and <code>chroot</code>.</p>
+<h3>Note</h3>
+<p>The <code>chroot</code> function has a TODO comment indicating that defensive programming examples are needed.</p>
 
 </body>
 

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('../Core');
+const fs = require('fs');
+
+// Define a function to get the search component
+const getSearchComponent = async () => {
+  // Interpret the command to get the left and right code
+  const result = await importer.interpret(['search notebook component', 'files in project', 'diff code blocks']);
+  const [left, right] = result.map(item => item.code);
+
+  // Get the list of files in the project
+  const listInProject = importer.import('files in project');
+  const projectPath = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+  const projectDir = projectPath + '/universal';
+  const searchComponentPath = listInProject(projectDir, '**/search.component.ts')[0];
+
+  // Read the right code from the file
+  const rightCode = fs.readFileSync(searchComponentPath).toString();
+
+  // Diff the two code blocks
+  const diffTwoTexts = importer.import('diff code blocks');
+  const diffResult = diffTwoTexts(left, rightCode);
+
+  // Return the HTML to display the diff result
+  return $.html(diffResult);
+};
+
+// Call the function to get the search component
+getSearchComponent();</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules and Variables</h3>
 <pre><code class="language-javascript">var importer = require('../Core')
 var left, right;

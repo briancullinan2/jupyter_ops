@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>clickSpa(client, profile)</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Simulates a click on a SPA link.
+ *
+ * @param {object} client - The client instance.
+ * @param {string} profile - The profile to search for.
+ * @returns {object} A promise that resolves with an array.
+ */
+function clickSpa(client, profile) {
+  // Get the current URL
+  return client
+   .getUrl()
+   .then((url) =&gt; {
+      // Check if the profile is already in the URL
+      if (url.includes(profile)) {
+        // If it is, return an empty array immediately
+        return [];
+      }
+
+      // If not, execute a script to create a SPA link
+      return client
+       .execute(() =&gt; {
+          // Create a new anchor element
+          const a = document.createElement('a');
+          // Set the href attribute
+          a.setAttribute('href', profile);
+          // Set the class attribute
+          a.setAttribute('class','spa');
+          // Set the onclick event to remove the element after 500ms
+          a.onclick = () =&gt; setTimeout(() =&gt; document.body.removeChild(a), 500);
+          // Make the element clickable
+          a.href = profile;
+          // Set some CSS styles to make the element visible
+          a.style.position = 'absolute';
+          a.style.zIndex = 4294967295;
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.bottom = 0;
+          a.style.right = 0;
+          // Add the element to the body
+          document.body.appendChild(a);
+        })
+       .then(() =&gt; {
+          // Wait for the element to be loaded and click it
+          return client.pause(1000).then(() =&gt; client.click('a.spa'));
+        });
+    })
+   .catch((e) =&gt; console.log(e));
+}
+
+module.exports = clickSpa;</code></pre></div><h3>Function: <code>clickSpa(client, profile)</code></h3>
 <h4>Parameters:</h4>
 <ul>
 <li><code>client</code>: Client object</li>

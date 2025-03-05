@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -195,7 +202,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet analyzes a Quake 3 map file to identify textures used within it and then attempts to locate and organize those textures within a specified output directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { globSync } = require('glob');
+const mkdirpSync = require('mkdirp').sync;
+const { regexToArray } = require('../Core/utils');
+
+const importer = Object.freeze({
+  glob: require('../Core/globFiles'),
+  changingFileName: require('../Core/changingFileName'),
+  listTextures: require('../Core/listTexturesInQuake3Map'),
+  // listShaders: require('../Core/listShadersInQuake3Shader') // Commented out as not used
+});
+
+class TextureFinder {
+  async findTextures(file, modDir, outDir) {
+    const {
+      glob: { files: globFiles },
+      changingFileName: { chext, chroot },
+      listTextures: { textures },
+    } = importer;
+
+    const shaders = require(path.join(modDir, 'all_shaders.json'));
+    const defaultTextures = textures(file);
+    const shadedTextures = [];
+
+    // Identify textures with shaders
+    for (const texture of defaultTextures) {
+      const realTexture = texture.includes('textures')? texture : `textures/${texture}`;
+      if (Object.prototype.hasOwnProperty.call(shaders, realTexture)) {
+        console.log(`Shaded: ${realTexture}`);
+        shadedTextures.push(texture);
+        const shader = shaders[realTexture];
+        const extraTextures = regexToArray(/map\s([^\s]+?\/[^\s]+?$)/gim, shader, 1).map((t) => chext(t, ''));
+        defaultTextures.push(...extraTextures);
+      }
+    }
+
+    // Find unshaded textures in modDir
+    const defaults = defaultTextures.filter((t) =>!shadedTextures.includes(t));
+    const matched = globFiles(defaults.map((t) => `**/${t}*`), modDir);
+    const unmatched = defaults.filter((t) =>!matched.join(';').includes(path.basename(t)));
+
+    // Copy matched files to outDir
+    if (outDir) {
+      for (const file of matched) {
+        const outFile = chroot(file, modDir, outDir);
+        mkdirpSync(path.dirname(outFile));
+        const fs = require('fs');
+        fs.copyFileSync(file, outFile);
+      }
+    }
+
+    return {
+      matched,
+      unmatched,
+    };
+  }
+}
+
+module.exports = TextureFinder;</code></pre></div><p>This code snippet analyzes a Quake 3 map file to identify textures used within it and then attempts to locate and organize those textures within a specified output directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

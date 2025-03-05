@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is a series of shell commands designed to update and refresh a Jupyter project's dependencies.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define environment variables and directories
+const contentDir = '/content/jupytangular';
+const nodeModulesDir = `${contentDir}/node_modules`;
+const repoDir = contentDir;
+const remoteRepo = 'origin';
+const masterBranch ='master';
+
+// Remove node_modules directory
+try {
+  // Use'sh' command to run rm -R command with error suppression
+  const { spawn } = require('child_process');
+  const rmCommand = spawn('sh', ['-c', `rm -R ${nodeModulesDir} || true`]);
+  rmCommand.on('close', (code) =&gt; {
+    if (code!== 0) {
+      console.error(`Failed to remove ${nodeModulesDir} directory`);
+    }
+  });
+} catch (error) {
+  console.error(`Failed to remove ${nodeModulesDir} directory: ${error}`);
+}
+
+// Checkout and pull latest changes
+try {
+  // Change directory to repository
+  require('child_process').execSync(`cd ${repoDir}`);
+  
+  // Reset and pull latest changes
+  const { spawn } = require('child_process');
+  const gitCommand = spawn('git', ['reset', '--hard']);
+  gitCommand.on('close', (code) =&gt; {
+    if (code!== 0) {
+      console.error('Failed to reset repository');
+    }
+  });
+  
+  const gitPullCommand = spawn('git', ['pull', '--rebase', remoteRepo, masterBranch]);
+  gitPullCommand.on('close', (code) =&gt; {
+    if (code!== 0) {
+      console.error('Failed to pull latest changes');
+    }
+  });
+} catch (error) {
+  console.error(`Failed to checkout and pull latest changes: ${error}`);
+}
+
+// Install dependencies
+try {
+  // Change directory to repository
+  require('child_process').execSync(`cd ${repoDir}`);
+  
+  // Install dependencies
+  const { spawn } = require('child_process');
+  const npmInstallCommand = spawn('npm', ['install']);
+  npmInstallCommand.on('close', (code) =&gt; {
+    if (code!== 0) {
+      console.error('Failed to install dependencies');
+    }
+  });
+} catch (error) {
+  console.error(`Failed to install dependencies: ${error}`);
+}</code></pre></div><p>This code snippet is a series of shell commands designed to update and refresh a Jupyter project's dependencies.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>!rm -R /content/jupytangular/node_modules || true</code></strong>:</p>

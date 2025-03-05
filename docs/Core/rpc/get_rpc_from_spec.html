@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -243,7 +250,118 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet focuses on transforming an OpenAPI specification into a format compatible with Google Discovery.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { url } = require('url');
+const { querystring } = require('querystring');
+const importer = require('../Core');
+const { request } = importer.import('http request');
+
+/**
+ * Converts spec to Google Discovery format.
+ * @param {Object} spec - API specification.
+ * @param {Object} req - Request object.
+ * @param {string} base - Base URL.
+ * @returns {Object} OpenAPI in Google Discovery format.
+ */
+function getRpcFromSpec(spec, req, base) {
+  // Check if req is a function and bind it to the request object
+  if (req &amp;&amp; req.request) {
+    req = req.request.bind(req);
+  }
+
+  // Set base URL
+  base = spec.baseUrl || base;
+
+  // Reduce spec to Google Discovery format
+  return Object.keys(spec.resources || {}).reduce((obj, key) =&gt; {
+    obj[key] = Object.keys(spec.resources[key].methods || {}).reduce((o, k) =&gt; {
+      spec.resources[key].methods[k].parameters2 = spec.parameters;
+      o[k] = assignAndRequest.bind(
+        spec,
+        base,
+        spec.resources[key].methods[k],
+        req || request
+      );
+      return o;
+    }, {});
+    // Combine parent parameters with child parameters
+    Object.assign(obj[key], getRpcFromSpec(spec.resources[key], req, base));
+    return obj;
+  }, {});
+}
+
+/**
+ * Assigns request parameters and makes a request.
+ * @param {Object} spec - API specification.
+ * @param {Object} resource - Resource object.
+ * @param {Object} request - Request function.
+ * @param {Object} input - Input object.
+ * @returns {Promise} Request promise.
+ */
+function assignAndRequest(spec, resource, request, input) {
+  try {
+    // Get path parameters
+    const pathParams = getResourceParameters(resource, input, 'path');
+    const address = `${resource.base}${resource.path.replace(
+      /\{(.*?)\}/ig,
+      (match, param) =&gt; {
+        if (!pathParams[param]) {
+          throw new Error(`Path parameter ${param} not defined!`);
+        }
+        return pathParams[param];
+      }
+    )}`;
+
+    // Parse URL and query parameters
+    const location = url.parse(address);
+    const queryParams = getResourceParameters(resource, input, 'query');
+    const params = Object.assign(queryParams, location.search? querystring.parse(location.search.slice(1)) : {});
+
+    // Get body parameters
+    const bodyParams = getResourceParameters(resource, input, 'body');
+    const data = bodyParams.length === 0? null : bodyParams;
+
+    // Construct final URL
+    const finalURL = `${address}?${querystring.stringify(params)}`;
+
+    // Log request
+    console.log('Requesting:', finalURL);
+
+    // Make request
+    return request({
+      method: resource.httpMethod,
+      url: finalURL,
+      data: data? JSON.stringify(input.resource) : data,
+      params: params,
+    });
+  } catch (error) {
+    // Handle errors
+    console.error(error);
+    throw error;
+  }
+}
+
+/**
+ * Gets resource parameters.
+ * @param {Object} resource - Resource object.
+ * @param {Object} input - Input object.
+ * @param {string} type - Parameter type (path, query, or body).
+ * @returns {Object} Resource parameters.
+ */
+function getResourceParameters(resource, input, type) {
+  const parameters = {...resource.parameters2,...resource.parameters };
+  return Object.keys(parameters)
+   .filter((k) =&gt; parameters[k].location === type)
+   .reduce((obj, key) =&gt; {
+      if (parameters[key].required &amp;&amp;!input[key]) {
+        throw new Error(`Required field ${key} not defined!`);
+      }
+      if (input[key]) obj[key] = input[key];
+      return obj;
+    }, {});
+}
+
+module.exports = getRpcFromSpec;</code></pre></div><p>This code snippet focuses on transforming an OpenAPI specification into a format compatible with Google Discovery.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

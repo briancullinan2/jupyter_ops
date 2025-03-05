@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>These are Git commands used for visualizing and navigating your project's commit history. Let's break them down:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Function to print Git log with graph, oneline, and decorate
+show_git_log() {
+  git log --graph --oneline --decorate --all
+}
+
+# Function to print Git log with graph and all commits
+show_git_commits() {
+  git log --graph --all
+}
+
+# Function to print Git show-branch with list
+show_git_show_branch() {
+  git show-branch --list
+}
+
+# Main function to call other functions
+main() {
+  # Print Git log with graph, oneline, and decorate
+  echo "Git Log with Graph, Oneline, and Decorate:"
+  show_git_log
+
+  # Print Git log with graph and all commits
+  echo -e "\nGit Log with Graph and All Commits:"
+  show_git_commits
+
+  # Print Git show-branch with list
+  echo -e "\nGit Show-branch with List:"
+  show_git_show_branch
+}
+
+# Call main function
+main
+
+# TODO: Add error handling for Git commands
+# TODO: Implement logging for Git commands</code></pre></div><p>These are Git commands used for visualizing and navigating your project's commit history. Let's break them down:</p>
 <p><strong>1. <code>git log --graph --oneline --decorate --all</code></strong></p>
 <ul>
 <li><code>git log</code>: This is the core command for viewing commit history.</li>

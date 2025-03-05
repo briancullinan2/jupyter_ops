@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -273,7 +280,97 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { createInterface } = require('../Core');
+
+const metaKernelInterface = {
+  execute_request: (metaKernel, request) => metaKernel.executeRequest(request),
+  is_complete_request: (metaKernel, request) => metaKernel.isCompleteRequest(request),
+  complete_request: (metaKernel, request) => metaKernel.completeRequest(request),
+  history_request: (metaKernel, request) => metaKernel.historyRequest(request),
+  inspect_request: (metaKernel, request) => metaKernel.inspectRequest(request),
+  shutdown_request: (metaKernel, request) => metaKernel.shutdownRequest(request)
+};
+
+class WireMetaKernel {
+  constructor(kernel) {
+    this.kernel = kernel;
+    this.executionCount = 0;
+  }
+
+  executeRequest(request) {
+    this.kernel.execute(request.content);
+    return this.doRespond({ status: { execution_state: 'idle' } });
+  }
+
+  isCompleteRequest(request) {
+    const result = this.kernel.isComplete(request.content);
+    return this.doRespond({ is_complete_reply: { status: (result? 'complete': 'incomplete'), indent: '' } });
+  }
+
+  completeRequest(request) {
+    this.kernel.complete(request.content);
+    return this.doRespond({ complete_reply: {
+      matches: this.kernel.completion.list,
+      cursor_start: this.kernel.completion.cursorStart,
+      cursor_end: this.kernel.completion.cursorEnd,
+      status: "ok",
+    }});
+  }
+
+  historyRequest(request) {
+    return this.doRespond({ status: { execution_state: 'idle' } })
+     .then(() => this.kernel.history(request.content))
+     .then(r => this.doRespond({ history_reply: {
+        history: r
+      }}));
+  }
+
+  inspectRequest(request) {
+    return this.doRespond({ status: { execution_state: 'busy' } })
+     .then(() => this.kernel.inspect(request.content))
+     .then(r => this.doRespond({ status: { execution_state: 'idle' } }))
+     .then(() => {
+        const inspectionType = r.inspection? r.inspection.type : '';
+        const inspectionString = r.inspection? r.inspection.string : '';
+        const docUsage = r.doc? r.doc.usage : '';
+        const docDescription = r.doc? r.doc.description : '';
+        return this.doRespond({ inspect_reply: {
+          found: true,
+          data: { 'text/plain': r, 'text/html': `<pre>${r}</pre>` },
+          metadata: {},
+          status: "ok",
+        }})
+       .catch(e => this.doRespond({ inspect_reply: {
+          status: "error",
+          execution_count: this.executionCount,
+          ename: e.ename,
+          evalue: e.evalue,
+          traceback: e.traceback,
+        }}));
+      });
+  }
+
+  shutdownRequest(request) {
+    this.kernel.shutdown(request.content);
+    return this.doRespond({ status: { execution_state: 'idle' } })
+     .then(() => this.doRespond({ shutdown_reply: request.content }));
+  }
+
+  doRespond(response) {
+    this.kernel.doRespond(response);
+    return Promise.resolve();
+  }
+}
+
+function createWireMetaKernel(kernel) {
+  return new WireMetaKernel(kernel);
+}
+
+module.exports = {
+  createWireMetaKernel,
+  metaKernelInterface,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var extend = importer.import('extend prototype')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>loadLocations</code> that reads a JSON file containing location data and processes it to create a cache of locations grouped by date.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+
+// Define months array for easier access
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Loads locations from a JSON file and caches them by date.
+ * 
+ * @param {string} file Path to the JSON file.
+ * @returns {object} An object containing location caches.
+ */
+function loadLocations(file) {
+    // Create a cache object to store locations
+    const locationCache = {};
+
+    // Get the current timezone offset
+    const timezoneOffset = (new Date()).getTimezoneOffset() * 60 * 1000;
+
+    // Use the importer to stream the JSON file
+    importer.streamJson(file, [true, { emitPath: true }], (match) =&gt; {
+        // Check if the path is locations and has a length of 3
+        if (match.path[0] === 'locations' &amp;&amp; match.path.length === 3) {
+            // Parse the timestampMs value to a Date object
+            const currDate = new Date(parseInt(match.value.timestampMs));
+
+            // Create a new key for the location cache
+            const newKey = `${currDate.getDate()}${MONTHS[currDate.getMonth()]}${currDate.getFullYear().toString().substr(-2)}`;
+
+            // Create a new row object
+            const newRow = {
+                time: currDate,
+                type: 'location',
+                location: newKey,
+               ...match.value,
+            };
+
+            // Get the cache for the new location
+            const cache = locationCache[newRow.location];
+
+            // If the cache is undefined, create it
+            if (typeof cache === 'undefined') {
+                locationCache[newRow.location] = cache = [];
+            }
+
+            // Add the new row to the cache
+            cache.push(newRow);
+
+            // Log a debug message to check the cache
+            // TODO: Remove this after debugging
+            // console.log(locationCache);
+        }
+    });
+
+    // Return the location cache
+    return locationCache;
+}
+
+module.exports = loadLocations;</code></pre></div><p>This code snippet defines a function <code>loadLocations</code> that reads a JSON file containing location data and processes it to create a cache of locations grouped by date.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

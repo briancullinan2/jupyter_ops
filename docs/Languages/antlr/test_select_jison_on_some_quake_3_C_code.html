@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Breakdown of the Code</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const getTypes = importer.import('get c types');
+const selectCode = importer.import('select code');
+
+/**
+ * Test ANTLR functionality by parsing and printing the types of a given code snippet.
+ * @returns {Promise<Object>} The parsed types.
+ */
+async function testAntlr() {
+    try {
+        // Interpret the code cell
+        const codeCell = await importer.interpret('rgb 2 lab');
+        
+        // Get the source code
+        const sourceCode = codeCell.source.join('');
+
+        // Get the types of the source code
+        const result = await getTypes(sourceCode);
+
+        // Log the result
+        console.log(result);
+
+        // Select code from a file
+        const selectedCode = await selectCode(['//functionDefinition', './declarator//declaratorid/@strdata'], 
+                                               path.join(__dirname, '../mouse.m'), 'cpp');
+
+        // Write the selected code to a JSON file
+        fs.writeFileSync('tree.json', JSON.stringify(selectedCode, null, 2));
+
+        // Return the selected code
+        return selectedCode;
+    } catch (error) {
+        // Log any errors
+        console.error(error);
+    }
+}
+
+// Export the function
+module.exports = testAntlr;
+
+// Call the function and handle the result
+if (typeof $!== 'undefined') {
+    $.async();
+    testAntlr()
+       .then((result) => $.sendResult(result))
+       .catch((error) => $.sendError(error));
+}</code></pre></div><h3>Breakdown of the Code</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">const fs = require('fs')
 const path = require('path')

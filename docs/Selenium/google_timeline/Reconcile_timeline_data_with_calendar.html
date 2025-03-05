@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -162,7 +169,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet aims to match events from a Google Calendar with nearby locations.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const unidecode = require('unidecode');
+const { getDaysEvents, getNearby, getOauthClient } = require('../Core');
+
+/**
+ * Filter events based on locations.
+ * 
+ * @param {Array} events - List of events.
+ * @param {Array} locations - List of locations.
+ * @returns {Object} Updated events with matched locations.
+ */
+function filterEvents(events, locations) {
+  const unmatched = locations.filter(location =&gt;!events.some(event =&gt; matchesEvent(event, location)));
+  const matches = locations.reduce((acc, location) =&gt; {
+    const matching = events.find(event =&gt; matchesEvent(event, location));
+    return matching? [...acc, {...location,...matching, event: location }] : acc;
+  }, []);
+
+  console.log(events.map(e =&gt; `${e.event.summary} - ${e.event.location}`));
+  console.log(`Unmatched ${unmatched.length} - out of ${matches.length} - ${unmatched.map(u =&gt; u.name).join(', ')}`);
+  return events;
+}
+
+/**
+ * Check if an event matches a location.
+ * 
+ * @param {Object} event - Event object.
+ * @param {Object} location - Location object.
+ * @returns {Boolean} Whether the event matches the location.
+ */
+function matchesEvent(event, location) {
+  const name = location.name.toLowerCase();
+  const locationStr = location.location.toLowerCase();
+
+  return (
+    (name.includes('gainey') &amp;&amp; event.event.summary === 'Drive to work') ||
+    (name.includes('swiftpage') &amp;&amp; event.event.summary === 'Drive to work') ||
+    (name.includes('6934') &amp;&amp; (event.event.summary === 'Drive home' || event.event.summary === 'Work from home')) ||
+    (typeof event.event.location!== 'undefined' &amp;&amp;
+      (locationStr.includes(event.event.location.toLowerCase()) ||
+        name.includes(event.event.summary.toLowerCase()) ||
+        locationStr.includes(name) ||
+        locationStr.includes(name.split(/[,:-]/ig)[0]) ||
+        name.includes(locationStr.split(/[,:-]/ig)[0]) ||
+        name.includes(locationStr.split(/[,:-]/ig)[0]) ||
+        name.includes(unidecode(locationStr).split(/[,:-]/ig)[0])))
+  );
+}
+
+/**
+ * Reconcile timeline locations.
+ * 
+ * @param {Array} destinations - List of destinations.
+ * @param {Date} date - Date to fetch events for.
+ * @returns {Promise} Updated events with matched locations.
+ */
+function reconcileTimelineLocations(destinations, date) {
+  const options = { calendarId: 'primary' };
+
+  return getOauthClient(options)
+   .then(() =&gt; getDaysEvents(date, options))
+   .then(r =&gt; getNearby(destinations))
+   .then(([events, locations]) =&gt; filterEvents(events, locations))
+   .catch(e =&gt; console.log(e))
+   .then(() =&gt; events.map(e =&gt; e.event));
+}
+
+module.exports = reconcileTimelineLocations;</code></pre></div><p>This code snippet aims to match events from a Google Calendar with nearby locations.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

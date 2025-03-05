@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -203,7 +210,121 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a Socket.IO server with a custom mocking mechanism for dependencies.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Observable } = require('rxjs').Observable;
+const { Server } = require('socket.io');
+
+class SocketServer {
+  constructor() {
+    this.deps = {};
+    this.io = {};
+  }
+
+  sockifyRequire(req, dep) {
+    if (this.deps[dep]!== undefined) {
+      return this.deps[dep];
+    }
+    console.log(`Requiring ${dep}`);
+    this.deps[dep] = this.automockMockValue(req, {
+      stubCreator: (name) => {
+        if (name.split('.').length === 1) {
+          return req;
+        }
+        return () => {
+          const args = ['resolve', name];
+          for (let i = 1; i < arguments.length; i++) {
+            args.push(arguments[i]);
+          }
+          return new Observable((observer) => {
+            const handlers = this.getSocketsForRoom(dep);
+            if (handlers.length === 0) {
+              throw new Error(`No handlers for ${name}`);
+            }
+            handlers.forEach((h) => {
+              h.emit.apply(h, args);
+            });
+          });
+        };
+      },
+      name: dep,
+    });
+    console.log(this.deps);
+    return this.deps[dep];
+  }
+
+  getMockedValue(req, dep) {
+    return this.sockifyRequire(req, dep);
+  }
+
+  automockMockValue(req, config) {
+    return new Proxy(req, {
+      get: (target, property) => {
+        const stub = this.deps[config.name];
+        if (stub && stub[config.name]) {
+          return stub[config.name];
+        }
+        return Reflect.get(target, property);
+      },
+    });
+  }
+
+  getSocketsForRoom(room) {
+    return Object.keys(this.io.sockets.adapter.rooms[room]? this.io.sockets.adapter.rooms[room].sockets : {})
+     .map((k) => this.io.sockets.connected[k]);
+  }
+
+  sockifyServer(port) {
+    this.io = new Server().listen(port);
+    this.io.sockets.on('connection', (socket) => {
+      console.log('Client connected');
+      socket.on('result', (name) => {
+        const args = ['result', name];
+        for (let i = 1; i < arguments.length; i++) {
+          args.push(arguments[i]);
+        }
+        const handlers = this.getSocketsForRoom(name);
+        handlers.forEach((h) => {
+          h.emit.apply(h, args);
+        });
+      });
+
+      socket.on('call', (name) => {
+        const args = [];
+        for (let i = 1; i < arguments.length; i++) {
+          args.push(arguments[i]);
+        }
+        const props = name.split('.');
+        const dep = props[0];
+        const func = this.deps[dep];
+        for (let j = 1; j < props.length; j++) {
+          func = func[props[j]];
+        }
+        const tmpsub = func.apply(this.deps[dep], args).subscribe(() => {
+          tmpsub.unsubscribe();
+        });
+      });
+
+      socket.on('handle', (dep, cb) => {
+        console.log(`Handler for ${dep}`);
+        cb();
+      });
+
+      socket.on('close', () => {
+        this.io.sockets.clients().forEach((socket) => {
+          socket.destroy();
+        });
+        this.io.close();
+      });
+    });
+    return this.io;
+  }
+}
+
+module.exports = {
+  SocketServer,
+  sockifyRequire: (SocketServer.prototype.sockifyRequire).bind(new SocketServer()),
+  sockifyServer: (SocketServer.prototype.sockifyServer).bind(new SocketServer()),
+};</code></pre></div><p>This code sets up a Socket.IO server with a custom mocking mechanism for dependencies.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -133,7 +140,103 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+# Import the required modules
+import math
+
+def prime_factors(n):
+    """
+    Returns a list of prime factors of a given number.
+
+    Args:
+    n (int or str): The number to find prime factors for. Can be a string representation of an integer.
+
+    Returns:
+    list: A list of prime factors.
+
+    Raises:
+    ValueError: If the input is not a valid integer or float.
+    """
+
+    # Try to convert the input to an integer or float
+    try:
+        n = int(n)
+    except ValueError:
+        try:
+            n = float(n)
+            n = int(n)  # Ensure n is an integer
+        except ValueError:
+            raise ValueError("Input must be a valid integer or float")
+
+    # Initialize the first prime number and the list of factors
+    v = 2
+    factors = []
+
+    # Only check divisibility up to the square root of n
+    for i in range(2, math.isqrt(n) + 1):
+        # Check if n is divisible by i
+        while n % i == 0:
+            # If it is, add i to the list of factors and divide n by i
+            factors.append(i)
+            n = n // i
+
+    # If n is a prime number greater than 2, add it to the list of factors
+    if n &gt; 2:
+        factors.append(n)
+
+    return factors
+
+def overlap(a, b):
+    """
+    Returns a sorted list of elements present in both a and b, with duplicates removed.
+
+    Args:
+    a (list): The first list.
+    b (list): The second list.
+
+    Returns:
+    list: A sorted list of unique elements present in both a and b.
+    """
+
+    # Initialize the result as an empty list
+    result = []
+
+    # Iterate over the elements in a and b
+    for n in a + b:
+        # If the element is not already in the result, add it
+        if n not in result:
+            result.append(n)
+
+    # Sort the result
+    result.sort()
+
+    return result
+
+# Define a function to calculate the product of a list of numbers
+def product(numbers):
+    """
+    Returns the product of a list of numbers.
+
+    Args:
+    numbers (list): A list of numbers.
+
+    Returns:
+    int: The product of the numbers in the list.
+    """
+
+    # Use the reduce function from the math module to calculate the product
+    return math.prod(numbers)
+
+def main():
+    # Calculate the product of the prime factors of numbers from 1 to 20
+    result = product(reduce(overlap, (prime_factors(x) for x in range(1, 21))))
+
+    # Print the result
+    print(result)
+
+if __name__ == "__main__":
+    main()</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-python">from operator import mul
 from functools import reduce

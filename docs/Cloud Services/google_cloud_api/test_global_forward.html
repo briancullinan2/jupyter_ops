@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const { Core } = require('../Core');
+const { listGlobalForwards } = Core.import('list global bucket url map');
+
+const PROJECT_ID ='spahaha-ea443';
+const PROXY_URL = 'https://www.googleapis.com/compute/v1/projects/spahaha-ea443/global/targetHttpsProxies/thp-0c28d-marketing-site-7b81f-sheet-to-web-com';
+
+/**
+ * Test suite for listing global forwards
+ */
+describe('listing global forwards', () => {
+  /**
+   * Test case: Should list forward
+   * @throws {Error} if no forwards are listed
+   */
+  it('should list forward', async () => {
+    const result = await listGlobalForwards(PROJECT_ID, PROXY_URL);
+    assert.ok(Object.keys(result).length > 0, 'Should list forward');
+    console.log(result);
+  }).timeout(60000); // 1 minute timeout
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <p>The code starts by importing two modules:</p>
 <pre><code class="language-javascript">var assert = require('assert');

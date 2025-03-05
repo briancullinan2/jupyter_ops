@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code processes a set of nodes and edges to prepare them for hierarchical visualization, likely a tree-like structure.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Formats node and edge data for graph representation.
+ * @param {Object[]} nodes - Array of node objects.
+ * @param {Object[]} edges - Array of edge objects.
+ * @returns {Object[]} Formatted nodes with added properties.
+ */
+function formatNodes(nodes, edges) {
+    // Create a node map for efficient lookup by name
+    const nodeMap = {};
+    
+    // Initialize node properties and add to map
+    nodes.forEach((node) =&gt; {
+        if (typeof node.size === 'undefined') {
+            node.size = 1;
+        }
+        nodeMap[node.name] = node;
+    });
+    
+    // Establish parent-child relationships between nodes
+    edges.forEach((edge) =&gt; {
+        // Get the source and target nodes from the map
+        const sourceNode = nodeMap[edge.source];
+        const targetNode = nodeMap[edge.target];
+        
+        // Handle target node's parent and children
+        if (!targetNode.parent) {
+            targetNode.parent = sourceNode;
+        }
+        if (!sourceNode.children) {
+            sourceNode.children = [];
+        }
+        sourceNode.children.push(targetNode);
+    });
+    
+    // Transfer branch information from target to source nodes
+    edges.forEach((edge) =&gt; {
+        const sourceNode = nodeMap[edge.source];
+        const targetNode = nodeMap[edge.target];
+        
+        // Only transfer branch if it's not already set or empty
+        if (targetNode.branch &amp;&amp; (!sourceNode.branch || sourceNode.branch === '')) {
+            sourceNode.branch = targetNode.branch;
+        }
+    });
+    
+    // Return the formatted nodes
+    return nodes;
+}
+
+module.exports = formatNodes;</code></pre></div><p>This code processes a set of nodes and edges to prepare them for hierarchical visualization, likely a tree-like structure.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

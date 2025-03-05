@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -156,7 +163,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>getResult</code> that handles the execution of a command based on provided parameters and permissions.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const assert = require('assert');
+const importer = require('../Core');
+
+// Define a function to check permissions
+const hasPermission = (id, circles, groupPermissions) =&gt; {
+    const permissions = groupPermissions(circles || ['Public']);
+    return Object.keys(permissions).includes(id);
+};
+
+// Define a function to get parameter values
+const getParameterValues = (props, commandResult, body) =&gt; {
+    const parameters = getParameters(commandResult).slice(1);
+    const values = parameters.map((k, i) =&gt; {
+        const p = body[k] || body[i];
+        if (typeof p === 'undefined' || p === 'undefined') {
+            return;
+        }
+        return p;
+    });
+    return values;
+};
+
+// Define the getResult function
+const getResult = (props) =&gt; {
+    // Check if result is provided
+    if (props.result === null) {
+        throw new Error('Command not found, please specify a command');
+    }
+
+    // Check if result id is valid
+    assert(props.result.id, `Invalid result ID: ${JSON.stringify(props.result)}`);
+
+    // Check permissions
+    const permitted = hasPermission(props.result.id, props.circles || ['Public'], groupPermissions);
+    if (!permitted) {
+        throw new Error(`Insufficient permissions to run "${props.result.id}".`);
+    }
+
+    // Log command execution
+    console.log(`Running ${props.result.id} (${props.command})`);
+
+    // Import command function
+    try {
+        const commandFunction = importer.import(props.result.id);
+        const functionName = Object.keys(commandFunction)[0];
+
+        // Check if command function is valid
+        if (typeof commandFunction[functionName]!== 'function') {
+            throw new Error(`Invalid command function: ${props.result.id}`);
+        }
+
+        // Get parameter values
+        const body = props.body || {};
+        const values = getParameterValues(props, commandFunction, body);
+
+        // Log command execution with parameters
+        console.log(`Calling ${props.result.id} (${props.command}) with parameters: ${JSON.stringify(values)}`);
+
+        // Execute command function with parameters
+        return commandFunction[functionName].apply(null, values);
+    } catch (error) {
+        // If importing command function fails, return an error
+        return error;
+    }
+};
+
+module.exports = getResult;</code></pre></div><p>This code snippet defines a function <code>getResult</code> that handles the execution of a command based on provided parameters and permissions.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>Let's break down these ImageMagick commands:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+enhance_and_composite() {
+  local input_image=$1
+  local output_image=$2
+  local alpha_factor=0.25
+
+  # Clone input image and enhance it
+  local enhanced_image=$(convert "$input_image" +clone -enhance -alpha on -channel alpha -evaluate multiply "$alpha_factor")
+
+  # Composite enhanced image with original image
+  convert "$input_image" "$enhanced_image" -composite "$output_image"
+}
+
+# Example usage:
+enhance_and_composite input.jpg output_enhanced.jpg</code></pre></div><p>Let's break down these ImageMagick commands:</p>
 <p><strong>Command 1: Image Resizing, Sharpening, and Conversion</strong></p>
 <pre><code class="language-bash">convert in.jpg -filter Box -resize 320x320+0+0 -unsharp 0x1+0.25+0 -quality 86% -sampling-factor 1x1 -write out.png out.jpg
 </code></pre>

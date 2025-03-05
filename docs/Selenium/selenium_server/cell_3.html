@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -124,7 +131,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const express = require('express');
+const router = express.Router();
+const { promisifyChrome } = require('./promisifyChrome'); // Assuming promisifyChrome is in a separate file
+
+// Helper function to get the current tab ID
+const getTab = () => {
+  // Assuming getTab is implemented elsewhere
+};
+
+// Helper function to send a response
+const response = (res, data) => {
+  res.json(data);
+};
+
+// Helper function to handle Chrome DevTools commands
+const handleChromeCommand = (method, params) => {
+  try {
+    return promisifyChrome(method, params);
+  } catch (error) {
+    console.error('Error handling Chrome DevTools command:', error);
+    return Promise.reject(error);
+  }
+};
+
+// Helper function to get elements using the given selector
+const findElements = async (selector) => {
+  /**
+   * Finds elements on the current page using the given selector.
+   * 
+   * @param {string} selector - A CSS selector to find elements.
+   * @returns {object[]} An array of element objects.
+   */
+  const tabId = getTab();
+  const chromeMethod = 'Runtime.evaluate';
+  const evaluateParams = {
+    expression: `new window.BackupPromise(resolve => setTimeout(() => {
+    resolve([].slice.call(window.document.querySelectorAll(${JSON.stringify(selector)}), 0)[0])
+  }, 500))`,
+    awaitPromise: true,
+  };
+
+  try {
+    const evaluateResult = await handleChromeCommand('debugger.sendCommand', {
+      tabId,
+    }, chromeMethod, evaluateParams);
+    const nodeId = evaluateResult.result.objectId;
+    const domMethod = 'DOM.requestNode';
+    const requestParams = { objectId: nodeId };
+    const nodeResult = await handleChromeCommand('debugger.sendCommand', {
+      tabId,
+    }, domMethod, requestParams);
+    return { value: { ELEMENT: nodeResult.nodeId } };
+  } catch (error) {
+    console.error('Error finding elements:', error);
+    return Promise.reject(error);
+  }
+};
+
+// Routes for finding a single element or multiple elements
+router.post('/session/:sessionId/element', (req, res) =>
+  response(res, findElements(req.body.value))
+);
+router.post('/session/:sessionId/elements', (req, res) =>
+  response(res, findElements(req.body.value))
+);
+
+module.exports = { findElements, router };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requires and Dependencies</h3>
 <ul>
 <li><code>express</code> is required and an instance of an express router is created.</li>

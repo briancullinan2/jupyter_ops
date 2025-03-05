@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines two functions, <code>selectDate</code> and <code>getGoogleTimeline</code>, that interact with a Google Maps timeline interface.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define an array of month abbreviations for easy mapping
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Function to format a date object into a format suitable for filling a form
+ * 
+ * @param {Date} date The date object to format
+ * @returns {Object} An object containing the formatted date
+ */
+function formatDate(date) {
+    return {
+        'Year': date.getFullYear(),
+        'Month': months[date.getMonth()],
+        'Day': date.getDate(),
+    };
+}
+
+/**
+ * Function to select a date in a form
+ * 
+ * @param {Date} date The date object to select
+ * @returns {Promise} A promise resolving to the result of the select operation
+ */
+function selectDate(date) {
+    return client.fillForm(formatDate(date));
+}
+
+/**
+ * Function to get Google timeline data
+ * 
+ * @param {Date} date The date object to get timeline data for (optional)
+ * @param {Boolean} [selectDate=false] Whether to select the date in the form
+ * @returns {Promise} A promise resolving to the result of the get operation
+ */
+function getGoogleTimeline(date, selectDate = false) {
+    console.log('Google: Logging timeline history');
+    
+    // Check if the date is valid before proceeding
+    if (!date) {
+        throw new Error('Date is required');
+    }
+
+    // Navigate to the Google Maps timeline page if not already there
+    return client
+       .getUrl()
+       .then(url =&gt; {
+            return client
+               .isVisible('button[jsaction="header.select-today"]')
+               .then(is =&gt;!is || url.indexOf('/timeline') === -1
+                   ? client.url('https://www.google.com/maps/timeline')
+                       .loginGoogle()
+                       .pause(3000)
+                    : []
+                )
+        })
+        // If the date is valid, select it in the form
+       .then(() =&gt; selectDate(date))
+       .catch(e =&gt; console.log(e));
+}
+
+// Check if the client has a getGoogleTimeline command and add it if not
+if (typeof client.getGoogleTimeline === 'undefined') {
+    client.addCommand('getGoogleTimeline', getGoogleTimeline);
+}
+
+// Export the getGoogleTimeline function
+module.exports = getGoogleTimeline;</code></pre></div><p>This code snippet defines two functions, <code>selectDate</code> and <code>getGoogleTimeline</code>, that interact with a Google Maps timeline interface.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>months</code> Array:</strong></p>

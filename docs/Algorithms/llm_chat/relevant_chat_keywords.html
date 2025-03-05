@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>relevantKeywords</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = require('./general-chit-chats');
+const logger = console;
+
+async function relevantKeywords(promptModel, session, prompt) {
+  try {
+    const loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
+     .filter((key) => key.match(`-${DEFAULT_MODEL}-${session}.json`))
+     .sort((a, b) => b.localeCompare(a));
+
+    const loadedKeywords = loadedConversations.reduce((keywords, conversationFile) => {
+      const conversation = ACTIVE_CONVERSATIONS[conversationFile];
+      return keywords.concat(
+        Object.keys(conversation)
+         .filter((key) => key!=='summaries' && key!=='memories')
+         .map((timestamp) => conversation[timestamp].keywords)
+         .flat()
+         .map((keyword) => keyword.trim())
+         .filter((k, i, arr) => k && arr.indexOf(k) === i)
+      );
+    }, []);
+
+    const question2 = `Given the following keywords:\n${loadedKeywords.join('\n')}\n\nGiven the following prompt:\n${prompt}\nReturn only a few keywords related to the prompt.`
+    const response2 = await promptModel(question2);
+    logger.log(`User: ${question2}`);
+    logger.log(`AI: ${response2}`);
+
+    const matchingKeywords = loadedKeywords.filter((keyword) => response2.match(keyword));
+
+    return matchingKeywords;
+  } catch (error) {
+    logger.error('Error in relevantKeywords:', error);
+    throw error;
+  }
+}
+
+module.exports = relevantKeywords;</code></pre></div><h3>Function: <code>relevantKeywords</code></h3>
 <h4>Description:</h4>
 <p>This function searches through loaded user history conversations to find relevant keywords for a given prompt.</p>
 <h4>Parameters:</h4>

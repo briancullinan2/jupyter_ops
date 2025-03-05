@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -145,7 +152,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>loginLinkedIn</code> that automates the process of logging into LinkedIn using Selenium.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client } = require('nightwatch-api');
+
+const loginLinkedIn = async (client) => {
+    // Check if not robot
+    await client.checkNotRobot();
+
+    // Attempt to log in
+    try {
+        // Check for sign-in required
+        const signinRequired = await client.isExisting('a[href*="uas/login"]');
+        if (signinRequired) {
+            // Click sign-in button
+            await client.click('a[href*="uas/login"]');
+        }
+
+        // Log in
+        await loginWorkflow(client);
+
+        // Check if logged in
+        const loggedIn = await client.getUrl().then(url => {
+            return (url.indexOf('linkedin') > -1 && url.indexOf('login') == -1
+                && url.indexOf('authwall') == -1);
+        });
+
+        // Log in successfully
+        if (loggedIn) {
+            // Switch to frame
+            await client.switchToFrame('authentication-iframe');
+            await enterLinkedIn(client);
+        } else {
+            // Log out or refresh page
+            console.log('Logged out or refresh page');
+            await client.url('https://www.linkedin.com/');
+        }
+    } catch (error) {
+        // Handle errors
+        if (error.message === 'captcha') {
+            console.error('Captcha detected');
+        } else {
+            console.error('Unknown error', error);
+        }
+        return Promise.reject(error);
+    }
+};
+
+const enterLinkedIn = async (client) => {
+    // Get credentials
+    const credentials = await getCredentials('linkedin.com');
+
+    // Click login button
+    await client.click('a[href*="login"]');
+
+    // Fill in username
+    await client.click('input[name*="session_key"]');
+    await client.keys(credentials.username);
+
+    // Wait for password prompt
+    await client.pause(1000);
+
+    // Click password button
+    await client.click('input[name*="session_password"]');
+
+    // Fill in password
+    await client.keys(credentials.password);
+
+    // Submit form
+    await client.submitForm('.login-form, [type="submit"]');
+    await client.pause(2000);
+
+    // Check for captcha
+    const captcha = await client.isExisting('.cp-challenge-form');
+    if (captcha) {
+        throw new Error('captcha');
+    }
+};
+
+const loginWorkflow = async (client) => {
+    // Check for alert
+    const alert = await client.alertText();
+    if (alert && alert.indexOf('leave') > -1) {
+        await client.alertAccept();
+    }
+
+    return client;
+};
+
+const getCredentials = async (url) => {
+    // Get credentials from storage or db
+    // TODO: implement credentials storage
+    throw new Error('Credentials not implemented');
+};
+
+module.exports = loginLinkedIn;</code></pre></div><p>This code defines a function <code>loginLinkedIn</code> that automates the process of logging into LinkedIn using Selenium.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>notRobot</code> Function:</strong></p>

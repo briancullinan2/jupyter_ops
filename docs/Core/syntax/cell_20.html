@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -180,7 +187,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const { importModules } = require('../Core');
+
+const { selectAst, makeXpaths, htmlToTree } = importModules([
+ 'select tree',
+ 'make xpaths',
+  'html to tree'
+]);
+
+/**
+ * Test code-to-dom functionality with the given code.
+ *
+ * @param {string} code - The code to test.
+ */
+function testCodeToDom(code) {
+  // Make a path with the interpret symbol
+  const interpretNode = selectAst(`//*[@name="interpret"]`, code);
+  console.log(interpretNode);
+
+  // Get the parent node of the interpret node
+  const parentNode = selectAst(`parent::*`, interpretNode);
+  assert(parentNode.nodeName!== '', 'Parent selector works');
+
+  // Log the number of children of the interpret node
+  console.log(selectAst(`*`, interpretNode).children.length);
+
+  // Log the HTML tree of the parent node
+  console.log(htmlToTree(parentNode));
+}
+
+/**
+ * Entry point of the script.
+ */
+function main() {
+  const code = `
+    var importer = require('../Core');
+    function name(params) {
+      return importer.interpret('this is a describe request');
+    }
+    console.log()
+  `;
+
+  // Only run the test if $ is defined, e.g., in a browser environment
+  if (typeof $!== 'undefined') {
+    testCodeToDom(code);
+  }
+}
+
+main();</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Imports</h3>
 <ul>
 <li>The code requires two modules:

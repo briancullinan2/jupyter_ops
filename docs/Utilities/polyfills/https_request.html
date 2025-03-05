@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,131 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet aims to provide a promisified <code>httpRequest</code> function for making HTTP requests, handling potential errors gracefully and falling back to a custom implementation if the <code>util.promisify</code> or <code>bluebird</code> libraries are not available.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const util = require('util');
+const querystring = require('querystring');
+const https = require('https');
+const http = require('http');
+const url = require('url');
+
+// Try to use promisify from util if available
+const promisify = util.promisify || (() =&gt; {
+  // If not, try to use promisify from bluebird if installed
+  try {
+    return require('bluebird').promisify;
+  } catch (error) {
+    // If bluebird is not installed, throw the error
+    if (!error.message.includes('Cannot find module')) {
+      throw error;
+    }
+    // If bluebird is not installed, do not throw any error
+    return util.promisify;
+  }
+})();
+
+// Promisify the request function
+const request = promisify(require('request'));
+
+// Function to create a promise-based version of request
+function httpRequest(params) {
+  // Check if the promise is already created
+  if (params instanceof Promise) {
+    return params;
+  }
+
+  // Extract the protocol, location and data from the params
+  const protocol = params.url.includes('http://')? http : https;
+  const location = url.parse(params.url);
+  const postData = querystring.stringify(params.data);
+
+  // Create a new params object with the path, host, port and headers
+  const newParams = {
+    path: location.pathname,
+    host: location.hostname,
+    port: location.port || (location.protocol === 'http:'? 80 : 443),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(postData)
+    }
+  };
+
+  // Merge the new params with the original params
+  Object.assign(newParams, params);
+
+  // Return a new promise
+  return new Promise((resolve, reject) =&gt; {
+    // Create a new request
+    const req = protocol.request(newParams, (res) =&gt; {
+      // Cumulate the data
+      res.setEncoding('utf8');
+      res.body = [];
+      res.on('data', (chunk) =&gt; {
+        res.body.push(chunk);
+      });
+
+      // Resolve the promise on end
+      res.on('end', () =&gt; {
+        try {
+          // Join the body chunks
+          res.body = res.body.join('');
+        } catch (error) {
+          // Reject the promise if an error occurs
+          reject(error);
+        }
+        // Resolve the promise with the response
+        resolve(res);
+      });
+    });
+
+    // Handle errors
+    req.on('error', (error) =&gt; reject(error));
+
+    // Write the data if it exists
+    if (params.data) {
+      req.write(postData);
+    }
+
+    // End the request
+    req.end();
+  });
+}
+
+// Function to handle the response
+function handleResponse(res) {
+  // Check the status code and throw an error if it's not between 200 and 300
+  if (res.statusCode &lt; 200 || res.statusCode &gt;= 300) {
+    throw new Error(`Error: ${res.statusCode} - ${JSON.stringify(res.body)}`);
+  }
+
+  // Check if the response is JSON
+  const isJson = (res.headers['content-type'] || '').match(/application\/json/ig);
+  const isPlain = (res.headers['content-type'] || '').match(/text\//ig);
+
+  // Parse the body as JSON if it's a JSON response
+  if (isJson &amp;&amp; typeof res.body!== 'undefined') {
+    try {
+      res.body = JSON.parse(res.body.toString('utf8'));
+    } catch (error) {
+      // Do nothing if an error occurs
+    }
+  }
+
+  // Set the body as a string if it's a plain text response
+  if (isPlain &amp;&amp; typeof res.body!== 'undefined') {
+    res.body = res.body.toString('utf8');
+  }
+
+  // Return the response
+  return res;
+}
+
+// Export the request function
+module.exports = {
+  request: (options) =&gt; {
+    // Call the request function with the options
+    return httpRequest(options).then(handleResponse);
+  }
+};</code></pre></div><p>This code snippet aims to provide a promisified <code>httpRequest</code> function for making HTTP requests, handling potential errors gracefully and falling back to a custom implementation if the <code>util.promisify</code> or <code>bluebird</code> libraries are not available.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>promisify</code> Detection and Fallback:</strong></p>

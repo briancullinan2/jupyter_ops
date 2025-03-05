@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -238,7 +245,141 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const { selectDom } = importer.import('select tree');
+
+// Function to remove special characters from a string
+const removeSpecialChars = (str) =&gt; {
+    const specialCharsRegex = /&amp;|&lt;|&gt;|"|'|/g;
+    return str.replace(specialCharsRegex, (match) =&gt; {
+        switch (match) {
+            case '&amp;':
+                return '&amp;amp;';
+            case '&lt;':
+                return '&amp;lt;';
+            case '&gt;':
+                return '&amp;gt;';
+            case '"':
+                return '&amp;quot;';
+            case "'":
+                return '&amp;apos;';
+            default:
+                return match;
+        }
+    });
+};
+
+// Function to filter out unwanted properties from an object
+const filterObject = (obj) =&gt; {
+    return Object.fromEntries(Object.entries(obj).filter(([key, value]) =&gt; key!== 'children' &amp;&amp; key!== 'parentCtx'));
+};
+
+// Function to convert a tree statement to a string
+const treeToStr = (statement, parent, parser) =&gt; {
+    const { type, ruleIndex, start, stop, exception, strdata } = statement;
+
+    if (typeof start === 'object') {
+        statement['start'] = start.start;
+        statement['line'] = start.line;
+    }
+    if (typeof stop === 'object') {
+        statement['stop'] = stop.stop;
+    }
+
+    const parserNames = parser.ruleNames;
+    if (!parser) {
+        parser = statement.parentCtx?.parser?? statement.parser;
+    }
+
+    if (typeof type === 'number') {
+        type = parserNames[type];
+    } else if (typeof ruleIndex === 'number') {
+        type = parserNames[ruleIndex];
+        statement.type = type;
+    }
+
+    if (exception) {
+        return '';
+    }
+
+    if (!strdata &amp;&amp; statement.start &amp;&amp; statement.stop &amp;&amp; statement.type) {
+        statement.strdata = parser.input.substring(statement.start, statement.stop + 1);
+    }
+
+    const result = [];
+    const attrs = {};
+    let isList = true;
+
+    for (const [key, value] of Object.entries(statement)) {
+        // Recursively convert child elements
+        if (parseInt(key) + '' === key + '') {
+            result.push(treeToStr(value, parent, parser));
+            continue;
+        }
+        if (key === 'parentCtx' || key === 'parser' || key.startsWith('_') || key === 'exception' || key ==='source') {
+            continue;
+        }
+
+        if (key ==='strdata') {
+            statement[key] = statement[key].split('\n')[0];
+        }
+
+        if (key === 'type' &amp;&amp; typeof statement[key] === 'number') {
+            statement[key] = parserNames[statement[key]];
+        }
+
+        isList = false;
+        const jsType = typeof value;
+
+        if (jsType === 'object' &amp;&amp; value) {
+            jsType = Object.getPrototypeOf(value).constructor.name;
+        }
+
+        if (key ==='symbol' &amp;&amp; jsType === 'Function') {
+            continue;
+        }
+
+        // Convert objects and arrays to HTML
+        if (statement[key] &amp;&amp; typeof statement[key].type!== 'undefined' ||
+            (Array.isArray(statement[key])) // TODO: uncomment this line
+        ) {
+            attrs[key] = { type: jsType };
+            // Recursively convert child elements
+            result.push(treeToStr(statement[key], key, parser));
+            // Output as child element and &lt;-attr&gt; elements
+            // TODO: uncomment this line
+        } else {
+            // Convert native types to HTML
+            if (typeof value === 'object' &amp;&amp; value!== null) {
+                attrs[key] = { type: jsType };
+                attrs[key].value = specialChars(JSON.stringify(filterObject(value)));
+            } else if (typeof value!=='string') {
+                attrs[key] = { type: jsType };
+                attrs[key].value = specialChars(JSON.stringify(value));
+            } else {
+                attrs[key] = { type: jsType };
+                attrs[key].value = specialChars(value);
+            }
+        }
+    }
+
+    // Output as child element or element with attributes
+    if (isList) {
+        return result.join('');
+    }
+    return `&lt;${type}${Object.keys(attrs).map((key) =&gt; `${key}="${attrs[key].value}" ${key}-type="${attrs[key].type}""`).join('')}${parent? ` parent-attr="${parent}"`: ``}&gt;${result.join('')}&lt;/${type}&gt;`;
+};
+
+// Function to convert a tree to HTML
+const treeToHtml = (tree) =&gt; {
+    const body = treeToStr(tree);
+    const fs = require('fs');
+    fs.writeFileSync('text.html', body);
+    return selectDom('//BODY', `&lt;BODY&gt;${body}&lt;/BODY&gt;`);
+};
+
+module.exports = { treeToHtml };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code appears to be a part of a parser or a tree-traversal function. It's written in JavaScript and uses Node.js's <code>require</code> function to import other modules. Here's a brief explanation of the code:</p>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">var importer = require('../Core');

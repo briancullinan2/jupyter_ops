@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -68,7 +75,7 @@
     <a href="../documentation/index.html">documentation</a> | <a href="./highlight_js.html">highlight js</a> |  | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
+  <p>An HTML document is composed of a root <code>&lt;html&gt;</code> element, containing metadata in the <code>&lt;head&gt;</code> element and content in the <code>&lt;body&gt;</code> element. The document uses styles and variables to dynamically generate content and layout properties.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "javadoc template"</code></pre><h1>javadoc template</h1>
@@ -108,6 +115,13 @@
     body {
       padding: 0 0 0 200px;
       margin: 0;
+    }
+
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
     }
 
     @media screen and (max-width: 600px) {
@@ -152,68 +166,123 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>HTML Document Breakdown</strong></p>
-<h3>Document Type Declaration</h3>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-</code></pre>
-<p>Declares the document type as HTML.</p>
-<h3>HTML Tag</h3>
-<pre><code class="language-html">&lt;html&gt;
-</code></pre>
-<p>The root element of the document.</p>
-<h3>Head Section</h3>
-<p>Defines metadata about the document.</p>
-<h4>Character Encoding</h4>
-<pre><code class="language-html">&lt;meta charset='utf-8'&gt;
-</code></pre>
-<p>Specifies the character encoding of the document as UTF-8.</p>
-<h4>Internet Explorer Compatibility</h4>
-<pre><code class="language-html">&lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt;
-</code></pre>
-<p>Instructs Internet Explorer to render the document in its highest mode.</p>
-<h4>Document Title</h4>
-<pre><code class="language-html">&lt;title&gt;${TITLE}&lt;/title&gt;
-</code></pre>
-<p>Sets the title of the document, where <code>${TITLE}</code> is a variable.</p>
-<h4>Viewport Settings</h4>
-<pre><code class="language-html">&lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
-</code></pre>
-<p>Sets the viewport settings for responsive design.</p>
-<h4>Stylesheet Link</h4>
-<pre><code class="language-html">&lt;link rel='stylesheet' type='text/css' media='screen' href='main.css'&gt;
-</code></pre>
-<p>Links an external stylesheet named <code>main.css</code>.</p>
-<h4>Inline Styles</h4>
-<pre><code class="language-html">&lt;style&gt;
- ...
-&lt;/style&gt;
-</code></pre>
-<p>Defines inline styles for the document.</p>
-<h3>Body Section</h3>
-<p>Contains the content of the document.</p>
-<h4>Navigation Bar</h4>
-<pre><code class="language-html">&lt;nav&gt;
-  ${PARENT}
-  &lt;br /&gt;&lt;br /&gt;
-  ${CLASSES}
-&lt;/nav&gt;
-</code></pre>
-<p>Defines a navigation bar with variables <code>${PARENT}</code> and <code>${CLASSES}</code>.</p>
-<h4>Header Section</h4>
-<pre><code class="language-html">&lt;header&gt;
-  ${PARENT} ${PREV} ${NEXT}
-&lt;/header&gt;
-</code></pre>
-<p>Defines a header section with variables <code>${PARENT}</code>, <code>${PREV}</code>, and <code>${NEXT}</code>.</p>
-<h4>Output Section</h4>
-<pre><code class="language-html">${OUTPUT}
-</code></pre>
-<p>Replaces with the output variable.</p>
-<h3>End of Document</h3>
-<pre><code class="language-html">&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>Closes the body and root elements of the document.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="html"><code><!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title><%=TITLE%></title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <style>
+    /* Global Styles */
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation */
+    #nav {
+      position: fixed;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: 0;
+      width: 200px;
+      background-color: #EEE;
+    }
+
+    /* Header */
+    #header {
+      padding: 10px;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 600px) {
+      #nav {
+        display: none;
+      }
+    }
+
+    /* Code Styling */
+    pre {
+      color: gold;
+    }
+
+   .gold {
+      background-color: #EEE;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Menu -->
+  <nav id='nav'>
+    <h3><%=PARENT%></h3>
+    <%=CLASSES%>
+  </nav>
+
+  <!-- Header with Links -->
+  <header id='header'>
+    <%=PARENT%> | 
+    <%=PREV%> | 
+    <%=NEXT%> | 
+    <%=SEARCH%>
+  </header>
+
+  <!-- Page Content -->
+  <%=OUTPUT%>
+
+  <!-- Search Modal (TODO: Implement Search Functionality) -->
+  <%--<div id='search-modal' style='display: none;'>--%>
+    <%--<input id='search-input' type='text' placeholder='Search...'>--%>
+    <%--<button id='search-button'>Search</button>--%>
+  <%--</div>--%>
+
+  <!-- JavaScript File (TODO: Add JavaScript Files) -->
+  <%--<script src='script.js' defer></script>--%>
+</body>
+
+</html></code></pre></div><p><strong>HTML Document Breakdown</strong></p>
+<h3>Document Structure</h3>
+<ul>
+<li>The HTML document starts with the <code>&lt;!DOCTYPE html&gt;</code> declaration.</li>
+<li>The <code>&lt;html&gt;</code> element is the root element of the HTML document.</li>
+<li>The <code>&lt;head&gt;</code> element contains metadata about the document.</li>
+<li>The <code>&lt;body&gt;</code> element contains the content of the HTML document.</li>
+</ul>
+<h3>Metadata</h3>
+<ul>
+<li>The <code>&lt;meta&gt;</code> elements specify character encoding (<code>utf-8</code>) and compatibility with Internet Explorer (<code>IE=edge</code>).</li>
+<li>The <code>&lt;title&gt;</code> element sets the title of the document, which can be dynamically updated with the <code>${TITLE}</code> variable.</li>
+<li>The <code>&lt;meta&gt;</code> element with <code>name='viewport'</code> sets the viewport settings for mobile devices.</li>
+<li>The <code>&lt;link&gt;</code> element links to an external stylesheet (<code>main.css</code>).</li>
+<li>The <code>&lt;style&gt;</code> element defines inline styles for the HTML document.</li>
+</ul>
+<h3>Styles</h3>
+<ul>
+<li>The styles define layout and visual properties for various HTML elements, including:
+<ul>
+<li><code>html</code>: resets padding and margin.</li>
+<li><code>nav</code>: positions the navigation menu at the top-left corner of the page.</li>
+<li><code>header</code>: sets the background color and padding for the header element.</li>
+<li><code>body</code>: sets the padding and margin for the body element.</li>
+<li><code>.gold code pre</code>: sets the text color to gold for elements with the <code>.gold</code> class.</li>
+<li>Media query: hides the navigation menu on small screens (max-width: 600px).</li>
+</ul></li>
+</ul>
+<h3>Content</h3>
+<ul>
+<li>The <code>&lt;nav&gt;</code> element contains the navigation menu, which includes:
+<ul>
+<li>A heading (<code>h3</code>) with the <code>${PARENT}</code> variable.</li>
+<li>The <code>${CLASSES}</code> variable is used to generate content.</li>
+</ul></li>
+<li>The <code>&lt;header&gt;</code> element contains a heading with the <code>${PARENT}</code> variable, and links for previous (<code>${PREV}</code>), next (<code>${NEXT}</code>), and search (<code>${SEARCH}</code>) functionality.</li>
+<li>The <code>${OUTPUT}</code> variable is used to generate the main content of the HTML document.</li>
+</ul>
 
 </body>
 

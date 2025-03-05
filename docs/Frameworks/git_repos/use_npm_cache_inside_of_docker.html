@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,17 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet configures npm, the Node.js package manager, to use a proxy server for network requests.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code># Set npm proxy and registry configuration
+# Configure npm to use a proxy and registry for package installations
+npm_config_proxy="http://{host}:8050"
+npm_config_registry="http://{host}:5080"
+npm_config_strict_ssl="false"
+
+# Set npm configuration using the config command
+RUN npm config set --force proxy "${npm_config_proxy}"
+RUN npm config set --force registry "${npm_config_registry}"
+RUN npm config set --force strict-ssl "${npm_config_strict_ssl}"</code></pre></div><p>This code snippet configures npm, the Node.js package manager, to use a proxy server for network requests.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>RUN npm config set proxy http://{host}:8050</code></strong>: This command sets the HTTP proxy server address to <code>http://{host}:8050</code>.  <code>{host}</code> should be replaced with the actual hostname or IP address of the proxy server.</p></li>

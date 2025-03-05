@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code performs a search within an Elasticsearch index named &quot;books&quot; for documents matching the query &quot;express js&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+// Import the required elasticsearch client library
+const { Client } = require('elasticsearch');
+
+// Create a client instance connected to the local elasticsearch server at port 9200
+const client = new Client({
+  host: 'localhost:9200',
+});
+
+// Define the search query with the relevant fields
+const searchQuery = {
+  index: 'books',
+  type: 'book',
+  body: {
+    query: {
+      multi_match: {
+        query: 'express js',
+        fields: ['title', 'description'],
+        fuzziness: 1, // optional: enable fuzziness for more flexible search
+      },
+    },
+  },
+};
+
+// Execute the search query and handle the response
+client.search(searchQuery)
+ .then((response) =&gt; {
+    // Extract the hits from the search response
+    const hits = response.hits.hits;
+
+    // Process the hits as needed (e.g., map over them, extract specific data, etc.)
+    // For this example, we'll just log the hits
+    console.log(hits);
+
+    // If you need to handle multiple pages of hits, consider using pagination
+    // For example:
+    // const pagination = { from: 0, size: 10 };
+    // const allHits = [];
+    // while (true) {
+    //   const searchResponse = await client.search({
+    //    ...searchQuery,
+    //     from: pagination.from,
+    //     size: pagination.size,
+    //   });
+    //   allHits.push(...searchResponse.hits.hits);
+    //   if (searchResponse.hits.total &lt; pagination.from + pagination.size) {
+    //     break;
+    //   }
+    //   pagination.from += pagination.size;
+    // }
+    // console.log(allHits);
+  })
+ .catch((error) =&gt; {
+    // Handle any errors that occur during the search
+    // logging the error is a good start, but consider adding more context or actions
+    console.error('Failed to execute search query:', error.message);
+    // TODO: implement error handling and logging as needed
+  });
+```</code></pre></div><p>This code performs a search within an Elasticsearch index named &quot;books&quot; for documents matching the query &quot;express js&quot;.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

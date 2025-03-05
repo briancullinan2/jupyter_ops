@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Breakdown of the Code</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { v1: uuid } = require('uuid');
+const Core = require('../Core');
+const { getSheetIdentifier } = Core.import('get sheet identifier');
+const { copyFileOnGoogleDrive } = Core.import('copy a file on google drive');
+const { listGoogleDriveFiles } = Core.import('list google drive files');
+const { insertPermissionOnGoogleDrive } = Core.import('insert google drive permissions');
+
+/**
+ * Copies a Google Drive file named 'Study sauce template' to a new file
+ * with a name based on the 'Study sauce' prefix and a 5-character uuid.
+ * Inserts a permission for the specified email address.
+ * Returns the ID of the newly copied file.
+ * @param {string} email - Email address for which permission is inserted.
+ * @returns {Promise<string>} ID of the newly copied file.
+ */
+function copyStudy(email) {
+  if (!email) {
+    throw new Error('Email address not specified!');
+  }
+
+  return listGoogleDriveFiles()
+   .then((files) => {
+      const templateFile = files.find((file) => file.name === 'Study sauce template');
+      if (!templateFile) {
+        throw new Error('Template file not found!');
+      }
+      return templateFile.id;
+    })
+   .then((fileId) => copyFileOnGoogleDrive(fileId, `Study sauce ${uuid().substr(0, 5)}`))
+   .then((newId) => {
+      return insertPermissionOnGoogleDrive(newId, email)
+       .then(() => getSheetIdentifier(newId, null, email))
+       .then(() => newId);
+    });
+}
+
+module.exports = copyStudy;</code></pre></div><h2>Breakdown of the Code</h2>
 <h3>Dependencies</h3>
 <ul>
 <li><code>uuid/v1</code>: a module for generating unique IDs.</li>

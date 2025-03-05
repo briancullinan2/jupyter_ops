@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>DNS Lookup Function</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// dns-lookup.js
+const dns = require('dns');
+
+// Cache DNS lookups to avoid redundant requests
+const dnsCache = {};
+
+/**
+ * Performs a DNS lookup on the given address and returns the result as a promise.
+ * If the result is already cached, it returns the cached value.
+ * @param {string} address - The IP address or hostname to perform the DNS lookup on.
+ * @returns {Promise<string>} A promise that resolves to the destination IP address.
+ */
+async function lookupDNS(address) {
+  // Check if the result is already cached
+  if (dnsCache[address]) {
+    return dnsCache[address];
+  }
+
+  // Perform the DNS lookup using dns.lookup
+  try {
+    const dstIP = await new Promise((resolve, reject) => {
+      dns.lookup(address, (err, ip) => {
+        if (err) {
+          reject(err);
+        } else {
+          dnsCache[address] = ip;
+          resolve(ip);
+        }
+      });
+    });
+
+    // Store the result in the cache
+    dnsCache[address] = dstIP;
+
+    return dstIP;
+  } catch (error) {
+    // If there's an error, remove the cached result to prevent stale data
+    delete dnsCache[address];
+    throw error;
+  }
+}
+
+module.exports = lookupDNS;</code></pre></div><h2>DNS Lookup Function</h2>
 <h3>Overview</h3>
 <p>This JavaScript code exports a function <code>lookupDNS</code> that performs a DNS lookup on a given IP address.</p>
 <h3>Code Breakdown</h3>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -285,7 +292,198 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { SelectTree } = require('../Core');
+const { default: puppeteer } = require('puppeteer');
+
+class BrowserRequestHandler {
+    constructor() {
+        this.browser = null;
+        this.RETRY_COUNT = 1;
+    }
+
+    async doBrowserRequest(url, readCache, storeCache, callback, retry = 0) {
+        if (url === false) {
+            console.log('Closing browser');
+            if (this.browser) {
+                await this.browser.close();
+                this.browser = null;
+            }
+            return;
+        }
+
+        try {
+            let response;
+            if (!this.browser) {
+                this.browser = await puppeteer.launch({
+                    headless: true,
+                    dumpio: true,
+                    ignoreHTTPSErrors: true,
+                    args: [
+                        '--disable-extensions-except=/Users/briancullinan/Downloads/1.18.4.crx',
+                        '--load-extension=/Users/briancullinan/Downloads/1.18.4.crx',
+                        '--enable-remote-extensions',
+                        '--no-first-run',
+                        '--disable-notifications',
+                        '--disable-geolocation',
+                        '--disable-infobars',
+                        '--disable-session-crashed-bubble',
+                        '--no-sandbox',
+                        '--silent-debugger-extension-api',
+                        '--extensions-on-chrome-urls',
+                    ],
+                });
+            }
+
+            console.log(`Initiating ${url}`);
+            const page = await this.browser.newPage();
+            page.setRequestInterception(true);
+            page.on('request', readCache);
+            page.on('response', storeCache);
+            if (url) {
+                await page.goto(url, { waitUntil: "networkidle2", timeout: 5 * 1000 });
+                response = await page.goto(url);
+            }
+
+            console.log(`Finishing ${url}`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            page.off('request', readCache);
+            page.off('response', storeCache);
+            await page.setRequestInterception(false);
+            if (response && callback) await callback(response, page);
+            console.log('Closing page');
+            await page.close();
+            return response;
+        } catch (e) {
+            if (retry < this.RETRY_COUNT) {
+                await this.doBrowserRequest(false);
+                return await this.doBrowserRequest(url, readCache, storeCache, callback, retry + 1);
+            } else if (this.handleError(e)) {
+                console.log(`Could not fetch ${url}`);
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    handleError(e) {
+        return e.message.includes('ERR_NAME_NOT_RESOLVED')
+            || e.message.includes('Navigation timeout')
+            || e.message.includes('ERR_CONNECTION_REFUSED')
+            || e.message.includes('ERR_ABORTED');
+    }
+}
+
+function getStyleUrls(content, url) {
+    const regex = /url\s*\(['"]*([^\)]*?)['"]*\)/gi;
+    return content.match(regex).map(match => {
+        const matchGroups = match.match(regex);
+        return matchGroups[1];
+    });
+}
+
+async function getAllLinks(url, html) {
+    const selectTree = new SelectTree({
+        links: ['//a', './@href'],
+        sources: ['(//img|//iframe|//audio)[@src]', './@src'],
+        styles: ['//link', './@href'],
+        styleInners: ['//style', './text()'],
+        styleTags: ['//*[@style]', './@style'],
+        html: ['/*']
+    });
+    const result = selectTree.execute(html);
+    const links = result.links
+       .concat(result.sources)
+       .concat(['/favicon.ico'])
+       .map(s => {
+            try {
+                return new URL(s, url).href;
+            } catch (e) {
+                return null;
+            }
+        });
+
+    const styles = result.styles
+       .concat(...result.styleInners.map(s => getStyleUrls(s, url)))
+       .concat(...result.styleTags.map(s => getStyleUrls(s, url)))
+       .map(s => {
+            try {
+                return new URL(s, url).href;
+            } catch (e) {
+                return null;
+            }
+        });
+
+    let htmlLinks = {};
+    if (result.html.length > 0) {
+        Object.assign(htmlLinks, result.html.map(h => h.outerHTML).join(''));
+    }
+
+    return {
+        links,
+        styles,
+        htmlLinks
+    };
+}
+
+async function getExpires(headers) {
+    const cacheControl = headers['cache-control'] || '';
+    const maxAgeMatch = cacheControl.match(/max-age=(\d+)/);
+    const maxAge = maxAgeMatch && maxAgeMatch.length > 1? parseInt(maxAgeMatch[1], 10) : 0;
+    return Date.now() + (maxAge * 1000);
+}
+
+async function getResponseContent(response, headers) {
+    const result = {
+        url: await response.url(),
+        type: (headers['content-type'] || '').split(/\n|;/gi)[0],
+        length: parseInt(headers['content-length']),
+        expires: await getExpires(headers),
+        status: await response.status(),
+        location: headers['location'],
+    };
+
+    if (result.url.substr(0, 5) === 'data:') {
+        return {};
+    }
+
+    if (result.status < 200 || result.status > 300) {
+        return result;
+    }
+
+    if (!result.length || isNaN(result.length) || result.length < 100 * 1024 * 1024) {
+        try {
+            let buffer = await response.buffer();
+            result.content = buffer.toString('utf8');
+            if (result.type.includes('text/')) {
+                result.content = result.content.replace(/<script>.*?<\/script>/g, '');
+            } else {
+                result.content = `data:${result.type};base64,${buffer.toString('base64')}`;
+            }
+            if (result.type.includes('/html')) {
+                const links = await getAllLinks(result.url, result.content).then(data => data);
+                Object.assign(result, links);
+            }
+        } catch (e) {
+            if (this.handleError(e)) {
+                console.log(`Probable tracker ${result.url}`);
+                return {};
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    return result;
+}
+
+module.exports = {
+    getStyleUrls,
+    getAllLinks,
+    getExpires,
+    getResponseContent,
+    BrowserRequestHandler
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Imports</h3>
 <pre><code class="language-javascript">var puppeteer = require('puppeteer')
 var importer = require('../Core')

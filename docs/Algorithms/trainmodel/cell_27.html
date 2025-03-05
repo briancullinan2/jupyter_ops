@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import load_img
+
+def load_image(image_path):
+    """
+    Load an image from the given path.
+    
+    Args:
+    image_path (str): Path to the image file.
+    
+    Returns:
+    PIL Image: Loaded image.
+    """
+    return load_img(image_path, target_size=(48, 48))
+
+def preprocess_image(image):
+    """
+    Resize and convert image to grayscale.
+    
+    Args:
+    image (PIL Image): Image to preprocess.
+    
+    Returns:
+    numpy array: Preprocessed image.
+    """
+    return np.array(image)[:, :, 0]
+
+def plot_image(image):
+    """
+    Plot the given image.
+    
+    Args:
+    image (numpy array): Image to plot.
+    """
+    plt.imshow(image, cmap='gray')
+    plt.show()
+
+def main():
+    # Load image
+    image_path = 'images/train/fear/2.jpg'
+    original_label = "fear"
+    print(f"Original image is of {original_label}")
+
+    # Load and preprocess image
+    image = load_image(image_path)
+    img = preprocess_image(image)
+
+    # Make predictions
+    model = tf.keras.models.load_model('path/to/model.h5')
+    pred = model.predict(img)
+    pred_label = 'anger' if pred.argmax() == 0 else 'fear'  # Replace with actual label
+    print(f"Model prediction is {pred_label}")
+
+    # Plot image
+    plot_image(img)
+
+if __name__ == "__main__":
+    main()</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables and Imports</h4>
 <ul>
 <li><code>image</code>: a string variable holding the path to an image file.</li>

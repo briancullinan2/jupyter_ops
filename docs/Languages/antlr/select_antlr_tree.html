@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -168,7 +175,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import fs from 'fs';
+import antlr from 'antlr4';
+import { importer } from './importer';
+
+const { selectDom } = importer.import('select tree');
+const { extToLang, treeToHtml, getParser } = await loadModules();
+
+async function loadModules() {
+    const extToLang = await importer.import('ext to lang');
+    const treeToHtml = (await importer.import('antlr to html')).treeToHtml;
+    const getParser = await importer.import('get antlr tool');
+    return { extToLang, treeToHtml, getParser };
+}
+
+/**
+ * Selects code from a given descriptor and returns the selected code as HTML.
+ * @param {string[]} descriptor - The descriptor to select the code from.
+ * @param {string|Function} code - The code to select, either a string or a function.
+ * @param {string} [language] - The language of the code, automatically detected if not provided.
+ * @returns {Promise&lt;string&gt;} The selected code as HTML.
+ */
+async function selectCode(descriptor, code, language) {
+    if (typeof code === 'function') {
+        code = code.toString();
+    }
+
+    if (typeof code ==='string' &amp;&amp; fs.existsSync(code)) {
+        language = await getLanguageFromExtension(code);
+        code = await readFile(code, 'utf8');
+    }
+
+    const lexer = await getLexer(language);
+    const parser = await getParser(language);
+
+    try {
+        const antlrStream = new antlr.InputStream(code);
+        const lexerStream = new lexer(antlrStream);
+        const tokens = new antlr.CommonTokenStream(lexerStream);
+        const parserStream = new parser(tokens);
+        parserStream.input = code;
+
+        const tree = parserStream[parserStream.ruleNames[0]]();
+        const codeHtml = await getHtmlFromTree(tree);
+
+        return selectDom(descriptor, codeHtml);
+    } catch (e) {
+        console.log(e);
+        throw new Error(`Could not parse \n${code}`);
+    }
+}
+
+async function getLanguageFromExtension(file) {
+    const extToLang = await importer.import('ext to lang');
+    return extToLang(file);
+}
+
+async function getLexer(language) {
+    const getParser = await importer.import('get antlr tool');
+    return getParser(language).lexer;
+}
+
+async function getParser(language) {
+    const getParser = await importer.import('get antlr tool');
+    return getParser(language);
+}
+
+async function getHtmlFromTree(tree) {
+    const treeToHtml = (await importer.import('antlr to html')).treeToHtml;
+    return treeToHtml(tree);
+}
+
+async function readFile(file, encoding) {
+    return fs.readFileSync(file, encoding);
+}
+
+export default selectCode;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>
 <p>The code starts by importing various modules:</p>
 <ul>

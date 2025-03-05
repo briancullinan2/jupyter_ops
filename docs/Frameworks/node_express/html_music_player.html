@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -252,7 +259,240 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="html"><code><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directory Listing</title>
+  <link rel="stylesheet" type="text/css" href="/amplitude.css">
+  <script src="/amplitude.js"></script>
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    i {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #666;
+    }
+
+    span {
+      font-size: 16px;
+      color: #333;
+    }
+
+   .container {
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    /* Amplitude Player Styles */
+    #visualizations-player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+   .top-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+   .meta-data-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+   .control-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+   .song-navigation {
+      margin-top: 20px;
+    }
+
+    /* Playlist Styles */
+    #visualizations-player-playlist {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+   .songs-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+   .song {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+   .song:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Directory Listing</h1>
+    <ul>
+      <li><a href="./?session={" + SESSION + "}">Parent directory/</a></li>
+    </ul>
+
+    <div id="visualizations-player">
+      <div class="top-container">
+        <img class="now-playing-album-art" id="large-now-playing-album-art" data-amplitude-song-info="cover_art_url"/>
+        <div class="amplitude-visualization" id="large-visualization">
+
+        </div>
+        <div class="visualization-toggle visualization-on"></div>
+        <div class="amplitude-shuffle"></div>
+        <div class="amplitude-repeat"></div>
+      </div>
+
+      <div class="meta-data-container">
+        <span class="now-playing-name" data-amplitude-song-info="name"></span>
+        <span class="now-playing-artist-album">
+          <span class="now-playing-artist" data-amplitude-song-info="artist"></span> - <span class="now-playing-album" data-amplitude-song-info="album"></span>
+        </span>
+      </div>
+
+      <div class="amplitude-wave-form">
+
+      </div>
+      <input type="range" class="amplitude-song-slider" id="global-large-song-slider"/>
+
+      <div>
+        <span class="amplitude-current-time"></span>
+
+        <span class="amplitude-time-remaining"></span>
+      </div>
+
+      <div class="control-container">
+        <div class="amplitude-prev">
+
+        </div>
+
+        <div class="amplitude-play-pause amplitude-paused">
+
+        </div>
+
+        <div class="amplitude-next">
+
+        </div>
+      </div>
+
+      <div class="song-navigation">
+        <input type="range" class="amplitude-song-slider"/>
+      </div>
+
+      <div class="arrow-up">
+        <img src="https://521dimensions.com/img/open-source/amplitudejs/examples/visualizations/arrow-up.svg" class="arrow-up-icon"/>
+      </div>
+
+      <div id="visualizations-player-playlist">
+        <div class="top-arrow">
+          <img src="https://521dimensions.com/img/open-source/amplitudejs/examples/visualizations/arrow-down.svg" class="arrow-down-icon"/>
+        </div>
+
+        <div class="top">
+          <span class="playlist-title">Songs</span>
+          <div class="amplitude-repeat">
+
+          </div>
+          <div class="amplitude-shuffle">
+
+          </div>
+        </div>
+
+        <div class="songs-container">
+          <!-- Songs will be dynamically rendered here -->
+        </div>
+
+        <div class="active-audio">
+          <img class="cover-art-small" data-amplitude-song-info="cover_art_url"/>
+
+          <div class="active-audio-right">
+            <span class="song-name" data-amplitude-song-info="name"></span>
+
+            <div class="active-audio-controls">
+              <div class="amplitude-prev"></div>
+              <div class="amplitude-play-pause"></div>
+              <div class="amplitude-next"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Amplitude Player Initialization
+      Amplitude.init({
+        songs: [
+          {
+            "name": "Song Name 1",
+            "artist": "Artist Name",
+            "album": "Album Name",
+            "url": "{FILE_URL}?raw=true" + ('{SESSION}'.length > 0? ('&session={SESSION}') : ''),
+            "cover_art_url": "/cover/art/url.jpg"
+          }
+        ]
+      });
+
+      // Dynamically render songs here
+      const songsContainer = document.querySelector('.songs-container');
+      Amplitude.on('song-loaded', function(song) {
+        const songElement = document.createElement('div');
+        songElement.classList.add('song');
+        songElement.innerHTML = `
+          <span class="song-position">${song.index + 1}</span>
+          <img class="song-album-art" data-amplitude-song-info="cover_art_url" data-amplitude-song-index="${song.index}"/>
+          <div class="song-meta-data-container">
+            <span class="song-name" data-amplitude-song-info="name" data-amplitude-song-index="${song.index}"></span>
+            <span class="song-artist" data-amplitude-song-info="artist" data-amplitude-song-index="${song.index}"></span>
+          </div>
+        `;
+        songsContainer.appendChild(songElement);
+      });
+    </script>
+  </div>
+</body>
+</html></code></pre></div><h3>Code Breakdown</h3>
 <h4>HTML Structure</h4>
 <p>The code is divided into three main sections:</p>
 <ol>

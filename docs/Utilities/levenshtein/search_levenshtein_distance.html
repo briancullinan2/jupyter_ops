@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>levSearch</code> that performs a fuzzy search within a dataset based on Levenshtein distance.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import importer from '../Core';
+import { levDist } from `${__filename}[0]`;
+
+/**
+ * Extract a string value from an object based on a dot notation key.
+ *
+ * @param {string|string[]} keys - The key(s) to extract value from.
+ * @param {object} obj - The object to extract value from.
+ * @return {string[]} The extracted string value(s) or empty array if not found.
+ */
+function getStr(keys, obj) {
+    if (typeof keys ==='string') {
+        keys = [keys];
+    }
+    return keys.reduce((arr, id) =&gt; {
+        const value = id.split('.').reduce((o, i) =&gt; o[i], obj);
+        return arr.concat(Array.isArray(value)? value : [value]);
+    }, []);
+}
+
+/**
+ * Perform a Levenshtein search on a cache of objects based on a search query.
+ *
+ * @param {object[]} cache - The cache of objects to search.
+ * @param {object} config - The configuration object containing keys and id.
+ * @param {string} search - The search query to perform Levenshtein distance on.
+ * @return {object[]} The sorted and filtered search results.
+ */
+function levSearch(cache, config, search) {
+    // Remove null or undefined values from cache to avoid errors
+    const filteredCache = cache.filter(Boolean);
+
+    // Tokenize the search query (TODO: implement tokenization)
+    const tokens = search.split('');
+
+    // Calculate Levenshtein distance for each object in the cache
+    const result = filteredCache.map((a) =&gt; {
+        const distances = getStr(config.keys, a).map((s) =&gt; levDist(s, search));
+        return {
+           ...a,
+            distance: Math.min(...distances),
+        };
+    });
+
+    // Sort the result based on the minimum distance
+    result.sort((a, b) =&gt; a.distance - b.distance);
+
+    // Map the result to the original object structure
+    return result.map((c) =&gt; config.id.split('.').reduce((o, i) =&gt; o[i], c));
+}
+
+export default levSearch;</code></pre></div><p>This code defines a function <code>levSearch</code> that performs a fuzzy search within a dataset based on Levenshtein distance.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

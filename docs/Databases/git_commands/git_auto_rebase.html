@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -94,7 +101,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet performs two Git commands:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a function to reset the repository to the latest commit
+reset_hard() {
+  git reset --hard "Resetting repository to the latest commit"
+}
+
+# Define a function to pull the latest changes from the remote repository
+pull_rebase() {
+  git pull --rebase "Pulling the latest changes from the remote repository"
+}
+
+# Main function
+main() {
+  # Reset the repository to the latest commit
+  reset_hard
+  
+  # If there are any conflicts, resolve them and pull again
+  if! git status | grep -q "nothing to commit"; then
+    echo "Conflicts detected. Resolving and pulling again..."
+    git status
+    pull_rebase
+  fi
+}
+
+# Call the main function
+main</code></pre></div><p>This code snippet performs two Git commands:</p>
 <ol>
 <li><p><strong><code>git reset --hard</code>:</strong></p>
 <ul>

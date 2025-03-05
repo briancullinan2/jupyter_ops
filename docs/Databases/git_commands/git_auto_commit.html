@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,30 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet automates a series of Git commands to stage, commit, and push changes to both GitHub and Bitbucket. Let's break it down:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a function to make a commit
+commit_changes() {
+  git add -A \
+  && git commit -m "auto-commit"
+}
+
+# Define a function to push changes to origin
+push_to_origin() {
+  git push origin master
+}
+
+# Define a function to push changes to bitbucket
+push_to_bitbucket() {
+  git push bitbucket
+}
+
+# Call the functions in sequence and handle failure
+commit_changes \
+&& push_to_origin \
+&& push_to_bitbucket \
+|| echo "Failed to push changes to bitbucket"</code></pre></div><p>This code snippet automates a series of Git commands to stage, commit, and push changes to both GitHub and Bitbucket. Let's break it down:</p>
 <p><strong>1. <code>git add -A</code></strong></p>
 <ul>
 <li><strong><code>git add</code></strong>: This command stages changes in your working directory for the next commit.</li>

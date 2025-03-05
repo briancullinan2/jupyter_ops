@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -224,7 +231,113 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for the <code>dataImporter</code> module's <code>bulkUploadEloqua</code> function, which handles uploading data to Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const sinon = require('sinon');
+const { importer } = require('../Core');
+
+describe('eloqua bulk upload', () =&gt; {
+  const sandbox = sinon.createSandbox();
+
+  afterEach(() =&gt; {
+    sandbox.restore();
+  });
+
+  function getEloquaConfig() {
+    return {
+      clientId: 'client-id',
+      clientSecret: 'client-secret',
+      tenantId: 'tenant-id',
+      tenantSecret: 'tenant-secret',
+    };
+  }
+
+  function getOauthToken() {
+    return 'oauth-token';
+  }
+
+  class EloquaImport {
+    async eloquaOauth(config) {
+      return Promise.resolve(getOauthToken());
+    }
+
+    async createImportDefinition() {
+      return Promise.resolve({ uri: '/imports/1234' });
+    }
+
+    async startBulkImportData() {
+      return Promise.resolve({ body: { status:'success' } });
+    }
+
+    async completeBulkImportSync() {
+      return Promise.resolve({ body: { uri: '/imports/1234' } });
+    }
+  }
+
+  class EloquaObjects {
+    async getImportDefinitions() {
+      return Promise.resolve({ uri: '/customObject/1234' });
+    }
+
+    async getCustomDataObject() {
+      return Promise.resolve({ uri: '/customObject/1234' });
+    }
+  }
+
+  const dataImporter = {
+    async bulkUploadEloqua(payload, config, instance, execution) {
+      const eloquaImport = new EloquaImport();
+      const eloquaObjects = new EloquaObjects();
+
+      const oauthStub = sandbox.stub(eloquaImport, 'eloquaOauth');
+      const createImportDefinitionStub = sandbox.stub(eloquaImport, 'createImportDefinition');
+      const startBulkImportDataStub = sandbox.stub(eloquaImport,'startBulkImportData');
+      const completeBulkImportSyncStub = sandbox.stub(eloquaImport, 'completeBulkImportSync');
+      const getImportDefinitionsStub = sandbox.stub(eloquaObjects, 'getImportDefinitions');
+      const getCustomDataObjectStub = sandbox.stub(eloquaObjects, 'getCustomDataObject');
+
+      oauthStub.returns(Promise.resolve(getOauthToken()));
+      createImportDefinitionStub.returns(Promise.resolve({ uri: '/imports/1234' }));
+      startBulkImportDataStub.returns(Promise.resolve({ body: { status:'success' } }));
+      completeBulkImportSyncStub.returns(Promise.resolve({ body: { uri: '/imports/1234' } }));
+      getImportDefinitionsStub.returns(Promise.resolve({ uri: '/customObject/1234' }));
+      getCustomDataObjectStub.returns(Promise.resolve({ uri: '/customObject/1234' }));
+
+      if (instance &amp;&amp; execution) {
+        // TODO: implement logic for instance and execution
+        completeBulkImportSyncStub.args[0][1] = getOauthToken();
+      }
+
+      const response = await eloquaImport.eloquaOauth(config);
+      // TODO: implement logic for oauth response
+      const definition = await eloquaImport.createImportDefinition();
+      // TODO: implement logic for import definition
+      const data = await eloquaImport.startBulkImportData();
+      // TODO: implement logic for bulk import data
+      const result = await eloquaImport.completeBulkImportSync();
+      // TODO: implement logic for bulk import result
+
+      assert.equal(completeBulkImportSyncStub.getCall(0).args[1], getOauthToken());
+      return result;
+    },
+  };
+
+  it('should call oauth', async () =&gt; {
+    await dataImporter.bulkUploadEloqua({}, getEloquaConfig());
+  });
+
+  it('should call import data', async () =&gt; {
+    await dataImporter.bulkUploadEloqua({}, getEloquaConfig());
+  });
+
+  it('should import temporary for each email from Content', async () =&gt; {
+    await dataImporter.bulkUploadEloqua({}, getEloquaConfig(), 'instance123', 'execution123');
+  });
+
+  it('should import an existing definition', async () =&gt; {
+    await dataImporter.bulkUploadEloqua({}, getEloquaConfig());
+  });
+});</code></pre></div><p>This code defines unit tests for the <code>dataImporter</code> module's <code>bulkUploadEloqua</code> function, which handles uploading data to Eloqua.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -277,7 +284,221 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="cpp"><code>cpp
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+#include &lt;SDL.h&gt;
+
+// Define a 2D and 3D vector class
+class Vector2D {
+public:
+    double x, y;
+
+    Vector2D() : x(0), y(0) {}
+    Vector2D(double x, double y) : x(x), y(y) {}
+
+    double&amp; operator[](int i) {
+        if (i == 0) return x;
+        return y;
+    }
+
+    double operator[](int i) const {
+        if (i == 0) return x;
+        return y;
+    }
+};
+
+class Vector3D {
+public:
+    double x, y, z;
+
+    Vector3D() : x(0), y(0), z(0) {}
+    Vector3D(double x, double y, double z) : x(x), y(y), z(z) {}
+
+    double&amp; operator[](int i) {
+        if (i == 0) return x;
+        if (i == 1) return y;
+        return z;
+    }
+
+    double operator[](int i) const {
+        if (i == 0) return x;
+        if (i == 1) return y;
+        return z;
+    }
+};
+
+// Define a 2D and 3D point class
+class Point2D {
+public:
+    Vector2D coords;
+
+    Point2D() {}
+    Point2D(double x, double y) : coords(x, y) {}
+
+    Vector2D operator[](int i) const {
+        return coords;
+    }
+};
+
+class Point3D {
+public:
+    Vector3D coords;
+
+    Point3D() {}
+    Point3D(double x, double y, double z) : coords(x, y, z) {}
+
+    Vector3D operator[](int i) const {
+        return coords;
+    }
+};
+
+// Define a 3D matrix class
+class Matrix3D {
+public:
+    std::vector&lt;std::vector&lt;double&gt;&gt; data;
+
+    Matrix3D(size_t rows, size_t cols) : data(rows, std::vector&lt;double&gt;(cols, 0)) {}
+
+    double&amp; operator()(size_t i, size_t j) {
+        return data[i][j];
+    }
+
+    double operator()(size_t i, size_t j) const {
+        return data[i][j];
+    }
+};
+
+// Function to multiply two 3D matrices
+Matrix3D dot(const Matrix3D&amp; a, const Matrix3D&amp; b) {
+    Matrix3D result(a.rows(), b.cols());
+
+    for (size_t i = 0; i &lt; a.rows(); ++i) {
+        for (size_t j = 0; j &lt; b.cols(); ++j) {
+            for (size_t k = 0; k &lt; a.cols(); ++k) {
+                result(i, j) += a(i, k) * b(k, j);
+            }
+        }
+    }
+
+    return result;
+}
+
+// Function to transform a 3D point using a rotation matrix
+Point3D transform(const Matrix3D&amp; matrix, const Point3D&amp; point) {
+    Matrix3D p({1, 0, 0},
+              {0, 1, 0},
+              {0, 0, 1});
+
+    for (size_t i = 0; i &lt; 3; ++i) {
+        p(i, 0) = point[i];
+    }
+
+    Matrix3D r = dot(matrix, p);
+
+    return Point3D(r(0, 0), r(1, 0), r(2, 0));
+}
+
+// Function to translate a point
+Point3D translate(const Point3D&amp; point, const Vector3D&amp; offset) {
+    return Point3D(point[0] + offset[0], point[1] + offset[1], point[2] + offset[2]);
+}
+
+// Function to render a frame
+void renderFrame(SDL_Renderer* renderer, const std::vector&lt;Point3D&gt;&amp; points, const Matrix3D&amp; rotationMatrix, const Point3D&amp; screenShift, const Point3D&amp; screenShiftOpposite) {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+    for (const auto&amp; point : points) {
+        point = translate(screenShiftOpposite, point);
+        point = transform(rotationMatrix, point);
+        point = translate(screenShift, point);
+
+        connect(renderer, points, std::distance(points.begin(), std::find(points.begin(), points.end(), point)), std::distance(points.begin(), std::find(points.begin(), points.end(), *(std::next(std::find(points.begin(), points.end(), point))))));
+    }
+
+    SDL_RenderPresent(renderer);
+    SDL_Delay(3);
+}
+
+// Function to get the rotation matrix
+Matrix3D getRotationMatrix() {
+    double alpha = 0.001;
+    Matrix3D rotationX({1, 0, 0,
+                       0, cos(alpha), -sin(alpha),
+                       0, sin(alpha), cos(alpha)});
+
+    double beta = 0.002;
+    Matrix3D rotationY({cos(beta), 0, sin(beta),
+                       0, 1, 0,
+                       -sin(beta), 0, cos(beta)});
+
+    double gamma = 0.003;
+    Matrix3D rotationZ({cos(gamma), -sin(gamma), 0,
+                       sin(gamma), cos(gamma), 0,
+                       0, 0, 1});
+
+    return dot(rotationZ, dot(rotationY, rotationX));
+}
+
+// Function to connect two points
+void connect(SDL_Renderer* renderer, const std::vector&lt;Point3D&gt;&amp; points, int i, int j) {
+    SDL_RenderDrawLine(renderer, points[i].coords[0], points[i].coords[1], points[j].coords[0], points[j].coords[1]);
+}
+
+int main() {
+    // Initialize SDL
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Window* window = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, 0);
+
+    // Create renderer
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    // Define points
+    std::vector&lt;Point3D&gt; points = {
+        {1, 1, 1},
+        {1, -1, 1},
+        {1, -1, -1},
+        {1, 1, -1},
+        {1, 1, 1},
+        {1, -1, -1},
+        {1, -1, 1},
+        {1, 1, -1},
+        {1, -1, 1},
+        {1, 1, -1},
+        {-1, -1, -1},
+        {-1, -1, 1},
+        {-1, 1, -1},
+        {-1, 1, 1},
+        {-1, -1, -1},
+        {-1, -1, 1},
+        {-1, 1, -1},
+        {-1, 1, 1}
+    };
+
+    // Define rotation matrix
+    Matrix3D rotationMatrix = getRotationMatrix();
+
+    // Define screen shift
+    Point3D screenShift(WIDTH / 2, HEIGHT / 2, 0);
+    Point3D screenShiftOpposite(-WIDTH / 2, -HEIGHT / 2, 0);
+
+    // Render frames
+    int frame = 0;
+    while (true) {
+        renderFrame(renderer, points, rotationMatrix, screenShift, screenShiftOpposite);
+        frame++;
+    }
+
+    // Clean up
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+
+    return 0;
+}</code></pre></div><p><strong>Overview</strong></p>
 <p>This code defines a 3D transformation system using C++ and the SDL library for rendering.</p>
 <p><strong>Classes and Functions</strong></p>
 <ol>

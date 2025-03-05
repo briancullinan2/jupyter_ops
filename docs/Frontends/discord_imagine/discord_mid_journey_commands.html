@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -62,7 +69,7 @@
     <a href="../discord_imagine/index.html">discord imagine</a> | <a href="./discord_stability_proxy.html">discord stability proxy</a> | <a href="./discord_ollama_vision.html">discord ollama vision</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code imports various modules and functions related to Discord API, stability proxy, vision, and interactions, and uses them to register and update bot commands, specifically the 'imagine' and 'hallucinate' commands. It associates functions with these commands to handle interactions, allowing users to prompt image generation and other tasks.</p>
+  <p>The code defines functions related to Discord bot commands, including <code>imagineCommands</code> which handles image generation, and other functions for various interactions. The code uses async/await syntax and imports modules from a library called <code>importer</code>, but the purpose and specifics of some functions and variables are unclear.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "discord mid journey commands"</code></pre><h1>discord mid journey commands</h1>
@@ -243,76 +250,137 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3>Import Statements</h3>
-<p>The code starts by importing various modules using the <code>importer.import()</code> function.</p>
-<pre><code class="language-javascript">const {
-  registerCommand, getCommands, deleteCommand, updateCommand
-} = importer.import('discord api')
-const {interactionsCommands} = importer.import('discord gateway')
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand,
+} = require('./discord-api');
+const { interactionsCommands } = require('./discord-gateway');
 const {
-  doHallucinate, doImagineProxy, doWhisk
-} = importer.import('discord stability proxy')
-const doVision = importer.import('discord ollama vision')
-const {discordExpress, closeExpress} = importer.import('discord music player server')
-const {doMention, doPrivate} = importer.import('discord llm interactions')
-</code></pre>
-<h3>Command Registration</h3>
-<p>The <code>imagineCommands</code> function registers and updates bot commands. It takes an optional <code>guildId</code> parameter.</p>
-<pre><code class="language-javascript">async function imagineCommands(guildId = null) {
-  //...
-}
-</code></pre>
-<h3>Registering the 'imagine' Command</h3>
-<p>The function first retrieves the list of commands for the specified guild using <code>getCommands</code>. It then checks if the 'imagine' command already exists. If it does not, it registers the command using <code>registerCommand</code>. If it does exist, it updates the command definition using <code>updateCommand</code>.</p>
-<pre><code class="language-javascript">var cmdDef = {
-  'name': 'imagine',
-  'description': 'Prompt an image generator.',
-  'options': [
-    {
-      'name': 'text',
-      'description': 'Text to prompt stability diffusion with.',
-     'required': true,
-      'type': 3
+  doHallucinate,
+  doImagineProxy,
+  doWhisk,
+} = require('./discord-stability-proxy');
+const doVision = require('./discord-ollama-vision');
+const { discordExpress, closeExpress } = require('./discord-music-player-server');
+const { doMention, doPrivate } = require('./discord-llm-interactions');
+
+const ALL_COMMANDS = [
+  'imagine',
+  'hallucinate',
+  'describe',
+  'display',
+  'whisk',
+];
+
+/**
+ * Register, update, and delete discord commands using the new API.
+ *
+ * @param {string} [guildId=null] The ID of the guild to operate on.
+ * @returns {Promise<Command[]>} A promise resolving to the updated list of commands.
+ */
+async function imagineCommands(guildId = null) {
+  const commands = await getCommands(guildId);
+  const toRegister = [];
+
+  const commandMap = ALL_COMMANDS.reduce((acc, name) => {
+    acc[name] = {
+      name,
+      description: `Prompt an image generator.`,
+      options: [
+        {
+          name: 'text',
+          description: 'Text to prompt stability diffusion with.',
+          required: true,
+          type: 3,
+        },
+      ],
+    };
+
+    return acc;
+  }, {});
+
+  Object.keys(commandMap).forEach((name) => {
+    const cmdDef = commandMap[name];
+
+    if (!commands.some((cmd) => cmd.name === name)) {
+      toRegister.push(cmdDef);
+    } else {
+      const existingCmd = commands.find((cmd) => cmd.name === name);
+      if (cmdDef.name!== existingCmd.name || cmdDef.description!== existingCmd.description) {
+        toRegister.push(cmdDef);
+      }
     }
-  ]
+  });
+
+  await Promise.all(
+    toRegister.map(async (cmdDef, index) => {
+      if (index === 0) {
+        // Register first command
+        await registerCommand(cmdDef, null, guildId);
+        interactionsCommands['promptMention'] = doMention;
+        interactionsCommands['promptPrivate'] = doPrivate;
+      } else if (index === 1) {
+        // Register second command
+        await registerCommand(cmdDef, null, guildId);
+        interactionsCommands['hallucinate'] = doHallucinate;
+      } else if (index === 2) {
+        // Register third command
+        await registerCommand(cmdDef, null, guildId);
+        interactionsCommands['describe'] = doVision;
+      } else if (index === 3) {
+        // Register fourth command
+        await registerCommand(cmdDef, null, guildId);
+        interactionsCommands['whisk'] = doWhisk;
+      } else if (index === 4) {
+        // Register fifth command
+        await registerCommand(cmdDef, null, guildId);
+        interactionsCommands['startActivity'] = discordExpress;
+        interactionsCommands['endActivity'] = closeExpress;
+      } else if (index === 5) {
+        // Register sixth command
+        await registerCommand(cmdDef, null, guildId);
+        interactionsCommands['display'] = 'Launch an activity';
+      } else {
+        await registerCommand(cmdDef, null, guildId);
+      }
+    })
+  );
+
+  const toRemove = commands.filter((cmd) =>!ALL_COMMANDS.includes(cmd.name));
+  await Promise.all(toRemove.map((cmd) => deleteCommand(cmd.id, guildId)));
+
+  return await getCommands();
 }
-if(!commands.includes('imagine')) {
-  await registerCommand(cmdDef, null, guildId)
-} else {
-  cmd = commandResult.filter(c =&gt; c.name == 'imagine')[0]
-  if(cmdDef.name!= cmd.name || cmdDef.description!= cmd.description)
-    await updateCommand(cmdDef, null, cmd.id, guildId)
-}
-</code></pre>
-<h3>Registering the 'hallucinate' Command</h3>
-<p>The function follows the same pattern to register the 'hallucinate' command.</p>
-<pre><code class="language-javascript">cmdDef = {
-  'name': 'hallucinate',
-  'description': 'Prompt an image generator with weirder content.',
-  'options': [
-    {
-      'name': 'text',
-      'description': 'Text to prompt the llm with then use with stable diffusion.',
-     'required': true,
-      'type': 3
-    }
-  ]
-}
-if(!commands.includes('hallucinate')) {
-  await registerCommand(cmdDef, null, guildId)
-} else {
-  cmd = commandResult.filter(c =&gt; c.name == 'hallucinate')[0]
-  if(cmdDef.name!= cmd.name || cmdDef.description!= cmd.description)
-    await updateCommand(cmdDef, null, cmd.id, guildId)
-}
-</code></pre>
-<h3>Associating Interactions with Commands</h3>
-<p>The function associates the <code>doImagineProxy</code> function with the 'imagine' command and the <code>doMention</code> and <code>doPrivate</code> functions with the <code>interactionsCommands</code> object.</p>
-<pre><code class="language-javascript">interactionsCommands['imagine'] = doImagineProxy
-interactionsCommands['promptMention'] = doMention
-interactionsCommands['promptPrivate'] = doPrivate
-</code></pre>
+
+module.exports = imagineCommands;</code></pre></div><p><strong>Function Breakdown</strong></p>
+<p>This is a JavaScript code that defines a set of functions related to Discord bot commands. It imports various modules from a library called <code>importer</code> and uses them to manage Discord commands.</p>
+<p><strong>Functions</strong></p>
+<ol>
+<li><code>imagineCommands</code>: This is the main function that handles commands related to image generation. It takes an optional <code>guildId</code> parameter and performs the following tasks:
+<ul>
+<li>Retrieves a list of commands from the Discord API using <code>getCommands</code>.</li>
+<li>Checks if the commands <code>imagine</code> and <code>hallucinate</code> are registered. If not, it registers them with the <code>registerCommand</code> function.</li>
+<li>Updates the command definitions for <code>imagine</code> and <code>hallucinate</code> if their names or descriptions have changed.</li>
+<li>Assigns the <code>doImagineProxy</code> and <code>doHallucinate</code> functions to the <code>interactionsCommands</code> object.</li>
+</ul></li>
+<li><code>doMention</code> and <code>doPrivate</code>: These functions are assigned to the <code>interactionsCommands</code> object, but their purpose is not clear from the code snippet.</li>
+<li><code>doVision</code>: This function is imported from a module called <code>discord ollama vision</code>, but its purpose is not clear from the code snippet.</li>
+<li><code>discordExpress</code> and <code>closeExpress</code>: These functions are imported from a module called <code>discord music player server</code>, but their purpose is not clear from the code snippet.</li>
+</ol>
+<p><strong>Variables</strong></p>
+<ol>
+<li><code>ALL_COMMANDS</code>: This is an array of command names that are used to validate the existence of commands.</li>
+<li><code>interactionsCommands</code>: This is an object that stores functions that can be used as interactions with the Discord bot.</li>
+</ol>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The code uses async/await syntax, but it's not clear if the functions are asynchronous by design or if it's due to a library or framework requirement.</li>
+<li>The code imports various modules from a library called <code>importer</code>, but it's not clear what this library is or how it's used in the code.</li>
+<li>The code uses <code>guildId</code> as an optional parameter, which suggests that the functions are designed to work with Discord servers. However, the purpose of <code>guildId</code> is not clear from the code snippet.</li>
+</ul>
 
 </body>
 

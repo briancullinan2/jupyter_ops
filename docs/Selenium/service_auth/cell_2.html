@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the core module
+import { Core } from '../Core';
+
+// Create an instance of the Core class
+const core = new Core();
+
+/**
+ * Save encrypted credentials to a JSON file.
+ *
+ * @param {object} credentials - Credentials object
+ * @param {string} credentials.host - Host URL
+ * @param {string} credentials.password - Encrypted password
+ * @param {string} credentials.username - Username
+ */
+export function saveCredentials(credentials) {
+  // Use the add method from the Core instance to save the credentials
+  core.add('add encrypted passwords.json', credentials);
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 </code></pre>

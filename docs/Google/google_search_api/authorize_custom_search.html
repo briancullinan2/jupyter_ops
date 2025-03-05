@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,61 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up authentication with the Google Custom Search Engine API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import required modules.
+ */
+const fs = require('fs');
+const path = require('path');
+const { GoogleAuth } = require('google-auth-library');
+
+/**
+ * Define constants.
+ * @const {string} PROFILE_PATH - The path to the user's profile directory.
+ * @const {array} GOOGLE_AUTH_SCOPE - The scope of authentication.
+ */
+const PROFILE_PATH = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) || process.env.HOMEDRIVE + process.env.HOMEPATH;
+const GOOGLE_AUTH_SCOPE = ['https://www.googleapis.com/auth/cse'];
+
+/**
+ * Define a function to get the credentials file path.
+ * @returns {string} The path to the credentials file.
+ */
+function getCredentialsFilePath() {
+    // Check if the credentials file exists in the current directory.
+    if (fs.existsSync('./sheet to web-8ca5784e0b05.json')) {
+        // If it exists, return the resolved path.
+        return path.resolve('./sheet to web-8ca5784e0b05.json');
+    } else {
+        // If it doesn't exist, return the path to the file in the user's profile directory.
+        return path.join(PROFILE_PATH, '.credentials/sheet to web-8ca5784e0b05.json');
+    }
+}
+
+/**
+ * Define a function to authorize search.
+ * @returns {GoogleAuth} The authorized Google auth instance.
+ */
+function authorizeSearch() {
+    // Get the credentials file path.
+    const credentials = getCredentialsFilePath();
+
+    // Check if the credentials file exists.
+    if (!fs.existsSync(credentials)) {
+        throw new Error('Credentials file not found.');
+    }
+
+    // Return the authorized Google auth instance.
+    return new GoogleAuth({
+        keyFile: credentials,
+        scopes: GOOGLE_AUTH_SCOPE
+    }).getClient();
+}
+
+/**
+ * Export the authorizeSearch function.
+ */
+module.exports = authorizeSearch;</code></pre></div><p>This code snippet sets up authentication with the Google Custom Search Engine API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Credentials Path:</strong></p>

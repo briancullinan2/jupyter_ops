@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Defines a list of key words used in function declarations.
+ * @constant {string[]} keywords
+ */
+const keywords = [
+  // Common function declaration attributes
+  'type', 'id', 'params',
+  // Function behavior and syntax
+  'body', 'generator', 'async',
+  // Function parameter or argument properties
+  'range', 'expression', 'callee',
+  // Function argument properties
+  'arguments'
+];
+
+/**
+ * Filters a list of keywords based on a specified pattern.
+ * @param {string[]} keywords - The list of keywords to filter.
+ * @param {string} pattern - The pattern to match.
+ * @returns {string[]} The filtered list of keywords.
+ */
+function filterKeywords(keywords, pattern) {
+  return keywords.filter(keyword =&gt; keyword.includes(pattern));
+}
+
+// Example usage:
+const filteredKeywords = filterKeywords(keywords, 'async');
+console.log(filteredKeywords); // Output: ['async', 'async', 'generator']</code></pre></div><h2>Code Breakdown</h2>
 <h3>Variable Declaration</h3>
 <ul>
 <li>A variable named <code>keywords</code> is declared and assigned an array of strings.</li>

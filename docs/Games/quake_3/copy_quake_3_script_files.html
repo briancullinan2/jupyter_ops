@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>convertScripts</code> that takes a directory path (<code>root</code>) as input and copies all files of specified types (defined in <code>fileTypes</code>) to a new directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * @module script-convertor
+ * @description convert quake 3 scripts
+ * @author your name
+ */
+
+const path = require('path');
+const fs = require('fs');
+const importer = require('../Core');
+
+// Import required modules
+const { glob, fileTypes } = importer.import({ glob: 'glob files', fileTypes: 'quake 3 file whitelist' });
+const { chroot, chext } = importer.import('changing file names');
+const mkdirp = importer.import('mkdirp').sync;
+
+/**
+ * @function convertScripts
+ * @description Convert quake 3 scripts
+ * @param {string} root Directory to start conversion from
+ * @returns {Promise&lt;string[]&gt;} List of converted script file paths
+ */
+async function convertScripts(root) {
+  // Handle errors if glob returns an error
+  const files = await glob(fileTypes.map(a =&gt; '**/*' + a), root).catch(error =&gt; console.error(error));
+
+  const outputDir = path.join(path.dirname(root), path.basename(root) + '-converted');
+  const result = [];
+
+  // Process each file
+  for (const inFile of files) {
+    // Get output file path
+    const outFile = chroot(inFile, root, outputDir);
+
+    // Create directory if it doesn't exist
+    if (!fs.existsSync(path.dirname(outFile))) {
+      mkdirp(path.dirname(outFile));
+    }
+
+    // Copy file if it doesn't exist at output directory
+    if (!fs.existsSync(outFile)) {
+      await fs.copyFileSync(inFile, outFile);
+      result.push(outFile);
+    }
+  }
+
+  return result;
+}
+
+module.exports = convertScripts;</code></pre></div><p>This code defines a function <code>convertScripts</code> that takes a directory path (<code>root</code>) as input and copies all files of specified types (defined in <code>fileTypes</code>) to a new directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

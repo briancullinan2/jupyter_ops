@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -109,7 +116,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code calculates the total duration of events in minutes.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Calculates the total duration of events in milliseconds.
+ * 
+ * @param {Array} events - An array of event objects.
+ * @returns {number} Total duration of events in hours.
+ */
+function sumEvents(events) {
+  // Initialize total duration to 0
+  let total = 0;
+  
+  // Check if events array is valid
+  if (!Array.isArray(events)) {
+    throw new Error('Events must be an array');
+  }
+  
+  // Iterate over each event
+  events.forEach((e, index) =&gt; {
+    // Ensure event has start and end dates
+    if (!e.event ||!e.event.start ||!e.event.end) {
+      console.log(`Ignoring event #${index} - ${JSON.stringify(e.event)}`);
+      return;
+    }
+    
+    // Ensure start and end dates are valid
+    if (!e.event.start.dateTime ||!e.event.end.dateTime) {
+      console.log(`Ignoring event #${index} - ${JSON.stringify(e.event)}`);
+      return;
+    }
+    
+    // Calculate duration
+    const duration = new Date(e.event.end.dateTime).getTime() - new Date(e.event.start.dateTime).getTime();
+    
+    // Check if duration is valid
+    if (isNaN(duration)) {
+      console.log(`Ignoring event #${index} - ${JSON.stringify(e.event)}`);
+      continue;
+    }
+    
+    // Add duration to total
+    total += duration;
+  });
+  
+  // Convert total duration from milliseconds to hours
+  const hours = total / 1000 / 60 / 60;
+  
+  // Return total duration
+  return hours;
+}
+
+module.exports = sumEvents;</code></pre></div><p>This code calculates the total duration of events in minutes.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>sumEvents(events)</code> function:</strong></p>

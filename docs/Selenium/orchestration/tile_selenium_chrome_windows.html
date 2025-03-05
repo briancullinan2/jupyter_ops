@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -154,7 +161,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code manages multiple browser windows, allowing you to open URLs in separate windows and arrange them in a tiled layout.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Core = require('../Core');
+const {
+  resizeWindow,
+  getAllSessionUrls
+} = Core.import(['resize selenium window', 'get all session urls']);
+
+/**
+ * Opens a URL in a new window and returns the handle of the new window.
+ * 
+ * @param {object} client - The Selenium client.
+ * @param {string} url - The URL to open.
+ * @returns {Promise&lt;object&gt;} A promise that resolves with the handle of the new window.
+ */
+function openUrl(client, url) {
+  return client
+   .getWindowHandles()
+   .then(handles =&gt; {
+      return client
+       .execute((url, width, height) =&gt; {
+          window.open(url, '', 'width=1350,height=1024');
+        }, url)
+       .then(() =&gt; client.getWindowHandles())
+       .then(newHandles =&gt; newHandles.filter(hwnd =&gt;!handles.includes(hwnd))[0]);
+    });
+}
+
+/**
+ * Creates new windows for the given URLs and returns the handles of the new windows.
+ * 
+ * @param {object} client - The Selenium client.
+ * @param {array} urls - An array of URLs to open in new windows.
+ * @returns {Promise&lt;object&gt;} A promise that resolves with an array of handles of the new windows.
+ */
+function createNewWindows(client, urls) {
+  return client
+   .getWindowHandle()
+   .then(handle =&gt; {
+      const promises = urls.map((url, index) =&gt; {
+        return openUrl(client, url).then(h =&gt; {
+          return client
+           .switchToWindow(h)
+           .then(() =&gt; h);
+        });
+      });
+      return Promise.all(promises);
+    });
+}
+
+/**
+ * Resizes the window, opens the given URL, and creates new windows for the remaining URLs.
+ * 
+ * @param {object} client - The Selenium client.
+ * @param {string|array} urls - The URL or an array of URLs to open.
+ * @returns {Promise&lt;object&gt;} A promise that resolves with an array of handles of the new windows.
+ */
+function tileWindows(client, urls) {
+  return resizeWindow(client, 0)
+   .then(() =&gt; {
+      const url = typeof urls ==='string'? urls : urls[0];
+      return client
+       .url(url)
+       .then(() =&gt; typeof urls ==='string'? [] : createNewWindows(client, urls.slice(1)));
+    })
+   .then(() =&gt; {
+      return getAllSessionUrls().then(() =&gt; client.getWindowHandles());
+    })
+   .then(handles =&gt; handles.filter(h =&gt;!handles[0].includes(h)));
+}
+
+module.exports = tileWindows;</code></pre></div><p>This code manages multiple browser windows, allowing you to open URLs in separate windows and arrange them in a tiled layout.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -86,10 +93,23 @@
 
 <a href="./blog_about_code.html">blog about code</a>
 <br /><br />
-<p>The <code>blogAboutCode</code> function takes a project directory path, timeframe, and model as inputs, and uses these to extract commit hashes, get the diff between commits, and parse the patch. The function involves several steps, including selecting a model, resolving the project path, checking project existence, getting commits, extracting commit hashes, getting the diff, and parsing the patch.</p>
+<p>The <code>blogAboutCode</code> function generates a blog post about a project's code history, using a specified timeframe and model. It retrieves the commit history, extracts commits, and logs the first and last commit hashes.</p>
 <a href="./parse_patch_file.html">parse patch file</a>
 <br /><br />
-<p>The <code>parsePatch</code> function takes a patch file as input, parses its content, and returns an object containing information about added and deleted lines across all files, along with the total number of additions and deletions. The function uses line type checks to determine the type of each line and update the corresponding object accordingly.</p>
+<h3><code>parsePatch</code> Function Summary</h3>
+<h4><code>summary</code> Object</h4>
+<ul>
+<li><code>files</code> (object)</li>
+<li>File names as keys and objects containing:</li>
+</ul>
+<ul>
+<li><code>additions</code> (array)</li>
+<li><code>deletions</code> (array)</li>
+</ul>
+<ul>
+<li><code>totalAdditions</code> (number): The total number of added lines in the patch.</li>
+<li><code>totalDeletions</code> (number): The total number of deleted lines in the patch.</li>
+</ul>
 <a href="./TODO__summerize_file_changes__downloads_try_to_infer_purpose__use_file_watcher_install_time_machine_.html">TODO: summerize file changes, downloads try to infer purpose, use file watcher install time machine  i version my entire disk</a>
 <br /><br />
 

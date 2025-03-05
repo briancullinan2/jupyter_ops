@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is a unit test for a function that adds a new row of data to a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { assert } = require('assert');
+const Core = require('../Core');
+const { addRowDataGoogleSheet } = require('../Core/importers');
+
+describe('add row data to google sheet', () => {
+    const docsId = '16b1Z0sQkYhtMUfP7qMRL3vRBPWQsRbSlntURkMqWGX0';
+
+    it('should add a row', () => {
+        // Create sample data
+        const rowData = {
+            timestamp: Date.now(),
+            name: 'Test Name',
+            email: 'test@test.com',
+            subject: 'This is a test subject',
+            message: 'This is a new message',
+            responded: 0
+        };
+
+        // Call the addRow function
+        return addRowDataGoogleSheet(docsId, rowData)
+           .then(rows => {
+                // Assert that a row was added
+                assert(rows!== undefined,'should have added a row to the sheet');
+            })
+           .catch(error => {
+                // Log any errors
+                console.error('Error adding row:', error);
+            });
+    });
+});</code></pre></div><p>This code snippet is a unit test for a function that adds a new row of data to a Google Sheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

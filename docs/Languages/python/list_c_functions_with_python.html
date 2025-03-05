@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import sys
+from antlr4 import *
+
+ANTLR_DIRECTORY = os.path.join(os.path.dirname(__file__), "../Resources/Parsers/c")
+sys.path.append(ANTLR_DIRECTORY)
+
+from CLexer import CLexer
+from CParser import CParser
+from CListener import CListener
+
+class FunctionExtractor(CListener):
+    """
+    A listener class for extracting function definitions from C code.
+
+    Attributes:
+        functions (list): A list of extracted function names
+    """
+
+    def __init__(self):
+        """
+        Initializes the FunctionExtractor instance.
+        """
+        self.functions = []
+
+    def enterFunctionDefinition(self, ctx):
+        """
+        Called when entering a function definition.
+
+        Args:
+            ctx (ParserRuleContext): The current parsing context
+        """
+        function_name = ctx.declarator().directDeclarator().getText()
+        self.functions.append(function_name)
+
+def get_functions(code_string):
+    """
+    Extracts function definitions from a given C code string.
+
+    Args:
+        code_string (str): The C code string to parse
+
+    Returns:
+        list: A list of extracted function names
+    """
+    if not code_string.strip():  # Check for empty string
+        return []
+
+    try:
+        lexer = CLexer(InputStream(code_string))
+        stream = CommonTokenStream(lexer)
+        parser = CParser(stream)
+        tree = parser.compilationUnit()
+        
+        listener = FunctionExtractor()
+        walker = ParseTreeWalker()
+        walker.walk(listener, tree)
+        
+        return listener.functions
+    
+    except Exception as e:
+        # Log or handle exception for real-time information
+        print(f"Error parsing code: {e}")
+        return []
+
+__all__ = {
+  "get_functions": get_functions
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
 <p>The code begins by importing necessary libraries:</p>
 <pre><code class="language-python">import os

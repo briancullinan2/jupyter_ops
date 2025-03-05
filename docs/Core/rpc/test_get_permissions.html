@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>groupPermissions</code> that filters and organizes permissions for code cells based on provided groups and a search query.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { read } = require('fs').promises;
+const { json } = require('node-json-db');
+const { path } = require('path');
+
+const { importModule, getPermissions } = require('../Core');
+const cache = json('cache', {
+  filePath: path.join(__dirname, './cache.ipynb'),
+  autosave: true
+});
+
+async function groupPermissions(groups, search) {
+  if (typeof groups ==='string') {
+    groups = [groups];
+  }
+
+  const permissions = await getPermissions(!search &amp;&amp; groups.includes('Available')
+   ? await readSync('cache.ipynb')
+     .then(cache =&gt; cache.map(i =&gt; i.id))
+    : search);
+
+  const filteredPermissions = permissions.reduce((obj, permission) =&gt; {
+    const groupsFound = groups.filter(group =&gt; permission.includes(group));
+    if (groupsFound.length === groups.length) {
+      obj[permission] = permission;
+    }
+    return obj;
+  }, {});
+
+  return filteredPermissions;
+}
+
+async function readSync(file) {
+  try {
+    return await read(file);
+  } catch (error) {
+    return [];
+  }
+}
+
+module.exports = groupPermissions;</code></pre></div><p>This code defines a function <code>groupPermissions</code> that filters and organizes permissions for code cells based on provided groups and a search query.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

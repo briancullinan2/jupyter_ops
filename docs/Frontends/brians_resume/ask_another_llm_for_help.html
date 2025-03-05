@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>askOtherLLMs Function</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Asks other LLMs for their input using the provided prompt.
+ * 
+ * @param {object} promptModel - The model used to generate the prompt.
+ * @param {object} session - The session used to communicate with other LLMs.
+ * @param {string} prompt - The prompt to be sent to other LLMs.
+ * @returns {Promise&lt;object&gt;} A promise that resolves with the response from the other LLMs.
+ */
+async function askOtherLLMs(promptModel, session, prompt) {
+  // Validate input parameters to ensure they are not null or undefined
+  if (!promptModel ||!session ||!prompt) {
+    throw new Error('Invalid input parameters');
+  }
+
+  try {
+    // Use the session object to send the prompt to other LLMs
+    const response = await session.send(prompt);
+
+    // Validate the response from other LLMs
+    if (!response || response.length === 0) {
+      throw new Error('No response received from other LLMs');
+    }
+
+    // Return the response from other LLMs
+    return response;
+  } catch (error) {
+    // Log the error and rethrow it
+    // console.error('Error asking other LLMs:', error); // TODO: add logging
+    throw error;
+  }
+}
+
+module.exports = askOtherLLMs;</code></pre></div><h3>askOtherLLMs Function</h3>
 <h4>Description</h4>
 <p>Asynchronous function to ask other Large Language Models (LLMs) a question.</p>
 <h4>Parameters</h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -169,7 +176,86 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet retrieves a user's Google Contacts and analyzes their membership in various contact groups to categorize them.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { PeopleService } = google.people('v1');
+const Core = require('../Core');
+
+const getContacts = Core.import('list google contacts');
+const getOauthClient = Core.import('import google calendar api');
+
+class GoogleAPI {
+  constructor(options) {
+    this.people = new PeopleService();
+    this.options = options;
+  }
+
+  async getSettings(name) {
+    try {
+      const groups = await this.getContactGroups();
+      const contact = await this.getContact(name, groups);
+      const memberships = contact.memberships.map(m =&gt; {
+        const groupLabel = groups.find(g =&gt; g.resourceName &amp;&amp; g.resourceName.includes(m.contactGroupMembership.contactGroupId)).name;
+        return {...m, contactGroupMembership: {...m.contactGroupMembership, contactGroupLabel } };
+      });
+      const { frequency, circles, preferred } = this.mapMembership(memberships);
+      return { frequency, circles, preferred };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  async getContactGroups() {
+    const auth = await getOauthClient(this.options);
+    const { data } = await this.getGooglePromise(
+      () =&gt; this.people.contactGroups.list({
+        auth: auth,
+        pageToken: this.options.pageToken
+      })
+    ).catch(error =&gt; console.error(error));
+    return data.contactGroups;
+  }
+
+  async getContact(name, groups) {
+    const options = {};
+    if (name.indexOf('@') &gt; -1) {
+      options.emailAddress = name.split(/\s/).join('.*');
+    } else {
+      options.displayName = name.split(/\s/).join('.*');
+    }
+    const contacts = await getContacts(options);
+    return contacts.map(c =&gt; Object.assign(c, {
+      memberships: c.memberships.map(m =&gt; Object.assign(m, {
+        contactGroupMembership: Object.assign(m.contactGroupMembership, {
+          contactGroupLabel: groups.find(g =&gt; g.resourceName &amp;&amp; g.resourceName.includes(m.contactGroupMembership.contactGroupId)).name
+        })
+      }))
+    }));
+  }
+
+  async getGooglePromise(func) {
+    return new Promise((resolve, reject) =&gt; {
+      func((err, response) =&gt; {
+        if (err) reject(err);
+        try {
+          resolve(response.data);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }).catch(error =&gt; console.error(error));
+  }
+
+  mapMembership(memberships) {
+    const frequency = memberships.find(m =&gt; ['Weekly', 'Yearly', 'Monthly'].includes(m.contactGroupMembership.contactGroupLabel)).contactGroupMembership.contactGroupLabel;
+    const circles = memberships.filter(m =&gt; ['YouTube', 'Coworkers', 'Family', 'friends', 'Recruiters', 'E-Level', 'A-Level', 'C-Level', 'Inner Circle', 'Outer Circle'].includes(m.contactGroupMembership.contactGroupLabel)).map(c =&gt; c.contactGroupMembership.contactGroupLabel);
+    const preferred = memberships.filter(m =&gt; ['LinkedIn', 'Facebook', 'Email', 'Mobile', 'Skype', 'Slack'].includes(m.contactGroupMembership.contactGroupLabel)).map(c =&gt; c.contactGroupMembership.contactGroupLabel);
+    return { frequency, circles, preferred };
+  }
+}
+
+module.exports = (options) =&gt; new GoogleAPI(options);</code></pre></div><p>This code snippet retrieves a user's Google Contacts and analyzes their membership in various contact groups to categorize them.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

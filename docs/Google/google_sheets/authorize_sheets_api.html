@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up authentication with Google Sheets API and provides a function to obtain an authorized client.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const { GoogleAuth } = require('google-auth-library');
+const importer = require('../Core');
+const getRpcFromSpec = importer.import('get rpc from spec');
+const googleapis = require('googleapis');
+
+// Define constants
+const DEFAULT_PROFILE_PATH = [
+  process.env.HOME,
+  process.env.HOMEPATH,
+  process.env.USERPROFILE,
+].find(Boolean) || process.cwd();
+const DEFAULT_CREDENTIALS_FILE = './sheet to web-8ca5784e0b05.json';
+const DEFAULT_GOOGLE_AUTH_SCOPE = [
+  'https://www.googleapis.com/auth/spreadsheets',
+];
+
+// Define the Google API wrapper
+class GoogleApiWrapper {
+  constructor(credentials, scope) {
+    this.credentials = credentials;
+    this.scope = scope;
+  }
+
+  async authorize() {
+    try {
+      const client = await new GoogleAuth({
+        keyFile: this.credentials,
+        scopes: this.scope,
+      }).getClient();
+      return googleapis.google.sheets({ version: 'v4', auth: client });
+    } catch (e) {
+      if (e.message.includes('Cannot find module')) {
+        // Use the custom implementation if the module is not found
+        return getRpcFromSpec(require(path.join(__dirname, `../Resources/APIs/sheets.v4.json`)));
+      }
+      throw e;
+    }
+  }
+}
+
+// Define the main function
+async function authorizeSheets() {
+  const credentials = fs.existsSync(DEFAULT_CREDENTIALS_FILE)
+   ? path.resolve(DEFAULT_CREDENTIALS_FILE)
+    : path.join(DEFAULT_PROFILE_PATH, '.credentials', DEFAULT_CREDENTIALS_FILE);
+  await authorizeSheetsWithCredentials(credentials);
+}
+
+async function authorizeSheetsWithCredentials(credentials) {
+  const googleAuthScope = DEFAULT_GOOGLE_AUTH_SCOPE;
+  const googleApiWrapper = new GoogleApiWrapper(credentials, googleAuthScope);
+  return googleApiWrapper.authorize();
+}
+
+module.exports = authorizeSheets;</code></pre></div><p>This code snippet sets up authentication with Google Sheets API and provides a function to obtain an authorized client.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

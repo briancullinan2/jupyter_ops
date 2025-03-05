@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -176,7 +183,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectAst } = require('../Core');
+
+/**
+ * Extracts the require statements from the given code.
+ * 
+ * @param {string} code The code to extract require statements from.
+ * @returns {string[]} An array of require statements.
+ */
+function getRequires(code) {
+    const requires = selectAst([
+        'CallExpression[./Identifier[@name="require"]]',
+        (ctx) => {
+            const values = selectAst(['./Literal[@value]', './TemplateLiteral[@value]'], ctx);
+            if (values.length === 0) {
+                throw new Error(`Dynamic require: ${JSON.stringify(selectAst(['//code'], ctx))}`);
+            }
+            return values;
+        }
+    ], code);
+
+    // Remove duplicates and empty values
+    return requires.filter((require, index, self) => {
+        return self.indexOf(require) === index && require.trim()!== '';
+    });
+}
+
+module.exports = { getRequires };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {selectAst} = importer.import('select code tree')

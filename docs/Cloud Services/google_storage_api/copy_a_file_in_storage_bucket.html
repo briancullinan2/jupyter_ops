@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>copyFileBucket</code> that copies a file from one location to another within a Google Cloud Storage bucket.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and define constants
+const importer = require('../Core');
+const authorizeGoogle = importer.import('authorize google service');
+const qs = require('querystring');
+const PROJECT_ID ='spahaha-ea443';
+
+/**
+ * Copies a file in a Google Cloud Storage bucket.
+ * 
+ * @param {string} bucket - The ID of the Google Cloud Storage bucket.
+ * @param {string} file - The name of the file to copy.
+ * @returns {Promise} A promise that resolves when the file has been copied.
+ */
+async function copyFileBucket(bucket, file) {
+    // Validate input parameters
+    if (!bucket ||!file) {
+        throw new Error('Both bucket and file are required');
+    }
+
+    // Construct the URL for the Copy request
+    const url = `https://www.googleapis.com/storage/v1/b/${bucket}/o/${qs.escape(file)}/rewriteTo/b/${bucket}/o/${qs.escape(file.replace(/\.html|\.htm/ig, ''))}`;
+
+    // Make the Copy request
+    const client = await authorizeGoogle();
+    return client.request({
+        method: 'POST',
+        url,
+        params: { project: PROJECT_ID }
+    });
+}
+
+module.exports = copyFileBucket;</code></pre></div><p>This code defines a function <code>copyFileBucket</code> that copies a file from one location to another within a Google Cloud Storage bucket.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

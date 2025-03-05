@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet simply prints the values of three command-line arguments to the console.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+display_arguments() {
+  # Check if the correct number of arguments are provided
+  if [ $# -ne 3 ]; then
+    echo "Error: Exactly 3 arguments are required."
+    return 1
+  fi
+
+  # Display the command line arguments
+  for ((i=1; i<=$#; i++)); do
+    echo "Argument $i: ${!i}"
+  done
+}
+
+display_arguments "$1" "$2" "$3"</code></pre></div><p>This code snippet simply prints the values of three command-line arguments to the console.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><strong><code>echo &quot;$1&quot;</code></strong>: Prints the value of the first command-line argument (<code>$1</code>).</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('./importer'); // Import the importer module
+const { extractArticle, summerizeArticle } = importer.import(['extract llm article','summarize llm article']); // Import functions
+const Client = importer.import('selenium client'); // Import the selenium client class
+
+// Regular expression for validating HTTPS links
+const HTTPS_LINK_REGEX = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/i;
+
+// Array of search engines
+const SEARCH_ENGINES = [
+  'https://www.google.com/search?q=',
+  'https://www.bing.com/search?q=',
+  'https://search.yahoo.com/search?p=',
+  'https://www.ask.com/web?q=',
+  'https://search.aol.com/aol/search?q=',
+  'http://www.baidu.com/s?wd=',
+  'https://www.wolframalpha.com/input/?i=',
+  'https://duckduckgo.com/?q=',
+  'https://www.yandex.com/search/?text=',
+  'https://archive.org/search.php?query=',
+];
+
+/**
+ * Accesses the internet by interacting with the user and searching for related knowledge.
+ * 
+ * @param {importer} promptModel - The model for generating prompts.
+ * @param {Client} session - The selenium client session.
+ * @param {string} prompt - The user prompt.
+ * @returns {Promise<string>} A summary of the search results in markdown format.
+ */
+async function accessInternet(promptModel, session, prompt) {
+  // Generate the initial prompt for the user
+  const q1 = `Given the following functions:\n\
+  ${Object.keys(importer.importedFunctions).join('\n')}\n\
+  \n\
+  Which function would be related to solving this prompt:\n\
+  ${prompt}\n\
+  \n\
+  Answer with only the functions names, nothing else.`;
+
+  // Log the prompt and its response
+  console.log('User:', q1);
+  const a1 = await promptModel(q1);
+  console.log('AI:', a1);
+
+  // Identify the matching functions
+  const matchingFunctions = Object.keys(importer.importedFunctions).filter(func => a1.match(func));
+
+  // Create a new selenium client session
+  const driver = new Client();
+
+  // Get the link from the prompt
+  let link = HTTPS_LINK_REGEX.exec(prompt);
+
+  // Initialize the summaries
+  let summaries = [];
+
+  // Check if extractArticle is a matching function or if a link is present
+  if (matchingFunctions.includes('extractArticle') || link) {
+    // Extract the article text
+    const article = await extractArticle(driver, link? link[0] : null);
+    // Summarize the article
+    const summary = await summerizeArticle(article);
+    // Add the summary to the list
+    summaries.push({ key: 'extractArticle', value: `TLDR: ${summary[1]}\n\n${summary[0]}` });
+  }
+
+  // Check if knowledgeSearch is a matching function
+  if (matchingFunctions.includes('knowledgeSearch')) {
+    // Generate the search query
+    const q2 = `What is the search topic for this prompt:\n\
+      ${prompt}\n\
+      \n\
+      Only return the search text and nothing else.`;
+    console.log('User:', q2);
+    const a2 = await promptModel(q2);
+    console.log('AI:', a2);
+    // Extract the article text
+    const article = await extractArticle(driver, `https://www.google.com/search?q=${a2}`);
+    // Summarize the article
+    const summary = await summerizeArticle(article);
+    // Add the summary to the list
+    summaries.push({ key: 'knowledgeSearch', value: `TLDR: ${summary[1]}\n\n${summary[0]}` });
+  }
+
+  // Quit the selenium client session
+  await driver.quit();
+
+  // Join the summaries into a single string
+  return summaries.map(summary => summary.value).join('\n\n');
+}
+
+module.exports = accessInternet;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports three modules:</p>
 <ul>

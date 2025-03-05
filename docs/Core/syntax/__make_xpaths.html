@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -223,7 +230,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { assert } = require('assert');
+const { selectDom } = require('../Core').import('select tree');
+
+/**
+ * Generate all combinations of a given array of values.
+ * 
+ * @param {string[]} values - Array of values to combine.
+ * @returns {string[]} Array of combinations.
+ */
+function makeCombinations(values) {
+    const combinations = [];
+    for (let i = 1; i &lt;= values.length; i++) {
+        for (let j = i; j &lt;= values.length; j++) {
+            combinations.push(values.slice(i, j).join(''));
+        }
+    }
+    return combinations.filter((c, i, arr) =&gt; arr.indexOf(c) === i).sort((a, b) =&gt; a.length - b.length);
+}
+
+/**
+ * Create a very specific XPath following the given rules.
+ * 
+ * @param {object} node - Node to create XPath from.
+ * @returns {string[]} Array of XPath expressions.
+ */
+function makeXpaths(node) {
+    const classifiers = [
+        {
+            tag: `local-name(.)`,
+            ids: [`@*[name()="type" or name()="id" or name()="name"]`],
+            classNames: `@class`,
+            index: `count(preceding-sibling::*)`,
+            parent: `local-name(parent::*)`,
+            nthType: `count(preceding-sibling::*[local-name(*)=local-name(.)])`
+        },
+        // XPath builder function
+        (classifiers) =&gt; ({
+            tag: classifiers.tag &amp;&amp; classifiers.tag!== 'object'? classifiers.tag : `*`,
+            id: classifiers.ids.length
+               ? `[${classifiers.ids.map(id =&gt; `(@id="${id}" or @name="${id}" or @type="${id}")`).join(` and `)}]`
+                : ``,
+            classNames: classifiers.classNames.length &gt; 0
+               ? `[contains(@class, "${classifiers.classNames}")]`
+                : ``,
+            index: typeof classifiers.index!== 'undefined' &amp;&amp; classifiers.parent
+               ? `/parent::${classifiers.parent}/*[${classifiers.index+1}]`
+                : ``,
+            parent: classifiers.parent &amp;&amp; typeof classifiers.nthType!== 'undefined'
+               ? `/parent::${classifiers.parent}/${
+                    classifiers.tag &amp;&amp; classifiers.tag!== 'object'? classifiers.tag : `*`}[${classifiers.nthType+1}]`
+                : ``
+        })
+    ];
+
+    const selectedClassifiers = selectDom(classifiers, node)[0];
+    const { tag, id, classNames, index, parent } = selectedClassifiers;
+
+    // Ensure order from most specific to least specific
+    const combinations = [...makeCombinations([tag, id, classNames, index, parent])];
+
+    // Assert XPath expression validity
+    assert(selectDom(combinations[0], node), 'XPath expression maker error');
+
+    return combinations;
+}
+
+module.exports = { makeXpaths };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Functions</h3>
 <p>The code starts by requiring two dependencies:</p>
 <ul>

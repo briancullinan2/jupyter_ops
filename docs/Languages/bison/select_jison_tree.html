@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -165,7 +172,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a utility for selecting and manipulating code structures, likely within a larger code analysis or transformation system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const jison = require('jison');
+const escodegen = require('escodegen');
+
+const {
+  selectDom,
+  evaluateDom,
+  treeToHtml,
+  htmlToTree
+} = require('../Core');
+
+/**
+ * Generates a Jison parser from a given BNF file.
+ * 
+ * If the BNF file exists, it reads the contents. Otherwise, it interprets the code.
+ * 
+ * @param {string} jisonFile Path to the BNF file or the code to interpret.
+ * @returns {jison.Parser} The generated parser.
+ */
+function getParser(jisonFile) {
+  try {
+    const bnf = fs.existsSync(jisonFile)? fs.readFileSync(jisonFile, 'utf8') : importer.interpret(jisonFile).code;
+    return new jison.Parser(bnf);
+  } catch (e) {
+    throw new Error(`Failed to generate parser: ${e.message}`);
+  }
+}
+
+/**
+ * Converts an AST to a string representation.
+ * 
+ * If the AST is an HTML element, it converts it to a tree first.
+ * 
+ * @param {Object} ast The AST to convert.
+ * @param {Object} [subctx] The sub-context AST.
+ * @returns {string} The string representation of the AST.
+ */
+function toString(ctx, subctx) {
+  const ast = subctx || ctx;
+  return ast.ownerDocument? treeToHtml(ast) : escodegen.generate(ast, {
+    comment: true,
+    tokens: true,
+    whitespace: true,
+    format: { indent: { style:'  '}, quotes:'single' }
+  });
+}
+
+/**
+ * Selects code based on a descriptor and a given code or function.
+ * 
+ * If the code is a function, it converts it to a string. If it's a file, it reads the contents.
+ * 
+ * It then parses the code using a Jison parser.
+ * 
+ * If the parsed code is not an AST, it converts it to one using the `selectDom` function.
+ * 
+ * @param {string} descriptor The selector for the code.
+ * @param {Function|string} code The code to select or a function to execute.
+ * @param {string} [language] The language of the code.
+ * @returns {Object} The selected code.
+ */
+function selectCode(descriptor, code, language) {
+  if (typeof code === 'function') {
+    code = code.toString();
+  }
+
+  if (typeof code ==='string') {
+    try {
+      const parser = getParser(language || code);
+      code = esprima.parse(code, { range: true, tokens: true, comment: true, whitespace: true });
+      return selectDom(descriptor, code);
+    } catch (e) {
+      if (e instanceof SyntaxError) {
+        const fileCode = fs.readFileSync(code);
+        return selectCode(descriptor, fileCode, code);
+      } else {
+        throw new Error(`Failed to parse code: ${e.message}`);
+      }
+    }
+  }
+
+  if (typeof code.evaluate === 'undefined' &amp;&amp; typeof code.ownerDocument === 'undefined') {
+    return selectDom(descriptor, selectDom('//Program', treeToHtml(code)));
+  }
+
+  return selectDom(descriptor, code);
+}
+
+module.exports = { selectCode };</code></pre></div><p>This code defines a utility for selecting and manipulating code structures, likely within a larger code analysis or transformation system.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong>Dependencies:</strong> It relies on several libraries: <code>fs</code> for file system operations, <code>jison</code> for parsing grammars, and <code>importer</code> for accessing other functionalities.</p></li>

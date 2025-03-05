@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { promisifyChrome, getTab, response } = require('../Core');
+const express = require('express');
+
+const clickElement = (id) => {
+    return promisifyChrome('debugger.sendCommand', {
+        tabId: getTab()
+    }, 'DOM.resolveNode', {
+        objectId: id
+    })
+   .then((node) => {
+        console.log(node);
+        return promisifyChrome('debugger.sendCommand', {
+            tabId: getTab()
+        }, 'Runtime.evaluate', {
+            expression: `new window.BackupPromise(resolve => setTimeout(() => {
+                resolve();
+            }, 500))`,
+            awaitPromise: true
+        });
+    })
+   .then(() => {
+        const { x, y } = node.result;
+        return promisifyChrome('debugger.sendCommand', {
+            tabId: getTab()
+        }, 'Input.dispatchMouseEvent', {
+            type:'mousePressed', 
+            x,
+            y, 
+        });
+    })
+   .catch((error) => {
+        console.error(error);
+        return { code: 500, message: 'Error clicking element' };
+    });
+};
+
+const router = express.Router();
+
+router.post('/session/:sessionId/element/:id/click', (req, res) => {
+    response(res, clickElement(parseInt(req.params['id'])));
+});
+
+module.exports = {
+    clickElement,
+    router,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requires and Dependencies</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var express = require('express');

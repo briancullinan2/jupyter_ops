@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -240,7 +247,210 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const importer = require('./importer');
+const { askLlamaAboutEmotions, askLlamaAboutConversation, askLlamaAboutCategory } = importer.import([
+  'ask llm about emotions',
+  'ask llm about chat conversations',
+  'ask llm about chat categories',
+]);
+const { storeChatHistory } = importer.import('store chat history');
+
+// Define regular expressions for chat dates and times
+const CHAT_DATES = [
+  /(\w+) (\d{1,2}), \d{4}/gi,
+  /\d{2}(\.|\/)(\d{2})\.(?:\d{2}|\d{4})/gi,
+  /(\d{2})\/(\d{2})\/\d{4}/gi,
+  /\d{4}-(\d{2})-(\d{2})/gi,
+  /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{1,2}), \d{4}/gi,
+];
+
+const CHAT_TIMES = [
+  /(0[1-9]|1[0-2]):([0-5]\d):([0-5]\d)\s?(AM|PM)/gi,
+  /([01]\d|2[0-3]):([0-5]\d):([0-5]\d)/gi,
+  /(0[1-9]|1[0-2]):([0-5]\d)\s?(AM|PM)/gi,
+  /([01]\d|2[0-3]):([0-5]\d)/gi,
+];
+
+// Define chat directories and resource path
+const CHAT_DIRECTORIES = [
+  '/Volumes/External/Personal/Collections/conversations',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/AIM/Query',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/MSN/Query',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/old logs/AIM',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/old logs/MSN',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/older logs/AIM',
+  '/Volumes/External/Personal/Collections/conversations/Trillian/logs/older logs/MSN',
+];
+
+const CHAT_RESOURCE_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations');
+
+// Define a function to check if a cell needs tidying
+function cellNeedsTidying(cellId, chatCache) {
+  return (
+   !chatCache[cellId] ||
+   !chatCache[cellId].emotions ||
+    typeof chatCache[cellId].category!=='string' ||
+   !chatCache[cellId].date ||
+    chatCache[cellId].summary.match(/Find the derivative/gi) ||
+    chatCache[cellId].category === '<h1>' ||
+   !chatCache[cellId].from ||!chatCache[cellId].to
+  );
+}
+
+// Define a function to convert messages to no dates
+function convertMessagesToNoDates(messageBlock) {
+  const messageNoTimes = messageBlock
+   .toString()
+   .replace(/(\d{2}\/\d{2}\/\d{4}|\d{4}\/\d{2}\/\d{2}|\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})/gi, '')
+   .replace(/\[\s*\]\s*/gi, '')
+   .split('\n')
+   .filter((item) => item.trim().length > 0);
+  return messageNoTimes;
+}
+
+// Define a function to get chat log information
+async function getChatLogInformation(chatLog) {
+  if (!chatLog) {
+    chatLog = 'fuji897@hotmail.com';
+  }
+
+  const chatPath = CHAT_DIRECTORIES.find((directory) => {
+    const fullPath = path.join(directory, chatLog + '.log');
+    return fs.existsSync(fullPath);
+  });
+
+  if (!chatPath) {
+    return null;
+  }
+
+  const chatHistory = fs.readFileSync(path.join(chatPath, chatLog + '.log'), 'utf8').split('\n');
+  const chatCacheFile = path.join(CHAT_RESOURCE_PATH, path.basename(chatPath).replace('.log', '') + '.json');
+  const chatCache = fs.existsSync(chatCacheFile)? JSON.parse(fs.readFileSync(chatCacheFile, 'utf8')) : {};
+
+  return { chatHistory, chatCache, chatPath };
+}
+
+// Define the main function to ask LLaMA about a chat log
+async function askLlamaAboutChatLog(chatLog) {
+  const { chatHistory, chatCache, chatPath } = await getChatLogInformation(chatLog);
+
+  if (!chatHistory) {
+    return;
+  }
+
+  const from = 0;
+  let mtime = fs.statSync(path.join(chatPath, chatLog + '.log')).mtime.getTime();
+  const previousTime = mtime;
+  const cellCounter = 0;
+  const currentMessages = [];
+  const currentTotal = 0;
+  let cellId = chatPath + '[' + cellCounter + ']';
+
+  for (let i = 0; i < chatHistory.length; i++) {
+    if (
+      currentMessages.length > 0 &&
+      currentTotal + chatHistory[i].length > 2048 ||
+      currentMessages.length === 20
+    ) {
+      const messageBlock = currentMessages.join('\n');
+      const messageNoTimes = convertMessagesToNoDates(messageBlock);
+      const date = CHAT_DATES
+       .map((d) => (messageBlock.match(d) || [])[0])
+       .filter((d) => d)[0];
+      const time = CHAT_TIMES
+       .map((d) => (messageBlock.match(d) || [])[0])
+       .filter((d) => d)[0];
+
+      const now = new Date(date +'' + time).getTime() || previousTime;
+      if (date && time) {
+        previousTime = now;
+      }
+
+      const hash = hashCode(messageBlock);
+
+      if (cellNeedsTidying(cellId, chatCache) || chatCache[cellId].hash!== hash) {
+        const summary = await askLlamaAboutConversation(messageNoTimes);
+        const emotions = await askLlamaAboutEmotions(messageNoTimes);
+        const category = await askLlamaAboutCategory(messageNoTimes);
+        storeChatHistory(
+          cellId,
+          mtime,
+          summary,
+          emotions,
+          category,
+          hash,
+          now,
+          from,
+          i - 1
+        );
+      }
+
+      currentMessages = [];
+      currentTotal = 0;
+      from = i;
+      cellCounter++;
+      cellId = chatPath + '[' + cellCounter + ']';
+    }
+
+    if (chatHistory[i].trim().length === 0) {
+      continue;
+    }
+
+    currentMessages[currentMessages.length] = chatHistory[i];
+    currentTotal += chatHistory[i].length;
+  }
+
+  if (currentMessages.length > 0) {
+    const messageBlock = currentMessages.join('\n');
+    const messageNoTimes = convertMessagesToNoDates(messageBlock);
+    const date = CHAT_DATES
+     .map((d) => (messageBlock.match(d) || [])[0])
+     .filter((d) => d)[0];
+    const time = CHAT_TIMES
+     .map((d) => (messageBlock.match(d) || [])[0])
+     .filter((d) => d)[0];
+
+    const now = new Date(date +'' + time).getTime();
+    const hash = hashCode(messageBlock);
+
+    if (cellNeedsTidying(cellId, chatCache) || chatCache[cellId].hash!== hash) {
+      const summary = await askLlamaAboutConversation(messageNoTimes);
+      const emotions = await askLlamaAboutEmotions(messageNoTimes);
+      const category = await askLlamaAboutCategory(messageNoTimes);
+      storeChatHistory(
+        cellId,
+        mtime,
+        summary,
+        emotions,
+        category,
+        hash,
+        now,
+        from,
+        chatHistory.length - 1
+      );
+    }
+  }
+}
+
+// Define the hash code function
+function hashCode(s) {
+  return s
+   .toString()
+   .split('')
+   .reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0) | 0, 0);
+}
+
+module.exports = {
+  askLlamaAboutChatLog,
+  askLlamaAboutConversation,
+  convertMessagesToNoDates,
+  CHAT_DIRECTORIES,
+  getChatLogInformation,
+};</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Modules and Functions</h3>
 <ul>
 <li>The code begins by importing necessary modules and functions:

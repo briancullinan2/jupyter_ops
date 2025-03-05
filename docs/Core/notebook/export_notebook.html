@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -213,7 +220,128 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for processing and exporting Jupyter Notebooks, focusing on handling imports and generating function handlers.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const mkdirpSync = require('mkdirp');
+const importer = require('../Core');
+
+const {
+  replaceImports,
+  replaceCore,
+} = importer.import(['./replace notebook imports', './replace core requirement']);
+
+const getImports = importer.import('./get imports');
+const fixImports = importer.import('./fix project paths');
+const delintCode = importer.import('./delint notebooks');
+const niceName = importer.import('./rename cell to nice name');
+const matchFilename = importer.import('./match filename');
+const makeHandler = importer.import('./generic gcloud function handler');
+const authorTemplate = importer.import('./authoring header template');
+
+/**
+ * Recursively get all imports from the given search cells.
+ * @param {string|string[]} searches The top-level cells to start the import tree.
+ * @returns {object[]} An array of all cells in the import tree.
+ */
+function getImportsRecursively(searches) {
+  if (typeof searches ==='string') {
+    searches = [searches];
+  }
+
+  const processed = [];
+  const allCells = [];
+  const pending = importer.interpret(searches);
+
+  while (pending.length > 0) {
+    const cell = pending.pop();
+    processed.push(cell.id);
+    allCells.push(cell);
+
+    if (cell.code.length > 10000 || cell.filename.includes('cache.ipynb')) continue;
+
+    try {
+      getImports(cell.code).forEach((search) => {
+        const cells = importer.interpret([search]);
+        cells.forEach((c) => {
+          if (!processed.includes(c.id)) pending.push(c);
+        });
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  return allCells;
+}
+
+/**
+ * Export a notebook, recursively getting all imports and writing them to files.
+ * @param {string|string[]} searches The top-level cells to start the export.
+ * @param {string} [projectOutput] The directory to write the exported code to.
+ * @param {object} [matchOutput] An object mapping nice names to file extensions.
+ * @returns {string} The fixed import paths for the exported project.
+ */
+function exportNotebook(searches, projectOutput, matchOutput) {
+  projectOutput = projectOutput || process.env.EXPORT_PATH || path.join(path.resolve(__dirname), '../.functions');
+  matchOutput = matchOutput || {};
+
+  const nextImports = [];
+  const cells = getImportsRecursively(searches);
+
+  cells.forEach((cell, i) => {
+    let exportedCode;
+
+    assert(!niceName(cell).match(/^\./), `No filename ${cell.id} -> ${niceName(cell)} ${cell.questions}!`);
+
+    if (cell.name ==='readme.md') {
+      exportedCode = cell.markdown;
+    } else {
+      try {
+        exportedCode = replaceImports(cell.code).ownerDocument.toString();
+        exportedCode = replaceCore(exportedCode).ownerDocument.toString();
+        const delinted = delintCode(exportedCode)[0];
+        exportedCode = delinted.fixed || delinted.code;
+      } catch (e) {
+        throw new Error(`Error exporting ${cell.id}: ${e.message}`);
+      }
+
+      exportedCode = authorTemplate(cell.markdown, exportedCode);
+    }
+
+    outputExport(exportedCode, cell, projectOutput, matchOutput);
+  });
+
+  // Add a Google handler if there is no index
+  if (Object.values(matchOutput).filter((o) => o.includes('index.js')).length === 0 && cells.filter((cell) => niceName(cell).includes('index')).length === 0) {
+    outputExport(makeHandler(searches), makeHandler(), projectOutput, {
+      '*function-handler*': './index.js',
+    });
+  }
+
+  return fixImports(projectOutput);
+}
+
+/**
+ * Output the exported code to the specified files.
+ * @param {string} exportedCode The code to be written to files.
+ * @param {object} cell The cell containing the code.
+ * @param {string} projectOutput The directory to write the exported code to.
+ * @param {object} matchOutput An object mapping nice names to file extensions.
+ */
+function outputExport(exportedCode, cell, projectOutput, matchOutput) {
+  matchFilename(niceName(cell), matchOutput, projectOutput).forEach((filename) => {
+    console.log(`emitting ${filename}`);
+
+    // Create directory if needed
+    mkdirpSync(path.dirname(filename));
+
+    // Write code to file
+    fs.writeFileSync(filename, exportedCode);
+  });
+}
+
+module.exports = exportNotebook;</code></pre></div><p>This code defines functions for processing and exporting Jupyter Notebooks, focusing on handling imports and generating function handlers.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

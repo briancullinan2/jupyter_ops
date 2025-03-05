@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,93 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>gitTree</code> that analyzes a Git repository and generates a structured representation of its commit history, essentially creating a visual &quot;tree&quot; of branches and commits.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const childProcess = require('child_process');
+const console = console;
+
+/**
+ * Creates a graph representation of a Git repository tree.
+ * @param {string} project - The path to the Git repository.
+ * @returns {object} - The graph nodes and edges.
+ */
+function gitTree(project) {
+  console.log(`Creating tree for project: ${project}`);
+
+  // Get a list of all branches and tags
+  const branches = getBranches(project);
+
+  // Get a list of commits in reverse chronological order
+  const commits = getCommits(project);
+
+  // Initialize nodes and edges arrays
+  const nodes = [];
+  const edges = [];
+
+  // Process each commit
+  commits.forEach((commit) =&gt; {
+    const [date, merge, hash, parents] = commit.split(' ');
+    const parentsArray = parents.trim().split(' ');
+
+    // Create nodes for each parent
+    parentsArray.forEach((parent, index) =&gt; {
+      if (!nodes.find((node) =&gt; node.name === parent)) {
+        nodes.push({
+          name: parent,
+          index: nodes.length,
+          branch: getBranch(hash),
+          time: date,
+        });
+      }
+    });
+
+    // Add edges between parents if not merge commits
+    if (parentsArray.length &gt; 1) {
+      for (let i = 1; i &lt; parentsArray.length; i++) {
+        edges.push({ source: parentsArray[i - 1], target: parentsArray[i] });
+      }
+    }
+  });
+
+  return formatNodes(nodes, edges.reverse());
+}
+
+// Helper function to get a list of branches
+function getBranches(project) {
+  return childProcess
+   .execSync(`git branch --list --all`, { cwd: project })
+   .toString()
+   .trim()
+   .split(/\s*\n\s*\*\s*/ig)
+   .map((b) =&gt; b.replace('remotes/', '').trim());
+}
+
+// Helper function to get a list of commits
+function getCommits(project) {
+  return childProcess
+   .execSync(
+      'git log --pretty=format:"%ct %d %h %p" --reverse --branches --tags',
+      { cwd: project }
+    )
+   .toString()
+   .split(/\s*\n\s*/ig);
+}
+
+// Helper function to get the branch name for a commit
+function getBranch(hash) {
+  const branch = childProcess
+   .execSync(`git branch --list --contains ${hash}`, { cwd: process.cwd() })
+   .toString()
+   .trim()
+   .split(/\s*\n\s*/ig)[0];
+  return branch.replace('remotes/', '').trim();
+}
+
+// Helper function to format nodes and edges
+function formatNodes(nodes, edges) {
+  return { nodes, edges };
+}
+
+module.exports = gitTree;</code></pre></div><p>This code defines a function <code>gitTree</code> that analyzes a Git repository and generates a structured representation of its commit history, essentially creating a visual &quot;tree&quot; of branches and commits.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

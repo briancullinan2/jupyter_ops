@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<pre><code class="language-markdown">### Code Breakdown
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Tool Instructions
+ *
+ * @function processToolInstructions
+ * @param {string} text
+ * @returns {string}
+ */
+function processToolInstructions(text) {
+  // Check if text is empty
+  if (!text.trim()) {
+    return 'No input provided';
+  }
+
+  // Remove extra whitespace and convert to lowercase
+  const trimmedText = text.trim().toLowerCase();
+
+  // Check if text is a sentence or a line
+  if (trimmedText.includes('.') || trimmedText.includes(',')) {
+    // Check if text is a markdown instruction
+    if (trimmedText.includes('#')) {
+      // Extract the instruction
+      const instruction = trimmedText.split('#').pop().trim();
+
+      // Process the instruction
+      switch (instruction) {
+        case'markdown':
+          return 'You are a large language model named Llama that provides clear and concise answers in beautifully crafted markdown unless otherwise instructed.';
+        default:
+          return `Unknown instruction: ${instruction}`;
+      }
+    } else {
+      return `Invalid instruction: ${trimmedText}`;
+    }
+  } else if (trimmedText.includes(' ')) {
+    // Check if text is a word or a set of words
+    // Check if text is a language instruction
+    if (trimmedText.includes('language')) {
+      // Extract the language
+      const language = trimmedText.split('language').pop().trim();
+
+      // Return the derived language
+      return `The language is automatically derived to be: ${language}`;
+    } else {
+      return `Invalid instruction: ${trimmedText}`;
+    }
+  } else {
+    return `Invalid input: ${trimmedText}`;
+  }
+}
+
+console.log(processToolInstructions('')); // No input provided
+console.log(processToolInstructions('# markdown')); // You are a large language model named Llama that provides clear and concise answers in beautifully crafted markdown unless otherwise instructed.
+console.log(processToolInstructions('language is automatically derrived')); // The language is automatically derived to be: language is automatically derrived
+console.log(processToolInstructions('unknown instruction')); // Invalid instruction: unknown instruction
+console.log(processToolInstructions('')); // Invalid input:
+console.log(processToolInstructions(' ')); // Invalid input:</code></pre></div><pre><code class="language-markdown">### Code Breakdown
 
 #### Key Features
 

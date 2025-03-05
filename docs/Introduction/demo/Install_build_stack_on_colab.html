@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be a series of shell commands designed to set up a development environment for a Jupyter-based project.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Set npm configuration
+npmConfig = {
+  user: 0,
+  unsafePerms: true
+};
+
+// Set unsafe-perm true (using npm config object)
+npm.config.set('unsafe-perm', true);
+
+// Set user 0 (using npm config object)
+npm.config.set('user', 0);
+
+// Install global packages
+const packages = [
+  'ijavascript',
+  'zeromq',
+  'node-gyp',
+  'node-pre-gyp',
+  'webpack'
+];
+
+packages.forEach(packageName => {
+  npm.config.set('unsafe-perm', true);
+  npm.install(packageName, { global: true });
+});
+
+// Perform ijsinstall with global install flag
+const ijsinstall = require('ijsinstall');
+ijsinstall({ install: 'global' });
+
+// List jupyter kernels
+console.log(npm.cmd('jupyter-kernelspec', 'list'));
+
+// Install git and build tools
+const childProcess = require('child_process');
+childProcess.execSync('apt-get install -yy git build-essential');
+
+// Create jupytangular directory if it does not exist
+const path = require('path');
+const jupytangularDir = path.join('/content', 'jupytangular');
+if (!fs.existsSync(jupytangularDir)) {
+  fs.mkdirSync(jupytangularDir);
+}
+
+// Create symbolic link
+const fs = require('fs');
+fs.symlinkSync(jupytangularDir, '/Core');
+
+// Initialize git in jupytangular directory
+const git = require('git');
+const jupytangularRepo = path.join(jupytangularDir, '.git');
+fs.mkdirSync(jupytangularRepo);
+git.init(jupytangularRepo);
+
+// Add remote origin and fetch data
+const gitRemote = require('git-remote');
+gitRemote.add(jupytangularRepo, 'origin', 'https://:@bitbucket.org/megamindbrian/jupyter_ops.git');
+gitRemote.fetch(jupytangularRepo, 'origin');
+
+// Reset local branch to origin/master
+const gitReset = require('git-reset');
+gitReset(jupytangularRepo, '--hard', 'origin/master');
+
+// Pull master branch
+const gitPull = require('git-pull');
+gitPull(jupytangularRepo,'master');
+
+// Install dependencies, run tests and build
+process.chdir(jupytangularDir);
+npm.install();
+npm.run('test');
+npm.run('build');</code></pre></div><p>This code snippet appears to be a series of shell commands designed to set up a development environment for a Jupyter-based project.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. npm Configuration and Installation:</strong></p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * @file Activity commands handler
+ * @description Handles registration, updates and removals of activity commands
+ */
+
+const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand,
+} = require('discord-api').import();
+const { interactionsCommands } = require('discord-gateway').import();
+
+// List of all available commands
+const ALL_COMMANDS = ['launch'];
+
+/**
+ * @async Register, update or remove activity commands based on guild id
+ * @param {string} [guildId] Guild id to operate on (default: null)
+ * @returns {Promise&lt;Command[]&gt;} Updated list of commands
+ */
+async function activityCommands(guildId = null) {
+  // Get all commands from the guild
+  const commandResult = await getCommands(guildId);
+
+  // Filter out commands that should not be removed
+  const commandsToKeep = commandResult.filter((command) =&gt;
+    ALL_COMMANDS.includes(command.name)
+  );
+
+  // Filter out commands to be removed
+  const commandsToRemove = commandResult.filter((command) =&gt;
+   !ALL_COMMANDS.includes(command.name)
+  );
+
+  // Register or update the 'launch' command if it does not exist or its definition has changed
+  if (!commandsToKeep.find((command) =&gt; command.name === 'launch')) {
+    // Create the command definition
+    const cmdDef = {
+      name: 'launch',
+      description: 'Launch an activity',
+      type: 4,
+      handler: 2,
+    };
+
+    // Register the command
+    await registerCommand(cmdDef, null, guildId);
+  } else {
+    // Get the existing command
+    const cmd = commandResult.find((command) =&gt; command.name === 'launch');
+
+    // Update the command definition if it has changed
+    if (
+      cmdDef.name!== cmd.name ||
+      cmdDef.description!== cmd.description
+    ) {
+      await updateCommand(cmdDef, null, cmd.id, guildId);
+    }
+  }
+
+  // Remove commands that should not be present
+  for (const cmd of commandsToRemove) {
+    await deleteCommand(cmd.id, guildId);
+  }
+
+  // Return the updated list of commands
+  return await getCommands();
+}
+
+module.exports = activityCommands;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>The code imports several modules using the <code>importer.import</code> function.</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -134,7 +141,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary functions from the'select tree' and 'walk tree' modules
+const { selectDom, evaluateDom } = importer.import('select tree');
+const { walkTree } = importer.import('walk tree');
+
+/**
+ * Retrieves all XPaths from a given DOM by executing a script on the driver.
+ * 
+ * @param {object} driver - The driver instance to execute the script on.
+ * @param {string} select - The DOM selector.
+ * @param {object} ctx - The context in which to select the DOM element (defaults to document).
+ * @returns {Promise<string[]>} A promise resolving to an array of XPaths.
+ */
+async function getAllXPath(driver, select, ctx = document) {
+  // Ensure the necessary functions are available on the window object
+  const { evaluateDomString, walkTreeString, selectDomString } = await Promise.all([
+    evaluateDom.toString(),
+    walkTree.toString(),
+    selectDom.toString(),
+  ]).then(([evaluateDomString, walkTreeString, selectDomString]) => (
+    { evaluateDomString, walkTreeString, selectDomString }
+  ));
+
+  // Execute the script on the driver, injecting the necessary functions
+  const result = await driver.executeScript(`
+    const evaluateDom = ${evaluateDomString};
+    const walkTree = ${walkTreeString};
+    const selectDom = ${selectDomString};
+    return selectDom("${select}", ${ctx === document? 'document' : ctx});
+  `);
+
+  // Return the result as an array of XPaths
+  return result.walkTree();
+}
+
+module.exports = getAllXPath;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Functions</h3>
 <pre><code class="language-javascript">const {selectDom, evaluateDom} = importer.import('select tree')
 const {walkTree} = importer.import('walk tree')

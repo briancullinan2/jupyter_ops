@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Monitor } = require('node-screenshots');
+const MouseController = require('mouse-controller');
+
+/**
+ * Clicks the left mouse button at the specified coordinates, taking into account the screen resolution.
+ * 
+ * @param {number} x The x-coordinate of the click.
+ * @param {number} y The y-coordinate of the click.
+ * @return {void}
+ */
+class MouseControllerWrapper {
+  /**
+   * Initialize the mouse controller.
+   */
+  constructor() {
+    this.mc = new MouseController();
+  }
+
+  /**
+   * Get all monitors and sort them in descending order based on their area.
+   * 
+   * @return {Array<Monitor>} An array of monitors, sorted by area.
+   */
+  getMonitors() {
+    return Monitor.all().sort((a, b) => (b.width * b.height) - (a.width * a.height));
+  }
+
+  /**
+   * Click the left mouse button at the specified coordinates.
+   * 
+   * @param {number} x The x-coordinate of the click.
+   * @param {number} y The y-coordinate of the click.
+   * @return {void}
+   */
+  click(x, y) {
+    const monitors = this.getMonitors();
+    const monitor = monitors[0];
+    const scaledX = (x * monitor.width) + monitor.x;
+    const scaledY = (y * monitor.height) * 3; // TODO: Validate the 3x scale factor
+    this.mc.click(this.mc.BUTTON.LEFT, { x: scaledX, y: scaledY });
+  }
+}
+
+const clickMouse = new MouseControllerWrapper();
+
+module.exports = clickMouse.click;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies</h3>
 <ul>
 <li><code>node-screenshots</code>: A Node.js module for capturing screenshots.</li>

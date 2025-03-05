@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -169,7 +176,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines an asynchronous function <code>testCrcFile</code> that calculates the CRC checksum of a Quake 3 game archive file (<code>pak8a.pk3</code>).</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const crc32 = require('crc-32');
+const path = require('path');
+
+/**
+ * Importer for core modules.
+ */
+const importer = require('../Core');
+
+/**
+ * Import the crc checksum file module.
+ */
+const checksumZip = importer.import('crc-checksum-file');
+
+/**
+ * Test the crc checksum file function.
+ * 
+ * @returns {Promise&lt;number&gt;} The crc checksum of the file at TEST_PK3.
+ */
+async function testCrcFile() {
+  const filePath = '/Applications/ioquake3/baseq3/pak8a.pk3';
+  const fileBuffer = await fs.promises.readFile(filePath);
+  const crc = crc32.buf(fileBuffer);
+  return crc &amp; 0xFFFFFFFF;
+}
+
+/**
+ * Example test data.
+ * 
+ * @type {number[]}
+ */
+const testData = [
+  1566731103,
+  298122907,
+  412165236,
+  2991495316,
+  1197932710,
+  4087071573,
+  3709064859,
+  908855077,
+  977125798,
+];
+
+/**
+ * Export the testCrcFile function.
+ */
+module.exports = testCrcFile;
+
+// TODO: Implement a way to test the crc checksum file function with the test data
+// TODO: Consider adding input validation for the file path</code></pre></div><p>This code snippet defines an asynchronous function <code>testCrcFile</code> that calculates the CRC checksum of a Quake 3 game archive file (<code>pak8a.pk3</code>).</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

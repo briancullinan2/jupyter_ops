@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>webpackAngularProject</code> that builds an Angular application for the server environment using Webpack.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { promises as fs } from 'fs';
+import path from 'path';
+import webpack from 'webpack';
+import { argv } from 'yargs';
+
+/**
+ * Compiles an Angular project using Webpack.
+ * @param {string} project - The path to the project's root directory.
+ * @returns {Promise&lt;string&gt;} - A promise that resolves with the compiled server.js code.
+ */
+async function webpackAngularProject(project) {
+    try {
+        // Set up project path
+        const previousDir = process.cwd();
+        process.chdir(project);
+        module.paths.unshift(path.join(project, 'node_modules'));
+
+        // Load project config
+        const webpackConfig = await import(path.join(project, 'webpack.config.js'));
+        const gulpConfig = await import(path.join(project, 'config', 'gulp-helpers.js'));
+        const buildConfig = await import(path.join(project, 'config', 'build-config.json'));
+
+        // Create Webpack config
+        const gulp = await gulpConfig();
+        const settings = await gulp.loadSettings(buildConfig);
+        const config = await webpackConfig({ env: 'prod', platform:'server' }, gulp.root, settings);
+
+        // Create Webpack compiler
+        const compiler = webpack(config);
+
+        // Run Webpack
+        const stats = await new Promise((resolve, reject) =&gt; {
+            compiler.run((err, stats) =&gt; {
+                if (err) return reject(err);
+                resolve(stats);
+            });
+        });
+
+        // Return compiled server.js code
+        const serverJsCode = stats.compilation.assets['server.js'].source();
+        process.chdir(previousDir);
+        return serverJsCode;
+    } catch (error) {
+        process.chdir(previousDir);
+        throw error;
+    }
+}
+
+export default webpackAngularProject;</code></pre></div><p>This code defines a function <code>webpackAngularProject</code> that builds an Angular application for the server environment using Webpack.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Project Setup:</strong></p>

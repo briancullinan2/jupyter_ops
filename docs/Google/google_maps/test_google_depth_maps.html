@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet downloads a Google Street View panorama and extracts its depth map, then visualizes the depth information as a grayscale image.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs').promises; // Use promises for asynchronous file operations
+const { createCanvas } = require('canvas');
+const { loadDepthMap, loadPanorama, setZoom } = require('../Core'); // Import all required functions
+
+// Set default zoom level
+setZoom(1);
+
+/**
+ * Callback function for depth map loading
+ * @param {object} depthMap - Loaded depth map object
+ */
+async function onDepthLoad(depthMap) {
+  // Get image dimensions
+  const { width, height } = depthMap;
+
+  // Create a new canvas element
+  const canvas = createCanvas(width, height);
+  const context = canvas.getContext('2d');
+
+  // Get image data from the canvas context
+  const imageData = context.getImageData(0, 0, width, height);
+  const data = imageData.data;
+
+  // Iterate over each pixel in the image
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      // Calculate pixel intensity based on depth map value
+      const c = depthMap.depthMap[y * width + x] / 50 * 255;
+
+      // Set pixel color and alpha value
+      data[4 * (y * width + x)] = c; // Red
+      data[4 * (y * width + x) + 1] = c; // Green
+      data[4 * (y * width + x) + 2] = c; // Blue
+      data[4 * (y * width + x) + 3] = 255; // Alpha
+    }
+  }
+
+  // Put image data back into the canvas context
+  context.putImageData(imageData, 0, 0);
+
+  // Save the image to a file
+  const buffer = await canvas.toBuffer('image/png');
+  await fs.writeFile('./image.png', buffer);
+}
+
+/**
+ * Callback function for panorama loading
+ * @param {string} panoId - Loaded panorama ID
+ */
+async function onPanoramaLoad(panoId) {
+  // Load depth map for the panorama
+  await loadDepthMap(panoId, onDepthLoad);
+}
+
+/**
+ * Test panorama loading
+ */
+async function testPanorama() {
+  try {
+    // Load panorama from the given coordinates
+    await loadPanorama([43.7369832, 7.4215723], onPanoramaLoad);
+  } catch (error) {
+    console.error('Error loading panorama:', error);
+  }
+}
+
+module.exports = testPanorama;</code></pre></div><p>This code snippet downloads a Google Street View panorama and extracts its depth map, then visualizes the depth information as a grayscale image.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

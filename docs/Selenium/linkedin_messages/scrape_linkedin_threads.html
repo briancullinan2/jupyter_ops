@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -185,7 +192,109 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code is designed to scrape LinkedIn data, specifically focusing on threads and their participants. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const { runSeleniumCell } = require('../Core');
+const logger = require('./logger'); // assuming a custom logger module
+const PROJECT_PATH = getProjectPath();
+const project = path.join(PROJECT_PATH, 'Conversations');
+
+// LinkedIn functions
+const { loginLinkedIn, readLinkedInProfileInfo, listLinkedInThreads, readLinkedInThread } =
+  getLinkedInFunctions();
+
+function getProjectPath() {
+  return process.env.HOME ||
+         process.env.HOMEPATH ||
+         process.env.USERPROFILE;
+}
+
+function getLinkedInFunctions() {
+  try {
+    return runSeleniumCell([
+      'log in linkedin',
+     'scrape LinkedIn profile',
+      'list LinkedIn threads',
+     'messages LinkedIn thread',
+    ]);
+  } catch (e) {
+    logger.error(e);
+    throw e;
+  }
+}
+
+// TODO: Implement rate limiting to avoid LinkedIn API restrictions
+async function readThread(thread) {
+  try {
+    const threadId = thread.replace(/^\/|\/$/ig, '').split('/').pop();
+    const file = glob.sync('**/' + threadId + '-*.json', {cwd: project})[0];
+    const messages = require(file);
+    const result = await readLinkedInThread(thread, messages);
+
+    const filename = project + '/'
+      + result.thread.replace(/^\/|\/$/ig, '').split('/').pop()
+      + '-' + result.participants.map(p =&gt; p.name).join('')
+       .replace(/[^a-z]/ig, '_') + '.json';
+
+    fs.writeFileSync(filename, JSON.stringify(result, null, 4));
+    return result;
+  } catch (error) {
+    logger.error(error);
+    return null;
+  }
+}
+
+async function listThreads() {
+  try {
+    const profileInfo = await readLinkedInProfileInfo();
+    const threads = await listLinkedInThreads();
+
+    fs.writeFileSync(
+      project + '/threads.json',
+      JSON.stringify(threads, null, 4));
+    return threads;
+  } catch (error) {
+    logger.error(error);
+    throw error;
+  }
+}
+
+async function scrapeLinkedInThreads() {
+  try {
+    const threads = require(path.join(project, 'threads.json'));
+    const freshThreads = threads.filter(thread =&gt; {
+      const threadId = thread.replace(/^\/|\/$/ig, '').split('/').pop();
+      const file = glob.sync('**/@(' + threadId + ')-*.json', { cwd: project })[0];
+      return!file ||!fs.existsSync(path.join(project, file));
+    });
+
+    const percent = Math.round((threads.length - freshThreads.length) / threads.length * 100);
+    console.log((threads.length - freshThreads.length) +'/'+ threads.length +':'+ percent + '%');
+    console.log(freshThreads.slice(0, 30));
+
+    if (percent === 100) {
+      await listThreads();
+    }
+
+    const promises = freshThreads.slice(0, 30)
+     .map(async thread =&gt; {
+        try {
+          return await readThread(thread);
+        } catch (error) {
+          logger.error(error);
+        }
+      });
+
+    await Promise.all(promises);
+  } catch (error) {
+    logger.error(error);
+    throw error;
+  }
+}
+
+module.exports = scrapeLinkedInThreads;</code></pre></div><p>This code is designed to scrape LinkedIn data, specifically focusing on threads and their participants. Here's a breakdown:</p>
 <p><strong>Core Functionality:</strong></p>
 <ol>
 <li><p><strong>Data Storage:</strong></p>

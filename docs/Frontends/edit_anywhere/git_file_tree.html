@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -229,7 +236,146 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a runtime environment for interacting with Git using the <code>wasm-git</code> library and defines a function to generate file icons based on MIME types.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const lg = require('../node_modules/wasm-git/lg2.js');
+const mime = require('mime');
+const { EOL } = require('os');
+
+lg.noExitRuntime = true;
+lg.quit = () =&gt; {};
+lg.onRuntimeInitialized = async () =&gt; {
+  const fs = lg.FS;
+  const path = lg.PATH;
+  const errnoCodes = lg.ERRNO_CODES;
+
+  try {
+    // Initialize file system
+    await fs.mkdir('/working');
+    await fs.mount(fs.filesystems.MEMFS, {}, '/working');
+    await fs.chdir('/working');
+
+    // Create.gitconfig file
+    const gitconfig = `[user]
+name = Test User
+email = test@example.com${EOL}`;
+    await fs.writeFile('/home/web_user/.gitconfig', gitconfig);
+
+    lg.loaded = true;
+
+    // Set up error handling
+    process.on('uncaughtException', e =&gt; console.error('Uncaught Exception:', e));
+    process.on('unhandledRejection', e =&gt; console.error('Unhandled Rejection:', e));
+  } catch (e) {
+    console.error('Error initializing file system:', e);
+  }
+};
+
+process.on('uncaughtException', e =&gt; console.error('Uncaught Exception:', e));
+process.on('unhandledRejection', e =&gt; console.error('Unhandled Rejection:', e));
+
+// Icon classes for mime types
+const iconClasses = {
+  '' : 'fa-file',
+  image: "fa-file-image",
+  audio: "fa-file-audio",
+  video: "fa-file-video",
+  application: {
+    pdf: "fa-file-pdf",
+    msword: "fa-file-word",
+    'vnd.ms-word': "fa-file-word",
+    'vnd.oasis.opendocument.text': "fa-file-word",
+    'vnd.openxmlformats-officedocument.wordprocessingml.document': "fa-file-word",
+    'vnd.ms-excel': "fa-file-excel",
+    'vnd.openxmlformats-officedocument.spreadsheetml.sheet': "fa-file-excel",
+    'vnd.oasis.opendocument.spreadsheet': "fa-file-excel",
+    'vnd.ms-powerpoint': "fa-file-powerpoint",
+    'vnd.openxmlformats-officedocument.presentationml.presentation': "fa-file-powerpoint",
+    'vnd.oasis.opendocument.presentation': "fa-file-powerpoint",
+    text: {
+      plain: "fa-file-alt",
+      html: "fa-file-code",
+      json: "fa-file-code"
+    },
+    gzip: "fa-file-archive",
+    zip: "fa-file-archive"
+  }
+};
+
+// Get icon class for mime type
+function getIconClass(mimeType) {
+  if (Object.keys(iconClasses).includes(mimeType)) {
+    return iconClasses[mimeType];
+  } else if (typeof iconClasses.application === 'object' &amp;&amp; typeof iconClasses.application[mimeType] ==='string') {
+    return iconClasses.application[mimeType];
+  } else if (typeof iconClasses.image ==='string' &amp;&amp; mimeType.split('/')[0] === 'image') {
+    return iconClasses.image;
+  } else {
+    return iconClasses[''];
+  }
+}
+
+// Async function to get git file tree
+async function gitFileTree() {
+  try {
+    // Wait for file system to initialize
+    await new Promise(resolve =&gt; {
+      const counter = 0;
+      const intervalId = setInterval(() =&gt; {
+        if (lg.loaded || counter === 1000) {
+          clearInterval(intervalId);
+          resolve();
+        } else {
+          counter++;
+        }
+      }, 10);
+    });
+
+    // Clone repository from GitHub
+    await fs.mkdir('/working/made-with-webassembly');
+    await fs.chdir('/working/made-with-webassembly');
+    await lg.callMain(['init', '.']);
+    await lg.callMain(['remote','remove', 'origin']);
+    await lg.callMain(['remote', 'add', 'origin', 'https://github.com/torch2424/made-with-webassembly.git']);
+    await lg.callMain(['config', 'core.sparsecheckout', 'true']);
+    await lg.callMain(['fetch', 'origin', '--depth=1']);
+    await lg.callMain(['checkout','master']);
+
+    // Get file tree
+    const makeTree = dir =&gt; {
+      const files = fs.readdir(dir)
+       .filter(file =&gt;!file.match(/^\.\.?$/));
+      return `&lt;ul&gt;${files.map((file, i) =&gt; {
+        const mimeType = mime.getType(file);
+        const path = dir + '/' + file;
+        const escPath = 'ft' + path.replace(/[^a-z0-9_-]/ig, '_') + '_' + i;
+        if (fs.isDir(fs.lstat(path).mode)) {
+          return `&lt;li class="folder"&gt;
+                    &lt;input type="checkbox" name="${escPath}" id="${escPath}" /&gt;
+                    &lt;label for="${escPath}"&gt;
+                      &lt;i class="fas fa-angle-right"&gt;&lt;/i&gt;&lt;i class="fas fa-folder"&gt;&lt;/i&gt;
+                      ${file}
+                    &lt;/label&gt;
+                    ${makeTree(path)}
+                  &lt;/li&gt;`;
+        } else if (fs.isFile(fs.lstat(path).mode)) {
+          return `&lt;li&gt;
+                    &lt;input type="checkbox" name="${escPath}" id="${escPath}" /&gt;
+                    &lt;label for="${escPath}"&gt;
+                      &lt;i class="fas ${getIconClass(mimeType)}"&gt;&lt;/i&gt;
+                      ${file}
+                    &lt;/label&gt;
+                  &lt;/li&gt;`;
+        }
+      }).join('')}&lt;/ul&gt;`;
+    };
+    const fileTree = makeTree('.');
+    return fileTree;
+  } catch (e) {
+    console.error('Error getting git file tree:', e);
+  }
+}
+
+module.exports = gitFileTree;</code></pre></div><p>This code sets up a runtime environment for interacting with Git using the <code>wasm-git</code> library and defines a function to generate file icons based on MIME types.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

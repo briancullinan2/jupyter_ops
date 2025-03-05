@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet removes all dangling Docker images from the system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to remove dangling Docker images
+remove_dangling_images() {
+  # Get a list of dangling images using Docker
+  dangling_images=$(docker images -q -f "dangling=true")
+
+  # Iterate over the list using while loop for better readability
+  while IFS= read -r image; do
+    # Remove each dangling image
+    docker rmi "${image}" || echo "Error removing image ${image}"
+  done <<< "$dangling_images"
+}
+
+# Call the function to remove dangling images
+remove_dangling_images</code></pre></div><p>This code snippet removes all dangling Docker images from the system.</p>
 <p><strong>Breakdown:</strong></p>
 <ol>
 <li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker images -q -f &quot;dangling=true&quot;')</code>:</strong></p>

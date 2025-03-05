@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -121,7 +128,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>HTML Structure Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="html"><code>html
+&lt;!-- Container for the chat interface --&gt;
+&lt;div id="chat-container"&gt;
+  &lt;!-- Toggle for off-the-record mode --&gt;
+  &lt;div class="form-group form-switch"&gt;
+    &lt;input type="checkbox" id="otr-toggle" value="otr" /&gt;
+    &lt;label for="otr-toggle"&gt;Off the Record&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Text input and send button --&gt;
+  &lt;div id="text-entry"&gt;
+    &lt;!-- Textarea for user input --&gt;
+    &lt;textarea id="message-input" placeholder="Enter your message"&gt;&lt;/textarea&gt;
+    &lt;!-- Send button with click event handler --&gt;
+    &lt;button id="send-button"&gt;Send&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Message display area --&gt;
+  &lt;div id="messages"&gt;
+    &lt;!-- Container for individual messages --&gt;
+    &lt;div id="chat-history"&gt;&lt;/div&gt;
+    &lt;!-- Link to restart the conversation --&gt;
+    &lt;a id="restart-now" href="#history-restart" onclick="restartNow(event)"&gt;Scroll to Now&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // Get elements by their IDs
+  const messageInput = document.getElementById('message-input');
+  const sendButton = document.getElementById('send-button');
+  const messagesContainer = document.getElementById('chat-history');
+
+  // Initialize the messages container
+  messagesContainer.innerHTML = '';
+
+  // Event handler for the send button
+  sendButton.addEventListener('click', () =&gt; {
+    // Get the user's input
+    const userMessage = messageInput.value.trim();
+    // Add the message to the container
+    if (userMessage) {
+      const messageElement = document.createElement('div');
+      messageElement.textContent = userMessage;
+      messagesContainer.appendChild(messageElement);
+      // Clear the input field
+      messageInput.value = '';
+    }
+  });
+
+  // Event handler for the off-the-record toggle
+  document.getElementById('otr-toggle').addEventListener('change', () =&gt; {
+    // TODO: Implement off-the-record mode logic here
+  });
+
+  // Event handler for the restart link
+  function restartNow(event) {
+    event.preventDefault();
+    messagesContainer.innerHTML = '';
+  }
+&lt;/script&gt;</code></pre></div><p><strong>HTML Structure Breakdown</strong></p>
 <p>The given code snippet is a simple HTML structure for a chat interface. Here's a breakdown of its components:</p>
 <h3>Container Element</h3>
 <ul>

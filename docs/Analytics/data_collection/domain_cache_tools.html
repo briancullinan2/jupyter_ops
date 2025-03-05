@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -258,7 +265,138 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const { URL } = require('url');
+const fs = require('fs');
+const path = require('path');
+const { glob } = require('../Core/glob');
+const { getResponseContent } = require('../Core/browser-crawler-tools');
+
+const PROFILE_PATH = '/Volumes/External/Personal';
+const project = path.join(PROFILE_PATH, 'Collections/crawls');
+const adblockerFile = path.join(__dirname, '../Resources/Projects/adblocker/hosts.txt');
+
+// Cache functions
+function cacheFilename(url) {
+    const time = new Date();
+    const urlObj = new URL(url.includes('://')? url : ('http://' + url.replace(/^\/\//, '')));
+    return path.join(
+        project,
+        safeurl(urlObj.hostname),
+        `${time.getFullYear()}-${(time.getMonth() + 1).toString().padStart(2, '0')}-${time.getDate().toString().padStart(2, '0')}.json`
+    );
+}
+
+function findCache(url) {
+    const urlObj = new URL(url.includes('://')? url : ('http://' + url.replace(/^\/\//, '')));
+    const host = safeurl(urlObj.hostname);
+    const crawl = glob(`**/*${host}*/**/index.json`, project);
+    crawl.sort((a, b) =&gt; fs.statSync(b).mtime.getTime() - fs.statSync(a).mtime.getTime());
+    return crawl;
+}
+
+function existingCache(url, restrain = 'week') {
+    const cache = findCache(url);
+    const filePath = cacheFilename(url);
+    if (cache[0]) {
+        const segments = cache[0].replace(/\..*$/ig, '').split('-');
+        const date = Date.parse(segments.slice(segments.length - 3).join('-'));
+        const inAWeek = date + 1000 * 60 * 60 * 24 * 7;
+        if (restrain === 'week' &amp;&amp; inAWeek &gt; Date.now()) {
+            return JSON.parse(fs.readFileSync(cache[0]));
+        } else if (restrain === 'day' &amp;&amp; cache[0] === filePath) {
+            return JSON.parse(fs.readFileSync(cache[0])) || [];
+        }
+    }
+    return [];
+}
+
+// Store cache functions
+async function storeCache(cache, response) {
+    const headers = await response.headers();
+    const result = await getResponseContent(response, headers);
+    if (typeof result.url === 'undefined') return;
+    const urls = cache.map(s =&gt; s.url.toLowerCase());
+    const index = urls.indexOf(result.url.toLowerCase());
+    if (index &gt; -1) {
+        console.log(`Received existing ${result.url}`);
+        cache[index] = result;
+    } else {
+        console.log(`Received ${result.url}`);
+        cache.push(result);
+    }
+    return cache;
+}
+
+// Ad blocker
+const adBlocker = (() =&gt; {
+    const hosts = {};
+    const readHosts = () =&gt; {
+        const hostFileContent = fs.readFileSync(adblockerFile, 'utf8').split('\n');
+        hostFileContent.forEach(line =&gt; {
+            const frags = line.split(' ');
+            if (frags.length &gt; 1 &amp;&amp; frags[0] === '0.0.0.0') {
+                hosts[frags[1].trim()] = true;
+            }
+        });
+        return hosts;
+    };
+    return () =&gt; {
+        if (Object.keys(hosts).length &gt; 0) return hosts;
+        readHosts();
+        return hosts;
+    };
+})();
+
+// Read cache functions
+function rmhash(url) {
+    return url.replace(/#.*$/ig, '');
+}
+
+function safeurl(url) {
+    return url.replace(/[^a-z0-9_-]/ig, '_').substr(0, 100);
+}
+
+function readCache(cache, request) {
+    if (request.url().substr(0, 5) === 'data:') return request.continue();
+    if (adBlocker()[new URL(request.url()).host]) return request.abort();
+    const url = new URL(request.url());
+    const index = cache.find(item =&gt; item.url.toLowerCase() === url.href.toLowerCase());
+    if (index &amp;&amp; index.status === 200) {
+        console.log(`Requesting cache ${index.status} ${index.type} ${request.url()}`);
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Location': index.location
+        };
+        try {
+            request.respond({
+                contentType: index.type,
+                headers,
+                status: index.status || 200,
+                body: Buffer.from(index.content || [], 'utf8')
+            });
+            return;
+        } catch (error) {
+            console.log(error);
+            request.continue();
+        }
+    }
+    console.log(`Requesting ${request.url()}`);
+    request.continue();
+}
+
+module.exports = {
+    cacheFilename,
+    findCache,
+    existingCache,
+    storeCache,
+    readCache,
+    rmhash,
+    safeurl,
+    adBlocker
+};
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Module Imports</h3>
 <p>The code begins by importing various Node.js modules:</p>
 <ul>

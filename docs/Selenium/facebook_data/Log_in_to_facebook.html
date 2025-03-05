@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines two functions, <code>enterFacebook</code> and <code>loginFacebook</code>, designed to automate the process of logging into a Facebook account using Selenium.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Attempts to log in to Facebook using the provided credentials.
+ * 
+ * @returns {Promise&lt;Client&gt;} The client instance if successful, or throws an error if a CAPTCHA is encountered.
+ */
+function enterFacebook() {
+    console.log('Facebook: Sign in required');
+    
+    // Get credentials from external function or object
+    const credentials = getCredentials('facebook.com');
+    
+    // Click on the email input field
+    return client
+       .click('input[name*="email"]')
+        // Type in the username
+       .keys(credentials.username)
+       .pause(1000) // Pause for 1 second to allow the username to be typed in
+       .then(() =&gt; console.log("Facebook: Require password"))
+        // Click on the password input field
+       .click('input[name*="pass"]')
+        // Type in the password
+       .keys(credentials.password)
+        // Submit the form
+       .submitForm('[type="submit"]')
+        // Pause for 2 seconds to allow the form to be submitted
+       .pause(2000)
+        // Check if a CAPTCHA is present
+       .isExisting('.cp-challenge-form')
+       .then(is =&gt; {
+            if (is) {
+                throw new Error('captcha');
+            }
+            // If no CAPTCHA is present, return the client instance
+            return client;
+        });
+}
+
+/**
+ * Attempts to log in to Facebook using the provided credentials.
+ * 
+ * @returns {Promise&lt;Client&gt;} The client instance if successful.
+ */
+function loginFacebook() {
+    try {
+        // Get the current URL
+        return client
+           .getUrl()
+           .then(url =&gt; {
+                // Check if the user is already logged in
+                const loggedIn = url.indexOf('facebook') &gt; -1 &amp;&amp; url.indexOf('login') === -1;
+                // If logged in, check if the email input field is visible
+                return loggedIn
+                   ? client
+                       .isVisible('input[name*="email"]')
+                       .then(is =&gt; is? enterFacebook() : client)
+                    : client.url('https://www.facebook.com/')
+                       .isVisible('input[name*="email"]')
+                       .then(is =&gt; is? enterFacebook() : client);
+            });
+    } catch (error) {
+        // If an error occurs, log it and return null
+        console.error(error);
+        return null;
+    }
+}
+
+module.exports = loginFacebook;</code></pre></div><p>This code snippet defines two functions, <code>enterFacebook</code> and <code>loginFacebook</code>, designed to automate the process of logging into a Facebook account using Selenium.</p>
 <p><strong><code>enterFacebook</code> Function:</strong></p>
 <ol>
 <li><strong>Log Message:</strong> Prints a message to the console indicating that Facebook sign-in is required.</li>

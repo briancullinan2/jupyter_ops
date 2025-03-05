@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up an Express.js middleware function for a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const cookie = require('cookie');
+const cors = require('cors')({ origin: true });
+const { importModule } = require('../Core');
+const { getResult, interpret } = importModule(['rpc result', 'get environment']);
+
+const expressToResult = (req, res) => {
+  const func = req.body?.function || req.query?.function;
+  const data = req.method === 'POST'? req.body : req.query;
+  const result = getResult({
+    command: func,
+    result: interpret(func),
+    body: data,
+    circles: ['Public'],
+  });
+
+  return result;
+};
+
+const logResult = (r) => {
+  let result;
+  if (typeof r === 'object') {
+    result = Object.fromEntries(Object.entries(r).map(([key, value]) => [key, value.toString()]));
+  } else {
+    result = r.toString();
+  }
+
+  console.log(result);
+  return result;
+};
+
+const expressHandler = (req, res) => {
+  getEnvironment();
+
+  req.cookies = cookie.parse(req.get('cookie') || '');
+  res.setHeader('Cache-Control', 'private');
+  cors(req, res, () => {});
+
+  return Promise.resolve()
+   .then(() => expressToResult(req, res))
+   .then((r) => {
+      res.status(200);
+      return r;
+    })
+   .catch((e) => {
+      res.status(500);
+      return e;
+    })
+   .then(logResult)
+   .then((r) => res.send(r));
+};
+
+module.exports.handler = expressHandler;</code></pre></div><p>This code sets up an Express.js middleware function for a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./llm_deceive.html">llm deceive</a> | <a href="./cell_4.html">Cell 4</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>llmVoice</code> function generates voice output from a given text prompt using LLaMA, utilizing an optional pre-existing session or creating a new one if necessary. It exports the function as a module, allowing for use in other JavaScript files, and returns the resulting voice output.</p>
+  <p>The <code>llmVoice</code> function generates text-to-speech output using the LLaMA model, taking a prompt and optional session object as parameters. It sends the prompt to the model, returning the generated result and resetting the chat history if the provided session is the same as the current session.</p>
 <h1>Cell 3</h1>
 
 
@@ -124,23 +133,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function Description</h3>
-<p><code>llmVoice</code> is an asynchronous function that generates voice output from a given text prompt using LLaMA.</p>
-<h3>Parameters</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Generate voice output from a given prompt using LLaMA.
+ * 
+ * @param {string} prompt The input text to generate voice output for.
+ * @param {object} session2 The session object, optional.
+ * @returns {Promise&lt;string&gt;} The generated voice output.
+ */
+async function llmVoice(prompt, session2) {
+  // Check if a session object is provided, otherwise create a new one
+  if (!session2) {
+    const { createSession } = await import('llama-vision');
+    // Comment: Importing the library using ES6 import syntax
+    session2 = await createSession(
+      'OuteTTS-0.3-1B-Q8_0.gguf', 
+      'You are an LLM that responds with medium quality text to voice.\n'
+    );
+    // Comment: Store the session2 object to avoid circular dependency
+    this.session2 = session2;
+  }
+
+  // Set the chat history for the session
+  const initialChatHistory = 'Initial conversation history.';
+  session2.setChatHistory(initialChatHistory);
+
+  // Prompt LLaMA to generate voice output
+  try {
+    const result = await session2.prompt(prompt, {
+      // Temperature value between 0 (very conservative) and 1 (very sampling-heavy)
+      temperature: 0.1,
+      // A value used to penalize repeated tokens and encourage greater variety
+      repetition_penalty: 1.1,
+      // Function called for each chunk of the output text
+      onTextChunk: (text) =&gt; {
+        // Write the chunk of text to the standard output
+        process.stdout.write(text);
+      }
+    });
+    return result;
+  } catch (error) {
+    // Log any errors that occur during the prompt
+    console.error('Error generating voice output:', error);
+    throw error;
+  }
+}
+
+module.exports = llmVoice;</code></pre></div><h2><code>llmVoice</code> Function</h2>
+<h3>Overview</h3>
+<p>An asynchronous function <code>llmVoice</code> that generates text-to-speech output using the LLaMA model.</p>
+<h3>Function Parameters</h3>
 <ul>
-<li><code>prompt</code>: The text to be converted to voice output.</li>
-<li><code>session2</code>: The LLaMA session to use for voice generation. If <code>session2</code> is not provided, a new session will be created.</li>
+<li><code>prompt</code>: The input text prompt to generate speech from.</li>
+<li><code>session2</code>: An optional session object. If not provided, a new session will be created.</li>
 </ul>
-<h3>Function Flow</h3>
+<h3>Function Behavior</h3>
 <ol>
-<li>If <code>session2</code> is not provided, a new LLaMA session is created using the <code>createSession</code> function from the <code>llama vision</code> module.</li>
-<li>The <code>prompt</code> is sent to the LLaMA session using the <code>prompt</code> method.</li>
-<li>The <code>temperature</code>, <code>repetition_penalty</code>, and <code>onTextChunk</code> options are passed to the <code>prompt</code> method to customize the voice output.</li>
-<li>If the current session is the same as the created session, the chat history is reset using the <code>setChatHistory</code> method.</li>
-<li>The resulting voice output is returned.</li>
+<li>If <code>session2</code> is not provided, a new session is created using the <code>importer.import('llama vision')</code> module.</li>
+<li>The function sends the <code>prompt</code> to the LLaMA model using the <code>session2.prompt</code> method with the following parameters:
+<ul>
+<li><code>temperature</code>: Set to 0.1.</li>
+<li><code>repetition_penalty</code>: Set to 1.1.</li>
+<li><code>onTextChunk</code>: A callback function that writes the generated text to the standard output.</li>
+</ul></li>
+<li>The generated result is then returned.</li>
+<li>If the provided <code>session2</code> is the same as the current session, the chat history is reset.</li>
 </ol>
-<h3>Module Export</h3>
-<p>The <code>llmVoice</code> function is exported as a module, making it available for use in other JavaScript files.</p>
+<h3>Export</h3>
+<p>The <code>llmVoice</code> function is exported as a module.</p>
 
 </body>
 

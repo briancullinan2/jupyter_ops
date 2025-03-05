@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function: <code>promiseOrResolve</code></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Fetches the value of a property from an object, either resolving the value if it exists
+ * or resolving a promise that populates the property.
+ *
+ * @param {Object} obj The object to query.
+ * @param {string} property The property to fetch.
+ * @param {Function} cb A callback function that returns a promise to populate the property.
+ * @returns {Promise} A promise that resolves with the property value.
+ */
+function promiseOrResolve(obj, property, cb) {
+  // Check if the object exists and the property is defined
+  if (obj &amp;&amp; typeof obj[property]!== 'undefined') {
+    // If the property exists, resolve with its value
+    return Promise.resolve(obj[property]);
+  }
+
+  // If the property doesn't exist, call the callback to populate it
+  return Promise.resolve(cb(obj)).then((value) =&gt; {
+    // Assign the populated value to the property
+    obj[property] = value;
+    // Return the populated property value
+    return value;
+  });
+}
+
+module.exports = promiseOrResolve;</code></pre></div><h2>Function: <code>promiseOrResolve</code></h2>
 <h3>Description</h3>
 <p>A utility function that returns a promise or resolves a value based on the availability of a property on an object.</p>
 <h3>Parameters</h3>

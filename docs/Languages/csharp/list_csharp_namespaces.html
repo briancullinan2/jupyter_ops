@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importAntlrTree } = require('./importer'); // assume importer is a custom module
+
+/**
+ * Retrieves namespaces by size from C# code using ANTLR tree.
+ * 
+ * @param {string} code - The C# code to parse.
+ * @returns {Promise<string[]>} An array of namespace names in descending order of namespace size.
+ */
+async function getNamespacesBySize(code) {
+  // TODO: Consider caching ANTLR tree imports for performance
+  const antlrTree = await importAntlrTree('select');
+
+  // Extract namespace declarations from the code
+  const namespaceDeclarations = antlrTree(['//namespace_declaration'], code, 'csharp');
+
+  // Filter out namespace declarations with empty names
+  const namedDeclarations = namespaceDeclarations.filter(decl => decl.name);
+
+  // Sort namespace declarations by size in descending order
+  namedDeclarations.sort((a, b) => (b.stop - b.start) - (a.stop - a.start));
+
+  // Return an array of namespace names
+  return namedDeclarations.map(decl => decl.name);
+}
+
+module.exports = getNamespacesBySize;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function: <code>getNamespacesBySize</code></h4>
 <ul>
 <li><p><strong>Purpose:</strong> Retrieves namespaces from C# code based on their size.</p></li>

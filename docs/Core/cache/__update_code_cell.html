@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./test_export_cache.html">test export cache</a> | <a href="./update_regular_cache.html">update regular cache</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides a function to update the content of a specific code cell in a Jupyter Notebook file by replacing its existing code with new code.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- ", update code cell"</code></pre><h1>, update code cell</h1>
 
@@ -138,35 +144,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>updateCode</code> that modifies a Jupyter Notebook file by replacing the content of a specific code cell.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Dependencies:</strong></p>
-<ul>
-<li><code>assert</code>: Used for making assertions to ensure the code is working as expected.</li>
-<li><code>fs</code>: Used for reading and writing files.</li>
-</ul></li>
-<li><p><strong><code>updateCode(cell, code)</code> Function:</strong></p>
-<ul>
-<li>Takes two arguments:
-<ul>
-<li><code>cell</code>: An object containing information about the target code cell (filename, starting and ending indices).</li>
-<li><code>code</code>: The new code to be inserted into the cell.</li>
-</ul></li>
-<li>Reads the entire notebook file from disk using <code>fs.readFileSync</code>.</li>
-<li>Parses the JSON content of the notebook file.</li>
-<li>Uses a regular expression <code>/\/\/.*/ig</code> to find a comment starting with <code>//</code> in the new code.</li>
-<li>Asserts that a comment was found and is at least 2 characters long.</li>
-<li>Asserts that the code cell to be updated exists in the notebook and contains the found comment.</li>
-<li>Replaces the content of the target code cell in the notebook object with the new code.</li>
-<li>Writes the modified notebook file back to disk using <code>fs.writeFileSync</code>.</li>
-</ul></li>
-<li><p><strong><code>module.exports</code>:</strong></p>
-<ul>
-<li>Exports the <code>updateCode</code> function for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p>In essence, this code provides a way to programmatically update the content of a specific code cell in a Jupyter Notebook file.</p>
 
 </body>
 

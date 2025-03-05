@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import * as fs from 'fs';
+import * as path from 'path';
+
+// Define constants for file paths
+const polyfillsFilePath = './sosmethod/dist/www/polyfills.59868df8094f160adda5.js';
+const vendorFilePath = './sosmethod/dist/www/vendor.59868df8094f160adda5.js';
+const appFilePath = './sosmethod/dist/www/app.59868df8094f160adda5.js';
+
+// Define a function to read and encode files
+function readFileAndEncode(filePath: string): string {
+  try {
+    const fileBuffer = fs.readFileSync(filePath);
+    return fileBuffer.toString('base64');
+  } catch (err) {
+    console.error(`Error reading file: ${err}`);
+    return '';
+  }
+}
+
+// Read and encode files
+const polyfillsContent = readFileAndEncode(polyfillsFilePath);
+const vendorContent = readFileAndEncode(vendorFilePath);
+const appContent = readFileAndEncode(appFilePath);
+
+// Define the HTML template
+const htmlTemplate = `
+  <bc-app style="position:relative;display:block;min-height:600px;min-width:600px;">
+    hello!
+    <script type="application/javascript">
+      eval(atob('%s'));
+    </script>
+    <script type="application/javascript">
+      eval(atob('%s'));
+    </script>
+    <script type="application/javascript">
+      eval(atob('%s'));
+    </script>
+  </bc-app>
+`;
+
+// Generate the final HTML string
+const finalHtml = htmlTemplate
+ .replace('%s', polyfillsContent)
+ .replace('%s', vendorContent)
+ .replace('%s', appContent);
+
+// TODO: Consider using a templating engine for easier maintenance and separation of concerns
+// TODO: Add error handling for edge cases (e.g., file not found, invalid file format)
+
+console.log(finalHtml);</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">const fs = require('fs');
 </code></pre>

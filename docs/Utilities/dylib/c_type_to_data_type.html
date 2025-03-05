@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Breakdown of the Code</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Maps JavaScript types to DataType objects.
+ *
+ * @param {number} returnLength - The length of the return value.
+ * @param {string} returnType - The type of the return value (e.g., 'void', 'double', 'float', etc.).
+ * @param {string} dataType - The data type to use for the return value.
+ * @returns {DataType | { type: DataType, length: number }} The DataType object or array constructor.
+ */
+const { DataType, arrayConstructor } = require('ffi-rs');
+
+function typeToDataType(returnLength, returnType, dataType) {
+  // Use a lookup table to improve performance
+  const typeLookup = {
+    'void': { dataType: DataType.Void, arrayType: DataType.StackArray },
+    'double': { dataType: DataType.Double, arrayType: DataType.DoubleArray },
+    'float': { dataType: DataType.Double, arrayType: DataType.DoubleArray },
+    'int': { dataType: DataType.I32, arrayType: DataType.I32Array },
+    'char': { dataType: DataType.String, arrayType: DataType.StringArray },
+  };
+
+  // Get the type from the lookup table or use a default value
+  const typeInfo = typeLookup[returnType] || { dataType, arrayType: dataType };
+
+  // If the return length is greater than 1, use the array type
+  if (returnLength &gt; 1) {
+    return arrayConstructor({ type: typeInfo.arrayType, length: returnLength });
+  }
+
+  // Otherwise, use the single value type
+  return typeInfo.dataType;
+}
+
+module.exports = typeToDataType;</code></pre></div><h3>Breakdown of the Code</h3>
 <h4>Overview</h4>
 <p>The code exports a function <code>typeToDataType</code> which takes three parameters: <code>returnLength</code>, <code>returnType</code>, and <code>dataType</code>. It is designed to convert these parameters into an object compatible with the <code>ffi-rs</code> library.</p>
 <h4>Parameters</h4>

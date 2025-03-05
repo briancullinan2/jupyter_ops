@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function <code>getAllUntil</code></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { By } = require('selenium-webdriver');
+const { scrollSpecificElement } = require('../Core');
+const { seleniumSelect } = require('../Core');
+
+async function getAllUntil(driver, scrollableSelector, dataSelector, compare = (a, b) =&gt; a === b, cb = (i, set) =&gt; i &lt; 3, set = [], up = false, i = 0) {
+    /**
+     * Recursive function to retrieve data from a scrollable element until a condition is met.
+     *
+     * @param {object} driver - Selenium WebDriver instance.
+     * @param {string} scrollableSelector - CSS selector for the scrollable element.
+     * @param {string} dataSelector - CSS selector for the data to retrieve.
+     * @param {function} compare - Function to compare elements (default: equality).
+     * @param {function} cb - Callback function to determine if retrieval should continue (default: less than 3 iterations).
+     * @param {array} set - Set of retrieved elements.
+     * @param {boolean} up - Scroll direction (default: false).
+     * @param {number} i - Current iteration (default: 0).
+     * @returns {array} Set of retrieved elements.
+     */
+    const result = await seleniumSelect(driver, dataSelector);
+    const filtered = result.filter((element, index) =&gt;!set.some((setElement) =&gt; compare(element, setElement)));
+
+    set = [...set,...filtered];
+    if (filtered.length &gt; 0 &amp;&amp; await cb(i, set)) {
+        await scrollSpecificElement(driver, scrollableSelector, up);
+        await new Promise(resolve =&gt; setTimeout(resolve, 2500));
+        await scrollSpecificElement(driver, scrollableSelector, up);
+        await new Promise(resolve =&gt; setTimeout(resolve, 2500));
+        return await getAllUntil(driver, scrollableSelector, dataSelector, compare, cb, set, up, i + 1);
+    }
+    return set;
+}
+
+module.exports = getAllUntil;</code></pre></div><h2>Function <code>getAllUntil</code></h2>
 <h3>Overview</h3>
 <p><code>getAllUntil</code> is an asynchronous function that retrieves and filters data from the DOM using Selenium WebDriver.</p>
 <h3>Parameters</h3>

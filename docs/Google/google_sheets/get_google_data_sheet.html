@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,64 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getDataSheet</code> that fetches and processes data from a specific worksheet in a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required module and function
+const getRows = require('../Core').import('get worksheet rows');
+
+/**
+ * Transforms a 2D array into a 1D array of objects.
+ * 
+ * @param {Array} rows - The 2D array to transform.
+ * @param {Array} columns - The header row containing column names.
+ * @returns {Array} An array of objects, where each object represents a row.
+ */
+function rowsToObjects(rows, columns) {
+    // Check if the input rows and columns are valid arrays
+    if (!Array.isArray(rows) ||!Array.isArray(columns)) {
+        throw new Error('Invalid input: rows and columns must be arrays');
+    }
+
+    // Use Array.prototype.map to create a new array of objects
+    return rows.slice(1).map((row, index) =&gt; {
+        // Check if the row has the same length as the header row
+        if (row.length!== columns.length) {
+            throw new Error(`Invalid row at index ${index}: length does not match header row`);
+        }
+
+        // Use Object.fromEntries to create a new object with column names as keys
+        return Object.fromEntries(row.map((cell, columnIndex) =&gt; [columns[columnIndex], cell]));
+    });
+}
+
+/**
+ * Retrieves a data sheet from a Google Sheets link and worksheet name.
+ * 
+ * @param {String} link - The link to the Google Sheets document.
+ * @param {String} worksheet - The name of the worksheet to retrieve.
+ * @returns {Promise} A promise resolving to an array of objects, where each object represents a row.
+ */
+async function getDataSheet(link, worksheet) {
+    // Use a try-catch block to handle errors when retrieving the rows
+    try {
+        // Call the getRows function to retrieve the rows
+        const rows = await getRows(link, worksheet);
+        
+        // Check if the rows are valid
+        if (!rows || rows.length === 0) {
+            throw new Error('Failed to retrieve rows');
+        }
+
+        // Call the rowsToObjects function to transform the rows into objects
+        return rowsToObjects(rows, rows[0]);
+    } catch (error) {
+        // Log the error and rethrow it
+        console.error('Error retrieving data sheet:', error);
+        throw error;
+    }
+}
+
+// Export the getDataSheet function
+module.exports = getDataSheet;</code></pre></div><p>This code defines a function <code>getDataSheet</code> that fetches and processes data from a specific worksheet in a Google Sheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

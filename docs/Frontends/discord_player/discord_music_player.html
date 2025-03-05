@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand,
+} = require('discord-api').commands;
+
+const {
+  interactionsCommands,
+} = require('discord-gateway').interactions;
+
+const {
+  discordExpress,
+  closeExpress,
+} = require('discord-music-player-server').server;
+
+const {
+  doMention,
+  doPrivate,
+} = require('discord-llm-interactions').interactions;
+
+const ALL_COMMANDS = ['browse'];
+
+/**
+ * Register, update, or delete bot commands for a guild.
+ * 
+ * @param {string} [guildId] - The ID of the guild to register commands for.
+ * @returns {Promise&lt;object[]&gt;} A list of registered commands.
+ */
+async function playerCommands(guildId) {
+  // Get the current commands for the guild.
+  const commandResult = await getCommands(guildId);
+
+  // Register custom interactions.
+  interactionsCommands['startActivity'] = discordExpress;
+  interactionsCommands['endActivity'] = closeExpress;
+  interactionsCommands['promptMention'] = doMention;
+  interactionsCommands['promptPrivate'] = doPrivate;
+
+  // Define the command to register or update.
+  const cmdDef = {
+    name: 'browse',
+    description: 'Launch the music player',
+    type: 4,
+    handler: 2,
+  };
+
+  // Check if the command already exists.
+  const existingCommand = commandResult.find((c) =&gt; c.name === cmdDef.name);
+
+  // Register or update the command.
+  if (!existingCommand) {
+    await registerCommand(cmdDef, null, guildId);
+  } else {
+    // Update the command if its definition has changed.
+    if (
+      cmdDef.name!== existingCommand.name ||
+      cmdDef.description!== existingCommand.description
+    ) {
+      await updateCommand(cmdDef, null, existingCommand.id, guildId);
+    }
+  }
+
+  // Remove any commands that are not in the ALL_COMMANDS list.
+  const toRemove = commandResult.filter((c) =&gt;!ALL_COMMANDS.includes(c.name));
+  await Promise.all(toRemove.map((c) =&gt; deleteCommand(c.id, guildId)));
+
+  // Return the list of registered commands.
+  return await getCommands();
+}
+
+module.exports = playerCommands;</code></pre></div><h3>Code Overview</h3>
 <p>This is a JavaScript module that exports an asynchronous function <code>playerCommands</code>. The function manages Discord bot commands using the Discord API.</p>
 <h3>Imported Modules</h3>
 <p>The code imports the following modules:</p>

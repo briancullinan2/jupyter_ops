@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,70 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>scanCommandsEmail</code> that processes incoming emails containing commands, filters them, retrieves relevant information, and sends back responses.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { searchImap, sendEmail, getOauthClient, filterCommand, storeResult } = require('../Core');
+
+const scanCommandsEmail = async () => {
+  try {
+    const messages = await searchImap('*','megamind', 1, 'Megamind');
+    const flattenedMessages = messages.flatten();
+
+    const friends = await getFriends(flattenedMessages);
+    const hasCommands = await filterFriends(friends);
+
+    const responses = await getResponses(hasCommands);
+    await sendResponses(responses);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getFriends = async (messages) => {
+  // get settings for each
+  const hasCommands = messages.map((message) => ({
+    id: `Email: ${message.id}`,
+    command: (new RegExp('megamind (.*?)')).exec(message.subject)[1].trim(),
+    date: message.date,
+    email: message.email,
+  }));
+
+  return hasCommands.filter((f) => f.command.length > 0 &&!f.body.match(/^\s* Mm\s*$/gm));
+};
+
+const filterFriends = async (friends) => {
+  const promises = friends.map(async (friend) => {
+    return filterCommand(friend.command, friend.date, friend.id, friend.email);
+  });
+
+  return Promise.all(promises);
+};
+
+const getResponses = async (friends) => {
+  const promises = friends.map(async (friend) => {
+    return storeResult(friend).then((response) => ({
+     ...friend,
+      response,
+    }));
+  });
+
+  return Promise.all(promises);
+};
+
+const sendResponses = async (responses) => {
+  await Promise.all(responses.map(async (response) => {
+    await sendEmail(response.email, JSON.stringify(response.response, null, 4) + '\n Mm\n', response.subject);
+    return response;
+  }));
+};
+
+module.exports = scanCommandsEmail;
+
+if (typeof $!== 'undefined') {
+  $.async();
+  scanCommandsEmail()
+   .then((r) => $.sendResult(r))
+   .catch((e) => $.sendError(e));
+}</code></pre></div><p>This code defines a function <code>scanCommandsEmail</code> that processes incoming emails containing commands, filters them, retrieves relevant information, and sends back responses.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong> It imports several functions from a custom <code>importer</code> module, including <code>searchImap</code> for fetching emails, <code>sendEmail</code> for sending responses, <code>filterCommand</code> for processing commands, and <code>storeResult</code> for storing results.</p></li>

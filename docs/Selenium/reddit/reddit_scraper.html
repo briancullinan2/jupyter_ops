@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function: redditLinks</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client, Builder } = require('selenium-webdriver');
+const { URL } = require('url');
+const { By, until } = require('selenium-webdriver');
+
+async function redditLinks(subreddit, driver = null) {
+  const url = new URL(`https://www.reddit.com/r/${subreddit}`);
+  driver??= await new Builder().forBrowser('chrome').build();
+  try {
+    await driver.get(url.href);
+
+    await driver.wait(until.elementLocated(By.css('body')), 1000);
+
+    const links = await driver.findElements(By.xpath('//div[contains(@role, "main")]//div[contains(@class, "link") and not(contains(@class, "linklisting")) and not(contains(@class, "promoted"))]'));
+
+    const results = await Promise.all(links.map(async (link) =&gt; {
+      const title = await link.findElement(By.xpath('.//a[contains(@class, "title")]/text()')).getText();
+      const linkHref = await link.findElement(By.xpath('.//a[contains(@class, "title")]/@href')).getAttribute('href');
+      const time = await link.findElement(By.xpath('.//time/@datetime')).getAttribute('datetime');
+      const comment = await link.findElement(By.xpath('.//a[contains(@class, "comments")]/text()')).getText();
+      return { title, link: linkHref.startsWith('/')? `${url.origin}/${linkHref}` : linkHref, time, comment };
+    }));
+
+    const next = await driver.findElement(By.xpath('//a[contains(@rel, "next")]/@href')).getAttribute('href');
+
+    const objectArray = results.map((r) =&gt; ({...r, time: new Date(r.time) }));
+    objectArray.push({ next });
+
+    await driver.quit();
+
+    return objectArray;
+  } catch (error) {
+    await driver.quit();
+    throw error;
+  }
+}
+
+module.exports = redditLinks;</code></pre></div><h2>Function: redditLinks</h2>
 <h3>Parameters</h3>
 <ul>
 <li><code>driver</code>: an instance of Selenium WebDriver, or <code>null</code>/<code>undefined</code> to initialize a new instance.</li>

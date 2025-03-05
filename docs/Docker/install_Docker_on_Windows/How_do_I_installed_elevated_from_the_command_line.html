@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code downloads and extracts the &quot;elevate&quot; tool, a utility for running commands with elevated privileges on Windows.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { promisify } = require('util');
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+const childProcess = require('child_process');
+
+// Constants
+const ELEVATE_ZIP_URL = 'https://github.com/jpassing/elevate/releases/download/1.0/elevate.zip';
+const ELEVATE_ZIP_LOC = path.join(process.cwd(), 'elevate.zip');
+const EXPANDED_LOC = path.join(process.cwd(), 'elevate');
+
+// Define a function to download the elevate archive
+async function downloadElevate() {
+  const request = https.get(ELEVATE_ZIP_URL);
+  const writeStream = fs.createWriteStream(ELEVATE_ZIP_LOC);
+  return new Promise((resolve, reject) =&gt; {
+    request.on('response', (r) =&gt; {
+      writeStream.on('finish', () =&gt; {
+        resolve(ELEVATE_ZIP_LOC);
+      });
+      r.pipe(writeStream).on('error', (e) =&gt; {
+        reject(e);
+      });
+    });
+  });
+}
+
+// Define a function to extract the archive
+async function extractElevate(archiveLoc) {
+  const expand = promisify(childProcess.exec);
+  try {
+    await expand(`powershell -c "Expand-Archive -Force ${archiveLoc} ${EXPANDED_LOC}"`);
+    console.log('downloaded and extracted elevate.exec');
+  } catch (e) {
+    console.error('Error extracting archive:', e);
+  }
+}
+
+// Download and extract the elevate archive
+downloadElevate()
+ .then((archiveLoc) =&gt; extractElevate(archiveLoc))
+ .catch((e) =&gt; console.error('Error downloading or extracting archive:', e));</code></pre></div><p>This code downloads and extracts the &quot;elevate&quot; tool, a utility for running commands with elevated privileges on Windows.</p>
 <p><strong>Breakdown:</strong></p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

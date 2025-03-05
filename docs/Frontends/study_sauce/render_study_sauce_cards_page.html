@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { v1: uuid } = require('uuid');
+const { Readable } = require('stream');
+const importer = require('../Core');
+const { getTemplates, getTemplateProperties, wrapTemplate, collectTemplateResources } = importer.import([
+  'templates google sheet',
+  'google sheet template properties',
+  'output google sheet template',
+  'collect template resources'
+]);
+
+const parseCards = (str) =&gt; str.split('\n').map(line =&gt; {
+  const values = line.split(',');
+  return {
+    type: values[0],
+    prompt: values[1],
+    answer: values[2],
+    'possible-1': values[2],
+    'possible-2': values[3],
+    'possible-3': values[4],
+    'possible-4': values[5],
+  };
+});
+
+const generateResources = async (name, properties, templates, bucket) =&gt; {
+  try {
+    const resources = await collectTemplateResources(`cards/${name}.html`, await wrapTemplate('cards/' + name, 'cards', properties['cards-cards'], Object.assign(properties, {
+      'cards-cards-link': '/cards/' + name,
+      'cards-data': (await parseCards(properties['demo-text'] || properties['cards-data']))
+       .map(c =&gt; Object.assign(c, {cards: '/cards/' + name}))
+    })), properties, templates, bucket);
+    return console.log(resources), `/cards/${name}.html`;
+  } catch (error) {
+    throw new Error(`Failed to generate resources: ${error.message}`);
+  }
+};
+
+const renderCards = async (cards) =&gt; {
+  if (typeof cards ==='string') {
+    cards = parseCards(cards);
+  }
+
+  const name = uuid().substr(0, 5) + (new Date()).getTime();
+  const properties = {};
+
+  const templates = await getTemplates(process.env.DOCID);
+  templates['cards'].data.rows = properties['cards-data'];
+  templates['cards-cards'] = {template: {rows: [[`{{&gt; cards/cards-cards-link}}`]]}};
+
+  await Promise.all([
+    getTemplateProperties('app', properties, templates),
+    getTemplateProperties('demo', properties, templates),
+    getTemplateProperties('cards-cards', properties, templates)
+  ]);
+
+  return generateResources(name, properties, templates, process.env.BUCKET);
+};
+
+module.exports = renderCards;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>The provided code appears to be a Node.js module that handles card data rendering and templating for a Google Sheets integration. It consists of the following main components:</p>
 <h3>Importing Dependencies</h3>
 <ul>

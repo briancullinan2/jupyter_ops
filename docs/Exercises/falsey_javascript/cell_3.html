@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Returns the first truthy value from a list of values.
+ * 
+ * @param {...any} values - A variable number of values to check.
+ * @returns {any} The first truthy value.
+ */
+function getTruthyValue(...values) {
+    // This function uses the short-circuit behavior of || to find the first truthy value
+    // It's a more concise and efficient way to do this, but the commented-out version
+    // shows how the filter and indexing approach works.
+    // return values.filter(Boolean)[0];
+
+    // Instead, we can use the || idiom to simplify the code
+    return values.find(Boolean) || null;
+}
+
+console.log(getTruthyValue(0, 1));</code></pre></div><h3>Code Breakdown</h3>
 <h4>Line 1</h4>
 <pre><code class="language-javascript">console.log(0 || 1)
 </code></pre>

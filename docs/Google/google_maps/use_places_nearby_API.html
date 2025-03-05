@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet searches for places near a given location using the Google Maps Places API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules and promisify the request function
+const axios = require('axios');
+const API_KEY = 'AIzaSyDVoQW6NTPuVz8ClOtl0ShITBr_E2sP4l0';
+
+/**
+ * Perform a text search or a nearby search for places
+ * @param {string} name - The name of the place to search for
+ * @param {Object} [options] - Options for the search
+ * @param {number} [options.lat] - The latitude of the location
+ * @param {number} [options.lng] - The longitude of the location
+ * @returns {Promise<Array>} A promise that resolves to an array of place results
+ */
+async function placesNearby(name, options = {}) {
+    // Log the search query
+    globalThis.console.info(`Searching for '${name}'`);
+
+    // Construct the API URL
+    const baseUri = 'https://maps.googleapis.com/maps/api/place/';
+
+    // Determine whether to perform a text search or a nearby search
+    const isNearby = Object.keys(options).some(key => ['lat', 'lng'].includes(key));
+
+    // Construct the API endpoint and query parameters
+    const endpoint = isNearby? 'nearbysearch' : 'textsearch';
+    const query = isNearby
+       ? `?name=${encodeURIComponent(name)}&location=${options.lat},${options.lng}&rankby=distance&key=${API_KEY}`
+        : `?query=${encodeURIComponent(name)}&key=${API_KEY}`;
+
+    try {
+        // Perform the API request
+        const response = await axios.get(`${baseUri}${endpoint}/json${query}`);
+
+        // Return the results
+        return response.data.results;
+    } catch (error) {
+        // Log any errors that occur
+        globalThis.console.error(`Error performing search: ${error.message}`);
+        throw error;
+    }
+}
+
+// Export the placesNearby function
+module.exports = placesNearby;
+
+// If this is a browser environment, perform the search and pass the results to the sendResult function
+if (typeof $!== 'undefined') {
+    $().then(() => {
+        placesNearby('Kazimierz World Wine Bar near', { lat: 33.505033, lng: -111.926218 })
+           .then(results => {
+                // Perform a details search on the first result
+                return placeDetails(results[0].place_id);
+            })
+           .then(details => {
+                // Update the first result with the details
+                results[0].details = details;
+                // Send the updated results to the server
+                return $().sendResult(results);
+            })
+           .catch(error => {
+                // Send any errors to the server
+                return $().sendError(error);
+            });
+    });
+}
+
+// TODO: Implement a placeDetails function to fetch additional details about a place
+async function placeDetails(placeId) {
+    // TODO: Implement the placeDetails function using the Google Maps Places API
+}</code></pre></div><p>This code snippet searches for places near a given location using the Google Maps Places API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,86 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to scrape Facebook event data from a set of HTML files and store the results in a JSON file. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const glob = require('glob');
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const runSeleniumCell = importer.import('selenium cell');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Conversations');
+
+class FacebookEventScraper {
+  constructor() {
+    this.filename = path.join(PROJECT_PATH, 'events.json');
+    this.loginFacebook = null;
+    this.scrapeFacebookEvent = null;
+  }
+
+  async scrapeFacebookEvents() {
+    try {
+      const eventFiles = await this.getFileNamesMatchingPattern();
+      const loginResponse = await runSeleniumCell([
+        'log in facebook',
+        'facebook event'
+      ]);
+      this.loginFacebook = loginResponse[0];
+      this.scrapeFacebookEvent = loginResponse[1];
+
+      await this.loginFacebook();
+
+      const events = await Promise.all(
+        eventFiles.map(async (file) => {
+          const filePath = path.join(PROJECT_PATH, file);
+          return this.getEventsFromHtmlFile(filePath);
+        })
+      );
+
+      const uniqueEvents = [...new Set(events.flat())];
+      const facebookEvents = await Promise.all(
+        uniqueEvents.map(async (event) => {
+          return await this.scrapeFacebookEvent(event);
+        })
+      );
+
+      await this.writeEventsToJSONFile(facebookEvents);
+      return facebookEvents;
+    } catch (error) {
+      console.error('Error occurred while scraping Facebook events:', error);
+      throw error;
+    }
+  }
+
+  async getFileNamesMatchingPattern() {
+    return glob.sync(
+      '**/*@(Past|Events|Cullinan).htm',
+      { cwd: PROJECT_PATH }
+    );
+  }
+
+  async getEventsFromHtmlFile(filePath) {
+    const html = await this.readHtmlFile(filePath);
+    return this.regexToArray(/href="([^"?]*)/ig, html, 1)
+     .filter((h) => h.indexOf('.js') === -1)
+     .filter((h) => h.indexOf('.css') === -1)
+     .filter((h) => h.match(/events\/[0-9]+/ig));
+  }
+
+  async readHtmlFile(filePath) {
+    return fs.readFileSync(filePath).toString();
+  }
+
+  regexToArray(regex, str, index) {
+    return importer.regexToArray(regex, str, index);
+  }
+
+  async writeEventsToJSONFile(events) {
+    fs.writeFileSync(this.filename, JSON.stringify(events, null, 4));
+  }
+}
+
+module.exports = FacebookEventScraper.prototype.scrapeFacebookEvents;</code></pre></div><p>This code snippet is designed to scrape Facebook event data from a set of HTML files and store the results in a JSON file. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
 <ul>
 <li><code>glob</code>: Used for finding files matching a pattern.</li>

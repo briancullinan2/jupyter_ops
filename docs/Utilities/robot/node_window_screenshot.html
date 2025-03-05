@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const { Window } = require('node-screenshots');
+
+/**
+ * Captures a screenshot of a specific window.
+ * 
+ * @param {string|number} window - The title or index of the window to capture.
+ * @returns {string|undefined} The screenshot as a PNG string or undefined if the window is not found.
+ */
+async function screenshotWindow(window) {
+  // Validate input
+  if (typeof window!=='string' &amp;&amp; typeof window!== 'number') {
+    throw new Error('Invalid window input. Must be a string or number.');
+  }
+
+  // Get all windows
+  const windows = await Window.all();
+
+  // Find the window to capture
+  let item = await getWindowItem(windows, window);
+
+  // If no window found, return undefined
+  if (!item) {
+    return;
+  }
+
+  // Capture the window image
+  const image = await item.captureImage();
+
+  // Return the screenshot as a PNG string
+  return await image.toPng();
+}
+
+/**
+ * Finds a window by title or index.
+ * 
+ * @param {Window[]} windows - The array of windows to search.
+ * @param {string|number} window - The title or index of the window to find.
+ * @returns {Window|undefined} The found window or undefined if not found.
+ */
+async function getWindowItem(windows, window) {
+  // Try to find by index (if it's a number)
+  if (!isNaN(parseInt(window))) {
+    return windows[window];
+  }
+
+  // Find by title (case-insensitive)
+  return windows.find(w =&gt; w.title.toLowerCase().includes(window.toLowerCase()));
+}
+
+module.exports = screenshotWindow;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requirements</h4>
 <p>The code requires two modules:</p>
 <ul>

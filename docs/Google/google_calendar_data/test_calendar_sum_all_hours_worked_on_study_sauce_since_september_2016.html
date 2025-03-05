@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches and summarizes Google Calendar events matching a specific query within a date range.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { Core } = require('../Core');
+const { google } = require('googleapis');
+
+// Initialize Google Calendar API client
+const calendar = google.calendar('v3');
+
+// Define utility functions
+const { sumEvents, listEvents, ISODateString } = Core.importFunctions([
+ 'sum a list of events',
+  'list events by date range and query',
+ 'sum a list of events',
+  'convert date to ISO string'
+]);
+
+// Define a function to get events by date range and query
+async function getEventsByDateRangeAndQuery(timeMin, timeMax, q) {
+  try {
+    const response = await listEvents({
+      timeMin,
+      timeMax,
+      q
+    });
+    return response.data.items;
+  } catch (error) {
+    // TODO: Handle API errors
+    console.error(error);
+    return [];
+  }
+}
+
+// Define a function to sum events
+async function sumEventsByDateRangeAndQuery(timeMin, timeMax, q) {
+  const events = await getEventsByDateRangeAndQuery(timeMin, timeMax, q);
+  const sum = events.reduce((acc, event) => acc + event.duration, 0);
+  return sum;
+}
+
+// Define a function to convert date to ISO string
+function dateToISO(date) {
+  return new Date(date).toISOString();
+}
+
+// Example usage
+async function main() {
+  const timeMin = dateToISO('2016/09/22');
+  const timeMax = dateToISO('2017/09/22');
+  const q ='study sauce';
+  
+  try {
+    const sum = await sumEventsByDateRangeAndQuery(timeMin, timeMax, q);
+    $.sendResult(sum);
+  } catch (error) {
+    $.sendError(error);
+  }
+}
+
+// Run the example
+main();</code></pre></div><p>This code snippet fetches and summarizes Google Calendar events matching a specific query within a date range.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

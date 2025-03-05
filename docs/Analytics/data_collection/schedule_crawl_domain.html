@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const google = require('googleapis');
+const { getOauthClient, ISODateString, createNewEvent } = require('../Core');
+
+/**
+ * Schedules a search on Google Calendar.
+ *
+ * @param {string} search - The search query to schedule.
+ * @returns {Promise} A promise that resolves with the scheduled event.
+ */
+async function scheduleSearch(search) {
+  // Use a more descriptive variable name for the parameters object
+  const searchQuery = {
+    query: search,
+  };
+
+  // Extract the current date to avoid recalculating it on every function call
+  const currentDate = new Date();
+
+  // Use async/await to simplify the code and make it easier to read
+  try {
+    // Get the OAuth client, but only if it's not already available
+    const oauthClient = await getOauthClient();
+    if (!oauthClient) {
+      // If the OAuth client is not available, return an empty array
+      return [];
+    }
+
+    // Create a new event with the provided parameters
+    const event = await createNewEvent('crawl domain', JSON.stringify(searchQuery, null, 4), oauthClient);
+
+    // Return the scheduled event
+    return event;
+  } catch (error) {
+    // Log any errors that occur during the scheduling process
+    // TODO: Implement error logging mechanism
+    console.error('Error scheduling search:', error);
+    return null;
+  }
+}
+
+module.exports = scheduleSearch;
+```</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requirements and Imports</h4>
 <pre><code class="language-javascript">var google = require('googleapis');
 var importer = require('../Core');

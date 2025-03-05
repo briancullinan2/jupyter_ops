@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -150,7 +157,123 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet automates the setup of a Selenium testing environment on a Linux machine.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define environment variables
+DEBIAN_DISTRO=xenial
+SECURITY_SOURCE=security.ubuntu.com
+UPDATES_SOURCE=xenial-updates
+RECOMMENDATIONS=false
+
+# Function to update package list
+update_packages() {
+  apt-get update -qqy
+}
+
+# Function to install packages
+install_packages() {
+  apt-get install -qqy --no-install-recommends "$@"
+}
+
+# Function to make directory
+make_directory() {
+  sudo mkdir -p "$1"
+}
+
+# Function to change ownership
+change_ownership() {
+  sudo chown "$1" "$2"
+}
+
+# Function to download file
+download_file() {
+  wget --no-verbose -O "$1" "$2"
+}
+
+# Function to add key to apt
+add_key() {
+  apt-key add - &lt;&lt;&lt; "$1"
+}
+
+# Function to generate locales
+generate_locales() {
+  locale-gen "$1"
+}
+
+# Update package list
+update_packages
+
+# Install base packages
+install_packages \
+  bzip2 \
+  ca-certificates \
+  openjdk-8-jre-headless \
+  tzdata \
+  sudo \
+  unzip \
+  wget \
+  x11vnc \
+  locales \
+  xvfb
+
+# Configure timezone
+echo "UTC" &gt; /etc/timezone
+dpkg-reconfigure --frontend noninteractive tzdata
+
+# Create user
+useradd seluser --shell /bin/bash --create-home
+
+# Add user to sudo group
+usermod -a -G sudo seluser
+
+# Add sudo rules
+echo 'ALL ALL = (ALL) NOPASSWD: ALL' &gt;&gt; /etc/sudoers
+
+# Set user password
+echo'seluser:secret' | chpasswd
+
+# Create selenium directory
+make_directory /opt/selenium
+change_ownership seluser:seluser /opt/selenium
+
+# Download selenium server
+download_file /opt/selenium/selenium-server-standalone.jar \
+  https://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar
+
+# Add Google Chrome repository
+download_file - https://dl-ssl.google.com/linux/linux_signing_key.pub
+add_key
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google-chrome.list
+update_packages
+install_packages google-chrome-stable
+
+# Download chromedriver
+CD_VERSION=$(download_file - https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+echo "Using chromedriver version: $CD_VERSION"
+download_file /tmp/chromedriver_linux64.zip \
+  https://chromedriver.storage.googleapis.com/$CD_VERSION/chromedriver_linux64.zip
+rm /opt/selenium/chromedriver
+unzip /tmp/chromedriver_linux64.zip -d /opt/selenium
+rm /tmp/chromedriver_linux64.zip
+mv /opt/selenium/chromedriver /opt/selenium/chromedriver-$CD_VERSION
+chmod 755 /opt/selenium/chromedriver-$CD_VERSION
+ln -fs /opt/selenium/chromedriver-$CD_VERSION /usr/bin/chromedriver
+
+# Generate locales
+generate_locales en_US.UTF-8
+dpkg-reconfigure --frontend noninteractive locales
+
+# Install additional packages
+install_packages \
+  language-pack-en \
+  fonts-ipafont-gothic \
+  xfonts-100dpi \
+  xfonts-75dpi \
+  xfonts-cyrillic \
+  xfonts-scalable \
+  fluxbox</code></pre></div><p>This code snippet automates the setup of a Selenium testing environment on a Linux machine.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>System Configuration:</strong></p>

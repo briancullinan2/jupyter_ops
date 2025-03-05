@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const sqlite3 = require('better-sqlite3');
+const path = require('path');
+const moviesDbPath = path.join(__dirname,'movies.sqlite.db');
+const db = new sqlite3(moviesDbPath, {});
+
+/**
+ * Drops titles index and table.
+ */
+function dropTitles() {
+    // Drop titles index
+    db.prepare(`DROP INDEX IF EXISTS titles_titles`).run();
+    db.prepare(`DROP INDEX IF EXISTS titles_types`).run();
+    
+    // Drop names table
+    db.prepare(`
+        DROP TABLE IF EXISTS names
+    `).run();
+}
+
+/**
+ * Retrieves the count of names in the database.
+ * @returns {Promise<number>} The count of names.
+ */
+function getCountOfNames() {
+    return db.prepare('SELECT COUNT(*) FROM names').get().count;
+}
+
+// Call dropTitles function
+dropTitles();
+
+// Call getCountOfNames function
+getCountOfNames().then(count => {
+    console.log(`Count of names: ${count}`);
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Dependencies and Initialization</h4>
 <pre><code class="language-javascript">var sqlite3 = require('better-sqlite3');
 var movies = './movies.sqlite.db';

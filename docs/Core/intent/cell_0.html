@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import sys
+from notebook.exporters import NotebookExporter
+from intent.exporter import IntentExporter
+from rpc.client import RPCClient
+from database import Database
+from language import Language
+
+class Llama:
+    def __init__(self):
+        self.notebook_exporter = NotebookExporter()
+        self.intent_exporter = IntentExporter()
+        self.rpc_client = RPCClient()
+        self.database = Database()
+        self.language = Language()
+
+    def run(self):
+        if len(sys.argv) > 1:
+            if sys.argv[1] == 'notebook':
+                self.notebook_exporter.export()
+            elif sys.argv[1] == 'intent':
+                self.intent_exporter.transpile()
+            elif sys.argv[1] == 'rpc':
+                self.rpc_client.interact()
+            elif sys.argv[1] == 'database':
+                self.database.query()
+            elif sys.argv[1] == 'language':
+                self.language.translate()
+        else:
+            print('Please specify a command-line argument.')
+
+    def export_notebook(self, format):
+        self.notebook_exporter.export(format)
+
+    def transpile_intent(self, language):
+        self.intent_exporter.transpile(language)
+
+    def rpc(self, method, *args):
+        return self.rpc_client.call(method, *args)
+
+    def database(self, db_type):
+        return self.database.connect(db_type)
+
+    def language(self, lang):
+        return self.language.translate(lang)
+
+if __name__ == '__main__':
+    llama = Llama()
+    llama.run()</code></pre></div><h2>Code Breakdown</h2>
 <h3>Code Purpose</h3>
 <p>This code is an excerpt from a documentation or instructions on how to use a project called <code>jupyter_ops</code>.</p>
 <h3>Key Points</h3>

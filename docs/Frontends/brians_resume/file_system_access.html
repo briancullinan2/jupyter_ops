@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -198,7 +205,110 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>messageFilesystem</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const { promisify } = require('util');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+
+const readdir = promisify(fs.readdir);
+const readFile = promisify(fs.readFile);
+const stat = promisify(fs.stat);
+
+async function messageFilesystem(promptModel, session, prompt) {
+  const currentProject = path.basename(path.resolve(__dirname, '..'));
+  const availableProjects = await getAvailableProjects();
+
+  const relatedProjects = await getRelatedProjects(promptModel, availableProjects, prompt);
+  if (relatedProjects.length === 0) {
+    return getProjectInfo(currentProject, availableProjects);
+  }
+
+  const projectFiles = await getProjectFiles(relatedProjects[0]);
+  const relatedFiles = await getRelatedFiles(promptModel, projectFiles, prompt, currentProject);
+
+  return getProjectInfo(currentProject, availableProjects, relatedProjects, relatedFiles);
+}
+
+async function getAvailableProjects() {
+  return (await readdir(PROFILE_PATH))
+   .filter(dir =&gt; dir[0]!== '.')
+   .filter(dir =&gt; (await stat(path.join(PROFILE_PATH, dir))).isDirectory())
+   .filter(dir =&gt; (await fs.existsSync(path.join(PROFILE_PATH, dir, '.git'))));
+}
+
+async function getRelatedProjects(promptModel, availableProjects, prompt) {
+  const q1 = `Current project: ${path.basename(path.resolve(__dirname, '..'))}
+Available projects:\n${availableProjects.join('\n')}
+Are any of these project related to the current prompt:\n${prompt}
+Only respond with the project name or "No" if none are related.`;
+  console.log('User:'+ q1);
+  const a1 = await promptModel(q1);
+  console.log('AI:'+ a1);
+
+  return availableProjects.filter(dir =&gt; a1.match(dir));
+}
+
+async function getProjectInfo(currentProject, availableProjects, relatedProjects = [], relatedFiles = []) {
+  return `Current project: ${currentProject}
+Available projects:\n${availableProjects.join('\n')}
+Related projects:\n${relatedProjects.join('\n')}
+Related files:\n${relatedFiles.join('\n')}`;
+}
+
+async function getProjectFiles(projectName) {
+  return (await readdir(path.join(PROFILE_PATH, projectName)))
+   .filter(dir =&gt; dir[0]!== '.' &amp;&amp; dir!== 'node_modules')
+   .map(file =&gt; {
+      const currentPath = path.join(PROFILE_PATH, projectName, file);
+      if ((await stat(currentPath)).isDirectory()) {
+        return [file].concat((await getProjectFiles(currentPath)));
+      } else {
+        return file;
+      }
+    })
+   .flat(1);
+}
+
+async function getRelatedFiles(promptModel, projectFiles, prompt, currentProject) {
+  const relatedFiles = [];
+  if (currentProject === relatedProjects[0]) {
+    let q2 = `Current project: ${currentProject}
+Related projects:\n${relatedProjects.join('\n')}
+Project files:\n`;
+    let originalFilePrompt = q2;
+    let count = 0;
+    for (let i = 0; i &lt; projectFiles.length; i++) {
+      q2 += projectFiles[i] + '\n';
+      count++;
+      if (count === 25 || q2.length &gt; 2048) {
+        q2 += `\nAre any of the project files relevant to the prompt:\n${prompt}
+Only respond with the related file paths or file names, nothing else.`;
+        console.log('User:'+ q2);
+        let a2 = await promptModel(q2);
+        console.log('AI:'+ a2);
+        relatedFiles = relatedFiles.concat(projectFiles
+         .filter(file =&gt; a2.match(file) || a2.match(path.basename(file))));
+        count = 0;
+        q2 = originalFilePrompt;
+      }
+    }
+    if (q2.length!== originalFilePrompt.length || count &gt; 0) {
+      q2 += `\nAre any of the project files relevant to the prompt:\n${prompt}
+Only respond with the related file paths or file names, nothing else.`;
+      console.log('User:'+ q2);
+      let a2 = await promptModel(q2);
+      console.log('AI:'+ a2);
+      relatedFiles = relatedFiles.concat(projectFiles
+       .filter(file =&gt; a2.match(file) || a2.match(path.basename(file))));
+    }
+  }
+
+  return relatedFiles;
+}
+
+module.exports = messageFilesystem;</code></pre></div><p><strong>Function Breakdown: <code>messageFilesystem</code></strong></p>
 <p>This is an asynchronous function that interacts with the file system to provide information about available projects and their related files. It takes in three parameters:</p>
 <ul>
 <li><code>promptModel</code>: a model used to generate prompts</li>

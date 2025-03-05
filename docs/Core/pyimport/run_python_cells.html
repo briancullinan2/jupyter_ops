@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -179,7 +186,101 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import json
+import os
+import sys
+import types
+import asyncio
+import inspect
+from Core import interpret, import_notebook, get_parameter_names
+from concurrent.futures import ThreadPoolExecutor
+
+def get_notebook_path():
+    """Get the notebook path from the command line arguments."""
+    if len(sys.argv) < 2:
+        print("Usage: python script.py <notebook_path> <function_args>")
+        sys.exit(1)
+    return sys.argv[1]
+
+def get_function_args():
+    """Get the function arguments from the command line arguments."""
+    if len(sys.argv) < 3:
+        return []
+    return sys.argv[2:]
+
+def import_notebook(notebook_path):
+    """Import the notebook as a module."""
+    results = interpret(notebook_path)
+    module = import_notebook(notebook_path, globals())
+    return module
+
+def find_function(module):
+    """Find the first function in the module."""
+    if callable(module):
+        return module
+    for name in module:
+        attr = module[name]
+        if callable(attr):
+            return attr
+    return None
+
+def extract_parameters(module):
+    """Extract parameters and map inputs."""
+    params = []
+    if hasattr(module, '__annotations__'):
+        func_annotations = module.__annotations__
+        params = list(func_annotations.keys())
+    else:
+        params = get_parameter_names(module.__code__)
+    mapped_inputs = []
+    inputs = get_function_args()
+    for param in params:
+        for i, arg in enumerate(inputs):
+            if arg.startswith(f"--{param}="):
+                mapped_inputs.append(arg.split("=")[1])
+                break
+        else:
+            mapped_inputs.append(inputs.pop(0) if inputs else None)
+    return params, mapped_inputs
+
+def convert_types(module, params, mapped_inputs):
+    """Convert types based on function annotations (if available)."""
+    func_annotations = module.__annotations__ if hasattr(module, '__annotations__') else {}
+    for i, param in enumerate(params):
+        if param in func_annotations:
+            mapped_inputs[i] = func_annotations[param](mapped_inputs[i])
+
+def execute_function(module, params, mapped_inputs):
+    """Execute the function."""
+    if inspect.iscoroutinefunction(module):
+        return module(*mapped_inputs)
+    else:
+        return module(*mapped_inputs)
+
+async def run_internal():
+    notebook_path = get_notebook_path()
+    module = import_notebook(notebook_path)
+    func = find_function(module)
+    if not func:
+        print("No function found in the notebook.")
+        sys.exit(1)
+    params, mapped_inputs = extract_parameters(func)
+    convert_types(func, params, mapped_inputs)
+    return await execute_function(func, params, mapped_inputs)
+
+async def run_async():
+    return await asyncio.gather(run_internal())
+
+def run():
+    loop = asyncio.get_event_loop()
+    result = loop.run_until_complete(run_async())
+    if os.getenv('RUN_OUTPUT') == 'json':
+        result = json.dumps(result, indent=4)
+    print(result)
+
+if __name__ == "__main__":
+    run()</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing various Python modules:</p>
 <pre><code class="language-python">import json

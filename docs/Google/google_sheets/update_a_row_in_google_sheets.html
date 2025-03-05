@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,106 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>updateRow</code> that updates a specific row in a Google Sheet based on a matching condition.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+
+const authorizeSheets = async () =&gt; {
+    // TODO: Add auth logic here
+    // For now, we assume it's already set up
+    const auth = new google.auth.GoogleAuth();
+    const client = await auth.getClient();
+    const googleSheets = google.sheets({ version: 'v4', auth: client });
+    return googleSheets;
+};
+
+const getRows = async (spreadsheetId, sheetName) =&gt; {
+    try {
+        // Get rows from the spreadsheet
+        const sheets = await authorizeSheets();
+        const result = await sheets.spreadsheets.values.get({
+            spreadsheetId,
+            range: `${sheetName}!A:Z` // Assume we're looking at the first 26 columns
+        });
+        return result.data.values;
+    } catch (error) {
+        console.error(`Error getting rows: ${error}`);
+        return [];
+    }
+};
+
+const getSheetByName = async (spreadsheetId, sheetName) =&gt; {
+    // Get sheet by name
+    try {
+        const sheets = await authorizeSheets();
+        const result = await sheets.spreadsheets.get({
+            spreadsheetId,
+            fields:'sheets/data'
+        });
+        const sheet = result.data.sheets.find(sheet =&gt; sheet.properties.title === sheetName);
+        if (!sheet) {
+            throw new Error(`Sheet "${sheetName}" not found`);
+        }
+        return sheet;
+    } catch (error) {
+        console.error(`Error getting sheet: ${error}`);
+        return null;
+    }
+};
+
+const getOrderedValues = (columns, rowData) =&gt; ({
+    values: [columns.map(c =&gt; typeof rowData[c]!== 'undefined'? rowData[c] : null)]
+});
+
+const getRange = (title, columns, match, rows) =&gt; {
+    // Calculate the range based on the match
+    const row = rows.find(r =&gt; match(r.reduce((acc, c, i) =&gt; ({...acc, [columns[i]]: c }), {})));
+    if (!row) {
+        // If no match, add it to the end
+        const index = rows.length + 1;
+        return `'${title}'!A${index}:${String.fromCharCode(65 + columns.length - 1)}${index}`;
+    }
+    // Find the index of the matched row
+    const index = rows.indexOf(row) + 1;
+    return `'${title}'!A${index}:${String.fromCharCode(65 + columns.length - 1)}${index}`;
+};
+
+const updateRow = async (link, match, updateRow, page) =&gt; {
+    // TODO: Validate inputs
+    if (!link ||!match ||!updateRow ||!page) {
+        throw new Error('Invalid inputs');
+    }
+
+    // Get the sheet and rows
+    const sheet = await getSheetByName(link, page);
+    if (!sheet) {
+        throw new Error(`Sheet "${page}" not found`);
+    }
+    const rows = await getRows(link, sheet.properties.title);
+
+    // Calculate the columns
+    let columns;
+    if (Array.isArray(updateRow)) {
+        columns = updateRow;
+    } else {
+        columns = Object.keys(updateRow);
+    }
+
+    // Get the range to update
+    const range = getRange(sheet.properties.title, columns, match, rows);
+
+    // Update the row
+    const sheets = await authorizeSheets();
+    const result = await sheets.spreadsheets.values.update({
+        spreadsheetId: sheet.spreadsheetId,
+        range,
+        valueInputOption: 'RAW',
+        resource: getOrderedValues(columns, updateRow)
+    });
+    console.log(`Updated range ${range}`);
+    return result;
+};
+
+module.exports = updateRow;</code></pre></div><p>This code defines a function <code>updateRow</code> that updates a specific row in a Google Sheet based on a matching condition.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong> It imports necessary modules for interacting with Google Sheets, including <code>authorizeSheets</code>, <code>getSheetByName</code>, and <code>getRows</code>.</p></li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches events from a Google Calendar based on keywords and logs event summaries.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { getOauthClient, listEvents, correctCalendarId } = require('../Core');
+
+const searchCalendar = (search, calendar = null) => {
+  const options = { calendarId: calendar };
+
+  return Promise.resolve()
+   .then(() => getOauthClient(options))
+   .then(() => correctCalendarId(options))
+   .then(() => {
+      const promises = search.split('|').map(term => listEvents({
+        auth: options.auth,
+        calendarId: options.calendarId,
+        q: term
+      }));
+      return Promise.all(promises);
+    })
+   .then(events => {
+      console.log('Search results:');
+      console.log(events.map(e => e.event.summary).slice(0, 10));
+      return events;
+    })
+   .catch(error => {
+      console.error('Error:', error);
+      throw error;
+    });
+};
+
+module.exports = searchCalendar;
+
+// TODO: Refactor this block to remove global variables and improve maintainability
+if (typeof $!== 'undefined') {
+  $.async();
+  searchCalendar('blur')
+   .then(result => $.sendResult(result))
+   .catch(error => $.sendError(error));
+}</code></pre></div><p>This code snippet fetches events from a Google Calendar based on keywords and logs event summaries.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports functions for interacting with the Google Calendar API, including authentication, listing events, and handling calendar IDs.</p></li>

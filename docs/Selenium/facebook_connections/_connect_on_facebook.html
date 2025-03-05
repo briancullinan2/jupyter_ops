@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>friendsOnFacebook</code> that automates the process of sending friend requests on Facebook.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Sends a friend request to a user on Facebook using the provided profile and friends.
+ * 
+ * @param {string} profile - The Facebook profile URL.
+ * @param {array} friends - The friends array.
+ * @param {object} client - The Selenium WebDriver client.
+ * @returns {Promise} A promise that resolves when the friend request is sent.
+ */
+function friendsOnFacebook(profile, friends, client) {
+    // Check if the profile URL is valid
+    return client
+       .getUrl()
+       .then(url =&gt; url.indexOf(profile) &gt; -1? [] : client.url(`https://${profile}`))
+        // Check if the "Add Friend" button exists
+       .isExisting('//*[@id = "fbProfileCover"]//button[contains(., "Add Friend")]')
+       .then(isExisting =&gt; {
+            // If the button exists, send the friend request
+            if (isExisting) {
+                // Check if the "Add Friend" button is visible
+                return client
+                   .isVisible('//*[@id = "fbProfileCover"]//button[contains(., "Add Friend")]')
+                   .then(isVisible =&gt; {
+                        // If the button is visible, click it
+                        if (isVisible) {
+                            return client.click('//*[@id = "fbProfileCover"]//button[contains(., "Add Friend")]');
+                        } else {
+                            // If the button is not visible, return an empty array
+                            return [];
+                        }
+                    });
+            } else {
+                // If the button does not exist, return an empty array
+                return [];
+            }
+        })
+        // Pause the execution for 1 second
+       .pause(1000)
+        // Check if the "Confirm" button exists
+       .isExisting('//button[contains(., "Confirm")]')
+       .then(isExisting =&gt; {
+            // If the button exists, confirm the friend request
+            if (isExisting) {
+                // Check if the "Confirm" button is visible
+                return client
+                   .isVisible('//button[contains(., "Confirm")]')
+                   .then(isVisible =&gt; {
+                        // If the button is visible, click it
+                        if (isVisible) {
+                            return client.click('//button[contains(., "Confirm")]');
+                        } else {
+                            // If the button is not visible, return an empty array
+                            return [];
+                        }
+                    });
+            } else {
+                // If the button does not exist, return an empty array
+                return [];
+            }
+        })
+        // Pause the execution for 1 second
+       .pause(1000)
+        // Catch any errors that occur during the execution
+       .catch(e =&gt; console.log(e));
+}
+
+module.exports = friendsOnFacebook;</code></pre></div><p>This code snippet defines a function <code>friendsOnFacebook</code> that automates the process of sending friend requests on Facebook.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

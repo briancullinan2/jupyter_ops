@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -64,7 +71,7 @@
     <a href="../llm_tools/index.html">llm tools</a> | <a href="./cache_chat_logs.html">cache chat logs</a> | <a href="./llm_respond_like_a_personality.html">llm respond like a personality</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code consists of two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, which interact with a Large Language Model (LLM) to gather information about a conversation and categorize it based on the conversation. Both functions import the LLM prompt function from a separate module, prompt the LLM with a user-defined question, and return the LLM's response after processing it for whitespace, punctuation, and special characters.</p>
+  <p>This code defines two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, that utilize a large language model for text analysis and summarization. The functions are designed to work with a <code>create llm session</code> module and are exported as a JavaScript module.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm about chat conversations"</code></pre><h1>ask llm about chat conversations</h1>
@@ -115,49 +122,108 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<p>This code consists of two asynchronous functions, <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code>, which interact with a Large Language Model (LLM) to gather information about a conversation.</p>
-<h4>Function 1: <code>askLlamaAboutConversation</code></h4>
-<ul>
-<li>Prompts the LLM to summarize the conversation in two sentences.</li>
-<li>Expects the LLM to discard any pleasantries and only provide documentation.</li>
-<li>Returns the LLM's response after trimming any unnecessary whitespace.</li>
-</ul>
-<h4>Function 2: <code>askLlamaAboutCategory</code></h4>
-<ul>
-<li>Prompts the LLM to categorize the conversation in two or three words.</li>
-<li>Expects the LLM to only respond with the category.</li>
-<li>Returns the first word of the LLM's response, trimmed and cleaned of any whitespace, punctuation, or special characters.</li>
-</ul>
-<h4>Module Exports</h4>
-<p>Both functions are exported as part of a module, allowing them to be used in other parts of the application.</p>
-<h3>Function Signature</h3>
-<pre><code class="language-javascript">async function askLlamaAboutConversation(currentMessages) {
-  //...
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('./importer'); // assuming importer is defined in a separate file
+const logger = require('./logger'); // assuming a logger is defined in a separate file
+
+/**
+ * Asks Llama about the conversation category.
+ *
+ * @param {string[]} currentMessages - The current messages in the conversation.
+ * @returns {Promise<string>} The category of the conversation.
+ */
+async function askLlamaAboutConversation(currentMessages) {
+  // Import the LLM prompt function
+  const { llmPrompt } = await importer.import('createLlmSession');
+
+  // Prepare the prompt with the current messages
+  const prompt = `Can you summarize in two sentences what this conversation is about:
+${currentMessages.join('\n')}
+Please discard any pleasantries, documentation only.`;
+
+  // Log the user message
+  logger.log(`User: ${prompt}`);
+
+  try {
+    // Ask Llama for a response
+    const response = await llmPrompt(prompt);
+    // Log the AI response
+    logger.log(`AI: ${response}`);
+    // Return the response
+    return response.trim();
+  } catch (error) {
+    // Handle any errors that occur during the request
+    logger.error(`Error asking Llama about conversation: ${error.message}`);
+    throw error;
+  }
 }
 
+/**
+ * Asks Llama about the conversation category.
+ *
+ * @param {string[]} currentMessages - The current messages in the conversation.
+ * @returns {Promise<string>} The category of the conversation.
+ */
 async function askLlamaAboutCategory(currentMessages) {
-  //...
+  // Import the LLM prompt function
+  const { llmPrompt } = await importer.import('createLlmSession');
+
+  // Prepare the prompt with the current messages
+  const prompt = `Categorize this conversation in two or three words:
+${currentMessages.join('\n')}
+Only respond with the category.`;
+
+  // Log the user message
+  logger.log(`User: ${prompt}`);
+
+  try {
+    // Ask Llama for a response
+    const response = await llmPrompt(prompt);
+    // Log the AI response
+    logger.log(`AI: ${response}`);
+
+    // Extract the category from the response
+    const category = response.trim().split(/\s*\n\s*|,\s*|\s*- |\s*\* /gi)[0];
+
+    // Return the category
+    return category;
+  } catch (error) {
+    // Handle any errors that occur during the request
+    logger.error(`Error asking Llama about category: ${error.message}`);
+    throw error;
+  }
 }
 
 module.exports = {
   askLlamaAboutConversation,
+  askLlamaAboutCategory,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
+<p>The provided code defines two asynchronous functions <code>askLlamaAboutConversation</code> and <code>askLlamaAboutCategory</code> that utilize a large language model (LLM) for text analysis and summarization. These functions are designed to work with a <code>create llm session</code> module.</p>
+<h3>askLlamaAboutConversation Function</h3>
+<p>This function:</p>
+<ol>
+<li>Imports the <code>create llm session</code> module using <code>importer</code>.</li>
+<li>Creates a prompt (<code>q1</code>) that asks the LLM to summarize the conversation in two sentences, discarding any non-essential information.</li>
+<li>Logs the user prompt to the console.</li>
+<li>Sends the prompt to the LLM using the <code>llmPrompt</code> function and logs the AI response.</li>
+<li>Returns the AI response after removing leading and trailing whitespace.</li>
+</ol>
+<h3>askLlamaAboutCategory Function</h3>
+<p>This function:</p>
+<ol>
+<li>Imports the <code>create llm session</code> module using <code>importer</code>.</li>
+<li>Creates a prompt (<code>q1</code>) that asks the LLM to categorize the conversation in two or three words.</li>
+<li>Logs the user prompt to the console.</li>
+<li>Sends the prompt to the LLM using the <code>llmPrompt</code> function and logs the AI response.</li>
+<li>Returns the first word of the AI response after removing leading and trailing whitespace, as well as any non-word characters or whitespace between the category and the rest of the response.</li>
+</ol>
+<h3>Exported Module</h3>
+<p>The code exports both functions as a module, allowing them to be used in other JavaScript files.</p>
+<pre><code class="language-javascript">module.exports = {
+  askLlamaAboutConversation,
   askLlamaAboutCategory
 }
 </code></pre>
-<h3>Parameters</h3>
-<p>Both functions expect an array of strings, <code>currentMessages</code>, as input.</p>
-<h3>Return Values</h3>
-<ul>
-<li><code>askLlamaAboutConversation</code> returns a string containing the LLM's response after trimming whitespace.</li>
-<li><code>askLlamaAboutCategory</code> returns a string containing the first word of the LLM's response after trimming and cleaning.</li>
-</ul>
-<h3>LLM Interaction</h3>
-<ul>
-<li>The <code>llmPrompt</code> function is imported from a module using the <code>importer</code> object.</li>
-<li>The LLM is prompted with a user-defined question, which is then logged to the console.</li>
-<li>The LLM's response is logged to the console and returned as the function's result.</li>
-</ul>
 
 </body>
 

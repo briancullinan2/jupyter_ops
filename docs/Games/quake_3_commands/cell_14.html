@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h1><strong>CMake Build Script</strong></h1>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Set up build environment
+BUILD_DIR="build"
+CMAKE_BUILD_TYPE="Release"
+C_COMPILER="/usr/local/bin/gcc-9"
+CXX_COMPILER="/usr/local/bin/g++-9"
+
+# Create build directory and set up CMake
+mkdir -p "$BUILD_DIR"
+cmake \
+  -G "Unix Makefiles" \
+  -H. \
+  -B"$BUILD_DIR" \
+  -DCMAKE_BUILD_TYPE="$CMAKE_BUILD_TYPE" \
+  -DCMAKE_C_COMPILER="$C_COMPILER" \
+  -DCMAKE_CXX_COMPILER="$CXX_COMPILER"
+
+# Compile and link Huffman library
+HUFFMAN_LIB_OUTPUT="./code/xquakejs/lib/huffman.js"
+emcc \
+  -O1 \
+  -s STANDALONE_WASM \
+  -s EXPORTED_FUNCTIONS="['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress']" \
+  -s EXPORT_NAME="huffman" \
+ ./code/xquakejs/lib/huffman.c \
+  -o "$HUFFMAN_LIB_OUTPUT"
+
+# Compile and link Huffman library with additional flags
+emcc \
+  -O1 \
+  -s SAFE_HEAP=1 \
+  -s WASM=0 \
+  -s EXTRA_EXPORTED_RUNTIME_METHODS="['getValue', 'allocate']" \
+  -s EXPORTED_FUNCTIONS="['_MSG_initHuffman', '_Huff_Decompress', '_Huff_Compress', '_HuffmanGetSymbol']" \
+  -s EXPORT_NAME="huffman" \
+ ./code/xquakejs/lib/huffman.c \
+  -o "$HUFFMAN_LIB_OUTPUT"
+
+# Run DPMaster with options
+DPMASTER_LOG_FILE="/Users/briancullinan/Downloads/dpmaster-2.2/dpmaster.log"
+DPMASTER_OPTIONS="--send-empty-servers"
+
+./dpmaster -L --log-file "$DPMASTER_LOG_FILE" -v -g Quake3Arena options="$DPMASTER_OPTIONS"</code></pre></div><h1><strong>CMake Build Script</strong></h1>
 <p>The first command is a CMake build script:</p>
 <pre><code class="language-bash">cmake -G &quot;Unix Makefiles&quot; -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/local/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-9
 </code></pre>

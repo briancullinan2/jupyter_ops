@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="cpp"><code>#include <QApplication>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QQmlEngine>
+#include <QQmlComponent>
+#include <QQuickWidget>
+#include <QQuickItem>
+#include <QQuickWindow>
+#include <QUrl>
+#include <QDebug>
+#include <QMessageBox>
+#include <QTimer>
+
+class LlamaApp : public QApplication {
+public:
+    LlamaApp(int argc, char *argv[]) : QApplication(argc, argv) {}
+
+    int run() {
+        // Load QML string into QML engine and component
+        QString qmlString =
+            "import QtQuick 2.0\n"
+            "import QtQuick.Controls 2.0\n"
+            "Item {\n"
+            "    width: 200\n"
+            "    height: 100\n"
+            "    Row {\n"
+            "        anchors.centerIn: parent\n"
+            "        Button {\n"
+            "            text: \"Button 1\"\n"
+            "            onClicked: { console.log(\"Button 1 clicked\") }\n"
+            "        }\n"
+            "    }\n"
+            "}\n";
+
+        QQmlEngine engine;
+        QQmlComponent component(&engine);
+        if (!component.setData(qmlString.toUtf8(), QUrl())) {
+            QMessageBox::critical(nullptr, "Error", engine.toScriptString());
+            return 1;
+        }
+
+        // Check for errors
+        if (component.isError()) {
+            QMessageBox::critical(nullptr, "Error", "Error loading QML: " + component.errorString());
+            return 1;
+        }
+
+        // Create the QQuickItem
+        QQuickItem *item = qobject_cast<QQuickItem*>(component.create());
+        if (!item) {
+            QMessageBox::critical(nullptr, "Error", "Error creating QQuickItem");
+            return 1;
+        }
+
+        // Create a QQuickWidget to host the QQuickItem
+        QQuickWidget *quickWidget = new QQuickWidget;
+        quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+        quickWidget->setSource(QUrl("data:text/plain," + qmlString));
+
+        // Create main widget and layout
+        QWidget *mainWindow = new QWidget;
+        QVBoxLayout *layout = new QVBoxLayout(mainWindow);
+
+        // Set up the QQuickWidget to be automatically resized
+        layout->setContentsMargins(0, 0, 0, 0); // Remove padding to ensure proper resize
+        quickWidget->setMinimumSize(200, 100); // Minimum size for the widget
+        quickWidget->show();
+
+        // Add the QQuickWidget to the layout
+        layout->addWidget(quickWidget);
+        mainWindow->setLayout(layout);
+        mainWindow->show();
+
+        // Initialize QTimer to periodically check for errors
+        QTimer timer;
+        QObject::connect(&timer, &QTimer::timeout, [engine] {
+            if (engine.toScriptString().isEmpty() || engine.hasError()) {
+                qDebug() << "QML engine is not responding";
+            }
+        });
+
+        return exec();
+    }
+};
+
+int main(int argc, char *argv[]) {
+    LlamaApp app(argc, argv);
+    return app.run();
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Includes</h3>
 <p>The code includes the following Qt libraries:</p>
 <ul>

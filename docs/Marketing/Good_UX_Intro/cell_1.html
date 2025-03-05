@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -87,7 +94,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Call: $TS.screen()</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Define the constants for the screen dimensions and zoom level
+const SCREEN_WIDTH = 680;
+const SCREEN_HEIGHT = 400;
+const ZOOM_LEVEL = 0.5;
+const CROP_Y = 400;
+const CROP_HEIGHT = 400;
+
+// Define the API endpoint for the screen operation
+const SCREEN_API_ENDPOINT = 'act.com';
+
+// Create a data object to hold the screen operation settings
+const screenSettings: ScreenSettings = {
+  endpoint: SCREEN_API_ENDPOINT,
+  zoom: ZOOM_LEVEL,
+  width: SCREEN_WIDTH,
+  cropY: CROP_Y,
+  cropHeight: CROP_HEIGHT,
+};
+
+// Call the screen operation API using the settings object
+void TS.screen(SCREEN_API_ENDPOINT, screenSettings);
+
+// TODO: Consider implementing input validation for the screenSettings object
+// TODO: Consider adding error handling for API calls</code></pre></div><p><strong>Function Call: $TS.screen()</strong></p>
 <ul>
 <li><strong>Parameters:</strong>
 <ul>

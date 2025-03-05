@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>QEMU System x86_64 Command</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+QEMU_ARGS=(
+  # General Options
+  "-vga" "std"
+  "-nographic"
+  "-vnc" ":1"
+  "-enable-kvm"
+  "-m" "3072"
+  "-cpu" "Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,$MY_OPTIONS"
+
+  # Machine Options
+  "-machine" "pc-q35-2.11"
+
+  # Multiprocessing Options
+  "-smp" "4,cores=2"
+
+  # Display and Input Options
+  "-usb"
+  "-device" "usb-kbd"
+  "-device" "usb-tablet"
+
+  # Apple-Specific Options
+  "-device" "isa-applesmc,osk=\"ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc\""
+
+  # Firmware Options
+  "-drive" "if=pflash,format=raw,readonly,file=OVMF_CODE.fd"
+  "-drive" "if=pflash,format=raw,file=OVMF_VARS-1024x768.fd"
+
+  # SMBIOS Options
+  "-smbios" "type=2"
+
+  # Audio Options
+  "-device" "ich9-intel-hda"
+  "-device" "hda-duplex"
+
+  # IDE Drive Options
+  "-device" "ide-drive,bus=ide.2,drive=Clover"
+  "-drive" "id=Clover,if=none,snapshot=on,format=qcow2,file='./Mojave/Clover.qcow2'"
+  "-device" "ide-drive,bus=ide.1,drive=MacHDD"
+  "-drive" "id=MacHDD,if=none,file='./mac_hdd.img',format=qcow2"
+  "-device" "ide-drive,bus=ide.0,drive=MacDVD"
+  "-drive" "id=MacDVD,if=none,snapshot=on,media=cdrom,file='./Mojave.iso'"
+
+  # Networking Options
+  "-netdev" "tap,id=net0,ifname=tap0,script=no,downscript=no"
+  "-device" "vmxnet3,netdev=net0,id=net0,mac=52:54:00:AB:F8:B7"
+)
+
+for arg in "${QEMU_ARGS[@]}"; do
+  echo "$arg"
+done</code></pre></div><p><strong>QEMU System x86_64 Command</strong></p>
 <h3>Overview</h3>
 <p>This command is used to launch a QEMU virtual machine with various settings and devices.</p>
 <h3>Breakdown</h3>

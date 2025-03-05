@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -81,7 +88,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>MDADM Command</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to create a RAID 1 array
+create_raid1() {
+  local device_name="/dev/md0"
+  local raid_level="1"
+  local num_disks="1"
+  local raid_disk=${2:-2}
+  local metadata_format="--metadata=1.2"
+  local disk_device="/dev/sdb1"
+
+  mdadm $metadata_format --create $device_name --level=$raid_level --raid-devices=$num_disks -f --raid-disk=$raid_disk $disk_device
+}
+
+# Call the function
+create_raid1</code></pre></div><p><strong>MDADM Command</strong></p>
 <ul>
 <li>Command: <code>mdadm</code></li>
 <li>Subcommand: <code>create</code></li>

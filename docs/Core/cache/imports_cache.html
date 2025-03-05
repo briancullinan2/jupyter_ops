@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./cache_all.html">cache all</a> | <a href="./create_import_cache.html">create import cache</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>importsCache</code> variable stores information about imported modules and files within Jupyter Notebook cells, including timestamps, file paths, and lists of imports. This cache likely aids in code analysis, dependency management, or understanding the structure of Jupyter Notebooks.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "imports cache"</code></pre><h1>imports cache</h1>
 
@@ -223,23 +229,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a <code>importsCache</code> variable, which appears to store information about imported modules and files within Jupyter Notebook cells.</p>
-<p>Here's a breakdown:</p>
-<ul>
-<li><p><strong>Structure:</strong></p>
-<ul>
-<li><code>importsCache</code> is an array of arrays. Each inner array represents a single notebook cell and contains three elements:
-<ul>
-<li><strong>Timestamp:</strong> A numerical timestamp (likely in milliseconds).</li>
-<li><strong>Path:</strong> A string representing the path to the notebook file containing the cell.</li>
-<li><strong>Imports:</strong> An array of strings, representing the modules or files imported within that cell.</li>
-</ul></li>
-</ul></li>
-<li><p><strong>Purpose:</strong></p>
-<ul>
-<li>The <code>importsCache</code> likely tracks the imported modules and files for each cell in a Jupyter Notebook, potentially for code analysis, dependency management, or other purposes related to understanding the structure and dependencies of a notebook.</li>
-</ul></li>
-</ul>
 
 </body>
 

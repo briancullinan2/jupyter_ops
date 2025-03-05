@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -121,7 +128,93 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import json
+import os
+
+def load_notebook(notebook_path: str) -> dict:
+    """Loads a Jupyter Notebook from a file.
+
+    Args:
+    notebook_path (str): Path to the Jupyter Notebook.
+
+    Returns:
+    dict: Loaded Jupyter Notebook content.
+    """
+    notebook_path = os.path.abspath(notebook_path)
+    try:
+        with open(notebook_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"Error loading notebook: {e}")
+        return {}
+
+def get_kernel_metadata(notebook: dict) -> dict:
+    """Extracts kernel metadata from a Jupyter Notebook.
+
+    Args:
+    notebook (dict): Loaded Jupyter Notebook content.
+
+    Returns:
+    dict: Kernel metadata.
+    """
+    return notebook.get('metadata', {}).get('kernelspec', {})
+
+def get_cell_metadata(cell: dict) -> dict:
+    """Extracts metadata from a Jupyter Notebook cell.
+
+    Args:
+    cell (dict): Cell content.
+
+    Returns:
+    dict: Cell metadata.
+    """
+    return {
+        key: value
+        for key, value in cell.items()
+        if key.startswith('metadata') or key == 'cell_type'
+    }
+
+def get_cell_language(cell: dict) -> str:
+    """Determines the language of a Jupyter Notebook cell.
+
+    Args:
+    cell (dict): Cell content.
+
+    Returns:
+    str: Language of the cell.
+    """
+    language = cell.get("metadata", {}).get("vscode", {}).get("languageId")
+    kernel = get_kernel_metadata(cell['metadata'])
+    return (language or kernel.get('language') or
+            cell.get('metadata', {}).get('language_info', {}).get('name', ''))
+
+def extract_cells(notebook: dict, types: list = ['*', 'code']) -> list:
+    """Extracts cells from a Jupyter Notebook with additional metadata.
+
+    Args:
+    notebook (dict): Loaded Jupyter Notebook content.
+    types (list, optional): Types of cells to extract. Defaults to ['*', 'code'].
+
+    Returns:
+    list: Extracted cells with additional metadata.
+    """
+    return [
+        {
+            **cell,
+            "language": get_cell_language(cell),
+            "filename": os.path.abspath(notebook['metadata']['path']),
+            "id": f"{os.path.basename(notebook['metadata']['path'])}[{i}]"
+        }
+        for i, cell in enumerate(notebook.get("cells", []))
+        if '*' in types or cell.get("cell_type") in types
+    ]
+
+# Example usage:
+if __name__ == "__main__":
+    notebook_path = 'path/to/notebook.ipynb'
+    cells = extract_cells(load_notebook(notebook_path))
+    print(cells)</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Libraries</h4>
 <pre><code class="language-python">import json
 import os

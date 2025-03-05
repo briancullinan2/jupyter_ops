@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -159,7 +166,138 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code># Llama - Large Language Model Assistant
+## Documentation
+### Functions
+#### cache_cells
+Extracts relevant cells from a Jupyter notebook, generates cache entries, and returns a list of dictionaries containing cache information.
+
+#### accumulate_markdown
+Accumulates markdown leading up to code cells in a Jupyter notebook.
+
+#### get_questions
+Extracts questions from markdown and source code.
+
+### Implementation
+```python
+import os
+import json
+import re
+import datetime
+from typing import List, Dict
+
+from Core import get_cells
+
+def get_questions(source: str, markdown: str) -&gt; List[str]:
+    """Extracts questions from markdown and source code.
+
+    Args:
+        source: Source code from which questions are to be extracted.
+        markdown: Markdown text from which questions are to be extracted.
+
+    Returns:
+        list: A list of extracted questions.
+    """
+    # Regular expression pattern to match questions
+    match_questions = re.compile(r'^.*\?.*
+</body>
+
+</html>, re.IGNORECASE | re.MULTILINE)
+    
+    # Extract questions from markdown and source code
+    questions = [
+        # Remove prefix and suffix from questions using regular expression
+        re.sub(r'how to|\?|#+', '', q, flags=re.IGNORECASE).strip()
+        for q in match_questions.findall(markdown)
+    ]
+    
+    # Append questions from source code if 'how to' is present
+    questions += [
+        re.sub(r'how to|\?|#+', '', q, flags=re.IGNORECASE).strip()
+        for q in match_questions.findall(source) if 'how to' in q.lower()
+    ]
+    
+    # Sort questions in ascending order of length
+    questions.sort(key=len)
+    
+    # Return first question if none or append it to the list
+    return questions + [questions[0]] if questions else ['']
+
+def accumulate_markdown(cells: List[Dict], notebook_path: str) -&gt; List[Dict]:
+    """Accumulates markdown leading up to code cells.
+
+    Args:
+        cells: List of dictionaries containing cell information.
+        notebook_path: Path to the Jupyter notebook.
+
+    Returns:
+        list: A list of dictionaries containing accumulated markdown and code information.
+    """
+    # Filter code cells
+    codes = [c for c in cells if c["cell_type"] == "code"]
+    
+    result = []
+    
+    # Iterate over code cells
+    for i, code_cell in enumerate(codes):
+        # Calculate index of previous code cell
+        from_idx = cells.index(codes[i-1]) + 1 if i &gt; 0 else 0
+        
+        # Calculate index of current code cell
+        to_idx = cells.index(code_cell)
+        
+        # Accumulate markdown
+        markdown = "\n".join("".join(m["source"]) for m in cells[from_idx:to_idx])
+        
+        # Accumulate code
+        code = "".join(code_cell["source"])
+        
+        # Append dictionary to result
+        result.append({
+            "id": f"{os.path.basename(notebook_path)}[{i}]", 
+            "language": code_cell["language"], 
+            "from": from_idx, 
+            "to": to_idx, 
+            "markdown": markdown, 
+            "code": code
+        })
+    
+    return result
+
+def cache_cells(filename: str) -&gt; List[Dict]:
+    """Parses a Jupyter notebook, extracts relevant cells, and generates cache entries.
+
+    Args:
+        filename: Path to the Jupyter notebook.
+
+    Returns:
+        list: A list of dictionaries containing cache information.
+    """
+    from Core import get_cells
+    filename = os.path.abspath(filename)
+    mtime = os.path.getmtime(filename)
+    
+    cells = get_cells(filename)
+    new_cache = accumulate_markdown(cells, filename)
+    
+    return [
+        {
+            "id": c["id"],
+            "filename": filename,
+            "mtime": datetime.datetime.fromtimestamp(mtime),
+            "questions": get_questions(c["code"], c["markdown"]),
+            "notebook": os.path.basename(filename),
+            **c
+        }
+        for c in new_cache
+    ]
+
+__all__ = {
+    "cache_cells": cache_cells,
+    "accumulate_markdown": accumulate_markdown,
+    "get_questions": get_questions
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Functions</h4>
 <h5>1. <code>get_questions(source, markdown)</code></h5>
 <ul>

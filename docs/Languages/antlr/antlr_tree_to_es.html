@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -268,7 +275,152 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: antlrToESTree</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { assert } = require('assert');
+const { importer } = require('../Core');
+const {
+  treeToHtml,
+  htmlToTree,
+  selectDom,
+} = importer.import(['tree to html', 'html to tree','select tree']);
+const { transpile, replace } = importer.import('transpile code');
+
+/**
+ * Converts an ANTLR AST to an ESTree.
+ *
+ * @param {import('antlr4/runtime/ParseTree').ParseTree} tree - The ANTLR AST to convert.
+ * @returns {import('estree').ESTree} The converted ESTree.
+ */
+function antlrToESTree(tree) {
+  console.log(tree);
+
+  const dom = selectDom('./*', treeToHtml([tree]));
+
+  selectDom([
+    `//TerminalNode/ancestor::ThetypenameContext
+     |//TerminalNode/ancestor::SimpletypespecitorContext`,
+    replace(ctx =&gt; {
+      const { range, value } = htmlToTree(selectDom('.//TerminalNode', ctx));
+      return selectDom('./*', treeToHtml({
+        type: 'Type',
+        name: value,
+        range,
+      }));
+    }),
+  ], dom);
+
+  selectDom([
+    `//TerminalNode/ancestor::IdexpressionContext`,
+    replace(ctx =&gt; {
+      if (selectDom('.//TerminalNode/ancestor::ClassnameContext', ctx)) {
+        const { range, value } = htmlToTree(
+          selectDom('.//TerminalNode[./parent::ClassnameContext]', ctx),
+        );
+        return selectDom('./*', treeToHtml({
+          type: 'UnaryExpression',
+          operator: '~',
+          argument: {
+            type: 'Identifier',
+            name: value,
+            kind: null,
+            pointer: false,
+            range,
+          },
+          prefix: true,
+        }));
+      }
+
+      const { range, value } = htmlToTree(selectDom('.//TerminalNode', ctx));
+      return selectDom('./*', treeToHtml({
+        type: 'Identifier',
+        name: value,
+        kind: null,
+        pointer: false,
+        range,
+      }));
+    }),
+  ], dom);
+
+  selectDom([
+    `//MemberdeclarationContext`,
+    replace(ctx =&gt; {
+      const { kind, key, semi } = selectDom({
+        kind: './/Type',
+        key: './/Identifier',
+        semi: './/TerminalNode[@value = ";"]',
+      }, ctx);
+      const id = htmlToTree(key);
+      id.kind = htmlToTree(kind);
+      return selectDom('./*', treeToHtml({
+        type: 'Property',
+        kind: 'init',
+        key: id,
+        method: false,
+        computed: false,
+        value: null,
+        shorthand: false,
+        range: [
+          htmlToTree(kind).range[0],
+          htmlToTree(semi).range[1],
+        ],
+      }));
+    }),
+  ], dom);
+
+  selectDom([
+    `//SimpledeclarationContext[
+     .//ClassheadContext//TerminalNode[@value = "struct"]
+    ]`,
+    replace(ctx =&gt; {
+      const { typedef, body, id, superClass, semi } = selectDom({
+        typedef: './/TerminalNode[@value = "typedef"]',
+        id: './/InitdeclaratorContext//Identifier',
+        body: ['.//Property'],
+        superClass: './/ClasskeyContext//@value',
+        semi: './TerminalNode[@value = ";"]',
+      }, ctx);
+      return selectDom('./*', treeToHtml({
+        type: 'ClassExpression',
+        id: htmlToTree(id),
+        superClass,
+        body: {
+          type: 'ClassBody',
+          body: htmlToTree(body),
+        },
+        typedef: true,
+        range: [
+          htmlToTree(typedef).range[0],
+          htmlToTree(semi).range[1],
+        ],
+      }));
+    }),
+  ], dom);
+
+  selectDom([
+    `//ParameterdeclarationContext`,
+    replace(ctx =&gt; {
+      const { type, constant, ptr, id } = selectDom({
+        type: './/Type',
+        constant: './/TerminalNode[@value="const"]/@value',
+        ptr: './/TerminalNode[@value="*"]/@value',
+        id: './/Identifier',
+      }, ctx);
+      if (!id) return type;
+      const result = Object.assign(
+        htmlToTree(id),
+        {
+          kind: htmlToTree(type),
+          pointer:!!ptr,
+        },
+      );
+      return selectDom('./*', treeToHtml(result));
+    }),
+  ], dom);
+
+  return htmlToTree(dom);
+}
+
+module.exports = antlrToESTree;</code></pre></div><p><strong>Function Breakdown: antlrToESTree</strong></p>
 <p>The <code>antlrToESTree</code> function appears to be a part of a code generator or transformer that converts an ANTLR-generated tree into an ESTree (ECMA Script Abstract Syntax Tree).</p>
 <h3>Parameters</h3>
 <ul>

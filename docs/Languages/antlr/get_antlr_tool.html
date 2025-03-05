@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import path from 'path';
+import fs from 'fs';
+import { importESModule } from 'import-ES-module';
+
+const parserPath = path.join(__dirname, '../Resources/Parsers');
+const languages = [];
+const grammars = [];
+
+/**
+ * Recursively finds grammars in the given directory.
+ * @param {string} directory The current directory to search.
+ */
+async function findGrammars(directory) {
+  try {
+    const files = await fs.promises.readdir(path.join(parserPath, directory));
+    for (const file of files) {
+      if (file.startsWith('.') || file.includes('examples')) {
+        continue;
+      }
+      if (file.endsWith('.g4')) {
+        const language = file.replace('Lexer', '').replace('Parser', '');
+        if (!languages.includes(directory)) {
+          languages.push(directory);
+        }
+        if (!languages.includes(language)) {
+          languages.push(language);
+        }
+
+        grammars.push(path.join(directory, file));
+      } else if ((await fs.promises.stat(path.join(parserPath, directory, file))).isDirectory()) {
+        await findGrammars(path.join(directory, file));
+      }
+    }
+  } catch (error) {
+    console.error(`Error reading directory ${directory}:`, error);
+  }
+}
+
+/**
+ * Finds all grammars in the parser path.
+ */
+async function initializeGrammars() {
+  try {
+    const directories = await fs.promises.readdir(parserPath);
+    for (const directory of directories) {
+      if (directory.startsWith('.') ||!(await fs.promises.stat(path.join(parserPath, directory))).isDirectory()) {
+        continue;
+      }
+      await findGrammars(directory);
+    }
+  } catch (error) {
+    console.error(`Error reading parser path:`, error);
+  }
+}
+
+/**
+ * Gets the parser for the given language.
+ * @param {string} language The language to get the parser for.
+ * @returns {object} The parser object, or an empty object if not found.
+ */
+async function getParser(language) {
+  try {
+    for (const grammar of grammars) {
+      if (grammar.includes(language + '/') || grammar.includes('/' + language)) {
+        const lang = path.basename(grammar, path.extname(grammar)).replace('Lexer', '').replace('Parser', '');
+        const lexerPath = path.join(parserPath, path.dirname(grammar), lang + 'Lexer.js');
+        const parserPath = path.join(parserPath, path.dirname(grammar), lang + 'Parser.js');
+        const listenerPath = path.join(parserPath, path.dirname(grammar), lang + 'Listener.js');
+        const hasListener = await fs.promises.exists(listenerPath);
+        if (!hasListener) {
+          listenerPath = path.join(parserPath, path.dirname(grammar), lang + 'ParserListener.js');
+        }
+        const codeCell = `
+import antlr4 from 'antlr4';
+import lexer from '${lexerPath}';
+import parser from '${parserPath}';
+${hasListener? 'import listener from \'' + listenerPath + '\'' : ''}
+export default { antlr4, lexer, parser${hasListener? ', listener' : ''} }
+`;
+        const module = await importESModule(codeCell, __filename + '<inline>', global);
+        return module;
+      }
+    }
+    return {};
+  } catch (error) {
+    console.error(`Error getting parser for language ${language}:`, error);
+    return {};
+  }
+}
+
+await initializeGrammars();
+
+export default getParser;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>This code is used to parse a directory structure for grammar files and extract language information. It appears to be designed for a parser generator tool, likely ANTLR.</p>
 <h3>Directory Structure</h3>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,64 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define a function to remove quarantine attribute
+remove_quarantine_attribute() {
+  # Remove quarantine attribute from a file or directory
+  if [ -n "$1" ]; then
+    xattr -d com.apple.quarantine "$1"
+  else
+    echo "Error: Path to file or directory is required"
+    return 1
+  fi
+}
+
+# Define a function to install macOS SDK headers
+install_sdk_headers() {
+  # Check if macOS SDK headers package is accessible
+  if [ -d "/Library/Developer/CommandLineTools/Packages" ]; then
+    open "/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg"
+  else
+    echo "Error: macOS SDK headers package not found"
+    return 1
+  fi
+}
+
+# Define a function to codesign an application
+codesign_application() {
+  # Check if the application path is provided
+  if [ -n "$1" ]; then
+    # Use the -f flag to force signing
+    # Use the --deep flag to sign entire application bundle
+    # Use the --sign flag to specify the identity
+    if sudo codesign --force --deep --sign - "$1"; then
+      echo "Application signed successfully"
+    else
+      echo "Error signing application"
+      return 1
+    fi
+  else
+    echo "Error: Path to application is required"
+    return 1
+  fi
+}
+
+# Example usage
+ioquake3_app_path="/Applications/ioquake3/ioquake3.app"
+sdk_headers_pkg_path="/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg"
+app_path="/Applications/new-app.app"
+
+# Remove quarantine attribute from ioquake3 application
+remove_quarantine_attribute "$ioquake3_app_path"
+
+# Install macOS SDK headers
+install_sdk_headers
+
+# Codesign new application
+codesign_application "$app_path"</code></pre></div><h3>Code Breakdown</h3>
 <h4>Command 1: Remove Quarantine Attribute</h4>
 <pre><code class="language-bash">xattr -d com.apple.quarantine /Applications/ioquake3/ioquake3.app
 </code></pre>

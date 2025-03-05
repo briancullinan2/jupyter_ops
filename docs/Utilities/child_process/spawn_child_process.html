@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { spawn } = require('child_process');
+const path = require('path');
+const { runAllPromises } = require('../Core');
+
+const MULTILINE = process.platform === 'win32'? '^\n': '\\\n ';
+const MULTICMD = process.platform === 'win32'?'^\n&amp;&amp;':'\\\n&amp;&amp; ';
+
+function bashToExec(code) {
+  return code
+   .split('\n')
+   .map((line) =&gt; ({ type: 'line', content: line }))
+   .map((line) =&gt; ({ type: 'cmd', content: `{EXEC} ${line.content}` }));
+}
+
+function resolveVariables(script) {
+  return script
+   .split(/\n/)
+   .map((line) =&gt; ({ type: 'line', content: line }))
+   .map((line) =&gt; {
+      const variables = line.content.match(/\$([0-9]+)/g);
+      if (variables) {
+        variables.forEach((variable) =&gt; {
+          line.content = line.content.replace(variable, process.argv[parseInt(variable.substr(1)) + 1] || '');
+        });
+      }
+      return line;
+    })
+   .map((line) =&gt; line.content)
+   .join('\n');
+}
+
+function execCmd(script, options = {}) {
+  const commands = bashToExec(script)
+   .map((cmd) =&gt; cmd.content)
+   .filter((cmd) =&gt; cmd.trim()!== '');
+
+  const promises = commands.map((cmd) =&gt; {
+    const command = resolveVariables(cmd);
+    if (!options.quiet) console.log(`spawning process: ${command}`);
+    return new Promise((resolve, reject) =&gt; {
+      const childProcess = spawn(command, {
+        maxBuffer: 1024 * 50000,
+      });
+
+      let errors = '';
+      let data = '';
+      childProcess.stderr.on('data', (d) =&gt; {
+        if (!options.quiet) console.error(d);
+        data += d;
+      });
+      childProcess.stdout.on('data', (d) =&gt; {
+        if (!options.quiet) console.log(d);
+        errors += d;
+      });
+      childProcess.on('exit', (code, signal) =&gt; {
+        if (code &gt; 0) {
+          const error = new Error(`child process exited with code ${code} and signal ${signal}`);
+          error.data = data + errors;
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    });
+  });
+
+  return runAllPromises(promises).catch((err) =&gt; {
+    if (err.data) console.error(err.data);
+    throw err;
+  });
+}
+
+module.exports = execCmd;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Variables</h3>
 <p>The code requires the following modules:</p>
 <ul>

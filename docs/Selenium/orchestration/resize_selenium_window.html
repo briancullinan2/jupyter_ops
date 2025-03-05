@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -145,7 +152,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>resizeWindow</code> that resizes and positions a browser window into a grid layout.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants for screen dimensions
+const ROWS = 6;
+const COLUMNS = 6;
+const SCREEN_WIDTH_MULTIPLIER = 1350;
+const SCREEN_HEIGHT_MULTIPLIER = 1024;
+
+// Constant for maximum allowed offset
+const MAX_OFFSET = 10000;
+
+// Function to get window size
+async function getWindowSize(client) {
+    try {
+        const windowHandle = await client.getWindowHandle();
+        const windowSize = await client Window().getSize();
+        return windowSize;
+    } catch (error) {
+        console.error('Error getting window size:', error);
+    }
+}
+
+// Function to set window position and size
+async function setWindowPosition(client, position) {
+    try {
+        const { x, y } = position;
+        const { width, height } = await getWindowSize(client);
+        const newWidth = Math.floor(width / COLUMNS);
+        const newHeight = Math.floor(height / ROWS);
+        await client.setWindowPosition(x, y);
+        await client.setWindowSize(newWidth, newHeight);
+        return { x, y, width: newWidth, height: newHeight };
+    } catch (error) {
+        console.error('Error setting window position and size:', error);
+    }
+}
+
+// Function to resize window
+async function resizeWindow(client, offset = 0) {
+    // Calculate new position based on offset
+    const newPosition = {
+        x: (Math.abs(offset + (typeof OFFSET!== 'undefined'? OFFSET : 0)) % COLUMNS) * Math.floor(getWindowSize(client).width / COLUMNS),
+        y: Math.floor((Math.abs(offset + (typeof OFFSET!== 'undefined'? OFFSET : 0)) / COLUMNS) % ROWS) * Math.floor(getWindowSize(client).height / ROWS)
+    };
+
+    // Set new window position and size
+    const result = await setWindowPosition(client, newPosition);
+    console.log(result);
+    return result;
+}
+
+module.exports = resizeWindow;</code></pre></div><p>This code defines a function <code>resizeWindow</code> that resizes and positions a browser window into a grid layout.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

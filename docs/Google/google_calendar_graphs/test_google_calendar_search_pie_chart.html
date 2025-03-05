@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -133,7 +140,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches data from a Google Calendar API, summarizes events based on search queries, and generates a pie chart visualizing the results.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+import importer from '../Core';
+import $ from 'jquery-async';
+
+// Define default options
+const defaultOptions = {
+  auth: null,
+};
+
+// Define the main function
+function calendarSearchToPieChart(searches, options = {}) {
+  // Merge default options with passed options
+  const mergedOptions = {...defaultOptions,...options };
+
+  // Check if required functions are imported
+  const {
+    listEvents, sumEvents, d3PieChart,
+  } = importer.import([
+    'list events',
+    'import google calendar api',
+   'sum a list of events',
+    'd3 pie chart',
+  ]);
+
+  // Map searches to promises
+  const promises = searches.map((search) =&gt; (
+    new Promise((resolve) =&gt; {
+      listEvents({
+        auth: mergedOptions.auth,
+        q: search,
+      })
+       .then((response) =&gt; {
+          resolve({ label: search, value: sumEvents(response) });
+        })
+       .catch((error) =&gt; {
+          console.error(`Error processing search: ${search}`, error);
+          resolve({ label: search, value: 0 });
+        });
+    })
+  ));
+
+  // Run all promises and then create pie chart
+  return Promise.all(promises)
+   .then((results) =&gt; d3PieChart(results))
+   .catch((error) =&gt; {
+      console.error('Error creating pie chart', error);
+      return [];
+    });
+}
+
+// Run calendar search to pie chart with searches
+calendarSearchToPieChart([
+ 'study sauce',
+  'portal',
+ 'renewal',
+  'work on sos',
+  'jupyter',
+  'jupytangular',
+  'unit tests',
+ 'selenium',
+  'angular',
+ 'mind spree',
+  '"c#"',
+  'docker',
+])
+ .then((pieChart) =&gt; $.svg(pieChart))
+ .catch((error) =&gt; $.sendError(error));</code></pre></div><p>This code snippet fetches data from a Google Calendar API, summarizes events based on search queries, and generates a pie chart visualizing the results.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

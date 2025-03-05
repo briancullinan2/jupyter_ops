@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,14 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet installs the IPython kernel for Python 2, making it available for use in Jupyter Notebook.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Install ipykernel using pip
+pip install --user ipykernel
+
+# Install ipykernel kernel
+ipython kernel install --user</code></pre></div><p>This code snippet installs the IPython kernel for Python 2, making it available for use in Jupyter Notebook.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>python2 -m pip install ipykernel</code></strong>: This command uses <code>pip</code>, the Python package installer, to install the <code>ipykernel</code> package. This package provides the necessary components to run Python code within Jupyter Notebook.</p></li>

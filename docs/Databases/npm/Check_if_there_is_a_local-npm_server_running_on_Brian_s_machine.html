@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>checkLocalNPM</code> that checks if a local npm server is running.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const http = require('http');
+const os = require('os');
+
+/**
+ * Checks if the local npm instance is running at the specified host.
+ * If no host is provided, it defaults to the local hostname or 'localhost'.
+ *
+ * @param {string} [host=os.hostname()] - The host to check.
+ * @returns {Promise&lt;boolean&gt;} - A promise resolving to true if the instance is running, false otherwise.
+ */
+function checkLocalNPM(host) {
+  // Determine the host to check
+  const HOST = host || os.hostname() || 'localhost';
+
+  // Create an HTTP GET request
+  return new Promise((resolve, reject) =&gt; {
+    const request = http.get(`http://${HOST}:5080`, (response) =&gt; {
+      // Resolve the promise with true if the status code is 200
+      resolve(response.statusCode === 200);
+    });
+
+    // Reject the promise with the error if an error occurs
+    request.on('error', (error) =&gt; {
+      reject(error);
+    });
+  });
+}
+
+// Export the function
+module.exports = checkLocalNPM;</code></pre></div><p>This code defines a function <code>checkLocalNPM</code> that checks if a local npm server is running.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

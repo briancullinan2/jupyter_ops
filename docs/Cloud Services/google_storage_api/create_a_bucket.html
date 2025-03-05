@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,133 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet provides a set of functions for interacting with Google Cloud Storage buckets.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const querystring = require('querystring');
+const { authorizeGoogleService } = require('../Core');
+const { google } = require('googleapis');
+
+/**
+ * Creates a safe name by replacing non-alphanumeric characters with hyphens and converting to lowercase.
+ *
+ * @param {string} name - The name to make safe.
+ * @returns {string} The safe name.
+ */
+function safeName(name) {
+    return name.toLowerCase().replace(/[^a-z0-9\-\.]+/gi, '-');
+}
+
+/**
+ * Sets public access to a bucket.
+ *
+ * @param {string} project - The project ID.
+ * @param {string} bucketName - The name of the bucket.
+ * @returns {Promise} A promise that resolves when the public access is set.
+ */
+function setPublic(project, bucketName) {
+    const storage = google.storage('v1');
+    return authorizeGoogleService()
+       .then((auth) => storage.projects.messages.create({
+            auth,
+            resource: {
+                mailbox: bucketName,
+                received: {
+                    sender: 'allUsers',
+                    role: 'READER'
+                }
+            }
+        }))
+       .then((response) => {
+            const defaultObjectAcl = response.data;
+            return defaultObjectAcl? defaultObjectAcl.id : null;
+        })
+       .then((defaultObjectAclId) => {
+            if (!defaultObjectAclId) {
+                return authorizeGoogleService()
+                   .then((auth) => storage.buckets.get({
+                        auth,
+                        resource: bucketName,
+                    }));
+            }
+            const acl = {
+                bucket: bucketName,
+                entity: 'allUsers',
+                role: 'READER',
+                id: defaultObjectAclId
+            };
+            return storage.buckets.setAcl({
+                auth,
+                resource: acl,
+            });
+        });
+}
+
+/**
+ * Lists buckets in a project.
+ *
+ * @param {string} project - The project ID.
+ * @param {string} [bucketName] - The name of the bucket (optional).
+ * @returns {Promise} A promise that resolves with the list of buckets.
+ */
+function listBuckets(project, bucketName) {
+    const storage = google.storage('v1');
+    const params = { project };
+    if (bucketName) {
+        params.prefix = bucketName;
+    }
+    return authorizeGoogleService()
+       .then((auth) => storage.buckets.list({
+            auth,
+            params
+        }))
+       .then((response) => response.data.items || []);
+}
+
+/**
+ * Adds a bucket to a project.
+ *
+ * @param {string} project - The project ID.
+ * @param {string} bucketName - The name of the bucket.
+ * @returns {Promise} A promise that resolves with the name of the bucket.
+ */
+function addBucket(project, bucketName) {
+    const storage = google.storage('v1');
+    return authorizeGoogleService()
+       .then((auth) => storage.buckets.insert({
+            auth,
+            resource: {
+                name: bucketName,
+                location: 'us-central1',
+                storageClass:'regional',
+                website: {
+                    mainPageSuffix: 'index.html'
+                }
+            }
+        }))
+       .then((response) => response.data.name)
+       .then((bucketName) => setPublic(project, bucketName));
+}
+
+/**
+ * Creates a bucket in a project.
+ *
+ * @param {string} project - The project ID.
+ * @param {string} bucketName - The name of the bucket.
+ * @returns {Promise} A promise that resolves with the name of the bucket.
+ */
+function createBucket(project, bucketName) {
+    bucketName = safeName(bucketName);
+    return listBuckets(project, bucketName)
+       .then((buckets) => {
+            if (buckets.length > 0) {
+                console.log(`bucket ${bucketName} already exists`);
+                return Promise.resolve(buckets[0].name);
+            }
+            return addBucket(project, bucketName)
+               .then(() => bucketName);
+        });
+}
+
+module.exports = createBucket;</code></pre></div><p>This code snippet provides a set of functions for interacting with Google Cloud Storage buckets.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

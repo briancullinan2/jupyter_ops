@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -244,7 +251,92 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = importer.import('general chit chat')
+const { relevantHistory, relevantKeywords, matchingTimestamps } = importer.import('relevant llm history')
+const { getLatestConversation } = importer.import('conversation helpers')
+
+/**
+ * Retrieve the message history for a given prompt.
+ * 
+ * @param {string} promptModel The model to use for the prompt.
+ * @param {string} session The session ID.
+ * @param {string} prompt The prompt to search for.
+ * @returns {string} The message history and conversation categories.
+ */
+async function messageHistory(promptModel, session, prompt) {
+  // Retrieve the relevant history files, keywords, and timestamps
+  const historyFiles = await relevantHistory(promptModel, session, prompt)
+  const matchingKeywords = await relevantKeywords(promptModel, session, prompt)
+  const relevantTimestamps = await matchingTimestamps(promptModel, session, prompt, matchingKeywords)
+
+  // Get the latest conversation files and sort them in descending order
+  const loadedConversations = Object.keys(ACTIVE_CONVERSATIONS)
+   .filter(conversation =&gt; conversation.match(`-${DEFAULT_MODEL}-${session}.json`))
+   .sort((a, b) =&gt; b.localeCompare(a))
+
+  // Create a string to store the matches closely
+  const matchesClosely = `Current date: ${new Date().toISOString()}\nOur recent topics:\n`
+
+  // Iterate over the conversations and find matching messages
+  for (const conversation of loadedConversations) {
+    const conversationData = ACTIVE_CONVERSATIONS[conversation]
+    const timestamps = Object.keys(conversationData).filter(key =&gt; key!=='summaries' &amp;&amp; key!=='memories')
+     .sort((a, b) =&gt; b.localeCompare(a))
+
+    for (const timestamp of timestamps) {
+      const message = conversationData[timestamp]
+      const topics = matchingKeywords.filter(key =&gt; message.keywords.match(key))
+
+      // Skip if the prompt doesn't match or if the timestamp is not relevant
+      if (!prompt.match(timestamp) &amp;&amp;!relevantTimestamps.includes(timestamp)) continue
+
+      // Add the message to the matches closely string
+      matchesClosely += `${new Date(parseInt(timestamp)).toISOString()} - ${topics.join(', ')}${message.summary? ` - ${message.summary}` : ''}\n`
+    }
+  }
+
+  // Ask the user if any of the timestamps match the prompt closely
+  const q4 = `${matchesClosely}\nDo any of these times match the subject very closely:\n${prompt}\nOnly respond with related and unique timestamps, no explanations.`
+  console.log('User:', q4)
+  const a4 = await promptModel(q4)
+  console.log('AI:', a4)
+
+  // Filter the relevant timestamps to match the user's response
+  const matchingClosely = relevantTimestamps.filter(time =&gt; a4.match(time) || a4.match(new Date(parseInt(time)).toISOString()))
+
+  // Create a string to store the conversation history
+  let messages = `Current date: ${new Date().toISOString()}\nOur most recent conversation:\n`
+
+  // Get the latest conversation or use the first one if none
+  const latestConversation = getLatestConversation(loadedConversations)
+  const conversationData = latestConversation? ACTIVE_CONVERSATIONS[latestConversation] : ACTIVE_CONVERSATIONS[loadedConversations[0]]
+
+  // Get the timestamps for the latest conversation
+  const latestTimestamps = Object.keys(conversationData).filter(key =&gt; key!=='summaries' &amp;&amp; key!=='memories')
+   .sort((a, b) =&gt; b.localeCompare(a))
+
+  // Iterate over the timestamps and add the messages to the conversation history
+  for (const timestamp of latestTimestamps) {
+    const message = conversationData[timestamp]
+
+    // Skip if the message doesn't match the prompt or if it's not in the matching closely timestamps
+    if (!prompt.match(timestamp) &amp;&amp;!matchingClosely.includes(timestamp)) continue
+
+    // Determine if to use the summary or content of the message
+    const useSummary = latestConversation? true : message.content &amp;&amp; message.content.length &gt; 2048
+    const useKeywords =!message.content
+
+    // Add the message to the conversation history string
+    messages += (message.user? 'User:': 'AI: ') + (useKeywords? message.keywords : (useSummary? message.summary : message.content)) + '\n\n'
+  }
+
+  // Log the conversation history and return the matches closely and conversation categories
+  console.log(messages)
+  return matchesClosely + '\nConversation categories:\n' + matchingKeywords.join('\n') + '\nClosely matching message IDs:\n' + relevantTimestamps.join('\n') + '\n' + messages
+}
+
+module.exports = messageHistory</code></pre></div><p><strong>Function Breakdown</strong></p>
 <h3>Importing Modules and Constants</h3>
 <p>The code starts by importing various modules and constants using the <code>importer</code> object.</p>
 <pre><code class="language-javascript">const {ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL} = importer.import('general chit chat')

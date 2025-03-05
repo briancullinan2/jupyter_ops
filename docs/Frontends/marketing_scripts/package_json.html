@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This is a <code>package.json</code> file describing a Node.js project named &quot;SheetToWeb&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="yaml"><code># Package Configuration
+package:
+  name: SheetToWeb
+  description: Marketing site functions
+  license: UNLICENSED
+
+# Environment Requirements
+engines:
+  node: ">= 8"
+  npm: ">= 4"
+
+# Repository Information
+repository:
+  type: git
+  url: https://github.com/megamindbrian/jupytangular.git
+
+# Dependencies
+dependencies:
+  - @google-cloud/compute@'^0.12.0'
+  - @google-cloud/storage@'^2.5.0'
+  - googleapis@'^39.2.0'
+  - jsdom@'^14.0.0'
+  - mustache@'^3.0.1'
+  - remarkable@'^1.7.1'
+
+# Scripts
+scripts:
+  # TODO: Add tasks for building, testing, and deploying the application
+  # build: yarn build
+  # test: yarn test
+  # deploy: yarn deploy
+
+# Development Dependencies
+devDependencies:
+  # TODO: Add dependencies required for development and testing
+  # eslint: "^7.7.0"
+  # @typescript-eslint/eslint-plugin: "^4.16.1"
+  # ts-node: "^10.2.1"
+
+# TODO: Update dependencies and scripts as needed</code></pre></div><p>This is a <code>package.json</code> file describing a Node.js project named &quot;SheetToWeb&quot;.</p>
 <p><strong>Key Information:</strong></p>
 <ul>
 <li><strong>Name:</strong> SheetToWeb</li>

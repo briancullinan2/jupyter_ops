@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./cell_0.html">Cell 0</a> | <a href="./project_imports_d3_tree.html">project imports d3 tree</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code generates a word cloud visualization of a project's imported packages and relative files, using a custom <code>importer</code> module and the <code>d3.ipynb</code> library for word cloud creation.</p>
+  <p>The code is a Node.js module that generates a word cloud for a project. It uses the <code>d3</code> library to convert a word cloud to SVG and the <code>path</code> module to work with file and directory paths.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "project word-cloud"</code></pre><h1>project word-cloud</h1>
@@ -158,40 +165,142 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates a word cloud visualization based on the imported packages and relative files within a given project.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const path = require('path');
+
+/**
+ * Generates a word cloud for a given project.
+ * @param {Object} project - The project to generate the word cloud for.
+ * @returns {Promise<string>} A promise that resolves to the SVG representation of the word cloud.
+ */
+function projectWordCloud(project) {
+    // Import the necessary functions from the Core module.
+    const { d3CloudToSVG, relativePaths } = importer.import([
+        'd3.ipynb[create word-cloud]',
+       'relative paths and includes',
+    ], { project });
+
+    // Initialize an empty array to store the words.
+    const words = [];
+
+    /**
+     * Counts the occurrences of each word in a project.
+     * @param {Object} r - The project data.
+     * @returns {Object[]} An array of objects containing the word and its frequency.
+     */
+    function wordCount(r) {
+        // Extract the package and relative import names.
+        const packageNames = r.packages.map(p => p.import);
+        const relativeImportNames = r.relatives.map(r => path.basename(r.import));
+
+        // Combine the names and count the occurrences of each word.
+        const wordCount = packageNames
+           .concat(r.packages.map(p => path.basename(p.file)))
+           .concat(relativeImportNames)
+           .reduce((acc, word) => {
+                if (acc[word]) {
+                    acc[word]++;
+                } else {
+                    acc[word] = 1;
+                }
+                return acc;
+            }, {});
+
+        // Convert the word count object to an array of objects.
+        return Object.keys(wordCount).map(word => ({ text: word, size: wordCount[word] }));
+    }
+
+    // Chain the relativePaths and d3CloudToSVG functions together.
+    return relativePaths(project)
+       .then(words => d3CloudToSVG(wordCount(words)));
+}
+
+module.exports = projectWordCloud;
+
+// TODO: Remove this block when it's no longer needed.
+if (typeof $!== 'undefined') {
+    const PROFILE_PATH = [
+        process.env.HOME,
+        process.env.HOMEPATH,
+        process.env.USERPROFILE,
+    ].find(Boolean) || '';
+
+    const project = PROFILE_PATH + '/Documents/portal';
+
+    $.async()
+       .then(() => projectWordCloud(project))
+       .then(svg => $.svg(svg))
+       .catch(e => $.sendError(e));
+}</code></pre></div><h2>Code Breakdown</h2>
+<h3>Requires and Function Definition</h3>
+<pre><code class="language-javascript">var importer = require('../Core');
+var path = require('path');
+    
+function projectWordCloud(project) {
+   ...
+}
+</code></pre>
 <ul>
-<li><code>importer</code>: Likely a custom module for importing functions and modules.</li>
-<li><code>path</code>: Node.js module for working with file paths.</li>
-</ul></li>
-<li><p><strong><code>projectWordCloud</code> Function:</strong></p>
+<li>The code starts by requiring two modules: <code>../Core</code> and <code>path</code>. The <code>path</code> module is a Node.js built-in module for working with file and directory paths.</li>
+<li>The <code>projectWordCloud</code> function is defined, which takes a <code>project</code> parameter.</li>
+</ul>
+<h3>Module Imports</h3>
+<pre><code class="language-javascript">var d3CloudToSVG = importer.import('d3.ipynb[create word-cloud]');
+var relativePaths = importer.import('relative paths and includes', {project});
+</code></pre>
 <ul>
-<li>Takes a <code>project</code> path as input.</li>
-<li>Imports <code>d3.ipynb[create word-cloud]</code> for generating the word cloud.</li>
-<li>Imports <code>relative paths and includes</code> to get a list of relative paths and imports within the project.</li>
-<li>Defines a <code>wordCount</code> function that:
+<li>The <code>importer</code> module is used to import two modules: <code>d3CloudToSVG</code> and <code>relativePaths</code>.</li>
+<li><code>d3CloudToSVG</code> is imported from <code>d3.ipynb[create word-cloud]</code>. This suggests that it's a function to convert a word cloud to SVG.</li>
+<li><code>relativePaths</code> is imported from <code>relative paths and includes</code> with the <code>project</code> parameter. This suggests that it's a function to get relative paths and includes for a project.</li>
+</ul>
+<h3>Word Count Function</h3>
+<pre><code class="language-javascript">function wordCount(r) {
+    var words = r['packages'].map(p =&gt; p.import)
+           .concat(r['packages'].map(p =&gt; path.basename(p.file)))
+           .concat(r['relatives'].map(r =&gt; path.basename(r.import)))
+           .concat(r['relatives'].map(r =&gt; path.basename(r.file)));
+    var wordCount = {};
+    words.forEach(w =&gt; {
+        if (typeof wordCount[w] === 'undefined') {
+            wordCount[w] = 15;
+        } else {
+            wordCount[w]++;
+        }
+    });
+    return Object.keys(wordCount).map((d) =&gt; ({text: d, size: wordCount[d]}));
+};
+</code></pre>
 <ul>
-<li>Extracts words from packages, relative imports, and file names.</li>
-<li>Counts the occurrences of each word.</li>
-<li>Returns an array of word objects with <code>text</code> and <code>size</code> properties.</li>
-</ul></li>
-<li>Calls <code>relativePaths</code> to get the list of relative paths and imports.</li>
-<li>Calls <code>d3CloudToSVG</code> with the word count data to generate the SVG word cloud.</li>
-</ul></li>
-<li><p><strong>Module Export:</strong></p>
+<li>The <code>wordCount</code> function is defined, which takes an object <code>r</code> as a parameter.</li>
+<li>It maps over the <code>packages</code> and <code>relatives</code> properties of <code>r</code>, extracting the import and file names, and concatenates them into an array <code>words</code>.</li>
+<li>It initializes an empty object <code>wordCount</code> and iterates over <code>words</code>, incrementing the count for each word in <code>wordCount</code>.</li>
+<li>It returns an array of objects, where each object has a <code>text</code> property (the word) and a <code>size</code> property (the count).</li>
+</ul>
+<h3>Project Word Cloud Function</h3>
+<pre><code class="language-javascript">return relativePaths(project)
+       .then(words =&gt; d3CloudToSVG(wordCount(words)));
+</code></pre>
 <ul>
-<li>Exports the <code>projectWordCloud</code> function.</li>
-</ul></li>
-<li><p><strong>Conditional Execution:</strong></p>
+<li>The <code>projectWordCloud</code> function returns a promise that:</li>
+<li>Calls <code>relativePaths</code> with the <code>project</code> parameter, which returns a promise that resolves to a value <code>words</code>.</li>
+<li>Calls <code>wordCount</code> with the <code>words</code> value, which returns a promise that resolves to an array of word cloud data.</li>
+<li>Calls <code>d3CloudToSVG</code> with the word cloud data, which returns a promise that resolves to an SVG string.</li>
+</ul>
+<h3>Module Exports and Execution</h3>
+<pre><code class="language-javascript">module.exports = projectWordCloud;
+
+if(typeof $!== 'undefined') {
+   ...
+}
+</code></pre>
 <ul>
-<li>Checks if <code>$</code> is defined (likely a special environment variable).</li>
-<li>If defined, it sets the <code>project</code> path to a default location and calls <code>projectWordCloud</code> to generate the word cloud.</li>
-<li>Sends the resulting SVG to the caller using <code>$.svg</code>.</li>
-<li>Handles any errors using <code>$.sendError</code>.</li>
-</ul></li>
-</ol>
+<li>The <code>projectWordCloud</code> function is exported as a module.</li>
+<li>The code checks if <code>$</code> is defined, and if so, executes a block of code that:</li>
+<li>Defines a <code>PROFILE_PATH</code> variable based on environment variables.</li>
+<li>Defines a <code>project</code> variable based on the <code>PROFILE_PATH</code>.</li>
+<li>Calls <code>projectWordCloud</code> with the <code>project</code> variable, which returns a promise that is handled by <code>$.async()</code> and <code>$.sendError()</code>.</li>
+</ul>
 
 </body>
 

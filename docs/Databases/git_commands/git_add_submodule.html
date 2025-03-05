@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up a Git submodule to include a remote repository named &quot;MEDIA&quot; within a project called &quot;PROJECT1&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define constants
+PROJECT_DIR="/path/to/PROJECT1"
+MEDIA_REPO="ssh://path.to.repo/MEDIA"
+
+# Navigate to the project directory
+cd "$PROJECT_DIR" || {
+  echo "Failed to navigate to $PROJECT_DIR"
+  exit 1
+}
+
+# Add the media submodule
+git submodule add "$MEDIA_REPO" || {
+  echo "Failed to add $MEDIA_REPO as a submodule"
+  exit 1
+}
+
+# Commit the changes with a meaningful message
+git commit -m "Added $MEDIA_REPO as a submodule" || {
+  echo "Failed to commit changes"
+  exit 1
+}
+
+# Initialize and update the submodules
+git submodule update --init || {
+  echo "Failed to update submodules"
+  exit 1
+}</code></pre></div><p>This code snippet sets up a Git submodule to include a remote repository named &quot;MEDIA&quot; within a project called &quot;PROJECT1&quot;.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>cd /path/to/PROJECT1</code>:</strong></p>

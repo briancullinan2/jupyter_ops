@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Module dependencies.
+ */
+const path = require('path');
+const antlr4 = require('antlr4');
+
+/**
+ * Function to parse Python code.
+ * 
+ * @param {string} pythonCode - The Python code to be parsed.
+ * @returns {Promise<Array<Object>>} A promise resolving to an array of function parameter objects.
+ */
+async function pythonParams(pythonCode) {
+  // Get the ANTLR parser generator for Python3
+  const { Grammar } = await import('antlr4/Java/ANTLRv4Parser');
+  const python3Grammar = require('./Python3.g4'); // Assuming the grammar file is in the same directory
+
+  // Create a Python3 lexer and parser
+  const python3Lexer = new antlr4.Lexer(new antlr4.InputStream(pythonCode), new python3Grammar.Lexer());
+  const python3Parser = new antlr4.Parser(new antlr4.InputStream(pythonCode), new python3Grammar.Parser());
+
+  // Define a custom listener to extract function parameters
+  class ParameterListener extends antlr4.tree.ParseTreeListener {
+    constructor() {
+      super();
+      this.parameters = [];
+    }
+
+    enterFuncdef(ctx) {
+      // Extract the function name and parameters
+      const funcName = ctx.children[1].getText();
+      const paramCtx = ctx.children[2];
+
+      if (paramCtx && paramCtx.children.length > 1) {
+        const params = paramCtx.getText()
+         .replace(/[()]/g, '')  // Remove brackets
+         .split(',')
+         .map(param => param.trim());
+
+        this.parameters.push({ function: funcName, parameters: params });
+      }
+    }
+  }
+
+  // Create an instance of the custom listener
+  const listener = new ParameterListener();
+
+  // Parse the Python code
+  const tree = python3Parser.file_input();
+
+  // Walk the parse tree with the listener
+  antlr4.tree.ParseTreeWalker.DEFAULT.walk(listener, tree);
+
+  // Filter the result to only include the function with the matching name
+  const mainFunc = listener.parameters.find(param => param.function === '__all__ = ');
+
+  return mainFunc || listener.parameters;
+}
+
+module.exports = pythonParams;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Purpose</h3>
 <p>This code is a Node.js module that provides a function to parse Python code and extract function parameters.</p>
 <h3>Dependencies</h3>

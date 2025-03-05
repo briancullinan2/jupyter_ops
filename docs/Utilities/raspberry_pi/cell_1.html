@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -154,7 +161,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>File Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="c"><code>/**
+ * @file rht03.c
+ * @brief Driver for the MaxDetect series sensors
+ *
+ * @copyright 2012-2013 Gordon Henderson <projects@drogon.net>
+ *
+ * @note This file is part of wiringPi:
+ *       https://projects.drogon.net/raspberry-pi/wiringpi/
+ */
+
+#include <stdio.h>
+#include <time.h>
+#include <wiringPi.h>
+#include <maxdetect.h>
+
+#define RHT03_PIN       7
+#define DELAY_MS        23000
+#define SERIAL_DELAY_MS 57
+
+#define MAX_TEMPERATURE 100
+#define MAX_HUMIDITY    100
+
+/**
+ * @brief Setup function for wiringPi
+ */
+void setup(void) {
+    wiringPiSetup();
+    piHiPri(55);
+}
+
+/**
+ * @brief Main program loop
+ */
+void loop(void) {
+    int newTemp, newRh;
+    float temp2;
+
+    if (readRHT03(RHT03_PIN, &newTemp, &newRh)) {
+        if ((temp!= newTemp) || (rh!= newRh)) {
+            temp = newTemp;
+            temp2 = (9.0 / 5) * (newTemp / 10) + 32;
+            rh = newRh;
+            printf("celsius=%.2f&fahrenheit=%.2f&humidity=%.2f&time=%u\n", temp / 10.0, temp2, rh / 10.0, (unsigned)time(NULL));
+            fflush(stdout);
+        }
+    } else {
+        // Serial interface is not available, wait and try again
+        usleep(SERIAL_DELAY_MS * 1000);
+    }
+
+    usleep(DELAY_MS * 1000);
+}
+
+int main(void) {
+    int temp, rh;
+    float temp2;
+
+    temp = rh = 0;
+    setup();
+
+    while (1) {
+        loop();
+    }
+
+    return 0;
+}</code></pre></div><h3>File Overview</h3>
 <p>This is a C program named <code>rht03.c</code> that serves as a driver for the MaxDetect series sensors, specifically the RHT03 sensor. The program is designed to run on a Raspberry Pi device.</p>
 <h3>Includes and Definitions</h3>
 <p>The program includes the following header files:</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,122 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Graphviz Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Import the Graphviz library
+import * as Graphviz from 'graphviz';
+
+// Create a new directed graph object
+const dot = new Graphviz.Digraph({
+  filename: 'example',
+  dir: 'LR',
+});
+
+// Set the font and style for all nodes
+dot.setGraph({
+  rankdir: 'BT',
+  fontname: 'Helvetica',
+});
+
+// Set the visual style for all nodes
+dot.node().setStyle({
+  peripheries: 0,
+  style: 'filled',
+  fillcolor: 'blue',
+  fontcolor: 'white',
+  fixedsize: true,
+  height: 0.8,
+  width: 1.8,
+});
+
+// Set the font style for all edges
+dot.edge().setStyle({
+  fontname: 'Helvetica',
+  fontsize: 12,
+  fontcolor: 'blue',
+  labeldistance: 1.8,
+});
+
+// Define the student cluster
+dot.subgraph('cluster_student', {
+  label: 'Student',
+  style: 'filled',
+  fillcolor: 'grey92',
+  node: {
+    shape:'record',
+    style: 'filled, rounded',
+    label: 'Submit\nRegistration\n',
+  },
+  node: {
+    shape: 'box',
+    peripheries: 0,
+    label: 'Letter',
+  },
+});
+
+// Define the admin cluster
+dot.subgraph('cluster_admin', {
+  label: 'Admin',
+  style: 'filled',
+  fillcolor: 'grey92',
+  node: {
+    shape: 'diamond',
+    height: 1.5,
+    label: 'Application\nComplete?',
+  },
+  node: {
+    shape:'record',
+    label: 'Write Rejection\nLetter\n',
+  },
+});
+
+// Define the registrar cluster
+dot.subgraph('cluster_registrar', {
+  label: 'Registrar',
+  style: 'filled',
+  fillcolor: 'grey92',
+  node: {
+    shape: 'diamond',
+    height: 1.8,
+    label: 'Minimum\nStandard\nMet?',
+  },
+});
+
+// Define the faculty cluster
+dot.subgraph('cluster_faculty', {
+  label: 'Faculty',
+  style: 'filled',
+  fillcolor: 'grey92',
+  node: {
+    shape: 'diamond',
+    height: 1.8,
+    label: 'Suitable for\nProgram?\n',
+  },
+  node: {
+    shape:'record',
+    label: 'Write Acceptance\nLetter\n',
+  },
+});
+
+// Define the edges between nodes
+dot.addEdge('submit', 'complete');
+dot.addEdge('complete','submit', { label: 'no' });
+dot.addEdge('complete','min', { label: 'yes' });
+dot.addEdge('min', 'admreject', { label: 'no' });
+dot.addEdge('min','suitable', { label: 'yes' });
+dot.addEdge('suitable', 'admreject', { label: 'no' });
+dot.addEdge('suitable', 'facaccept', { label: 'yes' });
+dot.addEdge('admreject', 'letter');
+dot.addEdge('facaccept', 'letter');
+
+// Render the graph
+dot.render('png', (err, graph) =&gt; {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(graph);
+  }
+});</code></pre></div><p><strong>Graphviz Code Breakdown</strong></p>
 <p>This is a Graphviz code written in DOT language, which is used to create directed graphs.</p>
 <h3>Graph Definition</h3>
 <pre><code class="language-dot">digraph apply {

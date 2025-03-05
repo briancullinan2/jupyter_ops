@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getSheetByName</code> that retrieves a specific worksheet from a Google Sheet based on its name or index.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Importer } = require('../Core');
+
+/**
+ * Retrieves Google Sheet information using the provided ID.
+ *
+ * @param {string} docId - The ID of the Google Sheet document.
+ * @returns {object} The retrieved document information.
+ */
+async function getGoogleSheetInfo(docId) {
+    // TODO: Implement Google Sheets API integration or caching for improved performance
+    // For now, assume this function is already implemented and returns the document info
+    // Replace this comment with the actual implementation
+    return { sheets: [], docId }; // Mock response for demonstration purposes
+}
+
+class GoogleSheetsManager {
+    constructor(core) {
+        this.core = core;
+        this.loadedDocs = {};
+    }
+
+    /**
+     * Retrieves a Google Sheet by its name or index.
+     *
+     * @param {string} docId - The ID of the Google Sheet document.
+     * @param {string|string[]} [page] - The name or index of the sheet to retrieve (optional).
+     * @returns {object} The retrieved sheet information.
+     */
+    async getSheetByName(docId, page) {
+        if (this.loadedDocs[docId]) {
+            return this.loadedDocs[docId];
+        }
+
+        const docInfo = await getGoogleSheetInfo(docId);
+        this.loadedDocs[docId] = docInfo;
+
+        if (typeof page ==='string') {
+            return docInfo.sheets.find(s =&gt; s.properties.title === page);
+        }
+
+        return docInfo.sheets.find(s =&gt; s.properties.index === page);
+    }
+}
+
+module.exports = (core) =&gt; new GoogleSheetsManager(core);</code></pre></div><p>This code defines a function <code>getSheetByName</code> that retrieves a specific worksheet from a Google Sheet based on its name or index.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Caching:</strong> It uses a <code>loadedDocs</code> object to cache information about Google Sheets to avoid redundant API calls.</p></li>

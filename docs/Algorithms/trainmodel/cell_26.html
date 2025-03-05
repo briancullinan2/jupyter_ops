@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,8 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="markdown"><code># Import necessary libraries for image processing and visualization</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules (Assumed)</h4>
 <pre><code class="language-python">import cv2 as ef  # Assuming 'ef' is an alias for OpenCV
 import matplotlib.pyplot as plt

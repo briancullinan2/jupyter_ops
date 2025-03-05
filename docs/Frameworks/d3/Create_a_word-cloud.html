@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -158,7 +165,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates an SVG image of a word cloud using D3.js and the <code>d3-cloud</code> library.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { createCanvas } = require('canvas');
+const cloud = require('d3-cloud');
+const { D3Node } = require('d3-node');
+
+/**
+ * Configuration for the D3 chart.
+ * @type {Object}
+ */
+const config = {
+  margin: {
+    top: 20,
+    right: 20,
+    bottom: 30,
+    left: 50,
+  },
+  width: 960,
+  height: 500,
+};
+
+/**
+ * Function to draw the D3 cloud chart.
+ * @param {Object[]} wordCount - Array of objects containing word information.
+ * @returns {Promise&lt;string&gt;} SVG string of the D3 chart.
+ */
+async function drawD3Cloud(wordCount) {
+  // Create a new D3Node instance
+  const d3n = new D3Node();
+  const d3 = d3n.d3;
+
+  // Create a scale for fill colors
+  const fill = d3.scaleOrdinal(d3.schemeCategory20);
+
+  // Create a new SVG element
+  const svg = d3n.createSVG(config.width + config.margin.left + config.margin.right, config.height + config.margin.top + config.margin.bottom)
+   .append('g')
+   .attr('transform', `translate(${config.margin.left + config.width / 2}, ${config.margin.top + config.height / 2})`);
+
+  // Select all text elements and bind data
+  svg.selectAll('text')
+   .data(wordCount)
+   .enter()
+   .append('text')
+   .style('font-size', (d) =&gt; `${d.size}px`)
+   .style('font-family', 'Impact')
+   .style('fill', (d, i) =&gt; fill(i))
+   .attr('text-anchor','middle')
+   .attr('transform', (d) =&gt; `translate(${d.x}, ${d.y}) rotate(${d.rotate})`)
+   .text((d) =&gt; d.text);
+
+  // Return the SVG string
+  return d3n.svgString();
+}
+
+/**
+ * Function to generate the D3 cloud chart.
+ * @param {Object[]} wordCount - Array of objects containing word information.
+ * @returns {Promise&lt;string&gt;} SVG string of the D3 chart.
+ */
+async function d3CloudToSVG(wordCount) {
+  // Create a new canvas element
+  const canvas = createCanvas(1, 1);
+  const context = canvas.getContext('2d');
+
+  // Create a new cloud instance
+  const cloudInstance = cloud()
+   .canvas(() =&gt; canvas)
+   .size([config.width, config.height])
+   .words(wordCount)
+   .padding(0)
+   .rotate(() =&gt; ~~(Math.random() * 120) - 60)
+   .font('Impact')
+   .fontSize((d) =&gt; d.size)
+   .on('end', (wordCount) =&gt; {
+      // Draw the D3 cloud chart
+      const svgString = drawD3Cloud(wordCount);
+      context.font = '16px Arial';
+      context.fillStyle = 'white';
+      context.textAlign = 'center';
+      context.textBaseline ='middle';
+      context.fillText(svgString, canvas.width / 2, canvas.height / 2);
+      // Return the SVG string
+      return canvas.toDataURL();
+    })
+   .start();
+
+  // Wait for the cloud instance to finish
+  return new Promise((resolve) =&gt; {
+    cloudInstance.on('end', (svgString) =&gt; resolve(svgString));
+  });
+}
+
+module.exports = d3CloudToSVG;</code></pre></div><p>This code generates an SVG image of a word cloud using D3.js and the <code>d3-cloud</code> library.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

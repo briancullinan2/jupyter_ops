@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./cell_3.html">Cell 3</a> | <a href="./llm_voice.html">llm voice</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code sets up a text-to-speech (TTS) system using the <code>outetts</code> library, importing necessary modules and environment variables, and defining a function <code>generateSpeech</code> that generates speech from a given prompt. The <code>generateSpeech</code> function creates a TTS interface instance, loads a default speaker, generates speech, and saves the output to a WAV file.</p>
+  <p>The code imports necessary modules, sets the <code>HOMEPATH</code> variable, configures a TTS model, and defines a <code>generateSpeech</code> function to synthesize speech from a prompt and save it to a file. The <code>generateSpeech</code> function is then exported as the default export of the module.</p>
 <h1>Cell 4</h1>
 
 
@@ -147,44 +156,128 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Import Statements</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+import { createInterface, createSpeaker } from './interface.js';
+import { HFModelConfig_v1, InterfaceHF } from './outetts.js';
+
+// Define constants
+const HOMEPATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const DEFAULT_MODEL_PATH = 'OuteAI/OuteTTS-0.3-1B';
+const DEFAULT_LANGUAGE = 'en';
+const DEFAULT_DTYPE = 'fp32';
+
+// Create a configuration class for the model
+class ModelConfig {
+  constructor({
+    modelPath = DEFAULT_MODEL_PATH,
+    language = DEFAULT_LANGUAGE,
+    dtype = DEFAULT_DTYPE,
+  }) {
+    this.modelPath = modelPath;
+    this.language = language;
+    this.dtype = dtype;
+  }
+}
+
+// Create an interface to the model
+class TTSInterface {
+  constructor({ modelVersion = '0.2', cfg, modelPath = DEFAULT_MODEL_PATH }) {
+    this.modelVersion = modelVersion;
+    this.cfg = cfg;
+    this.modelPath = modelPath;
+    this.speaker = null;
+  }
+
+  async generate(options) {
+    if (!this.speaker) {
+      await this.loadDefaultSpeaker('male_1');
+    }
+
+    const { text, temperature = 0.1, repetitionPenalty = 1.1 } = options;
+    const output = await this.interface.generate({
+      text,
+      temperature,
+      repetitionPenalty,
+      speaker: this.speaker,
+    });
+
+    return output;
+  }
+
+  async loadDefaultSpeaker(speakerName) {
+    const speaker = await this.interface.loadDefaultSpeaker(speakerName);
+    this.speaker = speaker;
+  }
+
+  async printDefaultSpeakers() {
+    await this.interface.printDefaultSpeakers();
+  }
+}
+
+// Refactor the generateSpeech function
+async function generateSpeech(prompt, {
+  modelVersion = '0.2',
+  modelPath = DEFAULT_MODEL_PATH,
+  language = DEFAULT_LANGUAGE,
+  dtype = DEFAULT_DTYPE,
+} = {}) {
+  // Create a model configuration
+  const modelConfig = new ModelConfig({ modelPath, language, dtype });
+
+  // Create an interface to the model
+  let interface;
+  if (!interface) {
+    interface = new TTSInterface({ modelVersion, cfg: modelConfig });
+    await interface.printDefaultSpeakers();
+    await interface.loadDefaultSpeaker('male_1');
+  }
+
+  // Generate speech
+  const output = await interface.generate({ text: prompt });
+
+  // Save the synthesized speech to a file
+  output.save('output.wav');
+}
+
+// Export the generateSpeech function
+export default generateSpeech;
+
+// TODO: Refactor the interface.js file to use ES6 classes
+// TODO: Add error handling for the outetts module</code></pre></div><h3>Code Breakdown</h3>
+<h4>Import Statements</h4>
+<p>The code imports the following modules:</p>
 <ul>
-<li><code>import path from 'path'</code>: Imports the Node.js <code>path</code> module.</li>
-<li><code>import process from 'process'</code>: Imports the Node.js <code>process</code> module.</li>
-<li><code>import { HFModelConfig_v1, InterfaceHF } from &quot;outetts&quot;;</code>: Imports the <code>HFModelConfig_v1</code> and <code>InterfaceHF</code> classes from the <code>outetts</code> library.</li>
+<li><code>path</code> from the <code>path</code> module, which provides utilities for working with file paths.</li>
+<li><code>process</code> from the <code>process</code> module, which provides information about the current Node.js process.</li>
+<li><code>HFModelConfig_v1</code> and <code>InterfaceHF</code> from the <code>outetts</code> module, which are used to configure and interact with a TTS (Text-to-Speech) model.</li>
 </ul>
-<h3>Environment Variable Setup</h3>
+<h4>Environment Variable</h4>
+<p>The code sets the <code>HOMEPATH</code> variable to the value of the following environment variables in order:</p>
+<ol>
+<li><code>HOME</code></li>
+<li><code>HOMEPATH</code></li>
+<li><code>USERPROFILE</code></li>
+</ol>
+<p>This is used to determine the home directory on the user's system.</p>
+<h4>Model Configuration</h4>
+<p>The code creates a new instance of <code>HFModelConfig_v1</code> with the following settings:</p>
 <ul>
-<li><code>const HOMEPATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE</code>: Sets the <code>HOMEPATH</code> constant to the value of the <code>HOME</code>, <code>HOMEPATH</code>, or <code>USERPROFILE</code> environment variables.</li>
+<li><code>model_path</code>: The path to the TTS model, set to <code>'OuteAI/OuteTTS-0.3-1B'</code>.</li>
+<li><code>language</code>: The language of the model, set to <code>&quot;en&quot;</code> (English).</li>
+<li><code>dtype</code>: The data type of the model, set to <code>&quot;fp32&quot;</code> (Float 32).</li>
 </ul>
-<h3>Model Configuration</h3>
+<h4>Function <code>generateSpeech</code></h4>
+<p>This is the main function that generates speech from a given prompt. It:</p>
 <ul>
-<li><code>const model_config = new HFModelConfig_v1({...})</code>: Creates a new <code>HFModelConfig_v1</code> instance with the following properties:
-<ul>
-<li><code>model_path</code>: The path to the model file, set to <code>'OuteAI/OuteTTS-0.3-1B'</code>.</li>
-<li><code>language</code>: The language code, set to <code>&quot;en&quot;</code>.</li>
-<li><code>dtype</code>: The data type, set to <code>'fp32'</code>.</li>
-</ul></li>
+<li>Initializes the TTS interface if it hasn't been initialized before.</li>
+<li>Prints the available default speakers.</li>
+<li>Loads a default speaker named <code>&quot;male_1&quot;</code>.</li>
+<li>Generates speech using the <code>generate</code> method of the TTS interface, passing in the prompt and other settings.</li>
+<li>Saves the synthesized speech to a file named <code>&quot;output.wav&quot;</code>.</li>
 </ul>
-<h3>Function Definitions</h3>
-<ul>
-<li><code>let tts_interface</code>: A variable to store the TTS interface instance.</li>
-<li><code>let speaker</code>: A variable to store the speaker instance.</li>
-<li><code>async function generateSpeech(prompt) {...}</code>: An asynchronous function that generates speech from a given prompt.</li>
-</ul>
-<h3>generateSpeech Function</h3>
-<ul>
-<li><code>if(!tts_interface) {...}</code>: Checks if the <code>tts_interface</code> instance is not created. If not, it creates a new instance using the <code>InterfaceHF</code> class.</li>
-<li><code>tts_interface.print_default_speakers()</code>: Prints the available default speakers.</li>
-<li><code>speaker = tts_interface.load_default_speaker(&quot;male_1&quot;)</code>: Loads a default speaker with the name <code>&quot;male_1&quot;</code>.</li>
-<li><code>const output = await tts_interface.generate({...})</code>: Generates speech using the <code>generate</code> method of the <code>tts_interface</code> instance.</li>
-<li><code>output.save(&quot;output.wav&quot;)</code>: Saves the synthesized speech to a file named <code>&quot;output.wav&quot;</code>.</li>
-</ul>
-<h3>Export Statement</h3>
-<ul>
-<li><code>export default generateSpeech</code>: Exports the <code>generateSpeech</code> function as the default export.</li>
-</ul>
+<h4>Export</h4>
+<p>The <code>generateSpeech</code> function is exported as the default export of the module.</p>
 
 </body>
 

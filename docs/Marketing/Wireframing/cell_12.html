@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * This function takes a list of numbers and adds 23 to each number.
+ * 
+ * @param numbers A list of numbers to increment by 23.
+ * @returns A list of numbers incremented by 23.
+ */
+function addTwentyThree(numbers: number[]): number[] {
+  /**
+   * Uses the map function to apply a callback function to each element in the list.
+   * The callback function returns the sum of the number and 23.
+   */
+  return numbers.map((number) =&gt; number + 23);
+}
+
+console.log(addTwentyThree([1, 2, 3]));
+```
+
+However, if you want to replicate the ClojureScript-like syntax and behavior, you could use TypeScript with a more functional programming style:
+
+```typescript
+/**
+ * This function takes a list of numbers and adds 23 to each number.
+ * 
+ * @param numbers A list of numbers to increment by 23.
+ * @returns A list of numbers incremented by 23.
+ */
+function addTwentyThree(numbers: number[]): number[] {
+  // Use the map function to apply a callback function to each element in the list.
+  // The callback function returns the sum of the number and 23.
+  return numbers.map((x) =&gt; x + 23);
+}
+
+console.log(addTwentyThree([1, 2, 3]));</code></pre></div><h3>Code Breakdown</h3>
 <ul>
 <li><code>clojurescript</code>: A comment indicating the code is written in ClojureScript.</li>
 <li><code>(map... )</code>: The <code>map</code> function is applied to the following sequence.</li>

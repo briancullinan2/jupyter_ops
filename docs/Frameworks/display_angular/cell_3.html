@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -164,7 +171,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { importer, https, fs } = require('node-modules');
+const express = require('express');
+const { promisify } = require('util');
+const { createServer } = require('https');
+const { join } = require('path');
+
+// Import custom modules
+const {
+  SearchProvider,
+  SocketIOserver,
+  SeleniumServer,
+} = importer.import([
+ 'search notebook provider',
+ 'socket.io server',
+ 'selenium http server',
+]);
+
+// Define HTTPS server options
+const httpsOptions = {
+  key: fs.readFileSync(join(__dirname, '../Utilities/.ca/intermediate/private/localhost.key.pem')),
+  cert: fs.readFileSync(join(__dirname, '../Utilities/.ca/intermediate/certs/localhost.cert.pem')),
+  passphrase: 'x',
+  rejectUnauthorized: false,
+};
+
+// Create HTTPS server
+const secureServer = createServer(httpsOptions, express());
+
+// Define trusted CA certificates
+const trustedCa = [join(__dirname, '../Utilities/ca/intermediate/certs/localhost.cert.pem')];
+
+// Set trusted CA certificates in the global agent
+https.globalAgent.options.ca = [];
+trustedCa.forEach((ca) =&gt; {
+  https.globalAgent.options.ca.push(httpsOptions.cert);
+});
+
+// Set up Socket.io server
+const sockify = new SocketIOserver();
+sockify.sockifyServer(secureServer);
+sockify.sockifyRequire({
+  prototype: {
+    search: async () =&gt; {},
+    results: async () =&gt; {},
+  },
+}, 'SearchService');
+sockify.sockifyRequire({
+  prototype: {
+    chrome: async () =&gt; {},
+  },
+}, 'BrowserService');
+
+// Start the HTTPS server
+const listener = secureServer.listen(8000);
+
+// Start SearchProvider
+SearchProvider();
+
+// Start SeleniumServer asynchronously
+promisify(seleniumServer)();
+ .catch((e) =&gt; console.error(e));
+
+// TODO: Integrate with native messaging using the following config
+// {
+//   "name": "com.my_company.my_application",
+//   "description": "My Application",
+//   "path": "C:\\Program Files\\My Application\\chrome_native_messaging_host.exe",
+//   "type": "stdio",
+//   "allowed_origins": [
+//     "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
+//   ]
+// }</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <ul>
 <li><code>var importer = require('../Core');</code>: Imports a module named <code>Core</code> from a directory two levels up from the current directory.</li>

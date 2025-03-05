@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,104 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>```markdown
+# Transition Stream
+====================
+
+A function to initiate a YouTube Live stream using the Google API and system commands.
+
+### Dependences
+---------------
+
+*   `googleapiclient`
+*   `subprocess`
+*   `os`
+*   `signal`
+
+### Functions
+-------------
+
+#### `transition_stream`
+
+Transition a YouTube Live stream.
+
+```python
+import os
+import signal
+import subprocess
+import time
+from googleapiclient.discovery import build
+from google.oauth2.credentials import Credentials
+from googleapiclient.errors import HttpError
+
+def youtube_authorize() -&gt; Credentials:
+    """
+    Authenticate with Google using a credentials file.
+    
+    TODO: Implement a more secure authentication method.
+    """
+    # For security reasons, we recommend to use a more secure authentication method.
+    # This is a placeholder.
+    return Credentials(None)
+
+def bind_stream_to_broadcast() -&gt; tuple:
+    """
+    Bind a stream to a broadcast.
+    
+    Returns:
+        tuple: A tuple containing the stream and broadcast ID.
+    """
+    # For security reasons, we recommend to use a more secure authentication method.
+    # This is a placeholder.
+    return {"cdn": {"ingestionInfo": {"streamName": "stream-name"}}}, "broadcast-id"
+
+def runffmpeg(stream_name: str) -&gt; None:
+    """
+    Run the ffmpeg process.
+    
+    Args:
+        stream_name (str): The name of the stream.
+    """
+    args = ["python", "-c", "__import__('Core').run()", "python write images to ffmpeg stream", 
+            "--streamName=" + stream_name]
+    process = subprocess.Popen(args)
+    return process
+
+def transition_stream():
+    """
+    Transition a YouTube Live stream.
+    """
+    # Authenticate with Google
+    credentials = youtube_authorize()
+    
+    # Build the YouTube API client
+    youtube = build("youtube", "v3", credentials=credentials)
+    
+    # Bind the stream to a broadcast
+    stream, broadcast_id = bind_stream_to_broadcast()
+    
+    # Run the ffmpeg process
+    process = runffmpeg(stream["cdn"]["ingestionInfo"]["streamName"])
+    
+    # Create 10 seconds of stream data before going live
+    # We can remove this line if we don't need to generate stream data.
+    # time.sleep(10)
+    
+    try:
+        while True:
+            time.sleep(1)
+            # Check if the stream is still running
+            if not process.poll():
+                break
+    except KeyboardInterrupt:
+        print("\nCTRL+C detected. Exiting...")
+    
+    # Terminate the ffmpeg process
+    os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+
+__all__ = {"transition_stream": transition_stream}
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>
 <p>The code imports the following modules:</p>
 <ul>

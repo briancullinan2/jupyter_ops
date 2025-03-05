@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import the core module to access the evalNotebook function.
+ */
+const { evalNotebook } = require('./Core');
+
+/**
+ * Constants for notebook and search type.
+ * @enum {string}
+ */
+const NotebookTypes = {
+  FILE_SYSTEM: 'Utilities/file system.ipynb',
+  DEFAULT: NotebookTypes.FILE_SYSTEM,
+};
+
+/**
+ * Enum for search types.
+ * @enum {string}
+ */
+const SearchTypes = {
+  CHEAP:'memory-fs',
+  NUMERIC_CODE_CELL: '1',
+};
+
+/**
+ * Evaluates a cell in the current notebook using the evalNotebook function.
+ * @param {string} notebookType - The type of notebook to use (default: FILE_SYSTEM).
+ * @param {string} searchType - The type of search to perform (default: CHEAP).
+ * @returns {void}
+ */
+function evaluateCell(notebookType = NotebookTypes.DEFAULT, searchType = SearchTypes.CHEAP) {
+  // Use evalNotebook function to evaluate the cell
+  evalNotebook(notebookType, searchType);
+}
+
+// Example usage
+evaluateCell(); // Evaluates cell in FILE_SYSTEM notebook with CHEAP search
+evaluateCell(NotebookTypes.DEFAULT, SearchTypes.NUMERIC_CODE_CELL); // Evaluates cell in FILE_SYSTEM notebook with NUMERIC_CODE_CELL search</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Module</h3>
 <ul>
 <li><code>var importer = require('./Core');</code>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -81,7 +88,8 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Command Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>./cloudflare_tunnel_runner.sh <tunnel_name></code></pre></div><h2>Command Breakdown</h2>
 <h3>Command</h3>
 <ul>
 <li><code>cloudflared tunnel run</code>: This command runs a Cloudflare Tunnel, which allows traffic from the internet to reach your application or service.</li>

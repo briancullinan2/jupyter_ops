@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code finds all Tuesdays in the remaining months of 2017 that fall on or after the 26th.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Calculates all Tuesdays in a given month and year.
+ * 
+ * @param {number} month - Zero-based month (0-11)
+ * @param {number} year - Four-digit year
+ * @returns {Date[]} Array of Tuesdays in the given month
+ */
+function getTuesdays(month, year) {
+    // Initialize the first day of the month
+    const firstDay = new Date(year, month, 1);
+    
+    // Calculate the first Tuesday of the month
+    let tuesday = new Date(firstDay.getTime());
+    tuesday.setDate(tuesday.getDate() + (9 - tuesday.getDay()) % 7);
+    
+    // Initialize an array to store Tuesdays
+    const tuesdays = [];
+    
+    // Loop through each week in the month
+    while (tuesday.getMonth() === month) {
+        // Add the current Tuesday to the array
+        tuesdays.push(new Date(tuesday.getTime()));
+        
+        // Move to the next Tuesday
+        tuesday.setDate(tuesday.getDate() + 7);
+    }
+    
+    return tuesdays;
+}
+
+/**
+ * Filters Tuesdays that occur after the 25th day of the month.
+ * 
+ * @param {Date[]} tuesdays - Tuesdays in a given month
+ * @returns {Date[]} Tuesdays that occur after the 25th day of the month
+ */
+function filterTuesdaysAfter25(tuesdays) {
+    return tuesdays.filter((tuesday) =&gt; tuesday.getDate() &gt; 25);
+}
+
+/**
+ * Prints Tuesdays after the 25th day of each month in a given year.
+ */
+function printTuesdaysAfter25() {
+    // Get the current month
+    const currentMonth = (new Date()).getMonth();
+    
+    // Initialize an array to store the result
+    const results = [];
+    
+    // Loop through each month in the year
+    for (let month = currentMonth; month &lt;= 11; month++) {
+        // Get the Tuesdays in the current month
+        const tuesdays = getTuesdays(month, 2017);
+        
+        // Filter out Tuesdays that occur after the 25th day
+        const filteredTuesdays = filterTuesdaysAfter25(tuesdays);
+        
+        // Add the filtered Tuesdays to the result array
+        results.push(...filteredTuesdays);
+    }
+    
+    // Print the result in the desired format
+    console.log(results.map((tuesday) =&gt; `${tuesday.getDate()}/${tuesday.getMonth() + 1}`).join('\n'));
+}
+
+// Export the function
+module.exports = { getTuesdays, filterTuesdaysAfter25, printTuesdaysAfter25 };</code></pre></div><p>This code finds all Tuesdays in the remaining months of 2017 that fall on or after the 26th.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>getTuesdays(month, year)</code> function:</strong></p>

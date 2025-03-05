@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules in a more modern way using import
+import childProcess from 'child_process';
+import fs from 'fs';
+import express from 'express';
+import mime from'mime';
+import path from 'path';
+import request from'request';
+import JSDOM from 'jsdom';
+
+// Define constants and variables
+const OUTPUT_DIR = path.join(process.cwd(), 'output');
+const PORT = process.env.PORT || 3000;
+const HOST = 'localhost';
+
+// Ensure output directory exists
+if (!fs.existsSync(OUTPUT_DIR)) {
+  fs.mkdirSync(OUTPUT_DIR);
+}
+
+// Install dependencies
+try {
+  childProcess.execSync('npm install jsdom express request mime', { stdio: [0, 1, 2] });
+  console.log('Dependencies installed successfully');
+} catch (error) {
+  console.error('Error installing dependencies:', error);
+  process.exit(1);
+}
+
+// Initialize express app
+const app = express();
+
+// Define query selector
+const QUERY_SELECTOR = '.w-gallery-list img';
+
+// TODO: Implement route handling
+app.get('/', (req, res) => {
+  // TO DO: Implement logic to handle request
+  res.status(200).send('Express is ready');
+});
+
+// Start server
+app.listen(PORT, HOST, () => {
+  console.log(`Server listening on http://${HOST}:${PORT}`);
+});
+
+// TODO: Implement request to fetch data
+request('https://example.com', (error, response, body) => {
+  if (error) {
+    console.error('Error fetching data:', error);
+  } else {
+    // TO DO: Implement logic to parse and process response data
+  }
+});</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requires</h3>
 <pre><code class="language-javascript">var exec = require('child_process').execSync;
 var fs = require('fs');

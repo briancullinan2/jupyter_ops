@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def create_max(num: str, k: int) -> str:
+    """
+    Returns the k largest digits from the input number, in descending order.
+    
+    Args:
+        num (str): The input number as a string.
+        k (int): The number of largest digits to return.
+    
+    Returns:
+        str: The k largest digits from the input number, in descending order.
+    """
+    # Convert the input number to a list of digits for easier manipulation
+    digits = list(num)
+    
+    # Calculate the number of digits to drop from the end of the list
+    drop = len(digits) - k
+    
+    # Initialize an empty stack to store the digits
+    stack = []
+    
+    # Iterate over each digit in the list
+    for digit in digits:
+        # While there are digits to drop from the stack and the top of the stack is less than the current digit
+        while drop and stack and stack[-1] < digit:
+            # Remove the top digit from the stack
+            stack.pop()
+            # Decrement the number of digits to drop
+            drop -= 1
+        # Push the current digit onto the stack
+        stack.append(digit)
+    
+    # Return the k largest digits from the stack as a string
+    return ''.join(stack[:k])
+
+# Test cases
+num = '912583'
+assert create_max(num, 1) == '9'
+assert create_max(num, 2) == '98'
+assert create_max(num, 3) == '983'
+assert create_max(num, 4) == '9583'
+assert create_max(num, 5) == '92583'
+
+print('All passed!')</code></pre></div><h2>Code Breakdown</h2>
 <h3>Function: <code>create_max</code></h3>
 <h4>Parameters</h4>
 <ul>

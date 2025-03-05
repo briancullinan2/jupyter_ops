@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,48 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>sendFacebookThanks</code> that checks for a &quot;dream&quot; related message in a Facebook thread and sends a &quot;Are you living the dream?&quot; message if none is found.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Sends a thanks message to a friend on Facebook.
+ * 
+ * @param {object} client - The automation client.
+ * @param {string} friend - The name of the friend to send the message to.
+ * @param {number} hwnd - The window handle to switch to.
+ * @returns {Promise&lt;string[]&gt;} A promise that resolves with an array of messages
+ * that contain the word "dream".
+ */
+function sendFacebookThanks(client, friend, hwnd) {
+  // Use promise chaining for better error handling and readability
+  return client.switchToWindow(hwnd)
+   .then(() =&gt; client.clickSpa(friend))
+   .then(() =&gt; readFacebookThread(friend))
+   .then(readThreadResult =&gt; {
+      // Extract messages that contain the word "dream"
+      const thanks = readThreadResult.messages.filter(message =&gt; message.message.indexOf('dream') &gt; -1);
+      
+      // Log the results
+      console.log(`Found ${thanks.length} messages containing 'dream'`);
+
+      // Send a message if none are found
+      return thanks.length === 0
+       ? sendFacebookMessage('Are you living the dream?')
+        : thanks;
+    })
+   .catch(error =&gt; {
+      // Log errors with the message
+      console.log(`Error sending Facebook thanks: ${error.message}`);
+      
+      // Re-throw the error to allow it to propagate up the call stack
+      throw error;
+    });
+}
+
+// Export the function
+module.exports = sendFacebookThanks;
+
+// TODO: Implement a retry mechanism to handle transient errors
+// TODO: Add a timeout to prevent the function from hanging indefinitely
+// TODO: Consider using a more robust error handling mechanism, such as a centralized error handler</code></pre></div><p>This code defines a function called <code>sendFacebookThanks</code> that checks for a &quot;dream&quot; related message in a Facebook thread and sends a &quot;Are you living the dream?&quot; message if none is found.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>sendFacebookThanks(client, friend, hwnd)</code>:</strong></p>

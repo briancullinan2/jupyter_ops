@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -268,7 +275,174 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>evaluateDom</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { walkTree } from '../Core/importer.js';
+import { JSDOM, XPathResult, ORDERED_NODE_ITERATOR_TYPE, ANY_TYPE } from 'jsdom';
+import wgxpath from 'wgxpath';
+import esquery from 'esquery';
+import jsel from 'jsel';
+import ASTQ from 'astq';
+
+const supportedResultTypes = {
+  [ORDERED_NODE_ITERATOR_TYPE]: 'orderedNodeIterator',
+  [ANY_TYPE]: 'anyType',
+  [1]: 'numberType',
+  [2]:'stringType',
+  [3]: 'booleanType',
+};
+
+class DOMEvaluator {
+  constructor(document, options = {}) {
+    this.document = document;
+    this.options = options;
+    this.wgxpath = wgxpath;
+  }
+
+  evaluateDom(select, ctx) {
+    try {
+      if (select.includes('//*')) {
+        console.warn(`Possible slow query evaluation due to wildcard: ${select}`);
+      }
+      const iterator = this.document.evaluate(
+        select,
+        ctx,
+        null,
+        ORDERED_NODE_ITERATOR_TYPE,
+        null,
+      );
+      const result = [];
+      let node;
+      while ((node = iterator.iterateNext())) {
+        result.push(node.nodeValue || node);
+      }
+      return result;
+    } catch (error) {
+      if (error.message.includes('Value should be a node-set')) {
+        const anyTypeIterator = this.document.evaluate(
+          select,
+          ctx,
+          null,
+          ANY_TYPE,
+          null,
+        );
+        const result = anyTypeIterator.resultType;
+        if (result === 1) {
+          return anyTypeIterator.numberValue;
+        } else if (result === 2) {
+          return anyTypeIterator.stringValue;
+        } else if (result === 3) {
+          return anyTypeIterator.booleanValue;
+        } else {
+          return anyTypeIterator.resultValue;
+        }
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  evaluateQuery(select, ctx) {
+    try {
+      return esquery(ctx, select);
+    } catch (error) {
+      if (!error.name.includes('SyntaxError') &amp;&amp;!error.message.includes('Cannot find module')) {
+        throw error;
+      }
+    }
+
+    try {
+      return jsel(ctx).selectAll(select);
+    } catch (error) {
+      if (!error.message.includes('XPath parse error') &amp;&amp;!error.message.includes('Unexpected character') &amp;&amp;!error.message.includes('Cannot find module')) {
+        throw error;
+      }
+    }
+
+    try {
+      const astq = new ASTQ();
+      return astq.query(ctx, select);
+    } catch (error) {
+      if (!error.message.includes('query parsing failed')) {
+        throw error;
+      }
+    }
+
+    throw new Error(`Could not parse select query ${JSON.stringify(select)} using XPath, CSS, or ASTQ`);
+  }
+
+  selectDom(select, ctx) {
+    let document;
+    let wgxpathInstalled = false;
+
+    if (typeof ctx ==='string' &amp;&amp; JSDOM) {
+      const dom = new JSDOM(ctx);
+      document = dom.window.document;
+      this.wgxpath.install(dom.window, true);
+      wgxpathInstalled = true;
+    } else if (ctx) {
+      document = ctx.ownerDocument;
+    } else {
+      document = this.document;
+    }
+
+    return walkTree(select, document, (select, ctx) =&gt; this.evaluateDom(select, ctx));
+  }
+
+  queryDom(select, ctx) {
+    let document;
+    let wgxpathInstalled = false;
+
+    if (typeof ctx ==='string' &amp;&amp; JSDOM) {
+      const dom = new JSDOM(ctx);
+      document = dom.window.document;
+      this.wgxpath.install(dom.window, true);
+      wgxpathInstalled = true;
+    } else if (ctx) {
+      document = ctx.ownerDocument;
+    } else {
+      document = this.document;
+    }
+
+    const result = document.querySelectorAll(select);
+    const co = result.filter(m =&gt; m).map(m =&gt; m);
+    if (document.shadowRoot) {
+      const shadowResult = document.shadowRoot.querySelectorAll(select);
+      co.push(...shadowResult.filter(m =&gt; m).map(m =&gt; m));
+    }
+
+    return co.length === 1? co[0] : co;
+  }
+
+  selectTree(select, ctx) {
+    if (typeof ctx ==='string') {
+      try {
+        const dom = new JSDOM(ctx);
+        this.wgxpath.install(dom.window, true);
+        return walkTree(select, dom.window.document, (select, ctx) =&gt; this.evaluateQuery(select, ctx));
+      } catch (error) {
+        if (error.name.includes('SyntaxError')) {
+          this.wgxpath.install(ctx.ownerDocument.defaultView, true);
+          return walkTree(select, ctx.ownerDocument, (select, ctx) =&gt; this.evaluateQuery(select, ctx));
+        } else {
+          throw error;
+        }
+      }
+    } else {
+      return walkTree(select, ctx, (select, ctx) =&gt; this.evaluateQuery(select, ctx));
+    }
+  }
+}
+
+const domEvaluator = new DOMEvaluator({}, {});
+
+module.exports = {
+  selectDom: (select, ctx) =&gt; domEvaluator.selectDom(select, ctx),
+  queryDom: (select, ctx) =&gt; domEvaluator.queryDom(select, ctx),
+  selectTree: (select, ctx) =&gt; domEvaluator.selectTree(select, ctx),
+  evaluateDom: (select, ctx) =&gt; domEvaluator.evaluateDom(select, ctx),
+  evaluateQuery: (select, ctx) =&gt; domEvaluator.evaluateQuery(select, ctx),
+  supportedResultTypes,
+};</code></pre></div><p><strong>Function Breakdown: <code>evaluateDom</code></strong></p>
 <h3>Overview</h3>
 <p>The <code>evaluateDom</code> function evaluates a given XPath query on a DOM document. It attempts to handle various query formats and types, including XPath and CSS selectors.</p>
 <h3>Parameters</h3>

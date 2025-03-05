@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -153,7 +160,117 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to scrape and manage Facebook message threads.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * @module listFacebookThreads
+ * @description Lists Facebook message threads and saves them to a JSON file.
+ * @author [Your Name]
+ */
+
+const fs = require('fs');
+const { Client } = require('playwright'); // Ensure the browser client is properly defined
+const { join } = require('path');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = join(PROFILE_PATH, 'Conversations');
+const FILE_PATH = join(PROJECT_PATH, 'facebook-threads.json');
+
+/**
+ * Retrieves Facebook threads.
+ * @param {object} client - The browser client.
+ * @param {array} threads - The array of threads to retrieve.
+ * @returns {Promise} A Promise that resolves with the retrieved threads.
+ */
+async function getFacebookThreads(client, threads) {
+  try {
+    // Get all threads until the scrollable element is reached
+    return client
+     .getAllUntil('//*[contains(@class, "scrollable")]',
+                   '//*[contains(@data-href, "messages")]/@data-href',
+                   threads,
+                   (a, b) =&gt; a === b,
+                   i =&gt; i &lt; 20);
+  } catch (e) {
+    console.error(e);
+    return []; // Return an empty array if an error occurs
+  }
+}
+
+/**
+ * Lists archived Facebook threads.
+ * @param {object} client - The browser client.
+ * @param {array} threads - The array of threads to retrieve.
+ * @returns {Promise} A Promise that resolves with the retrieved threads.
+ */
+async function listArchivedFacebook(client, threads) {
+  try {
+    // Check if the archived URL is not already loaded
+    if (await client.url().then(url =&gt; url.indexOf('/messages/archived') === -1)) {
+      // Navigate to the archived URL and click the scrollable element
+      return client
+       .url('https://www.facebook.com/messages/archived')
+       .pause(1000)
+       .click('.scrollable a[href="#"]');
+    }
+    return Promise.resolve([]); // Return an empty array if the archived URL is already loaded
+  } catch (e) {
+    console.error(e);
+    return []; // Return an empty array if an error occurs
+  }
+}
+
+/**
+ * Lists Facebook threads.
+ * @param {array} threads - The array of threads to retrieve.
+ * @param {boolean} [archived=false] - Whether to list archived threads.
+ * @returns {Promise} A Promise that resolves with the retrieved threads.
+ */
+async function listFacebookThreads(threads = [], archived = false) {
+  try {
+    // Load the threads from the JSON file if it exists
+    if (fs.existsSync(FILE_PATH)) {
+      threads = JSON.parse(fs.readFileSync(FILE_PATH));
+    }
+  } catch (e) {
+    console.error(e);
+    threads = [];
+  }
+
+  try {
+    // Get the current URL and click the Messages button if necessary
+    const client = await new Client().launch();
+    const url = await client.getUrl();
+    if (url.indexOf('/messages/t') === -1) {
+      await client
+       .click('[data-tooltip-content="Messages"]')
+       .click('a[href*="/messages/t"]');
+    }
+
+    // Get the Facebook threads
+    const facebookThreads = await getFacebookThreads(client, threads);
+
+    // Add the retrieved threads to the array
+    threads.push(...facebookThreads);
+
+    // List the archived threads if necessary
+    if (archived) {
+      const archivedThreads = await listArchivedFacebook(client, threads);
+      threads.push(...archivedThreads);
+    }
+
+    // Save the threads to the JSON file
+    fs.writeFileSync(FILE_PATH, JSON.stringify(threads, null, 4));
+
+    return threads;
+  } catch (e) {
+    console.error(e);
+    return [];
+  } finally {
+    await (client || {}).close();
+  }
+}
+
+module.exports = listFacebookThreads;</code></pre></div><p>This code snippet is designed to scrape and manage Facebook message threads.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

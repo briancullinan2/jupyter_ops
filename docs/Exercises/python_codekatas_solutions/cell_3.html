@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -123,7 +130,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Binary Search Function</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+def find_in_sorted(nums, target):
+    """
+    Binary search in a sorted list.
+
+    Args:
+    - nums (list): A sorted list of numbers.
+    - target: The target number to be searched.
+
+    Returns:
+    - int: The index of the target number if found, otherwise -1.
+    """
+    
+    # Check if the input list is empty
+    if not nums:
+        return -1  # or raise an exception, depending on the desired behavior
+
+    # Initialize the search range
+    left, right = 0, len(nums) - 1
+
+    # Perform binary search
+    while left &lt;= right:
+        mid = (left + right) // 2  # Use bitwise shift for more efficiency
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] &lt; target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+# Test cases
+assert find_in_sorted([], 0) == -1
+assert find_in_sorted([1, 2, 3], 0) == -1
+assert find_in_sorted([1, 2, 3], 2) == 1
+assert find_in_sorted([1, 2, 2, 2, 2, 2, 3], 2) in range(1, 6)
+assert find_in_sorted([1, 2, 3, 4, 6, 7, 8, 12, 13, 16], 12) == 7
+
+print('All passed!')</code></pre></div><h2>Binary Search Function</h2>
 <h3><code>find_in_sorted</code> Function</h3>
 <h4>Description</h4>
 <p>The <code>find_in_sorted</code> function performs a binary search on a sorted list of numbers to find a target value.</p>

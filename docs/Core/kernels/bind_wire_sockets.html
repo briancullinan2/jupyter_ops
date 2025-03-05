@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -175,7 +182,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// zmqSocketConfig.js
+const zmq = require('zmq');
+const { promisify } = require('util');
+
+// Define the supported socket types
+const socketTypes = ['xrep', 'router', 'pub','rep'];
+
+class ZMQSocketConfig {
+    constructor(config) {
+        if (!config ||!config.control_port) {
+            throw new Error('Missing required configuration');
+        }
+
+        // Set default values for missing configuration options
+        this.control = {
+            port: config.control_port,
+            type: 'xrep',
+        };
+        this.shell = {
+            port: config.shell_port || config.control_port,
+            type: 'xrep',
+        };
+        this.stdin = {
+            port: config.stdin_port || 5555, // Default stdin port
+            type: 'router',
+        };
+        this.iopub = {
+            port: config.iopub_port || config.control_port,
+            type: 'pub',
+        };
+        this.heartbeat = {
+            port: config.hb_port || (config.control_port + 1), // Default heartbeat port
+            type:'rep',
+        };
+    }
+
+    getSocketConfig() {
+        return {
+            control: this.control,
+            shell: this.shell,
+            stdin: this.stdin,
+            iopub: this.iopub,
+            heartbeat: this.heartbeat,
+        };
+    }
+}
+
+async function setupSockets(config) {
+    try {
+        const zmqConfig = new ZMQSocketConfig(config);
+        const sockets = zmqConfig.getSocketConfig();
+
+        // Validate the socket types
+        const validTypes = Object.values(sockets).map(socket =&gt; socket.type);
+        if (!validTypes.every(type =&gt; socketTypes.includes(type))) {
+            throw new Error('Invalid socket type');
+        }
+
+        // Set up the sockets
+        const promises = Object.keys(sockets).map(async (key) =&gt; {
+            const socketConfig = sockets[key];
+            const socket = await setupSocket(socketConfig, config);
+            return { [key]: socket };
+        });
+
+        // Wait for all sockets to be set up
+        const socketObjects = await Promise.all(promises);
+
+        // Merge the socket objects into a single object
+        return socketObjects.reduce((obj, socket) =&gt; ({...obj,...socket }), {});
+    } catch (error) {
+        console.error('Failed to set up sockets:', error);
+        throw error;
+    }
+}
+
+async function setupSocket(config, general) {
+    try {
+        const sock = zmq.socket(config.type);
+        const addr = `${general.transport}://${general.ip}:${config.port}`;
+        return promisify(sock.bind.bind(sock))(addr)
+           .then(() =&gt; sock);
+    } catch (error) {
+        console.error('Failed to set up socket:', error);
+        throw error;
+    }
+}
+
+module.exports = {
+    setupSockets,
+    setupSocket,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>setupSockets Function</h4>
 <p>The <code>setupSockets</code> function is an asynchronous operation that sets up multiple sockets based on the provided configuration.</p>
 <p><strong>Parameters:</strong></p>

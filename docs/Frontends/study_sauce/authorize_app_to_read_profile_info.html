@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,89 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const cookie = require('cookie');
+const { OAuth2Client } = require('google-auth-library');
+const logger = require('../utils/logger'); // import logging functionality
+
+const importer = require('../Core');
+const {
+  getDataSheet,
+  updateRow,
+  receiveCode,
+} = importer.import([
+  'get google data sheet',
+  'update row in google sheets',
+ 'receive an authentication code from google',
+]);
+
+const SCOPES = [
+  'https://www.googleapis.com/auth/userinfo.profile',
+  'https://www.googleapis.com/auth/userinfo.email',
+];
+
+const secretsPath = process.env.SECRETS_PATH;
+const domain = process.env.DOMAIN;
+const docId = process.env.DOCID;
+const authRedirect = process.env.AUTH_REDIRECT;
+
+/**
+ * Authorize user profile
+ * 
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @returns {Promise<string|Error>} - Redirect URL or authentication error
+ */
+function authorizeProfile(req, res) {
+  try {
+    const oauth2Client = new OAuth2Client(
+      secretsPath.credentials.installed.client_id,
+      secretsPath.credentials.installed.client_secret,
+      authRedirect,
+    );
+
+    const sessionId = (req.cookies || {}).__session;
+    let user;
+
+    // Retrieve user data from Google Sheets
+    return getDataSheet(docId, 'User data')
+     .then((users) => {
+        user = users.find((u) => u.session && u.session === sessionId);
+        return user;
+      })
+     .then((user) => {
+        // Check if user has a valid token
+        const token = JSON.parse(user && user.token || '""');
+        if (token) {
+          oauth2Client.setCredentials(token);
+          return oauth2Client.getAccessToken();
+        }
+        throw new Error('invalid_token');
+      })
+     .then(() => extractProfile(oauth2Client))
+     .then(() => res.redirect(`${domain}/${user.link}/home/`))
+     .catch((error) => {
+        if (error.message === 'invalid_token') {
+          // Generate authorization URL
+          const authUrl = oauth2Client.generateAuthUrl({
+            access_type: 'offline',
+            scope: SCOPES,
+          });
+          res.redirect(authUrl);
+          return authUrl;
+        }
+        logger.error(error);
+        throw error;
+      });
+  } catch (error) {
+    logger.error(error);
+    throw error;
+  }
+}
+
+module.exports = authorizeProfile;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Requires</h3>
 <p>The code requires several modules:</p>
 <ul>

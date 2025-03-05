@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -219,7 +226,130 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a server-side rendering engine for an Angular application using Express.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Import required modules
+import 'zone.js/dist/zone-node';
+import'reflect-metadata';
+import 'rxjs/Rx';
+import {
+    APP_INITIALIZER,
+    Compiler,
+    CompilerFactory,
+    enableProdMode,
+    InjectionToken,
+    Injector,
+    NgModuleFactory,
+    Type
+} from '@angular/core';
+import {ResourceLoader} from '@angular/compiler';
+import {INITIAL_CONFIG, platformDynamicServer, renderModuleFactory} from '@angular/platform-server';
+import {AppServerModule} from './app/app.server.module';
+import {Router} from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
+
+// Enable production mode
+enableProdMode();
+
+// Map of Module Factories
+const factoryCacheMap = new Map<Type<{}>, NgModuleFactory<{}>>();
+
+/**
+ * Express engine for handling Angular Applications
+ * @param boot NgModule or NgModuleFactory to be bootstrapped
+ * @param url URL for rendering the application
+ * @param callback Callback function for handling the response
+ */
+function bootstrapRender(boot: any, url: string, callback: (err?: Error | null, html?: string) => void) {
+    try {
+        if (!boot) {
+            return callback(new Error('You must pass in a NgModule or NgModuleFactory to be bootstrapped'));
+        }
+
+        // Get the compiler and factory from the platform
+        const compilerFactory: CompilerFactory = platformDynamicServer().injector.get(CompilerFactory);
+        const compiler: Compiler = compilerFactory.createCompiler([
+            {
+                providers: []
+            }
+        ]);
+
+        // Get the factory from the module or factory
+        getFactory(boot, compiler)
+           .then(factory => {
+                // Render the module factory
+                return renderModuleFactory(factory, {
+                    document: '<app-root></app-root>',
+                    url,
+                    extraProviders: [
+                        {
+                            provide: APP_INITIALIZER,
+                            useFactory: (injector: Injector) => {
+                                return () => {
+                                    const router: Router = injector.get(Router);
+                                    router.navigate([url]); // => This has NO effect
+                                    console.log(router.url); // this logs: '/' instead of the 'domain.com/de-de/contact'
+                                };
+                            },
+                            deps: [Injector],
+                            multi: true
+                        },
+                        {
+                            provide: INITIAL_CONFIG,
+                            useValue: {
+                                document: '<app-root></app-root>',
+                                url
+                            }
+                        }
+                    ]
+                });
+            })
+           .then((html: string) => {
+                callback(null, html);
+            }, (err) => {
+                callback(err);
+            });
+    } catch (err) {
+        callback(err);
+    }
+}
+
+/**
+ * Get a factory from a bootstrapped module/ module factory
+ * @param moduleOrFactory NgModule or NgModuleFactory to get the factory from
+ * @param compiler Compiler to use for compiling the module
+ * @returns Promise of the NgModuleFactory
+ */
+function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>, compiler: Compiler): Promise<NgModuleFactory<{}>> {
+    return new Promise<NgModuleFactory<{}>>((resolve, reject) => {
+        // If module has been compiled AoT
+        if (moduleOrFactory instanceof NgModuleFactory) {
+            resolve(moduleOrFactory);
+            return;
+        } else {
+            // Check if the module factory is cached
+            let moduleFactory = factoryCacheMap.get(moduleOrFactory);
+
+            if (moduleFactory) {
+                resolve(moduleFactory);
+                return;
+            }
+
+            // Compile the module and cache it
+            compiler.compileModuleAsync(moduleOrFactory)
+               .then((factory) => {
+                    factoryCacheMap.set(moduleOrFactory, factory);
+                    resolve(factory);
+                }, (err => {
+                    reject(err);
+                }));
+        }
+    });
+}
+
+// Set the global renderer to the bootstrapRender function
+// This is a hacky way to get the function out of the Zone context
+(<any>global).renderer = (url: string, callback: (err?: Error | null, html?: string) => void) =>
+    bootstrapRender(AppServerModule, url, callback);</code></pre></div><p>This code sets up a server-side rendering engine for an Angular application using Express.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong> It imports necessary modules from Angular, Express, and other libraries for server-side rendering, polyfills, and dependency injection.</p></li>

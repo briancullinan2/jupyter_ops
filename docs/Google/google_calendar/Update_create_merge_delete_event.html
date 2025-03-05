@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -188,7 +195,105 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet processes Google Calendar events, likely for updating or managing them.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { JSDOM } = require('jsdom');
+const { chrono } = require('chrono-node');
+const importer = require('../Core');
+
+const {
+    authorizeCalendar,
+    ISODateString,
+    correctCalendarId
+} = importer.import([
+    'authorize google calendar',
+    'convert date iso',
+    'lookup calendar name'
+]);
+
+const getDaysEvents = importer.import('days events');
+
+/**
+ * Updates an existing event or creates a new one if it does not exist.
+ * 
+ * @param {Object} event - The event to be updated or created.
+ * @param {Object} options - Options for the update process.
+ * @param {string} options.calendarId - The ID of the calendar to update.
+ * @param {Object} options.auth - Authentication object for Google Calendar.
+ * @returns {Promise} A promise that resolves when the update process is complete.
+ */
+async function updateEvent(event, options) {
+    const calendar = await authorizeCalendar();
+    const correctedCalendarId = await correctCalendarId(options);
+    const events = await getDaysEvents(event.start.dateTime, options);
+    const matches = events.filter(match =>!match.event.deleted
+        && match.event.summary.toLowerCase().trim() === event.summary.toLowerCase().trim()
+        && Math.abs(Math.round(new Date(match.event.start.dateTime).getTime() / 1000 / 60)
+            - Math.round(new Date(event.start.dateTime).getTime() / 1000 / 60)) < 32);
+
+    if (matches.length > 0) {
+        const descriptions = mergeDescriptions(event.description, matches.map(match => parseDescription(match.event.description)));
+        const newDescription = JSON.stringify(descriptions, null, 4);
+
+        if (matches[0].event.description!== newDescription) {
+            await calendar.events.patch({
+                eventId: matches[0].event.id,
+                calendarId: correctedCalendarId,
+                auth: options.auth,
+                resource: {
+                    description: newDescription,
+                    colorId: event.colorId
+                }
+            });
+        }
+
+        await deleteExtraEvents(calendar, correctedCalendarId, options.auth, matches.slice(1));
+    } else {
+        console.log(`Adding event ${event.summary}`);
+        await calendar.events.insert({
+            calendarId: correctedCalendarId,
+            auth: options.auth,
+            resource: event
+        });
+    }
+}
+
+async function mergeDescriptions(existingDescription, newDescriptions) {
+    if (existingDescription) {
+        try {
+            const existingDescriptions = JSON.parse(existingDescription);
+            newDescriptions.forEach(description => existingDescriptions.push(description));
+            return existingDescriptions;
+        } catch (e) {
+            const descriptions = existingDescription || [];
+            newDescriptions.forEach(description => descriptions.push(description));
+            return descriptions;
+        }
+    } else {
+        return newDescriptions;
+    }
+}
+
+async function parseDescription(description) {
+    try {
+        return JSON.parse(description);
+    } catch (e) {
+        return {};
+    }
+}
+
+async function deleteExtraEvents(calendar, calendarId, auth, events) {
+    events.forEach(event => {
+        event.event.deleted = true;
+        calendar.events.delete({
+            eventId: event.event.id,
+            calendarId,
+            auth
+        });
+    });
+}
+
+module.exports = updateEvent;</code></pre></div><p>This code snippet processes Google Calendar events, likely for updating or managing them.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

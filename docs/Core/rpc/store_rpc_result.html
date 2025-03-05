@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -175,7 +182,97 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for managing the execution and storage of RPC commands as Google Calendar events.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const { import as importer } = require('../Core');
+const { createNewCalendarEvent } = importer('create new calendar event');
+const { convertDateIso } = importer('convert date iso');
+const { getGoogleCalendarApi } = importer('import google calendar api');
+const { getRpcResult } = importer('rpc result');
+
+const DEFAULT_CALENDAR_ID = 'Commands';
+
+/**
+ * Updates a calendar event with the provided configuration.
+ * @param {Object} config Event configuration.
+ * @param {Object} options Calendar options.
+ * @returns {Promise&lt;Object&gt;} API response.
+ */
+async function updateResultEvent(config, options) {
+    const {
+        start: { dateTime: startTime },
+        end: { dateTime: endTime },
+        summary,
+        description,
+        colorId,
+    } = config;
+
+    assert(colorId!== 10 ||!config.isError, 'Reporting error failed:'+ JSON.stringify(config, null, 4));
+
+    const eventConfig = {
+        start: { dateTime: convertDateIso(startTime) },
+        end: { dateTime: convertDateIso(endTime) },
+        summary,
+        description: description.substr(0, 1000),
+        colorId,
+    };
+
+    return createNewCalendarEvent(eventConfig, options);
+}
+
+/**
+ * Stores a command result in a calendar event.
+ * @param {Object} executed Command result.
+ * @param {string} [calendar] Optional calendar ID.
+ * @returns {Promise&lt;Object&gt;} Command result.
+ */
+async function storeResult(executed, calendar) {
+    if (calendar) {
+        options.calendarId = calendar;
+    }
+
+    if (!executed || executed.already === true) {
+        throw new Error('Nothing to do!');
+    }
+
+    const eventLog = Object.keys(executed).reduce((acc, key) =&gt; {
+        acc[key] = (JSON.stringify(executed[key]) || '').substr(0, 200);
+        return acc;
+    }, {});
+
+    console.log(`Creating RPC event: ${JSON.stringify(eventLog)}`);
+
+    assert(executed.date, 'Missing date in command result.');
+
+    const [isError, errorResult] = await Promise.all([getResult(executed).catch(e =&gt; ({ isError: true, result: e })), getOauthClient({ calendarId: options.calendarId })]);
+
+    const resultEvent = await updateResultEvent({
+        time: new Date(),
+        result: executed.result.filename,
+        command: executed.command,
+        parameters: executed.body,
+        status:'starting',
+        isError: false,
+    }, options);
+
+    if (isError ||!errorResult) {
+        throw new Error('Error occurred during result processing.');
+    }
+
+    return await updateResultEvent(
+        {
+            time: new Date(),
+            result: errorResult,
+            command: executed.command,
+            parameters: executed.body,
+            status: 'failed',
+            isError: true,
+        },
+        options
+    ).catch(e =&gt; console.log(e));
+}
+
+module.exports = storeResult;</code></pre></div><p>This code defines functions for managing the execution and storage of RPC commands as Google Calendar events.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

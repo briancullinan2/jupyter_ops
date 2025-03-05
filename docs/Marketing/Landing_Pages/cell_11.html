@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Import the required module for screen manipulation
+import { screen } from 'electron';
+
+/**
+ * Opens a URL in the Electron screen
+ * @param url The URL to open
+ * @param options Options for the screen
+ */
+export function openScreen(url: string, options: { [key: string]: any }) {
+  // Validate the input URL
+  if (!url) {
+    throw new Error('Invalid URL');
+  }
+
+  // Validate the input options
+  if (!options || typeof options!== 'object') {
+    throw new Error('Invalid options');
+  }
+
+  // Set default options if not provided
+  const defaultOptions = {
+    zoom: 1,
+    width: undefined,
+    'crop-h': undefined,
+  };
+
+  // Merge the default options with the provided options
+  options = {...defaultOptions,...options };
+
+  // Validate the options
+  if (typeof options.zoom!== 'number' || options.zoom &lt;= 0 || options.zoom &gt; 1) {
+    throw new Error('Invalid zoom level');
+  }
+  if (typeof options.width!== 'number' || options.width &lt;= 0) {
+    throw new Error('Invalid width');
+  }
+  if (typeof options['crop-h']!== 'number' || options['crop-h'] &lt;= 0) {
+    throw new Error('Invalid crop height');
+  }
+
+  // Open the URL in the screen
+  screen.setZoomFactor(options.zoom);
+  screen.setDisplayMode({
+    width: options.width,
+    height: options['crop-h'],
+  });
+  screen.setUrl(url);
+}
+
+// Example usage:
+openScreen('act.com/au/products/act-pro', {
+  zoom: 0.5,
+  width: 680,
+  'crop-h': 400,
+});</code></pre></div><h2>Code Breakdown</h2>
 <h3>Overview</h3>
 <p>The code utilizes the <code>$TS</code> object to display a screen with specific settings.</p>
 <h3>Function Call</h3>

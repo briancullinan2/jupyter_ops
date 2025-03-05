@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -68,7 +75,7 @@
     <a href="../documentation/index.html">documentation</a> | <a href="./discover_well-known_apis.html">discover well-known apis</a> | <a href="./highlight_js.html">highlight js</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This Node.js script exports documentation for a project in HTML format, utilizing various imports and functions to generate the documentation, including rendering Markdown to HTML using the <code>Remarkable</code> module. The script defines an asynchronous function <code>exportAll(query)</code> that iterates over notebooks in the project directory and generates HTML documentation for each.</p>
+  <p>The code is a JavaScript part of a larger project that manages and exports notebooks and functions, with the <code>exportAll</code> function being the main entry point. It generates an index page and a search page, but several TODO comments indicate areas that need to be implemented or improved.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "export documentation"</code></pre><h1>export documentation</h1>
@@ -245,6 +252,7 @@ async function exportAll(query) {
       results[key].output = '&lt;h1&gt;' + title + '&lt;/h1&gt;\n\n' + results[key].output
       if (newCache[j].questions[0])
         results[key].output = '&lt;h2&gt;Run example&lt;/h2&gt;\n\n&lt;pre language="bash"&gt;&lt;code&gt;npm run import -- "' + newCache[j].questions[0] + '"&lt;/code&gt;&lt;/pre&gt;' + results[key].output
+      
       results[key].index = index
       results[key].title = title
       results[key].link = '&lt;a href="./' + cellname + '.html"&gt;' + title + '&lt;/a&gt;'
@@ -257,6 +265,7 @@ async function exportAll(query) {
       if (j == newCache.length - 1) {
         results[key].next = ''
       }
+
       results[key].parent = '&lt;a href="../' + safeurl(namespace) + '/index.html"&gt;' + namespace + '&lt;/a&gt;'
       results[search].output += '&lt;a href="./' + category + '/' + safeurl(namespace) + '/' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
       results[search].indexOutput += '&lt;a href="./' + category + '/' + safeurl(namespace) + '/' + cellname + '.html"&gt;' + title + '&lt;/a&gt;' + '\n&lt;br /&gt;&lt;br /&gt;\n'
@@ -269,10 +278,23 @@ async function exportAll(query) {
         continue
       }
 
+if(cellname.match('ask_llm_for_a_shorter_list_of_categories')) {
+  debugger
+}
+
       results[search].output += md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, ''))
       results[index].output += md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, ''))
+      if(description.amazing) {
+        let codeMatch = description.amazing.replace(/^```(markdown)\n*|\n```$/gi, '')
+        codeMatch = (/```(javascript|python|bash|[a-z0-9]+)\n*([\s\S]*?)\n```/gi).exec(codeMatch)
+        if(codeMatch) {
+          results[key].output += '&lt;div class="gold"&gt;&lt;h2&gt;What the code could have been:&lt;/h2&gt;\n&lt;pre class="' + codeMatch[1] + '"&gt;&lt;code&gt;' + codeMatch[2] + '&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;'
+        } else {
+          results[key].output += '&lt;div class="gold"&gt;&lt;h2&gt;What the code could have been:&lt;/h2&gt;\n&lt;pre class="' + newCache[j].language + '"&gt;&lt;code&gt;' + description.amazing.replaceAll('&amp;', '&amp;amp;').replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;') + '&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;'
+        }
+      }
       results[key].output = md.render(description.summary.replaceAll(/^.*?summary.*?:/gmi, '')) + results[key].output
-      results[key].output = results[key].output + md.render(description.description)
+      results[key].output += md.render(description.description)
     }
 
     // TODO: generate parameter, return type descriptions
@@ -326,39 +348,170 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
-<p>This code appears to be a Node.js script that exports documentation for a project in HTML format. It utilizes various imports and functions to generate the documentation.</p>
-<h3>Imports</h3>
-<p>The code imports various modules and functions from other files:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const importer = require('./importer'); // assuming importer module is in the same directory
+const Remarkable = require('remarkable');
+const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
+
+// Define constants
+const PROJECT_PATH = path.resolve(path.join(path.dirname(__dirname), 'docs'));
+const TEMPLATE_PATH = path.resolve(__dirname, 'templates');
+const LANGUAGE_TEMPLATE_FILE = 'highlight.js';
+const JAVADOC_TEMPLATE_FILE = 'javadoc-template.js';
+const CACHE_FUNCTIONS_FILE = 'cache-rpc-functions-with-llm-descriptions.js';
+
+// Define template variables
+const languageTemplate = importer.interpret(LANGUAGE_TEMPLATE_FILE);
+const javadocTemplate = importer.interpret(JAVADOC_TEMPLATE_FILE);
+
+// Define cache variables
+const cacheFunctions = importer.import(CACHE_FUNCTIONS_FILE);
+
+// Define function to export all notebooks
+async function exportAll() {
+  // Create project directory if it doesn't exist
+  if (!fs.existsSync(PROJECT_PATH)) {
+    fs.mkdirSync(PROJECT_PATH);
+  }
+
+  // Get list of all notebooks
+  const notebooks = await listInProject(path.resolve(__dirname, '../'), '{,*,*/,*/*/*,*/*/*/*}*.ipynb');
+
+  // Initialize variables to store results
+  const results = {};
+
+  // Loop through each notebook
+  for (const notebook of notebooks) {
+    // Get namespace and category from notebook path
+    const relative = path.relative(path.resolve(__dirname, '../'), notebook);
+    const category = relative.split(path.sep)[0];
+    const namespace = path.basename(notebook).replace('.ipynb', '');
+
+    // Create category directory if it doesn't exist
+    if (!fs.existsSync(path.join(PROJECT_PATH, category))) {
+      fs.mkdirSync(path.join(PROJECT_PATH, category));
+    }
+
+    // Create index page for category
+    const categoryIndex = path.join(PROJECT_PATH, category, 'index.html');
+    results[categoryIndex] = {
+      output: '',
+      indexOutput: '',
+      title: category,
+      next: '',
+      prev: '',
+    };
+    results[categoryIndex].index = categoryIndex;
+    results[categoryIndex].output += '<h1>' + category + '</h1>\n\n';
+    results[categoryIndex].link = '<a href="./' + category + '/index.html">' + category + '</a>';
+
+    // Loop through each cell in notebook
+    for (const cell of cacheCells(notebook)) {
+      // Create cell index page
+      const cellIndex = path.join(path.join(PROJECT_PATH, category, namespace), 'index.html');
+      results[cellIndex] = {
+        output: '',
+        indexOutput: '',
+        title: cell.questions[0],
+        next: '',
+        prev: '',
+      };
+      results[cellIndex].index = cellIndex;
+      results[cellIndex].parent = '<a href="../' + namespace + '/index.html">' + namespace + '</a>';
+      results[cellIndex].output += '<h1>' + cell.questions[0] + '</h1>\n\n';
+
+      // Add cell to category index
+      results[categoryIndex].output += '<a href="./' + namespace + '/' + safeurl(cell.questions[0]) + '.html">' + cell.questions[0] + '</a>\n\n';
+
+      // Create cell HTML page
+      const cellHtml = path.join(path.join(PROJECT_PATH, category, namespace), safeurl(cell.questions[0]) + '.html');
+      results[cellHtml] = {
+        output: '',
+        indexOutput: '',
+        title: cell.questions[0],
+        next: '',
+        prev: '',
+      };
+      results[cellHtml].index = cellIndex;
+      results[cellHtml].parent = '<a href="./' + namespace + '/index.html">' + namespace + '</a>';
+      results[cellHtml].output += '<h1>' + cell.questions[0] + '</h1>\n\n';
+
+      // Add cell to search results
+      results[categoryIndex].output += '<a href="./' + category + '/' + safeurl(namespace) + '/' + safeurl(cell.questions[0]) + '.html">' + cell.questions[0] + '</a>\n\n';
+
+      // Render HTML page
+      results[cellHtml].output = languageTemplate.code.replaceAll('${LANGUAGE}', cell.language) + '\n\n';
+      if (cell.questions[0]) {
+        results[cellHtml].output = '<h2>Run example</h2>\n\n<pre language="bash"><code>npm run import -- "' + cell.questions[0] + '"</code></pre>' + results[cellHtml].output;
+      }
+      results[cellHtml].output += md.render(cell.description);
+      fs.writeFileSync(cellHtml, results[cellHtml].output);
+    }
+  }
+
+  // Export all HTML pages
+  const pathList = Object.keys(results);
+  for (const path of pathList) {
+    const relative = path.relative(path.resolve(__dirname, '../docs'), path);
+    const template = importer.interpret('mergehtml.js');
+    const output = template.code
+     .replaceAll('${TITLE}', results[path].title)
+     .replaceAll('${PARENT}', results[path].parent)
+     .replaceAll('${NEXT}', results[path].next)
+     .replaceAll('${PREV}', results[path].prev)
+     .replaceAll('${OUTPUT}', results[path].output)
+     .replaceAll('${SEARCH}', '<a href="search.html">Search</a>');
+    fs.writeFileSync(path, output);
+  }
+}
+
+// Call exportAll function
+exportAll();</code></pre></div><p><strong>Breakdown of Code Structure</strong></p>
+<p>The code is written in JavaScript and appears to be a part of a larger project that manages and exports notebooks and functions.</p>
+<h3>Import Statements</h3>
+<p>The code starts with a series of import statements that bring in various functions and modules from other parts of the project. These imports include:</p>
 <ul>
-<li><code>fs</code> (File System) and <code>path</code> modules for file system operations</li>
-<li><code>importer</code> module, which provides functions for importing and interpreting cache RPC functions, storing LLM functions, listing project files, and more</li>
-<li><code>Remarkable</code> module for rendering Markdown to HTML</li>
-</ul>
-<h3>Variables and Constants</h3>
-<p>The code defines several variables and constants:</p>
+<li><code>fs</code> (File System) for interacting with the file system.</li>
+<li><code>path</code> for working with file paths.</li>
+<li>Various functions from an <code>importer</code> module, which seems to be a custom module for importing and managing functions from other parts of the project. These functions include:
 <ul>
-<li><code>PROJECT_PATH</code>: the path to the project directory</li>
-<li><code>md</code>: an instance of <code>Remarkable</code> for rendering Markdown</li>
-<li><code>languageTemplate</code> and <code>javadocTemplate</code>: templates for highlighting and Javadoc formatting, respectively</li>
+<li><code>functionCache</code></li>
+<li><code>storeAllLlamaFunctions</code></li>
+<li><code>listInProject</code></li>
+<li><code>askLlamaAboutCode</code></li>
+<li><code>askLlamaToSummerize</code> and <code>askLlamaToGeneralize</code></li>
+<li><code>cacheCells</code></li>
+<li><code>safeurl</code></li>
+</ul></li>
+<li><code>Remarkable</code> for working with Markdown documents.</li>
 </ul>
-<h3>Functions</h3>
-<p>The code defines an asynchronous function <code>exportAll(query)</code> that:</p>
+<h3>Constants and Variables</h3>
+<p>The code defines several constants and variables:</p>
+<ul>
+<li><code>PROJECT_PATH</code>: the path to the project directory.</li>
+<li><code>INTERPRET</code>: an empty object that is not used anywhere in the code.</li>
+<li><code>md</code>: an instance of the <code>Remarkable</code> class for working with Markdown documents.</li>
+</ul>
+<h3><code>exportAll</code> Function</h3>
+<p>The <code>exportAll</code> function is an asynchronous function that appears to be the main entry point of the code. It takes a <code>query</code> parameter that is not used anywhere in the function.</p>
+<p>The function does the following:</p>
 <ol>
-<li>Checks if the project directory exists and creates it if not</li>
-<li>Retrieves a list of notebooks from the project directory</li>
-<li>Iterates over the notebooks and generates HTML documentation for each</li>
-<li>Outputs the documentation to HTML files</li>
+<li>Checks if the project directory exists and creates it if it doesn't.</li>
+<li>Lists all notebooks in the project directory using the <code>listInProject</code> function.</li>
+<li>Sets up some variables for generating an index page and a search page.</li>
+<li>Iterates over the list of notebooks and generates an entry for each one.</li>
 </ol>
-<h3>TODOs and Notes</h3>
-<p>The code contains several TODOs and notes indicating areas where the code needs improvement or additional functionality:</p>
+<h3>TODO Comments</h3>
+<p>The code contains several TODO comments that indicate areas that need to be implemented or improved. These include:</p>
 <ul>
-<li>Retrieving a list of all notebooks</li>
-<li>Generating an index page that describes the index.js and <strong>init</strong>.py loaders</li>
-<li>Outputting folders and pages for every namespace and notebook</li>
-<li>Improving the implementation of several functions</li>
+<li>Generating an index page that describes the index.js and <strong>init</strong>.py loaders.</li>
+<li>Outputting folders and pages for every namespace and notebook.</li>
 </ul>
-<p>Overall, this code is likely part of a larger project that uses LLM (Large Language Model) functions to generate documentation for notebooks.</p>
+<h3>Overall Structure</h3>
+<p>The code appears to be a part of a larger project that manages and exports notebooks and functions. The <code>exportAll</code> function is the main entry point, and it sets up some variables and generates an index page and a search page. The code also contains several TODO comments that indicate areas that need to be implemented or improved.</p>
 
 </body>
 

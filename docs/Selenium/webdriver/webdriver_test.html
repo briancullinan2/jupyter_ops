@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -134,7 +141,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the necessary modules
+const { Client } = require('webdriverio');
+
+// Define a function to get the client instance
+async function getClient(browserType = 'chrome') {
+  try {
+    // Get the client instance
+    const client = await Client.launch({
+      capabilities: {
+        browserName: browserType,
+      },
+    });
+    return client;
+  } catch (error) {
+    console.error(`Failed to launch ${browserType} browser:`, error);
+    process.exit(1); // Exit the process if client instance cannot be obtained
+  }
+}
+
+// Define the main test function
+async function testDriver() {
+  try {
+    // Get the client instance
+    const driver = await getClient('chrome');
+
+    // Define the test website URL
+    const facebookUrl = 'https://www.facebook.com';
+
+    // Navigate to the test website
+    await driver.get(facebookUrl);
+
+    // Wait for 4 seconds
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+  } catch (error) {
+    console.error('Test failed:', error);
+  } finally {
+    // Quit the browser in the end
+    if (driver) {
+      await driver.quit();
+    }
+  }
+}
+
+// Export the test function
+module.exports = testDriver;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import</h3>
 <ul>
 <li><code>const getClient = importer.import('webdriver client')</code>

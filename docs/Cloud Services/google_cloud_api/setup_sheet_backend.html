@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { getSheetPurchases } = require('../Core');
+const { checkDns } = require('../Core');
+const { addGoogleBucketWebMap } = require('../Core');
+
+const {
+  insertBackendBucket,
+  insertGlobalForward,
+  updateUrlMap,
+} = addGoogleBucketWebMap;
+
+/**
+ * Set up the backend by retrieving sheet data, adding a DNS, inserting a global forward, 
+ * and updating the URL map.
+ * @param {string} link - The link to the Google Sheet.
+ * @param {string} [domain] - The domain to use. Defaults to the bucket from the sheet.
+ * @returns {Promise<string>} A promise resolving to the domain.
+ */
+function setupBackend(link, domain) {
+  const urlMap = 'web-map';
+
+  return getSheetPurchases(link)
+   .then(({ project, bucket }) => {
+      const projectDomain = domain || bucket;
+      return checkDns(project, projectDomain);
+    })
+   .then(ip => insertGlobalForward(project, ip, urlMap, domain))
+   .then(() => insertBackendBucket(project, domain))
+   .then(() => updateUrlMap(project, urlMap, domain))
+   .then(() => domain);
+}
+
+module.exports = setupBackend;</code></pre></div><h3>Code Breakdown</h3>
 <p><strong>Importing Modules and Functions</strong></p>
 <pre><code class="language-javascript">var importer = require('../Core');
 var getSheet = importer.import('get sheet purchases');

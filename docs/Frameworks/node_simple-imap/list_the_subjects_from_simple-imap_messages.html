@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet processes an array of email messages (<code>messages</code>) and generates an HTML-formatted list of email subjects and senders.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Generate HTML list from email messages and print using Markdown syntax.
+ *
+ * @param {Object[]} messages - Array of email messages.
+ * @return {string} HTML list in Markdown format.
+ */
+function generateHtmlList(messages) {
+    let htmlPrint = '';
+
+    // Use Array.prototype.forEach() for better performance and readability
+    messages.forEach((message) =&gt; {
+        // Filter headers containing 'HEADER' using Array.prototype.reduce()
+        const headers = message.parts.reduce((acc, part) =&gt; {
+            if (part.which.indexOf('HEADER') &gt; -1) {
+                acc.push(part);
+            }
+            return acc;
+        }, []);
+
+        // Check if headers exist to avoid index out of bounds error
+        if (headers.length &gt; 0) {
+            const subject = headers[0].body.subject[0];
+            const from = headers[0].body.from[0];
+            htmlPrint += `&lt;li&gt;subject: ${subject}, from: ${from}&lt;/li&gt;\n`;
+        }
+    });
+
+    // Return HTML list in Markdown format
+    return `Usage:\n\n```html\n${htmlPrint}\n```\nOuput:\n`;
+}
+
+// Example usage:
+$.mime({
+    'text/markdown': generateHtmlList(messages)
+});</code></pre></div><p>This code snippet processes an array of email messages (<code>messages</code>) and generates an HTML-formatted list of email subjects and senders.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Script Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/usr/bin/env bash
+
+# Set Spice port
+SPICE_PORT=${1:-5924}
+
+# Set VM configuration
+VM_NAME="WindowsVM"
+VM_DISK="WindowsVM.img"
+VM_MEM="1G"
+VM_VGA="qxl"
+VM_NIC="user,hostname=windowsvm"
+VM_DEVICE_TABLET="tablet"
+VM_DEVICE_VIRTIO_SERIAL="virtio-serial"
+VM_DEVICE_VDAGENT="vdagent"
+
+# Define function to start VM
+start_vm() {
+  local cpu="host"
+  local spice_options="port=${SPICE_PORT},disable-ticketing"
+
+  qemu-system-x86_64 -enable-kvm -daemonize \
+    -cpu ${cpu} \
+    -drive file=${VM_DISK},if=virtio \
+    -net nic -net ${VM_NIC} \
+    -m ${VM_MEM} \
+    -vga ${VM_VGA} \
+    -spice ${spice_options} \
+    -usbdevice ${VM_DEVICE_TABLET} \
+    -device ${VM_DEVICE_VIRTIO_SERIAL} \
+    -chardev spicevmc,id=${VM_DEVICE_VDAGENT},name=${VM_DEVICE_VDAGENT} \
+    -device virtserialport,chardev=${VM_DEVICE_VDAGENT},name=com.redhat.spice.0
+}
+
+# Define function to launch remote viewer
+launch_remote_viewer() {
+  local spice_url="spice://127.0.0.1:${SPICE_PORT}"
+  remote-viewer --title Windows ${spice_url}
+}
+
+# Start VM
+start_vm
+
+# Launch remote viewer
+launch_remote_viewer</code></pre></div><p><strong>Script Overview</strong></p>
 <p>This is a Bash script that runs a QEMU virtual machine (VM) and connects to it using the Remmina remote viewer.</p>
 <h3>QEMU Options</h3>
 <ul>

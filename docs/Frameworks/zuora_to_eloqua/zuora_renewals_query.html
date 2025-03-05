@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -237,7 +244,116 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be constructing a SQL query for retrieving data about active subscriptions from a database.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const moment = require('moment');
+const chrono = require('chrono-node');
+
+// Define excluded rate plans and product SKUs as constants for better maintainability
+const EXCLUDED_RATE_PLANS = [
+  'Act! Pro - New License',
+  'Act! Pro - 30 Day Support',
+  'Act! Pro - Upgrade License',
+  'Act! Password Reset Charge',
+  'Act! Premium Cloud - Trial',
+  'Act! Pro V19 - Upgrade License',
+  'Act! Pro V20 - Upgrade License',
+];
+
+const EXCLUDED_PRODUCT_SKUS = ['00000006'];
+
+const CURRENCIES = ['', 'USD', 'AUD', 'NZD'];
+
+const SQL_QUERY = `
+  SELECT
+    Account.Id,
+    Account.Name,
+    Account.AccountNumber,
+    Account.resellerofRecord__c,
+    Account.renewalRep__c,
+    Account.commisionedSalesRep__c,
+    Account.CreatedDate,
+    Account.Currency,
+    SoldToContact.WorkEmail,
+    SoldToContact.Country,
+    SoldToContact.State,
+    BillToContact.WorkEmail,
+    RatePlan.Id,
+    RatePlan.Name,
+    RatePlanCharge.Id,
+    RatePlanCharge.BillingPeriod,
+    RatePlanCharge.Description,
+    RatePlanCharge.Quantity,
+    RatePlanCharge.Version,
+    RatePlanCharge.CreatedDate,
+    RatePlanCharge.EffectiveEndDate,
+    DefaultPaymentMethod.CreditCardExpirationMonth,
+    DefaultPaymentMethod.CreditCardExpirationYear,
+    DefaultPaymentMethod.CreditCardMaskNumber,
+    ProductRatePlanCharge.Id,
+    ProductRatePlan.planType__c,
+    ProductRatePlan.planSubType__c,
+    ProductRatePlan.Id,
+    ProductRatePlan.Name,
+    Product.productType__c,
+    Product.Name,
+    Product.Description,
+    Product.Id,
+    Product.SKU,
+    Subscription.Id,
+    Subscription.Name,
+    Subscription.Status,
+    Subscription.Reseller__c,
+    Subscription.SubscriptionEndDate,
+    Subscription.SubscriptionStartDate,
+    Subscription.TermStartDate,
+    Subscription.TermEndDate,
+    Subscription.AutoRenew
+  FROM RatePlanCharge
+  WHERE (
+    Subscription.Status IN ('Draft', 'Cancelled', 'Expired')
+    OR Subscription.Status IN ('Active', 'Suspended', 'Pending')
+  )
+  AND Subscription.TermEndDate &gt;= :start_date
+  AND Subscription.TermEndDate &lt;= :end_date
+  AND Account.Currency IN (:currencies)
+  AND ProductRatePlan.Name NOT IN (:excludedRatePlans)
+  AND Product.SKU NOT IN (:excludedProductSkus)
+  AND (
+    SoldToContact.WorkEmail NOT LIKE 'qaaw%@gmail.com'
+    AND BillToContact.WorkEmail NOT LIKE 'qaaw%@gmail.com'
+    AND Account.Name NOT LIKE '%do not use%'
+  )
+`;
+
+// Function to create the query with start and end dates
+function getQuery(start, end) {
+  // Parse the start and end dates using chrono-node
+  const startDate = moment(chrono.parseDate(start));
+  const endDate = moment(chrono.parseDate(end));
+
+  // Check if the end date is before the start date and throw an error if true
+  if (endDate.isBefore(startDate)) {
+    throw new Error('End date cannot be before start date');
+  }
+
+  // Format the query placeholders
+  const formattedQuery = SQL_QUERY.replace(':start_date', startDate.format('YYYY-MM-DD'))
+   .replace(':end_date', endDate.format('YYYY-MM-DD'))
+   .replace(':currencies', CURRENCIES.join(', '))
+   .replace(':excludedRatePlans', EXCLUDED_RATE_PLANS.join(', '))
+   .replace(':excludedProductSkus', EXCLUDED_PRODUCT_SKUS.join(', '));
+
+  // Return the formatted query and its configuration
+  return {
+    Query: formattedQuery,
+    Format: 'csv',
+    Zip: false,
+  };
+}
+
+module.exports = {
+  getQuery,
+};</code></pre></div><p>This code snippet appears to be constructing a SQL query for retrieving data about active subscriptions from a database.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

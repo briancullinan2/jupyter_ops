@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -200,7 +207,139 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines several functions for interacting with Git repositories, including fetching remote information, retrieving branch names, and parsing commit logs.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const chrono = require('chrono-node');
+const _ = require('lodash');
+const importer = require('../Core');
+const { spawn } = require('child_process');
+const ISODateString = importer.import('convert date iso');
+const correctCalendarId = importer.import('lookup calendar name');
+const updateEvent = importer.import('update create merge event');
+
+/**
+ * Function to execute git remote command and parse output
+ * @param {string} project - The path to the git project
+ * @returns {Promise<Array>} - An array of objects representing the git remotes
+ */
+function getGitRemotes(project) {
+    return new Promise((resolve, reject) => {
+        const cmd = 'git remote -v';
+        childProcess.exec(cmd, { cwd: project }, (error, stdout, stderr) => {
+            if (error) {
+                reject(error);
+            } else {
+                const remotes = stdout.trim().split('\n').map(line => {
+                    if (!line) return { function: '(fetch)', name: false };
+                    const [name, address] = line.split('\t');
+                    const [function] = line.split(' ').pop().trim().split('(')[1].split(')')[0].split(',');
+                    return { name, address, function };
+                });
+                resolve(remotes);
+            }
+        });
+    });
+}
+
+/**
+ * Function to execute git branch command and parse output
+ * @param {string} project - The path to the git project
+ * @param {string} remote - The name of the git remote to show
+ * @returns {Promise<string>} - The name of the current branch
+ */
+function getGitBranch(project, remote) {
+    return new Promise((resolve, reject) => {
+        const cmd = `git remote show ${remote}`;
+        childProcess.exec(cmd, { cwd: project }, (error, stdout, stderr) => {
+            if (error) {
+                reject(error);
+            } else {
+                const branch = stdout.trim().match(/\s*HEAD branch:\s*(.*?)\s/ig)?.[1];
+                resolve(branch);
+            }
+        });
+    });
+}
+
+/**
+ * Function to execute git log command and parse output
+ * @param {string} project - The path to the git project
+ * @param {string} remote - The name of the git remote to fetch from
+ * @param {string} branch - The name of the git branch to log
+ * @returns {Promise<Array>} - An array of objects representing the git commits
+ */
+function getGitLog(project, remote, branch) {
+    return new Promise((resolve, reject) => {
+        let cmd;
+        if (remote) {
+            cmd = `git fetch ${remote} && git log --name-only --pretty=format:"%h%x09%an%x09%aD%x09%s" ${branch}`;
+        } else {
+            cmd = `git log --name-only --pretty=format:"%h%x09%an%x09%aD%x09%s" ${branch}`;
+        }
+        childProcess.exec(cmd, { cwd: project }, (error, stdout, stderr) => {
+            if (error) {
+                reject(error);
+            } else {
+                const commits = stdout.trim().split('\n\n').map(log => {
+                    const [hash, author, date, message] = log.split('\n')[0].split('\t');
+                    const files = log.split('\n').slice(1);
+                    return {
+                        hash,
+                        author,
+                        date: chrono.parse(date)[0].start.date(),
+                        message,
+                        files,
+                    };
+                });
+                resolve(commits);
+            }
+        });
+    });
+}
+
+/**
+ * Function to group commits by a few hours and create a working event
+ * @param {string} project - The path to the git project
+ * @param {string} summary - The summary of the event
+ * @param {string} branch - The name of the git branch
+ * @returns {Promise<Array>} - An array of objects representing the events
+ */
+function gitHistory(project, summary, branch) {
+    return getGitRemotes(project)
+       .then(remotes => {
+            const remote = remotes.find(r => r.function === '(fetch)').name;
+            return getGitBranch(project, remote);
+        })
+       .then(branch => {
+            if (!branch) branch ='master';
+            return getGitLog(project, remote, branch);
+        })
+       .then(commits => {
+            const grouped = _.groupBy(commits, c => {
+                const min = Math.round(c.date.getTime() / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000;
+                return min;
+            });
+            const events = Object.keys(grouped).map(t => {
+                const min = Math.round(_.min(grouped[t].map(g => g.date)).getTime() / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000;
+                const max = Math.round(_.max(grouped[t].map(g => g.date)).getTime() / (60 * 60 * 3 * 1000)) * 60 * 60 * 3 * 1000;
+                const messages = grouped[t].map(g => g.message).filter(m => m!== 'no message').join(', ');
+                return {
+                    start: {
+                        dateTime: ISODateString(new Date(parseInt(min) - offset)),
+                    },
+                    end: {
+                        dateTime: ISODateString(new Date(parseInt(max) + 60 * 60 * 1000 - offset)),
+                    },
+                    summary: summary + (messages!== ''? `, ${messages}` : ''),
+                    description: JSON.stringify(grouped[t], null, 4),
+                };
+            });
+            return importer.runAllPromises(events.map(event => resolve => updateEvent(event, {}).then(r => resolve(r))));
+        });
+}
+
+const childProcess = require('child_process');
+
+module.exports = gitHistory;</code></pre></div><p>This code defines several functions for interacting with Git repositories, including fetching remote information, retrieving branch names, and parsing commit logs.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

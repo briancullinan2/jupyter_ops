@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -181,7 +188,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules and functions
+const Core = require('../Core');
+const { getImports, selectAst, htmlToTree } = Core.importer;
+
+/**
+ * Function to test get imports functionality.
+ *
+ * @returns {object} An object containing the result of the get imports function.
+ */
+function testGetImports() {
+    // Get imports from the interpreted code in rpc.ipynb
+    const imports = getImports(Core.interpret('rpc.ipynb[1]').code);
+    console.log(imports);
+
+    // Parse and convert code to a tree
+    const codeTree = htmlToTree(selectAst('//CallExpression', code)[1]);
+    console.log(codeTree);
+
+    // Return the result of get imports function
+    return getImports(code);
+}
+
+// Define code to test the get imports function
+const code = `
+var importer = require('../Core');
+var getParameters = importer.import('get parameter names')
+`;
+
+// Check if $ is defined and call the test function
+if (typeof $!== 'undefined') {
+    testGetImports();
+
+    // Expected output
+    // get parameter names
+    // import
+}
+
+// TODO: Implement test cases for the get imports function
+// TODO: Consider using a testing framework like Jest for unit testing</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var getImports = importer.import('get imports from source')

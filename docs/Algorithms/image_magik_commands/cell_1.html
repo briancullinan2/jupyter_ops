@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,21 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+INPUT_IMAGE_DIR="/Users/briancullinan/jupyter_ops/.output"
+INPUT_IMAGE_FILE="IMG_6104.jpeg"
+OUTPUT_FILE="${INPUT_IMAGE_DIR}/IMG_6104-final.jpg"
+
+# Resize the image
+convert "${INPUT_IMAGE_DIR}/${INPUT_IMAGE_FILE}" -scale 50% -quality 50% "${OUTPUT_FILE}" && \
+
+# Enhance the image
+convert "${OUTPUT_FILE}" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite "${OUTPUT_FILE}" && \
+
+# Print a success message
+echo "done"</code></pre></div><h3>Code Breakdown</h3>
 <p>This code appears to be a series of ImageMagick commands used for image processing and conversion.</p>
 <h4>Command 1: Resize and Compress Image</h4>
 <pre><code class="language-bash">convert /Users/briancullinan/jupyter_ops/.output/IMG_6104.jpeg -scale 50% -quality 50% /Users/briancullinan/jupyter_ops/.output/IMG_6104-final.jpg

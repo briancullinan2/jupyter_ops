@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>correctCalendarId</code> that handles the process of selecting a Google Calendar to use based on a provided <code>calendarId</code>.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { authorizeGoogleCalendar } = require('../Core');
+const { assert } = require('assert');
+const console = require('console');
+
+const calendarList = [];
+let lastCalendar;
+
+/**
+ * Filter calendars based on the provided options.
+ * If no exact match is found, search for a calendar with a matching summary.
+ * @param {object} options - Options containing calendarId or calendarSummary.
+ * @returns {Promise&lt;object&gt;} Resolved options with the matched calendarId.
+ */
+function filterCalendar(options) {
+    return new Promise((resolve, reject) =&gt; {
+        const regex = new RegExp(options.calendarId, 'ig');
+        const exactMatch = calendarList.find((c) =&gt; c.id === options.calendarId);
+
+        if (!exactMatch) {
+            const summaryMatch = calendarList.find((c) =&gt; c.summary.match(regex));
+            assert(summaryMatch, `No calendar found for ${JSON.stringify(options, null, 4)} and ${JSON.stringify(calendarList, null, 4)}`);
+        } else {
+            assert(exactMatch, `No calendar found for ${JSON.stringify(options, null, 4)} and ${JSON.stringify(calendarList, null, 4)}`);
+        }
+
+        const selectedCalendar = calendarList.find((c) =&gt; c.summary === lastCalendar || c.id === exactMatch.id);
+        if (lastCalendar!== selectedCalendar.summary) {
+            console.log(`Using calendar: ${selectedCalendar.summary} - ${selectedCalendar.id}`);
+            lastCalendar = selectedCalendar.summary;
+        }
+
+        options.calendarId = selectedCalendar.id;
+        resolve(options);
+    });
+}
+
+/**
+ * Get the correct calendarId based on the provided options.
+ * If the calendarId is not provided or is 'primary', use the primary calendar.
+ * Otherwise, filter calendars to find the matching calendar.
+ * @param {object} options - Options containing calendarId or calendarSummary.
+ * @returns {Promise&lt;object&gt;} Resolved options with the matched calendarId.
+ */
+function correctCalendarId(options) {
+    if (options.calendarId === 'primary' ||!options.calendarId) {
+        return Promise.resolve({...options, calendarId: 'primary' });
+    }
+
+    if (calendarList.length === 0) {
+        return authorizeGoogleCalendar()
+           .then((calendar) =&gt; calendar.calendarList.list().asPromise())
+           .then((response) =&gt; {
+                calendarList = response.data.items || [];
+                return filterCalendar(options);
+            })
+           .catch((error) =&gt; {
+                console.error(error);
+                throw error;
+            });
+    }
+
+    return filterCalendar(options)
+       .catch((error) =&gt; {
+            console.error(error);
+            throw error;
+        });
+}
+
+module.exports = correctCalendarId;</code></pre></div><p>This code defines a function <code>correctCalendarId</code> that handles the process of selecting a Google Calendar to use based on a provided <code>calendarId</code>.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

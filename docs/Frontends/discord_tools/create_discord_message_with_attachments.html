@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { safeurl } = require('./domainCacheTools');
+const mime = require('mime-types');
+const { requestAuthQ } = require('./discordRequest');
+
+/**
+ * Posts a message with an image attachment to a Discord channel.
+ * 
+ * @param {string} prompt - The prompt for the image.
+ * @param {Buffer} buff - The image buffer.
+ * @param {string} channelId - The ID of the channel to post to.
+ * @param {string} [content='image/png'] - The content type of the image.
+ * @returns {Promise<Object>} The response from the Discord API.
+ */
+async function postMessageImageAttachment(prompt, buff, channelId, content = 'image/png') {
+  // Construct the payload as a JSON string
+  const payloadJson = JSON.stringify({
+    content: `Your ${content.includes('image')? 'image' : content} delivered: *${prompt}*`,
+    attachments: [{
+      id: 0,
+      description: prompt,
+      filename: `${safeurl(prompt)}.${mime.extension(content)}`,
+    }],
+  });
+
+  // Construct the multipart/form-data body
+  const boundary = 'boundary123';
+  const body = [
+    `--${boundary}`,
+    `Content-Disposition: form-data; name="payload_json"`,
+    `Content-Type: application/json`,
+    '',
+    payloadJson,
+    `--${boundary}`,
+    `Content-Disposition: form-data; name="files[0]"; filename="${safeurl(prompt)}.${mime.extension(content)}"`,
+    'Content-Transfer-Encoding: base64',
+    `Content-Type: ${content}`,
+    '',
+    buff.toString('base64'),
+    `--${boundary}--`,
+  ].join('\n');
+
+  // Make the request
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${boundary}`,
+    },
+    method: 'POST',
+    url: `channels/${channelId}/messages`,
+    body,
+  });
+}
+
+module.exports = {
+  postMessageImageAttachment,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">const { safeurl } = importer.import('domain cache tools')
 const mime = require('mime-types');

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,78 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const admin = require('firebase-admin');
+const firebaseFunctions = require('firebase-functions');
+const importCore = require('../Core');
+const rpcResult = importCore.import('rpc result');
+
+admin.initializeApp(firebaseFunctions.config().firebase);
+
+const cors = () => {
+    return (req, res, next) => {
+        next();
+    };
+};
+
+class Config {
+    constructor(config) {
+        this.config = config;
+    }
+
+    getServices() {
+        return Object.keys(this.config).reduce((acc, key) => {
+            Object.keys(this.config[key]).forEach((service) => {
+                const envKey = `${key.toUpperCase()}_${service.toUpperCase()}`;
+                process.env[envKey] = this.config[key][service];
+            });
+            return acc;
+        }, {});
+    }
+}
+
+class Rpc {
+    constructor(config) {
+        this.config = config;
+        this.services = new Config(config).getServices();
+    }
+
+    handleRequest(req, res) {
+        try {
+            const { body } = req;
+            const { command, result, body: data, circles } = this.interpretInput(body);
+            return rpcResult({
+                command,
+                result,
+                data,
+                circles,
+            })
+               .then((result) => {
+                    return res.status(200).send(result);
+                })
+               .catch((error) => {
+                    return res.status(500).send(error);
+                });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send(error);
+        }
+    }
+
+    interpretInput(input) {
+        const command = input['function'] || input.query['function'];
+        const result = importCore.interpret(input['function'] || input.query['function']);
+        const data = input.method === 'POST'? input.body : input.query;
+        const circles = ['Public'];
+
+        return { command, result, body: data, circles };
+    }
+}
+
+module.exports = (functions) => {
+    const rpc = new Rpc(functions.config());
+    return functions.https.onRequest(rpc.handleRequest);
+};</code></pre></div><p>This code sets up a Firebase Cloud Function that acts as a remote procedure call (RPC) endpoint.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./cell_cache.html">cell cache</a> | <a href="./test_cache_notebook.html">test cache notebook</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code analyzes Jupyter Notebooks, extracts questions from code and markdown sections, and creates a cache of cell information including questions, context, and metadata.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "cache notebook"</code></pre><h1>cache notebook</h1>
 
@@ -169,34 +175,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for processing Jupyter Notebook files.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong><code>getQuestions(source, markdown)</code>:</strong></p>
-<ul>
-<li>Extracts questions from both code and markdown sections of a notebook cell.</li>
-<li>Uses regular expressions to identify potential questions.</li>
-<li>Filters and cleans up the extracted questions.</li>
-</ul></li>
-<li><p><strong><code>accumulateMarkdown(cells)</code>:</strong></p>
-<ul>
-<li>Processes a list of notebook cells, grouping markdown and code together.</li>
-<li>Calculates the starting and ending indices of each code cell within the notebook.</li>
-<li>Creates an object for each code cell containing its markdown context and code content.</li>
-</ul></li>
-<li><p><strong><code>cacheCells(filename)</code>:</strong></p>
-<ul>
-<li>Reads a Jupyter Notebook file and extracts its cells.</li>
-<li>Calls <code>accumulateMarkdown</code> to process the cells.</li>
-<li>Calls <code>getQuestions</code> to extract questions from each cell.</li>
-<li>Creates a cache of cell objects containing metadata like filename, modification time, questions, and cell content.</li>
-</ul></li>
-<li><p><strong><code>module.exports</code>:</strong></p>
-<ul>
-<li>Exports the three functions for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p>In essence, this code provides a way to analyze Jupyter Notebooks, extract questions from them, and create a structured cache of cell information.</p>
 
 </body>
 

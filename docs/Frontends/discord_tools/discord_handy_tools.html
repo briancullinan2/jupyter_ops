@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -244,7 +251,145 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Synchronizes bot commands with the Discord API.
+ * 
+ * @param {string} [guildId] - The ID of the guild to sync commands for.
+ * @returns {Promise&lt;Command[]&gt;} A promise resolving to an array of registered commands.
+ */
+const {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateCommand
+} = require('discord-api').import();
+
+const { interactionsCommands } = require('discord-gateway').import();
+const { doDiscordPdf } = require('discord-pdf-converter').import();
+const {
+  doInterpret,
+  doSystemUsage,
+  doSummary
+} = require('discord-notebook-connector').import();
+const doMesh = require('discord-mesh-generator').import();
+const { doMention, doPrivate } = require('discord-llm-interactions').import();
+
+const ALL_COMMANDS = [
+  'pdf',
+  'interpret',
+  'usage',
+ 'mesh',
+ 'summary',
+];
+
+/**
+ * Synchronizes bot commands with the Discord API.
+ * 
+ * @param {string} [guildId] - The ID of the guild to sync commands for.
+ * @returns {Promise&lt;Command[]&gt;} A promise resolving to an array of registered commands.
+ */
+async function syncTools(guildId = null) {
+  const existingCommands = await getCommands(guildId);
+  const commands = existingCommands.map(command =&gt; command.name);
+
+  // Register or update command definitions
+  const commandDefs = [
+    {
+      name: 'pdf',
+      description: 'Convert a website to PDF.',
+      options: [
+        {
+          name: 'address',
+          description: 'Http address to convert.',
+          required: true,
+          type: 3
+        }
+      ]
+    },
+    {
+      name: 'interpret',
+      description: 'Interpret what a tool will do.',
+      options: [
+        {
+          name:'search',
+          description: 'Search function for the tool name.',
+          required: true,
+          type: 3
+        }
+      ]
+    },
+    {
+      name: 'usage',
+      description: 'View system usage.',
+      options: []
+    },
+    {
+      name:'summary',
+      description: 'Summarize an article with LLM.',
+      options: [
+        {
+          name: 'url',
+          description: 'Link address to summarize.',
+          required: true,
+          type: 3
+        }
+      ]
+    },
+    {
+      name:'mesh',
+      description: 'LLaMa-Mesh gguf.',
+      options: [
+        {
+          name: 'text',
+          description: 'Text to prompt mesh generator with.',
+          required: true,
+          type: 3
+        }
+      ]
+    }
+  ];
+
+  for (const cmd of commandDefs) {
+    const existingCmd = existingCommands.find(c =&gt; c.name === cmd.name);
+    if (!existingCmd) {
+      // Register new command
+      await registerCommand(cmd, null, guildId);
+    } else if (cmd.name!== existingCmd.name || cmd.description!== existingCmd.description) {
+      // Update existing command
+      await updateCommand(cmd, null, existingCmd.id, guildId);
+    }
+    interactionsCommands[cmd.name] = getCommandFunction(cmd.name);
+  }
+
+  // Remove unused commands
+  const toRemove = existingCommands.filter(c =&gt;!ALL_COMMANDS.includes(c.name));
+  for (const cmd of toRemove) {
+    await deleteCommand(cmd.id, guildId);
+  }
+
+  return await getCommands();
+}
+
+// Helper function to get command function from command name
+function getCommandFunction(name) {
+  switch (name) {
+    case 'pdf':
+      return doDiscordPdf;
+    case 'interpret':
+      return doInterpret;
+    case 'usage':
+      return doSystemUsage;
+    case'summary':
+      return doSummary;
+    case'mesh':
+      return doMesh;
+    default:
+      throw new Error(`Unknown command: ${name}`);
+  }
+}
+
+module.exports = syncTools;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <p>The code starts by importing various modules using the <code>importer.import()</code> function. These modules are:</p>
 <ul>

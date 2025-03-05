@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>moveMouse</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Moves the mouse cursor to a specified position on the screen.
+ *
+ * @param {number} x - The x-coordinate of the position to move the mouse to.
+ * @param {number} y - The y-coordinate of the position to move the mouse to.
+ *
+ * @returns {Promise&lt;void&gt;}
+ */
+async function moveMouse({ x, y }) {
+  // Import the mouse control module and extract the SetMousePosition function
+  const { SetMousePosition } = await importModule('mouse control c');
+
+  // Validate input coordinates
+  if (typeof x!== 'number' || typeof y!== 'number') {
+    throw new Error('Coordinates must be numbers');
+  }
+
+  // Move the mouse cursor to the specified position
+  await SetMousePosition(x, y);
+}
+
+// Refactored the import statement to use the importModule function
+function importModule(moduleName) {
+  // This function can be implemented to handle the import logic
+  // For simplicity, it returns the imported module
+  return import(moduleName);
+}
+
+// Export the moveMouse function
+module.exports = moveMouse;</code></pre></div><h3>Function: <code>moveMouse</code></h3>
 <h4>Description</h4>
 <p>Moves the mouse cursor to the specified coordinates (x, y) asynchronously.</p>
 <h4>Parameters</h4>

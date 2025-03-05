@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a function to create a class with overridden properties
+function overrideClass(overrides) {
+  return Object.create({
+    propertyOne: overrides.propertyOne,
+    propertyTwo: overrides.propertyTwo,
+    print: function() {
+      console.log(this.propertyOne);
+      console.log(this.propertyTwo);
+    }
+  });
+}
+
+// Define a function to create an interface with minimal properties
+function createInterface(properties) {
+  return Object.assign({}, properties);
+}
+
+// Test the functions
+if (typeof $!== 'undefined') {
+  // Create an original class
+  const originalClass = Object.create({
+    propertyOne: 'original 1',
+    propertyTwo: 'original 2',
+    print: function() {
+      console.log(this.propertyOne);
+      console.log(this.propertyTwo);
+    }
+  });
+
+  // Overriding the original class
+  const overridden = overrideClass({
+    propertyOne: 'overridden 1',
+    propertyTwo: 'overridden 2'
+  });
+  overridden.print();
+
+  // Creating an interface with minimal properties
+  const interfaced = createInterface({
+    propertyOne: 'overridden 1'
+  });
+  // Note: The print function is not available in the interface
+  // console.log(interfaced.print()); // Uncomment to see the error
+
+  // Overriding the interface
+  const overriddenInterface = Object.assign({}, interfaced);
+  overriddenInterface.print();
+
+  // Using the original class to override the interface
+  const originalOvertaken = Object.assign({}, originalClass);
+  originalOvertaken.print();
+  
+  // Creating an interface with the original class properties
+  const interfacedOriginal = createInterface({
+    propertyOne: 'original 1',
+    propertyTwo: 'original 2',
+    print: originalClass.print
+  });
+  interfacedOriginal.print();
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>myInterface Function</h4>
 <ul>
 <li>Creates a new object using <code>Object.create({})</code> and assigns it to the <code>interface</code> variable.</li>

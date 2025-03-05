@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const childProcess = require('child_process');
+const { importer } = require('domain-cache-tools');
+
+const getEnvVariable = (key) => {
+  return process.env[key] || '';
+};
+
+const getProjectPath = (github) => {
+  if (!fs.existsSync(github) && fs.existsSync(path.join(getEnvVariable('HOME'), github))) {
+    return path.join(getEnvVariable('HOME'), github);
+  }
+
+  if (github.includes('://') && fs.existsSync(path.basename(github).replace('.git', ''))) {
+    return path.join(getEnvVariable('HOME'), path.basename(github).replace('.git', ''));
+  }
+
+  return github;
+};
+
+async function getProjectFiles(github) {
+  const projectPath = getProjectPath(github);
+  if (!fs.existsSync(projectPath)) {
+    throw new Error('Project not found.');
+  }
+
+  return fs.readdirSync(projectPath);
+}
+
+const getPromptLines = (prompt, projectFiles) => {
+  return `Given the project files:
+${projectFiles.join('\n')}
+Fulfill the following instructions on the code file, only return the block of new code.
+${prompt}
+Response with only the block of code and no summary or reasoning.`;
+};
+
+async function generateCodeFile(prompt, codeBlocks, projectFiles) {
+  const llmCode = await importer.import('llm-code');
+  const promptLines = getPromptLines(prompt, projectFiles);
+  const response = await llmCode(promptLines);
+  const codeBlocksResponse = response.matchAll(/```(bash|javascript|code)*\n[\s\S]*?\n```/gi);
+  const codeBlocksExtracted = Array.from(codeBlocksResponse).map((match) => match[0].replace(/^```(bash|javascript|code)*\n|\n```$/gi, ''));
+
+  let codeFile = '';
+  if (codeBlocks) {
+    codeFile = codeBlocks.replace(/```(bash|javascript|code)*\n|\n```$/gi, '');
+  }
+
+  if (!codeFile) {
+    const q2 = `Given the project files:\n${projectFiles.join('\n')}\nGenerate a new name for the code file:\n${codeBlocksExtracted.join('\n')}\nOnly respond with the recommended file name and nothing else.`;
+    console.log('User:', q2);
+    let a2 = await llmCode(q2);
+    console.log('AI:', a2);
+
+    codeFile = safeurl(a2);
+  }
+
+  return codeFile;
+}
+
+async function makeCode(prompt, codeFile, github) {
+  if (!github) {
+    throw new Error('Project not specified.');
+  }
+
+  const projectFiles = await getProjectFiles(github);
+  const baseName = path.basename(github);
+
+  await childProcess.spawnSync('git', ['pull'], {
+    cwd: github,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
+
+  const codeBlocks = prompt + '\n' + projectFiles.join('\n');
+  const codeFileGenerated = await generateCodeFile(prompt, codeBlocks, projectFiles);
+
+  fs.writeFileSync(path.join(github, codeFileGenerated), codeBlocks);
+}
+
+module.exports = makeCode;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that uses various libraries and functions to generate code based on a given prompt. Here's a high-level overview:</p>
 <h3>Dependencies and Variables</h3>
 <ul>

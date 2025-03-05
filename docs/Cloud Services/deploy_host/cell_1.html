@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -85,7 +92,21 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="powershell"><code># Define the archive file path
+$archivePath = "index.zip"
+
+# Import the required assembly
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+# Define the script block
+$scriptBlock = {
+    # Compress the notify.bundle.js file into the archive
+    Compress-Archive -Path "notify.bundle.js" -DestinationPath $archivePath
+}
+
+# Run the script block
+& $scriptBlock</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p><strong>Command:</strong> <code>powershell.exe</code></p>
 <ul>
 <li>Launches the PowerShell command-line interface.</li>

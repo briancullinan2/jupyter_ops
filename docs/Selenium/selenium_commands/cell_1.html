@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define constants for display and chromedriver location
+LOCAL_DISPLAY=:0
+CHROMEDRIVER_PATH="/usr/bin/chromedriver"
+
+# Define command line options for chromedriver
+CHROMEDRIVER_ARGS=(
+    "--start-fullscreen"
+    "--no-sandbox"
+    "--incognito"
+)
+
+# Define the Selenium Server JAR location
+SELENIUM_JAR="/opt/selenium/selenium-server-standalone.jar"
+
+# Define a function to start the Selenium Server
+start_selenium_server() {
+    # Set the DISPLAY environment variable
+    export DISPLAY=$LOCAL_DISPLAY
+    
+    # Start the Selenium Server with custom chromedriver args
+    java -Dwebdriver.chrome.driver=$CHROMEDRIVER_PATH \
+        -Dwebdriver.chrome.args=$(IFS=,; echo "${CHROMEDRIVER_ARGS[*]}") \
+        -jar $SELENIUM_JAR
+}
+
+# Start the Selenium Server
+start_selenium_server</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p><strong>Purpose:</strong> Start a Selenium server with Chrome browser in headless mode.</p>
 <p><strong>Line-by-Line Explanation:</strong></p>
 <ol>

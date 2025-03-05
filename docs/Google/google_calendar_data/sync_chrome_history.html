@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -176,7 +183,120 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code synchronizes your Chrome browsing history from Takeout files with a Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importCore, importFunctions } = require('../Core');
+const url = require('url');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const { console } = require('console');
+
+// Define constants and environment variables
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Downloads');
+const CHROME_HISTORY_GLOB = 'Takeout*/Chrome/BrowserHistory.json';
+
+// Function to load Chrome history from a file
+function loadChromeHistory(filePath) {
+    // Read the file and parse its contents
+    const wholeFile = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+
+    // Initialize an object to store the Chrome history
+    const chromeHistory = {};
+
+    // Iterate over the browser history entries
+    wholeFile['Browser History'].forEach((match) =&gt; {
+        // Group the entries by date
+        const timeGroup = Math.round(match.time_usec / 60 / 30 / 1000000) * 60 * 30 * 1000;
+        if (!chromeHistory[timeGroup]) {
+            chromeHistory[timeGroup] = [];
+        }
+
+        // Parse the URL and extract the hostname
+        const host = url.parse(match.url).hostname;
+        const existingHosts = chromeHistory[timeGroup].filter((h) =&gt; h.host === host);
+
+        // Add the entry to the history if it's not already there
+        if (existingHosts.length === 0) {
+            chromeHistory[timeGroup].push({ host,...match });
+        } else {
+            // Merge the URL with the existing entry
+            const existingHost = existingHosts[0];
+            if (!existingHost.urls) {
+                existingHost.urls = {};
+            }
+            existingHost.urls[match.time_usec] = match.url;
+        }
+    });
+
+    return chromeHistory;
+}
+
+// Import functions from the core module
+const { ISODateString, updateEvent, correctCalendarId } = importFunctions([
+    'import google calendar api',
+    'lookup calendar name',
+    'convert date iso',
+    'update create merge event',
+]);
+
+// Options for the calendar ID
+const calendarOptions = {
+    calendarId: 'Bookmarks',
+};
+
+// Function to sync Chrome history with the calendar
+function syncChromeHistory() {
+    // Find the Chrome history files in the project directory
+    const files = glob.sync(CHROME_HISTORY_GLOB, { cwd: PROJECT_PATH })
+       .map((f) =&gt; path.join(PROJECT_PATH, f));
+
+    // Sort the files by creation time
+    files.sort((a, b) =&gt; fs.statSync(a).ctime - fs.statSync(b).ctime);
+
+    // Load the Chrome history from the most recent file
+    return correctCalendarId(calendarOptions)
+       .then(() =&gt; loadChromeHistory(files.pop()))
+       .then((chromeHistory) =&gt; {
+            // Group the history by date
+            const groups = Object.keys(chromeHistory).sort((a, b) =&gt; parseInt(b) - parseInt(a));
+
+            // Log the first 10 groups
+            console.log(groups.slice(0, 10));
+
+            // Get the start date of the history
+            const startDate = new Date(parseInt(Object.keys(chromeHistory)[0]));
+
+            // Create events for each group
+            return Object.keys(chromeHistory).map((t) =&gt; ({
+                start: {
+                    dateTime: ISODateString(new Date(parseInt(t))),
+                },
+                end: {
+                    dateTime: ISODateString(new Date(parseInt(t) + 60 * 30 * 1000)),
+                },
+                summary: 'Chrome activity',
+                description: JSON.stringify(chromeHistory[t], null, 4),
+            }));
+        })
+       .then((events) =&gt; {
+            // Update each event on the calendar
+            return importCore.runAllPromises(
+                events.map((event) =&gt;
+                    resolve =&gt;
+                        updateEvent(event, calendarOptions)
+                           .then((r) =&gt; resolve(r))
+                           .catch((e) =&gt; {
+                                console.log(e);
+                                resolve();
+                            }),
+                ),
+            );
+        })
+       .catch((error) =&gt; console.log(error));
+}
+
+module.exports = syncChromeHistory;</code></pre></div><p>This code synchronizes your Chrome browsing history from Takeout files with a Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

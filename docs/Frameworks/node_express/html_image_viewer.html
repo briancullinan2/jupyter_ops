@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,114 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="html"><code><!-- 
+  HTML5 doctype declaration for new standard.
+  Commented for understanding.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    Character encoding for text and meta tags
+    Title for browser tab and search engine results.
+    Link to external stylesheet.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directory Listing</title>
+  <!-- 
+    Internal stylesheet for improved customizability.
+    CSS selectors and properties for visual design.
+  -->
+  <style>
+    /* 
+      Remove list item's default styles.
+      Add padding and margin for clean design.
+    */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 
+      Style each list item.
+      Add padding and border for better visibility.
+      Remove border for last child.
+    */
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    /* 
+      Style icons.
+      Set font-size and color.
+    */
+    i {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #666;
+    }
+
+    /* 
+      Style spans.
+      Set font-size and color.
+    */
+    span {
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* 
+      Add padding to ul for better spacing.
+    */
+    ul {
+      padding-left: 20px;
+    }
+
+    /* 
+      Add padding to li for better spacing.
+    */
+    ul li {
+      padding-left: 10px;
+    }
+  </style>
+  <!-- 
+    Link to external stylesheet.
+  -->
+  <link rel="stylesheet" type="text/css" href="/amplitude.css" />
+  <!-- 
+    JavaScript library for web analytics.
+  -->
+  <script src="/amplitude.js"></script>
+</head>
+
+<body>
+  <!-- 
+    Page heading with directory listing information.
+  -->
+  <h1>Directory Listing</h1>
+  <!-- 
+    Unordered list with links for directory navigation.
+  -->
+  <ul>
+    <!-- 
+      List item with link to parent directory.
+    -->
+    <li><a href="./?session={SESSION}">Parent directory/</a></li>
+  </ul>
+  <!-- 
+    Image with link to file.
+  -->
+  <img src="{FILE_URL}?raw=true&session={SESSION}" />
+</body>
+</html></code></pre></div><h3>Code Breakdown</h3>
 <h4>HTML Structure</h4>
 <p>The code consists of an HTML document with a basic structure:</p>
 <ul>

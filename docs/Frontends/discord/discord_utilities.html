@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,102 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>class TimerManager {
+  /**
+   * Creates a new instance of TimerManager.
+   */
+  constructor() {
+    this.timers = {}
+    this.mainTimer = setInterval(this.callResolve.bind(this), 20)
+  }
+
+  /**
+   * Call resolve function for expired timers.
+   */
+  callResolve() {
+    const now = Date.now()
+    const times = Object.keys(this.timers)
+    for (const time of times) {
+      if (now > Number(time)) {
+        try {
+          Promise.resolve(this.timers[time]())
+          delete this.timers[time]
+        } catch (e) {
+          console.log('timer failed', e)
+          throw e
+        }
+      }
+    }
+  }
+
+  /**
+   * Add a resolve function to the timer queue.
+   * @param {function} resolve - The resolve function to be added.
+   * @param {number} time - The time when the resolve function should be called.
+   */
+  addResolve(resolve, time) {
+    while (this.timers[time]!== undefined) {
+      time++
+    }
+    this.timers[time] = resolve
+  }
+
+  /**
+   * Create a promise that resolves after a specified delay.
+   * @param {number} delay - The delay in milliseconds.
+   * @returns {Promise<void>}
+   */
+  async timeout(delay) {
+    const now = Date.now()
+    await new Promise(resolve => this.addResolve(resolve, now + delay))  
+  }
+
+  /**
+   * Delay for a specified time.
+   * @param {number} prev - The previous time.
+   * @param {number} delay - The delay in milliseconds.
+   * @returns {Promise<number>} The current time.
+   */
+  async delay(prev, delay) {
+    const now = Date.now()
+    if (now - prev < delay) {
+      await this.timeout(delay - (now - prev))
+    }
+    return Date.now()
+  }
+
+  /**
+   * Wait for a specified condition to be met.
+   * @param {function} until - The condition to be met.
+   * @param {number} delay - The delay in milliseconds.
+   * @returns {Promise<any>} The result of the condition.
+   */
+  async wait(until, delay) {
+    let waitTimer
+    let waitCount = 0
+    let result
+    const now = Date.now()
+    const delayed = now + delay
+    while (!result && now < delayed) {
+      await this.timeout(100)
+      result = await until()
+      now = Date.now()
+    }
+    return result
+  }
+
+  /**
+   * Clean up the timer queue.
+   */
+  cleanup() {
+    clearInterval(this.mainTimer)
+    this.mainTimer = null
+    this.timers = {}
+  }
+}
+
+module.exports = TimerManager</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables and Timers</h4>
 <ul>
 <li><code>timers</code> is an object used to store timer functions with their corresponding expiration times.</li>

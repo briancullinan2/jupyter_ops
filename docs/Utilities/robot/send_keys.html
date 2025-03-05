@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -128,7 +135,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import the robotjs module for simulating keyboard input.
+ */
+const robot = require("robotjs");
+
+/**
+ * Enum for special keys that can't be typed like normal keys.
+ */
+const TAP_SPECIAL = [
+  'enter',
+  'escape',
+  'backspace',
+  'delete',
+];
+
+/**
+ * Send a key sequence to the keyboard, handling normal and special keys.
+ * @param {string} text The text to type.
+ * @param {string[]} special Special keys to tap after typing.
+ * @returns {Promise&lt;void&gt;}
+ */
+async function keySend(text, special) {
+  // Type the text, handling shift keys and timing for a smooth typing experience.
+  for (let i = 0; i &lt; text.length; i++) {
+    let modifiers = getModifiers(text[i]);
+    await sendKey(text[i].toLowerCase(), modifiers);
+    await new Promise(resolve =&gt; setTimeout(resolve, 150));
+  }
+
+  // If there are special keys to tap, handle them here.
+  if (special.length &gt; 0) {
+    await tapSpecialKeys(special);
+  }
+}
+
+/**
+ * Get the modifiers for a given character, including shift if it's uppercase.
+ * @param {string} char The character to check.
+ * @returns {string[]} The modifiers for the character.
+ */
+function getModifiers(char) {
+  const modifiers = [];
+  if (char.toUpperCase() === char &amp;&amp;!modifiers.includes('shift')) {
+    modifiers.push('shift');
+  }
+  return modifiers;
+}
+
+/**
+ * Send a key to the keyboard with the given modifiers.
+ * @param {string} key The key to send.
+ * @param {string[]} modifiers The modifiers to apply.
+ * @returns {Promise&lt;void&gt;}
+ */
+async function sendKey(key, modifiers) {
+  await robot.keyToggle(key, 'down', modifiers);
+  await new Promise(resolve =&gt; setTimeout(resolve, 150));
+  await robot.keyToggle(key, 'up', modifiers);
+}
+
+/**
+ * Tap special keys on the keyboard.
+ * @param {string[]} special The special keys to tap.
+ * @returns {Promise&lt;void&gt;}
+ */
+async function tapSpecialKeys(special) {
+  for (const key of special) {
+    await robot.keyTap(key);
+    await new Promise(resolve =&gt; setTimeout(resolve, 150));
+  }
+}
+
+module.exports = keySend;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing the robotjs library</h4>
 <pre><code class="language-javascript">var robot = require(&quot;robotjs&quot;);
 </code></pre>

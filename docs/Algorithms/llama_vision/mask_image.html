@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./stable_diffusion_request.html">stable diffusion request</a> | <a href="./inpaint_mask.html">inpaint mask</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>doBackgroundMask(image)</code> function processes an input image by downloading, reading, or decoding it, and then uses the Rembg API to remove the background using the U2NET model. The processed background image is then extracted and saved to a timestamped folder in the specified <code>OUTPUT_PATH</code> directory, with the highest index of existing images in the folder incremented accordingly.</p>
+  <p>The <code>doBackgroundMask</code> function is an asynchronous process that takes an image, extracts its base64 representation, applies a background mask using the <code>rembg</code> API, and writes the masked image to a file. It involves file system operations, image processing, and HTTP requests to the <code>rembg</code> API.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "mask image"</code></pre><h1>mask image</h1>
@@ -183,45 +192,137 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>doBackgroundMask(image)</code></strong></p>
-<h3>Parameters</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const crypto = require('crypto');
+const sharp = require('sharp');
+
+const DEFAULT_OUTPUT_PATH = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,'stable-diffusion-webui/outputs');
+
+class BackgroundMaskService {
+  /**
+   * The path where the output images will be saved.
+   * @type {string}
+   */
+  static get OUTPUT_PATH() {
+    return process.env.OUTPUT_PATH || DEFAULT_OUTPUT_PATH;
+  }
+
+  /**
+   * Creates a background mask image from the given image.
+   * @param {Buffer|string} image - The image to apply the background mask to.
+   * @returns {Promise<{seed: string, image: Buffer, imagePath: string}>} - The created image with a generated seed and its path.
+   */
+  static async doBackgroundMask(image) {
+    try {
+      const { base64Data, filePath } = await BackgroundMaskService.processImage(image);
+
+      const response = await axios.post('http://127.0.0.1:7860/rembg', {
+        input_image: base64Data,
+        model: 'u2net',
+        return_mask: true,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const buff = Buffer.from(response.data.image, 'base64');
+      const seed = crypto.randomBytes(8).toString('hex');
+      const now = new Date();
+      const folderName = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+      const stablePath = path.join(BackgroundMaskService.OUTPUT_PATH, 'extras-images', folderName);
+      if (!fs.existsSync(stablePath)) {
+        fs.mkdirSync(stablePath);
+      }
+
+      const images = fs.readdirSync(stablePath);
+      let highestCount = 0;
+      for (let i = 0; i < images.length; i++) {
+        const index = parseInt(images[i].split(/[\.-]/gi)[0]);
+        if (!isNaN(index) && index > highestCount) {
+          highestCount = index;
+        }
+      }
+
+      const imagePath = path.join('extras-images', folderName, String(highestCount).padStart(5, '0') + '-' + seed + '.png');
+      fs.writeFileSync(path.join(BackgroundMaskService.OUTPUT_PATH, imagePath), buff);
+
+      const imageObj = await sharp(buff);
+      await imageObj.negate().toFile(path.join(BackgroundMaskService.OUTPUT_PATH, 'extras-images', folderName, String(highestCount).padStart(5, '0') + '-' + seed + '-negative.png'));
+
+      return { seed, image: buff, imagePath };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  static async processImage(image) {
+    if (typeof image ==='string') {
+      if (image.startsWith('data:image/')) {
+        image = image.replace(/^data:image\/.*?;base64,/gi, '');
+      }
+
+      if (image.includes('://')) {
+        const response = await axios.get(image);
+        return { base64Data: Buffer.from(await response.data.arrayBuffer()).toString('base64'), filePath: null };
+      } else if (!fs.existsSync(image)) {
+        throw new Error(`The file ${image} does not exist.`);
+      } else {
+        return { base64Data: fs.readFileSync(image).toString('base64'), filePath: image };
+      }
+    } else {
+      return { base64Data: image.toString('base64'), filePath: null };
+    }
+  }
+}
+
+module.exports = BackgroundMaskService;</code></pre></div><h2>Code Breakdown</h2>
+<h3>Imported Modules</h3>
 <ul>
-<li><code>image</code>: The image input, which can be a string (containing a base64-encoded image URL or data) or a Buffer object.</li>
+<li><code>fs</code>: File system module for interacting with the file system.</li>
+<li><code>path</code>: Path module for working with file paths.</li>
+<li><code>gaxios</code>: A Google-like HTTP client for making HTTP requests.</li>
+<li><code>crypto</code>: Cryptography module for generating random seeds.</li>
+<li><code>sharp</code>: A high-performance image processing library.</li>
 </ul>
-<h3>Functionality</h3>
-<ol>
-<li><strong>Image Processing</strong>: If <code>image</code> is a string, the function attempts to:
+<h3>Constants</h3>
 <ul>
-<li>Remove base64 encoding if present.</li>
-<li>Download the image from the provided URL using <code>gaxios</code> if the string contains a URL.</li>
-<li>Read the image from a local file if the string is a local file path.</li>
-<li>Use the provided base64-encoded string if valid.</li>
-</ul></li>
-<li><strong>BG Removal</strong>: Send a POST request to the Rembg API (<code>http://127.0.0.1:7860/rembg</code>) with the processed image and specify the U2NET model for background removal.</li>
-<li><strong>Image Processing</strong>: Extract the base64-encoded background image from the API response.</li>
-<li><strong>Generate Output Path</strong>: Create a folder with a timestamped name in the <code>OUTPUT_PATH</code> directory.</li>
-<li><strong>Check for Existing Images</strong>: If the folder already exists, find the highest index of images in the folder and increment it.</li>
-</ol>
-<h3>Functions and Modules Used</h3>
-<ul>
-<li><code>fs</code>: File system module for reading and writing files.</li>
-<li><code>path</code>: Path module for constructing file paths.</li>
-<li><code>gaxios</code>: Axios wrapper for making HTTP requests.</li>
-<li><code>crypto</code>: Cryptographic module for generating random seeds.</li>
-<li><code>sharp</code>: Image processing module (not used in this function).</li>
+<li><code>OUTPUT_PATH</code>: A constant representing the output directory path for generated images.</li>
 </ul>
-<h3>Variables</h3>
+<h3>Function: <code>doBackgroundMask</code></h3>
 <ul>
-<li><code>OUTPUT_PATH</code>: The base output directory for the function.</li>
-<li><code>base64_image</code>: The base64-encoded image processed from the input.</li>
-<li><code>result</code>: The API response from the Rembg service.</li>
-<li><code>buff</code>: The buffer object containing the background image.</li>
-<li><code>seed</code>: A random seed generated for the image.</li>
-<li><code>now</code>: The current date and time.</li>
-<li><code>folderName</code>: The timestamped folder name.</li>
-<li><code>stablePath</code>: The full path to the output folder.</li>
-<li><code>highestCount</code>: The highest index of existing images in the folder.</li>
-<li><code>images</code>: An array of image file names in the output folder.</li>
+<li>This is an asynchronous function that takes an <code>image</code> parameter.</li>
+<li>It processes the image to extract its base64 representation and apply a background masking using the <code>rembg</code> API.</li>
+<li>The function returns nothing.</li>
+</ul>
+<h3>Image Processing</h3>
+<ul>
+<li>If the <code>image</code> parameter is a string, it checks if it's a base64-encoded image.</li>
+<li>If it's not a base64-encoded image, it checks if the string contains a URL.</li>
+<li>If it's a URL, it makes a GET request to the URL and extracts the base64 representation of the image data.</li>
+<li>If it's not a URL and not a base64-encoded image, it reads the file from disk and converts it to base64.</li>
+</ul>
+<h3>Background Masking</h3>
+<ul>
+<li>The function sends a POST request to the <code>rembg</code> API with the base64-encoded image, specifying the <code>u2net</code> model and requesting a mask.</li>
+<li>It extracts the base64-encoded mask from the response and writes it to a file.</li>
+</ul>
+<h3>File System Operations</h3>
+<ul>
+<li>The function creates a directory for storing the masked images if it doesn't exist.</li>
+<li>It generates a random seed and uses it to create a subdirectory for the masked image.</li>
+<li>It reads the contents of the subdirectory and increments a counter for each image found.</li>
+<li>It writes the masked image to a file in the subdirectory, using the incremented counter as the file name.</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The function assumes that the <code>rembg</code> API is running on <code>http://127.0.0.1:7860/rembg</code>.</li>
+<li>The function uses the <code>sharp</code> library to process the images, but it's not clear how the library is being used.</li>
 </ul>
 
 </body>

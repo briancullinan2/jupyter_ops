@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./inpaint_mask.html">inpaint mask</a> | <a href="./whisk_images.html">whisk images</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>doImage2Image</code> function is an asynchronous function that processes an image and a prompt, sends a POST request to a local API endpoint, and saves the generated image to a specified output directory. The function currently lacks error handling and checks for existing output directory or file, and requires additional functionality to handle potential issues during API requests and file operations.</p>
+  <p>The code imports modules for interacting with the file system, working with file paths, and making HTTP requests. It defines a function <code>doImage2Image</code> that takes an image and a prompt, processes the image, makes a POST request to generate an image, and returns the seed and generated image.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "image 2 image"</code></pre><h1>image 2 image</h1>
@@ -183,37 +192,153 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Requires and Constants</h3>
-<p>The code requires three modules:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const gaxios = require('gaxios');
+const fs = require('fs');
+const path = require('path');
+
+const OUTPUT_PATH = process.env.HOME
+ ? path.join(process.env.HOME,'stable-diffusion-webui/outputs')
+  : process.env.HOMEPATH
+ ? path.join(process.env.HOMEPATH,'stable-diffusion-webui/outputs')
+  : process.env.USERPROFILE
+ ? path.join(process.env.USERPROFILE,'stable-diffusion-webui/outputs')
+  : './outputs';
+
+async function doImage2Image(image, prompt) {
+  try {
+    const width = getPreferredWidth(prompt);
+    const base64Image = await getImageData(image);
+    const result = await sendImageData(base64Image, prompt);
+    const { seed, imagePath } = await processResult(result, width);
+    return { seed, image: result.data.images[0], imagePath, prompt };
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * Returns the preferred width based on the prompt.
+ * @param {string} prompt
+ * @returns {number}
+ */
+function getPreferredWidth(prompt) {
+  return prompt.includes('View360')? 2048 : 1024;
+}
+
+/**
+ * Retrieves the image data from the provided image.
+ * @param {string} image
+ * @returns {Promise&lt;string&gt;}
+ */
+async function getImageData(image) {
+  if (typeof image ==='string' &amp;&amp; image.startsWith('data:image/')) {
+    image = image.replace(/^data:image\/.*?;base64,/gi, '');
+  }
+
+  if (image.includes('://')) {
+    const response = await gaxios.request({
+      url: image,
+      method: 'GET',
+    });
+    return Buffer.from(await response.data.arrayBuffer()).toString('base64');
+  } else if (!fs.existsSync(image)) {
+    return image;
+  } else {
+    return fs.readFileSync(image).toString('base64');
+  }
+}
+
+/**
+ * Sends the image data to the SD API.
+ * @param {string} base64Image
+ * @param {string} prompt
+ * @returns {Promise&lt;Object&gt;}
+ */
+async function sendImageData(base64Image, prompt) {
+  const response = await gaxios.request({
+    url: 'http://127.0.0.1:7860/sdapi/v1/img2img',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    data: JSON.stringify({
+      prompt,
+      negative_prompt: 'bad hands, bad feet, bad faces, bad eyes, bad anatomy, extra limbs, missing limbs, tattoo, statue, picture frame, anime, cartoon, signature, abstract',
+      save_images: true,
+      width: getPreferredWidth(prompt),
+      height: 1024,
+      steps: 30,
+      tiling: false,
+      init_images: [base64Image],
+    }),
+  });
+  return response.data;
+}
+
+/**
+ * Processes the result from the SD API.
+ * @param {Object} result
+ * @param {number} width
+ * @returns {Promise&lt;{ seed: string, imagePath: string }&gt;}
+ */
+async function processResult(result, width) {
+  const seed = JSON.parse(result.info).seed;
+  const buff = Buffer.from(result.images[0], 'base64');
+  const now = new Date();
+  const folderName = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const stablePath = path.join(OUTPUT_PATH, 'img2img-images', folderName);
+  let imagePath;
+  if (fs.existsSync(stablePath)) {
+    const images = fs.readdirSync(stablePath);
+    for (let i = 0; i &lt; images.length; i++) {
+      if (images[i].match(`-${seed}-`)) {
+        imagePath = path.join('img2img-images', folderName, images[i]);
+        break;
+      }
+    }
+  }
+  return { seed, imagePath };
+}
+
+module.exports = {
+  doImage2Image,
+  OUTPUT_PATH,
+};</code></pre></div><p><strong>Breakdown of the code</strong></p>
+<h3>Importing Modules</h3>
+<p>The code starts by importing three modules:</p>
 <ul>
-<li><code>fs</code> (File System) for interacting with the file system</li>
-<li><code>path</code> for working with file paths</li>
-<li><code>gaxios</code> (a Google API client library) for making HTTP requests</li>
+<li><code>fs</code> (File System): for interacting with the file system</li>
+<li><code>path</code>: for working with file paths</li>
+<li><code>gaxios</code> (Google HTTP client): for making HTTP requests</li>
 </ul>
-<p>It defines a constant <code>OUTPUT_PATH</code> which is the path to a directory where image outputs will be saved.</p>
-<h3><code>doImage2Image</code> Function</h3>
-<p>This is an asynchronous function that takes two arguments: <code>image</code> and <code>prompt</code>.</p>
+<h3>Defining Constants</h3>
+<ul>
+<li><code>OUTPUT_PATH</code>: the path where generated images will be stored, set to <code>stable-diffusion-webui/outputs</code> in the user's home directory</li>
+</ul>
+<h3>Defining the <code>doImage2Image</code> Function</h3>
+<p>This is an asynchronous function that takes two arguments:</p>
+<ul>
+<li><code>image</code>: the input image, which can be a string, a Buffer, or a URL</li>
+<li><code>prompt</code>: the prompt for the image generation</li>
+</ul>
 <h4>Image Processing</h4>
-<p>The function checks if the <code>image</code> argument is a string. If so, it determines if it's a URL, a local file path, or a base64-encoded image. It then converts the image to base64 format if necessary.</p>
-<h4>API Request</h4>
-<p>The function sends a POST request to a local API endpoint (<code>http://127.0.0.1:7860/sdapi/v1/img2img</code>) with the following data:</p>
+<p>The function processes the input <code>image</code> as follows:</p>
 <ul>
-<li><code>prompt</code>: the user-provided prompt</li>
-<li><code>negative_prompt</code>: a predefined string that describes what not to include in the image</li>
-<li><code>save_images</code>: set to <code>true</code> to save the generated image</li>
-<li><code>width</code>: the image width, which is either 1024 or 2048 depending on the presence of &quot;View360&quot; in the prompt</li>
-<li><code>height</code>: always 1024</li>
-<li><code>steps</code>: set to 30</li>
-<li><code>tiling</code>: set to <code>false</code></li>
-<li><code>init_images</code>: the base64-encoded image data</li>
+<li>If <code>image</code> is a string, it checks if it's a base64-encoded image. If not, it attempts to download the image from the URL if it's a valid URL.</li>
+<li>If <code>image</code> is a Buffer or a string representing a base64-encoded image, it converts it to a base64-encoded string</li>
+<li>If <code>image</code> is a URL, it downloads the image using <code>gaxios</code> and converts it to a base64-encoded string</li>
 </ul>
-<h4>Processing Response</h4>
-<p>The function extracts the <code>seed</code> and <code>images</code> from the API response. It then generates a filename for the output image based on the current date and time. If the output directory does not exist, the function creates it.</p>
-<h4>Saving Image</h4>
-<p>The function attempts to save the generated image to the output directory. If the directory exists, it reads the existing images in the directory, extracts the filename, and saves the new image with a incremented filename.</p>
-<h3>Missing Functionality</h3>
-<p>The code does not handle errors or exceptions that may occur during API requests or file operations. It also does not check if the output directory or file already exists before saving the image.</p>
+<h4>Making the Image Generation Request</h4>
+<p>The function makes a POST request to <code>http://127.0.0.1:7860/sdapi/v1/img2img</code> with the following data:</p>
+<ul>
+<li><code>prompt</code>: the prompt for the image generation</li>
+<li><code>negative_prompt</code>: a string of negative prompts</li>
+<li><code>save_images</code>: a boolean indicating whether to save the generated images</li>
+<li><code>width</code> and <code>height</code>: the dimensions of the generated image</li>
+<li><code>steps</code>: the number of steps for the image generation</li>
+<li><code>tiling</code>: a boolean indicating whether to use tiling</li>
+<li><code>init_images</code>: an array containing the base64-encoded input image</li>
+</ul>
+<p>The response from the server is parsed to extract the seed and the generated image.</p>
 
 </body>
 

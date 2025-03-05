@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules from the Core folder
+const { getRequires } = require('../Core').import('getRequiresFromSource');
+
+// Sample code snippet to extract requires from
+const sampleCode = `
+var importer = require('../Core');
+var glob = require('glob');
+var path = require('path');
+`;
+
+/**
+ * Function to test the getRequires function
+ * @returns {Array<string>} An array of required module paths
+ */
+function testGetRequires() {
+  // Call the getRequires function and return the result
+  return getRequires(sampleCode);
+}
+
+// Export the test function for other modules to use
+module.exports = testGetRequires;
+
+// If running in a test environment, call the test function
+if (typeof globalThis!== 'undefined' && typeof globalThis.console!== 'undefined') {
+  // Call the test function and log the expected output
+  globalThis.console.log(testGetRequires());
+  // Expected output
+  //../Core
+  // glob
+  // path
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {getRequires} = importer.import('get requires from source')

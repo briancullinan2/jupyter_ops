@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -183,7 +190,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a Lambda function handler that exports data from Zuora to Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const Core = require('../Core');
+const { bulkUploadEloqua, getZuoraMonth } = Core.import('bulk upload eloqua');
+const { mapDataToFields } = Core.import('zuora eloqua mapper');
+const { zuoraExport } = Core.import('zuora export month');
+
+// Define a configuration object with environment variable values
+const getEnvironmentVariable = (name) => process.env[name.replace('_', '/')];
+
+const config = {
+  zuora: {
+    restApiUser: getEnvironmentVariable('ZUORA_API_USER'),
+    restApiPassword: getEnvironmentVariable('ZUORA_API_PASS'),
+    restApiUrl: getEnvironmentVariable('ZUORA_API_URL'),
+  },
+  eloqua: {
+    authorizeUri: getEnvironmentVariable('ELOQUA_AUTHORIZE_URL'),
+    tokenUri: getEnvironmentVariable('ELOQUA_TOKEN_URL'),
+    restApiUrl: getEnvironmentVariable('ELOQUA_API_URL'),
+    restClientId: getEnvironmentVariable('ELOQUA_CLIENT_ID'),
+    restSecret: getEnvironmentVariable('ELOQUA_CLIENT_SECRET'),
+    restApiCompany: getEnvironmentVariable('ELOQUA_API_COMPANY'),
+    restApiUser: getEnvironmentVariable('ELOQUA_API_USER'),
+    restApiPassword: getEnvironmentVariable('ELOQUA_API_PASS'),
+  },
+};
+
+// Define the handler function
+function handler(event, context, callback) {
+  // Get the Zuora month data
+  zuoraExport.getZuoraMonth(0, config.zuora)
+   .then((records) => {
+      // Map Zuora data to Eloquent fields
+      return mapDataToFields(records);
+    })
+   .then((accounts) => {
+      // Bulk upload Eloquent data
+      return bulkUploadEloqua(accounts, config.eloqua);
+    })
+   .then(() => {
+      // Return success response
+      callback(null, {
+       'statusCode': 200,
+        'headers': { 'Content-Type': 'text/plain' },
+        'body': 'Success!',
+      });
+    })
+   .catch((error) => {
+      // Return error response
+      callback(error.message || error.body || error, {
+       'statusCode': 500,
+        'headers': { 'Content-Type': 'text/plain' },
+        'body': 'Error:'+ error.message,
+      });
+    });
+}
+
+// Export the handler function
+module.exports = { handler };</code></pre></div><p>This code defines a Lambda function handler that exports data from Zuora to Eloqua.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

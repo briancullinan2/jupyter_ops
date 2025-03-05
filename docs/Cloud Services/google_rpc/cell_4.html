@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules
+const { importer } = require('../Core');
+const { 
+  selectAst, 
+  makeHandler, 
+  createFunctionHandler 
+} = importer.import({
+ 'select code tree': true,
+  'generic gcloud function handler': {
+    handler: true,
+    makeHandler: true
+  }
+});
+
+// Function to load CKEditor
+const loadCKEditor = async () => {
+  try {
+    // Create a handler for the function
+    const ckeditorHandler = await makeHandler('load ckeditor');
+    
+    // Select the abstract syntax tree for the handler
+    const ast = await selectAst('.', ckeditorHandler.toString());
+    
+    // TODO: Log the result
+    //console.log(ast);
+  } catch (error) {
+    // Log any errors that occur
+    //console.log(error);
+  }
+};
+
+// Call the function
+loadCKEditor();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core')
 </code></pre>

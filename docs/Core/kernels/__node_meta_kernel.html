@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -184,7 +191,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const vm = require('vm');
+const { importAll } = require('../Core');
+const { extend } = importAll('extend prototype class');
+const nativeMetaKernel = importAll('native meta kernel');
+const { nativeMethods, socketMethods } = nativeMetaKernel;
+
+const TRANSFORM = {
+  presets: [
+    [require.resolve('@babel/preset-env'), {
+      loose: true,
+      targets: { node: true },
+    }],
+  ],
+};
+
+class NodeMetaKernel extends socketMethods.metaKernel {
+  constructor() {
+    super();
+    this.transpile = require('@babel/core').transform;
+  }
+
+  async doExecute(code) {
+    try {
+      const transpiled = await this.transpile(code, TRANSFORM);
+      const result = vm.runInThisContext(transpiled.code);
+      return this.doRespond(result);
+    } catch (error) {
+      console.error('Error executing code:', error);
+      return this.doRespond({ error });
+    }
+  }
+
+  doIsComplete(code) {
+    console.log('Checking syntax...');
+    const transpiled = this.transpile(code, TRANSFORM);
+    try {
+      vm.Script(transpiled.code);
+      return this.doRespond({ success: true });
+    } catch (error) {
+      console.error('Error checking syntax:', error);
+      return this.doRespond({ error });
+    }
+  }
+
+  doInit(config) {
+    this.socket = process;
+    socketMethods.doInit.call(this, config);
+    console.log('Starting Node Meta Kernel...');
+  }
+}
+
+module.exports = NodeMetaKernel;</code></pre></div><p><strong>Code Overview</strong></p>
 <p>This is a Node.js module that exports a function <code>nodeMetaKernel</code> which returns a meta kernel for Node.js. The meta kernel has three methods: <code>do_execute</code>, <code>do_is_complete</code>, and <code>do_init</code>.</p>
 <h3>Dependencies</h3>
 <ul>

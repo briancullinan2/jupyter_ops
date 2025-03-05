@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -197,7 +204,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Readable } = require('stream');
+const { selectDom } = require('../Core');
+const md = require('remarkable')({ html: true, xhtmlOut: true, breaks: true });
+
+const TRIM_ENTITIES = /<\/?\s*p\s*>|[\s\n\r]+|<\s*br\s*\/?\s*>/ig;
+
+function safeName(name) {
+  return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 40);
+}
+
+function collectExternalResources(page, rendered, routes) {
+  const body = selectDom('*', page);
+  const textObjs = selectDom([`//*[not(self::STYLE) and contains(., /text())]`], body);
+
+  textObjs.forEach((parent, i) => {
+    parent.childNodes.forEach((string) => {
+      if (string.nodeType!== 3) return;
+      const mdHtml = md.render(string.textContent);
+      const trimmedText = string.textContent.replace(TRIM_ENTITIES, '').trim();
+      const trimmedHtml = mdHtml.replace(TRIM_ENTITIES, '').trim();
+
+      if (trimmedHtml!== trimmedText) {
+        string.replaceWith(selectDom(['//BODY/*'], `<html><body>${mdHtml}</body></html>`)[0]);
+      }
+    });
+  });
+
+  const headingsObjs = selectDom(['(//h1|//h2|//h3|//h4)[not(@id) and not(./ancestor::nav)]'], body);
+  headingsObjs.forEach((h) => h.setAttribute('id', safeName(h.textContent)));
+
+  const paragraphs = selectDom(['//p'], body);
+  paragraphs.forEach((p) => {
+    p.setAttribute('class', selectDom(['.//*'], p).map((e) => e.tagName).join(' '));
+    const id = `id${safeName(p.textContent || p.querySelector('img').src)}`;
+    p.setAttribute('id', id);
+
+    const img = p.querySelector('img');
+    if (img) {
+      const src = decodeURIComponent(img.src)
+       .replace(/(-final)*\.[^\.]*$/ig, '');
+      const style = p.ownerDocument.createElement('style');
+      style.textContent = `#${id}:before {background-image: url("${src}-final.jpg");}`;
+      p.parentNode.insertBefore(style, p);
+    }
+  });
+
+  const linksObjs = selectDom(['//a[@href]'], body);
+  const links = linksObjs.map((l) => decodeURIComponent(l.href));
+
+  const imgObjs = selectDom(['//img[@src]'], body);
+  const imgs = imgObjs.map((img) => decodeURIComponent(img.src));
+  imgObjs.forEach((img) => {
+    const src = decodeURIComponent(img.src)
+     .replace(/(-final)*\.[^\.]*$/ig, '-final.jpg');
+    img.src = src;
+  });
+
+  const stylesObjs = selectDom(['//link[@href]'], body);
+  const styles = stylesObjs.map((l) => l.href);
+
+  const scriptsObjs = selectDom(['//script[@src]'], body);
+  const scripts = scriptsObjs.map((l) => l.src);
+
+  const backgrounds = require('../Core').regexToArray(/url\(['"]?(.*?)['"]?\)/ig, page, 1);
+
+  const searches = [].concat.apply([], [
+    imgs,
+    styles,
+    backgrounds,
+    scripts
+  ]);
+
+  links.forEach((s) => routes.push(s));
+  searches.forEach((s) => rendered.push(s));
+
+  const newPage = body.ownerDocument.documentElement.outerHTML;
+  backgrounds.forEach((b) => {
+    newPage = newPage.replace(b, b.replace(/(-final)*\.[^\.]*$/ig, '-final.jpg'));
+  });
+
+  const stream = new Readable();
+  stream.push(newPage);
+  stream.push(null);
+  return Promise.resolve(stream);
+}
+
+module.exports = collectExternalResources;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code appears to be a part of a web application or a static site generator, written in JavaScript. It transforms HTML templates into a format that can be used by a static site generator. Here's a high-level overview of the code:</p>
 <h3>Dependencies</h3>
 <p>The code requires several dependencies:</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to automate the login process to multiple websites and potentially scrape or interact with them. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const multiCrawl = importer.import('multi crawl');
+
+// Define constants for better readability and maintainability
+const PROFILE_PATH = getProfilePath();
+const PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'passwords.json');
+
+/**
+ * Test logins for multiple sites.
+ * 
+ * @returns {Promise} A promise resolving with the result of multiCrawl.
+ */
+function testLogins() {
+    // Try to load passwords from file, and fallback to default sites if fails.
+    const sites = loadPasswords() || getSites();
+    
+    console.log(sites);
+    return multiCrawl(sites.map(s =&gt; 'https://' + s), 'log in multiple sites');
+}
+
+// Helper function to load passwords from file
+function loadPasswords() {
+    try {
+        return JSON.parse(fs.readFileSync(PASSWORDS_FILE)).map(s =&gt; s.host);
+    } catch (e) {
+        console.error(`Error loading passwords from file: ${e}`);
+        return null;
+    }
+}
+
+// Helper function to get default sites
+function getSites() {
+    // TODO: Move default sites to a separate config file or constants.
+    return [
+        'twitter.com',
+        'linkedin.com',
+        // 'angel.co',
+        // 'facebook.com',
+        // 'github.com',
+        // 'plus.google.com'
+    ];
+}
+
+// Helper function to get profile path
+function getProfilePath() {
+    // TODO: Use a more robust method to get profile path (e.g. user.home).
+    return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+}
+
+module.exports = testLogins;
+
+if (typeof $!== 'undefined') {
+    $.async();
+    testLogins()
+       .then(r =&gt; $.sendResult(r))
+       .catch(e =&gt; $.sendError(e));
+}</code></pre></div><p>This code snippet is designed to automate the login process to multiple websites and potentially scrape or interact with them. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
 <ul>
 <li><code>fs</code>: Node.js built-in module for file system operations (reading files).</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -248,7 +255,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>Here's a short breakdown of the code:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const fs = require('fs');
+const path = require('path');
+
+const CHAT_PATH = path.join(__dirname, '..', 'Resources', 'Projects', 'conversations');
+const { askLlamaAboutConversation, askLlamaAboutCategory, askLlamaAboutEmotions, askLlamaAboutFunctions } = require('./askLlmAboutConversation');
+const { convertMessagesToNoDates, CHAT_DIRECTORIES } = require('./howToScanChatLogs');
+const { createLLMSession } = require('./createLLMSession');
+const { EMOTIONS } = require('./askLlmAboutEmotions');
+
+const llmPrompt = async (question) =&gt; {
+  const { llmPrompt } = await createLLMSession();
+  return llmPrompt(question);
+};
+
+async function getChatHistory(chatLog) {
+  try {
+    const chatHistory = await fs.promises.readFile(path.join(CHAT_DIRECTORIES[0], chatLog + '.log'), 'utf-8');
+    return chatHistory.split('\n');
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+async function askLlamaToRespondLike(name, conversation) {
+  if (!name) name = 'Brian/Me';
+  const category = await askLlamaAboutCategory(conversation);
+  const matchingEmotions = await askLlamaAboutEmotions(conversation.join(', '));
+  const allCategories = Object.keys(chatCache).map((k) =&gt; chatCache[k].category).filter((a, i, arr) =&gt; arr.indexOf(a) === i);
+  const matchingCategories = await askLlamaAboutFunctions(category, allCategories.slice(0, 20), [], true);
+  allCategories.splice(0, 20);
+
+  const chatLogs = {};
+  const answers = [];
+
+  for (const key of Object.keys(chatCache)) {
+    const chatLog = path.basename(key).replace(/\[[0-9]+\]/gi, '').replace('.log', '');
+    if (chatCache[key].emotions &amp;&amp; chatCache[key].emotions.filter((e) =&gt; matchingEmotions.includes(e)).length &gt; 0 || matchingCategories.includes(chatCache[key].category)) {
+      if (!chatLogs[chatLog]) {
+        chatLogs[chatLog] = await getChatHistory(chatLog);
+      }
+      const history = chatLogs[chatLog].slice(chatCache[key].from, chatCache[key].to);
+      const q1 = 'Derive any response style, personality, topics from this conversation:\n' + convertMessagesToNoDates(history).join('\n');
+      const a1 = await llmPrompt(q1);
+      answers.push(a1);
+    }
+  }
+
+  console.log(answers);
+  return answers;
+}
+
+const chatCache = {};
+const conversations = fs.readdirSync(CHAT_PATH);
+for (const file of conversations) {
+  if (file[0] === '.') continue;
+  try {
+    const chatCacheFile = path.join(CHAT_PATH, file);
+    const data = JSON.parse(fs.readFileSync(chatCacheFile, 'utf-8'));
+    Object.assign(chatCache, data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = { askLlamaToRespondLike };
+```</code></pre></div><p>Here's a short breakdown of the code:</p>
 <p><strong>Requires and Imports</strong></p>
 <p>The code requires the following modules:</p>
 <ul>

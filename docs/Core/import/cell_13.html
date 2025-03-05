@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,8 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./parse_cells_from_a_notebook.html">parse cells from a notebook</a> |  | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>run</code> function is an asynchronous command-line tool that processes command-line arguments to execute a result's <code>apply</code> method, returning the result after execution.</p>
-<p>The <code>run</code> function is an asynchronous command-line tool that processes command-line arguments and executes a result's <code>apply</code> method. It returns the result of the execution, unless the result is the global object, in which case it returns immediately.</p>
+  <p>The code defines an <code>async</code> function <code>run()</code> that executes a notebook function with provided inputs using a CLI interface. It imports necessary modules, interprets a notebook, and executes a function with provided parameters and inputs.</p>
 <h1>Cell 13</h1>
 
 
@@ -176,31 +182,152 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function <code>run</code></h3>
-<h4>Overview</h4>
-<p>The <code>run</code> function is an asynchronous function that appears to be part of a command-line tool. It takes two arguments, <code>process.argv[1]</code> and <code>process.argv[2]</code>, which are command-line arguments.</p>
-<h4>Importing Modules</h4>
-<p>The function imports two modules using <code>require</code>:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Entry point of the application.
+ * @async
+ * @returns {Promise&lt;void&gt;}
+ */
+async function run() {
+    // Import required modules
+    const { 
+        importNotebook, 
+        interpret, 
+        CONSOLE 
+    } = await require('../Core'); // Use await with require to ensure module is loaded
+
+    // Get function parameters from notebook
+    const getParameters = await importNotebook('function parameters');
+    const cell = await interpret(process.argv[1]);
+
+    // Load result from notebook
+    let result = await importNotebook(process.argv[1]);
+
+    // Log result to console
+    CONSOLE.log(result);
+
+    // HACK to get C# working
+    if (typeof result.functions!== 'undefined') {
+        result = result[result.functions[0]];
+    }
+
+    // Check if result is a function
+    if (typeof result === 'object' &amp;&amp; typeof result[Object.keys(result)[0]] === 'function') {
+        result = result[Object.keys(result)[0]];
+    }
+
+    // Get function parameters
+    const params = result.params || getParameters(result.toString()).slice(1);
+
+    // Log parameters to console
+    CONSOLE.log(params);
+
+    // Parse input arguments
+    let inputs = [];
+    try {
+        inputs = eval(process.argv[2] || '[]');
+    } catch (e) {
+        CONSOLE.error(`Error parsing input arguments: ${e.message}`);
+        inputs = [];
+    }
+
+    // Ensure inputs is an array
+    if (!Array.isArray(inputs)) {
+        inputs = [inputs];
+    }
+
+    // Process arguments
+    for (let i = 0; i &lt; process.argv.length; i++) {
+        const arg = process.argv[i];
+        for (let j = 0; j &lt; params.length; j++) {
+            if (arg.includes(`--${params[j]}`)) {
+                if (arg.includes('=')) {
+                    inputs[j] = arg.split('=')[1];
+                } else {
+                    inputs[j] = process.argv[i + 1];
+                    i++;
+                }
+
+                // Convert input to correct type if specified
+                if (result.types &amp;&amp; typeof inputs[j]!== 'number') {
+                    if (result.types[j + 1] === 'int') {
+                        inputs[j] = parseInt(inputs[j]);
+                    } else if (result.types[j + 1] === 'float' || result.types[j + 1] === 'double') {
+                        inputs[j] = parseFloat(inputs[j]);
+                    }
+                }
+            }
+        }
+    }
+
+    // Execute function
+    const executed = await result.apply(null, inputs);
+
+    // Handle exceptions
+    if (executed instanceof Error) {
+        return CONSOLE.error(executed.message);
+    }
+
+    // Log result to console
+    if (executed!== null &amp;&amp; typeof executed.catch!== 'undefined') {
+        return await executed.catch(e =&gt; e).then(r =&gt; CONSOLE.log(r));
+    } else {
+        CONSOLE.log(executed);
+    }
+}
+
+module.exports.run = run;
+
+// TODO: Try to write the entire output back into the notebook cell
+```</code></pre></div><p><strong>Breakdown of the Code</strong></p>
+<h3>Functionality</h3>
+<p>The code defines an <code>async</code> function <code>run()</code> that appears to be a command-line interface (CLI) runner for a notebook-based system. It imports necessary modules, interprets a notebook, and executes a function with provided inputs.</p>
+<h3>Module Import and Initialization</h3>
+<ol>
+<li>The code imports the following modules:
 <ul>
-<li><code>importNotebook</code> and <code>interpret</code> from the <code>../Core</code> directory.</li>
-</ul>
-<h4>Getting Parameters</h4>
-<p>The function uses <code>importNotebook</code> to get notebook parameters. It then uses these parameters to get the result of the notebook.</p>
-<h4>Processing Parameters</h4>
-<p>The function processes the parameters by:</p>
+<li><code>importNotebook()</code>: imports a notebook function</li>
+<li><code>interpret()</code>: interprets a notebook cell</li>
+<li><code>CONSOLE</code>: a logging object</li>
+</ul></li>
+<li>It requires the imported notebooks and assigns them to variables:
 <ul>
-<li>Checking if the result has a <code>functions</code> property and, if so, extracting the first function.</li>
-<li>Checking if the result is an object with a function property and, if so, extracting the function.</li>
-<li>Getting the parameters from the result or, if not available, from the <code>getParameters</code> function.</li>
-</ul>
-<h4>Parsing Inputs</h4>
-<p>The function tries to parse the second command-line argument as an array of inputs using <code>eval</code>. If the parsing fails, it sets the inputs to an empty array. If the inputs are not an array, it wraps the single input in an array.</p>
-<h4>Getting Command-Line Arguments</h4>
-<p>The function iterates over the command-line arguments, checking for parameters specified in the <code>params</code> array. If a parameter is found, it extracts the value from the command-line argument and, if necessary, converts it to the correct type based on the result's <code>types</code> property.</p>
-<h4>Executing the Function</h4>
-<p>The function calls the result's <code>apply</code> method with the processed inputs and waits for the result.</p>
-<h4>Returning the Result</h4>
-<p>The function returns the result of the <code>apply</code> method, unless the result is the global object, in which case it returns immediately.</p>
+<li><code>getParameters</code>: a function to get function parameters</li>
+<li><code>cell</code>: the interpreted notebook cell</li>
+<li><code>result</code>: the executed notebook function</li>
+</ul></li>
+</ol>
+<h3>Notebook Function Execution</h3>
+<ol>
+<li>The code checks if the <code>result</code> object has a <code>functions</code> property and, if so, extracts the first function from it.</li>
+<li>It then checks if the <code>result</code> object has a property whose value is a function and, if so, assigns it to the <code>result</code> variable.</li>
+<li>The code retrieves the function parameters using <code>getParameters()</code> and assigns them to the <code>params</code> variable.</li>
+</ol>
+<h3>Input Handling</h3>
+<ol>
+<li>The code tries to evaluate the second command-line argument (<code>process.argv[2]</code>) as an array of inputs using <code>eval()</code>. If evaluation fails, an empty array is assigned to <code>inputs</code>.</li>
+<li>If <code>inputs</code> is not an array, it is wrapped in an array.</li>
+<li>The code iterates through the command-line arguments and:
+<ul>
+<li>Checks if the argument matches the format <code>--param=value</code> or <code>--param</code>.</li>
+<li>If a match is found, it:
+<ul>
+<li>Assigns the value to the corresponding input in the <code>inputs</code> array.</li>
+<li>Converts the input to a number if the function parameter type requires it.</li>
+</ul></li>
+</ul></li>
+</ol>
+<h3>Execution</h3>
+<ol>
+<li>The code calls the <code>apply()</code> method on the <code>result</code> object, passing in the <code>inputs</code> array as arguments.</li>
+<li>If the returned value is <code>global</code>, the function returns.</li>
+<li>If the returned value has a <code>catch</code> property, the function returns the result of executing the returned value's <code>catch</code> method.</li>
+</ol>
+<h3>Debugger Statement</h3>
+<p>The code includes a <code>debugger</code> statement, which is likely used for debugging purposes.</p>
+<h3>Return Statement</h3>
+<p>The code has a <code>return</code> statement without an expression, which means the function will return <code>undefined</code> if it reaches this point and has not returned a value earlier.</p>
 
 </body>
 

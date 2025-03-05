@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -155,7 +162,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet generates a line graph visualizing time-series data using the D3.js library.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>'use strict';
+
+const D3Node = require('d3-node');
+
+/**
+ * Creates a graph of events with dates on the x-axis and days on the y-axis.
+ *
+ * @param {Object[]} events - An array of objects with start date and days properties.
+ * @returns {string} The SVG string representing the graph.
+ */
+function graphDates(events) {
+    // Initialize D3 with a container element
+    const d3n = new D3Node();
+    const d3 = d3n.d3;
+
+    // TODO: Consider using a const for the margin object
+    const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+    const width = 700 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+
+    // Set the ranges for the x and y scales
+    const x = d3.scaleTime().range([0, width]);
+    const y = d3.scaleLinear().range([height, 0]);
+
+    // Define the line generator
+    const valueline = d3.line()
+       .x((d) =&gt; x(d.start))
+       .y((d) =&gt; y(d.days));
+
+    // Create the SVG element and append it to the body
+    const svgContainer = d3n.createSVG(width + margin.left + margin.right, height + margin.top + margin.bottom);
+    const svg = svgContainer
+       .append('g')
+       .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    // Set the domains for the x and y scales
+    x.domain(d3.extent(events, (d) =&gt; d.start));
+    y.domain([0, d3.max(events, (d) =&gt; d.days)]);
+
+    // Add the valueline path to the SVG
+    svg.append('path')
+       .datum(events)
+       .attr('class', 'line')
+       .attr('fill', 'none')
+       .attr('stroke', '#000')
+       .attr('d', valueline);
+
+    // Add the X and Y axes
+    svg.append('g')
+       .attr('transform', `translate(0, ${height})`)
+       .call(d3.axisBottom(x));
+    svg.append('g')
+       .call(d3.axisLeft(y));
+
+    // Return the SVG string
+    return d3n.svgString();
+}
+
+module.exports = graphDates;</code></pre></div><p>This code snippet generates a line graph visualizing time-series data using the D3.js library.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

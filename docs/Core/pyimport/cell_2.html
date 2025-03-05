@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,17 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import re
+import subprocess
+
+BUILD_DIRECTORY = os.path.join(os.path.dirname(__file__), "../.build")
+os.makedirs(BUILD_DIRECTORY, exist_ok=True)
+
+def safeurl(name: str) -> str:
+    """Returns a sanitized version of the input name as a string, replacing non-word characters with underscores."""
+    return re.sub(r'\W+', '_', name)</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <p>This code is a part of a build system for dynamic libraries (.dylib) in various programming languages. Here's a simplified explanation of what it does:</p>
 <h3>Importing Libraries and Setting Constants</h3>
 <pre><code class="language-python">import os

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,108 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+import { fileURLToPath, path } from 'node:url';
+import { writeFileSync } from 'node:fs';
+import Remarkable from'remarkable';
+import importer from './importer.js';
+const { safeurl } = importer.import('domain cache tools');
+const selectModel = importer.import('select llm');
+const askLlamaForAChapterSynopsis = importer.import('ask llm to write chapter titles and descriptions');
+
+const PROJECT_PATH = fileURLToPath(new URL('../Resources/Projects/reasonings', import.meta.url));
+
+/**
+ * Asks Llama to write an essay on a given topic.
+ * @param {string} topic - The topic to write about.
+ * @param {string} name - The name of the paper. If not provided, a name will be generated.
+ * @param {string} [promptModel='Qwen'] - The model to use for prompting Llama.
+ * @returns {string} The HTML content of the generated paper.
+ */
+async function askLlamaWriteEssay(topic, name, promptModel = 'Qwen') {
+  if (typeof promptModel!== 'function') {
+    // Use the selected model if not a function
+    promptModel = await selectModel(promptModel);
+  }
+
+  // Default topic if not provided
+  topic = topic ||'metal bonding';
+
+  /**
+   * Generates a name for the paper if none is provided.
+   * @returns {string} The generated name.
+   */
+  function generatePaperName() {
+    const q0 = `Brainstorm 12 funny but creative names for a book involving:
+${topic}
+Respond with only the list of fun names and nothing else.`;
+    console.log(`User: ${q0}`);
+
+    const a0 = await promptModel(q0);
+    console.log(`AI: ${a0}`);
+
+    const names = a0.trim().split(/(^|\s*\n)[0-9]+\.\s*/).filter((a) =&gt; a &amp;&amp; a.trim().length &gt; 0);
+    return names[Math.round(Math.random() * (names.length - 1))];
+  }
+
+  // Generate a name for the paper if not provided
+  let paperName = name;
+  if (!name) {
+    paperName = generatePaperName();
+  }
+
+  // Get the chapters for the paper
+  const chapters = await askLlamaForAChapterSynopsis(
+    `a research paper named ${paperName} on the topic ${topic} including an introduction, background information, and new research information in the chapter outline.`,
+   'sections'
+  );
+
+  // Initialize the book chapters array
+  const bookChapters = [];
+
+  // Loop through the chapters and ask for an essay on each one
+  for (const key in chapters) {
+    const chapter = chapters[key];
+    const q1 = `Write a long essay section about ${key}
+${chapter}
+On the topic of ${topic}
+Discard any synopsis or conclusions.`;
+
+    console.log(`User: ${q1}`);
+    const a1 = await promptModel(q1);
+    console.log(`AI: ${a1}`);
+
+    // Add the chapter to the book chapters array
+    bookChapters.push(`## Chapter ${bookChapters.length + 1} - ${key}
+${a1}`);
+  }
+
+  // Generate an abstract for the paper
+  const q3 = `Generate an abstract for this research paper:
+${Object.values(chapters).join('\n')}`;
+  console.log(`User: ${q3}`);
+  const a3 = await promptModel(q3);
+  console.log(`AI: ${a3}`);
+
+  // Render the Markdown content to HTML
+  const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
+  const mdHtml = md.render(`
+    # ${paperName}
+    ## Abstract
+    ${a3}
+    ${bookChapters.join('\n')}
+  `);
+
+  // Save the HTML content to a file
+  const filename = path.join(PROJECT_PATH, safeurl((new Date()).toISOString() + '-' + topic) + '.html');
+  writeFileSync(filename, mdHtml);
+
+  return mdHtml;
+}
+
+export default askLlamaWriteEssay;
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing various modules:</p>
 <ul>

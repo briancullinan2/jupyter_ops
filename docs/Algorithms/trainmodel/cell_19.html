@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Saving a Deep Learning Model</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def serialize_model_to_json(model):
+    """
+    Serialize the given model into a JSON string.
+
+    Args:
+    model (keras.Model): The model to be serialized.
+
+    Returns:
+    str: The JSON representation of the model.
+    """
+    model_json = model.to_json()
+    return model_json
+
+# Serialize the model and write it to a file
+model_json = serialize_model_to_json(model)
+with open("emotiondetector.json", "w") as json_file:
+    json_file.write(model_json)</code></pre></div><h2>Saving a Deep Learning Model</h2>
 <h3>Purpose</h3>
 <p>Save a deep learning model's architecture and weights to JSON and H5 files.</p>
 <h3>Code Breakdown</h3>

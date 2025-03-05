@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -156,7 +163,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a larger project designed to automate friend connections on Facebook.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('../Core');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const runSeleniumCell = importer.import('run selenium cell');
+
+// Define constants
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_DIR = path.join(PROFILE_PATH, 'Conversations');
+
+// Regular expression to extract Facebook URLs
+const FACEBOOK_URL_REGEX = /facebook\.com\/.*/ig;
+
+// Function to convert regex matches to array
+const regexToArray = (ex, str, i = 0) =&gt; {
+    const matches = [];
+    let match;
+    while ((match = ex.exec(str)) &amp;&amp; matches.push(match[i])) ;
+    return matches;
+}
+
+// Function to load new connections from files
+const loadNewConnections = async () =&gt; {
+    // Check if new friends file exists
+    if (fs.existsSync(path.join(PROJECT_DIR, 'new-friends.json'))) {
+        return JSON.parse(fs.readFileSync(path.join(PROJECT_DIR, 'new-friends.json')).toString());
+    }
+
+    // Find posts files
+    const posts = glob.sync('**/*-posts-*', { cwd: PROJECT_DIR })
+       .map(file =&gt; path.join(PROJECT_DIR, file));
+
+    // Load friends from posts files
+    const friends = await Promise.all(posts.map(async file =&gt; {
+        const matches = await importer.streamJson(file, [true, { emitPath: true }]);
+        return regexToArray(FACEBOOK_URL_REGEX, matches.value).map(url =&gt; url.replace(/\?fref.*|\?ref.*|\?rc=.*|\?hc_location.*/ig, ''));
+    }));
+
+    // Remove duplicates and write to file
+    const uniqueFriends = [...new Set(friends.flat())];
+    fs.writeFileSync(path.join(PROJECT_DIR, 'new-friends.json'), JSON.stringify(uniqueFriends, null, 4));
+    return uniqueFriends;
+}
+
+// Function to add Facebook friends
+const addFacebookFriends = async () =&gt; {
+    const pages = await loadNewConnections();
+    console.log(pages.length);
+    console.log(pages.slice(0, 30));
+
+    // Run Selenium commands
+    const { loginFacebook, friendsOnFacebook } = await runSeleniumCell(['log in facebook', 'connect on facebook']);
+    loginFacebook = await loginFacebook();
+
+    // Connect to Facebook friends in batches
+    const batchSize = 30;
+    const batches = Math.ceil(pages.length / batchSize);
+    for (let i = 0; i &lt; batches; i++) {
+        const batch = pages.slice(i * batchSize, i * batchSize + batchSize);
+        await importer.runAllPromises(batch.map(page =&gt; resolve =&gt; {
+            console.log(page);
+            return friendsOnFacebook(page, true)
+               .then(r =&gt; resolve(r))
+               .catch(e =&gt; resolve(e))
+        }));
+    }
+
+    return pages;
+}
+
+module.exports = addFacebookFriends;</code></pre></div><p>This code snippet appears to be part of a larger project designed to automate friend connections on Facebook.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

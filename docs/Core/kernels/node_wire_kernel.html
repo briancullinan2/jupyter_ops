@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -169,7 +176,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importModules } = require('../Core');
+
+const { nodeJson, notebookJson } = importModules('get kernel json');
+const { wireKernel } = importModules('jupyter wire kernel');
+const { nativeKernelInfo } = importModules('get kernel info');
+const { processMetaKernel } = importModules('process meta kernel');
+const { languageInterface } = importModules('get kernel language');
+
+/**
+ * Extracts the version from a string in the format'major.minor.patch'
+ * @param {string} str - The version string
+ * @returns {string} The version in the format'major.minor.patch'
+ */
+function getVersion(str) {
+  const versionParts = str.split('.');
+  const version = versionParts.map((part) =&gt; parseInt(part, 10));
+  return version.join('.');
+}
+
+/**
+ * Creates a Node.js kernel configuration
+ * @param {object} config - The kernel configuration
+ * @param {object} options - The start configuration
+ * @returns {object} The Node.js kernel configuration
+ */
+function nodeKernel(config, options) {
+  const languageInfo = {
+    name: 'node',
+    fileExtension: '.js',
+    mimetype: 'application/javascript',
+    version: getVersion(process.versions.node),
+    codemirrorMode: 'javascript',
+  };
+
+  const kernelInfo = {
+    banner: 'Node JS',
+    helpLinks: ['https://nodejs.org'], // TODO: automatically create this from installation instructions
+  };
+
+  return wireKernel({
+    kernelConfig: config,
+    startConfig: options,
+    installConfig: notebookJson,
+    kernelInfo,
+    languageInfo,
+    childProcess: [],
+  });
+}
+
+module.exports = nodeKernel;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {nodeJson, notebookJson} = importer.import('get kernel json');

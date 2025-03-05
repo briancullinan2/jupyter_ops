@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This Dockerfile snippet sets up a development environment for a Selenium project within a Docker container.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+# Set working directory to /home/seluser
+WORKDIR /home/seluser
+
+# Create project and selenium directories
+RUN mkdir -p project selenium
+
+# Copy project and selenium directories to the new locations
+COPY project /home/seluser/project
+COPY selenium /home/seluser/selenium
+
+# Switch to project directory
+WORKDIR /home/seluser/project
+
+# Install dependencies and build the project in a single command
+RUN (cd /home/seluser/project &amp;&amp; npm install &amp;&amp; npm run build)
+
+# Switch to selenium/test directory
+WORKDIR /home/seluser/selenium/test
+
+# Install npm dependencies in selenium/test directory
+RUN npm install
+
+# Edit entry_point.sh file to add npm run static command
+RUN sed -i '/wait \$NODE_PID/)s/$/ &amp;&amp; npm --prefix /home/seluser/selenium/test run static/' /opt/bin/entry_point.sh
+
+# TODO: Consider using a more robust method for modifying the entry_point.sh file, such as using a template file.</code></pre></div><p>This Dockerfile snippet sets up a development environment for a Selenium project within a Docker container.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Copy Project Files:</strong></p>

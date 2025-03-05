@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and tools
+const fs = require('fs');
+const path = require('path');
+const { safeurl } = require('domain-cache-tools');
+const { Client } from'selenium-client';
+const { Select } from'selenium-select';
+
+// Define constants
+const PROJECT_PATH = path.join(__dirname, '..', 'Resources', 'Projects','reasonings');
+
+// Function to get the nearest Sunday
+/**
+ * Returns the nearest Sunday date as a string in the format 'MM/DD/YYYY'.
+ * @param {Date} [date=new Date()] - The date to find the nearest Sunday for.
+ * @returns {string} The nearest Sunday date as a string.
+ */
+function getNearestSunday(date = new Date()) {
+  const day = date.getDay();
+  const diff = date.getDate() - day + (day === 0? -7 : 0); // Adjust when it is Sunday
+  const result = new Date(date.setDate(diff));
+  const customString = `${result.getMonth() + 1}/${result.getDate()}/${result.getFullYear()}`;
+  return customString;
+}
+
+// Function to collect links from a webpage using Selenium
+/**
+ * Collects links from a webpage using Selenium.
+ * @param {Client} [driver] - The Selenium client instance.
+ * @param {string} startPage - The URL of the webpage to collect links from.
+ * @param {string} [selector='//a[@href]/@href'] - The XPath selector to use for collecting links.
+ * @returns {Promise<Array<{ link: string }>>} A promise that resolves with an array of links.
+ */
+async function defaultCollector(driver, startPage, selector = '//a[@href]/@href') {
+  if (!driver) {
+    driver = await Client();
+  }
+  try {
+    await driver.get(startPage);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const selectDom = Select(driver);
+    const links = await selectDom(driver, selector);
+    return links.map((l) => ({ link: l }));
+  } catch (e) {
+    driver.quit();
+    throw e;
+  }
+}
+
+// Function to persist summaries to a file
+/**
+ * Persists summaries to a file.
+ * @param {boolean} funny - Whether to use a funny summary name or not.
+ * @param {Object} [summaries] - The summaries to persist.
+ * @returns {Object} The persisted summaries or an empty object if none are provided.
+ */
+function persistSummaries(funny, summaries) {
+  if (!funny) {
+    funny ='summary';
+  }
+  const weeklySummary = path.join(PROJECT_PATH, safeurl(getNearestSunday()) + '-' + safeurl(funny) + '.json');
+  if (!summaries && fs.existsSync(weeklySummary)) {
+    return JSON.parse(fs.readFileSync(weeklySummary));
+  } else if (!summaries) {
+    return {};
+  } else {
+    fs.writeFileSync(weeklySummary, JSON.stringify(summaries, null, 4));
+    return summaries;
+  }
+}
+
+// Export the functions
+module.exports = {
+  defaultCollector,
+  getNearestSunday,
+  persistSummaries,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requires and Imports</h3>
 <pre><code class="language-javascript">const fs = require('fs'); // Import the File System module
 const path = require('path'); // Import the Path module

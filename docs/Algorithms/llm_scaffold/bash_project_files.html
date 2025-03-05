@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -175,7 +182,102 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const process = require('process');
+const { spawnSync } = require('child_process');
+const importer = require('importer');
+const safeurl = require('domain-cache-tools').safeurl;
+
+async function generateBash(prompt, github) {
+  try {
+    const llmCode = await importer.import('llm-code');
+
+    const profilePath = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+    let githubPath = github;
+
+    if (!fs.existsSync(githubPath) && fs.existsSync(path.join(profilePath, github))) {
+      githubPath = path.join(profilePath, github);
+    }
+
+    if (githubPath.includes('://') && fs.existsSync(path.basename(githubPath).replace('.git', ''))) {
+      githubPath = path.join(profilePath, path.basename(githubPath).replace('.git', ''));
+    }
+
+    if (!fs.existsSync(githubPath)) {
+      return;
+    }
+
+    const baseName = path.basename(githubPath);
+
+    const pullResult = await spawnSync('git', ['pull'], {
+      cwd: githubPath,
+      timeout: 3000,
+      stdio: ['pipe', 'pipe', 'pipe']
+    });
+
+    if (pullResult.status!== 0) {
+      console.log('Git pull failed with status:', pullResult.status);
+      return;
+    }
+
+    const promptText = `Project listing:
+${fs.readdirSync(githubPath).join('\n\n')}
+Generate a Bash shell script for the following request, include any empty file touch/folder creations, file moves or general file management: ${prompt}\n</think>Don't do any file content insertion or reasoning, limit response to two or three shell command lines.`;
+    console.log('User:', promptText);
+
+    const response = await llmCode(promptText);
+    console.log('AI:', response);
+
+    const codeBlocks = extractCodeBlocks(response);
+
+    if (!codeBlocks) {
+      console.log('Error, couldn\'t find code in:', response);
+      return;
+    }
+
+    const codeFile = path.join('.automations', safeurl(new Date().toISOString() + '-' + prompt) + '.sh');
+    fs.writeFileSync(path.join(githubPath, codeFile), codeBlocks);
+    fs.chmodSync(path.join(githubPath, codeFile), 0o777);
+
+    const dockerArgs = [
+      'run',
+      '-it',
+      '--rm',
+      '-v',
+      `${githubPath}:/${baseName}`,
+      'alpine:latest',
+     'sh',
+      `/${baseName}/${codeFile}`
+    ];
+
+    const dockerResult = await spawnSync('docker', dockerArgs, {
+      cwd: githubPath,
+      timeout: 3000,
+      stdio: [0, 1, 2]
+    });
+
+    if (dockerResult.status!== 0) {
+      console.log('Docker run failed with status:', dockerResult.status);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+function extractCodeBlocks(response) {
+  const codeBlocks = response.matchAll(/```(bash|javascript|code)*\n[\s\S]*?\n```/gi);
+  let blocks = '';
+
+  for (const match of codeBlocks) {
+    blocks += match[0].replace(/^```(bash|javascript|code)*\n|\n```$/gi, '') + '\n';
+  }
+
+  return blocks;
+}
+
+module.exports = generateBash;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>
 <ul>
 <li><code>const fs = require('fs')</code>: Imports the File System module to interact with the file system.</li>

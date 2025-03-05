@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>applyAcl</code> that takes an ACL (Access Control List) and an HTML document as input.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectDom } = require('../Core/importers/selectTree');
+
+const supportedFormats = {
+  JSON: {
+    selector: (json) => JSON.parse(json),
+    'glob-url@selector': (json) => ({
+      url: JSON.parse(json)[0],
+      selector: JSON.parse(json)[1],
+    }),
+    'html-file@selector': (json) => ({
+      file: JSON.parse(json)[0],
+      selector: JSON.parse(json)[1],
+    }),
+    'html-file@xpath': (json) => ({
+      file: JSON.parse(json)[0],
+      xpath: JSON.parse(json)[1],
+    }),
+    'glob-file': (json) => {
+      const formats = JSON.parse(json).formats;
+      return formats.map((format) => {
+        if (format.type === 'glob-url') {
+          return {
+            url: format.glob,
+            selector: format.selector,
+          };
+        } else if (format.type === 'glob-file') {
+          return {
+            file: format.glob,
+          };
+        }
+        throw new Error(`Unsupported format type: ${format.type}`);
+      });
+    },
+  },
+};
+
+async function applyAcl(acl, doc) {
+  if (typeof doc ==='string') {
+    doc = await selectDom('*', doc);
+  }
+
+  if (typeof acl ==='string') {
+    acl = [acl];
+  }
+
+  const body = await selectDom('//body', doc);
+  if (!body) {
+    throw new Error('Not found');
+  }
+
+  const aclElements = await selectDom(acl, body);
+  aclElements.forEach((el) => {
+    el.setAttribute('contenteditable', 'true');
+  });
+
+  return doc;
+}
+
+module.exports = applyAcl;</code></pre></div><p>This code defines a function <code>applyAcl</code> that takes an ACL (Access Control List) and an HTML document as input.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Input Handling:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -296,7 +303,173 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>expandTop</code> that processes a string and expands any nested braced sections within it.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+class StringUtilities {
+  static escapeBraces(str) {
+    return str
+     .replace(/\\{/g, '\0OPEN' + Math.random() + '\0')
+     .replace(/\\}/g, '\0CLOSE' + Math.random() + '\0')
+     .replace(/\\,/g, '\0COMMA' + Math.random() + '\0')
+     .replace(/\\\. /g, '\0PERIOD' + Math.random() + '\0');
+  }
+
+  static unescapeBraces(str) {
+    return str
+     .replace(/\0OPEN\d+\0/g, '\\{')
+     .replace(/\0CLOSE\d+\0/g, '\\}')
+     .replace(/\0COMMA\d+\0/g, '\\,')
+     .replace(/\0PERIOD\d+\0/g, '\\.');
+  }
+}
+
+class BashExpansion {
+  static parseCommaParts(str) {
+    if (!str) return [''];
+
+    const { pre, body, post } = this.balanced('{', '}', str);
+    if (!pre) return str.split(',');
+
+    const parts = pre.split(',');
+    parts[parts.length - 1] += '{' + body + '}';
+    return this.parseCommaParts(post).map((part) =&gt; {
+      if (part.length) {
+        parts[parts.length - 1] += part;
+        return parts;
+      }
+      parts.push(part);
+      return parts;
+    }).flat();
+  }
+
+  static balanced(open, close, str) {
+    const pre = str.substring(0, str.indexOf(open));
+    const body = str.substring(str.indexOf(open) + open.length, str.lastIndexOf(close));
+    const post = str.substring(str.lastIndexOf(close) + close.length);
+    return { pre, body, post };
+  }
+
+  static numeric(str) {
+    return parseInt(str, 10) === str? parseInt(str, 10) : str.charCodeAt(0);
+  }
+
+  static isPadded(el) {
+    return /^-?0\d/.test(el);
+  }
+
+  static lte(i, y) {
+    return i &lt;= y;
+  }
+
+  static gte(i, y) {
+    return i &gt;= y;
+  }
+
+  static concatMap(arr, fn) {
+    return arr.reduce((acc, current) =&gt; acc.concat(fn(current)), []);
+  }
+
+  static expand(str, isTop = true) {
+    const expansions = [];
+    const { pre, body, post } = this.balanced('{', '}', str);
+    if (!pre || /\$\s/.test(pre)) return [str];
+
+    const isNumericSequence = /^-?\d+\.\.-?\d+(?:\.\.-?\d+)?$/.test(body);
+    const isAlphaSequence = /^[a-zA-Z]\.\.[a-zA-Z](?:\.\.-?\d+)?$/.test(body);
+    const isSequence = isNumericSequence || isAlphaSequence;
+    const isOptions = body.includes(',');
+
+    if (!isSequence &amp;&amp;!isOptions) {
+      if (post.match(/,.*\}/)) {
+        return this.expand(pre + '{' + body + '\0CLOSE' + Math.random() + '\0' + post, isTop);
+      }
+      return [str];
+    }
+
+    let parts;
+    if (isSequence) {
+      parts = body.split(/\.\./);
+    } else {
+      parts = this.parseCommaParts(body);
+      if (parts.length === 1) {
+        parts = this.expand(parts[0], false).map((el) =&gt; `{"${el}"}`);
+        if (parts.length === 1) {
+          const postExpansions = this.expand(post, false);
+          return postExpansions.map((post) =&gt; pre + parts[0] + post);
+        }
+      }
+    }
+
+    const preExpansions = [];
+    if (!isTop || isSequence) {
+      for (const part of parts) {
+        preExpansions.push(part);
+      }
+    }
+
+    const N = isSequence
+     ? this.expandSequence(parts, isTop)
+      : this.expandOptions(parts, isTop);
+
+    for (const n of N) {
+      for (const preExpansion of preExpansions) {
+        for (const postExpansion of this.expand(post, false)) {
+          expansions.push(preExpansion + n + postExpansion);
+        }
+      }
+    }
+
+    return expansions;
+  }
+
+  static expandSequence(parts, isTop) {
+    const x = this.numeric(parts[0]);
+    const y = this.numeric(parts[1]);
+    const width = Math.max(parts[0].length, parts[1].length);
+    const incr = parts.length === 3? Math.abs(this.numeric(parts[2])) : 1;
+    const test = this.lte;
+    let reverse = y &lt; x;
+    if (reverse) {
+      incr *= -1;
+      test = this.gte;
+    }
+    const pad = parts.some(this.isPadded);
+
+    const N = [];
+
+    for (let i = x; test(i, y); i += incr) {
+      let c;
+      if (this.isAlphaSequence(parts)) {
+        c = String.fromCharCode(i);
+        if (c === '\\') c = '';
+      } else {
+        c = String(i);
+        if (pad) {
+          const z = new Array(width - c.length + 1).join('0');
+          if (i &lt; 0) c = '-' + z + c.slice(1);
+          else c = z + c;
+        }
+      }
+      N.push(c);
+    }
+
+    return N;
+  }
+
+  static expandOptions(parts, isTop) {
+    return this.concatMap(parts, (part) =&gt; this.expand(part, false));
+  }
+
+  static isAlphaSequence(parts) {
+    return /^([a-zA-Z])\.([a-zA-Z])(?:\.\.-?\d+)?$/.test(parts.join('.'));
+  }
+}
+
+module.exports = {
+  expand: BashExpansion.expand,
+  parseCommaParts: BashExpansion.parseCommaParts,
+  balanced: BashExpansion.balanced,
+};</code></pre></div><p>This code defines a function <code>expandTop</code> that processes a string and expands any nested braced sections within it.</p>
 <p>Here's a breakdown:</p>
 <p><strong>Helper Functions:</strong></p>
 <ul>

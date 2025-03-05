@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -220,7 +227,180 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates a heatmap visualization of time-series data using D3.js.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const d3 = require('d3/d3');
+const moment = require('moment');
+const D3Node = require('d3-node');
+
+class D3Heatmap {
+    constructor(data) {
+        this.data = data;
+        this.margin = { top: 20, right: 50, bottom: 20, left: 20 };
+    }
+
+    getYears() {
+        const startYear = d3.min(this.data.map(d =&gt; moment(d.start).year())),
+            endYear = d3.max(this.data.map(d =&gt; moment(d.end).year())).year() + 1;
+        return d3.range(startYear, endYear).reverse();
+    }
+
+    getNestedData() {
+        const nestedData = d3.nest()
+           .key((d) =&gt; moment(d.start).startOf('day').toISOString())
+           .rollup(function (n) {
+                return d3.sum(n, function (d) {
+                    return moment(d.end).diff(moment(d.start));
+                });
+            })
+           .map(this.data);
+        return nestedData;
+    }
+
+    getColourScale() {
+        return d3.scaleLinear()
+           .range(['#666666', '#000000'])
+           .domain([-1, 0, 100, 100000]);
+    }
+
+    getSvg() {
+        const svg = d3.select(this.container)
+           .append('svg')
+           .attr('width', 950)
+           .attr('height', this.years.length * 150);
+        return svg;
+    }
+
+    getYearsTitle() {
+        const yearTitle = this.years.map((year, index) =&gt; {
+            const title = this.svg.selectAll('.year')
+               .data(this.years)
+               .enter().append('g')
+               .attr('class', 'year')
+               .attr('transform', (d, i) =&gt; `translate(30,${index * 150})`);
+            title.append('text')
+               .attr('class', 'year-title')
+               .attr('transform', 'translate(-38,135)rotate(-90)')
+               .attr('text-anchor','middle')
+               .text(d =&gt; year);
+            return title;
+        });
+        return yearTitle;
+    }
+
+    getDaysRects() {
+        const daysRects = this.yearsTitle.map(yearTitle =&gt; {
+            const days = yearTitle.selectAll('.day')
+               .data(d =&gt; d3.timeDays(new Date(year, 0, 1), new Date(year + 1, 0, 1)))
+               .enter().append('rect')
+               .attr('fill', (d) =&gt; {
+                    const t = moment(d).startOf('day').toISOString();
+                    const normalDay = this.nestedData['
+</body>
+
+</html> + t] / 1000 / (moment(d).diff(moment(d.startOf('day'))) / 1000);
+                    return isNaN(normalDay)? 'white' : this.colourScale(normalDay);
+                })
+               .attr('class', 'day')
+               .attr('stroke', 'black')
+               .attr('stroke-width', 0.5)
+               .attr('width', 60)
+               .attr('height', 60)
+               .attr('x', (d) =&gt; d.getWeek() * 60)
+               .attr('y', (d) =&gt; d.getDay() * 60);
+            return days;
+        });
+        return daysRects;
+    }
+
+    getMonthPaths() {
+        const monthPaths = this.yearsTitle.map(yearTitle =&gt; {
+            const months = yearTitle.selectAll('.month')
+               .data(d =&gt; d3.timeMonths(new Date(year, 0, 1), new Date(year + 1, 0, 1)))
+               .enter().append('path')
+               .attr('stroke', 'black')
+               .attr('stroke-width', 2)
+               .attr('class','month')
+               .attr('fill', 'none')
+               .attr('d', t0 =&gt; this.monthPath(t0));
+            return months;
+        });
+        return monthPaths;
+    }
+
+    getMonthPath(t0) {
+        const t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
+            d0 = +moment(t0).day(),
+            w0 = +moment(t0).week(),
+            d1 = +moment(t1).day(),
+            w1 = +moment(t1).week();
+        return 'M' + (w0 + 1) * 60 + ',' + d0 * 60
+            + 'H' + w0 * 60 + 'V' + 7 * 60
+            + 'H' + w1 * 60 + 'V' + (d1 + 1) * 60
+            + 'H' + (w1 + 1) * 60 + 'V' + 0
+            + 'H' + (w0 + 1) * 60 + 'Z';
+    }
+
+    getTitles() {
+        const titlesDay = this.yearsTitle.map(yearTitle =&gt; {
+            const days = yearTitle.selectAll('.titles-day')
+               .data(weekDays)
+               .enter().append('g')
+               .attr('class', 'titles-day')
+               .attr('transform', (d, i) =&gt; `translate(-5,${(i + 1) * 60})`);
+            days.append('text')
+               .attr('class', (d, i) =&gt; weekDays[i])
+               .style('text-anchor', 'end')
+               .attr('dy', '-.25em')
+               .text(d =&gt; weekDays[i]);
+            return days;
+        });
+
+        const titlesMonth = this.yearsTitle.map(yearTitle =&gt; {
+            const months = yearTitle.selectAll('.titles-month')
+               .data(month)
+               .enter().append('g')
+               .attr('class', 'titles-month')
+               .attr('transform', (d, i) =&gt; `translate(${((i + 1) * 60 * 52 / 12 - 60)},-5)`);
+            months.append('text')
+               .attr('class', (d, i) =&gt; month[i])
+               .style('text-anchor', 'end')
+               .text(d =&gt; month[i]);
+            return months;
+        });
+        return { titlesDay, titlesMonth };
+    }
+
+    create() {
+        this.container = document.createElement('div');
+        this.svg = this.getSvg();
+        this.years = this.getYears();
+        this.yearsTitle = this.getYearsTitle();
+        this.nestedData = this.getNestedData();
+        this.colourScale = this.getColourScale();
+        this.daysRects = this.getDaysRects();
+        this.monthPaths = this.getMonthPaths();
+        this.titles = this.getTitles();
+    }
+
+    render() {
+        this.create();
+        this.daysRects.forEach((daysRect, index) =&gt; {
+            daysRect.attr('y', index * 150);
+        });
+        this.monthPaths.forEach((monthPath, index) =&gt; {
+            monthPath.attr('transform', `(translate(30,${index * 150})`);
+        });
+        this.titles.titlesDay.forEach((titlesDay, index) =&gt; {
+            titlesDay.attr('transform', `translate(-5,${(index + 1) * 60})`);
+        });
+        this.titles.titlesMonth.forEach((titlesMonth, index) =&gt; {
+            titlesMonth.attr('transform', `(translate(${((index + 1) * 60 * 52 / 12 - 60)},-5))`);
+        });
+        return this.svg.node().outerHTML;
+    }
+}
+
+module.exports = D3Heatmap;</code></pre></div><p>This code generates a heatmap visualization of time-series data using D3.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

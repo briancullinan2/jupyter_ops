@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,81 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2><strong>Overview</strong></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules
+const { Parser } = require("jison");
+
+// Define the jisonAST class
+class JisonAST {
+  /**
+   * Constructor for the jisonAST class.
+   * @param {string} name - The name of the AST node.
+   * @param {array} x - The children of the AST node.
+   */
+  constructor(name, x) {
+    this.name = name;
+    this.x = x;
+  }
+
+  // Return the indented AST
+  get(indent = 0) {
+    // Create an indentation string for the given level
+    const indentString = (level) => "  ".repeat(level);
+
+    let result = indentString(indent) + "[" + this.name + ": ";
+
+    // Process the children of the AST node
+    const processChild = (child) =>
+      child instanceof JisonAST
+       ? "\n" + child.get(indent + 1)
+        : "\n" + indentString(indent + 1) + "'" + child + "'";
+
+    // Recursively process each child and append the result to the string
+    result +=
+      this.x.length === 1 &&!this.x[0] instanceof JisonAST
+       ? "'" + this.x[0] + "'"
+        : this.x.map(processChild).join("");
+
+    return result + "]";
+  }
+}
+
+// Function to generate a string in the format required by Jison
+const generateOString = (s) => `$ = new yy.JisonAST('${s}', [${s.split(" ").map((_, i) => `${i + 1}`).join(",")}]));`;
+
+// Define the grammar for the parser
+const grammar = {
+  lex: {
+    rules: [
+      ["\\s+", "/* skip whitespace */"],
+      ["[a-f0-9]+", "return 'HEX';"],
+    ],
+  },
+  bnf: {
+    start: [["hex_strings", "return $1"]],
+    hex_strings: [generateOString("hex_strings HEX"), generateOString("HEX")],
+  },
+};
+
+// Create a new parser instance
+const parser = new Parser(grammar);
+
+// Expose the AST object to Jison
+parser.yy.JisonAST = JisonAST;
+
+// Test the parser
+const input = "adfe34bc e82a 43af";
+const result = parser.parse(input);
+console.log(result.get());
+
+/*
+expects
+[hex_strings HEX: 
+  [hex_strings HEX: 
+    [HEX: 'adfe34bc']  
+    'e82a']  
+  '43af']
+*/</code></pre></div><h2><strong>Overview</strong></h2>
 <p>This code defines a JavaScript parser using the Jison library. It creates an Abstract Syntax Tree (AST) from a given input string and outputs the indented AST.</p>
 <h2><strong>Function Breakdown</strong></h2>
 <h3><code>jisonAST</code> Function</h3>

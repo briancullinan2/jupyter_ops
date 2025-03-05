@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,7 +67,7 @@
     <a href="../llm_blogging/index.html">llm blogging</a> |  | <a href="./parse_patch_file.html">parse patch file</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>blogAboutCode</code> function takes a project directory path, timeframe, and model as inputs, and uses these to extract commit hashes, get the diff between commits, and parse the patch. The function involves several steps, including selecting a model, resolving the project path, checking project existence, getting commits, extracting commit hashes, getting the diff, and parsing the patch.</p>
+  <p>The <code>blogAboutCode</code> function generates a blog post about a project's code history, using a specified timeframe and model. It retrieves the commit history, extracts commits, and logs the first and last commit hashes.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "blog about code"</code></pre><h1>blog about code</h1>
@@ -189,45 +196,132 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Importing Dependencies</h3>
-<p>The code starts by importing various dependencies:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const fs = require('fs');
+const path = require('path');
+const { Remarkable } = require('remarkable');
+const { safeurl } = require('./domain-cache-tools');
+const { selectModel, importer } = require('./llm-importer');
+const { parsePatch } = require('./parse-patch-file');
+const { spawnSync } = require('child_process');
+
+const PROJECT_PATH = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) || '';
+const DEFAULT_PROJECT_PATH = path.join(PROJECT_PATH, 'Resources', 'Projects', 'code-summaries');
+
+const defaultProject = (project = path.basename(path.resolve(path.join(process.cwd(), '..')))) =&gt; {
+  if (!fs.existsSync(project) &amp;&amp; fs.existsSync(path.join(PROFILE_PATH, project))) {
+    return path.join(PROFILE_PATH, project);
+  }
+  if (project.includes('://') &amp;&amp; fs.existsSync(path.basename(project).replace('.git', ''))) {
+    return path.join(PROFILE_PATH, path.basename(project).replace('.git', ''));
+  }
+  return project;
+};
+
+const getCommits = async (project, timeframe = 3) =&gt; {
+  const result = await spawnSync('git', ['log', '--since=' + timeframe + '.days'], {
+    cwd: project,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  });
+  const commits = result.stdout.toString();
+  const matches = [...commits.matchAll(/commit ([a-z0-9]+)/gi)];
+  return matches;
+};
+
+const getDiff = async (first, last, project) =&gt; {
+  if (first === last) {
+    return await spawnSync('git', ['diff', '-U5', first[1]], {
+      cwd: project,
+      timeout: 3000,
+      stdio: ['pipe', 'pipe', 'pipe']
+    });
+  }
+  return await spawnSync('git', ['diff', '-U5', last[1], first[1]], {
+    cwd: project,
+    timeout: 3000,
+    stdio: ['pipe', 'pipe', 'pipe']
+  });
+};
+
+const processFiles = async (files, project, promptModel) =&gt; {
+  const summaryOutputs = [];
+  for (const file of files) {
+    if (file.match('cache')) {
+      continue;
+    }
+    const q1 = `Summerize this code like you're writing for a fun coding blog, include code excerpts as context: 
+    ${file}
+    Additions that were made: 
+    ${summary.files[file].additions.join('')}
+    Deletions that were made:
+    ${summary.files[file].deletions.join('')}
+    `;
+    const a1 = await promptModel(q1);
+    summaryOutputs.push(`# ${file}\n\n${a1}`);
+  }
+  return summaryOutputs;
+};
+
+const blogAboutCode = async (project, timeframe = 3, promptModel = 'Meta') =&gt; {
+  project = defaultProject(project);
+  if (!fs.existsSync(project)) {
+    console.error('No project');
+    return;
+  }
+
+  const commits = await getCommits(project, timeframe);
+  if (!commits.length) {
+    console.error('No commits!');
+    return;
+  }
+
+  console.log(commits[0][1], commits[commits.length - 1][1]);
+
+  const result = await getDiff(commits[0], commits[commits.length - 1], project);
+  const codePatch = result.stdout.toString();
+  const summary = parsePatch(codePatch);
+  const summaryOutputs = await processFiles(Object.keys(summary.files), project, promptModel);
+
+  const md = new Remarkable({ html: true, xhtmlOut: true, breaks: true });
+  const mdHtml = md.render(summaryOutputs.join('\n'));
+  const now = new Date();
+  const filename = path.join(DEFAULT_PROJECT_PATH, safeurl(path.basename(project) + now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate()) + '.html');
+  fs.writeFileSync(filename, mdHtml);
+  return mdHtml;
+};
+
+module.exports = blogAboutCode;
+```</code></pre></div><p><strong>Function Overview</strong></p>
+<p><code>blogAboutCode</code> is an asynchronous function that generates blog posts about a given project's code history.</p>
+<p><strong>Parameters</strong></p>
 <ul>
-<li><code>path</code>: for working with file paths</li>
-<li><code>fs</code>: for interacting with the file system</li>
-<li><code>Remarkable</code>: a Markdown parser, not used in this code snippet</li>
-<li><code>importer</code>: a module for dynamically importing other modules</li>
-<li><code>child_process</code>: for spawning child processes</li>
-</ul>
-<h3>Setting Constants</h3>
-<p>Several constants are defined:</p>
-<ul>
-<li><code>PROFILE_PATH</code>: the user's home directory</li>
-<li><code>PROJECT_PATH</code>: the path to a project directory</li>
-</ul>
-<h3>Defining the <code>blogAboutCode</code> Function</h3>
-<p>The main function, <code>blogAboutCode</code>, takes three parameters:</p>
-<ul>
-<li><code>project</code>: the path to a project directory</li>
-<li><code>timeframe</code>: the timeframe to consider (default: 3 days)</li>
-<li><code>promptModel</code>: the model to use for prompts (default: 'Meta')</li>
+<li><code>project</code>: The path to the project directory (optional, defaults to the current project's directory if not provided)</li>
+<li><code>timeframe</code>: The time period to consider in the code history (default: 3 days)</li>
+<li><code>promptModel</code>: The model to use for generating the blog post (default: 'Meta')</li>
 </ul>
 <p><strong>Function Flow</strong></p>
 <ol>
-<li><strong>Select Model</strong>: If <code>promptModel</code> is not a function, it is replaced with a function obtained from <code>selectModel</code>.</li>
-<li><strong>Resolve Project Path</strong>: The project path is resolved by:
-<ul>
-<li>Checking if the project already exists in the file system and using it if so.</li>
-<li>If the project path includes a URL, it is resolved by checking if the project directory exists in the file system.</li>
-</ul></li>
-<li><strong>Check Project Existence</strong>: If the project does not exist, an error is logged.</li>
-<li><strong>Get Commits</strong>: The function uses <code>git log</code> to get the commits for the project within the specified timeframe.</li>
-<li><strong>Extract Commit Hashes</strong>: The commit hashes are extracted from the log output.</li>
-<li><strong>Get Diff</strong>: If there are multiple commits, the function uses <code>git diff</code> to get the patch between the first and last commit. Otherwise, it gets the diff for the single commit.</li>
-<li><strong>Parse Patch</strong>: The patch is parsed using the <code>parsePatch</code> function.</li>
+<li><strong>Project Path Resolution</strong>: Determines the project path by checking the current directory, user profile, and environment variables.</li>
+<li><strong>Local Project Path</strong>: If the project path is not local, it tries to find a local clone of the repository.</li>
+<li><strong>Git Log Generation</strong>: Runs <code>git log</code> to retrieve the commit history of the project, filtered by the specified timeframe.</li>
+<li><strong>Commit Extraction</strong>: Extracts the first and last commit hashes from the log output.</li>
+<li><strong>Diff Generation</strong>: Runs <code>git diff</code> to retrieve the changes between the first and last commits (if they are different).</li>
+<li><strong>Commit Hashes Output</strong>: Logs the first and last commit hashes.</li>
 </ol>
-<h3>Unused Code</h3>
-<p>The code includes some unused functions and variables, such as <code>summary</code> and <code>parsePa</code>, which are likely typos.</p>
+<p><strong>Error Handling</strong></p>
+<ul>
+<li>If the project directory does not exist, it logs an error message and returns.</li>
+<li>If no commits are found, it logs an error message and returns.</li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The function uses <code>child_process.spawnSync</code> to run Git commands, which returns a buffer containing the output.</li>
+<li>The <code>Remarkable</code> library is imported but not used in this function.</li>
+<li>The <code>safeurl</code> function is imported but not used in this function.</li>
+<li>The <code>parsePatch</code> function is imported but not used in this function.</li>
+</ul>
 
 </body>
 

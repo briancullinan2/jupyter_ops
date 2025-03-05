@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getIdentityServer</code> that builds and runs a Docker container for an identity server.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { execSync } = require('child_process');
+
+/**
+ * Retrieves the identity server information for a given Docker container.
+ *
+ * @param {string} [name='act-identity'] The name of the Docker container.
+ * @returns {Promise<string>} A promise resolving to the identity server information.
+ */
+async function getIdentityServer(name = 'act-identity') {
+  const dockerfilePath = path.resolve(__dirname);
+  const dockerfile = identityDockerfile(dockerfilePath);
+
+  try {
+    await dockerfile;
+  } catch (error) {
+    // TODO: Improve error handling for failed Docker build
+    throw error;
+  }
+
+  try {
+    await buildDockerImage(name, dockerfilePath);
+  } catch (error) {
+    // TODO: Improve error handling for failed Docker image build
+    throw error;
+  }
+
+  const containerName = await getRunningContainerName(name);
+  if (containerName) {
+    await stopAndRemoveContainer(name);
+  }
+
+  await runDockerContainer(name);
+
+  // Wait for the process to start
+  await new Promise((resolve) => {
+    setTimeout(resolve, 5000);
+  });
+
+  return `Identity server started for container ${name}`;
+}
+
+// Helper functions
+
+async function identityDockerfile(dockerfilePath) {
+  // Return a promise that resolves with no value (simulating the return value of identityDockerfile)
+  return Promise.resolve();
+}
+
+async function buildDockerImage(name, dockerfilePath) {
+  const output = execSync(`docker build -t ${name} "${dockerfilePath}"`).toString();
+  return output;
+}
+
+async function getRunningContainerName(name) {
+  const output = execSync('docker ps -a').toString();
+  const containerName = output.indexOf(name)!== -1? name : null;
+  return containerName;
+}
+
+async function stopAndRemoveContainer(name) {
+  execSync(`docker stop ${name}`).toString();
+  execSync(`docker rm ${name}`).toString();
+}
+
+async function runDockerContainer(name) {
+  execSync(`docker run --name ${name} ${name}`).toString();
+}
+
+// Call the function
+getIdentityServer().then((output) => {
+  console.log(output);
+});</code></pre></div><p>This code defines a function <code>getIdentityServer</code> that builds and runs a Docker container for an identity server.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

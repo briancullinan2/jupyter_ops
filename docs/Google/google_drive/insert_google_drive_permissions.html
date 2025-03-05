@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -123,7 +130,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { google } = require('googleapis');
+const { authorizeGoogleDrive } = require('../Core');
+
+/**
+ * Inserts permission for a file in Google Drive
+ *
+ * @param {string} fileId - ID of the file
+ * @param {string} email - Email address of the user
+ * @returns {Promise&lt;string&gt;} ID of the newly created permission
+ */
+async function insertPermission(fileId, email) {
+  // Authorize Google Drive using the authorized client
+  const drive = await authorizeGoogleDrive();
+  
+  // Create a permission for the user as an owner
+  const permission = await drive.permissions.create({
+    requestBody: {
+      type: 'user',
+      role: 'owner',
+      emailAddress: email
+    },
+    fileId,
+    fields: 'id',
+    transferOwnership: true
+  });
+  
+  // Return the ID of the newly created permission
+  return permission.data.id;
+}
+
+// Export the insertPermission function
+module.exports = insertPermission;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>The code starts by importing two modules:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -156,7 +163,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is a unit test for a function that generates an import definition for Eloqua, a marketing automation platform.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const {
+  importer,
+  temporaryImportTemplate,
+} = require('../Core');
+
+describe('Eloqua Bulk Import Definition', () =&gt; {
+  // Mock Eloqua instance for testing purposes
+  const dummyEloquaInstance = 'instance123';
+  const dummyExecution = 'execution123';
+
+  it('should return the current import definition', () =&gt; {
+    // Create temporary import template instance
+    const template = temporaryImportTemplate(dummyEloquaInstance, dummyExecution);
+    
+    // Verify that the template includes the instance and execution IDs
+    assert.strictEqual(
+      JSON.stringify(template),
+      JSON.stringify({ instance: dummyEloquaInstance, execution: dummyExecution }),
+      'Template does not match expected format'
+    );
+  });
+
+  // TODO: Add more test cases for different import scenarios
+  // TODO: Consider using a testing library like Jest for better test coverage
+});</code></pre></div><p>This code snippet is a unit test for a function that generates an import definition for Eloqua, a marketing automation platform.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

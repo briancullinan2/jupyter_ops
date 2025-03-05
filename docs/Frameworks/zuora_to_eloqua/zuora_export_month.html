@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -173,7 +180,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getZuoraMonth</code> that retrieves renewal data from Zuora for a specified period and converts it into a JSON format.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and utilities
+const { importer } = require('../Core');
+const { renewalsQuery } = importer.import('zuora renewals query');
+const { zuoraExport } = importer.import('zuora to eloqua.ipynb')[0];
+
+/**
+ * Calculates the start and end dates for a specific number of months.
+ * 
+ * @param {number} [months=0] The number of months to calculate for.
+ * @returns {Object} An object with start and end dates.
+ */
+function getMonthDateRange(months = 0) {
+    const start = new Date();
+    start.setMonth(start.getMonth() - months);
+    start.setDate(1);
+    start.setHours(0, 0, 0);
+    const end = new Date();
+    end.setMonth(end.getMonth() + months + 1);
+    end.setDate(1);
+    end.setHours(0, 0, 0);
+    // Correct for February (29th doesn't exist in some years)
+    if (start.getMonth() > end.getMonth()) {
+        end.setFullYear(end.getFullYear() + 1);
+    }
+    return { start: start.toISOString(), end: end.toISOString() };
+}
+
+/**
+ * Retrieves data from Zuora for a specific date range.
+ * 
+ * @param {Object} zuoraConfig - The Zuora API configuration.
+ * @returns {Promise<string>} The ID of the bulk export job.
+ */
+function getZuoraExport(zuoraConfig) {
+    const { start, end } = getMonthDateRange();
+    const query = renewalsQuery.getQuery(start, end);
+    return zuoraExport.createBulkExportJob(query, zuoraConfig);
+}
+
+/**
+ * Gets the status of the bulk export job.
+ * 
+ * @param {string} exportId - The ID of the bulk export job.
+ * @param {Object} zuoraConfig - The Zuora API configuration.
+ * @returns {Promise<any>} The status of the bulk export job.
+ */
+function getBulkExportStatus(exportId, zuoraConfig) {
+    return zuoraExport.getBulkExportJobStatus(exportId, zuoraConfig);
+}
+
+/**
+ * Gets the CSV file associated with the bulk export job.
+ * 
+ * @param {string} fileId - The ID of the file.
+ * @param {Object} zuoraConfig - The Zuora API configuration.
+ * @returns {Promise<any>} The CSV file contents.
+ */
+function getBulkExportFile(fileId, zuoraConfig) {
+    return zuoraExport.getBulkExportFile(fileId, zuoraConfig);
+}
+
+/**
+ * Converts the CSV file to JSON.
+ * 
+ * @param {any} csvFile - The CSV file contents.
+ * @returns {Promise<string>} The JSON contents of the CSV file.
+ */
+function csvToJson(csvFile) {
+    return zuoraExport.csvToJson(csvFile);
+}
+
+/**
+ * Retrieves the Zuora data for a specific number of months.
+ * 
+ * @param {number} [months=0] The number of months to retrieve data for.
+ * @param {Object} zuoraConfig - The Zuora API configuration.
+ * @returns {Promise<string>} The JSON contents of the CSV file.
+ */
+module.exports = {
+    getZuoraMonth: async function (months = 0, zuoraConfig) {
+        const exportId = await getZuoraExport(zuoraConfig);
+        const status = await getBulkExportStatus(exportId, zuoraConfig);
+        const fileId = await getBulkExportStatus(exportId, zuoraConfig);
+        const csvFile = await getBulkExportFile(fileId, zuoraConfig);
+        return csvToJson(csvFile);
+    }
+};</code></pre></div><p>This code defines a function <code>getZuoraMonth</code> that retrieves renewal data from Zuora for a specified period and converts it into a JSON format.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

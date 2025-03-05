@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -205,7 +212,129 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { PlacesNearby, PlaceDetails, RunSeleniumCell, LevenshteinDistance, LevenshteinSort } = require('../Core');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = `${PROFILE_PATH}/Collections/flagstaff-happy`;
+
+const LocationsService = {
+  async loadLocations() {
+    const day = new Date();
+    const date = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`;
+    const filename = `${project}/locations-${date}.json`;
+    if (require('fs').existsSync(filename)) {
+      try {
+        return require('fs').readFileSync(filename, 'utf8');
+      } catch (e) {
+        console.error(`Error reading locations file: ${e}`);
+      }
+    }
+    try {
+      const locations = await RunSeleniumCell('google maps data list', false);
+      return locations();
+    } catch (e) {
+      console.error(`Error loading locations: ${e}`);
+    }
+  },
+
+  async getAllLocationsData() {
+    const day = new Date();
+    const date = `${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`;
+    const filename = `${project}/locations-${date}-full.json`;
+    if (require('fs').existsSync(filename)) {
+      try {
+        return JSON.parse(require('fs').readFileSync(filename, 'utf8'));
+      } catch (e) {
+        console.error(`Error reading locations file: ${e}`);
+      }
+    }
+
+    try {
+      const locations = await this.loadLocations();
+      const data = await Promise.all(locations.map(loc =&gt; this.getLocationData(loc)));
+      fs.writeFileSync(filename, JSON.stringify(data, null, 4));
+      return data;
+    } catch (e) {
+      console.error(`Error getting locations data: ${e}`);
+    }
+  },
+
+  async getLocationData(location) {
+    const placeId = location.name +'near'+ location.description.pop() + ', Flagstaff';
+    const result = await PlacesNearby(placeId);
+    const placeDetailsResult = await PlaceDetails(result[0].place_id);
+    return Object.assign(location, result[0], placeDetailsResult);
+  }
+};
+
+if (typeof $!== 'undefined') {
+  $().async();
+  LocationsService.getAllLocationsData()
+   .then(r =&gt; {
+      const hasSites = r.filter(loc =&gt; loc.website);
+      console.log(`Websites: ${hasSites.length}/${r.length} - ${Math.round(1.0 * hasSites.length / r.length * 100)}%`);
+
+      const existing = glob.sync('**/!(locations)*', { cwd: project });
+      const existingMatch = existing
+       .map(loc =&gt; loc.split(/-|\.json/ig).join(' ').trim())
+       .map(loc =&gt; {
+          const levMatch = LevenshteinSort(r, loc, r =&gt; r.name)[0].name;
+          if (LevenshteinDistance(loc, levMatch) &lt; loc.length / 2) {
+            return loc +'-'+ levMatch;
+          }
+          return loc +'- no match';
+        })
+       .filter(loc =&gt;!loc.includes('no match'))
+      console.log(`Existing matches: ${existingMatch.length}/${existing.length} - ${Math.round(1.0 * existingMatch.length / existing.length * 100)}%`);
+
+      console.log('Variance:');
+      const variations = existing.map(loc =&gt; `${project}/${loc}`)
+       .reduce((acc, loc) =&gt; {
+          const loaded = JSON.parse(require('fs').readFileSync(loc, 'utf8'));
+          if (!acc.dotw) {
+            acc.dotw = {};
+          }
+          loaded.forEach(doc =&gt; {
+            const dayOfWeek = doc.dotw.match(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/ig);
+            if (dayOfWeek) {
+              if (!acc.dotw.matches) {
+                acc.dotw.matches = 0;
+              }
+              acc.dotw.matches++;
+            } else {
+              if (!acc.dotw.unmatched) {
+                acc.dotw.unmatched = [];
+              }
+              acc.dotw.unmatched.push(loc + doc.dotw);
+            }
+          });
+          if (!acc.time) {
+            acc.time = {};
+          }
+          loaded.forEach(doc =&gt; {
+            console.log(loc +'-'+ doc.time);
+            const timeMatch = doc.time.match(/^([0-9]+(p|a)\.m\.\s+-\s+([0-9]+(p|a)|close)|all day)\s*$/ig);
+            if (timeMatch) {
+              if (!acc.time.matches) {
+                acc.time.matches = 0;
+              }
+              acc.time.matches++;
+            } else {
+              if (!acc.time.unmatched) {
+                acc.time.unmatched = [];
+              }
+              acc.time.unmatched.push(loc + doc.dotw);
+            }
+          });
+          return acc;
+        }, {});
+      console.log(variations);
+      return r;
+    })
+   .then(r =&gt; $().sendResult(r))
+   .catch(e =&gt; $().sendError(e));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Functions</h3>
 <p>The code starts by importing necessary modules and functions:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -141,7 +148,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Storage } = require('@google-cloud/storage');
+
+/**
+ * HTTP function that generates a signed URL
+ * The signed URL can be used to upload files to Google Cloud Storage (GCS)
+ *
+ * @param {Object} req Cloud Function request context.
+ * @param {Object} res Cloud Function response context.
+ */
+exports.getSignedUrl = async (req, res) => {
+  if (req.method!== 'POST') {
+    return res.status(405).send({ message: 'Method not allowed' });
+  }
+
+  // Check user authorization
+  if (!req.body.authorization) {
+    return res.status(401).send({ message: 'Unauthorized' });
+  }
+
+  try {
+    // Get a reference to the destination file in GCS
+    const file = await storage.bucket(req.body.bucket).file(req.body.filename).getMetadata();
+    if (!file) {
+      return res.status(404).send({ message: 'File not found' });
+    }
+
+    // Generate a signed URL
+    const expiresAtMs = Date.now() + 300000; // Link expires in 5 minutes
+    const signedUrl = await file.getSignedUrl({
+      action: 'write',
+      expires: expiresAtMs,
+      contentType: req.body.contentType,
+    });
+
+    res.send(signedUrl);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Google Cloud Storage Library</h3>
 <pre><code class="language-javascript">const { Storage } = require('@google-cloud/storage');
 const storage = new Storage();

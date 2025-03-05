@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -195,7 +202,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for an AWS Lambda function that handles notifications and data synchronization between Zuora and Eloqua.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const sinon = require('sinon');
+const assert = require('assert');
+const importer = require('../Core');
+
+describe('Content Notify Entry Point', () => {
+  let sandbox, bundle, zuoraExport, eloquaUpload;
+
+  beforeEach(() => {
+    sandbox = sinon.createSandbox();
+    bundle = importer.import('notify entry point');
+    zuoraExport = importer.import('zuora account service');
+    eloquaUpload = importer.import('bulk upload eloqua');
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  describe('Handler Calls', () => {
+    describe('Zuora Export', () => {
+      it('should call zuora export when no accounts are present', () => {
+        const callback = sinon.spy();
+        const dummyBody = {};
+        const dummyAccounts = [];
+
+        const requestStub = sandbox.stub(zuoraExport, "getZuoraAccounts")
+         .returns(Promise.resolve(dummyAccounts));
+        sandbox.stub(eloquaUpload, "bulkUploadEloqua")
+         .returns(Promise.resolve(true));
+
+        return bundle.handler(dummyBody, null, callback)
+         .then(() => {
+            assert(callback.calledOnce);
+            const stubCall = requestStub.getCall(0);
+            assert.equal(stubCall.args[0].zuoraExport, zuoraExport); // TODO: Check if dummyBody is actually being passed
+            assert.deepEqual(stubCall.args[0].accounts, []); // TODO: Check if dummyAccounts is actually being passed
+          });
+      });
+
+      it('should call bulk upload with accounts', () => {
+        const callback = sinon.spy();
+        const dummyAccounts = [];
+
+        sandbox.stub(zuoraExport, "getZuoraAccounts")
+         .returns(Promise.resolve(dummyAccounts));
+        const requestStub = sandbox.stub(eloquaUpload, "bulkUploadEloqua")
+         .returns(Promise.resolve(true));
+
+        return bundle.handler({}, null, callback)
+         .then(() => {
+            assert(callback.calledOnce);
+            const stubCall = requestStub.getCall(0);
+            assert.equal(stubCall.args[0].zuoraExport, zuoraExport); // TODO: Check if dummyAccounts is actually being passed
+            assert.deepEqual(stubCall.args[0].accounts, dummyAccounts);
+          });
+      });
+    });
+  });
+});</code></pre></div><p>This code defines unit tests for an AWS Lambda function that handles notifications and data synchronization between Zuora and Eloqua.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

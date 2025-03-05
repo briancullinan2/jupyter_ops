@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a function to send text messages using the Twilio API.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required libraries
+const Twilio = require('twilio');
+
+// Define Twilio credentials (environment variables are recommended for security)
+const accountSid = process.env.TWILIO_ACCOUNT_SID || 'SKb0edec7c2a729ae2cb2ae0561bc0ed33';
+const authToken = process.env.TWILIO_AUTH_TOKEN || 'V53NuXy1ZJcwBXwmo6or35E7X5gNPnSY';
+
+// Initialize Twilio client
+const client = new Twilio(accountSid, authToken);
+
+/**
+ * Sends a Twilio message to the specified recipient.
+ * 
+ * @param {string} to The recipient's phone number (including international prefix).
+ * @param {string} message The message to be sent.
+ * 
+ * @returns {Promise&lt;string&gt;} A promise resolving to the message SID.
+ */
+async function sendTwilio(to, message) {
+    // Validate phone number format (optional, but recommended for robustness)
+    if (!/^[\+]?[\d]{3,12}$/.test(to)) {
+        throw new Error('Invalid phone number format');
+    }
+
+    // Create the message
+    const messageOpts = {
+        body: message,
+        to: to.includes('+')? to : `+1${to}`,  // Ensure the number starts with a '+' (if not already)
+        from: '+18086701280' // From a valid Twilio number
+    };
+
+    try {
+        // Send the message
+        const message = await client.messages.create(messageOpts);
+        return message.sid;
+    } catch (error) {
+        // Log and rethrow the error for handling in the calling code
+        console.error(`Error sending Twilio message: ${error}`);
+        throw error;
+    }
+}
+
+module.exports = sendTwilio;</code></pre></div><p>This code sets up a function to send text messages using the Twilio API.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Credentials:</strong></p>

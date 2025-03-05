@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code is a comment in a programming language, specifically a placeholder for a README file.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Readme Generator
+//-----------------------------
+
+/**
+ * Function to generate a basic readme
+ * @param {Object} readmeData - Data to populate the readme
+ * @param {string} readmeData.title - Title of the readme
+ * @param {string} readmeData.description - Brief description of the project
+ * @param {string} readmeData.tags - Tags or keywords for the project
+ * @returns {string} Formatted readme in markdown
+ */
+function generateReadme(readmeData) {
+    // Check if necessary data is provided
+    if (!readmeData.title ||!readmeData.description ||!readmeData.tags) {
+        throw new Error('Missing required data');
+    }
+
+    // Start with the title
+    let readme = `# ${readmeData.title}\n\n`;
+    
+    // Add the description
+    readme += `**Description:** ${readmeData.description}\n\n`;
+    
+    // Add the tags
+    readme += `**Tags:** ${readmeData.tags}\n\n`;
+
+    return readme;
+}
+
+// Example usage:
+const readmeData = {
+    title: 'Example Project',
+    description: 'This is an example project',
+    tags: 'node.js, javascript, example'
+};
+
+const formattedReadme = generateReadme(readmeData);
+console.log(formattedReadme);</code></pre></div><p>This code is a comment in a programming language, specifically a placeholder for a README file.</p>
 <pre><code class="language-markdown">// placeholder for readme
 </code></pre>
 <p>It serves as a placeholder or a temporary note for developers to fill in the documentation for the README file at a later time.</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -221,7 +228,146 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions to interact with LinkedIn messages and extract information about thread participants.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const moment = require('moment');
+const chrono = require('chrono-node');
+const puppeteer = require('puppeteer');
+
+async function getThreadParticipants(thread, client) {
+    try {
+        // check if thread url is valid
+        const url = await client.getUrl();
+        if (url.indexOf(thread + 'topcard/') === -1) {
+            // navigate to thread topcard url
+            await client.url('https://www.linkedin.com' + thread + 'topcard/');
+            // handle alert if it exists
+            const alertText = await client.alertText();
+            if (alertText.indexOf('leave') &gt; -1) {
+                await client.alertAccept();
+            }
+        }
+        // wait for 3 seconds to ensure topcard is loaded
+        await client.pause(3000);
+        // extract participant links
+        const links = await client.elements('.view-profile').then(els =&gt; Promise.all(els.value.map(a =&gt; {
+            return client.elementIdAttribute(a.ELEMENT, 'href').then(h =&gt; h.value);
+        })));
+        // fetch participant profiles
+        const participants = await importer.runAllPromises(links.map(link =&gt; () =&gt; {
+            return client.click('a[href*="' + link.replace('https://www.linkedin.com', '') + '"]')
+               .pause(3000)
+               .then(() =&gt; readLinkedInProfileInfo(link))
+               .then(r =&gt; r)
+               .back()
+               .pause(1000)
+               .then(() =&gt; Promise.resolve());
+        }));
+        return participants;
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+async function scrollLinkedInMessages(messages, client) {
+    // scroll to bottom of messages
+    try {
+        await client.execute(() =&gt; {
+            document.getElementsByClassName('msg-s-message-list')[0]
+               .scrollTop -= 10000;
+        });
+        await client.pause(2000);
+        // fetch new messages
+        return readLinkedInMessages(messages);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function readLinkedInMessages(messages, client) {
+    try {
+        // fetch alert text to handle possible alert
+        const alertText = await client.alertText();
+        if (alertText.indexOf('leave') &gt; -1) {
+            await client.alertAccept();
+        }
+        // fetch all messages
+        const messagesList = await getAllXPath([
+            '//li[contains(@class, "msg-s-message-list__event")]',
+            {
+                from: './/img/@title',
+                time: './/time//text()',
+                message: './/*[contains(@class, "msg-s-message-listitem__message-bubble")]//text()'
+            }
+        ]);
+        // process messages
+        const processedMessages = messagesList.map(m =&gt; {
+            const newTime = chrono.parseDate(m.time + '');
+            if (newTime!== null) {
+                newTime.setHours(newTime.getHours() - (new Date()).getTimezoneOffset() / 60);
+            }
+            return Object.assign(m, {
+                time: newTime,
+                from: m.from + '',
+                message: m.message.filter(s =&gt;!s.match(/^\s*$/igm)).join('\n')
+            });
+        });
+        // filter new messages
+        const newMessages = processedMessages.filter(e =&gt; messages
+           .filter(m =&gt; m.message === e.message).length === 0);
+        messages = newMessages.concat(messages);
+        // scroll to bottom if new messages exist
+        if (newMessages.length &gt; 0) {
+            return scrollLinkedInMessages(messages, client);
+        }
+        return Promise.resolve(messages);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function readLinkedInThread(thread, client, messages = []) {
+    try {
+        // fetch thread url
+        const url = await client.getUrl();
+        if (url.indexOf(thread) === -1) {
+            // navigate to thread url
+            await client.url('https://www.linkedin.com' + thread);
+            // handle alert if it exists
+            const alertText = await client.alertText();
+            if (alertText.indexOf('leave') &gt; -1) {
+                await client.alertAccept();
+            }
+            // click topcard link if it exists
+            const isTopcardLinkExisting = await client.isExisting('a[href*="topcard"]');
+            if (isTopcardLinkExisting) {
+                await client.click('a[href*="topcard"]');
+            }
+        } else if (url.indexOf('topcard') === -1) {
+            // click topcard link if it exists
+            const isTopcardLinkExisting = await client.isExisting('a[href*="topcard"]');
+            if (isTopcardLinkExisting) {
+                await client.click('a[href*="topcard"]');
+            }
+        }
+        // fetch participants
+        const participants = await getThreadParticipants(thread, client);
+        // fetch messages
+        const result = await readLinkedInMessages(messages);
+        return {
+            thread: thread,
+            participants: participants,
+            messages: result
+        };
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = async (thread, client) =&gt; {
+    return readLinkedInThread(thread, client);
+};</code></pre></div><p>This code defines functions to interact with LinkedIn messages and extract information about thread participants.</p>
 <p>Here's a breakdown:</p>
 <p><strong><code>getThreadParticipants(thread)</code>:</strong></p>
 <ol>

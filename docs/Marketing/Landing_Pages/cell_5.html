@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code is written in TypeScript and uses the <code>$TS</code> object to call the <code>screen</code> method.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Displays a window on the screen with the specified URL, zoom level, width, and height.
+ * 
+ * @param url The URL to display.
+ * @param options The configuration options.
+ */
+function showScreen(url: string, options: { zoom: number, width: number, 'crop-h': number }): void {
+  // Validate input parameters
+  if (!url || typeof url!=='string') {
+    throw new Error('Invalid URL');
+  }
+
+  if (!options || typeof options!== 'object') {
+    throw new Error('Invalid options');
+  }
+
+  // Validate required properties
+  if (!options.zoom || typeof options.zoom!== 'number') {
+    throw new Error('Invalid zoom level');
+  }
+
+  if (!options.width || typeof options.width!== 'number') {
+    throw new Error('Invalid width');
+  }
+
+  if (!options['crop-h'] || typeof options['crop-h']!== 'number') {
+    throw new Error('Invalid height');
+  }
+
+  // Implement TODO: add more validation for other properties if needed
+
+  // Set the default width if the given width is too small
+  options.width = Math.max(options.width, 400);
+
+  // Create a new screen with the specified configuration
+  const screen = {
+    url,
+    zoom: options.zoom,
+    width: options.width,
+    height: options['crop-h']
+  };
+
+  // Display the screen
+  TS.screen('act.com/nl-nl', screen);
+}
+
+// Example usage:
+showScreen('act.com/nl-nl', { zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><p>This code is written in TypeScript and uses the <code>$TS</code> object to call the <code>screen</code> method.</p>
 <h3>Code Breakdown</h3>
 <ul>
 <li><code>$TS.screen</code>: Method to open a new tab in the browser or simulate a tab opening.</li>

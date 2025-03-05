@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -128,7 +135,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+from collections import deque
+from typing import Dict, List
+
+def shortest_path(graph: Dict[str, List[str]], start: str, end: str) -&gt; List[str]:
+    """
+    Find the shortest path between start and end in the graph.
+
+    Args:
+    graph (Dict[str, List[str]]): Adjacency list representation of the graph.
+    start (str): Starting node.
+    end (str): Ending node.
+
+    Returns:
+    List[str]: Shortest path from start to end if exists, -1 otherwise.
+    """
+    # Initialize visited set and queue for BFS
+    visited = set()
+    queue = deque([[start]])
+
+    while queue:
+        # Dequeue the first path from the queue
+        path = queue.popleft()
+        # If the end node is reached, return the path
+        if path[-1] == end:
+            return path
+        # Mark the last node as visited
+        visited.add(path[-1])
+        # Add all unvisited neighbors to the queue
+        for neighbor in graph.get(path[-1], []):
+            if neighbor not in visited:
+                queue.append(list(path) + [neighbor])
+
+    # If no path is found, return -1
+    return -1
+
+# Test cases
+assert shortest_path({'a': ['a']}, 'a', 'a') == ['a']
+assert shortest_path({'a': [], 'b': []}, 'a', 'b') == -1
+graph = {
+    'a': ['b'],
+    'b': ['a', 'c', 'd'],
+    'c': ['b', 'd', 'e'],
+    'd': ['b', 'c', 'f'],
+    'e': ['c', 'f', 'g'],
+    'f': ['d', 'e', 'g'],
+    'g': ['e', 'f']
+}
+start = 'a'
+end = 'g'
+assert len(shortest_path(graph, start, end)) == 5
+print('All passed!')</code></pre></div><h2>Code Breakdown</h2>
 <h3>Function: <code>shortest_path</code></h3>
 <h4>Description</h4>
 <p>Finds the shortest path between two nodes (<code>u</code> and <code>v</code>) in a graph <code>g</code>.</p>

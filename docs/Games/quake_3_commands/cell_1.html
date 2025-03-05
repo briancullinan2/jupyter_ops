@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to make a file executable
+make_executable() {
+  if [! -f "$1" ]; then
+    echo "Error: File not found: $1"
+    return 1
+  fi
+
+  chmod +x "$1"
+}
+
+# Directories containing OpenArena executables
+openarena_dirs=(
+  "/Applications/openarena-0.8.8/OpenArena.app/Contents/MacOS/"
+  "/Applications/openarena-0.8.8/OpenArena 0.8.8 r28.app/Contents/MacOS/"
+)
+
+# Executable file name
+executable_name="openarena.ub"
+
+# Loop through each directory and make the executable
+for dir in "${openarena_dirs[@]}"; do
+  file_path="${dir}${executable_name}"
+  make_executable "$file_path" || { echo "Error making executable: $file_path"; exit 1; }
+done</code></pre></div><h3>Code Breakdown</h3>
 <h4>Purpose</h4>
 <p>The code is used to make two executable files (<code>openarena.ub</code>) on macOS accessible.</p>
 <h4>Commands Used</h4>

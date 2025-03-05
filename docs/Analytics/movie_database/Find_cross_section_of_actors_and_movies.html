@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -171,7 +178,114 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code imports and processes data from IMDb TSV files into a SQLite database.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const papa = require('papaparse');
+const sqlite3 = require('better-sqlite3');
+const importer = require('../Core');
+
+// Define constants for file paths and database connection
+const PRINCIPALS_FILE = '/Users/briancullinan/Downloads/title.principals.tsv';
+const TITLES_FILE = '/Users/briancullinan/Downloads/title.basics.tsv';
+const NAMES_FILE = '/Users/briancullinan/Downloads/name.basics.tsv';
+const MOVIES_DB = './movies.sqlite.db';
+
+// Import database schema creation function
+const createTables = importer.import('create movie database tables');
+
+// Create a new SQLite database connection
+const db = new sqlite3(MOVIES_DB, {});
+
+// Define a function to import data from a TSV file using Papa Parse
+async function importTsvData(file, cb) {
+  try {
+    let fileStream = fs.createReadStream(file);
+    if (file.endsWith('.tsv')) {
+      fileStream = papa.parse(fileStream, {
+        worker: true,
+        delimiter: '\t',
+        fastMode: true,
+        skipEmptyLines: true,
+      });
+    }
+
+    // Process data in chunks to avoid memory issues
+    const promises = [];
+    const chunkSize = 1000;
+
+    // Process each chunk of data
+    fileStream.then((result) => {
+      let prev = 0;
+      let count = 0;
+      result.data.forEach((row) => {
+        count++;
+        if (count % chunkSize === 0 || count === result.data.length) {
+          prev = count;
+          promises.push(cb(row));
+          console.log(`${count} - ${result.data.length} - ${result.data[1]}`);
+        }
+      });
+
+      // Resolve the promise chain
+      return Promise.all(promises);
+    });
+  } catch (error) {
+    global.$.sendError(error);
+  }
+}
+
+// Define functions to insert data into the database
+function insertPrincipals(data) {
+  const stmt = db.prepare(`
+    INSERT OR IGNORE INTO principals
+    (tconst, ordering, nconst, category, job, characters)
+    VALUES (?,?,?,?,?,?)
+  `);
+  return stmt.run(data);
+}
+
+function insertTitles(data) {
+  // Flatten the data array if it contains a single object
+  data = data.map((row) => row instanceof Object? [row] : row);
+
+  const stmt = db.prepare(`
+    INSERT OR IGNORE INTO titles
+    (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres)
+    VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9)
+  `);
+  return data.map((row) => stmt.run(row));
+}
+
+function insertNames(data) {
+  // Flatten the data array if it contains a single object
+  data = data.map((row) => row instanceof Object? [row] : row);
+
+  const stmt = db.prepare(`
+    INSERT OR IGNORE INTO name
+    (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles)
+    VALUES (?1,?2,?3,?4,?5,?6)
+  `);
+  return data.map((row) => stmt.run(row));
+}
+
+// Create the database tables and import data
+createTables(db)
+ .then(() => Promise.all([
+    importTsvData(NAMES_FILE, insertNames),
+    importTsvData(TITLES_FILE, insertTitles),
+    importTsvData(PRINCIPALS_FILE, insertPrincipals),
+  ]))
+ .then((results) => {
+    global.$.sendResult(results);
+  })
+ .catch((error) => {
+    global.$.sendError(error);
+  })
+ .finally(() => {
+    // Close the database connection
+    db.close();
+  });</code></pre></div><p>This code imports and processes data from IMDb TSV files into a SQLite database.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

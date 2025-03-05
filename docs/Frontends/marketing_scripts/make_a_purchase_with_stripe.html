@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up Stripe.js for a simple checkout process on a webpage.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Get the head element from the document
+const head = document.querySelector('head');
+
+// Create a new script element to load Stripe library
+const stripeScript = document.createElement('script');
+stripeScript.src = 'https://js.stripe.com/v3';
+
+// Append the script to the head element
+head.appendChild(stripeScript);
+
+// Initialize Stripe object when script is loaded
+let stripe;
+
+// Define stripeKey for better code organization
+const stripeKey = 'pk_live_4LdeNXQQ1sm3SECaJRr5lMg9000RQ4FXDa';
+
+// Wait for script to load before initializing Stripe object
+stripeScript.onload = function () {
+  // Initialize Stripe object with public key
+  stripe = Stripe(stripeKey);
+}
+
+// Function to handle checkout button click event
+function checkout(evt) {
+  // Get the selected sku from the event
+  const sku = evt.target.value;
+
+  // Check if the script is loaded before proceeding
+  if (stripe) {
+    // Redirect to Checkout with required items and success URL
+    stripe.redirectToCheckout({
+      items: [{ sku, quantity: 1 }],
+      billingAddressCollection:'required',
+      successUrl: `${window.location.protocol}://${window.location.host}/success`,
+      cancelUrl: `${window.location.protocol}://${window.location.host}/canceled`,
+    })
+   .then(result => {
+      // Check for any errors
+      if (result.error) {
+        // Display the error message to the user
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = result.error.message;
+      }
+    });
+  } else {
+    // Display error message if Stripe object is not initialized
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = 'Stripe script is not loaded yet.';
+  }
+}</code></pre></div><p>This code snippet sets up Stripe.js for a simple checkout process on a webpage.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Include Stripe.js:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function:</strong> <code>messageResume</code></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { selectDom } = require('./select-tree');
+
+/**
+ * Message resume function to extract and summarize resume sections.
+ * @param {object} promptModel - Model for generating prompts and getting user responses.
+ * @param {object} session - Session object for the user.
+ * @param {string} prompt - Original prompt to guide the conversation.
+ * @returns {string} - Summarized answers from the user.
+ */
+async function messageResume({ promptModel, session, prompt }) {
+  const resumeHtml = await importer.interpret('brians resume in html');
+  const textNodes = selectDom(['//*[text()]', './text()'], resumeHtml.code);
+  const MAX_PROMPT_LENGTH = 2048;
+  const originalPrompt = 'This is part of Brian Cullinan\'s resume:\n';
+  const answers = [];
+
+  // Populate the context with details from the resume
+  for (const textNode of textNodes) {
+    let accumulatedPrompt = originalPrompt + textNode;
+
+    // Break the prompt into smaller chunks if it exceeds the maximum length
+    while (accumulatedPrompt.length &gt; MAX_PROMPT_LENGTH) {
+      const chunk = accumulatedPrompt.substring(0, MAX_PROMPT_LENGTH + originalPrompt.length);
+      const question = chunk + '\nWrite a short summary of this resume section.';
+      console.log('User:', question);
+      answers.push(await promptModel(question));
+
+      const relatedResponse = await promptModel(
+        chunk +
+          '\nAnswer this prompt, or respond No if it is not related to the question:\n' +
+          prompt +
+          '\nRespond with "No" if the prompt is unrelated.'
+      );
+
+      // Only keep the response if it's not 'No' or 'No.'
+      if (relatedResponse.trim()!== 'No' &amp;&amp; relatedResponse.trim()!== 'No.') {
+        answers.push(relatedResponse);
+      }
+
+      accumulatedPrompt = accumulatedPrompt.substring(MAX_PROMPT_LENGTH + originalPrompt.length);
+    }
+
+    // Add the last chunk of the prompt to the answers if it's not empty
+    if (accumulatedPrompt.length &gt; originalPrompt.length) {
+      const question = accumulatedPrompt + '\nWrite a short summary of this resume section.';
+      console.log('User:', question);
+      answers.push(await promptModel(question));
+
+      const relatedResponse = await promptModel(
+        accumulatedPrompt +
+          '\nAnswer this prompt, or respond No if it is not related to the question:\n' +
+          prompt +
+          '\nRespond with "No" if the prompt is unrelated.'
+      );
+
+      // Only keep the response if it's not 'No' or 'No.'
+      if (relatedResponse.trim()!== 'No' &amp;&amp; relatedResponse.trim()!== 'No.') {
+        answers.push(relatedResponse);
+      }
+    }
+  }
+
+  return answers.join('\n');
+}
+
+module.exports = messageResume;</code></pre></div><p><strong>Function:</strong> <code>messageResume</code></p>
 <p><strong>Purpose:</strong> Splits a large HTML block of text (a resume) into smaller sections and prompts the user for a short summary and related answers.</p>
 <p><strong>Parameters:</strong></p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>delintCell</code> that leverages an external library (<code>delint</code>) to perform code linting on a given input.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Core } = require('../Core');
+
+/**
+ * Delints cells from a search query.
+ * 
+ * @param {string} search - The search query to delint.
+ * @returns {string|Array&lt;string&gt;} - The delinted code as a string or an array of strings.
+ */
+function delintCell(search) {
+  // Import delint functionality from the Core module
+  const delintCode = require('../Core').import('delint notebooks');
+
+  // Interpret the search query
+  const results = delintCode.interpret(search);
+
+  // Check if the results are valid
+  if (results &amp;&amp; results.length &gt; 0) {
+    // If the results are an array, map over them and delint each cell
+    if (Array.isArray(results)) {
+      return results.map((result) =&gt; delintCode(result.code));
+    }
+    // If the result is a single string, delint it and return as is
+    else if (typeof results ==='string') {
+      return delintCode(results);
+    }
+    // If the result is an object with a code property, delint it and return
+    else if (results.code) {
+      return delintCode(results.code);
+    }
+  }
+  // If no results were found, return an empty array
+  return [];
+}
+
+module.exports = delintCell;</code></pre></div><p>This code defines a function <code>delintCell</code> that leverages an external library (<code>delint</code>) to perform code linting on a given input.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

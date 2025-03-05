@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -215,7 +222,139 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown: Quake 3 Server Status and Chat Capture</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="node"><code>// Import required modules
+const importer = require('../Core');
+const { join } = require('path');
+const gamedig = require('gamedig');
+const serverApi = importer.import('quake 3 server commands');
+const {
+  sendRcon,
+  nextAllResponses,
+  udpClient,
+} = serverApi;
+const discordApi = importer.import('discord api');
+const { authorizeGateway } = importer.import('authorize discord');
+const { parseConfigStr } = importer.import('quake 3 server responses');
+const removeCtrlChars = importer.import('remove ctrl characters');
+
+// Define constants
+const SV_EVENT = Object.freeze({
+  MAPCHANGE: 0,
+  CLIENTSAY: 1,
+  MATCHEND: 2,
+  CALLADMIN: 3,
+  CLIENTDIED: 4,
+  CLIENTWEAPON: 5,
+  CLIENTRESPAWN: 6,
+  CLIENTAWARD: 7,
+  GETSTATUS: 8,
+  SERVERINFO: 9,
+  CONNECTED: 10,
+  DISCONNECT: 11,
+});
+
+// Define type for recent event
+type RecentEvent = 'MAPCHANGE' | 'CLIENTSAY' | 'MATCHEND' | 'CALLADMIN' | 'CLIENTDIED' | 'CLIENTWEAPON' | 'CLIENTRESPAWN' | 'CLIENTAWARD' | 'GETSTATUS' | 'SERVERINFO' | 'CONNECTED' | 'DISCONNECT';
+
+// Define a function to get server status
+async function getStatus(ip: string, port: number) {
+  try {
+    const state = await gamedig.query({
+      type: 'quake3',
+      host: ip,
+      port: port,
+    });
+    return state;
+  } catch (error) {
+    console.log('Server is offline:', error);
+    return null;
+  }
+}
+
+// Define a function to capture all stats
+async function captureAllStats() {
+  const masters = await serverApi.listMasters('master.ioquake3.org', void 0, false);
+  const status = await getStatus('45.32.237.139', 27960);
+  console.log(status?.bots);
+}
+
+// Define a function to get chats
+async function getChats(channelId: string) {
+  // Send RCON command to get recent events
+  await sendRcon('127.0.0.1', 27960, '','recentPassword');
+
+  // Get all responses
+  const responses = await nextAllResponses();
+
+  // Check if any responses were received
+  if (!responses) return;
+
+  // Parse responses into JSON
+  const parsedResponses = responses.map((r) =&gt; JSON.parse(r.content));
+
+  // Get events
+  const events = parsedResponses.filter((r) =&gt; r.type ==='recentEvent');
+
+  // Get specific events
+  const chats = events.filter((r) =&gt; r.event.type === SV_EVENT.CLIENTSAY);
+  const calls = events.filter((r) =&gt; r.event.type === SV_EVENT.CALLADMIN);
+  const status = events.filter((r) =&gt; r.event.type === SV_EVENT.GETSTATUS);
+  const server = {};
+  if (status.length) {
+    Object.assign(server, parseConfigStr(status[0].value));
+  }
+
+  // Get server info
+  const info = parsedResponses.filter((r) =&gt; r.type === SV_EVENT.SERVERINFO);
+  if (info.length) {
+    Object.assign(server, parseConfigStr(info[0].value));
+  }
+
+  // Get match end events
+  const matches = parsedResponses.filter((r) =&gt; r.type === SV_EVENT.MATCHEND);
+  if (matches.length) {
+    // TODO: save to SQL database
+    console.log(matches[matches.length - 1]);
+  }
+
+  // Get Discord socket
+  const discordSocket = await authorizeGateway();
+
+  // Trigger typing
+  if (calls.length) {
+    await discordApi.triggerTyping(channelId);
+  }
+
+  // Create messages
+  for (const call of calls) {
+    try {
+      await discordApi.createMessage({
+        embed: {
+          title: removeCtrlChars(server.hostname || server.sv_hostname || server.gamename),
+          description: server.ip + ':' + server.port,
+          color: 0xdda60f,
+          fields: [
+            {
+              name: call.value,
+              value: `&lt;@&amp;752605581029802155&gt; [Connect](https://quake.games/?connect%20${'127.0.0.1:27960'})`,
+              inline: false,
+            },
+          ],
+        },
+        allowed_mentions: {
+          parse: ['users', 'roles'],
+          users: [],
+          roles: [],
+        },
+      }, channelId);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}
+
+module.exports = getChats;</code></pre></div><p><strong>Code Breakdown: Quake 3 Server Status and Chat Capture</strong></p>
 <h3>Dependencies and Imports</h3>
 <p>The code imports various modules and functions from other files using the <code>require</code> function:</p>
 <pre><code class="language-javascript">var importer = require('../Core')

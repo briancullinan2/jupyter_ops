@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>/**
+ * Navigate to Act Premium product page with predefined settings.
+ * @param {string} url - The URL of the Act Premium product page.
+ * @param {Object} options - Additional settings for the navigation.
+ */
+function navigateToActPremium(url: string, options: { zoom: number; width: number; 'crop-h': number }) {
+    // Validate input parameters
+    if (!url) {
+        throw new Error('URL is required');
+    }
+
+    if (!options) {
+        throw new Error('Options are required');
+    }
+
+    if (typeof options.zoom!== 'number') {
+        throw new Error('Zoom must be a number');
+    }
+
+    if (typeof options.width!== 'number' || options.width <= 0) {
+        throw new Error('Width must be a positive number');
+    }
+
+    if (typeof options['crop-h']!== 'number' || options['crop-h'] <= 0) {
+        throw new Error('Crop height must be a positive number');
+    }
+
+    // Set default width and height if not provided
+    const width = options.width || 680;
+    const height = options['crop-h'] || 400;
+
+    // Create navigation function call
+    const navigationFunc = 'TS.screen';
+    const navigationArgs = [url, { zoom: options.zoom, width, 'crop-h': height }];
+
+    // Log navigation function call for debugging purposes
+    console.log(`Calling ${navigationFunc} with args:`, navigationArgs);
+
+    // Execute navigation function
+    TS.screen(url, { zoom: options.zoom, width, 'crop-h': height });
+}
+
+// Example usage
+navigateToActPremium('act.com/fr-fr/produits/act-premium', { zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><h3>Code Breakdown</h3>
 <ul>
 <li><code>$TS.screen</code>: A function that opens a new screen with the specified URL.</li>
 <li><code>act.com/fr-fr/produits/act-premium</code>: The URL of the webpage to be opened.</li>

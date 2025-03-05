@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown: Graphviz DOT File</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="graphviz"><code>digraph high_level_architecture {
+    label = 'High level architecture';
+    rankdir = LR;
+    fontname = Helvetica;
+
+    node[fontname = Helvetica, width = 1.8, height = 0.8];
+    edge[fontname = Helvetica, fontsize = 12, fontcolor = blue, labeldistance = 1.8];
+
+    subgraph cluster_available_plans {
+        label = 'ECommerce.Core';
+
+        subgraph cluster_entitlement {
+            label = 'ECommerce.Entitlement';
+
+            subgraph cluster_identity {
+                label = 'ECommerce.Identity';
+
+                // Integrate with various services
+                integrations[shape = box, label = 'ECommerce.Integrations | Integrations'];
+
+                // Custom implementation
+                myact[shape = box, label = 'ECommerce.MyAct | Custom Implementation'];
+            }
+        }
+    }
+}</code></pre></div><p><strong>Code Breakdown: Graphviz DOT File</strong></p>
 <p>This is a Graphviz DOT file that defines a directed graph with nodes and edges. Here's a breakdown of the code:</p>
 <ul>
 <li><code>digraph apply {... }</code>: Defines a directed graph named <code>apply</code>.</li>

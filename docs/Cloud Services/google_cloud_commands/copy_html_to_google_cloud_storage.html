@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This Bash script sets the content type of HTML files in a directory to &quot;text/html; charset=utf-8&quot; and uploads them to Google Cloud Storage.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>```markdown
+## Set Output Path
+# Define default output path
+DEFAULT_OUTPUT_PATH="../.output"
+
+## Process Command Line Arguments
+# Check if output path is provided as an argument
+if [[ -z ${1+x} ]]; then
+    OUTPUT_PATH=$DEFAULT_OUTPUT_PATH
+else
+    # If provided, validate and set the output path
+    if [[ -e $1 ]]; then
+        OUTPUT_PATH=$1
+    else
+        echo "Error: Output path '$1' does not exist."
+        exit 1
+    fi
+fi
+
+## Set Bucket and File Path
+# Define default bucket and file path
+DEFAULT_BUCKET="my-bucket"
+DEFAULT_FILE_PATH="/"
+
+## Get Bucket and File Path from Arguments
+if [[ ${2+x} ]]; then
+    BUCKET=${2%%/*}
+    FILE_PATH=${2#*/}
+else
+    BUCKET=$DEFAULT_BUCKET
+    FILE_PATH=$DEFAULT_FILE_PATH
+fi
+
+## Copy and Set Metadata for HTML Files
+# Find all HTML files in the output path
+for file in $(find "$OUTPUT_PATH" -type f -name "*.html"); do
+    # Extract file name without path
+    filename=${file##*/}
+    # Use gsutil to copy and set metadata for the file
+    gsutil setmeta -h "Content-Type:text/html; charset=utf-8" "$BUCKET/$FILE_PATH/$filename" &amp;&amp; \
+    gsutil -h "Content-Type:text/html; charset=utf-8" cp "$file" "$BUCKET/$FILE_PATH/${filename%.*}"
+done
+```</code></pre></div><p>This Bash script sets the content type of HTML files in a directory to &quot;text/html; charset=utf-8&quot; and uploads them to Google Cloud Storage.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>output=&quot;../.output&quot;;</code></strong>:</p>

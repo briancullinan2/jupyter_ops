@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -184,7 +191,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an asynchronous function <code>convertNonAlpha</code> that converts image files within a specified directory to PNG format, ensuring transparency support.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Convert all non-alphabetic images to their respective alpha-enabled formats.
+ * 
+ * @param {string} root The root directory to scan for images.
+ * @returns {Promise&lt;string[]&gt;} An array of converted image paths.
+ */
+const path = require('path');
+const fs = require('fs');
+const importer = require('../Core');
+const { glob } = importer.import('glob files');
+const { execCmd } = importer.import('spawn child process');
+const { mkdirpSync } = importer.import('mkdirp');
+const { chext, chroot } = importer.import('changing file names');
+const { imageTypes } = importer.import('quake 3 file whitelist');
+
+async function convertNonAlpha(root) {
+  // Define the output directory
+  const outputDir = path.join(path.dirname(root), path.basename(root) + '-converted');
+  
+  // Define the image file types to search for
+  const imageFiles = await glob(imageTypes.map((a) =&gt; `**/*${a}`), root);
+  
+  // Initialize an array to store the converted image paths
+  const result = [];
+  
+  // Loop through each image file
+  for (const { dir: inFile } of imageFiles) {
+    // Check if the image has alpha
+    const alpha = await execCmd(`identify -format '%[opaque]' '${inFile}'`, { quiet: true });
+    
+    // If the image does not have alpha, convert it
+    if (alpha[0] === 'False') {
+      // Get the output file path
+      const outFile = chroot(chext(inFile, '.png'), root, outputDir);
+      
+      // Create the output directory if it does not exist
+      mkdirpSync(path.dirname(outFile));
+      
+      // Convert the image to PNG with low quality
+      await execCmd(`convert -strip -interlace Plane -sampling-factor 4:2:0 -quality 50% "${inFile}" "${outFile}"`, { quiet: true });
+      
+      // Add the converted image path to the result array
+      result.push(outFile);
+    } else {
+      // If the image has alpha, check if a JPEG version exists
+      const jpegFile = chext(inFile, '.jpg');
+      
+      // If the JPEG version exists, use it
+      if (fs.existsSync(jpegFile)) {
+        const outFile = chroot(jpegFile, root, outputDir);
+        mkdirpSync(path.dirname(outFile));
+        await execCmd(`convert -strip -interlace Plane -sampling-factor 4:2:0 -quality 50% "${jpegFile}" "${outFile}"`, { quiet: true });
+        result.push(outFile);
+      } else {
+        // If the JPEG version does not exist, convert the image to JPEG with low quality
+        const outFile = chroot(chext(inFile, '.jpg'), root, outputDir);
+        mkdirpSync(path.dirname(outFile));
+        await execCmd(`convert -strip -interlace Plane -sampling-factor 4:2:0 -quality 50% "${inFile}" "${outFile}"`, { quiet: true });
+        result.push(outFile);
+      }
+    }
+  }
+  
+  // Return the array of converted image paths
+  return result;
+}
+
+module.exports = convertNonAlpha;</code></pre></div><p>This code defines an asynchronous function <code>convertNonAlpha</code> that converts image files within a specified directory to PNG format, ensuring transparency support.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

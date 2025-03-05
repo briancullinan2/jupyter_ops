@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>deployAws</code> that deploys a Lambda function named <code>eloqua_test</code> to the AWS us-west-2 region.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Deploys an AWS Lambda function using the provided script.
+ *
+ * @returns {Promise<string>} The output of the deployed function.
+ */
+async function deployAws() {
+  const { platform } = process;
+
+  const command = platform === 'win32'
+   ? `
+      # PowerShell script to deploy an AWS Lambda function
+      Add-Type -A 'System.IO.Compression.FileSystem'
+      Remove-Item –path index.zip –recurse -erroraction'silentlycontinue'
+      $files = @(
+        'index.js',
+        'eloqua-service.js',
+        'eloqua-create.js',
+        'eloqua-mapper.js',
+        'https-request-polyfill.js',
+       'sync-zuora-eloqua.js',
+        'zuora-service.js',
+        'zuora-renewals-query.js',
+        'package.json',
+        'package-lock.json'
+      )
+      $files | Compress-Archive -DestinationPath index.zip
+      aws lambda update-function-code --region us-west-2 --function-name eloqua_test --zip-file fileb://index.zip
+    `
+    : `
+      # Bash script to deploy an AWS Lambda function
+      rm index.zip
+      zip./index.zip -r index.js eloqua-service.js eloqua-create.js eloqua-mapper.js https-request-polyfill.js sync-zuora-eloqua.js zuora-service.js zuora-renewals-query.js package.json package-lock.json
+      aws lambda update-function-code --region us-west-2 --function-name eloqua_test --zip-file fileb://index.zip
+    `;
+
+  try {
+    const { stdout, stderr } = await execCmd(command, { cwd: PROJECT_PATH });
+    return stdout.trim();
+  } catch (error) {
+    console.error(`Error deploying AWS Lambda function: ${stderr.trim()}`);
+    return Promise.reject(error);
+  }
+}</code></pre></div><p>This code defines a function <code>deployAws</code> that deploys a Lambda function named <code>eloqua_test</code> to the AWS us-west-2 region.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Platform Check:</strong></p>

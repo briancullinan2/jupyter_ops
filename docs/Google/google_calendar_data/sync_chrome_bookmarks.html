@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,82 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code synchronizes your Chrome bookmarks with a Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { 
+  google,
+  googleAuth,
+  fetchGoogleCalendarId,
+  parseBookmarksFile,
+  updateEventGoogleCalendar,
+  getEventDateISOString 
+} = require('../Core');
+
+const { groupBy } = require('lodash');
+const { googleCalendarId } = require('../constants');
+
+function getAllBookmarks(folders) {
+  if (!folders || folders.length === 0) return [];
+  return folders.reduce((acc, folder) => {
+    const links = folder.links.map(link => ({...link, folder: folder.folder }));
+    return acc.concat(links.concat(getAllBookmarks(folder.children)).flat(2));
+  }, []);
+}
+
+async function getBookmarksFromTakeout() {
+  try {
+    const parsedBookmarks = parseBookmarksFile();
+    return getAllBookmarks(parsedBookmarks);
+  } catch (error) {
+    console.error('Error parsing bookmarks file:', error);
+    throw error;
+  }
+}
+
+async function groupBookmarksByTime(links) {
+  links.sort((a, b) => parseInt(b.date) - parseInt(a.date));
+  return groupBy(links, l => Math.floor(l.date / (60 * 30 * 1000)));
+}
+
+async function createEvents(groups) {
+  return Object.keys(groups).reduce((acc, time) => {
+    const folders = groupBy(groups[time], l => l.folder);
+    return acc.concat(Object.keys(folders).map(f => ({
+      start: {
+        dateTime: getEventDateISOString(new Date(parseInt(time) * 30 * 60 * 1000 - offset))
+      },
+      end: {
+        dateTime: getEventDateISOString(new Date(parseInt(time) * 30 * 60 * 1000 + 60 * 30 * 1000 - offset))
+      },
+      summary: f,
+      description: JSON.stringify(folders[f], null, 4)
+    })));
+  }, []);
+}
+
+async function syncChromeBookmarks() {
+  try {
+    const calendarId = await fetchGoogleCalendarId(googleCalendarId);
+    await correctCalendarId(calendarId);
+    const links = await getBookmarksFromTakeout();
+    const groups = await groupBookmarksByTime(links);
+    const events = await createEvents(groups);
+    return await runAllPromises(events.map(event => updateEventGoogleCalendar(event, calendarId)));
+  } catch (error) {
+    console.error('Error syncing bookmarks:', error);
+    throw error;
+  }
+}
+
+async function runAllPromises(promises) {
+  const results = [];
+  for (const promise of promises) {
+    const result = await promise();
+    results.push(result);
+  }
+  return results;
+}
+
+module.exports = syncChromeBookmarks;</code></pre></div><p>This code synchronizes your Chrome bookmarks with a Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong> It imports necessary modules for interacting with Google Calendar, parsing bookmarks, and working with dates.</p></li>

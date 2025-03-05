@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,72 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code manages and repositions multiple browser sessions, allowing you to retrieve URLs from each session.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importer } = require('../Core');
+const { resizeWindow } = importer.import('resize selenium window');
+
+/**
+ * Repositions a session by switching to it, resizing the window, and returning the current URL.
+ * @param {object} client - The selenium client.
+ * @param {object} s - The session object.
+ * @param {boolean} [reposition=true] - Whether to reposition the session or not.
+ * @returns {Promise&lt;string&gt;} A promise resolving to the current URL of the session.
+ */
+async function repositionSession(client, s, reposition = true) {
+  try {
+    client.sessionId = s.id;
+    const urls = await Promise.all([
+      client.getUrl(),
+      client.getWindowHandles().then(h =&gt; h.map(hwnd =&gt; {
+        return client.switchToWindow(hwnd).then(() =&gt; {
+          if (reposition) {
+            resizeWindow(client, client.getWindowHandles().indexOf(hwnd));
+          }
+          return client.getUrl();
+        });
+      })),
+    ]);
+    return urls[1];
+  } catch (e) {
+    if (e.message.includes('chrome not reachable')) {
+      return '';
+    } else {
+      throw e;
+    }
+  }
+}
+
+/**
+ * Retrieves URLs of all sessions and optionally repositions them.
+ * @param {object} client - The selenium client.
+ * @param {boolean} [reposition=true] - Whether to reposition the sessions or not.
+ * @returns {Promise&lt;string[]&gt;} A promise resolving to an array of URLs.
+ */
+async function getAllSessionUrls(client, reposition = true) {
+  try {
+    const sessions = await client.getSessions();
+    const urls = await Promise.all(sessions.map(async s =&gt; {
+      try {
+        return await repositionSession(client, s, reposition);
+      } catch (e) {
+        // Ignore errors
+        return '';
+      }
+    }));
+    return urls;
+  } catch (e) {
+    throw e;
+  }
+}
+
+module.exports = getAllSessionUrls;
+
+if (typeof $.$!== 'undefined') {
+  $.$async();
+  getAllSessionUrls(false)
+   .then(r =&gt; $.sendResult(r))
+   .catch(e =&gt; $.sendError(e));
+}</code></pre></div><p>This code manages and repositions multiple browser sessions, allowing you to retrieve URLs from each session.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

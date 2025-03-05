@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Installation of istanbul typescript</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define the package manager and package to be installed
+PACKAGE_MANAGER="npm"
+PACKAGE="itypescript"
+
+# Define the installation flag
+GLOBAL_FLAG="-g"
+
+# Check if the package manager is available
+if command -v "${PACKAGE_MANAGER}" &> /dev/null; then
+  # Install the package globally
+  "${PACKAGE_MANAGER}" install "${GLOBAL_FLAG}" "${PACKAGE}"
+  echo "Installed ${PACKAGE} globally using ${PACKAGE_MANAGER}"
+else
+  echo "Error: ${PACKAGE_MANAGER} not found. Please install and try again."
+  exit 1
+fi</code></pre></div><h3>Installation of istanbul typescript</h3>
 <h4>Code Breakdown</h4>
 <ul>
 <li><code>npm install</code>: A command to install a package using Node Package Manager (npm).</li>

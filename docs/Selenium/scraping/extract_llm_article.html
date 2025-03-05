@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,120 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>extractArticle</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import necessary modules.
+ * @type {Object}
+ */
+const { WebDriver } = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
+
+/**
+ * Extract the article from an HTML page.
+ *
+ * @param {string|WebDriver} driver - WebDriver instance or URL of the page.
+ * @param {string} startPage - URL of the page to extract the article from.
+ * @returns {Promise<string>} The extracted article in plain text.
+ */
+async function extractArticle(startPage, retry = false, driver = null) {
+  // Check if the driver is not provided, create a new one if necessary.
+  if (!driver) {
+    driver = await createDriver();
+  }
+
+  // Check if the start page is provided, return if not.
+  if (!startPage) {
+    return '';
+  }
+
+  try {
+    console.log('Loading page:', startPage);
+
+    // Navigate to the start page.
+    await driver.get(startPage);
+
+    // Wait for the page to load.
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // Select all elements in the body that match the given criteria.
+    const bodyElements = await selectElements(driver, [
+      '//body//*[string-length(text()) > 20 and not(self::script|self::style|self::form) and not(ancestor::aside|ancestor::nav|ancestor::form|ancestor::header)]'
+    ]);
+
+    // Extract the text from each element.
+    const bodyText = await extractText(bodyElements);
+
+    // Join the text from all elements into a single string.
+    return await mergeText(bodyText);
+  } catch (up) {
+    if (!up.message.includes('page crash')) {
+      driver.quit();
+
+      throw up;
+    } else if (!retry) {
+      return await extractArticle(startPage, true, await createDriver());
+    } else {
+      throw up;
+    }
+  }
+}
+
+/**
+ * Create a new WebDriver instance.
+ *
+ * @returns {Promise<WebDriver>} A promise that resolves to a new WebDriver instance.
+ */
+async function createDriver() {
+  const { Builder } = require('selenium-webdriver');
+  return new Builder().forBrowser('chrome').build();
+}
+
+/**
+ * Select elements on the page.
+ *
+ * @param {WebDriver} driver - WebDriver instance.
+ * @param {string[]} selectors - Array of CSS selectors.
+ * @returns {Promise<Promise<webelement>[]>} A promise that resolves to an array of element promises.
+ */
+async function selectElements(driver, selectors) {
+  const { By } = require('selenium-webdriver');
+  return Promise.all(selectors.map(selector => driver.findElement(By.xpath(selector))));
+}
+
+/**
+ * Extract text from a list of elements.
+ *
+ * @param {Promise<webelement>[]} elements - Array of element promises.
+ * @returns {Promise<string[]>} A promise that resolves to an array of extracted text.
+ */
+async function extractText(elements) {
+  return Promise.all(elements.map(async element => {
+    try {
+      return await element.getText();
+    } catch (e) {
+      if (e.message.includes('stale element reference')) {
+        return '';
+      } else {
+        throw e;
+      }
+    }
+  }));
+}
+
+/**
+ * Merge an array of text into a single string.
+ *
+ * @param {string[]} text - Array of text.
+ * @returns {Promise<string>} A promise that resolves to the merged text.
+ */
+async function mergeText(text) {
+  return text
+   .map(t => Array.isArray(t)? t.join('\n').trim() : t.trim())
+   .filter(t => t.length)
+   .join('\n');
+}
+
+module.exports = extractArticle;</code></pre></div><p><strong>Function Breakdown: <code>extractArticle</code></strong></p>
 <h3>Purpose</h3>
 <p>Extracts the article content from a given HTML page in plain text.</p>
 <h3>Parameters</h3>

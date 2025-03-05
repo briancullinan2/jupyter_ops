@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -147,7 +154,99 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+# Image Path
+image_path = 'images/train/disgust/299.jpg'
+
+# Load Image
+def load_image(image_path):
+    """
+    Loads an image from a file path.
+    
+    Args:
+        image_path (str): Path to the image file.
+    
+    Returns:
+        np.ndarray: Loaded image.
+    """
+    # TODO: implement image loading using a library like OpenCV
+    return ef(image_path)
+
+# Process Image
+def process_image(img):
+    """
+    Reshapes the image to the required size.
+    
+    Args:
+        img (np.ndarray): Input image.
+    
+    Returns:
+        np.ndarray: Processed image.
+    """
+    return img.reshape(48, 48)
+
+# Predict Facial Expression
+def predict_expression(img):
+    """
+    Uses the model to predict the facial expression.
+    
+    Args:
+        img (np.ndarray): Input image.
+    
+    Returns:
+        int: Prediction index.
+    """
+    return model.predict(img)
+
+# Get Prediction Label
+def get_label(prediction):
+    """
+    Maps the prediction index to a label.
+    
+    Args:
+        prediction (int): Prediction index.
+    
+    Returns:
+        str: Prediction label.
+    """
+    return label[prediction.argmax()]
+
+# Display Image
+def display_image(img):
+    """
+    Displays the image using matplotlib.
+    
+    Args:
+        img (np.ndarray): Input image.
+    """
+    plt.imshow(img, cmap='gray')
+    plt.show()
+
+# Main Function
+def main():
+    # Load Image
+    img = load_image(image_path)
+    
+    # Process Image
+    img = process_image(img)
+    
+    # Predict Facial Expression
+    pred = predict_expression(img)
+    
+    # Get Prediction Label
+    pred_label = get_label(pred)
+    
+    # Display Image
+    display_image(img)
+    
+    print("Original image is of disgust")
+    print("Model prediction is", pred_label)
+
+if __name__ == "__main__":
+    main()</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Libraries</h4>
 <p>No imports are shown in the provided code, but the following libraries are likely being used:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet uses the <code>docker system prune</code> command with the <code>-a</code> flag to remove all unused Docker images, containers, networks, volumes, and build caches.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Function to clean up unused Docker resources
+clean_docker() {
+  # Option to remove all unused data, including networks and volumes
+  local -i confirm_remove_all=true
+
+  # Ask user to confirm before proceeding
+  while true; do
+    read -p "Are you sure you want to remove all unused Docker data? (y/n): " confirm
+    if [[ $confirm =~ ^[Yy]$ ]]; then
+      break
+    elif [[ $confirm =~ ^[Nn]$ ]]; then
+      echo "Docker cleanup cancelled."
+      return
+    else
+      read -p "Invalid input. Please enter 'y' or 'n': " confirm
+    fi
+  done
+
+  # Remove all unused data
+  docker system prune -a --force
+}
+
+# Call the function
+clean_docker</code></pre></div><p>This code snippet uses the <code>docker system prune</code> command with the <code>-a</code> flag to remove all unused Docker images, containers, networks, volumes, and build caches.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>docker system prune</code>:</strong></p>

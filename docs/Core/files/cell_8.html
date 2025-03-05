@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./List_all_projects_by_names.html">List all projects by names</a> | <a href="./fix_project_paths.html">fix project paths</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This JavaScript code imports necessary modules, sets environment variables, and defines test suites and individual tests using Mocha, including test setup and conditional execution. The tests cover listing files in a project directory, ignoring hidden directories for better performance, and verifying the presence of specific projects.</p>
+  <p>This code is a Mocha test suite that uses the <code>importer</code> module to import two functions, <code>listInProject</code> and <code>listProjects</code>, which are used to test file system operations in a project directory.</p>
 <h1>Cell 8</h1>
 
 
@@ -145,8 +152,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<h4>Importing Modules</h4>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import { listInProject, listProjects } from '../Core';
+
+// Define constants
+const HOME_DIRS = ['HOME', 'HOMEPATH', 'USERPROFILE'];
+const DEFAULT_PROFILE_PATH = HOME_DIRS.reduce((acc, curr) => process.env[curr] || acc, '');
+
+describe('file system service', () => {
+    let profilePath: string;
+
+    // Setup the profile path before each test
+    beforeEach(() => {
+        profilePath = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    });
+
+    it('should list files quickly', async () => {
+        // Use async/await for better readability
+        const files = await listInProject(profilePath);
+        expect(files.length).toBeGreaterThan(0);
+    });
+
+    it('should ignore hidden directories for better performance', async () => {
+        // Avoid console.log for production-ready code
+        const files = await listProjects(profilePath);
+        if (!files.portal) {
+            throw new Error('Could not find own notebook project under the name jupytangular');
+        }
+    });
+
+    // TODO: Implement a test for listInProject edge cases (e.g., empty dir)
+    // TODO: Implement a test for listProjects edge cases (e.g., non-existent dir)
+});</code></pre></div><h3>Code Breakdown</h3>
+<p><strong>Importing Modules and Variables</strong></p>
 <pre><code class="language-javascript">var importer = require('../Core');
 var {
     listInProject,
@@ -154,49 +192,41 @@ var {
 } = importer.import(['list project files', 'list all projects by name']);
 </code></pre>
 <ul>
-<li>Imports the <code>importer</code> module from a relative path (<code>../Core</code>).</li>
-<li>Uses the <code>importer</code> module to import two functions: <code>listInProject</code> and <code>listProjects</code>.</li>
-<li>Passes an array of function names to <code>importer.import()</code>.</li>
+<li>The code imports a module named <code>importer</code> from the <code>../Core</code> directory.</li>
+<li>It then extracts two functions, <code>listInProject</code> and <code>listProjects</code>, from the <code>importer</code> module using destructuring syntax. These functions are imported with the names <code>list project files</code> and <code>list all projects by name</code>, respectively.</li>
 </ul>
-<h4>Environment Variable</h4>
+<p><strong>Setting the PROFILE_PATH Variable</strong></p>
 <pre><code class="language-javascript">var PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 </code></pre>
 <ul>
-<li>Sets the <code>PROFILE_PATH</code> variable to the value of one of the following environment variables:
-<ul>
-<li><code>HOME</code></li>
-<li><code>HOMEPATH</code></li>
-<li><code>USERPROFILE</code></li>
-</ul></li>
+<li>The code sets a variable named <code>PROFILE_PATH</code> to the value of the <code>HOME</code> environment variable. If <code>HOME</code> is not set, it falls back to <code>HOMEPATH</code> and then <code>USERPROFILE</code> as a last resort.</li>
 </ul>
-<h4>Conditional Execution</h4>
+<p><strong>Conditional Test Suite</strong></p>
 <pre><code class="language-javascript">if(typeof describe!== 'undefined') {
     //...
 }
 </code></pre>
 <ul>
-<li>Checks if the <code>describe</code> variable is defined.</li>
-<li>If it is, executes the code block that follows.</li>
+<li>The code checks if the <code>describe</code> function is defined. If it is, the code inside the conditional block is executed.</li>
 </ul>
-<h4>Mocha Tests</h4>
+<p><strong>Mocha Test Suite</strong></p>
 <pre><code class="language-javascript">describe('file system service', () =&gt; {
     //...
 });
 </code></pre>
 <ul>
-<li>Defines a test suite using the <code>describe()</code> function.</li>
-<li>The test suite is named 'file system service'.</li>
+<li>This is a Mocha test suite with the description &quot;file system service&quot;.</li>
+<li>The <code>describe</code> function is used to group related tests together.</li>
 </ul>
-<h4>Test Setup</h4>
+<p><strong>Before Each Test</strong></p>
 <pre><code class="language-javascript">beforeEach(() =&gt; {
-    // intentionally left empty
 })
 </code></pre>
 <ul>
-<li>Defines a setup function using the <code>beforeEach()</code> function.</li>
-<li>The function is intentionally left empty.</li>
+<li>This is a Mocha &quot;before each&quot; hook, which is executed before each test in the suite.</li>
+<li>However, in this case, it is empty and does not perform any actions.</li>
 </ul>
-<h4>Individual Tests</h4>
+<p><strong>Test Cases</strong></p>
 <pre><code class="language-javascript">it('should list files quickly', () =&gt; {
     //...
 });
@@ -206,24 +236,26 @@ it('should ignore hidden directories for better performance', () =&gt; {
 });
 </code></pre>
 <ul>
-<li>Defines two individual tests using the <code>it()</code> function.</li>
-<li>Each test has a descriptive name.</li>
+<li>These are two test cases, each with a descriptive string that specifies the expected behavior of the code.</li>
+<li>Each test case is executed separately using the <code>it</code> function.</li>
 </ul>
-<h4>Test Logic</h4>
-<pre><code class="language-javascript">// Test 1: listing files
-var files = listInProject(PROFILE_PATH);
-console.log(files.length);
-assert(files.length &gt; 0);
+<p><strong>Test Implementations</strong></p>
+<pre><code class="language-javascript">it('should list files quickly', () =&gt; {
+    var files = listInProject(PROFILE_PATH);
+    console.log(files.length);
+    assert(files.length &gt; 0);
+});
 
-// Test 2: ignoring hidden directories
-var files = listProjects(PROFILE_PATH);
-console.log(files.portal);
-assert(files.jupytangular &amp;&amp; files.jupytangular.indexOf('jupytangular') &gt; -1
-        || files.jupytangular2 &amp;&amp; files.jupytangular2.indexOf('jupytangular2') &gt; -1, 'could not find own notebook project under the name jupytangular');
+it('should ignore hidden directories for better performance', () =&gt; {
+    var files = listProjects(PROFILE_PATH);
+    console.log(files.portal);
+    assert(files.jupytangular &amp;&amp; files.jupytangular.indexOf('jupytangular') &gt; -1
+            || files.jupytangular2 &amp;&amp; files.jupytangular2.indexOf('jupytangular2') &gt; -1, 'could not find own notebook project under the name jupytangular');
+});
 </code></pre>
 <ul>
-<li>Test 1: lists files in the project directory using <code>listInProject()</code> and asserts that the list is not empty.</li>
-<li>Test 2: lists projects in the directory using <code>listProjects()</code> and asserts that a specific project is found.</li>
+<li>The first test case lists files in the project directory using the <code>listInProject</code> function and checks that the list is not empty.</li>
+<li>The second test case lists all projects in the project directory using the <code>listProjects</code> function and checks that the list contains a specific project named &quot;jupytangular&quot;.</li>
 </ul>
 
 </body>

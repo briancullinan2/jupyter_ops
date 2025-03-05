@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -212,7 +219,122 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown: <code>renderHistory</code> Function</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const importer = require('./importer');
+
+// Import constants and functions
+const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = importer.import('general chit chat');
+const selectModel = importer.import('select llm');
+
+/**
+ * Render conversation history for a given session.
+ * 
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+async function renderHistory(req, res) {
+  // Get session from query parameter
+  const session = req.query.session;
+
+  // Return empty string if session is not provided
+  if (!session) {
+    return '';
+  }
+
+  // Get file names of conversation history
+  const history = fs.readdirSync(PROJECT_PATH);
+  const historyFiles = history.filter(fileName =&gt; fileName.match(`-${DEFAULT_MODEL}-${session}.json`));
+
+  // Sort files in descending order
+  historyFiles.sort((a, b) =&gt; b.localeCompare(a));
+
+  // Get nearest hour
+  const nowNearestHour = Date.now() | 0;
+
+  // Initialize variables to store history summaries and missing summaries
+  const includedHistory = [];
+  const missingSummaries = {};
+
+  // Build history summaries
+  historyFiles.forEach((file) =&gt; {
+    const convoFile = path.join(PROJECT_PATH, file);
+    const timestamps = Object.keys(ACTIVE_CONVERSATIONS[convoFile])
+     .filter((k) =&gt; k!=='summaries' &amp;&amp; k!=='memories')
+     .sort();
+
+    timestamps.forEach((timestamp, index) =&gt; {
+      const nearestHourGroup = (parseInt(timestamp) | 0) / 60 / 60 | 0 * 60 * 60;
+
+      // Check if nearest hour group is the same as nowNearestHour
+      if (nearestHourGroup === nowNearestHour) {
+        return;
+      }
+
+      // Check if summaries for nearest hour group exist
+      if (typeof ACTIVE_CONVERSATIONS[convoFile]['summaries'][nearestHourGroup] === 'undefined' ||
+        typeof missingSummaries[nearestHourGroup] === 'undefined') {
+        // Initialize missing summaries for nearest hour group
+        missingSummaries[nearestHourGroup] = [];
+
+        // Add summary to missing summaries if it exists
+        if (typeof ACTIVE_CONVERSATIONS[convoFile][timestamp].summary!== 'undefined') {
+          missingSummaries[nearestHourGroup].push(ACTIVE_CONVERSATIONS[convoFile][timestamp].summary);
+        } else {
+          missingSummaries[nearestHourGroup].push(ACTIVE_CONVERSATIONS[convoFile][timestamp].keywords);
+        }
+      } else if (!includedHistory.includes(nearestHourGroup)) {
+        // Add nearest hour group to included history
+        includedHistory.push(nearestHourGroup);
+
+        // Build history summary
+        const summary = ACTIVE_CONVERSATIONS[convoFile]['summaries'][nearestHourGroup];
+        historySummaries += `&lt;a onclick="loadHistory(event)" href="#history-${nearestHourGroup}"&gt;${summary}&lt;/a&gt;`;
+      }
+    });
+  });
+
+  // Send history summaries to client
+  res.send(historySummaries);
+
+  // Get missing timestamps
+  const missingTimestamps = Object.keys(missingSummaries);
+
+  // Select model
+  const promptModel = await selectModel(DEFAULT_MODEL);
+
+  // Create summaries for missing timestamps
+  missingTimestamps.forEach((timestamp) =&gt; {
+    const missingDate = new Date(parseInt(timestamp));
+    const convoFile = historyFiles.find((file) =&gt; file.startsWith(`${missingDate.getFullYear()}-${String(missingDate.getMonth() + 1).padStart(2, '0')}-${DEFAULT_MODEL}-`));
+
+    if (!convoFile) {
+      console.error(`No file for: ${missingDate.getFullYear()}-${String(missingDate.getMonth() + 1).padStart(2, '0')}`);
+      return;
+    }
+
+    const convoFile = path.join(PROJECT_PATH, convoFile);
+
+    // Check if summaries for missing timestamp exist
+    if (typeof ACTIVE_CONVERSATIONS[convoFile]['summaries'][timestamp]!== 'undefined') {
+      return;
+    }
+
+    // Build prompt
+    const q1 = `Given the following statements about the conversation:\n${missingSummaries[timestamp].join('\n')}\nSummarize these points into two or three words with no title.`;
+    console.log(`User: ${q1}`);
+
+    // Get response from model
+    const a1 = promptModel(q1);
+
+    // Update summaries
+    ACTIVE_CONVERSATIONS[convoFile]['summaries'][timestamp] = a1;
+    fs.writeFileSync(convoFile, JSON.stringify(ACTIVE_CONVERSATIONS[convoFile], null, 4));
+  });
+}
+
+module.exports = renderHistory;</code></pre></div><p><strong>Code Breakdown: <code>renderHistory</code> Function</strong></p>
 <h3>Dependencies and Variables</h3>
 <ul>
 <li><code>path</code> and <code>fs</code> modules are imported to handle file system operations.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and configurations
+const { DEFAULT_CHANNEL } = require('./discord-configuration');
+const { requestAuthQ } = require('./discord-request');
+
+// Define a function to create a new thread
+/**
+ * Creates a new thread in a specified Discord channel.
+ * 
+ * @param {string} name - The name of the thread.
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the thread will be created.
+ * @returns {Promise&lt;object&gt;} A promise that resolves to the created thread object.
+ */
+async function createThread(name, channelId = DEFAULT_CHANNEL) {
+  // Define the thread data to be sent in the request body
+  const threadData = {
+    name,
+    type: 11,
+    auto_archive_duration: 60,
+  };
+
+  // Use the requestAuthQ function to send a POST request to create the thread
+  return await requestAuthQ({
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    url: `/channels/${channelId}/threads`,
+    data: JSON.stringify(threadData),
+  });
+}
+
+// Define a function to retrieve archived threads
+/**
+ * Retrieves a list of archived threads in a specified Discord channel.
+ * 
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the archived threads will be retrieved from.
+ * @returns {Promise&lt;object&gt;} A promise that resolves to the list of archived thread objects.
+ */
+async function archivedThreads(channelId = DEFAULT_CHANNEL) {
+  // Use the requestAuthQ function to send a GET request to retrieve the archived threads
+  return await requestAuthQ({
+    method: 'GET',
+    url: `/channels/${channelId}/threads/archived/public`,
+  });
+}
+
+// Define a function to retrieve active threads
+/**
+ * Retrieves a list of active threads in a specified Discord channel.
+ * 
+ * @param {string} [channelId=DEFAULT_CHANNEL] - The ID of the channel where the active threads will be retrieved from.
+ * @returns {Promise&lt;object&gt;} A promise that resolves to the list of active thread objects.
+ */
+async function activeThreads(channelId = DEFAULT_CHANNEL) {
+  // Use the requestAuthQ function to send a GET request to retrieve the active threads
+  return await requestAuthQ({
+    method: 'GET',
+    url: `/channels/${channelId}/threads/active`,
+  });
+}
+
+// Define a function to add a member to a thread
+/**
+ * Adds a member to a thread in a specified Discord channel.
+ * 
+ * @param {string} memberId - The ID of the member to be added to the thread.
+ * @param {string} channelId - The ID of the channel where the thread is located.
+ * @returns {Promise&lt;object&gt;} A promise that resolves to the updated thread object.
+ */
+async function addThreadMember(memberId, channelId) {
+  // Use the requestAuthQ function to send a PUT request to add the member to the thread
+  return await requestAuthQ({
+    method: 'PUT',
+    url: `/channels/${channelId}/thread-members/${memberId}`,
+  });
+}
+
+// Export the functions
+module.exports = {
+  createThread,
+  archivedThreads,
+  activeThreads,
+  addThreadMember,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">var {DEFAULT_CHANNEL} = importer.import('discord configuration')
 const {requestAuthQ} = importer.import('discord request')

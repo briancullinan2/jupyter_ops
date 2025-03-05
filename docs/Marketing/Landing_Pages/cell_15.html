@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Constants for browser actions
+const ACT_COM_PROD = 'act.com/fr-fr/produits/act-pro';
+const DEFAULT_ZOOM = 0.5;
+const DEFAULT_WIDTH = 680;
+const DEFAULT_HEIGHT = 400;
+
+/**
+ * Opens act.com/fr-fr/produits/act-pro in the browser with specified dimensions
+ */
+function openActComPage(): void {
+  const options: any = {
+    zoom: DEFAULT_ZOOM,
+    width: DEFAULT_WIDTH,
+    height: DEFAULT_HEIGHT,
+  };
+
+  browser.actions().navigate({
+    url: ACT_COM_PROD,
+    options,
+  });
+}
+
+// Example usage:
+openActComPage();</code></pre></div><h3>Code Breakdown</h3>
 <p>This code uses the <code>$TS.screen</code> function to display a webpage in a webbrowser or headless browser.</p>
 <h4>Function Parameters</h4>
 <ul>

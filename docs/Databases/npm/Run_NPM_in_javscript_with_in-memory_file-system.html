@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>npm</code> that provides a wrapper around the <code>npm</code> package manager, allowing for more controlled execution within a specific project directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const npm = require('npm');
+const { importPlugin } = require('@pluginjs/import');
+
+const installNpm = async () => {
+    try {
+        await require.resolve('npm');
+    } catch (e) {
+        // Install npm package when it's not installed
+        execSync('npm install npm');
+    }
+};
+
+const runNpm = async (project, args, config) => {
+    // Get the current directory
+    const currentDir = process.cwd();
+    try {
+        // Change to the project directory
+        await fs.promises.chroot(project);
+
+        // Import required modules
+        const {
+            default: importFs,
+            rewire,
+        } = await importPlugin(['memory-fs','rewire']);
+
+        // Set up project path
+        const projectPath = path.join(project, 'package.json');
+
+        // Check if package.json file exists
+        const packageJson = await fs.promises.readFile(projectPath, 'utf8');
+        if (!packageJson) {
+            throw new Error('Package.json file not found');
+        }
+
+        // Load npm configuration
+        npm.load(config, (err) => {
+            if (err) {
+                throw err;
+            }
+
+            // Run npm command
+            npm.commands[args[0]](...args.slice(1), (err, data) => {
+                if (err) {
+                    throw err;
+                }
+                // Log data or errors
+                globalThis.console.log(data);
+            });
+        });
+    } catch (error) {
+        throw error;
+    } finally {
+        // Change back to the original directory
+        await fs.promises.chroot(currentDir);
+    }
+};
+
+// Export the function
+module.exports = runNpm;</code></pre></div><p>This code defines a function <code>npm</code> that provides a wrapper around the <code>npm</code> package manager, allowing for more controlled execution within a specific project directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>npm Installation Check:</strong></p>

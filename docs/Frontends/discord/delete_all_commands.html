@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -125,7 +132,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { registerCommand, getCommands, deleteCommand, updateCommand } = require('discord.js').cmds;
+const { timeout } = require('discord.js').utils;
+
+/**
+ * Commands to be excluded from deletion
+ * @type {string[]}
+ */
+const EXCEPT_COMMANDS = [];
+
+/**
+ * Deletes commands in a guild, excluding the ones specified in EXCEPT_COMMANDS
+ * @param {string} guildId - ID of the guild
+ */
+async function deleteCommands(guildId) {
+  // Get the commands in the guild
+  const commandsToDel = await getCommands(guildId);
+
+  // Filter out the commands that should be excluded
+  const commandsToDelFiltered = commandsToDel.filter((cmd) =>!EXCEPT_COMMANDS.includes(cmd.name));
+
+  // Wait for 3 seconds between each command deletion
+  for (const command of commandsToDelFiltered) {
+    await timeout(3000);
+    // Delete the command
+    await deleteCommand(command.id, guildId);
+  }
+}
+
+module.exports = deleteCommands;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <p>The code imports the following dependencies:</p>
 <ul>

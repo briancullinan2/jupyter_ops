@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -181,7 +188,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Builder, Browser, By, Key, until } = require('selenium-webdriver');
+const { Client } = require('webdriverio');
+
+const PASSWORDS_FILE = process.env.HOME
+ ? `${process.env.HOME}/.credentials/brian.json`
+  : process.env.HOMEPATH
+ ? `${process.env.HOMEPATH}/.credentials/brian.json`
+  : process.env.USERPROFILE
+ ? `${process.env.USERPROFILE}/.credentials/brian.json`
+  : null;
+
+async function enterLinkedIn(driver) {
+  try {
+    // Wait for the login button to be clickable
+    await driver.wait(until.elementClickable(By.css('a[href*="/login"]')), 10000);
+    const loginButton = await driver.findElement(By.css('a[href*="/login"]'));
+    await loginButton.click();
+
+    // Wait for the login form to be visible
+    await driver.wait(until.elementLocated(By.css('.login-form, [type="submit"]')), 10000);
+  } catch (error) {
+    // If the login button is not found, try to proceed with the login
+  }
+
+  const loginForm = await driver.findElement(By.css('.login-form, [type="submit"]'));
+  const loginInput = await driver.findElement(By.css('input[name*="session_key"]'));
+  await driver.executeScript('arguments[0].click();', loginInput);
+  await loginInput.sendKeys(process.env.BRIAN_USERNAME || require(PASSWORDS_FILE).username);
+
+  await driver.sleep(1000); // Wait for 1 second
+
+  const passwordInput = await driver.findElement(By.css('input[name*="session_password"]'));
+  await passwordInput.click();
+  await passwordInput.sendKeys(process.env.BRIAN_PASSWORD || require(PASSWORDS_FILE).password);
+
+  const submitButton = await loginForm.findElement(By.css('button[type="submit"]'));
+  await submitButton.click();
+
+  await driver.sleep(3000); // Wait for 3 seconds
+
+  try {
+    const captcha = await driver.findElement(By.css('#captcha-internal'));
+    throw new Error('captcha');
+  } catch (error) {}
+}
+
+async function loginLinkedIn(client = null) {
+  if (!client) {
+    client = await Client.default();
+  }
+
+  try {
+    const url = await client.getUrl();
+    const loggedIn = url.indexOf('linkedin') &gt; -1 &amp;&amp; url.indexOf('login') == -1 &amp;&amp; url.indexOf('authwall') == -1;
+    if (loggedIn) {
+      // If already logged in, check if we need to handle the authentication iframe
+      if (await client.findElement(By.css('iframe.authentication-iframe'))) {
+        await client.switchToFrame(await client.element('iframe.authentication-iframe'));
+        await enterLinkedIn();
+      } else {
+        // If not in the iframe, we're already logged in
+        return client;
+      }
+    } else {
+      // If not logged in, navigate to the login page
+      await client.get('https://www.linkedin.com/');
+      try {
+        await client.findElement(By.xpath('//a[text()[contains(.,"Forgot password?")]]'));
+      } catch (error) {}
+      try {
+        await client.findElement(By.xpath('//a[text()[contains(.,"Join now")]]'));
+      } catch (error) {}
+      await enterLinkedIn(client);
+    }
+  } catch (error) {
+    client.end();
+
+    throw error;
+  }
+
+  return client;
+}
+
+module.exports = loginLinkedIn;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">const getClient = importer.import('selenium client')
 const { Builder, Browser, By, Key, until } = require('selenium-webdriver')

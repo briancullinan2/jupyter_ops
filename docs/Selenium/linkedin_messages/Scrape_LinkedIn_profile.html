@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>readLinkedInProfileInfo</code> that automates the process of extracting information from a LinkedIn profile.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Function to visit the user's profile page.
+ * @param {object} client - The browser client object.
+ * @return {Promise} A promise that resolves when the user's profile page is loaded.
+ */
+function visitMyProfile(client) {
+    // Check if we need to go to LinkedIn and handle accordingly.
+    if (!isOnLinkedin()) {
+        return navigateToLinkedIn(client);
+    }
+
+    // Check if we need to login and handle accordingly.
+    if (!isLoggedIn()) {
+        return login(client);
+    }
+
+    // Wait for the navigation menu to load and click on the profile link.
+    return client
+       .pause(2000)
+       .click('#nav-settings__dropdown-trigger')
+       .pause(500)
+       .click('.nav-settings__view-profile-link')
+       .pause(2000);
+}
+
+/**
+ * Function to read LinkedIn profile info.
+ * @param {object} client - The browser client object.
+ * @return {Promise} A promise that resolves with an object containing the user's profile info.
+ */
+function readLinkedInProfileInfo(client) {
+    // Check if we are on the user's profile page and return an empty array if not.
+    const url = client.getUrl();
+    if (url.indexOf('/in/') == -1) {
+        return visitMyProfile(client).then(() =&gt; []);
+    }
+
+    // Wait for the contact info to load and extract the relevant info.
+    return client
+       .isExisting('.contact-see-more-less')
+       .then(is =&gt; is? client.click('.contact-see-more-less') : client)
+       .pause(500)
+       .then(() =&gt; getAllXPath({
+            name: '//*[contains(@class, "pv-top-card-section__name")]//text()',
+            title: '//*[contains(@class, "pv-top-card-section__headline")]//text()',
+            url: '//*[contains(@class, "ci-vanity-url")]//*[contains(@class, "pv-contact-info__contact-item")]//text()',
+            phone: '//*[contains(@class, "ci-phone")]//*[contains(@class, "pv-contact-info__contact-item")]//text()',
+            email: '//*[contains(@class, "ci-email")]//*[contains(@class, "pv-contact-info__contact-item")]//text()'
+        }))
+       .then(r =&gt; ({
+            name: extractText(r.name),
+            title: extractText(r.title),
+            url: extractText(r.url),
+            phone: extractText(r.phone),
+            email: extractText(r.email)
+        }));
+}
+
+// Helper function to check if we are on LinkedIn.
+function isOnLinkedin() {
+    // Implement logic to check if we are on LinkedIn.
+}
+
+// Helper function to navigate to LinkedIn.
+function navigateToLinkedIn(client) {
+    // Implement logic to navigate to LinkedIn.
+}
+
+// Helper function to check if we are logged in.
+function isLoggedIn() {
+    // Implement logic to check if we are logged in.
+}
+
+// Helper function to login.
+function login(client) {
+    // Implement logic to login.
+}
+
+// Helper function to extract text from an array or string.
+function extractText(text) {
+    return (typeof text ==='string'? [text] : (text || [])).join('').trim();
+}
+
+module.exports = readLinkedInProfileInfo;</code></pre></div><p>This code defines a function <code>readLinkedInProfileInfo</code> that automates the process of extracting information from a LinkedIn profile.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>visitMyProfile</code> Function:</strong></p>

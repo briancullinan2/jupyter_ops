@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>QEMU System Emulation Command</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define VM settings
+VMMODE="qemu-system-x86_64"
+MONITOR="stdio"
+GPU="ati-vga"
+QEMU_ACCEL="hvf"
+VCPUS="2"
+MEM="3G"
+NETWORK_DEV="tap"
+NETWORK_IFNAME="tap0"
+NETWORK_BRIDGE="bridge1"
+NETWORK_SCRIPT="no"
+NETWORK_DOWN_SCRIPT="no"
+NETWORK_ID="n1"
+NIC_MODEL="rtl8139"
+
+# Define disk settings
+CDROM_MEDIA="cdrom"
+CDROM_FILE=""
+DISK_ID="ubuntuhdd"
+DISK_FILE="/path/to/Ubuntu.vmdk"
+DISK_IF="none"
+DISK_FORMAT="raw"
+BOOT_INDEX="2"
+
+# Define USB settings
+USB_DEV="piix3-usb-uhci"
+USB_HDD_ID="freeagent"
+USB_HDD_FILE="/dev/disk2"
+USB_HDD_IF="none"
+
+# Define qemu command options
+qemu_opts=(
+  "-monitor ${MONITOR}"
+  "-device ${GPU}"
+  "-enable-kvm"
+  "-accel ${QEMU_ACCEL}"
+  "-smp ${VCPUS}"
+  "-m ${MEM}"
+  "-netdev ${NETWORK_DEV},ifname=${NETWORK_IFNAME},br=${NETWORK_BRIDGE},script=${NETWORK_SCRIPT},downscript=${NETWORK_DOWN_SCRIPT},id=${NETWORK_ID}"
+  "-device ${NIC_MODEL},netdev=${NETWORK_ID}"
+  "-drive if=ide,index=1,media=${CDROM_MEDIA},file=${CDROM_FILE}"
+  "-drive file=${DISK_FILE},if=${DISK_IF},id=${DISK_ID}"
+  "-device virtio-blk-pci,drive=${DISK_ID},bus=pci.0,bootindex=${BOOT_INDEX}"
+  "-device ${USB_DEV}"
+  "-drive id=${USB_HDD_ID},file=${USB_HDD_FILE},if=${USB_HDD_IF},format=${DISK_FORMAT}"
+  "-device usb-storage,drive=${USB_HDD_ID}"
+)
+
+# Create qemu command
+qemu_cmd="${VMMODE} ${qemu_opts[@]}"
+
+# Print qemu command
+echo "${qemu_cmd}"</code></pre></div><h2>QEMU System Emulation Command</h2>
 <h3>Overview</h3>
 <p>This command utilizes QEMU to emulate an x86_64 system.</p>
 <h3>Command Breakdown</h3>

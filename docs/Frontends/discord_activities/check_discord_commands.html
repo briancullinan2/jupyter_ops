@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,20 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import the discord api module, ensuring that 'getCommands' function is exported as a default export.
+ * This allows for better code organization and reusability.
+ */
+
+const { getCommands } = require('discord-api').default;
+
+/**
+ * Main export of this module, returning the 'getCommands' function from the discord-api module.
+ * 
+ * @type {function}
+ */
+module.exports = getCommands;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p><strong>Importing a Function</strong></p>
 <pre><code class="language-javascript">const {getCommands} = importer.import('discord api')
 </code></pre>

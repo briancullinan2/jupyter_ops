@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -165,7 +172,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { By } = require('selenium-webdriver');
+const { Client } = require('selenium-webdriver/chrome');
+const { Builder } = require('selenium-webdriver');
+const loginReddit = require('./reddit login');
+const getAllQuery = require('./selenium query');
+const importLLM = require('./create llm session');
+const puppeteer = require('puppeteer');
+
+/**
+ * Posts to a subreddit using Reddit's submit page.
+ * 
+ * @param {string} startPage The name of the subreddit to post to (e.g. 'r/test').
+ * @param {string} content The content of the post.
+ * @param {string|object|undefined} driver The Selenium WebDriver instance to use.
+ * @throws {Error} If an error occurs during the posting process.
+ */
+async function redditPost(startPage, content, driver) {
+  // Get the start page URL if the startPage parameter does not include '://'
+  if (!startPage.includes('://')) {
+    startPage = `https://www.reddit.com/r/${startPage}`;
+  }
+
+  // Append the post submission URL to the start page if not already present
+  if (!startPage.includes('/submit')) {
+    startPage += '/submit?type=TEXT';
+  }
+
+  // Initialize the Selenium driver if none is provided
+  driver = driver || (await getClient());
+
+  // Navigate to the post submission page
+  await driver.get(startPage);
+
+  // Log in to Reddit
+  await loginReddit(driver);
+
+  // Wait for a short period to allow the page to load
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
+  // Extract the title from the content if it is marked up with Markdown headers
+  let titleStr;
+  const titleMatch = (/\*\*(.*?)\*\*\n*/gi).exec(content);
+  if (titleMatch) {
+    content = content.replace(titleMatch[0], '');
+    titleStr = titleMatch[1].replaceAll(/[#*"']/gi, '');
+  } else {
+    // Otherwise, generate a title using the LLM
+    const { llmPrompt } = await importLLM();
+    titleStr = await llmPrompt('Generate a short title for this summary:\n' + content);
+    titleStr = titleStr.replaceAll(/[#*"']/gi, '');
+  }
+
+  // Try to submit the post
+  try {
+    // Click into the title field
+    const titleField = await driver.findElement(By.css('faceplate-textarea-input[name*="title"]'));
+    await titleField.click();
+
+    // Send the title to the title field
+    await driver.actions().sendKeys(titleStr).perform();
+
+    // Switch to Markdown mode
+    const switchButton = await getAllQuery(driver, [
+     'shreddit-composer',
+      'button[aria-label*="Switch to Markdown"]',
+    ]);
+    await driver.executeScript('arguments[0].click();', switchButton[0]);
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Click into the body field
+    const bodyField = await getAllQuery(driver, [
+     'shreddit-composer',
+     'shreddit-markdown-composer',
+      'textarea[placeholder*="Body"]',
+    ]);
+    await driver.executeScript('arguments[0].click();', bodyField[0]);
+
+    // Send the content to the body field
+    await driver.actions().sendKeys(content).perform();
+
+    // Submit the post
+    const submitButton = await driver.findElement(By.css('#submit-post-button'));
+    submitButton.click();
+
+    // Wait for a short period to allow the post to be submitted
+    await new Promise(resolve => setTimeout(resolve, 1500));
+  } catch (error) {
+    // TODO: Consider logging the error and quitting the driver if desired
+    throw error;
+  }
+}
+
+// Export the redditPost function
+module.exports = redditPost;
+
+// TODO: Consider implementing a retry mechanism for failed post submissions
+
+// TODO: Consider adding a test suite for the redditPost function
+
+// TODO: Consider refactoring the code to use a more robust error handling mechanism</code></pre></div><h2>Code Breakdown</h2>
 <h3>Overview</h3>
 <p>This is a JavaScript function named <code>redditPost</code> that automates posting on Reddit using Selenium WebDriver. It takes three parameters: <code>driver</code>, <code>content</code>, and <code>startPage</code>.</p>
 <h3>Parameters</h3>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -180,7 +187,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const axios = require('axios');
+
+// Load Eloqua configuration from file
+consteloquaConfig = JSON.parse(fs.readFileSync(PROFILE_PATH + '/.credentials/eloqua_production.json', 'utf8'));
+
+// Function to obtain Eloqua token using OAuth
+async function obtainEloquaToken(config) {
+    try {
+        const response = await axios.post(`${config.rest_api_url}/oauth2/token`, null, {
+            headers: {
+                'Authorization': 'Basic'+ Buffer.from(`${config.client_id}:${config.client_secret}`).toString('base64'),
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            params: {
+                'grant_type': 'client_credentials'
+            }
+        });
+        return response.data.access_token;
+    } catch (error) {
+        throw new Error(`Failed to obtain Eloqua token: ${error.message}`);
+    }
+}
+
+// Function to get Eloqua existing imports
+async function getEloquaExistingImports(token, config) {
+    try {
+        const response = await axios.get(`${config.rest_api_url}/bulk/2.0/import/definitions`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error(`Failed to retrieve Eloqua existing imports: ${error.message}`);
+    }
+}
+
+// Main execution
+if (typeof $!== 'undefined') {
+    $.async();
+    const eloquaToken = await obtainEloquaToken(eloquaConfig);
+    try {
+        const existingImports = await getEloquaExistingImports(eloquaToken, eloquaConfig);
+        console.log(existingImports);
+        $.mime({ 'text/html': '&lt;pre&gt;' + JSON.stringify(existingImports, null, 4) + '&lt;/pre&gt;' });
+    } catch (error) {
+        $.sendError(error);
+    }
+} else {
+    throw new Error('$ is undefined');
+}
+
+// TODO: find other definitions, compare, and import using the same definition
+// This can be achieved by implementing a function that takes two lists of existing imports as input,
+// compares them, and returns the differences.</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Conditional Block</h3>
 <pre><code class="language-javascript">if (typeof $!== 'undefined') {
     //...

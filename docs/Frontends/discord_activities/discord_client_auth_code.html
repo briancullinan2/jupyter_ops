@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -180,7 +187,127 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants and variables
+const DISCORD_API_URI = 'https://discord.com/api/token';
+const COOKIE_NAME ='session';
+const COOKIE_EXPIRY_NAME = 'expiry';
+
+let result;
+let initNonce = Math.floor(Math.random() * 1000);
+
+// Add event listener to handle messages from the parent window
+window.addEventListener('message', async (evt) => {
+  // Log received message
+  document.querySelector('h1').innerHTML = `<pre>${JSON.stringify(evt.data, null, 2)}</pre>`;
+
+  // Get the source window (parent or opener)
+  const getSourceWindow = () => (window.parent.opener || window.parent);
+
+  // Handle message with handshake
+  if (evt.data[0] === 3 && 'frame_id' in evt.data[1]) {
+    result = evt.data[1];
+    // Send handshake to Discord
+    const handshakeMessage = [
+      0,
+      {
+        v: 1,
+        encoding: 'json',
+        client_id: '{CLIENT_ID}',
+        frame_id: result.frame_id,
+        nonce: initNonce,
+        transfer: undefined
+      }
+    ];
+    getSourceWindow().postMessage(handshakeMessage, 'https://discord.com');
+  }
+
+  // Handle message with dispatch command
+  if (evt.data[0] === 1 && evt.data[1].cmd === 'DISPATCH') {
+    // Start authorization chain
+    const authorizeMessage = [
+      1,
+      {
+        cmd: 'AUTHORIZE',
+        args: {
+          client_id: '{CLIENT_ID}',
+          prompt: 'none',
+          response_type: 'code',
+          scope: ['applications.commands', 'identify', 'guilds.members.read', 'rpc.activities.write'],
+          state: ''
+        },
+        nonce: Math.floor(Math.random() * 1000),
+        transfer: undefined
+      }
+    ];
+    getSourceWindow().postMessage(authorizeMessage, 'https://discord.com');
+  }
+
+  // Handle message with authorize command
+  if ('cmd' in evt.data[1] && evt.data[1].cmd === 'AUTHORIZE') {
+    const code = evt.data[1].data.code;
+
+    try {
+      const response = await fetch(DISCORD_API_URI, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials:'same-origin',
+        body: JSON.stringify({
+          code,
+          launch_id: result.launch_id,
+          frame_id: result.frame_id
+        })
+      });
+      const { access_token, expires_in, session_id } = await response.json();
+      window.session_id = session_id;
+
+      // Store expiry date
+      const expiryDate = new Date(Date.now() + expires_in * 1000);
+      Cookies.set(COOKIE_EXPIRY_NAME, expiryDate.toISOString(), { expires: 1 });
+      Cookies.set(COOKIE_NAME, session_id, { expires: 1 });
+
+      // Send authenticate command
+      const authenticateMessage = [
+        1,
+        {
+          cmd: 'AUTHENTICATE',
+          args: {
+            access_token: access_token
+          },
+          nonce: Math.floor(Math.random() * 1000),
+          transfer: undefined
+        }
+      ];
+      getSourceWindow().postMessage(authenticateMessage, 'https://discord.com');
+    } catch (error) {
+      console.error('Error requesting token:', error);
+    }
+  }
+
+  // Handle message with authenticate command
+  if ('cmd' in evt.data[1] && evt.data[1].cmd === 'AUTHENTICATE') {
+    // Update authenticated page
+    if (window.session_id) {
+      const expiryDate = Cookies.get(COOKIE_EXPIRY_NAME);
+      if (expiryDate) {
+        const expiryDateObject = new Date(expiryDate);
+        if (expiryDateObject <= new Date()) {
+          // Expired, remove session
+          Cookies.remove(COOKIE_NAME);
+          Cookies.remove(COOKIE_EXPIRY_NAME);
+        } else {
+          // Update location with session ID
+          window.location = `{BASE_URI}?t=${Date.now()}&session=${window.session_id}`;
+        }
+      } else {
+        // Update location with session ID
+        window.location = `{BASE_URI}?t=${Date.now()}&session=${window.session_id}`;
+      }
+    }
+  }
+});</code></pre></div><p><strong>Overview</strong></p>
 <p>This JavaScript code handles messages received from a parent window and performs the following actions:</p>
 <ol>
 <li><strong>Discord OAuth flow</strong>: It receives messages from the parent window, sends a handshake, and then initiates the OAuth flow to obtain an access token.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,158 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  postMessageImageAttachment,
+  triggerTyping,
+  createMessage,
+  updateInteraction,
+} = require('./discord-api');
+const { selectModel } = require('./select-llm');
+const {
+  askLlamaToWriteStory,
+  askLlamaToWriteBusinessPlan,
+  askLlamaWriteEssay,
+} = require('./llm-services');
+
+/**
+ * Interface for interaction context
+ * @typedef {Object} InteractionContext
+ * @property {string} channel_id - Channel ID
+ * @property {string} id - Interaction ID
+ * @property {string} token - Interaction token
+ * @property {Object[]} data - Interaction data
+ * @property {string} data.options[].value - Interaction option value
+ * @property {string} data.options[].name - Interaction option name
+ */
+class InteractionContext {
+  /**
+   * @param {Object} interaction - Interaction object
+   */
+  constructor(interaction) {
+    this.channel_id = interaction.channel_id;
+    this.id = interaction.id;
+    this.token = interaction.token;
+    this.data = interaction.data;
+  }
+}
+
+/**
+ * Service for creating essays using LLM
+ */
+class EssayService {
+  /**
+   * Creates an essay using the selected LLM model
+   * @param {InteractionContext} interaction - Interaction context
+   * @param {string} promptModel - Selected LLM model
+   * @return {Promise<string>} Essay content as a string
+   */
+  async createEssay(interaction, promptModel) {
+    const essay = await askLlamaWriteEssay(
+      interaction.data.options[0].value,
+      null,
+      promptModel
+    );
+    return essay;
+  }
+}
+
+class BusinessPlanService {
+  /**
+   * Creates a business plan using the selected LLM model
+   * @param {InteractionContext} interaction - Interaction context
+   * @param {string} promptModel - Selected LLM model
+   * @return {Promise<string>} Business plan content as a string
+   */
+  async createBusinessPlan(interaction, promptModel) {
+    const businessPlan = await askLlamaToWriteBusinessPlan(
+      interaction.data.options[0].value,
+      null,
+      promptModel
+    );
+    return businessPlan;
+  }
+}
+
+class StoryService {
+  /**
+   * Creates a story using the selected LLM model
+   * @param {InteractionContext} interaction - Interaction context
+   * @param {string} promptModel - Selected LLM model
+   * @return {Promise<string>} Story content as a string
+   */
+  async createStory(interaction, promptModel) {
+    const story = await askLlamaToWriteStory(
+      interaction.data.options[0].value,
+      null,
+      promptModel
+    );
+    return story;
+  }
+}
+
+/**
+ * Service for handling interactions with the LLM
+ */
+class InteractionService {
+  /**
+   * Creates an instance of the interaction service
+   * @param {Object} services - Service instances
+   */
+  constructor(services) {
+    this.services = services;
+    this.services.selectModel = selectModel;
+    this.services.triggerTyping = triggerTyping;
+    this.services.createMessage = createMessage;
+    this.services.updateInteraction = updateInteraction;
+    this.services.postMessageImageAttachment = postMessageImageAttachment;
+    this.services.essay = new EssayService();
+    this.services.businessPlan = new BusinessPlanService();
+    this.services.story = new StoryService();
+  }
+
+  /**
+   * Handles an interaction with the LLM
+   * @param {InteractionContext} interaction - Interaction context
+   * @param {string} serviceType - Service type (essay, business, story)
+   * @return {Promise<void>} Promise resolving when the interaction is handled
+   */
+  async handleInteraction(interaction, serviceType) {
+    const promptModel = await this.services.selectModel(
+      interaction.data.options[1]? interaction.data.options[1].value : 'Meta'
+    );
+
+    await this.services.triggerTyping(interaction.channel_id);
+    await this.services.updateInteraction('This could take a while...', interaction.id, interaction.token);
+
+    let content;
+    switch (serviceType) {
+      case 'essay':
+        content = await this.services.essay.createEssay(interaction, promptModel);
+        break;
+      case 'business':
+        content = await this.services.businessPlan.createBusinessPlan(interaction, promptModel);
+        break;
+      case'story':
+        content = await this.services.story.createStory(interaction, promptModel);
+        break;
+      default:
+        throw new Error(`Unsupported service type: ${serviceType}`);
+    }
+
+    await this.services.postMessageImageAttachment(
+      interaction.data.options[0].value,
+      Buffer.from(content),
+      interaction.channel_id,
+      'text/html'
+    );
+  }
+}
+
+module.exports = {
+  createInteractionService: (services) => new InteractionService(services),
+  InteractionContext,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>
 <p>The code imports various functions from other modules using the <code>importer.import()</code> method:</p>
 <ul>

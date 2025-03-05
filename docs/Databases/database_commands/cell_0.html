@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/sh
+
+# Converts a mysqldump file into a Sqlite 3 compatible file.
+#
+# Usage: $./mysql2sqlite mysqldump-opts db-name | sqlite3 database.sqlite
+#
+# Example: $./mysql2sqlite --no-data -u root -pMySecretPassWord myDbase | sqlite3 database.sqlite
+
+mysqldump  --compatible=ansi --skip-extended-insert --compact  "$@" | \
+awk '
+  BEGIN {
+    FS=",$"
+    print "PRAGMA synchronous = OFF;"
+    print "PRAGMA journal_mode = MEMORY;"
+    print "BEGIN TRANSACTION;"
+  }
+
+  # Process CREATE TRIGGER statements
+  /^\/\*.*CREATE.*TRIGGER/ {
+    gsub( /^.*TRIGGER/, "CREATE TRIGGER" )
+    print
+    inTrigger = 1
+    next
+  }
+
+  # Process end of CREATE TRIGGER
+  /END \*\/;;/ {
+    gsub( /\*\//, "" )
+    print
+    inTrigger = 0
+    next
+  }
+
+  # Process TRIGGER statements
+  inTrigger!= 0 { print; next }
+
+  # Skip other comments
+  /^\/\*/ { next }
+
+  # Process INSERT statements
+  /INSERT/ {
+    gsub( /\\\047/, "\047\047" )
+    gsub(/\\n/, "\n")
+    gsub(/\\r/, "\r")
+    gsub(/\\"/, "\"")
+    gsub(/\\\\/, "\\")
+    gsub(/\\\032/, "\032")
+    print
+    next
+  }
+
+  # Process CREATE statements
+  /^CREATE/ {
+    print
+    if ( match( $0, /\"[^\"]+/ ) ) tableName = substr( $0, RSTART+1, RLENGTH-1 )
+  }
+
+  # Replace KEY statements
+  /^  [^"]+KEY/ &amp;&amp;!/^  PRIMARY KEY/ {
+    if ( match( $0, / FULLTEXT / ) ) gsub( / FULLTEXT KEY/, " FULLTEXT" )
+    else if ( match( $0, / KEY / ) ) gsub( / KEY/, " KEY" )
+  }
+
+  # Get rid of field lengths in KEY lines
+  / KEY/ { gsub(/\([0-9]+\)/, "") }
+
+  # Process fields definition lines
+  /^  / &amp;&amp;!/^(  KEY|\);)/ {
+    gsub( /AUTO_INCREMENT|auto_increment/, "" )
+    gsub( /(CHARACTER SET|character set) [^ ]+ /, "" )
+    gsub( /DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP|default current_timestamp on update current_timestamp/, "" )
+    gsub( /(COLLATE|collate) [^ ]+ /, "" )
+    gsub(/(ENUM|enum)[^)]+\)/, "text ")
+    gsub(/(SET|set)\([^)]+\)/, "text ")
+    gsub(/UNSIGNED|unsigned/, "")
+    if (prev) prev = prev "," $1
+    else prev = $1
+  }
+
+  # Process KEY lines
+  /^(  KEY|\);)/ {
+    if (prev) print prev
+    prev=""
+    if ($0 == ");") {
+      print
+    } else {
+      if ( match( $0, /\"[^"]+/ ) ) indexName = substr( $0, RSTART+1, RLENGTH-1 )
+      if ( match( $0, /\([^()]+/ ) ) indexKey = substr( $0, RSTART+1, RLENGTH-1 )
+      key[tableName] = key[tableName] "CREATE INDEX \"" tableName "_" indexName "\" ON \"" tableName "\" (" indexKey ");\n"
+    }
+  }
+
+  # Print all KEY creation lines
+  END {
+    for (table in key) printf key[table]
+    print "END TRANSACTION;"
+  }
+'
+exit 0</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Overview</h3>
 <p>This is a shell script that utilizes <code>awk</code> to transform a MySQL dump file into a format compatible with SQLite. The script also extracts the MySQL <code>KEY</code> clauses and creates them as separate commands.</p>
 <h3>Script Structure</h3>

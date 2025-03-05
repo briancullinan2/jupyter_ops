@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Description</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const path = require('path');
+const fs = require('fs');
+const importer = require('../Core');
+
+// Define constants
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Documents');
+const PROJECT_FILE = path.join(PROJECT_PATH, 'passwords.htm');
+const CREDENTIALS_FILE = path.join(PROJECT_PATH, 'encrypted passwords.json');
+
+// Function to read passwords from HTML file
+async function readPasswords() {
+    try {
+        // Read project file
+        const projectData = fs.readFileSync(PROJECT_FILE, 'utf16le');
+        
+        // Extract table body from project data
+        const credentials = importer.regexToArray(/TBODY[^&gt;]*&gt;[\s\S]*?\/TBODY/ig, projectData);
+        
+        // Process each table row
+        const result = await Promise.all(credentials.map(async (row) =&gt; {
+            try {
+                // Initialize credentials object
+                const creds = {};
+                
+                // Extract host from row data
+                const host = (((/subcaption[^&gt;]*&gt;(.*?)&lt;\/td&gt;/ig)
+                   .exec(row) || [])[1] || '').replace(/&lt;wbr&gt;/ig, '').toLowerCase();
+                if (host.trim() === '') {
+                    return;
+                }
+                
+                // Extract key-value pairs from row data
+                const keyValuePairs = importer.regexToArray(/&lt;tr&gt;[\s\S]*?&lt;\/tr&gt;/ig, row);
+                keyValuePairs.forEach((pair) =&gt; {
+                    const key = (((/field[^&gt;]*&gt;(.*?)&lt;\/td&gt;/ig)
+                       .exec(pair) || [])[1] || '').replace(/&lt;wbr&gt;/ig, '');
+                    const value = (((/wordbreakfield[^&gt;]*&gt;(.*?)&lt;\/td&gt;/ig)
+                       .exec(pair) || [])[1] || '').replace(/&lt;wbr&gt;/ig, '');
+                    if (key.trim()!== '') {
+                        creds[key] = value;
+                    }
+                });
+                
+                // Save credentials to JSON file
+                await saveCredentials(creds);
+                
+                // Return updated credentials
+                return creds;
+            } catch (error) {
+                // Log any errors that occur during processing
+                globalThis.console.error(`Error processing row: ${error.message}`);
+                return null;
+            }
+        }));
+        
+        // Return processed credentials
+        return result;
+    } catch (error) {
+        // Log any errors that occur during file reading
+        globalThis.console.error(`Error reading project file: ${error.message}`);
+        return null;
+    }
+}
+
+// Function to save credentials to JSON file
+async function saveCredentials(credentials) {
+    try {
+        // Read existing credentials
+        const existingCredentials = fs.existsSync(CREDENTIALS_FILE)? JSON.parse(fs.readFileSync(CREDENTIALS_FILE, 'utf8')) : {};
+        
+        // Update existing credentials with new credentials
+        existingCredentials[credentials.host] = credentials;
+        
+        // Save updated credentials to JSON file
+        fs.writeFileSync(CREDENTIALS_FILE, JSON.stringify(existingCredentials, null, 2));
+        
+        // Return saved credentials
+        return existingCredentials;
+    } catch (error) {
+        // Log any errors that occur during saving credentials
+        globalThis.console.error(`Error saving credentials: ${error.message}`);
+        return null;
+    }
+}
+
+// Export readPasswords function
+module.exports = readPasswords;</code></pre></div><p><strong>Function Description</strong></p>
 <p>The <code>readPasswordsHtm</code> function reads passwords from an HTML file (<code>passwords.htm</code>) and extracts host and credential information from each table row.</p>
 <p><strong>Variables and Functions</strong></p>
 <ul>

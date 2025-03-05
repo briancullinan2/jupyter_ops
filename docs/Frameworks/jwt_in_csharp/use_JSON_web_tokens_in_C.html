@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,53 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>GetUrlContent Method</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="csharp"><code>using System;
+using System.Net;
+
+public class WebClientHelper
+{
+    /// <summary>
+    /// Retrieves the content of a specified URL.
+    /// </summary>
+    /// <param name="uri">The URL to retrieve content from.</param>
+    /// <returns>The content of the specified URL as a string.</returns>
+    public static string GetUrlContent(string uri)
+    {
+        // TODO: Consider using HttpClient which is more modern and flexible
+        using (var client = new WebClient())
+        {
+            try
+            {
+                using (var data = client.OpenRead(uri))
+                {
+                    using (var reader = new StreamReader(data))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+            }
+            catch (WebException ex) when (ex.Status == WebExceptionStatus.NameResolutionFailure)
+            {
+                Console.WriteLine($"Failed to resolve URL: {uri}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw;
+            }
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        var url = "http://zohaib.me";
+        var content = GetUrlContent(url);
+        Console.WriteLine($"Content of {url}:");
+        Console.WriteLine(content);
+    }
+}</code></pre></div><h3>GetUrlContent Method</h3>
 <h4>Parameters</h4>
 <ul>
 <li><code>uri</code>: A string representing the URL to retrieve content from.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet removes all Docker images from your system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Function to remove unused Docker images
+remove_unused_images() {
+  # Get a list of all Docker images, except the ones with no size (i.e., running containers)
+  # This is done using the -q flag to suppress the image ID and the --filter flag to exclude images with a size of 0
+  local image_ids=$(docker images -f "dangling=false" -q)
+
+  # Remove the images from the Docker registry
+  # The -f flag is used to specify that we want to force the removal of the images
+  docker rmi -f "$image_ids"
+}
+
+# Call the function to remove unused Docker images
+remove_unused_images</code></pre></div><p>This code snippet removes all Docker images from your system.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>docker images -q</code>:</strong></p>

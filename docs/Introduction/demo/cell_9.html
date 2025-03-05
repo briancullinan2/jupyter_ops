@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<pre><code class="language-markdown">### Function: import
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Returns a function that can be imported and executed, making its contents publicly accessible.
+ * 
+ * @return {Function}
+ */
+function importModule() {
+  /**
+   * Public function to be exported.
+   * 
+   * @return {Function}
+   */
+  const exportFunction = () =&gt; {
+    // TODO: Add functionality to be executed when the function is imported and run.
+    console.log("Public function executed.");
+  };
+
+  return exportFunction;
+}
+
+// Export the module to be imported and executed elsewhere.
+export default importModule;</code></pre></div><pre><code class="language-markdown">### Function: import
 
 #### Purpose
 Returns a function that can be imported as a module.

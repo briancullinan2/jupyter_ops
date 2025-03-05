@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -180,7 +187,95 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines two functions, <code>listAllConnections</code> and <code>connectLinkedin</code>, that automate interactions with LinkedIn, specifically focusing on retrieving a list of connections and sending connection requests.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const client = require('../Core');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = `${PROFILE_PATH}/Collections/conversations`;
+const NEW_CONNECTIONS_FILE = `${project}/new-connections.json`;
+
+class ConnectionManager {
+  async listAllConnections(list) {
+    if (fs.existsSync(NEW_CONNECTIONS_FILE)) {
+      try {
+        return JSON.parse(fs.readFileSync(NEW_CONNECTIONS_FILE));
+      } catch (error) {
+        console.error('Error reading new connections file:', error);
+      }
+    }
+
+    try {
+      const url = await client.getUrl();
+      if (list &amp;&amp; list.includes('linkedin.com')) {
+        await client.url(list).pause(3000);
+      } else {
+        await client.url('https://www.linkedin.com/mynetwork/').pause(3000);
+      }
+
+      const friends = await this.getAllUntil(false, '//a[contains(@href, "/in/")]/@href', []);
+      const uniqueFriends = [...new Set(friends)];
+
+      fs.writeFileSync(NEW_CONNECTIONS_FILE, JSON.stringify(uniqueFriends, null, 4));
+      return uniqueFriends;
+    } catch (error) {
+      console.error('Error listing connections:', error);
+    }
+  }
+
+  async getAllUntil(isAsync, selector, result, equality, condition) {
+    try {
+      const element = await client.isVisible(selector);
+      if (element) {
+        const elements = await client.getElements(selector);
+        result = result.concat(elements.map((element) =&gt; element.getAttribute('href')));
+
+        if (equality(result[result.length - 1], result[result.length - 2])) {
+          return result;
+        }
+
+        if (condition(result.length)) {
+          return result;
+        }
+
+        return this.getAllUntil(isAsync, selector, result, equality, condition);
+      }
+    } catch (error) {
+      console.error('Error getting elements:', error);
+    }
+  }
+
+  async connectLinkedin(profile) {
+    try {
+      await client.clickSpa(`https://linkedin.com${profile}`).pause(3000);
+      const connectButton = await client.isVisible('//button[contains(., "Connect")]');
+      if (connectButton) {
+        await client.click('//button[contains(., "Connect")]').pause(1000);
+      } else {
+        const moreButton = await client.isVisible('//button[contains(., "More")]');
+        if (moreButton) {
+          await client.click('//button[contains(., "More")]').pause(500);
+          const connectButton = await client.isVisible('//button[contains(., "Connect")][not(contains(., "Remove"))]');
+          if (connectButton) {
+            await client.click('//button[contains(., "Connect")][not(contains(., "Remove"))]').pause(1000);
+          }
+        }
+      }
+
+      const sendNowButton = await client.isVisible('//button[contains(., "Send now")]');
+      if (sendNowButton) {
+        await client.click('//button[contains(., "Send now")]').pause(2000);
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error connecting to LinkedIn:', error);
+      return false;
+    }
+  }
+}
+
+module.exports = new ConnectionManager();</code></pre></div><p>This code snippet defines two functions, <code>listAllConnections</code> and <code>connectLinkedin</code>, that automate interactions with LinkedIn, specifically focusing on retrieving a list of connections and sending connection requests.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>listAllConnections</code> Function:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -162,7 +169,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getCatalog</code> that fetches a complete product catalog from the Zuora API, handling pagination.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Retrieves a catalog of products from Zuora.
+ * 
+ * @param {Object} zuoraConfig - Configuration object containing Zuora API settings.
+ * @param {string} zuoraConfig.rest_api_url - Base URL of the Zuora REST API.
+ * @param {string} zuoraConfig.client_id - Client ID for authentication.
+ * @param {string} zuoraConfig.client_secret - Client secret for authentication.
+ * @param {string} [nextPage] - Optional next page URL for pagination.
+ * @returns {Promise<Array<Object>>} A promise resolving to an array of products.
+ */
+function getCatalog(zuoraConfig, nextPage) {
+    // Initialize an empty array to store the catalog of products
+    const catalog = [];
+
+    // Define the API request options
+    const options = {
+        followAllRedirects: true,
+        uri: zuoraConfig.rest_api_url + (nextPage? nextPage.replace(/\/v1/ig, '') : '/catalog/products'),
+        method: 'GET',
+        headers: getAuthHeaders(zuoraConfig)
+    };
+
+    // Send the API request and process the response
+    return request.request(options)
+       .then(response => {
+            // Get the products from the response body
+            const products = response.body.products;
+
+            // Add the products to the catalog
+            catalog.push(...products);
+
+            // Check if there is a next page and recursively fetch it
+            if (response.body.nextPage) {
+                // Use Promise.resolve to handle the case where nextPage is falsy
+                return Promise.resolve(getCatalog(zuoraConfig, response.body.nextPage))
+                   .then(results => catalog.push(...results));
+            }
+
+            // Return the catalog when there are no more pages
+            return catalog;
+        })
+       .catch(error => {
+            // Handle any errors that occur during the request
+            // TODO: Implement error handling and logging
+            globalThis.console.error('Error fetching catalog:', error);
+            return [];
+        });
+}
+
+// Export the function
+module.exports = getCatalog;</code></pre></div><p>This code defines a function <code>getCatalog</code> that fetches a complete product catalog from the Zuora API, handling pagination.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -109,7 +116,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>addRow</code> that adds a new row to a specific sheet in a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { google } = require('googleapis');
+const core = require('../Core');
+const { updateRow } = core.import('update a row in google sheets');
+
+/**
+ * Adds a new row to a Google Sheet.
+ *
+ * @param {string} link - The link to the Google Sheet.
+ * @param {object} newRow - The data to be inserted into the new row.
+ * @param {string} page - The page number where the row will be added.
+ * @param {string} sheetName - The name of the sheet in the Google Sheet.
+ * @param {function} callback - An optional callback function.
+ * @returns {Promise} A promise that resolves to an object containing the response from the API.
+ */
+async function addRow({
+  link,
+  newRow,
+  page,
+  sheetName = 'Sheet1', // Default sheet name
+  callback,
+}) {
+  // Check if all necessary parameters are provided
+  if (!link ||!newRow ||!page) {
+    throw new Error('Missing required parameters');
+  }
+
+  // Update the row and return the response
+  return updateRow(link, r => false, newRow, page, sheetName, callback);
+}
+
+// Export the function
+module.exports = addRow;</code></pre></div><p>This code defines a function <code>addRow</code> that adds a new row to a specific sheet in a Google Sheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

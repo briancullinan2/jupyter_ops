@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Installing TypeScript</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Function to install TypeScript
+install_typescript() {
+  # Check if npm is installed
+  if! command -v npm &> /dev/null; then
+    echo "Error: npm is not installed. Please install it first."
+    return 1
+  fi
+
+  # Update package list
+  npm install -g npm@latest
+
+  # Install TypeScript globally
+  npm install -g typescript
+
+  echo "TypeScript installed successfully."
+}
+
+# Call the function
+install_typescript</code></pre></div><h3>Installing TypeScript</h3>
 <h4>Prerequisites</h4>
 <ul>
 <li>Node.js installed on your system</li>

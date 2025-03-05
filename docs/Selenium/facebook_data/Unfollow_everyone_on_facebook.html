@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to unfollow users on Facebook.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { client, getUrl } = require('../Core');
+
+/**
+ * Unfollows all friends on Facebook.
+ * @returns {Promise} A promise resolving to the result of unfollowing all friends.
+ */
+function unfollowFacebook() {
+    // Get the Facebook following page URL
+    const url = getUrl().url('https://www_facebook_dotcom/me/following'); // Using template literals for readability
+
+    // Wait for 3 seconds for the page to load
+    return url.pause(3000).elements('//a[contains(@ajaxify, "unfollow_profile")]')
+       .then(els =&gt; {
+            // Map over the elements, clicking each one to unfollow
+            const unfollowPromises = els.value.map(el =&gt; () =&gt; {
+                // Click the unfollow button and resolve the promise with the result
+                return client.elementIdClick(el.ELEMENT).then(() =&gt; {})
+                   .catch(e =&gt; e); // Log the error if the click fails
+            });
+
+            // Use Promise.all to wait for all unfollow clicks to complete
+            return Promise.all(unfollowPromises.map(p =&gt; importer.runPromise(p))).catch(e =&gt; e); // Run each promise and catch any errors
+        });
+}
+
+module.exports = unfollowFacebook;</code></pre></div><p>This code snippet is designed to unfollow users on Facebook.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong> It imports a custom <code>importer</code> module, likely containing utility functions.</p></li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define constants for wget options
+MIRROR=false
+LEVEL=2
+NO_PARENT=true
+CONVERT_LINKS=true
+HTML_EXTENSION=true
+NO_HOST=true
+NO_CLOBBER=true
+NEWER=true
+CONTINUOUS=true
+ACCEPT_PATTERN="/documentation/"
+WAIT_PERIOD=1
+URL="https://www.excessiveplus.net/documentation"
+
+# Set wget options
+OPTS=(
+  "--${MIRROR:-false}"
+  "--level=${LEVEL}"
+  "--no-parent"
+  "--convert-links"
+  "--html-extension"
+  "--no-host"
+  "--no-clobber"
+  "-N"
+  "-c"
+  "--accept-regex=${ACCEPT_PATTERN}"
+  "--wait=${WAIT_PERIOD}"
+  "--page-requisites"
+)
+
+# Print wget command
+echo "wget ${OPTS[@]} ${URL}"
+
+# TODO: Consider using a more robust way of defining wget options
+#       such as using a separate file or environment variables.</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This code uses the <code>wget</code> command to download a website's documentation section. Here's a step-by-step explanation:</p>
 <ol>
 <li><code>wget</code>: The command to download the website using the <code>wget</code> utility.</li>

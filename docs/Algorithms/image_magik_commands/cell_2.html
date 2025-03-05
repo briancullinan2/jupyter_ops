@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -105,7 +112,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define the input directory and the output directory
+INPUT_DIR="/Users/briancullinan/jupyter_ops/.output"
+OUTPUT_DIR="${INPUT_DIR}/converted"
+
+# Create the output directory if it does not exist
+mkdir -p "${OUTPUT_DIR}"
+
+# Define the file extensions to be processed
+FILE_EXTENSIONS=(jpeg jpg heic tga png svg webp wal)
+
+# Use find to locate all files in the input directory with the specified extensions
+for i in $(find "${INPUT_DIR}" -type f -name "*.*" -print0 | xargs -0 -I {} basename {}); do
+    # Extract the filename and extension from the file path
+    filename="${i%.*}"
+    extension="${i##*.}"
+
+    # Check if the file extension is in the list of supported extensions
+    if [[ " ${FILE_EXTENSIONS[@]} " =~ " ${extension} " ]]; then
+        # Construct the output filename
+        output_filename="${filename%-final*}-final.jpg"
+
+        # Construct the output file path
+        output_file_path="${OUTPUT_DIR}/${output_filename}"
+
+        # Check if the output file already exists
+        if [! -f "${output_file_path}" ]; then
+            # Use ImageMagick to convert the file to RGB and resize it
+            convert -density 600 "${i}" -resize "600^<" -scale 50% "${output_file_path}" || true
+
+            # Use ImageMagick to apply image enhancement and cleanup
+            convert "${output_file_path}" +clone -enhance -despeckle -alpha on -channel alpha -evaluate multiply 0.25 -composite -quality 50% "${output_file_path}" || true
+        fi
+    fi
+done
+
+echo "done"</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Section 1: Windows Batch Script</h3>
 <pre><code class="language-bash"># Windows
 # for /r %%v in (*.pcx or *.jpg or *.jpeg) do convert -colorspace RGB &quot;%%v&quot; &quot;%%~dpv%%~nv.tga&quot; ; done

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -169,7 +176,92 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h1><strong>Code Breakdown</strong></h1>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const _ = require('lodash');
+const fs = require('fs');
+const xlsx = require('xlsx');
+const path = require('path');
+const { createLogger, format, transports } = require('winston');
+
+// Setup logging
+const logger = createLogger({
+  level: 'info',
+  format: format.combine(
+    format.timestamp(),
+    format.json()
+  ),
+  transports: [
+    new transports.Console()
+  ]
+});
+
+// Define constants
+const PROFILE_PATH = getProfilePath();
+const ZUORA_CONFIG_FILE = path.join(PROFILE_PATH, '.credentials/zuoraRest_production.json');
+
+// Define functions
+function getProfilePath() {
+  return process.env.HOME ||
+    process.env.HOMEPATH ||
+    process.env.USERPROFILE ||
+    '';
+}
+
+function loadZuoraConfig() {
+  try {
+    return JSON.parse(fs.readFileSync(ZUORA_CONFIG_FILE).toString().trim());
+  } catch (error) {
+    logger.error(`Error loading Zuora config: ${error.message}`);
+  }
+}
+
+function getZuoraMonth(zuoraConfig, month) {
+  return Promise.resolve(importer.import('zuora export month')(zuoraConfig, month));
+}
+
+function calculatePrice(zuoraConfig, catalog) {
+  return Promise.resolve(importer.import('calculate price')(zuoraConfig, catalog));
+}
+
+function getCatalog(zuoraConfig) {
+  return getZuoraMonth(zuoraConfig, 6)
+   .then(zuora => importer.import('zuora to eloqua.ipynb[0]')(zuora));
+}
+
+// Import required modules asynchronously
+async function init() {
+  const importer = await import('../Core');
+  const zuoraConfig = loadZuoraConfig();
+
+  if (!zuoraConfig) {
+    logger.error('Zuora config is empty');
+    return;
+  }
+
+  let zuora;
+
+  try {
+    zuora = await getZuoraMonth(zuoraConfig, 6);
+  } catch (error) {
+    logger.error(`Error getting Zuora month: ${error.message}`);
+  }
+
+  if (zuora) {
+    logger.info(`Zuora length: ${zuora.length}`);
+    const uniqueProducts = _.uniqBy(zuora, r => r['ProductRatePlan.Name']);
+    logger.info(`Unique products: ${JSON.stringify(uniqueProducts, null, 4)}`);
+
+    await $.sendResult(uniqueProducts);
+  } else {
+    await $.sendError('Failed to get Zuora data');
+  }
+}
+
+// Call init function
+init();
+
+// TODO: Replace $.sendResult and $.sendError with a more robust error handling mechanism</code></pre></div><h1><strong>Code Breakdown</strong></h1>
 <h3>Dependencies</h3>
 <ul>
 <li><code>lodash</code> (<code>_</code>): a utility library for functional programming.</li>

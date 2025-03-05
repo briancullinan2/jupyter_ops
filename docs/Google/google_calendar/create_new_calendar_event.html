@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -128,7 +135,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>createNewEvent</code> that creates a new event in a Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { google } = require('googleapis');
+const { correctCalendarId } = require('../Core');
+const console = require('console');
+
+/**
+ * Creates a new event on the specified Google Calendar.
+ * 
+ * @param {string|object} summary - The summary of the event.
+ * @param {string} description - A description of the event.
+ * @param {object} options - Options for the event.
+ * @param {string} options.calendarId - The ID of the calendar to add the event to.
+ * @param {object} options.auth - The authentication credentials.
+ * @returns {Promise<void>} A promise that resolves when the event is created.
+ */
+async function createNewEvent(summary, description, options = {}) {
+    // Get the current date and time
+    const now = new Date();
+    
+    // Create a new event object
+    const event = {
+        summary: summary.toString(), // Ensure summary is a string
+        description,
+        start: { dateTime: new Date(now.getTime()) }, // Use camelCase property names
+        end: { dateTime: new Date(now.getTime() + 30 * 60 * 1000) }
+    };
+
+    // If summary is an object, merge it with the event object
+    if (typeof summary === 'object') {
+        Object.assign(event, summary);
+        // Update description to be the last argument (if multiple)
+        const args = Array.prototype.slice.call(arguments);
+        args.shift();
+        args.shift();
+        description = args.pop();
+    }
+
+    // Get the correct calendar ID
+    const calendarId = await correctCalendarId(options);
+
+    // Create the event on the specified calendar
+    const calendar = google.calendar('v3');
+    const response = await calendar.events.insert({
+        auth: options.auth,
+        calendarId,
+        resource: event
+    });
+
+    // Log the event ID
+    console.log(`Event created: ${response.data.id}`);
+
+    return response.data.id;
+}
+
+module.exports = createNewEvent;</code></pre></div><p>This code snippet defines a function <code>createNewEvent</code> that creates a new event in a Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,138 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client, Builder, Browser, By, Key, until } = require('selenium-webdriver');
+
+async function enterReddit(driver) {
+  console.log('Reddit: Sign in required');
+
+  const waitOptions = {
+    timeout: 30000,
+    timeoutMessage: 'Timed out waiting for element to be present',
+  };
+
+  const elementOptions = {
+    timeout: 30000,
+    timeoutMessage: 'Timed out waiting for element to be present',
+  };
+
+  let loginStill, loginStill2, loginStill3;
+
+  try {
+    loginStill = await driver.wait(
+      until.elementLocated(By.css('#captcha-internal'), elementOptions),
+      waitOptions.timeout
+    );
+  } catch (error) {
+    loginStill = null;
+  }
+
+  try {
+    loginStill2 = await driver.wait(
+      until.elementLocated(By.css('input[name*="session_password"]'), elementOptions),
+      waitOptions.timeout
+    );
+  } catch (error) {
+    loginStill2 = null;
+  }
+
+  try {
+    loginStill3 = await driver.wait(
+      until.elementLocated(
+        By.xpath('//*[contains(text(),"Check your notifications")]'),
+        elementOptions
+      ),
+      waitOptions.timeout
+    );
+  } catch (error) {
+    loginStill3 = null;
+  }
+
+  if (loginStill3) {
+    await new Promise((resolve) =&gt; setTimeout(resolve, 20000));
+    try {
+      loginStill = null;
+      loginStill2 = null;
+      loginStill3 = await driver.wait(
+        until.elementLocated(
+          By.xpath('//*[contains(text(),"Check your notifications")]'),
+          elementOptions
+        ),
+        waitOptions.timeout
+      );
+    } catch (error) {
+      loginStill3 = null;
+    }
+  }
+
+  if (loginStill || loginStill2 || loginStill3) {
+    throw new Error('captcha');
+  }
+}
+
+async function loginReddit(driver) {
+  if (!driver) {
+    driver = await new Builder()
+     .forBrowser(Browser.FIREFOX)
+     .build();
+  }
+
+  try {
+    const url = await driver.getCurrentUrl();
+    const loggedIn = url.indexOf('reddit') &gt; -1 &amp;&amp; url.indexOf('login') === -1;
+
+    if (loggedIn) {
+      await enterReddit(driver);
+    } else {
+      await driver.get('https://www.reddit.com/submit');
+
+      let loginLink, loginLink2;
+
+      try {
+        loginLink = await driver.wait(
+          until.elementLocated(
+            By.xpath('//auth-flow-link[text()[contains(.,"Forgot password?")]]'),
+            {
+              timeout: 30000,
+              timeoutMessage: 'Timed out waiting for element to be present',
+            }
+          ),
+          30000
+        );
+      } catch (error) {
+        loginLink = null;
+      }
+
+      try {
+        loginLink2 = await driver.wait(
+          until.elementLocated(
+            By.xpath('//auth-flow-link[text()[contains(.,"Sign up")]]'),
+            {
+              timeout: 30000,
+              timeoutMessage: 'Timed out waiting for element to be present',
+            }
+          ),
+          30000
+        );
+      } catch (error) {
+        loginLink2 = null;
+      }
+
+      if (loginLink || loginLink2) {
+        await enterReddit(driver);
+      }
+    }
+  } catch (error) {
+    await driver.quit(); // Avoid leaving sessions hanging around
+
+    throw error;
+  }
+
+  return driver;
+}
+
+module.exports = loginReddit;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code imports the following dependencies:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -123,7 +130,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>setReminder</code> that schedules a Google Calendar event to send a Twilio message at a specified time.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { google } = require('googleapis');
+const { chronoNode } = require('chrono-node');
+const util = require('util');
+const importer = require('../Core');
+
+// Create a Google Calendar API client
+const calendar = google.calendar('v3');
+
+// Util functions
+const promisify = util.promisify;
+const parseDate = chronoNode.parseDate;
+
+// API constants
+const MIN_EVENT_DURATION = 30 * 60 * 1000; // 30 minutes in milliseconds
+
+// Get OAuth client and correct calendar ID
+const { getOauthClient, correctCalendarId } = importer.import([
+  'lookup calendar name',
+  'import google calendar api',
+]);
+
+// Default calendar ID
+const DEFAULT_CALENDAR_ID = 'aws';
+
+// Set reminder function
+/**
+ * Set a reminder in the Google Calendar.
+ * 
+ * @param {string} to - The recipient's phone number.
+ * @param {string} message - The message to be sent.
+ * @param {string} time - The reminder time in a format that can be parsed by chrono-node.
+ * @returns {Promise<void>} - A promise that resolves when the reminder is set.
+ */
+function setReminder(to, message, time) {
+  // Parse the reminder time
+  const eventTime = parseDate(time).getTime();
+
+  // Create the event
+  const event = {
+    summary: 'Send Twilio message',
+    description: JSON.stringify({ message, to }),
+    start: { dateTime: new Date(eventTime) },
+    end: { dateTime: new Date(eventTime + MIN_EVENT_DURATION) },
+  };
+
+  // Set the calendar ID
+  const options = { calendarId: DEFAULT_CALENDAR_ID, auth: true };
+
+  // Set the reminder
+  return Promise.resolve(options)
+   .then((authOptions) => getOauthClient(authOptions))
+   .then((oauthClient) => correctCalendarId({...options, oauthClient }))
+   .then((calendarId) => promisify(calendar.events.insert)({
+      calendarId,
+      auth: oauthClient,
+      resource: event,
+    }));
+}
+
+module.exports = setReminder;</code></pre></div><p>This code defines a function <code>setReminder</code> that schedules a Google Calendar event to send a Twilio message at a specified time.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

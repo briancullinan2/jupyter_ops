@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -291,7 +298,176 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>addHints</code> that adds hints to a Quake 3 map file based on its name or a provided pattern.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const { getBounds } = importer.import('add skybox to map');
+
+// Define map hints in a more readable format
+const MAPS_HINTS = {
+  'base1-a': [
+    [-648, -209],
+    [-648, 235],
+    [-400, 235],
+    [-400, 514],
+    [300, 514],
+    [300, 1922],
+    [9999, 1922],
+    [9999, -9999],
+    [-648, -9999],
+    [-648, -209]
+  ],
+  'base1-b': [
+    [-648, -209],
+    [-648, 235],
+    [-400, 235],
+    [-400, 514],
+    [300, 514],
+    [300, 1922],
+    [-1300, 2174],
+    [-1300, 648],
+    [-648, -209],
+  ],
+  'base1-c': [
+    [-1300, 1000],
+    [-1300, 2174],
+    [-9999, 9999],
+    [-9999, 1000],
+    [-1300, 1000],
+  ],
+  'base2-a': [
+    [-1212, 1242],
+    [340, 1242],
+    [340, 1030],
+    [1324, 1030],
+    [1324, 3109],
+    [-1212, 3109],
+    [-1212, 1242]
+  ],
+  'base2-b': [
+    [-1212, 1242],
+    [340, 1242],
+    [340, 1030],
+    [1324, 1030],
+    [1324, -1711],
+    [736, -1711],
+    [736, -1251],
+    [-1212, -1251],
+    [-1212, 1242]
+  ],
+  'base2-c': [
+    [1324, 1030],
+    [1324, -1711],
+    [736, -1711],
+    [736, -1251],
+    [-1212, -1251],
+    [-1212, -2815],
+    [1324, -2815],
+    [1324, 1030],
+  ]
+};
+
+/**
+ * Add hints to a map file based on the provided map hints.
+ * 
+ * @param {string} fileName The path to the map file or the file contents as a string.
+ * @param {string|Array&lt;any&gt;} hints A string or array of map hints to add.
+ * @returns {string} The updated map file contents.
+ */
+function addHints(fileName, hints) {
+  // Read the file contents if a file path is provided
+  let file;
+  if (typeof fileName ==='string' &amp;&amp; fs.existsSync(fileName)) {
+    file = fs.readFileSync(fileName, 'utf-8');
+    // Extract the map hint name from the file name
+    const hintName = path.basename(fileName).replace(/[-_]converted|\.map$/ig, '');
+    // If no hints are provided, use the hint name as a regex to extract the map hint
+    if (!hints) {
+      hints = Object.keys(MAPS_HINTS).reduce((arr, k) =&gt; {
+        if (k.match(new RegExp(hintName, 'ig'))) {
+          arr.push(MAPS_HINTS[k]);
+        }
+        return arr;
+      }, []);
+    }
+  } else {
+    file = fileName;
+  }
+
+  // If the hints are a string, convert it to an array of map hints
+  if (!Array.isArray(hints)) {
+    const exp = new RegExp(hints, 'ig');
+    hints = Object.keys(MAPS_HINTS).reduce((arr, k) =&gt; {
+      if (k.match(exp)) {
+        arr.push(MAPS_HINTS[k]);
+      }
+      return arr;
+    }, []);
+  }
+
+  // Extract the brushes from the file contents
+  const brushes = importer.regexToArray(/\{[^\{}]*?\}\s*/ig, file);
+
+  // Remove any areaportal brushes
+  // TODO: Optimize this loop
+  // brushes.forEach((b) =&gt; {
+  //   if (b.includes('/areaportal')) {
+  //     file = file.replace(b, '');
+  //     return false;
+  //   }
+  //   return true;
+  // });
+
+  // Get the bounds of the map
+  const vs = getBounds(file);
+
+  // Initialize the new brush contents
+  let newBrush = '';
+
+  // Iterate over each map hint and add a brush for each segment
+  hints.forEach((hint) =&gt; {
+    for (let i = 0; i &lt; hint.length - 1; i++) {
+      const minX = Math.min(hint[i][0], hint[i + 1][0]);
+      const maxX = Math.max(hint[i][0], hint[i + 1][0]);
+      const minY = Math.min(hint[i][1], hint[i + 1][1]);
+      const maxY = Math.max(hint[i][1], hint[i + 1][1]);
+
+      const p1 = [minX, minY, vs[0][2]];
+      const p2 = [maxX + 2, maxY + 2, vs[1][2]];
+
+      // Add the brush contents for the current segment
+      newBrush += `
+{ // brush 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p2[0]} ${p1[1]} ${p2[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p2[0]} ${p2[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p2[1]} ${p1[2]} ) ( ${p1[0]} ${p1[1]} ${p1[2]} ) ( ${p2[0]} ${p1[1]} ${p1[2]} ) common/hint 0 0 0 1 1 0 0 0
+( ${p1[0]} ${p1[1]} ${p2[2]} ) ( ${p1[0]} ${p2[1]} ${p2[2]} ) ( ${p2[0]} ${p2[1]} ${p2[2]} ) common/hint 0 0 0 1 1 0 0 0
+}
+`;
+    }
+  });
+
+  // Insert the new brush contents into the file
+  const exp = /\{*\s*\/\/\s*brush\s*0\s*\{*/ig;
+  const match = exp.exec(file);
+  const pos = exp.lastIndex;
+  file = file.substr(0, pos - match[0].length) + newBrush + file.substr(pos - match[0].length);
+
+  // Write the updated file contents to the original file if necessary
+  if (typeof fileName ==='string' &amp;&amp; fs.existsSync(fileName)) {
+    console.log(`writing ${fileName}`);
+    fs.writeFileSync(fileName, file);
+  } else {
+    return file;
+  }
+}
+
+module.exports = addHints;
+module.exports.addHints = addHints;
+module.exports.MAPS_HINTS = MAPS_HINTS;</code></pre></div><p>This code snippet defines a function <code>addHints</code> that adds hints to a Quake 3 map file based on its name or a provided pattern.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

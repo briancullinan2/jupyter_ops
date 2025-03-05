@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,7 +95,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<pre><code class="language-markdown">## Audio Analysis Functions
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Extracts distinguishable features from the audio signal
+ * 
+ * @param {Array} audioSignal - A 1D array representing the audio signal
+ * @returns {Object} features - An object containing the extracted features of the audio signal
+ */
+function walkAudio(audioSignal) {
+    // Check if input is a valid array
+    if (!Array.isArray(audioSignal)) {
+        throw new Error('Input must be a valid array');
+    }
+
+    // Extract Mel-Frequency Cepstral Coefficients (MFCCs)
+    const mfccs = extractMFCCs(audioSignal);
+    
+    // Extract Mel-Scale Spectral Features
+    const melSpectralFeatures = extractMelSpectralFeatures(audioSignal);
+
+    // Return extracted features
+    return { mfccs, melSpectralFeatures };
+}
+
+## selectAudio Function
+### Queries Specific Features of Audio
+
+### Parameters:
+- `audioSignal`: A 1D array representing the audio signal
+- `featureType`: A string indicating the type of feature to query (e.g.,'mfcc','melSpectral')
+### Returns:
+- `featureValue`: The value of the queried feature
+</code></pre></div><pre><code class="language-markdown">## Audio Analysis Functions
 
 ### walkAudio()
 

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -163,7 +170,71 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>searchResultsToJson(url)</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Extracts search results from a given URL and returns them in JSON format.
+ * 
+ * @param {string} url - The URL to extract search results from.
+ * @returns {Promise&lt;Object&gt;} A promise resolving to an object containing the URL, search query, and results.
+ */
+function searchResultsToJson(url) {
+    // Log the URL and client session ID for debugging purposes
+    console.log(`Searching ${url} - Session ID: ${client.requestHandler.sessionID}`);
+    
+    // Define the XPath query to extract search results
+    const query = `
+        //input[contains(@aria-label, "Search")]/@value |
+        //input[contains(@aria-label, "search")]/@value |
+        //label[contains(., "Search")]/following::*//input[@type="text"]/@value |
+        //input[contains(@class, "Search")]/@value |
+        //input[contains(@name, "query")]/@value |
+        //input[contains(@id, "search")]/@value |
+        //input[contains(@aria-label, "Request")]/@value
+    `;
+    
+    const resultsQuery = `
+        //h3 | //h2 | div[contains(@class, "title")] |
+        //*[contains(@class, "item-title")]
+    `;
+    
+    const resultFields = {
+        name: './/text()',
+        summary: './/following-sibling::div//text()'
+    };
+    
+    // Execute the XPath query and extract the results
+    return client
+       .url(url)
+       .pause(2000)
+       .getAllXPath({
+            query,
+            results: [resultsQuery, resultFields]
+        })
+       .then(r =&gt; {
+            // Extract the search query and results from the response
+            const { query: queryValue, results: resultsArray } = r;
+            const queryResult = typeof queryValue ==='string'? queryValue : queryValue[0];
+            const results = resultsArray.map(s =&gt; ({
+                name: typeof s.name ==='string'? s.name : s.name.join('\n'),
+                summary: typeof s.summary ==='string'? s.summary : s.summary.join('\n')
+            }));
+            
+            return {
+                url,
+                query: queryResult,
+                results
+            };
+        })
+       .catch(e =&gt; {
+            // Log any errors and return an empty response
+            console.error(e);
+            return { url, query: null, results: [] };
+        });
+}
+
+module.exports = searchResultsToJson;
+```</code></pre></div><h3>Function: <code>searchResultsToJson(url)</code></h3>
 <h4>Description</h4>
 <p>Extracts search results from a given URL and returns them in JSON format.</p>
 <h4>Parameters</h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines two functions for interacting with the Eloqua API to manage custom data objects and import definitions.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { createClient } = require('http-request-polyfill');
+const { EloquentImport } = require('./Core');
+const { BulkImportTemplate } = require('./BulkImportTemplate');
+
+class LlamaService {
+  constructor(eloquaImport, bulkImportTemplate, httpclient = createClient()) {
+    this.eloquaImport = eloquaImport;
+    this.bulkImportTemplate = bulkImportTemplate;
+    this.httpClient = httpclient;
+  }
+
+  async getCustomDataObject(eloquaToken, eloquaConfig) {
+    /**
+     * Retrieves the custom data object 'AUT - NA Renewals' from Eloqua.
+     * 
+     * @param {string} eloquaToken - Eloqua API token.
+     * @param {object} eloquaConfig - Eloqua API configuration.
+     * @returns {object} The custom data object.
+     */
+    const response = await this.httpClient.get({
+      uri: `${eloquaConfig.rest_api_url}/bulk/2.0/customobjects`,
+      followAllRedirects: true,
+      headers: this.eloquaImport.eloquaRequestHeaders(eloquaToken)
+    });
+
+    const customDataObject = response.body.items.find(item => item.name === 'AUT - NA Renewals');
+    return customDataObject || {};
+  }
+
+  async getImportDefinitions(uri, eloquaToken, eloquaConfig) {
+    /**
+     * Retrieves the import definition for the bulk import template.
+     * 
+     * @param {string} uri - The specific import definition URI.
+     * @param {string} eloquaToken - Eloqua API token.
+     * @param {object} eloquaConfig - Eloqua API configuration.
+     * @returns {object} The import definition.
+     */
+    const response = await this.httpClient.get({
+      uri: `${eloquaConfig.rest_api_url}/bulk/2.0${uri}/imports`,
+      followAllRedirects: true,
+      headers: this.eloquaImport.eloquaRequestHeaders(eloquaToken)
+    });
+
+    const importDefinition = response.body.items.find(item => item.name === this.bulkImportTemplate(0).name);
+    return importDefinition || {};
+  }
+}
+
+const eloquaImport = new EloquentImport();
+const bulkImportTemplate = new BulkImportTemplate();
+const httpclient = createClient();
+const llamaService = new LlamaService(eloquaImport, bulkImportTemplate, httpclient);
+
+module.exports = {
+  getCustomDataObject: llamaService.getCustomDataObject.bind(llamaService),
+  getImportDefinitions: llamaService.getImportDefinitions.bind(llamaService)
+};</code></pre></div><p>This code defines two functions for interacting with the Eloqua API to manage custom data objects and import definitions.</p>
 <p><strong>Here's a breakdown:</strong></p>
 <ol>
 <li><p><strong>Imports:</strong></p>

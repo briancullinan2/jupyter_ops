@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -130,7 +137,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>updateGist</code> that commits changes to a GitHub Gist.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Octokit } = require('@octokit/rest');
+
+/**
+ * Updates an existing GitHub Gist.
+ *
+ * @param {Object} gist - The Gist object.
+ * @param {Object} files - The files to update.
+ * @returns {Promise<Object>} The updated Gist.
+ */
+async function updateGist({ gist_id, files, token }) {
+    // Validate inputs
+    if (!gist_id ||!files) {
+        throw new Error('Missing required parameters');
+    }
+
+    const octokit = new Octokit({
+        baseUrl: 'https://api.github.com',
+        // Use personal access token for authentication
+        auth: token
+    });
+
+    try {
+        const response = await octokit.gists.update({
+            gist_id,
+            files
+        });
+        return response.data;
+    } catch (error) {
+        // Log error and return it
+        globalThis.console.error(error);
+        throw error;
+    }
+}
+
+export default updateGist;</code></pre></div><p>This code defines a function <code>updateGist</code> that commits changes to a GitHub Gist.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

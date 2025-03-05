@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const { DiscordApi } = require('discord-api');
+const { authorizeGateway } = require('authorize-discord');
+
+/**
+ * Sends a message to a specified Discord channel.
+ *
+ * @async
+ * @returns {Promise<void>}
+ */
+async function sendMessage(message, channelId)
+{
+    // Check if message and channel ID are provided
+    if (!message ||!channelId) {
+        throw new Error('Message and channel ID are required');
+    }
+
+    try {
+        // Authorize the gateway to interact with Discord
+        const discordSocket = await authorizeGateway();
+
+        // Create a new message on the specified channel
+        await DiscordApi.createMessage(message, channelId);
+
+        // Close the Discord socket
+        discordSocket.close();
+    } catch (error) {
+        // Handle any errors that occur during the process
+        console.error('Error sending message:', error);
+    }
+}
+
+// Export the function
+module.exports = sendMessage;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var discordApi = importer.import('discord api')
 var {authorizeGateway} = importer.import('authorize discord')

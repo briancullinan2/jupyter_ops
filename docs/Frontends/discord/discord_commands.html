@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -208,7 +215,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  DEFAULT_APPLICATION,
+  timeout,
+  requestAuthQ
+} = require('./discord-utility-functions');
+
+// Function to register a new command
+async function registerCommand(cmd, desc, guildId = null) {
+  const commandData = typeof cmd === 'object'? cmd : { name: cmd, description: desc };
+  console.log(`Registering command ${commandData.name}`);
+  await timeout(2000);
+  const url = guildId
+   ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands`
+    : `applications/${DEFAULT_APPLICATION}/commands`;
+  return await requestAuthQ({
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    url,
+    data: JSON.stringify(commandData)
+  });
+}
+
+// Function to retrieve a list of commands
+async function getCommands(guildId = null) {
+  const url = guildId
+   ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands`
+    : `applications/${DEFAULT_APPLICATION}/commands`;
+  return await requestAuthQ({ method: 'GET', url });
+}
+
+// Function to retrieve a specific command
+async function getCommand(commandId, guildId = null) {
+  const url = guildId
+   ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands/${commandId}`
+    : `applications/${DEFAULT_APPLICATION}/commands/${commandId}`;
+  return await requestAuthQ({ method: 'GET', url });
+}
+
+// Function to update an existing interaction (DEPRECATED)
+async function updateInteraction(message, interactionId, interactionToken) {
+  const url = `webhooks/${DEFAULT_APPLICATION}/${interactionToken}/messages/@original`;
+  const data = typeof message ==='string'? { content: message } : message;
+  return await requestAuthQ({
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PATCH',
+    url,
+    data: JSON.stringify(data)
+  });
+}
+
+// Function to update an existing command
+async function updateCommand(cmd, desc, commandId, guildId = null) {
+  const commandData = typeof cmd === 'object'? cmd : { name: cmd, description: desc };
+  console.log(`Updating command ${commandData.name}`);
+  await timeout(2000);
+  const url = guildId
+   ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands/${commandId}`
+    : `applications/${DEFAULT_APPLICATION}/commands/${commandId}`;
+  return await requestAuthQ({
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PATCH',
+    url,
+    data: JSON.stringify(commandData)
+  });
+}
+
+// Function to delete a command
+async function deleteCommand(commandId, guildId = null) {
+  console.log(`Deleting command ${commandId}`);
+  const url = guildId
+   ? `applications/${DEFAULT_APPLICATION}/guilds/${guildId}/commands/${commandId}`
+    : `applications/${DEFAULT_APPLICATION}/commands/${commandId}`;
+  return await requestAuthQ({ method: 'DELETE', url });
+}
+
+module.exports = {
+  registerCommand,
+  getCommands,
+  getCommand,
+  updateInteraction, // DEPRECATED
+  deleteCommand,
+  updateCommand,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <p>The code starts by importing dependencies from other modules using the <code>importer.import</code> function.</p>
 <pre><code class="language-javascript">const {DEFAULT_APPLICATION} = importer.import('discord configuration')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -166,7 +173,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to find and collect all shader definitions from a Quake 3 mod directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { glob } = require('glob');
+const importer = require('../Core');
+
+/**
+ * Finds all shaders in the given directory and its subdirectories.
+ * 
+ * @param {string} modDir - The directory to search for shaders.
+ * @returns {Promise<string[]>} An array of shader names.
+ */
+async function findAllShaders(modDir) {
+    // Initialize an object to store all shaders
+    const allShaders = {};
+
+    try {
+        // Get all shader files in the directory
+        const shaderFiles = await glob(path.join(modDir, '**/*.shader'));
+
+        // Iterate over each shader file
+        for (const shaderFile of shaderFiles) {
+            // Get the shader definition and add it to the allShaders object
+            const shaders = await findShaders(shaderFile);
+            Object.assign(allShaders, shaders);
+        }
+
+        // Write the allShaders object to a JSON file
+        fs.writeFileSync(path.join(modDir, 'all_shaders.json'), JSON.stringify(allShaders, null, 2));
+
+        // Return the names of all shaders
+        return Object.keys(allShaders);
+    } catch (error) {
+        // Log any errors that occur during the process
+        console.error(`Error finding shaders in ${modDir}:`, error);
+    }
+}
+
+module.exports = findAllShaders;
+
+// TODO: Consider using a more robust logging mechanism
+// TODO: Add input validation for the modDir parameter
+// TODO: Consider using a more efficient data structure than an object for allShaders</code></pre></div><p>This code snippet is designed to find and collect all shader definitions from a Quake 3 mod directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

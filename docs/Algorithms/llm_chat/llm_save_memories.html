@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -159,7 +166,77 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = require('./general-chit-chat');
+const { findMemories, listMemories } = require('./llm-load-memories');
+
+/**
+ * Manage memories by determining the user's intended action and performing it.
+ * 
+ * @param {import('./llm-model').LlmModel} promptModel - The language model used for prompting.
+ * @param {string} session - The current session ID.
+ * @param {string} prompt - The user's input prompt.
+ * @returns {string} A list of available memories.
+ */
+async function manageMemories(promptModel, session, prompt) {
+  if (!session) return '';
+
+  // Create a timestamped file path for the current conversation.
+  const now = new Date();
+  const currentFile = path.join(PROJECT_PATH, now.toLocaleDateString('en-CA') + '-' + DEFAULT_MODEL + '-' + session + '.json');
+
+  // Load or create the conversation data if it doesn't exist yet.
+  if (!ACTIVE_CONVERSATIONS[currentFile]) {
+    if (fs.existsSync(currentFile)) {
+      ACTIVE_CONVERSATIONS[currentFile] = JSON.parse(fs.readFileSync(currentFile));
+    } else {
+      ACTIVE_CONVERSATIONS[currentFile] = {};
+    }
+  }
+
+  // Define memory-related functions and their descriptions.
+  const MEMORY_FUNCTIONS = {
+    'listMemories': 'Display a list of stored memories at the user\'s request.',
+   'saveMemory': 'Save a new memory given the instructions to always remember something.',
+   'removeMemory': 'Remove a matching memory from the storage bank.',
+    'clearMemory': 'Remove all memories but only if the user is absolutely certain.',
+  };
+
+  // Determine the user's intended action by prompting them to choose a function.
+  const q1 = `Given the following memory-related functions:\n${Object.values(MEMORY_FUNCTIONS).join('\n')}\nWhich function best matches this prompt?\n${prompt}\nOnly return the function name and nothing else.`;
+  const a1 = await promptModel(q1);
+
+  switch (a1) {
+    case 'listMemories':
+      // Display the list of memories.
+      return 'This is the list of available memories:\n' + await listMemories(session);
+    case'saveMemory':
+      // Prompt the user to summarize the memory in one sentence.
+      const q2 = 'Summarize this memory in one very precise sentence in first person:\n' + prompt + '\nOnly return the summary, no explanation.';
+      const a2 = await promptModel(q2);
+
+      // Save the memory to the conversation data.
+      ACTIVE_CONVERSATIONS[currentFile].memories = await findMemories(session);
+      ACTIVE_CONVERSATIONS[currentFile].memories[Date.now()] = a2;
+      fs.writeFileSync(currentFile, JSON.stringify(ACTIVE_CONVERSATIONS[currentFile], null, 4));
+
+      // Return the list of memories.
+      return 'This is the list of available memories:\n' + await listMemories(session);
+    case'removeMemory':
+      // Prompt the user for the memory they want to remove and confirm the action.
+      throw new Error('TODO: Implement removeMemory function');
+    case 'clearMemory':
+      // Prompt the user to confirm the action.
+      throw new Error('TODO: Implement clearMemory function to confirm user intention');
+    default:
+      // Return an error message if the user's input doesn't match any function.
+      return 'Invalid function name. Please try again.';
+  }
+}
+
+module.exports = manageMemories;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Constants</h3>
 <pre><code class="language-javascript">const fs = require('fs')
 const path = require('path')

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -214,7 +221,116 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates a D3.js visualization of a hierarchical tree structure, likely representing a file system or organizational hierarchy.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const d3 = require('d3-node');
+
+class BranchVisualizer {
+  constructor() {
+    this.margin = { top: 25, right: 25, bottom: 25, left: 25 };
+    this.width = 960;
+    this.height = 500;
+    this.WIDTH_BETWEEN_NODES_X = 10;
+    this.WIDTH_BETWEEN_NODES_Y = 20;
+    this.fillScale = d3.scaleOrdinal(d3.schemeCategory20);
+  }
+
+  displayBranches(nodes) {
+    this.width -= this.margin.left + this.margin.right;
+    this.height -= this.margin.top + this.margin.bottom;
+
+    const d3n = new d3();
+    const svg = d3n.createSVG(
+      (nodes.length + 1) * this.WIDTH_BETWEEN_NODES_X + this.margin.left + this.margin.right,
+      (nodes.length + 1) * this.WIDTH_BETWEEN_NODES_Y + this.margin.top + this.margin.bottom
+    );
+    const g = svg.append('g');
+
+    const root = this.createHierarchy(nodes);
+    const branches = root
+     .descendants()
+     .map(d =&gt; d.data.branch || '')
+     .map(branch =&gt; branch.replace('HEAD -&gt; ', '').trim().split(/\s*,\s*/igm))
+     .reduce((acc, r) =&gt; acc.concat(r), [])
+     .filter((b, i, arr) =&gt; arr.indexOf(b) === i);
+
+    this.createLinks(root, g, branches);
+    this.createNodes(root, g, branches, svg);
+
+    return d3n.svgString();
+  }
+
+  createHierarchy(nodes) {
+    const visited = [];
+    return nodes.reduce((acc, node) =&gt; {
+      const children = this.getVisibleChildren(nodes, node, visited);
+      if (children.length &gt; 0) {
+        acc.children = acc.children || [];
+        acc.children.push({...node, children });
+      }
+      return acc;
+    }, { name: '', children: [] });
+  }
+
+  getVisibleChildren(nodes, node, visited) {
+    const children = node.children || [];
+    return children.filter(child =&gt;!visited.includes(child) &amp;&amp; child.depth &gt; 0);
+  }
+
+  createLinks(root, g, branches) {
+    const links = root.descendants().filter(n =&gt; n.depth &gt; 1);
+    const x = d3.scaleLinear().range([branches.length * this.WIDTH_BETWEEN_NODES_X, 0]).domain([0, branches.length]);
+    const y = d3.scaleLinear().range([(root.depth + 1) * this.WIDTH_BETWEEN_NODES_Y, 0]).domain([0, root.depth + 1]);
+
+    g.selectAll('.link')
+     .data(links)
+     .enter().append('path')
+     .attr('class', 'link')
+     .attr('fill', 'none')
+     .attr('stroke', 'rgba(0,0,0,0.3)')
+     .attr('stroke-width', 3)
+     .attr('d', d =&gt; `
+        M${x(this.getBranchIndex(branches, d.data.branch))},${y(d.depth)}
+        C${x((this.getBranchIndex(branches, d.data.branch) + this.getBranchIndex(branches, d.parent.data.branch)) / 2.0)},
+          ${y(d.depth)} ${x((this.getBranchIndex(branches, d.data.branch) + this.getBranchIndex(branches, d.parent.data.branch)) / 2.0)},
+          ${y(d.parent.depth)}, ${x(this.getBranchIndex(branches, d.parent.data.branch))},
+          ${y(d.parent.depth)}`);
+
+    function getBranchIndex(branches, branch) {
+      const index = branches.findIndex(b =&gt; b === branch);
+      return index === -1? d.depth : index;
+    }
+  }
+
+  createNodes(root, g, branches, svg) {
+    const node = g.selectAll('g.node')
+     .data(root.descendants())
+     .enter().append('g')
+     .attr('class', 'node')
+     .style('fill', d =&gt; this.fillScale(d.data.branch || ''))
+     .attr('transform', d =&gt; `translate(${this.getBranchIndex(branches, d.data.branch)}, ${d.depth * this.WIDTH_BETWEEN_NODES_Y})`);
+
+    node.append('circle')
+     .attr('class', d =&gt; (d.data.isAux? 'node-aux-route' : 'node-route'))
+     .attr('r', 6);
+
+    node.append('text')
+     .attr('x', 13)
+     .attr('dy', '.35em')
+     .attr('text-anchor','start')
+     .attr('style', 'text-shadow:0 0 1px rgba(0,0,0,1), 0 0 1px rgba(0,0,0,1), 0 0 1px rgba(0,0,0,1);')
+     .text(d =&gt; d.data.name + (d.data.branch &amp;&amp; d.children.filter(c =&gt; c.data.branch == d.data.branch).length == 0? (' ('+ d.data.branch +') ') : ''));
+
+    function getBranchIndex(branches, branch) {
+      const index = branches.findIndex(b =&gt; b === branch);
+      return index === -1? d.depth : index;
+    }
+  }
+}
+
+module.exports = (function() {
+  const visualizer = new BranchVisualizer();
+  return visualizer.displayBranches;
+})();</code></pre></div><p>This code generates a D3.js visualization of a hierarchical tree structure, likely representing a file system or organizational hierarchy.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

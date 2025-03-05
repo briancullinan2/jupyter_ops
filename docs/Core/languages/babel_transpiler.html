@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -166,7 +173,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a Babel plugin for transpiling notebook code, likely for a specific environment or framework.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const babel = require('babel-core');
+const toBabel = require('estree-to-babel');
+const { selectAst, selectAcorn } = require('../Core').import('code-tree-selection');
+const { htmlToTree } = require('../Core').import('html-to-tree');
+const { addImports, replaceImports, replaceCore } = require('../Core').import([
+  'add-missing-imports',
+ 'replace-notebook-import',
+ 'replace-core-requirement',
+]);
+
+// Define transpiler plugins
+const transpilePlugins = [
+  addImports,
+  replaceImports,
+  replaceCore,
+];
+
+// Define the transpiler function
+function transpileNotebook(opts, code) {
+  return transpilePlugins.reduce((code, plugin) => plugin(code, opts.sourceFileName), code);
+}
+
+// Define the babel transpiler configuration
+function babelTranspile() {
+  return {
+    // Define the babel parser options
+    parser: {
+      // Transpile the code before parsing it
+      transpile(code, opts) {
+        return transpileNotebook(opts, code);
+      },
+      // Transform the code into an AST using estree-to-babel
+      transform(code) {
+        return toBabel(code);
+      },
+    },
+  };
+}
+
+// Export the babel transpiler configuration
+module.exports = babelTranspile;</code></pre></div><p>This code defines a Babel plugin for transpiling notebook code, likely for a specific environment or framework.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

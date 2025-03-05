@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,54 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a utility function called <code>streamToGoogle</code> that uploads a file or stream to a Google Cloud Storage bucket.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const mime = require('mime-types');
+const path = require('path');
+const { Storage } = require('@google-cloud/storage');
+const importer = require('../Core');
+const { createBucket, streamToOutput, fetchOrStream } = importer;
+
+const storageConfig = {
+  projectId: process.env.GOOGLE_STORAGE_PROJECT,
+  keyFilename: process.env.GOOGLE_STORAGE_CREDENTIALS
+};
+
+class GoogleStorage {
+  constructor(storageConfig) {
+    this.storage = new Storage(storageConfig);
+  }
+
+  async createBucket(bucketName) {
+    try {
+      await createBucket(this.storage.projectId, bucketName);
+      return this.storage.bucket(bucketName);
+    } catch (error) {
+      console.error(`Error creating bucket ${bucketName}:`, error);
+      throw error;
+    }
+  }
+
+  async streamToGoogle(fileUrl, bucketName, stream, metadata) {
+    const gcsname = (stream? fileUrl : path.basename(fileUrl)).replace(/\?.*/ig, '');
+    const bucket = await this.createBucket(bucketName);
+    const file = bucket.file(gcsname);
+    const writeStream = file.createWriteStream({
+      metadata: Object.assign({
+        contentType: mime.lookup(gcsname)
+      }, metadata || {})
+    });
+
+    await fetchOrStream(stream || fileUrl, writeStream);
+    const url = `https://storage.googleapis.com/${bucketName}/${gcsname}`;
+    await streamToOutput(writeStream);
+    return url;
+  }
+}
+
+const googleStorage = new GoogleStorage(storageConfig);
+
+module.exports = { googleStorage, streamToGoogle: googleStorage.streamToGoogle };
+</code></pre></div><p>This code defines a utility function called <code>streamToGoogle</code> that uploads a file or stream to a Google Cloud Storage bucket.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

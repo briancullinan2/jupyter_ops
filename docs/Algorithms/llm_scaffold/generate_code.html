@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -199,7 +206,92 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { spawnSync } = require('child_process');
+const { safeUrl } = require('domain-cache-tools');
+
+class CodeGenerator {
+  constructor(llmCode) {
+    this.llmCode = llmCode;
+  }
+
+  async generateCode(prompt, codeFile, github) {
+    if (!github) {
+      throw new Error('Project not specified.');
+    }
+
+    if (!fs.existsSync(github) && fs.existsSync(path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, github))) {
+      github = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, github);
+    }
+
+    if (github.includes('://') && fs.existsSync(path.basename(github).replace('.git', ''))) {
+      github = path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, path.basename(github).replace('.git', ''));
+    }
+
+    if (!fs.existsSync(github)) {
+      throw new Error('Project not found.');
+    }
+
+    let baseName = path.basename(github);
+
+    try {
+      await this.pullRepo(github);
+    } catch (error) {
+      throw new Error('Failed to pull repository.');
+    }
+
+    if (!codeFile) {
+      try {
+        codeFile = await this.autocompleteCode(prompt, github);
+      } catch (error) {
+        throw new Error('Failed to autocomplete code.');
+      }
+    }
+
+    if (!fs.existsSync(path.join(github, codeFile))) {
+      throw new Error('Code file not found.');
+    }
+
+    try {
+      const existingCode = fs.readFileSync(path.join(github, codeFile));
+      const newCode = await this.generateNewCode(prompt, existingCode, github);
+      fs.writeFileSync(path.join(github, codeFile), newCode);
+    } catch (error) {
+      throw new Error('Failed to generate new code.');
+    }
+  }
+
+  async pullRepo(github) {
+    return spawnSync('git', ['pull'], {
+      cwd: github,
+      timeout: 3000,
+      stdio: ['pipe', 'pipe', 'pipe']
+    });
+  }
+
+  async autocompleteCode(prompt, github) {
+    const projectFiles = fs.readdirSync(github).filter(file =>!fs.statSync(path.join(github, file)).isDirectory());
+    const q0 = `Out of these project files:\n${projectFiles.join('\n')}\nWhich one needs to be edited for the given prompt:\n${prompt}\nReturn only the potential file name and nothing else.`;
+    const a0 = await this.llmCode(q0);
+    const codeFile = projectFiles.filter(file => a0.match(file))[0];
+    return codeFile;
+  }
+
+  async generateNewCode(prompt, existingCode, github) {
+    const q1 = `Given the project files:\n${fs.readdirSync(github).join('\n')}\nAnd the existing code for the file ${path.basename(github)}:\n${existingCode}\nFulfill the following instructions on the code file, only return the block of new code.\n${prompt}\nResponse with only the block of code and no summary or reasoning.`;
+    const a1 = await this.llmCode(q1);
+    const code = a1.matchAll(/```(bash|javascript|code)*\n[\s\S]*?\n```/gi);
+    let codeBlocks = '';
+    for (let match of code) {
+      codeBlocks += match[0].replace(/^```(bash|javascript|code)*\n|\n```$/gi, '') + '\n';
+    }
+    return codeBlocks;
+  }
+}
+
+module.exports = (llmCode) => new CodeGenerator(llmCode);</code></pre></div><p><strong>Function Overview</strong></p>
 <p>This is an asynchronous function <code>generateCode</code> that takes three parameters: <code>prompt</code>, <code>codeFile</code>, and <code>github</code>. The function appears to be designed to generate code based on a given prompt and project repository.</p>
 <p><strong>Key Steps</strong></p>
 <ol>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -299,7 +306,145 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const dns = require('dns');
+const { promisify } = require('util');
+const { v1: uuid } = require('uuid');
+const importer = require('../Core');
+const authorizeGoogle = importer.import('authorize google service');
+const listGlobalForwards = importer.import('list google bucket url map');
+const waitForOperation = importer.import('wait cloud operation');
+
+const host ='sheet-to-web.com';
+
+function safeName(name) {
+    if (typeof name!=='string') return '';
+
+    return name.replace(/[^a-z0-9\-]/ig, '-').substr(0, 50).toLowerCase();
+}
+
+function createZone(client, project, subdomain) {
+    return client.getRequest('GET', `https://www.googleapis.com/dns/v1/projects/${project}/managedZones`)
+       .then(res =&gt; {
+            if (res.data &amp;&amp; res.data.managedZones &amp;&amp; res.data.managedZones.length &gt; 0) {
+                const zone = res.data.managedZones[0];
+                console.log(`Zone ${subdomain} already mapped`);
+                return Promise.resolve(zone.name);
+            }
+
+            const zoneName = `mz-${uuid().substr(0, 5)}-${safeName(subdomain)}`;
+            console.log(`Creating a zone for ${subdomain}`);
+
+            return client.request({
+                method: 'POST',
+                url: `https://www.googleapis.com/dns/v1/projects/${project}/managedZones`,
+                data: {
+                    name: zoneName,
+                    dnsName: subdomain + '.',
+                    description: '',
+                    visibility: 'public',
+                    dnssecConfig: {
+                        state: 'on',
+                        kind: 'dns#managedZoneDnsSecConfig'
+                    }
+                }
+            })
+               .then(() =&gt; zoneName);
+        });
+}
+
+function getZone(client, project, subdomain) {
+    return client.getRequest('GET', `https://www.googleapis.com/dns/v1/projects/${project}/managedZones`)
+       .then(res =&gt; {
+            if (res.data &amp;&amp; res.data.managedZones &amp;&amp; res.data.managedZones.length &gt; 0) {
+                return res.data.managedZones.find(zone =&gt; zone.dnsName === subdomain + '.');
+            }
+            return null;
+        });
+}
+
+function insertAddress(client, project, addrs, subdomain) {
+    const zoneName = safeName(subdomain);
+    const name = `ip-${uuid().substr(0, 5)}-${zoneName}`;
+    let address = '';
+    let records = [];
+
+    return createZone(client, project, subdomain)
+       .then(zone =&gt; {
+            records = getRecords(client, project, zone.name, subdomain);
+            return records;
+        })
+       .then(records =&gt; {
+            const unusedIps = Object.keys(addrs).filter(a =&gt;!records.some(r =&gt; r.rrdatas[0] === addrs[a]));
+            if (unusedIps.length &gt; 0) {
+                address = addrs[unusedIps[0]];
+                name = unusedIps[0];
+                console.log(`New unused IP ${unusedIps[0]} exists`);
+                return Promise.resolve({ name, address });
+            }
+
+            const defaultRecord = records.find(r =&gt; r.type === 'A' &amp;&amp; r.name === host + '.');
+            if (defaultRecord) {
+                address = defaultRecord.rrdatas[0];
+            }
+
+            return client.createResourceRecordSet(client, project, zone.name, subdomain + '.', 'A', [address]);
+        })
+       .then(() =&gt; ({ name, address }));
+}
+
+function getRecords(client, project, zoneName, subdomain) {
+    return client.getRequest('GET', `https://www.googleapis.com/dns/v1/projects/${project}/managedZones/${zoneName}/rrsets`)
+       .then(res =&gt; res.data.rrsets.filter(r =&gt; r.type === 'A' &amp;&amp; r.name === subdomain + '.'));
+}
+
+function addIP(project, subdomain) {
+    const client = authorizeGoogle();
+    const addresses = [];
+    const { promisifiedLookup } = promisify(dns.lookup);
+    const findExistingAddress = address =&gt; address.rrdatas[0];
+    const findUnusedAddress = () =&gt; {
+        const unusedIps = Object.keys(addresses).filter(a =&gt;!getAddresses(client, project).some(addr =&gt; findExistingAddress(addr) === addresses[a]));
+        return unusedIps.length &gt; 0? unusedIps[0] : null;
+    };
+
+    return promisifiedLookup(subdomain)
+       .catch(up =&gt; {
+            if (up.message.includes('ENOTFOUND')) {
+                console.log(up.message);
+                return;
+            }
+            throw up;
+        })
+       .then(addrs =&gt; {
+            addresses.push(addrs.address);
+            return listGlobalForwards(project);
+        })
+       .then(forwards =&gt; {
+            const matching = Object.keys(forwards).filter(a =&gt; addresses.indexOf(forwards[a]) &gt; -1);
+            if (matching.length &gt; 0) {
+                console.log(`domain ${subdomain} already exists, ip address ${matching[0]}`);
+                return Promise.resolve(matching[0]);
+            }
+            return insertAddress(client, project, addresses, subdomain);
+        });
+}
+
+function clientRequest(client, method, url, data) {
+    return client.request({
+        method,
+        url,
+        data
+    });
+}
+
+function clientGetRequest(client, url) {
+    return client.getRequest('GET', url);
+}
+
+module.exports = addIP;
+```</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requirements and Imports</h3>
 <p>The code requires the following modules:</p>
 <ul>

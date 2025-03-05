@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,83 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code implements a <code>minimatch</code> function that performs pattern matching on filenames using a simplified glob-like syntax.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importFunctions } = require('../Core');
+
+const expand = importFunctions('expand');
+const parse = importFunctions('mini parser');
+
+/**
+ * Escape special characters in a string to use in a regular expression.
+ *
+ * @param {string} s - The string to escape.
+ * @returns {string} The escaped string.
+ */
+function regExpEscape(s) {
+  return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\${OUTPUT}amp;');
+}
+
+/**
+ * Convert a minimatch expression to a regular expression.
+ *
+ * @param {string} filename - The filename to match.
+ * @param {string} pattern - The minimatch expression.
+ * @returns {boolean} Whether the filename matches the pattern.
+ */
+function minimatch(filename, pattern) {
+  try {
+    // Expand braces in the minimatch expression.
+    const expanded = expand(pattern);
+
+    // Split the expanded pattern into individual paths.
+    const paths = expanded.map((s) =&gt; s.split(/\//g));
+
+    // Parse each path into a regular expression.
+    const regexps = paths.map((path, index, paths) =&gt; {
+      return path.map((segment, segmentIndex) =&gt; {
+        const parsedSegment = parse(segment);
+        if (parsedSegment === false) {
+          // If the segment is invalid, return null.
+          return null;
+        }
+        if (typeof parsedSegment.glob === 'boolean') {
+          // If the segment is a glob, match any characters except directory separators.
+          return '(?:(?!(?:\\/|^)(?:\\.{1,2})($|\\/)).)*?';
+        } else if (typeof parsedSegment ==='string') {
+          // If the segment is a string, escape special characters.
+          return regExpEscape(parsedSegment);
+        } else {
+          // If the segment is a parsed segment, use its source.
+          return parsedSegment._src;
+        }
+      });
+    });
+
+    // Filter out any paths that were invalid.
+    const validPaths = regexps.filter((path) =&gt; path.every((segment) =&gt; segment!== null));
+
+    // Convert each valid path to a regular expression.
+    const compiled = validPaths.map((path) =&gt; {
+      return path.join('\\/');
+    });
+
+    // Join the compiled paths with '|' and wrap in a regular expression.
+    const re = new RegExp('^' + compiled.join('|') + '
+</body>
+
+</html>, 'i');
+
+    // Return whether the filename matches the regular expression.
+    return filename.match(re)!== null;
+  } catch (error) {
+    // If an error occurs, throw it.
+    throw error;
+  }
+}
+
+module.exports = {
+  minimatch,
+};</code></pre></div><p>This code implements a <code>minimatch</code> function that performs pattern matching on filenames using a simplified glob-like syntax.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

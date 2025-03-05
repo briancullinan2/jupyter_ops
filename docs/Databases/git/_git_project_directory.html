@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,106 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for cloning and managing Git repositories, particularly focusing on creating deep copies of projects.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs').promises;
+const glob = require('glob');
+const rimraf = require('rimraf');
+const path = require('path');
+const { exec } = require('child_process');
+const importer = require('../Core');
+const listInProject = importer.import('list project files');
+
+async function deepCopy(projectOrig) {
+    const date = new Date();
+    const copies = glob.sync(path.basename(projectOrig) + '-copy-*', { cwd: path.dirname(projectOrig) });
+    await promisify(rimraf)(copies.map(c =&gt; path.join(path.dirname(projectOrig), c)));
+
+    const projectName = `${path.basename(projectOrig)}-copy-${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+    const project = path.join(path.dirname(projectOrig), projectName);
+
+    console.log(`Cloning repo ${projectOrig} -&gt; ${project}`);
+
+    const files = await Promise.all([
+        listInProject(projectOrig, '**/*'),
+        listInProject(projectOrig + '/.git', '**/*'),
+    ]);
+
+    const filesFlat = files.flat().sort();
+
+    for (const file of filesFlat) {
+        const dirname = path.dirname(file.replace(projectOrig, project)).split(/\/|\\/ig);
+
+        await fs.mkdir(dirname.slice(0, -1).join('/'), { recursive: true });
+
+        await fs.copyFile(file, file.replace(projectOrig, project));
+    }
+
+    await Promise.all([listInProject(project, '**/*.lock').then(p =&gt; rimraf.sync(p))]);
+
+    return project;
+}
+
+function promisify(func) {
+    return function (...args) {
+        return new Promise((resolve, reject) =&gt; {
+            func(...args, (err, result) =&gt; {
+                if (err) reject(err);
+                else resolve(result);
+            });
+        });
+    };
+}
+
+async function cloneProject(project, copy) {
+    const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+
+    if (!project) {
+        throw new Error('Specify project path or GitHub URL');
+    }
+
+    project = path.resolve(project);
+
+    if (!fs.existsSync(project)) {
+        const localPath = ['Documents', project].join('/');
+        if (fs.existsSync(localPath)) {
+            project = path.resolve(localPath);
+        } else if (fs.existsSync(path.join(PROFILE_PATH, project))) {
+            project = path.resolve(path.join(PROFILE_PATH, project));
+        }
+    }
+
+    if (project.match(/github\.com\/[a-z0-9_-]+\/[a-z0-9_-]+/ig)) {
+        const projectName = (/github\.com\/([a-z0-9_-]+)\/([a-z0-9_-]+)/ig).exec(project)[2];
+        const projectHttp = project.replace(/^(https*:)?\/*\/*\/*/ig, 'https://');
+
+        const localPath = path.join(PROFILE_PATH, projectName);
+
+        if (fs.existsSync(localPath)) {
+            project = path.resolve(localPath);
+        } else {
+            const cmd = `git clone -v ${projectHttp}`;
+            await new Promise((resolve, reject) =&gt; {
+                exec(cmd, { cwd: path.resolve(PROFILE_PATH) }, (err) =&gt; {
+                    if (err) reject(err);
+                    else resolve();
+                });
+            });
+
+            project = path.resolve(path.join(PROFILE_PATH, projectName));
+            if (copy) {
+                return deepCopy(project);
+            }
+        }
+    }
+
+    if (!fs.existsSync(project)) {
+        throw new Error(`Invalid project path "${project}"`);
+    }
+
+    return project;
+}
+
+module.exports = cloneProject;</code></pre></div><p>This code defines functions for cloning and managing Git repositories, particularly focusing on creating deep copies of projects.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

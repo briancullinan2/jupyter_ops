@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,66 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { glob, asyncify } = require('glob');
+const { spawn } = require('child_process');
+
+class AntlrGenerator {
+  constructor(importer) {
+    this.execCmd = importer.import('spawn child process');
+    this.chext = importer.import('changing file name');
+  }
+
+  async generateAntlr() {
+    const antlrFiles = await this.getAntlrFiles();
+    const typescriptDirs = await this.getTypescriptDirs(antlrFiles);
+
+    await this.transpileTypescript(typescriptDirs);
+  }
+
+  async getAntlrFiles() {
+    try {
+      return (await glob('**/*.g4', path.join(__dirname, '../Resources/Parsers/'))).map(f =&gt; f);
+    } catch (error) {
+      // TODO: Handle glob error
+      console.error(error);
+      return [];
+    }
+  }
+
+  async getTypescriptDirs(antlrFiles) {
+    try {
+      return (await this.getUniqueDirectories(antlrFiles)).map(f =&gt; path.dirname(f));
+    } catch (error) {
+      // TODO: Handle glob error
+      console.error(error);
+      return [];
+    }
+  }
+
+  async getUniqueDirectories(files) {
+    try {
+      return [...new Set(files.map(f =&gt; path.dirname(f)))];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  async transpileTypescript(typescriptDirs) {
+    for (const dir of typescriptDirs) {
+      try {
+        await this.execCmd(`npx babel --extensions.ts,.tsx "${dir}" --out-dir "${dir}"`);
+      } catch (error) {
+        // TODO: Handle babel error
+        console.error(error);
+      }
+    }
+  }
+}
+
+module.exports = (importer) =&gt; new AntlrGenerator(importer).generateAntlr();</code></pre></div><h2>Code Breakdown</h2>
 <h3>Requirements and Dependencies</h3>
 <p>The code requires the following dependencies:</p>
 <ul>

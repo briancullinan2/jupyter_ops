@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -87,7 +94,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="php"><code>php
+/**
+ * Adds a category to the page.
+ *
+ * @return void
+ */
+function addCategory(): void
+{
+    // Include the menu partial
+    require'menu.php';
+
+    // Set the category title
+    $categoryTitle = 'Category: 1';
+
+    // Add the category title to the page
+    echo '&lt;h1&gt;'. $categoryTitle. '&lt;/h1&gt;';
+
+    // Define the category data array
+    $categoryData = [
+        [
+            'banner' =&gt; 'path/to/banner1.jpg',
+            'link' =&gt; 'https://example.com/link1',
+            'title' =&gt; 'Title 1',
+           'summary' =&gt; 'Summary 1',
+        ],
+        [
+            'banner' =&gt; 'path/to/banner2.jpg',
+            'link' =&gt; 'https://example.com/link2',
+            'title' =&gt; 'Title 2',
+           'summary' =&gt; 'Summary 2',
+        ],
+    ];
+
+    // Loop through the category data and add each item to the page
+    foreach ($categoryData as $item) {
+        echo '&lt;div&gt;';
+        echo '&lt;img src="'. $item['banner']. '" /&gt;';
+        echo '&lt;a href="'. $item['link']. '"&gt;';
+        echo '&lt;h2&gt;'. $item['title']. '&lt;/h2&gt;';
+        echo $item['summary'];
+        echo '&lt;/a&gt;';
+        echo '&lt;/div&gt;';
+    }
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Structure</h4>
 <p>This code is written in a templating language, likely Handlebars.</p>
 <h4>Sections</h4>

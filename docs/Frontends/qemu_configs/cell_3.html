@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>QEMU and Spice Server Command</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define constants for qemu and spice parameters
+QEMU_CPU="host"
+QEMU_VGA="qxl"
+QEMU_SPICE_PORT=5924
+QEMU_SPICE_DISABLE_TICKETING=true
+
+# Define VM disk and network parameters
+VM_DISK_FILE="/Users/briancullinan/VirtualBox VMs/Ubuntu/Ubuntu.vmdk"
+VM_DISK_IF="virtio"
+VM_NIC_MODEL="virtio"
+VM_HOSTNAME="ubuntuvm"
+
+# Define VM name and spice connection information
+VM_NAME="Ubuntu"
+SPICE_TITLE="Ubuntu"
+SPICE_HOST="127.0.0.1"
+SPICE_PORT=$QEMU_SPICE_PORT
+
+# Define number of CPUs and RAM
+NUM_CPUS=3
+NUM_RAM_MB=3072
+
+# Run qemu-system-x86_64 with parameters
+qemu-system-x86_64 \
+    --smp $NUM_CPUS \
+    --cpu $QEMU_CPU \
+    --m $NUM_RAM_MB \
+    --vga $QEMU_VGA \
+    --spice port=$QEMU_SPICE_PORT,disable-ticketing=$QEMU_SPICE_DISABLE_TICKETING \
+    --drive file=$VM_DISK_FILE,if=$VM_DISK_IF \
+    --net nic,model=$VM_NIC_MODEL \
+    --net user,hostname=$VM_HOSTNAME \
+    --monitor stdio \
+    --name "$VM_NAME"
+
+# Run spice connection
+spicy --title "$SPICE_TITLE" "$SPICE_HOST" -p $SPICE_PORT</code></pre></div><h2>QEMU and Spice Server Command</h2>
 <p>This code is a command that boots a virtual machine (VM) using <code>qemu-system-x86_64</code> and connects to it with a Spice server.</p>
 <h3>Components:</h3>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -316,7 +323,215 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a system for real-time saving of edits made to content within a web page.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required libraries
+import { JSDOM } from 'jsdom';
+import axios from 'axios';
+
+// Create a mock DOM for the script to run in
+const dom = new JSDOM(`&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;`);
+
+// Function to save edits
+async function saveEdits(data) {
+    try {
+        const response = await axios.post(
+            window.location.href.replace('gitEditorHandler', 'gitSaveHandler'),
+            data,
+            {
+                headers: {
+                    'X-Referrer': window.location.href,
+                },
+            }
+        );
+
+        if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) {
+            return response;
+        } else {
+            throw new Error('The request failed!');
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Function to load a script
+async function loadScript(src) {
+    try {
+        const response = await axios.get(src);
+
+        if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) {
+            const script = document.createElement('script');
+            script.textContent = response.data;
+            document.body.appendChild(script);
+
+            return Promise.resolve();
+        } else {
+            throw new Error('Failed to load script!');
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Function to start Golden Layout
+async function startGolden() {
+    try {
+        // Create the Golden Layout configuration
+        const config = {
+            settings: {
+                showPopoutIcon: false,
+                showMaximiseIcon: false,
+                showCloseIcon: false,
+            },
+            dimensions: {
+                borderWidth: 10,
+                headerHeight: 40,
+            },
+            content: [
+                {
+                    type: 'row',
+                    content: [
+                        {
+                            type: 'component',
+                            componentName: 'Preview Page',
+                            componentState: { label: 'A' },
+                        },
+                        {
+                            type: 'column',
+                            content: [
+                                {
+                                    type: 'component',
+                                    componentName: 'Project Files',
+                                    componentState: { label: 'B' },
+                                },
+                                {
+                                    type: 'component',
+                                    componentName: 'Code View',
+                                    componentState: { label: 'C' },
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        };
+
+        // Create the Golden Layout instance
+        const myLayout = new GoldenLayout(config);
+
+        // Register components
+        myLayout.registerComponent(
+            'Preview Page',
+            (container, componentState) =&gt; {
+                const initial = dom.window.document.getElementsByClassName('initial-page');
+                container.getElement()[0].appendChild(initial[0].cloneNode(true));
+                container.getElement()[0].style.minHeight = window.innerHeight + 'px';
+
+                container.on('tab', (tab) =&gt; {
+                    const i = dom.window.document.createElement('i');
+                    i.className = 'fas fa-binoculars';
+                    tab.element[0].appendChild(i.cloneNode(true));
+
+                    i = dom.window.document.createElement('i');
+                    i.className = 'fas fa-search';
+                    tab.element[0].appendChild(i.cloneNode(true));
+
+                    i = dom.window.document.createElement('i');
+                    i.className = 'fas fa-print';
+                    tab.element[0].appendChild(i.cloneNode(true));
+                });
+            }
+        );
+
+        myLayout.registerComponent(
+            'Project Files',
+            (container, componentState) =&gt; {
+                const initial = dom.window.document.getElementsByClassName('initial-files');
+                container.getElement()[0].appendChild(initial[0].cloneNode(true));
+
+                container.on('tab', (tab) =&gt; {
+                    const i = dom.window.document.createElement('i');
+                    i.className = 'fas fa-exchange-alt';
+                    tab.element[0].appendChild(i.cloneNode(true));
+
+                    i = dom.window.document.createElement('i');
+                    i.className = 'fas fa-columns';
+                    tab.element[0].appendChild(i.cloneNode(true));
+
+                    i = dom.window.document.createElement('i');
+                    i.className = 'fas fa-stream';
+                    tab.element[0].appendChild(i.cloneNode(true));
+                });
+            }
+        );
+
+        myLayout.registerComponent(
+            'Code View',
+            (container, componentState) =&gt; {
+                const initial = dom.window.document.getElementsByClassName('initial-code');
+                container.getElement()[0].appendChild(initial[0].cloneNode(true));
+
+                container.on('open', () =&gt; {
+                    const editor = ace.edit(container.getElement()[0], {
+                        useWorker: false,
+                    });
+
+                    editor.setTheme('ace/theme/monokai');
+                    editor.session.setMode('ace/mode/javascript');
+                    componentState.editor = editor;
+                });
+
+                container.on('resize', () =&gt; {
+                    if (componentState.editor) {
+                        componentState.editor.resize();
+                    }
+                });
+            }
+        );
+
+        // Initialize the Golden Layout instance
+        myLayout.init();
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Load required scripts
+loadScript('https://code.jquery.com/jquery-3.5.1.min.js')
+   .then(loadScript.bind(null, 'https://golden-layout.com/files/latest/js/goldenlayout.min.js'))
+   .then(loadScript.bind(null, 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js'))
+   .then(loadScript.bind(null, 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-javascript.min.js'))
+   .then(loadScript.bind(null, 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.min.js'))
+   .then(startGolden);
+
+// Initialize the DOM
+dom.window.addEventListener('load', () =&gt; {
+    // Create and append the script element
+    const script = dom.window.document.createElement('script');
+    script.onload = () =&gt; {
+        // Get all contenteditable elements
+        const editors = dom.window.document.querySelectorAll('*[contenteditable]');
+
+        editors.forEach((editor) =&gt; {
+            // Create an Inline Editor instance
+            InlineEditor.create(editor, {
+                plugins: [Autosave],
+                autosave: {
+                    save(editor) {
+                        return saveEdits(editor.getData());
+                    },
+                },
+            })
+               .catch((error) =&gt; console.error(error));
+        });
+    };
+
+    // Set the script source
+    script.setAttribute('src', 'https://cdn.ckeditor.com/ckeditor5/16.0.0/inline/ckeditor.js');
+
+    // Append the script to the body
+    dom.window.document.body.appendChild(script);
+});</code></pre></div><p>This code sets up a system for real-time saving of edits made to content within a web page.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>saveEdits</code> Function:</strong></p>

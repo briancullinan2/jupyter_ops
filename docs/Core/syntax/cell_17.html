@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -199,7 +206,76 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('../Core');
+const { treeToHtml, htmlToTree } = importer.import(['tree to html', 'html to tree']);
+const assert = require('assert');
+const esprima = require('esprima');
+
+/**
+ * Setup an Abstract Syntax Tree (AST) array from the given JavaScript code.
+ * @param {string} code JavaScript code to parse
+ * @returns {object} Parsed AST array
+ */
+function setupASTArray(code) {
+    // Parse the code using esprima
+    const ctx = esprima.parseScript(code, { range: true, tokens: true, comment: true, whitespace: true });
+    return ctx;
+}
+
+/**
+ * Test the AST array by converting it to HTML, then back to an AST array,
+ * and assert that the two AST arrays are equal.
+ * @param {object} ctx Parsed AST array
+ * @returns {string} Converted HTML
+ */
+function testASTArray(ctx) {
+    // Convert the AST array to HTML
+    const html = treeToHtml(ctx);
+    // Convert the HTML back to an AST array
+    const translatedBack = htmlToTree(html);
+    
+    // Assert that the two AST arrays are equal
+    assert.deepEqual(JSON.stringify(ctx), JSON.stringify(translatedBack[0]), 'Different code trees');
+    
+    // Log success message
+    globalThis.console.log('Two JSON trees are same-same');
+    
+    return html;
+}
+
+// Define a function to encode HTML entities
+function htmlEntities(str) {
+    // Use the String.prototype.replace method to replace special characters
+    return String(str)
+       .replace(/&/g, '&amp;')
+       .replace(/</g, '&lt;')
+       .replace(/>/g, '&gt;')
+       .replace(/"/g, '&quot;');
+}
+
+// Export the testASTArray function
+module.exports = testASTArray;
+
+// Check if the $ object is defined
+if (typeof $!== 'undefined') {
+    // Define the code to parse
+    const code = `
+function name(params) {
+    
+}
+console.log()
+`;
+    
+    // Parse the code
+    const ctx = setupASTArray(code);
+    // Test the AST array
+    const html = testASTArray(ctx);
+    // Encode the HTML and display it
+    const encodedHtml = htmlEntities(html);
+    globalThis.$html('<pre>' + encodedHtml + '</pre>');
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <ul>
 <li>The code starts by importing required modules:

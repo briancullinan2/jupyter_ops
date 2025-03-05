@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code fetches events from a Google Calendar, parses their descriptions, and executes Node.js scripts based on the extracted parameters.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { JSDOM } = require('jsdom');
+const { getOauthClient, getDaysEvents, thump } = require('../Core').import([
+    'days events',
+    'google calendar api',
+    'heartbeat thump'
+]);
+
+// Define default options
+const DEFAULT_OPTIONS = {
+    calendarId: 'aws'
+};
+
+// Function to run today's heartbeat
+function runTodaysHeartbeat(calendar = null, exit = false) {
+    // Update calendar ID if provided
+    if (calendar) {
+        DEFAULT_OPTIONS.calendarId = calendar;
+    }
+
+    // Return a promise chain to handle Google calendar API
+    return (typeof DEFAULT_OPTIONS.auth === 'undefined'
+          ? getOauthClient(DEFAULT_OPTIONS)
+           : Promise.resolve([]))
+       .then(() => getDaysEvents(new Date(), DEFAULT_OPTIONS))
+       .then((events) => {
+            // Filter events for heartbeat and todays heartbeat items
+            const heartbeatEvents = events.filter((event) => {
+                return event.event.summary === 'heartbeat'
+                       || event.event.summary === 'todays heartbeat items';
+            });
+
+            try {
+                // Create a JSDOM instance from the heartbeat event description
+                const dom = new JSDOM(`<body>${(heartbeatEvents[0]?.event.description || '').replace(/<br\/?>/igm, '\n')}</body>');
+                const desc = dom.window.document.body.textContent.split('\n')
+                   .filter((line) => line.trim().length > 0);
+
+                // Process each line in the heartbeat event description
+                desc.forEach((line) => {
+                    // Extract parameters from the line
+                    const parameters = (/[\{].*[\}]|[\[].*[\]]|(['"]).*\1/igm).exec(line) || ['""'];
+                    thump(line.replace(parameters[0], ''), JSON.parse(parameters[0]), false);
+                });
+            } catch (error) {
+                // Log any errors that occur during processing
+                globalThis.console.error(error);
+            }
+
+            // Exit the process if desired
+            if (!exit) {
+                globalThis.process.exit(0);
+            }
+        });
+}
+
+// Export the runTodaysHeartbeat function
+module.exports = runTodaysHeartbeat;
+
+// Check for $ and async functionality
+if (typeof globalThis.$!== 'undefined') {
+    globalThis.$.async();
+    runTodaysHeartbeat(false, false)
+       .then((result) => globalThis.$.sendResult(result))
+       .then((error) => globalThis.$.sendError(error));
+}</code></pre></div><p>This code fetches events from a Google Calendar, parses their descriptions, and executes Node.js scripts based on the extracted parameters.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

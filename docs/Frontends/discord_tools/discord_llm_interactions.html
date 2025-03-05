@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -154,7 +161,103 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  DEFAULT_MODEL,
+  DEFAULT_APPLICATION,
+} = require('./general-chit-chat-importer');
+
+const {
+  triggerTyping,
+  createMessage,
+} = require('./discord-api-importer');
+
+const {
+  handleConversation,
+} = require('./handle-conversation-importer');
+
+const {
+  selectModel,
+} = require('./select-llm-importer');
+
+/**
+ * Handles interactions with the bot.
+ *
+ * @param {object} interaction - The interaction object.
+ * @returns {Promise} A promise resolving when the interaction is handled.
+ */
+async function doInteraction(interaction) {
+  const prompt = getPrompt(interaction);
+
+  const result = await llmPrompt(prompt + '\nMake it short.');
+  await updateInteraction({
+    content: result.substring(0, 1800),
+  }, interaction.id, interaction.token);
+}
+
+/**
+ * Handles mentions with the bot.
+ *
+ * @param {object} interaction - The interaction object.
+ * @returns {Promise} A promise resolving when the mention is handled.
+ */
+async function doMention(interaction) {
+  await triggerTyping(interaction.channel_id);
+  const q1 = interaction.content.replace(`<@${DEFAULT_APPLICATION}>`, '') + '\nMake it short.';
+
+  const promptModel = await selectModel(DEFAULT_MODEL);
+  const result = await handleConversation(promptModel, interaction.author.id, q1);
+
+  return await createMessage({
+    content: result.substring(0, 1800),
+    message_reference: {
+      message_id: interaction.id,
+    },
+  }, interaction.channel_id);
+}
+
+/**
+ * Handles private messages with the bot.
+ *
+ * @param {object} interaction - The interaction object.
+ * @returns {Promise} A promise resolving when the private message is handled.
+ */
+async function doPrivate(interaction) {
+  await triggerTyping(interaction.channel_id);
+
+  const promptModel = await selectModel(DEFAULT_MODEL);
+  const result = await handleConversation(promptModel, interaction.author.id, interaction.content);
+
+  return await createMessage({
+    content: result.substring(0, 1800),
+    message_reference: {
+      message_id: interaction.id,
+    },
+  }, interaction.channel_id);
+}
+
+/**
+ * Gets the prompt for the interaction.
+ *
+ * @param {object} interaction - The interaction object.
+ * @returns {string} The prompt.
+ */
+function getPrompt(interaction) {
+  if (interaction.data.name === 'hello') {
+    return 'Hello';
+  } else {
+    return interaction.data.options[0].value;
+  }
+}
+
+module.exports = {
+  doInteraction,
+  doMention,
+  doPrivate,
+};
+
+// TODO: Move the getPrompt function to a separate file.
+// TODO: Implement logging for errors.</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">const {DEFAULT_MODEL} = importer.import('general chit chat')
 const {DEFAULT_APPLICATION} = importer.import('discord configuration')

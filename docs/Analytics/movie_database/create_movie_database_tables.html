@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -215,7 +222,171 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines SQL statements to create tables and indexes for storing IMDb movie data in a SQLite database.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Creates tables in the database with indexes for efficient querying.
+ * 
+ * @param {object} db - The database object.
+ * @returns {Promise} A promise that resolves when the tables are created.
+ */
+function createTables(db) {
+  // Create the principals table with an index on tconst and nconst for efficient lookup.
+  const principals = db.prepare(`
+    CREATE TABLE IF NOT EXISTS principals (
+      tconst TEXT NOT NULL,
+      ordering INT NOT NULL,
+      nconst TEXT NOT NULL,
+      category TEXT,
+      job TEXT,
+      characters TEXT,
+      UNIQUE(tconst, ordering),
+      PRIMARY KEY (tconst, ordering)
+    );
+  `).run();
+
+  // Create indexes on tconst and nconst for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS principles_titles ON principals (tconst);
+  `).run();
+
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS principles_names ON principals (nconst);
+  `).run();
+
+  // Create the titles table with an index on tconst and titleType for efficient lookup.
+  const titles = db.prepare(`
+    CREATE TABLE IF NOT EXISTS titles (
+      tconst TEXT NOT NULL,
+      titleType TEXT NOT NULL,
+      primaryTitle TEXT,
+      originalTitle TEXT,
+      isAdult INTEGER,
+      startYear INTEGER,
+      endYear INTEGER,
+      runtimeMinutes INTEGER,
+      genres TEXT,
+      UNIQUE(tconst, titleType),
+      PRIMARY KEY (tconst, titleType)
+    );
+  `).run();
+
+  // Create indexes on tconst and titleType for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS titles_titles ON titles (tconst);
+  `).run();
+
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS titles_types ON titles (tconst, titleType);
+  `).run();
+
+  // Create the akas table with an index on tconst for efficient lookup.
+  const akas = db.prepare(`
+    CREATE TABLE IF NOT EXISTS akas (
+      tconst TEXT NOT NULL,
+      ordering INTEGER NOT NULL,
+      title TEXT NOT NULL,
+      region TEXT NOT NULL,
+      language TEXT,
+      types TEXT,
+      attributes TEXT,
+      isOriginalTitle INTEGER,
+      UNIQUE(tconst, ordering),
+      PRIMARY KEY (tconst, ordering)
+    );
+  `).run();
+
+  // Create an index on tconst for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS akas_titles ON akas (tconst);
+  `).run();
+
+  // Create the crew table with an index on tconst for efficient lookup.
+  const crew = db.prepare(`
+    CREATE TABLE IF NOT EXISTS crew (
+      tconst TEXT NOT NULL,
+      directors TEXT,
+      writers TEXT,
+      UNIQUE(tconst),
+      PRIMARY KEY (tconst)
+    );
+  `).run();
+
+  // Create an index on tconst for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS crew_titles ON crew (tconst);
+  `).run();
+
+  // Create the episode table with an index on tconst and parentTconst for efficient lookup.
+  const episode = db.prepare(`
+    CREATE TABLE IF NOT EXISTS episode (
+      tconst TEXT NOT NULL,
+      parentTconst TEXT NOT NULL,
+      seasonNumber INTEGER,
+      episodeNumber INTEGER,
+      UNIQUE(tconst, parentTconst),
+      PRIMARY KEY (tconst, parentTconst)
+    );
+  `).run();
+
+  // Create indexes on tconst and parentTconst for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS episode_titles ON episode (tconst);
+  `).run();
+
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS episode_parents ON episode (tconst, parentTconst);
+  `).run();
+
+  // Create the ratings table with an index on tconst for efficient lookup.
+  const ratings = db.prepare(`
+    CREATE TABLE IF NOT EXISTS ratings (
+      tconst TEXT NOT NULL,
+      averageRating INTEGER,
+      numVotes INTEGER,
+      UNIQUE(tconst),
+      PRIMARY KEY (tconst)
+    );
+  `).run();
+
+  // Create an index on tconst for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS ratings_titles ON ratings (tconst);
+  `).run();
+
+  // Create the name table with an index on nconst for efficient lookup.
+  const name = db.prepare(`
+    CREATE TABLE IF NOT EXISTS name (
+      nconst TEXT NOT NULL,
+      primaryName TEXT,
+      birthYear INTEGER,
+      deathYear INTEGER,
+      primaryProfession TEXT,
+      knownForTitles TEXT,
+      UNIQUE(nconst),
+      PRIMARY KEY (nconst)
+    );
+  `).run();
+
+  // Create an index on nconst for efficient lookup.
+  db.prepare(`
+    CREATE INDEX IF NOT EXISTS name_names ON name (nconst);
+  `).run();
+
+  // Return a promise that resolves when all tables are created.
+  return Promise.all([
+    principals,
+    titles,
+    akas,
+    crew,
+    episode,
+    ratings,
+    name,
+  ]).then(() =&gt; Promise.resolve());
+}
+
+module.exports = createTables;
+```</code></pre></div><p>This code defines SQL statements to create tables and indexes for storing IMDb movie data in a SQLite database.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Table Creation:</strong></p>

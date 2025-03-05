@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -209,7 +216,142 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a module for interacting with the Zuora API to retrieve account information, specifically focusing on email addresses and the last four digits of associated credit cards.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { promisify } = require('util');
+const request = promisify(require('request-polyfill'));
+const ZuoraExportService = require('./zuora-export-service');
+
+module.exports = {
+  getZuoraAccounts,
+  zuoraQuery
+};
+
+class ZuoraQuery {
+  constructor(zuoraConfig) {
+    this.zuoraConfig = zuoraConfig;
+  }
+
+  query(query) {
+    const authHeaders = ZuoraExportService.getAuthHeaders(this.zuoraConfig);
+    const options = {
+      followAllRedirects: true,
+      uri: this.zuoraConfig.rest_api_url + '/action/query',
+      json: {
+        queryString: query
+      },
+      method: 'POST',
+      headers: authHeaders
+    };
+
+    return request(options);
+  }
+}
+
+class ContactService {
+  constructor(zuoraQuery, zuoraConfig) {
+    this.zuoraQuery = zuoraQuery;
+    this.zuoraConfig = zuoraConfig;
+  }
+
+  async getContact(email) {
+    const query = `
+      SELECT AccountId, PersonalEmail, WorkEmail
+      FROM Contact
+      WHERE PersonalEmail LIKE '${email}'
+      OR WorkEmail LIKE '${email}'
+    `;
+    const response = await this.zuoraQuery.query(query);
+    return response.body;
+  }
+}
+
+class AccountService {
+  constructor(zuoraQuery, zuoraConfig) {
+    this.zuoraQuery = zuoraQuery;
+    this.zuoraConfig = zuoraConfig;
+  }
+
+  async getAccountById(accountId) {
+    const query = `
+      SELECT Id, Status, Name, Currency, DefaultPaymentMethodId
+      FROM Account
+      WHERE Id='${accountId}'
+    `;
+    const response = await this.zuoraQuery.query(query);
+    return response.body;
+  }
+}
+
+class PaymentMethodService {
+  constructor(zuoraQuery, zuoraConfig) {
+    this.zuoraQuery = zuoraQuery;
+    this.zuoraConfig = zuoraConfig;
+  }
+
+  async getPaymentMethod(paymentId) {
+    const query = `
+      SELECT CreditCardMaskNumber
+      FROM PaymentMethod
+      WHERE Id='${paymentId}'
+    `;
+    const response = await this.zuoraQuery.query(query);
+    return response.body;
+  }
+}
+
+class AccountLast4DigitsService {
+  constructor(contactService, accountService, paymentMethodService, zuoraConfig) {
+    this.contactService = contactService;
+    this.accountService = accountService;
+    this.paymentMethodService = paymentMethodService;
+    this.zuoraConfig = zuoraConfig;
+  }
+
+  async getAccountLast4Digits(email) {
+    const contactResponse = await this.contactService.getContact(email);
+    const accountId = contactResponse.records[0].AccountId;
+    const accountResponse = await this.accountService.getAccountById(accountId);
+    const paymentMethodId = accountResponse.records[0].DefaultPaymentMethodId;
+    const paymentMethodResponse = await this.paymentMethodService.getPaymentMethod(paymentMethodId);
+
+    return {
+      EmailAddress: email,
+      Last4DigitsOfCard: paymentMethodResponse.records[0].CreditCardMaskNumber
+    };
+  }
+}
+
+class ZuoraAccountsService {
+  constructor(zuoraQuery, zuoraConfig) {
+    this.zuoraQuery = zuoraQuery;
+    this.zuoraConfig = zuoraConfig;
+  }
+
+  async getZuoraAccounts(notifyRequest) {
+    if (!notifyRequest.items) {
+      throw new Error('Account items not defined, nothing to do!');
+    }
+    const services = notifyRequest.items.map(c => this.getAccountLast4DigitsService(c.EmailAddress));
+    return Promise.all(services);
+  }
+
+  getAccountLast4DigitsService(email) {
+    return new AccountLast4DigitsService(
+      new ContactService(this.zuoraQuery, this.zuoraConfig),
+      new AccountService(this.zuoraQuery, this.zuoraConfig),
+      new PaymentMethodService(this.zuoraQuery, this.zuoraConfig),
+      this.zuoraConfig
+    );
+  }
+}
+
+function getZuoraAccounts(notifyRequest, zuoraConfig) {
+  return new ZuoraAccountsService(new ZuoraQuery(zuoraConfig), zuoraConfig).getZuoraAccounts(notifyRequest);
+}
+
+function zuoraQuery(query, zuoraConfig) {
+  return new ZuoraQuery(zuoraConfig).query(query);
+}</code></pre></div><p>This code defines a module for interacting with the Zuora API to retrieve account information, specifically focusing on email addresses and the last four digits of associated credit cards.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

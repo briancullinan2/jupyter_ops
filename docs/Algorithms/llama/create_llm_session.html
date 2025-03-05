@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,9 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./store_all_notebook_llm_functions.html">store all notebook llm functions</a> |  | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code initializes a chat session with the LLaMA model by importing necessary modules, defining variables and constants, and creating two asynchronous functions to initialize and create a new session.</p>
-<p>Or in two sentences:</p>
-<p>The code sets up a chat session with the LLaMA model by importing required modules and defining key variables and constants. Two asynchronous functions, <code>initSession</code> and <code>createSession</code>, are defined to handle the initialization and creation of new chat sessions.</p>
+  <p>The code imports necessary modules, defines constants and variables, and creates LLaMA-related objects for initializing and interacting with a large language model. It includes two main functions: <code>createSession</code> for creating a new model instance and <code>initSession</code> for initializing a new chat session with the model.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "create llm session"</code></pre><h1>create llm session</h1>
@@ -181,8 +186,8 @@ async function llmPrompt(prompt, model) {
   //if(result.includes('&lt;/think&gt;')) {
   //  result = result.split('&lt;/think&gt;\n')[1]
   //}
-  if(result.startsWith('```') &amp;&amp; result.endsWith('````')) {
-    result = result.replace(/^```(markdown)*\n*|\n*```$/gi, '')
+  if(result.startsWith('```') &amp;&amp; result.endsWith('```')) {
+    result = result.replace(/^```(markdown)\n*|\n```$/gi, '')
   }
   if(session == model)
     model.setChatHistory(initialChatHistory);
@@ -213,39 +218,128 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import path from "path";
+import { getLlama, LlamaChatSession } from "node-llama-cpp";
+import process from "process";
+
+const HOMEPATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+class Llama {
+  constructor() {
+    this.llama = null;
+    this.model = null;
+    this.context = null;
+    this.session = null;
+    this.initialChatHistory = null;
+    this.modelPath = process.env.MODELPATH || path.join(HOMEPATH, "llama.cpp", "models", 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf');
+  }
+
+  async initSession(context = null, prompt = '# You are a\n##large language model\nnamed Llama that provides clear and concise answers in beautifully crafted `markdown` unless otherwise instructed.\n</think>\n...') {
+    this.context = context? context : await this.model.createContext();
+    this.session = new LlamaChatSession({
+      contextSequence: this.context.getSequence(),
+      systemPrompt: prompt,
+    });
+    this.initialChatHistory = this.session.getChatHistory();
+    this.session.setChatHistory(this.initialChatHistory);
+    return this.session;
+  }
+
+  async createSession() {
+    if (!this.llama) {
+      this.llama = await getLlama();
+    }
+
+    if (!this.model) {
+      this.model = await this.llama.loadModel({
+        modelPath: this.modelPath,
+        contextSize: 2048,
+      });
+    }
+
+    await this.initSession();
+
+    return this.session;
+  }
+
+  async getSession() {
+    if (!this.session) {
+      await this.createSession();
+    }
+    return this.session;
+  }
+
+  async llmPrompt(prompt, model = null) {
+    if (!model) {
+      model = await this.getSession();
+    }
+    if (model && typeof model ==='string') {
+      model = await this.getSession(model);
+    }
+    let result = await model.prompt(prompt, {
+      temperature: 0.8,
+      maxTokens: this.context.contextSize,
+      onTextChunk: (text) => process.stdout.write(text),
+    });
+
+    if (result.includes('```markdown') && result.endsWith('```')) {
+      result = result.replace(/^```(markdown)*\n*|\n*```$/gi, '');
+    }
+
+    if (result.startsWith('Response error')) {
+      await this.initSession();
+      result = await this.session.prompt(prompt, {
+        temperature: 0.8,
+        maxTokens: this.context.contextSize,
+        onTextChunk: (text) => process.stdout.write(text),
+      });
+    }
+
+    this.model.setChatHistory(this.initialChatHistory);
+    return result;
+  }
+}
+
+export default new Llama({
+  llmPrompt,
+  createSession,
+  initSession,
+  getSession,
+});</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>
-<p>The code starts by importing the following modules:</p>
+<p>The code imports the following modules:</p>
 <ul>
-<li><code>path</code> from the <code>path</code> module for working with file paths</li>
-<li><code>getLlama</code> and <code>LlamaChatSession</code> from the <code>node-llama-cpp</code> module, which is a Node.js wrapper for the LLaMA (Large Language Model Applications) C++ library</li>
-<li><code>process</code> from the <code>process</code> module for accessing environment variables</li>
+<li><code>path</code> from the Node.js <code>path</code> module for working with file paths.</li>
+<li><code>getLlama</code> and <code>LlamaChatSession</code> from the <code>node-llama-cpp</code> module, which is a Node.js wrapper for the LLaMA (Large Language Model Application) C++ API.</li>
+<li><code>process</code> from the Node.js <code>process</code> module, which provides access to environment variables.</li>
 </ul>
-<h3>Variables and Constants</h3>
-<p>The code defines the following variables and constants:</p>
+<h3>Constants and Variables</h3>
+<p>The code defines the following constants and variables:</p>
 <ul>
-<li><code>HOMEPATH</code>: the user's home directory, which is obtained from environment variables <code>HOME</code>, <code>HOMEPATH</code>, and <code>USERPROFILE</code></li>
-<li><code>llama</code>: an instance of the LLaMA model</li>
-<li><code>model</code>: the loaded LLaMA model</li>
-<li><code>context</code>: the context for the LLaMA model</li>
-<li><code>session</code>: the chat session for the LLaMA model</li>
-<li><code>initialChatHistory</code>: the initial chat history for the session</li>
+<li><code>HOMEPATH</code>: a string representing the user's home directory, determined by checking the <code>HOME</code>, <code>HOMEPATH</code>, and <code>USERPROFILE</code> environment variables.</li>
+<li><code>llama</code>, <code>model</code>, <code>context</code>, <code>session</code>, and <code>initialChatHistory</code>: variables that will store instances of LLaMA-related objects.</li>
 </ul>
 <h3>Functions</h3>
-<p>The code defines two asynchronous functions:</p>
+<p>The code defines the following functions:</p>
+<h4><code>initSession(context2, prompt)</code></h4>
+<p>An asynchronous function that initializes a new chat session with the LLaMA model:</p>
 <ul>
-<li><code>initSession(context2, prompt)</code>: initializes a new chat session with the given <code>context</code> and <code>prompt</code>. If <code>context2</code> is not provided, it creates a new context using the <code>model.createContext()</code> method.</li>
-<li><code>createSession(modelPath)</code>: creates a new instance of the LLaMA model using the <code>getLlama()</code> method and loads a model from the specified <code>modelPath</code>. If no <code>modelPath</code> is provided, it uses the <code>MODELPATH</code> environment variable or a default model path.</li>
+<li>If <code>context2</code> is provided, it uses that context. Otherwise, it creates a new context using the <code>createContext</code> method of the <code>model</code>.</li>
+<li>It creates a new <code>LlamaChatSession</code> instance with the context sequence and a system prompt (if provided).</li>
+<li>It initializes the model and gets the initial chat history.</li>
+<li>It resets the chat history and returns the session.</li>
+</ul>
+<h4><code>createSession(modelPath)</code></h4>
+<p>An asynchronous function that creates a new LLaMA model instance:</p>
+<ul>
+<li>If the <code>llama</code> instance is not already created, it creates a new instance using the <code>getLlama</code> function.</li>
+<li>It loads a model from the specified <code>modelPath</code> using the <code>loadModel</code> method of the <code>llama</code> instance.</li>
+<li>It sets the <code>model</code> variable to the loaded model instance.</li>
+<li>It returns the model instance.</li>
 </ul>
 <h3>Notes</h3>
-<ul>
-<li>The code uses the <code>async/await</code> syntax to handle asynchronous operations.</li>
-<li>The <code>getLlama()</code> method is used to create an instance of the LLaMA model.</li>
-<li>The <code>loadModel()</code> method is used to load a model from the specified <code>modelPath</code>.</li>
-<li>The <code>createContext()</code> method is used to create a new context for the LLaMA model.</li>
-<li>The <code>LlamaChatSession</code> class is used to represent a chat session with the LLaMA model.</li>
-<li>The <code>setChatHistory()</code> method is used to reset the chat history for the session.</li>
-</ul>
+<p>The code appears to be part of a larger program that uses the LLaMA C++ API to interact with a large language model. The <code>createSession</code> function seems to be the entry point for creating a new model instance, while the <code>initSession</code> function is used to initialize a new chat session with the model.</p>
 
 </body>
 

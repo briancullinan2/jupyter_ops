@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -240,7 +247,134 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to scrape Facebook posts and extract information from them. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const glob = require('glob');
+const fs = require('fs');
+const importer = require('../Core');
+const Client = require('selenium-webdriver');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = PROFILE_PATH + '/Conversations';
+const client = new Client.Builder().forBrowser('chrome').build();
+
+async function listFacebookPosts(profile, posts = []) {
+    try {
+        const r = await client.getAllUntil(
+            '//body',
+            '//*[contains(@class, "timestampContent")]/parent::*/parent::*/@href',
+            posts,
+            (a, b) =&gt; a === b,
+            (i) =&gt; i &lt; 20
+        );
+        const facebookUrls = r.map(l =&gt; l.includes('facebook.com')? l : `https://www.facebook.com${l}`);
+        return facebookUrls;
+    } catch (e) {
+        console.error(e);
+        return [];
+    }
+};
+
+async function scrapeFacebookPost(post) {
+    try {
+        await client.getUrl().then(url =&gt; {
+            if (url.indexOf(post) === -1) {
+                client.url(post);
+            }
+        });
+        await client.pause(post.includes('video')? 4000 : 2000);
+        const r = await client.getAllXPath([
+            '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]',
+            {
+                posts: [
+                    './/*[contains(@class, "userContentWrapper")]|.//*[contains(@class, "fbUserPost")]|.//*[contains(@class, "fbUserStory")]',
+                    {
+                        description:
+                            './/following-sibling::div//*[contains(@class, "fbPhotosPhotoCaption")]//text()|.//*[contains(@class, "userContent")]//text()|.//h5//text()|.//a[contains(@class, "profileLink")]//text()',
+                        participants: [
+                            './/a[contains(@class, "profileLink")]/@href|.//a[contains(@href, "facebook") and.//img]/@href',
+                            './following-sibling::div//a/@href',
+                            './/*[contains(@class, "commentable_item")]//a[contains(@class, "UFICommentActorName")]/@href'
+                        ],
+                        comments: [
+                            './/h6[contains(., "Comments")]//following-sibling::div/div/div[contains(@class, "UFIComment")]',
+                            {
+                                time:
+                                    './/*[contains(@class, "uiLinkSubtle")]//text()',
+                                content:
+                                    './/*[contains(@class, "UFICommentBody")]//text()',
+                                from:
+                                    './/a[contains(@class, "UFICommentActorName")]/text()|.//a[contains(@class, "UFICommentActorName")]/@href'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]);
+        const posts = r[0].posts.map(p =&gt; {
+            return {
+               ...p,
+                post: post,
+                description: typeof p.description ==='string'? p.description : p.description.join(' '),
+                participants: p.participants.filter(i =&gt; i.indexOf('photo') === -1 &amp;&amp; i!== '#' &amp;&amp; i.indexOf('ufi/reaction') === -1),
+                photos: p.participants.filter(i =&gt; i.indexOf('photo')!== -1 &amp;&amp; i!== '#' &amp;&amp; i.indexOf('ajax/sharer') === -1),
+                comments: p.comments.map(c =&gt; ({
+                   ...c,
+                    time: typeof c.time ==='string'? c.time : c.time.join(' '),
+                    content: typeof c.content ==='string'? c.content : c.content.join(' '),
+                    from: typeof c.from ==='string'? c.from : c.from.join(' ')
+                }))
+            };
+        });
+        return posts;
+    } catch (e) {
+        console.error(e);
+        return [];
+    }
+};
+
+async function likeFacebookPost(post) {
+    try {
+        await client.getUrl().then(url =&gt; {
+            if (url.indexOf(post) === -1) {
+                client.url(post);
+            }
+        });
+        await client.pause(post.includes('video')? 4000 : 2000);
+        const els = await client.elements(
+            '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]//a[contains(., "Like")][contains(@class, "UFILikeLink")][not(contains(@class, "UFILinkBright"))]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]//a[contains(., "Like")][contains(@class, "UFILikeLink")][not(contains(@class, "UFILinkBright"))]'
+        );
+        await importer.runAllPromises(els.value.slice(0, 4).map(el =&gt; () =&gt; client.elementIdClick(el.ELEMENT).catch(() =&gt; {}).then(() =&gt; client.pause(1500))));
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+async function likeAllPosts(profile, like = null) {
+    const profileId = profile.replace(/^\/|\/$/ig, '').split('/').pop().replace(/[^a-z0-9]/ig, '_');
+    const file = glob.sync('**/' + profileId + '-*.json', { cwd: project })[0];
+    try {
+        const posts = JSON.parse(fs.readFileSync(file)) || [];
+        const facebookUrls = await listFacebookPosts(profile, posts.map(p =&gt; p.post));
+        const results = [];
+        for (const url of facebookUrls) {
+            const r = await scrapeFacebookPost(url);
+            if (like) {
+                await likeFacebookPost(url);
+            }
+            results.push(...r);
+        }
+        const filename = project + '/' + profileId + '-posts-' + (new Date()).getFullYear() + '.json';
+        fs.writeFileSync(filename, JSON.stringify(results, null, 4));
+        return results;
+    } catch (e) {
+        console.error(e);
+        return [];
+    } finally {
+        client.quit();
+    }
+};
+
+module.exports = likeAllPosts;</code></pre></div><p>This code snippet is designed to scrape Facebook posts and extract information from them. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
 <ul>
 <li><code>glob</code>: Used for file pattern matching (not directly used in the provided snippet).</li>

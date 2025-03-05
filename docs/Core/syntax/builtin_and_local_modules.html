@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -198,7 +205,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>relativeImports Function</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const importer = require('../Core');
+const { getRequires } = importer.import('getRequires');
+
+/**
+ * Resolves relative imports in the given code and categorizes them as local, built-in, packages, or missing.
+ * @param {string} code - The code to analyze.
+ * @param {string} pathToCode - The path to the code file.
+ * @returns {object} An object containing the categorized imports.
+ */
+function relativeImports(code, pathToCode) {
+    const result = {
+        local: [],
+        builtin: [],
+        packages: [],
+        missing: []
+    };
+
+    const requires = getRequires(code);
+
+    function resolveImport(imp, category) {
+        try {
+            const relativeImp = path.relative(__dirname, pathToCode, imp);
+            require.resolve(relativeImp);
+            result.local.push(relativeImp);
+        } catch (e) {
+            if (e.message.includes('Cannot find module')) {
+                category === 'local'? result.missing.push(imp) : result.packages.push(imp);
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    requires.forEach(imp =&gt; {
+        const local = imp.startsWith('.');
+        if (local) {
+            resolveImport(imp, 'local');
+        } else {
+            if (!module.builtinModules.includes(imp)) {
+                resolveImport(imp, 'package');
+            } else {
+                result.builtin.push(imp);
+            }
+        }
+    });
+
+    return result;
+}
+
+module.exports = { relativeImports };</code></pre></div><h2>relativeImports Function</h2>
 <h3>Purpose</h3>
 <p>The <code>relativeImports</code> function analyzes a given code snippet to identify required modules. It categorizes them into local, built-in, packages, and missing modules.</p>
 <h3>Parameters</h3>

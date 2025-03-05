@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -184,7 +191,103 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Builder, Browser, By, Key, until, WebElement } = require('selenium-webdriver');
+const path = require('path');
+const { Client } = require('selenium-webdriver/lib/remote/index.js');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PASSWORDS_FILE = path.join(PROFILE_PATH, '.credentials', 'brian.json');
+
+async function enterFacebook(driver) {
+  /**
+   * Enters Facebook login credentials into the driver instance.
+   * @param {Client} driver Selenium WebDriver instance.
+   */
+  console.log('Facebook: Sign in required');
+
+  try {
+    const credentials = require(PASSWORDS_FILE);
+    await driver.wait(until.elementLocated(By.css('.login-form, [type="submit"]')), 10000);
+
+    const submitButton = await driver.findElement(By.css('.login-form, [type="submit"]'));
+    const emailInput = await driver.findElement(By.css('input[name*="email"]'));
+
+    await driver.executeScript('arguments[0].click();', emailInput);
+    await driver.actions().sendKeys(credentials.username).perform();
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const passwordInput = await driver.findElement(By.css('input[name*="pass"]'));
+    await passwordInput.click();
+    await passwordInput.sendKeys(credentials.password);
+
+    await submitButton.click();
+
+    await new Promise(resolve => setTimeout(resolve, 3000));
+  } catch (e) {
+    console.error('Failed to enter Facebook credentials', e);
+    throw e;
+  }
+
+  try {
+    // Wait for CAPTCHA to appear
+    await driver.wait(until.elementLocated(By.css('#captcha-internal')), 20000);
+    throw new Error('captcha');
+  } catch (e) {}
+
+  try {
+    // Wait for notifications to appear
+    const notification = await driver.findElement(By.xpath('//*[contains(text(),"Check your notifications")]'));
+    await driver.sleep(20000); // Wait for notification to load
+    await driver.wait(until.elementLocated(By.xpath('//*[contains(text(),"Check your notifications")]')), 20000);
+    throw new Error('captcha');
+  } catch (e) {}
+}
+
+async function loginFacebook(driver) {
+  /**
+   * Logs in to Facebook using the provided driver instance.
+   * @param {Client} driver Selenium WebDriver instance.
+   */
+  if (!driver) {
+    driver = await getClient();
+  }
+
+  try {
+    const url = await driver.getCurrentUrl();
+    const loggedIn = url.indexOf('facebook') > -1 && url.indexOf('login') == -1;
+
+    if (loggedIn) {
+      if (await driver.findElement(By.xpath('iframe.authentication-iframe'))) {
+        await driver.switchTo().frame(await driver.findElement(By.xpath('iframe.authentication-iframe')));
+        await enterFacebook();
+        await driver.switchTo().defaultContent();
+      }
+    } else {
+      await driver.get('https://www.facebook.com/');
+
+      try {
+        const loginLink = await driver.findElement(By.xpath('//a[text()[contains(.,"Forgot password?")]]'));
+        const loginLink2 = await driver.findElement(By.xpath('//a[text()[contains(.,"Create new account")]]'));
+
+        if (loginLink || loginLink2) {
+          await enterFacebook(driver);
+        }
+      } catch (e) {
+        console.error('Failed to find login link', e);
+      }
+    }
+  } catch (e) {
+    driver.quit(); // avoid leaving sessions hanging around
+
+    throw e;
+  }
+
+  return driver;
+}
+
+module.exports = loginFacebook;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Dependencies</h3>
 <p>The code imports the following dependencies:</p>
 <ul>

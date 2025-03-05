@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import numpy as np
+from tensorflow.keras.utils import to_categorical
+
+def convert_to_one_hot(y_train, y_test, num_classes):
+    """
+    Convert class labels to one-hot encoding using Keras' to_categorical function.
+
+    Args:
+        y_train (np.ndarray): Training labels.
+        y_test (np.ndarray): Testing labels.
+        num_classes (int): Number of classes.
+
+    Returns:
+        tuple: One-hot encoded training and testing labels.
+    """
+    y_train_one_hot = to_categorical(y_train, num_classes=num_classes)
+    y_test_one_hot = to_categorical(y_test, num_classes=num_classes)
+
+    return y_train_one_hot, y_test_one_hot
+
+# Example usage
+y_train = np.array([0, 1, 2, 3, 4, 5, 6])
+y_test = np.array([6, 5, 4, 3, 2, 1, 0])
+num_classes = 7
+
+y_train_one_hot, y_test_one_hot = convert_to_one_hot(y_train, y_test, num_classes)
+print("One-hot encoded training labels:", y_train_one_hot)
+print("One-hot encoded testing labels:", y_test_one_hot)</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function: <code>to_categorical</code></h4>
 <p>The <code>to_categorical</code> function is used to convert integer class vectors to binary class matrices.</p>
 <h4>Usage:</h4>

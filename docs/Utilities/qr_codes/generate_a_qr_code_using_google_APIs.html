@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet generates a QR code image from a vCard (digital contact card) and displays it.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+import { request } from 'node-fetch';
+import { Buffer } from 'buffer';
+
+// Define constants for user information
+const FIRST_NAME = 'Elvis';
+const LAST_NAME = 'Presley';
+const PHONE_NUMBER = '5558675309';
+const EMAIL_ADDRESS = 'dawid@gmail.com';
+
+// Define a function to generate QR code URL
+const generateQrUrl = () =>
+  `https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=BEGIN:VCARD%0AN:${FIRST_NAME}%20${LAST_NAME}%0ATEL;CELL:${PHONE_NUMBER}%0AEMAIL:${EMAIL_ADDRESS}%0AEND:VCARD`;
+
+// Define a function to handle QR code request and display
+const handleQrRequest = async () => {
+  try {
+    // Send HTTP GET request to API
+    const response = await request(generateQrUrl());
+
+    // Convert response body to base64 encoded string
+    const qrCode = new Buffer(response.body).toString('base64');
+
+    // Display QR code as PNG image
+    // Note: We assume that $.png and $.sendError are functions that can display and handle errors respectively.
+    // However, Node.js does not have a built-in $.png function. This code snippet is just an example.
+    $.png(qrCode);
+  } catch (error) {
+    // Handle any errors that occur during the request or display process
+    $.sendError(error);
+  }
+};
+
+// Call the handleQrRequest function
+handleQrRequest();
+
+// Print the QR code URL (Optional)
+console.log(generateQrUrl());</code></pre></div><p>This code snippet generates a QR code image from a vCard (digital contact card) and displays it.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

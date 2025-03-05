@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -237,7 +244,98 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { JSDOM } = require('jsdom');
+
+/**
+ * Accumulate child nodes into a tree-like structure.
+ * 
+ * @param {document} body The body of the HTML document.
+ * @returns {object} The accumulated tree structure.
+ */
+function accumulateChildNodes(body) {
+    const commentBuffer = [];
+    const children = Array.from(body.childNodes)
+       .filter(n =&gt; n.nodeName!== '#comment')
+       .reduce((obj, n) =&gt; {
+            if (n.nodeName === '#text') {
+                commentBuffer.push(n.nodeValue);
+                return obj;
+            }
+
+            const parent = n.getAttribute('parent-attr');
+            const newNode = htmlToTree(n);
+
+            if (parent) {
+                const parentType = body.getAttribute(parent + '-type');
+                if (parentType === 'Array') {
+                    if (!obj[parent]) obj[parent] = [];
+                    obj[parent].push(newNode);
+                } else {
+                    obj[parent] = newNode;
+                }
+            } else {
+                if (!obj.children) obj.children = [];
+                obj.children.push(newNode);
+            }
+
+            if (newNode.comments) {
+                newNode.comments.push(...commentBuffer);
+                commentBuffer.length = 0;
+            }
+
+            return obj;
+        }, {});
+
+    // Remove child properties with no children
+    Object.keys(children).forEach(key =&gt; {
+        if (!children[key] || children[key].length === 0) delete children[key];
+    });
+
+    return children;
+}
+
+/**
+ * Convert HTML string or tree to a tree-like structure.
+ * 
+ * @param {string|object} body The HTML string or tree.
+ * @returns {object} The converted tree structure.
+ */
+function htmlToTree(body) {
+    if (typeof body ==='string') {
+        const dom = new JSDOM(body);
+        return accumulateChildNodes(dom.window.document.body);
+    } else if (Array.isArray(body)) {
+        return body.map(t =&gt; htmlToTree(t));
+    } else if (body.nodeName === '#text') {
+        return body.nodeValue;
+    } else {
+        const attrs = Array.from(body.getAttributeNames())
+           .filter(attr =&gt; attr!== 'parent-attr' &amp;&amp;!attr.endsWith('-type'))
+           .reduce((obj, attr) =&gt; {
+                const value = body.getAttribute(attr);
+                try {
+                    if (body.getAttribute(`${attr}-type`)!=='string') {
+                        obj[attr] = JSON.parse(value);
+                    } else {
+                        obj[attr] = value;
+                    }
+                } catch (e) {
+                    obj[attr] = value;
+                }
+                return obj;
+            }, {});
+
+        const children = accumulateChildNodes(body);
+
+        return Object.assign({
+            type: body.nodeName,
+            children,
+        }, attrs);
+    }
+}
+
+module.exports = { htmlToTree };</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing JSDOM</h3>
 <pre><code class="language-javascript">var { JSDOM } = require('jsdom');
 </code></pre>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Snippet</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Ends all client connections.
+ * 
+ * @param {Object} client The client object that needs to be ended.
+ * @throws {Error} If the client object is undefined or null.
+ */
+function endClientConnections(client) {
+    if (!client) {
+        throw new Error('Client object is undefined or null.');
+    }
+
+    if (client.endAll) {
+        client.endAll();
+    } else {
+        console.warn('Client object does not have an endAll method.');
+    }
+}
+
+// Usage example
+try {
+    endClientConnections(client);
+} catch (error) {
+    console.error(error);
+}</code></pre></div><h3>Code Snippet</h3>
 <h4>Purpose</h4>
 <p>Closes all connections to a client if it exists.</p>
 <h4>Syntax</h4>

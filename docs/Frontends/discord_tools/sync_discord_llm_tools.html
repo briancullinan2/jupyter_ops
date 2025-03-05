@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -398,7 +405,248 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const {
+  registerCommand, getCommands, deleteCommand, updateCommand
+} = require('discord-api');
+const { interactionsCommands } = require('discord-gateway');
+const {
+  doInteraction, doMention, doPrivate
+} = require('discord-llm-interactions');
+const {
+  doDistill, doInstruct, doReason, doMistral
+} = require('discord-llm-connector');
+const {
+  doEssay, doBusiness, doStory
+} = require('discord-writing-llms');
+
+// Define commands with their default options
+const commands = {
+  hello: {
+    name: 'hello',
+    description: 'Check if Orbb is awake.',
+  },
+  prompt: {
+    name: 'prompt',
+    description: 'Prompt an llm.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt the llm with.',
+        required: true,
+        type: 3
+      }
+    ]
+  },
+  distill: {
+    name: 'distill',
+    description: 'Distill with DeepSeek R1 8B.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt the DeepSeek R1 8B with.',
+        required: true,
+        type: 3
+      }
+    ]
+  },
+  instruct: {
+    name: 'instruct',
+    description: 'Meta Instruct 70B.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt the Meta Instruct 70B with.',
+        required: true,
+        type: 3
+      }
+    ]
+  },
+  mistral: {
+    name:'mistral',
+    description: 'Meta Instruct 70B.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt the Meta Instruct 70B with.',
+        required: true,
+        type: 3
+      }
+    ]
+  },
+  reason: {
+    name:'reason',
+    description: 'Qwen 2.5 14B M1.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt Qwen reasoning LLM.',
+        required: true,
+        type: 3
+      }
+    ]
+  },
+  essay: {
+    name: 'essay',
+    description: 'Write an essay.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt LLM.',
+        required: true,
+        type: 3
+      },
+      {
+        name:'model',
+        description: 'Model to use, Meta, DeepSeek, Llama, or Qwen.',
+        required: false,
+        type: 3,
+        choices: [
+          { name: 'Meta', value: 'Meta' },
+          { name: 'DeepSeek', value: 'DeepSeek' },
+          { name: 'Llama', value: 'Llama' },
+          { name: 'Qwen', value: 'Qwen' },
+          { name: 'Code', value: 'Code' },
+          { name: 'Mistral', value: 'Mistral' },
+        ]
+      }
+    ]
+  },
+  business: {
+    name: 'business',
+    description: 'Write an business plan.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt LLM.',
+        required: true,
+        type: 3
+      },
+      {
+        name:'model',
+        description: 'Model to use, Meta, DeepSeek, Llama, or Qwen.',
+        required: false,
+        type: 3,
+        choices: [
+          { name: 'Meta', value: 'Meta' },
+          { name: 'DeepSeek', value: 'DeepSeek' },
+          { name: 'Llama', value: 'Llama' },
+          { name: 'Qwen', value: 'Qwen' },
+          { name: 'Code', value: 'Code' },
+          { name: 'Mistral', value: 'Mistral' },
+        ]
+      }
+    ]
+  },
+  story: {
+    name:'story',
+    description: 'Write an story.',
+    options: [
+      {
+        name: 'text',
+        description: 'Text to prompt LLM.',
+        required: true,
+        type: 3
+      },
+      {
+        name:'model',
+        description: 'Model to use, Meta, DeepSeek, Llama, or Qwen.',
+        required: false,
+        type: 3,
+        choices: [
+          { name: 'Meta', value: 'Meta' },
+          { name: 'DeepSeek', value: 'DeepSeek' },
+          { name: 'Llama', value: 'Llama' },
+          { name: 'Qwen', value: 'Qwen' },
+          { name: 'Code', value: 'Code' },
+          { name: 'Mistral', value: 'Mistral' },
+        ]
+      }
+    ]
+  },
+};
+
+// Define all available commands
+const allCommands = [
+  'hello',
+  'prompt',
+  'distill',
+  'instruct',
+ 'mistral',
+ 'reason',
+  'essay',
+  'business',
+ 'story',
+];
+
+// Function to sync chat commands
+async function syncChat(guildId = null) {
+  try {
+    // Get all commands in the guild
+    const commandsResult = await getCommands(guildId);
+
+    // Filter out commands that are not in our list
+    const commandsToCreate = commandsResult.filter((command) =&gt;!allCommands.includes(command.name));
+
+    // Create commands that are not present
+    for (const command of commandsToCreate) {
+      await registerCommand(command, null, guildId);
+    }
+
+    // Map commands to their corresponding functions
+    const interactions = {
+      hello: doInteraction,
+      prompt: doInteraction,
+      promptMention: doMention,
+      promptPrivate: doPrivate,
+      distill: doDistill,
+      instruct: doInstruct,
+      mistral: doMistral,
+      reason: doReason,
+      essay: doEssay,
+      business: doBusiness,
+      story: doStory,
+    };
+
+    // Update commands that have changed
+    for (const command of allCommands) {
+      const commandDef = commands[command];
+      const commandResult = commandsResult.find((c) =&gt; c.name === command);
+
+      if (commandResult &amp;&amp; commandDef.name!== commandResult.name || commandDef.description!== commandResult.description) {
+        await updateCommand(commandDef, null, commandResult.id, guildId);
+
+        // Update interactions mapping
+        if (interactions[command]) {
+          delete interactions[command];
+          interactions[command] = doInteraction;
+        }
+      } else if (!commandResult) {
+        // Create command
+        await registerCommand(commandDef, null, guildId);
+
+        // Update interactions mapping
+        interactions[command] = doInteraction;
+      }
+    }
+
+    // Delete commands that are not present in our list
+    const commandsToDelete = commandsResult.filter((command) =&gt;!allCommands.includes(command.name));
+
+    for (const command of commandsToDelete) {
+      await deleteCommand(command.id, guildId);
+    }
+
+    // Return all commands
+    return await getCommands();
+  } catch (error) {
+    console.error('Error syncing chat commands:', error);
+    throw error;
+  }
+}
+
+module.exports = syncChat;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>The code imports several modules using the <code>importer.import</code> function:</p>
 <ul>

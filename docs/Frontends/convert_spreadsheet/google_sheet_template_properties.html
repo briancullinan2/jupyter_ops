@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -173,7 +180,89 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { getDataSheet, renderRows, getRows, filteredData, unfilteredData } = require('../Core');
+
+// Define a function to check if a row is a wrapper template
+const isWrapper = rows =&gt; rows.length === 1 &amp;&amp; rows[0].length === 1
+    &amp;&amp; rows[0][0].match(/\{\{\s*&gt;\s*(.*?)(\/(.*?-)+link)*\}\}/ig);
+
+// Define a function to check if a URL is filtered
+const isFiltered = (url) =&gt; url.split('/').length &gt; 1;
+
+// Define a function to get template properties
+const getTemplateProperties = async (key, properties, templates, getDataSheet, renderRows, getRows, filteredData, unfilteredData) =&gt; {
+    if (!templates[key]) {
+        throw new Error(`Section "${key}" not found!`);
+    }
+    
+    // Load template data
+    const data = await promiseOrResolve(templates[key].data, 'rows', getDataSheet);
+    properties[key + '-original-data'] = data;
+    properties[key + '-data'] = unfilteredData.bind(null, key);
+
+    // Load template layout
+    const rows = await promiseOrResolve(templates[key].template, 'rows', getRows);
+    const flatRows = rows.flat();
+    
+    // Detect if this is just a wrapper template and don't render rows, do a direct replacement
+    if (isWrapper(flatRows)) {
+        return flatRows[0][0];
+    }
+    
+    // Render rows
+    const template = await renderRows(key, flatRows, properties, templates);
+    properties[key] = template;
+    
+    return properties;
+};
+
+// Define a function to match sections
+const matchSections = async (cell, properties, templates, getDataSheet, renderRows, getRows, filteredData, unfilteredData) =&gt; {
+    const sections = importer.regexToArray(/\{\{\s*&gt;\s*(.*?)\s*\}\}/ig, cell, 1);
+    
+    return sections.reduce(async (promise, section) =&gt; {
+        const result = await promise;
+        const key = section.split('/')[0];
+        
+        // Check if the section is filtered
+        if (isFiltered(section)) {
+            return createAssignFilter(section, properties);
+        }
+        
+        // Get template properties
+        const properties = await getTemplateProperties(key, properties, templates, getDataSheet, renderRows, getRows, filteredData, unfilteredData);
+        
+        return Promise.resolve(properties);
+    }, Promise.resolve(properties));
+};
+
+// Define a function to create an assign filter
+const createAssignFilter = (section, properties) =&gt; {
+    const key = section.split('/')[0];
+    const match = section.split('/').slice(1).join('/');
+    properties[section] = properties[key];
+    
+    // Add a special partial for the filtered data
+    const categorical = isCategorical(properties[key + '-original-data'] || [], key);
+    
+    // Automatically wrap unique templates in a data section for accessing filtered properties
+    if (!categorical &amp;&amp;!properties[key].includes(`{{#${key}-data}}`) &amp;&amp; typeof properties[key + '-original-data']!== 'undefined') {
+        properties[section] = `{{#${key}-data}}${properties[key]}{{/${key}-data}}`;
+    }
+    
+    // Run the filtered function instead of using the array
+    properties[key + '-data'] = filteredData.bind(null, key, match, properties, categorical);
+};
+
+// Define a function to check if data is categorical
+const isCategorical = (data, key) =&gt; data.filter(row =&gt; row.hasOwnProperty(key)).length &gt; 0;
+
+// Export the getTemplateProperties function
+module.exports = async (key, properties, templates, getDataSheet, renderRows, getRows, filteredData, unfilteredData) =&gt; {
+    return getTemplateProperties(key, properties, templates, getDataSheet, renderRows, getRows, filteredData, unfilteredData);
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Variables and Functions</h3>
 <ul>
 <li><code>importer</code>: an object that provides various functions from the <code>../Core</code> module.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -89,7 +96,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be using a JavaScript library or framework (likely <code>$TS</code>) to control a screen or display element.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Import the necessary module
+import { screen } from 'ts-screen';
+
+/**
+ * Set the screen dimensions and zoom level for the given URL.
+ * @param url - The URL to display.
+ * @param options - The screen dimensions and zoom level.
+ * @param options.zoom - The zoom level (default: 1).
+ * @param options.width - The width of the screen (default: 1024).
+ * @param options.height - The height of the screen (default: 768).
+ * @param options.cropHeight - The height to crop the screen to (default: null).
+ */
+function setScreenDimensions(url: string, options: ScreenOptions): void {
+  const defaultOptions: ScreenOptions = {
+    zoom: 1,
+    width: 1024,
+    height: 768,
+    cropHeight: null
+  };
+
+  // Merge the default options with the provided options
+  const mergedOptions = {...defaultOptions,...options };
+
+  // Check if the cropHeight option is provided and set it if not
+  if (!mergedOptions.cropHeight) {
+    mergedOptions.cropHeight = mergedOptions.height;
+  }
+
+  screen(url, mergedOptions);
+}
+
+interface ScreenOptions {
+  zoom: number;
+  width: number;
+  height: number;
+  'crop-h': number;
+}
+
+// Call the function with the provided URL and options
+setScreenDimensions('act.com', {
+  zoom: 0.5,
+  width: 680,
+  'crop-h': 400
+});</code></pre></div><p>This code snippet appears to be using a JavaScript library or framework (likely <code>$TS</code>) to control a screen or display element.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><strong><code>$TS.screen('act.com', ...)</code>:</strong> This suggests a function called <code>screen</code> within the <code>$TS</code> object. It's likely used to manage or manipulate a screen or display area.</li>

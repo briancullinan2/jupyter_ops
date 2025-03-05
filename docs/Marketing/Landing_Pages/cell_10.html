@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Constants for default window settings
+const DEFAULT_ZOOM = 0.5;
+const DEFAULT_WIDTH = 680;
+const DEFAULT_HEIGHT = 400;
+
+/**
+ * Opens a window with the specified URL and settings.
+ *
+ * @param url The URL to open in the window.
+ * @param settings An object containing the desired window settings.
+ * @param settings.zoom The zoom level of the window (default: 0.5).
+ * @param settings.width The width of the window (default: 680).
+ * @param settings.height The height of the window (default: 400).
+ */
+function openWindow(url: string, settings: { zoom?: number, width?: number, height?: number } = {}): void {
+  // Merge default settings with provided settings
+  const mergedSettings = {
+    zoom: settings.zoom?? DEFAULT_ZOOM,
+    width: settings.width?? DEFAULT_WIDTH,
+    height: settings.height?? DEFAULT_HEIGHT,
+  };
+
+  // Use TS.screen function to open the window
+  TS.screen(url, mergedSettings);
+}
+
+// Example usage
+openWindow('act.com/au/products/act-emarketing', {
+  zoom: 0.5,
+  width: 680,
+  height: 800,
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function Call</h4>
 <p>The code calls the <code>$TS.screen</code> function, which is likely a part of a library or framework that handles screen manipulation or layout adjustments.</p>
 <h4>Argument 1: URL</h4>

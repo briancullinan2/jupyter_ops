@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -105,7 +112,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>CSS Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Define CSS styles in a separate file, but for simplicity, we'll define it here
+const cssStyles = `
+  :root {
+    --primary-color: #fe5000;
+  }
+
+  a {
+    color: var(--primary-color);
+  }
+`;
+
+// Extract the primary color from the CSS styles
+const PRIMARY_COLOR: string = cssStyles.match(/--primary-color:\s*([^\s]+)/)[1];
+
+// Define a function to generate the CSS styles
+function generateCss(): string {
+  return `
+    :root {
+      --primary-color: ${PRIMARY_COLOR};
+    }
+
+    a {
+      color: var(--primary-color);
+    }
+  `;
+}
+
+console.log(generateCss());</code></pre></div><p><strong>CSS Code Breakdown</strong></p>
 <p>This code defines two styles for HTML anchor tags (<code>a</code>) using CSS.</p>
 <h3>Rule 1: Direct Color Assignment</h3>
 <pre><code class="language-css">a {

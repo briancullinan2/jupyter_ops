@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -169,7 +176,89 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importer } = require('./importer');
+
+const { messageRecents, listMemories } = importer.import('general chit chat');
+const { doStableRequest, API_DESCRIPTION } = importer.import('stable diffusion request');
+const { askLlamaMatchingFunction } = importer.import('classify llm prompt');
+const { getParameters } = importer.import('function parameters');
+
+async function classifyPrompt({
+  promptModel,
+  session,
+  prompt,
+  image,
+  otr,
+}) {
+  const matchingFunctions = await askLlamaMatchingFunction(promptModel, prompt, image);
+
+  // If the matching function is ourselves, return function description for capabilities inquiry
+  if (matchingFunctions.includes(classifyPrompt.name)) {
+    return {
+      memories: await listMemories(session),
+      content: 'Given the following functions:\n' + API_DESCRIPTION,
+    };
+  }
+
+  for (const matchingFunction of matchingFunctions) {
+    const importedFunction = importer.import(matchingFunction);
+
+    // Call parameterized
+    const params = getParameters(importedFunction.toString()).slice(1);
+    const inputs = params.map((param) => context[param]);
+
+    try {
+      const answer = await importedFunction(...inputs);
+      return mergeAnswer(answer, session);
+    } catch (error) {
+      // If the function fails, try the next one
+      continue;
+    }
+  }
+
+  // If no matching function is found, return a default message
+  return {
+    memories: await listMemories(session),
+    content: 'No matching function found for the given prompt.',
+  };
+}
+
+async function mergeAnswer(answer, session) {
+  if (answer && answer!== true) {
+    return Object.assign({}, {
+      memories: await listMemories(session),
+      content: answer,
+    });
+  } else if (answer === true) {
+    return {
+      memories: await listMemories(session),
+      content: await messageRecents(session),
+    };
+  } else {
+    return {
+      memories: await listMemories(session),
+      content: answer || (await messageRecents(session)),
+    };
+  }
+}
+
+// Special handling for doStableRequest
+async function specialHandling(answer, session) {
+  if (answer!== undefined) {
+    return Object.assign(answer, {
+      memories: await listMemories(session),
+      content: await messageRecents(session),
+    });
+  } else {
+    return {
+      memories: await listMemories(session),
+      content: await messageRecents(session),
+    };
+  }
+}
+
+module.exports = classifyPrompt;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Import Statements</h3>
 <p>The code imports various functions and variables from different modules:</p>
 <ul>

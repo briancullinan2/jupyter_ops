@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -179,7 +186,61 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines an asynchronous function <code>disassembleQVMs</code> that disassembles Quake 3 game files (QVMs) into human-readable disassembly output.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules
+const fs = require('fs');
+const path = require('path');
+const { importFile } = require('../Core');
+const { changeFileExtension, spawnChildProcess, findGlobFiles } = importFile([
+  { name: 'changing file name', path: 'Core/changing file name' },
+  { name:'spawn child process', path: 'Core/spawn child process' },
+  { name: 'glob files', path: 'Core/glob files' },
+]);
+
+// Define constants
+const PROJECT_ROOT = '/Users/briancullinan/planet_quake_data/';
+const QVM_DISASSEMBLER = '/Users/briancullinan/planet_quake_data/tools/q3vm-master/qvmdis';
+
+/**
+ * Disassembles QVMs in the given project directory.
+ * 
+ * @param {string} [project=PROJECT_ROOT] The project directory to disassemble QVMs in.
+ * @returns {Promise&lt;void&gt;} A promise that resolves when the disassembly is complete.
+ */
+async function disassembleQVMs(project = PROJECT_ROOT) {
+  // Find all QVM files in the project directory
+  const qvms = await findGlobFiles(project, '**/*.qvm');
+  console.log(`Found ${qvms.length} QVMs`);
+
+  // Disassemble each QVM
+  for (const qvm of qvms) {
+    console.log(`Disassembling ${qvm}`);
+
+    // Determine the QVM type
+    let type;
+    if (qvm.match(/cgame/i)) type = 'cgame';
+    else if (qvm.match(/qagame/i)) type = 'game';
+    else if (qvm.match(/ui/i)) type = 'ui';
+    else throw new Error(`Don't know what kind of QVM ${qvm} is.`);
+
+    // Get the output file path
+    const output = changeFileExtension(qvm, '.dis');
+
+    // Skip if the output file already exists
+    if (fs.existsSync(output)) continue;
+
+    try {
+      // Disassemble the QVM using the qvmdis tool
+      await spawnChildProcess(`
+        ${QVM_DISASSEMBLER} "${qvm}" ${type} &gt; "${output}"
+      `);
+    } catch (error) {
+      console.log(`Error disassembling ${qvm}:`, error);
+    }
+  }
+}
+
+module.exports = disassembleQVMs;</code></pre></div><p>This code snippet defines an asynchronous function <code>disassembleQVMs</code> that disassembles Quake 3 game files (QVMs) into human-readable disassembly output.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

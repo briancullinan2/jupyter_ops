@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>contactUs</code> that handles incoming contact form submissions and adds them to a Google Sheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Importing required modules
+const importer = require('../Core');
+const addRow = importer.import('addRowDataGoogleSheet'); // Renamed for consistency
+
+/**
+ * Handles contact us form submission
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+function contactUs(req, res) {
+    // Extracting required fields from request body
+    const { name, email, subject, message } = req.body;
+    
+    // Logging contact form submission
+    console.log(`Adding contact row for ${name}`);
+    
+    // Adding new contact row to Google Sheet
+    return addRow(process.env.CONTACT_DOCID, {
+        timestamp: Date.now(),
+        name,
+        email,
+        subject,
+        message,
+        responded: 0,
+    })
+       .then((response) =&gt; {
+            // Redirecting to a success page after adding row
+            res.redirect(process.env.CONTACT_REDIRECT);
+        })
+       .catch((error) =&gt; {
+            // TODO: Implement error handling for adding row to Google Sheet
+            console.error(error);
+            // TODO: Implement fallback logic for error scenarios
+        });
+}
+
+module.exports = contactUs;</code></pre></div><p>This code defines a function <code>contactUs</code> that handles incoming contact form submissions and adds them to a Google Sheet.</p>
 <p><strong>Functionality:</strong></p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Script Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define virtual machine configuration
+VM_CONFIG_FILE="vm_config.sh"
+VM_NAME="WindowsVM"
+VM_IMAGE="WindowsVM.img"
+
+# Define port for spice connection
+SPICE_PORT=${1:-5924}
+
+# Define virtual machine architecture
+VM_ARCH="x86_64"
+
+# Define amount of RAM for the virtual machine
+VM_RAM=1G
+
+# Define virtual machine graphics
+VM_GRAPHICS="qxl"
+
+# Define network settings
+VM_NETWORK="user,hostname=${VM_NAME}"
+
+# Define USB settings
+VM_USB="tablet"
+
+# Define virtio-serial settings
+VM_VIRTIO_SERIAL=device virtio-serial
+
+# Define vdagent settings
+VM_VDAGENT="chardev spicevmc,id=vdagent,name=vdagent"
+
+# Define virtserialport settings
+VM_VIRT_SERIAL_PORT="device virtserialport,chardev=vdagent,name=com.redhat.spice.0"
+
+# Check for required dependencies
+if! command -v qemu-system-x86_64 &amp;&gt; /dev/null; then
+  echo "Error: QEMU is not installed."
+  exit 1
+fi
+
+if! command -v spicy &amp;&gt; /dev/null; then
+  echo "Error: Spicy is not installed."
+  exit 1
+fi
+
+# Load user provided arguments
+shift 1
+
+# Start QEMU in daemon mode
+qemu-system-x86_64 -enable-kvm -daemonize \
+  -cpu host \
+  -drive file=${VM_IMAGE},if=virtio \
+  -net nic -net ${VM_NETWORK} \
+  -m ${VM_RAM} \
+  -vga ${VM_GRAPHICS} \
+  -spice port=${SPICE_PORT},disable-ticketing \
+  -usb ${VM_USB} \
+  -${VM_VIRTIO_SERIAL} \
+  -${VM_VDAGENT} \
+  -${VM_VIRT_SERIAL_PORT} \
+  "$@"
+
+# Connect to the virtual machine using Spicy
+exec spicy --title ${VM_NAME} 127.0.0.1 -p ${SPICE_PORT}
+
+# TODO: Add error handling for Spicy connection</code></pre></div><h3>Script Overview</h3>
 <p>This is a Bash script that sets up a virtual machine using QEMU and a VNC viewer called spicy.</p>
 <h3>Breakdown</h3>
 <ol>

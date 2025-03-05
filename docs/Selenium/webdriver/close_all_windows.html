@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Builder, Capabilities, until } = require('selenium-webdriver');
+const createExecutor = require('selenium-executor').default;
+
+const LOCAL_URL = 'http://localhost:4444/wd/hub';
+
+/**
+ * Closes all browser windows except the one specified by `keep`.
+ * 
+ * @param {WebDriver} driver - The WebDriver instance
+ * @param {string} sessionId - The session ID of the WebDriver instance
+ * @param {string} keep - The handle of the window to keep open
+ */
+async function closeAllWindows(driver, sessionId, keep) {
+  // Create a new WebDriver instance with the specified session ID and capabilities
+  const driver2 = await new Builder()
+   .usingServer(LOCAL_URL)
+   .withCapabilities(Capabilities.chrome())
+   .build();
+
+  try {
+    // Get all window handles
+    const windows = await driver2.getAllWindowHandles();
+
+    console.log(`Closing session ${sessionId.slice(1)} windows ${windows}`);
+
+    // Iterate over all window handles and close the ones that are not 'keep'
+    for (let i = 0; i &lt; windows.length; i++) {
+      if (windows[i]!== keep) {
+        // Switch to the current window and close it
+        await driver2.switchTo().window(windows[i]);
+        await driver2.close();
+      }
+    }
+  } catch (e) {
+    console.error(e);
+  } finally {
+    // Ensure the driver is closed after use
+    await driver2.quit();
+  }
+}
+
+module.exports = closeAllWindows;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Imports</h4>
 <pre><code class="language-javascript">const { WebDriver, Capabilities, Session } = require('selenium-webdriver')
 const createExecutor = importer.import('selenium executor')

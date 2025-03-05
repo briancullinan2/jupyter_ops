@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code uses the <code>$TS.screen</code> function to set up a screen:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// constants.ts
+export const DEFAULT_ZOOM = 0.5;
+export const DEFAULT_WIDTH = 680;
+export const DEFAULT_HEIGHT = 400;
+
+// BrowserHelper.ts
+interface BrowserConfig {
+  zoom: number;
+  width: number;
+  'crop-h': number;
+}
+
+class BrowserHelper {
+  public static getScreenUrl(languageCode: string, config: BrowserConfig): string {
+    return `act.com/${languageCode}`;
+  }
+
+  public static getScreenConfig(config: BrowserConfig): BrowserConfig {
+    if (!config.zoom) config.zoom = DEFAULT_ZOOM;
+    if (!config.width) config.width = DEFAULT_WIDTH;
+    if (!config['crop-h']) config['crop-h'] = DEFAULT_HEIGHT;
+    return config;
+  }
+
+  public static getScreenUrlWithConfig(languageCode: string, config: BrowserConfig): string {
+    const config = this.getScreenConfig(config);
+    return `${this.getScreenUrl(languageCode, config)}?zoom=${config.zoom}&amp;width=${config.width}&amp;crop-h=${config['crop-h']}`;
+  }
+}
+
+// main.ts
+import { BrowserConfig, DEFAULT_ZOOM, DEFAULT_WIDTH, DEFAULT_HEIGHT } from './constants';
+
+const languageCode: string = 'fr-fr';
+const config: BrowserConfig = {
+  zoom: 0.5,
+  width: 680,
+  'crop-h': 400,
+};
+
+const screenUrl: string = BrowserHelper.getScreenUrlWithConfig(languageCode, config);
+console.log(screenUrl);
+
+TS.screen(screenUrl);</code></pre></div><p>This code uses the <code>$TS.screen</code> function to set up a screen:</p>
 <ul>
 <li>The first argument <code>'act.com/fr-fr'</code> is likely a device or screen identifier.</li>
 <li>The second argument is an object with properties:

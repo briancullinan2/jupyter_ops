@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>getToken</code></strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const axios = require('axios');
+const qs = require('qs');
+const crypto = require('crypto');
+const { DEFAULT_API, SECRET, TOKEN, DEFAULT_APPLICATION } = require('./discord-configuration');
+const { INSTANCES, SESSIONS } = require('./discord-gateway');
+
+const MAX_COOKIE_EXPIRY = 8.64e+13; // 1 hour in milliseconds
+
+async function getToken(req, res, next) {
+  try {
+    const { code } = req.body;
+    if (!code) {
+      return res.status(400).send({ error: 'Missing authorization code' });
+    }
+
+    const response = await axios.post(
+      `${DEFAULT_API}oauth2/token`,
+      qs.stringify({
+        client_id: DEFAULT_APPLICATION,
+        client_secret: SECRET,
+        grant_type: 'authorization_code',
+        code,
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+
+    const { expires_in, access_token } = response.data;
+
+    const expiry = new Date(Date.now() + expires_in);
+    const expiryMs = expiry.getTime();
+    if (expiryMs > MAX_COOKIE_EXPIRY) {
+      expiryMs = MAX_COOKIE_EXPIRY;
+    }
+
+    if (
+      req.body?.launch_id &&
+      req.body?.frame_id &&
+      typeof INSTANCES[req.body.launch_id]!== 'undefined'
+    ) {
+      // Get user information
+      const userResponse = await axios.get(
+        `${DEFAULT_API}oauth2/@me`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+
+      const { user } = userResponse.data;
+
+      const instance = INSTANCES[req.body.launch_id];
+      instance.push([user.id, req.body.frame_id]);
+      console.log(INSTANCES);
+
+      // Generate nonce for client to use on future commands
+      const sessionId = crypto.randomBytes(16).toString('hex');
+      SESSIONS[sessionId] = user.id;
+
+      res.cookie('discord_bot_session', user.id, {
+        path: '/.proxy/',
+        expires: expiry,
+      });
+      res.cookie('discord_bot_frame', req.body.frame_id, {
+        path: '/.proxy/',
+        expires: expiry,
+      });
+    }
+
+    res.cookie('discord_bot_expiry', expiryMs, {
+      path: '/.proxy/',
+      expires: expiry,
+    });
+
+    res.setHeader('Content-Type', 'application/json');
+    return res.send(JSON.stringify(response.data));
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send({ error: 'Internal Server Error' });
+  }
+}
+
+module.exports = getToken;</code></pre></div><p><strong>Function Breakdown: <code>getToken</code></strong></p>
 <h3>Function Purpose</h3>
 <p>The <code>getToken</code> function is an asynchronous handler that retrieves an access token for Discord API using the client credentials flow.</p>
 <h3>Function Parameters</h3>

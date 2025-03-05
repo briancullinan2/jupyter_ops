@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -165,7 +172,57 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define the path to the mbspc and q3map2 executables
+MBSPC_EXECUTABLE="Z:\planet_quake_data\tools\mbspc.exe"
+Q3MAP2_EXECUTABLE_MAC="Applications/NetRadiant.app/Contents/MacOS/install/q3map2.bin"
+Q3MAP2_EXECUTABLE_LINUX="/usr/local/bin/q3map2"
+Q3MAP2_EXECUTABLE_WINDOWS="Applications/GtkRadiant.app/Contents/Resources/install/q3map2"
+
+# Define the path to the input and output directories
+INPUT_DIR="Z:\.quake2\baseq2\pak0.pak\maps"
+OUTPUT_DIR="Z:\.quake2\baseq2\pak0.pak\maps"
+
+# Convert BSP files to MAP files
+convert_bsp_to_map() {
+  local bsp_file=$1
+  local output_file=${bsp_file%.bsp}.map
+  if [! -f "$output_file" ]; then
+    "${MBSPC_EXECUTABLE}" -bsp2map "$bsp_file"
+  fi
+}
+
+# Normalize brushes vertices using q3map2
+normalize_brushes() {
+  local bsp_file=$1
+  local output_file=${bsp_file%.bsp}_converted.map
+  if [! -f "$output_file" ]; then
+    "${Q3MAP2_EXECUTABLE_MAC}" -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -convert -format map -readmap "${output_file%.map}"
+  fi
+}
+
+# Compile hinted maps
+compile_hinted_maps() {
+  local map_file=$1
+  "${Q3MAP2_EXECUTABLE_MAC}" -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${map_file}-a.map"
+  "${Q3MAP2_EXECUTABLE_MAC}" -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${map_file}-b.map"
+  "${Q3MAP2_EXECUTABLE_MAC}" -game quake3 -fs_basepath /Applications/ioquake3/ -fs_game baseq2 -meta _keeplights "${map_file}-c.map"
+}
+
+# Main script
+for bsp_file in $(find "$INPUT_DIR" -iname '*.bsp'); do
+  convert_bsp_to_map "$bsp_file"
+  normalize_brushes "$bsp_file"
+done
+
+# Run the entire process for a single map
+map_file="/Users/briancullinan/planet_quake_data/quake2-baseq2/pak0.pk3dir/maps/base2.map"
+convert_bsp_to_map "${map_file%.map}.bsp"
+normalize_brushes "${map_file%.map}.bsp"
+compile_hinted_maps "${map_file%.map}"</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Overview</h3>
 <p>The provided code is a collection of batch scripts and commands used to preprocess and convert Quake 2 maps. It appears to be written for both Windows and macOS platforms.</p>
 <h3>Commands</h3>

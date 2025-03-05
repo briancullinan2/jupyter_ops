@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = require('./general-chit-chat');
+
+async function findMemories(session) {
+  if (!session) {
+    return {};
+  }
+
+  const now = new Date();
+  const currentFile = getConversationFile(now, session);
+  if (!ACTIVE_CONVERSATIONS[currentFile]) {
+    await loadConversationFile(currentFile);
+  }
+
+  return ACTIVE_CONVERSATIONS[currentFile]['memories'] || {};
+}
+
+async function loadConversationFile(file) {
+  if (fs.existsSync(file)) {
+    ACTIVE_CONVERSATIONS[file] = JSON.parse(fs.readFileSync(file));
+  } else {
+    ACTIVE_CONVERSATIONS[file] = {};
+  }
+  return file;
+}
+
+function getConversationFile(now, session) {
+  const date = now.toISOString().split('T')[0];
+  return `${PROJECT_PATH}/${date}-${DEFAULT_MODEL}-${session}.json`;
+}
+
+async function listMemories(session) {
+  const memories = await findMemories(session);
+  const dates = Object.keys(memories).map((key) => {
+    const date = new Date(parseInt(key));
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getDate()} - ${memories[key]}`;
+  });
+  return dates;
+}
+
+module.exports = {
+  findMemories,
+  listMemories,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Imported Modules and Constants</h3>
 <pre><code class="language-javascript">const fs = require('fs')
 const path = require('path')

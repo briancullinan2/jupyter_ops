@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet automates the setup of a Git repository for Selenium testing, specifically targeting a branch named &quot;Buy_funnel&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define constants for repository URL and branch name
+REPOSITORY_URL="https://github.com/username/repository.git"
+BRANCH_NAME="Buy_funnel"
+
+# Create directory for Selenium repository
+mkdir -p selenium/repository
+
+# Navigate to the repository directory
+cd selenium/repository
+
+# Check if the branch exists in the repository
+if! git branch | grep -q "$BRANCH_NAME"; then
+  # Clone the repository if the branch does not exist
+  git clone -b "$BRANCH_NAME" "$REPOSITORY_URL".
+fi
+
+# Reset to parent directory
+cd../../</code></pre></div><p>This code snippet automates the setup of a Git repository for Selenium testing, specifically targeting a branch named &quot;Buy_funnel&quot;.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>mkdir -r selenium/repository</code></strong>:</p>

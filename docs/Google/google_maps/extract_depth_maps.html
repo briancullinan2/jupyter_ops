@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -270,7 +277,144 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines an asynchronous function <code>loadDepthMap</code> that retrieves and processes depth map data for a given Google Street View panorama ID.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { request } = require('../Core/importer');
+const debug = require('debug')('gsvpandepth');
+
+const DEPTH_MAP_URL = 'https://www.google.com/maps/photometa/v1';
+
+async function loadDepthMap(panoId, onDepthLoad) {
+  debug(`Getting depth map for panoid: ${panoId}`);
+
+  const url = `${DEPTH_MAP_URL}?authuser=0&hl=en&gl=uk&panoid=${panoId}`;
+  const res = await request({ method: 'GET', url });
+  const dm = JSON.parse(res.body.substr(4))[1][0][5][0][5][1][2];
+
+  try {
+    const decoded = decodeDepthMap(dm);
+    const depthMap = parseDepthMap(decoded);
+    if (onDepthLoad) await onDepthLoad(depthMap);
+    return depthMap;
+  } catch (e) {
+    console.error(`Error loading depth map for pano ${panoId}\n${e.message}\nAt ${e.filename}(${e.lineNumber})`);
+    const depthMap = createEmptyDepthMap();
+    if (onDepthLoad) await onDepthLoad(depthMap);
+    return depthMap;
+  }
+}
+
+function decodeDepthMap(rawDepthMap) {
+  // Append '=' in order to make the length of the array a multiple of 4
+  while (rawDepthMap.length % 4!== 0) rawDepthMap += '=';
+
+  // Replace '-' by '+' and '_' by '/'
+  rawDepthMap = rawDepthMap.replace(/-/g, '+');
+  rawDepthMap = rawDepthMap.replace(/_/g, '/');
+
+  // Decode and decompress data
+  const decompressedDepthMap = Buffer.from(rawDepthMap, 'base64').toString('binary');
+
+  return decompressedDepthMap;
+}
+
+function parseDepthHeader(depthMap) {
+  const headerSize = depthMap.getUint8(0);
+  const numberOfPlanes = depthMap.getUint16(1, true);
+  const width = depthMap.getUint16(3, true);
+  const height = depthMap.getUint16(5, true);
+  const offset = depthMap.getUint16(7, true);
+
+  return { headerSize, numberOfPlanes, width, height, offset };
+}
+
+function parseDepthPlanes(header, depthMap) {
+  const planes = [];
+  const indices = [];
+  const n = [0, 0, 0];
+  const byteOffset = 0;
+
+  for (let i = 0; i < header.width * header.height; ++i) {
+    indices.push(depthMap.getUint8(header.offset + i));
+  }
+
+  for (let i = 0; i < header.numberOfPlanes; ++i) {
+    byteOffset += header.width * header.height + i * 4 * 4;
+
+    n[0] = depthMap.getFloat32(byteOffset, true);
+    n[1] = depthMap.getFloat32(byteOffset + 4, true);
+    n[2] = depthMap.getFloat32(byteOffset + 8, true);
+    const d = depthMap.getFloat32(byteOffset + 12, true);
+
+    planes.push({ n: n.slice(0), d });
+  }
+
+  return { planes, indices };
+}
+
+function computeDepthMap(header, indices, planes) {
+  const depthMap = new Float32Array(header.width * header.height);
+  const sinTheta = new Float32Array(header.height);
+  const cosTheta = new Float32Array(header.height);
+  const sinPhi = new Float32Array(header.width);
+  const cosPhi = new Float32Array(header.width);
+
+  for (let y = 0; y < header.height; ++y) {
+    const theta = (header.height - y - 0.5) / header.height * Math.PI;
+    sinTheta[y] = Math.sin(theta);
+    cosTheta[y] = Math.cos(theta);
+  }
+  for (let x = 0; x < header.width; ++x) {
+    const phi = (header.width - x - 0.5) / header.width * 2 * Math.PI + Math.PI / 2;
+    sinPhi[x] = Math.sin(phi);
+    cosPhi[x] = Math.cos(phi);
+  }
+
+  for (let y = 0; y < header.height; ++y) {
+    for (let x = 0; x < header.width; ++x) {
+      const planeIdx = indices[y * header.width + x];
+
+      const v = [
+        sinTheta[y] * cosPhi[x],
+        sinTheta[y] * sinPhi[x],
+        cosTheta[y],
+      ];
+
+      if (planeIdx > 0) {
+        const plane = planes[planeIdx];
+
+        const t = Math.abs(plane.d / (v[0] * plane.n[0] + v[1] * plane.n[1] + v[2] * plane.n[2]));
+        depthMap[y * header.width + (header.width - x - 1)] = t;
+      } else {
+        depthMap[y * header.width + (header.width - x - 1)] = 9999999999999999999;
+      }
+    }
+  }
+
+  return { width: header.width, height: header.height, depthMap };
+}
+
+function parseDepthMap(depthMap) {
+  const depthMapData = new DataView(depthMap.buffer);
+  const header = parseDepthHeader(depthMapData);
+  const data = parseDepthPlanes(header, depthMapData);
+  const depthMap = computeDepthMap(header, data.indices, data.planes);
+
+  return depthMap;
+}
+
+function createEmptyDepthMap() {
+  const depthMap = {
+    width: 512,
+    height: 256,
+    depthMap: new Float32Array(512 * 256),
+  };
+  for (let i = 0; i < 512 * 256; ++i) {
+    depthMap.depthMap[i] = 9999999999999999999;
+  }
+  return depthMap;
+}
+
+module.exports = { loadDepthMap };</code></pre></div><p>This code snippet defines an asynchronous function <code>loadDepthMap</code> that retrieves and processes depth map data for a given Google Street View panorama ID.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

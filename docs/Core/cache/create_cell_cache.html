@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./exports_cache.html">exports cache</a> | <a href="./test_export_cache.html">test export cache</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides functions for managing and updating caches of code cells and their exports, allowing for efficient retrieval and use of code snippets based on search terms.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "create cell cache"</code></pre><h1>create cell cache</h1>
 
@@ -188,37 +194,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for managing and updating caches related to code cells and exports.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
-<ul>
-<li>Imports modules for interacting with caches, getting exports, and interpreting code.</li>
-</ul></li>
-<li><p><strong><code>makeCamel</code> Function:</strong></p>
-<ul>
-<li>Converts a string to camel case.</li>
-</ul></li>
-<li><p><strong><code>createCellCache</code> Function:</strong></p>
-<ul>
-<li>Takes a search term, cache object, cache cell, and callback function as arguments.</li>
-<li>Constructs a camel case version of the cache cell's question.</li>
-<li>Retrieves all cell IDs from the cache.</li>
-<li>Refreshes the cache if necessary.</li>
-<li>Interprets the search term to get a list of code cells.</li>
-<li>Filters the cells based on length and uniqueness.</li>
-<li>Logs the number of cells being cached.</li>
-<li>Creates a promise that resolves with an array of updates for the cache.</li>
-<li>Updates the cache with the new data.</li>
-<li>Generates a code snippet that includes the updated cache and updates the cache cell with the new code.</li>
-</ul></li>
-<li><p><strong><code>createExportCache</code> Function:</strong></p>
-<ul>
-<li>Takes a search term as an argument.</li>
-<li>Retrieves the exports cache cell.</li>
-<li>Calls <code>createCellCache</code> with the search term, exports cache, and a callback function to get exports from the code cells.</li>
-</ul></li>
-</ol>
 
 </body>
 

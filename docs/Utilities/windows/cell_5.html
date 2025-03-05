@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,123 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Microsoft Visual Studio Solution File Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="csharp"><code>// Solution file for window tracking project
+// Version: 12.00
+
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectCollection>
+  <GlobalSection(SolutionConfigurationPlatforms) 
+    Type="Lines" 
+    DefaultSection="SolutionConfigurationPlatforms"
+    Name="SolutionConfigurationPlatforms"
+    Scope="Interactive"
+    FileProxy="Microsoft.VisualStudio.Platform.VCProjectEngine.Configurations.ProjectConfigurationPlatforms"
+    Language="en-US"
+    xmlns="http://schemas microsoft com/vstudio/solutionconfiguration">
+    <!-- List of configurations for the solution -->
+    <Configuration 
+      Platform="Any CPU" 
+      Active="True" 
+      Name="Debug|Any CPU"
+      Build="Debug|Any CPU"
+      Build.0="Debug|Any CPU">
+      <!-- Configuration settings for Debug|Any CPU -->
+      <ConfigurationOption 
+        Name="DebugSymbols" 
+        Active="True">
+        <!-- Enable debug symbols for Debug build -->
+      </ConfigurationOption>
+    </Configuration>
+    <Configuration 
+      Platform="Any CPU" 
+      Active="False" 
+      Name="Release|Any CPU"
+      Build="Release|Any CPU"
+      Build.0="Release|Any CPU">
+      <!-- Configuration settings for Release|Any CPU -->
+      <ConfigurationOption 
+        Name="OptimizeCode" 
+        Active="True">
+        <!-- Optimize code for Release build -->
+      </ConfigurationOption>
+    </Configuration>
+  </GlobalSection>
+
+  <GlobalSection(ProjectConfigurationPlatforms) 
+    Type="Lines" 
+    DefaultSection="ProjectConfigurationPlatforms"
+    Name="ProjectConfigurationPlatforms"
+    Scope="Interactive"
+    FileProxy="Microsoft.VisualStudio.Platform.VCProjectEngine.Configurations.ProjectConfigurationPlatforms"
+    Language="en-US"
+    xmlns="http://schemas microsoft com/vstudio/solutionconfiguration">
+    <!-- Project configurations for window tracker project -->
+    <ProjectConfiguration 
+      Project="{CBBD254A-ED60-4677-AB5C-4AA7A292A1FE}" 
+      Active="True" 
+      Name="{CBBD254A-ED60-4677-AB5C-4AA7A292A1FE}.Debug|Any CPU">
+      <!-- Project configuration settings for Debug|Any CPU -->
+      <ConfigurationOption 
+        Name="DebugSymbols" 
+        Active="True">
+        <!-- Enable debug symbols for Debug|Any CPU -->
+      </ConfigurationOption>
+    </ProjectConfiguration>
+    <ProjectConfiguration 
+      Project="{CBBD254A-ED60-4677-AB5C-4AA7A292A1FE}" 
+      Active="False" 
+      Name="{CBBD254A-ED60-4677-AB5C-4AA7A292A1FE}.Release|Any CPU">
+      <!-- Project configuration settings for Release|Any CPU -->
+      <ConfigurationOption 
+        Name="OptimizeCode" 
+        Active="True">
+        <!-- Optimize code for Release|Any CPU -->
+      </ConfigurationOption>
+    </ProjectConfiguration>
+  </GlobalSection>
+
+  <GlobalSection(SolutionProperties) 
+    Type="Lines" 
+    DefaultSection="SolutionProperties"
+    Name="SolutionProperties"
+    Scope="Interactive"
+    FileProxy="Microsoft.VisualStudio.Platform.VCProjectEngine.Configurations.SolutionProperties"
+    Language="en-US"
+    xmlns="http://schemas microsoft com/vstudio/solutionsolutionproperties">
+    <!-- Solution properties -->
+    <Property 
+      Name="HideSolutionNode" 
+      Value="False">
+      <!-- Show solution node in Solution Explorer -->
+    </Property>
+  </GlobalSection>
+
+  <GlobalSection(ExtensibilityGlobals) 
+    Type="Lines" 
+    DefaultSection="ExtensibilityGlobals"
+    Name="ExtensibilityGlobals"
+    Scope="Interactive"
+    FileProxy="Microsoft.VisualStudio.Platform.VCProjectEngine.Configurations.ExtensibilityGlobals"
+    Language="en-US"
+    xmlns="http://schemas.microsoft.com/visualstudio/2005/08/expansions"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Solution extensions -->
+    <Setting 
+      Id="SolutionGuid" 
+      Value="{8A185532-6E16-4241-B1B6-CE6109E2E112}">
+      <!-- Solution GUID -->
+    </Setting>
+  </GlobalSection>
+
+  <Project 
+    Solution="{8A185532-6E16-4241-B1B6-CE6109E2E112}" 
+    ProjectGuid="{CBBD254A-ED60-4677-AB5C-4AA7A292A1FE}" 
+    Name="window tracker" 
+    ProjectType="CSharp">
+    <!-- Window tracker project configuration -->
+  </Project>
+</ProjectCollection></code></pre></div><p><strong>Microsoft Visual Studio Solution File Breakdown</strong></p>
 <p>This is a Microsoft Visual Studio solution file, specifically a <code>.sln</code> file. It contains metadata and configuration information for a Visual Studio solution.</p>
 <h3>Key Components</h3>
 <ul>

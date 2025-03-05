@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,22 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the minimatch function from the '../Core' module
+const { minimatch } = require('../Core').import('minimatch');
+
+// Define a function to match patterns
+function matchPattern(path, pattern) {
+  // Enable glob pattern matching, dot notation, and regular expressions
+  return minimatch(path, pattern, { dot: true, regexp: true });
+}
+
+// Match patterns
+console.log(matchPattern('/some/file/to/test', '**/file/**')); // Expected output: true
+console.log(matchPattern('/node_modules/@firebase', '**/node_modules/**')); // Expected output: true
+
+// TODO: Add more test cases to ensure the matchPattern function is working as expected
+// TODO: Consider adding error handling to the matchPattern function to handle invalid inputs</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports two modules:</p>
 <ol>

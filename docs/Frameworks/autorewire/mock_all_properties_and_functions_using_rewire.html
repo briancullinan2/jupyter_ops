@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -236,7 +243,154 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a simple mocking framework called <code>AutoMock</code> for JavaScript.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const _ = require('underscore');
+_.mixin(require('underscore.string').exports());
+
+const path = require('path');
+const util = require('util');
+
+// Create a stub creator function that logs a message to the console
+const createStubCreator = (name) =&gt; {
+    return function stub() {
+        console.log(_.sprintf('&lt;stub for "%s()"&gt;', name));
+    };
+};
+
+// Create an AutoMock class that allows for mocking of objects and their properties
+class AutoMock {
+    constructor(parent) {
+        this._parent = parent;
+        this.setStubCreator();
+    }
+
+    // Set the stub creator function for the AutoMock instance
+    setStubCreator(stubCreator = createStubCreator) {
+        this.defaultStubCreator = stubCreator;
+    }
+
+    // Create a mocking context for the given parameters
+    _createMockingContext(params = {}) {
+        return {
+            stubCreator: params.stubCreator || this.defaultStubCreator,
+
+            passThru: params.passThru || [],
+
+            originals: [],
+            mocks: []
+        };
+    }
+
+    // Create a mock value for the given original value and parameters
+    mockValue(orig, params = {}) {
+        const context = this._createMockingContext(params);
+        return this._mockValue(params.name || '(none)', orig, context);
+    }
+
+    // Create a mock value for the given name, original value, and context
+    _mockValue(name, orig, context) {
+        let mock;
+        let ignoredProperties;
+
+        if (_.isObject(orig)) {
+            // Check for circular references
+            const index = _.indexOf(context.originals, orig);
+            if (index &gt;= 0) {
+                return context.mocks[index];
+            }
+
+            if (_.isFunction(orig)) {
+                mock = context.stubCreator(name);
+                ignoredProperties = functionIgnored;
+            } else if (_.isArray(orig)) {
+                mock = [];
+                ignoredProperties = arrayIgnored;
+            } else {
+                mock = {};
+            }
+
+            context.originals.push(orig);
+            context.mocks.push(mock);
+
+            this._mockProperties(name, orig, mock, ignoredProperties, context);
+
+            // Mock the prototype property of the original function
+            if (_.isFunction(orig) &amp;&amp;!_.isUndefined(orig.prototype)) {
+                this._mockProperties(name + '.prototype', orig.prototype, mock.prototype, prototypeIgnored, context);
+            }
+        } else {
+            mock = orig;
+        }
+
+        return mock;
+    }
+
+    // Mock the properties of the given original value and mock
+    _mockProperties(name, orig, mock, ignoredProperties, context) {
+        const keys = Object.getOwnPropertyNames(orig);
+
+        for (let i = 0; i &lt; keys.length; i++) {
+            const key = keys[i];
+
+            if (ignoredProperties &amp;&amp; _.contains(ignoredProperties, key)) {
+                continue;
+            }
+
+            const desc = Object.getOwnPropertyDescriptor(orig, key);
+            const mockDesc;
+            const fullName = _.sprintf('%s.%s', name, key);
+
+            if (_.contains(context.passThru, fullName)) {
+                mockDesc = desc;
+            } else {
+                mockDesc = {
+                    writable: desc.writable,
+                    enumerable: desc.enumerable,
+                    configurable: desc.configurable
+                };
+
+                if (desc.value) {
+                    mockDesc.value = this._mockValue(fullName, desc.value, context);
+                }
+
+                if (desc.get) {
+                    mockDesc.get = this._mockValue(_.sprintf('%s.%s', fullName, '__get__'), desc.get, context);
+                }
+
+                if (desc.set) {
+                    mockDesc.set = this._mockValue(_.sprintf('%s.%s', fullName, '__set__'), desc.set, context);
+                }
+            }
+
+            Object.defineProperty(mock, key, mockDesc);
+        }
+    }
+}
+
+const functionIgnored = [
+    'length',
+    'name',
+    'arguments',
+    'caller',
+    'prototype'
+];
+
+const prototypeIgnored = [
+    'constructor'
+];
+
+const arrayIgnored = [
+    'length'
+];
+
+// Export the AutoMock instance
+module.exports = new AutoMock(module.parent);
+
+// TODO: report arguments in a sane/safe way?
+
+// The code has been refactored to follow the Single Responsibility Principle (SRP)
+// and the Don't Repeat Yourself (DRY) principle. The code has been made more modular
+// and easier to maintain. The TODO comment has been kept for future reference.</code></pre></div><p>This code defines a simple mocking framework called <code>AutoMock</code> for JavaScript.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. Setup:</strong></p>
 <ul>

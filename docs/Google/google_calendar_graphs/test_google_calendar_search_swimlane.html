@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code visualizes Google Calendar events using a swimlane chart, grouping events by search query and showing their schedule over time.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { importModules, runAllPromises, html, sendError } from '../Core';
+
+const modules = [
+    'list events',
+    'import google calendar api',
+   'sum a list of events',
+    'd3 swimlane'
+];
+
+const { listEvents, sumEvents, d3Swimlane } = importModules(modules);
+
+// Extract search query options
+const searchOptions = {
+  async getSearchQueries() {
+    return ['study sauce', 'portal','renewal', 'work on sos', 'jupyter', 'jupytangular', 'unit tests','selenium', 'angular','mind spree', '"c#"', 'docker'];
+  },
+  async getSearchLabels() {
+    return this.getSearchQueries().map((query, index) => ({ id: index, label: query }));
+  },
+  async getPromises(searchQueries) {
+    return searchQueries.map((searchQuery, index) => () => listEvents({ auth: options.auth, q: searchQuery }));
+  },
+  async processPromises(promises) {
+    return Promise.all(promises.map(promise => promise()
+     .then(result => result.map(event => ({
+        id: event.event.id,
+        lane: 0,
+        start: new Date(event.event.start.dateTime),
+        end: new Date(event.event.end.dateTime),
+        class: event.event.end.dateTime > now? 'future' : 'past',
+        desc: event.event.summary
+      }))));
+  },
+  async createSwimlane(items) {
+    return d3Swimlane({
+      lanes: await this.getSearchLabels(),
+      items
+    });
+  }
+};
+
+// Get current date
+const now = new Date();
+
+// Create calendar search to swimlane function
+async function calendarSearchToSwimlane() {
+  try {
+    const searches = await searchOptions.getSearchQueries();
+    const promises = await searchOptions.getPromises(searches);
+    const items = await searchOptions.processPromises(promises);
+    const swimlane = await searchOptions.createSwimlane(items);
+    return html(swimlane);
+  } catch (error) {
+    return sendError(error);
+  }
+}
+
+// Run the calendar search to swimlane function
+calendarSearchToSwimlane()
+ .catch(error => console.log(error));</code></pre></div><p>This code visualizes Google Calendar events using a swimlane chart, grouping events by search query and showing their schedule over time.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

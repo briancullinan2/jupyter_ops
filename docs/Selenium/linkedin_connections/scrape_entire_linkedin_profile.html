@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -183,7 +190,114 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a larger script designed to scrape data from a LinkedIn profile using Selenium.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+
+/**
+ * Loads an entire LinkedIn page.
+ *
+ * @param {Object} client - The client object.
+ * @returns {Promise} A promise that resolves when the page is loaded.
+ */
+function loadEntirePage(client) {
+    // Load all deferred elements by scrolling
+    return client
+       .then(() => getAllUntil(
+            false,
+            '//*[contains(@class, "pv-deferred-area")]/@id',
+            [],
+            (a, b) => a === b,
+            (i) => i < 30
+        ))
+       .pause(2000)
+        // Show more all sections
+       .scroll(0, 0)
+       .then(() => importer.runAllPromises([
+            '//button[contains(., "See more")]',
+            '//button[contains(., "more skills")]',
+            '//button[contains(., "more education")]',
+            '//button[contains(., "more recommendations")]'
+        ].map(selector => resolve => {
+            // Check if the button is visible, and if so, click it
+            return client
+               .isVisible(selector)
+               .then(is => is? client.click(selector).pause(1000) : [])
+               .then(e => resolve())
+               .catch(e => console.log(e) && resolve()); // Fix console.log to console.log(e)
+        })))
+       .catch(e => console.log(e));
+}
+
+/**
+ * Scrapes an entire LinkedIn profile.
+ *
+ * @param {Object} profile - The LinkedIn profile object.
+ * @returns {Promise} A promise that resolves with the scraped profile info.
+ */
+function scrapeEntireLinkedInProfile(client, profile) {
+    // Initialize contact
+    let contact;
+    
+    // Click on the profile and read profile info
+    return client
+       .then(() => clickSpa(profile))
+       .then(() => readLinkedInProfileInfo())
+       .then(r => {
+            contact = r;
+            // Load entire page
+            return loadEntirePage(client);
+        })
+        // Get extra profile info
+       .then(() => {
+            const selectors = {
+                summary: '//p[contains(@class, "section__summary")]//text()',
+                experience: [
+                    '//*[contains(@class, "profile-section__card")]|//*[contains(@class, "profile-section__section-info-item")]',
+                    ['.//text()']
+                ],
+                skills: [
+                    '//*[contains(@class, "skill-entity--featured")]|//*[contains(@class, "skill-entity__pill")]',
+                    ['.//text()']
+                ],
+                recommendations: [
+                    '//*[contains(@class, "recommendation-entity")]',
+                    ['.//text()']
+                ],
+                interests: [
+                    '//*[contains(@class, "interest-entity")]',
+                    ['.//text()']
+                ]
+            };
+
+            // Extract extra profile info
+            return getAllXPath(selectors);
+        })
+       .then(r => {
+            // Process extracted info
+            return Object.assign(r, {
+                summary: r.summary.join(''),
+                experience: r.experience.map(e => typeof e[0] ==='string'
+                   ? e[0]
+                    : e[0].join('')
+                       .trim().split(/\s*\n+\s*/)),
+                skills: r.skills.map(e => typeof e[0] ==='string'
+                   ? e[0]
+                    : e[0].join('')
+                       .trim().split(/\s*\n+\s*/)),
+                recommendations: r.recommendations.map(e => typeof e[0] ==='string'
+                   ? e[0]
+                    : e[0].join('')
+                       .trim().split(/\s*\n+\s*/)),
+                interests: r.interests.map(e => typeof e[0] ==='string'
+                   ? e[0]
+                    : e[0].join('')
+                       .trim().split(/\s*\n+\s*/))
+            }, contact);
+        })
+       .catch(e => console.log(e)); // Fix console.log to console.log(e)
+}
+
+module.exports = scrapeEntireLinkedInProfile;</code></pre></div><p>This code snippet appears to be part of a larger script designed to scrape data from a LinkedIn profile using Selenium.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

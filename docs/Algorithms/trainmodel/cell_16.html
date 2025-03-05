@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -166,7 +173,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Convolutional Neural Network (CNN) Model Architecture</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+
+# Create a Sequential model
+model = Sequential()
+
+# First convolutional block
+# TODO: Consider using transfer learning for pre-trained models like VGG16 or ResNet50
+first_block = [
+    Conv2D(128, kernel_size=(3, 3), activation='relu', input_shape=(48, 48, 1)),
+    MaxPooling2D(pool_size=(2, 2)),
+    Dropout(0.4)
+]
+for layer in first_block:
+    model.add(layer)
+
+# Second convolutional block
+second_block = [
+    Conv2D(256, kernel_size=(3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Dropout(0.4)
+]
+for layer in second_block:
+    model.add(layer)
+
+# Third convolutional block
+third_block = [
+    Conv2D(512, kernel_size=(3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Dropout(0.4)
+]
+for layer in third_block:
+    model.add(layer)
+
+# Fourth convolutional block
+fourth_block = [
+    Conv2D(512, kernel_size=(3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Dropout(0.4)
+]
+for layer in fourth_block:
+    model.add(layer)
+
+# Flatten the output
+model.add(Flatten())
+
+### Fully Connected Layers
+# Hidden layer with 512 units
+model.add(Dense(512, activation='relu'))
+model.add(Dropout(0.4))
+
+# Hidden layer with 256 units
+model.add(Dense(256, activation='relu'))
+model.add(Dropout(0.3))
+
+### Output Layer
+# Output layer with 7 units and softmax activation
+model.add(Dense(7, activation='softmax'))</code></pre></div><p><strong>Convolutional Neural Network (CNN) Model Architecture</strong></p>
 <p>This code defines a CNN model architecture using the Keras Sequential API. The model consists of multiple convolutional and pooling layers, followed by fully connected and output layers.</p>
 <h3>Convolutional Layers</h3>
 <ol>

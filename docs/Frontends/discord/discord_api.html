@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,126 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import {
+  DEFAULT_CHANNEL,
+  DEFAULT_USERNAME
+} from './discord/config/discoDefaultConfig.js';
+
+import {
+  authorizeGateway,
+  authorizeUrl,
+  closeGateway
+} from './discord/auth/discordAuth.js';
+
+import {
+  requestAuthQ,
+  interactionResponse
+} from './discord/request/discordRequest.js';
+
+import {
+  userChannels,
+  guildChannels,
+  channelMessages,
+  deleteChannel
+} from './discord/channels/discordChannels.js';
+
+import {
+  userGuilds,
+  userConnections,
+  getGuildRoles
+} from './discord/guilds/discordGuilds.js';
+
+import {
+  createMessage,
+  updateMessage,
+  getPins,
+  pinMessage,
+  unpinMessage
+} from './discord/messages/discordMessages.js';
+
+import {
+  registerCommand,
+  getCommands,
+  deleteCommand,
+  updateInteraction,
+  updateCommand
+} from './discord/commands/discordCommands.js';
+
+import {
+  createThread,
+  archivedThreads,
+  activeThreads,
+  addThreadMember
+} from './discord/threads/discordThreads.js';
+
+import {
+  getUser
+} from './discord/users/discordUsers.js';
+
+// Refactored the exports to use a more modular approach
+const discordExports = {
+  DEFAULT_USERNAME,
+  authorizeGateway,
+  authorizeUrl,
+  closeGateway,
+  triggerTyping,
+  request: requestAuthQ,
+  interactionResponse,
+  // Discard channel operations
+  channelOperations: {
+    userChannels,
+    guildChannels,
+    channelMessages,
+    deleteChannel
+  },
+  // Guild operations
+  guildOperations: {
+    userGuilds,
+    userConnections,
+    getGuildRoles
+  },
+  // Message operations
+  messageOperations: {
+    createMessage,
+    updateMessage,
+    getPins,
+    pinMessage,
+    unpinMessage
+  },
+  // Command operations
+  commandOperations: {
+    registerCommand,
+    getCommands,
+    deleteCommand,
+    updateInteraction,
+    updateCommand
+  },
+  // Thread operations
+  threadOperations: {
+    createThread,
+    archivedThreads,
+    activeThreads,
+    addThreadMember
+  },
+  // User operations
+  userOperations: {
+    getUser
+  }
+};
+
+// TODO: Consider adding additional error handling or validation for each function
+export default discordExports;
+
+async function triggerTyping(channelId = DEFAULT_CHANNEL) {
+  // TODO: Consider adding a timeout or retry mechanism for the request
+  return await requestAuthQ({
+    method: 'POST',
+    url: `channels/${channelId}/typing`
+  });
+}
+
+// TODO: Consider removing unused imports or functions</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules and Variables</h3>
 <p>The code starts by importing modules and variables from external sources using the <code>importer.import()</code> function.</p>
 <pre><code class="language-javascript">var {DEFAULT_CHANNEL, DEFAULT_USERNAME} = importer.import('discord configuration')

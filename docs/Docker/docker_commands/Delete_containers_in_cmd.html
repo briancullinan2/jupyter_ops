@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet forcefully removes all Docker containers, both running and stopped.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Function to remove all stopped containers
+remove_stopped_containers() {
+  # Use docker ps with -a and -q flags to get a list of stopped container IDs
+  stopped_containers=$(docker ps -aq)
+
+  # Iterate over each stopped container and remove it
+  for container in $stopped_containers; do
+    # Use docker rm with -f flag to force removal of the container
+    docker rm -f "$container"
+  done
+}
+
+# Call the function to remove stopped containers
+remove_stopped_containers</code></pre></div><p>This code snippet forcefully removes all Docker containers, both running and stopped.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>FOR /f &quot;tokens=*&quot; %i IN ('docker ps -a -q')</code></strong>:</p>

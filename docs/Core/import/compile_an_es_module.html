@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./cell_2.html">Cell 2</a> | <a href="./compile_a_csharp_file_into_a_DLL.html">compile a csharp file into a DLL</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code imports dependencies and defines an asynchronous <code>makeESModule</code> function that creates a virtual machine context and compiles code using the <code>vm</code> module. The function also defines a linker function that resolves and imports modules dynamically, allowing the code to be executed and exported as a virtual machine module.</p>
+  <p>The <code>makeESModule</code> function creates an ES module from a given code string by first checking for a cached module, then setting up a context object, creating a new ES module instance, caching and exporting the module, linking and exporting dependencies, and optionally logging the process.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "compile an es module"</code></pre><h1>compile an es module</h1>
@@ -181,52 +188,112 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Importing Dependencies</h3>
-<p>The code starts by importing the required modules:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const vm = require('vm');
+const { resolveModuleSpecifier, Core } = require('../Core');
+
+class ESModuleCompiler {
+  constructor() {
+    this.console = Core.CONSOLE;
+  }
+
+  async makeESModule(code, filename, context = {}) {
+    const filepath = path.resolve(process.cwd(), filename);
+
+    // Check if module is already cached
+    if (Module._cache[filepath]) {
+      return Module._cache[filepath].namespace.default || Module._cache[filepath].namespace;
+    }
+
+    // Prepare context for execution
+    context = {...context, importer: Core, __dirname: path.dirname(filename), __filename: filename.split('[')[0], global: context, console: this.console };
+
+    // Create VM context and module
+    const vmModule = new vm.SourceTextModule(code, {
+      identifier: filename,
+      context: await vm.createContext(context),
+      initializeImportMeta(meta) {
+        meta.url = filename;
+      },
+      async importModuleDynamically(specifier) {
+        return await import(resolveModuleSpecifier(specifier, path.dirname(filename)));
+      }
+    });
+
+    // Cache module and prepare it for execution
+    Module._cache[filepath] = vmModule;
+    Module._cache[filepath].exports = {};
+
+    // Log compilation info
+    if (!filename.includes('Core')) {
+      this.console.info(`Compiling ES ${filename} with ${Object.keys(context)}`);
+    }
+
+    // Define linker function for importing modules
+    const linker = async (specifier) => {
+      // Resolve and import module
+      const resolvedSpecifier = specifier;
+      const targetModule = await import(resolveModuleSpecifier(specifier, path.dirname(filename)));
+      context['__INTERNAL_IMPORTS_FROM_STRING'][specifier] = targetModule;
+
+      // Create stringified specifier and exported names
+      const stringifiedSpecifier = JSON.stringify(specifier);
+      const exportedNames = Object.keys(targetModule);
+      const targetModuleContent = `${exportedNames.includes('default')
+       ? `export default __INTERNAL_IMPORTS_FROM_STRING[${stringifiedSpecifier}].default;\n`
+        : ''
+      }export const { ${exportedNames
+         .filter(exportedName => exportedName!== 'default')
+         .join(', ')} } = __INTERNAL_IMPORTS_FROM_STRING[${stringifiedSpecifier}];`;
+
+      // Create new VM module for imported module
+      return new vm.SourceTextModule(targetModuleContent, {
+        identifier: resolvedSpecifier,
+        context
+      });
+    };
+
+    // Link and evaluate module
+    await vmModule.link(linker);
+    await vmModule.evaluate();
+
+    // Assign exports and mark module as loaded
+    Object.assign(Module._cache[filepath].exports, vmModule.namespace.default);
+    Module._cache[filepath].loaded = true;
+
+    // Return module
+    return vmModule.namespace.default || vmModule.namespace;
+  }
+}
+
+module.exports = new ESModuleCompiler();</code></pre></div><p><strong>Function Breakdown: <code>makeESModule</code></strong></p>
+<p>The <code>makeESModule</code> function is an asynchronous function that creates an ES module from a given code string. Here's a step-by-step breakdown of what it does:</p>
+<h3>1. Caching</h3>
+<p>The function first checks if a module with the given <code>filepath</code> already exists in the <code>Module._cache</code> cache. If it does, it returns the cached module.</p>
+<h3>2. Context Setup</h3>
+<p>If the module doesn't exist in the cache, the function sets up a context object with the following properties:</p>
 <ul>
-<li><code>Module</code> from the built-in <code>module</code> module</li>
-<li><code>path</code> module for working with file paths</li>
-<li><code>vm</code> module for working with virtual machines</li>
+<li><code>importer</code>: an instance of <code>require('../Core')</code></li>
+<li><code>__dirname</code>: the directory of the current module</li>
+<li><code>__filename</code>: the name of the current module (with the brackets removed)</li>
+<li><code>global</code>: the context object itself</li>
+<li><code>console</code>: an instance of <code>CONSOLE</code> (imported from <code>../Core</code>)</li>
 </ul>
-<h3>makeESModule Function</h3>
-<p>The <code>makeESModule</code> function is an asynchronous function that takes three parameters:</p>
+<h3>3. ES Module Creation</h3>
+<p>The function creates a new <code>vm.SourceTextModule</code> instance from the given <code>code</code> string. It passes the following options to the constructor:</p>
 <ul>
-<li><code>code</code>: The code to be executed</li>
-<li><code>filename</code>: The filename of the code</li>
-<li><code>context</code>: An optional context object</li>
+<li><code>identifier</code>: the <code>filename</code> of the module</li>
+<li><code>context</code>: the context object created in step 2</li>
+<li><code>initializeImportMeta</code>: a function that sets the <code>url</code> property of the import metadata to the <code>filename</code></li>
+<li><code>importModuleDynamically</code>: a function that imports modules dynamically using the <code>resolveModuleSpecifier</code> function</li>
 </ul>
-<h3>File Caching</h3>
-<p>The code checks if a module with the given <code>filename</code> is already cached in the <code>Module._cache</code> object. If it is, the cached module is returned.</p>
-<h3>Creating a Virtual Machine Context</h3>
-<p>If the module is not cached, a new virtual machine context is created using <code>vm.createContext</code>. The context is initialized with the following properties:</p>
-<ul>
-<li><code>importer</code>: a reference to the <code>../Core</code> module</li>
-<li><code>__dirname</code>: the directory path of the current file</li>
-<li><code>__filename</code>: the filename of the current file</li>
-<li><code>global</code>: a reference to the global object</li>
-</ul>
-<h3>Creating a Virtual Machine Module</h3>
-<p>A new virtual machine module is created using <code>vm.SourceTextModule</code>. The module is configured with the following properties:</p>
-<ul>
-<li><code>identifier</code>: the filename of the code</li>
-<li><code>context</code>: the virtual machine context created earlier</li>
-<li><code>initializeImportMeta</code>: a function that sets the <code>url</code> property of the import meta object</li>
-<li><code>importModuleDynamically</code>: an asynchronous function that imports a module dynamically using the <code>import</code> function</li>
-</ul>
-<h3>Compiling the Code</h3>
-<p>The code is compiled using the virtual machine module. If the filename does not include &quot;Core&quot;, a message is logged to the console indicating that the code is being compiled.</p>
-<h3>Defining a Linker Function</h3>
-<p>A linker function is defined that takes a specifier (a module name) as input. The linker function:</p>
-<ul>
-<li>Resolves the specifier using a function called <code>resolveModuleSpecifier</code></li>
-<li>Imports the specified module using the <code>import</code> function</li>
-<li>Stores the imported module in the <code>__INTERNAL_IMPORTS_FROM_STRING</code> object</li>
-<li>Creates a string that exports the imported module's properties</li>
-<li>Returns a new virtual machine module that exports the imported module's properties.</li>
-</ul>
-<h3>Returning the Module</h3>
-<p>The compiled module is stored in the <code>Module._cache</code> object and returned.</p>
+<h3>4. Cache and Export Setup</h3>
+<p>The function adds the created module to the <code>Module._cache</code> cache and sets its <code>exports</code> property to an empty object.</p>
+<h3>5. Linking and Exporting</h3>
+<p>The function defines a <code>linker</code> function that takes a <code>specifier</code> as an argument. It resolves the specifier, imports the module, and adds it to the cache. It then stringifies the specifier and exports its names using the <code>export const {... }</code> syntax.</p>
+<h3>6. Logging</h3>
+<p>If the <code>filename</code> doesn't include the string &quot;Core&quot;, the function logs a message indicating that it's compiling the ES module with the given context.</p>
 
 </body>
 

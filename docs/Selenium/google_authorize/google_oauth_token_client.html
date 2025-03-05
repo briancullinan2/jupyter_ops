@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -182,7 +189,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const readline = require('readline');
+const { OAuth2Client } = require('google-auth-library');
+const fs = require('fs').promises;
+const path = require('path');
+const { sep } = require('path');
+const util = require('util');
+const console = console;
+
+const importer = require('../Core');
+const { runSeleniumCell } = importer.import('selenium cell');
+
+const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+const SECRET_PATH = path.join(path.dirname(require.main.filename), 'client_secret.json');
+const TOKEN_DIR = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '', '.credentials';
+
+async function authorize(scopes = SCOPES) {
+    const tokenPath = path.join(TOKEN_DIR, scopes.join('')
+       .replace(/[^a-z]+/ig, '_') + '.json');
+    const oauth2Client = new OAuth2Client(
+        await getCredentials().web.client_id,
+        await getCredentials().web.client_secret,
+        await getCredentials().web.redirect_uris[0]);
+
+    try {
+        // Check if we have previously stored a token.
+        const storedToken = await fs.readFile(tokenPath);
+        oauth2Client.setCredentials(JSON.parse(storedToken));
+        await oauth2Client.getAccessToken();
+        return oauth2Client;
+    } catch (error) {
+        try {
+            await renewToken(oauth2Client, scopes, tokenPath);
+        } catch (error) {
+            throw error;
+        }
+    }
+}
+
+async function renewToken(oauth2Client, scopes, tokenPath) {
+    try {
+        const authUrl = oauth2Client.generateAuthUrl({
+            access_type: 'offline',
+            scope: scopes
+        });
+        const authorizeSelenium = await runSeleniumCell(['log in Google','selenium authorize google access']);
+        console.log('using selenium to authorize:'+ authUrl);
+        const code = await authorizeSelenium(authUrl);
+        return receiveCode(code, oauth2Client, tokenPath);
+    } catch (error) {
+        await errorFallback(error, oauth2Client, tokenPath);
+    }
+}
+
+async function errorFallback(up, oauth2Client, tokenPath) {
+    if (up.message.includes('ECONNREFUSED') || up.message.includes('find module') || up.message.includes('runSeleniumCell is not defined')) {
+        console.log('can\'t authenticate with selenium, waiting for user input.');
+        console.log('Authorize this app by visiting this url:', oauth2Client.generateAuthUrl({
+            access_type: 'offline',
+            scope: SCOPES
+        }));
+        const interface = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+        const code = await new Promise(resolve =&gt; interface.question(
+            'Enter the code from that page here: ', resolve));
+        interface.close();
+        return receiveCode(code, oauth2Client, tokenPath);
+    } else {
+        throw up;
+    }
+}
+
+async function receiveCode(code, oauth2Client, tokenPath) {
+    const token = await util.promisify(oauth2Client.getToken.bind(oauth2Client))(code);
+    console.log('recieved token:'+ token.access_token);
+    oauth2Client.setCredentials(token);
+    await fs.writeFile(tokenPath, JSON.stringify(token, null, 4));
+    console.log('Token stored to'+ tokenPath);
+    return oauth2Client;
+}
+
+async function getCredentials() {
+    try {
+        const secretPath = path.join(TOKEN_DIR, 'client_secret.json');
+        const secret = await fs.readFile(secretPath).then(data =&gt; JSON.parse(data).toString());
+        return secret;
+    } catch (error) {
+        throw new Error('Unable to load client secret json');
+    }
+}
+
+module.exports = authorize;</code></pre></div><p><strong>Overview</strong></p>
 <p>This code is a JavaScript module that utilizes various external libraries to handle OAuth2 authentication with Google Calendar. The module appears to be designed to handle errors and fallback scenarios, allowing the application to recover from connection issues.</p>
 <p><strong>Breakdown</strong></p>
 <h3>Importing Libraries</h3>

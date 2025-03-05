@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -213,7 +220,85 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to extract files from Quake 3 PAK (package) archives.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { promises: fsPromises } = require('fs');
+const path = require('path');
+const { listInProject } = require('../Core');
+const StreamZip = require('node-stream-zip');
+
+/**
+ * Function to read a pak file.
+ * 
+ * @param {string} zipFile - The path to the zip file.
+ * @param {function} cb - The callback function to call when the operation is complete.
+ */
+async function readPak(zipFile) {
+    try {
+        const zip = new StreamZip({
+            file: zipFile,
+            storeEntries: true
+        });
+
+        await new Promise((resolve, reject) =&gt; {
+            zip.on('ready', () =&gt; {
+                resolve();
+            });
+            zip.on('error', (err) =&gt; {
+                reject(err);
+            });
+        });
+
+        console.log(`Entries read: ${zip.entriesCount} ${path.basename(zipFile)}`);
+        const entries = Object.values(zip.entries());
+
+        for (const entry of entries) {
+            if (entry.name.includes('.bsp')) {
+                console.log(entry.name);
+            }
+            if (entry.name.includes('levelshots/') &amp;&amp; entry.name!== 'levelshots/') {
+                const levelPath = path.join('/Applications/ioquake3/bestmaps', 'levelshots', path.basename(entry.name));
+                if (!fsPromises.existsSync(levelPath)) {
+                    zip.extract(entry.name, levelPath);
+                }
+            }
+        }
+
+        await new Promise((resolve) =&gt; {
+            zip.on('close', () =&gt; {
+                resolve();
+            });
+        });
+    } catch (err) {
+        console.log(err);
+    } finally {
+        return zipFile;
+    }
+}
+
+/**
+ * Function to extract paks.
+ * 
+ * @returns {Promise&lt;string[]&gt;} A promise that resolves with an array of extracted pak files.
+ */
+async function extractPaks() {
+    const results = await listInProject('/Applications/ioquake3/bestmaps', '**/*.pk3');
+    const extracted = await Promise.all(results.map(async (r) =&gt; {
+        try {
+            await readPak(r);
+            return true;
+        } catch (e) {
+            if (e.message.includes('Bad archive')) {
+                return false;
+            } else {
+                console.log(e);
+                return true;
+            }
+        }
+    }));
+    return results.filter((_, index) =&gt; extracted[index]);
+}
+
+module.exports = extractPaks;</code></pre></div><p>This code snippet is designed to extract files from Quake 3 PAK (package) archives.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

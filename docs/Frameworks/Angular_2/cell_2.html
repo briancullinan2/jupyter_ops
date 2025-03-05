@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -109,7 +116,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Command Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Builds the Angular project in production mode using Ahead-of-Time (AOT) compilation.
+ */
+
+import * as childProcess from 'child_process';
+
+export function buildAngularProject(): void {
+  // Define the command to be executed
+  const command = [
+    'ng',
+    'build',
+    '--prod',
+    '--aot',
+  ];
+
+  // Use childProcess to execute the command in the context of the project
+  childProcess.exec(command.join(' '), (error) =&gt; {
+    if (error) {
+      console.error(`Error building the Angular project: ${error}`);
+    } else {
+      console.log('Angular project built successfully');
+    }
+  });
+}
+
+// Alternatively, you can use the npm run command to run the build script
+export function runBuildScript(): void {
+  // Define the command to be executed
+  const command = ['npm', 'run', 'ng:build'];
+
+  // Use childProcess to execute the command in the context of the project
+  childProcess.exec(command.join(' '), (error) =&gt; {
+    if (error) {
+      console.error(`Error running build script: ${error}`);
+    } else {
+      console.log('Build script executed successfully');
+    }
+  });
+}
+```
+
+You can call these functions as follows:
+
+```typescript
+buildAngularProject();
+// or
+runBuildScript();</code></pre></div><p><strong>Command Breakdown</strong></p>
 <ul>
 <li><code>npm run ng:build</code>
 <ul>

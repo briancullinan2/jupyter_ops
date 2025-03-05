@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -103,7 +110,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the Reddit post function
+const redditPost = require('./redditPost').default;
+
+/**
+ * Test function to post a comment on Reddit.
+ * @param {string} subreddit - The name of the subreddit to post in.
+ * @param {string} comment - The comment to post.
+ * @param {string} userId - The Reddit user ID of the account to use.
+ */
+async function testPost(subreddit = 'r/test', comment = 'this is a test', userId = 'CollapseGently') {
+  // Validate the input parameters
+  if (!subreddit || typeof subreddit!=='string') {
+    throw new Error('Subreddit must be a non-empty string');
+  }
+  if (!comment || typeof comment!=='string') {
+    throw new Error('Comment must be a non-empty string');
+  }
+  if (!userId || typeof userId!=='string') {
+    throw new Error('User ID must be a non-empty string');
+  }
+
+  // Post the comment
+  await redditPost(subreddit, comment, userId);
+}
+
+// Export the testPost function
+module.exports = testPost;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing a Module</h3>
 <pre><code class="language-javascript">const redditPost = importer.import('reddit post')
 </code></pre>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./image_2_image.html">image 2 image</a> |  | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>whiskImages</code> function is an asynchronous function that takes four parameters (<code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>) and processes them to return an object with the processed parameters. It handles base64-encoded images, URLs, and file paths, and uses various modules such as <code>gaxios</code> and <code>fs</code> to make HTTP requests and interact with files.</p>
+  <p>The code imports various modules and functions, then defines an asynchronous function <code>whiskImages</code> that takes four arguments and handles different types of input for its first two arguments, <code>subject</code> and <code>scene</code>.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "whisk images"</code></pre><h1>whisk images</h1>
@@ -267,40 +276,152 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<p><strong>Importing Modules</strong></p>
-<p>The code starts by importing various modules:</p>
-<ul>
-<li><code>fs</code>: The file system module for interacting with files.</li>
-<li><code>gaxios</code>: A HTTP client library for making requests.</li>
-<li><code>importer</code>: A custom module for importing other modules (not shown in this code snippet).</li>
-<li><code>requestOllamaVision</code>, <code>selectModel</code>, <code>doStableRequest</code>, <code>doImage2Image</code>, <code>doBackgroundMask</code>, <code>doInpaintMask</code>: Various functions imported from other modules.</li>
-</ul>
-<p><strong>Function <code>whiskImages</code></strong></p>
-<p>The <code>whiskImages</code> function takes four parameters: <code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>. It is an asynchronous function.</p>
-<p><strong>Functionality</strong></p>
-<p>The function performs the following tasks:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { request, getAuth } = require('gaxios');
+const importer = require('importer');
+const { doStableRequest, doImage2Image, doBackgroundMask, doInpaintMask } = importer.import([
+ 'stable diffusion request',
+  'image 2 image',
+ 'mask image',
+  'inpaint mask'
+]);
+
+// Function to get base64 image from URL or file
+async function getImageAsBase64(imagePathOrUrl) {
+  if (imagePathOrUrl.startsWith('data:image/')) {
+    return imagePathOrUrl.replace(/^data:image\/.*?;base64,/gi, '');
+  } else if (imagePathOrUrl.includes('://')) {
+    const response = await request({
+      url: imagePathOrUrl,
+      method: 'GET',
+    });
+    return Buffer.from(await response.data.arrayBuffer()).toString('base64');
+  } else if (!require('fs').existsSync(imagePathOrUrl)) {
+    throw new Error(`File ${imagePathOrUrl} does not exist.`);
+  } else {
+    return require('fs').readFileSync(imagePathOrUrl).toString('base64');
+  }
+}
+
+// Function to describe image using Ollama Vision
+async function getImageDescription(imageBase64, descriptionPrompt) {
+  const response = await requestOllamaVision('data:image/png;base64,' + imageBase64, descriptionPrompt);
+  return response;
+}
+
+// Function to summarize a sentence using a model
+async function summarizeSentence(sentence, model) {
+  const response = await model(`Summarize this sentence into four or five words:\n${sentence}\nOnly return the summary, no title or explanation.`);
+  return response;
+}
+
+// Main function to whisk images together
+async function whiskImages(subject, scene, style, short) {
+  // Get the model to use for summarization
+  const model = await selectModel(process.env.DEFAULT_MODEL || 'Default');
+
+  // Get base64 images from URLs or files
+  let subjectBase64, sceneBase64, styleBase64;
+  try {
+    subjectBase64 = await getImageAsBase64(subject);
+    sceneBase64 = await getImageAsBase64(scene);
+    styleBase64 = await getImageAsBase64(style);
+  } catch (error) {
+    if (error.message.includes('does not exist')) {
+      // If a file does not exist, try to get a description for the image from Ollama Vision
+      const subjectDescription = await getImageDescription(subjectBase64 || subject, 'Describe the foreground subject of the image in one short sentence.');
+      const sceneDescription = await getImageDescription(sceneBase64 || scene, 'Describe the scenery in the image in one short sentence.');
+      const styleDescription = await getImageDescription(styleBase64 || style, 'Describe the art style of image in one short sentence.');
+      subjectBase64 = await getImageAsBase64(subjectDescription);
+      sceneBase64 = await getImageAsBase64(sceneDescription);
+      styleBase64 = await getImageAsBase64(styleDescription);
+    } else {
+      throw error;
+    }
+  }
+
+  // Summarize the descriptions
+  let subjectSummary, sceneSummary, styleSummary;
+  if (short) {
+    subjectSummary = await summarizeSentence(subjectBase64, model);
+    sceneSummary = await summarizeSentence(sceneBase64, model);
+    styleSummary = await summarizeSentence(styleBase64, model);
+  } else {
+    subjectSummary = await summarizeSentence(subject, model);
+    sceneSummary = await summarizeSentence(scene, model);
+    styleSummary = await summarizeSentence(style, model);
+  }
+
+  // Determine which image generation route to take
+  if (!sceneBase64 &amp;&amp;!styleBase64 &amp;&amp;!subjectBase64) {
+    // No images provided, generate an image directly
+    if (short) {
+      return await doStableRequest(subjectSummary + '\n' + sceneSummary + '\n' + styleSummary);
+    } else {
+      return await doStableRequest(subject + '\n' + scene + '\n' + style);
+    }
+  } else if (subjectBase64 &amp;&amp;!sceneSummary) {
+    // Only subject and style, generate an image 2 image
+    if (short) {
+      return await doImage2Image('data:image/png;base64,' + subjectBase64, subjectSummary + (styleSummary? ('\n' + styleSummary) : ''));
+    } else {
+      return await doImage2Image('data:image/png;base64,' + subjectBase64, subject + (style? ('\n' + style) : ''));
+    }
+  } else if (sceneBase64 &amp;&amp;!subjectSummary) {
+    // Only scene and style, generate an image 2 image
+    if (short) {
+      return await doImage2Image('data:image/png;base64,' + sceneBase64, sceneSummary + (styleSummary? ('\n' + styleSummary) : ''));
+    } else {
+      return await doImage2Image('data:image/png;base64,' + sceneBase64, scene + (style? ('\n' + style) : ''));
+    }
+  } else if (subjectBase64 &amp;&amp; sceneSummary) {
+    // Combine subject and scene to generate a new image
+    const mask = await doBackgroundMask('data:image/png;base64,' + subjectBase64);
+    const inpaintImage = await doInpaintMask('data:image/png;base64,' + subjectBase64, mask.image.toString('base64'), sceneSummary);
+    if (!styleSummary) {
+      return inpaintImage;
+    }
+    return await doImage2Image('data:image/png;base64,' + inpaintImage.image, styleSummary + '\n' + subjectSummary + '\n' + sceneSummary);
+  } else {
+    console.error('Missing components:');
+    return {};
+  }
+}
+
+module.exports = whiskImages;</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Importing Modules and Functions</h3>
+<p>The code starts by importing various modules and functions:</p>
+<pre><code class="language-javascript">const fs = require('fs')
+const { request } = require('gaxios')
+const requestOllamaVision = importer.import('request ollama vision')
+const selectModel = importer.import('select llm')
+const {doStableRequest} = importer.import('stable diffusion request')
+const {doImage2Image} = importer.import('image 2 image')
+const {doBackgroundMask} = importer.import('mask image')
+const {doInpaintMask} = importer.import('inpaint mask')
+</code></pre>
+<h3>Function Definition: <code>whiskImages</code></h3>
+<p>The <code>whiskImages</code> function takes four arguments: <code>subject</code>, <code>scene</code>, <code>style</code>, and <code>short</code>, and is defined as an asynchronous function:</p>
+<pre><code class="language-javascript">async function whiskImages(subject, scene, style, short) {
+  //...
+}
+</code></pre>
+<h3>Handling <code>subject</code> Input</h3>
+<p>The function handles the <code>subject</code> input in several cases:</p>
 <ol>
-<li><strong>Selects a model</strong>: It selects a model using the <code>selectModel</code> function and assigns it to the <code>promptModel</code> variable.</li>
-<li><strong>Processes the <code>subject</code> parameter</strong>:
-<ul>
-<li>If <code>subject</code> is a string, it checks if it's a base64-encoded image, a URL, or a file path. If it's a base64-encoded image, it decodes it. If it's a URL, it makes a GET request to the URL and decodes the response. If it's a file path, it reads the file and decodes it.</li>
-<li>If <code>subject</code> is not a string, it converts it to a string using <code>toString('base64')</code>.</li>
-</ul></li>
-<li><strong>Processes the <code>scene</code> parameter</strong>:
-<ul>
-<li>Similar to the <code>subject</code> parameter, but with its own set of checks and processing.</li>
-</ul></li>
-<li><strong>Returns</strong>: The function returns an object with the processed <code>subject</code> and <code>scene</code> parameters.</li>
+<li>If <code>subject</code> is a string that starts with <code>'data:image/'</code>, it extracts the base64-encoded image data.</li>
+<li>If <code>subject</code> is a string that includes <code>'://'</code>, it makes a GET request to the URL and extracts the base64-encoded image data.</li>
+<li>If <code>subject</code> is a string that does not exist as a file, it keeps the string value.</li>
+<li>If <code>subject</code> is not a string, it converts it to a base64-encoded string.</li>
 </ol>
-<p><strong>Notes</strong></p>
-<ul>
-<li>The function uses <code>async/await</code> syntax to handle promises.</li>
-<li>The <code>request</code> function from <code>gaxios</code> is used to make HTTP requests.</li>
-<li>The <code>fs</code> module is used to interact with files.</li>
-<li>The <code>importer</code> module is used to import other modules.</li>
-<li>The <code>requestOllamaVision</code>, <code>selectModel</code>, <code>doStableRequest</code>, <code>doImage2Image</code>, <code>doBackgroundMask</code>, <code>doInpaintMask</code> functions are not used in this code snippet, but are likely used elsewhere in the codebase.</li>
-</ul>
+<h3>Handling <code>scene</code> Input</h3>
+<p>The function handles the <code>scene</code> input similarly to the <code>subject</code> input.</p>
+<h3>Error Handling</h3>
+<p>The function does not appear to include any error handling or logging.</p>
+<h3>Unused Variables</h3>
+<p>The variables <code>sceneShort</code>, <code>sceneString</code>, <code>style</code>, and <code>short</code> are declared but not used anywhere in the function.</p>
+<h3>Documentation</h3>
+<p>The code does not include any comments or documentation, making it difficult to understand its purpose or functionality.</p>
 
 </body>
 

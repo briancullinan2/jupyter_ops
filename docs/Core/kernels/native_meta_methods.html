@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -190,7 +197,140 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+const childProcess = require('child_process');
+
+class Kernel {
+  /**
+   * Initializes the kernel with the given configuration.
+   * @param {Object} config - The kernel configuration.
+   */
+  doInit(config) {
+    this.kernelConfig = config;
+    console.log('Starting meta kernel');
+  }
+
+  /**
+   * Installs the kernel with the given configuration.
+   * @param {Object} configJson - The kernel configuration.
+   */
+  async doInstall(configJson) {
+    console.log(`Installing kernel ${JSON.stringify(configJson)}`);
+    await this.createKernelDirectory(configJson);
+    await this.writeKernelJson(configJson);
+    await this.installKernel(configJson);
+    // TODO: convert to bash notebook or kernel call
+  }
+
+  /**
+   * Creates the kernel directory.
+   * @param {Object} configJson - The kernel configuration.
+   */
+  async createKernelDirectory(configJson) {
+    try {
+      await mkdirp(path.join(process.cwd(), `.kernel/${configJson.language}`));
+    } catch (error) {
+      console.error(`Error creating kernel directory: ${error}`);
+    }
+  }
+
+  /**
+   * Writes the kernel JSON file.
+   * @param {Object} configJson - The kernel configuration.
+   */
+  async writeKernelJson(configJson) {
+    try {
+      await fs.writeFileSync(
+        path.join(process.cwd(), `.kernel/${configJson.language}/kernel.json`),
+        JSON.stringify(configJson, null, 4)
+      );
+    } catch (error) {
+      console.error(`Error writing kernel JSON: ${error}`);
+    }
+  }
+
+  /**
+   * Installs the kernel.
+   * @param {Object} configJson - The kernel configuration.
+   */
+  async installKernel(configJson) {
+    try {
+      await childProcess.execSync(
+        `jupyter kernelspec install --user --replace "${path.join(process.cwd(), `.kernel/${configJson.language}`)}"`
+      );
+    } catch (error) {
+      console.error(`Error installing kernel: ${error}`);
+    }
+  }
+
+  /**
+   * Removes the kernel directory.
+   */
+  async doRemove() {
+    try {
+      await rimraf.sync(process.cwd() + '/.kernel');
+    } catch (error) {
+      console.error(`Error removing kernel directory: ${error}`);
+    }
+  }
+
+  /**
+   * Checks if the kernel is complete.
+   * @param {Object} message - The message to check.
+   */
+  async doIsComplete(message) {
+    try {
+      await this.doExecute(message);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  /**
+   * Executes the kernel.
+   * @param {Object} message - The message to execute.
+   */
+  async doExecute(message) {
+    // TO DO: implement kernel execution
+  }
+
+  /**
+   * Responds to the message.
+   * @param {Object} message - The message to respond to.
+   */
+  doRespond(message) {
+    // TO DO: add line and block magics handling here
+    return message;
+  }
+
+  /**
+   * Handles the message.
+   * @param {Object} message - The message to handle.
+   */
+  async handleMessage(message) {
+    try {
+      const handler = this[Object.keys(message)[0]];
+      if (!handler) {
+        console.error(`Unhandled message type: ${JSON.stringify(message)}`);
+        return;
+      }
+      const result = await handler.apply(this, Object.values(message));
+      if (result instanceof Promise) {
+        await result;
+      }
+      return result;
+    } catch (error) {
+      console.error(`Error handling message: ${error}`);
+    }
+  }
+}
+
+module.exports = Kernel;</code></pre></div><p><strong>Code Overview</strong></p>
 <p>This code defines a set of functions for a meta kernel, which is a kernel that manages and interacts with other kernels. The functions are exported as a module, allowing them to be used by other applications.</p>
 <p><strong>Functions</strong></p>
 <h3><code>do_init(config)</code></h3>

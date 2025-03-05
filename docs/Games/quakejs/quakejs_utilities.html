@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -131,7 +138,63 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines two functions for handling out-of-band (OOB) data, a common technique used in network communication to send special instructions or metadata alongside regular data.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Formats input data to include OOB (out of bounds) markers.
+ *
+ * @param {string} data - the input data to format.
+ * @returns {ArrayBuffer} the formatted ArrayBuffer.
+ */
+function formatOOB(data) {
+  // Use a single line to create the formatted string
+  const formattedData = '\xff\xff\xff\xff' + data + '\x00';
+
+  // Use a more modern approach with TypedArray
+  const uint8Array = new Uint8Array(formattedData.length);
+  for (let i = 0; i < formattedData.length; i++) {
+    uint8Array[i] = formattedData.charCodeAt(i);
+  }
+
+  // Return the ArrayBuffer view
+  return uint8Array.buffer;
+}
+
+/**
+ * Strips OOB (out of bounds) markers from the provided ArrayBuffer.
+ *
+ * @param {ArrayBuffer} buffer - the input ArrayBuffer to strip.
+ * @returns {string|null} the stripped string, or null if no valid data is found.
+ */
+function stripOOB(buffer) {
+  // Convert the ArrayBuffer to a DataView for easier access
+  const view = new DataView(buffer);
+
+  // Check for valid data at the start of the buffer
+  if (view.getInt32(0) === -1n) {
+    // If no valid data, return null
+    return null;
+  }
+
+  // Calculate the start and end indices for the valid data
+  let start = 4; /* ignore leading -1 */ // TODO: remove hardcoded value
+  let end = buffer.byteLength;
+  while (end > start && view.getUint8(end - 1) <=''.charCodeAt(0)) {
+    --end;
+  }
+
+  // Read the valid data from the buffer
+  let result = '';
+  for (let i = start; i < end; i++) {
+    result += String.fromCharCode(view.getUint8(i));
+  }
+
+  return result;
+}
+
+module.exports = {
+  formatOOB,
+  stripOOB
+};</code></pre></div><p>This code defines two functions for handling out-of-band (OOB) data, a common technique used in network communication to send special instructions or metadata alongside regular data.</p>
 <p><strong><code>_formatOOB(data)</code>:</strong></p>
 <ul>
 <li>Takes a string <code>data</code> as input.</li>

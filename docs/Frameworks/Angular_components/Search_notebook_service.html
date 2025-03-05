@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an Angular service called <code>SearchService</code> responsible for handling search requests.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+@Injectable()
+export class SearchService {
+  private apiEndpoint = 'localhost';
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+  });
+
+  constructor(private http: HttpClient) { }
+
+  /**
+   * Search for a query using the provided API endpoint.
+   *
+   * @param query The search query.
+   * @returns An observable of the response.
+   */
+  search(query: string): any {
+    console.log(`Searching for ${query}...`);
+    return this.http.post(
+      this.apiEndpoint,
+      { query },
+      { headers: this.headers }
+    );
+  }
+
+  /**
+   * Set the API endpoint URL.
+   *
+   * @param url The new API endpoint URL.
+   */
+  setApiEndpoint(url: string): void {
+    this.apiEndpoint = url;
+  }
+}</code></pre></div><p>This code defines an Angular service called <code>SearchService</code> responsible for handling search requests.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

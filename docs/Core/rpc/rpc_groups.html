@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,110 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a configuration for access control and permissions for various Jupyter Notebook functionalities.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const PUBLIC_Notebooks = {
+  // RPC Basics
+  rpc: {
+    ipynb: {
+      permissions: ['Public']
+    },
+    syntax: {
+      'ipynb[parameter names]': ['Public']
+    }
+  },
+
+  // Tags on Contacts Used for Permissions Groups
+  'google contacts.ipynb': {
+    'google contact settings': ['Inner Circle', 'Public']
+  },
+
+  // Searching
+  search: {
+    gulp: {
+      'ipynb[search notebooks]': ['Public']
+    },
+    import: {
+      'ipynb[search notebook questions]': ['Public']
+    },
+    dataCollection: {
+      'ipynb[meta search all]': [], // No public access, use schedule instead
+      'ipynb[schedule search all]': ['Public','scheduler'],
+      'ipynb[crawl domain]': [], // No public access, use schedule instead
+      'ipynb[schedule crawl domain]': ['Public','scheduler']
+    }
+  },
+
+  // Date Tools
+  dateTools: {
+    dataCollection: {
+      'ipynb[tell joke]': ['Public']
+    },
+    timeline: {
+      'ipynb[search timeline events]': ['Public','map']
+    },
+    scheduling: {
+      'ipynb[search calendar]': ['Public', 'history'],
+      'ipynb[calendar search heatmap]': ['Public','slider']
+    }
+  },
+
+  // Dev Tools
+  devTools: {
+    aws: {
+      'ipynb[latest s3 bucket]': ['Public', 'gallery']
+    },
+    git: {
+      'ipynb[tip git tree]': ['Public','slider'],
+      'ipynb[megamind]': ['Public', 'editor'],
+      'ipynb[github commit html acl]': ['Public', 'editor']
+    },
+    process: {
+      'ipynb[spawn child process]': ['Public']
+    },
+    twilio: {
+      'ipynb[accept incoming twilio message]': ['Public'],
+      'ipynb[twilio reminder]': ['Public','scheduler']
+    }
+  },
+
+  // Marketing Site
+  marketingSite: {
+   'marketing scripts.ipynb': {
+      'contact us handler': ['Public']
+    },
+    convert: {
+      spreadsheet: {
+        'ipynb[get sheet identifier]': ['Public'],
+        'ipynb[sheet marketing import]': ['Public'],
+        'ipynb[setup sheet backend]': ['Public'],
+        'ipynb[create a sheet]': ['Public']
+      }
+    }
+  },
+
+  // Study Sauce
+  studySauce: {
+   'study sauce.ipynb': {
+      'authorize app to read profile info': ['Public'],
+      'create a study sauce user directory': ['Public'],
+     'render study sauce cards page': ['Public'],
+      'create a copy of study sauce template': ['Public']
+    }
+  }
+};
+
+const FUNCTION_GROUPS = ['Function'];
+const SELENIUM_GROUPS = ['Selenium'];
+const UNITTEST_GROUPS = ['Unit Test']; // Identified using describe
+const DEFAULT_GROUPS = ['Available'];
+
+module.exports = {
+  FUNCTION_GROUPS,
+  SELENIUM_GROUPS,
+  UNITTEST_GROUPS,
+  DEFAULT_GROUPS,
+  PUBLIC_Notebooks
+};</code></pre></div><p>This code defines a configuration for access control and permissions for various Jupyter Notebook functionalities.</p>
 <p><strong>Key Points:</strong></p>
 <ul>
 <li><strong>Permission Groups:</strong> It defines several arrays representing permission groups: <code>FUNCTION_GROUPS</code>, <code>SELENIUM_GROUPS</code>, <code>UNITTEST_GROUPS</code>, and <code>DEFAULT_GROUPS</code>.</li>

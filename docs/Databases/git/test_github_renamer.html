@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be a test case for the <code>renameUsingGit</code> function we discussed earlier.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Renames SCSS files to LESS using Git.
+ *
+ * @param {string} directory - Directory path to rename files in.
+ * @param {string} pattern - Glob pattern of files to rename.
+ * @param {string} fromExtension - Current file extension.
+ * @param {string} toExtension - Target file extension.
+ */
+function renameUsingGit(directory, pattern, fromExtension, toExtension) {
+    // TODO: Add error handling for directory and pattern
+    const fs = require('fs');
+    const path = require('path');
+    const childProcess = require('child_process');
+
+    // Log the operation for clarity
+    console.log(`Renaming files in ${directory} from ${fromExtension} to ${toExtension}`);
+
+    // Check if Git is installed and available
+    if (!isGitInstalled()) {
+        throw new Error('Git is not installed. Please install Git before proceeding.');
+    }
+
+    // Get a list of files matching the pattern
+    const filePaths = getFilePaths(directory, pattern);
+
+    // Iterate over each file and rename it using Git
+    filePaths.forEach((filePath) =&gt; {
+        const fileName = path.basename(filePath);
+        const newFileName = fileName.replace(`.${fromExtension}`, `.${toExtension}`);
+        const newFilePath = path.join(path.dirname(filePath), newFileName);
+
+        // Use Git to rename the file
+        renameFileUsingGit(filePath, newFilePath);
+    });
+}
+
+/**
+ * Checks if Git is installed and available.
+ *
+ * @returns {boolean} True if Git is installed, false otherwise.
+ */
+function isGitInstalled() {
+    try {
+        require('child_process').execSync('git --version');
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+/**
+ * Gets a list of file paths matching the given pattern.
+ *
+ * @param {string} directory - Directory path to search in.
+ * @param {string} pattern - Glob pattern of files to find.
+ * @returns {Array&lt;string&gt;} List of file paths matching the pattern.
+ */
+function getFilePaths(directory, pattern) {
+    const childProcess = require('child_process');
+    return childProcess.execSync(`find ${directory} -name "${pattern}"`).toString().trim().split('\n');
+}
+
+/**
+ * Renames a file using Git.
+ *
+ * @param {string} from - Original file path.
+ * @param {string} to - Target file path.
+ */
+function renameFileUsingGit(from, to) {
+    const childProcess = require('child_process');
+    childProcess.execSync(`git mv ${from} ${to}`);
+}</code></pre></div><p>This code snippet appears to be a test case for the <code>renameUsingGit</code> function we discussed earlier.</p>
 <p>Let's break it down:</p>
 <ul>
 <li><strong><code>// test it</code></strong>: This is a comment indicating the purpose of the following lines.</li>

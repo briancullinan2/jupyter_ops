@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -94,24 +101,23 @@
 
 <a href="./convert_notebook_to_open_api.html">convert notebook to open api</a>
 <br /><br />
-<p>The code imports various modules and defines custom functions, including <code>getTail()</code> for recursively traversing objects and <code>getPathId()</code> for normalizing path IDs, to generate an RPC specification. The main entry point function <code>getRpcSpecFromCells()</code> is exported as a module, allowing it to be used in other parts of the application.</p>
+<p>This Node.js module exports a function <code>getRpcSpecFromCells</code> that generates REST API documentation from Jupyter notebooks by grouping permissions, iterating over cells, and creating method objects. It returns an object containing documentation details such as title, name, description, and parameters.</p>
 <a href="./test_convert_notebook_api.html">test convert notebook api</a>
 <br /><br />
-<p>The code imports functions from a <code>Core</code> module, sets the environment, and conditionally executes a series of function calls to obtain an RPC specification and permissions, using a global object <code>$</code> to send the results or errors.</p>
+<p>The code imports necessary functions and sets the environment to <code>'STUDY_LOCAL'</code>, then conditionally executes a block of code and finally calls main functions to convert notebooks to OpenAPI, extract RPC information, and test permissions. The main functions are executed within a promise chain that handles success and error cases.</p>
 <a href="./convert_google_discovery_to_documentation.html">convert google discovery to documentation</a>
 <br /><br />
 <a href="./discover_well-known_apis.html">discover well-known apis</a>
 <br /><br />
 <a href="./export_documentation.html">export documentation</a>
 <br /><br />
-<p>This Node.js script exports documentation for a project in HTML format, utilizing various imports and functions to generate the documentation, including rendering Markdown to HTML using the <code>Remarkable</code> module. The script defines an asynchronous function <code>exportAll(query)</code> that iterates over notebooks in the project directory and generates HTML documentation for each.</p>
+<p>The code is a JavaScript part of a larger project that manages and exports notebooks and functions, with the <code>exportAll</code> function being the main entry point. It generates an index page and a search page, but several TODO comments indicate areas that need to be implemented or improved.</p>
 <a href="./highlight_js.html">highlight js</a>
 <br /><br />
-<p>The HTML document links to external style sheets and a JavaScript file from the Highlight.js library, and initializes the library to highlight code elements on the page.</p>
-<p>The HTML document includes external style sheets and a JavaScript file from the Highlight.js library, which is used to highlight code elements on the page. The library is initialized using <code>hljs.highlightAll()</code> to automatically highlight all code elements on the page.</p>
+<p>Highlight.js styles and script, along with additional language scripts, are imported and initialized. The highlight.js plugin and all code in the document are then added and highlighted.</p>
 <a href="./javadoc_template.html">javadoc template</a>
 <br /><br />
-<p>The basic structure of an HTML document includes the document type declaration, HTML tag, head section (with metadata, document title, viewport settings, stylesheet link, and inline styles), body section (with navigation bar, header section, and output section), and end of document tags. The document can be customized with variables and links to external stylesheets, and can be designed to be responsive with viewport settings.</p>
+<p>An HTML document is composed of a root <code>&lt;html&gt;</code> element, containing metadata in the <code>&lt;head&gt;</code> element and content in the <code>&lt;body&gt;</code> element. The document uses styles and variables to dynamically generate content and layout properties.</p>
 
 </body>
 

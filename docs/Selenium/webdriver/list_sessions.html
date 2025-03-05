@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { readSessions } = importer.import('selenium session');
+const { WebDriver, Capabilities, Session } = require('selenium-webdriver');
+const { Builder } = require('selenium-webdriver/chrome');
+const createExecutor = importer.import('selenium executor');
+const getClient = importer.import('webdriver client');
+
+const LOCAL_URL = 'http://localhost:4444/wd/hub';
+
+/**
+ * Verifies a session by getting all window handles.
+ * @param {Session} driver - The session to verify.
+ * @param {string} sessionId - The ID of the session.
+ * @returns {string} The ID of the verified session.
+ */
+async function verifySession(session, sessionId) {
+  try {
+    const driver = new Builder().forBrowser('chrome').setChromeOptions(Capabilities.chrome()).build();
+    const windows = await driver.getAllWindowHandles();
+    console.log('Windows: ', windows);
+    driver.quit(); // Quit the driver after use to free up resources.
+    return sessionId;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/**
+ * Gets active or inactive sessions.
+ * @param {Session} driver - The driver to use.
+ * @param {boolean} inactive - Whether to get inactive sessions.
+ * @returns {Array&lt;string&gt;} The IDs of the available sessions.
+ */
+async function getSessions(driver, inactive = false) {
+  const sessions = readSessions();
+  if (!driver) {
+    driver = await getClient();
+  }
+
+  const activeSessions = sessions
+   .filter((session) =&gt; Object.prototype.hasOwnProperty.call(session, 'id') &amp;&amp; session.id!== null &amp;&amp; session.id.length &gt; 0);
+
+  let availableSessions = activeSessions.map((session) =&gt; verifySession(null, session));
+
+  if (inactive) {
+    await Promise.all(availableSessions);
+    availableSessions = availableSessions.filter((result) =&gt; result!== undefined);
+  } else {
+    await Promise.all(availableSessions);
+    availableSessions = availableSessions.filter((result) =&gt; result!== undefined).map((result) =&gt; result);
+  }
+
+  return availableSessions.filter((session) =&gt; session!== undefined &amp;&amp; session!== null).filter((value, index, array) =&gt; array.indexOf(value) === index);
+}
+
+module.exports = getSessions;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Imported Modules</h3>
 <p>The code imports the following modules:</p>
 <ul>

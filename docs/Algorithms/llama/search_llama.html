@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,7 +83,7 @@
     <a href="../llama/index.html">llama</a> |  | <a href="./ask_llm_about_categories.html">ask llm about categories</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code imports necessary functions and variables, defines the <code>askLlamaMatchingFunction</code> function, and exports it for use in other modules. The <code>askLlamaMatchingFunction</code> function iteratively processes functions in the <code>cellCache</code> array, filtering and appending them to arrays based on categories and descriptions, and repeats this process until all functions have been processed.</p>
+  <p>This code defines an asynchronous function <code>askLlamaMatchingFunction</code> that searches for matching functions based on a given query by utilizing imported functions and caching cell and RPC function data. The function stores, filters, and queries LLM functions to return an array of matching functions.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "search llama"</code></pre><h1>search llama</h1>
@@ -159,42 +166,113 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<h4>Import Statements</h4>
-<p>The code begins by importing various functions and variables from other modules:</p>
-<pre><code class="language-javascript">const {askLlamaAboutFunctions} = importer.import('ask llm about functions')
-const {askLlamaAboutCategories} = importer.import('ask llm about categories')
-const lookupCell = importer.lookupCell
-const { cacheCells } = importer.import('cache notebook')
-const { functionCache } = importer.import('cache rpc functions with llm descriptions')
-const { cellCache } = importer.import('cell cache')
-const {storeAllLlamaFunctions} = importer.import('store all notebook llm functions')
-</code></pre>
-<h4>askLlamaMatchingFunction Function</h4>
-<p>The <code>askLlamaMatchingFunction</code> function is defined:</p>
-<pre><code class="language-javascript">async function askLlamaMatchingFunction(query) {
-  //...
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import necessary modules and functions
+const { askLlamaAboutFunctions, askLlamaAboutCategories } = require('./ask-llm-about-functions');
+const { lookupCell, cacheCells } = require('./lookup-cell');
+const { functionCache, cellCache } = require('./cache');
+const { storeAllLlamaFunctions } = require('./store-all-notebook-llm-functions');
+
+/**
+ * Asks the LLaMA about functions matching the given query
+ * @param {string} query - The query to match LLaMA functions against
+ * @returns {Promise&lt;Array&gt;} An array of functions that match the query
+ */
+async function askLlamaMatchingFunction(query) {
+  // Store all LLaMA functions before searching
+  await storeAllLlamaFunctions();
+
+  try {
+    // Get the filtered categories from the LLaMA
+    const filterCategories = await askLlamaAboutCategories(query);
+    // Print the filtered categories for debugging purposes
+    console.log(filterCategories);
+
+    // Initialize arrays to store matching functions and descriptions
+    let matchingFunctions = [];
+    let functions = [];
+    let descriptions = [];
+
+    // Iterate over each cell in the cache
+    for (const cell of cellCache) {
+      // Skip cells without questions
+      if (!cell[2].questions ||!cell[2].questions[0]) continue;
+
+      // Get the code from the cell
+      const code = lookupCell(cell[1], cacheCells);
+
+      // Skip cells without exports
+      if (!functionCache[cell[1]].exports) continue;
+
+      // Limit the number of calls based on the filter
+      if (filterCategories.length &gt; 0 &amp;&amp;!filterCategories.includes(code.filename)) {
+        continue;
+      }
+
+      // Append the function and description to the arrays
+      functions.push(functionCache[cell[1]].exports[0]);
+      descriptions.push(functionCache[cell[1]].summary);
+
+      // If the array is full, ask the LLaMA about the functions and descriptions
+      if (functions.length === 20) {
+        const result = await askLlamaAboutFunctions(query, functions, descriptions);
+        // Clear the arrays for the next batch
+        functions = [];
+        descriptions = [];
+        // Concatenate the result to the matching functions array
+        matchingFunctions = matchingFunctions.concat(result);
+      }
+    }
+
+    // If there are remaining functions, ask the LLaMA about them
+    if (functions.length &gt; 0) {
+      const result = await askLlamaAboutFunctions(query, functions, descriptions);
+      // Clear the arrays
+      functions = [];
+      descriptions = [];
+      // Concatenate the result to the matching functions array
+      matchingFunctions = matchingFunctions.concat(result);
+    }
+
+    // Return the matching functions
+    return matchingFunctions;
+  } catch (error) {
+    // Log any errors that occur during the process
+    console.error(error);
+    return [];
+  }
 }
-</code></pre>
-<p>This function takes a <code>query</code> parameter and returns an array of matching functions.</p>
-<h4>Function Flow</h4>
-<ol>
-<li>Store all Llama functions using <code>storeAllLlamaFunctions</code>.</li>
-<li>Ask Llama about categories related to the query using <code>askLlamaAboutCategories</code>.</li>
-<li>Iterate through the <code>cellCache</code> array.</li>
-<li>For each cell, check if it has a code and if the code has an export.</li>
-<li>Filter functions based on categories and limit the number of calls.</li>
-<li>Append functions and descriptions to arrays.</li>
-<li>Call <code>askLlamaAboutFunctions</code> to get a list of matching functions.</li>
-<li>Repeat steps 4-7 until all functions have been processed.</li>
-</ol>
-<h4>Export Statement</h4>
-<p>The <code>askLlamaMatchingFunction</code> function is exported:</p>
-<pre><code class="language-javascript">module.exports = {
+
+module.exports = {
   askLlamaMatchingFunction
-}
-</code></pre>
-<p>This allows the function to be used in other modules.</p>
+};</code></pre></div><h3>Overview</h3>
+<p>This code defines an asynchronous function <code>askLlamaMatchingFunction</code> that searches for matching functions based on a given query. It utilizes various imported functions to perform the search and returns an array of matching functions.</p>
+<h3>Imported Functions</h3>
+<p>The following functions are imported from other modules:</p>
+<ul>
+<li><code>askLlamaAboutFunctions</code>: Asks Llama about functions and returns a list of functions.</li>
+<li><code>askLlamaAboutCategories</code>: Asks Llama about categories and returns a list of categories.</li>
+<li><code>lookupCell</code>: Looks up a cell in the notebook.</li>
+<li><code>cacheCells</code>: Caches cells in the notebook.</li>
+<li><code>functionCache</code>: Caches RPC functions with LLM descriptions.</li>
+<li><code>cellCache</code>: Caches cells in the notebook.</li>
+<li><code>storeAllLlamaFunctions</code>: Stores all notebook LLM functions.</li>
+</ul>
+<h3>askLlamaMatchingFunction</h3>
+<p>This function performs the following steps:</p>
+<ol>
+<li>Calls <code>storeAllLlamaFunctions</code> to store all notebook LLM functions.</li>
+<li>Calls <code>askLlamaAboutCategories</code> with the given query to get a list of categories.</li>
+<li>If categories are found, it logs them to the console.</li>
+<li>Iterates through the <code>cellCache</code> array and filters out cells that do not contain questions or code.</li>
+<li>For each cell, it checks if the code is in the <code>functionCache</code> and if it has an export. If not, it skips to the next cell.</li>
+<li>It limits the number of calls based on the filter categories.</li>
+<li>It appends the functions and descriptions to separate arrays.</li>
+<li>If the arrays have 20 or more elements, it calls <code>askLlamaAboutFunctions</code> with the query, functions, and descriptions. If a result is returned, it appends it to the <code>matchingFunction</code> array.</li>
+<li>Finally, it calls <code>askLlamaAboutFunctions</code> with the remaining functions and descriptions, if any, and returns the <code>matchingFunction</code> array.</li>
+</ol>
+<h3>Exports</h3>
+<p>The <code>askLlamaMatchingFunction</code> is exported as a module, making it available for use in other parts of the application.</p>
 
 </body>
 

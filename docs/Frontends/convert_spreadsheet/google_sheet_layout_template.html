@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Escapes special characters in a string for use in regular expressions.
+ *
+ * @param {string} s - The string to escape.
+ * @returns {string} The escaped string.
+ */
+function escape(s) {
+    return s.replace(/[[-\/\\^$*+?.()|[\]{}]/g, '\\${OUTPUT}amp;');
+}
+
+/**
+ * Generates a safe name for a string by replacing special characters with spaces and trimming to 40 characters.
+ *
+ * @param {string} name - The string to generate a safe name for.
+ * @returns {string} The safe name.
+ */
+function safeName(name) {
+    return name.replace(/\//ig,'').replace(/[^a-z0-9\- ]/ig, '-').substr(0, 40);
+}
+
+/**
+ * Retrieves data classes from Mustache variables used with supplied data.
+ *
+ * @param {string} c - The Mustache variable to check.
+ * @param {object} data - The data to search for Mustache variables.
+ * @returns {string[]} An array of matching data classes.
+ */
+function getDataClasses(c, data) {
+    // Check if data is an object and ensure it's an array of properties
+    const props = Array.isArray(data)? data : Object.values(data);
+    return props.reduce((acc, cur) =&gt; acc.concat(Object.keys(cur)), []).filter((k, i, arr) =&gt; arr.indexOf(k) === i).filter(k =&gt; c.match(new RegExp(`\\{\\{\\s*[&gt;#\\/]?\\s*${escape(k)}\\s*\\}\\}`, 'ig')));
+}
+
+/**
+ * Defines a property for an object.
+ *
+ * @param {string} c - The property name (with or without leading colon).
+ * @param {*} value - The value to assign to the property.
+ * @param {object} properties - The object to assign the property to.
+ * @returns {object} The updated properties object.
+ */
+function defineProperty(c, value, properties) {
+    if (c.startsWith '::') {
+        c = c.slice(2);
+        if (!properties[c]) properties[c] = [];
+        else if (!Array.isArray(properties[c])) properties[c] = [properties[c]];
+        properties[c].push(value);
+    } else {
+        properties[c.slice(1)] = value;
+    }
+    return properties;
+}
+
+/**
+ * Renders rows of data using Mustache templates.
+ *
+ * @param {string} key - The key of the data to render (used for Mustache variables).
+ * @param {array} rows - The data to render.
+ * @param {object} properties - The object of properties to use for rendering.
+ * @param {object} templates - The object of Mustache templates to use.
+ * @returns {string} The rendered HTML.
+ */
+function renderRows(key, rows, properties, templates) {
+    return rows.reduce((acc, row, i) =&gt; {
+        const rowHtml = row.reduce((arr, c, j) =&gt; {
+            if (c.startsWith(':')) {
+                // Use subsequent column for property values
+                defineProperty(c, row[j + 1], properties);
+            } else if (j === 0 || (row[j - 1] &amp;&amp;!row[j - 1].startsWith(':'))) {
+                const dataClasses = getDataClasses(c, properties[`${key}-original-data`]).map(k =&gt; `val-${safeName(k)}`).join(' ');
+                const sectionClasses = getDataClasses(c, [properties, templates]).map(k =&gt; `section-${safeName(k)}`).join(' ');
+                arr.push(`
+&lt;div class="cell-${i} ${dataClasses} ${sectionClasses}"&gt;
+${c}
+&lt;/div&gt;
+`);
+            }
+            return arr;
+        }, []).join('');
+
+        if (rowHtml) {
+            const className = properties['class'] || '';
+            acc.push(`
+&lt;div class="row-${i} ${className} col-${row.length}"&gt;
+${rowHtml}
+&lt;/div&gt;
+`);
+        }
+        return acc;
+    }, []).join('');
+}
+
+module.exports = renderRows;</code></pre></div><p><strong>Function Breakdown</strong></p>
 <h3><code>safeName(name)</code></h3>
 <ul>
 <li>Replaces forward slashes (<code>/</code>) with spaces.</li>

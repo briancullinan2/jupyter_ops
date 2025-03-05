@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,33 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import pandas as pd
+
+def load_test_data(test_dir):
+    try:
+        # Create a pandas DataFrame from the provided test directory
+        image_data, label_data = createdataframe(test_dir)
+        
+        # Create a dictionary to store the data
+        data = {
+            'image': image_data,
+            "label": label_data
+        }
+        
+        # Convert the dictionary to a DataFrame
+        test_df = pd.DataFrame(data)
+        
+        # Return the DataFrame
+        return test_df
+    
+    except Exception as e:
+        # Log any exceptions and return None
+        print(f"An error occurred: {str(e)}")
+        return None
+
+# Example usage:
+test_df = load_test_data(TEST_DIR)</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Libraries</h3>
 <p>The code snippet assumes that the pandas library (<code>pd</code>) has been imported.</p>
 <h3>Creating an Empty DataFrame</h3>

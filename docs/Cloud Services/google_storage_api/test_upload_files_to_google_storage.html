@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a test suite using the <code>describe</code> and <code>it</code> functions from a testing framework (likely Jest) to verify the functionality of a function called <code>streamToGoogle</code>.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { describe, it } = require('mocha');
+const assert = require('assert');
+const importer = require('../Core');
+const { streamToGoogle } = importer.import('upload files google cloud');
+
+describe('upload google storage', () => {
+  /**
+   * Test suite for uploading a file to Google Cloud Storage
+   */
+
+  it('should upload a file to a bucket', async () => {
+    // Define the file URL and bucket name
+    const fileUrl = 'https://www.sgs.com/-/media/global/images/structural-website-images/hero-images/hero-color-palette.jpg?la=en&hash=70B51DB0FA678306B2EAF2E6C4A725BAB0D12342';
+    const bucketName ='sheet-to-web.com';
+
+    try {
+      // Upload the file to Google Cloud Storage
+      const uploadedUrl = await streamToGoogle(fileUrl, bucketName);
+
+      // Assert that the uploaded URL is not empty
+      assert.ok(uploadedUrl,'should have a file url');
+    } catch (error) {
+      // Rethrow the error to ensure it's caught by the test framework
+      throw error;
+    }
+  });
+});</code></pre></div><p>This code defines a test suite using the <code>describe</code> and <code>it</code> functions from a testing framework (likely Jest) to verify the functionality of a function called <code>streamToGoogle</code>.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

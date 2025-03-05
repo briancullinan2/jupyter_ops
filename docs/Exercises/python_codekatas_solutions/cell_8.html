@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,35 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def max_profit(prices):
+    """
+    Find the maximum possible profit from a list of prices.
+
+    Args:
+        prices (list): A list of prices where each price is a positive integer.
+
+    Returns:
+        int: The maximum possible profit.
+
+    Raises:
+        ValueError: If prices is empty or contains non-positive values.
+    """
+    if not prices:
+        raise ValueError("Prices cannot be empty")
+    for price in prices:
+        if price <= 0:
+            raise ValueError("All prices must be positive")
+    
+    return sum(max(0, prices[i+1] - prices[i]) for i in range(len(prices)-1))
+
+assert max_profit([]) == 0
+assert max_profit([100]) == 0
+assert max_profit([1,6,5,2,8,1,4,5]) == 15
+assert max_profit(range(100, 0, -1)) == 0
+
+# TODO: Implement a more efficient solution using a single pass through the prices list
+#       (currently has a time complexity of O(n^2))</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function Definition</h4>
 <pre><code class="language-python">def max_profit(prices):
 </code></pre>

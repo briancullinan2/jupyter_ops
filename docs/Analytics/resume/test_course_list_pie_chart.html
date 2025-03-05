@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet imports a function to generate a pie chart visualization of course data and then displays the resulting SVG image on a webpage.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+import importer from '../Core';
+
+/**
+ * Retrieves the course list pie chart SVG component.
+ * 
+ * @returns {Promise<string>} A promise resolving to the SVG component HTML.
+ */
+async function getCourseSVG() {
+  const courseListPieChart = await importer.import('course list pie chart');
+  return courseListPieChart();
+}
+
+// Render the course list pie chart SVG component
+getCourseSVG().then(html => {
+  // Update the HTML content
+  $.html(html);
+});</code></pre></div><p>This code snippet imports a function to generate a pie chart visualization of course data and then displays the resulting SVG image on a webpage.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Import:</strong></p>

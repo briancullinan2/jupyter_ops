@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function Breakdown: <code>walkTree</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Recursively traverse a tree-like data structure, applying a set of queries and evaluators.
+ * 
+ * @param {string|function|object|array} select - The current node in the tree.
+ * @param {object} ctx - The current context.
+ * @param {function} evaluate - The function to evaluate a node.
+ * @returns {array|object|string} The result of applying the queries and evaluators.
+ */
+function walkTree(select, ctx, evaluate) {
+    // If select is an array, recursively traverse each node.
+    if (Array.isArray(select)) {
+        return select.reduce((acc, query, idx) =&gt; {
+            // If this is not the first node, use the previous results as the context.
+            const context = idx &gt; 0? acc : ctx;
+            return walkTree(query, context, evaluate).concat(acc.slice(idx));
+        }, []);
+    } 
+    // If select is a function, directly apply it to the context.
+    else if (typeof select === 'function') {
+        return select(ctx);
+    } 
+    // If select is an object, recursively traverse each property.
+    else if (typeof select === 'object') {
+        return Object.keys(select).reduce((acc, prop) =&gt; {
+            acc[prop] = walkTree(select[prop], ctx, evaluate);
+            return acc;
+        }, {});
+    } 
+    // Otherwise, directly evaluate the node.
+    else {
+        return evaluate(select, ctx);
+    }
+}
+
+// Expose the walkTree function.
+export { walkTree };</code></pre></div><h3>Function Breakdown: <code>walkTree</code></h3>
 <h4>Purpose</h4>
 <p>The <code>walkTree</code> function recursively traverses an object or array, executing functions or evaluating expressions at each level.</p>
 <h4>Parameters</h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -153,7 +160,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const dynamicLib = require.resolve(path.join('../Resources/Projects/rosetta-euler/csharp/005/Debug/net9.0/osx-arm64/005.dll'));
+const dotnet = require('node-api-dotnet');
+
+/**
+ * Load the dynamic library and call the Main function.
+ * @returns {Promise<string>} The result of the Main function.
+ */
+async function testEdge() {
+  try {
+    // Load the dynamic library
+    await dotnet.load(dynamicLib);
+
+    // Get the Rosetta.Euler class
+    const Euler = dotnet.Rosetta.Euler;
+
+    // Create an instance of the class
+    const myObject = new Euler();
+
+    // Call the Main function
+    const result = await myObject.Main([]);
+
+    console.log('Result:', result);
+  } catch (error) {
+    // Handle any errors that occur
+    console.error('Error:', error);
+  }
+}
+
+// Export the testEdge function
+module.exports = testEdge;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies and Variables</h3>
 <ul>
 <li><code>path</code>: a built-in Node.js module for working with file paths.</li>

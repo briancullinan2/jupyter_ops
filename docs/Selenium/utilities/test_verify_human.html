@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { SeleniumClient } = require('selenium-client');
+const VerifyHuman = require('verify-human');
+
+const PAGE_URL = 'https://medium.com/@hanton.yang/how-to-create-a-360-video-player-with-opengl-es-3-0-and-glkit-360-3f29a9cfac88';
+
+class VerifyPage {
+  async verify(page = PAGE_URL) {
+    const client = new SeleniumClient();
+    try {
+      await client.get(page);
+      const human = new VerifyHuman();
+      return await human.verify();
+    } catch (error) {
+      // Catch and log any errors that occur during the verification process
+      globalThis.console.error(error);
+      return false;
+    } finally {
+      // Close the selenium client to free up resources
+      await client.quit();
+    }
+  }
+}
+
+module.exports = VerifyPage;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Imported Modules</h4>
 <ul>
 <li><code>getClient</code> and <code>verifyHuman</code> are imported functions from external modules:

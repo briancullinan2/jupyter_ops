@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,85 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const { spawnSync } = require('child_process');
+const importer = require('./importer'); // assumes importer is in a separate file
+const updateCode = importer.import('update code cell');
+const LLMCode = importer.import('llm code');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+
+async function generateCell(prompt, codeCell, github) {
+  if (!github) {
+    throw new Error('Project not specified.');
+  }
+
+  let githubPath = getProjectPath(github);
+  if (!fs.existsSync(githubPath)) {
+    throw new Error('Project not found.');
+  }
+
+  await pullProject(githubPath);
+
+  const llmCode = new LLMCode();
+  if (typeof codeCell ==='string') {
+    codeCell = await importer.interpret(codeCell);
+  }
+  if (!codeCell) {
+    throw new Error('Code cell not found.');
+  }
+
+  const q1 = createQ1(githubPath, codeCell, prompt);
+  const a1 = await llmCode.generateCode(q1);
+
+  const codeBlocks = extractCodeBlocks(a1);
+  if (!codeBlocks) {
+    throw new Error('Error, couldn\'t find code in response.');
+  }
+
+  await updateCode(codeCell, codeBlocks);
+}
+
+async function getProjectPath(github) {
+  if (fs.existsSync(path.join(PROFILE_PATH, github)) &&!github.includes('://')) {
+    return path.join(PROFILE_PATH, github);
+  }
+  return github;
+}
+
+async function pullProject(githubPath) {
+  try {
+    await spawnSync('git', ['pull'], {
+      cwd: githubPath,
+      timeout: 3000,
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+  } catch (error) {
+    console.error('Error pulling project:', error);
+    throw new Error('Error pulling project.');
+  }
+}
+
+function createQ1(githubPath, codeCell, prompt) {
+  const projectFiles = fs.readdirSync(githubPath).join('\n');
+  const existingCode = codeCell.code;
+  return `Give the project files:\n${projectFiles}And the existing code for the file ${codeCell.id}:\n${existingCode}\nFulfill the following instructions on the code file, only return the block of new code:\n${prompt}\nResponse with only the block of code and no summary or reasoning.`;
+}
+
+function extractCodeBlocks(response) {
+  const regex = /\`\`\`(bash|javascript|code)*\n([\s\S]*?)\n\`\`\`/gi;
+  const matches = response.matchAll(regex);
+  if (!matches) {
+    return null;
+  }
+  return matches.reduce((acc, match) => acc + match[2].trim() + '\n', '');
+}
+
+module.exports = generateCell;</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <p>This Node.js script appears to be a part of a larger project that utilizes a Large Language Model (LLM) to generate code for a given project. Here's a brief overview of the code:</p>
 <h3>Dependencies and Imports</h3>
 <p>The script begins by importing the necessary dependencies:</p>

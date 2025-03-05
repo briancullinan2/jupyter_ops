@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,32 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and interfaces
+const { wireJson, jsonInterface } = require('../Core').import({
+  'enforcing an interface': 'interface',
+  'notebook kernel json': ['wireJson', 'jsonInterface']
+});
+
+// Define the JSON data to be parsed
+const jsonData = {
+  display_name: 'Node JS',
+  argv: [],
+  language: '',
+  some_other_stuff: true
+};
+
+// Convert the JSON data into a usable format
+const parsedJson = wireJson(jsonData);
+
+// Log the argv and display_name properties of the parsed JSON
+console.log(`argv: ${parsedJson.argv}`);
+console.log(`display_name: ${parsedJson.display_name}`);
+
+// Log the interface results
+console.log(interface(parsedJson, jsonInterface));
+
+// TODO: Implement further validation and error handling for the imported modules and interfaces</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var interface = importer.import('enforcing an interface');

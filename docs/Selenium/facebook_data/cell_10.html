@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const { runSeleniumCell } = importer.import('selenium cell');
+
+/**
+ * Unfollow everyone on Facebook using Selenium.
+ * 
+ * @returns {Promise&lt;Array&lt;string&gt;&gt;} A promise resolving to an array of function names.
+ */
+async function runFacebookUnfollow() {
+  // Get the function names from the array
+  const [loginFacebook, unfollowFacebook] = [
+    'log in facebook',
+    'unfollow everyone facebook'
+  ];
+
+  try {
+    // Run the Selenium cell and get the function results
+    const [loginResult, unfollowResult] = await runSeleniumCell([
+      loginFacebook,
+      unfollowFacebook
+    ]);
+
+    // Login using the login function result
+    await loginResult();
+
+    // Unfollow everyone using the unfollow function result
+    await unfollowResult();
+
+    // Return the result
+    return $.sendResult(null);
+  } catch (error) {
+    // If an error occurs, send the error
+    return $.sendError(error);
+  }
+}
+
+// Run the function
+runFacebookUnfollow().catch(e =&gt; $.sendError(e));</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -163,7 +170,107 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import regex for trimming leading/trailing whitespace
+const { trim } = require('lodash');
+
+// Define the trim regular expression
+const TRIM_PATTERN = /^\s*\/\s*|\s*\/\s*$/i;
+
+/**
+ * Compare two links for equality.
+ * 
+ * @param {string} dataValue - The data value to compare.
+ * @param {string} base - The base URL.
+ * @param {string} link - The link to compare.
+ * @returns {string|boolean} The normalized link if the links match, otherwise false.
+ */
+function compareLink(dataValue, base, link) {
+    // Define possible comparison operations
+    const compareOps = [
+        link,
+        `${base}/${link}`,
+        link.split('/').slice(1).join('/'),
+        base,
+        link.trim(TRIM_PATTERN)
+    ];
+
+    // Iterate over comparison operations and return the first matching link
+    return compareOps.some((comp) => {
+        // Trim leading/trailing whitespace and compare with dataValue
+        if (dataValue && comp.trim(TRIM_PATTERN) === dataValue.trim(TRIM_PATTERN)) {
+            // Return the normalized link if the links match
+            return comp.trim(TRIM_PATTERN);
+        }
+        return false;
+    });
+}
+
+/**
+ * Render unfiltered data.
+ * 
+ * @param {string} key - The key of the data.
+ * @returns {function(val, render): string} A function that renders the unfiltered data.
+ */
+function unfilteredData(key) {
+    console.log(`Rendering unfiltered ${key}`);
+    return (val, render) => render(`{{#${key}-original-data}}${val}{{/${key}-original-data}}`);
+}
+
+/**
+ * Render filtered data.
+ * 
+ * @param {string} key - The key of the data.
+ * @param {string} match - The match to filter by.
+ * @param {object} properties - The properties object.
+ * @param {boolean} categorical - Whether the data is categorical.
+ * @returns {function(val, render): string} A function that renders the filtered data.
+ */
+function filteredData(key, match, properties, categorical) {
+    return (val, render) => {
+        // Render the base and match values
+        const link = render(`{{{${match}}}}`).trim(TRIM_PATTERN);
+        const base = render(`{{{base}}}`) || properties['base'] || '';
+
+        // Normalize the link and base URLs
+        if (link.startsWith(base)) {
+            link = link.substring(base.length).trim(TRIM_PATTERN);
+        }
+
+        // Get the original data for the key
+        const restore = properties[key + '-original-data'];
+
+        // Filter the data based on the comparison result
+        let matchKey;
+        if (categorical) {
+            // For categorical data, filter by the link and return multiple results
+            matchKey = key + '-filtered-data';
+            properties[matchKey] = restore.filter((data) => compareLink(data[key], base, link));
+        } else {
+            // For non-categorical data, filter by the link or URL and return a single result
+            const filtered = restore.filter((data) => compareLink(data['link'], base, link) || compareLink(data['url'], base, link));
+            if (filtered.length!== 1) {
+                throw new Error(`Unique key not found: ${key} ${match} ${link} ${filtered.length}`);
+            }
+            properties[matchKey] = filtered;
+        }
+
+        console.log(`Rendering filtered ${categorical? 'categorical' : 'unique'}: ${key} ${match} ${link} ${properties[matchKey].length}`);
+
+        // Render the filtered data
+        const rendered = render(`{{#${matchKey}}}${val}{{/${matchKey}}}`);
+
+        // Remove the filtered data from the properties object
+        delete properties[matchKey];
+
+        return rendered;
+    };
+}
+
+module.exports = {
+    filteredData,
+    unfilteredData
+};</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Regular Expression</h3>
 <pre><code class="language-javascript">var TRIM = /^\s*\/\s*|\s*\/\s*$/ig;
 </code></pre>

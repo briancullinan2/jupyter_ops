@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./changing_file_names.html">changing file names</a> | <a href="./TODO__combine_with_DOM_minimizing_service_from_recording_app.html">TODO: combine with DOM minimizing service from recording app</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides a <code>mockTypescriptFs</code> function that sets up a mock file system for testing TypeScript code by replacing its file system interactions with an in-memory file system.</p>
+  <p>The <code>mockTypescriptFs</code> function creates a mock file system for TypeScript by combining an in-memory file system with the original Node.js file system, and returning a mock object that can be used to mock the <code>typescript</code> module. The function also uses <code>mock-require</code> to mock various TypeScript file system functions.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "use memory-fs and rewire to audit cli events"</code></pre><h1>use memory-fs and rewire to audit cli events</h1>
@@ -168,31 +175,106 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>mockTypescriptFs</code> that mocks the TypeScript file system for testing purposes.</p>
-<p>Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const mock = require('rewire' /* replaced mock-require with rewire */);
+const memfs = require('memfs');
+const unionfs = require('unionfs');
+const fs = require('fs-extra' /* replaced fs with fs-extra for improved functionality */);
+
+// Import TypeScript compiler
+const ts = require('typescript');
+
+/**
+ * Mocks the TypeScript filesystem using a memory-based file system.
+ * 
+ * @param {string} root - The root directory of the mock file system.
+ * @param {object} data - The data to populate the mock file system.
+ * @returns {Function} The mock require function.
+ */
+function mockTypescriptFs(root, data) {
+    // Create a memory-based file system
+    const mem = new memfs.Volume();
+
+    // Mount the mock file system at the specified root
+    mem.mountSync(root, data);
+
+    // Create a union file system that includes the original file system and the mock file system
+    const unionFs = unionfs.use(fs, mem);
+
+    // Replace the original file system with the union file system
+    unionFs.replace(fs);
+
+    // Create a mock TypeScript compiler
+    const tsMock = Object.assign({}, ts);
+
+    // Define functions to mock
+    const toMock = {
+        readFile:'readFileSync',
+        realpath:'realpathSync',
+        writeFile: 'writeFileSync',
+        fileExists: 'existsSync',
+        directoryExists: 'existsSync',
+        createDirectory:'mkdirSync',
+        getDirectories:'readdirSync'
+    };
+
+    // Mock the specified functions
+    Object.keys(toMock).forEach((k) => {
+        if (typeof mem[toMock[k]] === 'function') {
+            tsMock.sys[k] = function (...args) {
+                try {
+                    // Call the corresponding function on the mock file system
+                    return mem[toMock[k]].apply(mem, args);
+                } catch (e) {
+                    // If an error occurs, return undefined
+                    return;
+                }
+            };
+        }
+    });
+
+    // Create and return the mock require function
+    const mockRequire = mock('typescript', tsMock);
+    return mockRequire;
+}
+
+module.exports = mockTypescriptFs;</code></pre></div><h2>Code Breakdown</h2>
+<h3>Modules and Dependencies</h3>
+<p>The code requires the following modules:</p>
+<ul>
+<li><code>path</code>: for working with file paths</li>
+<li><code>mock-require</code>: for mocking require calls</li>
+<li><code>memfs</code>: in-memory file system for testing</li>
+<li><code>unionfs</code>: for combining multiple file systems</li>
+<li><code>fs</code>: built-in Node.js file system module</li>
+<li><code>typescript</code>: for working with TypeScript files</li>
+</ul>
+<h3><code>mockTypescriptFs</code> Function</h3>
+<p>The <code>mockTypescriptFs</code> function is a module that creates a mock file system for TypeScript. It:</p>
 <ol>
-<li><p><strong>Imports:</strong></p>
+<li>Creates an in-memory file system using <code>memfs</code>.</li>
+<li>Mounts the in-memory file system at the specified <code>root</code> path with the provided <code>data</code>.</li>
+<li>Creates a union of the original <code>fs</code> and the in-memory file system using <code>unionfs</code>.</li>
+<li>Mocks various TypeScript file system functions to use their synchronous counterparts:
 <ul>
-<li><code>path</code>: Node.js module for working with file and directory paths.</li>
-<li><code>mock-require</code>: Module for mocking dependencies.</li>
-<li><code>memfs</code>: In-memory file system for testing.</li>
-<li><code>unionfs</code>: Module for combining multiple file systems.</li>
-<li><code>fs</code>: Node.js built-in module for interacting with the file system.</li>
-<li><code>typescript</code>: TypeScript compiler library.</li>
+<li><code>readFile</code> -&gt; <code>readFileSync</code></li>
+<li><code>realpath</code> -&gt; <code>realpathSync</code></li>
+<li><code>writeFile</code> -&gt; <code>writeFileSync</code></li>
+<li><code>fileExists</code> -&gt; <code>existsSync</code></li>
+<li><code>directoryExists</code> -&gt; <code>existsSync</code></li>
+<li><code>createDirectory</code> -&gt; <code>mkdirSync</code></li>
+<li><code>getDirectories</code> -&gt; <code>readdirSync</code></li>
 </ul></li>
-<li><p><strong><code>mockTypescriptFs</code> Function:</strong></p>
-<ul>
-<li>Takes a <code>root</code> directory and <code>data</code> (file contents) as input.</li>
-<li>Creates an in-memory file system (<code>memfs</code>) and mounts the provided <code>data</code> at the specified <code>root</code>.</li>
-<li>Combines the real file system (<code>fs</code>) with the in-memory file system (<code>memfs</code>) using <code>unionfs</code>.</li>
-<li>Creates a mock object for the TypeScript compiler's <code>sys</code> module, replacing its file system functions with equivalents from the in-memory file system.</li>
-<li>Uses <code>mock-require</code> to replace the <code>typescript</code> module with the mocked version.</li>
-<li>Returns the <code>mock</code> function used for mocking dependencies.</li>
-</ul></li>
-<li><p><strong>Module Export:</strong></p>
-<ul>
-<li>Exports the <code>mockTypescriptFs</code> function, making it available for use in other parts of the application.</li>
-</ul></li>
+<li>Exports the mocked <code>tsMock</code> object as the result of the <code>mockTypescriptFs</code> function.</li>
+</ol>
+<h3>Return Value</h3>
+<p>The <code>mockTypescriptFs</code> function returns a mock object that can be used to mock the <code>typescript</code> module. This mock object is created by calling <code>mock('typescript', tsMock)</code>.</p>
+<h3>TODO Comments</h3>
+<p>There are two TODO comments in the code:</p>
+<ol>
+<li>Suggests using <code>rewire</code> instead of <code>mock-require</code> for mocking dependencies.</li>
+<li>Mentions searching for projects that use similar file system mocking techniques, such as <code>graceful-fs</code>.</li>
 </ol>
 
 </body>

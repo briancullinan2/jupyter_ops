@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,18 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Module Import and Routing Configuration</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// app.routes.ts
+/**
+ * App routing configuration
+ */
+import { Routes } from '@angular/router';
+
+const routes: Routes = [
+  // Add routes here
+];
+
+export { routes };</code></pre></div><p><strong>Module Import and Routing Configuration</strong></p>
 <pre><code class="language-markdown">### Code Breakdown
 
 * `export const routing`: Exports a constant named `routing` from the file.

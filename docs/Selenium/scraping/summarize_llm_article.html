@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,72 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function Definition</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Summarize an article using a large language model.
+ * 
+ * @param {string} article - The article to be summarized.
+ * @param {boolean} [funny=false] - Whether the summary should be funny or not.
+ * @returns {Promise&lt;[string, string]&gt;} A promise that resolves to an array of two strings, the detailed summary and the one-sentence summary.
+ */
+
+async function summarizeArticle(article, funny = false) {
+  try {
+    // Import the LLM prompt and create a session.
+    const { llmPrompt } = await importModule('create-llm-session');
+
+    // Define the prompts for the detailed and one-sentence summaries.
+    const prompts = [
+      {
+        prompt: `Summarize this article in great detail ${funny? 'funnily' : ''}: ${article.substring(0, 4096)}`,
+        responseLength: 'full',
+      },
+      {
+        prompt: `Summarize this article in a single sentence ${funny? 'funnily' : ''}: ${article.substring(0, 4096)}`,
+        responseLength: 'one-sentence',
+      },
+    ];
+
+    // Log the user prompts.
+    console.log('User prompts:');
+    prompts.forEach((prompt, index) =&gt; {
+      console.log(`${index + 1}. ${prompt.prompt}`);
+    });
+
+    // Get the LLM responses.
+    const responses = await Promise.all(prompts.map(async (prompt) =&gt; {
+      return await llmPrompt(prompt.prompt);
+    }));
+
+    // Log the LLM responses.
+    console.log('LLM responses:');
+    responses.forEach((response, index) =&gt; {
+      console.log(`${index + 1}. ${response}`);
+    });
+
+    // Return the detailed and one-sentence summaries.
+    return responses;
+  } catch (error) {
+    // Handle any errors that occur during execution.
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+module.exports = summarizeArticle;
+
+// Helper function to import a module.
+function importModule(moduleName) {
+  try {
+    return import(moduleName);
+  } catch (error) {
+    if (error.code === 'MODULE_NOT_FOUND') {
+      throw new Error(`Module '${moduleName}' not found.`);
+    } else {
+      throw error;
+    }
+  }
+}</code></pre></div><h3>Function Definition</h3>
 <p><code>summerizeArticle</code> is an asynchronous function that summarizes an article in two ways:</p>
 <ol>
 <li><strong>Detailed Summary</strong>: A detailed summary of the article in a few paragraphs.</li>

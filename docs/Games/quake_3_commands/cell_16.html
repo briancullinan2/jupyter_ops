@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -168,7 +175,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define constants
+QUAKE3E_BUILD_PATH="~/Quake3e/build/release-darwin-arm/"
+QUAKE3E_Q3MAP2="quake3e_q3map2"
+GAME_NAME="quake3"
+BASE_PATH="/Users/briancullinan/planet_quake_data"
+GAME_BASE="quake3-baseq3"
+
+# Functions to convert.bsp to.map and vice versa
+convert_bsp_to_map() {
+  local bsp_file=$1
+  local map_file="${bsp_file%.bsp}.map"
+  if [ -f "$map_file" ]; then
+    if [! -s "$map_file" ]; then
+      $QUAKE3E_BUILD_PATH$QUAKE3E_Q3MAP2 -convert -format map -keeplights -game $GAME_NAME -fs_basepath $BASE_PATH -fs_game $GAME_BASE "$bsp_file"
+      mv "${bsp_file%.bsp}_converted.map" "$map_file"
+    fi
+  fi
+}
+
+convert_map_to_bsp() {
+  local map_file=$1
+  local bsp_file="${map_file%.map}.bsp"
+  if [! -f "$bsp_file" ]; then
+    $QUAKE3E_BUILD_PATH$QUAKE3E_Q3MAP2 -convert -format bsp -keeplights -game $GAME_NAME -fs_basepath $BASE_PATH -fs_game $GAME_BASE "$map_file"
+    mv "${map_file%.map}_converted.bsp" "$bsp_file"
+  fi
+}
+
+# Find all.bsp and.map files in the current directory
+for file in $(find. -iname '*.bsp' -o -iname '*.map'); do
+  # Check if the file is not in the concepts, autosave or quarantine directories
+  if [[! "$file" =~ concepts/ ]] && [[! "$file" =~ autosave/ ]] && [[! "$file" =~ quarantine/ ]]; then
+    # Check if the.map file exists for the.bsp file
+    if [! -f "${file%.bsp}.map" ]; then
+      # Check if the.map file was previously converted
+      if [ -f "${file%.bsp}_converted.map" ]; then
+        mv "${file%.bsp}_converted.map" "${file%.bsp}.map"
+      fi
+      # If not, convert the.bsp file to.map
+      convert_bsp_to_map "$file"
+    fi
+
+    # Check if the.bsp file exists for the.map file
+    if [! -f "${file%.map}.bsp" ]; then
+      # If not, convert the.map file to.bsp
+      convert_map_to_bsp "$file"
+    fi
+
+    # Check if the.map file is smaller than 100,000 bytes
+    if [ -f "$file" ] && [ $(wc -c <"$file") -le 100000 ]; then
+      # If so, re-convert the.map file to.bsp and vice versa
+      convert_map_to_bsp "$file"
+      convert_bsp_to_map "$file"
+    fi
+  fi
+done</code></pre></div><h2>Code Breakdown</h2>
 <h3>Overview</h3>
 <p>This is a Bash script that automates the conversion of Quake 3 map files (<code>.bsp</code>, <code>.map</code>) into other formats. It uses the <code>find</code> command to search for files with the specified extensions and then performs operations on each found file.</p>
 <h3>Script Structure</h3>

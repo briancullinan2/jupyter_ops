@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -167,7 +174,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the core module and its dependencies
+const { importer } = require('../Core');
+
+/**
+ * Retrieves and returns core dependencies.
+ * @returns {Promise} A promise resolving to the core dependencies.
+ */
+async function getCoreDependencies() {
+  try {
+    return await importer.import('core dependencies');
+  } catch (error) {
+    console.error('Error importing core dependencies:', error);
+  }
+}
+
+/**
+ * Tests the core dependencies by retrieving and logging them.
+ */
+async function testCoreDependencies() {
+  const coreDependencies = await getCoreDependencies();
+  console.log('Core dependencies:', coreDependencies);
+}
+
+// Export the test function for use in other modules
+module.exports = testCoreDependencies;
+
+// Run the test function when $ is defined
+if (typeof $!== 'undefined') {
+  testCoreDependencies();
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-markdown">var importer = require('../Core')
 var {coreDependencies} = importer.import('core dependencies')

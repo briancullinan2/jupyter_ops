@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,46 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a way to mock the Angular CLI (<code>ng</code>) commands within a test environment.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importFs, importRewire } = require('../Core');
+const memoryFs = importFs('memory-fs','rewire');
+
+const angularCli = require('@angular/cli');
+const { normalize } = angularCli;
+
+const DEFAULT_CMD = ['generate', 'component', 'test'];
+
+/**
+ * Mocks the TypeScript file system and executes the Angular CLI command.
+ * 
+ * @param {string} project - The name of the project.
+ * @param {string[]} [args=DEFAULT_CMD] - The arguments to pass to the CLI.
+ * @returns {Promise<any>} The result of the CLI command.
+ */
+function ng(project, args = DEFAULT_CMD) {
+    // Mock the file system
+    memoryFs(project);
+
+    // Set up the project path
+    const previousCwd = process.cwd();
+    process.chdir(project);
+
+    // Get the normalized path
+    const projectPath = normalize(project);
+
+    // Set up the CLI configuration
+    const config = {
+        cliArgs: args,
+        inputStream: null,
+        outputStream: process.stdout,
+        projectPath,
+    };
+
+    // Execute the CLI command
+    return angularCli(config);
+}
+
+module.exports = ng;</code></pre></div><p>This code sets up a way to mock the Angular CLI (<code>ng</code>) commands within a test environment.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong> It imports the <code>Core</code> module (likely containing utility functions) and <code>memory-fs rewire</code> for mocking the filesystem and TypeScript compiler.</p></li>

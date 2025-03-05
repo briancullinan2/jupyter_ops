@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -120,7 +127,31 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Import the necessary module
+import { Clone } from 'nodegit';
+
+// Define constants for the repository URL, working directory, and branch
+const REPOSITORY_URL = 'https://github.com/megamindbrian/sosmethod';
+const WORKING_DIRECTORY = './sosmethod';
+const MASTER_BRANCH ='master';
+
+// Initialize the clone options with checkout to the specified branch
+const cloneOptions = {
+  checkoutBranch: MASTER_BRANCH,
+};
+
+// Clone the repository using asynchronous/await syntax for better error handling
+async function cloneRepository() {
+  try {
+    const repository = await Clone.clone(REPOSITORY_URL, WORKING_DIRECTORY, cloneOptions);
+    console.log(repository);
+  } catch (error) {
+    console.error('Error cloning repository:', error);
+  }
+}
+
+cloneRepository();</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requirements and Variables</h4>
 <ul>
 <li><code>var Git = require('nodegit');</code>: Imports the Nodegit library, a Git toolkit for Node.js.</li>

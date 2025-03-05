@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Returns a non-empty array or a default value if the provided array is empty.
+ *
+ * @param {Array} array - The input array to check.
+ * @param {Array} [defaultArray=['not falsey enough']] - The default array to return if the input array is empty.
+ * @returns {Array} A non-empty array or the default array.
+ */
+function getNonEmptyArray(array, defaultArray = ['not falsey enough']) {
+  // Check if the array is truthy and has at least one element
+  if (array &amp;&amp; array.length &gt; 0) {
+    // If the array is truthy, return it
+    return array;
+  } else {
+    // If the array is empty, return the default array
+    return defaultArray;
+  }
+}
+
+// Usage example
+console.log(getNonEmptyArray([])); // Output: ['not falsey enough']
+console.log(getNonEmptyArray(['hello', 'world'])); // Output: ['hello', 'world']</code></pre></div><h3>Code Breakdown</h3>
 <ul>
 <li><code>console.log()</code>: Logs output to the console.</li>
 <li><code>[]</code>: An empty array, which is considered a falsy value in JavaScript.</li>

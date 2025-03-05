@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2><strong>Overview</strong></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+// Import required modules
+const { import: levSort } = require('../Core');
+const sqlite3 = require('better-sqlite3');
+const dbPath = './movies.sqlite.db';
+
+// Initialize the SQLite database
+const db = new sqlite3(dbPath, {});
+
+// Define utility functions
+const getValues = (t) =&gt; t.map((item) =&gt; typeof item ==='string'? [item] : item);
+
+// Function to get titles from the database
+const getTitles = (t) =&gt; {
+    const query = `SELECT * FROM principals WHERE tconst IN (${getValues(t).map((i) =&gt; '?').join(',')})`;
+    return db.prepare(query).all(getValues(t));
+};
+
+// Function to get actors by title from the database
+const getActorsByTitles = (t, n) =&gt; {
+    const query = `SELECT * FROM principals WHERE nconst IN (${getValues(n).map((i) =&gt; '?').join(',')}) AND tconst IN (${getValues(t).map((i) =&gt; '?').join(',')})`;
+    return db.prepare(query).all(getValues(n).concat(getValues(t)));
+};
+
+// Function to get a single actor's exact name from the database
+const getExactName = (n) =&gt; {
+    const query = `SELECT * FROM name WHERE nconst=?`;
+    return db.prepare(query).get(n);
+};
+
+// Function to get a single title's exact details from the database
+const getExactTitle = (t) =&gt; {
+    const query = `SELECT * FROM titles WHERE tconst=?`;
+    return db.prepare(query).get(t);
+};
+
+// Function to get a single title's details from the database using levenshtein distance
+const getTitle = (t) =&gt; {
+    // Find words in the title
+    const words = t.split(/\s+/ig);
+    const query = `SELECT * FROM titles WHERE (${words.map((word) =&gt; 'primaryTitle LIKE?').join(' AND ')}) OR (${words.map((word) =&gt; 'originalTitle LIKE?').join(' AND ')})`;
+    return db.prepare(query).all(words.map((w) =&gt; `%${w}%`).concat(words.map((w) =&gt; `%${w}%`)));
+};
+
+// Function to get a title's intersection of titles from the database
+const getTitleTitleIntersection = (t) =&gt; {
+    const titles = Array.from(arguments);
+    return Promise.resolve()
+       .then(() =&gt; getTitles(t))
+       .then((as) =&gt; getActorsByTitles(titles.slice(1), as.map((a) =&gt; a.nconst)))
+       .then((r) =&gt; levSort(r.map((r) =&gt; r), t, (r) =&gt; r.primaryTitle)[0]);
+};
+
+// Function to get an actor's intersection of titles from the database
+const getActorTitlesIntersection = (n, t) =&gt; {
+    const titles = getTitles(n);
+    const actors = getTitles(t);
+    return Promise.all([titles, actors]).then((results) =&gt; {
+        const titlesArray = results[0].map((t) =&gt; t.tconst);
+        const actorsArray = results[1].map((a) =&gt; a.nconst);
+        return levSort(getActorsByTitles(titlesArray, actorsArray), t, (r) =&gt; r.primaryTitle)[0];
+    });
+};
+
+// Function to assign exact name to an actor
+const assignPromise = (r) =&gt; {
+    return getExactName(r.nconst).then((result) =&gt; Object.assign(r, result));
+};
+
+// Initialize the database connection
+db.close();
+
+// Usage
+getTitle('three colors: white')
+   .then((result) =&gt; console.log(result))
+   .catch((error) =&gt; console.error(error));
+getTitleTitleIntersection('tt0111507', 'tt0111495', 'tt0108394')
+   .then((result) =&gt; console.log(result))
+   .catch((error) =&gt; console.error(error));
+getActorTitlesIntersection('nm0001348', 'tt0082694')
+   .then((result) =&gt; console.log(result))
+   .catch((error) =&gt; console.error(error));
+```</code></pre></div><h2><strong>Overview</strong></h2>
 <p>This code is a set of functions for interacting with a SQLite database containing movie information. It provides methods for retrieving actor and title data, including functionality for searching by Levenshtein distance.</p>
 <h2><strong>Required Modules</strong></h2>
 <p>The code requires two external modules:</p>

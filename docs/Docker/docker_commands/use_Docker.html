@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>Here's a breakdown of those Docker commands:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a function to build and tag the Docker image
+build_and_tag() {
+  docker build -t $1
+}
+
+# Define a function to list all available Docker images
+list_images() {
+  docker images
+}
+
+# Define a function to list all running and stopped Docker containers
+list_containers() {
+  docker ps -a
+}
+
+# Build and tag the Docker image with the name "act-selenium"
+build_and_tag "act-selenium"
+
+# List all available Docker images
+echo "Available Docker Images:"
+list_images
+
+# List all running and stopped Docker containers
+echo "Running and Stopped Docker Containers:"
+list_containers</code></pre></div><p>Here's a breakdown of those Docker commands:</p>
 <ul>
 <li><p><strong><code>docker build -t act-selenium</code></strong></p>
 <ul>

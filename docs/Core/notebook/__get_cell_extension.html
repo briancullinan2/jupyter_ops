@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -150,7 +157,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>getExtension</code> that determines the appropriate file extension for a given code cell based on its content and type.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Determine the file extension based on the cell type and language.
+ * 
+ * @param {object} cell - The cell object.
+ * @param {object} notebook - The notebook object.
+ * @returns {string} The file extension.
+ */
+function getExtension(cell, notebook) {
+    const languageExtensions = {
+        'javascript': '.js',
+        'node': '.js',
+        'powershell': '.ps1',
+        'csharp': '.cs',
+        'python': '.py',
+        'typescript': '.ts',
+        'bash': '.sh',
+       'markdown': '.md',
+        'raw': '.txt',
+    };
+
+    const language = cell.language || '(unknown)';
+    const cellType = cell.cell_type || '(unknown)';
+
+    if (cellType ==='markdown') {
+        return languageExtensions['markdown'];
+    } else if (cellType === 'raw') {
+        return languageExtensions['raw'];
+    } else if (language in languageExtensions) {
+        const filename = cell.filename || notebook;
+        if (filename.includes('spec')) {
+            return `${languageExtensions[language]}`;
+        } else if (language === 'typescript' &amp;&amp; (cell.questions[0] || '').includes('test')) {
+            return `.spec.${languageExtensions[language]}`;
+        } else if (language === 'javascript' &amp;&amp; (cell.source || [cell.code]).join('').match(/describe\s*\(/igm)) {
+            return `.spec.${languageExtensions[language]}`;
+        } else {
+            return languageExtensions[language];
+        }
+    } else {
+        throw new Error(`unknown language or cell type: ${filename} (${cellType}, ${language})`);
+    }
+}
+
+module.exports = getExtension;</code></pre></div><p>This code defines a function called <code>getExtension</code> that determines the appropriate file extension for a given code cell based on its content and type.</p>
 <p><strong>Here's a breakdown:</strong></p>
 <ol>
 <li><p><strong>Input:</strong> The function takes two arguments:</p>

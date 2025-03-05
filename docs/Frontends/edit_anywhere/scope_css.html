@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -142,7 +149,58 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>prefixCssRules</code> that modifies CSS rules by adding a prefix to selectors, effectively renaming elements within the stylesheet.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const css = require('css');
+
+/**
+ * Recursively prefixes CSS selectors with the given prefix.
+ * 
+ * @param {Object} rule - The CSS rule to prefix.
+ * @param {string} str - The original CSS string.
+ * @param {string} prefix - The prefix to apply.
+ * @param {string} bodyId - The ID of the body element.
+ */
+function prefixRule(rule, str, prefix, bodyId) {
+    if (rule.rules) {
+        rule.rules.forEach(r => prefixRule(r, str, prefix, bodyId));
+    }
+    
+    if (!rule.selectors) return;
+
+    rule.selectors.forEach((selector, index) => {
+        if (selector.includes(`#${bodyId}`)) {
+            rule.selectors[index] = selector.replace(`#${bodyId}`, prefix);
+        } else if (selector.includes('body') &&!selector.includes('#body')) {
+            rule.selectors[index] = selector.replace(/\s*body\s*/gi, prefix);
+        } else {
+            rule.selectors[index] = `${prefix} ${selector}`;
+        }
+    });
+}
+
+/**
+ * Prefixes CSS rules in the given string with the specified prefix.
+ * 
+ * @param {string} str - The CSS string to prefix.
+ * @param {string} prefix - The prefix to apply.
+ * @param {string} bodyId - The ID of the body element.
+ * @returns {string} The prefixed CSS string.
+ */
+function prefixCssRules(str, prefix, bodyId) {
+    try {
+        const ast = css.parse(str);
+        
+        // Prefix rules in media queries
+        ast.stylesheet.rules.forEach(rule => prefixRule(rule, str, prefix, bodyId));
+        
+        return css.stringify(ast);
+    } catch (error) {
+        console.error(error);
+        return str;
+    }
+}
+
+module.exports = prefixCssRules;</code></pre></div><p>This code defines a function <code>prefixCssRules</code> that modifies CSS rules by adding a prefix to selectors, effectively renaming elements within the stylesheet.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

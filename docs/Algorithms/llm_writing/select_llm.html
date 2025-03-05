@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -173,7 +180,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>GGUF SPECIFICATIONS AND INSTRUCTIONS</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the required modules
+const importer = require('./importer');
+
+// Define the model specifications and instructions
+const GGUF_SPECIFICATIONS = {
+  'Meta': 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf',
+  'Default': 'Meta-Llama-3.1-8B-Instruct-Q6_K_L.gguf',
+  'DeepSeek': 'DeepSeek-R1-Distill-Llama-8B-Q6_K.gguf',
+  'Llama': 'Meta-Llama-3-70B-Instruct-Q5_K_M.gguf',
+  'Qwen': 'Qwen2.5-14B-Instruct-1M-Q6_K_L.gguf',
+  'Code': 'DeepSeek-R1-Distill-Llama-70B-Q5_K_S.gguf',
+  'Mistral': 'Mistral-Small-24B-Instruct-2501-Q6_K_L.gguf',
+  'Mesh': 'LLaMA-Mesh-Q6_K_L.gguf',
+};
+
+const GGUF_INSTRUCTIONS = {
+  'Meta': void 0,
+  'Default': void 0,
+  'DeepSeek': void 0,
+  'Llama': void 0,
+  'Qwen': void 0,
+  'Code': (modelName) => `# You are a helpful coding module named ${modelName} that responds to every request using beautifully crafted `markdown`. Return only a single code block in the specified language without reasoning or instructions if requested.`,
+  'Mistral': void 0,
+  'Mesh': (modelName) => `You are an LLM named ${modelName} that responds with high quality detailed OBJ format models.`,
+};
+
+// Define the function to prompt the model
+async function promptModel(temperature, chatHistory, session, prompt) {
+  const result = await session.prompt(prompt, {
+    temperature,
+    onTextChunk: (text) => process.stdout.write(text),
+  });
+  session.setChatHistory(chatHistory);
+  return result;
+}
+
+// Define the function to select a model
+async function selectModel(modelName, temperature) {
+  const createSession = await importer.import('llama vision').createSession;
+
+  // Check if the model name is a string
+  if (typeof modelName ==='string') {
+    // Find the matching model specification
+    const modelSpecification = Object.keys(GGUF_SPECIFICATIONS).find((modelName) => modelName.match(modelName));
+
+    if (!modelSpecification) {
+      throw new Error(`Model not found: ${modelName}`);
+    }
+
+    // Create a new session or reuse an existing one
+    const session = modelSessions[modelSpecification] || (await createSession(GGUF_SPECIFICATIONS[modelSpecification], GGUF_INSTRUCTIONS[modelSpecification](modelName)));
+
+    // Initialize the chat history
+    const chatHistory = session.getChatHistory();
+
+    // Return the prompt model function
+    return async (prompt = '') => {
+      await promptModel(temperature, chatHistory, session, prompt);
+      return session.getChatHistory();
+    };
+  }
+
+  throw new Error('Invalid model name:'+ modelName);
+}
+
+// Export the selectModel function
+module.exports = selectModel;</code></pre></div><p><strong>GGUF SPECIFICATIONS AND INSTRUCTIONS</strong></p>
 <p>This code defines two objects: <code>GGUF_SPECIFICATIONS</code> and <code>GGUF_INSTRUCTIONS</code>.</p>
 <h3>GGUF_SPECIFICATIONS</h3>
 <p>This object contains a list of model specifications, where each key is a model name and the corresponding value is a string representing the model's specification.</p>

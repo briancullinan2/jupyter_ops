@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -93,7 +100,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet performs a web search using a custom search engine and sends the results to an external system.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the core module and search function
+const { importer } = require('../Core');
+const { search } = importer.import('search the web');
+
+// Run the asynchronous function
+async function runSearch(query) {
+  try {
+    // Search the web for the given query
+    const result = await search(query);
+    return result.items;
+  } catch (error) {
+    // Handle any errors that occur during the search process
+    throw error;
+  }
+}
+
+// Run the search function
+const query = 'google';
+runSearch(query)
+ .then(items =&gt; $.sendResult(items))
+ .catch(e =&gt; $.sendError(e));
+```
+Or using async/await syntax for better readability:
+
+```javascript
+// Import the core module and search function
+const { importer } = require('../Core');
+const { search } = importer.import('search the web');
+
+// Run the asynchronous function
+async function main() {
+  try {
+    // Run the search function
+    const query = 'google';
+    const items = await search(query);
+    // Send the result
+    $.sendResult(items);
+  } catch (error) {
+    // Send the error
+    $.sendError(error);
+  }
+}
+
+// Run the main function
+main();</code></pre></div><p>This code snippet performs a web search using a custom search engine and sends the results to an external system.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong> It imports a function <code>search</code> from a local module <code>Core</code> which likely handles the interaction with a web search engine.</p></li>

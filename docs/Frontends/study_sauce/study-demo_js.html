@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Creates a study pack with the given email.
+ * 
+ * @param {string} email - The email to create the study pack for.
+ * @returns {Promise<boolean>} A promise resolving to a boolean indicating whether the operation was successful.
+ */
+async function createStudyPack(email) {
+    try {
+        // Call the Jupyter OPS function to create the study pack
+        await jupyter_ops.studysauce.copyStudy({ email });
+        // Log success to the console
+        globalThis.console.log(`Study pack created for email: ${email}`);
+        // Return true to indicate success
+        return true;
+    } catch (error) {
+        // Log any errors to the console
+        globalThis.console.error(`Error creating study pack for email: ${email}`, error);
+        // Return false to indicate failure
+        return false;
+    }
+}
+
+/**
+ * Creates a cards component with the given cards.
+ * 
+ * @param {Array} cards - The cards to create the component with.
+ * @returns {Promise<void>} A promise resolving when the operation is complete.
+ */
+async function createCards(cards) {
+    try {
+        // Check if the cards array is valid
+        if (!Array.isArray(cards)) {
+            throw new Error('Invalid cards array');
+        }
+
+        // Call the Jupyter OPS function to render the cards
+        const response = await jupyter_ops.studysauce.renderCards({ cards });
+        // Update the iframe source with the response
+        globalThis.document.getElementsByTagName('iframe')[0].setAttribute('src', response);
+    } catch (error) {
+        // Log any errors to the console
+        globalThis.console.error('Error creating cards component:', error);
+    }
+}</code></pre></div><h2>Function Breakdown</h2>
 <h3>createStudyPack(email)</h3>
 <ul>
 <li><strong>Purpose:</strong> Creates a study pack.</li>

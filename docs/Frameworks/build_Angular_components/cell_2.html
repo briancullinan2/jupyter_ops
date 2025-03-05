@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { execSync } = require('child_process');
+const { join } = require('path');
+const { createServer } = require('http');
+const { createInterface } = require('readline');
+const { promisify } = require('util');
+
+// Import required functions, removing unused ones
+const ng = promisify(require('ng')).default;
+const npm = promisify(require('npm')).default;
+
+async function buildAnguarProject(project) {
+  // Create a new project in a new NG module, skipping Git and installation
+  await ng(join(project, 'new-portal'), ['new', '--skip-git', '--skip-install']);
+
+  // Generate a new AppServer module
+  await ng(project, ['generate','module', '--spec', '--flat', 'AppServer']);
+
+  // Install packages with verbose output
+  await npm(project, ['install'], { save: true, binLinks: false, verbose: true, prefix: project });
+
+  // Install @angular/material and @angular/cdk packages
+  await npm(project, ['install', '@angular/material', '@angular/cdk'], { save: true, binLinks: false, verbose: true, prefix: project });
+
+  // Build the project in memory
+  const webpackOutput = execSync(`webpack AngularProject --config webpack.config.js --mode development`);
+  console.log(`Webpack output: ${webpackOutput}`);
+
+  // Start the Sockify server with log forwarding
+  const sockifyServer = createServer((req, res) =&gt; {
+    console.log('Sockify server: Handling request...');
+    res.writeHead(200);
+    res.end('Hello from Sockify!');
+  });
+  sockifyServer.listen(0, async () =&gt; {
+    console.log(`Sockify server listening on port ${sockifyServer.address().port}`);
+    process.chdir(project);
+
+    // Start the application server
+    const server = require(join(project, '.server','server.js'));
+    console.log(server);
+
+    // Create a readline interface to capture logs from the application server
+    const rl = createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.on('line', (line) =&gt; {
+      console.log(`Application server log: ${line}`);
+    });
+
+    // Start the application server's logs forwarding
+    execSync(`node_modules/.bin/ts-node server.ts --log-forwarding`);
+  });
+}
+
+// Build the project with all the required steps
+buildAnguarProject('project-name')
+ .catch((error) =&gt; {
+    console.error(`Error building Angular project: ${error.message}`);
+    process.exit(1);
+  });</code></pre></div><h2>Code Breakdown</h2>
 <h3>Section 1: Creating a New Angular Project</h3>
 <ul>
 <li><code>ng(path.dirname(project), ['new', '--skip-git', '--skip-install', 'new-portal'])</code>:

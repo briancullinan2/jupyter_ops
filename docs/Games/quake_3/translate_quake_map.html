@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -183,7 +190,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>translateMap</code> that modifies a text file representing a map.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+
+/**
+ * Translates a 3D model map by scaling all brushes and origins by a given amount.
+ *
+ * @param {String} file The 3D model map file contents.
+ * @param {Array(Number)} amount The scaling amount for each dimension.
+ * @returns {String} The translated 3D model map file contents.
+ */
+function translateMap(file, amount) {
+    // Get all brushes in the map, leaf nodes with at least one vertex
+    const brushesRegex = /\{[^\{\}]*?\}/ig;
+    const brushes = importer.regexToArray(brushesRegex, file);
+
+    // Replace all brushes with scaled values
+    brushes.forEach((brush) =&gt; {
+        const newBrush = brush.replace(/\(((\s*[0-9\.-]+\s*)*)\)/ig, (str, $1) =&gt; {
+            return '('+ $1.trim().split(/\s+/ig)
+               .map((n, i) =&gt; (n.includes('.')
+                   ? parseFloat(n.trim())
+                    : parseInt(n.trim())) + amount[i])
+               .join(' ') +')';
+        });
+        file = file.replace(brush, newBrush);
+    });
+
+    // Replace all origins with scaled values
+    const originsRegex = /"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig;
+    const origins = importer.regexToArray(originsRegex, file, 1);
+
+    // Function to scale origin values
+    const scaleOrigin = (origin) =&gt; {
+        return origin.trim().split(/\s+/ig)
+           .map((n, i) =&gt; (n.includes('.')
+               ? parseFloat(n.trim())
+                : parseInt(n.trim())) + amount[i])
+           .join(' ');
+    };
+
+    origins.forEach((origin) =&gt; {
+        const newOrigin = scaleOrigin(origin);
+        file = file.replace(new RegExp('"origin"\\s+"' + origin + '"', 'ig'), `"origin" "${newOrigin}"`);
+    });
+
+    return file;
+}
+
+module.exports = translateMap;</code></pre></div><p>This code defines a function <code>translateMap</code> that modifies a text file representing a map.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Input:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code fetches nearby places for a list of destinations, caching the results to improve performance.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs').promises;
+const unidecode = require('unidecode');
+const importer = require('../Core');
+const placesNearby = importer.import('places nearby api');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = `${PROFILE_PATH}/Collections/timeline`;
+
+let nearbyCache;
+try {
+    nearbyCache = JSON.parse(await fs.readFile(`${PROJECT_PATH}/geolocations.json`, 'utf8'));
+} catch (e) {
+    nearbyCache = {};
+}
+
+/**
+ * Get nearby locations for destinations.
+ * 
+ * @param {Array<Object>} destinations - List of destinations with name and location.
+ * @returns {Promise<Array<Object>>} - List of destinations with nearby locations.
+ */
+async function getNearby(destinations) {
+    const filteredDestinations = destinations.filter(d =>!d.traveling);
+    const promises = filteredDestinations.map(async (d) => {
+        // Check cache first
+        const cacheKey = `${d.name}, ${d.location}`;
+        if (nearbyCache[cacheKey]) {
+            return nearbyCache[cacheKey];
+        }
+        console.log(`${d.name}, ${d.location}`);
+        try {
+            const result = await placesNearby(
+                unidecode(`${d.name}, ${d.location}`),
+                { lat: d.averageLat, lng: d.averageLon });
+            if (result.length === 0) {
+                console.warn(`No match for ${JSON.stringify(d)}`);
+                return {};
+            }
+            nearbyCache[cacheKey] = result[0];
+            return Object.assign(d, result[0]);
+        } catch (e) {
+            console.error(`Error for ${d.name}: ${e}`);
+            return {};
+        }
+    });
+
+    const results = await Promise.all(promises);
+    // Write cache to file
+    await fs.writeFile(`${PROJECT_PATH}/geolocations.json`, JSON.stringify(nearbyCache, null, 4));
+    return results.filter(l => Object.keys(l).length > 0);
+}
+
+module.exports = getNearby;</code></pre></div><p>This code fetches nearby places for a list of destinations, caching the results to improve performance.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

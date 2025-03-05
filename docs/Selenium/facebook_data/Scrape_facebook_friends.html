@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -121,7 +128,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>scrapeFacebookFriends</code> that automates the process of scraping Facebook friend URLs.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the core module
+const core = require('../Core');
+
+/**
+ * Scrape Facebook friends
+ * @return {Promise} Friends list
+ */
+function scrapeFacebookFriends() {
+    // Initialize friends list
+    const friends = [];
+
+    // Login to Facebook
+    return core.loginFacebook()
+       .then((result) =&gt; {
+            // Navigate to friends page
+            return result.url('https://www.facebook.com/me/friends');
+        })
+       .then(() =&gt; {
+            // Wait for 4 seconds
+            return result.pause(4000);
+        })
+       .then(() =&gt; {
+            // Scrape friends list
+            return scrapeFriendsList(false, '//a[contains(@href, "friends_tab")]/@href', friends, (a, b) =&gt; a === b, (i) =&gt; i &lt; 30);
+        })
+       .then((html) =&gt; {
+            // Extract HTML content
+            return result.getHTML('body');
+        })
+       .catch((error) =&gt; {
+            // Log any errors
+            console.error(error);
+        });
+}
+
+/**
+ * Scrape Facebook friends list
+ * @param {boolean} useCache Use cache
+ * @param {string} selector Selector
+ * @param {array} list Friends list
+ * @param {function} equalityComparer Equality comparer
+ * @param {function} limitCondition Limit condition
+ * @return {Promise} Friends list
+ */
+function scrapeFriendsList(useCache, selector, list, equalityComparer, limitCondition) {
+    // Scrape friends list until condition is met
+    return getAllUntil(
+        useCache,
+        selector,
+        list,
+        equalityComparer,
+        limitCondition
+    );
+}
+
+// Scrape friends list until condition is met
+function getAllUntil(useCache, selector, list, equalityComparer, limitCondition) {
+    // TODO: Implement useCache functionality
+    return core.getHTML(selector, {})
+       .then((data) =&gt; {
+            // Parse data
+            const parsedData = parseData(data);
+            
+            // Add parsed data to list
+            list.push(...parsedData);
+            
+            // Check limit condition
+            if (limitCondition(list.length)) {
+                // Return list
+                return list;
+            } else {
+                // Recursively scrape until condition is met
+                return getAllUntil(useCache, selector, list, equalityComparer, limitCondition);
+            }
+        })
+       .catch((error) =&gt; {
+            // Log any errors
+            console.error(error);
+        });
+}
+
+// Parse data
+function parseData(data) {
+    // TODO: Implement data parsing logic
+    // For now, assume data is an array of friend names
+    return data;
+}
+
+module.exports = scrapeFacebookFriends;</code></pre></div><p>This code defines a function <code>scrapeFacebookFriends</code> that automates the process of scraping Facebook friend URLs.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

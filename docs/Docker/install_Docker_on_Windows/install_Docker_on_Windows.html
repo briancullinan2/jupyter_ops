@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet checks if Docker is installed on the system and signals completion based on the result.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const childProcess = require('child_process');
+const { async: $, done } = require('./asyncUtil'); // Assuming asyncUtil is a separate module
+
+// Define a constant for docker command
+const DOCKER_PS_CMD = 'docker ps';
+
+// Define a function to check if docker is installed
+const checkDockerInstalled = async () => {
+  try {
+    // Execute docker ps command
+    const { stdout } = await childProcess.exec(DOCKER_PS_CMD);
+    if (stdout.includes('not found')) {
+      // Docker not found, install it
+      await $;
+      return 'Docker not found, installing';
+    }
+    // Docker is already installed
+    return 'Docker is already installed';
+  } catch (error) {
+    // If command execution fails, return an error message
+    return `Error executing command: ${error.message}`;
+  }
+};
+
+// Call the function to check docker installation
+checkDockerInstalled()
+ .then((message) => done(message))
+ .catch((error) => done(`Error checking docker installation: ${error.message}`));</code></pre></div><p>This code snippet checks if Docker is installed on the system and signals completion based on the result.</p>
 <p><strong>Breakdown:</strong></p>
 <ol>
 <li><p><strong><code>$.async();</code></strong>:</p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -183,7 +190,73 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines an asynchronous function <code>checksumZip</code> that calculates the MD4 checksum of a ZIP archive.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const StreamZip = require('node-stream-zip');
+const mdfour = require('md4-checksum');
+
+/**
+ * Generates a checksum for a given zip file.
+ *
+ * @param {string} file - The path to the zip file.
+ * @returns {Promise<number>} The unsigned checksum of the zip file's contents.
+ */
+async function checksumZip(file) {
+    // Validate the input file path
+    if (!file || typeof file!=='string') {
+        throw new Error('Invalid file path');
+    }
+
+    try {
+        // Initialize the checksum calculator
+        const digest = new Uint32Array(4);
+
+        // Load the zip file
+        const zip = new StreamZip({
+            file,
+            storeEntries: true,
+        });
+
+        // Wait for the zip file to be loaded
+        const entries = await new Promise((resolve, reject) => {
+            let skipped = 0;
+            zip.on('ready', async () => {
+                // Log the number of entries read from the zip file
+                console.log(`Entries read: ${zip.entriesCount} ${path.basename(file)}`);
+                resolve(Object.values(zip.entries()));
+            });
+            zip.on('error', reject);
+        });
+
+        // Filter out non-data entries (i.e., directories)
+        const contents = entries
+           .filter((entry) => entry.method!== 0 && entry.method!== 8 && entry.size > 0)
+           .map((entry) => entry.crc);
+
+        // Create a buffer to store the contents data
+        const contentsBuffer = new Uint8Array(contents.length * 4);
+        contents.forEach((crc, index) => {
+            contentsBuffer.set(new Uint8Array([crc >>> 24, crc >>> 16, crc >>> 8, crc]), index * 4);
+        });
+
+        // Calculate the MD4 checksum of the contents
+        mdfour(digest, contentsBuffer.slice(4), contentsBuffer.length - 4);
+
+        // Compute the unsigned checksum
+        const unsigned = new Uint32Array(1);
+        unsigned[0] = digest[0] ^ digest[1] ^ digest[2] ^ digest[3];
+
+        // Return the unsigned checksum
+        return unsigned[0];
+    } catch (error) {
+        // Log the error and rethrow it
+        console.error('Error generating checksum:', error);
+        throw error;
+    }
+}
+
+module.exports = checksumZip;</code></pre></div><p>This code defines an asynchronous function <code>checksumZip</code> that calculates the MD4 checksum of a ZIP archive.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

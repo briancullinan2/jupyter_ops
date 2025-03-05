@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -80,7 +89,7 @@
     <a href="../llama_vision/index.html">llama vision</a> | <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a> | <a href="./mask_image.html">mask image</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code requires various modules, defines constants, and exports the <code>doStableRequest</code> function, which makes an API request, extracts image data, and saves the image to a specified directory. The <code>doStableRequest</code> function handles errors, logs any issues to the console, and returns data about the generated image, including the seed, image buffer, and original prompt.</p>
+  <p>The code requires modules for file operations and HTTP requests, defines a constant for the output directory path, and includes an asynchronous function <code>doStableRequest</code> to generate an image based on a given prompt. This function makes a POST request to the stable diffusion API, processes the response, and returns an object containing the seed, image buffer, image path, and prompt.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "stable diffusion request"</code></pre><h1>stable diffusion request</h1>
@@ -170,28 +179,137 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
-<h3>Requires and Variables</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { request } = require('gaxios');
+
+/**
+ * Path to output directory
+ */
+const OUTPUT_PATH = path.join(
+  process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
+ 'stable-diffusion-webui/outputs'
+);
+
+/**
+ * Make a request to the stable diffusion API
+ * @param {string} prompt - The prompt to use for the image generation
+ * @returns {object} An object containing the seed, image buffer, image path, and prompt
+ */
+async function doStableRequest(prompt) {
+  // Define default image dimensions
+  let width = 1024;
+  let height = 1024;
+
+  // Check for special flags in the prompt
+  if (prompt.includes('View360')) {
+    width = 2048;
+  }
+
+  // Check for specific height and width parameters in the prompt
+  const specificHeightMatch = prompt.match(/--height=(\d+)/);
+  const specificWidthMatch = prompt.match(/--width=(\d+)/);
+  if (specificHeightMatch) {
+    height = parseInt(specificHeightMatch[1]);
+    prompt = prompt.replace(/--height=(\d+)/, '');
+  }
+  if (specificWidthMatch) {
+    width = parseInt(specificWidthMatch[1]);
+    prompt = prompt.replace(/--width=(\d+)/, '');
+  }
+
+  try {
+    // Make the request to the API
+    const result = await request({
+      url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: JSON.stringify({
+        prompt,
+        negative_prompt: 'bad hands, bad feet, bad faces, bad eyes, bad anatomy, extra limbs, missing limbs, tattoo, statue, picture frame, anime, cartoon, signature, abstract',
+        save_images: true,
+        width,
+        height,
+        steps: 30,
+        tiling: false,
+      }),
+    });
+
+    // Extract the seed and image buffer from the response
+    const seed = JSON.parse(result.data.info).seed;
+    const imageBuffer = Buffer.from(result.data.images[0], 'base64');
+
+    // Get the current date and time
+    const now = new Date();
+
+    // Create the directory path for the output images
+    const folderName = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const stablePath = path.join(OUTPUT_PATH, 'txt2img-images', folderName);
+
+    // Check if the output directory exists, and if so, find the image with the matching seed
+    let imagePath;
+    if (fs.existsSync(stablePath)) {
+      const images = fs.readdirSync(stablePath);
+      for (const image of images) {
+        if (image.match(`-${seed}-`)) {
+          imagePath = path.join('txt2img-images', folderName, image);
+          break;
+        }
+      }
+    }
+
+    // Return the seed, image buffer, image path, and prompt
+    return { seed, image: imageBuffer, imagePath, prompt };
+  } catch (error) {
+    // Log the error, but don't break the program
+    console.error(error);
+  }
+}
+
+module.exports = {
+  doStableRequest,
+  OUTPUT_PATH,
+};</code></pre></div><h2>Code Breakdown</h2>
+<h3>Requirements and Constants</h3>
 <p>The code starts by requiring the following modules:</p>
 <ul>
-<li><code>fs</code>: a built-in Node.js module for interacting with the file system</li>
-<li><code>path</code>: a built-in Node.js module for working with file paths</li>
-<li><code>gaxios</code>: a library for making HTTP requests in Node.js</li>
+<li><code>fs</code> (File System) for file operations</li>
+<li><code>path</code> for path manipulation</li>
+<li><code>gaxios</code> for making HTTP requests (specifically the <code>request</code> function)</li>
 </ul>
-<p>The code then defines a constant <code>OUTPUT_PATH</code> which specifies the directory where output images will be saved.</p>
-<h3><code>doStableRequest</code> Function</h3>
-<p><code>doStableRequest</code> is an asynchronous function that takes a <code>prompt</code> string as an argument. It does the following:</p>
-<ol>
-<li><strong>Handles prompt options</strong>: If the prompt contains <code>View360</code>, it sets the image width to 2048. If the prompt contains specific width or height options (<code>--width</code> or <code>--height</code>), it extracts and applies those values.</li>
-<li><strong>Makes an API request</strong>: It sends a POST request to <code>http://127.0.0.1:7860/sdapi/v1/txt2img</code> with the modified prompt and image settings.</li>
-<li><strong>Extracts image data</strong>: It extracts the image buffer, seed, and other metadata from the response.</li>
-<li><strong>Saves image</strong>: It checks if the output directory exists and then saves the image to the directory with a filename based on the seed value.</li>
-<li><strong>Returns data</strong>: It returns an object with the seed, image buffer, image path, and the original prompt.</li>
-</ol>
-<h3>Error Handling</h3>
-<p>The function catches any errors that occur during the API request or image saving process and logs the error to the console.</p>
-<h3>Exports</h3>
-<p>The code exports the <code>doStableRequest</code> function and the <code>OUTPUT_PATH</code> constant.</p>
+<p>It then defines a constant <code>OUTPUT_PATH</code> which is the path to the output directory where images will be saved. This path is constructed using the <code>process.env</code> object to get the home directory path.</p>
+<h3>doStableRequest Function</h3>
+<p>The <code>doStableRequest</code> function is an asynchronous function that takes a <code>prompt</code> string as input. It appears to be a stable diffusion API request function, which generates an image based on the given prompt.</p>
+<h4>Processing the Prompt</h4>
+<p>The function first checks if the prompt includes the string &quot;View360&quot; and sets the width to 2048 if it does. It also checks for specific height and width values in the prompt and updates the corresponding variables if found.</p>
+<h4>Making the API Request</h4>
+<p>The function then makes a POST request to the stable diffusion API using the <code>request</code> function from <code>gaxios</code>. The request includes the prompt, negative prompt, save images flag, width, height, steps, and tiling settings.</p>
+<h4>Processing the Response</h4>
+<p>After making the request, the function parses the response data and extracts the seed, image buffer, and other information. It then constructs a folder name based on the current date and looks for an existing image in the output directory with the same seed. If an image is found, it returns the seed, image buffer, image path, and prompt. If no image is found, it returns an empty object.</p>
+<h4>Error Handling</h4>
+<p>The function catches any errors that occur during the request or processing and logs them to the console.</p>
+<h3>Module Exports</h3>
+<p>Finally, the code exports the <code>doStableRequest</code> function and the <code>OUTPUT_PATH</code> constant.</p>
+<h2>Function Signature</h2>
+<h3>doStableRequest</h3>
+<ul>
+<li><code>async function doStableRequest(prompt)</code></li>
+</ul>
+<h2>Parameters</h2>
+<ul>
+<li><code>prompt</code> (string): The prompt to generate an image for.</li>
+</ul>
+<h2>Returns</h2>
+<ul>
+<li>An object containing the seed, image buffer, image path, and prompt.</li>
+</ul>
+<h2>Throws</h2>
+<ul>
+<li>Any errors that occur during the request or processing.</li>
+</ul>
 
 </body>
 

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code script processes Jupyter Notebook files (.ipynb) and replaces code cells with content from corresponding JavaScript files.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
+
+// Define constants
+const { HOME, HOMEPATH, USERPROFILE } = process.env;
+const PROFILE_PATH = HOME || HOMEPATH || USERPROFILE;
+const PROJECT_PATH = path.join(PROFILE_PATH, 'Documents', 'jupytangular2', 'Utilities', '.modules');
+const PROJECT_DIR = path.join(PROFILE_PATH, 'Documents', 'jupytangular2');
+
+// Find notebook cells
+const cells = glob.sync('**/cell-*', { cwd: PROJECT_PATH });
+
+// Process notebook cells
+cells.forEach((c) => {
+  const cellName = path.basename(c);
+  const notebookName = path.basename(path.dirname(c));
+  const parentDir = path.basename(path.dirname(path.dirname(c)));
+
+  // Skip notebooks in the project directory
+  if (parentDir === 'jupytangular2') {
+    return;
+  }
+
+  // Parse notebook file
+  const nbPath = path.join(PROJECT_DIR, parentDir, `${notebookName}.ipynb`);
+  const nb = JSON.parse(fs.readFileSync(nbPath));
+
+  // Replace code cells with JavaScript files
+  let counter = 0;
+  nb.cells.forEach((cell, index) => {
+    if (cell.cell_type === 'code') {
+      const targetCellName = `cell-${counter}.js`;
+      if (cellName === targetCellName) {
+        const jsContent = fs.readFileSync(path.join(PROJECT_PATH, c), 'utf8');
+        const lines = jsContent.split('\n');
+        cell.source = lines.map((line) => line.trim());
+      }
+      counter++;
+    }
+  });
+
+  // Write updated notebook file
+  fs.writeFileSync(nbPath, JSON.stringify(nb, null, 2));
+});</code></pre></div><p>This code script processes Jupyter Notebook files (.ipynb) and replaces code cells with content from corresponding JavaScript files.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

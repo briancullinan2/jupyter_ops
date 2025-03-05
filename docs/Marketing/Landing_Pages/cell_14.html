@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>/**
+ * Navigates to the specified URL with custom browser settings.
+ *
+ * @param url The URL to navigate to.
+ * @param options Optional settings for the browser.
+ * @param options.zoom The zoom level for the browser.
+ * @param options.width The width of the browser window.
+ * @param options.cropY The y-coordinate for cropping the browser window.
+ * @param options.cropH The height of the cropped browser window.
+ */
+function navigateToUrlWithCustomSettings(url: string, options: NavigateToUrlOptions): void {
+    // Merge default settings with provided options
+    const defaultSettings = { zoom: 1, width: 800, cropY: 0, cropH: 0 };
+    const mergedSettings = {...defaultSettings,...options };
+
+    // Validate settings to prevent errors
+    if (mergedSettings.zoom < 0.1 || mergedSettings.zoom > 5) {
+        console.error("Invalid zoom level. Please provide a value between 0.1 and 5.");
+        return;
+    }
+    if (mergedSettings.width <= 0) {
+        console.error("Invalid width. Please provide a positive value.");
+        return;
+    }
+    if (mergedSettings.cropY < 0 || mergedSettings.cropH < 0) {
+        console.error("Invalid crop settings. Please provide non-negative values.");
+        return;
+    }
+
+    // Navigate to the specified URL with custom settings
+    $TS.screen(url, mergedSettings);
+}
+
+// Example usage
+navigateToUrlWithCustomSettings('act.com/fr-fr/produits/act-premium', {
+    zoom: 0.5,
+    width: 680,
+    'crop-y': 400,
+    'crop-h': 400,
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function Call</h4>
 <ul>
 <li><code>$TS.screen()</code> is a function call, likely part of a TestComplete scripting API.</li>

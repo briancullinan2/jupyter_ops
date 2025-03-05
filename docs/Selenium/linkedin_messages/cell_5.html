@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -98,7 +105,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { scrapeLinkedInThreads } from '../Core';
+import { logError, sendResult } from './util'; // assuming these functions exist
+
+/**
+ * Scrape LinkedIn threads.
+ */
+async function scrapeLinkedInThreadsTask() {
+  try {
+    const result = await scrapeLinkedInThreads();
+    sendResult(result);
+  } catch (error) {
+    logError(error);
+  }
+}
+
+// If you're using a task runner or a framework that supports async/await,
+// you can use the following code:
+scrapeLinkedInThreadsTask();
+
+// If not, you can use the following code:
+// $.async(scrapeLinkedInThreadsTask);</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <ul>
 <li><code>var importer = require('../Core');</code>: Imports a module located at <code>../Core</code> and assigns it to the <code>importer</code> variable.</li>

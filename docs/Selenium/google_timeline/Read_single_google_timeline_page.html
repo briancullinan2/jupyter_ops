@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,87 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a larger script designed to extract and process timeline data, likely from a social media platform or a personal website.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const chrono = require('chrono-node');
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Function to read timeline page.
+ * @return {Promise} A promise that resolves to an array of timeline events.
+ */
+async function readTimelinePage() {
+    try {
+        const response = await client.getAllXPath({
+            day: ['//*[contains(@class,"timeline-subtitle")]//text()|//*[contains(@class,"timeline-title")]//text()'],
+            items: [
+                '//*[contains(@class,"timeline-item")]/parent::*/*[@jsinstance]',
+                {
+                    duration: './/*[contains(@class, "duration-text")]//text()',
+                    data: './/*[contains(@class, "timeline-item")]/@data-segment-key',
+                    title: './/*[contains(@class, "timeline-item-title-content")][.//i]/*[not(self::i)]//text()|.//*[contains(@class, "timeline-item-title-content")][not(.//i)]//text()',
+                    location: './/*[contains(@class, "timeline-item-text")][not(contains(@class,"add-child"))][.//a]/a//*[not(self::i)]//text()|.//*[contains(@class, "timeline-item-text")][not(contains(@class,"add-child"))][not(.//a)]/text()'
+                }
+            ]
+        });
+
+        // Handle empty response
+        if (!response || response.day.length === 0) {
+            return [];
+        }
+
+        // Parse dates
+        const currDate = chrono.parseDate(response.day[response.day.length - 1] + '')
+            || chrono.parseDate(response.day[0] + '');
+        if (!currDate) {
+            return [];
+        }
+
+        // Format date
+        const newKey = currDate.toLocaleDateString();
+
+        // Parse events
+        return response.items.map((i) => {
+            const timelineData = (i.data + '').split(':');
+            let start, end, length;
+
+            if (timelineData.length >= 3) {
+                start = new Date(parseFloat(timelineData[1].split(',')[0]));
+                end = new Date(parseFloat(timelineData[2].split(',')[0]));
+                length = end.getTime() - start.getTime();
+            } else {
+                // TODO: Handle invalid duration format
+                start = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate(), 0, 0, 0);
+                end = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate(), 0, 0, 0);
+                length = 0;
+            }
+
+            // Check for invalid dates
+            if (start.getFullYear()!== 2016 || length < 0) {
+                console.log(start);
+            }
+
+            const traveling = (/(Driving|Walking|Traveling|Flying|Moving).*\s+-\s+(.*),/ig).exec(i.title + ','+ i.location);
+            return {
+                traveling: traveling? traveling[0] : false,
+                type: 'timeline',
+                timeline: newKey,
+                name: i.title,
+                location: i.location,
+                time: start,
+                length: isNaN(length)? 0 : length
+            };
+        });
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
+if (typeof client.readTimelinePage === 'undefined') {
+    client.addCommand('readTimelinePage', readTimelinePage);
+}
+
+module.exports = readTimelinePage;</code></pre></div><p>This code snippet appears to be part of a larger script designed to extract and process timeline data, likely from a social media platform or a personal website.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -218,7 +225,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for a module that interacts with the Zuora API to export data and handle the export process.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+import { assert, sinon } from'sinon';
+import { createBulkExportJob, getBulkExportJobStatus, getBulkExportFile, csvToJson } from './zuoraToEloqua';
+import { HttpRequestPolyfill } from './httpRequestPolyfill';
+
+// Configure Zuora API settings
+const zuoraConfig = {
+  rest_api_user: 'devteam@fakepage.com',
+  rest_api_password: 'pass',
+  rest_api_url: 'http://localhost:18888',
+};
+
+// Create a Sinon sandbox for stubbing and mocking
+const sandbox = sinon.createSandbox();
+
+// Restore the sandbox after each test
+afterEach(() => {
+  sandbox.restore();
+});
+
+describe('Zuora Integration Tests', () => {
+  // Test createBulkExportJob function
+  it('should connect to Zuora using OAuth', async () => {
+    // Define dummy data
+    const dummyQuery = 'SELECT * FROM Accounts';
+    const dummyId = '123';
+
+    // Stub the request function
+    const requestStub = sandbox.stub(HttpRequestPolyfill,'request')
+     .returns(Promise.resolve({ body: { Id: dummyId } }));
+
+    // Call the createBulkExportJob function
+    const result = await createBulkExportJob(dummyQuery, zuoraConfig);
+
+    // Assert the result and request stub
+    assert.equal(result, dummyId);
+    assert(requestStub.calledOnce);
+    const stubCall = requestStub.getCall(0);
+    assert.equal(stubCall.args[0].json, dummyQuery);
+  });
+
+  // Test getBulkExportJobStatus function
+  it('should wait for the export to complete', async () => {
+    // Define dummy data
+    const dummyId = '12345';
+
+    // Stub the request function
+    const requestStub = sandbox.stub(HttpRequestPolyfill,'request')
+     .returns(Promise.resolve({ body: { Status: 'Completed', FileId: dummyId } }));
+
+    // Call the getBulkExportJobStatus function
+    const result = await getBulkExportJobStatus('123', zuoraConfig);
+
+    // Assert the result and request stub
+    assert.equal(result, dummyId);
+    assert(requestStub.calledOnce);
+  });
+
+  // Test getBulkExportFile function
+  it('should download the CSV file', async () => {
+    // Define dummy data
+    const csvFile ='some,csv,file';
+
+    // Stub the request function
+    const requestStub = sandbox.stub(HttpRequestPolyfill,'request')
+     .returns(Promise.resolve({ body: csvFile }));
+
+    // Call the getBulkExportFile function
+    const result = await getBulkExportFile('1234', zuoraConfig);
+
+    // Assert the result and request stub
+    assert.equal(result, csvFile);
+    assert(requestStub.calledOnce);
+  });
+
+  // Test csvToJson function
+  it('should convert CSV to JSON', () => {
+    // Define dummy data
+    const csvData ='some,csv,file\n1,2,3';
+
+    // Call the csvToJson function
+    const result = csvToJson(csvData);
+
+    // Assert the result
+    assert.equal(result[0].file, 3);
+  });
+});</code></pre></div><p>This code defines unit tests for a module that interacts with the Zuora API to export data and handle the export process.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

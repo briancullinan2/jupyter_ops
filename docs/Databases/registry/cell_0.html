@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -85,7 +92,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="powershell"><code># Define a function to get MSBuildToolsPath for a given version
+function Get-MsBuildToolsPath {
+    param (
+        [string]$Version
+    )
+    
+    # Define the registry key
+    $key = "HKLM:\SOFTWARE\Microsoft\MSBuild\ToolsVersions\$Version"
+    
+    # Try to get the value
+    try {
+        $value = (Get-ItemProperty -Path $key -Name MSBuildToolsPath).MSBuildToolsPath
+    } catch {
+        # If the value is not found, return $null
+        Write-Warning "Value not found in registry key $key"
+        return $null
+    }
+    
+    # Return the value
+    return $value
+}
+
+# Get MSBuildToolsPath for 4.0 and 14.0 versions
+$toolsPath4_0 = Get-MsBuildToolsPath -Version 4.0
+$toolsPath14_0 = Get-MsBuildToolsPath -Version 14.0
+
+# Print the results
+Write-Output "MSBuildToolsPath for 4.0: $toolsPath4_0"
+Write-Output "MSBuildToolsPath for 14.0: $toolsPath14_0"</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Purpose</h3>
 <p>The code is used to query the registry for specific values related to MSBuild tools.</p>
 <h3>Code Structure</h3>

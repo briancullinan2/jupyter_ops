@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a test function <code>testSelectJson</code> that demonstrates the usage of the <code>selectJson</code> function from the <code>importer</code> library.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { Readable } = require('stream');
+const { importer } = require('../Core');
+const { selectJson } = importer.import('select-json');
+
+/**
+ * Tests the selectJson function with a slow stream.
+ * 
+ * This function reads a package.json file and pushes its data to a slow stream.
+ * The selectJson function is then used to extract the dependencies from the package.json.
+ * 
+ * @returns {Promise} A promise that resolves to the extracted dependencies.
+ */
+async function testSelectJson() {
+  // Read the package.json file as a stream.
+  const packageStream = fs.createReadStream(
+    path.join(__dirname, '../package.json'),
+    { highWaterMark: 8 }
+  );
+
+  // Create a slow stream that pushes data with a delay.
+  const slowStream = new Readable();
+  slowStream._read = () => {};
+
+  // Delay the pushing of data by 50ms initially.
+  let delay = 50;
+
+  // Push the data from the package stream to the slow stream with a delay.
+  packageStream.on('data', (data) => {
+    delay += 50;
+    setTimeout(() => slowStream.push(data), delay);
+  });
+
+  // Use the selectJson function to extract the dependencies from the package.json.
+  return await selectJson('//dependencies', slowStream);
+}
+
+module.exports = testSelectJson;
+
+// Check if $ is defined and log the result if it is.
+if (typeof $!== 'undefined') {
+  console.log(await testSelectJson());
+}</code></pre></div><p>This code defines a test function <code>testSelectJson</code> that demonstrates the usage of the <code>selectJson</code> function from the <code>importer</code> library.</p>
 <p>Here's a breakdown:</p>
 <ul>
 <li><p><strong>Dependencies:</strong> It uses <code>fs</code> for file system operations, <code>path</code> for path manipulation, <code>stream</code> for working with streams, and <code>importer</code> for accessing the <code>selectJson</code> function.</p></li>

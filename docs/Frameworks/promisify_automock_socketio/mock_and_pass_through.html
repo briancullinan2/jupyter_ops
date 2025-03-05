@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>promisifyMock</code> that creates mock implementations for asynchronous functions within a given request object (<code>req</code>) using the <code>rewire</code> library.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Bluebird = require('bluebird');
+const importer = require('../Core');
+const rewire = require('rewire'); // Import rewire directly for clarity
+
+/**
+ * Creates a promisified mock for the given request and dependency.
+ *
+ * @param {Object} req - The object to be mocked.
+ * @param {Object} dep - The dependency object.
+ * @returns {Object} - The promisified mock object.
+ */
+async function promisifyMock(req, dep) {
+  const automock = rewire('../Core').import('mock all properties and functions using rewire');
+  const ctx = await automock.mockValue(req, {
+    stubCreator: (name) =&gt; {
+      // Extract the method name from the property name (e.g., 'prop.method')
+      const methodName = name.split('.').pop();
+      const origMethod = Bluebird.promisify(req[methodName], {
+        multiArgs: true,
+        context: req
+      });
+
+      // Return a function that logs the method call and its arguments, then calls the original method
+      return async function (...args) {
+        console.log(`${name} (${JSON.stringify(args)}) in ${JSON.stringify(dep)}`);
+        return origMethod.apply(null, args);
+      };
+    }
+  });
+
+  return ctx;
+}
+
+module.exports = promisifyMock;</code></pre></div><p>This code defines a function <code>promisifyMock</code> that creates mock implementations for asynchronous functions within a given request object (<code>req</code>) using the <code>rewire</code> library.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

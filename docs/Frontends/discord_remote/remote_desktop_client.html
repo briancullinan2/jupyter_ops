@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -259,7 +266,212 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>HTML and CSS Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="html"><code>html
+&lt;!-- 
+  Live Development Page
+  ======================
+
+  This HTML page is designed for live development and provides features like
+  a live display of multiple monitors, a textarea for sending keyboard events,
+  and buttons for sending specific key presses.
+
+--&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta http-equiv="Content-Security-Policy" content="default-src *;
+   img-src *'self' data: https:; script-src'self' 'unsafe-inline' 'unsafe-eval' *;
+   style-src 'self' 'unsafe-inline' *" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Live Development&lt;/title&gt;
+  &lt;style&gt;
+    /* Global Styles */
+    html, body {
+      padding: 0;
+      margin: 0;
+      background: rgb(51, 51, 68);
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    /* Header Styles */
+    h1, h2, h3 {
+      color: white;
+      padding: 10px;
+      margin: 0;
+    }
+
+    /* Container Styles */
+   .container {
+      min-width: 3840px;
+      width: auto;
+      padding: 20mm 16mm;
+      background: #222;
+      box-shadow: rgb(0 0 0 / 50%) 2px 3px 10px;
+      margin: 20px;
+      border-radius: 2px;
+      border: 1px solid #666;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Live Development Styles */
+   .livedev {
+      position: relative;
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 460px;
+      display: flex;
+      padding-bottom: 18.75%;
+      position: relative;
+    }
+
+   .livedev img {
+      width: 33.3%;
+      min-width: 33.3%;
+      height: 100%;
+      position: absolute;
+      background-size: 100% contain;
+      border: none;
+      border-style: none;
+      background-repeat: no-repeat;
+      left: 0;
+    }
+
+   .livedev img:nth-of-type(2) {
+      left: 33.3%;
+    }
+
+   .livedev img:nth-of-type(3) {
+      left: 66.6%;
+    }
+
+   .livedev p {
+      text-align: center;
+      padding-bottom: 60%;
+    }
+
+   .livedev iframe {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    /* Form Styles */
+   .container p {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+   .container p input {
+      opacity: 0;
+      height: 1px;
+      width: 1px;
+      position: absolute;
+      right: 1px;
+      bottom: 1px;
+    }
+
+   .container p label,.container p button {
+      border: 5px solid transparent;
+      border-radius: 10px;
+      background: #226;
+      position: relative;
+      display: inline-block;
+      background-clip: padding-box;
+      z-index: unset;
+      list-style: none;
+      text-align: left;
+      text-decoration: none;
+      color: white;
+      min-width: 200px;
+      text-align: center;
+      cursor: pointer;
+      padding: 10px;
+      font-size: unset;
+    }
+
+    /* Key Press Styles */
+    /* TODO: Refactor this to use a more efficient method */
+    input[type="checkbox"]:checked ~ label {
+      background-color: white;
+      color: #226;
+    }
+
+    #sendkeys {
+      width: 100%;
+    }
+
+    /* Button Styles */
+    button {
+      margin: 10px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Live Development&lt;/h1&gt;
+    &lt;ol class="windows"&gt;&lt;/ol&gt;
+    &lt;div class="livedev"&gt;
+      &lt;img src="{BASE_URI}monitors/0" /&gt;
+      &lt;img src="{BASE_URI}monitors/1" /&gt;
+      &lt;img src="{BASE_URI}monitors/2" /&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;
+      &lt;textarea id="sendkeys"&gt;&lt;/textarea&gt;
+      &lt;span&gt;
+        &lt;input type="checkbox" id="special-alt" value="alt" /&gt;
+        &lt;label for="special-alt"&gt;alt&lt;/label&gt;
+        &lt;input type="checkbox" id="special-command" value="command" /&gt;
+        &lt;label for="special-command"&gt;command&lt;/label&gt;
+        &lt;input type="checkbox" id="special-control" value="control" /&gt;
+        &lt;label for="special-control"&gt;control&lt;/label&gt;
+        &lt;input type="checkbox" id="special-shift" value="shift" /&gt;
+        &lt;label for="special-shift"&gt;shift&lt;/label&gt;
+        &lt;button id="special-esc" value="backspace"&gt;backspace&lt;/button&gt;
+        &lt;button id="special-esc" value="delete"&gt;delete&lt;/button&gt;
+        &lt;button id="special-esc" value="escape"&gt;escape&lt;/button&gt;
+        &lt;button id="special-esc" value="enter"&gt;enter&lt;/button&gt;
+        &lt;button id="special-esc" value=""&gt;send&lt;/button&gt;
+      &lt;/span&gt;
+      &lt;a class="nowButton" target="_blank" href="https://www.youtube.com/channel/UCPaZDuwY1sJOb5l-QHm9mDw"&gt;
+        My YouTube Channel&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 
+    TODO: Include YouTube iframe here or refactor to use a more efficient method
+  --&gt;
+
+  &lt;script&gt;
+    // Initialize YouTube iframe
+    function initYouTubeIframe() {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/live_stream?channel=UCPaZDuwY1sJOb5l-QHm9mDw&amp;origin=' + window.location.origin + '&amp;controls=0&amp;rel=0&amp;autoplay=1';
+      iframe.frameBorder = '0';
+      iframe.allowFullScreen = true;
+      iframe.width = '560';
+      iframe.height = '315';
+      iframe.allow = 'autoplay';
+      iframe.modestbranding = true;
+      document.querySelector('.livedev').appendChild(iframe);
+    }
+
+    // Call the initYouTubeIframe function
+    initYouTubeIframe();
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><p><strong>HTML and CSS Code Breakdown</strong></p>
 <h3>HTML Structure</h3>
 <p>The HTML document has a standard structure:</p>
 <ul>

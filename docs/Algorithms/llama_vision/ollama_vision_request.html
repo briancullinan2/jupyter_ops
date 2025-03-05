@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -60,6 +67,8 @@
 <br /><br />
 <a href="./llm_voice.html">llm voice</a>
 <br /><br />
+<a href="./cell_6.html">Cell 6</a>
+<br /><br />
 <a href="./ollama_vision_request.html">ollama vision request</a>
 <br /><br />
 <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a>
@@ -77,10 +86,10 @@
 
   </nav>
   <header>
-    <a href="../llama_vision/index.html">llama vision</a> | <a href="./llm_voice.html">llm voice</a> | <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a> | <a href="../../search.html">Search</a>
+    <a href="../llama_vision/index.html">llama vision</a> | <a href="./cell_6.html">Cell 6</a> | <a href="./start_a_bunch_of_llm_rpc_services.html">start a bunch of llm rpc services</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>requestOllamaVision</code> function sends a POST request to the LLaMA Vision API with a base64-encoded image and a provided prompt, and returns the response message content. It handles various image input types, including URLs, file paths, and base64-encoded strings, and logs an error if no image is provided.</p>
+  <p>Makes a request to the LLaMA Vision API with an optional image and prompt, returning the response message from the API. The function uses async/await syntax and assumes the LLaMA Vision API is running on <code>http://localhost:11434/api/chat</code>.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ollama vision request"</code></pre><h1>ollama vision request</h1>
@@ -166,49 +175,108 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Breakdown: <code>requestOllamaVision</code></strong></p>
-<h3>Function Signature</h3>
-<p><code>async function requestOllamaVision(image, prompt)</code></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const fs = require('fs');
+const fetch = require('isomorphic-fetch');
+
+/**
+ * Makes a request to the LLaMA Vision API.
+ * 
+ * @param {Buffer|string} image - The image to be processed.
+ * @param {string} prompt - The prompt for the image description.
+ * @returns {Promise<string>} The response from the API.
+ */
+async function requestLlamaVision(image, prompt = 'Describe the image in great detail.') {
+  // Check if the image is valid
+  if (!image) {
+    console.error('Image not set!');
+    return;
+  }
+
+  let base64Image;
+  if (typeof image ==='string') {
+    try {
+      // Try to parse the image as a base64 string
+      if (image.startsWith('data:image/')) {
+        base64Image = image.replace(/^data:image\/.*?;base64,/gi, '');
+      } else if (image.includes('://')) {
+        // If it's a URL, fetch the image
+        const response = await fetch(image);
+        base64Image = await response.arrayBuffer().then(buffer => Buffer.from(buffer).toString('base64'));
+      } else {
+        // If it's a local file, read it
+        base64Image = fs.readFileSync(image).toString('base64');
+      }
+    } catch (error) {
+      // If any of the above steps fail, return an error
+      console.error('Error processing image:', error);
+      return;
+    }
+  } else {
+    // If it's a Buffer, convert it to base64
+    base64Image = image.toString('base64');
+  }
+
+  try {
+    // Make the request to the LLaMA Vision API
+    const apiResponse = await google.chat('v1').messages.list({
+      'parent': 'projects/-/locations/-/agents/-',
+      'body': {
+       'model': 'llama3.2-vision',
+       'stream': false,
+       'messages': [
+          {
+            'role': 'user',
+            'content': prompt,
+            'images': [base64Image]
+          }
+        ]
+      }
+    });
+    const result = apiResponse.data.messages;
+    return result[0].text;
+  } catch (error) {
+    // If the API request fails, return an error
+    console.error('Error requesting LLaMA Vision API:', error);
+    return;
+  }
+}
+
+module.exports = requestLlamaVision;</code></pre></div><h2>Function: <code>requestOllamaVision</code></h2>
+<h3>Description</h3>
+<p>Makes a request to the LLaMA Vision API with an optional image and prompt.</p>
 <h3>Parameters</h3>
 <ul>
-<li><code>image</code>: The image to be processed. Can be a URL, file path, or base64-encoded image string.</li>
-<li><code>prompt</code>: The prompt to be sent to LLaMA Vision API. Defaults to &quot;Describe the image in great detail.&quot; if not provided.</li>
-</ul>
-<h3>Function Behavior</h3>
-<ol>
-<li>Checks if <code>image</code> is not set. If so, logs an error and returns.</li>
-<li>Converts the <code>image</code> to base64-encoded string if it is:
+<li><code>image</code>: The image to be processed. Can be a:
 <ul>
-<li>A string starting with &quot;data:image/...&quot; (e.g., base64-encoded image string).</li>
-<li>A URL that is not a local file (fetches the image using <code>gaxios</code>).</li>
-<li>A local file path (reads the file using <code>fs</code>).</li>
+<li><code>Buffer</code> object</li>
+<li><code>string</code> representing a base64 encoded image</li>
+<li><code>string</code> representing a URL to an image (will be downloaded and processed)</li>
+<li><code>string</code> representing a local file path to an image (will be read and processed)</li>
 </ul></li>
-<li>Sends a POST request to LLaMA Vision API with the <code>image</code> as a base64-encoded string and the provided <code>prompt</code>.</li>
-<li>Returns the response message content if the response has a <code>message</code> property.</li>
-</ol>
-<h3>API Request Details</h3>
-<ul>
-<li>URL: <code>http://localhost:11434/api/chat</code></li>
-<li>Method: <code>POST</code></li>
-<li>Headers:
-<ul>
-<li><code>Content-Type</code>: <code>application/json</code></li>
-</ul></li>
-<li>Data: JSON object with the following structure:</li>
+<li><code>prompt</code>: The prompt to be sent to the LLaMA Vision API. Defaults to &quot;Describe the image in great detail.&quot;</li>
 </ul>
-<pre><code class="language-json">{
-  &quot;model&quot;: &quot;llama3.2-vision&quot;,
-  &quot;stream&quot;: false,
-  &quot;messages&quot;: [
-    {
-      &quot;role&quot;: &quot;user&quot;,
-      &quot;content&quot;: &quot;...&quot;,
-      &quot;images&quot;: [&quot;...&quot;]
-    }
-  ]
-}
-</code></pre>
-<p>Note: The <code>messages</code> array can contain multiple messages, but in this implementation, it only contains a single message with the provided <code>prompt</code> and <code>image</code>.</p>
+<h3>Returns</h3>
+<ul>
+<li><code>string</code>: The response message from the LLaMA Vision API.</li>
+</ul>
+<h3>Throws</h3>
+<ul>
+<li><code>Error</code>: If the image is not set or cannot be processed.</li>
+</ul>
+<h3>Dependencies</h3>
+<ul>
+<li><code>gaxios</code> for making HTTP requests</li>
+<li><code>fs</code> for reading local files</li>
+</ul>
+<h3>Notes</h3>
+<ul>
+<li>The function uses the <code>async/await</code> syntax to handle promises.</li>
+<li>The <code>request</code> function from <code>gaxios</code> is used to make HTTP requests.</li>
+<li>The function assumes that the LLaMA Vision API is running on <code>http://localhost:11434/api/chat</code>.</li>
+<li>The function returns the response message from the LLaMA Vision API, or an empty string if the response is invalid.</li>
+</ul>
 
 </body>
 

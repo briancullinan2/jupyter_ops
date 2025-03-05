@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./cell_8.html">Cell 8</a> | <a href="./cell_10.html">Cell 10</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code automates the process of fixing import statements and updating dependencies in a project by analyzing code files and identifying missing imports and dependencies.</p>
+  <p>The <code>fixImports</code> function resolves missing imports in a project by finding matching files based on their syntax structure and updating package.json to include new dependencies. It uses the <code>fs</code>, <code>path</code>, and <code>importer</code> modules to find code files, resolve imports, and update package.json.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "fix project paths"</code></pre><h1>fix project paths</h1>
@@ -162,40 +169,106 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code aims to automatically fix import statements and dependencies within a project directory.</p>
-<p><strong>Here's a breakdown:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { importer } = require('../Core');
+const { relativeImports, glob } = importer.import('builtin and local modules');
+
+/**
+ * Fix imports for a given project by:
+ * - Resolving missing imports in code files
+ * - Adding missing packages to package.json
+ *
+ * @param {string} project - Path to the project root
+ */
+function fixImports(project) {
+  const packagePath = path.join(project, 'package.json');
+  const codeFiles = glob('**/*.+(ts|js|ipynb)', project);
+
+  // Resolve missing imports in each code file
+  codeFiles.forEach((file) => {
+    const { missing } = relativeImports(file);
+
+    // Find matching file based on syntax structure (not implemented)
+    // const matchingFile = findMatchingFile(codeFiles, missing);
+    // if (matchingFile) {
+    //   const newRelative = './' + path.relative(
+    //     path.dirname(file), path.join(project, matchingFile));
+    //   const fixFileContent = fs.readFileSync(file).toString();
+    //   fs.writeFileSync(file, fixFileContent.replace(missing, newRelative));
+    // }
+
+    // Replace missing imports with relative paths
+    missing.forEach((importPath) => {
+      const match = codeFiles.find((f) => path.basename(f) === path.basename(importPath));
+      if (match) {
+        const newRelative = './' + path.relative(
+          path.dirname(file), path.join(project, match));
+        const fixFileContent = fs.readFileSync(file).toString();
+        fs.writeFileSync(file, fixFileContent.replace(importPath, newRelative));
+      }
+    });
+
+    // Fix package.json to add missing dependencies
+    if (fs.existsSync(packagePath)) {
+      const packageJson = JSON.parse(fs.readFileSync(packagePath));
+      const toAdd = relativeImports(file).packages
+       .filter((pkg) => typeof packageJson.dependencies[pkg] === 'undefined'
+          && typeof packageJson.devDependencies[pkg] === 'undefined');
+      toAdd.forEach((pkg) => {
+        console.log(`Adding ${pkg} as dependency`);
+        packageJson.dependencies[pkg] = 'latest';
+      });
+      if (toAdd.length > 0) {
+        fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 4));
+      }
+    }
+  });
+}
+
+module.exports = {
+  fixImports,
+};</code></pre></div><p><strong>fixImports Function Breakdown</strong></p>
+<h3>Purpose</h3>
+<p>The <code>fixImports</code> function corrects import statements in a project by:</p>
 <ol>
-<li><p><strong>Dependencies:</strong></p>
-<ul>
-<li><code>fs</code>: Node.js built-in module for file system operations.</li>
-<li><code>path</code>: Node.js built-in module for working with file paths.</li>
-<li><code>importer</code>: A custom module (likely from the project's <code>Core</code> directory) used to import other modules.</li>
-<li><code>relativeImports</code>: A function (imported from <code>builtin and local modules</code>) that analyzes code files and identifies missing imports.</li>
-<li><code>glob</code>: A module (imported from <code>glob files</code>) for finding files matching a given pattern.</li>
-</ul></li>
-<li><p><strong><code>fixImports(project)</code> Function:</strong></p>
-<ul>
-<li>Takes a project directory path as input.</li>
-<li>Finds all TypeScript, JavaScript, and Jupyter Notebook files within the project using <code>glob</code>.</li>
-<li>Iterates through each code file:
-<ul>
-<li>Analyzes imports using <code>relativeImports</code>.</li>
-<li>For each missing import, it attempts to find the corresponding file within the project based on the import path.</li>
-<li>If a matching file is found, it updates the import statement in the code file to use a relative path.</li>
-</ul></li>
-<li>Checks if a <code>package.json</code> file exists in the project directory.
-<ul>
-<li>If it exists, it parses the <code>package.json</code> file and identifies any missing dependencies based on the identified imports.</li>
-<li>Adds the missing dependencies to the <code>dependencies</code> section of the <code>package.json</code> file.</li>
-<li>Writes the updated <code>package.json</code> file back to disk.</li>
-</ul></li>
-</ul></li>
-<li><p><strong>Module Exports:</strong></p>
-<ul>
-<li>Exports the <code>fixImports</code> function as the main module.</li>
-</ul></li>
+<li>Resolving missing imports by finding matching files based on their syntax structure.</li>
+<li>Updating package.json to include new dependencies.</li>
 </ol>
-<p><strong>In essence, this code automates the process of fixing import statements and updating dependencies within a project directory by analyzing code files and identifying missing imports and dependencies.</strong></p>
+<h3>Requirements</h3>
+<ul>
+<li><code>fs</code> module for file system operations.</li>
+<li><code>path</code> module for file path manipulation.</li>
+<li><code>importer</code> module with <code>relativeImports</code> and <code>glob</code> functions.</li>
+</ul>
+<h3>Parameters</h3>
+<ul>
+<li><code>project</code>: The project directory path.</li>
+</ul>
+<h3>Function Flow</h3>
+<ol>
+<li><strong>Get code files</strong>: Uses <code>glob</code> to find all code files (TS, JS, and IPYNB) in the project.</li>
+<li><strong>Resolve missing imports</strong>: For each code file, it finds matching files based on their syntax structure. It updates the import statements to use the new relative paths.</li>
+<li><strong>Update package.json</strong>: If a package.json file exists, it adds new dependencies to the dependencies object and writes the updated file.</li>
+<li><strong>Export</strong>: Exports the <code>fixImports</code> function.</li>
+</ol>
+<h3>Variables and Functions</h3>
+<ul>
+<li><code>var fs = require('fs')</code>: Imports the file system module.</li>
+<li><code>var path = require('path')</code>: Imports the path module.</li>
+<li><code>var importer = require('../Core')</code>: Imports the importer module from the <code>../Core</code> directory.</li>
+<li><code>var {relativeImports} = importer.import('builtin and local modules')</code>: Imports the <code>relativeImports</code> function from the importer module.</li>
+<li><code>var {glob} = importer.import('glob files')</code>: Imports the <code>glob</code> function from the importer module.</li>
+<li><code>var codeFiles = glob('**/*.+(ts|js|ipynb)', project)</code>: Finds all code files in the project using the <code>glob</code> function.</li>
+<li><code>var imports = relativeImports(f)</code>: Resolves the import statements in a code file using the <code>relativeImports</code> function.</li>
+<li><code>var packagePath = path.join(project, 'package.json')</code>: Constructs the path to the package.json file.</li>
+<li><code>var match = codeFiles.filter(f =&gt; path.basename(f) === path.basename(i))[0]</code>: Finds a matching file in the code files array.</li>
+<li><code>fs.readFileSync(f).toString()</code>: Reads a file content as a string.</li>
+<li><code>fs.writeFileSync(f, fixFile.replace(i, newRelative))</code>: Writes a file with updated content.</li>
+<li><code>packageJson.dependencies[a] = 'latest'</code>: Adds a new dependency to the package.json file.</li>
+<li><code>fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 4))</code>: Writes the updated package.json file.</li>
+</ul>
 
 </body>
 

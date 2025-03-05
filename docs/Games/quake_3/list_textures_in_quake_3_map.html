@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -219,7 +226,135 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet analyzes Quake map files to extract and list texture references used within the map.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const { importer } = require('../Core');
+const { BitStream } = importer.import('bit buffer');
+
+// Define constants
+const MAX_QPATH = 64;
+const MAX_SHADER_SIZE = 72;
+
+// Define shader structure
+class Shader {
+  /**
+   * @param {string} shaderName - Shader name
+   * @param {number} surfaceFlags - Surface flags
+   * @param {number} contents - Contents
+   */
+  constructor(shaderName = null, surfaceFlags = 0, contents = 0) {
+    this.shaderName = shaderName;
+    this.surfaceFlags = surfaceFlags;
+    this.contents = contents;
+  }
+}
+
+// Define function to load shaders from binary file
+function loadShaders(file, fileofs, filelen) {
+  // TODO: Add error handling for file I/O operations
+  const bb = new BitStream(file);
+  bb.byteIndex = fileofs;
+
+  // Initialize array to store shaders
+  const shaders = new Array(filelen / MAX_SHADER_SIZE);
+
+  // Iterate over each shader in the file
+  for (let i = 0; i &lt; shaders.length; i++) {
+    // Create a new shader object
+    const shader = shaders[i] = new Shader();
+
+    // Read shader name, surface flags, and contents from the file
+    shader.shaderName = bb.readASCIIString(MAX_QPATH);
+    shader.surfaceFlags = bb.readInt32();
+    shader.contents = bb.readInt32();
+  }
+
+  return shaders;
+}
+
+// Define function to list textures from a BSP file
+function listTextures(file, dirsOnly = false) {
+  // Check if the file is a BSP file
+  if (file.includes('.bsp')) {
+    // Read the BSP file into a buffer
+    const fileBuffer = fs.readFileSync(file);
+
+    // Initialize a BitStream object to read from the file buffer
+    const bb = new BitStream(fileBuffer);
+
+    // Skip over the BSP file header
+    bb.readASCIIString(4);
+    bb.readInt32();
+    bb.readInt32();
+    bb.readInt32();
+    bb.readInt32();
+
+    // Get the file offset and length for the shaders lump
+    const fileofs = bb.readInt32();
+    const filelen = bb.readInt32();
+
+    // Load shaders from the file
+    const shaders = loadShaders(fileBuffer, fileofs, filelen);
+
+    // Return a list of unique shader names
+    return shaders.filter((s, i, arr) =&gt; s.shaderName &amp;&amp; arr.indexOf(s) === i).map(s =&gt; s.shaderName);
+  }
+
+  // Check if the file is a string
+  if (typeof file ==='string') {
+    // Check if the file exists on disk
+    if (!fs.existsSync(file)) {
+      throw new Error(`File not found: ${file}`);
+    }
+
+    // Read the file contents into a string
+    const fileContents = fs.readFileSync(file, 'utf-8');
+  }
+
+  // Initialize an array to store used texture paths
+  const usedTextures = [];
+
+  // Use regular expressions to find all brushes in the file contents
+  const brushes = importer.regexToArray(/\{[\s\S^\}\{]*?\}/ig, fileContents, -1);
+
+  // Log the number of brushes found
+  console.log(`Found ${brushes.length} brushes.`);
+
+  // Iterate over each brush
+  for (let i = 0; i &lt; brushes.length; i++) {
+    // Extract the brush contents
+    const brush = fileContents.substr(brushes[i][0], brushes[i][1]);
+
+    // Use regular expressions to find all texture paths in the brush
+    const texturePaths = importer.regexToArray(/\)\s+([^\)\(]*?)\s+((\s*[0-9\.-]+){5,8})/igm, brush, 1);
+
+    // Iterate over each texture path
+    texturePaths.forEach((texturePath) =&gt; {
+      // Check if the dirsOnly flag is set
+      if (dirsOnly) {
+        // Check if the texture path's directory has already been added to the usedTextures array
+        if (!usedTextures.includes(path.dirname(texturePath))) {
+          // Add the directory to the usedTextures array
+          usedTextures.push(path.dirname(texturePath));
+        }
+      } else {
+        // Check if the texture path has already been added to the usedTextures array
+        if (!usedTextures.includes(texturePath)) {
+          // Add the texture path to the usedTextures array
+          usedTextures.push(texturePath);
+        }
+      }
+    });
+  }
+
+  // Return the usedTextures array
+  return usedTextures;
+}
+
+// Export the listTextures function
+module.exports = listTextures;</code></pre></div><p>This code snippet analyzes Quake map files to extract and list texture references used within the map.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

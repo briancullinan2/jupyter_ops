@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,8 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>pip install markdown pytest</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Language Model Overview</h3>
 <p>The code snippet appears to be a declaration of a large language model named Llama that can provide clear and concise answers in markdown format.</p>
 <h3>Key Points</h3>

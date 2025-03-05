@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -128,7 +135,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h1><strong>Docker Build and Push Commands</strong></h1>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+IMAGE_NAME="briancullinan/quake3e"
+TAGS=("build-tools" "build-latest" "build-js" "build-ded" "serve-tools" "serve-content" "serve-quake3e" "serve-both" "repack" "latest" "baseq3" "full")
+TARGETS=("build-tools" "build-latest" "build-js" "build-ded" "serve-tools" "serve-content" "serve-quake3e" "serve-both" "repack" "latest" "build-latest" "full")
+
+VOLUME_MOUNT="/Applications/ioquake3/baseq3:/home/baseq3"
+
+for i in "${!TAGS[@]}"; do
+  build_target=${TARGETS[$i]}
+  image_tag="${IMAGE_NAME}:${TAGS[$i]}"
+
+  # Build the image
+  echo "Building image ${image_tag} with target ${build_target}"
+  docker build -t "${image_tag}" --target "${build_target}".
+
+  # Push the image
+  echo "Pushing image ${image_tag}"
+  docker push "${image_tag}"
+done
+
+# Run and commit the container
+echo "Running container baseq3 with volume mount ${VOLUME_MOUNT}"
+docker run -ti -v ${VOLUME_MOUNT} --name baseq3 ${IMAGE_NAME}:repack
+docker commit baseq3
+docker tag baseq3 ${IMAGE_NAME}:baseq3
+
+# Build the full image
+echo "Building image ${IMAGE_NAME}:full with target full"
+docker build -t ${IMAGE_NAME}:full --target full.
+docker push ${IMAGE_NAME}:full</code></pre></div><h1><strong>Docker Build and Push Commands</strong></h1>
 <h3>Build Commands</h3>
 <p>These commands build and create Docker images with specific tags.</p>
 <ol>

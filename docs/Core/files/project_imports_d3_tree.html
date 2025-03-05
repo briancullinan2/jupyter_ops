@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./project_word-cloud.html">project word-cloud</a> | <a href="./__glob_files.html">, glob files</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code generates a visual representation of a project's code structure as a tree, using imported files and relative paths to determine relationships between code components.</p>
+  <p>The code consists of three main functions: <code>icons</code>, <code>wordCount</code>, and <code>projectTree</code>, which perform tasks such as iconizing file types, counting words, and creating a project tree. The <code>projectTree</code> function imports and processes modules to generate a formatted tree data.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "project imports d3 tree"</code></pre><h1>project imports d3 tree</h1>
@@ -194,36 +201,164 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for generating a tree-like visualization of a project's code structure based on imported files and relative paths.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong>Imports:</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const path = require('path');
+
+/**
+ * Replaces file extensions with corresponding Unicode icons.
+ *
+ * @param {string} fileName - The file name to replace extensions for.
+ * @returns {string} The file name with Unicode icons for extensions.
+ */
+function icons(fileName) {
+    return fileName
+       .replace('.component', '\u2699')
+       .replace('.module', '\u26E9')
+       .replace('.service', '\u26F4')
+       .replace('.routing', '\u2697');
+}
+
+/**
+ * Calculates the word counts for a given project data.
+ *
+ * @param {object} projectData - The project data containing packages and relatives.
+ * @returns {object} An object containing the node data and edge data for the project tree.
+ */
+function wordCount(projectData) {
+    const words = [...new Set(
+        projectData.packages.map(p => p.import)
+           .concat(projectData.packages.map(p => path.basename(p.file)))
+           .concat(projectData.relatives.map(r => path.basename(r.import)))
+           .concat(projectData.relatives.map(r => path.basename(r.file)))
+    )];
+
+    const wordCounts = words.reduce((acc, curr) => {
+        acc[curr] = (acc[curr] || 0) + 1;
+        return acc;
+    }, {});
+
+    const resultWords = words.map(word => ({
+        name: icons(word),
+        branch: ((/\.component|\.module|\.service|\.routing/ig).exec(word) || {})[0],
+        size: wordCounts[word]
+    }));
+
+    const edges = projectData.packages.map(p => ({
+        source: icons(p.import),
+        target: icons(path.basename(p.file))
+    }));
+    edges.push(...projectData.relatives.map(r => ({
+        source: icons(path.basename(r.file)),
+        target: icons(path.basename(r.import))
+    })));
+    return { nodes: resultWords, edges };
+}
+
+/**
+ * Formats the project tree data into a D3 tree structure.
+ *
+ * @param {object} projectData - The project data containing nodes and edges.
+ * @returns {object} The formatted project tree data.
+ */
+function formatTree(nodes, edges) {
+    // Implement D3 tree formatting logic here
+    // For now, just return the nodes and edges as is
+    return { nodes, edges };
+}
+
+/**
+ * Generates the project tree for a given project path.
+ *
+ * @param {string} projectPath - The path to the project.
+ * @returns {object} A promise resolving to the project tree SVG.
+ */
+function projectTree(projectPath) {
+    const importer = require('../Core');
+    const d3TieredPieSVG = importer.import('d3.ipynb[display d3 tree]');
+    const projectRelatives = importer.import('relative paths and includes', { projectPath });
+    return projectRelatives(projectPath)
+       .then(relativePaths => {
+            const projectData = relativePaths;
+            const treeData = wordCount(projectData);
+            treeData.nodes = treeData.nodes
+               .filter((node, index, array) => array.findIndex(n => n.name === node.name) === index)
+               .map((node, index) => Object.assign(node, { index: array.findIndex(n => n.branch === node.branch) }));
+            treeData.edges = treeData.edges
+               .filter((edge, index, array) => array.findIndex(e => e.source === edge.source && e.target === edge.target) === index);
+            const root = formatTree(treeData.nodes, treeData.edges);
+            return d3TieredPieSVG(root);
+        })
+       .catch(e => console.log(e));
+}
+
+module.exports = projectTree;
+
+if (typeof $!== 'undefined') {
+    const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    const projectPath = PROFILE_PATH + '/jupytangular2';
+
+    $().async().then(() => projectTree(projectPath))
+       .then(svg => $().svg(svg))
+       .catch(e => $().sendError(e));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
+<h3>Dependencies</h3>
+<p>The code requires two external dependencies:</p>
 <ul>
-<li><code>importer</code>: A custom module for importing functions and modules.</li>
-<li><code>path</code>: Node.js module for working with file paths.</li>
-</ul></li>
-<li><p><strong><code>icons</code> Function:</strong></p>
+<li><code>../Core</code>: a module that exports a function to import other modules.</li>
+<li><code>path</code>: a built-in Node.js module for working with file paths.</li>
+</ul>
+<h3>Functions</h3>
+<h4><code>icons(c)</code></h4>
 <ul>
-<li>Takes a file path as input.</li>
-<li>Replaces file extensions with Unicode icons based on the extension type (component, module, service, routing).</li>
-</ul></li>
-<li><p><strong><code>wordCount</code> Function:</strong></p>
+<li>Takes a string <code>c</code> as input.</li>
+<li>Replaces specific suffixes in the string with Unicode icons:
 <ul>
-<li>Takes a data object <code>r</code> (likely containing information about project files and imports) as input.</li>
-<li>Extracts unique words from file names and imports.</li>
-<li>Counts the occurrences of each word.</li>
-<li>Returns an object with nodes (words and their counts) and edges (relationships between files).</li>
+<li><code>.component</code> -&gt; <code>\u2699</code></li>
+<li><code>.module</code> -&gt; <code>\u26E9</code></li>
+<li><code>.service</code> -&gt; <code>\u26F4</code></li>
+<li><code>.routing</code> -&gt; <code>\u2697</code></li>
 </ul></li>
-<li><p><strong><code>projectTree</code> Function:</strong></p>
+<li>Returns the modified string.</li>
+</ul>
+<h4><code>wordCount(r)</code></h4>
 <ul>
-<li>Takes a <code>project</code> path as input.</li>
-<li>Imports necessary functions for formatting the tree and displaying it as a D3 SVG.</li>
-<li>Retrieves relative paths and imports for the project.</li>
-<li>Calls <code>wordCount</code> to generate the tree data.</li>
-<li>Filters and formats the nodes for display.</li>
-<li>Returns a promise that resolves with the formatted tree data.</li>
+<li>Takes an object <code>r</code> as input, which contains information about packages and relatives.</li>
+<li>Extracts words from various fields in the object:
+<ul>
+<li><code>packages.import</code></li>
+<li><code>packages.file</code></li>
+<li><code>relatives.import</code></li>
+<li><code>relatives.file</code></li>
 </ul></li>
-</ol>
+<li>Creates a word count object <code>wordCounts</code> with the extracted words as keys and their frequencies as values.</li>
+<li>Creates an array of objects <code>resultWords</code> with the following properties:
+<ul>
+<li><code>name</code>: the iconized word (using the <code>icons</code> function)</li>
+<li><code>branch</code>: the type of word (e.g., <code>.component</code>, <code>.module</code>, etc.)</li>
+<li><code>size</code>: the word count</li>
+</ul></li>
+<li>Creates an array of edges <code>edges</code> with the following properties:
+<ul>
+<li><code>source</code>: the iconized package or relative file</li>
+<li><code>target</code>: the iconized package or relative file</li>
+</ul></li>
+<li>Returns an object with the <code>nodes</code> and <code>edges</code> arrays.</li>
+</ul>
+<h4><code>projectTree(project)</code></h4>
+<ul>
+<li>Takes a <code>project</code> object as input.</li>
+<li>Imports three modules:
+<ul>
+<li><code>d3.ipynb[format tree]</code></li>
+<li><code>d3.ipynb[display d3 tree]</code></li>
+<li><code>relative paths and includes</code></li>
+</ul></li>
+<li>Calls the <code>projectRelatives</code> function with the <code>project</code> object as an argument.</li>
+<li>Processes the result using the <code>wordCount</code> function.</li>
+<li>Returns an object with the processed data.</li>
+</ul>
+<p>Note: The <code>projectRelatives</code> function is not defined in the code snippet, but it is likely a function that returns a promise resolving to the processed words.</p>
 
 </body>
 

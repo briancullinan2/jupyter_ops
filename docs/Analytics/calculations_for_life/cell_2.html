@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -96,7 +103,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: getSequenceNumeral</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Calculates the sequence numeral for a given prefix and count.
+ * 
+ * The sequence numeral is calculated by summing the prefix multiplied by
+ * powers of 10 up to the number of digits in the sequence, plus the remainder
+ * of the count modulo 10.
+ * 
+ * @param {number} pre The prefix to use in the sequence numeral.
+ * @param {number} count The number of items in the sequence.
+ * @returns {number} The sequence numeral.
+ */
+function getSequenceNumeral(pre, count) {
+  // Calculate the number of digits in the sequence
+  const digitCount = Math.ceil(count / 10) + 1;
+  
+  // Initialize the result
+  let result = 0;
+  
+  // Use a loop to sum the prefix multiplied by powers of 10
+  for (let i = 1; i <= digitCount; i++) {
+    // Use Math.pow for exponentiation, but consider a more efficient approach
+    result += pre * (10 ** i);
+  }
+  
+  // Add the remainder of the count modulo 10 to the result
+  result += count % 10;
+  
+  return result;
+}
+
+// Example usage:
+getSequenceNumeral(3, 1);</code></pre></div><h3>Function: getSequenceNumeral</h3>
 <h4>Parameters</h4>
 <ul>
 <li><code>pre</code>: The prefix digit to be used in sequence generation.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a utility function called <code>streamToOutput</code> that takes a file URL, a bucket name, and an optional stream as input.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const { importCoreFunctions } = require('../Core');
+
+// Define utility function to stream a file or URL to output
+/**
+ * Streams a file or URL to the specified output path.
+ * 
+ * @param {string} fileUrl The URL or path to the file to be streamed.
+ * @param {string} bucketName The name of the bucket (currently unused).
+ * @param {ReadableStream} stream The ReadableStream containing the file data (or null for file URL).
+ * @returns {Promise<string>} The path to the streamed file.
+ */
+function streamToOutput(fileUrl, bucketName, stream = null) {
+    // Construct the output path
+    const outputPath = path.join(
+        path.resolve(process.env.PROJECT_OUTPUT),
+        fileUrl.replace(/\?.*/ig, '')
+    );
+
+    // Create the output directory if it doesn't exist
+    importCoreFunctions.mkdirpSync(path.dirname(outputPath));
+
+    // Create a write stream for the output file
+    const writeStream = fs.createWriteStream(outputPath);
+
+    // Stream the file or URL to the output file
+    return importCoreFunctions.fetchOrStream(stream, writeStream)
+       .then((outputPath) => outputPath);
+}
+
+// Export the utility function
+module.exports = streamToOutput;</code></pre></div><p>This code defines a utility function called <code>streamToOutput</code> that takes a file URL, a bucket name, and an optional stream as input.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

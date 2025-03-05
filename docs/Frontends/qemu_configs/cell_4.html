@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -104,7 +111,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>QEMU System X86-64 Command Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define device and system settings
+MONITOR="stdio"
+GPU="ati-vga"
+CPU_VIRT="kvm"
+CPU_HOST="hvf"
+CPU_CORES=2
+MEMORY=3G
+NETWORK_INTERFACE="virtio"
+NETWORK_HOSTNAME="windowsvm"
+
+# Define drive settings
+CDROM_MEDIA=cdrom
+CDROM_FILE=""
+HARD_DISK_FILE="./Parallels/Windows 10.pvm/harddisk.hdd/harddisk.hdd.0.{5fbaabe3-6958-40ff-92a7-860e329aab41}.hds"
+
+# qemu-system-x86_64 command settings
+qemu_cmd=("qemu-system-x86_64" 
+          "-monitor" "$MONITOR" 
+          "-device" "vgabios" # added vga bios
+          "-device" "$GPU" 
+          "-enable-kvm" 
+          "-accel" "$CPU_HOST" 
+          "-smp" "${CPU_CORES}" 
+          "-m" "${MEMORY}" 
+          "-net" "nic,model=${NETWORK_INTERFACE}" 
+          "-net" "user,hostname=${NETWORK_HOSTNAME}" 
+          "-drive" "if=ide,index=1,media=${CDROM_MEDIA},file=${CDROM_FILE}" 
+          "-drive" "file=${HARD_DISK_FILE},if=none,id=windowshdd" 
+          "-device" "virtio-blk-pci,drive=windowshdd,bus=pci.0,bootindex=2")
+
+# Execute qemu-system-x86_64 command
+execute_qemu() {
+  "${qemu_cmd[@]}"
+}
+
+execute_qemu</code></pre></div><h2>QEMU System X86-64 Command Breakdown</h2>
 <h3>Command Overview</h3>
 <p>The provided command is used to launch a QEMU virtual machine on an x86-64 system.</p>
 <h3>Options and Parameters</h3>

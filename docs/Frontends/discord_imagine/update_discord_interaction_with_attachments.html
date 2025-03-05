@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -62,7 +69,7 @@
     <a href="../discord_imagine/index.html">discord imagine</a> |  | <a href="./discord_stability_proxy.html">discord stability proxy</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code imports necessary dependencies, including Discord configuration and mime types, and defines an asynchronous function <code>patchInteractionImageAttachment</code> that sends a PATCH request to a Discord webhook endpoint to update an interaction image attachment. The function takes four parameters: <code>prompt</code>, <code>buff</code>, <code>token</code>, and <code>content</code>, and constructs a multipart/form-data request body with a JSON payload and the base64-encoded <code>buff</code> buffer as a file attachment.</p>
+  <p>The <code>patchInteractionImageAttachment</code> function is an asynchronous function that patches an interaction image attachment with the given prompt, image buffer, token, and content type. It returns a promise that resolves to the result of the patch request.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "update discord interaction with attachments"</code></pre><h1>update discord interaction with attachments</h1>
@@ -126,41 +133,120 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<h4>Importing Dependencies</h4>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { DEFAULT_APPLICATION } from 'discord configuration';
+import { safeUrl } from 'domain cache tools';
+import mime from'mime-types';
+import { requestAuthQ } from 'discord request';
+
+/**
+ * Patches an interaction image attachment with the given prompt and buffer.
+ * 
+ * @param {string} prompt The prompt to be displayed with the image.
+ * @param {Buffer} buff The image buffer.
+ * @param {string} token The token for the application.
+ * @param {string} [content='image/png'] The content type of the image.
+ * @returns {Promise<Object>} The response from the request.
+ */
+async function patchInteractionImageAttachment(prompt, buff, token, content = 'image/png') {
+  // Set the content type and boundary for the request
+  const contentType ='multipart/form-data; boundary=boundary123';
+  const boundary = '--boundary123';
+
+  // Define the payload JSON
+  const payloadJson = {
+    content: `Your ${content.includes('image')? 'image' : content} delivered: *${prompt}*`,
+    attachments: [{
+      id: 0,
+      description: prompt,
+      filename: `${safeUrl(prompt)}.${mime.extension(content)}`,
+    }],
+  };
+
+  // Convert the payload to JSON string
+  const payloadJsonStr = JSON.stringify(payloadJson);
+
+  // Set the file content type and transfer encoding
+  const fileContentType = content;
+  const fileTransferEncoding = 'base64';
+
+  // Convert the buff to base64 string
+  const fileContent = buff.toString('base64');
+
+  // Construct the request body
+  const requestBody = `${boundary}
+Content-Disposition: form-data; name="payload_json"
+Content-Type: application/json
+
+${payloadJsonStr}
+${boundary}
+Content-Disposition: form-data; name="files[0]"; filename="${safeUrl(prompt)}.${mime.extension(content)}"
+Content-Transfer-Encoding: ${fileTransferEncoding}
+Content-Type: ${fileContentType}
+
+${fileContent}
+${boundary}--`;
+
+  // Make the request
+  const response = await requestAuthQ({
+    headers: {
+      'Content-Type': contentType,
+    },
+    method: 'PATCH',
+    url: `webhooks/${DEFAULT_APPLICATION}/${token}/messages/@original`,
+    body: requestBody,
+  });
+
+  return response;
+}
+
+export { patchInteractionImageAttachment };</code></pre></div><h3>Code Breakdown</h3>
+<h4>Imports</h4>
 <ul>
-<li><code>importer.import('discord configuration')</code> imports a module named <code>discord configuration</code> and assigns its property <code>DEFAULT_APPLICATION</code> to a constant.</li>
-<li><code>importer.import('domain cache tools')</code> imports a module named <code>domain cache tools</code> and assigns its property <code>safeurl</code> to a constant.</li>
-<li><code>require('mime-types')</code> imports the <code>mime-types</code> module and assigns it to a constant named <code>mime</code>.</li>
-<li><code>importer.import('discord request')</code> imports a module named <code>discord request</code> and assigns its property <code>requestAuthQ</code> to a constant.</li>
+<li><code>DEFAULT_APPLICATION</code> and <code>requestAuthQ</code> are imported from <code>discord configuration</code> and <code>discord request</code> respectively.</li>
+<li><code>safeurl</code> is imported from <code>domain cache tools</code>.</li>
+<li><code>mime</code> is required from <code>mime-types</code>.</li>
 </ul>
-<h4>patchInteractionImageAttachment Function</h4>
+<h4>Function <code>patchInteractionImageAttachment</code></h4>
 <ul>
-<li><code>patchInteractionImageAttachment</code> is an asynchronous function that takes four parameters:
+<li>An asynchronous function that patches an interaction image attachment.</li>
+<li>Parameters:
 <ul>
-<li><code>prompt</code>: a string</li>
-<li><code>buff</code>: a buffer (not a variable type, but a common Buffer object)</li>
-<li><code>token</code>: a string</li>
-<li><code>content</code>: a string (defaults to <code>'image/png'</code>)</li>
+<li><code>prompt</code>: The prompt for the image attachment.</li>
+<li><code>buff</code>: The buffer of the image attachment.</li>
+<li><code>token</code>: The token for the interaction.</li>
+<li><code>content</code>: The content type of the image attachment (default: 'image/png').</li>
 </ul></li>
-<li>The function makes a <code>PATCH</code> request to a Discord webhook endpoint with the following properties:
+<li>Returns: A promise that resolves to the result of the patch request.</li>
+</ul>
+<h4>Request Body</h4>
 <ul>
-<li><code>url</code>: a string formed by concatenating the string <code>'webhooks/'</code>, the <code>DEFAULT_APPLICATION</code> constant, the <code>token</code> parameter, and the string <code>'/messages/@original'</code>.</li>
-<li><code>headers</code>: an object with a single property <code>'Content-Type'</code> set to <code>'multipart/form-data; boundary=boundary123'</code>.</li>
-<li><code>body</code>: a string formed by concatenating multiple parts:
+<li>The function constructs a multipart/form-data request body with the following parts:
 <ul>
-<li>A boundary string (<code>'--boundary123'</code>)</li>
-<li>A JSON payload with <code>content</code> and <code>attachments</code> properties, where <code>attachments</code> is an array with a single object containing <code>id</code>, <code>description</code>, and <code>filename</code> properties.</li>
-<li>Another boundary string (<code>'--boundary123'</code>)</li>
-<li>A file part with <code>Content-Disposition</code>, <code>Content-Transfer-Encoding</code>, and <code>Content-Type</code> properties, and the base64-encoded <code>buff</code> buffer as its value.</li>
-<li>A final boundary string (<code>'--boundary123--'</code>)</li>
-</ul></li>
+<li><code>payload_json</code>: A JSON object containing the content and attachment information.</li>
+<li><code>files[0]</code>: The base64 encoded image attachment buffer.</li>
 </ul></li>
 </ul>
-<h4>Exporting the Function</h4>
+<h4>Module Exports</h4>
 <ul>
-<li>The <code>patchInteractionImageAttachment</code> function is exported as a module export.</li>
+<li>The function <code>patchInteractionImageAttachment</code> is exported as a module.</li>
 </ul>
+<h3>Example Usage</h3>
+<pre><code class="language-javascript">const { patchInteractionImageAttachment } = require('./patchInteractionImageAttachment');
+
+const prompt = 'Example Image';
+const buff = Buffer.from('image data', 'utf8');
+const token = 'interaction token';
+const content = 'image/png';
+
+patchInteractionImageAttachment(prompt, buff, token, content)
+ .then((result) =&gt; {
+    console.log(result);
+  })
+ .catch((error) =&gt; {
+    console.error(error);
+  });
+</code></pre>
 
 </body>
 

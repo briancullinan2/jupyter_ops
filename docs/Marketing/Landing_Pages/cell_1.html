@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>/**
+ * Util function to open a URL with specific screen settings.
+ *
+ * @param url - The URL to open.
+ * @param screenSettings - An object containing zoom and width settings.
+ */
+const openUrlWithScreenSettings = (
+  url: string,
+  screenSettings: { zoom: number; width: number; 'crop-h': number }
+) => {
+  // Set default values for screen settings
+  const defaultScreenSettings: { zoom: number; width: number; 'crop-h': number } = {
+    zoom: 1,
+    width: 1920,
+    'crop-h': 1080,
+  };
+
+  // Merge user-provided settings with default settings
+  const mergedSettings = {...defaultScreenSettings,...screenSettings };
+
+  // Check for invalid settings
+  if (mergedSettings.zoom < 0) {
+    throw new Error("Zoom cannot be a negative number");
+  }
+  if (mergedSettings.width <= 0) {
+    throw new Error("Width must be a positive number");
+  }
+  if (mergedSettings['crop-h'] <= 0) {
+    throw new Error("Crop height must be a positive number");
+  }
+
+  // Create the command string
+  const command = `TS.screen(${url}, { zoom: ${mergedSettings.zoom}, width: ${mergedSettings.width}, 'crop-h': ${mergedSettings['crop-h']} })`;
+
+  // Execute the command (this would be the actual browser or system command to open the URL)
+  // Here, we'll just return the command string for now
+  return command;
+};
+
+// Example usage:
+const url = "act.com/de-de";
+const screenSettings = { zoom: 0.5, width: 680, 'crop-h': 400 };
+const command = openUrlWithScreenSettings(url, screenSettings);
+console.log(command);</code></pre></div><h3>Code Breakdown</h3>
 <p>This code uses the <code>$TS</code> object to load a webpage into the browser's viewport.</p>
 <h4>Parameters</h4>
 <ul>

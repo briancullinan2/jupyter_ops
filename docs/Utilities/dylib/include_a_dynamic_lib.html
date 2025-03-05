@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Overview</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { assert } = require('assert');
+const { load, DataType, open, close, arrayConstructor, define } = require('ffi-rs');
+const path = require('path');
+const { platform } = require('os');
+
+// Define constant for library path based on platform
+const dynamicLibPath = path.join(__dirname, getDynamicLibPath());
+
+// Define a function to get dynamic library path based on platform
+function getDynamicLibPath() {
+  switch (platform) {
+    case 'win32':
+      return '../sog.dll';
+    case 'linux':
+      return '../sog.so';
+    default:
+      return '../sog.dylib';
+  }
+}
+
+// Define a function to enumerate windows and get their titles
+function enumWindows() {
+  // Open dynamic library with key for close
+  const lib = open({
+    library:'sog',
+    path: dynamicLibPath,
+  });
+
+  // Define a function to get the count of windows
+  const getCount = load({
+    library:'sog',
+    funcName: 'getCount',
+    retType: DataType.I32,
+    paramsType: [],
+    paramsValue: [],
+  });
+
+  // Get the count of windows
+  const count = getCount();
+
+  // Define a function to get the title of a window
+  const getTitle = load({
+    library:'sog',
+    funcName: 'getTitle',
+    retType: DataType.String,
+    paramsType: [DataType.I32],
+    paramsValue: [0],
+  });
+
+  // Create a list to store the titles of windows
+  const titles = [];
+
+  // Iterate over the count of windows
+  for (let i = 0; i &lt; count; i++) {
+    // Load the getTitle function with the current index
+    getTitle.paramsValue[0] = i;
+
+    // Get the title of the current window
+    const title = getTitle();
+
+    // Add the title to the list of titles
+    titles.push(title.split(/:\s/g)[1]);
+  }
+
+  // Close the library
+  close(lib);
+
+  // Filter out the windows with titles that match the ignored programs
+  const ignoredPrograms = [
+    'Window Server',
+    'Macs Fan Control',
+    'Control Center',
+    'Spotlight',
+    'Dock',
+    'SSMenuAgent',
+    'Menubar',
+  ];
+
+  return titles.filter((title, index, array) =&gt; array.indexOf(title) === index &amp;&amp;!ignoredPrograms.includes(title));
+}
+
+// Export the enumWindows function
+module.exports = enumWindows;</code></pre></div><h2>Code Overview</h2>
 <p>This code is a Node.js module that exports a function <code>enumWindows</code> which enumerates the titles of visible windows on the system and filters out certain programs.</p>
 <h3>Dependencies</h3>
 <ul>

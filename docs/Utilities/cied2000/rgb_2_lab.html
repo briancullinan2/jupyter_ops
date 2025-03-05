@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,71 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="c"><code>c
+#include &lt;math.h&gt;
+
+// Function to calculate F(x) according to the given formula
+double F(double input) {
+  // Ensure input is in the valid range [4/29, 1]
+  if (input &lt; 4 / 29.0) {
+    // If input is out of range, clamp it to the minimum value
+    input = 4 / 29.0;
+  } else if (input &gt; 1) {
+    // If input is out of range, clamp it to the maximum value
+    input = 1;
+  }
+
+  if (input &lt;= 0.008856) {
+    // For inputs less than or equal to 0.008856, use the linear formula
+    return (841.0 / 108.0) * input + 4 / 29.0;
+  } else {
+    // For inputs greater than 0.008856, use the cubic root formula
+    return pow(input, 1.0 / 3.0);
+  }
+}
+
+// Function to convert XYZ to Lab color space
+void XYZtoLab(double X, double Y, double Z, double *L, double *a, double *b) {
+  const double Xo = 95.047;  // Reference white in CIE XYZ
+  const double Yo = 100.0;   // Reference white in CIE XYZ
+  const double Zo = 108.883; // Reference white in CIE XYZ
+
+  // Calculate L, a, and b values
+  *L = 116.0 * F(Y / Yo) - 16.0;
+  *a = 500.0 * (F(X / Xo) - F(Y / Yo));
+  *b = 200.0 * (F(Y / Yo) - F(Z / Zo));
+}
+
+// Function to convert RGB to XYZ color space
+void RGBtoXYZ(double R, double G, double B) {
+  // Assume RGB values are in the range [0, 1]
+  double var_R = (R &gt; 0.04045)? pow((R + 0.055) / 1.055, 2.4) : R / 12.92;
+  double var_G = (G &gt; 0.04045)? pow((G + 0.055) / 1.055, 2.4) : G / 12.92;
+  double var_B = (B &gt; 0.04045)? pow((B + 0.055) / 1.055, 2.4) : B / 12.92;
+
+  // Scale XYZ values
+  var_R *= 100.0;
+  var_G *= 100.0;
+  var_B *= 100.0;
+
+  // Return XYZ values
+  return var_R * 0.4124 + var_G * 0.3576 + var_B * 0.1805,
+         var_R * 0.2126 + var_G * 0.7152 + var_B * 0.0722,
+         var_R * 0.0193 + var_G * 0.1192 + var_B * 0.9505;
+}
+
+// Function to convert RGB to Lab color space
+double *rgb2lab(int R, int G, int B) {
+  static double Lab[3] = {0, 0, 0};
+  double X, Y, Z;
+  double xyz_values[3];
+  xyz_values = RGBtoXYZ(R / 255.0, G / 255.0, B / 255.0);
+
+  XYZtoLab(xyz_values[0], xyz_values[1], xyz_values[2],
+           &amp;Lab[0], &amp;Lab[1], &amp;Lab[2]);
+  return Lab;
+}</code></pre></div><h2>Code Breakdown</h2>
 <h3>Function F</h3>
 <ul>
 <li>Calculates the cube root of the input value if it is greater than 0.008856</li>

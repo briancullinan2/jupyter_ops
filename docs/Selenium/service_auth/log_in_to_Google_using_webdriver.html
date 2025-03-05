@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -172,7 +179,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines functions for automating the Google sign-in process using a Selenium WebDriver client.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Constants for matching elements on the page
+const MATCH_USERNAME = 'input[name="Email"], input[autocomplete="username"]';
+const MATCH_PASSWORD = 'input[name="Passwd"], input[autocomplete="password"], input[name="password"]';
+
+class GoogleLogin {
+  constructor(client) {
+    this.client = client;
+  }
+
+  /**
+   * Enters the username in the Google sign-in form
+   * @param {string} email - The email to enter in the sign-in form
+   * @returns {Promise} A promise that resolves when the operation is complete
+   */
+  enterGoogleUsername(email) {
+    console.log('Google: Sign in required');
+    return this.client
+     .pause(1000)
+     .then(() =&gt; this.client.$(MATCH_USERNAME))
+     .then(el =&gt; el.addValue(email))
+     .then(() =&gt; this.client.$('#identifierNext'))
+     .then(el =&gt; el.click())
+     .catch((e) =&gt; console.log(e));
+  }
+
+  /**
+   * Enters the password in the Google sign-in form
+   * @param {string} pass - The password to enter in the sign-in form
+   * @returns {Promise} A promise that resolves when the operation is complete
+   */
+  enterGooglePassword(pass) {
+    console.log('Google: Require password');
+    return this.client
+     .pause(2000)
+     .then(() =&gt; this.client.$(MATCH_PASSWORD))
+     .then(el =&gt; el.addValue(pass))
+     .then(() =&gt; this.client.$('#passwordNext'))
+     .then(el =&gt; el.click());
+  }
+
+  /**
+   * Determines whether to enter a username or password in the Google sign-in form
+   * @param {boolean} isPassword - Whether to enter a password
+   * @param {Object} credentials - The credentials to use
+   * @returns {Promise} A promise that resolves when the operation is complete
+   */
+  enterCredentials(isPassword, credentials) {
+    return this.client
+     .$('#passwordNext')
+     .then(el =&gt; el.isDisplayed())
+     .then(isDisplayed =&gt; {
+        if (isDisplayed) {
+          return this.enterGooglePassword(credentials.Passwd);
+        } else if (isPassword) {
+          // This is redundant, as isPassword is already true
+          // return this.enterGooglePassword(credentials.Passwd);
+          return this.enterGooglePassword(credentials.Passwd);
+        } else {
+          return this.enterGoogleUsername(credentials.Email).then(() =&gt; this.enterGooglePassword(credentials.Passwd));
+        }
+      })
+     .catch((e) =&gt; console.log(e));
+  }
+
+  /**
+   * Logs in to Google
+   * @returns {Promise} A promise that resolves when the operation is complete
+   */
+  loginGoogle() {
+    return this.client
+     .findElements('css selector', 'a[href*="ServiceLogin"]')
+     .then(is =&gt; is.length &gt; 0? this.client.click('a[href*="ServiceLogin"]') : null)
+     .then(() =&gt; this.client.pause(1000))
+     .then(() =&gt; this.client.findElements('css selector', 'form[action*="signin"]'))
+     .then(is =&gt; is.length &gt; 0 &amp;&amp; this.enterCredentials(true, getCredentials('accounts.google.com')))
+     .catch((e) =&gt; {
+        console.log(e);
+        console.log('Google: Could not log in');
+      });
+  }
+}
+
+module.exports = (client) =&gt; new GoogleLogin(client).loginGoogle();</code></pre></div><p>This code snippet defines functions for automating the Google sign-in process using a Selenium WebDriver client.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Selectors:</strong></p>

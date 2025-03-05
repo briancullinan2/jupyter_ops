@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -182,7 +189,71 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a larger script designed to synchronize LinkedIn contact data with a local storage directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { resolve } = require('path');
+const { promisify } = require('util');
+const fs = promisify(require('fs'));
+const glob = promisify(require('glob'));
+const { getContacts, runSeleniumCell, scrapeEntireLinkedInProfile } = require('../Core');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = resolve(PROFILE_PATH, 'Conversations');
+
+const escapeFilename = (f) =&gt; f.replace(/[^a-z0-9-\s]/ig, '_');
+
+async function syncLinkedInContacts() {
+  try {
+    // Load existing linkedin contacts and their corresponding urls
+    const loadedContacts = await glob('**/linkedin-*.json', { cwd: project })
+     .then(fileNames =&gt; fileNames.reduce((acc, fileName) =&gt; {
+        const contactName = fileName.replace('linkedin-', '').replace('.json', '');
+        const contact = JSON.parse(await fs.readFile(resolve(project, fileName), 'utf8'))[0];
+        return [...acc, { name: contactName, url: contact.url }];
+      }, []));
+
+    const { loginLinkedIn, listAllConnections } = await runSeleniumCell([
+      'log in linkedin',
+     'scrape linkedin profile',
+     'scrape linkedin contacts',
+     'scrape entire linkedin profile',
+    ]);
+
+    const connections = await listAllConnections();
+
+    // Calculate the percentage of new connections
+    const newConnections = connections.filter(connection =&gt; {
+      const trimmedUrl = connection.replace(/^.*?\/*in\/|\/$/ig, '');
+      return!loadedContacts.find(item =&gt; item.name === trimmedUrl || item.url === trimmedUrl);
+    });
+    const percentage = Math.round((connections.length - newConnections.length) / connections.length * 100);
+
+    console.log(`${connections.length - newConnections.length} / ${connections.length} : ${percentage}%`);
+
+    // Select a random subset of new connections to scrape
+    const rand = Math.floor(newConnections.length / 30 * Math.random()) * 30;
+    console.log(newConnections.slice(rand, rand + 30));
+
+    // Scrape and save new connections
+    await Promise.all(newConnections.slice(rand, rand + 30).map(async (connection) =&gt; {
+      try {
+        const linkedIn = await scrapeEntireLinkedInProfile(`https://linkedin.com${connection}`);
+        const contacts = await getContacts({ displayName: linkedIn.name.split(/\s/).join('.*') });
+        if (contacts.length === 0) contacts.push({});
+
+        Object.assign(contacts[0], linkedIn);
+        await fs.writeFile(
+          resolve(project, `linkedin-${escapeFilename(connection.replace(/^\/*in\/|\/$/ig, ''))}.json`),
+          JSON.stringify(contacts, null, 4));
+      } catch (error) {
+        console.log(error);
+      }
+    }));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+module.exports = syncLinkedInContacts;</code></pre></div><p>This code snippet appears to be part of a larger script designed to synchronize LinkedIn contact data with a local storage directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Opens the given URL with the specified settings.
+ * 
+ * @param url The URL to be opened.
+ * @param settings The settings to be applied. Can be zoom level, width, or height.
+ */
+function openUrl(url: string, settings: { zoom: number, width: number, 'crop-h': number }): void {
+    // Validate the inputs
+    if (!url) {
+        throw new Error('URL is required');
+    }
+    if (typeof settings!== 'object' || settings === null) {
+        throw new Error('Settings must be an object');
+    }
+
+    // Validate the settings
+    if (typeof settings.zoom!== 'number' || settings.zoom &lt; 0 || settings.zoom &gt; 1) {
+        throw new Error('Zoom level must be between 0 and 1');
+    }
+    if (typeof settings.width!== 'number' || settings.width &lt;= 0) {
+        throw new Error('Width must be a positive number');
+    }
+    if (typeof settings['crop-h']!== 'number' || settings['crop-h'] &lt;= 0) {
+        throw new Error('Crop height must be a positive number');
+    }
+
+    // Construct the command
+    const command = `TS.screen('${url}', {zoom: ${settings.zoom}, width: ${settings.width}, 'crop-h': ${settings['crop-h']}})`;
+
+    // Execute the command
+    console.log(command); // or call an exec function if not in a browser environment
+}
+
+// Example usage
+openUrl('act.com/au', { zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><h3>Code Breakdown</h3>
 <p>This code snippet uses the <code>$TS.screen</code> method to set up a screen or viewport.</p>
 <h4>Parameters</h4>
 <ul>

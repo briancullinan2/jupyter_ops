@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>sendFacebookMessage</code> that automates the process of sending a message on Facebook.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Sends a Facebook message with the given text, optionally to a specific thread.
+ *
+ * @param {string} message - The message to send.
+ * @param {string} [thread] - The ID of the thread to send the message in.
+ * @returns {Promise} A promise that resolves when the message has been sent.
+ */
+async function sendFacebookMessage(message, thread = null) {
+  try {
+    // Get the client object, or throw an error if it's not available
+    const client = client.getUrl();
+    if (thread) {
+      // If a thread ID is specified, navigate to it
+      if (!client.url(thread).then(url =&gt; url.indexOf(thread) &gt; -1)) {
+        throw new Error(`Thread not found: ${thread}`);
+      }
+    }
+
+    // Split the message into parts
+    const parts = message.split('\n');
+
+    // Send each part of the message
+    await Promise.all(parts.map((t, i) =&gt; {
+      // If it's the last part, just send it
+      if (i === parts.length - 1) {
+        return client.keys(t);
+      }
+      // Otherwise, send it and then press enter
+      return client.keys(t).keys('Shift').keys('Enter').keys('NULL');
+    }));
+
+    // Send the final part and press enter
+    await client.keys(parts[parts.length - 1]).keys('Shift').keys('Enter').keys('NULL');
+
+    // Press enter to send the message
+    await client.keys('\uE007');
+  } catch (error) {
+    // Log any errors that occur
+    console.error(error);
+  }
+}
+
+module.exports = sendFacebookMessage;</code></pre></div><p>This code snippet defines a function <code>sendFacebookMessage</code> that automates the process of sending a message on Facebook.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

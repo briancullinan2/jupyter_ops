@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>import os
+import cv2
+import numpy as np
+from tensorflow import keras
+
+def load_image(image_path):
+    """
+    Load an image from the given path.
+
+    Args:
+    image_path (str): Path to the image file.
+
+    Returns:
+    np.ndarray: Loaded image.
+    """
+    img = cv2.imread(image_path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
+    return img
+
+def preprocess_image(image):
+    """
+    Pre-process the image by resizing it.
+
+    Args:
+    image (np.ndarray): Input image.
+
+    Returns:
+    np.ndarray: Pre-processed image.
+    """
+    image = cv2.resize(image, (224, 224))  # Resize to 224x224
+    image = image / 255.0  # Normalize pixel values
+    return image
+
+## Main Function
+
+def classify_image(image_path, model, label):
+    """
+    Classify an image using the given model.
+
+    Args:
+    image_path (str): Path to the image file.
+    model: Image classification model.
+    label (list): List of labels.
+
+    Returns:
+    str: Predicted label.
+    """
+    image = load_image(image_path)
+    image = preprocess_image(image)
+    image = np.expand_dims(image, axis=0)  # Add batch dimension
+    pred = model.predict(image)
+    pred_label = label[pred.argmax()]
+    return pred_label
+
+# Example usage
+image_path = 'images/train/sad/42.jpg'
+model = keras.models.load_model('path_to_your_model.h5')  # Load the model
+label = ['happy','sad', 'angry']  # List of labels
+
+pred_label = classify_image(image_path, model, label)
+print("original image is of", pred_label)</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules</h4>
 <p>No imports are shown in the code snippet.</p>
 <h4>Loading Image</h4>

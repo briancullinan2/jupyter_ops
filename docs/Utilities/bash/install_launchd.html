@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -100,7 +107,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Command Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define a function to copy and load a LaunchDaemon plist
+load_launch_daemon() {
+  local plist_path=./com.jupytangular.heartbeat.plist
+  local target_path=~/Library/LaunchAgents/com.jupytangular.heartbeat.plist
+
+  # Copy the plist to the target path
+  if! cp "$plist_path" "$target_path"; then
+    echo "Error copying plist: $?"
+    return 1
+  fi
+
+  # Load the plist
+  if! launchctl load "$target_path"; then
+    echo "Error loading plist: $?"
+    return 1
+  fi
+
+  # Enable the launch daemon
+  if! launchctl enable "$target_path"; then
+    echo "Error enabling launch daemon: $?"
+    return 1
+  fi
+
+  # Start the launch daemon
+  if! launchctl start "$target_path"; then
+    echo "Error starting launch daemon: $?"
+    return 1
+  fi
+}
+
+# Call the function to load the launch daemon
+load_launch_daemon || {
+  echo "Failed to load launch daemon. Check the plist path and permissions."
+}</code></pre></div><h3>Command Breakdown</h3>
 <h4>Command Purpose</h4>
 <p>The provided code is a shell command that sets up and starts a LaunchAgent on macOS.</p>
 <h4>Breakdown</h4>

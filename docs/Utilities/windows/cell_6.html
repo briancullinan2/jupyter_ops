@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -93,7 +100,29 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Command Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="shellscript"><code>```markdown
+#!/bin/bash
+
+# Define project path and MSBuild location
+MSBUILD_PATH="/C/Program Files (x86)/MSBuild/14.0/bin/amd64/msbuild.exe"
+PROJECT_FILE="window tracker.csproj"
+
+# Function to build the project
+build_project() {
+  # Execute MSBuild command with project file
+  "${MSBUILD_PATH}" "${PROJECT_FILE}"
+}
+
+# Call the build_project function
+build_project
+```
+
+### Explanation:
+- The script is now wrapped in a `build_project` function, making it more modular and reusable.
+- Variable assignments are used to define project path and MSBuild location, making the script more readable and maintainable.
+- The MSBuild command is now executed using the `${MSBUILD_PATH}` variable, allowing for easier modification of the path.
+- The `build_project` function is called at the end of the script, ensuring that the project is built when the script is run.</code></pre></div><h2>Command Breakdown</h2>
 <h3>Command Structure</h3>
 <p>The code is a command line instruction to build a project using MSBuild.</p>
 <h3>Components</h3>

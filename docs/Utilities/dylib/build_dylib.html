@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -197,7 +204,115 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { interpret, safeurl } = require('./core');
+const { parse } = require('./shell-parse');
+
+const BUILD_DIRECTORY = path.join(__dirname, '../.build');
+const SCAN_ENVIRONMENT = /([A-Z_])\s*[\:-=]+\s*(.*?)\s*(\n|$)/g;
+
+/**
+ * Build a dynamic library from the given code.
+ * 
+ * @param {object} code - The code to build.
+ * @param {string} pathToCode - The path to the code file.
+ * @param {object} ctx - The build context.
+ */
+function buildDylib(code, pathToCode, ctx) {
+  // Create the build directory if it does not exist.
+  if (!fs.existsSync(BUILD_DIRECTORY)) {
+    fs.mkdirSync(BUILD_DIRECTORY);
+  }
+
+  // Interpret the code and get the code cell.
+  const codeCell = interpret(pathToCode);
+
+  // Get the library name and path.
+  const libName = safeurl(codeCell.questions[0]);
+  const libPath = path.join(BUILD_DIRECTORY, libName + (codeCell.language == 'cpp'? '.cpp' : '.c'));
+
+  // Check if the library source file needs to be written.
+  if (!fs.existsSync(libPath) || fs.statSync(codeCell.filename).mtime &gt; fs.statSync(libPath).mtime) {
+    // Write the library source file.
+    fs.writeFileSync(libPath, codeCell.source.join(''));
+  }
+
+  // Initialize the environment object.
+  const env = {};
+
+  // Parse the environment variables from the code cell's markdown.
+  let match;
+  while ((match = SCAN_ENVIRONMENT.exec(codeCell.markdown.join('')))!== null) {
+    env[match[1]] = match[2];
+  }
+
+  // Parse the CXX and STD environment variables.
+  if (codeCell.language == 'cpp') {
+    env['CXX'] = parse(process.env.CXX) || ['clang++'];
+    env['STD'] = parse(process.env.STD) || ['-std=c++17', '-stdlib=libc++'];
+  } else {
+    env['CXX'] = parse(process.env.CXX) || ['clang'];
+  }
+
+  // Build the library object file.
+  const objPath = path.join(BUILD_DIRECTORY, libName + '.o');
+  if (!fs.existsSync(objPath) || fs.statSync(libPath).mtime &gt; fs.statSync(objPath).mtime) {
+    // Get the compiler and flags.
+    const { spawnSync } = require('child_process');
+    let mods = [];
+    if (codeCell.language == 'objective-c') {
+      mods = ['-x', 'objective-c', '-fno-objc-arc'];
+    }
+
+    if (codeCell.source.join('').match('@import')) {
+      mods = ['-fmodules'].concat(mods);
+    }
+
+    let cflags = [];
+    if (env['PKG_CONFIG']) {
+      let result = spawnSync('pkg-config', ['--cflags'].concat(parse(env['PKG_CONFIG'])));
+      cflags = parse(result.stdout.toString());
+    }
+
+    let args = ['-c', libPath, '-o', objPath];
+
+    try {
+      spawnSync(env['CXX'][0], env['CXX'].slice(1).concat(mods).concat(cflags).concat(args), { stdio: [0, 1, 2], env });
+    } catch (error) {
+      console.error(`Error building library object file: ${error}`);
+      return;
+    }
+  }
+
+  // Build the dynamic library.
+  const modPath = path.join(BUILD_DIRECTORY, libName + '.dylib');
+  if (!fs.existsSync(modPath) || fs.statSync(objPath).mtime &gt; fs.statSync(modPath).mtime) {
+    // Get the linker flags.
+    let libs = [];
+    if (env['PKG_CONFIG']) {
+      let result = spawnSync('pkg-config', ['--libs'].concat(parse(env['PKG_CONFIG'])));
+      libs = parse(result.stdout.toString());
+    }
+
+    let mods = [];
+    if (env['CXX'].match('clang')) {
+      mods = ['-dynamiclib', '-rdynamic'];
+    }
+
+    let objs = [objPath];
+    let args = ['-o', modPath];
+
+    try {
+      spawnSync(env['CXX'][0], objs.concat(mods).concat(libs).concat(args), { stdio: [0, 1, 2] });
+    } catch (error) {
+      console.error(`Error building dynamic library: ${error}`);
+      return;
+    }
+  }
+}
+
+module.exports = buildDylib;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requires and Constants</h3>
 <p>The code begins by importing required modules and defining constants:</p>
 <ul>

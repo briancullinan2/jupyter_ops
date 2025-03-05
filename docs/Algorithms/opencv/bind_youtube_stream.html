@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,8 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>stream, broadcast_id = bind_stream_to_broadcast()</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Required Modules and Notebooks</h4>
 <pre><code class="language-python">import_notebook(&quot;list broadcasts&quot;, globals())
 import_notebook(&quot;list live stream&quot;, globals())

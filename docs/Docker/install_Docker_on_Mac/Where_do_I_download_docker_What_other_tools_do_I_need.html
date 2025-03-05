@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -91,7 +98,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet installs the <code>rimraf</code> and <code>JSONStream</code> Node.js packages using <code>npm</code> and handles the output of the installation process.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
+import { spawn } from 'child_process';
+import $ from 'jquery';
+import { promisify } from 'util';
+
+const installCmd = async () =&gt; {
+  try {
+    await promisify(spawn)('npm', ['install', 'rimraf', 'JSONStream'], {
+      shell: true,
+      env: process.env,
+      stdio: 'pipe',
+    });
+
+    $.done('installed basic node utilities, rimraf, JSONStream, etc');
+
+    return 'Installation successful';
+  } catch (error) {
+    $.done(`Installation failed: ${error.message}`);
+
+    return error.message;
+  }
+};
+
+// Use async/await to handle promises
+installCmd()
+ .then((result) =&gt; console.log(result))
+ .catch((error) =&gt; console.error(error));
+
+// Add TODO: Implement logging for execution output
+// Add TODO: Implement retry mechanism for failed installations</code></pre></div><p>This code snippet installs the <code>rimraf</code> and <code>JSONStream</code> Node.js packages using <code>npm</code> and handles the output of the installation process.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>$.async();</code></strong>: This line initializes an asynchronous context. The <code>$</code> likely refers to a framework or library that manages asynchronous operations.</p></li>

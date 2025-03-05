@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -97,7 +104,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Command Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+// Import the required module from the webpack package
+import webpack from 'webpack';
+
+// Define the configuration for the webpack-dev-server
+const webpackConfig = {
+  // Define the module for the dev-server
+  devServer: {
+    // Display the inline compiler output
+    inline: true,
+    // Display the progress bar
+    progress: true,
+    // Set the port for the development server
+    port: 9090,
+  },
+};
+
+// Check if the --mode argument is provided
+if (process.argv.includes('--mode')) {
+  // Set the mode for the webpack configuration
+  webpackConfig.mode = process.argv[process.argv.indexOf('--mode') + 1];
+}
+
+// Create a new instance of the webpack-dev-server
+const devServer = webpack.createDevServer(webpackConfig);
+
+// Start the development server
+devServer.start(() =&gt; {
+  console.log('Webpack development server started on port 9090');
+});</code></pre></div><p><strong>Command Breakdown</strong></p>
 <ul>
 <li><code>webpack</code>: The command to start the Webpack development server.</li>
 <li><code>dev-server</code>: The mode to run the server in, which is development mode.</li>

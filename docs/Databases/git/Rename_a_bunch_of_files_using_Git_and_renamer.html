@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>renameUsingGit</code> that renames files within a Git repository using Git commands. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { execSync } = require('child_process');
+const Renamer = require('renamer');
+
+/**
+ * Renames files in a Git repository.
+ * 
+ * @param {string} gitRoot - The root of the Git repository.
+ * @param {string} match - The pattern to match files.
+ * @param {string} find - The pattern to find in files.
+ * @param {string} replace - The pattern to replace with.
+ * @returns {Promise<string[]>} Promised array of renamed files.
+ */
+async function renameUsingGit(gitRoot, match, find, replace) {
+  // Check if Git root is a valid directory
+  if (!fs.existsSync(gitRoot)) {
+    throw new Error('Invalid Git root directory');
+  }
+
+  // Expand the files to be renamed
+  const files = new Renamer().expand(path.join(gitRoot, match)).filesAndDirs;
+
+  // Check if files or directories exist
+  if (!files.length) {
+    throw new Error('No files or directories found');
+  }
+
+  // Replace the pattern in files
+  const results = new Renamer().replace({
+    files,
+    find,
+    replace,
+  });
+
+  // Dry run the results to see the file names before renaming them
+  const dryRunResults = new Renamer().dryRun(results);
+
+  // List of renamed files
+  const renamedFiles = [];
+
+  // Rename each file using Git
+  dryRunResults.list.forEach((file) => {
+    // Use execSync to execute the Git command
+    const output = execSync('git '
+      + `--work-tree=${gitRoot}`
+      + ` --git-dir=${path.join(gitRoot, '.git')}`
+      + ` mv ${file.before} ${file.after}`);
+
+    // Get the output as a string
+    const outputStr = output.toString();
+
+    // Add the renamed file to the list
+    renamedFiles.push(outputStr || file.after);
+  });
+
+  // Return the list of renamed files
+  return renamedFiles;
+}
+
+// Export the function
+module.exports = renameUsingGit;</code></pre></div><p>This code defines a function <code>renameUsingGit</code> that renames files within a Git repository using Git commands. Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>var renamer = require('renamer');</code></strong>: This line imports a module named <code>renamer</code>, which likely provides utilities for finding and renaming files.</p></li>
 <li><p><strong><code>function renameUsingGit(gitRoot, match, find, replace)</code></strong>: This defines the function <code>renameUsingGit</code>, which takes four arguments:</p>

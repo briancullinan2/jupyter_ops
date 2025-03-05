@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,25 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Script Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+# Define the import command as a function for reuse and ease of modification
+import_data() {
+  # Use the npm run import command with the specified arguments
+  npm run import "$@"
+}
+
+# Use a loop to continuously import data until the user decides to stop
+while true
+do
+  # Ask the user to confirm before proceeding
+  read -p "Import data? (y/n): "
+  case "$REPLY" in
+    y|Y) import_data "create export cache";;
+    n|N) break;;
+    *) read -p "Invalid input. Please enter y or n: "
+  esac
+done</code></pre></div><p><strong>Script Overview</strong></p>
 <p>This is a Bash script that continuously runs an npm command in an infinite loop.</p>
 <h3>Loop Structure</h3>
 <ul>

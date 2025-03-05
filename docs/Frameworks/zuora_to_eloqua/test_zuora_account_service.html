@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -180,7 +187,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines unit tests for the <code>accounts</code> module, which interacts with the Zuora API to retrieve account information.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const sinon = require('sinon');
+const { assert } = require('chai'); // Use chai for assertions
+const importer = require('../Core');
+const request = importer.import('request polyfill');
+const accounts = importer.import('zuora account service');
+
+describe('zuora account service', () => {
+    let sandbox; // Declare sandbox variable to avoid global scope
+
+    beforeEach(() => {
+        sandbox = sinon.createSandbox(); // Create sandbox in beforeEach
+    });
+
+    afterEach(() => {
+        sandbox.restore(); // Restore sandbox in afterEach
+    });
+
+    it('should call zuora query', async () => {
+        // Define constants at the top for better readability
+        const zuoraConfig = {
+            "rest_api_user": "devteam@fakepage.com",
+            "rest_api_password": "pass",
+            "rest_api_url": "http://localhost:18888"
+        };
+
+        const dummyEmail = 'zuora-test@swiftipage.com';
+
+        // Use sandbox.stub to return a promise for better testing
+        const queryStub = sandbox.stub(request,'request').returns(
+            Promise.resolve({ body: { records: [{ emailAddress: dummyEmail }] } })
+        );
+
+        // Call the function and then assert the results
+        const result = await accounts.getZuoraAccounts({
+            items: [{
+                'EmailAddress': dummyEmail
+            }]
+        }, zuoraConfig);
+
+        assert.isOk(result); // Use assert.isOk instead of just assert
+
+        const queryCall = queryStub.getCall(0);
+        assert.includes(queryCall.args[0].json.queryString, dummyEmail); // Use assert.includes
+    });
+});</code></pre></div><p>This code defines unit tests for the <code>accounts</code> module, which interacts with the Zuora API to retrieve account information.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -76,8 +83,7 @@
     <a href="../llama/index.html">llama</a> | <a href="./ask_llm_about_functions.html">ask llm about functions</a> | <a href="./ask_llm_about_notebooks.html">ask llm about notebooks</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>askLlamaAboutCode</code> function sends a code snippet to the Llama model and returns a breakdown of the code in a string format, facilitating analysis and understanding of the provided code.</p>
-<p>The <code>askLlamaAboutCode</code> function is designed to analyze code snippets by sending them to the Llama model for a breakdown. It takes a code snippet as input, sends it to the Llama model, and returns a string containing the breakdown of the code.</p>
+  <p>The <code>askLlamaAboutCode</code> function takes a string of code, uses an LLM to provide a short breakdown, and logs the prompt and response. It limits input code to 2048 characters and trims the LLM response.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "ask llm about code"</code></pre><h1>ask llm about code</h1>
@@ -119,36 +125,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
-<h3>Function: <code>askLlamaAboutCode</code></h3>
-<h4>Purpose</h4>
-<p>This function sends a code snippet to the Llama model and receives a breakdown of the code in return.</p>
-<h4>Parameters</h4>
-<ul>
-<li><code>code</code>: The code snippet to be analyzed.</li>
-</ul>
-<h4>Flow</h4>
-<ol>
-<li><strong>Import LLM Session</strong>: The function imports the <code>create llm session</code> module to establish a connection with the Llama model.</li>
-<li><strong>Create Prompt</strong>: A prompt is created by combining a fixed string with the first 2048 characters of the provided code.</li>
-<li><strong>Send Prompt to LLM</strong>: The prompt is sent to the Llama model, and the response is captured in the <code>a2</code> variable.</li>
-<li><strong>Return Response</strong>: The response is trimmed to remove any unnecessary whitespace and returned by the function.</li>
-</ol>
-<h4>Output</h4>
-<p>The function returns a string containing the breakdown of the code provided in the input.</p>
-<h3>Example Use Case</h3>
-<pre><code class="language-javascript">const { askLlamaAboutCode } = require('./llama-helper');
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { createLlmSession } = require('./importer');
+const logger = console;
 
-const code = `
-function add(a, b) {
-  return a + b;
+/**
+ * Ask LLaMA about the provided code snippet.
+ * 
+ * @param {string} code - The code snippet to be analyzed.
+ * @returns {Promise<string>} A breakdown of the code snippet.
+ */
+async function askLlamaAboutCode(code) {
+  // Create a new LLaMA session
+  const llmSession = await createLlmSession();
+
+  // Define the prompt with a maximum code length of 2048 characters
+  const maxCodeLength = 2048;
+  const prompt = `Give me a short breakdown of this code:\n${code.substring(0, maxCodeLength)}\nDocumentation only, discard any friendly remarks.`;
+
+  // Log the user's query for debugging purposes
+  logger.log('User:', prompt);
+
+  // Ask LLaMA for a breakdown of the code
+  const response = await llmSession.llmPrompt(prompt);
+
+  // Log the AI's response for debugging purposes
+  logger.log('AI:', response);
+
+  // Return the AI's response with trailing whitespace removed
+  return response.trim();
 }
-`;
 
-const breakdown = await askLlamaAboutCode(code);
-console.log(breakdown);
-</code></pre>
-<p>This example sends a simple function to the Llama model and receives a breakdown of the code, which can then be logged to the console.</p>
+module.exports = {
+  askLlamaAboutCode,
+};</code></pre></div><h2>Code Breakdown</h2>
+<p>This code defines a function <code>askLlamaAboutCode</code> that takes a string of code as input and uses a language model (LLM) to provide a short breakdown of the code.</p>
+<h3>Function Flow</h3>
+<ol>
+<li><strong>Import LLM Session</strong>: The function imports an LLM session using the <code>importer</code> module.</li>
+<li><strong>Prepare Prompt</strong>: It creates a prompt string <code>q2</code> by concatenating a default prompt with the first 2048 characters of the input code.</li>
+<li><strong>Log Prompt</strong>: The prompt is logged to the console with a &quot;User:&quot; label.</li>
+<li><strong>Get LLM Response</strong>: The function sends the prompt to the LLM using the <code>llmPrompt</code> function and logs the response with an &quot;AI:&quot; label.</li>
+<li><strong>Return Response</strong>: The response is trimmed and returned by the function.</li>
+</ol>
+<h3>Notes</h3>
+<ul>
+<li>The <code>importer</code> module is not a standard Node.js module, so it's likely a custom module that exports an <code>import</code> function to load external modules.</li>
+<li>The <code>llmPrompt</code> function is also not a standard Node.js module, so it's likely a custom function that interacts with an LLM API or service.</li>
+<li>The <code>substr(0, 2048)</code> call limits the input code to 2048 characters, which may be a limitation or a precaution to prevent overwhelming the LLM with excessive code.</li>
+<li>The <code>trim()</code> call removes any leading or trailing whitespace from the LLM response, which may be useful for cleaning up the output.</li>
+</ul>
 
 </body>
 

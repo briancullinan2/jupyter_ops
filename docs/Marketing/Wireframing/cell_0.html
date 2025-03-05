@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -143,7 +150,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Breakdown of the Code</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>// Import required modules
+import * as childProcess from 'child_process';
+import * as path from 'path';
+
+// Define constants for Git repository URL and Docker images
+const GIT_REPO_URL = 'https://github.com/megamindbrian/jupytangular2';
+const DOCKER_IMAGE_NAME = 'jupytangular';
+
+// Define the directory path for the cloned repository
+const REPO_DIR = path.join(process.env.HOME?? '', 'jupytangular2');
+
+// Define the container name and ports
+const CONTAINER_NAME = 'jupytangular';
+const CONTAINER_PORT = 8888;
+
+// Define the notebooks directory path
+const NOTEBOOKS_DIR = path.join(process.env.HOME, 'jovyan', 'notebooks');
+
+// Function to clone the Git repository
+function cloneRepo(repoUrl: string, repoDir: string): void {
+  // Use childProcess to execute the Git clone command
+  childProcess.execSync(`git clone ${repoUrl} ${repoDir}`);
+}
+
+// Function to build the Docker image
+function buildDockerImage(repoDir: string): void {
+  // Use childProcess to execute the Docker build command
+  childProcess.execSync(`docker build -t ${DOCKER_IMAGE_NAME} ${repoDir}`);
+}
+
+// Function to run the Docker container
+function runDockerContainer(containerName: string, containerPort: number, repoDir: string, notebooksDir: string): void {
+  // Use childProcess to execute the Docker run command
+  childProcess.execSync(
+    `docker run --name ${containerName} -it -p ${containerPort}:${containerPort} -v ${repoDir}/notebooks/:/home/jovyan/notebooks/ ${containerName}`,
+  );
+  childProcess.execSync(
+    `docker run --name ${containerName} -it -p ${containerPort}:${containerPort} -v '${path.join(
+      process.env.HOME,
+      'Documents',
+      'jupytangular2',
+      'notebooks',
+    )}':/home/jovyan/notebooks/ ${containerName}`,
+  );
+}
+
+// Main function
+function main(): void {
+  // Clone the Git repository
+  cloneRepo(GIT_REPO_URL, REPO_DIR);
+
+  // Build the Docker image
+  buildDockerImage(REPO_DIR);
+
+  // Run the Docker container
+  runDockerContainer(CONTAINER_NAME, CONTAINER_PORT, REPO_DIR, NOTEBOOKS_DIR);
+}
+
+// Call the main function
+main();</code></pre></div><h3>Breakdown of the Code</h3>
 <h4>Section 1: Clone a GitHub Repository</h4>
 <pre><code class="language-bash">git clone https://github.com/megamindbrian/jupytangular2
 </code></pre>

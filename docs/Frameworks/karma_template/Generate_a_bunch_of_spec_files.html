@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,91 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates Angular component test files using a template.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const glob = require('glob-promise');
+const path = require('path');
+
+const cwd = 'C:\\Users\\brian.cullinan\\Documents\\portal\\src';
+
+// Import required modules, install glob if not exist
+try {
+    require.resolve('glob-promise');
+} catch (e) {
+    require('npm').install(['glob-promise'], (err) => {
+        if (err) {
+            console.error(err);
+            process.exit(1);
+        }
+    });
+}
+
+const template = `
+import {ComponentFixture} from '@angular/core/testing';
+import {} from 'jasmine';
+import {MockBackend} from '@angular/http/testing';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
+import {By} from '@angular/platform-browser';
+import {Core} from '../../../testing/core';
+{import}
+
+describe('{title}', function () {
+    let fixture: ComponentFixture<{title}>;
+    let router: Router;
+    let location: Location;
+    let xhr: MockBackend;
+    let comp: {title};
+
+    beforeEach(() => {
+        fixture = Core.createAppWithShared([], [], [{title}]);
+        comp = fixture.componentInstance;
+        router = fixture.debugElement.injector.get(Router);
+        xhr = fixture.debugElement.injector.get(MockBackend);
+        location = fixture.debugElement.injector.get(Location);
+    });
+
+    it('should load {title}', (done) => {
+        fixture.whenStable().then(() => {
+            expect(comp).not.toBeNull();
+            done();
+        });
+    });
+
+});
+`;
+
+// Function to convert string to camel case
+function toCamelCase(str) {
+    return str.replace(/(^|\s|-)([a-z])/g, (m, p1, p2) => p1 + p2.toUpperCase()).replace(/-/ig, '');
+}
+
+// Function to generate spec file
+async function generateSpec(file) {
+    try {
+        const title = toCamelCase(file.split('.')[0].split('/').pop());
+        const specFile = path.join(cwd, file.replace('.ts', '.spec.ts'));
+        if (fs.existsSync(specFile)) {
+            return;
+        }
+        const importStr = `import ${title} from './${file.split('.')[0]}'`;
+        await fs.promises.writeFile(specFile, template
+           .replace(/\{title\}/ig, title)
+           .replace(/\{import\}/ig, importStr)
+        );
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// Get list of component files
+const files = await glob('**/*component.ts', {
+    ignore: '**/*.spec.ts',
+    cwd: cwd
+});
+
+// Generate spec files
+await Promise.all(files.map(generateSpec));</code></pre></div><p>This code generates Angular component test files using a template.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,81 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h1><strong>System Usage Monitor</strong></h1>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Requires the os module for system information.
+ * @module systemUsage
+ */
+const os = require('os');
+
+/**
+ * System usage class with methods for CPU and memory usage.
+ * @class SystemUsage
+ */
+class SystemUsage {
+  /**
+   * Calculates the average idle and tick times for the CPU.
+   * @returns {Object} An object with average idle and total times.
+   */
+  static async getCPUInfo() {
+    const cpus = os.cpus();
+    let totalIdle = 0, totalTick = 0;
+
+    for (const cpu of cpus) {
+      for (const type in cpu.times) {
+        totalTick += cpu.times[type];
+      }
+      totalIdle += cpu.times.idle;
+    }
+
+    return {
+      idle: totalIdle / cpus.length,
+      total: totalTick / cpus.length
+    };
+  }
+
+  /**
+   * Calculates the system usage (CPU and memory) over time.
+   * @returns {Object} An object with memory and CPU usage arrays.
+   */
+  static async systemUsage() {
+    // Initialize arrays for memory and CPU usage
+    const reportMem = [];
+    const reportCPU = [];
+
+    // Get initial CPU info
+    const startMeasure = await SystemUsage.getCPUInfo();
+
+    // Get initial memory usage
+    const memUsage = Math.round(100 * (os.totalmem() - os.freemem()) / os.totalmem());
+    reportMem.unshift(memUsage);
+
+    // Wait 1 second to measure CPU usage
+    await new Promise(resolve =&gt; setTimeout(resolve, 1000));
+
+    // Get final CPU info
+    const endMeasure = await SystemUsage.getCPUInfo();
+
+    // Calculate CPU usage
+    const idleDifference = endMeasure.idle - startMeasure.idle;
+    const totalDifference = endMeasure.total - startMeasure.total;
+    const percentageCPU = 100 - ~~(100 * idleDifference / totalDifference);
+    reportCPU.unshift(percentageCPU);
+
+    // Ensure arrays are not too large
+    if (reportMem.length &gt; 30 || reportCPU.length &gt; 30) {
+      reportMem.pop();
+      reportCPU.pop();
+    }
+
+    return {
+      memory: reportMem,
+      cpus: reportCPU
+    };
+  }
+}
+
+module.exports = SystemUsage;</code></pre></div><h1><strong>System Usage Monitor</strong></h1>
 <p><strong>Overview</strong></p>
 <p>The <code>systemUsage</code> function monitors system CPU usage and memory usage over time. It calculates the average percentage CPU usage and memory usage, and returns the data in an object format.</p>
 <p><strong>Function Breakdown</strong></p>

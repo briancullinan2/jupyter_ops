@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -99,7 +106,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Configuration Objects</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+// Configuration for Zuora and Eloqua APIs
+const getEnvironmentVariable = (key) =&gt; {
+    if (process.env[key]) {
+        return process.env[key];
+    } else {
+        throw new Error(`Environment variable ${key} not set`);
+    }
+};
+
+const zuoraConfig = {
+    restApiUser: getEnvironmentVariable('ZUORA_API_USER'),
+    restApiPassword: getEnvironmentVariable('ZUORA_API_PASS'),
+    restApiUrl: getEnvironmentVariable('ZUORA_API_URL')
+};
+
+const eloquaConfig = {
+    authorizeUri: getEnvironmentVariable('ELOQUA_AUTHORIZE_URL'),
+    tokenUri: getEnvironmentVariable('ELOQUA_TOKEN_URL'),
+    restApiUrl: getEnvironmentVariable('ELOQUA_API_URL'),
+    clientId: getEnvironmentVariable('ELOQUA_CLIENT_ID'),
+    clientSecret: getEnvironmentVariable('ELOQUA_CLIENT_SECRET'),
+    restApiCompany: getEnvironmentVariable('ELOQUA_API_COMPANY'),
+    restApiUser: getEnvironmentVariable('ELOQUA_API_USER'),
+    restApiPassword: getEnvironmentVariable('ELOQUA_API_PASS')
+};
+
+// TODO: Implement validation and error handling for missing environment variables
+// TODO: Consider using a more robust configuration management system, such as a separate configuration file or a library like dotenv
+```</code></pre></div><h3>Configuration Objects</h3>
 <h4>zuoraConfig</h4>
 <pre><code class="language-javascript">const zuoraConfig = {
     &quot;rest_api_user&quot;: process.env.ZUORA_API_USER,

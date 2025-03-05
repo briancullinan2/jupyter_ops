@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -165,7 +172,122 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+import whoosh.index as wi
+from whoosh.qparser import QueryParser
+from Core import interpret, build_dylib
+import os
+import re
+import ctypes
+import types
+
+class ModuleImporter:
+    def __init__(self):
+        # Initialize the index and parser for searching notebooks
+        self.index = wi.open_dir("index_dir")
+        self.parser = QueryParser("query", self.index.schema)
+        self.modules = {}  # Cache for imported modules
+
+    def safe_url(self, name):
+        """Replace non-alphanumeric characters with underscores in a string"""
+        return re.sub(r'\W+', '_', name)
+
+    def get_functions(self, code):
+        """Parse C/C++ code to extract function names"""
+        # TODO: Implement a proper parser for C/C++ code
+        # For now, just split on whitespace and take the first word
+        return [line.split()[0] for line in code.splitlines()]
+
+    def import_notebook(self, query_str, ctx):
+        """Searches the Whoosh index and returns a module of the retrieved code"""
+        try:
+            results = interpret(query_str)  # Search for matching notebooks
+        except ImportError as e:
+            print(f"No matching notebook found for query: {query_str}")
+            return
+
+        if not results:
+            return
+
+        filename = results[0]["filename"]
+        fileid = results[0]["id"]
+        print(filename)
+
+        if fileid in self.modules:
+            self._load_module(fileid, ctx)
+            return self.modules[fileid]
+
+        module = types.ModuleType(filename)
+        module.__file__ = filename
+        module.import_notebook = self.import_notebook
+
+        self._create_module(module)
+
+        return module
+
+    def _create_module(self, module):
+        """Create a new module and add it to the cache"""
+        self.modules[module.__file__] = module
+
+    def _load_module(self, fileid, ctx):
+        """Load a cached module and add its contents to the context"""
+        module = self.modules[fileid]
+
+        if hasattr(module, '__all__') and callable(module.__all__):
+            name = module.__all__.__name__
+            ctx[name] = module.__all__
+            globals()[name] = module.__all__
+        else:
+            for name in module.__all__:
+                ctx[name] = module.__all__[name]
+                globals()[name] = module.__all__[name]
+
+    def _load_dylib(self, filename, result):
+        """Load a dynamic library from a C/C++ notebook"""
+        # TODO: Handle loading of dynamic libraries
+        # For now, just create an empty dictionary
+        return {}
+
+    def _parse_c_code(self, code):
+        """Parse C/C++ code to extract function names and load the dynamic library"""
+        # TODO: Implement a proper parser for C/C++ code
+        # For now, just split on whitespace and take the first word
+        functions = self.get_functions(code)
+
+        if not functions:
+            return {}
+
+        lib_name = self.safe_url(result["questions"][0])
+        BUILD_DIRECTORY = os.path.join(os.path.dirname(__file__), "../.build")
+        result = ctypes.CDLL(os.path.join(BUILD_DIRECTORY, lib_name + '.dylib'))
+
+        for f in functions:
+            func_name = f.split('(')[0]
+            setattr(result, func_name, getattr(result, func_name))
+
+        return result
+
+    def _import_python_code(self, code):
+        """Import Python code from a notebook"""
+        # TODO: Handle importing of Python code
+        # For now, just execute the code in the module namespace
+        exec(code, self.modules[code.__file__].__dict__)
+
+    def _handle_notebook_language(self, results, module):
+        """Handle the language of the notebook and execute the code accordingly"""
+        if results[0]["language"] in ["c", "cpp", "objective-c"]:
+            result = self._parse_c_code(results[0]["code"])
+            module.__all__ = {}
+            for f in result:
+                module.__all__[f] = result[f]
+        elif results[0]["language"] == "python":
+            self._import_python_code(results[0]["code"])
+
+__all__ = {
+    "ModuleImporter": ModuleImporter,
+    "ModuleImporter.import_notebook": ModuleImporter.import_notebook,
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Setting Up Variables</h3>
 <pre><code class="language-python">import types
 import ctypes

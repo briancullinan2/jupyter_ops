@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -105,7 +112,24 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>ISODateString</code> that converts a Date object into an ISO 8601 formatted string.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Converts a Date object to an ISO 8601 formatted string.
+ *
+ * @param {Date} date - The date to be converted.
+ * @returns {string} The ISO 8601 formatted string.
+ */
+function isoDateString(date) {
+    // Use a reusable function to pad the date components
+    const pad = n => (n < 10? '0' + n : n);
+
+    // Use template literals for better readability
+    return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}T`
+        + `${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}:${pad(date.getUTCSeconds())}-00:00`;
+}
+
+// Export the function as a module
+module.exports = isoDateString;</code></pre></div><p>This code defines a function <code>ISODateString</code> that converts a Date object into an ISO 8601 formatted string.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>pad(n)</code> function:</strong></p>

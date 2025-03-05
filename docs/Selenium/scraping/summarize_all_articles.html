@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -156,7 +163,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const Client = require('selenium-client');
+const { ExtractLLMArticle, SummarizeLLMArticle } = require('./extract-llm-article');
+const { DefaultLinkCollector, persistSummaries } = require('./default-link-collector');
+const RedditLinkCollector = require('./reddit-link-collector');
+
+class LinkScraper {
+  static selectScraper(selector, startPage) {
+    if (!selector && startPage.includes('reddit.com')) {
+      selector = new RedditLinkCollector();
+    } else if (!selector) {
+      selector = new DefaultLinkCollector();
+    } else if (typeof selector ==='string') {
+      selector = () => new DefaultLinkCollector(startPage, selector);
+    }
+    return selector;
+  }
+}
+
+async function summarizeAll(links, selector, startPage, funny) {
+  if (!startPage &&!links) {
+    throw new Error('No start page or links to summarize.');
+  }
+
+  const client = new Client();
+  const extractor = new ExtractLLMArticle();
+  const summarizer = new SummarizeLLMArticle(funny);
+  const collector = LinkScraper.selectScraper(selector, startPage);
+  const summaries = persistSummaries(funny);
+
+  try {
+    if (!links && startPage) {
+      links = await collector(client, startPage);
+    }
+
+    console.log(links);
+
+    for (const link of links) {
+      if (summaries[link.link]) {
+        continue; // already loaded
+      }
+
+      const article = await extractor.client(client, link.link);
+      const summary = await summarizer(article);
+
+      summaries[link.link] = summary;
+      persistSummaries(funny, summaries);
+    }
+
+    await client.quit();
+
+    return summaries;
+  } catch (error) {
+    // do not quit client in case of an error
+    throw error;
+  }
+}
+
+module.exports = summarizeAll;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports several modules using the <code>importer.import</code> function:</p>
 <ul>

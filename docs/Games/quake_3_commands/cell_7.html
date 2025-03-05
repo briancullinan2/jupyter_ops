@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -139,7 +146,100 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Overview of q3map2.exe/q3map2 Commands</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a helper function for q3map2 options
+q3map2_options() {
+  local basepath=$1
+  local game=$2
+  local map=$3
+  local format=${4:-map}
+  local options=()
+
+  # Check if the game is baseq3 or baseq2
+  if [ "$game" == "baseq3" ]; then
+    options+=(-game baseq3 -fs_basepath "$basepath")
+  elif [ "$game" == "baseq2" ]; then
+    options+=(-game baseq2 -fs_basepath "$basepath")
+  else
+    echo "Error: Unsupported game version"
+    return 1
+  fi
+
+  # Add the map path to the options
+  options+=("$map")
+
+  # Set the output format to map if not specified
+  if [ "${options[2]}"!= "-format" ]; then
+    options+=(-format "$format")
+  fi
+
+  # Add additional options for light and vis
+  if [ "${options[0]}" == "-game" ]; then
+    options+=(-light) # light options
+    options+=(-fast)  # fast options
+    options+=(-vis)   # vis options
+  fi
+
+  # Print the q3map2 command with options
+  printf -v q3map2_command "%s %s\n" "q3map2" "${options[@]}"
+  echo "$q3map2_command"
+}
+
+# Usage example:
+usage() {
+  basename=$(basename "$0")
+  echo "Usage: $basename [options]"
+  echo "  -h    Show this help message"
+  echo "  -l    Run light options"
+  echo "  -v    Run vis options"
+  echo "  -b    Run bsp options"
+  echo "  -m    Run meta options"
+  echo "  -c    Convert ase"
+  echo "  -a    Run ase options"
+  echo "  -o    Output format (default: map)"
+}
+
+# Define the main command
+main() {
+  local game=$1
+  local map=$2
+  local options=$3
+
+  case $options in
+    -h) usage; return 0 ;;
+    -l) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map" "light"; return 0 ;;
+    -v) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map" "vis"; return 0 ;;
+    -b) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map"; return 0 ;;
+    -m) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map" "meta"; return 0 ;;
+    -c) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map" "ase"; return 0 ;;
+    -a) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map" "ase"; return 0 ;;
+    *) q3map2_options "/Applications/ioquake3/unpacked" "$game" "$map"; return 0 ;;
+  esac
+}
+
+# Define additional commands
+convert_ase() {
+  q3map2_options "/Applications/ioquake3/unpacked" "baseq3" "$map" "ase"
+}
+
+light() {
+  q3map2_options "/Applications/ioquake3/unpacked" "baseq3" "$map" "light"
+}
+
+vis() {
+  q3map2_options "/Applications/ioquake3/unpacked" "baseq3" "$map" "vis"
+}
+
+meta() {
+  q3map2_options "/Applications/ioquake3/unpacked" "baseq3" "$map" "meta"
+}
+
+# Main execution
+if [ "$0" == "$BASH_SOURCE" ]; then
+  main "baseq3" "/Applications/ioquake3/unpacked/acid3dm5.pk3dir/maps/acid3dm5_converted.map" "$1"
+fi</code></pre></div><h3>Overview of q3map2.exe/q3map2 Commands</h3>
 <p>The provided commands are used to convert, optimize, and prepare 3D maps for Quake 3 Arena games. These commands utilize the q3map2.exe/q3map2 tool.</p>
 <h3>Command Breakdown</h3>
 <h4>1. Converting and Lighting</h4>

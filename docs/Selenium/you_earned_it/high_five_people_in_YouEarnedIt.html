@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,55 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a series of functions to automate interactions with a website, likely related to a &quot;YouEarnedIt&quot; platform.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client } = require('playwright');
+const Core = require('../Core');
+const { getCredentials } = require('./credentials'); // assume credentials function is in this file
+
+class YouEarnedItClient {
+    constructor(browser, url) {
+        this.browser = browser;
+        this.client = browser.newPage();
+        this.client.goto(url);
+    }
+
+    async navigateLogin() {
+        await this.client.fill('input[name="user[login]"]', await getCredentials('swiftpage.youearnedit.com').username);
+        await this.client.fill('input[name="user[password]"]', await getCredentials('swiftpage.youearnedit.com').password);
+        await this.client.click('form[action]');
+        await this.client.waitForNavigation();
+    }
+
+    async clickHighFive(element) {
+        try {
+            await this.client.click(element);
+            await this.client.waitForSelector('//div[contains(@class, "modal")]//button[contains(., "Continue")]');
+            await this.client.click('//div[contains(@class, "modal")]//button[contains(., "Continue")]');
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    async highFive() {
+        try {
+            await this.client.goto('https://swiftpage.youearnedit.com/posts');
+            await this.client.waitForSelector('form[action*="sign_in"]');
+            if (await this.client.isVisible('form[action*="sign_in"]')) {
+                await this.navigateLogin();
+            }
+            const highFiveButtons = await this.client.$('//button[not(@disabled)]/i[contains(@class, "High-Five")]');
+            const promises = highFiveButtons.map(button =&gt; this.clickHighFive(button));
+            await Core.runAllPromises(promises);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+module.exports = async (browser) =&gt; {
+    const youEarnedItClient = new YouEarnedItClient(browser, 'https://swiftpage.youearnedit.com/posts');
+    await youEarnedItClient.highFive();
+};</code></pre></div><p>This code defines a series of functions to automate interactions with a website, likely related to a &quot;YouEarnedIt&quot; platform.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>loginYouEarnedIt()</code>:</strong></p>

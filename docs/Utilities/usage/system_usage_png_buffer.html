@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const os = require('os'); // Add os module for accessing system properties
+const { spawnSync } = require('child_process');
+const importer = require('./importer'); // Replace 'importer' with actual module path
+
+// Define constants
+const TEMP_DIR = os.tmpdir(); // Use constant for path
+const MAX_TEMP_FILES = 4; // Define maximum temp files limit
+const TEMP_FILE_EXTENSION = '.svg'; // Extract file extension to a constant
+const OUTPUT_FILE_EXTENSION = '.png'; // Extract file extension to a constant
+const MAX_RESIZE_TIME = 3000; // Define timeout in milliseconds
+
+// Initialize counter for temp file names
+let count = 0;
+
+/**
+ * Generates a system usage graph and returns it as a PNG file.
+ * 
+ * @param {Object} data - Input data for the graph
+ * @returns {Buffer} PNG file buffer representation
+ */
+async function systemBuffer(data) {
+  try {
+    // Import system usage graph module
+    const graphUsage = await importer.import('system usage graph');
+    
+    // Generate SVG graph
+    let svg = await graphUsage(data);
+    
+    // Create a temp file name using the counter
+    let svgTempFile = path.join(TEMP_DIR, `tmp${count % MAX_TEMP_FILES}${TEMP_FILE_EXTENSION}`);
+    
+    // Write SVG to temp file
+    fs.writeFileSync(svgTempFile, svg);
+    
+    // Resize SVG to PNG using ImageMagick
+    await spawnSync('convert', [
+      '-density', '1200', 
+      '-resize', '300x200', 
+      svgTempFile, 
+      svgTempFile.replace(TEMP_FILE_EXTENSION, OUTPUT_FILE_EXTENSION)
+    ], {
+      cwd: TEMP_DIR,
+      timeout: MAX_RESIZE_TIME,
+    });
+    
+    // Increment counter for next temp file
+    count++;
+    
+    // Return PNG file buffer
+    return fs.readFileSync(svgTempFile.replace(TEMP_FILE_EXTENSION, OUTPUT_FILE_EXTENSION));
+  } catch (error) {
+    // Log any errors that occur during the process
+    console.error('Error generating system usage graph:', error);
+    throw error;
+  }
+}
+
+// Export the systemBuffer function
+module.exports = systemBuffer;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies and Variables</h3>
 <ul>
 <li>The code requires the following dependencies:

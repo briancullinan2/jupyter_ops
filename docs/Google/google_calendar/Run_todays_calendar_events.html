@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -164,7 +171,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches upcoming events from a Google Calendar, extracts parameters from their descriptions, and prepares them for execution.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { JSDOM } = require('jsdom');
+const { listEvents, storeResult } = require('./Core').import([
+  'list events',
+ 'store rpc result'
+]);
+
+const runTodaysEvents = async (calendar = 'commands') => {
+  try {
+    const options = { calendarId: calendar };
+    const events = await listEvents({
+      auth: options.auth,
+      calendarId: options.calendarId,
+      timeMin: '12:00 AM today',
+      timeMax: '1:00 AM today'
+    });
+
+    const commandEvent = events
+     .find((event) =>!event.event.summary.startsWith('Result: ') &&!events.find((m) => m.event.summary === event.event.summary && m.event.start.dateTime === event.event.start.dateTime));
+
+    if (!commandEvent) {
+      throw new Error('No events!');
+    }
+
+    const dom = new JSDOM('<body>' + (commandEvent.event.description || '').replace(/<br\/?>/igm, '\n') + '</body>');
+    const parameters = tryParseJson(dom.window.document.body.textContent);
+
+    if (parameters === null) {
+      parameters = (commandEvent.event.description || '').trim().split(/\n/ig);
+    }
+
+    const result = {
+      already: false,
+      body: parameters,
+      name: 'Today\'s events',
+      command: commandEvent.event.summary.trim(),
+      date: new Date(commandEvent.event.start.dateTime),
+      id: commandEvent.event.summary.trim(),
+      circles: ['Function', 'Selenium'],
+      result: importer.interpret(commandEvent.event.summary.trim()),
+      allowed: true
+    };
+
+    await storeResult(result, options.calendarId);
+    return result;
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
+};
+
+module.exports = runTodaysEvents;
+
+// Helper function to attempt to parse JSON
+function tryParseJson(str) {
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    return null;
+  }
+}</code></pre></div><p>This code snippet fetches upcoming events from a Google Calendar, extracts parameters from their descriptions, and prepares them for execution.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -95,7 +102,37 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+import { execCmd } from './utils/execCmd.js';
+import { sendResult, sendError } from './utils/results.js';
+import { async as $ } from './utils/async.js';
+
+/**
+ * Execute a command and handle the result
+ * @return {Promise<void>}
+ */
+async function executeCommand() {
+    try {
+        // Execute the command
+        const result = await execCmd('ps -a');
+        // Send the result
+        await sendResult(result);
+    } catch (error) {
+        // Send the error if any occurs
+        await sendError(error);
+    }
+}
+
+// Execute the command in an async context
+$().then(executeCommand).catch(console.error);
+
+// Alternatively, using a describe block for Jest or another testing framework
+describe('executeCommand', () => {
+    it('should execute the command and handle the result', async () => {
+        await executeCommand();
+    });
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Overview</h4>
 <p>The code appears to be a combination of asynchronous operations and error handling in a Node.js environment.</p>
 <h4>Breakdown</h4>

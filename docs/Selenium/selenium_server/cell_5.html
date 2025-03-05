@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const express = require('express');
+const router = express.Router();
+const fs = require('fs');
+const path = require('path');
+
+// Define a function to promisify a chrome function
+function promisifyChrome(method, params) {
+    // Implementation for promisifyChrome function
+    // For demonstration, assume it returns a function that takes a callback
+    return (callback) => {
+        // Simulate the chrome function call
+        setTimeout(() => {
+            callback(null, { windows: [{ id: 1 }, { id: 2 }] });
+        }, 100);
+    };
+}
+
+// Define a function to get window handles
+async function getWindowHandles(sessionId) {
+    try {
+        const windows = await promisifyChrome('windows.getAll', {})(() => {});
+        return windows.map(w => w.id);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+// Define a function to create a response
+function response(res, data) {
+    res.json(data);
+}
+
+// Define routes for window handles
+router.get('/session/:sessionId/window', (req, res) => {
+    throw new Error(`Endpoint not implemented: ${req.originalUrl} ${JSON.stringify(req.params).substr(0, 200)}`);
+});
+
+router.get('/session/:sessionId/window_handle', (req, res) => {
+    throw new Error(`Endpoint not implemented: ${req.originalUrl} ${JSON.stringify(req.params).substr(0, 200)}`);
+});
+
+router.get('/session/:sessionId/window/handles', (req, res) => {
+    throw new Error(`Endpoint not implemented: ${req.originalUrl} ${JSON.stringify(req.params).substr(0, 200)}`);
+});
+
+router.get('/session/:sessionId/window_handles', (req, res) => {
+    try {
+        const sessionId = req.params['sessionId'];
+        const windowHandles = getWindowHandles(sessionId);
+        response(res, { sessionId, windowHandles });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error fetching window handles' });
+    }
+});
+
+// Export the router
+module.exports = { getWindowHandles, router };</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requires and Dependencies</h4>
 <ul>
 <li><code>fs</code> (File System) and <code>path</code> are Node.js built-in modules for file system operations.</li>

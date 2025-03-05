@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,112 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Configuration Object
+class Config {
+  constructor() {
+    this.packageRestore = {
+      enabled: true,
+      automatic: true,
+    };
+    this.packageSources = [
+      {
+        key: 'nuget.org',
+        value: 'https://www.nuget.org/api/v2/',
+      },
+      {
+        key: 'nuget.org',
+        value: 'https://api.nuget.org/v3/index.json',
+        protocolVersion: 3,
+      },
+      {
+        key: 'teamCity',
+        value: 'http://teamcity.actops.com/httpAuth/app/nuget/v1/FeedService.svc',
+      },
+    ];
+  }
+}
+
+// Create Config Object
+const config = new Config();
+
+// Generate Config XML
+function generateConfigXml(config) {
+  return `
+    &lt;configuration&gt;
+      &lt;packageRestore&gt;
+        &lt;add key="enabled" value="${config.packageRestore.enabled}" /&gt;
+        &lt;add key="automatic" value="${config.packageRestore.automatic}" /&gt;
+      &lt;/packageRestore&gt;
+      &lt;packageSources&gt;
+        ${config.packageSources.map((source) =&gt; `
+          &lt;add key="${source.key}" value="${source.value}" /&gt;
+        `).join('')}
+      &lt;/packageSources&gt;
+    &lt;/configuration&gt;
+  `;
+}
+
+// Generate Config XML
+const configXml = generateConfigXml(config);
+
+// Output Config XML
+console.log(configXml);
+
+// Create Symlinks
+function createSymlink(src, dst) {
+  console.log(`Creating symlink: ${src} -&gt; ${dst}`);
+}
+
+// Create Symlinks
+const symlinks = [
+  ['subscription.myact', 'Subscription.MyAct'],
+  ['subscription.core', 'Subscription.Core'],
+  ['subscription.entitlement', 'Subscription.Entitlement'],
+  ['subscription.integrations', 'Subscription.Integrations'],
+  ['subscription.identitymanagement', 'Subscription.IdentityManagement'],
+];
+
+symlinks.forEach(([src, dst]) =&gt; createSymlink(src, dst));
+
+// Update NuGet Sources
+function updateNugetSources(configFile, source, username, password, url) {
+  return `
+    nuget sources update -Name teamCity -source ${url} -User ${username} -pass ${password} -configFile ${configFile}
+  `;
+}
+
+// Update NuGet Sources
+const nugetSourcesUpdate = updateNugetSources('.nuget/NuGet.Config', 'http://teamcity.actops.com/httpAuth/app/nuget/v1/FeedService.svc', '{username}', '{password}', 'http://teamcity.actops.com/httpAuth/app/nuget/v1/FeedService.svc');
+
+// Output NuGet Sources Update
+console.log(nugetSourcesUpdate);
+
+// Update Solution
+function updateSolution(solutionFile) {
+  return `
+    nuget update ${solutionFile}
+  `;
+}
+
+// Update Solution
+const solutionUpdate = updateSolution('act.subscription.management.sln');
+
+// Output Solution Update
+console.log(solutionUpdate);
+
+// Build Project
+function buildProject(projectFile) {
+  return `
+    msbuild ${projectFile}
+  `;
+}
+
+// Build Project
+const projectBuild = buildProject('Subscription.IdentityManagement.csproj');
+
+// Output Project Build
+console.log(projectBuild);</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a shell script that appears to be configuring a NuGet package source and restoring packages in a.NET project.</p>
 <h3>Section 1: Configuration File</h3>
 <p>The script creates a configuration file <code>NuGet.Config</code> with the following content:</p>

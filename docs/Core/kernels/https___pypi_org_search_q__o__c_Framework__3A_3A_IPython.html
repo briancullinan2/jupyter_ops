@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -178,7 +185,112 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { spawn } = require('child_process');
+const { languageInterface, replKernel } = require('./languageInterface');
+const { version } = require('process');
+
+/**
+ * Bash Kernel implementation.
+ * @param {Object} config - Kernel configuration.
+ * @param {Object} options - Kernel options.
+ * @returns {Object} Kernel instance.
+ */
+function bashKernel(config, options) {
+  // Create the kernel instance with Bash configuration and options
+  const kernel = replKernel({
+    kernel_config: config,
+    start_options: options,
+    child_process: spawnBash(),
+    execute: (request) => executeBashCommand(request),
+    complete: (request) => completeBashCommand(request),
+  });
+
+  return kernel;
+}
+
+/**
+ * Bash Language implementation.
+ * @returns {Object} Language interface instance.
+ */
+function bashLanguage() {
+  return languageInterface({
+    name: 'bash',
+    version: getVersion(),
+    file_extension: '.sh',
+    mimetype: 'text/x-sh',
+    codemirror_mode:'shell',
+  });
+}
+
+// Bash configuration
+function spawnBash() {
+  return spawn('bash', ['-c', `
+    echo "starting bash kernel";
+    do_execute() {
+      request=$1
+      return $(eval "$request")
+    }
+
+    do_complete() {
+      request=$1
+      return $(bash -n -c "$request") 
+    }
+
+    # Equivallent of process.stdin.resume();
+    while [ true ]; do
+      read -u $NODE_CHANNEL_FD request
+      
+      echo $request
+    done
+    `]);
+}
+
+// Execute Bash command
+function executeBashCommand(request) {
+  return new Promise((resolve, reject) => {
+    const process = spawnBash();
+    process.stdout.on('data', (data) => {
+      resolve(data.toString());
+    });
+    process.stderr.on('data', (error) => {
+      reject(error.toString());
+    });
+  });
+}
+
+// Complete Bash command
+function completeBashCommand(request) {
+  return new Promise((resolve, reject) => {
+    const process = spawn('bash', ['-n', '-c', request]);
+    process.stdout.on('data', (data) => {
+      resolve(data.toString());
+    });
+    process.stderr.on('data', (error) => {
+      reject(error.toString());
+    });
+  });
+}
+
+// Get Bash version
+function getVersion() {
+  return new Promise((resolve, reject) => {
+    try {
+      const versionStr = spawn('bash', ['--version']).stdout.toString();
+      const match = versionStr.match(/bash (\d+\.\d+)/);
+      if (match) {
+        resolve(match[1]);
+      } else {
+        resolve('unknown');
+      }
+    } catch (error) {
+      reject(error.toString());
+    }
+  });
+}
+
+module.exports = { bashKernel, bashLanguage };</code></pre></div><h2>Code Breakdown</h2>
 <h3>bashKernel Function</h3>
 <p>This function creates a kernel for executing Bash code. It takes two parameters:</p>
 <ul>

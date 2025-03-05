@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -457,7 +464,151 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to load and process scraped web pages, likely for a web crawler or data extraction tool.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const { URL } = require('url');
+const { v1: uuidv1 } = require('uuid');
+const glob = require('glob');
+const minimatch = require('minimatch');
+const selectDom = require('select-dom');
+const { prefixCssRules } = require('./scope-css');
+const { findCache } = require('./domain-crawler-tools');
+const importer = require('./Core');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const project = path.join(PROFILE_PATH, 'Collections/crawls');
+
+const matchPage = (match, search, hostname) => {
+  return search.toLowerCase() === match.toLowerCase()
+    || minimatch(search, match)
+    || (!match || match === 'index')
+    && search.match(/https?:\/\/[^\/]*\/?$/ig)
+    && search.includes(hostname);
+};
+
+const loadScraped = (url = 'https://google.com') => {
+  if (typeof url!=='string') return {};
+
+  const parsedUrl = new URL(url);
+  const host = parsedUrl.hostname;
+  const file = parsedUrl.pathname;
+  const hostEscaped = host.replace(/[^a-z0-9_-]/ig, '_');
+
+  if (!file || file === '/') file = 'index';
+
+  const cache = findCache(hostEscaped);
+  if (!cache[0]) return {};
+
+  const crawl = JSON.parse(fs.readFileSync(cache[0]).toString());
+  const entry = crawl.filter(r => matchPage(file, r.url, host))[0];
+  if (!entry) return {};
+
+  const { html } = entry;
+  const doc = selectDom('*', html);
+  const styles = selectDom(['//link[@rel = "stylesheet"]|//style'], doc);
+
+  const css = styles.reduce((acc, style) => {
+    const src = style.getAttribute('src') || style.getAttribute('href');
+    style.remove();
+    if (!src) return acc + style.innerHTML;
+
+    const linkedCss = crawl.find(r => r.url === src);
+    if (linkedCss) {
+      return acc + linkedCss.content;
+    }
+
+    return acc;
+  }, '');
+
+  const scripts = selectDom(['//script|//iframe'], doc);
+  scripts.forEach(s => s.remove());
+
+  const images = selectDom(['//img'], doc);
+  images.forEach(i => {
+    const src = i.getAttribute('src');
+    const imageSrc = new URL(src, url).pathname;
+    const imagesEntry = crawl.find(r => r.url.includes(imageSrc));
+    if (imagesEntry && imagesEntry.content.includes('data:')) {
+      i.setAttribute('src', imagesEntry.content);
+    }
+    const srcset = i.getAttribute('srcset');
+    if (srcset) {
+      const imageSrcSet = srcset.split(' ')[0];
+      const imageSrcSetUrl = new URL(imageSrcSet, url).pathname;
+      const imagesEntry = crawl.find(r => r.url.includes(imageSrcSetUrl));
+      if (imagesEntry && imagesEntry.content.includes('data:')) {
+        i.setAttribute('src', imagesEntry.content);
+        i.removeAttribute('srcset');
+      }
+    }
+  });
+
+  const links = selectDom(['//a'], doc);
+  links.forEach(l => {
+    const src = l.getAttribute('href');
+    const linkSrc = new URL(src, url).href;
+    l.setAttribute('href', `/?url=${linkSrc}`);
+  });
+
+  const bodyId = selectDom('body', doc).getAttribute('id');
+
+  const urlReplace = ($0, $1) => {
+    if (!$1 || $1.length === 0) return $0;
+    const src = new URL($1, url).pathname;
+    const imagesEntry = crawl.find(r => r.url.includes(src));
+    if (imagesEntry && imagesEntry.content.includes('data:')) {
+      return `url(${imagesEntry.content})`;
+    }
+    return $0;
+  };
+
+  const styleTags = selectDom(['//*[@style]'], doc);
+  styleTags.forEach(i => {
+    const style = i.getAttribute('style')
+     .replace(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, urlReplace);
+    i.setAttribute('style', style);
+  });
+
+  const icon = (crawl.find(r => r.url.includes('favicon.ico')) || {}).content;
+
+  const body = selectDom('//body', doc);
+  const classes = body.getAttribute('class');
+
+  const result = {
+    [file.replace(/[^a-z0-9_-]/ig, '_')]: `
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="${icon}">
+  <link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" />
+  <link type="text/css" rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/solid.css" />
+  <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
+  <link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-dark-theme.css" />
+  <link type="text/css" rel="stylesheet" href="" />
+  <style>
+    ${prefixCssRules(css, `#${hostEscaped}`, bodyId).replace(/url\s*\(['"]*([^\)]*?)['"]*\)/ig, urlReplace).replace(/href="([^\"]*)"/ig, ($0, $1) => {
+      const src = new URL($1, url).href;
+      return $0.replace($1, `/?url=${src}`);
+    })}
+  </style>
+</head>
+<body>
+  <div id="${hostEscaped}" class="initial-page">
+    <div class="${classes}">
+      ${body.innerHTML}
+    </div>
+  </div>
+  <script>${importer.interpret('ckeditor configuration').code}</script>
+</body>
+</html>
+  `,
+  };
+
+  return result;
+};
+
+module.exports = loadScraped;</code></pre></div><p>This code snippet is designed to load and process scraped web pages, likely for a web crawler or data extraction tool.</p>
 <p>Here's a breakdown:</p>
 <p><strong>1. Dependencies:</strong></p>
 <ul>

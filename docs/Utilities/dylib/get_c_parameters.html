@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Retrieves parameters from a given code snippet.
+ * @param {string} code - The code snippet to extract parameters from.
+ * @returns {Promise<object>} An object containing the extracted parameters.
+ */
+async function getParameters(code) {
+  try {
+    // Import the necessary library
+    const { importANTLRTree } = await import('antlr4/tree');
+    
+    // Create an instance of the ANTLR tree parser
+    const parser = new importANTLRTree();
+    
+    // Define the grammar rules to follow
+    const rules = [
+      {
+        rule: '//functionDefinition',
+        path: './declarator//declaratorid/@strdata'
+      }
+    ];
+    
+    // Parse the code using the grammar rules
+    const result = await parser.parseCode(code, 'cpp', rules);
+    
+    return result;
+  } catch (error) {
+    console.error('Failed to retrieve parameters:', error);
+    return {};
+  }
+}
+
+module.exports = getParameters;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function: <code>getParameters</code></h4>
 <ul>
 <li><code>async</code> function that takes a single argument <code>code</code> of unknown type</li>

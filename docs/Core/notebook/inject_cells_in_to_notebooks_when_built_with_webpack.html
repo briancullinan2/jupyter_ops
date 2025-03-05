@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a JavaScript project that deals with code transformation and execution, likely within a notebook environment. Let's break it down:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const path = require('path');
+const { importer } = require('../Core');
+const { getArrayAST } = importer.import('get ast path array');
+const { importsTemplate, cachedTemplate } = importer.import('include require like import');
+
+/**
+ * Injects imports into the given AST.
+ * This function injects the cached code and require statements into the given AST.
+ * It assumes that the cacheAll function and runInNewContext function are already present in the AST.
+ * 
+ * @param {object} ast - The Abstract Syntax Tree to be modified.
+ * @param {object[]} allImports - An array of import objects containing 'id' and 'cells' properties.
+ */
+function injectImports(ast, allImports) {
+    // Extract the cacheAll function body from the AST
+    const cacheBody = getArrayAST('//*[/*/ExpressionStatement/CallExpression[@callee.name == "cacheAll"]]', ast)[0];
+    
+    // Extract the first cacheAll function call from the cache body
+    const firstCacheCall = getArrayAST('//*[ExpressionStatement/CallExpression[@callee.name == "cacheAll"]]', cacheBody)[0];
+    
+    // Generate the cached code using the cachedTemplate function
+    const cacheCode = getArrayAST('*', cachedTemplate(allImports.map(importObject => importObject.cells)))[0];
+    
+    // Replace the first cache call with the cached code in the cache body
+    cacheBody.body = cacheBody.body.slice(0, cacheBody.body.indexOf(firstCacheCall),...cacheCode.body);
+    
+    // Extract the runInNewContext function from the AST
+    const runContext = getArrayAST('//*[AssignmentExpression[@left.name == "runInNewContext"]]', ast)[0];
+    
+    // Extract the unique import IDs
+    const uniqueImportIds = [...new Set(allImports.map(importObject => importObject.id))];
+    
+    // Generate the require code using the importsTemplate function
+    const requireCode = getArrayAST('*', importsTemplate(uniqueImportIds))[0].body[0];
+    
+    // Replace the right-hand side of the runInNewContext function with the require code
+    requireCode.expression.right = runContext.right;
+    runContext.right = requireCode;
+}
+
+// Export the injectImports function
+module.exports = injectImports;</code></pre></div><p>This code snippet appears to be part of a JavaScript project that deals with code transformation and execution, likely within a notebook environment. Let's break it down:</p>
 <p><strong>1. Dependencies:</strong></p>
 <ul>
 <li><code>path</code>: A built-in Node.js module for working with file and directory paths.</li>

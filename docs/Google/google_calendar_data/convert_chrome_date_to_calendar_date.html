@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -106,7 +113,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>chromeDtToDate</code> that converts a Chrome-specific date representation (a number representing microseconds since a specific epoch) into a standard JavaScript Date object.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Converts Chrome datetime (in microseconds since 1601-01-01) to JavaScript Date.
+ *
+ * @param {string} st_dt - Chrome datetime in microseconds since 1601-01-01
+ * @returns {Date} JavaScript Date object
+ */
+function chromeDtToDate(st_dt) {
+  // Ensure input is a string to avoid parsing issues
+  if (typeof st_dt!=='string') {
+    throw new Error('Input must be a string');
+  }
+
+  // Parse input as an integer to avoid decimal errors
+  const microseconds = parseInt(st_dt, 10);
+
+  // Check if input is a valid number
+  if (isNaN(microseconds)) {
+    throw new Error('Invalid input: not a number');
+  }
+
+  // Calculate milliseconds by dividing by 1000
+  const millis = microseconds / 1000;
+
+  // Define a constant for the epoch start date (01 Jan 1601)
+  const EPOCH_START = new Date(1601, 0, 1);
+
+  // Create a new Date object by adding the calculated milliseconds to the epoch start date
+  return new Date(EPOCH_START.getTime() + millis);
+}
+
+module.exports = chromeDtToDate;
+```
+
+However, a more concise and efficient version using the `Date.UTC()` method would be:
+
+```javascript
+/**
+ * Converts Chrome datetime (in microseconds since 1601-01-01) to JavaScript Date.
+ *
+ * @param {string} st_dt - Chrome datetime in microseconds since 1601-01-01
+ * @returns {Date} JavaScript Date object
+ */
+function chromeDtToDate(st_dt) {
+  if (typeof st_dt!=='string') {
+    throw new Error('Input must be a string');
+  }
+
+  const microseconds = parseInt(st_dt, 10);
+  if (isNaN(microseconds)) {
+    throw new Error('Invalid input: not a number');
+  }
+
+  const millis = microseconds / 1000;
+  const epochStart = new Date(Date.UTC(1601, 0, 1));
+  return new Date(epochStart.getTime() + millis);
+}
+
+module.exports = chromeDtToDate;</code></pre></div><p>This code snippet defines a function <code>chromeDtToDate</code> that converts a Chrome-specific date representation (a number representing microseconds since a specific epoch) into a standard JavaScript Date object.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Function Definition:</strong></p>

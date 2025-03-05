@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { minBy } = require('lodash');
+
+const importer = require('../Core');
+const parseBookmarksFile = importer.import('parse bookmarks file');
+const updateRowInGoogleSheets = importer.import('update a row in google sheets');
+const getGoogleDataSheet = importer.import('get google data sheet');
+
+const DOCUMENT_ID = 'https://docs.google.com/spreadsheets/d/1dAtBQyn5vwStM6ITn7iCpp996Sus26k0bJtbGNlCX2g/edit#gid=257854275';
+
+/**
+ * Updates the Interest page by fetching bookmarks, filtering interests, and updating the sheet.
+ *
+ * @returns {Promise} A promise resolving with the updated data.
+ */
+function updateInterestPage() {
+    const interests = [];
+    const links = [];
+
+    /**
+     * Fetches the interests data from the sheet.
+     */
+    return getGoogleDataSheet(DOCUMENT_ID, 'Interests data')
+       .then((rows) => {
+            const uniqueInterests = rows.map((r) => r.category).filter((r, i, arr) => arr.indexOf(r) === i);
+            interests.push(...uniqueInterests);
+            return getBookmarksFromTakeout();
+        })
+       .then((bookmarks) => {
+            links.push(...Object.values(bookmarks)
+               .filter((bookmark) => interests.includes(bookmark.folder))
+               .map((bookmark) => ({
+                    category: bookmark.folder,
+                    date: bookmark.time,
+                    title: bookmark.title,
+                    link: bookmark.url,
+                    skills: null,
+                    tools: null,
+                })));
+
+            // Update rows in the sheet
+            return Promise.all(links.map(updateRowInGoogleSheets(DOCUMENT_ID, 'Interests data')));
+        })
+       .then(() => links);
+
+}
+
+module.exports = updateInterestPage;
+
+if (typeof $!== 'undefined') {
+    $.async();
+    
+    updateInterestPage()
+       .then((result) => $.sendResult(result))
+       .catch((error) => $.sendError(error));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Dependencies</h3>
 <ul>
 <li><code>lodash</code> is imported for functional utilities.</li>

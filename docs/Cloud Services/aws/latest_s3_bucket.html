@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,75 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket that match a given pattern.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const minimatch = require('minimatch');
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3();
+const importer = require('../Core');
+
+// Configuration constants
+const AWS_HTTP = 'https://s3-us-west-2.amazonaws.com/selenium-bots/';
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || '';
+const CREDENTIALS_FILE = path.join(PROFILE_PATH, '.credentials/aws-sdk.json');
+
+// Load AWS credentials from file
+const loadCredentials = () => {
+    try {
+        const credentials = fs.readFileSync(CREDENTIALS_FILE, 'utf8');
+        return JSON.parse(credentials);
+    } catch (error) {
+        throw new Error('Failed to load AWS credentials');
+    }
+};
+
+// Update AWS config with credentials
+const updateAWSConfig = (credentials) => {
+    AWS.config.update(credentials);
+};
+
+// Get S3 objects from a bucket
+const getS3Objects = (bucket, marker) => {
+    return s3.listObjects({
+        Bucket: bucket ||'selenium-bots',
+        Prefix: '',
+        Marker: marker
+    }).promise()
+       .then((resp) => {
+            if (resp.IsTruncated) {
+                return getS3Objects(bucket, resp.Contents[resp.Contents.length - 1].Key);
+            }
+            return resp.Contents;
+        });
+};
+
+// Get the latest S3 objects that match a pattern
+const getLatestS3 = (match, bucket) => {
+    return getS3Objects(bucket)
+       .then((files) => {
+            return files.sort((a, b) => b.LastModified.getTime() - a.LastModified.getTime())
+               .filter((s) =>!match || minimatch(s.Key, match))
+               .slice(0, 5)
+               .map((i) => AWS_HTTP + i.Key);
+        });
+};
+
+// Export the getLatestS3 function
+module.exports = getLatestS3;
+
+// Initialize AWS config and export the function
+const init = () => {
+    const credentials = loadCredentials();
+    updateAWSConfig(credentials);
+    return getLatestS3();
+};
+
+if (typeof $!== 'undefined') {
+    init()
+       .then((r) => $.sendResult(r))
+       .catch((e) => $.sendError(e));
+}</code></pre></div><p>This code defines a function <code>latestS3</code> that retrieves the 5 most recently modified files from an S3 bucket that match a given pattern.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

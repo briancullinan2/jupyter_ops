@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>sendEmail</code> that sends emails using Nodemailer and Gmail.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const nodemailer = require('nodemailer');
+const importer = require('../Core');
+const getCredentials = importer.import('decrypt passwords');
+
+/**
+ * Sends an email using Gmail SMTP server.
+ * @param {string} to - recipient email address
+ * @param {string} text - email body
+ * @param {string} subject - email subject
+ * @param {string} from - sender email address
+ * @returns {Promise<string>} - email message ID
+ */
+async function sendEmail(to, text, subject, from) {
+  try {
+    // Load account credentials from environment
+    const { Email, Passwd } = getCredentials('accounts.google.com');
+
+    // Set email credentials from environment
+    process.env.GOOGLE_USER = Email;
+    process.env.GOOGLE_PASS = Passwd;
+
+    // Create reusable transporter object
+    const transporter = nodemailer.createTransport({
+      host:'smtp.gmail.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: process.env.GOOGLE_USER, // generated ethereal user
+        pass: process.env.GOOGLE_PASS, // generated ethereal password
+      },
+    });
+
+    // Setup email data with unicode symbols
+    const mailOptions = {
+      from: from, // sender address
+      to: to, // list of receivers
+      subject: subject, // Subject line
+      text: text, // plain text body
+      html: text, // html body
+    };
+
+    // Send mail with defined transport object
+    const result = await new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(info.messageId);
+      });
+    });
+
+    return result;
+  } catch (error) {
+    // Log errors to facilitate debugging
+    console.error('Error sending email:', error);
+    throw error;
+  }
+}
+
+module.exports = sendEmail;</code></pre></div><p>This code defines a function <code>sendEmail</code> that sends emails using Nodemailer and Gmail.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

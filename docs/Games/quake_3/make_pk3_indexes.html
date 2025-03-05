@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -211,7 +218,95 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates a map index for Quake 3 maps stored in <code>.pk3dir</code> archives.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs').promises;
+const path = require('path');
+const glob = require('glob');
+const os = require('os');
+
+const DEFAULT_PATH = path.join(
+  process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE || os.tmpdir(),
+  '/.quake3/bestmaps-cc'
+);
+
+/**
+ * Creates a JSON index of maps from PK3 directories.
+ * 
+ * @param {string} searchPath - The path to search for PK3 directories (default: DEFAULT_PATH).
+ * @param {string} prefixPath - The prefix to use for keys in the output JSON (default: '/base/baseq3-cc').
+ * @returns {Promise&lt;string&gt;} A JSON string representing the map index.
+ */
+async function makePk3MapIndex(searchPath = DEFAULT_PATH, prefixPath = '/base/baseq3-cc') {
+  // Resolve the search path
+  searchPath = path.resolve(searchPath);
+
+  // Find all PK3 directories
+  const pk3Dirs = glob.sync('**/*.pk3dir/', {
+    nodir: false,
+    cwd: searchPath,
+    nocase: true,
+  });
+
+  const allMaps = {};
+
+  // Process each PK3 directory
+  for (const dir of pk3Dirs) {
+    // Get the absolute path of the PK3 directory
+    const pk3Path = path.join(searchPath, dir);
+
+    // Find all files in the PK3 directory
+    const files = await glob('**/*', {
+      nodir: false,
+      cwd: pk3Path,
+      nocase: true,
+    });
+
+    // Filter the files to only include bsp files
+    const maps = files.filter(file =&gt; file.match(/\.bsp$/i));
+
+    // Create a key for the PK3 directory in the output JSON
+    const pk3Key = path.join(prefixPath, dir).toLowerCase();
+
+    // Create an object to store the files in the PK3 directory
+    const manifest = files.reduce((obj, file) =&gt; {
+      const filePath = path.join(pk3Path, file);
+      const stat = await fs.stat(filePath);
+      const key = path.join(prefixPath, file).toLowerCase() + (stat.isDirectory()? '/' : '');
+      obj[key] = {
+        name: path.join('/', dir, file).replace(/\/$/ig, ''),
+       ...(stat.isDirectory()? {} : { size: stat.size }),
+      };
+      return obj;
+    }, {});
+
+    // Create a JSON string for the manifest
+    const manifestJson = JSON.stringify(manifest, null, 2);
+
+    // Process each bsp file
+    for (const map of maps) {
+      // Get the name of the bsp file
+      const mapName = path.basename(map).toLowerCase().replace(/\.bsp/i, '');
+
+      // Create a key for the bsp file in the output JSON
+      const mapKey = path.join(prefixPath, path.basename(pk3Path), map).toLowerCase();
+
+      // Create an index file for the bsp file
+      const indexFile = path.join(searchPath, `index-${mapName}.json`);
+      await fs.writeFile(indexFile, manifestJson);
+
+      // Add the bsp file to the output JSON
+      allMaps[mapKey] = {
+        name: path.join('/', dir, map),
+        size: await fs.stat(path.join(searchPath, dir, map)).size,
+      };
+    }
+  }
+
+  // Return the output JSON as a string
+  return JSON.stringify(allMaps, null, 2);
+}
+
+module.exports = makePk3MapIndex;</code></pre></div><p>This code generates a map index for Quake 3 maps stored in <code>.pk3dir</code> archives.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

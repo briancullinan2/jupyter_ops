@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -177,7 +184,82 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be a set of test specifications for a system that integrates Zuora (a subscription management platform) with Eloqua (a marketing automation platform).</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>describe('zuora to eloqua integration', () =&gt; {
+  const testScenario = [
+   'start a trial through portal',
+    'add / remove support',
+    'acc / distributor updates',
+   'make a purchase',
+    'purchase expires',
+    'change quantity',
+    'cancel subscription',
+    'change quantity within 30 days of renewal',
+    'change quantity within 60 days of renewal',
+    'au/nz renewals',
+    'acc have eternally free terms',
+   'renew with new subscription, same account',
+   'renew new subscription, same email',
+  ];
+
+  beforeEach(() =&gt; {
+    // Initialize test environment
+    // Mock API calls as needed
+  });
+
+  it('should export a month of zuora data', async () =&gt; {
+    // Arrange
+    const zuoraData = {
+      // Mock zuora data
+    };
+
+    // Act
+    const exportedData = await exportZuoraData(zuoraData);
+
+    // Assert
+    expect(exportedData).toBeDefined();
+  });
+
+  it('should match all products in zuora catalog', async () =&gt; {
+    // Arrange
+    const zuoraCatalog = {
+      // Mock zuora catalog
+    };
+
+    // Act
+    const matchedProducts = await matchProducts(zuoraCatalog);
+
+    // Assert
+    expect(matchedProducts).toBeDefined();
+    expect(matchedProducts.length).toBeGreaterThan(0);
+  });
+
+  it('should transfer data end-to-end', async () =&gt; {
+    // Arrange
+    const zuoraData = {
+      // Mock zuora data
+    };
+
+    // Act
+    const transferredData = await transferData(zuoraData);
+
+    // Assert
+    expect(transferredData).toBeDefined();
+  });
+
+  it.each(testScenario)('should handle %s scenario', async (scenario) =&gt; {
+    // Arrange
+    const zuoraData = {
+      // Mock zuora data
+    };
+
+    // Act
+    const result = await handleScenario(zuoraData, scenario);
+
+    // Assert
+    expect(result).toBeDefined();
+  });
+});</code></pre></div><p>This code snippet appears to be a set of test specifications for a system that integrates Zuora (a subscription management platform) with Eloqua (a marketing automation platform).</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Test Suite:</strong></p>

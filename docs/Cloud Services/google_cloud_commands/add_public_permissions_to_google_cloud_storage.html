@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -93,7 +100,27 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet uses the <code>gsutil</code> command-line tool to set read access for all users on a specified Google Cloud Storage bucket and its contents.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Check if a bucket path is provided as a command-line argument
+if [[ -n "$1" ]]; then
+  # Define a function to configure public read access
+  configure_public_access() {
+    # Remove any leading or trailing slashes from the bucket path
+    bucket_path=${1#"${1%%[![:space:]]*}"}
+    bucket_path=${bucket_path%"${bucket_path##*[![:space:]]}"}
+
+    # Configure default ACL to grant read access to AllUsers
+    gsutil defacl ch -u AllUsers:R "${bucket_path}"
+
+    # Configure ACL for all objects within the bucket to grant read access to AllUsers
+    gsutil acl ch -u AllUsers:R "${bucket_path}/**"
+  }
+
+  # Call the function to configure public access
+  configure_public_access
+fi</code></pre></div><p>This code snippet uses the <code>gsutil</code> command-line tool to set read access for all users on a specified Google Cloud Storage bucket and its contents.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Conditional Check:</strong></p>

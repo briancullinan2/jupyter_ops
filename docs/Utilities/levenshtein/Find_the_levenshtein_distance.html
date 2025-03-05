@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -136,7 +143,61 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code implements the Levenshtein distance algorithm, which calculates the minimum number of edits (insertions, deletions, or substitutions) needed to transform one string into another.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Calculates the Levenshtein distance between two strings.
+ * This distance is a measure of the minimum number of single-character edits (insertions, deletions or substitutions) required to change one word into the other.
+ *
+ * @param {string} s The first string.
+ * @param {string} t The second string.
+ * @returns {number} The Levenshtein distance between the two strings.
+ */
+function levenshteinDistance(s, t) {
+  // If either string is empty, the distance is the length of the other string.
+  if (s.length === 0) return t.length;
+  if (t.length === 0) return s.length;
+
+  // Create a 2D array to store the distances between substrings.
+  const distances = Array(s.length + 1).fill(null).map(() =&gt; Array(t.length + 1).fill(0));
+
+  // Initialize the first row and column of the array.
+  for (let i = 0; i &lt;= s.length; i++) {
+    distances[i][0] = i;
+  }
+  for (let j = 0; j &lt;= t.length; j++) {
+    distances[0][j] = j;
+  }
+
+  // Fill in the rest of the array using dynamic programming.
+  for (let i = 1; i &lt;= s.length; i++) {
+    for (let j = 1; j &lt;= t.length; j++) {
+      const cost = s[i - 1] === t[j - 1]? 0 : 1;
+      const mi = Math.min(
+        distances[i - 1][j] + 1,
+        distances[i][j - 1] + 1,
+        distances[i - 1][j - 1] + cost
+      );
+
+      // If the current characters in the strings are equal, there is no cost.
+      if (cost === 0) {
+        distances[i][j] = mi;
+      } else {
+        // Otherwise, the cost is 1.
+        distances[i][j] = mi;
+
+        // Check for Damerau transposition.
+        if (i &gt; 1 &amp;&amp; j &gt; 1 &amp;&amp; s[i - 1] === t[j - 2] &amp;&amp; s[i - 2] === t[j - 1]) {
+          distances[i][j] = Math.min(distances[i][j], distances[i - 2][j - 2] + cost);
+        }
+      }
+    }
+  }
+
+  // The Levenshtein distance is stored in the bottom-right corner of the array.
+  return distances[s.length][t.length];
+}
+
+module.exports = levenshteinDistance;</code></pre></div><p>This code implements the Levenshtein distance algorithm, which calculates the minimum number of edits (insertions, deletions, or substitutions) needed to transform one string into another.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

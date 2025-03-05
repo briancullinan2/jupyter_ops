@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -149,7 +156,42 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const assert = require('assert');
+const { listUrlMaps, listTargetProxies, listGlobalForwards, listBackendBuckets } = require('../Core');
+
+describe('listing subdomains from load balancer', () => {
+    const project ='spahaha-ea443';
+    const map = 'web-map';
+    const proxy = 'web-map-target-proxy-5';
+
+    it('should list buckets maps', async () => {
+        // Get list of URL maps
+        const urlMaps = await listUrlMaps(project);
+        if (!urlMaps || Object.keys(urlMaps).length === 0) {
+            throw new Error('No URL maps found');
+        }
+        const urlMap = urlMaps[Object.keys(urlMaps)[0]];
+        console.log('URL Map Host Rules:', urlMap.hostRules);
+        console.log('URL Map Path Matchers:', urlMap.pathMatchers);
+        console.log('Path Matcher Path Rules:', urlMap.pathMatchers[0].pathRules);
+
+        // Get list of target proxies
+        const proxies = await listTargetProxies(project, map);
+        assert(proxies.length > 0,'should have a proxy');
+        console.log('Target Proxies:', proxies);
+
+        // Get list of global forwards
+        const rules = await listGlobalForwards(project, proxy);
+        assert(Object.keys(rules).length > 0,'should have a rule');
+        console.log('Global Forwards:', rules);
+
+        // Get list of backend buckets
+        const buckets = await listBackendBuckets(project);
+        assert(Object.keys(buckets).length > 0,'should have a bucket');
+        console.log('Backend Buckets:', buckets);
+    });
+});</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p><strong>Dependencies and Imports</strong></p>
 <ul>
 <li><code>assert</code> module is imported for testing assertions.</li>

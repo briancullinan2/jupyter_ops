@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>getClassNames</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Retrieves class names from a given code snippet, optionally filtered by namespace.
+ * 
+ * @param {string} code The code snippet to parse.
+ * @param {string} [namespace] The namespace to filter by (optional).
+ * @returns {Promise&lt;string[]&gt;} A promise resolving to an array of class names.
+ */
+export async function getClassNames(code, namespace = null) {
+  // Import the select function from the antlr-tree package
+  const { select } = await import('antlr-tree');
+
+  // Define the AST node selectors for class definitions
+  const selectors = {
+    classDefinition: '//class_definition',
+    classDefinitionInNamespace: '//namespace_declaration[contains(./qualified_identifier/@strdata, $namespace)]//class_definition',
+  };
+
+  // Define the properties to extract from each node
+  const properties = {
+    start: './@start',
+    stop: './@stop',
+    name: './identifier[1]/@strdata',
+  };
+
+  // Determine which selector to use based on the namespace filter
+  const selector = namespace? selectors.classDefinitionInNamespace : selectors.classDefinition;
+
+  // Select the class definitions with the specified properties
+  const results = await select(code, selector, properties);
+
+  // Sort the results by stop position in descending order
+  results.sort((a, b) =&gt; b.stop - b.start - (a.stop - a.start));
+
+  // Return the class names
+  return results.map((result) =&gt; result.name);
+}</code></pre></div><h3>Function: <code>getClassNames</code></h3>
 <h4>Description</h4>
 <p>Asynchronously extracts class names from C# code using an ANTLR parser.</p>
 <h4>Parameters</h4>

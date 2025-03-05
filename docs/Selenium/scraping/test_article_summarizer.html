@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>'use strict';
+
+const { extractLlmArticle } = require('./extractLlmArticle');
+const { seleniumClient } = require('./seleniumClient');
+const { summarizeLlmArticle } = require('./summarizeLlmArticle');
+
+/**
+ * Extracts a summary from a given article using a Selenium client and returns it.
+ * 
+ * @param {string} startPage The starting page URL to extract from.
+ * @param {Object} options Optional configuration for the client.
+ * @returns {Promise<string>} The extracted summary.
+ */
+async function testExtractor(startPage, options = {}) {
+  // Set default start page if not provided
+  if (!startPage) {
+    startPage = 'https://tsakraklides.com/2025/02/05/in-the-age-of-infinite-consumer-choice-the-only-choice-is-collapse/';
+  }
+
+  // Initialize Selenium client
+  const driver = await seleniumClient(options);
+
+  try {
+    // Extract article content
+    const result = await extractLlmArticle(driver, startPage);
+
+    // Clean up client
+    await driver.quit();
+
+    // Summarize extracted article
+    const summary = await summarizeLlmArticle(result);
+
+    return summary;
+  } catch (e) {
+    // Clean up client on error
+    await driver.quit();
+
+    // Re-throw error
+    throw e;
+  }
+}
+
+module.exports = testExtractor;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">const extractArticle = importer.import('extract llm article')
 const getClient = importer.import('selenium client')

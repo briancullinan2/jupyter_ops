@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -151,7 +158,86 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up an IMAP client to access Gmail using OAuth 2.0 authentication.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { Imap } = require('imap');
+const { GoogleAuth } = require('google-auth-library');
+const { promisify } = require('util');
+const mime = require('mime');
+const importer = require('../Core');
+const getCredentials = importer.import('decrypt passwords');
+
+// Define a constant for the profile path
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+// Define the path to the credentials file
+const CREDENTIALS_FILE = path.join(PROFILE_PATH, '.credentials/sheet to web-8ca5784e0b05.json');
+
+// Define the scope for Google authentication
+const GOOGLE_AUTH_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://mail.google.com/'
+];
+
+/**
+ * Authorizes Gmail using Google Auth Library
+ *
+ * @returns {Promise} A promise that resolves with the authenticated client
+ */
+async function authorizeGmail() {
+    const googleAuth = new GoogleAuth({
+        keyFile: CREDENTIALS_FILE,
+        scopes: GOOGLE_AUTH_SCOPE
+    });
+
+    return googleAuth.getClient();
+}
+
+/**
+ * Initializes the IMAP client
+ *
+ * @returns {Promise} A promise that resolves with the IMAP client instance
+ */
+async function imapClient() {
+    let client, imap;
+
+    try {
+        client = await authorizeGmail();
+        const response = await client.request({
+            url: 'https://people.googleapis.com/v1/people/me?personFields=names'
+        });
+
+        // Extract the access token from the response
+        const accessToken = client.credentials.access_token;
+
+        // Create the base64 encoded credentials string
+        const creds = `user=megamindbrian@gmail.com\x01auth=Bearer ${accessToken}\x01\x01`;
+        const base64Creds = (new Buffer(creds)).toString('base64');
+
+        // Initialize the IMAP client
+        imap = new Imap({
+            host: 'imap.gmail.com',
+            port: 993,
+            tls: true,
+            xoauth2: base64Creds,
+            debug: console.log
+        });
+
+        // Wait for the IMAP client to connect and open the mailbox
+        await Promise.all([
+            imap.connect(),
+            promisify(imap.openBox.bind(imap))('INBOX', true)
+        ]);
+
+        return imap;
+    } catch (error) {
+        console.error('Error initializing IMAP client:', error);
+        throw error;
+    }
+}
+
+module.exports = imapClient;</code></pre></div><p>This code sets up an IMAP client to access Gmail using OAuth 2.0 authentication.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./compile_an_es_module.html">compile an es module</a> | <a href="./compile_a_dylib_from_source_cell.html">compile a dylib from source cell</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This Node.js module builds and loads Dynamic Link Libraries (DLLs) from source code by interpreting, compiling, and caching DLLs based on source code changes. It utilizes various Node.js modules, custom modules, and notebooks to perform tasks such as interpreting source code, selecting ANTLR trees, and extracting class information.</p>
+  <p>The code imports modules, defines constants, and constructs paths to DLL files, before implementing two functions: <code>buildDLL</code>, which compiles DLLs from code, and <code>makeDLL</code>, which imports and interprets code, then logs extracted namespace information to the console.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "compile a csharp file into a DLL"</code></pre><h1>compile a csharp file into a DLL</h1>
@@ -189,32 +196,127 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
-<p>This code is a module that builds and loads Dynamic Link Libraries (DLLs) from source code. It uses Node.js's built-in modules and some custom modules (<code>../Core</code>) to interpret the source code, compile it to an object file, and then create a DLL.</p>
-<p><strong>Main Functions</strong></p>
-<ol>
-<li><code>buildDLL(code, pathToCode, ctx)</code>: This function builds the DLL by:
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const { EOL } = require('os');
+const { Module } = require('module');
+const dotnet = require('node-api-dotnet');
+const { spawnSync } = require('child_process');
+
+const BUILD_DIRECTORY = path.join(__dirname, '../.build');
+
+class DLLBuilder {
+  async buildDLL(code, pathToCode, ctx) {
+    if (!fs.existsSync(BUILD_DIRECTORY)) {
+      fs.mkdirSync(BUILD_DIRECTORY);
+    }
+
+    const {
+      importNotebook,
+      interpret
+    } = require('../Core');
+
+    const codeCell = await interpret(pathToCode);
+    const { safeurl } = importNotebook('domain cache tools');
+    const libName = safeurl(codeCell.questions[0]);
+    const libPath = path.join(BUILD_DIRECTORY, libName + '.cs');
+    const lastModified = (await fs.promises.stat(libPath)).mtime;
+    const file = await fs.promises.stat(codeCell.filename);
+    if (!fs.existsSync(libPath) || file.mtime > lastModified) {
+      await fs.promises.writeFile(libPath, codeCell.source.join(EOL));
+    }
+
+    const objPath = path.join(BUILD_DIRECTORY, libName + '.dll');
+    if (!fs.existsSync(objPath) || lastModified > (await fs.promises.stat(objPath)).mtime) {
+      const args = ['-target:library', '-out:' + objPath, libPath];
+      spawnSync('mcs', args, { stdio: [0, 1, 2] });
+    }
+  }
+}
+
+async function makeDLL(code, pathToCode, ctx) {
+  if (Module._cache[pathToCode]) {
+    return Module._cache[pathToCode].exports;
+  }
+
+  const dllBuilder = new DLLBuilder();
+  await dllBuilder.buildDLL(code, pathToCode, ctx);
+
+  const {
+    importNotebook,
+    interpret
+  } = require('../Core');
+  const codeCell = await interpret(pathToCode);
+
+  const { safeurl } = importNotebook('domain cache tools');
+  const libName = safeurl(codeCell.questions[0]);
+
+  const selectCode = await importNotebook('select antlr tree');
+  const rootNode = (await selectCode(['//*'], code.toString(), 'csharp'))[0];
+
+  const getClassParams = await importNotebook('list csharp params');
+  const getClassNames = await importNotebook('list csharp classes');
+  const getNamespacesBySize = await importNotebook('list csharp namespaces');
+  const namespace = (await getNamespacesBySize(rootNode))[0];
+  console.log(namespace);
+  dotnet.load(path.join(BUILD_DIRECTORY, libName + '.dll'));
+  const classes = await getClassNames(rootNode, namespace);
+  console.log(classes);
+  const params = await getClassParams(rootNode, classes[0]);
+  console.log(params);
+
+  dotnet[namespace][classes[0]].functions = params.map(p => p[0]);
+  for (let i = 0; i < params.length; i++) {
+    if (dotnet[namespace][classes[0]][params[i][0]]) {
+      dotnet[namespace][classes[0]][params[i][0]].params = params;
+    }
+  }
+
+  return dotnet[namespace][classes[0]];
+}
+
+module.exports.makeDLL = makeDLL;</code></pre></div><p><strong>Breakdown of the Code</strong></p>
+<h3>Requires and Imports</h3>
+<p>The code starts by importing the following modules:</p>
 <ul>
-<li>Checking if the build directory exists and creating it if not.</li>
-<li>Interpreting the source code using the <code>interpret</code> function from <code>../Core</code>.</li>
-<li>Comparing the source code file time with the existing DLL file time. If the source code has changed, it recompiles the DLL.</li>
-<li>Writing the compiled object file and DLL to the build directory.</li>
-</ul></li>
-<li><code>makeDLL(code, pathToCode, ctx)</code>: This function tries to load the DLL from the cache. If it doesn't exist, it calls <code>buildDLL</code> to build the DLL. It then:
-<ul>
-<li>Imports some custom modules.</li>
-<li>Interprets the source code using <code>interpret</code> from <code>../Core</code>.</li>
-<li>Selects the ANTLR tree using the <code>select antlr tree</code> module.</li>
-<li>Extracts the class names, namespaces, and parameters using the <code>list csharp params</code>, <code>list csharp classes</code>, and <code>list csharp namespaces</code> modules.</li>
-</ul></li>
-</ol>
-<p><strong>Notable Points</strong></p>
-<ul>
-<li>The code uses <code>fs</code> and <code>path</code> modules from Node.js to interact with the file system.</li>
-<li>It uses <code>child_process</code> to compile the source code to an object file.</li>
-<li>The <code>Module._cache</code> is used to cache the compiled DLL.</li>
-<li>The code uses some custom modules (<code>../Core</code>) and notebooks to perform tasks such as interpreting source code, selecting ANTLR trees, and extracting class information.</li>
+<li><code>fs</code> (File System) for file operations</li>
+<li><code>path</code> for path manipulation</li>
+<li><code>Module</code> from the <code>module</code> module (not shown in this snippet)</li>
+<li><code>importNotebook</code> and <code>interpret</code> from a local module named <code>../Core</code></li>
 </ul>
+<h3>Constants and File Pathing</h3>
+<ul>
+<li><code>BUILD_DIRECTORY</code> is defined as the path to a directory named <code>.build</code> in the parent directory of the current module.</li>
+<li><code>libName</code> is generated by taking the first <code>question</code> from the <code>codeCell</code> object and passing it to the <code>safeurl</code> function from <code>importNotebook('domain cache tools')</code>.</li>
+<li><code>libPath</code> is the full path to the DLL file, constructed by joining <code>BUILD_DIRECTORY</code>, <code>libName</code>, and the file extension <code>.cs</code>.</li>
+<li><code>objPath</code> is the full path to the DLL file, constructed by joining <code>BUILD_DIRECTORY</code>, <code>libName</code>, and the file extension <code>.dll</code>.</li>
+</ul>
+<h3>buildDLL Function</h3>
+<p>The <code>buildDLL</code> function checks if the <code>BUILD_DIRECTORY</code> exists and creates it if not. It then:</p>
+<ol>
+<li>Requires the <code>importNotebook</code> and <code>interpret</code> functions from <code>../Core</code>.</li>
+<li>Interprets the code at the specified <code>pathToCode</code> using <code>interpret</code>.</li>
+<li>Checks if the DLL file exists or if the source file has been modified since the last compilation. If either condition is true, it recompiles the DLL.</li>
+<li>Uses the <code>spawnSync</code> function from the <code>child_process</code> module to spawn a new process that compiles the DLL using a C# compiler (<code>mcs</code>).</li>
+<li>Writes the compiled DLL to disk.</li>
+</ol>
+<h3>makeDLL Function</h3>
+<p>The <code>makeDLL</code> function:</p>
+<ol>
+<li>Checks if a module is already cached for the specified <code>pathToCode</code>. If so, it returns the cached exports.</li>
+<li>Calls <code>buildDLL</code> to compile the DLL.</li>
+<li>Requires the <code>importNotebook</code> and <code>interpret</code> functions from <code>../Core</code>.</li>
+<li>Interprets the code at the specified <code>pathToCode</code> using <code>interpret</code>.</li>
+<li>Uses <code>importNotebook</code> to import three notebooks and extract the following information:
+<ul>
+<li><code>libName</code> from <code>safeurl</code> (same as in <code>buildDLL</code>).</li>
+<li>The root node of the ANTLR tree from <code>select antlr tree</code>.</li>
+<li>The namespace from <code>list csharp namespaces</code>.</li>
+</ul></li>
+<li>Logs the extracted namespace to the console.</li>
+</ol>
+<p><strong>Note</strong>: This breakdown only includes the code that is presented in the snippet. The actual code may contain additional functionality and dependencies not shown here.</p>
 
 </body>
 

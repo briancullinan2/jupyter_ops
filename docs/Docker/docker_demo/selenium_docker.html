@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -113,7 +120,59 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines two functions, <code>bashToRun</code> and <code>seleniumDocker</code>, to generate a Dockerfile for running Selenium with a VNC connection.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const fs = require('fs').promises; // Use promises for file system operations
+
+/**
+ * Converts bash commands to Docker RUN commands.
+ * @param {string} code - The bash code to convert.
+ * @returns {string} The converted Docker RUN commands.
+ */
+function bashToRun(code) {
+    // Split the code into lines, filter out empty lines, and map each line to a RUN command
+    return Array.from(code.split('\n'))
+       .filter(line => line.trim().length > 0)
+       .map(line => `RUN ${line.trim()}`)
+       .join('\n').replace(/\\\s*\nRUN\s*/ig, '\\\n ');
+}
+
+/**
+ * Creates a Selenium Dockerfile with VNC connection.
+ * @param {string} outputFile - The path to the output file.
+ * @returns {Promise<void>} A promise that resolves when the Dockerfile is created.
+ */
+async function seleniumDocker(outputFile) {
+    try {
+        // Interpret the code to generate the Dockerfile instructions
+        const r = await importer.interpret([
+            'run selenium inside docker',
+            'linux dev tools',
+            'vnc html',
+            'vnc in docker'
+        ]);
+        
+        // Log the results for debugging purposes
+        console.log(r);
+        
+        // Assemble the Dockerfile instructions
+        const dockerfileContent = [
+            r[0].code,
+            bashToRun(r[1].code),
+            bashToRun(r[2].code),
+            bashToRun(r[3].code), // Convert the last instruction to a RUN command
+            r[3].code // Append the original instruction
+        ].join('\n');
+        
+        // Save the Dockerfile
+        await fs.writeFile(outputFile, dockerfileContent);
+    } catch (error) {
+        // Handle any errors that occur during the process
+        console.error(error);
+    }
+}
+
+module.exports = seleniumDocker;</code></pre></div><p>This code defines two functions, <code>bashToRun</code> and <code>seleniumDocker</code>, to generate a Dockerfile for running Selenium with a VNC connection.</p>
 <p><strong><code>bashToRun(code)</code>:</strong></p>
 <ul>
 <li>Takes a string of bash commands as input.</li>

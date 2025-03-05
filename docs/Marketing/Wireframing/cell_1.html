@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -109,7 +116,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import * as os from 'os';
+
+/**
+ * Retrieves the hostname of the current system.
+ *
+ * @returns {string} The hostname of the current system.
+ */
+function getHostname(): string {
+  try {
+    // Use os.hostname() to get the hostname
+    const hostname = os.hostname();
+    if (!hostname) {
+      throw new Error('Hostname not found');
+    }
+    return hostname;
+  } catch (error) {
+    // Handle any errors that occur
+    throw new Error(`Failed to retrieve hostname: ${error.message}`);
+  }
+}
+
+// Example usage
+try {
+  const systemHostname = getHostname();
+  console.log(`Hostname: ${systemHostname}`);
+} catch (error) {
+  // Handle any exceptions
+  console.error(`Error: ${error.message}`);
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Module</h4>
 <pre><code class="language-javascript">var os = require('os')
 </code></pre>

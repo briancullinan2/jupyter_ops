@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -173,7 +180,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { importModule } = require('../Core');
+const { processMetaKernel } = importModule('process meta kernel');
+
+// Define the event listener for initialization
+function doInit(config) {
+  processMethods.do_init.call(this, config);
+  this.socket.stdout.on('data', message => this.doRespond(message));
+  this.socket.stderr.on('data', message => this.doRespond(message));
+}
+
+// Define the event listener for responding to messages
+function doRespond(message) {
+  /**
+   * Handle incoming messages from the stream
+   * @param {string} message - The incoming message
+   */
+  const { stdout } = message;
+  if (stdout) {
+    const { name, text } = stdout;
+    if (name ==='stream') {
+      // Handle stream messages
+      console.log(`Received stream message: ${text}`);
+    } else {
+      // Handle other types of messages
+      console.log(`Received message: ${text}`);
+    }
+  }
+}
+
+// Define the meta kernel replacer function
+function replMetaKernel(metaKernel) {
+  const meta = interface(metaKernel, metaKernelInterface);
+  const kernel = extend(meta, {
+    doRespond,
+    doInit,
+  });
+  return processMetaKernel(kernel);
+}
+
+module.exports = {
+  replMetaKernel,
+  doRespond,
+  doInit,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables and Imports</h4>
 <ul>
 <li><code>var importer = require('../Core')</code>: Imports a module from a parent directory (<code>../Core</code>) and assigns it to the <code>importer</code> variable.</li>

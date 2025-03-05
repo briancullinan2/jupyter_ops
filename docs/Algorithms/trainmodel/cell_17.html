@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -141,7 +148,16 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Model Compilation</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code># Define the model compilation parameters
+compilation_params = {
+    'optimizer': 'adam',
+    'loss': 'categorical_crossentropy',
+   'metrics': 'accuracy',
+}
+
+# Compile the model with the defined parameters
+model.compile(**compilation_params)</code></pre></div><h2>Model Compilation</h2>
 <h3>Method</h3>
 <p><code>model.compile()</code></p>
 <h3>Parameters</h3>

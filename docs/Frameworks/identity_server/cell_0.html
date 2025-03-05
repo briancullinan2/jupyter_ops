@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -126,7 +133,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const path = require('path');
+const fs = require('fs');
+const { interpret } = require('../Core');
+
+// Define constants
+const GITHUB_TOKEN_FILE_PATH = path.join(
+    process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
+    '.credentials',
+    'github_token.txt');
+
+// Function to format bash commands
+const formatBashCommands = (code) =&gt; {
+    // Split code into lines
+    const lines = code.split('\n');
+
+    // Format each line and join them back together
+    return lines.map((line) =&gt; `RUN ${line}`)
+       .join('\n').replace(/\\\s*\nRUN\s*/ig, '\\\n ');
+};
+
+// Function to create a Selenium Dockerfile with a VNC connection
+const createSeleniumDockerfile = (outputDir) =&gt; {
+    // Construct Dockerfile path
+    const dockerfilePath = path.resolve(path.join(outputDir, 'Dockerfile'));
+
+    // Define Dockerfile commands
+    const commands = [
+        'RUN Mono',
+        'RUN linux dev tools',
+        'RUN act identity repository',
+        'RUN build mono'
+    ];
+
+    // Interpret Dockerfile commands and format bash commands
+    return interpret(commands)
+       .then((results) =&gt; {
+            const formattedResults = results.map((result, index) =&gt; {
+                // Format bash commands for each result
+                result.code = formatBashCommands(result.code);
+
+                // Replace username placeholder in third result
+                if (index === 2) {
+                    result.code = result.code.replace('{username}', fs.readFileSync(GITHUB_TOKEN_FILE_PATH));
+                }
+
+                return result;
+            });
+
+            // Join formatted results into a single string
+            const dockerfileContent = formattedResults.map((result) =&gt; result.code).join('\n');
+
+            // Save Dockerfile content
+            fs.writeFileSync(dockerfilePath, dockerfileContent);
+
+            return dockerfileContent;
+        })
+       .catch((error) =&gt; {
+            console.error('Error creating Dockerfile:', error);
+            return null;
+        });
+};
+
+// Example usage
+const outputDir = './example';
+createSeleniumDockerfile(outputDir).then((dockerfileContent) =&gt; {
+    if (dockerfileContent) {
+        console.log('Dockerfile created successfully:');
+        console.log(dockerfileContent);
+    }
+}).catch((error) =&gt; {
+    console.error('Error creating Dockerfile:', error);
+});</code></pre></div><h3>Code Breakdown</h3>
 <h4>Module Imports</h4>
 <ul>
 <li><code>path</code>: a built-in Node.js module for working with file paths.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -615,7 +622,430 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>LZString Library Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Copyright (c) 2013 Pieroxy &lt;pieroxy@pieroxy.net&gt;
+// This work is free. You can redistribute it and/or modify it
+// under the terms of the WTFPL, Version 2
+// For more information see LICENSE.txt or http://www.wtfpl.net/
+//
+// For more information, the home page:
+// http://pieroxy.net/blog/pages/lz-string/testing.html
+//
+// LZ-based compression algorithm, version 1.4.4
+
+// Constants
+const base64KeyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+const base64ReverseDict = {};
+const uriSafeKeyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-
+</body>
+
+</html>;
+
+// Private functions
+function createBaseReverseDict(alphabet) {
+    const result = {};
+    for (let i = 0; i &lt; alphabet.length; i++) {
+        result[alphabet[i]] = i;
+    }
+    return result;
+}
+
+function getBaseValue(alphabet, character) {
+    const baseReverseDict = createBaseReverseDict(alphabet);
+    return baseReverseDict[character];
+}
+
+function padBase64(str) {
+    switch (str.length % 4) {
+        case 1:
+            return str + '===';
+        case 2:
+            return str + '==';
+        case 3:
+            return str + '=';
+        default:
+            return str;
+    }
+}
+
+// Public functions
+class LZString {
+    constructor() {
+        this.baseReverseDict = {};
+    }
+
+    compressToBase64(input) {
+        if (!input) return '';
+        const compressed = this._compress(input, 6, (a) =&gt; base64KeyStr.charAt(a));
+        return padBase64(compressed);
+    }
+
+    decompressFromBase64(input) {
+        if (!input) return '';
+        if (input === '') return null;
+        return this._decompress(input.length, 32, (index) =&gt; getBaseValue(base64KeyStr, input.charAt(index)));
+    }
+
+    compressToUTF16(input) {
+        if (!input) return '';
+        return this._compress(input, 15, (a) =&gt; String.fromCharCode(a + 32)) +'';
+    }
+
+    decompressFromUTF16(compressed) {
+        if (!compressed) return '';
+        if (compressed === '') return null;
+        return this._decompress(compressed.length, 16384, (index) =&gt; compressed.charCodeAt(index) - 32);
+    }
+
+    compressToUint8Array(uncompressed) {
+        const compressed = this.compress(uncompressed);
+        const buf = new Uint8Array(compressed.length * 2);
+        for (let i = 0, TotalLen = compressed.length; i &lt; TotalLen; i++) {
+            const current_value = compressed.charCodeAt(i);
+            buf[i * 2] = current_value &gt;&gt;&gt; 8;
+            buf[i * 2 + 1] = current_value % 256;
+        }
+        return buf;
+    }
+
+    decompressFromUint8Array(compressed) {
+        if (!compressed) return '';
+        const buf = new Array(compressed.length / 2);
+        for (let i = 0, TotalLen = buf.length; i &lt; TotalLen; i++) {
+            buf[i] = compressed[i * 2] * 256 + compressed[i * 2 + 1];
+        }
+        const result = [];
+        buf.forEach((c) =&gt; result.push(String.fromCharCode(c)));
+        return this.decompress(result.join(''));
+
+    }
+
+    compressToEncodedURIComponent(input) {
+        if (!input) return '';
+        return this._compress(input, 6, (a) =&gt; uriSafeKeyStr.charAt(a));
+    }
+
+    decompressFromEncodedURIComponent(input) {
+        if (!input) return '';
+        if (input === '') return null;
+        input = input.replace(/ /g, '+');
+        return this._decompress(input.length, 32, (index) =&gt; getBaseValue(uriSafeKeyStr, input.charAt(index)));
+    }
+
+    compress(uncompressed) {
+        return this._compress(uncompressed, 16, (a) =&gt; String.fromCharCode(a));
+    }
+
+    _compress(uncompressed, bitsPerChar, getCharFromInt) {
+        if (!uncompressed) return '';
+        const dictionary = {};
+        const dictionaryToCreate = {};
+        const context_c = '';
+        const context_wc = '';
+        const context_w = '';
+        let context_enlargeIn = 2;
+        let context_dictSize = 3;
+        let context_numBits = 2;
+        const context_data = [];
+        let context_data_val = 0;
+        let context_data_position = 0;
+
+        for (let ii = 0; ii &lt; uncompressed.length; ii++) {
+            const context_c = uncompressed.charAt(ii);
+            if (!dictionary[context_c]) {
+                dictionary[context_c] = context_dictSize++;
+                dictionaryToCreate[context_c] = true;
+            }
+            const context_wc = context_w + context_c;
+            if (dictionary[context_wc]) {
+                context_w = context_wc;
+            } else {
+                if (dictionaryToCreate[context_w]) {
+                    this._addValueToDictionary(dictionary, dictionaryToCreate, context_w, context_dictSize, context_numBits, context_data, bitsPerChar, getCharFromInt);
+                } else {
+                    const value = dictionary[context_w];
+                    this._addValueToDictionary(dictionary, dictionaryToCreate, value, context_dictSize, context_numBits, context_data, bitsPerChar, getCharFromInt);
+                }
+                dictionary[context_wc] = context_dictSize++;
+                context_w = context_c;
+            }
+        }
+
+        // Output the code for w.
+        if (context_w!== '') {
+            this._addValueToDictionary(dictionary, dictionaryToCreate, context_w, context_dictSize, context_numBits, context_data, bitsPerChar, getCharFromInt);
+        }
+
+        // Mark the end of the stream
+        const value = 2;
+        for (let i = 0; i &lt; context_numBits; i++) {
+            context_data_val = (context_data_val &lt;&lt; 1) | (value &amp; 1);
+            if (context_data_position == bitsPerChar - 1) {
+                context_data_position = 0;
+                context_data.push(getCharFromInt(context_data_val));
+                context_data_val = 0;
+            } else {
+                context_data_position++;
+            }
+            value = value &gt;&gt; 1;
+        }
+
+        // Flush the last char
+        while (true) {
+            context_data_val = (context_data_val &lt;&lt; 1);
+            if (context_data_position == bitsPerChar - 1) {
+                context_data.push(getCharFromInt(context_data_val));
+                break;
+            } else context_data_position++;
+        }
+        return context_data.join('');
+    }
+
+    _addValueToDictionary(dictionary, dictionaryToCreate, value, dictSize, numBits, context_data, bitsPerChar, getCharFromInt) {
+        let enlargeIn = Math.pow(2, numBits);
+        let numBitsCurrent = numBits;
+        let context_enlargeIn;
+        if (value &lt; 256) {
+            context_enlargeIn = 2;
+            for (let i = 0; i &lt; numBits; i++) {
+                context_data_val = (context_data_val &lt;&lt; 1);
+                if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                } else {
+                    context_data_position++;
+                }
+            }
+            const valueCurrent = value;
+            for (let i = 0; i &lt; 8; i++) {
+                context_data_val = (context_data_val &lt;&lt; 1) | (valueCurrent &amp; 1);
+                if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                } else {
+                    context_data_position++;
+                }
+                valueCurrent = valueCurrent &gt;&gt; 1;
+            }
+        } else {
+            context_enlargeIn = 4;
+            for (let i = 0; i &lt; numBits; i++) {
+                context_data_val = (context_data_val &lt;&lt; 1) | 1;
+                if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                } else {
+                    context_data_position++;
+                }
+            }
+            const valueCurrent = value;
+            for (let i = 0; i &lt; 16; i++) {
+                context_data_val = (context_data_val &lt;&lt; 1) | (valueCurrent &amp; 1);
+                if (context_data_position == bitsPerChar - 1) {
+                    context_data_position = 0;
+                    context_data.push(getCharFromInt(context_data_val));
+                    context_data_val = 0;
+                } else {
+                    context_data_position++;
+                }
+                valueCurrent = valueCurrent &gt;&gt; 1;
+            }
+        }
+        if (context_enlargeIn == 0) {
+            context_enlargeIn = enlargeIn;
+            numBitsCurrent++;
+        }
+        delete dictionaryToCreate[value];
+        return;
+    }
+
+    decompress(compressed) {
+        if (!compressed) return '';
+        if (compressed === '') return null;
+        return this._decompress(compressed.length, 32768, (index) =&gt; compressed.charCodeAt(index));
+    }
+
+    _decompress(length, resetValue, getNextValue) {
+        const dictionary = Array(4).fill(0).map((_, i) =&gt; i);
+        let next;
+        let enlargeIn = 4;
+        let dictSize = 4;
+        let numBits = 3;
+        const entry = '';
+        const result = [];
+        let i;
+        let w;
+        let bits;
+        let resb;
+        let maxpower;
+        let power;
+        let c;
+        const data = { val: getNextValue(0), position: resetValue, index: 1 };
+
+        for (i = 0; i &lt; 3; i += 1) {
+            dictionary[i] = i;
+        }
+
+        bits = 0;
+        maxpower = Math.pow(2, 2);
+        power = 1;
+        while (power!== maxpower) {
+            resb = data.val &amp; data.position;
+            data.position &gt;&gt;= 1;
+            if (data.position == 0) {
+                data.position = resetValue;
+                data.val = getNextValue(data.index++);
+            }
+            bits |= (resb &gt; 0? 1 : 0) * power;
+            power &lt;&lt;= 1;
+        }
+
+        switch (next = bits) {
+            case 0:
+                bits = 0;
+                maxpower = Math.pow(2, 8);
+                power = 1;
+                while (power!== maxpower) {
+                    resb = data.val &amp; data.position;
+                    data.position &gt;&gt;= 1;
+                    if (data.position == 0) {
+                        data.position = resetValue;
+                        data.val = getNextValue(data.index++);
+                    }
+                    bits |= (resb &gt; 0? 1 : 0) * power;
+                    power &lt;&lt;= 1;
+                }
+                c = String.fromCharCode(bits);
+                break;
+            case 1:
+                bits = 0;
+                maxpower = Math.pow(2, 16);
+                power = 1;
+                while (power!== maxpower) {
+                    resb = data.val &amp; data.position;
+                    data.position &gt;&gt;= 1;
+                    if (data.position == 0) {
+                        data.position = resetValue;
+                        data.val = getNextValue(data.index++);
+                    }
+                    bits |= (resb &gt; 0? 1 : 0) * power;
+                    power &lt;&lt;= 1;
+                }
+                c = String.fromCharCode(bits);
+                break;
+            case 2:
+                return '';
+        }
+        dictionary[3] = c;
+        w = c;
+        result.push(c);
+        while (true) {
+            if (data.index &gt; length) {
+                return '';
+            }
+
+            bits = 0;
+            maxpower = Math.pow(2, numBits);
+            power = 1;
+            while (power!== maxpower) {
+                resb = data.val &amp; data.position;
+                data.position &gt;&gt;= 1;
+                if (data.position == 0) {
+                    data.position = resetValue;
+                    data.val = getNextValue(data.index++);
+                }
+                bits |= (resb &gt; 0? 1 : 0) * power;
+                power &lt;&lt;= 1;
+            }
+
+            switch (c = bits) {
+                case 0:
+                    bits = 0;
+                    maxpower = Math.pow(2, 8);
+                    power = 1;
+                    while (power!== maxpower) {
+                        resb = data.val &amp; data.position;
+                        data.position &gt;&gt;= 1;
+                        if (data.position == 0) {
+                            data.position = resetValue;
+                            data.val = getNextValue(data.index++);
+                        }
+                        bits |= (resb &gt; 0? 1 : 0) * power;
+                        power &lt;&lt;= 1;
+                    }
+                    dictionary[dictSize++] = String.fromCharCode(bits);
+                    c = dictSize - 1;
+                    enlargeIn--;
+                    break;
+                case 1:
+                    bits = 0;
+                    maxpower = Math.pow(2, 16);
+                    power = 1;
+                    while (power!== maxpower) {
+                        resb = data.val &amp; data.position;
+                        data.position &gt;&gt;= 1;
+                        if (data.position == 0) {
+                            data.position = resetValue;
+                            data.val = getNextValue(data.index++);
+                        }
+                        bits |= (resb &gt; 0? 1 : 0) * power;
+                        power &lt;&lt;= 1;
+                    }
+                    dictionary[dictSize++] = String.fromCharCode(bits);
+                    c = dictSize - 1;
+                    enlargeIn--;
+                    break;
+                case 2:
+                    return result.join('');
+            }
+
+            if (enlargeIn == 0) {
+                enlargeIn = Math.pow(2, numBits);
+                numBits++;
+            }
+
+            if (dictionary[c]) {
+                entry = dictionary[c];
+            } else {
+                if (c == dictSize) {
+                    entry = w + w.charAt(0);
+                } else {
+                    return null;
+                }
+            }
+            result.push(entry);
+
+            // Add w+entry[0] to the dictionary.
+            dictionary[dictSize++] = w + entry.charAt(0);
+            enlargeIn--;
+
+            w = entry;
+
+            if (enlargeIn == 0) {
+                enlargeIn = Math.pow(2, numBits);
+                numBits++;
+            }
+
+        }
+    }
+}
+
+// Export
+if (typeof define === 'function' &amp;&amp; define.amd) {
+    define(function () {
+        return LZString;
+    });
+} else if (typeof module!== 'undefined' &amp;&amp; module!= null) {
+    module.exports = LZString
+} else if (typeof angular!== 'undefined' &amp;&amp; angular!= null) {
+    angular.module('LZString', [])
+       .factory('LZString', function () {
+            return LZString;
+        });
+}</code></pre></div><p><strong>LZString Library Breakdown</strong></p>
 <p>The LZString library is a JavaScript implementation of the LZ77 compression algorithm. It provides methods for compressing and decompressing strings using Base64 and UTF16 encoding schemes.</p>
 <h3>Private Variables and Functions</h3>
 <ul>

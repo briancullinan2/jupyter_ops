@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet sets up a Ruby development environment using Homebrew and rbenv.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Install Ruby using rbenv
+brew install rbenv automake gmp libtool wget
+rbenv install -v 2.4.1
+
+# Set default ruby version globally
+rbenv global 2.4.1
+
+# Add rbenv init to bashrc
+echo "eval \"\$(rbenv init -)\"" >> ~/.bashrc
+source ~/.bashrc
+
+# Install ZeroMQ and czmq using Homebrew
+brew install zeromq czmq --HEAD
+
+# Install cztop gem
+gem install cztop
+
+# Install iruby and register it for usage
+iruby register --force</code></pre></div><p>This code snippet sets up a Ruby development environment using Homebrew and rbenv.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>brew install rbenv automake gmp libtool wget</code></strong>: This installs several packages required for building Ruby extensions and managing dependencies using Homebrew.</p></li>

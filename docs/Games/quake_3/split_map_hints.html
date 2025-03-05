@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -314,7 +321,182 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet processes a Quake map file, extracts entity and brush information, and potentially applies hints or modifications based on predefined rules.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const fs = require('fs');
+const importer = require('../Core');
+
+// Import required functions
+const {
+  MAPS_HINTS,
+  addHints,
+  regexToArray,
+  isInside,
+  translateMap,
+  addSkybox,
+} = importer.import([
+  'draw hints in map',
+  'add hints in map',
+ 'regex array',
+  'is inside',
+  'translate quake map',
+  'add skybox to map',
+]);
+
+// Define constants
+const BUFFER_UNITS = 200;
+const ENTITIES_EXP = /\{[^\{\}]*?"classname"\s*"([^"]*)"[^\{\}]*?(\{[^\{\}]*?\}[^\{\}]*?)*\}/ig;
+const BRUSH_EXP = /\{[^\{\}]*?\}\s*/ig;
+const MOVES = [
+  [0, 0],
+  [BUFFER_UNITS, 0],
+  [0, BUFFER_UNITS],
+  [BUFFER_UNITS, BUFFER_UNITS],
+  [-BUFFER_UNITS, 0],
+  [0, -BUFFER_UNITS],
+  [-BUFFER_UNITS, -BUFFER_UNITS],
+];
+
+/**
+ * Splits hints into individual maps.
+ *
+ * @param {string} fileName - Name of the file to read from.
+ * @param {object} hints - Hints to apply.
+ * @returns {array} - List of translated maps.
+ */
+function splitHints(fileName, hints) {
+  let file;
+  if (typeof fileName ==='string' &amp;&amp; fs.existsSync(fileName)) {
+    file = fs.readFileSync(fileName).toString('utf-8');
+    if (!hints) {
+      hints = path.basename(fileName).replace(/[-_]converted|\.map$/ig, '');
+    }
+  } else {
+    file = fileName;
+  }
+
+  if (typeof hints!== 'object') {
+    hints = Object.keys(MAPS_HINTS).reduce((obj, k) =&gt; {
+      const exp = new RegExp(hints, 'ig');
+      if (k.match(exp)) {
+        obj[k] = MAPS_HINTS[k];
+      }
+      return obj;
+    }, {});
+  }
+
+  const multimaps = {};
+  const worldspawn = {};
+  Object.keys(hints).forEach((k) =&gt; {
+    multimaps[k] = [];
+    worldspawn[k] = [];
+  });
+
+  const entities = regexToArray(ENTITIES_EXP, file, false);
+  entities.forEach((ent, index) =&gt; {
+    const include = false;
+    const points = [];
+
+    ent.points = points;
+
+    const brushes = regexToArray(BRUSH_EXP, ent[0]);
+
+    brushes.forEach((brush, brushIndex) =&gt; {
+      if (brush.includes('/sky')) {
+        return;
+      }
+
+      const pts = regexToArray(/\(((\s*[0-9\.-]+\s*)*)\)/ig, brush, 1)
+       .map((m) =&gt; m.trim().split(/\s+/ig).map((n) =&gt; (n.includes('.')? parseFloat(n.trim()) : parseInt(n.trim()))));
+      pts.forEach((b, ptIndex) =&gt; {
+        Object.keys(hints).forEach((k, hintIndex) =&gt; {
+          if (worldspawn[k].indexOf(brush) === -1) {
+            for (const move of MOVES) {
+              if (isInside(hints[k].map((h, i) =&gt; ({ x: h[0], y: h[1] })), hints[k].length - 1, { x: b[0] + move[0], y: b[1] + move[1] })) {
+                points.push(pts[ptIndex]);
+                worldspawn[k].push(brush);
+                return;
+              }
+            }
+          }
+        });
+      });
+    });
+
+    const skipOrigin = false;
+    Object.keys(worldspawn).forEach((k, i) =&gt; {
+      if (!worldspawn[k].length) return;
+
+      multimaps[k].push({
+        0: ent[0].replace(BRUSH_EXP, '').replace('}', worldspawn[k].join('\n') + '}'),
+        points: points,
+      });
+      worldspawn[k] = [];
+      skipOrigin = true;
+    });
+    if (skipOrigin) return;
+
+    const origins = regexToArray(/"origin"\s+"((\s*[0-9\.-]+\s*)*)"/ig, ent[0], 1)
+     .map((o) =&gt; o.trim().split(/\s+/ig).map((n) =&gt; (n.includes('.')? parseFloat(n.trim()) : parseInt(n.trim()))));
+
+    origins.forEach((b, i) =&gt; {
+      Object.keys(hints).forEach((k, j) =&gt; {
+        for (const move of MOVES) {
+          if (isInside(hints[k].map((h, index) =&gt; ({ x: h[0], y: h[1] })), hints[k].length - 1, { x: b[0] + move[0], y: b[1] + move[1] })) {
+            points.push(b);
+            multimaps[k].push(entities[index]);
+          }
+        }
+      });
+    });
+  });
+
+  // Get middle 50% of all points
+  const translations = Object.keys(multimaps).map((k) =&gt; {
+    const result = [];
+    for (let i = 0; i &lt; 3; i++) {
+      const points = multimaps[k]
+       .map((ent) =&gt; ent.points.map((p) =&gt; p[i]))
+       .flat();
+      points.sort();
+      result[i] = -Math.round(
+        points
+         .slice(points.length / 4, points.length / 4 * 3)
+         .reduce((a, b) =&gt; a + b, 0) /
+          (points.length / 2)
+      ) *
+        147.2;
+    }
+    return result;
+  });
+
+  console.log(translations);
+
+  const maps = Object.keys(multimaps).forEach((k, i) =&gt; {
+    const map = multimaps[k]
+     .filter((ent, index, array) =&gt; array.indexOf(ent) === index)
+     .map((ent) =&gt; ent[0])
+     .join('\n');
+
+    map = translateMap(map, translations[i]);
+
+    map = addSkybox(map);
+
+    file = addHints(file, [hints[k]]);
+
+    if (typeof fileName ==='string' &amp;&amp; fs.existsSync(fileName)) {
+      const newFile = path.join(path.dirname(path.resolve(fileName)), path.basename(k) + '.map');
+      console.log(`Writing ${newFile}`);
+      fs.writeFileSync(newFile, map);
+    } else {
+      return map;
+    }
+  });
+
+  return maps;
+}
+
+module.exports = splitHints;</code></pre></div><p>This code snippet processes a Quake map file, extracts entity and brush information, and potentially applies hints or modifications based on predefined rules.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -146,7 +153,74 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code generates a simple pie chart visualization using D3.js.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const d3 = require('d3');
+
+/**
+ * Creates a Pie Chart using D3.js
+ * @param {Object[]} values - Data for the chart, each object must have a 'label' and a 'value'
+ * @returns {string} The SVG string representation of the chart
+ */
+function d3PieChart(values) {
+    // Constants
+    const MARGIN = { top: 100, right: 100, bottom: 100, left: 100 };
+    const HEIGHT = 500;
+    const WIDTH = 500;
+
+    // Calculate radius
+    const radius = Math.min(HEIGHT - MARGIN.top - MARGIN.bottom, WIDTH - MARGIN.left - MARGIN.right) / 2;
+
+    // Color scale
+    const color = d3.scaleOrdinal(d3.schemeAccent);
+
+    // Create SVG
+    const svg = d3.select('body').append('svg')
+       .attr('width', WIDTH + MARGIN.left + MARGIN.right)
+       .attr('height', HEIGHT + MARGIN.top + MARGIN.bottom)
+       .append('g')
+       .attr('transform', `translate(${WIDTH / 2 + MARGIN.left}, ${HEIGHT / 2 + MARGIN.top})`);
+
+    // Pie layout
+    const pie = d3.pie()
+       .sort(null)
+       .value(d =&gt; d.value);
+
+    // Arcs
+    const arc = d3.arc()
+       .outerRadius(radius - 10)
+       .innerRadius(0);
+
+    const label = d3.arc()
+       .outerRadius(radius + 5)
+       .innerRadius(radius + 5);
+
+    // Data binding
+    const g = svg.selectAll('.arc')
+       .data(pie(values))
+       .enter().append('g')
+       .attr('class', 'arc');
+
+    // Draw paths and labels
+    g.append('path')
+       .attr('d', arc)
+       .attr('fill', d =&gt; color(d.data.label))
+       .attr('opacity', 0.7);
+
+    g.append('text')
+       .text(d =&gt; d.data.label +'-'+ d.data.value)
+       .attr('dy', '0.35em')
+       .attr('transform', d =&gt; {
+            const midAngle = (d.endAngle &lt; Math.PI)? (d.startAngle + d.endAngle) / 2 : (d.startAngle + d.endAngle) / 2 + Math.PI;
+            return `translate(${label.centroid(d)}) rotate(-90) rotate(${midAngle * 180 / Math.PI})`;
+        })
+       .attr('font-size', 12)
+       .attr('text-anchor','middle');
+
+    // Return SVG string
+    return svg.node().outerHTML;
+}
+
+module.exports = d3PieChart;</code></pre></div><p>This code generates a simple pie chart visualization using D3.js.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

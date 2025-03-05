@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -122,7 +129,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { v4: uuid } = require('uuid');
+const { importFunctions } = require('../Core');
+const {
+  getSheetIdentifier,
+  copyFileOnGoogleDrive,
+  listGoogleDriveFiles,
+  insertGoogleDrivePermissions,
+} = importFunctions();
+
+/**
+ * Copies the 'Marketing site' file on Google Drive, inserts a permission, and returns the file ID.
+ * 
+ * @param {string} email - The email address to grant permission to.
+ * @returns {Promise&lt;string&gt;} The ID of the copied file.
+ */
+function copyMarketing(email) {
+  // TODO: Handle error cases where the 'Marketing site' file does not exist.
+  return listGoogleDriveFiles()
+   .then((files) =&gt; {
+      const marketingFile = files.find((file) =&gt; file.name === 'Marketing site');
+      return marketingFile? marketingFile.id : null;
+    })
+   .then((fileId) =&gt; {
+      if (!fileId) {
+        throw new Error("File 'Marketing site' not found.");
+      }
+      return copyFileOnGoogleDrive(fileId, `Marketing site ${uuid().substr(0, 5)}`);
+    })
+   .then((id) =&gt; insertGoogleDrivePermissions(id, email))
+   .then(() =&gt; getSheetIdentifier(id, email))
+   .then(() =&gt; id);
+}
+
+module.exports = copyMarketing;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code starts by importing several modules:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -189,7 +196,132 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const { importer } = require('./importer');
+const { express, path, cors, cookieParser } = require('express');
+const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
+const directoryToHtml = importer.import('directory to html');
+const authenticateRoute = importer.import('discord authenticate instances');
+const getToken = importer.import('discord express token endpoint');
+
+// Define constants
+const BASE_DIRECTORY = process.env.BASE_DIRECTORY;
+const DEFAULT_APPLICATION = importer.import('discord configuration');
+const BASE_URI = `https://${DEFAULT_APPLICATION}.discordsays.com/.proxy/`;
+const EXPRESS_PORT = process.env.EXPRESS_PORT || 3001;
+
+// Create the Express application
+const app = express();
+
+// Enable CORS, JSON parsing, and cookie parsing
+app.use(cors({ credentials: true, origin: '*' }));
+app.use(express.json());
+app.use(cookieParser());
+
+// Set up routes
+app.post('/api/token', getToken);
+// app.post('/register', registerInstance);
+app.get('/', authenticateRoute, discordLogin);
+app.get('*', authenticateRoute, handleDirectory);
+
+// Serve static files
+// app.use('/Music', express.static(path.join(BASE_DIRECTORY, 'Music')));
+app.get('/amplitude.js', (req, res) => {
+  return res.sendFile(path.join(__dirname, '../amplitude.js'));
+});
+app.get('/amplitude.css', (req, res) => {
+  return res.sendFile(path.join(__dirname, '../amplitude.css'));
+});
+
+// Create a unique instance for each request
+const INSTANCES = {};
+
+// Define the discordLogin function
+async function discordLogin(baseURI, req, res, next) {
+  try {
+    const basePath = path.resolve(BASE_DIRECTORY);
+    const combined = path.join(basePath, decodeURIComponent(req.path));
+    const isDirectory = fs.existsSync(combined) && fs.statSync(combined).isDirectory();
+
+    if (!isDirectory) {
+      return next();
+    }
+
+    const htmlCode = await directoryToHtml(combined, req.path.split('/').length > 2, req.authenticated);
+    const clientAuthCode = importer.interpret('discord client auth code')
+     .code
+     .replaceAll('{CLIENT_ID}', DEFAULT_APPLICATION)
+     .replaceAll('{BASE_URI}', baseURI);
+
+    htmlCode = htmlCode.replace('<head>', `<head>
+      <base href="/.proxy/" />
+      <script type="text/javascript">${clientAuthCode}</script>`);
+    return res.send(htmlCode);
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+}
+
+// Define the handleDirectory function
+async function handleDirectory(req, res, next) {
+  try {
+    const basePath = path.resolve(BASE_DIRECTORY);
+    const combined = path.join(basePath, decodeURIComponent(req.path));
+    const isDirectory = fs.existsSync(combined) && fs.statSync(combined).isDirectory();
+
+    if (!isDirectory) {
+      return next();
+    }
+
+    const htmlCode = await directoryToHtml(combined, req.path.split('/').length > 2, req.authenticated);
+    return res.send(htmlCode);
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+}
+
+// Define the discordExpress function
+async function discordExpress(activity) {
+  if (!express) {
+    return false;
+  }
+
+  if (activity.participants.length === 0 && server) {
+    server.close();
+    server = null;
+  }
+
+  if (activity.length > 1 || server) {
+    return;
+  }
+
+  const server = await app.listen(EXPRESS_PORT, () => {
+    console.log(`Listening on: ${EXPRESS_PORT}`);
+  });
+  return { server };
+}
+
+// Define the closeExpress function
+function closeExpress(activity) {
+  if (!activity) {
+    return;
+  }
+
+  if (server) {
+    server.close();
+    server = null;
+  }
+}
+
+module.exports = {
+  discordExpress,
+  closeExpress,
+  INSTANCES,
+};</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules and Variables</h3>
 <p>The code starts by importing various modules and variables using the <code>importer</code> module. The imported modules and variables include:</p>
 <ul>

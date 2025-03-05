@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -174,7 +181,48 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const { importInterface } = require('../Core');
+
+const jsonInterface = {
+  display_name: '',
+  argv: [], // not optional
+  language: '', // not optional
+  metadata: [null, {}], // optional
+  env: [null, {}], // optional
+  interrupt_mode: [null, null], // optional
+};
+
+/**
+ * Creates a wired JSON object based on the kernel JSON object.
+ * 
+ * @param {Object} kernel_json The kernel JSON object.
+ * @returns {Object} The wired JSON object.
+ */
+function wireJson(kernel_json) {
+  const wire_json = interface(kernel_json, jsonInterface);
+  wire_json.argv = (kernel_json.argv || []).concat(kernel_json.argv.includes('{connection_file}')? kernel_json.argv : ['{connection_file}']);
+  return wire_json;
+}
+
+/**
+ * Creates a path JSON object based on the kernel JSON object.
+ * 
+ * @param {Object} kernel_json The kernel JSON object.
+ * @returns {Object} The path JSON object.
+ */
+function pathJson(kernel_json) {
+  const parsedArgs = kernel_json.path? [kernel_json.path].concat(kernel_json.argv || kernel_json.args || []) : [].concat(kernel_json.argv || kernel_json.args || []);
+  return interface(Object.assign({}, kernel_json, { argv: parsedArgs }), jsonInterface);
+}
+
+module.exports = {
+  jsonInterface,
+  wireJson,
+  pathJson,
+  importInterface
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Variables and Modules</h4>
 <ul>
 <li><code>var path = require('path')</code>: Requires the built-in Node.js <code>path</code> module.</li>

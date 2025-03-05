@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,8 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./__________________1__________.html">(=\{((:[^{}]++|\{(1)\})++)\})</a> | <a href="./file_tools__match_filename.html">file tools, match filename</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The code declares variables for a user's profile directory path and a project directory path, then calls an asynchronous function that searches for long functions in the project directory and sends the results or errors to <code>$().sendResult()</code> or <code>$().sendError()</code>.</p>
-<p>The purpose of <code>$().async()</code> and <code>$().sendResult()</code>/<code>$().sendError()</code> is unknown as it is not clearly documented.</p>
+  <p>The code declares variables and calculates the <code>project</code> path by concatenating environment variables. It then calls the <code>findLongFunctions</code> function to find and return potentially long functions in the project, handling the result with a <code>then</code> and <code>catch</code> block.</p>
 <h1>Cell 12</h1>
 
 
@@ -126,30 +132,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
-<h4>Variable Declarations</h4>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+// Define constants for user profile path and project directory
+const USER_PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = `${USER_PROFILE_PATH}/Documents/asm`;
+
+// Import required functions (assuming findLongFunctions is a separate module)
+import { findLongFunctions } from './utils'; // Replace with actual module path
+import { sendResult, sendError } from './communication'; // Replace with actual module path
+
+// Check if $ object is defined
+if (typeof $!== 'undefined') {
+  // Call async method on $ object
+  $.async();
+
+  // Call findLongFunctions with project path and handle promise resolution
+  findLongFunctions(PROJECT_PATH)
+   .then((result) =&gt; sendResult(result.map((m) =&gt; m.path)))
+   .catch((error) =&gt; sendError(error))
+   .finally(() =&gt; {
+      // Cleanup or logging after the promise is resolved or rejected
+      console.log('Finished processing');
+    });
+}
+
+// TODO: Consider removing hardcoded paths and using a more robust configuration mechanism
+// TODO: Implement error handling for $ object
+```</code></pre></div><h2>Code Breakdown</h2>
+<h3>Variable Declarations</h3>
 <ul>
-<li><code>PROFILE_PATH</code>: stores the path to the user's profile directory, prioritizing:
-<ol>
-<li><code>process.env.HOME</code></li>
-<li><code>process.env.HOMEPATH</code> (Windows)</li>
-<li><code>process.env.USERPROFILE</code> (Windows, alternative)</li>
-</ol></li>
-<li><code>project</code>: concatenates the <code>PROFILE_PATH</code> with the string <code>/Documents/asm</code>, representing a project directory path.</li>
+<li><p><code>PROFILE_PATH</code>: a string variable that stores the path to the user's home directory. It tries to get the path from the following environment variables in order: <code>HOME</code>, <code>HOMEPATH</code>, and <code>USERPROFILE</code>.</p></li>
+<li><p><code>project</code>: a string variable that stores the path to a specific project directory. It is calculated by concatenating <code>PROFILE_PATH</code> with the path to the user's Documents directory and the string <code>'asm'</code>.</p></li>
 </ul>
-<h4>Async Function Call</h4>
+<h3>Function Call</h3>
 <ul>
-<li>Checks if <code>$</code> is defined:
+<li><code>findLongFunctions(project)</code>: a function that takes the project path as an argument and returns a promise. It tries to find functions in the project that are too long (implementation not shown in this code snippet). The return value of <code>findLongFunctions</code> is used as input for the <code>then</code> block.</li>
+<li><code>then</code> and <code>catch</code> blocks:
 <ul>
-<li>If true, calls <code>$().async()</code> ( purpose unknown)</li>
-<li>Then, calls <code>findLongFunctions(project)</code>:
-<ul>
-<li>Returns a Promise that resolves to an array of objects (<code>e</code>)</li>
-<li>Maps each object to its <code>path</code> property</li>
-<li>Calls <code>$().sendResult()</code> with the mapped array</li>
+<li><code>then(e =&gt; $.sendResult(e.map(m =&gt; m.path)))</code>: if <code>findLongFunctions</code> resolves successfully, it maps the result to an array of paths and sends it as a result using the <code>$.sendResult</code> function.</li>
+<li><code>catch(e =&gt; $.sendError(e))</code>: if <code>findLongFunctions</code> rejects, it sends the error to the client using the <code>$.sendError</code> function.</li>
 </ul></li>
-<li>Catches any errors (<code>e</code>) and calls <code>$().sendError(e)</code></li>
-</ul></li>
+</ul>
+<h3>Conditional Statement</h3>
+<ul>
+<li><code>if (typeof $!== 'undefined')</code>: checks if the global object <code>$</code> is defined. If it is, the code inside the <code>if</code> statement is executed.</li>
 </ul>
 
 </body>

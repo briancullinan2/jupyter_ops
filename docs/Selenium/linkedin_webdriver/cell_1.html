@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,50 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/* eslint-disable no-unused-vars, no-undef, no-prototype-builtins */
+
+import fs from 'fs';
+import getClient from './seleniumClient.js';
+import getAllUntil from './allElementsUntil.js';
+import loginLinkedIn from './loginLinkedIn.js';
+
+/**
+ * Retrieves a list of LinkedIn connections.
+ *
+ * @param {object} driver - The Selenium WebDriver instance.
+ * @returns {Promise&lt;string[]&gt;} A list of unique LinkedIn connection URLs.
+ */
+async function listConnections(driver) {
+  // Ensure the driver is initialized and logged in
+  if (!driver) {
+    driver = await getClient();
+    await loginLinkedIn(driver);
+  }
+
+  // Navigate to the LinkedIn My Network page
+  const url = await driver.getCurrentUrl();
+  const isLoggedIn = url.indexOf('mynetwork') &gt; -1;
+  if (!isLoggedIn) {
+    await driver.get('https://www.linkedin.com/mynetwork/');
+    // Introduce a 4-second wait to allow the page to load
+    await new Promise((resolve) =&gt; setTimeout(resolve, 4000));
+  }
+
+  // Retrieve a list of connections using a custom XPath expression
+  const connections = await getAllUntil(driver, {
+    locateBy: '//a[contains(@href, "/in/")]/@href',
+    ignoreDuplicates: false,
+    friends: [],
+    areEqual: (a, b) =&gt; a === b,
+    stopAfter: 10,
+  });
+
+  // Remove duplicates from the list of connections
+  return [...new Set(connections)];
+}
+
+export default listConnections;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Dependencies and Import</h3>
 <ul>
 <li>The code starts by requiring the <code>fs</code> module and importing three functions from other modules using <code>importer.import()</code>:

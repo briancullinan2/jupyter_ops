@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -166,7 +173,98 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Overview</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Define a base class with a method for initialization and a method for sending a message
+class BaseClass {
+  /**
+   * Initializes the class by logging a message to the console
+   */
+  doInit() {
+    console.log('base');
+  }
+
+  /**
+   * Sends a message by logging a message to the console
+   * @returns {string} The original message
+   */
+  doMessage() {
+    console.log('original');
+    return 'original';
+  }
+}
+
+// Define a class that extends the base class and overrides the doMessage method
+class ChildClass extends BaseClass {
+  /**
+   * Initializes the class by calling the parent's doInit method and logging a message
+   */
+  doInit() {
+    super.doInit();
+    console.log('child');
+  }
+
+  /**
+   * Overloads the doMessage method to log an additional message
+   * @returns {string} The original message
+   */
+  doMessage() {
+    const originalMessage = super.doMessage();
+    console.log('overridden');
+    return originalMessage;
+  }
+}
+
+// Define an extend function to create a new class that inherits from an existing class
+class ClassExtender {
+  /**
+   * Creates a new class that inherits from the specified parent class
+   * @param {Object} child The child class to extend
+   * @param {Object} parent The parent class to inherit from
+   * @returns {Object} A new class that inherits from the parent class
+   */
+  static extend(child, parent = {}) {
+    return class NewClass extends parent {
+      constructor(...args) {
+        super(...args);
+        Object.assign(this, child);
+      }
+    }
+  }
+}
+
+// Define an override function to create a new class that inherits from the current class
+class ClassOverrider {
+  /**
+   * Creates a new class that inherits from the current class
+   * @returns {Object} A new class that inherits from the current class
+   */
+  static override() {
+    return ClassExtender.extend(this);
+  }
+}
+
+// Test the ClassExtender and ClassOverrider classes
+const extender = new ClassExtender();
+const overrider = new ClassOverrider();
+
+// Create a new class that inherits from the base class
+const testClass = extender.extend();
+
+// Test the doInit and doMessage methods
+console.log(typeof testClass.doInit); // Should be undefined
+testClass = extender.extend(ChildClass, BaseClass);
+testClass.doInit();
+testClass.doMessage();
+
+// Create a new class that inherits from the base class without a parent class
+testClass = extender.extend({}, BaseClass);
+testClass.doInit();
+testClass.doMessage();
+
+// Create a new class that inherits from the base class using the override function
+testClass = overrider.override();
+testClass.doInit();
+testClass.doMessage();</code></pre></div><p><strong>Overview</strong></p>
 <p>This code defines a module that exports two functions, <code>extend</code> and <code>override</code>, which are used to create a new class by inheriting properties from a parent class. The code also includes unit tests to demonstrate the functionality.</p>
 <p><strong>Functions</strong></p>
 <h3><code>extend(child, parent)</code></h3>

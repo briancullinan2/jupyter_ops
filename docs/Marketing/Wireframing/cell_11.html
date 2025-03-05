@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -118,7 +125,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>import { spawn, fork } from 'child_process';
+import * as base64 from 'base64-js';
+import { promisify } from 'util';
+
+// Define constants
+const URL = 'act.com';
+const DEFAULT_OPTIONS = {
+  zoom: 0.5,
+  width: 680,
+  'crop-h': 400,
+  'javascript-delay': 1000,
+};
+
+// Define the options type
+interface Options extends Partial<typeof DEFAULT_OPTIONS> {}
+
+// Define the function to generate the image
+async function generateImage(options?: Options): Promise<string> {
+  // Merge default options with provided options
+  const mergedOptions = {...DEFAULT_OPTIONS,...options };
+
+  // Create the command
+  const command = [
+    'xvfb-run',
+    '-a',
+    '-s',
+    '-screen 0 640x480x16',
+    'wkhtmltoimage',
+    '-q',
+    '-f',
+    'jpeg',
+   ...Object.keys(mergedOptions).map((key) => [`--${key}`, mergedOptions[key]]),
+    URL,
+    '-',
+  ];
+
+  // Log the command for debugging purposes
+  console.log(command.join(' '));
+
+  // Create a child process
+  const wk = spawn(command[0], command.slice(1));
+
+  // Handle errors
+  wk.stderr.on('data', (d) => console.error(d));
+
+  // Pipe the stdout to a base64 encoded string
+  const encode = base64.fromByteArray;
+  let out = '';
+  for await (const chunk of promisify(wk.stdout).pipe(encode)) {
+    out += chunk;
+  }
+
+  // Return the base64 encoded string
+  return out;
+}
+
+// Generate the image and log it
+$TS.jpg(await generateImage());</code></pre></div><h2>Code Breakdown</h2>
 <h3>Initialization</h3>
 <ul>
 <li><code>$.async();</code>: Not a standard JavaScript function, likely a custom function for asynchronous operations.</li>

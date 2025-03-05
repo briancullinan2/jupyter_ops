@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -153,7 +160,85 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet uses Selenium to scrape location data from Google Maps search results.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const runSeleniumCell = importer.import('selenium cell');
+const moment = require('moment'); // for date formatting
+
+// Get user's home path
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+
+// Set project path
+const project = `${PROFILE_PATH}/Collections/flagstaff-happy`;
+
+// Set default location query
+const DEFAULT_LOCATION = 'bars+near+Flagstaff,+AZ';
+
+// Selenium client (assuming already initialized)
+const client = require('./seleniumClient');
+
+// Function to get results page
+function getResultsPage() {
+    return client
+       .then(() => getAllXPath([
+            '//*[contains(@class, "section-result-text-content")]',
+            {
+                name: './/h3[contains(@class, "section-result-title")]//text()',
+                description: './/span[contains(@class, "section-result-details")]//text()|.//span[contains(@class, "section-result-location")]//text()'
+            }
+        ]))
+       .then(r => r.map(item => ({
+            name: typeof item.name ==='string'? item.name : item.name.join('\n').trim(),
+            description: typeof item.description ==='string'
+               ? item.description
+                : item.description.join('\n').trim().split(/\s*\n\s*/ig),
+        })));
+}
+
+// Function to get all results (recursive)
+function getAllResults() {
+    const locations = [];
+    return getResultsPage()
+       .then(newLocs => {
+            locations.push(...newLocs); // use spread operator for concating arrays
+            return client
+               .isExisting('//*[contains(@class, "section-pagination-right")]//button[contains(@aria-label, "Next page") and not(@disabled)]')
+               .then(isExisting => {
+                    if (isExisting) {
+                        // Use async/await for better readability
+                        return client
+                           .click('//*[contains(@class, "section-pagination-right")]//button[contains(@aria-label, "Next page") and not(@disabled)]')
+                           .pause(3000)
+                           .then(() => getAllResults());
+                    } else {
+                        return locations;
+                    }
+                });
+        });
+}
+
+// Function to get nearby locations in JSON format
+function getNearbyJSON(location = DEFAULT_LOCATION) {
+    // Use async/await for better readability
+    return client.url(`https://www.google.com/maps/search/${location}`)
+       .then(() => getAllResults())
+       .then(results => {
+            const date = moment().format('YYYY-MM-DD'); // format date using moment
+            const filePath = path.join(project, `locations-${date}.json`);
+            fs.writeFileSync(filePath, JSON.stringify(results, null, 4));
+            return results;
+        })
+       .catch(err => {
+            // Log error if any
+            console.error(err);
+            return []; // return empty array on error
+        });
+}
+
+module.exports = getNearbyJSON;</code></pre></div><p>This code snippet uses Selenium to scrape location data from Google Maps search results.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

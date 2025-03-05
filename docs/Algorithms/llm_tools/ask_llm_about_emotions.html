@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -334,7 +341,261 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the selectModel function
+const selectModel = importer.import('select llm');
+
+// Define the list of emotions
+const EMOTIONS = [
+  'Joyful',
+  'Romantic',
+  'Angry',
+  'Confused',
+  'Supportive',
+  'Excited',
+  'Nostalgic',
+  'Grateful',
+  'Sad',
+  'Humorous',
+  'Anxious',
+  'Curious',
+  'Inspired',
+  'Defensive',
+  'Assertive',
+  'Empathetic',
+  'Reflective',
+  'Playful',
+  'Hopeful',
+  'Apologetic',
+  'Lonely',
+  'Proud',
+  'Vulnerable',
+  'Determined',
+  'Aroused',
+  'Neutral',
+  'Dissident',
+  'Rebelious',
+  'Frustrated',
+  'Helpful',
+  'Enthusiastic',
+  'Casual',
+  'Enthusiasm',
+  'Annoyed',
+  'Touched',
+  'Regret',
+  'Regretful',
+  'Content',
+  'Insecure',
+  'Concerned',
+  'Erotic',
+  'Vulgar',
+  'Bored',
+  'Confused',
+  'Caring',
+  'Hesitant',
+  'Flirty',
+  'Flirtatious',
+  'Eager',
+  'Attentive',
+  'Affectionate',
+  'Charming',
+  'Confident',
+  'Smug',
+  'Embarrassed',
+  'Nervous',
+  'Thoughtful',
+  'Apprehensive',
+  'Tired',
+  'Amused',
+  'Flustered',
+  'Exasperated',
+  'Longing',
+  'Happy',
+  'Uncertain',
+  'Understanding',
+  'Encouraging',
+  'Upset',
+  'Worried',
+  'Self-Conscious',
+  'Sarcastic',
+  'Teasing',
+  'Competitive',
+  'Serious',
+  'Impressed',
+  'Amazed',
+  'Suggestive',
+  'Needy',
+  'Relatable',
+  'Sexual',
+  'Horny',
+  'Flattered',
+  'Intrigued',
+  'Lighthearted',
+  'Relieved',
+  'Protective',
+  'Apathetic',
+  'Distracted',
+  'Reassured',
+  'Detached',
+  'Numb',
+  'Optimistic',
+  'Passionate',
+  'Amusing',
+  'Dismissive',
+  'Disappointed',
+  'Resigned',
+  'Sympathetic',
+  'Open',
+  'Disgruntled',
+  'Guilty',
+  'Awkward',
+  'Knowledgeable',
+  'Disengaged',
+  'Interested',
+  'Surprised',
+  'Downcast',
+  'Observant',
+  'Stressful',
+  'Hurt',
+  'Self-Doubt',
+  'Overwhelmed',
+  'Yearning',
+  'Desireous',
+  'Loving',
+  'Despondent',
+  'Unheard',
+  'Hopeless',
+  'Remorseful',
+  'Lewd',
+  'Amusement',
+  'Critical',
+  'Lust',
+  'Manipulative',
+  'Matter-of-fact',
+  'Task-Oriented',
+  'Transitional',
+  'Impatient',
+  'Negative',
+  'Dissatisfied',
+  'Indecisive',
+  'Preference',
+  'Assertiveness',
+  'Anger',
+  'Contempt',
+  'Disdain',
+  'Threat',
+  'Apathy',
+  'Condescending',
+  'Disbelief',
+  'Reassurance',
+  'Determination',
+  'Informative',
+  'Dismissiveness',
+  'Resignation',
+  'Businesslike',
+  'Cooperative',
+  'Skeptical',
+  'Shock',
+  'Infatuation',
+  'Friendly',
+  'Indifferent',
+  'Explanatory',
+  'Appreciative',
+  'Neediness',
+  'Contentment',
+  'Excitement',
+  'Amazement',
+  'Joy',
+  'Curiosity',
+  'Optimism',
+  'Skepticism',
+  'Trust',
+  'Interest',
+  'Inquiry',
+  'Anticipation',
+  'Empathy',
+  'Compassion',
+  'Supportiveness',
+  'Vulnerability',
+  'Gratitude',
+];
+
+// Define the list of emotion hex codes
+const EMOTION_HEX = [
+  '#FFFF00',
+  '#FFC0CB',
+  '#FF0000',
+  '#D8BFD8',
+  '#90EE90',
+  '#FFA500',
+  '#4682B4',
+  '#FFD700',
+  '#00008B',
+  '#FFFF99',
+  '#800080',
+  '#40E0D0',
+  '#FFC107',
+  '#800000',
+  '#FF4500',
+  '#E6E6FA',
+  '#B0C4DE',
+  '#00FFFF',
+  '#FFFACD',
+  '#B0E0E6',
+  '#191970',
+  '#FFD700',
+  '#FFE4E1',
+  '#DC143C',
+  '#FF4500',
+  '#B0B0B0',
+  '#556B2F',
+  '#000000',
+  '#800020',
+  '#87CEEB',
+  '#FFA500',
+  '#5B84B1',
+  '#FFA500',
+  '#900020',
+];
+
+// Define the function to ask LLaMA about emotions
+async function askLlamaAboutEmotions(currentMessages) {
+  // Select the model
+  let promptModel = await selectModel(process.env.DEFAULT_MODEL || 'Default');
+
+  // Ensure currentMessages is an array
+  if (typeof currentMessages ==='string') {
+    currentMessages = [currentMessages];
+  }
+
+  // Create the prompt
+  let q1 = 'Can you derive the emotional contexts of this conversation:\n' + currentMessages.join('\n') + '\nOnly give the emotions in the response, no explanations.';
+
+  // Ask LLaMA about emotions
+  const a1 = await promptModel(q1);
+
+  // Create the follow-up prompt
+  let q2 = 'Based on this description which emotions best fit:\n' + a1 + '\nOut of this list of emotions which one is the closest match:' + EMOTIONS.join(', ') + '\nOnly respond with a few matching emotions, no explanations.';
+
+  // Ask LLaMA about emotions
+  const a2 = await promptModel(q2);
+
+  // Extract the emotions from the response
+  const emotions = a2.trim().split(/\s*\n\s*|,\s*|\s*- |\s*\*+\s*/gi);
+
+  // Filter and deduplicate the emotions
+  const filteredEmotions = EMOTIONS.filter((e) => emotions.includes(e) || a2.includes(e) || a1.includes(e)).filter((e, i, arr) => arr.indexOf(e) === i);
+
+  // Return the filtered emotions
+  return filteredEmotions;
+}
+
+// Export the function
+module.exports = {
+  askLlamaAboutEmotions,
+  EMOTIONS,
+  EMOTION_HEX,
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing a Module</h4>
 <pre><code class="language-javascript">const selectModel = importer.import('select llm')
 </code></pre>

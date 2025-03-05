@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -114,7 +121,23 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Command Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Extract and decompress the contents of the compressed tar file
+tar_xf_gz() {
+  # Check if the input file exists and is a gzip compressed tar file
+  if [! -f "$1" ]; then
+    echo "Error: Input file '$1' not found or is not a gzip compressed tar file."
+    return 1
+  fi
+
+  # Extract and decompress the contents
+  tail -n +165 "$1" | gzip -cd | tar xf -
+}
+
+# Call the function with the input file name
+tar_xf_gz "linuxq3ademo.gz.sh"</code></pre></div><h2>Command Breakdown</h2>
 <h3>Command Overview</h3>
 <p>The command extracts a specific portion of an archived file, <code>linuxq3ademo.gz.sh</code>, and saves its contents to the current directory.</p>
 <h3>Parameters</h3>

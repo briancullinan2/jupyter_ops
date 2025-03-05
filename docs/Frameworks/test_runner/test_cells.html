@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,81 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha test runner environment.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const importer = require('../Core');
+const path = require('path');
+const Module = require('module').Module;
+const Mocha = require('mocha');
+
+// Initialize Mocha test runner
+const mocha = new Mocha({
+  ui: 'bdd',
+  reporter: 'list',
+  timeout: 10000,
+});
+
+/**
+ * Reset Mocha test suite to its initial state.
+ *
+ * @param {Mocha.Suite} suite Test suite to reset.
+ */
+function resetTests(suite) {
+  suite.tests.forEach((test) =&gt; {
+    test.state = undefined;
+    test.timedOut = false;
+  });
+
+  suite.suites.forEach(resetTests);
+  suite.tests = [];
+}
+
+/**
+ * Run tests from given cells.
+ *
+ * @param {Array&lt;any&gt;|string} cells Test cells or a string.
+ * @param {Object} [ctx={}] Context for test runs.
+ * @returns {Promise&lt;number&gt;} Number of test failures.
+ */
+async function testCells(cells, ctx = {}) {
+  // Reset Mocha test suite
+  resetTests(mocha.suite);
+
+  // Interpret cells if they are a string or an array of strings
+  cells = Array.isArray(cells)? cells : [cells];
+
+  // Interpret each cell and run its test
+  for (const cell of cells) {
+    if (typeof cell ==='string') {
+      // Assume cell is a string if it's not an object with 'code' property
+      if (!cell.includes('.ipynb') || cell.includes('[')) {
+        cell = importer.interpret(cell);
+      } else {
+        // Assume cell is a string with code if it has '.ipynb' but not '['
+        cell = [importer.interpret(cell)];
+      }
+    }
+
+    // Run cell's test in a new context
+    try {
+      const { code, input, result, output } = cell;
+      const ctxWithMocha = {...ctx,...Mocha };
+      const required = await importer.interpretCode(code, ctxWithMocha);
+      await required.runInNewContext({...ctxWithMocha });
+    } catch (e) {
+      console.error(e); // TODO: Improve error handling and logging
+    }
+  }
+
+  // Run Mocha test suite and return number of test failures
+  return new Promise((resolve) =&gt; {
+    mocha.run((failures) =&gt; {
+      resolve(failures);
+    });
+  });
+}
+
+module.exports = testCells;</code></pre></div><p>This code defines a function <code>testCells</code> that executes JavaScript code within a Mocha test runner environment.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

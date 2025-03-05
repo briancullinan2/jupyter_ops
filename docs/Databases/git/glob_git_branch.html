@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -235,7 +242,70 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function <code>globBranch</code> that automates the process of cloning a Git repository, fetching branches, resetting to a specific commit, and creating new branches based on modified files.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const glob = require('glob');
+const minimatch = require('minimatch');
+const { cloneProject, execCmd } = require('../Core');
+const { regexToArray } = require('../Core/utils');
+const { HOME, HOMEPATH, USERPROFILE } = process.env;
+const PROFILE_PATH = HOME || HOMEPATH || USERPROFILE;
+const projectDir = path.join(PROFILE_PATH, 'Documents/portal');
+
+const globBranch = (globs, remote ='swiftpage', branch = 'development') =&gt; {
+  const projectCopy = cloneProject(projectDir, true);
+  return projectCopy
+   .then((p) =&gt; {
+      const commands = [
+        `git fetch ${remote}`,
+        `git log ${remote}/${branch}..${'HEAD'}`,
+        `git reset --mixed $(git log -n 1 --format=%H)`,
+        `git status -s`,
+      ];
+      return Promise.all(commands.map((cmd) =&gt; execCmd(cmd, { cwd: p })));
+    })
+   .then((results) =&gt; {
+      const logs = results[0].split('\n').filter((line) =&gt; line.includes('commit'));
+      const lastCommit = logs[logs.length - 1].split('commit ')[1];
+      const status = results[3].split('\n').map((line) =&gt; line.split(/\s+/ig)[2]).filter((line) =&gt; line);
+      const filesToCommit = Object.keys(globs).reduce((acc, pattern) =&gt; {
+        const matches = status.filter((file) =&gt; minimatch(file, pattern));
+        return acc.concat(matches);
+      }, []);
+      return Promise.all(filesToCommit.map((file) =&gt; execCmd(`git checkout -B ${globs[file]}\ngit add ${file}\ncommit -m "auto-commit ${globs[file]}"`, { cwd: p })));
+    })
+   .then((results) =&gt; {
+      return results.reduce((acc, result) =&gt; acc.concat([result.output]), []);
+    });
+};
+
+module.exports = globBranch;
+```
+
+```javascript
+if (typeof $!== 'undefined') {
+  $.async();
+  globBranch({
+    '**/+(custom-spinner|layout|core|assets|testing)/**': 'B-11801_Moving_Layout_To_Match_Mobile',
+    '**/trial/**': 'B-11801_Loadding_Spinner',
+    '**/auth/register*/**': 'B-11803_Portal_Register',
+    '**/auth/login/**': 'B-11802_Portal_Login',
+    '**/auth/forgot*/**': 'B-11802_Portal_Login_Missing_Or_Unscheduled_Work',
+    '**/account/subscription/**': 'B-11819_Modify_Subscription',
+    '**/*handheld*/**': 'B-11806_Addons',
+    '**/*emarketing*/**': 'B-11804_AEM',
+    '**/*support*/**': 'B-11807_Support',
+    '**/*+(primary|premium)*/**': 'B-11818_Premium_Plus',
+    '**/*billing*/**': 'B-11808_Billing',
+    '**/*confirm*/**': 'B-11809_Review',
+    '**/+(cart|order-tracker*|*line-item*)/**': 'B-11804_Cart',
+    '**/account/overview/**': 'B-11812_Summary',
+    '**/account/billing/**': 'B-11813_Billing',
+    '**/account/subscription/**': 'B-11814_Manage_Subscription',
+    '**/account/**': 'B-11811_My_Account',
+  }, projectDir)
+ .then((result) =&gt; $.sendResult(result))
+ .catch((error) =&gt; $.sendError(error));
+}</code></pre></div><p>This code snippet defines a function <code>globBranch</code> that automates the process of cloning a Git repository, fetching branches, resetting to a specific commit, and creating new branches based on modified files.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -107,7 +114,34 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Closes the server connection if it exists.
+ *
+ * @param {import('http').Server} server The server object to close.
+ */
+function closeServer(server) {
+  // Check if the server object is not undefined
+  if (server &amp;&amp; typeof server.close === 'function') {
+    // Close the server connection
+    server.close();
+  } else {
+    // Log a warning message if the server object is invalid
+    console.warn('Invalid server object. Cannot close server connection.');
+  }
+}
+
+// Usage example
+import http from 'http';
+const server = http.createServer((req, res) =&gt; {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello World\n');
+});
+
+// Close the server after 5 seconds
+setTimeout(() =&gt; {
+  closeServer(server);
+}, 5000);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Functionality</h4>
 <p>This code checks if a variable named <code>server</code> exists, and if it does, it calls the <code>close()</code> method on it.</p>
 <h4>Syntax</h4>

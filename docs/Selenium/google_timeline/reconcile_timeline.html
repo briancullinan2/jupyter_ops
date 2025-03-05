@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -188,7 +195,124 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet appears to be part of a larger script designed to analyze location history data from Google Takeout and reconcile it with timeline data from Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('../Core');
+const {
+  loadLocations,
+  averageDestinations,
+  reconcileTimelineLocations,
+  runSeleniumCell
+} = importer.import([
+  'load locations export data',
+  'average latitude longitude',
+ 'reconcile timeline calendar',
+ 'selenium cell'
+]);
+
+const { fs } = require('fs');
+const { join } = require('path');
+const { format } = require('date-fns');
+const { parse } = require('date-fns');
+
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROJECT_PATH = join(PROFILE_PATH, 'Collections/timeline');
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
+
+// TODO: Extract daysInMonth function to date-utils.js file
+
+function daysInMonth(month, year) {
+  return parse(`$ {
+    year}-${month}-01`, `yyyy-MM-dd`, new Date()).getDate() - 1;
+}
+
+class Timeline {
+  constructor() {
+    this.geoLocations = {};
+  }
+
+  loadTimeline(date) {
+    const dateKey = format(date, `yyyy-MM`);
+    if (this.geoLocations[dateKey]) {
+      return Promise.resolve(this.geoLocations[dateKey]);
+    }
+    console.log(`Loading locations for ${dateKey}...`);
+    return runSeleniumCell([
+      'log in google',
+     'single timeline page',
+     'scrape google timeline'
+    ])
+     .then((r) =&gt; {
+        this.readTimelinePage = r.readTimelinePage;
+        this.getGoogleTimeline = r.getGoogleTimeline;
+        return this.geoLocations[dateKey] = loadLocations(`/Users/briancullinan/Downloads/Takeout 7/Location History/Location History.json`);
+      });
+  }
+
+  reconcileTimeline(date) {
+    const dateKey = format(date, `yyyy-MM`);
+    return this.loadTimeline(date)
+     .then(() =&gt; this.getGoogleTimeline(date))
+     .then(() =&gt; this.readTimelinePage())
+     .then((timelineLocations) =&gt; {
+        if (timelineLocations.length === 0) {
+          console.log(`No timeline data for ${dateKey}`);
+          return;
+        }
+        const d = averageDestinations(this.geoLocations[dateKey], timelineLocations);
+        if (d.length === 0) {
+          console.log(`No still geo data for ${dateKey}`);
+          return;
+        }
+        return reconcileTimelineLocations(d, date);
+      })
+     .then((events) =&gt; {
+        fs.writeFileSync(
+          join(PROJECT_PATH, `events-${dateKey}.json`),
+          JSON.stringify(events, null, 4)
+        );
+        return events;
+      })
+     .catch((e) =&gt; console.log(e));
+  }
+}
+
+const timeline = new Timeline();
+
+function reconcileTimelineCell(date) {
+  return timeline.reconcileTimeline(date);
+}
+
+module.exports = reconcileTimelineCell;
+
+if (typeof $!== 'undefined') {
+  $.async();
+  const start = new Date('10/1/2016');
+  const end = daysInMonth(start.getMonth() + 1, start.getFullYear());
+  const promises = [];
+  for (let day = start.getDate(); day &lt;= end; day++) {
+    const tmpDate = new Date(start);
+    tmpDate.setDate(day);
+    promises.push((date =&gt; resolve =&gt; timeline.reconcileTimeline(date)
+     .catch(e =&gt; console.log(e))
+     .then(r =&gt; resolve(r)))(tmpDate));
+  }
+  importer.runAllPromises(promises)
+   .then(r =&gt; $.sendResult(r))
+   .catch(e =&gt; $.sendError(e));
+}</code></pre></div><p>This code snippet appears to be part of a larger script designed to analyze location history data from Google Takeout and reconcile it with timeline data from Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

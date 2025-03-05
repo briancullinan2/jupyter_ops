@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,30 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Opens a new browser tab with the specified URL.
+ * @param url The URL to navigate to.
+ * @param options Additional options for the navigation.
+ */
+function navigateTo(url: string, options: { [key: string]: number | string } = {}): void {
+    const { zoom = 1, width = 1024,...crop } = options;
+    
+    // Use the TS function to open a new browser tab with the specified URL.
+    TS.screen(url, {
+        zoom,
+        width,
+       ...crop,
+    });
+}
+
+// Use the navigateTo function to open the specified URL.
+navigateTo('act.com/fr-fr/produits/nouveautes', {
+    zoom: 0.5,
+    width: 680,
+    'crop-h': 400,
+});</code></pre></div><h3>Code Breakdown</h3>
 <p>This is a code snippet in JavaScript, likely part of a larger framework or library.</p>
 <p><strong>Function Call</strong></p>
 <p><code>$TS.screen('act.com/fr-fr/produits/nouveautes', {zoom:.5, width: 680, 'crop-h': 400});</code></p>

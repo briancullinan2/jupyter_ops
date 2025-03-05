@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -186,7 +193,56 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const path = require('path');
+const importer = require('../Core');
+
+/**
+ * Extracts core dependencies from notebooks in the project.
+ *
+ * @returns {object} An object containing core packages and built-in modules.
+ */
+module.exports = {
+  coreDependencies: async () => {
+    const { relativeImports, listInProject } = importer.import([
+      'builtin and local modules',
+      'list project files',
+    ]);
+
+    const projectsRoot = path.dirname(__dirname);
+    const coreNotebooks = await listInProject(projectsRoot, [
+      '**/*/*.ipynb',
+      '**/*/*/*.ipynb',
+      '**/*/*/*/*.ipynb',
+    ])
+     .filter(n =>!n.includes('cache.ipynb'));
+
+    const packages = [];
+    const builtin = [];
+
+    for (const notebook of coreNotebooks) {
+      try {
+        const notebookPath = path.join(projectsRoot, notebook);
+        const cells = await importer.interpret(path.basename(notebookPath));
+        for (const cell of cells) {
+          const { packages: relativeImportsPackages, builtin: relativeImportsBuiltin } = await relativeImports(
+            cell.code,
+            cell.filename,
+          );
+          packages.push(...relativeImportsPackages);
+          builtin.push(...relativeImportsBuiltin);
+        }
+      } catch (error) {
+        console.error(`Error processing notebook ${notebook}: ${error.message}`);
+      }
+    }
+
+    console.log('Core packages:', packages);
+    console.log('Built-in modules:', builtin);
+
+    return { packages, builtin };
+  },
+};</code></pre></div><h3>Code Breakdown</h3>
 <h4>Required Modules</h4>
 <ul>
 <li><code>path</code>: A built-in Node.js module for working with file paths.</li>

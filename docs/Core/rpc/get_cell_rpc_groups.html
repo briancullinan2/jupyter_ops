@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -160,7 +167,92 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getCellGroups</code> that categorizes code cells based on various criteria.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const coreImporter = require('../Core');
+
+const {
+  selectAst,
+  getExports
+} = coreImporter.import(['select code tree', 'get exports']);
+
+const {
+  FUNCTION_GROUPS,
+  SELENIUM_GROUPS,
+  UNITTEST_GROUPS,
+  DEFAULT_GROUPS,
+  PUBLIC
+} = coreImporter.import('rpc groups');
+
+function getUnmatched(cell) {
+  try {
+    return!cell.questions[0] || (cell.id!== coreImporter.interpret(cell.id2).id) || (cell.id!== coreImporter.interpret(cell.questions[0]).id);
+  } catch (error) {
+    return false;
+  }
+}
+
+const getCellGroups = (cell) => {
+  const filteredGroups = filterClassGroups(cell);
+
+  if (cell.language === 'javascript') {
+    try {
+      const { ast, exports } = getASTAndExports(cell);
+      cell.ast = ast;
+      cell.exports = exports;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const groups = [
+    filteredGroups,
+    cell.ast? [] : ['Error'],
+    cell.ast && cell.exports[0]? FUNCTION_GROUPS : ['Uncallable'],
+    cell.filename.includes('Selenium')? SELENIUM_GROUPS : [],
+    unitTestGroups(cell),
+    cell.language,
+    filterByModuleExports(cell),
+    filterByNotebookName(cell),
+    getUnmatched(cell)? ['Unmatched'] : DEFAULT_GROUPS,
+    getExactOrCorrected(cell)
+  ];
+
+  return groups.flat().filter((g, i, arr) => arr.indexOf(g) === i);
+};
+
+const filterClassGroups = (cell) => {
+  return cell.groups
+   .filter((g) =>!['Unmatched', 'Exact', 'Corrected', 'Available', 'Error', 'Uncallable'].includes(g));
+};
+
+const getASTAndExports = (cell) => {
+  try {
+    const ast = selectAst('*', cell.code);
+    const exports = getExports(cell.code);
+    return { ast, exports };
+  } catch (error) {
+    console.log(error);
+    return {};
+  }
+};
+
+const unitTestGroups = (cell) => {
+  return cell.questions[0].includes('test')? UNITTEST_GROUPS : [];
+};
+
+const filterByModuleExports = (cell) => {
+  return cell.exports || [];
+};
+
+const filterByNotebookName = (cell) => {
+  return cell.notebook.replace(/\.ipynb|\s+/ig, '').toLowerCase();
+};
+
+const getExactOrCorrected = (cell) => {
+  return cell.original && cell.id2 === cell.original? ['Exact'] : ['Corrected'];
+};
+
+module.exports = getCellGroups;</code></pre></div><p>This code defines a function <code>getCellGroups</code> that categorizes code cells based on various criteria.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

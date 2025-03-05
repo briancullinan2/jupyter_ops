@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -168,7 +175,90 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { D3Node } from 'd3-node'
+import systemUsage from './systemUsage'; // assuming systemUsage is a separate module
+
+/**
+ * Graphs system usage data.
+ *
+ * @param {Object[]} data - System usage data.
+ * @returns {Promise&lt;string&gt;} SVG string representation of the graph.
+ */
+async function graphUsage(data) {
+  if (!data) {
+    // TODO: Consider caching system usage data to prevent repeated calls.
+    const usage = await systemUsage();
+    const now = Date.now();
+    data = usage.cpus
+     .map((t, i) =&gt; ({ n: t, year: now - i * 1000, name: 'cpu' }))
+     .concat(usage.memory.map((t, i) =&gt; ({ n: t, year: now - i * 1000, name:'mem' }))
+      ).sort((a, b) =&gt; a.name.localeCompare(b.name)); // use localeCompare for string comparison
+    console.log(data);
+  }
+
+  const margin = { top: 10, right: 30, bottom: 30, left: 60 };
+  const width = 460 - margin.left - margin.right;
+  const height = 200 - margin.top - margin.bottom;
+
+  const d3n = new D3Node();
+  const d3 = d3n.d3;
+
+  const svg = d3n.createSVG(
+    width + margin.left + margin.right,
+    height + margin.top + margin.bottom
+  ).append("g")
+   .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Group data by name
+  const sumstat = d3.group(data, (d) =&gt; d.name);
+
+  // Set up scales
+  const x = d3.scaleTime() // Use scaleTime for date scales
+   .domain(d3.extent(data, (d) =&gt; d.year))
+   .range([0, width]);
+  const y = d3.scaleLinear()
+   .domain([0, Math.max(...data.map((d) =&gt; d.n))]) // Use Math.max for domain calculation
+   .range([height, 0]);
+
+  // Add axes
+  svg.append("g")
+   .attr("transform", `translate(0, ${height})`)
+   .call(d3.axisBottom(x).ticks(5));
+  svg.append("g")
+   .call(d3.axisLeft(y));
+
+  // Color palette
+  const color = d3.scaleOrdinal()
+   .range([
+      '#e41a1c',
+      '#377eb8',
+      '#4daf4a',
+      '#984ea3',
+      '#ff7f00',
+      '#ffff33',
+      '#a65628',
+      '#f781bf',
+      '#999999'
+    ]);
+
+  // Draw the line
+  const lines = svg.selectAll(".line")
+   .data(sumstat)
+   .join("path")
+   .attr("fill", "none")
+   .attr("stroke", (d) =&gt; color(d[0]))
+   .attr("stroke-width", 1.5)
+   .attr("d", (d) =&gt; d3.line()
+     .x((d) =&gt; x(d.year))
+     .y((d) =&gt; y(+d.n))
+      (d[1])
+    );
+
+  return d3n.svgString();
+}
+
+export default graphUsage;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Modules and Data</h4>
 <pre><code class="language-javascript">import { D3Node } from 'd3-node'
 const systemUsage = importer.import('system usage report')

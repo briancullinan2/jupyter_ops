@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -131,7 +138,60 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet defines a function called <code>readFacebookProfileInfo</code> that aims to extract information from a Facebook profile.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client } = require('../Core');
+
+/**
+ * Reads Facebook profile information from the browser.
+ *
+ * @returns {Object} Profile information (name, description, url)
+ */
+async function readFacebookProfileInfo(profilePath) {
+    try {
+        // Check if profile path is provided
+        if (!profilePath) {
+            throw new Error('Profile path is required');
+        }
+
+        // Get all relevant profile links
+        const profileLinks = await Client.getAllXPath(`//*[contains(@class, "scrollable")]//h4[contains(., "Profile")]/parent::*//a/@href`);
+
+        // If no links are found, return an empty profile
+        if (profileLinks.length === 0) {
+            return {};
+        }
+
+        // Click on the first profile link
+        const profileUrl = profileLinks[0];
+        await Client.clickSpa(profileUrl);
+        await Client.pause(2000);
+
+        // Get profile information
+        const promises = [
+            Client.getText('[role="main"] h1'),
+            Client.isExisting('#intro_container_id li')
+               .then(isExisting =&gt; isExisting
+                   ? Client.getText('#intro_container_id li')
+                    : Promise.resolve('')),
+            Client.getUrl()
+        ];
+        const profileInfo = await Client.runAllPromises(promises);
+
+        // Create profile object
+        const profile = {
+            name: profileInfo[0],
+            description: profileInfo[1],
+            url: profileInfo[2]
+        };
+
+        return profile;
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+}
+
+module.exports = readFacebookProfileInfo;</code></pre></div><p>This code snippet defines a function called <code>readFacebookProfileInfo</code> that aims to extract information from a Facebook profile.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

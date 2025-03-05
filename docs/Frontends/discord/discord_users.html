@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -115,7 +122,39 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { requestAuthQ } from 'discord-request';
+
+/**
+ * Retrieves user data from the Discord API
+ * @param {string} [userId='@me'] - The ID of the user to retrieve data for
+ * @returns {Promise<Object>} - The user data
+ */
+async function getUser(userId = '@me') {
+  // Validate the userId to prevent errors
+  if (typeof userId!=='string') {
+    throw new Error('User ID must be a string');
+  }
+
+  // Remove leading '@' if present to match Discord API requirements
+  if (userId.startsWith('@')) {
+    userId = userId.slice(1);
+  }
+
+  // Construct the API request URL
+  const url = `/users/${userId}`;
+
+  // Perform the API request
+  const response = await requestAuthQ({
+    method: 'GET',
+    url,
+  });
+
+  // Return the user data
+  return response.data;
+}
+
+export { getUser };</code></pre></div><h3>Code Breakdown</h3>
 <h4>Imported Function</h4>
 <ul>
 <li><code>requestAuthQ</code> is imported from the module <code>'discord request'</code> using the <code>importer.import</code> function.</li>

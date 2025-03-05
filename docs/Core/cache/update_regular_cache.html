@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -88,8 +95,7 @@
     <a href="../cache/index.html">cache</a> | <a href="./__update_code_cell.html">, update code cell</a> | <a href="./memory_safe_async.html">memory safe async</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code provides functions for managing a cache of data, including updating it with new information, removing outdated entries, and ensuring the cache is sorted alphabetically.</p>
-<h2>Run example</h2>
+  <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "update regular cache"</code></pre><h1>update regular cache</h1>
 
@@ -160,40 +166,6 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for managing a cache of data, likely related to search results or similar.</p>
-<p>Here's a breakdown:</p>
-<ol>
-<li><p><strong><code>sortAlphaNumeric(a, b)</code>:</strong></p>
-<ul>
-<li>A utility function that sorts two values alphabetically and numerically.</li>
-<li>Converts both values to strings and lowercase for consistent comparison.</li>
-<li>Uses <code>localeCompare</code> for locale-aware sorting.</li>
-</ul></li>
-<li><p><strong><code>cleanCache(cache, allIds)</code>:</strong></p>
-<ul>
-<li>Removes entries from the cache that are no longer present in the <code>allIds</code> array.</li>
-<li>Filters the cache to find entries not in <code>allIds</code>.</li>
-<li>Removes those entries from the cache using <code>splice</code>.</li>
-<li>Sorts the remaining cache entries alphabetically using <code>sortAlphaNumeric</code>.</li>
-</ul></li>
-<li><p><strong><code>updateCache(updates, cache, allIds)</code>:</strong></p>
-<ul>
-<li>Updates the cache with new data from <code>updates</code>.</li>
-<li>Extracts the IDs from the existing cache.</li>
-<li>Iterates through <code>updates</code>:
-<ul>
-<li>If an ID is not found in the existing cache, it's added as a new entry.</li>
-<li>If an ID exists, the corresponding entry is replaced with the updated data.</li>
-</ul></li>
-<li>Calls <code>cleanCache</code> to remove any outdated entries.</li>
-<li>Returns the updated cache.</li>
-</ul></li>
-<li><p><strong><code>module.exports</code>:</strong></p>
-<ul>
-<li>Exports the three functions for use in other parts of the application.</li>
-</ul></li>
-</ol>
-<p>In essence, this code provides a way to manage a cache of data, ensuring it remains up-to-date and sorted alphabetically.</p>
 
 </body>
 

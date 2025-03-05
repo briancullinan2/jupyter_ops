@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -159,7 +166,129 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>"""
+Discord Bot using Outetts for TTS and FFmpeg for audio playback.
+"""
+
+import os
+import io
+import ffmpeg
+import discord
+import asyncio
+import outetts
+
+# Configuration
+TOKEN = os.getenv("BOT_TOKEN")
+GUILD_ID = os.getenv("DEFAULT_GUILD_ID")
+VC_CHANNEL_ID = os.getenv("VC_CHANNEL_ID", "")
+
+class OutettsInterface:
+    """Outetts interface for generating TTS."""
+    def __init__(self):
+        self.model_config = outetts.HFModelConfig_v2(
+            model_path="OuteAI/OuteTTS-0.3-1B",
+            tokenizer_path="OuteAI/OuteTTS-0.3-1B"
+        )
+        self.interface = outetts.InterfaceHF(model_version="0.3", cfg=self.model_config)
+        self.speaker = self.interface.load_default_speaker(name="en_male_1")
+
+    async def generate_tts(self, prompt):
+        """Generate TTS from a prompt."""
+        gen_cfg = outetts.GenerationConfig(
+            text=prompt,
+            temperature=0.3,
+            repetition_penalty=1.1,
+            max_length=4096,
+            speaker=self.speaker,
+        )
+        output = self.interface.generate(config=gen_cfg)
+        return output
+
+class DiscordClient:
+    """Discord client for playing audio."""
+    def __init__(self, token):
+        self.client = discord.Client(intents=discord.Intents.default())
+        self.token = token
+
+    async def start(self):
+        """Start the Discord client."""
+        await self.client.start(self.token)
+
+    async def connect_voice(self, guild_id):
+        """Connect to a voice channel."""
+        guild = discord.utils.get(self.client.guilds, id=int(guild_id))
+        vc_channel = discord.utils.get(guild.voice_channels)
+        if vc_channel:
+            vc = await vc_channel.connect()
+            await self.play_audio(vc)
+
+    async def play_audio(self, vc, audio_stream):
+        """Play audio from a stream."""
+        audio_source = discord.FFmpegPCMAudio(audio_stream, pipe=True)
+        vc.play(audio_source)
+
+class AudioConverter:
+    """Convert Outetts output to a stream."""
+    def __init__(self):
+        self.audio_buffer = io.BytesIO()
+
+    def convert(self, output):
+        """Convert output to a stream."""
+        output.save(self.audio_buffer)
+        self.audio_buffer.seek(0)
+        return self.audio_buffer
+
+async def init_discord(token):
+    """
+    Initialize the Discord bot.
+
+    Args:
+        token (str): The Discord bot token.
+    """
+    interface = OutettsInterface()
+    client = DiscordClient(token)
+    await client.start()
+    await client.connect_voice(GUILD_ID)
+
+async def connect_voice(guild_id):
+    """
+    Connect to a voice channel.
+
+    Args:
+        guild_id (str): The ID of the guild.
+    """
+    client = globals()['client']
+    print(f'Logged in as {client.user}')
+    guild = discord.utils.get(client.guilds, id=int(guild_id))
+    vc_channel = discord.utils.get(guild.voice_channels)
+    if vc_channel:
+        await client.connect_voice(guild_id)
+
+async def play_tts(prompt, vc):
+    """
+    Play TTS from a prompt.
+
+    Args:
+        prompt (str): The prompt to generate TTS from.
+        vc (discord.VoiceClient): The voice client to play audio from.
+    """
+    interface = OutettsInterface()
+    output = await interface.generate_tts(prompt)
+    audio_converter = AudioConverter()
+    audio_stream = audio_converter.convert(output)
+    await client.play_audio(vc, audio_stream)
+
+# Initialization
+TOKEN = os.getenv("BOT_TOKEN")
+GUILD_ID = os.getenv("DEFAULT_GUILD_ID")
+client = globals()['client']
+
+__all__ = {
+  "init_discord",
+  "connect_voice",
+  "play_tts",
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <p>The code imports the following modules:</p>
 <ul>

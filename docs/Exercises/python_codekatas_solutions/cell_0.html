@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Function Breakdown: <code>palindrome(string)</code></h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def is_palindrome(s: str) -> bool:
+    """
+    Check if input string is a palindrome, ignoring case and spaces.
+
+    Args:
+    s (str): The input string to check.
+
+    Returns:
+    bool: True if the string is a palindrome, False otherwise.
+    """
+    # Remove spaces and convert to lower case
+    s = ''.join(c for c in s if c.isalnum()).lower()
+    
+    # Handle empty strings as edge case
+    if len(s) < 2:
+        return True
+    
+    # Compare characters from the start and end, moving towards the center
+    left = 0
+    right = len(s) - 1
+    while left < right:
+        if s[left]!= s[right]:
+            return False
+        left += 1
+        right -= 1
+    
+    return True
+
+assert is_palindrome('')
+assert is_palindrome('a')
+assert not is_palindrome('ab')
+assert is_palindrome('abba')
+assert is_palindrome('redivider')
+print('All passed!')</code></pre></div><h2>Function Breakdown: <code>palindrome(string)</code></h2>
 <h3>Purpose</h3>
 <p>Checks if the input string (with all lower-case characters) is a palindrome.</p>
 <h3>Parameters</h3>

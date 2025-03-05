@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -132,7 +139,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet fetches and saves API discovery documents in a specific format.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const fs = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const { getRpcFromSpec } = importer.import();
+
+/**
+ * Test API discovery for a given configuration.
+ * 
+ * @param {Object} config - Configuration object with 'api' and'version' properties.
+ * @param {string} config.api - API name.
+ * @param {string} config.version - API version.
+ * @returns {Promise<Object>} Promise resolving with the API discovery result.
+ */
+async function testDiscovery(config = { api: 'drive', version: 'v3' }) {
+    try {
+        const discovery = await getRpcFromSpec(require('/Users/briancullinan/Downloads/rest.json'));
+        const apiDiscovery = await discovery.apis.getRest(config);
+        const apiConfigFile = path.join(__dirname, `../Resources/APIs/${config.api}.${config.version}.json`);
+        await fs.promises.writeFile(apiConfigFile, JSON.stringify(apiDiscovery.body, null, 4));
+        return apiDiscovery.body;
+    } catch (error) {
+        throw error;
+    }
+}
+
+if (typeof $!== 'undefined') {
+    try {
+        await $.async();
+        const result = await testDiscovery();
+        $.sendResult(result);
+    } catch (error) {
+        $.sendError(error);
+    }
+}
+
+module.exports = testDiscovery;</code></pre></div><p>This code snippet fetches and saves API discovery documents in a specific format.</p>
 <p><strong>Key Points:</strong></p>
 <ul>
 <li><strong>Dependencies:</strong> It uses <code>fs</code> for file system operations, <code>path</code> for path manipulation, and <code>importer</code> for loading a function <code>getRpcFromSpec</code>.</li>

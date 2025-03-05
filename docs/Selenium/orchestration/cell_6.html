@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -282,7 +289,80 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { RPC } = require('../Core');
+const { runSeleniumCell } = RPC.import('selenium cell');
+
+const friends = getFriends(); // Fetch friends list from a reliable source
+
+// Refactored functions for better readability and maintainability
+async function loginFacebook() {
+    return await runSeleniumCell('login facebook');
+}
+
+async function listFacebookThreads() {
+    return await runSeleniumCell('list facebook threads');
+}
+
+async function tileWindows(friends) {
+    return await runSeleniumCell('tile chrome windows', friends);
+}
+
+async function sendFacebookMessage(friendUrl) {
+    return await runSeleniumCell('send facebook message', friendUrl);
+}
+
+async function sendJoke(friendUrl) {
+    return await runSeleniumCell('send a joke', friendUrl);
+}
+
+async function sendFacebookThanks(friendUrl, hwnd) {
+    return await runSeleniumCell('send facebook thanks', friendUrl, hwnd);
+}
+
+async function tellJokes() {
+    try {
+        // Login to Facebook
+        const loginResult = await loginFacebook();
+        
+        // Get friends list
+        const friendsList = await listFacebookThreads();
+        friends = friendsList.slice(0, 100);
+        console.log(friends);
+
+        // Tile windows for scrapes
+        await tileWindows(friends.slice(0, 3));
+
+        // Send thanks to friends in parallel
+        const promises = [];
+        for (let i = 0; i < Math.ceil(friends.length / 3); i++) {
+            const hwnds = await tileWindows(friends.slice(i * 3, (i + 1) * 3));
+            const hwndPromises = hwnds.map(hwnd => sendFacebookThanks(friends[i * 3], hwnd));
+            promises.push(...hwndPromises);
+        }
+        await RPC.runAllPromises(promises);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// TODO: Replace getFriends with a reliable function to fetch friends list
+function getFriends() {
+    // For demonstration purposes, return a sample list of friends
+    return [
+        'https://www.facebook.com/messages/t/patti.caudill',
+        'https://www.facebook.com/messages/t/andrei.darie.5',
+        'https://www.facebook.com/messages/t/setha.vanderhoof',
+        // Add more friends to the list as needed
+    ];
+}
+
+if (typeof $!== 'undefined') {
+    $.async();
+    tellJokes()
+       .then(result => $.sendResult(result))
+       .catch(error => $.sendError(error));
+}</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">var importer = require('../Core');
 var runSeleniumCell = importer.import('selenium cell');

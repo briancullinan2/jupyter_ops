@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -138,7 +145,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code automates the synchronization of your Chrome browsing history and bookmarks with Google Calendar.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { importModule } = require('../Core');
+const path = require('path');
+const glob = require('glob');
+const fs = require('fs');
+const { exec } = require('child_process');
+const rimraf = require('rimraf');
+const { spawn } = require('child_process');
+
+const {
+    googleTakeout, syncChromeHistory, syncChromeBookmarks
+} = importModule([
+    'googleTakeout',
+   'syncChromeHistory',
+   'syncChromeBookmarks',
+]);
+
+const PROFILE_PATH = getEnvironmentVariable('HOME') || getEnvironmentVariable('HOMEPATH') || getEnvironmentVariable('USERPROFILE');
+const DOWNLOADS_PATH = path.join(PROFILE_PATH, 'Downloads');
+
+function getEnvironmentVariable(name) {
+    return process.env[name];
+}
+
+function unzip(file) {
+    console.log(`Unzipping ${file}...`);
+    return new Promise((resolve, reject) => {
+        exec(`unzip -o "${file}"`, { cwd: DOWNLOADS_PATH }, (error, stdout, stderr) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+async function syncChrome() {
+    const unzipPath = getUnzipPath();
+    const shouldDownload = await shouldTakeoutBeDownloaded(unzipPath);
+    return (shouldDownload
+       ? await downloadTakeout()
+        : unzip(unzipPath))
+       .then(() => await syncChromeHistory())
+       .then(() => await syncChromeBookmarks());
+}
+
+function getUnzipPath() {
+    const takeouts = glob.sync('takeout-*.zip', { cwd: DOWNLOADS_PATH });
+    return path.join(DOWNLOADS_PATH, takeouts.sort((a, b) => fs.statSync(a).mtime.getTime() - fs.statSync(b).mtime.getTime()).pop());
+}
+
+async function shouldTakeoutBeDownloaded(unzipPath) {
+    return!(fs.existsSync(unzipPath) && (new Date().getTime()) - fs.statSync(unzipPath).mtime.getTime() < 24 * 60 * 60 * 1000);
+}
+
+async function downloadTakeout() {
+    console.log('Downloading Google Takeout...');
+    return googleTakeout('chrome');
+}
+
+module.exports = syncChrome;</code></pre></div><p>This code automates the synchronization of your Chrome browsing history and bookmarks with Google Calendar.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>

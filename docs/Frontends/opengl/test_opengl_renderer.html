@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,52 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import all necessary modules
+const { createWindow, importModules } = require('./utils');
+
+// Extract and store the beginFrame and endFrame functions
+async function getFrameFunctions() {
+  try {
+    const { beginFrame, endFrame } = await importModules('opengl frame');
+    return { beginFrame, endFrame };
+  } catch (error) {
+    throw new Error('Failed to import OpenGL frame functions');
+  }
+}
+
+// Handle a single frame
+async function handleFrame(window) {
+  try {
+    const { beginFrame, endFrame } = await getFrameFunctions();
+    beginFrame(window);
+    endFrame(window);
+  } catch (error) {
+    console.error('Error handling frame:', error);
+  }
+}
+
+// Main test function
+async function testOpenGL() {
+  try {
+    const { createWindow } = await importModules('opengl context');
+    const window = createWindow();
+    console.log('OpenGL context created');
+
+    // Handle initial frame
+    await handleFrame(window);
+
+    // Handle frames at 10ms intervals
+    setInterval(async () => {
+      await handleFrame(window);
+    }, 10);
+  } catch (error) {
+    console.error('Error setting up OpenGL test:', error);
+  }
+}
+
+// Export the main test function
+module.exports = testOpenGL;</code></pre></div><h2>Code Breakdown</h2>
 <h3>Variables</h3>
 <ul>
 <li><code>beginFrame</code> and <code>endFrame</code> are variables initialized to <code>null</code>. They are later assigned functions from an imported module.</li>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,51 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>def print_test_info(test):
+    """
+    Prints information about a test.
+
+    Args:
+        test (dict): Dictionary containing test information.
+
+    Returns:
+        None
+    """
+    print_test_details(test)
+    print_image_info(test)
+
+
+def print_test_details(test):
+    """
+    Prints details about a test.
+
+    Args:
+        test (dict): Dictionary containing test information.
+
+    Returns:
+        None
+    """
+    print(test)
+
+
+def print_image_info(test):
+    """
+    Prints image information about a test.
+
+    Args:
+        test (dict): Dictionary containing test information.
+
+    Returns:
+        None
+    """
+    if 'image' in test:
+        print(test['image'])
+
+
+# Example usage:
+test_info = {'test_name': 'unit test', 'image': 'image1.jpg'}
+print_test_info(test_info)</code></pre></div><h3>Code Breakdown</h3>
 <h4>Lines 1-2:</h4>
 <pre><code class="language-markdown">print(test)
 print(test['image'])

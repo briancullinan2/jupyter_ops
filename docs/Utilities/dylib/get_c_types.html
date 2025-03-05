@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -117,7 +124,68 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const importer = require('importer');
+
+/**
+ * Retrieves the types of functions in a given code.
+ * 
+ * @param {string} code The code to parse.
+ * @param {string} functionName The name of the function to retrieve the type for.
+ * @returns {Promise<string[]>} A list of function types.
+ */
+async function getTypes(code, functionName) {
+    // Ensure we have the selectCode function
+    if (!selectCode) {
+        // Import the necessary module on first use
+        selectCode = await _import('select-antlr-tree');
+    }
+
+    // Function to retrieve the types of functions
+    const getFunctions = async (query) => {
+        // Execute the query on the code and return the result
+        return await selectCode(query, code, 'cpp');
+    };
+
+    // If a specific function name is provided, retrieve its type
+    if (functionName) {
+        // Construct the query to retrieve the function type
+        const query = [
+            '(//functionDefinition[contains(.//declarator/id/@strdata, "' + functionName + '")]/declSpecifierSeq/declSpecifier/typeSpecifier|' +
+            '//functionDefinition[contains(.//declarator/id/@strdata, "' + functionName + '")]/declarator//typeSpecifier)',
+            './@strdata'
+        ];
+
+        // Execute the query and return the result
+        return getFunctions(query);
+    }
+
+    // Otherwise, retrieve all function types
+    else {
+        // Construct the query to retrieve all function types
+        const query = [
+            '(//functionDefinition/declSpecifierSeq/declSpecifier/typeSpecifier|//functionDefinition/declarator//typeSpecifier)',
+            './@strdata'
+        ];
+
+        // Execute the query and return the result
+        return getFunctions(query);
+    }
+}
+
+// Import the necessary function to retrieve the selectCode
+const _import = async (name) => {
+    try {
+        return await importer.import(name);
+    }
+    catch (error) {
+        // TODO: Handle the error when the module is not found
+        console.error(`Error importing module ${name}: ${error}`);
+        throw error;
+    }
+};
+
+module.exports = getTypes;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Function Overview</h4>
 <p>The <code>getTypes</code> function is an asynchronous function that retrieves function types from a given code snippet in C++.</p>
 <h4>Parameters</h4>

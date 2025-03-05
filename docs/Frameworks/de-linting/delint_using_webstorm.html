@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -108,7 +115,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code sets up a function <code>delint</code> that performs code formatting and potentially imports project settings from a <code>.idea</code> directory.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// @description: Deletes lint in a project directory.
+// @param {string} project - Path to the project directory.
+// @return {Promise} - Resolves when the lint deletion is complete.
+
+const path = require('path');
+const { promisify } = require('util'); // Use util.promisify to avoid multiple imports
+const ncp = require('ncp').promisify(); // Use promisify to avoid callback hell
+const importer = require('../Core');
+const { spawnChildProcess } = importer.import(); // Use destructuring to improve readability
+
+// Define constants for WebStorm executable paths
+const webstormExe = {
+  win32: 'C:\\Program Files\\JetBrains\\WebStorm 2017.1.1\\bin\\format.bat',
+  darwin: '/Applications/WebStorm.app/Contents/bin/format.sh', // Use darwin for macOS
+};
+
+// Define constants for IDEA directory path
+const ideaDir = path.resolve(path.join(__dirname, '../.idea'));
+
+/**
+ * Deletes lint in a project directory using WebStorm's format tool.
+ * @param {string} project - Path to the project directory.
+ * @returns {Promise} - Resolves when the lint deletion is complete.
+ */
+function delint(project) {
+  // Limit ncp to 16 concurrent operations
+  ncp.limit = 16;
+
+  // Use process.platform to determine the correct executable path
+  const webstorm = webstormExe[process.platform];
+
+  // Copy IDEA directory to project directory
+  return ncp(ideaDir, path.join(project, '.idea'))
+   .then(() => {
+      // Execute WebStorm's format tool in the project directory
+      return spawnChildProcess(`${webstorm} ${project}`, { cwd: project });
+    });
+}
+
+module.exports = delint;</code></pre></div><p>This code sets up a function <code>delint</code> that performs code formatting and potentially imports project settings from a <code>.idea</code> directory.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

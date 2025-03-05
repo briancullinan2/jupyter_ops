@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -182,7 +189,103 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import dependencies
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const importer = require('../Core');
+const { getResult } = importer.import(['get rpc permissions', 'rpc result']);
+
+// Initialize Express app
+const app = express();
+
+// Create an HTTP server
+const server = require('http').createServer(app);
+
+// Configure middleware
+app.use(bodyParser.json());    // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
+app.use(cors());
+
+// Create a new router
+const router = express.Router();
+
+// Define a route for the RPC endpoint
+router.all('/rpc', async (req, res) => {
+    try {
+        // Get the result from the rpcResult function
+        const result = await getResult({
+            command: req.body.function || req.query.function,
+            result: importer.interpret(req.body.function || req.query.function),
+            body: req.method === 'POST'? req.body : req.query,
+            circles: ['Public']
+        });
+
+        // Send the result as JSON
+        res.status(200).send(JSON.stringify(result, null, 4));
+    } catch (error) {
+        // Catch any errors and send a 500 response with the error details
+        const errorDetails = Object.getOwnPropertyNames(error).reduce((acc, key) => {
+            acc[key] = error[key];
+            return acc;
+        }, {});
+        console.error(error);
+        res.status(500).send(JSON.stringify(errorDetails, null, 4));
+    }
+});
+
+// Use the router
+app.use(router);
+
+// Start the server
+const listener = server.listen(8181, () => {
+    console.log('Listening on 0.0.0.0:8181');
+});
+
+// Handle errors
+listener.on('error', (error) => {
+    if (error.code!== 'EADDRINUSE') {
+        throw error;
+    }
+});
+
+// Handle close event
+listener.on('close', () => {
+    process.exit(0);
+});
+
+// Handle SIGTERM and SIGINT signals
+process.on('SIGTERM', () => {
+    listener.close();
+    process.exit(0);
+});
+process.on('SIGINT', () => {
+    listener.close();
+    process.exit(0);
+});
+
+module.exports = async function start() {
+    // Return a promise that resolves immediately
+    return Promise.resolve();
+}
+
+// Shut down properly when using the async/await syntax
+async function shutdown() {
+    await new Promise((resolve) => {
+        listener.close(() => {
+            resolve();
+        });
+    });
+}
+
+// Call the shutdown function when using the async/await syntax
+shutdown();
+
+// Call the done function when using the async/await syntax
+if (typeof $!== 'undefined') {
+    $().done();
+}</code></pre></div><h3>Code Breakdown</h3>
 <h4>Dependencies and Setup</h4>
 <ul>
 <li>The code requires the following dependencies:

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -159,7 +166,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet analyzes a Quake 2 map file (<code>base1.map</code>) to identify missing sound files referenced by &quot;noise&quot; entities.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs').promises; // Use promises for asynchronous I/O
+const path = require('path');
+constImporter = require('../Core'); // PascalCase for consistency
+
+// Constants for better readability
+const Q3A_SOUND_DIR = '/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/sound/';
+const BASE1_MAP_FILE = '/Users/briancullinan/.q3a/baseq3/baseq2.pk3dir/maps/base1.map';
+
+/**
+ * Lists all noise names from the base1.map file and checks if the corresponding sound files exist.
+ * @returns {{all: string[], missing: string[]}} An object with two properties: all and missing noise names.
+ */
+async function listNoise() {
+    // Read the base1.map file asynchronously for better performance
+    const contents = await fs.readFile(BASE1_MAP_FILE, 'utf8');
+
+    // Use the importer module to extract noise names from the file contents
+    const noises = Importer.regexToArray(/noise.*?"\s*"(.*?)"/ig, contents, 1);
+
+    // Filter the noise names to get the missing ones
+    const soundFiles = await fs.readdir(Q3A_SOUND_DIR);
+    const missing = noises.filter(n =&gt;!soundFiles.includes(n));
+
+    // Return the combined result
+    return { all: noises, missing };
+}
+
+module.exports = listNoise;</code></pre></div><p>This code snippet analyzes a Quake 2 map file (<code>base1.map</code>) to identify missing sound files referenced by &quot;noise&quot; entities.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,45 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code uses the <code>$TS</code> object to open a URL in a new window.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="typescript"><code>typescript
+/**
+ * Navigate to a specific webpage with custom browser settings.
+ *
+ * @param url The URL to navigate to.
+ * @param options Custom browser settings.
+ */
+function navigateToUrl(url: string, options: { zoom: number; width: number; 'crop-h': number }): void {
+  // Set default zoom level if not provided
+  options.zoom = options.zoom || 1;
+
+  // Set default width if not provided
+  options.width = options.width || 800;
+
+  // Set default crop height if not provided
+  options['crop-h'] = options['crop-h'] || 600;
+
+  // Use TypeScript's built-in string formatting features to create a formatted string
+  const formattedString = `act.com/nl-nl/producten/act-pro`;
+  const zoomLevel = options.zoom.toString();
+  const width = options.width.toString();
+  const cropHeight = options['crop-h'].toString();
+
+  // Use the formatted string to create the final command
+  const command = `$TS.screen(${formattedString}, {zoom: ${zoomLevel}, width: ${width}, 'crop-h': ${cropHeight}})`;
+
+  // Log the command for debugging purposes
+  console.log(command);
+
+  // Execute the command
+  // Replace this with your actual browser navigation logic
+  // For example, you could use a library like puppeteer to navigate the browser
+  // or use a browser automation tool like Selenium
+  console.log("Navigating to URL...");
+}
+
+// Example usage:
+navigateToUrl("act.com/nl-nl/producten/act-pro", { zoom: 0.5, width: 680, 'crop-h': 400 });</code></pre></div><p>This code uses the <code>$TS</code> object to open a URL in a new window.</p>
 <ul>
 <li><code>act.com/nl-nl/producten/act-pro</code> is the URL to be opened.</li>
 <li>The second parameter is an object with the following properties:

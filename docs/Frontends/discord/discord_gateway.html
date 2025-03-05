@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -240,7 +247,176 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Breakdown of the Code</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const {
+  TOKEN,
+  DEFAULT_APPLICATION,
+} = importer.import('discord configuration');
+
+const {
+  getSystemUsage,
+} = importer.import('system usage report');
+
+const INSTANCES = {};
+const SESSIONS = {};
+const privateChannels = {};
+const interactions = {};
+const interactionsCommands = {};
+
+let indentifyTimer;
+let cancelConnection;
+let heartbeat;
+let resources;
+let seq = 0;
+
+/**
+ * Sends a heartbeat to Discord
+ * @param {Object} ws WebSocket object
+ * @param {Boolean} reconnect Whether to reconnect after sending heartbeat
+ */
+function sendHeartbeat(ws, reconnect) {
+  if (!ws) return;
+  console.log('Sending heartbeat');
+  ws.send(JSON.stringify({
+    op: 1,
+    d: seq,
+  }));
+  cancelConnection = setTimeout(() =&gt; gatewayClose(ws, reconnect), 4000);
+}
+
+/**
+ * Handles a message received from Discord
+ * @param {Object} ws WebSocket object
+ * @param {Boolean} reconnectGateway Whether to reconnect to the gateway
+ * @param {Function} interactionResponse Function to respond to interactions
+ * @param {Object} message Message received from Discord
+ */
+function gatewayMessage(ws, reconnectGateway, interactionResponse, message) {
+  const msgBuffer = Buffer.from(message);
+  const gateway = JSON.parse(msgBuffer.toString('utf-8'));
+  if (gateway.s) seq = gateway.s;
+  if (gateway.d &amp;&amp; gateway.d.seq) seq = gateway.d.seq;
+
+  console.log('Gateway message', gateway);
+
+  switch (gateway.op) {
+    case 10:
+      ws.identified = true;
+      heartbeat = setInterval(() =&gt; sendHeartbeat(ws, reconnectGateway), gateway.d.heartbeat_interval);
+      resources = setInterval(getSystemUsage, 1000);
+      ws.send(JSON.stringify({
+        op: 2,
+        intents: [
+          'DIRECT_MESSAGES',
+          'DIRECT_MESSAGE_REACTIONS',
+          'GUILD_MESSAGES',
+          'GUILD_MESSAGE_REACTIONS',
+          'GUILDS',
+          'THREAD_UPDATE',
+          'THREAD_CREATE',
+          'THREAD_DELETE',
+          'THREAD_LIST_SYNC',
+          'THREAD_MEMBER_UPDATE',
+          'THREAD_MEMBERS_UPDATE',
+          'MESSAGE_CREATE',
+          'MESSAGE_UPDATE',
+          'GUILD_PRESENCES',
+        ],
+        d: {
+          token: TOKEN,
+          properties: {
+            '$os': 'linux',
+            '$browser': 'nodejs',
+            '$device': 'quake3',
+          },
+        },
+      }));
+      break;
+
+    case 7:
+      console.log('Reconnecting...');
+      gatewayClose(ws, reconnectGateway);
+      break;
+
+    case 0:
+    case 9:
+      if (gateway.t === 'MESSAGE_CREATE') {
+        const { guild_id, channel_id, author, content } = gateway.d;
+        if (typeof guild_id === 'undefined') {
+          privateChannels[channel_id] = Date.now();
+          if (author.id!== DEFAULT_APPLICATION &amp;&amp; interactionsCommands.promptPrivate) {
+            interactionsCommands.promptPrivate(gateway.d);
+          }
+        } else if (content.includes(`@${DEFAULT_APPLICATION}`) &amp;&amp; interactionsCommands.promptMention) {
+          interactionsCommands.promptMention(gateway.d);
+        }
+      }
+
+      if (gateway.t === 'INTERACTION_CREATE') {
+        const { channel_id, data } = gateway.d;
+        if (!interactions[channel_id]) interactions[channel_id] = [];
+        interactions[channel_id].push(gateway.d);
+        if (interactionsCommands[data.name]) {
+          Promise.resolve(interactionsCommands[data.name](gateway.d));
+        }
+        interactionResponse(gateway.d.id, gateway.d.token);
+      }
+
+      if (gateway.t === 'EMBEDDED_ACTIVITY_UPDATE_V2') {
+        const { instance_id, participants } = gateway.d;
+        if (!INSTANCES[instance_id]) INSTANCES[instance_id] = [];
+        INSTANCES[instance_id] = INSTANCES[instance_id].filter(i =&gt; participants.includes(i[0]));
+
+        if (interactionsCommands.startActivity &amp;&amp; interactionsCommands.endActivity) {
+          if (participants.length) {
+            Promise.resolve(interactionsCommands.startActivity(gateway.d));
+          } else {
+            Promise.resolve(interactionsCommands.endActivity(gateway.d));
+          }
+        }
+      }
+      break;
+
+    case 11:
+      clearTimeout(cancelConnection);
+      break;
+
+    default:
+      console.log('Unrecognized gateway', gateway);
+      break;
+  }
+}
+
+/**
+ * Closes the Discord gateway
+ * @param {Object} ws WebSocket object
+ * @param {Boolean} reconnect Whether to reconnect after closing the gateway
+ */
+function gatewayClose(ws, reconnect) {
+  console.log('Discord disconnected');
+  clearInterval(indentifyTimer);
+  clearInterval(heartbeat);
+  clearInterval(resources);
+  if (ws.readyState === 1) ws.close();
+  if (reconnect) {
+    setTimeout(reconnect, 1000);
+  }
+  if (interactionsCommands.endActivity) {
+    Promise.resolve(interactionsCommands.endActivity());
+  }
+  ws.identified = false;
+  return;
+}
+
+module.exports = {
+  gatewayClose,
+  gatewayMessage,
+  privateChannels,
+  interactions,
+  interactionsCommands,
+  INSTANCES,
+  SESSIONS,
+};</code></pre></div><p><strong>Breakdown of the Code</strong></p>
 <h3>Importing Configuration and Functionality</h3>
 <pre><code class="language-javascript">const {TOKEN, DEFAULT_APPLICATION} = importer.import('discord configuration')
 const systemUsage = importer.import('system usage report')

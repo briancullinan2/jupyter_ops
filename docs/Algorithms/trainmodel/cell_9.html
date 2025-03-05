@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -141,7 +148,49 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Function Call</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="markdown"><code># Import Required Libraries
+## Import OpenCV for image processing and feature extraction
+import cv2
+import numpy as np
+from typing import List
+
+# Function to extract features from images
+def extract_features(image: List[np.ndarray]) -> np.ndarray:
+    """
+    Extracts features from a list of images.
+
+    Args:
+    image (List[np.ndarray]): A list of image arrays.
+
+    Returns:
+    np.ndarray: A numpy array containing the extracted features.
+    """
+    # Initialize an empty list to store the features
+    features = []
+
+    # Loop through each image in the list
+    for img in image:
+        # Convert the image to grayscale
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        # Detect edges using the Canny edge detector
+        edges = cv2.Canny(gray, 100, 200)
+
+        # Extract the features using the Histogram of Oriented Gradients (HOG)
+        hog = cv2.HOGDescriptor()
+        hog_features = hog.compute(edges)
+
+        # Append the features to the list
+        features.append(hog_features)
+
+    # Convert the list to a numpy array
+    features = np.array(features)
+
+    return features
+
+# Extract features from the training images
+train_features = extract_features(train['image'])</code></pre></div><p><strong>Function Call</strong></p>
 <p><code>train_features = extract_features(train['image'])</code></p>
 <p><strong>Parameters:</strong></p>
 <ul>

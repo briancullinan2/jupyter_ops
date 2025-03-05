@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -184,7 +191,87 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines functions for managing and visualizing Git branches within a project.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { formatNodes, gitTree, displayBranches, cloneProject, execCmd } = require('../Core');
+
+/**
+ * Resets the commit for a given branch by checking out the branch, resetting to the specified parent commit, adding all files, and committing the changes.
+ * @param {string} branch The branch to reset.
+ * @param {string} parent The parent commit to reset to.
+ * @param {string} project The Git project directory.
+ * @returns {Promise&lt;string&gt;} The output of the Git commit command.
+ */
+function getResetCommit(branch, parent, project) {
+    const command = [
+        'git checkout',
+        branch,
+        'git reset --mixed',
+        parent,
+        'git add -A',
+        'git commit -m',
+        `auto reset ${branch}`,
+    ].join(' ');
+    return execCmd(command, { cwd: project });
+}
+
+/**
+ * Resets all branches by iteratively squashing branches until no further squashing is possible.
+ * @param {string} project The Git project directory.
+ * @returns {Promise&lt;string[]&gt;} The SVGs representing the branches after squashing.
+ */
+function resetAllBranches(project) {
+    const children = [];
+    const promises = [];
+
+    const nodeTree = gitTree(project).sort((a, b) =&gt; a.time - b.time);
+    for (const node of nodeTree) {
+        let current = node;
+        let parentCount = 0;
+        while (current.parent &amp;&amp; current.parent.branch === current.branch) {
+            current = current.parent;
+            parentCount++;
+        }
+
+        if (parentCount &gt; 0 &amp;&amp; current.parent) {
+            promises.push((current, node) =&gt; () =&gt; {
+                children.push(node);
+                return getResetCommit(node.branch, current.parent.name, project)
+                   .then(() =&gt; {
+                        const nodeTree = gitTree(project).sort((a, b) =&gt; a.time - b.time);
+                        return displayBranches(nodeTree);
+                    });
+            })(current, node);
+        }
+    }
+
+    return Promise.all(promises.map(p =&gt; p()))
+       .then(() =&gt; children);
+}
+
+/**
+ * Returns the SVG representation of the tip of the Git tree.
+ * @param {string} project The Git project directory.
+ * @returns {Promise&lt;string&gt;} The SVG representing the tip of the tree.
+ */
+function gitTipOfTree(project) {
+    const promises = [
+        cloneProject(project, true),
+        resetAllBranches(project),
+    ];
+
+    return Promise.all(promises)
+       .then(([clone, children]) =&gt; {
+            const nodeTree = gitTree(project).sort((a, b) =&gt; a.time - b.time);
+            const head = nodeTree.find(node =&gt; node.branch.indexOf('HEAD') &gt; -1);
+            const branch = head
+               ? nodeTree.find(node =&gt; node.branch.indexOf(head.branch.replace(/HEAD *-*&gt;* */ig, '').split(/\s*,\s*/ig)) &gt; -1) || nodeTree[0]
+                : nodeTree[0];
+            return displayBranches([branch]);
+        })
+       .then(svg =&gt; [svg]);
+}
+
+module.exports = gitTipOfTree;</code></pre></div><p>This code defines functions for managing and visualizing Git branches within a project.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Imports:</strong></p>

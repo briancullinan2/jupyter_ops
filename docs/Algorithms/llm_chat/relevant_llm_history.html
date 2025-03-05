@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -148,7 +155,79 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>relevantHistory</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const fs = require('fs');
+const path = require('path');
+const { ACTIVE_CONVERSATIONS, PROJECT_PATH, DEFAULT_MODEL } = require('./general-chit-chat');
+
+/**
+ * Retrieves a range of relevant conversation history files based on the user's prompt.
+ *
+ * @param {Object} promptModel - The model used for prompt-based conversations.
+ * @param {Object} session - The current conversation session.
+ * @param {string} prompt - The user's prompt to determine relevant history.
+ * @returns {string[]} An array of conversation history file names relevant to the user's prompt.
+ */
+async function relevantHistory(promptModel, session, prompt) {
+  if (!session) {
+    return [];
+  }
+
+  const historyFiles = await getRelevantHistoryFiles(session);
+  const relevantFiles = await getRelevantConversations(promptModel, historyFiles, prompt);
+
+  return relevantFiles;
+}
+
+/**
+ * Retrieves a list of relevant conversation history files based on the user's prompt.
+ *
+ * @param {Object} promptModel - The model used for prompt-based conversations.
+ * @param {string[]} historyFiles - The list of conversation history file names.
+ * @param {string} prompt - The user's prompt to determine relevant history.
+ * @returns {Promise&lt;string[]&gt;} A promise resolving to an array of conversation history file names relevant to the user's prompt.
+ */
+async function getRelevantConversations(promptModel, historyFiles, prompt) {
+  const now = new Date();
+  const q1 = `Current date: ${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}\nGiven the following chat history:\n${historyFiles.join('\n')}\nGiven the following prompt:\n${prompt}\nReturn a short range of Year-Month for related dates.`;
+  console.log(`User: ${q1}`);
+
+  const a1 = await promptModel(q1);
+  console.log(`AI: ${a1}`);
+
+  const relevantFiles = historyFiles.filter((file) =&gt; a1.match(file));
+
+  await Promise.all(relevantFiles.map((file) =&gt; {
+    const convoFile = path.join(PROJECT_PATH, file);
+    if (!fs.existsSync(convoFile)) {
+      return;
+    }
+
+    const content = fs.readFileSync(convoFile, 'utf8');
+    ACTIVE_CONVERSATIONS[convoFile] = JSON.parse(content);
+  }));
+
+  return relevantFiles;
+}
+
+/**
+ * Retrieves a list of relevant conversation history files based on the user's session.
+ *
+ * @param {Object} session - The current conversation session.
+ * @returns {string[]} A promise resolving to an array of conversation history file names relevant to the user's session.
+ */
+async function getRelevantHistoryFiles(session) {
+  const history = fs.readdirSync(PROJECT_PATH);
+  const historyFiles = history
+   .filter((file) =&gt; file.match(`-${DEFAULT_MODEL}-${session}.json`))
+   .map(path.basename);
+
+  return historyFiles;
+}
+
+module.exports = relevantHistory;
+```</code></pre></div><h3>Function: <code>relevantHistory</code></h3>
 <h4>Description</h4>
 <p>Retrieves relevant conversation history files based on a given prompt.</p>
 <h4>Parameters</h4>

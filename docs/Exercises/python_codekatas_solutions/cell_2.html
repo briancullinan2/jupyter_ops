@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -119,7 +126,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>last_word_length function</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>python
+def last_word_length(text: str) -&gt; int:
+    """
+    Given a string of words separated by spaces, returns the length of the last word.
+    
+    Args:
+        text (str): The input string.
+    
+    Returns:
+        int: The length of the last word.
+    """
+    # Remove trailing whitespace to simplify the search for the last word
+    text = text.rstrip()
+    
+    # If the string is empty, return 0
+    if not text:
+        return 0
+    
+    # Find the index of the last space before the last word
+    last_space_index = text.rfind(' ')
+    
+    # If no space is found, the entire string is the last word
+    if last_space_index == -1:
+        return len(text)
+    
+    # Return the length of the last word
+    return len(text) - last_space_index - 1
+
+
+assert last_word_length('') == 0
+assert last_word_length('last   ') == 4
+assert last_word_length('string  of  words') == 5
+print('All passed!')</code></pre></div><h2>last_word_length function</h2>
 <h3>Purpose</h3>
 <p>Returns the length of the last word in a given string.</p>
 <h3>Parameters</h3>

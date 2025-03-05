@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,36 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Set the directory path
+JUPYTANGULAR_DIR="~/jupytangular"
+
+# Function to create directory
+create_directory() {
+  local dir_path=$1
+  if [! -d "$dir_path" ]; then
+    mkdir -p "$dir_path"
+    echo "Directory created: $dir_path"
+  else
+    echo "Directory already exists: $dir_path"
+  fi
+}
+
+# Create directories
+cd "$JUPYTANGULAR_DIR" || exit
+echo "Installing dependencies..."
+npm install wdio webdriverio
+echo "Directories created..."
+
+# Create subdirectories in ~/Collections if they don't exist
+create_directory "~/Collections"
+create_directory "~/Collections/searches"
+create_directory "~/Collections/screenshots"
+
+# TODO: Consider adding error handling for npm install</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p><strong>Command 1: <code>cd ~/jupytangular</code></strong></p>
 <ul>
 <li>Changes the current working directory to <code>~/jupytangular</code> (user's home directory followed by <code>jupytangular</code> folder)</li>

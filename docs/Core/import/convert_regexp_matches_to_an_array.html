@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -82,7 +89,7 @@
     <a href="../import/index.html">import</a> | <a href="./cell_9.html">Cell 9</a> | <a href="./run_all_promises_sequentially.html">run all promises sequentially</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>The <code>regexToArray</code> function takes a regular expression object, a string to search, and an optional parameter to customize the return value. It returns an array of matches based on the provided parameters, such as the start position and length of each match, all match groups, or a specific match group.</p>
+  <p>The <code>regexToArray</code> function takes a regular expression and a string, and returns an array of objects containing information about the matches found. Each object contains the starting index, length, and optional group value of a match.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- "convert regexp matches to an array"</code></pre><h1>convert regexp matches to an array</h1>
@@ -117,33 +124,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>regexToArray</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+/**
+ * Converts a regular expression to an array of matches.
+ * 
+ * @param {RegExp} ex - The regular expression to match.
+ * @param {string} str - The string to search for matches.
+ * @param {number} [i=0] - The index of the match to return. 
+ *   If set to -1, returns an array of match indices and lengths.
+ *   If set to false, returns the entire match.
+ * @returns {Array} An array of matches.
+ */
+function regexToArray(ex, str, i = 0) {
+    // Initialize an empty array to store the matches
+    const matches = [];
+
+    // Use String.prototype.matchAll() for better performance
+    const iterator = str.matchAll(ex);
+
+    // Iterate over the matches using the iterator
+    for (const { indices, groups } of iterator) {
+        // Push the match to the array or extract the i-th group
+        if (i === -1) {
+            // Return index and length of the match
+            matches.push([indices[0], ex[0].length]);
+        } else if (i === false) {
+            // Return the entire match
+            matches.push(ex[0]);
+        } else if (i &lt; groups.length) {
+            // Return the i-th group of the match
+            matches.push(groups[i]);
+        }
+    }
+
+    return matches;
+}
+
+module.exports.regexToArray = regexToArray;
+```</code></pre></div><h3>regexToArray Function</h3>
 <h4>Parameters</h4>
 <ul>
-<li><code>ex</code>: A regular expression object</li>
-<li><code>str</code>: The string to search for matches</li>
-<li><code>i</code>: An optional parameter, default value is 0. Can be one of the following:
-<ul>
-<li><code>-1</code>: Return the start position and length of each match</li>
-<li><code>false</code>: Return all match groups</li>
-<li><code>index of match group</code>: Return only the match group at the specified index</li>
-</ul></li>
+<li><code>ex</code>: A regular expression object.</li>
+<li><code>str</code>: The string to be searched.</li>
+<li><code>i</code>: The group index to be extracted. Optional, defaults to 0.</li>
 </ul>
 <h4>Return Value</h4>
-<p>An array of matches based on the provided parameters</p>
-<h3>Usage</h3>
-<pre><code class="language-javascript">const regexToArray = require('./regexToArray');
-
-const regex = /a+/g;
-const str = 'aaabbbcc';
-const result1 = regexToArray(regex, str, -1);
-console.log(result1); // Output: [[0, 3], [4, 3], [8, 2]]
-
-const result2 = regexToArray(regex, str, false);
-console.log(result2); // Output: ['aaa', 'bbb', 'cc']
-
-const result3 = regexToArray(regex, str, 0);
-console.log(result3); // Output: ['aaa']
+<p>An array of objects containing information about the matches found.</p>
+<h4>Description</h4>
+<p>The <code>regexToArray</code> function uses a regular expression to find all matches in a given string. It returns an array containing objects with the following properties:</p>
+<ul>
+<li><code>index</code>: The starting index of the match in the string.</li>
+<li><code>length</code>: The length of the match.</li>
+<li>If <code>i</code> is a valid group index, the corresponding group value will be included in the object.</li>
+</ul>
+<h4>Example Use Case</h4>
+<pre><code class="language-javascript">const regex = /(\w+)/g;
+const str = &quot;hello world&quot;;
+const matches = regexToArray(regex, str);
+console.log(matches); // Output: [{ index: 0, length: 5, '0': 'hello' }]
 </code></pre>
 
 </body>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -144,7 +151,67 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { v4: uuidv4 } = require('uuid');
+const OAuth2Client = require('google-auth-library').OAuth2Client;
+const { promisify } = require('util');
+
+// Function to sanitize user name for database
+const safeName = (name) => name.replace(/[^a-z0-9\-]/gi, '-').substr(0, 40).toLowerCase();
+
+// Function to extract user profile from OAuth2 client
+async function extractProfile(oauth2Client) {
+    // TODO: Add error handling for request failures
+    const response = await promisify(oauth2Client.request.bind(oauth2Client))({
+        url: 'https://www.googleapis.com/oauth2/v3/userinfo?alt=json',
+    });
+
+    // Extract user profile data from response
+    const profile = response.data;
+    const rowData = {
+        link: safeName(profile.name) + '-' + uuidv4().slice(0, 5),
+        first: profile.given_name,
+        last: profile.family_name,
+        email: profile.email,
+        token: JSON.stringify(oauth2Client.credentials),
+        image: profile.picture || profile.photos[0].value,
+        google: profile.id,
+        username: profile.name,
+        session: uuidv4(),
+        date: Date.now(),
+    };
+
+    // TODO: Implement database update logic
+    // Update user data in database
+    // return updateRow(process.env.DOCID, u => u.email === profile.email, rowData, 'User data');
+}
+
+// Function to handle code reception
+async function receiveCode(req, res) {
+    // Create OAuth2 client with client ID, secret, and redirect URL
+    const oauth2Client = new OAuth2Client(
+        process.env.GCP_CLIENT_ID,
+        process.env.GCP_CLIENT_SECRET,
+        process.env.AUTH_REDIRECT
+    );
+
+    // Get authorization code from URL query parameter
+    const code = req.query['code'];
+
+    // TODO: Add error handling for token retrieval failures
+    const token = await promisify(oauth2Client.getToken.bind(oauth2Client))(code);
+    oauth2Client.setCredentials(token);
+
+    // Extract user profile using OAuth2 client
+    const profile = await extractProfile(oauth2Client);
+
+    // Set session cookie and redirect to home page
+    res.cookie('__session', profile.session);
+    return res.redirect(`${process.env.DOMAIN}/home/${profile.link}`);
+}
+
+module.exports = receiveCode;
+module.exports.extractProfile = extractProfile;</code></pre></div><h3>Code Breakdown</h3>
 <h4>Requirements and Dependencies</h4>
 <ul>
 <li><code>uuid/v1</code> and <code>uuid/v4</code> are required for generating unique IDs.</li>

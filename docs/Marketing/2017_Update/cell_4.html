@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -194,7 +201,96 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Graphviz DOT Language Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="dot"><code>digraph Angular2Architecture {
+    label = 'Angular 2 Architecture';
+    rankdir = TB;
+    fontname = Helvetica;
+    node[fontname = Helvetica, width = 1.8, height = 0.8];
+    edge[fontname = Helvetica, fontsize = 12, fontcolor = blue, labeldistance = 1.8];
+
+    # Web Browser
+    subgraph cluster_browser {
+        label = 'Web Browser';
+        socket[shape = 'box', label = 'SocketJS'];
+        xhr[shape = 'box', label = 'XHR'];
+        cli[shape = 'box', label = 'CLI'];
+        less[shape = 'box', label = 'Less/SASS'];
+        material[shape = 'box', label = 'Material'];
+
+        # Angular Components
+        subgraph cluster_angular_component {
+            label = 'Angular Components';
+            core[shape = 'box', label = 'Core'];
+            router[shape = 'box', label = 'Router'];
+            rxjs[shape = 'box', label = 'RxJs'];
+
+            {
+                rank = same
+                core
+                router
+                rxjs
+            }
+        ->
+            {
+                rank = same
+                cli
+                less
+                material
+            }
+            [style = invis]
+        }
+
+        # Connections between components
+        edge[style = invisible, dir = none];
+        router -> material -> socket -> xhr;
+    }
+
+    # Developer Tools
+    subgraph cluster_angular_tools {
+        label = 'Developer Tools';
+        rank = same;
+        teamcity[shape = 'box', label = 'TeamCity'];
+        lint[shape = 'box', label = 'Lint'];
+        webpack[shape = 'box', label = 'Webpack'];
+
+        # Connections between tools
+        edge[style = invisible, dir = none];
+        teamcity -> lint -> webpack;
+    }
+
+    # Connections between web browser and tools
+    webpack -> socket [minlen = 3];
+
+    # AWS
+    subgraph cluster_aws {
+        label = 'AWS';
+        subgraph cluster_vm {
+            label = 'Hyper-V / Docker';
+            windows[shape = 'box', label = 'Windows'];
+
+            subgraph cluster_server {
+                label = 'Server Stack';
+                csharp[shape = 'box', label = 'C#'];
+                swagger[shape = 'box', label = 'Swagger'];
+                identity[shape = 'box', label = 'Identity\nServer 3'];
+
+                subgraph cluster_server_tools {
+                    label = 'Developer Tools';
+                    blueprint[shape = 'box', label = 'Blueprint'];
+                    msbuild[shape = 'box', label = 'MSBuild'];
+                }
+
+                # Connections between server tools
+                edge[style = invisible, dir = none];
+                csharp -> swagger -> identity;
+            }
+
+            # Connections between server and tools
+            xhr -> identity [minlen = 3];
+        }
+    }
+}</code></pre></div><p><strong>Graphviz DOT Language Breakdown</strong></p>
 <p>This code is written in the Graphviz DOT language, used to create graphical representations of nodes and edges.</p>
 <h3>Code Structure</h3>
 <ul>

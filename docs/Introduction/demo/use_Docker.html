@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -129,7 +136,43 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet demonstrates the correct way to handle multiple asynchronous operations using promises in JavaScript.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import the importer module
+import importer from './Core';
+
+// Use the async/await syntax for better readability
+async function runAllPromises(promises) {
+  // Use Promise.allSettled for more robust handling of promise outcomes
+  const results = await Promise.allSettled(promises);
+  results.forEach((result, index) => {
+    // Handle successful and failed promises separately
+    if (result.status === 'fulfilled') {
+      console.log(`Promise ${index + 1} resolved successfully: ${result.value}`);
+    } else {
+      console.log(`Promise ${index + 1} rejected with reason: ${result.reason}`);
+    }
+  });
+}
+
+// Refactor the code to remove unnecessary variables and improve clarity
+async function main() {
+  // Use the runAllPromises function to import multiple notebooks
+  try {
+    await runAllPromises([
+      importer.importNotebook(n),
+      importer.importNotebook(n),
+    ]);
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error('Error importing notebooks:', error);
+  }
+}
+
+// Run the main function
+main();
+
+// TODO: Consider adding a timeout or progress indicator for longer imports
+// TODO: Add error handling for cases where a notebook cannot be imported</code></pre></div><p>This code snippet demonstrates the correct way to handle multiple asynchronous operations using promises in JavaScript.</p>
 <p><strong>Problem:</strong></p>
 <p>The commented-out code uses <code>Promise.all</code> to run multiple <code>importer.importNotebook</code> calls concurrently. While this works, it's not ideal because it waits for <em>all</em> promises to resolve before proceeding.</p>
 <p><strong>Solution:</strong></p>

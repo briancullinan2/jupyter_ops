@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -124,7 +131,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Map List Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+
+# Define a function to handle map query
+handle_map_query() {
+  local query=$1
+  local map_name=$(echo "$query" | cut -d'-' -f2)
+  case $map_name in
+    dm1) echo "Map Name: $query (Deathmatch 1)" ;;
+    dm2) echo "Map Name: $query (Deathmatch 2)" ;;
+    dm3) echo "Map Name: $query (Deathmatch 3)" ;;
+    dm4) echo "Map Name: $query (Deathmatch 4)" ;;
+    dm5) echo "Map Name: $query (Deathmatch 5)" ;;
+    dm6) echo "Map Name: $query (Deathmatch 6)" ;;
+    e1m7) echo "Map Name: $query (Level 7 of Episode 1)" ;;
+    original) echo "Map Name: ${query%% *} (Original map by unknown author)" ;;
+  esac
+}
+
+# Define a function to handle map query with additional information
+handle_map_query_with_info() {
+  local query=$1
+  case $query in
+    -q3twodeaths (*) handle_map_query "$query" ;;
+    -q3claustro (*) handle_map_query "$query" ;;
+    -q3badplace (*) handle_map_query "$query" ;;
+    -q3cistern (*) handle_map_query "$query" ;;
+    -q3darkzone (*) handle_map_query "$query" ;;
+    -q3death32c (*) handle_map_query "$query" ;;
+    -q3ultrav (*) handle_map_query "$query" ;;
+    -q3abandoned (*) handle_map_query "$query" ;;
+    -q3chthon (*) handle_map_query "$query" ;;
+    -q3start (*) handle_map_query "$query" ;;
+    -q3debello (*) handle_map_query "$query" ;;
+  esac
+}
+
+# Main function to handle map query
+handle_map_query_main() {
+  local query=$1
+  if [[ $query =~ ^-q[3t]{1}[a-z]{1,10} ]]; then
+    handle_map_query_with_info "$query"
+  else
+    echo "Invalid query"
+  fi
+}
+
+# Test the functions
+echo "$(handle_map_query_main "-q3twodeaths")"
+echo "$(handle_map_query_main "-q3claustro")"
+echo "$(handle_map_query_main "-q3badplace")"
+echo "$(handle_map_query_main "-q3cistern")"
+echo "$(handle_map_query_main "-q3darkzone")"
+echo "$(handle_map_query_main "-q3death32c")"
+echo "$(handle_map_query_main "-q3ultrav")"
+echo "$(handle_map_query_main "-q3abandoned")"
+echo "$(handle_map_query_main "-q3chthon")"
+echo "$(handle_map_query_main "-q3start")"
+echo "$(handle_map_query_main "-q3debello")"
+
+# TODO: Implement real-time map information
+# TODO: Handle multiple map queries at once</code></pre></div><h3>Map List Breakdown</h3>
 <p>This code snippet appears to be a list of Quake 3 Arena map names, each associated with a difficulty level or mode (dm).</p>
 <h3>Map List</h3>
 <ol>

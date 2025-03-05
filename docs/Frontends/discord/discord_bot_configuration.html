@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -154,7 +161,69 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Module Overview</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs');
+const path = require('path');
+
+// Define environment variables with default values
+const ENV_VARIABLES = {
+  DEFAULT_GUILD: process.env.DEFAULT_GUILD || '319817668117135362',
+  DEFAULT_CHANNEL: process.env.DEFAULT_CHANNEL || '366715821654933515', // Prioritize this channel
+  DEFAULT_APPLICATION: process.env.DEFAULT_APPLICATION || '1328141471840206899',
+  DEFAULT_API: process.env.DEFAULT_API || 'https://discord.com/api/v10/',
+  MESSAGE_TIME: (process.env.DEFAULT_TIME || 1000 * 60 * 2) +'ms', // Convert to milliseconds
+  DEFAULT_RATE: 1000 / 50, // from discord documentation
+  PROFILE_PATH: process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
+  DEFAULT_USERNAME: 'Orbb',
+  MESSAGES_START: 1420070400000,
+};
+
+// Define file paths for token and secret
+const TOKEN_FILE_PATHS = ['discord-bot.txt', path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials/discord-bot.txt')];
+const SECRET_FILE_PATHS = ['discord.txt', path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, '.credentials/discord.txt')];
+
+// Check if token and secret files exist and read their contents
+let tokenPath, secretPath;
+if (fs.existsSync(TOKEN_FILE_PATHS[0])) {
+  tokenPath = path.resolve(TOKEN_FILE_PATHS[0]);
+  TOKEN = fs.readFileSync(tokenPath).toString('utf-8').trim();
+} else if (fs.existsSync(TOKEN_FILE_PATHS[1])) {
+  tokenPath = TOKEN_FILE_PATHS[1];
+  TOKEN = fs.readFileSync(tokenPath).toString('utf-8').trim();
+}
+if (fs.existsSync(SECRET_FILE_PATHS[0])) {
+  secretPath = path.resolve(SECRET_FILE_PATHS[0]);
+  SECRET = fs.readFileSync(secretPath).toString('utf-8').trim();
+} else if (fs.existsSync(SECRET_FILE_PATHS[1])) {
+  secretPath = SECRET_FILE_PATHS[1];
+  SECRET = fs.readFileSync(secretPath).toString('utf-8').trim();
+}
+
+// Check if token and secret are provided as environment variables
+let TOKEN = process.env.TOKEN;
+let SECRET = process.env.SECRET;
+if (!TOKEN) {
+  try {
+    TOKEN = fs.readFileSync(tokenPath).toString('utf-8').trim();
+  } catch (error) {
+    console.error('Error reading token file:', error);
+  }
+}
+if (!SECRET) {
+  try {
+    SECRET = fs.readFileSync(secretPath).toString('utf-8').trim();
+  } catch (error) {
+    console.error('Error reading secret file:', error);
+  }
+}
+
+// Export environment variables
+module.exports = {
+ ...ENV_VARIABLES,
+  TOKEN,
+  SECRET,
+};</code></pre></div><h2>Module Overview</h2>
 <p>This module exports various constants and variables used in a Discord bot application.</p>
 <h3>Environment Variables</h3>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -181,7 +188,97 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Overview</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+const importer = require('../Core');
+const { jsonInterface, wireJson, pathJson } = importer.import('notebook kernel json');
+
+// Implement a base function for generating kernel JSON
+function generateKernelJson(kernel_json, kernelType) {
+    // Use a switch statement to generate the kernel JSON based on the type
+    switch (kernelType) {
+        case 'python':
+            return generatePythonKernelJson(kernel_json);
+        case 'node':
+            return generateNodeKernelJson(kernel_json);
+        case 'notebook':
+            return generateNotebookKernelJson(kernel_json);
+        case 'bash':
+            return generateBashKernelJson(kernel_json);
+        case 'processing':
+            return generateProcessingKernelJson(kernel_json);
+        default:
+            throw new Error(`Unsupported kernel type: ${kernelType}`);
+    }
+}
+
+// Specific kernel JSON generators
+function generatePythonKernelJson(kernel_json) {
+    // Refactored to simplify the code and reduce duplication
+    return pathJson({
+        argv: ['python3', '-m', 'IPython.kernel', '-f', '{connection_file}'],
+       ...kernel_json,
+    });
+}
+
+function generateNodeKernelJson(kernel_json) {
+    return pathJson({
+        path: process.argv[2] || process.argv[0],
+        argv: [kernel_json.path].concat(kernel_json.argv || kernel_json.args || []),
+       ...kernel_json,
+    });
+}
+
+function generateNotebookKernelJson(kernel_json) {
+    return jsonInterface({
+        argv: [
+            'npm',
+            'run',
+            'import',
+            '--',
+            'get javascript kernel',
+            '["{connection_file}"]',
+        ],
+       ...kernel_json,
+    });
+}
+
+function generateBashKernelJson(kernel_json) {
+    return jsonInterface({
+        argv: [
+            'npm',
+            'run',
+            'import',
+            '--',
+            'get bash kernel',
+            '["{connection_file}"]',
+        ],
+       ...kernel_json,
+    });
+}
+
+function generateProcessingKernelJson(kernel_json) {
+    return jsonInterface({
+        argv: [
+            'npm',
+            'run',
+            'import',
+            '--',
+            'get processing kernel',
+            '["{connection_file}"]',
+        ],
+       ...kernel_json,
+    });
+}
+
+module.exports = {
+    generateKernelJson,
+    generatePythonKernelJson,
+    generateNodeKernelJson,
+    generateNotebookKernelJson,
+    generateBashKernelJson,
+    generateProcessingKernelJson,
+};</code></pre></div><h3>Overview</h3>
 <p>This code exports a set of functions for generating JSON objects used in kernel communication.</p>
 <h3>Functions</h3>
 <h4>1. <code>pythonJson(kernel_json)</code></h4>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -102,7 +109,21 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet installs a Bash kernel for Jupyter Notebook.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Define a function to install Bash kernel
+install_bash_kernel() {
+  # Try to install bash_kernel using pip
+  pip install --quiet --no-input bash_kernel
+  # If installation succeeded, install Bash kernel in Jupyter
+  python -m bash_kernel.install
+  # Print success message
+  echo "Bash kernel installed successfully."
+}
+
+# Call the function to install Bash kernel
+install_bash_kernel</code></pre></div><p>This code snippet installs a Bash kernel for Jupyter Notebook.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong><code>pip install bash_kernel</code></strong>: This command uses <code>pip</code>, the Python package installer, to install the <code>bash_kernel</code> package. This package provides the necessary components to run Bash code within Jupyter Notebook.</p></li>

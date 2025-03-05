@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -133,7 +140,62 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This Bash script sets up a remote desktop environment with a VNC server for Selenium testing. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>bash
+#!/bin/bash
+#
+# IMPORTANT: Change this file only in directory StandaloneDebug!
+
+# Function to shutdown the process
+shutdown() {
+  # Send SIGTERM signal to the process
+  kill -s SIGTERM $NODE_PID
+  # Wait for the process to exit
+  wait $NODE_PID
+}
+
+# Check if selenium options are provided
+if [ -n "$SE_OPTS" ]; then
+  # Log the selenium options
+  echo "Appending selenium options: ${SE_OPTS}"
+fi
+
+# Clean up X11 locks
+rm -f /tmp/.X*lock
+
+# Set the display environment variable
+export DISPLAY=:99
+
+# Run xvfb with custom screen arguments
+xvfb-run --server-args="-screen 0 8160x6120x24 -ac +extension RANDR" \
+  java -Dwebdriver.chrome.chromedriver=/opt/selenium/chromedriver-* -jar /opt/selenium/selenium-server-standalone.jar  &amp;
+NODE_PID=$!
+
+# Trap SIGTERM and SIGINT signals to call the shutdown function
+trap shutdown SIGTERM SIGINT
+
+# Wait for xvfb to start
+for i in $(seq 1 10); do
+  # Check if xvfb is running using xdpyinfo
+  xdpyinfo -display $DISPLAY &gt;/dev/null 2&gt;&amp;1
+  if [ $? -eq 0 ]; then
+    # If xvfb is running, break out of the loop
+    break
+  fi
+  # Log a message to indicate that xvfb is still starting
+  echo "Waiting for xvfb..."
+  # Wait for 0.5 seconds before checking again
+  sleep 0.5
+done
+
+# Run fluxbox on the display
+fluxbox -display $DISPLAY &amp;
+
+# Run x11vnc on the display with custom settings
+x11vnc -scale 2700x2048 -noxdamage -forever -nopw -shared -rfbport 5900 -display $DISPLAY &amp;
+
+# Wait for the xvfb process to exit
+wait $NODE_PID</code></pre></div><p>This Bash script sets up a remote desktop environment with a VNC server for Selenium testing. Here's a breakdown:</p>
 <p><strong>Initialization:</strong></p>
 <ul>
 <li><strong><code>shutdown</code> function:</strong> Defines a function to gracefully shut down the Node.js process running Selenium.</li>

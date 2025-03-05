@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -201,7 +208,162 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const mysql = require('mysql2/promise'); // Use promise version of mysql driver
+const importer = require('../Core');
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+
+// Define constants
+const HOME = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const PROFILE_PATH = HOME;
+const project = path.join(PROFILE_PATH, 'Documents/studysauce4/data');
+const filename = path.join(project, 'cleaned.json');
+const credentialsPath = path.join(PROFILE_PATH, 'credentials/studysaucedb.json');
+
+// Load database credentials
+const credentials = fs.readFileSync(credentialsPath, 'utf8');
+const credentialsObject = JSON.parse(credentials);
+
+// Connect to database
+const con = mysql.createConnection({
+  host: credentialsObject.host,
+  port: credentialsObject.port,
+  user: credentialsObject.user,
+  password: credentialsObject.password,
+  database: credentialsObject.database
+});
+
+// Query database
+async function queryDatabase(q) {
+  try {
+    const result = await con.execute(q);
+    console.log(result);
+    return result;
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Get tables
+async function getTables() {
+  try {
+    const result = await queryDatabase('SHOW TABLES');
+    return result.map(r =&gt; r[Object.keys(r)[0]])
+     .filter(r =&gt; r.indexOf('acl_') === -1
+        &amp;&amp; r.indexOf('rememberme') === -1
+        &amp;&amp; r.indexOf('session') === -1
+        &amp;&amp; r.indexOf('mail') === -1
+        &amp;&amp; r.indexOf('visit') === -1);
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Parse boolean values
+function parseBoolean(value) {
+  return value === 'true' || value === '0' || parseInt(value) &gt; 0;
+}
+
+// Parse string values
+function parseString(value) {
+  return value + '';
+}
+
+// Describe table
+async function describeTable(table) {
+  try {
+    const fields = await queryDatabase(`DESCRIBE ${table}`);
+    const obj = {};
+    fields.forEach(f =&gt; {
+      const parse = parseString;
+      if (f.Type === 'tinyint(1)') return obj[f.Field] = parseBoolean;
+      if (f.Type.indexOf('int') &gt; -1) return obj[f.Field] = parseInt;
+      if (f.Type.indexOf('datetime') &gt; -1) return obj[f.Field] = Date.parse;
+      obj[f.Field] = parse;
+    });
+    return obj;
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Select objects
+async function selectObjects(table, descriptor, query = '') {
+  try {
+    const rows = await queryDatabase(`SELECT * FROM ${table} ${query}`);
+    return rows.map(r =&gt; {
+      delete r['password'];
+      delete r['salt'];
+      delete r['confirmation_token'];
+      if (typeof r['coupon_id']!== 'undefined') {
+        r['bundle_id'] = r['coupon_id'];
+        delete r['coupon_id'];
+      }
+      if (typeof r['options']!== 'undefined') {
+        r['properties'] = r['options'];
+        delete r['options'];
+      }
+      if (typeof r['properties']!== 'undefined') {
+        r['properties'] = unserialize(r['properties']);
+      }
+      return r;
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Unserialize data
+function unserialize(data) {
+  // Load unserializer from GitHub
+  return new Promise((resolve, reject) =&gt; {
+    https.get('https://raw.githubusercontent.com/naholyr/js-php-unserialize/master/php-unserialize.js', (res) =&gt; {
+      let data = '';
+      res.on('data', (d) =&gt; {
+        data += d.toString();
+      });
+      res.on('end', () =&gt; {
+        const unserializer = require(data);
+        resolve(unserializer.unserialize);
+      });
+    }).on('error', (e) =&gt; {
+      reject(e);
+    });
+  });
+}
+
+// Main function
+async function main() {
+  try {
+    // Load unserializer
+    const unserializeFunc = await unserialize();
+
+    // Get tables
+    const tables = await getTables();
+
+    // Describe and select objects for each table
+    const results = {};
+    await Promise.all(tables.map(async (table) =&gt; {
+      const descriptor = await describeTable(table);
+      const rows = await selectObjects(table, descriptor);
+      results[table.replace('ss_', '').replace('coupon', 'bundle')] = rows;
+    }));
+
+    // Write results to file
+    fs.writeFileSync(filename, JSON.stringify(results, null, 4));
+
+    // Send result
+    $.sendResult(results);
+  } catch (err) {
+    $.sendError(err);
+  }
+}
+
+// Run main function
+main();</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Importing Modules</h3>
 <ul>
 <li><code>var mysql = require('mysql');</code>: Imports the MySQL module.</li>

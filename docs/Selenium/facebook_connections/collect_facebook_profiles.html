@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -187,7 +194,93 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code is designed to scrape Facebook friend data and process it. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const { JSDOM } = require('jsdom');
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const assert = require('assert');
+const importer = require('../Core');
+const runSeleniumCell = importer.import('selenium cell');
+
+// Set project path based on environment variables
+const PROFILE_PATH = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const project = path.join(PROFILE_PATH, 'Conversations');
+
+// Function to parse Facebook friends from a file
+function parseFacebookFriends(file) {
+    return getAllXPath([
+        '//a[contains(@href, "friends_tab")]/@href'
+    ])
+   .then(friends =&gt; {
+        return friends
+         .filter((elem, pos, arr) =&gt; arr.indexOf(elem) === pos)
+         .map(f =&gt; f.replace(/\?.*$/ig, ''))
+         .then(friends =&gt; {
+              return fs.existsSync(file)? friends : [];
+          });
+    });
+}
+
+// Function to collect Facebook profiles
+async function collectFacebookProfiles() {
+    const freshFriends = [];
+    const existingPosts = glob.sync('**/*-posts-*.json', { cwd: project });
+    const friendCount = await getAllFriends();
+    const friendsFile = path.join(project, getNewestFriendFile(friendCount, existingPosts));
+    const friends = await parseFacebookFriends(friendsFile);
+    assert(friends.length &gt; 0, friendsFile +'should have friends links in it');
+
+    // Filter friends to scrape
+    const filteredFriends = friends
+       .filter(profile =&gt; {
+            const profileId = profile.replace(/^\/|\/$/ig, '').split('/').pop()
+               .replace(/[^a-z0-9]/ig, '_');
+            return existingPosts.indexOf(profileId
+                + '-posts-' + (new Date()).getFullYear() + '.json') === -1;
+        })
+       .map(profile =&gt; friends.indexOf(profile));
+
+    // Scrape and like posts
+    const promises = filteredFriends
+       .map((index, i) =&gt; (resolve) =&gt; likeAllPosts(friends[index], null).then(r =&gt; resolve(r)));
+    const results = await importer.runAllPromises(promises);
+    return results;
+}
+
+// Function to get all friends
+async function getAllFriends() {
+    // Call script to get all Facebook friends
+    const file = path.join(project, getNewestFriendFile([], glob.sync('**/*friend*', { cwd: project, nodir: true })));
+    const dom = new JSDOM(await fs.readFileSync(file).toString());
+    getAllXPath = importer.import('all elements xpath',  {
+        client: {
+            execute: (func,...args) =&gt; Promise.resolve({
+                value: func.apply(dom.window.document, args)
+            }),
+            addCommand: () =&gt; {
+            }
+        },
+        document: dom.window.document,
+        XPathResult: {ORDERED_NODE_ITERATOR_TYPE: 5}
+    });
+    const friends = await parseFacebookFriends(file);
+    return friends.length;
+}
+
+// Function to get the newest friend file
+function getNewestFriendFile(friends = [], files) {
+    if (friends.length === 0) return files.sort((a, b) =&gt; 
+        new Date(fs.statSync(path.join(project, a)).mtime).getTime()
+            - new Date(fs.statSync(path.join(project, b)).mtime).getTime())[0];
+    return friends.map((index, i) =&gt; friends[i].replace(/^\/|\/$/ig, '').split('/').pop())
+       .map(profile =&gt; path.join(project, profile + '-posts-' + (new Date()).getFullYear() + '.json'))
+       .filter(file =&gt; files.indexOf(file) === -1);
+}
+
+// Run the scraper
+module.exports = collectFacebookProfiles;</code></pre></div><p>This code is designed to scrape Facebook friend data and process it. Here's a breakdown:</p>
 <ol>
 <li><p><strong>Setup:</strong></p>
 <ul>

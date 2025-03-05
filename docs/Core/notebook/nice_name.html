@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -135,7 +142,40 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function called <code>niceName</code> that generates a user-friendly filename for a code cell based on its content and type.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import required functions from the core module.
+ * @module importer
+ */
+const { importCellExtension } = require('../Core');
+
+/**
+ * Get the nice name for a given cell.
+ * @param {Object} cell - The cell object containing questions.
+ * @returns {string} The nice name for the cell.
+ */
+function niceName(cell) {
+  // Extract the question from the cell and convert it to a nice name
+  const name = cell.questions[0]
+   .replace('?', '') // Remove the '?' from the question
+   .replace(/[^a-z0-9]+|\btest\b/igm,'') // Replace invalid characters with spaces
+   .trim() // Trim the string
+   .replace(/\s+/igm, '-') // Replace multiple spaces with a single '-'
+   .concat(importCellExtension(cell)); // Append the cell extension
+
+  // Special case handling for common file names
+  if (name.toLowerCase().includes('readme')) {
+    name ='readme.md';
+  } else if (name.toLowerCase().includes('package-json')) {
+    name = 'package.json';
+  } else if (name.toLowerCase().includes('index')) {
+    name = 'index.js';
+  }
+
+  return name;
+}
+
+module.exports = niceName;</code></pre></div><p>This code defines a function called <code>niceName</code> that generates a user-friendly filename for a code cell based on its content and type.</p>
 <p><strong>Here's a breakdown:</strong></p>
 <ol>
 <li><p><strong>Dependencies:</strong></p>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -124,7 +131,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>import { INSTANCES, SESSIONS } from './discord-gateway.js';
+
+// Define allowed users
+const ALLOWED_USERS = ['1019970191603544164'];
+
+/**
+ * Authenticate route middleware
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @param {function} next - Express next middleware function
+ */
+async function authenticateRoute(req, res, next) {
+  // Parse URL query parameters
+  const query = new URL(req.url, `http://${req.headers.host}`).searchParams;
+
+  // Check if session is provided and user is allowed
+  const allowed = query.get('session') && SESSIONS[query.get('session')] && ALLOWED_USERS.includes(SESSIONS[query.get('session')]);
+
+  if (allowed) {
+    // Authenticate user and continue
+    req.authenticated = query.get('session');
+    return next();
+  }
+
+  // User is not authenticated, set auth status to false
+  req.authenticated = false;
+
+  // Continue to the next middleware
+  return next();
+}
+
+// Export authenticateRoute and dependencies
+module.exports = {
+  authenticateRoute,
+  INSTANCES,
+  SESSIONS,
+};</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Dependencies</h3>
 <pre><code class="language-javascript">const {INSTANCES, SESSIONS} = importer.import('discord gateway')
 </code></pre>

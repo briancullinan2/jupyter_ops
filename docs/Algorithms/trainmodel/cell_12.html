@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -141,7 +148,65 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>LabelEncoder from scikit-learn</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="python"><code>"""
+Module Description:
+This module provides utility functions for data preprocessing.
+
+Author:
+Llama (Large Language Model)
+"""
+
+import sklearn.preprocessing as le  # Import Label Encoder as le for readability
+from sklearn.exceptions import NotFittedError  # Import NotFittedError for type hint
+
+class LabelEncoderWrapper:
+    """Wrapper class for LabelEncoder with additional functionality."""
+
+    def __init__(self):
+        """
+        Initialize LabelEncoderWrapper instance.
+
+        Attributes:
+        - le (LabelEncoder): The LabelEncoder instance.
+        """
+        self.le = le.LabelEncoder()  # Initialize LabelEncoder instance
+
+    def fit_transform(self, y: list) -> list:
+        """
+        Fit LabelEncoder to data and transform it.
+
+        Args:
+        - y (list): The data to fit and transform.
+
+        Returns:
+        - list: The transformed data.
+
+        Raises:
+        - NotFittedError: If the LabelEncoder is not fitted.
+        """
+        try:
+            self.le.fit(y)  # Try to fit the LabelEncoder
+        except NotFittedError:
+            self.le.fit(y)  # If not fitted, fit it
+        return self.le.transform(y)  # Return the transformed data
+
+    def transform(self, y: list) -> list:
+        """
+        Transform data using the fitted LabelEncoder.
+
+        Args:
+        - y (list): The data to transform.
+
+        Returns:
+        - list: The transformed data.
+
+        Raises:
+        - NotFittedError: If the LabelEncoder is not fitted.
+        """
+        if not self.le.fit_available:  # Check if the LabelEncoder is fitted
+            raise NotFittedError("LabelEncoder is not fitted")
+        return self.le.transform(y)  # Return the transformed data</code></pre></div><h2>LabelEncoder from scikit-learn</h2>
 <h3>Class Description</h3>
 <p>The <code>LabelEncoder</code> class from scikit-learn's <code>preprocessing</code> module is used to convert non-numerical labels (such as class labels) into numerical labels.</p>
 <h3>Key Methods</h3>

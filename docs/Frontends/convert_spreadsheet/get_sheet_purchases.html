@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -157,7 +164,94 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { google } = require('googleapis');
+const { v4: uuidv4 } = require('uuid');
+const { importFunction } = require('../Core');
+
+const getDataSheet = importFunction('google sheet array objects');
+const getInfo = importFunction('get google sheet info');
+const addRow = importFunction('add row data google sheet');
+const updateRow = importFunction('update a row in google sheets');
+
+const safeName = (name) => {
+  // Replace non-alphanumeric characters and whitespace with hyphens
+  const safeName = name.replace(/[^a-z0-9\-]/ig, '-');
+  // Trim to 40 characters to prevent excessive length
+  return safeName.substr(0, 40).toLowerCase();
+};
+
+async function getSheet(auth, link, domain, email) {
+  // Extract spreadsheet ID from link
+  const docId = link.split('sheet/to/web.com/')[1];
+
+  try {
+    // Get spreadsheet info
+    const info = await getInfo(auth, link);
+    const title = info.data.properties.title;
+    const purchases = await getDataSheet(auth, purchaseId, 'Purchases');
+    const match = purchases.find((p) => p.sheet === docId);
+
+    if (domain &&!match || isInvalidDomain(match, domain)) {
+      // If domain doesn't match, add new sheet
+      const name = safeName(title.replace(/\s*(configuration|config)\s*/ig, ''))
+        + '-' + uuidv4().substr(0, 5);
+      await addRow(auth, purchaseId, {
+        timestamp: Date.now(),
+        name: title,
+        email: email || '',
+        address: '',
+        domain: '',
+        bucket: name + '.sheet-to-web.com',
+        project: project,
+        sheet: docId,
+      }, 'Purchases');
+      return name + '.sheet-to-web.com';
+    } else if (!match) {
+      // If sheet doesn't exist, add new sheet
+      return await addSheet(auth, docId, title, email);
+    } else {
+      // Update existing sheet
+      const updatedMatch = Object.assign(match, {
+        name: title,
+        email,
+      });
+      await updateRow(auth, purchaseId, r => r.sheet === docId, updatedMatch, 'Purchases');
+      console.log(`Purchase ${docId} updated`);
+      return updatedMatch.bucket || updatedMatch.domain;
+    }
+  } catch (error) {
+    throw new Error(`Failed to retrieve sheet: ${error.message}`);
+  }
+}
+
+async function addSheet(auth, docId, title, email) {
+  const name = safeName(title.replace(/\s*(configuration|config)\s*/ig, ''))
+    + '-' + uuidv4().substr(0, 5);
+  await addRow(auth, purchaseId, {
+    timestamp: Date.now(),
+    name: title,
+    email: email || '',
+    address: '',
+    domain: '',
+    bucket: name + '.sheet-to-web.com',
+    project: project,
+    sheet: docId,
+  }, 'Purchases');
+  return name + '.sheet-to-web.com';
+}
+
+// Usage example:
+async function main() {
+  const auth = new google.auth.GoogleAuth();
+  const link = 'https://sheet-to-web.com/your-spreadsheet-id';
+  const domain = 'your-domain.com';
+  const email = 'your-email@example.com';
+  const result = await getSheet(auth, link, domain, email);
+  console.log(result);
+}
+
+main();</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Requires and Imports</h3>
 <p>The code starts by requiring several modules:</p>
 <ul>

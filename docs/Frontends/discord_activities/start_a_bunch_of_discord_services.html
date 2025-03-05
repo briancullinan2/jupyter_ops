@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -193,7 +200,122 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { spawn, spawnSync } = require("child_process");
+const path = require('path');
+
+// Define Discord services and their corresponding application IDs
+const DISCORD_SERVICES = [
+  null, // TODO: Define the first service
+  null, // TODO: Define the second service
+  'discord mid journey commands',
+ 'sync deceptive chat',
+ 'sync discord llm tools',
+  'discord handy tools',
+  'discord remote control',
+  'discord music player',
+];
+
+const APPLICATION_IDS = [
+  null, // TODO: Define the first application ID
+  null, // TODO: Define the second application ID
+  '1335464182111535124',
+  '1335472379232780401',
+  '1335479586858733568',
+  '1335483072602177626',
+  '1335491680630997034',
+  '1335769252409380884',
+];
+
+// Define environments for each Discord service
+const ENVIRONMENTS = [
+  null, // TODO: Define the first environment
+  {
+    model: 'Orbb',
+    defaultModel: 'Default',
+  },
+  {
+    baseDirectory: path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,'stable-diffusion-webui/outputs'),
+    expressPort: 3002,
+    model: 'Imagineer',
+    defaultModel: 'Meta',
+  },
+  {
+    model: 'Megatron',
+    defaultModel: 'DeepSeek',
+  },
+  {
+    baseDirectory: path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'jupyter_ops/Resources/Projects'),
+    expressPort: 3004,
+    model: 'Optimus Prime',
+    defaultModel: 'Qwen',
+  },
+  {
+    model: 'WALL-E',
+    defaultModel: 'Code',
+  },
+  {
+    model: 'GLaDOS',
+    defaultModel: 'Code',
+  },
+  {
+    baseDirectory: path.join(process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE, 'Music'),
+    expressPort: 3001,
+    model: 'BMO',
+    defaultModel: 'Mistral',
+  },
+];
+
+/**
+ * Launches a Discord bot with the specified index.
+ * @param {number} [botIndex=0] The index of the bot to launch.
+ */
+function launchDiscord(botIndex = 0) {
+  // Validate the bot index
+  if (typeof botIndex!== 'number' || botIndex &lt; 0 || botIndex &gt;= DISCORD_SERVICES.length) {
+    return;
+  }
+
+  // Iterate over the Discord services starting from the specified index
+  for (let i = botIndex; i &lt; DISCORD_SERVICES.length; i++) {
+    // Skip services with no ID
+    if (!DISCORD_SERVICES[i]) {
+      continue;
+    }
+
+    // Create a new environment for the service
+    const environment = ENVIRONMENTS[i] || {};
+
+    // Set environment variables
+    const envVariables = {
+     ...process.env,
+      tokenPath: `/Users/briancullinan/.credentials/discord-bot${i? `-${i}` : ''}.txt`,
+      secretPath: `/Users/briancullinan/.credentials/discord${i? `-${i}` : ''}.txt`,
+      defaultApplication: APPLICATION_IDS[i],
+     ...environment,
+    };
+
+    // Spawn a new process for the bot
+    spawn('node', [
+      '--experimental-vm-modules',
+      '-e',
+      `var result = require('./Core').run();`,
+      '--',
+      DISCORD_SERVICES[i],
+    ], {
+      env: envVariables,
+      stdio: [0, 1, 2],
+      cwd: path.dirname(__dirname),
+    });
+
+    // Break the loop if the specified index is reached
+    if (botIndex === i) {
+      break;
+    }
+  }
+}
+
+module.exports = launchDiscord;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <p>This is a Node.js script that appears to be managing a collection of Discord bots. Here's a concise explanation of the code:</p>
 <p><strong>Requires</strong></p>
 <p>The script starts by importing the <code>child_process</code> module and the <code>path</code> module.</p>

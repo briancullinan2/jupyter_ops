@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -92,7 +99,7 @@
     <a href="../files/index.html">files</a> | <a href="./project_imports_d3_tree.html">project imports d3 tree</a> | <a href="./cell_4.html">Cell 4</a> | <a href="../../search.html">Search</a>
   </header>
 
-  <p>This code implements a custom <code>glob</code> function that recursively searches a directory for files matching specified patterns, while also considering ignore rules.</p>
+  <p>The <code>globMatch</code> and <code>glob</code> functions recursively search for file paths matching a specified pattern in a project directory, and return an array of matching file paths. The functions handle various types of patterns, including directory patterns, and can be used to filter out ignored files based on the <code>ignores</code> array.</p>
 <h2>Run example</h2>
 
 <pre language="bash"><code>npm run import -- ", glob files"</code></pre><h1>, glob files</h1>
@@ -178,35 +185,124 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code provides a custom <code>glob</code> function for matching file paths within a directory, similar to the built-in <code>glob</code> function in Node.js.</p>
-<p>Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>```javascript
+const {
+  readdirSync,
+  lstatSync,
+  resolve,
+} = require('fs');
+const path = require('path');
+const importer = require('../Core');
+const { minimatch } = importer.import('minimatch');
+const { ignores } = importer.import('common ignore paths');
+const expand = importer.import('expand');
+
+/**
+ * Searches project directory recursively for file paths matching the pattern.
+ *
+ * @param {string|string[]} pattern - The pattern to match.
+ * @param {string} cwd - The current working directory.
+ * @param {string} origin - The origin directory.
+ * @returns {string[]} - An array of matching file paths.
+ */
+function globMatch(pattern, cwd, origin) {
+  if (!Array.isArray(pattern)) {
+    pattern = [pattern];
+  }
+
+  const result = [];
+  const absoluteCwd = resolve(cwd);
+  const files = readdirSync(absoluteCwd);
+
+  files.forEach((file) =&gt; {
+    const filepath = path.join(absoluteCwd, file);
+    const relativePath = path.relative(origin, filepath);
+
+    // Skip ignores, don't even search directories
+    if (ignores.some((i) =&gt; minimatch(relativePath, i))) {
+      return;
+    }
+
+    const isDirectory = lstatSync(filepath).isDirectory();
+
+    pattern.forEach((pattern) =&gt; {
+      if (minimatch(relativePath, pattern)) {
+        if (isDirectory &amp;&amp; pattern.endsWith('/')) {
+          result.push(filepath);
+        } else if (!isDirectory &amp;&amp;!pattern.endsWith('/')) {
+          result.push(filepath);
+        }
+        return false;
+      }
+      return true;
+    });
+
+    // Recursive matching
+    if (isDirectory) {
+      result.push(...globMatch(pattern, filepath, origin));
+    }
+  });
+  return result;
+}
+
+/**
+ * Searches project directory recursively for file paths matching the pattern.
+ *
+ * @param {string|string[]} pattern - The pattern to match.
+ * @param {string} cwd - The current working directory.
+ * @returns {string[]} - An array of matching file paths.
+ */
+function glob(pattern, cwd) {
+  return globMatch(pattern, cwd, cwd);
+}
+
+module.exports = {
+  glob,
+};
+```</code></pre></div><h3>Code Breakdown</h3>
+<h4>Variables</h4>
+<ul>
+<li><code>fs</code>: The <code>fs</code> (File System) module is required for file system operations.</li>
+<li><code>path</code>: The <code>path</code> module is required for working with file paths.</li>
+<li><code>importer</code>: The <code>importer</code> module is required for importing specific modules from the project's core.</li>
+<li><code>minimatch</code>: The <code>minimatch</code> function is imported from the <code>minimatch</code> module for pattern matching.</li>
+<li><code>ignores</code>: The <code>ignores</code> array is imported from the <code>common ignored paths</code> module to filter out ignored files.</li>
+<li><code>expand</code>: The <code>expand</code> function is imported from the <code>expand</code> module but not used in this snippet.</li>
+</ul>
+<h4>Functions</h4>
+<h4><code>globMatch(pattern, cwd, origin)</code></h4>
+<p>Searches the project directory recursively for file paths matching the pattern.</p>
+<ul>
+<li>Parameters:
+<ul>
+<li><code>pattern</code>: The pattern to match (can be an array of patterns).</li>
+<li><code>cwd</code>: The current working directory.</li>
+<li><code>origin</code>: The origin directory.</li>
+</ul></li>
+<li>Returns: An array of file paths that match the pattern.</li>
+</ul>
+<h4><code>glob(pattern, cwd)</code></h4>
+<p>A wrapper function around <code>globMatch</code> that calls it with <code>cwd</code> as both the <code>cwd</code> and <code>origin</code> parameters.</p>
+<ul>
+<li>Parameters:
+<ul>
+<li><code>pattern</code>: The pattern to match.</li>
+<li><code>cwd</code>: The current working directory.</li>
+</ul></li>
+<li>Returns: An array of file paths that match the pattern.</li>
+</ul>
+<h4>Logic</h4>
 <ol>
-<li><p><strong>Imports:</strong></p>
-<ul>
-<li><code>fs</code>: Node.js built-in module for interacting with the file system.</li>
-<li><code>path</code>: Node.js module for working with file paths.</li>
-<li><code>importer</code>: A custom module for importing other functions and modules.</li>
-<li><code>minimatch</code>: A module for matching patterns against file paths.</li>
-<li><code>ignores</code>: An object containing patterns for files and directories to ignore.</li>
-<li><code>expand</code>: A module for expanding file paths (likely used for relative paths).</li>
-</ul></li>
-<li><p><strong><code>globMatch</code> Function:</strong></p>
-<ul>
-<li>Takes a pattern (string or array of strings), a current working directory (<code>cwd</code>), and an <code>origin</code> directory as input.</li>
-<li>Recursively searches the directory structure starting from <code>cwd</code>.</li>
-<li>Uses <code>minimatch</code> to check if file paths match the provided patterns.</li>
-<li>Ignores files and directories matching patterns in the <code>ignores</code> object.</li>
-<li>Returns an array of matching file paths.</li>
-</ul></li>
-<li><p><strong><code>glob</code> Function:</strong></p>
-<ul>
-<li>A wrapper function that calls <code>globMatch</code> with the current working directory as both <code>cwd</code> and <code>origin</code>.</li>
-</ul></li>
-<li><p><strong>Module Export:</strong></p>
-<ul>
-<li>Exports the <code>glob</code> function, making it available for use in other parts of the application.</li>
-</ul></li>
+<li>The function <code>globMatch</code> iterates over the files in the current directory.</li>
+<li>For each file, it checks if it matches any of the patterns. If it does, it adds it to the result array.</li>
+<li>If the file is a directory and the pattern is a directory pattern (i.e., it ends with <code>/</code>), it adds the directory to the result array.</li>
+<li>If the file is a directory and the pattern is not a directory pattern, it recursively calls <code>globMatch</code> on the directory and adds its result to the array.</li>
+<li>If the file is not a directory, it adds it to the result array if it matches the pattern.</li>
+<li>Finally, it returns the result array.</li>
 </ol>
+<h4>Exports</h4>
+<p>The <code>glob</code> function is exported as the main export of the module.</p>
 
 </body>
 

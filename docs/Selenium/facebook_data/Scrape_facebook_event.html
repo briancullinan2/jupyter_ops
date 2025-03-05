@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -188,7 +195,156 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet is designed to scrape information about a Facebook event. Here's a breakdown:</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { Client } = require('../Core');
+
+/**
+ * Scrape a Facebook event.
+ * 
+ * This function uses a Puppeteer client to navigate to the event page, extract information, 
+ * and return the results in a structured format.
+ * 
+ * @param {string} event - The URL of the Facebook event to scrape.
+ * @returns {Promise&lt;Object&gt;} A promise that resolves to an object containing the scraped data.
+ */
+async function scrapeFacebookEvent(event) {
+    try {
+        // Create a new Puppeteer client instance
+        const client = new Client();
+
+        // Navigate to the event page
+        const url = await client.getUrl();
+        if (!url.includes(event)) {
+            // If the current URL doesn't match the event URL, navigate to the event page
+            await client.url(event);
+        }
+
+        // Wait for the page to load
+        await client.pause(3000);
+
+        // Check if the About button exists and click it if it does
+        if (await client.isExisting('//a[contains(., "About")]')) {
+            await client.click('//a[contains(., "About")]');
+        }
+
+        // Wait for the next page to load
+        await client.pause(1000);
+
+        // Extract event description
+        const description = await extractDescription(client);
+
+        // Check if the Discussion button exists and click it if it does
+        if (await client.isExisting('//a[contains(., "Discussion")]')) {
+            await client.click('//a[contains(., "Discussion")]');
+        }
+
+        // Wait for the next page to load
+        await client.pause(1000);
+
+        // Extract discussion data
+        const discussionData = await extractDiscussionData(client, description);
+
+        // Process the discussion data
+        const processedData = discussionData.map((data, index) =&gt; ({
+           ...data,
+            description: description[index].description.map((desc) =&gt; desc.value.join(' ')),
+            posts: data.posts.map((post) =&gt; ({
+               ...post,
+                event,
+                description: post.description.join(' '),
+                participants: post.participants.filter((participant) =&gt; participant!== '#' &amp;&amp; participant.indexOf('photo') === -1),
+                photos: post.participants.filter((participant) =&gt; participant!== '#' &amp;&amp; participant.indexOf('photo')!== -1),
+                comments: post.comments.map((comment) =&gt; ({
+                   ...comment,
+                    time: comment.time.join(' '),
+                    content: comment.content.join(' '),
+                    from: comment.from.join(' ')
+                }))
+            }))
+        }));
+
+        // Return the processed data
+        return processedData;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+/**
+ * Extract event description.
+ * 
+ * This function uses Puppeteer to extract the event description from the event page.
+ * 
+ * @param {Client} client - The Puppeteer client instance.
+ * @returns {Promise&lt;Array&lt;Object&gt;&gt;} A promise that resolves to an array of objects containing the event description.
+ */
+async function extractDescription(client) {
+    const xPath = '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]';
+    const description = await getAllXPath([xPath, {
+        description: [
+            './/*[contains(@id, "reaction_units")]/div/div|.//*[contains(@id, "event_summary")]//li',
+            {
+                value: ['.//span//text()']
+            }
+        ]
+    }]);
+    return description;
+}
+
+/**
+ * Extract discussion data.
+ * 
+ * This function uses Puppeteer to extract the discussion data from the discussion page.
+ * 
+ * @param {Client} client - The Puppeteer client instance.
+ * @param {Array&lt;Object&gt;} description - The event description.
+ * @returns {Promise&lt;Array&lt;Object&gt;&gt;} A promise that resolves to an array of objects containing the discussion data.
+ */
+async function extractDiscussionData(client, description) {
+    const xPath = '//body[not(.//*[contains(@class, "fbPhotoSnowliftPopup")])]|//body[.//*[contains(@class, "fbPhotoSnowliftPopup")]]//*[contains(@class, "fbPhotoSnowliftPopup")]';
+    const discussionData = await getAllXPath([xPath, {
+        posts: [
+            './/*[contains(@class, "fbPhotoSnowliftAuthorInfo")]|.//*[contains(@class, "fbUserPost")]',
+            {
+                description:
+                    './/following-sibling::div//*[contains(@class, "fbPhotosPhotoCaption")]//text()|.//*[contains(@class, "userContent")]//text()|.//h5//text()|.//a[contains(@class, "profileLink")]//text()',
+                participants: [
+                    './/a[contains(@class, "profileLink")]/@href|.//a[contains(@href, "facebook") and.//img]/@href',
+                    './following-sibling::div//a/@href',
+                    './/*[contains(@class, "commentable_item")]//a[contains(@class, "UFICommentActorName")]/@href'
+                ],
+                comments: [
+                    './/h6[contains(., "Comments")]//following-sibling::div/div/div[contains(@class, "UFIComment")]',
+                    {
+                        time:
+                            './/*[contains(@class, "uiLinkSubtle")]//text()',
+                        content:
+                            './/*[contains(@class, "UFICommentBody")]//text()',
+                        from:
+                            './/a[contains(@class, "UFICommentActorName")]/text()|.//a[contains(@class, "UFICommentActorName")]/@href'
+                    }
+                ]
+            }
+        ]
+    }]);
+    return discussionData;
+}
+
+/**
+ * Get all XPath elements.
+ * 
+ * This function uses Puppeteer to get all elements matching the specified XPath.
+ * 
+ * @param {Array&lt;string|Object&gt;} xPath - The XPath to match.
+ * @returns {Promise&lt;Array&lt;Object&gt;&gt;} A promise that resolves to an array of objects containing the matched elements.
+ */
+async function getAllXPath(xPath) {
+    // TO DO: implement get all XPath function
+    throw new Error('Not implemented');
+}
+
+module.exports = scrapeFacebookEvent;</code></pre></div><p>This code snippet is designed to scrape information about a Facebook event. Here's a breakdown:</p>
 <p><strong>Dependencies:</strong></p>
 <ul>
 <li><code>importer</code>: A custom module (not shown) likely providing utility functions.</li>

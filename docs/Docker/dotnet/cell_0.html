@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -110,7 +117,44 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Dockerfile Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="dockerfile"><code># Define the base image and set the working directory
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+WORKDIR /app
+
+# Install the necessary package for.NET Core
+RUN dotnet install-template
+
+# Copy the project files into the current directory
+COPY./subscription.services/Subscription.Services.EloquaImport/*.csproj./subscription.services/Subscription.Services.EloquaImport/
+COPY./subscription.services/Subscription.Services.ZuoraExport/*.csproj./subscription.services/Subscription.Services.ZuoraExport/
+COPY./act.subscription.management.sln./act.subscription.management.sln
+
+# Restore the NuGet packages
+RUN /bin/bash -c "dotnet restore./act.subscription.management.sln"
+
+# Copy the rest of the application files into the current directory
+COPY..
+
+# Build the application
+RUN /bin/bash -c "dotnet publish./act.subscription.management.sln -c Release -o./obj/Docker/publish"
+
+# Create a new image with the published application
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1
+WORKDIR /app
+COPY --from=build-env /app/obj/Docker/publish.
+EXPOSE 80
+ENTRYPOINT ["/usr/bin/dotnet", "Subscription.Services.EloquaImport.dll"]
+
+# You can specify a custom file path for the source directory
+# ARG source=${PWD}
+# RUN cp -R "${source:-subscription.services/Subscription.Services.EloquaImport/obj/Docker/publish}" /app
+
+# The mono images are not required for.NET Core applications
+# FROM mono:latest
+# RUN mono --version
+
+# RUN ls -la</code></pre></div><p><strong>Dockerfile Breakdown</strong></p>
 <p>This Dockerfile is used to build a multi-stage image for a.NET Core application.</p>
 <h3>Stage 1: Building the Application</h3>
 <ul>

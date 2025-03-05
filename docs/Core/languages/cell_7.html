@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -137,7 +144,47 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h2>Code Breakdown</h2>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules
+const fs = require('fs/promises'); // Use promises version for async functionality
+const { parse } = require('parse5'); // Import specific function to avoid namespace pollution
+const { serializeToString } = require('xmlserializer'); // Import specific function to avoid namespace pollution
+const { DOMParser } = require('xmldom'); // Use import for ES6 compatibility
+const { select } = require('xpath'); // Import specific function to avoid namespace pollution
+const { useNamespaces } = require('xpath'); // Import specific function to avoid namespace pollution
+
+// Define constants for namespace and file path
+const XHTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
+const FILE_PATH = './test.htm';
+
+// Define async function to extract href attributes
+async function extractHref() {
+  try {
+    // Read file asynchronously
+    const html = await fs.readFile(FILE_PATH);
+
+    // Parse HTML using parse5
+    const document = parse(html.toString());
+
+    // Serialize HTML to XML string
+    const xhtml = serializeToString(document);
+
+    // Parse XML string to DOM document
+    const doc = new DOMParser().parseFromString(xhtml);
+
+    // Use XPath expression to select href attributes
+    const selectNamespace = useNamespaces({ x: XHTML_NAMESPACE });
+    const nodes = select("//x:a/@href", doc, selectNamespace);
+
+    console.log(nodes);
+  } catch (error) {
+    // Log error and continue execution
+    console.error(error);
+  }
+}
+
+// Call async function to extract href attributes
+extractHref();</code></pre></div><h2>Code Breakdown</h2>
 <h3>Importing Modules</h3>
 <pre><code class="language-javascript">const fs = require('mz/fs');
 const xpath = require('xpath');

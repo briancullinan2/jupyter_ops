@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -112,7 +119,30 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// Import required modules and functions
+import { importFunction } from '../Core';
+import createSheet from '../Core/create-a-sheet-in-google-drive';
+
+describe('create a new marketing sheet', () => {
+    /**
+     * Test suite for creating a new marketing sheet in Google Drive
+     */
+    
+    it('should create a sheet', async () => {
+        // Use a valid email address for testing
+        const email = 'bjcullinan@gmail.com';
+        
+        try {
+            // Call the createSheet function and assert its success
+            await createSheet(email);
+            console.log(`Sheet created successfully for ${email}`);
+        } catch (error) {
+            // Catch any errors and log the error message
+            console.error(`Error creating sheet: ${error.message}`);
+        }
+    })
+})</code></pre></div><h3>Code Breakdown</h3>
 <h4>Importing Dependencies</h4>
 <pre><code class="language-javascript">var importer = require('../Core');
 var createSheet = importer.import('create a sheet in google drive');

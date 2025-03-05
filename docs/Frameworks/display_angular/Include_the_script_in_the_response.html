@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -124,7 +131,61 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code defines a function <code>getScriptsAndStyles</code> that extracts and processes <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags from HTML content.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Extracts scripts and styles from the given HTML content.
+ *
+ * @param {string} content - The HTML content to process.
+ * @param {string} [additional='.js'] - A regex pattern to match additional script files.
+ * @returns {string} The processed HTML content with extracted scripts and styles.
+ */
+function getScriptsAndStyles(content, additional = '.js') {
+    // Extract all inline styles
+    const inlineStyles = content.match(/&lt;style.*?\/style&gt;/ig) || '';
+
+    // Initialize an empty string to store the extracted scripts
+    let scripts = '';
+
+    // Regular expression to match link tags
+    const linkRegex = /&lt;link.*?&gt;/ig;
+    let match;
+    while ((match = linkRegex.exec(content))!== null) {
+        // Regular expression to match href attribute
+        const hrefRegex = /href="(.*?)"/ig;
+        const hrefMatch = hrefRegex.exec(match[0]);
+
+        // If href attribute is found and does not match Google, extract the script
+        if (hrefMatch!== null &amp;&amp;!hrefMatch[1].includes('google')) {
+            // TODO: Consider using a more robust way to read the script file
+            // For example, using a library like fs-extra or a bundler like Webpack
+            scripts += `&lt;style&gt;${fs.readFileSync(path.join('public', hrefMatch[1]))}&lt;/style&gt;`;
+        } else {
+            scripts += match[0];
+        }
+    }
+
+    // Regular expression to match script tags
+    const scriptRegex = /&lt;script.*?\/script&gt;/ig;
+    while ((match = scriptRegex.exec(content))!== null) {
+        // Regular expression to match src attribute
+        const srcRegex = /src="(.*?)"/ig;
+        const srcMatch = srcRegex.exec(match[0]);
+
+        // If src attribute is found, extract the script
+        if (srcMatch!== null) {
+            // TODO: Consider using a more robust way to read the script file
+            // For example, using a library like fs-extra or a bundler like Webpack
+            scripts += `&lt;script defer&gt;${fs.readFileSync(path.join('public', srcMatch[1]))}&lt;/script&gt;`;
+        } else {
+            scripts += match[0];
+        }
+    }
+
+    // Return the processed HTML content with extracted scripts and styles
+    return inlineStyles + scripts;
+}
+
+module.exports = getScriptsAndStyles;</code></pre></div><p>This code defines a function <code>getScriptsAndStyles</code> that extracts and processes <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags from HTML content.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Initialization:</strong></p>

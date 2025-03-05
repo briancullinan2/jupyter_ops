@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -101,7 +108,28 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p>This code snippet checks out a Git repository named &quot;repository&quot; from GitHub into a local directory named &quot;project&quot;.</p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="bash"><code>#!/bin/bash
+
+# Create a project directory if it does not exist
+mkdir -p project || echo "Error creating project directory"
+
+# Change the current working directory to the project directory
+cd project
+
+# Checkout the master branch
+if git branch | grep -q'master'; then
+  echo "Already checked out project"
+else
+  # Clone the repository if it does not exist
+  git clone https://github.com/username/repository.git || echo "Error cloning repository"
+fi
+
+# Print the directory contents
+ls -la
+
+# Print the current working directory
+pwd</code></pre></div><p>This code snippet checks out a Git repository named &quot;repository&quot; from GitHub into a local directory named &quot;project&quot;.</p>
 <p>Here's a breakdown:</p>
 <ol>
 <li><p><strong>Directory Creation:</strong></p>

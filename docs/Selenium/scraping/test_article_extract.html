@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -116,7 +123,38 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Function: <code>testExtractor</code></h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>const { extractLlmArticle, getWebDriver } = require('./importer'); // Import functions directly for clarity
+
+/**
+ * Extracts an article from the given webpage using a Selenium client.
+ * @param {string} [startPage] The URL of the article to extract.
+ * @returns {Promise<object>} The extracted article data.
+ */
+async function testExtractor(startPage = 'https://tsakraklides.com/2025/02/05/in-the-age-of-infinite-consumer-choice-the-only-choice-is-collapse/') {
+  // Initialize the Selenium client
+  const driver = await getWebDriver();
+
+  try {
+    // Extract the article data from the webpage
+    const result = await extractLlmArticle(driver, startPage);
+
+    // Return the extracted article data
+    return result;
+  } catch (error) {
+    // Handle any errors that occur during the extraction process
+    console.error('Error extracting article:', error);
+    throw error;
+  } finally {
+    // Quit the Selenium client when done
+    await driver.quit();
+  }
+}
+
+module.exports = testExtractor;
+
+// TODO: Consider implementing pagination for larger articles
+// TODO: Improve error handling and logging for better debugging</code></pre></div><h3>Function: <code>testExtractor</code></h3>
 <h4>Parameters</h4>
 <ul>
 <li><code>startPage</code>: URL of the webpage to extract data from (optional, defaults to <code>'https://tsakraklides.com/2025/02/05/in-the-age-of-infinite-consumer-choice-the-only-choice-is-collapse/'</code> if not provided)</li>

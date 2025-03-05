@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -161,7 +168,81 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<p><strong>Code Breakdown</strong></p>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>/**
+ * Import required modules
+ */
+const { importer, TRIM } = require('../Core');
+
+/**
+ * Import helper functions
+ */
+const { getTemplateProperties, wrapTemplate, getTemplateByUrl } = importer.import([
+  'google sheet template properties',
+  'output google sheet template',
+  'convert sheet helper functions'
+]);
+
+/**
+ * Check if a URL is filtered
+ *
+ * @param {string} url - The URL to check
+ * @returns {boolean} Whether the URL is filtered
+ */
+const isFiltered = (url) =&gt; url.split('/').length &gt; 1;
+
+/**
+ * Collect routes by combining 'routes' and 'properties' with fake include templates
+ *
+ * @param {array} routes - The list of routes
+ * @param {object} properties - The properties object
+ * @param {object} templates - The templates object
+ * @param {object} rendered - The rendered object
+ * @returns {Promise&lt;object&gt;} A promise resolving to the collected routes
+ */
+function collectRoutes(routes, properties, templates, rendered) {
+  const local = routes
+   .concat(properties.render || [])
+   .filter((link, i, arr) =&gt;!rendered.includes(link) &amp;&amp; arr.indexOf(link) === i &amp;&amp;!link.includes(':'));
+
+  local.forEach((link) =&gt; rendered[rendered.length] = link);
+
+  const promises = local.map((link) =&gt; (resolve) =&gt; {
+    const trimmedBase = (properties.base || '').replace(TRIM, '');
+    const filteredLink = link.replace(/#.*$/, '').replace(TRIM, '');
+
+    if (filteredLink.startsWith(trimmedBase)) {
+      filteredLink = filteredLink.substring(trimmedBase.length).replace(TRIM, '');
+    }
+
+    const key = getTemplateByUrl(templates, filteredLink);
+    const newProps = {...properties };
+
+    newProps[key + '-' + key + '-link'] = link;
+    templates[key + '-' + key] = {
+      template: {
+        rows: [
+          isFiltered(link)
+           ? `{{&gt; ${key}/${key}-${key}-link}}`
+            : `{{&gt; ${key}}}`
+        ]
+      }
+    };
+
+    return getTemplateProperties(key + '-' + key, newProps, templates)
+     .then(() =&gt; wrapTemplate(link, key, newProps[key + '-' + key], newProps))
+     .then((page) =&gt; {
+        const pages = {};
+        pages[link] = page;
+        resolve(pages);
+      });
+  });
+
+  return importer.runAllPromises(promises)
+   .then((results) =&gt; results.reduce((obj, r) =&gt; ({...obj,...r }), {}));
+}
+
+module.exports = collectRoutes;</code></pre></div><p><strong>Code Breakdown</strong></p>
 <h3>Import Statements</h3>
 <p>The code imports several modules using the <code>require</code> function:</p>
 <ul>

@@ -33,6 +33,13 @@
       margin: 0;
     }
 
+    .gold pre code,
+    .gold pre code span,
+    .gold code pre,
+    .gold code pre span {
+      color: gold;
+    }
+
     @media screen and (max-width: 600px) {
       body {
         padding-left: 0;
@@ -111,7 +118,41 @@ hljs.addPlugin(mergeHTMLPlugin);
 hljs.highlightAll();
 </script>
 
-<h3>Code Breakdown</h3>
+<div class="gold"><h2>What the code could have been:</h2>
+<pre class="javascript"><code>// service.js
+/**
+ * A base class for services.
+ */
+class Service {
+  /**
+   * Constructor for the service.
+   */
+  constructor() {
+  }
+
+  /**
+   * Searches for results based on the given query.
+   * @param {Object} query - The search query to execute.
+   * @returns {Promise} A promise that resolves with the result of the search query.
+   */
+  async search(query) {
+    // TODO: Implement search logic for the service
+    throw new Error("Not implemented");
+  }
+}
+
+// Example service implementation
+class ExampleService extends Service {
+  async search(query) {
+    // Simulate a basic search result
+    return { results: [{ id: 1, name: "Example result" }] };
+  }
+}
+
+// Usage example
+const service = new ExampleService();
+const llama = new Llama();
+llama.addService(service);</code></pre></div><h3>Code Breakdown</h3>
 <h4>Expose Functions as Express HTTP Service</h4>
 <ul>
 <li>Expose functions as an Express HTTP service, allowing them to be accessed via HTTP requests.</li>
