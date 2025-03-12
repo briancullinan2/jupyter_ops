@@ -20,3 +20,4 @@ Resources/Projects/rosetta-euler/csharp/005/.vs
 indexdir
 .cache
 **/__pycache__
+movies.sqlite.db

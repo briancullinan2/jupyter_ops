@@ -27,6 +27,7 @@
     "dependencies": {
         "antlr4": "^4.13.2",
         "antlr4ts": "^0.5.0-alpha.4",
+        "better-sqlite3": "^11.8.1",
         "color-name": "^2.0.0",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
@@ -45,6 +46,7 @@
         "node-screenshots": "^0.2.1",
         "node-stream-zip": "^1.15.0",
         "outetts": "^0.2.0",
+        "papaparse": "^5.5.2",
         "puppeteer": "^23.11.1",
         "pythonia": "^1.2.2",
         "remarkable": "^2.0.1",
