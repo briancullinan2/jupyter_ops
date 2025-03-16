@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiley Face with Three.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <script>
+        // Setup scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create face (yellow circle)
+        const faceGeometry = new THREE.CircleGeometry(5, 32);
+        const faceMaterial = new THREE.MeshBasicMaterial({ color: 0xFFFF00 });
+        const face = new THREE.Mesh(faceGeometry, faceMaterial);
+        scene.add(face);
+
+        // Create eyes (black circles)
+        function createEye(x, y) {
+            const eyeGeometry = new THREE.CircleGeometry(0.5, 16);
+            const eyeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const eye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            eye.position.set(x, y, 0.1);
+            return eye;
+        }
+
+        scene.add(createEye(-1.5, 1.5)); // Left eye
+        scene.add(createEye(1.5, 1.5));  // Right eye
+
+        // Create smile (curved line)
+        const smileCurve = new THREE.CatmullRomCurve3([
+            new THREE.Vector3(-2, -1, 0.1),
+            new THREE.Vector3(-1, -2, 0.1),
+            new THREE.Vector3(0, -2.2, 0.1),
+            new THREE.Vector3(1, -2, 0.1),
+            new THREE.Vector3(2, -1, 0.1)
+        ]);
+
+        const smilePoints = smileCurve.getPoints(50);
+        const smileGeometry = new THREE.BufferGeometry().setFromPoints(smilePoints);
+        const smileMaterial = new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 3 });
+        const smile = new THREE.Line(smileGeometry, smileMaterial);
+        scene.add(smile);
+
+        // Set camera position
+        camera.position.z = 10;
+
+        // Render the scene
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
