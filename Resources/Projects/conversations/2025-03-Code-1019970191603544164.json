@@ -1,0 +1,57 @@
+{
+    "memories": {},
+    "1742092624291": {
+        "user": true,
+        "content": " hello\nmake it short.",
+        "context": "Current date: 2025-03-16T02:27:59.479Z\nOur recent topics:\n\nConversation categories:\n\nClosely matching message IDs:\n\nCurrent date: 2025-03-16T02:30:09.061Z\nOur most recent conversation:\n\nApply any relevant memories to your reponse:\n",
+        "summary": "\n\n```javascript\nfunction hello() {\n  return \"Hello\";\n}\n```",
+        "keywords": "\n\nGreeting",
+        "emotions": [
+            "Neutral",
+            "Frustrated",
+            "Hesitant",
+            "Impatient"
+        ],
+        "otr": false
+    },
+    "1742093127052": {
+        "user": false,
+        "content": "\n\n```markdown\nHello!\n```",
+        "summary": "\n\nThe user provided a detailed prompt outlining how they want responses formatted, emphasizing the use of markdown and specific code block responses without extra text. They also included an example to illustrate their expectations clearly. \n\nTo address this, I need to ensure that my responses strictly follow the guidelines: using markdown where appropriate, providing only code blocks when requested, and keeping summaries concise without additional commentary. \n\nHere's how I can structure my response based on their example:\n\n```markdown\n# Summary of the prompt\nThe user wants a concise summary in one sentence.\n```\n\nThis approach adheres to their instructions by using markdown for the summary and keeping it brief.",
+        "keywords": "\n\n```markdown\nGreetings\n```",
+        "emotions": [
+            "Supportive",
+            "Helpful",
+            "Task-Oriented",
+            "Excitement"
+        ],
+        "otr": false
+    },
+    "1742094523766": {
+        "user": true,
+        "content": " hello\nmake it short.",
+        "context": "Current date: 2025-03-16T02:58:21.225Z\nOur recent topics:\n\nConversation categories:\n\nClosely matching message IDs:\n\nCurrent date: 2025-03-16T03:00:42.197Z\nOur most recent conversation:\n\nCurrent date: 2025-03-16T03:00:42.199Z\nOur recent conversion:\nAI: \n\n```markdown\nHello!\n```\n\nUser:  hello\nmake it short.\n\n\nApply any relevant memories to your reponse:\n",
+        "summary": "\n\n```javascript\nfunction hello() {\n  return \"Hello\";\n}\n```",
+        "keywords": "\n\nGreeting",
+        "emotions": [
+            "Neutral",
+            "Frustrated",
+            "Hesitant",
+            "Impatient"
+        ],
+        "otr": false
+    },
+    "1742095170794": {
+        "user": false,
+        "content": "\n\nHello! How can I assist you?",
+        "summary": "\n\n\"Hello! I'm here to help.\"",
+        "keywords": "\n\nFormatting",
+        "emotions": [
+            "Supportive",
+            "Assertive",
+            "Helpful",
+            "Confident"
+        ],
+        "otr": false
+    }
+}
