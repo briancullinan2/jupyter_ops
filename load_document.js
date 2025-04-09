@@ -8,7 +8,7 @@ const s = document.createElement('script');
 s.setAttribute('type', 'text/javascript');
 s.innerHTML = `
     window.BackupPromise = window.Promise;
-    window.SOCKIFY_SERVER = \'https://localhost:8000\';
+    window.SOCKIFY_SERVER = \'http://localhost:8000\';
     `;
 (document.head || document.documentElement).appendChild(s);
 

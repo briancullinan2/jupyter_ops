@@ -89,7 +89,7 @@ function launchApp(id, callback, errCallback) {
 }
 
 window.addEventListener('load', function () {
-    const client = io('https://localhost:8000', {
+    const client = io('http://localhost:8000', {
         secure: true,
         rejectUnauthorized: false,
         autoConnect: true
