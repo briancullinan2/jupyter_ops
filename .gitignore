@@ -21,3 +21,4 @@ indexdir
 .cache
 **/__pycache__
 movies.sqlite.db
+.logs
