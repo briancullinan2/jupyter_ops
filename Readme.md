@@ -6,6 +6,7 @@ DevOps crestomathy in jupyter notebooks.
 1. install node
 2. run `npm install`
 3. run `npm run interpret "command"` to select code where command matches a line in the notebook markdown with a question mark `?` in it.
+4. run `npm run import -- "express service"` then visit [http://localhost:8080/import/node%20express.ipynb](http://localhost:8080)
 
 ## Features
 
