@@ -25,9 +25,11 @@ DevOps crestomathy in jupyter notebooks.
 3. Multi-lingual, runs from R/Matlab (DONE: Python, C#, C, C++, ES/CommonJS interops)
 4. Logic merging (as opposed to line merging and feature branching, the enemies of code organization)
 5. [Aspects oriented](https://en.wikipedia.org/wiki/Aspect-oriented_programming) eg [Morpheus](https://github.com/briancullinan2/morpheus/blob/main/library/repl/attrib.js)
-6. Make a public meeting request scheduling app
-7. Make an admin panel menu and RPC functions like media server has
+6. DONE: Make a public meeting request scheduling app
+7. Make an admin panel menu and RPC functions like media server/swagger has
 8. Clone other necessary services like google calendar and google maps
+9. User arcan-fe to pull out audio attributes and make a music duplicate finder, do the same with images
+
 
 
 

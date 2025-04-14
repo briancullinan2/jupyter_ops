@@ -25,6 +25,13 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "esprima": "^4.0.1",
+        "glob": "^11.0.0",
+        "escodegen": "^2.1.0"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "3.3.1",
+        "@eslint/js": "9.24.0",
         "antlr4": "^4.13.2",
         "antlr4ts": "^0.5.0-alpha.4",
         "better-sqlite3": "^11.8.1",
@@ -35,12 +42,9 @@
         "cors": "^2.8.5",
         "d3-node": "^4.0.1",
         "edge-js": "^23.1.4",
-        "escodegen": "^2.1.0",
         "eslint": "^9.24.0",
-        "esprima": "^4.0.1",
         "express": "^4.21.2",
         "ffi-rs": "^1.2.4",
-        "glob": "^11.0.0",
         "googleapis": "^144.0.0",
         "gulp": "^5.0.0",
         "gulp-tap": "^2.0.0",
@@ -67,9 +71,5 @@
         "sharp": "^0.33.5",
         "wgxpath": "^1.2.0",
         "xlsx": "^0.18.5"
-    },
-    "devDependencies": {
-        "@eslint/eslintrc": "3.3.1",
-        "@eslint/js": "9.24.0"
     }
 }
