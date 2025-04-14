@@ -71,5 +71,11 @@
     "Image",
     "Text",
     "LLM",
-    "Browser"
+    "Browser",
+    "Images",
+    "Documents",
+    "Installers",
+    "PDFs",
+    "Scripts",
+    "Taxes"
 ]
