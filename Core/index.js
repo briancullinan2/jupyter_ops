@@ -6,6 +6,8 @@ var path = require('path')
 var Module = require('module').Module
 var fs = require('fs')
 
+Error.stackTraceLimit = 1200;
+
 var notebookPath = path.resolve(path.join(__dirname, 'import.ipynb'))
 var notebook = JSON.parse(fs.readFileSync(notebookPath).toString())
 var cells = notebook.cells
