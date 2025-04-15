@@ -7,6 +7,8 @@ DevOps crestomathy in jupyter notebooks.
 2. run `npm install`
 3. run `npm run interpret "command"` to select code where command matches a line in the notebook markdown with a question mark `?` in it.
 4. run `npm run import -- "express service"` then visit [http://localhost:8080/import/node%20express.ipynb](http://localhost:8080)
+5. use `const importer = require('../Core'); const {exportedCell} = importer.import('anything with a question mark')` 
+  from entry cells to import cells from other notebooks into the current notebook
 
 ## Features
 
