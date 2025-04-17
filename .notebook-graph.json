@@ -2511,7 +2511,7 @@
         {
             "id": "test runner.ipynb[3]",
             "cell": "test sigma index",
-            "route": "",
+            "route": "ROUTE = /sigma",
             "service": "Frameworks"
         },
         {
@@ -2529,7 +2529,7 @@
         {
             "id": "test runner.ipynb[6]",
             "cell": "sigma-style.css",
-            "route": "",
+            "route": "ROUTE = /sigma-style.css",
             "service": "Frameworks"
         },
         {
@@ -2571,7 +2571,7 @@
         {
             "id": "test runner.ipynb[13]",
             "cell": "cell nodes",
-            "route": "",
+            "route": "ROUTE = /node-graph.json",
             "service": "Frameworks"
         },
         {
@@ -10388,7 +10388,7 @@
         "/Users/briancullinan/jupyter_ops/Algorithms/llama vision.ipynb": 1744667039123,
         "/Users/briancullinan/jupyter_ops/Algorithms/llm writing.ipynb": 1742093404929,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb": 1744564158320,
-        "/Users/briancullinan/jupyter_ops/Core/cache.ipynb": 1744914109407,
+        "/Users/briancullinan/jupyter_ops/Core/cache.ipynb": 1744919504220,
         "/Users/briancullinan/jupyter_ops/Databases/caches.ipynb": 1744667976005,
         "/Users/briancullinan/jupyter_ops/Core/files.ipynb": 1744480751345,
         "/Users/briancullinan/jupyter_ops/Core/syntax.ipynb": 1744852876569,
@@ -10433,7 +10433,7 @@
         "/Users/briancullinan/jupyter_ops/Google/google contacts.ipynb": 1511887066000,
         "/Users/briancullinan/jupyter_ops/Cloud Services/google cloud commands.ipynb": 1556343901000,
         "/Users/briancullinan/jupyter_ops/Utilities/polyfills.ipynb": 1624084235000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb": 1744914566303,
+        "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb": 1744919047173,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb": 1744915009577,
         "/Users/briancullinan/jupyter_ops/Utilities/child process.ipynb": 1738622135375,
         "/Users/briancullinan/jupyter_ops/Databases/git.ipynb": 1602138669000,
@@ -10444,7 +10444,7 @@
         "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb": 1562192584000,
         "/Users/briancullinan/jupyter_ops/Selenium/service auth.ipynb": 1559875029000,
         "/Users/briancullinan/jupyter_ops/Frameworks/autorewire.ipynb": 1510360183000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb": 1744915952288,
+        "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb": 1744919439744,
         "/Users/briancullinan/jupyter_ops/Frontends/brians resume.ipynb": 1744492567579,
         "/Users/briancullinan/jupyter_ops/Selenium/scraping.ipynb": 1740353079366,
         "/Users/briancullinan/jupyter_ops/Frontends/discord.ipynb": 1744777071197,
