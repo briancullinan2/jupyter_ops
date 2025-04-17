@@ -2,3563 +2,4518 @@
     "nodes": [
         {
             "id": "demo.ipynb[8]",
-            "label": "use Docker"
+            "label": "use Docker",
+            "service": "demo.ipynb"
         },
         {
             "id": "node simple-imap.ipynb[0]",
-            "label": "node imap client"
+            "label": "node imap client",
+            "service": "Frameworks"
         },
         {
             "id": "demo.ipynb[14]",
-            "label": "Install build stack on colab"
+            "label": "Install build stack on colab",
+            "service": "demo.ipynb"
         },
         {
             "id": "demo.ipynb[15]",
-            "label": "update notebook repo on colab"
+            "label": "update notebook repo on colab",
+            "service": "demo.ipynb"
         },
         {
             "id": "image magik commands.ipynb[0]",
-            "label": "reduce noise from images after resizing"
+            "label": "reduce noise from images after resizing",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[0]",
-            "label": "llama vision"
+            "label": "llama vision",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[1]",
-            "label": "analyze image with llm"
+            "label": "analyze image with llm",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[2]",
-            "label": "llm deceive"
+            "label": "llm deceive",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[5]",
-            "label": "llm voice"
+            "label": "llm voice",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[7]",
-            "label": "ollama vision request"
+            "label": "ollama vision request",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[8]",
-            "label": "start a bunch of llm rpc services"
+            "label": "start a bunch of llm rpc services",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[9]",
-            "label": "stable diffusion request"
+            "label": "stable diffusion request",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[10]",
-            "label": "mask image"
+            "label": "mask image",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[11]",
-            "label": "inpaint mask"
+            "label": "inpaint mask",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[12]",
-            "label": "image 2 image"
+            "label": "image 2 image",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[13]",
-            "label": "whisk images"
+            "label": "whisk images",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[4]",
-            "label": "select llm"
+            "label": "select llm",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[14]",
-            "label": "local lumina"
+            "label": "local lumina",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[15]",
-            "label": "stability 3.5"
+            "label": "stability 3.5",
+            "service": "Algorithms"
         },
         {
             "id": "llama vision.ipynb[16]",
-            "label": "login huggingface"
+            "label": "login huggingface",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[0]",
-            "label": "search llama"
+            "label": "search llama",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[4]",
-            "label": "ask llm about functions"
+            "label": "ask llm about functions",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[1]",
-            "label": "ask llm about categories"
+            "label": "ask llm about categories",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[9]",
-            "label": "store all notebook llm functions"
+            "label": "store all notebook llm functions",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[2]",
-            "label": "ask llm to generalize categories"
+            "label": "ask llm to generalize categories",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[8]",
-            "label": "store llama function"
+            "label": "store llama function",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[3]",
-            "label": "ask llm for a shorter list of categories"
+            "label": "ask llm for a shorter list of categories",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[10]",
-            "label": "create llm session"
+            "label": "create llm session",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[5]",
-            "label": "ask llm about code"
+            "label": "ask llm about code",
+            "service": "Algorithms"
         },
         {
             "id": "llama.ipynb[6]",
-            "label": "ask llm about notebooks"
+            "label": "ask llm about notebooks",
+            "service": "Algorithms"
         },
         {
             "id": "files.ipynb[5]",
-            "label": "list project files"
+            "label": "list project files",
+            "service": "Core"
         },
         {
             "id": "llama.ipynb[7]",
-            "label": "ask llm to summerize"
+            "label": "ask llm to summerize",
+            "service": "Algorithms"
         },
         {
             "id": "syntax.ipynb[7]",
-            "label": "get parameter names"
+            "label": "get parameter names",
+            "service": "Core"
         },
         {
             "id": "dylib.ipynb[5]",
-            "label": "get c parameters"
+            "label": "get c parameters",
+            "service": "Utilities"
         },
         {
             "id": "python.ipynb[2]",
-            "label": "python params in antrl"
+            "label": "python params in antrl",
+            "service": "Languages"
         },
         {
             "id": "llm blogging.ipynb[0]",
-            "label": "blog about code"
+            "label": "blog about code",
+            "service": "Algorithms"
         },
         {
             "id": "llm blogging.ipynb[1]",
-            "label": "parse patch file"
+            "label": "parse patch file",
+            "service": "Algorithms"
         },
         {
             "id": "llm blogging.ipynb[2]",
-            "label": "TODO: summerize file changesdownloads try to infer purposeuse file watcher install time machine  i version my entire disk"
+            "label": "TODO: summerize file changesdownloads try to infer purposeuse file watcher install time machine  i version my entire disk",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[0]",
-            "label": "store llm response"
+            "label": "store llm response",
+            "service": "Algorithms"
         },
         {
             "id": "llm tools.ipynb[1]",
-            "label": "ask llm about emotions"
+            "label": "ask llm about emotions",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[1]",
-            "label": "general chit chat"
+            "label": "general chit chat",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[2]",
-            "label": "relevant llm history"
+            "label": "relevant llm history",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[3]",
-            "label": "relevant chat keywords"
+            "label": "relevant chat keywords",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[4]",
-            "label": "relevant history timestamps"
+            "label": "relevant history timestamps",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[5]",
-            "label": "classify llm prompt"
+            "label": "classify llm prompt",
+            "service": "Algorithms"
         },
         {
             "id": "syntax.ipynb[5]",
-            "label": "get exports from source"
+            "label": "get exports from source",
+            "service": "Core"
         },
         {
             "id": "llm chat.ipynb[6]",
-            "label": "handle conversation"
+            "label": "handle conversation",
+            "service": "Algorithms"
         },
         {
             "id": "llm chat.ipynb[7]",
-            "label": "add conversation context"
+            "label": "add conversation context",
+            "service": "Algorithms"
         },
         {
             "id": "git index.ipynb[19]",
-            "label": "determine language"
+            "label": "determine language",
+            "service": "Databases"
         },
         {
             "id": "llm chat.ipynb[8]",
-            "label": "llm load memories"
+            "label": "llm load memories",
+            "service": "Algorithms"
         },
         {
             "id": "python.ipynb[1]",
-            "label": "list c functions with python"
+            "label": "list c functions with python",
+            "service": "Languages"
         },
         {
             "id": "llm chat.ipynb[9]",
-            "label": "llm save memories"
+            "label": "llm save memories",
+            "service": "Algorithms"
         },
         {
             "id": "llm scaffold.ipynb[0]",
-            "label": "llm scaffold"
+            "label": "llm scaffold",
+            "service": "Algorithms"
         },
         {
             "id": "llm scaffold.ipynb[1]",
-            "label": "bash project files"
+            "label": "bash project files",
+            "service": "Algorithms"
         },
         {
             "id": "llm scaffold.ipynb[2]",
-            "label": "generate code"
+            "label": "generate code",
+            "service": "Algorithms"
         },
         {
             "id": "llm scaffold.ipynb[3]",
-            "label": "make code file with llm"
+            "label": "make code file with llm",
+            "service": "Algorithms"
         },
         {
             "id": "llm scaffold.ipynb[4]",
-            "label": "edit code cell in notebook"
+            "label": "edit code cell in notebook",
+            "service": "Algorithms"
         },
         {
             "id": "llm scaffold.ipynb[5]",
-            "label": "add llm code cell"
+            "label": "add llm code cell",
+            "service": "Algorithms"
         },
         {
             "id": "llm tools.ipynb[0]",
-            "label": "scan chat logs"
+            "label": "scan chat logs",
+            "service": "Algorithms"
         },
         {
             "id": "llm tools.ipynb[3]",
-            "label": "ask llm about chat conversations"
+            "label": "ask llm about chat conversations",
+            "service": "Algorithms"
         },
         {
             "id": "llm tools.ipynb[2]",
-            "label": "cache chat logs"
+            "label": "cache chat logs",
+            "service": "Algorithms"
         },
         {
             "id": "llm tools.ipynb[4]",
-            "label": "llm respond like a personality"
+            "label": "llm respond like a personality",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[0]",
-            "label": "business plan llm"
+            "label": "business plan llm",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[1]",
-            "label": "write creatively llm"
+            "label": "write creatively llm",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[5]",
-            "label": "ask llm to write chapter titles and descriptions"
+            "label": "ask llm to write chapter titles and descriptions",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[2]",
-            "label": "argue with multiple llms"
+            "label": "argue with multiple llms",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[3]",
-            "label": "research paper llm"
+            "label": "research paper llm",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[6]",
-            "label": "ask llm to brainstorm"
+            "label": "ask llm to brainstorm",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[7]",
-            "label": "write a grant proposal with llm"
+            "label": "write a grant proposal with llm",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[8]",
-            "label": "decode xlsx spreadsheet"
+            "label": "decode xlsx spreadsheet",
+            "service": "Algorithms"
         },
         {
             "id": "llm writing.ipynb[9]",
-            "label": "elaborate list with llm"
+            "label": "elaborate list with llm",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[0]",
-            "label": "detect people"
+            "label": "detect people",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[1]",
-            "label": "motion detection"
+            "label": "motion detection",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[2]",
-            "label": "python write video"
+            "label": "python write video",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[3]",
-            "label": "python write images to ffmpeg stream"
+            "label": "python write images to ffmpeg stream",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[4]",
-            "label": "create a live streaming request"
+            "label": "create a live streaming request",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[5]",
-            "label": "authorize youtube in python"
+            "label": "authorize youtube in python",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[6]",
-            "label": "list broadcasts"
+            "label": "list broadcasts",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[8]",
-            "label": "list live stream"
+            "label": "list live stream",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[7]",
-            "label": "create live stream"
+            "label": "create live stream",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[9]",
-            "label": "bind youtube stream"
+            "label": "bind youtube stream",
+            "service": "Algorithms"
         },
         {
             "id": "opencv.ipynb[10]",
-            "label": "transition live stream"
+            "label": "transition live stream",
+            "service": "Algorithms"
         },
         {
             "id": "calculations for life.ipynb[0]",
-            "label": "This does not include vacation days since I was 14 and moved away from Ohio. Maybe 1 week every 3 years average"
+            "label": "This does not include vacation days since I was 14 and moved away from Ohio. Maybe 1 week every 3 years average",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[0]",
-            "label": "Crime reports"
+            "label": "Crime reports",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[1]",
-            "label": "https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600"
+            "label": "https://www.amazon.com/gp/yourstore/iyr/ref=pd_ys_iyr_nextie=UTF8&collection=watched&iyrGroup=&maxItem=616&minItem=600",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[2]",
-            "label": "meta search all"
+            "label": "meta search all",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[5]",
-            "label": "multi crawl"
+            "label": "multi crawl",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[3]",
-            "label": "schedule search all"
+            "label": "schedule search all",
+            "service": "Analytics"
         },
         {
             "id": "dates.ipynb[1]",
-            "label": "Convert a date to ISO"
+            "label": "Convert a date to ISO",
+            "service": "Utilities"
         },
         {
             "id": "google calendar.ipynb[8]",
-            "label": "create new calendar event"
+            "label": "create new calendar event",
+            "service": "Google"
         },
         {
             "id": "google calendar.ipynb[0]",
-            "label": "use Google calendar API"
+            "label": "use Google calendar API",
+            "service": "Google"
         },
         {
             "id": "data collection.ipynb[4]",
-            "label": "tell joke"
+            "label": "tell joke",
+            "service": "Analytics"
         },
         {
             "id": "webdriver.ipynb[0]",
-            "label": "selenium client"
+            "label": "selenium client",
+            "service": "Selenium"
         },
         {
             "id": "syntax.ipynb[19]",
-            "label": "select ast"
+            "label": "select ast",
+            "service": "Core"
         },
         {
             "id": "data collection.ipynb[6]",
-            "label": "crawl domain"
+            "label": "crawl domain",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[8]",
-            "label": "browser crawler tools"
+            "label": "browser crawler tools",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[7]",
-            "label": "domain cache tools"
+            "label": "domain cache tools",
+            "service": "Analytics"
         },
         {
             "id": "files.ipynb[3]",
-            "label": "glob files"
+            "label": "glob files",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[2]",
-            "label": "select tree"
+            "label": "select tree",
+            "service": "Core"
         },
         {
             "id": "data collection.ipynb[9]",
-            "label": "analyze cache file"
+            "label": "analyze cache file",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[10]",
-            "label": "schedule crawl domain"
+            "label": "schedule crawl domain",
+            "service": "Analytics"
         },
         {
             "id": "data collection.ipynb[11]",
-            "label": "collect all bookmarks"
+            "label": "collect all bookmarks",
+            "service": "Analytics"
         },
         {
             "id": "google calendar data.ipynb[2]",
-            "label": "Parse bookmarks file"
+            "label": "Parse bookmarks file",
+            "service": "Google"
         },
         {
             "id": "data collection.ipynb[12]",
-            "label": "search results as json"
+            "label": "search results as json",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[0]",
-            "label": "install movie database"
+            "label": "install movie database",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[4]",
-            "label": "create movie database tables"
+            "label": "create movie database tables",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[1]",
-            "label": "Find cross section of actors and movies"
+            "label": "Find cross section of actors and movies",
+            "service": "Analytics"
         },
         {
             "id": "levenshtein.ipynb[1]",
-            "label": "Sort by levenshtein distance"
+            "label": "Sort by levenshtein distance",
+            "service": "Utilities"
         },
         {
             "id": "movie database.ipynb[3]",
-            "label": "use elastic search from node"
+            "label": "use elastic search from node",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[5]",
-            "label": "express handle movie search"
+            "label": "express handle movie search",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[8]",
-            "label": "movie tile"
+            "label": "movie tile",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[6]",
-            "label": "express list movies database"
+            "label": "express list movies database",
+            "service": "Analytics"
         },
         {
             "id": "movie database.ipynb[7]",
-            "label": "movie page"
+            "label": "movie page",
+            "service": "Analytics"
         },
         {
             "id": "parsing email addresses.ipynb[0]",
-            "label": "search google email format"
+            "label": "search google email format",
+            "service": "Analytics"
         },
         {
             "id": "google search api.ipynb[0]",
-            "label": "search the web"
+            "label": "search the web",
+            "service": "Google"
         },
         {
             "id": "reconcile timeline data.ipynb[0]",
-            "label": "read Google calendar and timeline data"
+            "label": "read Google calendar and timeline data",
+            "service": "Analytics"
         },
         {
             "id": "resume.ipynb[0]",
-            "label": "course list pie chart"
+            "label": "course list pie chart",
+            "service": "Analytics"
         },
         {
             "id": "google sheets.ipynb[3]",
-            "label": "get google data sheet"
+            "label": "get google data sheet",
+            "service": "Google"
         },
         {
             "id": "d3.ipynb[3]",
-            "label": "d3 pie chart"
+            "label": "d3 pie chart",
+            "service": "Frameworks"
         },
         {
             "id": "resume.ipynb[1]",
-            "label": "test course list pie chart"
+            "label": "test course list pie chart",
+            "service": "Analytics"
         },
         {
             "id": "stable diffusion.ipynb[0]",
-            "label": "rename txt2img directories"
+            "label": "rename txt2img directories",
+            "service": "Art"
         },
         {
             "id": "aws.ipynb[0]",
-            "label": "aws rpc wrapper"
+            "label": "aws rpc wrapper",
+            "service": "Cloud Services"
         },
         {
             "id": "rpc.ipynb[6]",
-            "label": "rpc result"
+            "label": "rpc result",
+            "service": "Core"
         },
         {
             "id": "bash.ipynb[6]",
-            "label": "copy credentials"
+            "label": "copy credentials",
+            "service": "Utilities"
         },
         {
             "id": "aws.ipynb[1]",
-            "label": "latest s3 bucket"
+            "label": "latest s3 bucket",
+            "service": "Cloud Services"
         },
         {
             "id": "deploy host.ipynb[0]",
-            "label": "deploy aws"
+            "label": "deploy aws",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[0]",
-            "label": "list google bucket url map"
+            "label": "list google bucket url map",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[9]",
-            "label": "authorize google service"
+            "label": "authorize google service",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[1]",
-            "label": "test list url map"
+            "label": "test list url map",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[2]",
-            "label": "wait for cloud operation"
+            "label": "wait for cloud operation",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[3]",
-            "label": "add a google bucket web map"
+            "label": "add a google bucket web map",
+            "service": "Cloud Services"
         },
         {
             "id": "google storage api.ipynb[0]",
-            "label": "create a bucket"
+            "label": "create a bucket",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[4]",
-            "label": "test global forward"
+            "label": "test global forward",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[5]",
-            "label": "test bucket web map"
+            "label": "test bucket web map",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[6]",
-            "label": "check dns"
+            "label": "check dns",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[7]",
-            "label": "test check dns"
+            "label": "test check dns",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[8]",
-            "label": "invalidate cdn cache"
+            "label": "invalidate cdn cache",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[10]",
-            "label": "setup sheet backend"
+            "label": "setup sheet backend",
+            "service": "Cloud Services"
         },
         {
             "id": "convert spreadsheet.ipynb[1]",
-            "label": "get sheet purchases"
+            "label": "get sheet purchases",
+            "service": "Frontends"
         },
         {
             "id": "google cloud commands.ipynb[0]",
-            "label": "upload output to google cloud storage"
+            "label": "upload output to google cloud storage",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud commands.ipynb[1]",
-            "label": "add public permissions to google cloud storage"
+            "label": "add public permissions to google cloud storage",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud commands.ipynb[2]",
-            "label": "copy html to google cloud storage"
+            "label": "copy html to google cloud storage",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud commands.ipynb[3]",
-            "label": "test command arguments"
+            "label": "test command arguments",
+            "service": "Cloud Services"
         },
         {
             "id": "google cloud commands.ipynb[4]",
-            "label": "deploy a cloud function"
+            "label": "deploy a cloud function",
+            "service": "Cloud Services"
         },
         {
             "id": "google rpc.ipynb[0]",
-            "label": "firebase rpc wrapper"
+            "label": "firebase rpc wrapper",
+            "service": "Cloud Services"
         },
         {
             "id": "google rpc.ipynb[1]",
-            "label": "google cloud function rpc wrapper"
+            "label": "google cloud function rpc wrapper",
+            "service": "Cloud Services"
         },
         {
             "id": "rpc.ipynb[7]",
-            "label": "get environment"
+            "label": "get environment",
+            "service": "Core"
         },
         {
             "id": "google rpc.ipynb[2]",
-            "label": "test google express rpc handler"
+            "label": "test google express rpc handler",
+            "service": "Cloud Services"
         },
         {
             "id": "google rpc.ipynb[3]",
-            "label": "generic gcloud function handler"
+            "label": "generic gcloud function handler",
+            "service": "Cloud Services"
         },
         {
             "id": "notebook.ipynb[13]",
-            "label": "nice name"
+            "label": "nice name",
+            "service": "Core"
         },
         {
             "id": "zuora to eloqua.ipynb[15]",
-            "label": "aws entry point"
+            "label": "aws entry point",
+            "service": "Frameworks"
         },
         {
             "id": "google storage api.ipynb[1]",
-            "label": "test create bucket"
+            "label": "test create bucket",
+            "service": "Cloud Services"
         },
         {
             "id": "google storage api.ipynb[2]",
-            "label": "test stream to output"
+            "label": "test stream to output",
+            "service": "Cloud Services"
         },
         {
             "id": "files.ipynb[14]",
-            "label": "mkdirp"
+            "label": "mkdirp",
+            "service": "Core"
         },
         {
             "id": "google storage api.ipynb[3]",
-            "label": "fetch file or stream"
+            "label": "fetch file or stream",
+            "service": "Cloud Services"
         },
         {
             "id": "google storage api.ipynb[4]",
-            "label": "upload files to google cloud"
+            "label": "upload files to google cloud",
+            "service": "Cloud Services"
         },
         {
             "id": "google storage api.ipynb[5]",
-            "label": "copy a file in storage bucket"
+            "label": "copy a file in storage bucket",
+            "service": "Cloud Services"
         },
         {
             "id": "google storage api.ipynb[6]",
-            "label": "test upload files to google storage"
+            "label": "test upload files to google storage",
+            "service": "Cloud Services"
         },
         {
             "id": "aspects.ipynb[0]",
-            "label": "inspect every statement"
+            "label": "inspect every statement",
+            "service": "Core"
         },
         {
             "id": "languages.ipynb[3]",
-            "label": "transpile code"
+            "label": "transpile code",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[16]",
-            "label": "html to tree"
+            "label": "html to tree",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[1]",
-            "label": "project word-cloud"
+            "label": "project word-cloud",
+            "service": "Core"
         },
         {
             "id": "d3.ipynb[0]",
-            "label": "Create a word-cloud"
+            "label": "Create a word-cloud",
+            "service": "Frameworks"
         },
         {
             "id": "files.ipynb[2]",
-            "label": "project imports d3 tree"
+            "label": "project imports d3 tree",
+            "service": "Core"
         },
         {
             "id": "minimatch.ipynb[2]",
-            "label": "minimatch"
+            "label": "minimatch",
+            "service": "Languages"
         },
         {
             "id": "files.ipynb[6]",
-            "label": "common ignore paths"
+            "label": "common ignore paths",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[7]",
-            "label": "List all projects by names"
+            "label": "List all projects by names",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[9]",
-            "label": "fix project paths"
+            "label": "fix project paths",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[2]",
-            "label": "builtin and local modules"
+            "label": "builtin and local modules",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[11]",
-            "label": "(=\\{((:[^{}]++|\\{(1)\\})++)\\})"
+            "label": "(=\\{((:[^{}]++|\\{(1)\\})++)\\})",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[13]",
-            "label": "file tools match filename"
+            "label": "file tools match filename",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[15]",
-            "label": "changing file names"
+            "label": "changing file names",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[16]",
-            "label": "use memory-fs and rewire to audit cli events"
+            "label": "use memory-fs and rewire to audit cli events",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[17]",
-            "label": "TODO: combine with DOM minimizing service from recording app"
+            "label": "TODO: combine with DOM minimizing service from recording app",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[0]",
-            "label": "import notebook"
+            "label": "import notebook",
+            "service": "Core"
         },
         {
             "id": "notebook extensions.ipynb[0]",
-            "label": "notebook extension"
+            "label": "notebook extension",
+            "service": "Frameworks"
         },
         {
             "id": "import.ipynb[2]",
-            "label": "how does node module require work"
+            "label": "how does node module require work",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[4]",
-            "label": "compile an es module"
+            "label": "compile an es module",
+            "service": "Core"
         },
         {
             "id": "quake3 server connector.ipynb[3]",
-            "label": "test specific channel"
+            "label": "test specific channel",
+            "service": "Games"
         },
         {
             "id": "import.ipynb[5]",
-            "label": "compile a csharp file into a DLL"
+            "label": "compile a csharp file into a DLL",
+            "service": "Core"
         },
         {
             "id": "antlr.ipynb[1]",
-            "label": "select antlr tree"
+            "label": "select antlr tree",
+            "service": "Languages"
         },
         {
             "id": "csharp.ipynb[4]",
-            "label": "get csharp params"
+            "label": "get csharp params",
+            "service": "Languages"
         },
         {
             "id": "csharp.ipynb[3]",
-            "label": "list csharp classes"
+            "label": "list csharp classes",
+            "service": "Languages"
         },
         {
             "id": "csharp.ipynb[2]",
-            "label": "list csharp namespaces"
+            "label": "list csharp namespaces",
+            "service": "Languages"
         },
         {
             "id": "import.ipynb[6]",
-            "label": "compile a dylib from source cell"
+            "label": "compile a dylib from source cell",
+            "service": "Core"
         },
         {
             "id": "dylib.ipynb[9]",
-            "label": "c type to data type"
+            "label": "c type to data type",
+            "service": "Utilities"
         },
         {
             "id": "dylib.ipynb[10]",
-            "label": "build dylib"
+            "label": "build dylib",
+            "service": "Utilities"
         },
         {
             "id": "dylib.ipynb[8]",
-            "label": "get c types"
+            "label": "get c types",
+            "service": "Utilities"
         },
         {
             "id": "import.ipynb[7]",
-            "label": "display interpreted results in markdown"
+            "label": "display interpreted results in markdown",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[8]",
-            "label": "search jupter notebooks for questions and answers"
+            "label": "search jupter notebooks for questions and answers",
+            "service": "Core"
         },
         {
             "id": "gulp.ipynb[5]",
-            "label": "search notebooks gulp"
+            "label": "search notebooks gulp",
+            "service": "Frameworks"
         },
         {
             "id": "import.ipynb[9]",
-            "label": "search notebook questions"
+            "label": "search notebook questions",
+            "service": "Core"
         },
         {
             "id": "pyimport.ipynb[3]",
-            "label": "questions = [re.sub(r'|\\|+'''qflags=re.IGNORECASE).strip()"
+            "label": "questions = [re.sub(r'|\\|+'''qflags=re.IGNORECASE).strip()",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[11]",
-            "label": "convert regexp matches to an array"
+            "label": "convert regexp matches to an array",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[12]",
-            "label": "run all promises sequentially"
+            "label": "run all promises sequentially",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[13]",
-            "label": "parse cells from a notebook"
+            "label": "parse cells from a notebook",
+            "service": "Core"
         },
         {
             "id": "intent.ipynb[3]",
-            "label": "use intent"
+            "label": "use intent",
+            "service": "Core"
         },
         {
             "id": "intent.ipynb[6]",
-            "label": "to exist right (i.e. monitor program state)"
+            "label": "to exist right (i.e. monitor program state)",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[0]",
-            "label": "get kernel json"
+            "label": "get kernel json",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[9]",
-            "label": "enforcing an interface"
+            "label": "enforcing an interface",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[1]",
-            "label": "test notebook kernel json"
+            "label": "test notebook kernel json",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[2]",
-            "label": "custom kernel json"
+            "label": "custom kernel json",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[3]",
-            "label": "jupyter meta kernel"
+            "label": "jupyter meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[4]",
-            "label": "kernel info interface"
+            "label": "kernel info interface",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[5]",
-            "label": "meta kernel interface"
+            "label": "meta kernel interface",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[6]",
-            "label": "native meta kernel"
+            "label": "native meta kernel",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[8]",
-            "label": "extend prototype class"
+            "label": "extend prototype class",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[7]",
-            "label": "native meta methods"
+            "label": "native meta methods",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[8]",
-            "label": "socket meta kernel"
+            "label": "socket meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[9]",
-            "label": "process meta kernel"
+            "label": "process meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[10]",
-            "label": "test process meta kernel"
+            "label": "test process meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[18]",
-            "label": "node meta kernel"
+            "label": "node meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[11]",
-            "label": "TODO: repl process kernel"
+            "label": "TODO: repl process kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[12]",
-            "label": "test repl process using bash"
+            "label": "test repl process using bash",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[13]",
-            "label": "jupyter wire interface"
+            "label": "jupyter wire interface",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[16]",
-            "label": "TODO jupyter wire kernel"
+            "label": "TODO jupyter wire kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[24]",
-            "label": "decode encode ipython zmq protocol"
+            "label": "decode encode ipython zmq protocol",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[17]",
-            "label": "TODO: wire meta kernel"
+            "label": "TODO: wire meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[19]",
-            "label": "test node meta kernel"
+            "label": "test node meta kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[20]",
-            "label": "node wire kernel"
+            "label": "node wire kernel",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[23]",
-            "label": "https://pypi.org/search/q=&o=&c=Framework+%3A%3A+IPython"
+            "label": "https://pypi.org/search/q=&o=&c=Framework+%3A%3A+IPython",
+            "service": "Core"
         },
         {
             "id": "kernels.ipynb[25]",
-            "label": "bind wire sockets"
+            "label": "bind wire sockets",
+            "service": "Core"
         },
         {
             "id": "languages.ipynb[8]",
-            "label": "babel transpiler"
+            "label": "babel transpiler",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[21]",
-            "label": "select acorn tree"
+            "label": "select acorn tree",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[7]",
-            "label": "add missing imports"
+            "label": "add missing imports",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[4]",
-            "label": "replace core requirement"
+            "label": "replace core requirement",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[5]",
-            "label": "replace notebook import"
+            "label": "replace notebook import",
+            "service": "Core"
         },
         {
             "id": "languages.ipynb[15]",
-            "label": "TODO: import falsey javascript in to this notebook"
+            "label": "TODO: import falsey javascript in to this notebook",
+            "service": "Core"
         },
         {
             "id": "languages.ipynb[17]",
-            "label": "display safe object"
+            "label": "display safe object",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[0]",
-            "label": "readme.md"
+            "label": "readme.md",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[1]",
-            "label": "import notebook import all cell modules"
+            "label": "import notebook import all cell modules",
+            "service": "Core"
         },
         {
             "id": "json.ipynb[0]",
-            "label": "select json"
+            "label": "select json",
+            "service": "Languages"
         },
         {
             "id": "notebook.ipynb[8]",
-            "label": "test add missing imports"
+            "label": "test add missing imports",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[10]",
-            "label": "export notebook"
+            "label": "export notebook",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[14]",
-            "label": "authoring header template"
+            "label": "authoring header template",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[9]",
-            "label": "get imports from source"
+            "label": "get imports from source",
+            "service": "Core"
         },
         {
             "id": "de-linting.ipynb[0]",
-            "label": "delint notebooks"
+            "label": "delint notebooks",
+            "service": "Frameworks"
         },
         {
             "id": "notebook.ipynb[11]",
-            "label": "inject cells in to notebooks when built with webpack"
+            "label": "inject cells in to notebooks when built with webpack",
+            "service": "Core"
         },
         {
             "id": "notebook.ipynb[12]",
-            "label": "get cell extension"
+            "label": "get cell extension",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[0]",
-            "label": "walk tree"
+            "label": "walk tree",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[6]",
-            "label": "resolve a promise properly"
+            "label": "resolve a promise properly",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[7]",
-            "label": "making a class the normal way"
+            "label": "making a class the normal way",
+            "service": "Core"
         },
         {
             "id": "patterns.ipynb[10]",
-            "label": "test enforcing an interface with prototype"
+            "label": "test enforcing an interface with prototype",
+            "service": "Core"
         },
         {
             "id": "pyimport.ipynb[0]",
-            "label": "get python params"
+            "label": "get python params",
+            "service": "Core"
         },
         {
             "id": "pyimport.ipynb[6]",
-            "label": "run python cells"
+            "label": "run python cells",
+            "service": "Core"
         },
         {
             "id": "rpc.ipynb[0]",
-            "label": "rpc groups"
+            "label": "rpc groups",
+            "service": "Core"
         },
         {
             "id": "rpc.ipynb[1]",
-            "label": "get cell rpc groups"
+            "label": "get cell rpc groups",
+            "service": "Core"
         },
         {
             "id": "rpc.ipynb[2]",
-            "label": "rpc permissions"
+            "label": "rpc permissions",
+            "service": "Core"
         },
         {
             "id": "rpc.ipynb[3]",
-            "label": "test get permissions"
+            "label": "test get permissions",
+            "service": "Core"
         },
         {
             "id": "rpc.ipynb[4]",
-            "label": "filter command permission"
+            "label": "filter command permission",
+            "service": "Core"
         },
         {
             "id": "google calendar.ipynb[6]",
-            "label": "days events"
+            "label": "days events",
+            "service": "Google"
         },
         {
             "id": "google contacts.ipynb[1]",
-            "label": "google contact settings"
+            "label": "google contact settings",
+            "service": "Google"
         },
         {
             "id": "rpc.ipynb[5]",
-            "label": "store rpc result"
+            "label": "store rpc result",
+            "service": "Core"
         },
         {
             "id": "rpc.ipynb[8]",
-            "label": "get rpc from spec"
+            "label": "get rpc from spec",
+            "service": "Core"
         },
         {
             "id": "polyfills.ipynb[0]",
-            "label": "https request"
+            "label": "https request",
+            "service": "Utilities"
         },
         {
             "id": "rpc.ipynb[9]",
-            "label": "test rpc from spec"
+            "label": "test rpc from spec",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[0]",
-            "label": "get requires"
+            "label": "get requires",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[3]",
-            "label": "core dependencies"
+            "label": "core dependencies",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[4]",
-            "label": "test core dependencies"
+            "label": "test core dependencies",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[8]",
-            "label": "test parameter names"
+            "label": "test parameter names",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[10]",
-            "label": "test get imports"
+            "label": "test get imports",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[14]",
-            "label": "tree to html"
+            "label": "tree to html",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[22]",
-            "label": "make xpaths"
+            "label": "make xpaths",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[23]",
-            "label": "generate css selectors from code"
+            "label": "generate css selectors from code",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[24]",
-            "label": "minimize xpath"
+            "label": "minimize xpath",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[26]",
-            "label": "select from code"
+            "label": "select from code",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[28]",
-            "label": "test expression on notebook code"
+            "label": "test expression on notebook code",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[30]",
-            "label": "Generate unit test from logic branching"
+            "label": "Generate unit test from logic branching",
+            "service": "Core"
         },
         {
             "id": "syntax.ipynb[33]",
-            "label": "generate unit test"
+            "label": "generate unit test",
+            "service": "Core"
         },
         {
             "id": "filesystem.ipynb[0]",
-            "label": "organize downloads"
+            "label": "organize downloads",
+            "service": "Databases"
         },
         {
             "id": "filesystem.ipynb[1]",
-            "label": "categorize home directory"
+            "label": "categorize home directory",
+            "service": "Databases"
         },
         {
             "id": "filesystem.ipynb[2]",
-            "label": "categories downloads"
+            "label": "categories downloads",
+            "service": "Databases"
         },
         {
             "id": "filesystem.ipynb[3]",
-            "label": "download reorganize bash"
+            "label": "download reorganize bash",
+            "service": "Databases"
         },
         {
             "id": "filesystem.ipynb[4]",
-            "label": "bash make categories"
+            "label": "bash make categories",
+            "service": "Databases"
         },
         {
             "id": "filesystem.ipynb[5]",
-            "label": "run bash on downloads"
+            "label": "run bash on downloads",
+            "service": "Databases"
         },
         {
             "id": "filesystem.ipynb[6]",
-            "label": "macos time added"
+            "label": "macos time added",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[0]",
-            "label": "git discard whitespace"
+            "label": "git discard whitespace",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[1]",
-            "label": "compare git branches"
+            "label": "compare git branches",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[2]",
-            "label": "interesting git commands"
+            "label": "interesting git commands",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[3]",
-            "label": "cache git credentials"
+            "label": "cache git credentials",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[4]",
-            "label": "git auto commit"
+            "label": "git auto commit",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[5]",
-            "label": "git auto rebase"
+            "label": "git auto rebase",
+            "service": "Databases"
         },
         {
             "id": "git commands.ipynb[6]",
-            "label": "git add submodule"
+            "label": "git add submodule",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[0]",
-            "label": "git stylesheet"
+            "label": "git stylesheet",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[1]",
-            "label": "git service index"
+            "label": "git service index",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[2]",
-            "label": "repositories fragment"
+            "label": "repositories fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[3]",
-            "label": "file list fragment"
+            "label": "file list fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[4]",
-            "label": "branch list fragment"
+            "label": "branch list fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[5]",
-            "label": "commit list fragment"
+            "label": "commit list fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[6]",
-            "label": "git tag list"
+            "label": "git tag list",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[7]",
-            "label": "repo fragment"
+            "label": "repo fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[8]",
-            "label": "branch fragment"
+            "label": "branch fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[9]",
-            "label": "commit fragment"
+            "label": "commit fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[10]",
-            "label": "git tag fragment"
+            "label": "git tag fragment",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[11]",
-            "label": "html code view"
+            "label": "html code view",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[12]",
-            "label": "github service config"
+            "label": "github service config",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[13]",
-            "label": "git service branches"
+            "label": "git service branches",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[14]",
-            "label": "git branches"
+            "label": "git branches",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[15]",
-            "label": "git serve bare"
+            "label": "git serve bare",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[16]",
-            "label": "git serve repo list"
+            "label": "git serve repo list",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[17]",
-            "label": "git serve tree"
-        },
-        {
-            "id": "node express.ipynb[12]",
-            "label": "directory to html"
-        },
-        {
-            "id": "git index.ipynb[18]",
-            "label": "git serve blob"
+            "label": "git serve tree",
+            "service": "Databases"
         },
         {
             "id": "node express.ipynb[15]",
-            "label": "html image viewer"
+            "label": "directory to html",
+            "service": "Frameworks"
+        },
+        {
+            "id": "git index.ipynb[18]",
+            "label": "git serve blob",
+            "service": "Databases"
         },
         {
             "id": "node express.ipynb[14]",
-            "label": "html music player"
+            "label": "zuora eloqua express mock",
+            "service": "Frameworks"
         },
         {
             "id": "documentation.ipynb[5]",
-            "label": "highlight js"
+            "label": "highlight js",
+            "service": "Frontends"
         },
         {
             "id": "git index.ipynb[20]",
-            "label": "git serve commits"
+            "label": "git serve commits",
+            "service": "Databases"
         },
         {
             "id": "git.ipynb[0]",
-            "label": "Rename a bunch of files using Git and renamer"
+            "label": "Rename a bunch of files using Git and renamer",
+            "service": "Databases"
         },
         {
             "id": "git.ipynb[1]",
-            "label": "test github renamer"
+            "label": "test github renamer",
+            "service": "Databases"
         },
         {
             "id": "git.ipynb[2]",
-            "label": "json git tree"
+            "label": "json git tree",
+            "service": "Databases"
         },
         {
             "id": "child process.ipynb[0]",
-            "label": "spawn child process"
+            "label": "spawn child process",
+            "service": "Utilities"
         },
         {
             "id": "git.ipynb[3]",
-            "label": "source tree"
+            "label": "source tree",
+            "service": "Databases"
         },
         {
             "id": "d3.ipynb[4]",
-            "label": "Format d3 tree"
+            "label": "Format d3 tree",
+            "service": "Frameworks"
         },
         {
             "id": "d3.ipynb[5]",
-            "label": "Display d3 tree"
+            "label": "Display d3 tree",
+            "service": "Frameworks"
         },
         {
             "id": "git.ipynb[7]",
-            "label": "git project directory"
+            "label": "git project directory",
+            "service": "Databases"
         },
         {
             "id": "git.ipynb[4]",
-            "label": "Display graphs of different commands and scenarios using dry-run"
+            "label": "Display graphs of different commands and scenarios using dry-run",
+            "service": "Databases"
         },
         {
             "id": "gulp.ipynb[1]",
-            "label": "gulp tasks to promise"
+            "label": "gulp tasks to promise",
+            "service": "Frameworks"
         },
         {
             "id": "gulp.ipynb[0]",
-            "label": "use gulp"
+            "label": "use gulp",
+            "service": "Frameworks"
         },
         {
             "id": "git.ipynb[5]",
-            "label": "update git"
+            "label": "update git",
+            "service": "Databases"
         },
         {
             "id": "git.ipynb[6]",
-            "label": "github updates"
+            "label": "github updates",
+            "service": "Databases"
         },
         {
             "id": "google calendar.ipynb[7]",
-            "label": "Update create merge delete event"
+            "label": "Update create merge delete event",
+            "service": "Google"
         },
         {
             "id": "git.ipynb[8]",
-            "label": "glob git branch"
+            "label": "glob git branch",
+            "service": "Databases"
         },
         {
             "id": "git.ipynb[9]",
-            "label": "convert git history to google calendar events"
+            "label": "convert git history to google calendar events",
+            "service": "Databases"
         },
         {
             "id": "google calendar.ipynb[5]",
-            "label": "lookup calendar name"
+            "label": "lookup calendar name",
+            "service": "Google"
         },
         {
             "id": "npm.ipynb[0]",
-            "label": "Replace package.json latest with actual latest version numbers"
+            "label": "Replace package.json latest with actual latest version numbers",
+            "service": "Databases"
         },
         {
             "id": "npm.ipynb[1]",
-            "label": "Check if there is a local-npm server running on Brian's machine"
+            "label": "Check if there is a local-npm server running on Brian's machine",
+            "service": "Databases"
         },
         {
             "id": "npm.ipynb[2]",
-            "label": "Run NPM in javscript with in-memory file-system"
+            "label": "Run NPM in javscript with in-memory file-system",
+            "service": "Databases"
         },
         {
             "id": "docker commands.ipynb[0]",
-            "label": "use Docker"
+            "label": "use Docker",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[1]",
-            "label": "Restart the docker service"
+            "label": "Restart the docker service",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[2]",
-            "label": "Actually delete everything"
+            "label": "Actually delete everything",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[3]",
-            "label": "Delete all containers"
+            "label": "Delete all containers",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[4]",
-            "label": "Delete all images"
+            "label": "Delete all images",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[5]",
-            "label": "Delete all images in Powershell"
+            "label": "Delete all images in Powershell",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[6]",
-            "label": "Delete containers in cmd"
+            "label": "Delete containers in cmd",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[7]",
-            "label": "Delete images in cmd"
+            "label": "Delete images in cmd",
+            "service": "Docker"
         },
         {
             "id": "docker commands.ipynb[8]",
-            "label": "Delete danglings images in cmd"
+            "label": "Delete danglings images in cmd",
+            "service": "Docker"
         },
         {
             "id": "docker demo.ipynb[0]",
-            "label": "What is Docker"
+            "label": "What is Docker",
+            "service": "Docker"
         },
         {
             "id": "docker demo.ipynb[1]",
-            "label": "selenium docker"
+            "label": "selenium docker",
+            "service": "Docker"
         },
         {
             "id": "selenium commands.ipynb[3]",
-            "label": "Run selenium inside of docker"
+            "label": "Run selenium inside of docker",
+            "service": "Selenium"
         },
         {
             "id": "node install.ipynb[1]",
-            "label": "Install dev tools on Linux"
+            "label": "Install dev tools on Linux",
+            "service": "Docker"
         },
         {
             "id": "vnc.ipynb[2]",
-            "label": "VNC HTML client"
+            "label": "VNC HTML client",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[4]",
-            "label": "VNC in Docker"
+            "label": "VNC in Docker",
+            "service": "Utilities"
         },
         {
             "id": "install Docker on Mac.ipynb[0]",
-            "label": "install Docker on Mac"
+            "label": "install Docker on Mac",
+            "service": "Docker"
         },
         {
             "id": "install Docker on Mac.ipynb[1]",
-            "label": "Where do I download dockerWhat other tools do I need"
+            "label": "Where do I download dockerWhat other tools do I need",
+            "service": "Docker"
         },
         {
             "id": "install Docker on Windows.ipynb[0]",
-            "label": "install Docker on Windows"
+            "label": "install Docker on Windows",
+            "service": "Docker"
         },
         {
             "id": "install Docker on Windows.ipynb[1]",
-            "label": "How do I installed elevated from the command line"
+            "label": "How do I installed elevated from the command line",
+            "service": "Docker"
         },
         {
             "id": "install Docker on Windows.ipynb[2]",
-            "label": "Where do I download the Windows Docker installer"
+            "label": "Where do I download the Windows Docker installer",
+            "service": "Docker"
         },
         {
             "id": "install Docker on Windows.ipynb[3]",
-            "label": "How do I fix the firewall for Docker"
+            "label": "How do I fix the firewall for Docker",
+            "service": "Docker"
         },
         {
             "id": "install Docker on Windows.ipynb[4]",
-            "label": "install build tools on Windows"
+            "label": "install build tools on Windows",
+            "service": "Docker"
         },
         {
             "id": "node install.ipynb[0]",
-            "label": "use nodejs"
+            "label": "use nodejs",
+            "service": "Docker"
         },
         {
             "id": "fizz buzz.ipynb[0]",
-            "label": "http://wiki.c2.com/FizzBuzzTest"
+            "label": "http://wiki.c2.com/FizzBuzzTest",
+            "service": "Exercises"
         },
         {
             "id": "How code should look.ipynb[0]",
-            "label": "How code should look"
+            "label": "How code should look",
+            "service": "Frameworks"
         },
         {
             "id": "node simple-imap.ipynb[5]",
-            "label": "get attachments using simple-imap"
+            "label": "get attachments using simple-imap",
+            "service": "Frameworks"
         },
         {
             "id": "Jupyter language kernels.ipynb[0]",
-            "label": "install bash kernel"
+            "label": "install bash kernel",
+            "service": "Frameworks"
         },
         {
             "id": "Jupyter language kernels.ipynb[1]",
-            "label": "install ipython kernel"
+            "label": "install ipython kernel",
+            "service": "Frameworks"
         },
         {
             "id": "Jupyter language kernels.ipynb[2]",
-            "label": "install ICSharp (C) kernel"
+            "label": "install ICSharp (C) kernel",
+            "service": "Frameworks"
         },
         {
             "id": "Jupyter language kernels.ipynb[5]",
-            "label": "install ruby"
+            "label": "install ruby",
+            "service": "Frameworks"
         },
         {
             "id": "Jupyter language kernels.ipynb[6]",
-            "label": "install Powershell"
+            "label": "install Powershell",
+            "service": "Frameworks"
         },
         {
             "id": "autorewire.ipynb[0]",
-            "label": "install autorewire"
+            "label": "install autorewire",
+            "service": "Frameworks"
         },
         {
             "id": "autorewire.ipynb[1]",
-            "label": "mock all properties and functions using rewire"
+            "label": "mock all properties and functions using rewire",
+            "service": "Frameworks"
         },
         {
             "id": "d3 dates.ipynb[0]",
-            "label": "d3 swimlane"
+            "label": "d3 swimlane",
+            "service": "Frameworks"
         },
         {
             "id": "d3 dates.ipynb[1]",
-            "label": "d3 calendar"
+            "label": "d3 calendar",
+            "service": "Frameworks"
         },
         {
             "id": "d3.ipynb[1]",
-            "label": "d3 tiered pie chart"
+            "label": "d3 tiered pie chart",
+            "service": "Frameworks"
         },
         {
             "id": "de-linting.ipynb[1]",
-            "label": "lint notebook"
+            "label": "lint notebook",
+            "service": "Frameworks"
         },
         {
             "id": "de-linting.ipynb[2]",
-            "label": "delint specific cells"
+            "label": "delint specific cells",
+            "service": "Frameworks"
         },
         {
             "id": "de-linting.ipynb[3]",
-            "label": "notebook lint watcher"
+            "label": "notebook lint watcher",
+            "service": "Frameworks"
         },
         {
             "id": "de-linting.ipynb[4]",
-            "label": "test de-linting service"
+            "label": "test de-linting service",
+            "service": "Frameworks"
         },
         {
             "id": "diff.ipynb[0]",
-            "label": "diff"
+            "label": "diff",
+            "service": "Utilities"
         },
         {
             "id": "de-linting.ipynb[5]",
-            "label": "delint using webstorm"
+            "label": "delint using webstorm",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[0]",
-            "label": "test repository"
+            "label": "test repository",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[1]",
-            "label": "selenium repository"
+            "label": "selenium repository",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[2]",
-            "label": "project repository"
+            "label": "project repository",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[3]",
-            "label": "Setup git credentials in docker"
+            "label": "Setup git credentials in docker",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[4]",
-            "label": "use in Docker"
+            "label": "use in Docker",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[5]",
-            "label": "use npm cache inside of docker"
+            "label": "use npm cache inside of docker",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[6]",
-            "label": "run the Docker image"
+            "label": "run the Docker image",
+            "service": "Frameworks"
         },
         {
             "id": "git repos.ipynb[7]",
-            "label": "Selenium test scripts"
+            "label": "Selenium test scripts",
+            "service": "Frameworks"
         },
         {
             "id": "gulp.ipynb[3]",
-            "label": "Apply universal to angular project"
+            "label": "Apply universal to angular project",
+            "service": "Frameworks"
         },
         {
             "id": "gulp.ipynb[4]",
-            "label": "Fix project relatives as a service for updating files when they change"
+            "label": "Fix project relatives as a service for updating files when they change",
+            "service": "Frameworks"
         },
         {
             "id": "identity server.ipynb[2]",
-            "label": "set up identity server"
+            "label": "set up identity server",
+            "service": "Frameworks"
         },
         {
             "id": "jupyter interaction.ipynb[0]",
-            "label": "Interactive cells in juypter"
+            "label": "Interactive cells in juypter",
+            "service": "Frameworks"
         },
         {
             "id": "jwt in csharp.ipynb[0]",
-            "label": "use JSON web tokens in C"
+            "label": "use JSON web tokens in C",
+            "service": "Frameworks"
         },
         {
             "id": "karma template.ipynb[0]",
-            "label": "Generate a bunch of spec files"
+            "label": "Generate a bunch of spec files",
+            "service": "Frameworks"
         },
         {
             "id": "ngx-translate.ipynb[1]",
-            "label": "Find unused/misplaced translation strings"
+            "label": "Find unused/misplaced translation strings",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[0]",
-            "label": "express service"
+            "label": "express service",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[1]",
-            "label": "import new service"
-        },
-        {
-            "id": "node express.ipynb[3]",
-            "label": "express router"
+            "label": "import new service",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[2]",
-            "label": "express rpc service"
+            "label": "websocket subscription service",
+            "service": "Frameworks"
         },
         {
-            "id": "node express.ipynb[4]",
-            "label": "parse environment"
+            "id": "node express.ipynb[3]",
+            "label": "express rpc service",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[5]",
-            "label": "start a proxy on {port}"
+            "label": "reliable-websocket.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[4]",
+            "label": "browser socket service",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[6]",
-            "label": "display the output from express"
+            "label": "express router",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[7]",
-            "label": "run a DOM query on a remote HTML page"
+            "label": "parse environment",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[8]",
-            "label": "save a list of image elements"
+            "label": "start a proxy on {port}",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[9]",
-            "label": "stop express server"
+            "label": "display the output from express",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[10]",
+            "label": "run a DOM query on a remote HTML page",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[11]",
-            "label": "zuora eloqua express mock"
+            "label": "save a list of image elements",
+            "service": "Frameworks"
         },
         {
-            "id": "node express.ipynb[13]",
-            "label": "node express directory handler"
+            "id": "node express.ipynb[12]",
+            "label": "stop express server",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[16]",
-            "label": "rpc index"
-        },
-        {
-            "id": "node express.ipynb[19]",
-            "label": "rpc service index"
-        },
-        {
-            "id": "node express.ipynb[18]",
-            "label": "rpc fragement"
+            "label": "node express directory handler",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[17]",
-            "label": "rpc list fragement"
+            "label": "html music player",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[18]",
+            "label": "html image viewer",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[19]",
+            "label": "rpc index",
+            "service": "Frameworks"
         },
         {
             "id": "node express.ipynb[20]",
-            "label": "node express styles"
+            "label": "rpc list fragement",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[21]",
+            "label": "rpc fragement",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[22]",
+            "label": "rpc service index",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[23]",
+            "label": "node express styles",
+            "service": "Frameworks"
         },
         {
             "id": "service auth.ipynb[0]",
-            "label": "Decrypt passwords.json"
+            "label": "Decrypt passwords.json",
+            "service": "Selenium"
         },
         {
             "id": "node simple-imap.ipynb[1]",
-            "label": "search for messages using simple-imap"
+            "label": "search for messages using simple-imap",
+            "service": "Frameworks"
         },
         {
             "id": "node simple-imap.ipynb[2]",
-            "label": "test search messages imap"
+            "label": "test search messages imap",
+            "service": "Frameworks"
         },
         {
             "id": "node simple-imap.ipynb[3]",
-            "label": "scan commands email"
+            "label": "scan commands email",
+            "service": "Frameworks"
         },
         {
             "id": "node simple-imap.ipynb[6]",
-            "label": "send email"
+            "label": "send email",
+            "service": "Frameworks"
         },
         {
             "id": "node simple-imap.ipynb[4]",
-            "label": "list the subjects from simple-imap messages"
+            "label": "list the subjects from simple-imap messages",
+            "service": "Frameworks"
         },
         {
             "id": "promisify automock socketio.ipynb[0]",
-            "label": "mock and pass through"
+            "label": "mock and pass through",
+            "service": "Frameworks"
         },
         {
             "id": "promisify automock socketio.ipynb[1]",
-            "label": "Create an RPC socker.io server for any module using promisify"
+            "label": "Create an RPC socker.io server for any module using promisify",
+            "service": "Frameworks"
         },
         {
             "id": "promisify automock socketio.ipynb[2]",
-            "label": "Mock any module with promisify and socket.io-client"
+            "label": "Mock any module with promisify and socket.io-client",
+            "service": "Frameworks"
         },
         {
             "id": "promisify automock socketio.ipynb[3]",
-            "label": "Check if sockify server is running"
+            "label": "Check if sockify server is running",
+            "service": "Frameworks"
         },
         {
             "id": "register jupter kernels.ipynb[0]",
-            "label": "install a kernel from just the spec"
+            "label": "install a kernel from just the spec",
+            "service": "Frameworks"
         },
         {
             "id": "test runner.ipynb[0]",
-            "label": "test cells"
+            "label": "test cells",
+            "service": "Frameworks"
         },
         {
             "id": "test runner.ipynb[1]",
-            "label": "mocha test the test cell runner"
+            "label": "mocha test the test cell runner",
+            "service": "Frameworks"
         },
         {
             "id": "test runner.ipynb[2]",
-            "label": "test runner"
+            "label": "test runner",
+            "service": "Frameworks"
         },
         {
             "id": "test runner.ipynb[3]",
-            "label": "test sigma index"
-        },
-        {
-            "id": "test runner.ipynb[4]",
-            "label": "sigma-style.css"
+            "label": "test sigma index",
+            "service": "Frameworks"
         },
         {
             "id": "test runner.ipynb[5]",
-            "label": "sigma-script.js"
+            "label": "notebook-colors.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[4]",
+            "label": "test sigma template",
+            "service": "Frameworks"
         },
         {
             "id": "test runner.ipynb[6]",
-            "label": "cell nodes"
+            "label": "sigma-style.css",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[7]",
+            "label": "sigma-script.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[8]",
+            "label": "highlight-nodes.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[9]",
+            "label": "color-fader.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[10]",
+            "label": "update-view.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[11]",
+            "label": "render-remote.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[12]",
+            "label": "animate-nodes.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[13]",
+            "label": "cell nodes",
+            "service": "Frameworks"
         },
         {
             "id": "twilio.ipynb[0]",
-            "label": "accept incoming twilio message"
+            "label": "accept incoming twilio message",
+            "service": "Frameworks"
         },
         {
             "id": "twilio.ipynb[1]",
-            "label": "twilio reminder"
+            "label": "twilio reminder",
+            "service": "Frameworks"
         },
         {
             "id": "twilio.ipynb[2]",
-            "label": "send a twilio message"
+            "label": "send a twilio message",
+            "service": "Frameworks"
         },
         {
             "id": "twilio.ipynb[3]",
-            "label": "make a twilio call"
+            "label": "make a twilio call",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[0]",
-            "label": "zuora export service"
+            "label": "zuora export service",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[1]",
-            "label": "zuora export catalog"
+            "label": "zuora export catalog",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[2]",
-            "label": "zuora export service test"
+            "label": "zuora export service test",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[3]",
-            "label": "zuora renewals query"
+            "label": "zuora renewals query",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[4]",
-            "label": "test zuora renewals query"
+            "label": "test zuora renewals query",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[5]",
-            "label": "eloqua import service"
+            "label": "eloqua import service",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[10]",
-            "label": "eloqua import create template"
+            "label": "eloqua import create template",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[6]",
-            "label": "test eloqua import service"
+            "label": "test eloqua import service",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[12]",
-            "label": "eloqua import blueprints"
+            "label": "eloqua import blueprints",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[7]",
-            "label": "zuora eloqua mapper"
+            "label": "zuora eloqua mapper",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[8]",
-            "label": "zuora eloqua mapper test"
+            "label": "zuora eloqua mapper test",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[9]",
-            "label": "zuora account blueprints"
+            "label": "zuora account blueprints",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[11]",
-            "label": "test eloqua import create template"
+            "label": "test eloqua import create template",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[13]",
-            "label": "eloqua existing import"
+            "label": "eloqua existing import",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[14]",
-            "label": "test eloqua existing import"
+            "label": "test eloqua existing import",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[23]",
-            "label": "bulk upload eloqua"
+            "label": "bulk upload eloqua",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[19]",
-            "label": "zuora export month"
+            "label": "zuora export month",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[16]",
-            "label": "test aws entry point"
+            "label": "test aws entry point",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[17]",
-            "label": "notify entry point"
+            "label": "notify entry point",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[21]",
-            "label": "zuora account service"
+            "label": "zuora account service",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[18]",
-            "label": "test notify entry point"
+            "label": "test notify entry point",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[20]",
-            "label": "test zuora export month"
+            "label": "test zuora export month",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[22]",
-            "label": "test zuora account service"
+            "label": "test zuora account service",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[24]",
-            "label": "test bulk upload eloqua"
+            "label": "test bulk upload eloqua",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[25]",
-            "label": "sync zuora eloqua end to end"
+            "label": "sync zuora eloqua end to end",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[26]",
-            "label": "calculate price"
+            "label": "calculate price",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[27]",
-            "label": "calculate price test"
+            "label": "calculate price test",
+            "service": "Frameworks"
         },
         {
             "id": "zuora to eloqua.ipynb[28]",
-            "label": "readme"
+            "label": "readme",
+            "service": "Frameworks"
         },
         {
             "id": "brians resume.ipynb[0]",
-            "label": "get a list of folder topics from bookmarks"
+            "label": "get a list of folder topics from bookmarks",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[1]",
-            "label": "update insterests resume sheet"
+            "label": "update insterests resume sheet",
+            "service": "Frontends"
         },
         {
             "id": "google sheets.ipynb[8]",
-            "label": "update a row in google sheets"
+            "label": "update a row in google sheets",
+            "service": "Google"
         },
         {
             "id": "brians resume.ipynb[2]",
-            "label": "load message history"
+            "label": "load message history",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[3]",
-            "label": "brians resume"
+            "label": "brians resume",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[12]",
-            "label": "brians resume in html"
+            "label": "brians resume in html",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[4]",
-            "label": "file system access"
+            "label": "file system access",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[5]",
-            "label": "access web information"
+            "label": "access web information",
+            "service": "Frontends"
         },
         {
             "id": "scraping.ipynb[0]",
-            "label": "extract llm article"
+            "label": "extract llm article",
+            "service": "Selenium"
         },
         {
             "id": "scraping.ipynb[2]",
-            "label": "summarize llm article"
+            "label": "summarize llm article",
+            "service": "Selenium"
         },
         {
             "id": "brians resume.ipynb[6]",
-            "label": "ask another llm for help"
+            "label": "ask another llm for help",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[7]",
-            "label": "render message history"
+            "label": "render message history",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[10]",
-            "label": "resume chat program"
+            "label": "resume chat program",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[8]",
-            "label": "resume express chat service"
+            "label": "resume express chat service",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[9]",
-            "label": "render history navigation"
+            "label": "render history navigation",
+            "service": "Frontends"
         },
         {
             "id": "brians resume.ipynb[11]",
-            "label": "chat page"
+            "label": "chat page",
+            "service": "Frontends"
         },
         {
             "id": "calendar.ipynb[0]",
-            "label": "frequency calendar index"
+            "label": "frequency calendar index",
+            "service": "Frontends"
         },
         {
             "id": "calendar.ipynb[1]",
-            "label": "calendar frequency timeline"
+            "label": "calendar frequency timeline",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[0]",
-            "label": "readme.md"
+            "label": "readme.md",
+            "service": "Frontends"
         },
         {
             "id": "google sheets.ipynb[2]",
-            "label": "get google sheet info"
+            "label": "get google sheet info",
+            "service": "Google"
         },
         {
             "id": "google sheets.ipynb[6]",
-            "label": "add row data google sheet"
+            "label": "add row data google sheet",
+            "service": "Google"
         },
         {
             "id": "convert spreadsheet.ipynb[2]",
-            "label": "sheet marketing import"
+            "label": "sheet marketing import",
+            "service": "Frontends"
         },
         {
             "id": "google sheets.ipynb[0]",
-            "label": "templates google doc"
+            "label": "templates google doc",
+            "service": "Google"
         },
         {
             "id": "convert spreadsheet.ipynb[6]",
-            "label": "output google sheet template"
+            "label": "output google sheet template",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[4]",
-            "label": "google sheet template properties"
+            "label": "google sheet template properties",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[9]",
-            "label": "collect google sheets resources"
+            "label": "collect google sheets resources",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[11]",
-            "label": "convert sheet helper functions"
+            "label": "convert sheet helper functions",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[3]",
-            "label": "filter data sheet based on url"
+            "label": "filter data sheet based on url",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[5]",
-            "label": "google sheet layout template"
+            "label": "google sheet layout template",
+            "service": "Frontends"
         },
         {
             "id": "google sheets.ipynb[4]",
-            "label": "get worksheet rows"
+            "label": "get worksheet rows",
+            "service": "Google"
         },
         {
             "id": "convert spreadsheet.ipynb[7]",
-            "label": "find known routes to sheets"
+            "label": "find known routes to sheets",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[8]",
-            "label": "collect external content and resources"
+            "label": "collect external content and resources",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[10]",
-            "label": "sheet to web"
+            "label": "sheet to web",
+            "service": "Frontends"
         },
         {
             "id": "convert spreadsheet.ipynb[12]",
-            "label": "package.json"
+            "label": "package.json",
+            "service": "Frontends"
         },
         {
             "id": "discord activities.ipynb[0]",
-            "label": "discord client code"
+            "label": "discord client code",
+            "service": "Frontends"
         },
         {
             "id": "discord activities.ipynb[1]",
-            "label": "discord client auth code"
+            "label": "discord client auth code",
+            "service": "Frontends"
         },
         {
             "id": "discord activities.ipynb[2]",
-            "label": "start a bunch of discord services"
+            "label": "start a bunch of discord services",
+            "service": "Frontends"
         },
         {
             "id": "discord activities.ipynb[3]",
-            "label": "discord authenticate instances"
+            "label": "discord authenticate instances",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[1]",
-            "label": "discord gateway"
+            "label": "discord gateway",
+            "service": "Frontends"
         },
         {
             "id": "discord activities.ipynb[4]",
-            "label": "discord express token endpoint"
+            "label": "discord express token endpoint",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[2]",
-            "label": "discord bot configuration"
+            "label": "discord bot configuration",
+            "service": "Frontends"
         },
         {
             "id": "discord games.ipynb[1]",
-            "label": "discord game commands"
+            "label": "discord game commands",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[3]",
-            "label": "discord api"
+            "label": "discord api",
+            "service": "Frontends"
         },
         {
             "id": "discord imagine.ipynb[0]",
-            "label": "update discord interaction with attachments"
+            "label": "update discord interaction with attachments",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[0]",
-            "label": "discord request"
+            "label": "discord request",
+            "service": "Frontends"
         },
         {
             "id": "discord imagine.ipynb[1]",
-            "label": "discord stability proxy"
+            "label": "discord stability proxy",
+            "service": "Frontends"
         },
         {
             "id": "discord imagine.ipynb[2]",
-            "label": "discord mid journey commands"
+            "label": "discord mid journey commands",
+            "service": "Frontends"
         },
         {
             "id": "discord imagine.ipynb[3]",
-            "label": "discord ollama vision"
+            "label": "discord ollama vision",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[5]",
-            "label": "discord llm interactions"
+            "label": "discord llm interactions",
+            "service": "Frontends"
         },
         {
             "id": "discord player.ipynb[0]",
-            "label": "discord music player"
+            "label": "discord music player",
+            "service": "Frontends"
         },
         {
             "id": "discord player.ipynb[1]",
-            "label": "discord music player server"
+            "label": "discord music player server",
+            "service": "Frontends"
+        },
+        {
+            "id": "node express.ipynb[13]",
+            "label": "\n## RPC Wrapper\n\n#### the code\n\nexpress rpc wrapper\n\nlegacy rpc wrapper\n",
+            "service": "Frameworks"
         },
         {
             "id": "discord remote.ipynb[0]",
-            "label": "discord remote control"
+            "label": "discord remote control",
+            "service": "Frontends"
         },
         {
             "id": "discord remote.ipynb[1]",
-            "label": "discord remote proxy server"
+            "label": "discord remote proxy server",
+            "service": "Frontends"
         },
         {
             "id": "discord remote.ipynb[3]",
-            "label": "remote desktop client"
+            "label": "remote desktop client",
+            "service": "Frontends"
         },
         {
             "id": "discord remote.ipynb[4]",
-            "label": "client input remote code"
+            "label": "client input remote code",
+            "service": "Frontends"
         },
         {
             "id": "discord remote.ipynb[2]",
-            "label": "express automation routes"
+            "label": "express automation routes",
+            "service": "Frontends"
         },
         {
             "id": "robot.ipynb[0]",
-            "label": "node screenshots"
+            "label": "node screenshots",
+            "service": "Utilities"
         },
         {
             "id": "google scheduling.ipynb[3]",
-            "label": "remove overlaps"
+            "label": "remove overlaps",
+            "service": "Google"
         },
         {
             "id": "robot.ipynb[4]",
-            "label": "mouse click"
+            "label": "mouse click",
+            "service": "Utilities"
         },
         {
             "id": "robot.ipynb[5]",
-            "label": "send keys"
+            "label": "send keys",
+            "service": "Utilities"
         },
         {
             "id": "discord tools.ipynb[0]",
-            "label": "discord pdf converter"
+            "label": "discord pdf converter",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[1]",
-            "label": "discord notebook connector"
+            "label": "discord notebook connector",
+            "service": "Frontends"
         },
         {
             "id": "usage.ipynb[2]",
-            "label": "system usage png buffer"
+            "label": "system usage png buffer",
+            "service": "Utilities"
         },
         {
             "id": "scraping.ipynb[3]",
-            "label": "test article summarizer"
+            "label": "test article summarizer",
+            "service": "Selenium"
         },
         {
             "id": "discord tools.ipynb[2]",
-            "label": "discord llm connector"
+            "label": "discord llm connector",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[9]",
-            "label": "create discord message with attachments"
+            "label": "create discord message with attachments",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[3]",
-            "label": "discord writing llms"
+            "label": "discord writing llms",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[4]",
-            "label": "discord mesh generator"
+            "label": "discord mesh generator",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[6]",
-            "label": "sync discord llm tools"
+            "label": "sync discord llm tools",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[7]",
-            "label": "sync deceptive chat"
+            "label": "sync deceptive chat",
+            "service": "Frontends"
         },
         {
             "id": "discord tools.ipynb[8]",
-            "label": "discord handy tools"
+            "label": "discord handy tools",
+            "service": "Frontends"
         },
         {
             "id": "discord voice.ipynb[0]",
-            "label": "send voice on discord"
+            "label": "send voice on discord",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[10]",
-            "label": "discord utilities"
+            "label": "discord utilities",
+            "service": "Frontends"
         },
         {
             "id": "usage.ipynb[0]",
-            "label": "system usage report"
+            "label": "system usage report",
+            "service": "Utilities"
         },
         {
             "id": "discord.ipynb[5]",
-            "label": "discord channels"
+            "label": "discord channels",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[7]",
-            "label": "discord guilds"
+            "label": "discord guilds",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[4]",
-            "label": "discord messages"
+            "label": "discord messages",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[6]",
-            "label": "discord commands"
+            "label": "discord commands",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[8]",
-            "label": "discord threads"
+            "label": "discord threads",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[9]",
-            "label": "discord users"
+            "label": "discord users",
+            "service": "Frontends"
         },
         {
             "id": "discord.ipynb[11]",
-            "label": "delete all commands"
+            "label": "delete all commands",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[0]",
-            "label": "convert notebook to open api"
+            "label": "convert notebook to open api",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[1]",
-            "label": "test convert notebook api"
+            "label": "test convert notebook api",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[2]",
-            "label": "convert google discovery to documentation"
+            "label": "convert google discovery to documentation",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[3]",
-            "label": "discover well-known apis"
+            "label": "discover well-known apis",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[4]",
-            "label": "export documentation"
+            "label": "export documentation",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[6]",
-            "label": "javadoc template"
+            "label": "javadoc template",
+            "service": "Frontends"
         },
         {
             "id": "documentation.ipynb[7]",
-            "label": "documentation stylesheet"
+            "label": "documentation stylesheet",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[1]",
-            "label": "read gist files"
+            "label": "read gist files",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[3]",
-            "label": "write gist files"
+            "label": "write gist files",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[4]",
-            "label": "save git"
+            "label": "save git",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[5]",
-            "label": "git file tree"
+            "label": "git file tree",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[6]",
-            "label": "apply acl to html"
+            "label": "apply acl to html",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[7]",
-            "label": "load ckeditor"
+            "label": "load ckeditor",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[10]",
-            "label": "read crawl files"
+            "label": "read crawl files",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[8]",
-            "label": "scope css"
+            "label": "scope css",
+            "service": "Frontends"
         },
         {
             "id": "edit anywhere.ipynb[11]",
-            "label": "ckeditor configuration"
+            "label": "ckeditor configuration",
+            "service": "Frontends"
         },
         {
             "id": "frontends.ipynb[0]",
-            "label": "start a bunch of front end services"
+            "label": "start a bunch of front end services",
+            "service": "Frontends"
         },
         {
             "id": "grafana.ipynb[0]",
-            "label": "grafana llm service"
+            "label": "grafana llm service",
+            "service": "Frontends"
         },
         {
             "id": "grafana.ipynb[1]",
-            "label": "show grafana metrics"
+            "label": "show grafana metrics",
+            "service": "Frontends"
         },
         {
             "id": "grafana.ipynb[2]",
-            "label": "start a bunch of grafana services"
+            "label": "start a bunch of grafana services",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[0]",
-            "label": "linkedin stylesheet"
+            "label": "linkedin stylesheet",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[1]",
-            "label": "linkedin network stylesheet"
+            "label": "linkedin network stylesheet",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[2]",
-            "label": "linkedin profile stylesheet"
+            "label": "linkedin profile stylesheet",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[3]",
-            "label": "linkedin home stylesheet"
+            "label": "linkedin home stylesheet",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[4]",
-            "label": "linkedin index"
+            "label": "linkedin index",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[5]",
-            "label": "linkedin login page"
+            "label": "linkedin login page",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[6]",
-            "label": "linkedin homepage"
+            "label": "linkedin homepage",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[7]",
-            "label": "linkedin network html"
+            "label": "linkedin network html",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[8]",
-            "label": "linkedin network profile list"
+            "label": "linkedin network profile list",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[9]",
-            "label": "linkedin jobs template"
+            "label": "linkedin jobs template",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[10]",
-            "label": "linkedin edit jobs template"
+            "label": "linkedin edit jobs template",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[11]",
-            "label": "linkedin job list item"
+            "label": "linkedin job list item",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[12]",
-            "label": "linkedin job edit item"
+            "label": "linkedin job edit item",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[13]",
-            "label": "linkedin profile"
+            "label": "linkedin profile",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[14]",
-            "label": "linkedin education view row"
+            "label": "linkedin education view row",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[15]",
-            "label": "linkedin education edit row"
+            "label": "linkedin education edit row",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[16]",
-            "label": "linkedin experience edit row"
+            "label": "linkedin experience edit row",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[17]",
-            "label": "linkedin experience view row"
+            "label": "linkedin experience view row",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[18]",
-            "label": "linkedin edit"
+            "label": "linkedin edit",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[19]",
-            "label": "linkedin load profile"
+            "label": "linkedin load profile",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[22]",
-            "label": "serve linkedin login"
+            "label": "serve linkedin login",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[20]",
-            "label": "serve linkedin homepage"
+            "label": "serve linkedin homepage",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[21]",
-            "label": "serve linkedin profile"
+            "label": "serve linkedin profile",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[23]",
-            "label": "verify linkedin email"
+            "label": "verify linkedin email",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[24]",
-            "label": "save linkedin profile"
+            "label": "save linkedin profile",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[25]",
-            "label": "save linkedin pic"
+            "label": "save linkedin pic",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[26]",
-            "label": "linkedin profile blob"
+            "label": "linkedin profile blob",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[27]",
-            "label": "linkedin network"
+            "label": "linkedin network",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[28]",
-            "label": "linkedin jobs"
+            "label": "linkedin jobs",
+            "service": "Frontends"
         },
         {
             "id": "linkedin.ipynb[29]",
-            "label": "linkedin create"
+            "label": "linkedin create",
+            "service": "Frontends"
         },
         {
             "id": "marketing scripts.ipynb[0]",
-            "label": "make a purchase with stripe"
+            "label": "make a purchase with stripe",
+            "service": "Frontends"
         },
         {
             "id": "marketing scripts.ipynb[1]",
-            "label": "contact us handler"
+            "label": "contact us handler",
+            "service": "Frontends"
         },
         {
             "id": "marketing scripts.ipynb[2]",
-            "label": "package.json"
+            "label": "package.json",
+            "service": "Frontends"
         },
         {
             "id": "opengl.ipynb[0]",
-            "label": "opengl context"
+            "label": "opengl context",
+            "service": "Frontends"
         },
         {
             "id": "opengl.ipynb[1]",
-            "label": "test opengl renderer"
+            "label": "test opengl renderer",
+            "service": "Frontends"
         },
         {
             "id": "opengl.ipynb[3]",
-            "label": "opengl frame"
+            "label": "opengl frame",
+            "service": "Frontends"
         },
         {
             "id": "opengl.ipynb[4]",
-            "label": "shader toy"
+            "label": "shader toy",
+            "service": "Frontends"
         },
         {
             "id": "opengl.ipynb[2]",
-            "label": "test shader toy"
+            "label": "test shader toy",
+            "service": "Frontends"
         },
         {
             "id": "opengl.ipynb[5]",
-            "label": "fragment shader"
+            "label": "fragment shader",
+            "service": "Frontends"
         },
         {
             "id": "qt.ipynb[0]",
-            "label": "qt application"
+            "label": "qt application",
+            "service": "Frontends"
         },
         {
             "id": "qt.ipynb[1]",
-            "label": "test qt application"
+            "label": "test qt application",
+            "service": "Frontends"
         },
         {
             "id": "qt.ipynb[2]",
-            "label": "qt qml widget"
+            "label": "qt qml widget",
+            "service": "Frontends"
         },
         {
             "id": "scheduler.ipynb[0]",
-            "label": "scheduler index"
+            "label": "scheduler index",
+            "service": "Frontends"
         },
         {
             "id": "scheduler.ipynb[1]",
-            "label": "schedule stylesheet"
+            "label": "schedule stylesheet",
+            "service": "Frontends"
         },
         {
             "id": "scheduler.ipynb[2]",
-            "label": "schedule client script"
+            "label": "schedule client script",
+            "service": "Frontends"
         },
         {
             "id": "scheduler.ipynb[3]",
-            "label": "schedule service"
+            "label": "schedule service",
+            "service": "Frontends"
         },
         {
             "id": "scheduler.ipynb[4]",
-            "label": "list google calendars"
+            "label": "list google calendars",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[0]",
-            "label": "convert anki package to study sauce"
+            "label": "convert anki package to study sauce",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[1]",
-            "label": "render study sauce cards page"
+            "label": "render study sauce cards page",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[2]",
-            "label": "authorize app to read profile info"
+            "label": "authorize app to read profile info",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[3]",
-            "label": "receive an authentication code from google"
+            "label": "receive an authentication code from google",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[4]",
-            "label": "create a study sauce user directory"
+            "label": "create a study sauce user directory",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[5]",
-            "label": "package.json"
+            "label": "package.json",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[6]",
-            "label": "study-demo.js"
+            "label": "study-demo.js",
+            "service": "Frontends"
         },
         {
             "id": "study sauce.ipynb[7]",
-            "label": "study sauce express service"
+            "label": "study sauce express service",
+            "service": "Frontends"
         },
         {
             "id": "quake 3 commands.ipynb[3]",
-            "label": "Try streaming the game over VNCis it awful Kind ofand inputs don't work as expected."
+            "label": "Try streaming the game over VNCis it awful Kind ofand inputs don't work as expected.",
+            "service": "Games"
         },
         {
             "id": "quake 3 commands.ipynb[6]",
-            "label": "https://quake.games/set%20name%20player_name"
+            "label": "https://quake.games/set%20name%20player_name",
+            "service": "Games"
         },
         {
             "id": "quake 3 model conv.ipynb[0]",
-            "label": "convert a model using python and blender"
+            "label": "convert a model using python and blender",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[1]",
-            "label": "find pk3 files in zips"
+            "label": "find pk3 files in zips",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[2]",
-            "label": "find only bsps in map paks"
+            "label": "find only bsps in map paks",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[3]",
-            "label": "list bsps in a pak"
+            "label": "list bsps in a pak",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[4]",
-            "label": "unpack pk3s"
+            "label": "unpack pk3s",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[6]",
-            "label": "make pk3 indexes"
+            "label": "make pk3 indexes",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[7]",
-            "label": "md4 checksum"
+            "label": "md4 checksum",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[8]",
-            "label": "crc checksum file"
+            "label": "crc checksum file",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[9]",
-            "label": "test crc file"
+            "label": "test crc file",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[10]",
-            "label": "scan map graphs"
+            "label": "scan map graphs",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[11]",
-            "label": "convert nonalpha"
+            "label": "convert nonalpha",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[14]",
-            "label": "quake 3 file whitelist"
+            "label": "quake 3 file whitelist",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[12]",
-            "label": "convert quake 3 audio"
+            "label": "convert quake 3 audio",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[13]",
-            "label": "copy quake 3 script files"
+            "label": "copy quake 3 script files",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[15]",
-            "label": "quake 3 menu image list"
+            "label": "quake 3 menu image list",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[16]",
-            "label": "Does TrenchBroom really require everything be in 1 folder"
+            "label": "Does TrenchBroom really require everything be in 1 folder",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[17]",
-            "label": "convert quake 2 map to quake 3"
+            "label": "convert quake 2 map to quake 3",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[21]",
-            "label": "replace known classes in map"
+            "label": "replace known classes in map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[22]",
-            "label": "replace entities in map"
+            "label": "replace entities in map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[20]",
-            "label": "replace common textures in map"
+            "label": "replace common textures in map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[18]",
-            "label": "scale quake map"
+            "label": "scale quake map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[23]",
-            "label": "add skybox to map"
+            "label": "add skybox to map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[24]",
-            "label": "draw hints in map"
+            "label": "draw hints in map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[19]",
-            "label": "translate quake map"
+            "label": "translate quake map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[26]",
-            "label": "brush to vertex"
+            "label": "brush to vertex",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[25]",
-            "label": "split map hints"
+            "label": "split map hints",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[28]",
-            "label": "list noises in a quake 3 map"
+            "label": "list noises in a quake 3 map",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[29]",
-            "label": "list textures in quake 3 map"
+            "label": "list textures in quake 3 map",
+            "service": "Games"
         },
         {
             "id": "bitbuffer.ipynb[0]",
-            "label": "bit buffer"
+            "label": "bit buffer",
+            "service": "Utilities"
         },
         {
             "id": "quake 3.ipynb[30]",
-            "label": "list shaders in quake 3 shader"
+            "label": "list shaders in quake 3 shader",
+            "service": "Games"
         },
         {
             "id": "balanced.ipynb[0]",
-            "label": "balanced"
+            "label": "balanced",
+            "service": "Languages"
         },
         {
             "id": "quake 3.ipynb[31]",
-            "label": "find all shaders"
+            "label": "find all shaders",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[32]",
-            "label": "search textures directory for paths"
+            "label": "search textures directory for paths",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[33]",
-            "label": "disassemble all QVMs"
+            "label": "disassemble all QVMs",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[0]",
-            "label": "test sending a discord message"
+            "label": "test sending a discord message",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[2]",
-            "label": "respond discord commands"
+            "label": "respond discord commands",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[4]",
-            "label": "challenge discord command"
+            "label": "challenge discord command",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[6]",
-            "label": "quake 3 server commands"
+            "label": "quake 3 server commands",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[5]",
-            "label": "discord bot"
+            "label": "discord bot",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[9]",
-            "label": "format quake 3 response"
+            "label": "format quake 3 response",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[16]",
-            "label": "remove ctrl characters"
+            "label": "remove ctrl characters",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[8]",
-            "label": "quake 3 server responses"
+            "label": "quake 3 server responses",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[15]",
-            "label": "dns lookup"
+            "label": "dns lookup",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[11]",
-            "label": "huffman decode"
+            "label": "huffman decode",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[10]",
-            "label": "decode client messages"
+            "label": "decode client messages",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[7]",
-            "label": "test quake 3 rcon commands"
+            "label": "test quake 3 rcon commands",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[12]",
-            "label": "monitor q3 servers"
+            "label": "monitor q3 servers",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[13]",
-            "label": "index"
+            "label": "index",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[18]",
-            "label": "spectate q3 server"
+            "label": "spectate q3 server",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[14]",
-            "label": "ssh remote wget"
+            "label": "ssh remote wget",
+            "service": "Games"
         },
         {
             "id": "quake3 server connector.ipynb[17]",
-            "label": "quake3 server status"
+            "label": "quake3 server status",
+            "service": "Games"
         },
         {
             "id": "quakejs.ipynb[0]",
-            "label": "quakejs web master"
+            "label": "quakejs web master",
+            "service": "Games"
         },
         {
             "id": "quakejs.ipynb[1]",
-            "label": "quakejs connection"
+            "label": "quakejs connection",
+            "service": "Games"
         },
         {
             "id": "quakejs.ipynb[3]",
-            "label": "quakejs utilities"
+            "label": "quakejs utilities",
+            "service": "Games"
         },
         {
             "id": "quakejs.ipynb[2]",
-            "label": "quakejs parsing"
+            "label": "quakejs parsing",
+            "service": "Games"
         },
         {
             "id": "quakejs.ipynb[4]",
-            "label": "test quakejs master"
+            "label": "test quakejs master",
+            "service": "Games"
         },
         {
             "id": "google calendar data.ipynb[0]",
-            "label": "test calendar sum all hours worked on study sauce since september 2016"
+            "label": "test calendar sum all hours worked on study sauce since september 2016",
+            "service": "Google"
         },
         {
             "id": "google calendar.ipynb[1]",
-            "label": "list events"
+            "label": "list events",
+            "service": "Google"
         },
         {
             "id": "dates.ipynb[2]",
-            "label": "sum a list of events"
+            "label": "sum a list of events",
+            "service": "Utilities"
         },
         {
             "id": "google calendar data.ipynb[1]",
-            "label": "convert chrome date to calendar date"
+            "label": "convert chrome date to calendar date",
+            "service": "Google"
         },
         {
             "id": "google calendar data.ipynb[3]",
-            "label": "get bookmarks from local chrome database"
+            "label": "get bookmarks from local chrome database",
+            "service": "Google"
         },
         {
             "id": "google calendar data.ipynb[4]",
-            "label": "test parse bookmarks"
+            "label": "test parse bookmarks",
+            "service": "Google"
         },
         {
             "id": "google calendar data.ipynb[5]",
-            "label": "sync chrome bookmarks"
+            "label": "sync chrome bookmarks",
+            "service": "Google"
         },
         {
             "id": "google calendar data.ipynb[6]",
-            "label": "sync chrome history"
+            "label": "sync chrome history",
+            "service": "Google"
         },
         {
             "id": "google calendar data.ipynb[7]",
-            "label": "sync chrome data"
+            "label": "sync chrome data",
+            "service": "Google"
         },
         {
             "id": "google takeout.ipynb[1]",
-            "label": "order google takeout"
+            "label": "order google takeout",
+            "service": "Selenium"
         },
         {
             "id": "google calendar data.ipynb[8]",
-            "label": "test syn chrome data"
+            "label": "test syn chrome data",
+            "service": "Google"
         },
         {
             "id": "google calendar graphs.ipynb[0]",
-            "label": "test calendar api graph Iga's cycle for as long as there are valid dates"
+            "label": "test calendar api graph Iga's cycle for as long as there are valid dates",
+            "service": "Google"
         },
         {
             "id": "dates.ipynb[3]",
-            "label": "Number of days between events"
+            "label": "Number of days between events",
+            "service": "Utilities"
         },
         {
             "id": "dates.ipynb[4]",
-            "label": "display recurrence line graph"
+            "label": "display recurrence line graph",
+            "service": "Utilities"
         },
         {
             "id": "google calendar graphs.ipynb[1]",
-            "label": "test google calendar search heatmap"
+            "label": "test google calendar search heatmap",
+            "service": "Google"
         },
         {
             "id": "google calendar graphs.ipynb[2]",
-            "label": "test google calendar search swimlane"
+            "label": "test google calendar search swimlane",
+            "service": "Google"
         },
         {
             "id": "google calendar graphs.ipynb[3]",
-            "label": "test google calendar search pie chart"
+            "label": "test google calendar search pie chart",
+            "service": "Google"
         },
         {
             "id": "google authorize.ipynb[0]",
-            "label": "google oauth token client"
+            "label": "google oauth token client",
+            "service": "Selenium"
         },
         {
             "id": "google calendar.ipynb[4]",
-            "label": "correct dates time"
+            "label": "correct dates time",
+            "service": "Google"
         },
         {
             "id": "google calendar.ipynb[2]",
-            "label": "Run todays calendar events"
+            "label": "Run todays calendar events",
+            "service": "Google"
         },
         {
             "id": "heartbeat.ipynb[0]",
-            "label": "heartbeat thump"
+            "label": "heartbeat thump",
+            "service": "Utilities"
         },
         {
             "id": "facebook data.ipynb[4]",
-            "label": "Scrape facebook events"
+            "label": "Scrape facebook events",
+            "service": "Selenium"
         },
         {
             "id": "google contacts.ipynb[0]",
-            "label": "list google contact"
+            "label": "list google contact",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[0]",
-            "label": "authorize google drive"
+            "label": "authorize google drive",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[1]",
-            "label": "test list google drive"
+            "label": "test list google drive",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[2]",
-            "label": "list google drive files"
+            "label": "list google drive files",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[3]",
-            "label": "insert google drive permissions"
+            "label": "insert google drive permissions",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[4]",
-            "label": "create a sheet in google drive"
+            "label": "create a sheet in google drive",
+            "service": "Google"
         },
         {
             "id": "google sheets.ipynb[10]",
-            "label": "authorize sheets api"
+            "label": "authorize sheets api",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[5]",
-            "label": "test google sheet create"
+            "label": "test google sheet create",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[6]",
-            "label": "copy a file on google drive"
+            "label": "copy a file on google drive",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[7]",
-            "label": "merge google drive"
+            "label": "merge google drive",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[8]",
-            "label": "download all docs as actual data files"
+            "label": "download all docs as actual data files",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[9]",
-            "label": "sign a file url for uploading to google storage"
+            "label": "sign a file url for uploading to google storage",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[10]",
-            "label": "create a copy of study sauce template"
+            "label": "create a copy of study sauce template",
+            "service": "Google"
         },
         {
             "id": "google drive.ipynb[11]",
-            "label": "create a sheet handler"
+            "label": "create a sheet handler",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[0]",
-            "label": "use places nearby API"
+            "label": "use places nearby API",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[1]",
-            "label": "place details google maps"
+            "label": "place details google maps",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[2]",
-            "label": "use Google Geocaching"
+            "label": "use Google Geocaching",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[3]",
-            "label": "cache locations nearby"
+            "label": "cache locations nearby",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[4]",
-            "label": "extract depth maps"
+            "label": "extract depth maps",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[5]",
-            "label": "load google panorama"
+            "label": "load google panorama",
+            "service": "Google"
         },
         {
             "id": "google maps.ipynb[6]",
-            "label": "test google depth maps"
+            "label": "test google depth maps",
+            "service": "Google"
         },
         {
             "id": "google scheduling.ipynb[0]",
-            "label": "space out purple event"
+            "label": "space out purple event",
+            "service": "Google"
         },
         {
             "id": "google scheduling.ipynb[1]",
-            "label": "schedule study time"
+            "label": "schedule study time",
+            "service": "Google"
         },
         {
             "id": "google scheduling.ipynb[2]",
-            "label": "schedule inside outside of time bounds"
+            "label": "schedule inside outside of time bounds",
+            "service": "Google"
         },
         {
             "id": "google scheduling.ipynb[4]",
-            "label": "prioritize events based on glob summary"
+            "label": "prioritize events based on glob summary",
+            "service": "Google"
         },
         {
             "id": "google scheduling.ipynb[5]",
-            "label": "calendar search heatmap"
+            "label": "calendar search heatmap",
+            "service": "Google"
         },
         {
             "id": "google scheduling.ipynb[6]",
-            "label": "search calendar"
+            "label": "search calendar",
+            "service": "Google"
         },
         {
             "id": "google search api.ipynb[2]",
-            "label": "authorize custom search"
+            "label": "authorize custom search",
+            "service": "Google"
         },
         {
             "id": "google search api.ipynb[1]",
-            "label": "test custom search"
+            "label": "test custom search",
+            "service": "Google"
         },
         {
             "id": "google sheets.ipynb[1]",
-            "label": "test templates google sheet"
+            "label": "test templates google sheet",
+            "service": "Google"
         },
         {
             "id": "google sheets.ipynb[7]",
-            "label": "get worksheet by name"
+            "label": "get worksheet by name",
+            "service": "Google"
         },
         {
             "id": "google sheets.ipynb[5]",
-            "label": "test google data sheet"
+            "label": "test google data sheet",
+            "service": "Google"
         },
         {
             "id": "google sheets.ipynb[9]",
-            "label": "test google sheet add row"
+            "label": "test google sheet add row",
+            "service": "Google"
         },
         {
             "id": "antlr.ipynb[11]",
-            "label": "ext to lang"
+            "label": "### TODO: build a directed graph of all filesystem calls and automatically asyncify\n\nRemove nodes where call is followed by a return or is last in the context block and last in the function, these nodes won't need a callback but the next level up will need to be called.\n\nUse main and abort frame and entry from getAnimationFrame as the top of the tree/graph.s\n",
+            "service": "Languages"
         },
         {
             "id": "antlr.ipynb[4]",
-            "label": "antlr to html"
+            "label": "get antlr tool",
+            "service": "Languages"
         },
         {
             "id": "antlr.ipynb[3]",
-            "label": "get antlr tool"
-        },
-        {
-            "id": "antlr.ipynb[2]",
-            "label": "test select jison on some quake 3 C code"
+            "label": "test select jison on some quake 3 C code",
+            "service": "Languages"
         },
         {
             "id": "antlr.ipynb[8]",
-            "label": "antlr tree to es"
+            "label": "#### TODO: use g4 translator to automatically select entry point, because this is silly\n\n\n",
+            "service": "Languages"
         },
         {
             "id": "ciede2000.ipynb[1]",
-            "label": "rgb 2 lab"
+            "label": "rgb 2 lab",
+            "service": "Utilities"
         },
         {
             "id": "antlr.ipynb[5]",
-            "label": "antlr tree visitor"
+            "label": "antlr to html",
+            "service": "Languages"
+        },
+        {
+            "id": "antlr.ipynb[6]",
+            "label": "antlr tree visitor",
+            "service": "Languages"
+        },
+        {
+            "id": "antlr.ipynb[9]",
+            "label": "antlr tree to es",
+            "service": "Languages"
         },
         {
             "id": "antlr.ipynb[12]",
-            "label": "generate antlr parsers"
+            "label": "ext to lang",
+            "service": "Languages"
+        },
+        {
+            "id": "antlr.ipynb[13]",
+            "label": "generate antlr parsers",
+            "service": "Languages"
         },
         {
             "id": "bison.ipynb[1]",
-            "label": "select jison tree"
+            "label": "select jison tree",
+            "service": "Languages"
         },
         {
             "id": "google timeline.ipynb[5]",
-            "label": "reconcile timeline"
+            "label": "reconcile timeline",
+            "service": "Selenium"
         },
         {
             "id": "csharp.ipynb[0]",
-            "label": "rosetta euler csharp 005"
+            "label": "rosetta euler csharp 005",
+            "service": "Languages"
         },
         {
             "id": "csharp.ipynb[1]",
-            "label": "test edge.js"
+            "label": "test edge.js",
+            "service": "Languages"
         },
         {
             "id": "json.ipynb[1]",
-            "label": "test stream by creating a slow stream"
+            "label": "test stream by creating a slow stream",
+            "service": "Languages"
         },
         {
             "id": "minimatch.ipynb[0]",
-            "label": "expand"
+            "label": "expand",
+            "service": "Languages"
         },
         {
             "id": "minimatch.ipynb[1]",
-            "label": "mini parser"
+            "label": "mini parser",
+            "service": "Languages"
         },
         {
             "id": "python.ipynb[0]",
-            "label": "rosetta euler python 005"
+            "label": "rosetta euler python 005",
+            "service": "Languages"
         },
         {
             "id": "regexp.ipynb[0]",
-            "label": "Why parse it when it is built in to javascript"
+            "label": "Why parse it when it is built in to javascript",
+            "service": "Languages"
         },
         {
             "id": "Good UX Intro.ipynb[0]",
-            "label": "Pretty simple right"
+            "label": "Pretty simple right",
+            "service": "Marketing"
         },
         {
             "id": "Good UX Intro.ipynb[4]",
-            "label": "2. Product owner: Begin.  Good on regressions"
+            "label": "2. Product owner: Begin.  Good on regressions",
+            "service": "Marketing"
         },
         {
             "id": "What is Selenium.ipynb[0]",
-            "label": "What is Selenium"
+            "label": "What is Selenium",
+            "service": "Selenium"
         },
         {
             "id": "What is Selenium.ipynb[1]",
-            "label": "connect to VNC through the web browser"
+            "label": "connect to VNC through the web browser",
+            "service": "Selenium"
         },
         {
             "id": "What is Selenium.ipynb[2]",
-            "label": "run a selenium cell on the Docker machine"
+            "label": "run a selenium cell on the Docker machine",
+            "service": "Selenium"
         },
         {
             "id": "utilities.ipynb[1]",
-            "label": "all elements until"
+            "label": "all elements until",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[0]",
-            "label": "resize selenium window"
+            "label": "resize selenium window",
+            "service": "Selenium"
         },
         {
             "id": "utilities.ipynb[2]",
-            "label": "click spa link"
+            "label": "click spa link",
+            "service": "Selenium"
         },
         {
             "id": "forms.ipynb[0]",
-            "label": "form utilities"
+            "label": "form utilities",
+            "service": "Selenium"
         },
         {
             "id": "What is Selenium.ipynb[3]",
-            "label": "Test docker selenium"
+            "label": "Test docker selenium",
+            "service": "Selenium"
         },
         {
             "id": "What is Selenium.ipynb[4]",
-            "label": "Transfer login state to current browser"
+            "label": "Transfer login state to current browser",
+            "service": "Selenium"
         },
         {
             "id": "avidbrain.ipynb[0]",
-            "label": "Test avidbrain"
+            "label": "Test avidbrain",
+            "service": "Selenium"
         },
         {
             "id": "facebook connections.ipynb[0]",
-            "label": "collect facebook profiles"
+            "label": "collect facebook profiles",
+            "service": "Selenium"
         },
         {
             "id": "facebook connections.ipynb[3]",
-            "label": "connect on facebook"
+            "label": "connect on facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook connections.ipynb[4]",
-            "label": "connect add friends facebook"
+            "label": "connect add friends facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[0]",
-            "label": "Log in to facebook"
+            "label": "Log in to facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[1]",
-            "label": "Scrape facebook profile"
+            "label": "Scrape facebook profile",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[2]",
-            "label": "Like all facebook posts"
+            "label": "Like all facebook posts",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[3]",
-            "label": "Scrape facebook event"
+            "label": "Scrape facebook event",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[6]",
-            "label": "Scrape facebook friends"
+            "label": "Scrape facebook friends",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[7]",
-            "label": "Automatically diff facebook friends"
+            "label": "Automatically diff facebook friends",
+            "service": "Selenium"
         },
         {
             "id": "facebook data.ipynb[9]",
-            "label": "Unfollow everyone on facebook"
+            "label": "Unfollow everyone on facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook messaging.ipynb[0]",
-            "label": "get unread threads facebook"
+            "label": "get unread threads facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook messaging.ipynb[3]",
-            "label": "List Facebook threads"
+            "label": "List Facebook threads",
+            "service": "Selenium"
         },
         {
             "id": "facebook messaging.ipynb[4]",
-            "label": "Get messages from facebook"
+            "label": "Get messages from facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook messaging.ipynb[1]",
-            "label": "scan commands facebook"
+            "label": "scan commands facebook",
+            "service": "Selenium"
         },
         {
             "id": "facebook messaging.ipynb[2]",
-            "label": "sync facebook threads"
+            "label": "sync facebook threads",
+            "service": "Selenium"
         },
         {
             "id": "facebook messaging.ipynb[6]",
-            "label": "send facebook message"
+            "label": "send facebook message",
+            "service": "Selenium"
         },
         {
             "id": "facebook webdriver.ipynb[0]",
-            "label": "facebook login"
+            "label": "facebook login",
+            "service": "Selenium"
         },
         {
             "id": "facebook webdriver.ipynb[1]",
-            "label": "list friends"
+            "label": "list friends",
+            "service": "Selenium"
         },
         {
             "id": "facebook webdriver.ipynb[2]",
-            "label": "add friend"
+            "label": "add friend",
+            "service": "Selenium"
         },
         {
             "id": "forms.ipynb[1]",
-            "label": "fill select dropdown"
+            "label": "fill select dropdown",
+            "service": "Selenium"
         },
         {
             "id": "forms.ipynb[2]",
-            "label": "map object to form"
+            "label": "map object to form",
+            "service": "Selenium"
         },
         {
             "id": "forms.ipynb[3]",
-            "label": "log in to multiple sites"
+            "label": "log in to multiple sites",
+            "service": "Selenium"
         },
         {
             "id": "forms.ipynb[4]",
-            "label": "test sites logins"
+            "label": "test sites logins",
+            "service": "Selenium"
         },
         {
             "id": "forms.ipynb[5]",
-            "label": "get all links html"
+            "label": "get all links html",
+            "service": "Selenium"
         },
         {
             "id": "github.ipynb[0]",
-            "label": "download github"
+            "label": "download github",
+            "service": "Selenium"
         },
         {
             "id": "google authorize.ipynb[1]",
-            "label": "use selenium to authorize Google access"
+            "label": "use selenium to authorize Google access",
+            "service": "Selenium"
         },
         {
             "id": "google takeout.ipynb[0]",
-            "label": "download google takeout"
+            "label": "download google takeout",
+            "service": "Selenium"
         },
         {
             "id": "google takeout.ipynb[3]",
-            "label": "d3 stream my chrome history by category and site sub-divided"
+            "label": "d3 stream my chrome history by category and site sub-divided",
+            "service": "Selenium"
         },
         {
             "id": "google timeline.ipynb[0]",
-            "label": "Scrape google timeline"
+            "label": "Scrape google timeline",
+            "service": "Selenium"
         },
         {
             "id": "google timeline.ipynb[1]",
-            "label": "Read single google timeline page"
+            "label": "Read single google timeline page",
+            "service": "Selenium"
         },
         {
             "id": "google timeline.ipynb[2]",
-            "label": "Find the average latitute and longitude at each destination"
+            "label": "Find the average latitute and longitude at each destination",
+            "service": "Selenium"
         },
         {
             "id": "google timeline.ipynb[3]",
-            "label": "Reconcile timeline data with calendar"
+            "label": "Reconcile timeline data with calendar",
+            "service": "Selenium"
         },
         {
             "id": "google timeline.ipynb[4]",
-            "label": "Load location export data"
+            "label": "Load location export data",
+            "service": "Selenium"
         },
         {
             "id": "google timeline.ipynb[6]",
-            "label": "search timeline events"
+            "label": "search timeline events",
+            "service": "Selenium"
         },
         {
             "id": "linkedin connections.ipynb[0]",
-            "label": "sync linkedin contacts with google contacts"
+            "label": "sync linkedin contacts with google contacts",
+            "service": "Selenium"
         },
         {
             "id": "linkedin connections.ipynb[1]",
-            "label": "scrape entire linkedin profile"
+            "label": "scrape entire linkedin profile",
+            "service": "Selenium"
         },
         {
             "id": "linkedin connections.ipynb[2]",
-            "label": "scrape linkedin contacts"
+            "label": "scrape linkedin contacts",
+            "service": "Selenium"
         },
         {
             "id": "linkedin connections.ipynb[4]",
-            "label": "connect on linkedin"
+            "label": "connect on linkedin",
+            "service": "Selenium"
         },
         {
             "id": "linkedin connections.ipynb[5]",
-            "label": "connect add friends linkedin"
+            "label": "connect add friends linkedin",
+            "service": "Selenium"
         },
         {
             "id": "linkedin messages.ipynb[0]",
-            "label": "Log in to LinkedIn"
+            "label": "Log in to LinkedIn",
+            "service": "Selenium"
         },
         {
             "id": "linkedin messages.ipynb[1]",
-            "label": "Scrape LinkedIn profile"
+            "label": "Scrape LinkedIn profile",
+            "service": "Selenium"
         },
         {
             "id": "linkedin messages.ipynb[2]",
-            "label": "List LinkedIn threads"
+            "label": "List LinkedIn threads",
+            "service": "Selenium"
         },
         {
             "id": "linkedin messages.ipynb[3]",
-            "label": "Read messages LinkedIn thread"
+            "label": "Read messages LinkedIn thread",
+            "service": "Selenium"
         },
         {
             "id": "linkedin messages.ipynb[4]",
-            "label": "scrape linkedin threads"
+            "label": "scrape linkedin threads",
+            "service": "Selenium"
         },
         {
             "id": "linkedin messages.ipynb[6]",
-            "label": "scan for commands linkedin"
+            "label": "scan for commands linkedin",
+            "service": "Selenium"
         },
         {
             "id": "linkedin webdriver.ipynb[0]",
-            "label": "login linkedin"
+            "label": "login linkedin",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[1]",
-            "label": "only one window"
+            "label": "only one window",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[2]",
-            "label": "tile selenium chrome windows"
+            "label": "tile selenium chrome windows",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[3]",
-            "label": "get all session and window urls"
+            "label": "get all session and window urls",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[4]",
-            "label": "send a joke"
+            "label": "send a joke",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[5]",
-            "label": "send facebook thanks"
+            "label": "send facebook thanks",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[7]",
-            "label": "clean up old selenium sessions"
+            "label": "clean up old selenium sessions",
+            "service": "Selenium"
         },
         {
             "id": "orchestration.ipynb[8]",
-            "label": "screenshot all sessions"
+            "label": "screenshot all sessions",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[0]",
-            "label": "reddit login"
+            "label": "reddit login",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[1]",
-            "label": "reddit post"
+            "label": "reddit post",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[7]",
-            "label": "selenium query"
+            "label": "selenium query",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[2]",
-            "label": "test reddit post"
+            "label": "test reddit post",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[3]",
-            "label": "reddit weekly"
+            "label": "reddit weekly",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[5]",
-            "label": "reddit scraper"
+            "label": "reddit scraper",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[4]",
-            "label": "reddit month of links"
+            "label": "reddit month of links",
+            "service": "Selenium"
         },
         {
             "id": "scraping.ipynb[5]",
-            "label": "convert summaries"
+            "label": "convert summaries",
+            "service": "Selenium"
         },
         {
             "id": "scraping.ipynb[6]",
-            "label": "default link collector"
+            "label": "default link collector",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[6]",
-            "label": "selenium select"
+            "label": "selenium select",
+            "service": "Selenium"
         },
         {
             "id": "reddit.ipynb[6]",
-            "label": "test reddit scraper"
+            "label": "test reddit scraper",
+            "service": "Selenium"
         },
         {
             "id": "scraping.ipynb[1]",
-            "label": "test article extract"
+            "label": "test article extract",
+            "service": "Selenium"
         },
         {
             "id": "scraping.ipynb[4]",
-            "label": "summarize all articles"
+            "label": "summarize all articles",
+            "service": "Selenium"
         },
         {
             "id": "selenium commands.ipynb[0]",
-            "label": "What is Selenium"
+            "label": "What is Selenium",
+            "service": "Selenium"
         },
         {
             "id": "selenium demo.ipynb[0]",
-            "label": "Start the selenium server and crawl 16 search results at once"
+            "label": "Start the selenium server and crawl 16 search results at once",
+            "service": "Selenium"
         },
         {
             "id": "selenium server.ipynb[0]",
-            "label": "Start a selenium http express server"
+            "label": "Start a selenium http express server",
+            "service": "Selenium"
         },
         {
             "id": "service auth.ipynb[1]",
-            "label": "Add encrypted to passwords.json"
+            "label": "Add encrypted to passwords.json",
+            "service": "Selenium"
         },
         {
             "id": "service auth.ipynb[4]",
-            "label": "download passwords from google"
+            "label": "download passwords from google",
+            "service": "Selenium"
         },
         {
             "id": "service auth.ipynb[6]",
-            "label": "log in to Google using webdriver"
+            "label": "log in to Google using webdriver",
+            "service": "Selenium"
         },
         {
             "id": "service auth.ipynb[7]",
-            "label": "Automatically fill any type of login form using various algorithms"
+            "label": "Automatically fill any type of login form using various algorithms",
+            "service": "Selenium"
         },
         {
             "id": "utilities.ipynb[0]",
-            "label": "Scroll a specific element"
+            "label": "Scroll a specific element",
+            "service": "Selenium"
         },
         {
             "id": "utilities.ipynb[3]",
-            "label": "https://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.htmls_tid=gn_loc_drop"
+            "label": "https://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.htmls_tid=gn_loc_drop",
+            "service": "Selenium"
         },
         {
             "id": "utilities.ipynb[4]",
-            "label": "verify human"
+            "label": "verify human",
+            "service": "Selenium"
         },
         {
             "id": "utilities.ipynb[5]",
-            "label": "test verify human"
+            "label": "test verify human",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[1]",
-            "label": "selenium session"
+            "label": "selenium session",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[2]",
-            "label": "webdriver test"
+            "label": "webdriver test",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[3]",
-            "label": "close all windows"
+            "label": "close all windows",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[4]",
-            "label": "selenium executor"
+            "label": "selenium executor",
+            "service": "Selenium"
         },
         {
             "id": "webdriver.ipynb[5]",
-            "label": "list sessions"
+            "label": "list sessions",
+            "service": "Selenium"
         },
         {
             "id": "you earned it.ipynb[0]",
-            "label": "high five people in YouEarnedIt"
+            "label": "high five people in YouEarnedIt",
+            "service": "Selenium"
         },
         {
             "id": "you earned it.ipynb[1]",
-            "label": "automate YouEarnedIt"
+            "label": "automate YouEarnedIt",
+            "service": "Selenium"
         },
         {
             "id": "bash.ipynb[1]",
-            "label": "node webdriver support"
+            "label": "node webdriver support",
+            "service": "Utilities"
         },
         {
             "id": "bash.ipynb[2]",
-            "label": "install node"
+            "label": "install node",
+            "service": "Utilities"
         },
         {
             "id": "bash.ipynb[3]",
-            "label": "install notebooks"
+            "label": "install notebooks",
+            "service": "Utilities"
         },
         {
             "id": "bash.ipynb[4]",
-            "label": "install systemd"
+            "label": "install systemd",
+            "service": "Utilities"
         },
         {
             "id": "bash.ipynb[5]",
-            "label": "install launchd"
+            "label": "install launchd",
+            "service": "Utilities"
         },
         {
             "id": "bash.ipynb[7]",
-            "label": "run the same command"
+            "label": "run the same command",
+            "service": "Utilities"
         },
         {
             "id": "bash.ipynb[9]",
-            "label": "better jupyter organization"
+            "label": "better jupyter organization",
+            "service": "Utilities"
         },
         {
             "id": "child process.ipynb[1]",
-            "label": "test child process"
+            "label": "test child process",
+            "service": "Utilities"
         },
         {
             "id": "child process.ipynb[2]",
-            "label": "convert bash to one liner"
+            "label": "convert bash to one liner",
+            "service": "Utilities"
         },
         {
             "id": "ciede2000.ipynb[0]",
-            "label": "ciede2000"
+            "label": "ciede2000",
+            "service": "Utilities"
         },
         {
             "id": "ciede2000.ipynb[2]",
-            "label": "try ciede2000"
+            "label": "try ciede2000",
+            "service": "Utilities"
         },
         {
             "id": "compress.ipynb[0]",
-            "label": "Minified lzw compression"
+            "label": "Minified lzw compression",
+            "service": "Utilities"
         },
         {
             "id": "compress.ipynb[2]",
-            "label": "encode files with brotli"
+            "label": "encode files with brotli",
+            "service": "Utilities"
         },
         {
             "id": "dates.ipynb[0]",
-            "label": "find Tuesdays late in the month"
+            "label": "find Tuesdays late in the month",
+            "service": "Utilities"
         },
         {
             "id": "dylib.ipynb[0]",
-            "label": "include a dynamic lib"
+            "label": "include a dynamic lib",
+            "service": "Utilities"
         },
         {
             "id": "dylib.ipynb[3]",
-            "label": "test a csharp dylib"
+            "label": "test a csharp dylib",
+            "service": "Utilities"
         },
         {
             "id": "dylib.ipynb[4]",
-            "label": "set mouse position"
+            "label": "set mouse position",
+            "service": "Utilities"
         },
         {
             "id": "robot.ipynb[6]",
-            "label": "mouse control cocoa"
+            "label": "mouse control cocoa",
+            "service": "Utilities"
         },
         {
             "id": "dylib.ipynb[6]",
-            "label": "get c exports"
+            "label": "get c exports",
+            "service": "Utilities"
         },
         {
             "id": "shell-parse.ipynb[0]",
-            "label": "shell parse"
+            "label": "shell parse",
+            "service": "Utilities"
         },
         {
             "id": "heartbeat.ipynb[1]",
-            "label": "run todays heartbeat items"
+            "label": "run todays heartbeat items",
+            "service": "Utilities"
         },
         {
             "id": "levenshtein.ipynb[0]",
-            "label": "Find the levenshtein distance"
+            "label": "Find the levenshtein distance",
+            "service": "Utilities"
         },
         {
             "id": "levenshtein.ipynb[2]",
-            "label": "search levenshtein distance"
+            "label": "search levenshtein distance",
+            "service": "Utilities"
         },
         {
             "id": "mono.ipynb[0]",
-            "label": "run Mono with docker"
+            "label": "run Mono with docker",
+            "service": "Utilities"
         },
         {
             "id": "openssl.ipynb[0]",
-            "label": "create a trusted root CA"
+            "label": "create a trusted root CA",
+            "service": "Utilities"
         },
         {
             "id": "openssl.ipynb[2]",
-            "label": "generate a self-signed cert"
+            "label": "generate a self-signed cert",
+            "service": "Utilities"
         },
         {
             "id": "parse.ipynb[0]",
-            "label": "//  escape a string for regex"
+            "label": "//  escape a string for regex",
+            "service": "Utilities"
         },
         {
             "id": "qr codes.ipynb[0]",
-            "label": "generate a qr code using google APIs"
+            "label": "generate a qr code using google APIs",
+            "service": "Utilities"
         },
         {
             "id": "robot.ipynb[1]",
-            "label": "node window screenshot"
+            "label": "node window screenshot",
+            "service": "Utilities"
         },
         {
             "id": "robot.ipynb[2]",
-            "label": "get screen size"
+            "label": "get screen size",
+            "service": "Utilities"
         },
         {
             "id": "robot.ipynb[3]",
-            "label": "move mouse"
+            "label": "move mouse",
+            "service": "Utilities"
         },
         {
             "id": "usage.ipynb[1]",
-            "label": "system usage graph"
+            "label": "system usage graph",
+            "service": "Utilities"
         },
         {
             "id": "uuid.ipynb[0]",
-            "label": "Generate a universally unique identifier"
+            "label": "Generate a universally unique identifier",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[0]",
-            "label": "What is VNC"
+            "label": "What is VNC",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[3]",
-            "label": "Use vnc with live-server"
+            "label": "Use vnc with live-server",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[5]",
-            "label": "selenium vnc server"
+            "label": "selenium vnc server",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[6]",
-            "label": "vnc entry point"
+            "label": "vnc entry point",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[7]",
-            "label": "install vnc entry"
+            "label": "install vnc entry",
+            "service": "Utilities"
         },
         {
             "id": "vnc.ipynb[8]",
-            "label": "install aws vnc selenium"
+            "label": "install aws vnc selenium",
+            "service": "Utilities"
         },
         {
             "id": "window enum.ipynb[0]",
-            "label": "enum windows with cocoa"
+            "label": "enum windows with cocoa",
+            "service": "Utilities"
         },
         {
             "id": "window enum.ipynb[1]",
-            "label": "lookup window by"
+            "label": "lookup window by",
+            "service": "Utilities"
         },
         {
             "id": "windows.ipynb[0]",
-            "label": "list window handles"
+            "label": "list window handles",
+            "service": "Utilities"
         },
         {
             "id": "windows.ipynb[1]",
-            "label": "monitor active windows"
+            "label": "monitor active windows",
+            "service": "Utilities"
         },
         {
             "id": "Angular 2.ipynb[0]",
-            "label": "What is Angular 2"
+            "label": "What is Angular 2",
+            "service": "Frameworks"
         },
         {
             "id": "Angular components.ipynb[0]",
-            "label": "Display search notebook component"
+            "label": "Display search notebook component",
+            "service": "Frameworks"
         },
         {
             "id": "Angular components.ipynb[1]",
-            "label": "Search notebook service"
+            "label": "Search notebook service",
+            "service": "Frameworks"
         },
         {
             "id": "Angular components.ipynb[2]",
-            "label": "Display code results"
+            "label": "Display code results",
+            "service": "Frameworks"
         },
         {
             "id": "Angular components.ipynb[3]",
-            "label": "Sockify search notebook provider"
+            "label": "Sockify search notebook provider",
+            "service": "Frameworks"
         },
         {
             "id": "Angular components.ipynb[5]",
-            "label": "Display login form"
+            "label": "Display login form",
+            "service": "Frameworks"
         },
         {
             "id": "Angular components.ipynb[6]",
-            "label": "Authentication service"
+            "label": "Authentication service",
+            "service": "Frameworks"
         },
         {
             "id": "angular core modules.ipynb[0]",
-            "label": "Useful list of material and core modules"
+            "label": "Useful list of material and core modules",
+            "service": "Frameworks"
         },
         {
             "id": "angular render service.ipynb[0]",
-            "label": "render Angular modules instead of using express"
+            "label": "render Angular modules instead of using express",
+            "service": "Frameworks"
         },
         {
             "id": "build Angular components.ipynb[0]",
-            "label": "Run angular-cli commands from nodejs"
+            "label": "Run angular-cli commands from nodejs",
+            "service": "Frameworks"
         },
         {
             "id": "build Angular components.ipynb[1]",
-            "label": "Compile the project using webpack"
+            "label": "Compile the project using webpack",
+            "service": "Frameworks"
         },
         {
             "id": "build Angular components.ipynb[3]",
-            "label": "Set angular theme colors"
+            "label": "Set angular theme colors",
+            "service": "Frameworks"
         },
         {
             "id": "display angular.ipynb[0]",
-            "label": "Include the script in the response"
+            "label": "Include the script in the response",
+            "service": "Frameworks"
         },
         {
             "id": "display angular.ipynb[1]",
-            "label": "Display angular modules in jupyter"
+            "label": "Display angular modules in jupyter",
+            "service": "Frameworks"
         }
     ],
     "edges": [
@@ -4956,7 +5911,7 @@
         },
         {
             "source": "git index.ipynb[17]",
-            "target": "node express.ipynb[12]"
+            "target": "node express.ipynb[15]"
         },
         {
             "source": "git index.ipynb[17]",
@@ -5191,6 +6146,10 @@
             "target": "node express.ipynb[1]"
         },
         {
+            "source": "node express.ipynb[0]",
+            "target": "node express.ipynb[2]"
+        },
+        {
             "source": "node express.ipynb[1]",
             "target": "node express.ipynb[3]"
         },
@@ -5200,54 +6159,66 @@
         },
         {
             "source": "node express.ipynb[2]",
-            "target": "syntax.ipynb[7]"
+            "target": "node express.ipynb[0]"
         },
         {
             "source": "node express.ipynb[2]",
-            "target": "git index.ipynb[1]"
-        },
-        {
-            "source": "node express.ipynb[3]",
             "target": "node express.ipynb[2]"
         },
         {
             "source": "node express.ipynb[3]",
+            "target": "node express.ipynb[5]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "node express.ipynb[3]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "syntax.ipynb[7]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "git index.ipynb[1]"
+        },
+        {
+            "source": "node express.ipynb[6]",
+            "target": "node express.ipynb[2]"
+        },
+        {
+            "source": "node express.ipynb[6]",
             "target": "node express.ipynb[4]"
         },
         {
-            "source": "node express.ipynb[13]",
-            "target": "node express.ipynb[12]"
-        },
-        {
-            "source": "node express.ipynb[13]",
-            "target": "node express.ipynb[14]"
-        },
-        {
-            "source": "node express.ipynb[13]",
+            "source": "node express.ipynb[16]",
             "target": "node express.ipynb[15]"
         },
         {
             "source": "node express.ipynb[16]",
+            "target": "node express.ipynb[14]"
+        },
+        {
+            "source": "node express.ipynb[19]",
             "target": "files.ipynb[5]"
         },
         {
-            "source": "node express.ipynb[16]",
+            "source": "node express.ipynb[19]",
             "target": "node express.ipynb[3]"
         },
         {
-            "source": "node express.ipynb[16]",
+            "source": "node express.ipynb[19]",
             "target": "node express.ipynb[4]"
         },
         {
-            "source": "node express.ipynb[16]",
+            "source": "node express.ipynb[19]",
             "target": "node express.ipynb[19]"
         },
         {
-            "source": "node express.ipynb[16]",
+            "source": "node express.ipynb[19]",
             "target": "node express.ipynb[18]"
         },
         {
-            "source": "node express.ipynb[16]",
+            "source": "node express.ipynb[19]",
             "target": "node express.ipynb[17]"
         },
         {
@@ -5307,15 +6278,27 @@
             "target": "test runner.ipynb[0]"
         },
         {
-            "source": "test runner.ipynb[6]",
+            "source": "test runner.ipynb[3]",
+            "target": "files.ipynb[5]"
+        },
+        {
+            "source": "test runner.ipynb[3]",
+            "target": "test runner.ipynb[5]"
+        },
+        {
+            "source": "test runner.ipynb[3]",
+            "target": "test runner.ipynb[4]"
+        },
+        {
+            "source": "test runner.ipynb[13]",
             "target": "gulp.ipynb[1]"
         },
         {
-            "source": "test runner.ipynb[6]",
+            "source": "test runner.ipynb[13]",
             "target": "gulp.ipynb[0]"
         },
         {
-            "source": "test runner.ipynb[6]",
+            "source": "test runner.ipynb[13]",
             "target": "llama.ipynb[0]"
         },
         {
@@ -5836,7 +6819,7 @@
         },
         {
             "source": "discord player.ipynb[1]",
-            "target": "node express.ipynb[12]"
+            "target": "node express.ipynb[15]"
         },
         {
             "source": "discord player.ipynb[1]",
@@ -7335,47 +8318,47 @@
             "target": "antlr.ipynb[3]"
         },
         {
-            "source": "antlr.ipynb[2]",
+            "source": "antlr.ipynb[3]",
             "target": "dylib.ipynb[8]"
         },
         {
-            "source": "antlr.ipynb[2]",
+            "source": "antlr.ipynb[3]",
             "target": "antlr.ipynb[8]"
         },
         {
-            "source": "antlr.ipynb[2]",
+            "source": "antlr.ipynb[3]",
             "target": "ciede2000.ipynb[1]"
         },
         {
-            "source": "antlr.ipynb[4]",
+            "source": "antlr.ipynb[5]",
             "target": "patterns.ipynb[2]"
         },
         {
-            "source": "antlr.ipynb[8]",
+            "source": "antlr.ipynb[9]",
             "target": "syntax.ipynb[14]"
         },
         {
-            "source": "antlr.ipynb[8]",
+            "source": "antlr.ipynb[9]",
             "target": "syntax.ipynb[16]"
         },
         {
-            "source": "antlr.ipynb[8]",
+            "source": "antlr.ipynb[9]",
             "target": "patterns.ipynb[2]"
         },
         {
-            "source": "antlr.ipynb[8]",
+            "source": "antlr.ipynb[9]",
             "target": "languages.ipynb[3]"
         },
         {
-            "source": "antlr.ipynb[12]",
+            "source": "antlr.ipynb[13]",
             "target": "files.ipynb[3]"
         },
         {
-            "source": "antlr.ipynb[12]",
+            "source": "antlr.ipynb[13]",
             "target": "child process.ipynb[0]"
         },
         {
-            "source": "antlr.ipynb[12]",
+            "source": "antlr.ipynb[13]",
             "target": "files.ipynb[15]"
         },
         {
@@ -8167,7 +9150,7 @@
         "branch fragment": "/Users/briancullinan/jupyter_ops/Databases/git index.ipynb[8]",
         "repo fragment": "/Users/briancullinan/jupyter_ops/Databases/git index.ipynb[7]",
         "repositories fragment": "/Users/briancullinan/jupyter_ops/Databases/git index.ipynb[2]",
-        "directory to html": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[12]",
+        "directory to html": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[15]",
         "file list fragment": "/Users/briancullinan/jupyter_ops/Databases/git index.ipynb[3]",
         "determine language": "/Users/briancullinan/jupyter_ops/Databases/git index.ipynb[19]",
         "html image viewer": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[15]",
@@ -8489,17 +9472,23 @@
         "interpret all notebooks.ipynb": "",
         "search notebooks using gulp": "/Users/briancullinan/jupyter_ops/Frameworks/gulp.ipynb[5]",
         "list files in project": "/Users/briancullinan/jupyter_ops/Core/files.ipynb[5]",
-        "render Angular modules": "/Users/briancullinan/jupyter_ops/Frameworks/Angular/angular render service.ipynb[0]"
+        "render Angular modules": "/Users/briancullinan/jupyter_ops/Frameworks/Angular/angular render service.ipynb[0]",
+        "browser socket service": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[3]",
+        "websocket subscription service": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[2]",
+        "message.service": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[0]",
+        "test sigma template": "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb[4]",
+        "notebook-colors.js": "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb[5]",
+        "realiable-websocket.js": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[5]"
     },
     "times": {
         "/Users/briancullinan/jupyter_ops/Frameworks/node simple-imap.ipynb": 1578449241000,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama vision.ipynb": 1744667039123,
         "/Users/briancullinan/jupyter_ops/Algorithms/llm writing.ipynb": 1742093404929,
         "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb": 1744564158320,
-        "/Users/briancullinan/jupyter_ops/Core/cache.ipynb": 1744777788911,
+        "/Users/briancullinan/jupyter_ops/Core/cache.ipynb": 1744876395648,
         "/Users/briancullinan/jupyter_ops/Databases/caches.ipynb": 1744667976005,
         "/Users/briancullinan/jupyter_ops/Core/files.ipynb": 1744480751345,
-        "/Users/briancullinan/jupyter_ops/Core/syntax.ipynb": 1743458464759,
+        "/Users/briancullinan/jupyter_ops/Core/syntax.ipynb": 1744852876569,
         "/Users/briancullinan/jupyter_ops/Utilities/dylib.ipynb": 1744682917044,
         "/Users/briancullinan/jupyter_ops/Languages/python.ipynb": 1744667841203,
         "/Users/briancullinan/jupyter_ops/Algorithms/llm blogging.ipynb": 1741116318292,
@@ -8531,7 +9520,7 @@
         "/Users/briancullinan/jupyter_ops/Languages/minimatch.ipynb": 1579235767000,
         "/Users/briancullinan/jupyter_ops/Frameworks/notebook extensions.ipynb": 1561923854000,
         "/Users/briancullinan/jupyter_ops/Games/quake3 server connector.ipynb": 1738469780090,
-        "/Users/briancullinan/jupyter_ops/Languages/antlr.ipynb": 1744667546326,
+        "/Users/briancullinan/jupyter_ops/Languages/antlr.ipynb": 1744852372941,
         "/Users/briancullinan/jupyter_ops/Languages/csharp.ipynb": 1740682674276,
         "/Users/briancullinan/jupyter_ops/Frameworks/gulp.ipynb": 1744736148500,
         "/Users/briancullinan/jupyter_ops/Core/pyimport.ipynb": 1741033686742,
@@ -8541,7 +9530,7 @@
         "/Users/briancullinan/jupyter_ops/Google/google contacts.ipynb": 1511887066000,
         "/Users/briancullinan/jupyter_ops/Cloud Services/google cloud commands.ipynb": 1556343901000,
         "/Users/briancullinan/jupyter_ops/Utilities/polyfills.ipynb": 1624084235000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb": 1744763930697,
+        "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb": 1744877304584,
         "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb": 1744742270785,
         "/Users/briancullinan/jupyter_ops/Utilities/child process.ipynb": 1738622135375,
         "/Users/briancullinan/jupyter_ops/Databases/git.ipynb": 1602138669000,
@@ -8552,7 +9541,7 @@
         "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb": 1562192584000,
         "/Users/briancullinan/jupyter_ops/Selenium/service auth.ipynb": 1559875029000,
         "/Users/briancullinan/jupyter_ops/Frameworks/autorewire.ipynb": 1510360183000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb": 1744820158618,
+        "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb": 1744878370614,
         "/Users/briancullinan/jupyter_ops/Frontends/brians resume.ipynb": 1744492567579,
         "/Users/briancullinan/jupyter_ops/Selenium/scraping.ipynb": 1740353079366,
         "/Users/briancullinan/jupyter_ops/Frontends/discord.ipynb": 1744777071197,
