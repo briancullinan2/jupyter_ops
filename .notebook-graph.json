@@ -1,30 +1,6 @@
 {
     "nodes": [
         {
-            "id": "demo.ipynb[8]",
-            "cell": "use Docker",
-            "route": "",
-            "service": "demo.ipynb"
-        },
-        {
-            "id": "node simple-imap.ipynb[0]",
-            "cell": "node imap client",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "demo.ipynb[14]",
-            "cell": "Install build stack on colab",
-            "route": "",
-            "service": "demo.ipynb"
-        },
-        {
-            "id": "demo.ipynb[15]",
-            "cell": "update notebook repo on colab",
-            "route": "",
-            "service": "demo.ipynb"
-        },
-        {
             "id": "image magik commands.ipynb[0]",
             "cell": "reduce noise from images after resizing",
             "route": "",
@@ -40,36 +16,6 @@
             "id": "llama vision.ipynb[1]",
             "cell": "analyze image with llm",
             "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "llama vision.ipynb[2]",
-            "cell": "llm deceive",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "llama vision.ipynb[5]",
-            "cell": "llm voice",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "llama vision.ipynb[7]",
-            "cell": "ollama vision request",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "llama vision.ipynb[8]",
-            "cell": "start a bunch of llm rpc services",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "llama vision.ipynb[9]",
-            "cell": "stable diffusion request",
-            "route": "ROUTE = /txt2img-images",
             "service": "Algorithms"
         },
         {
@@ -97,9 +43,21 @@
             "service": "Algorithms"
         },
         {
+            "id": "llama vision.ipynb[7]",
+            "cell": "ollama vision request",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
             "id": "llm writing.ipynb[4]",
             "cell": "select llm",
             "route": "",
+            "service": "Algorithms"
+        },
+        {
+            "id": "llama vision.ipynb[9]",
+            "cell": "stable diffusion request",
+            "route": "ROUTE = /txt2img-images",
             "service": "Algorithms"
         },
         {
@@ -117,6 +75,24 @@
         {
             "id": "llama vision.ipynb[16]",
             "cell": "login huggingface",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
+            "id": "llama vision.ipynb[2]",
+            "cell": "llm deceive",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
+            "id": "llama vision.ipynb[5]",
+            "cell": "llm voice",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
+            "id": "llama vision.ipynb[8]",
+            "cell": "start a bunch of llm rpc services",
             "route": "",
             "service": "Algorithms"
         },
@@ -145,6 +121,12 @@
             "service": "Algorithms"
         },
         {
+            "id": "llama.ipynb[10]",
+            "cell": "create llm session",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
             "id": "llama.ipynb[2]",
             "cell": "ask llm to generalize categories",
             "route": "",
@@ -159,12 +141,6 @@
         {
             "id": "llama.ipynb[3]",
             "cell": "ask llm for a shorter list of categories",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "llama.ipynb[10]",
-            "cell": "create llm session",
             "route": "",
             "service": "Algorithms"
         },
@@ -221,6 +197,12 @@
             "cell": "parse patch file",
             "route": "",
             "service": "Algorithms"
+        },
+        {
+            "id": "data collection.ipynb[7]",
+            "cell": "domain cache tools",
+            "route": "",
+            "service": "Analytics"
         },
         {
             "id": "llm blogging.ipynb[2]",
@@ -355,14 +337,14 @@
             "service": "Algorithms"
         },
         {
-            "id": "llm tools.ipynb[3]",
-            "cell": "ask llm about chat conversations",
+            "id": "llm tools.ipynb[2]",
+            "cell": "cache chat logs",
             "route": "",
             "service": "Algorithms"
         },
         {
-            "id": "llm tools.ipynb[2]",
-            "cell": "cache chat logs",
+            "id": "llm tools.ipynb[3]",
+            "cell": "ask llm about chat conversations",
             "route": "",
             "service": "Algorithms"
         },
@@ -439,6 +421,24 @@
             "service": "Algorithms"
         },
         {
+            "id": "opencv.ipynb[10]",
+            "cell": "transition live stream",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
+            "id": "opencv.ipynb[9]",
+            "cell": "bind youtube stream",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
+            "id": "opencv.ipynb[8]",
+            "cell": "list live stream",
+            "route": "",
+            "service": "Algorithms"
+        },
+        {
             "id": "opencv.ipynb[2]",
             "cell": "python write video",
             "route": "",
@@ -469,26 +469,8 @@
             "service": "Algorithms"
         },
         {
-            "id": "opencv.ipynb[8]",
-            "cell": "list live stream",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
             "id": "opencv.ipynb[7]",
             "cell": "create live stream",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "opencv.ipynb[9]",
-            "cell": "bind youtube stream",
-            "route": "",
-            "service": "Algorithms"
-        },
-        {
-            "id": "opencv.ipynb[10]",
-            "cell": "transition live stream",
             "route": "",
             "service": "Algorithms"
         },
@@ -511,20 +493,8 @@
             "service": "Analytics"
         },
         {
-            "id": "data collection.ipynb[2]",
-            "cell": "meta search all",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "data collection.ipynb[5]",
-            "cell": "multi crawl",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "data collection.ipynb[3]",
-            "cell": "schedule search all",
+            "id": "data collection.ipynb[10]",
+            "cell": "schedule crawl domain",
             "route": "",
             "service": "Analytics"
         },
@@ -547,6 +517,54 @@
             "service": "Google"
         },
         {
+            "id": "data collection.ipynb[11]",
+            "cell": "collect all bookmarks",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
+            "id": "google calendar data.ipynb[2]",
+            "cell": "Parse bookmarks file",
+            "route": "",
+            "service": "Google"
+        },
+        {
+            "id": "data collection.ipynb[6]",
+            "cell": "crawl domain",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
+            "id": "data collection.ipynb[8]",
+            "cell": "browser crawler tools",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
+            "id": "data collection.ipynb[12]",
+            "cell": "search results as json",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
+            "id": "data collection.ipynb[2]",
+            "cell": "meta search all",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
+            "id": "data collection.ipynb[5]",
+            "cell": "multi crawl",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
+            "id": "data collection.ipynb[3]",
+            "cell": "schedule search all",
+            "route": "",
+            "service": "Analytics"
+        },
+        {
             "id": "data collection.ipynb[4]",
             "cell": "tell joke",
             "route": "",
@@ -565,24 +583,6 @@
             "service": "Core"
         },
         {
-            "id": "data collection.ipynb[6]",
-            "cell": "crawl domain",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "data collection.ipynb[8]",
-            "cell": "browser crawler tools",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "data collection.ipynb[7]",
-            "cell": "domain cache tools",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
             "id": "files.ipynb[3]",
             "cell": "glob files",
             "route": "",
@@ -597,30 +597,6 @@
         {
             "id": "data collection.ipynb[9]",
             "cell": "analyze cache file",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "data collection.ipynb[10]",
-            "cell": "schedule crawl domain",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "data collection.ipynb[11]",
-            "cell": "collect all bookmarks",
-            "route": "",
-            "service": "Analytics"
-        },
-        {
-            "id": "google calendar data.ipynb[2]",
-            "cell": "Parse bookmarks file",
-            "route": "",
-            "service": "Google"
-        },
-        {
-            "id": "data collection.ipynb[12]",
-            "cell": "search results as json",
             "route": "",
             "service": "Analytics"
         },
@@ -775,14 +751,32 @@
             "service": "Cloud Services"
         },
         {
-            "id": "google cloud api.ipynb[2]",
-            "cell": "wait for cloud operation",
+            "id": "google cloud api.ipynb[10]",
+            "cell": "setup sheet backend",
+            "route": "",
+            "service": "Cloud Services"
+        },
+        {
+            "id": "convert spreadsheet.ipynb[1]",
+            "cell": "get sheet purchases",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "google cloud api.ipynb[6]",
+            "cell": "check dns",
             "route": "",
             "service": "Cloud Services"
         },
         {
             "id": "google cloud api.ipynb[3]",
             "cell": "add a google bucket web map",
+            "route": "",
+            "service": "Cloud Services"
+        },
+        {
+            "id": "google cloud api.ipynb[2]",
+            "cell": "wait for cloud operation",
             "route": "",
             "service": "Cloud Services"
         },
@@ -805,12 +799,6 @@
             "service": "Cloud Services"
         },
         {
-            "id": "google cloud api.ipynb[6]",
-            "cell": "check dns",
-            "route": "",
-            "service": "Cloud Services"
-        },
-        {
             "id": "google cloud api.ipynb[7]",
             "cell": "test check dns",
             "route": "",
@@ -821,18 +809,6 @@
             "cell": "invalidate cdn cache",
             "route": "",
             "service": "Cloud Services"
-        },
-        {
-            "id": "google cloud api.ipynb[10]",
-            "cell": "setup sheet backend",
-            "route": "",
-            "service": "Cloud Services"
-        },
-        {
-            "id": "convert spreadsheet.ipynb[1]",
-            "cell": "get sheet purchases",
-            "route": "",
-            "service": "Frontends"
         },
         {
             "id": "google cloud commands.ipynb[0]",
@@ -979,8 +955,14 @@
             "service": "Frameworks"
         },
         {
-            "id": "files.ipynb[2]",
-            "cell": "project imports d3 tree",
+            "id": "files.ipynb[11]",
+            "cell": "(=\\{((:[^{}]++|\\{(1)\\})++)\\})",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "files.ipynb[13]",
+            "cell": "file tools match filename",
             "route": "",
             "service": "Core"
         },
@@ -989,6 +971,30 @@
             "cell": "minimatch",
             "route": "",
             "service": "Languages"
+        },
+        {
+            "id": "files.ipynb[15]",
+            "cell": "changing file names",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "files.ipynb[16]",
+            "cell": "use memory-fs and rewire to audit cli events",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "files.ipynb[17]",
+            "cell": "TODO: combine with DOM minimizing service from recording app",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "files.ipynb[2]",
+            "cell": "project imports d3 tree",
+            "route": "",
+            "service": "Core"
         },
         {
             "id": "files.ipynb[6]",
@@ -1015,36 +1021,6 @@
             "service": "Core"
         },
         {
-            "id": "files.ipynb[11]",
-            "cell": "(=\\{((:[^{}]++|\\{(1)\\})++)\\})",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "files.ipynb[13]",
-            "cell": "file tools match filename",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "files.ipynb[15]",
-            "cell": "changing file names",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "files.ipynb[16]",
-            "cell": "use memory-fs and rewire to audit cli events",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "files.ipynb[17]",
-            "cell": "TODO: combine with DOM minimizing service from recording app",
-            "route": "",
-            "service": "Core"
-        },
-        {
             "id": "import.ipynb[0]",
             "cell": "import notebook",
             "route": "",
@@ -1055,6 +1031,24 @@
             "cell": "notebook extension",
             "route": "",
             "service": "Frameworks"
+        },
+        {
+            "id": "import.ipynb[11]",
+            "cell": "convert regexp matches to an array",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "import.ipynb[12]",
+            "cell": "run all promises sequentially",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "import.ipynb[13]",
+            "cell": "parse cells from a notebook",
+            "route": "",
+            "service": "Core"
         },
         {
             "id": "import.ipynb[2]",
@@ -1159,24 +1153,6 @@
             "service": "Core"
         },
         {
-            "id": "import.ipynb[11]",
-            "cell": "convert regexp matches to an array",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "import.ipynb[12]",
-            "cell": "run all promises sequentially",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "import.ipynb[13]",
-            "cell": "parse cells from a notebook",
-            "route": "",
-            "service": "Core"
-        },
-        {
             "id": "intent.ipynb[3]",
             "cell": "use intent",
             "route": "",
@@ -1207,50 +1183,8 @@
             "service": "Core"
         },
         {
-            "id": "kernels.ipynb[2]",
-            "cell": "custom kernel json",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "kernels.ipynb[3]",
-            "cell": "jupyter meta kernel",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "kernels.ipynb[4]",
-            "cell": "kernel info interface",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "kernels.ipynb[5]",
-            "cell": "meta kernel interface",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "kernels.ipynb[6]",
-            "cell": "native meta kernel",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "patterns.ipynb[8]",
-            "cell": "extend prototype class",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "kernels.ipynb[7]",
-            "cell": "native meta methods",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "kernels.ipynb[8]",
-            "cell": "socket meta kernel",
+            "id": "kernels.ipynb[10]",
+            "cell": "test process meta kernel",
             "route": "",
             "service": "Core"
         },
@@ -1261,8 +1195,8 @@
             "service": "Core"
         },
         {
-            "id": "kernels.ipynb[10]",
-            "cell": "test process meta kernel",
+            "id": "kernels.ipynb[5]",
+            "cell": "meta kernel interface",
             "route": "",
             "service": "Core"
         },
@@ -1297,8 +1231,20 @@
             "service": "Core"
         },
         {
+            "id": "patterns.ipynb[8]",
+            "cell": "extend prototype class",
+            "route": "",
+            "service": "Core"
+        },
+        {
             "id": "kernels.ipynb[24]",
             "cell": "decode encode ipython zmq protocol",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "kernels.ipynb[3]",
+            "cell": "jupyter meta kernel",
             "route": "",
             "service": "Core"
         },
@@ -1309,8 +1255,32 @@
             "service": "Core"
         },
         {
+            "id": "kernels.ipynb[6]",
+            "cell": "native meta kernel",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "kernels.ipynb[7]",
+            "cell": "native meta methods",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "kernels.ipynb[8]",
+            "cell": "socket meta kernel",
+            "route": "",
+            "service": "Core"
+        },
+        {
             "id": "kernels.ipynb[19]",
             "cell": "test node meta kernel",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "kernels.ipynb[2]",
+            "cell": "custom kernel json",
             "route": "",
             "service": "Core"
         },
@@ -1329,6 +1299,24 @@
         {
             "id": "kernels.ipynb[25]",
             "cell": "bind wire sockets",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "kernels.ipynb[4]",
+            "cell": "kernel info interface",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "languages.ipynb[15]",
+            "cell": "TODO: import falsey javascript in to this notebook",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "languages.ipynb[17]",
+            "cell": "display safe object",
             "route": "",
             "service": "Core"
         },
@@ -1363,18 +1351,6 @@
             "service": "Core"
         },
         {
-            "id": "languages.ipynb[15]",
-            "cell": "TODO: import falsey javascript in to this notebook",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "languages.ipynb[17]",
-            "cell": "display safe object",
-            "route": "",
-            "service": "Core"
-        },
-        {
             "id": "notebook.ipynb[0]",
             "cell": "readme.md",
             "route": "",
@@ -1383,18 +1359,6 @@
         {
             "id": "notebook.ipynb[1]",
             "cell": "import notebook import all cell modules",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "json.ipynb[0]",
-            "cell": "select json",
-            "route": "",
-            "service": "Languages"
-        },
-        {
-            "id": "notebook.ipynb[8]",
-            "cell": "test add missing imports",
             "route": "",
             "service": "Core"
         },
@@ -1435,8 +1399,26 @@
             "service": "Core"
         },
         {
+            "id": "json.ipynb[0]",
+            "cell": "select json",
+            "route": "",
+            "service": "Languages"
+        },
+        {
+            "id": "notebook.ipynb[8]",
+            "cell": "test add missing imports",
+            "route": "",
+            "service": "Core"
+        },
+        {
             "id": "patterns.ipynb[0]",
             "cell": "walk tree",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "patterns.ipynb[10]",
+            "cell": "test enforcing an interface with prototype",
             "route": "",
             "service": "Core"
         },
@@ -1449,12 +1431,6 @@
         {
             "id": "patterns.ipynb[7]",
             "cell": "making a class the normal way",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "patterns.ipynb[10]",
-            "cell": "test enforcing an interface with prototype",
             "route": "",
             "service": "Core"
         },
@@ -1543,24 +1519,6 @@
             "service": "Core"
         },
         {
-            "id": "syntax.ipynb[3]",
-            "cell": "core dependencies",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "syntax.ipynb[4]",
-            "cell": "test core dependencies",
-            "route": "",
-            "service": "Core"
-        },
-        {
-            "id": "syntax.ipynb[8]",
-            "cell": "test parameter names",
-            "route": "",
-            "service": "Core"
-        },
-        {
             "id": "syntax.ipynb[10]",
             "cell": "test get imports",
             "route": "",
@@ -1603,6 +1561,12 @@
             "service": "Core"
         },
         {
+            "id": "syntax.ipynb[3]",
+            "cell": "core dependencies",
+            "route": "",
+            "service": "Core"
+        },
+        {
             "id": "syntax.ipynb[30]",
             "cell": "Generate unit test from logic branching",
             "route": "",
@@ -1611,6 +1575,30 @@
         {
             "id": "syntax.ipynb[33]",
             "cell": "generate unit test",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "syntax.ipynb[4]",
+            "cell": "test core dependencies",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "syntax.ipynb[8]",
+            "cell": "test parameter names",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "voidzero.ipynb[1]",
+            "cell": "attribute code",
+            "route": "",
+            "service": "Core"
+        },
+        {
+            "id": "voidzero.ipynb[3]",
+            "cell": "attribute notebook",
             "route": "",
             "service": "Core"
         },
@@ -1711,54 +1699,6 @@
             "service": "Databases"
         },
         {
-            "id": "git index.ipynb[2]",
-            "cell": "repositories fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[3]",
-            "cell": "file list fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[4]",
-            "cell": "branch list fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[5]",
-            "cell": "commit list fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[6]",
-            "cell": "git tag list",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[7]",
-            "cell": "repo fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[8]",
-            "cell": "branch fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
-            "id": "git index.ipynb[9]",
-            "cell": "commit fragment",
-            "route": "",
-            "service": "Databases"
-        },
-        {
             "id": "git index.ipynb[10]",
             "cell": "git tag fragment",
             "route": "",
@@ -1789,6 +1729,18 @@
             "service": "Databases"
         },
         {
+            "id": "git index.ipynb[4]",
+            "cell": "branch list fragment",
+            "route": "",
+            "service": "Databases"
+        },
+        {
+            "id": "git index.ipynb[8]",
+            "cell": "branch fragment",
+            "route": "",
+            "service": "Databases"
+        },
+        {
             "id": "git index.ipynb[15]",
             "cell": "git serve bare",
             "route": "ROUTE[] = /:profile/:primary/:branch/**",
@@ -1798,6 +1750,18 @@
             "id": "git index.ipynb[16]",
             "cell": "git serve repo list",
             "route": "ROUTE[] = /github",
+            "service": "Databases"
+        },
+        {
+            "id": "git index.ipynb[7]",
+            "cell": "repo fragment",
+            "route": "",
+            "service": "Databases"
+        },
+        {
+            "id": "git index.ipynb[2]",
+            "cell": "repositories fragment",
+            "route": "",
             "service": "Databases"
         },
         {
@@ -1811,6 +1775,12 @@
             "cell": "directory to html",
             "route": "",
             "service": "Frameworks"
+        },
+        {
+            "id": "git index.ipynb[3]",
+            "cell": "file list fragment",
+            "route": "",
+            "service": "Databases"
         },
         {
             "id": "git index.ipynb[18]",
@@ -1834,6 +1804,24 @@
             "id": "git index.ipynb[20]",
             "cell": "git serve commits",
             "route": "ROUTE[] = /:profile/:primary/commits/:branch",
+            "service": "Databases"
+        },
+        {
+            "id": "git index.ipynb[5]",
+            "cell": "commit list fragment",
+            "route": "",
+            "service": "Databases"
+        },
+        {
+            "id": "git index.ipynb[9]",
+            "cell": "commit fragment",
+            "route": "",
+            "service": "Databases"
+        },
+        {
+            "id": "git index.ipynb[6]",
+            "cell": "git tag list",
+            "route": "",
             "service": "Databases"
         },
         {
@@ -1955,6 +1943,30 @@
             "cell": "Run NPM in javscript with in-memory file-system",
             "route": "",
             "service": "Databases"
+        },
+        {
+            "id": "demo.ipynb[14]",
+            "cell": "Install build stack on colab",
+            "route": "",
+            "service": "demo.ipynb"
+        },
+        {
+            "id": "demo.ipynb[15]",
+            "cell": "update notebook repo on colab",
+            "route": "",
+            "service": "demo.ipynb"
+        },
+        {
+            "id": "demo.ipynb[8]",
+            "cell": "use Docker",
+            "route": "",
+            "service": "demo.ipynb"
+        },
+        {
+            "id": "node simple-imap.ipynb[0]",
+            "cell": "node imap client",
+            "route": "",
+            "service": "Frameworks"
         },
         {
             "id": "docker commands.ipynb[0]",
@@ -2101,44 +2113,86 @@
             "service": "Exercises"
         },
         {
-            "id": "How code should look.ipynb[0]",
-            "cell": "How code should look",
+            "id": "Angular 2.ipynb[0]",
+            "cell": "What is Angular 2",
             "route": "",
             "service": "Frameworks"
         },
         {
-            "id": "node simple-imap.ipynb[5]",
-            "cell": "get attachments using simple-imap",
+            "id": "Angular components.ipynb[0]",
+            "cell": "Display search notebook component",
             "route": "",
             "service": "Frameworks"
         },
         {
-            "id": "Jupyter language kernels.ipynb[0]",
-            "cell": "install bash kernel",
+            "id": "Angular components.ipynb[1]",
+            "cell": "Search notebook service",
             "route": "",
             "service": "Frameworks"
         },
         {
-            "id": "Jupyter language kernels.ipynb[1]",
-            "cell": "install ipython kernel",
+            "id": "Angular components.ipynb[2]",
+            "cell": "Display code results",
             "route": "",
             "service": "Frameworks"
         },
         {
-            "id": "Jupyter language kernels.ipynb[2]",
-            "cell": "install ICSharp (C) kernel",
+            "id": "Angular components.ipynb[3]",
+            "cell": "Sockify search notebook provider",
             "route": "",
             "service": "Frameworks"
         },
         {
-            "id": "Jupyter language kernels.ipynb[5]",
-            "cell": "install ruby",
+            "id": "Angular components.ipynb[5]",
+            "cell": "Display login form",
             "route": "",
             "service": "Frameworks"
         },
         {
-            "id": "Jupyter language kernels.ipynb[6]",
-            "cell": "install Powershell",
+            "id": "Angular components.ipynb[6]",
+            "cell": "Authentication service",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "angular core modules.ipynb[0]",
+            "cell": "Useful list of material and core modules",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "angular render service.ipynb[0]",
+            "cell": "render Angular modules instead of using express",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "build Angular components.ipynb[0]",
+            "cell": "Run angular-cli commands from nodejs",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "build Angular components.ipynb[1]",
+            "cell": "Compile the project using webpack",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "build Angular components.ipynb[3]",
+            "cell": "Set angular theme colors",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "display angular.ipynb[0]",
+            "cell": "Include the script in the response",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "display angular.ipynb[1]",
+            "cell": "Display angular modules in jupyter",
             "route": "",
             "service": "Frameworks"
         },
@@ -2269,6 +2323,18 @@
             "service": "Frameworks"
         },
         {
+            "id": "How code should look.ipynb[0]",
+            "cell": "How code should look",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node simple-imap.ipynb[5]",
+            "cell": "get attachments using simple-imap",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
             "id": "identity server.ipynb[2]",
             "cell": "set up identity server",
             "route": "",
@@ -2277,6 +2343,36 @@
         {
             "id": "jupyter interaction.ipynb[0]",
             "cell": "Interactive cells in juypter",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "Jupyter language kernels.ipynb[0]",
+            "cell": "install bash kernel",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "Jupyter language kernels.ipynb[1]",
+            "cell": "install ipython kernel",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "Jupyter language kernels.ipynb[2]",
+            "cell": "install ICSharp (C) kernel",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "Jupyter language kernels.ipynb[5]",
+            "cell": "install ruby",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "Jupyter language kernels.ipynb[6]",
+            "cell": "install Powershell",
             "route": "",
             "service": "Frameworks"
         },
@@ -2323,42 +2419,6 @@
             "service": "Frameworks"
         },
         {
-            "id": "node express.ipynb[5]",
-            "cell": "reliable-websocket.js",
-            "route": "ROUTE = /reliable-websocket.js",
-            "service": "Frameworks"
-        },
-        {
-            "id": "node express.ipynb[4]",
-            "cell": "browser socket service",
-            "route": "ROUTE = /socket-service.js",
-            "service": "Frameworks"
-        },
-        {
-            "id": "node express.ipynb[6]",
-            "cell": "express router",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "node express.ipynb[7]",
-            "cell": "parse environment",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "node express.ipynb[8]",
-            "cell": "start a proxy on {port}",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "node express.ipynb[9]",
-            "cell": "display the output from express",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
             "id": "node express.ipynb[10]",
             "cell": "run a DOM query on a remote HTML page",
             "route": "",
@@ -2401,6 +2461,12 @@
             "service": "Frameworks"
         },
         {
+            "id": "node express.ipynb[4]",
+            "cell": "browser socket service",
+            "route": "ROUTE = /socket-service.js",
+            "service": "Frameworks"
+        },
+        {
             "id": "node express.ipynb[20]",
             "cell": "rpc list fragement",
             "route": "",
@@ -2422,6 +2488,36 @@
             "id": "node express.ipynb[23]",
             "cell": "node express styles",
             "route": "ROUTE = /express-styles.css",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[5]",
+            "cell": "reliable-websocket.js",
+            "route": "ROUTE = /reliable-websocket.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[6]",
+            "cell": "express router",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[7]",
+            "cell": "parse environment",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[8]",
+            "cell": "start a proxy on {port}",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "node express.ipynb[9]",
+            "cell": "display the output from express",
+            "route": "",
             "service": "Frameworks"
         },
         {
@@ -2503,60 +2599,6 @@
             "service": "Frameworks"
         },
         {
-            "id": "test runner.ipynb[2]",
-            "cell": "test runner",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[3]",
-            "cell": "test sigma index",
-            "route": "ROUTE = /sigma",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[5]",
-            "cell": "notebook-colors.js",
-            "route": "ROUTE = /notebook-colors.js",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[9]",
-            "cell": "color-fader.js",
-            "route": "ROUTE = /color-fader.js",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[16]",
-            "cell": "git service list",
-            "route": "ROUTE = /:project/service-list.json",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[4]",
-            "cell": "test sigma template",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[6]",
-            "cell": "sigma-style.css",
-            "route": "ROUTE = /sigma-style.css",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[7]",
-            "cell": "sigma-script.js",
-            "route": "ROUTE = /sigma-script.js",
-            "service": "Frameworks"
-        },
-        {
-            "id": "test runner.ipynb[8]",
-            "cell": "highlight-nodes.js",
-            "route": "ROUTE = /highlight-nodes.js",
-            "service": "Frameworks"
-        },
-        {
             "id": "test runner.ipynb[10]",
             "cell": "update-view.js",
             "route": "ROUTE = /update-view.js",
@@ -2599,6 +2641,60 @@
             "service": "Languages"
         },
         {
+            "id": "test runner.ipynb[16]",
+            "cell": "git service list",
+            "route": "ROUTE = /:project/service-list.json",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[2]",
+            "cell": "test runner",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[3]",
+            "cell": "test sigma index",
+            "route": "ROUTE[] = /sigma",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[5]",
+            "cell": "notebook-colors.js",
+            "route": "ROUTE = /notebook-colors.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[9]",
+            "cell": "color-fader.js",
+            "route": "ROUTE = /color-fader.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[4]",
+            "cell": "test sigma template",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[6]",
+            "cell": "sigma-style.css",
+            "route": "ROUTE = /sigma-style.css",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[7]",
+            "cell": "sigma-script.js",
+            "route": "ROUTE = /sigma-script.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[8]",
+            "cell": "highlight-nodes.js",
+            "route": "ROUTE = /highlight-nodes.js",
+            "service": "Frameworks"
+        },
+        {
             "id": "twilio.ipynb[0]",
             "cell": "accept incoming twilio message",
             "route": "",
@@ -2635,62 +2731,8 @@
             "service": "Frameworks"
         },
         {
-            "id": "zuora to eloqua.ipynb[2]",
-            "cell": "zuora export service test",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[3]",
-            "cell": "zuora renewals query",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[4]",
-            "cell": "test zuora renewals query",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[5]",
-            "cell": "eloqua import service",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
             "id": "zuora to eloqua.ipynb[10]",
             "cell": "eloqua import create template",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[6]",
-            "cell": "test eloqua import service",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[12]",
-            "cell": "eloqua import blueprints",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[7]",
-            "cell": "zuora eloqua mapper",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[8]",
-            "cell": "zuora eloqua mapper test",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "zuora to eloqua.ipynb[9]",
-            "cell": "zuora account blueprints",
             "route": "",
             "service": "Frameworks"
         },
@@ -2701,8 +2743,20 @@
             "service": "Frameworks"
         },
         {
+            "id": "zuora to eloqua.ipynb[12]",
+            "cell": "eloqua import blueprints",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
             "id": "zuora to eloqua.ipynb[13]",
             "cell": "eloqua existing import",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[5]",
+            "cell": "eloqua import service",
             "route": "",
             "service": "Frameworks"
         },
@@ -2721,6 +2775,12 @@
         {
             "id": "zuora to eloqua.ipynb[19]",
             "cell": "zuora export month",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[7]",
+            "cell": "zuora eloqua mapper",
             "route": "",
             "service": "Frameworks"
         },
@@ -2745,6 +2805,18 @@
         {
             "id": "zuora to eloqua.ipynb[18]",
             "cell": "test notify entry point",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[3]",
+            "cell": "zuora renewals query",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[2]",
+            "cell": "zuora export service test",
             "route": "",
             "service": "Frameworks"
         },
@@ -2791,6 +2863,30 @@
             "service": "Frameworks"
         },
         {
+            "id": "zuora to eloqua.ipynb[4]",
+            "cell": "test zuora renewals query",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[6]",
+            "cell": "test eloqua import service",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[8]",
+            "cell": "zuora eloqua mapper test",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
+            "id": "zuora to eloqua.ipynb[9]",
+            "cell": "zuora account blueprints",
+            "route": "",
+            "service": "Frameworks"
+        },
+        {
             "id": "brians resume.ipynb[0]",
             "cell": "get a list of folder topics from bookmarks",
             "route": "",
@@ -2809,6 +2905,24 @@
             "service": "Google"
         },
         {
+            "id": "brians resume.ipynb[10]",
+            "cell": "resume chat program",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "brians resume.ipynb[11]",
+            "cell": "chat page",
+            "route": "ROUTE = /chat",
+            "service": "Frontends"
+        },
+        {
+            "id": "brians resume.ipynb[12]",
+            "cell": "brians resume in html",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
             "id": "brians resume.ipynb[2]",
             "cell": "load message history",
             "route": "",
@@ -2817,12 +2931,6 @@
         {
             "id": "brians resume.ipynb[3]",
             "cell": "brians resume",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "brians resume.ipynb[12]",
-            "cell": "brians resume in html",
             "route": "",
             "service": "Frontends"
         },
@@ -2863,12 +2971,6 @@
             "service": "Frontends"
         },
         {
-            "id": "brians resume.ipynb[10]",
-            "cell": "resume chat program",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
             "id": "brians resume.ipynb[8]",
             "cell": "resume express chat service",
             "route": "ROUTE = /chat",
@@ -2878,12 +2980,6 @@
             "id": "brians resume.ipynb[9]",
             "cell": "render history navigation",
             "route": "ROUTE = /history",
-            "service": "Frontends"
-        },
-        {
-            "id": "brians resume.ipynb[11]",
-            "cell": "chat page",
-            "route": "ROUTE = /chat",
             "service": "Frontends"
         },
         {
@@ -2917,8 +3013,26 @@
             "service": "Google"
         },
         {
+            "id": "convert spreadsheet.ipynb[10]",
+            "cell": "sheet to web",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
             "id": "convert spreadsheet.ipynb[2]",
             "cell": "sheet marketing import",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "convert spreadsheet.ipynb[11]",
+            "cell": "convert sheet helper functions",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "convert spreadsheet.ipynb[12]",
+            "cell": "package.json",
             "route": "",
             "service": "Frontends"
         },
@@ -2943,12 +3057,6 @@
         {
             "id": "convert spreadsheet.ipynb[9]",
             "cell": "collect google sheets resources",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "convert spreadsheet.ipynb[11]",
-            "cell": "convert sheet helper functions",
             "route": "",
             "service": "Frontends"
         },
@@ -2979,18 +3087,6 @@
         {
             "id": "convert spreadsheet.ipynb[8]",
             "cell": "collect external content and resources",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "convert spreadsheet.ipynb[10]",
-            "cell": "sheet to web",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "convert spreadsheet.ipynb[12]",
-            "cell": "package.json",
             "route": "",
             "service": "Frontends"
         },
@@ -3241,6 +3337,12 @@
             "service": "Utilities"
         },
         {
+            "id": "discord.ipynb[11]",
+            "cell": "delete all commands",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
             "id": "discord.ipynb[5]",
             "cell": "discord channels",
             "route": "",
@@ -3273,12 +3375,6 @@
         {
             "id": "discord.ipynb[9]",
             "cell": "discord users",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "discord.ipynb[11]",
-            "cell": "delete all commands",
             "route": "",
             "service": "Frontends"
         },
@@ -3331,6 +3427,24 @@
             "service": "Frontends"
         },
         {
+            "id": "edit anywhere.ipynb[10]",
+            "cell": "read crawl files",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "edit anywhere.ipynb[8]",
+            "cell": "scope css",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "edit anywhere.ipynb[11]",
+            "cell": "ckeditor configuration",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
             "id": "edit anywhere.ipynb[3]",
             "cell": "write gist files",
             "route": "",
@@ -3357,24 +3471,6 @@
         {
             "id": "edit anywhere.ipynb[7]",
             "cell": "load ckeditor",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "edit anywhere.ipynb[10]",
-            "cell": "read crawl files",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "edit anywhere.ipynb[8]",
-            "cell": "scope css",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "edit anywhere.ipynb[11]",
-            "cell": "ckeditor configuration",
             "route": "",
             "service": "Frontends"
         },
@@ -3412,54 +3508,6 @@
             "id": "linkedin.ipynb[1]",
             "cell": "linkedin network stylesheet",
             "route": "ROUTE = /linkedin-network.css",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[2]",
-            "cell": "linkedin profile stylesheet",
-            "route": "ROUTE = /linkedin-profile.css",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[3]",
-            "cell": "linkedin home stylesheet",
-            "route": "ROUTE = /linkedin-home.css",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[4]",
-            "cell": "linkedin index",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[5]",
-            "cell": "linkedin login page",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[6]",
-            "cell": "linkedin homepage",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[7]",
-            "cell": "linkedin network html",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[8]",
-            "cell": "linkedin network profile list",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "linkedin.ipynb[9]",
-            "cell": "linkedin jobs template",
-            "route": "",
             "service": "Frontends"
         },
         {
@@ -3529,9 +3577,33 @@
             "service": "Frontends"
         },
         {
+            "id": "linkedin.ipynb[2]",
+            "cell": "linkedin profile stylesheet",
+            "route": "ROUTE = /linkedin-profile.css",
+            "service": "Frontends"
+        },
+        {
             "id": "linkedin.ipynb[20]",
             "cell": "serve linkedin homepage",
             "route": "ROUTE = /linkedin",
+            "service": "Frontends"
+        },
+        {
+            "id": "linkedin.ipynb[5]",
+            "cell": "linkedin login page",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "linkedin.ipynb[6]",
+            "cell": "linkedin homepage",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "linkedin.ipynb[4]",
+            "cell": "linkedin index",
+            "route": "",
             "service": "Frontends"
         },
         {
@@ -3571,15 +3643,39 @@
             "service": "Frontends"
         },
         {
+            "id": "linkedin.ipynb[8]",
+            "cell": "linkedin network profile list",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "linkedin.ipynb[7]",
+            "cell": "linkedin network html",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
             "id": "linkedin.ipynb[28]",
             "cell": "linkedin jobs",
             "route": "ROUTE[] = /create",
             "service": "Frontends"
         },
         {
+            "id": "linkedin.ipynb[9]",
+            "cell": "linkedin jobs template",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
             "id": "linkedin.ipynb[29]",
             "cell": "linkedin create",
             "route": "ROUTE = /create",
+            "service": "Frontends"
+        },
+        {
+            "id": "linkedin.ipynb[3]",
+            "cell": "linkedin home stylesheet",
+            "route": "ROUTE = /linkedin-home.css",
             "service": "Frontends"
         },
         {
@@ -3757,48 +3853,6 @@
             "service": "Games"
         },
         {
-            "id": "quake 3.ipynb[2]",
-            "cell": "find only bsps in map paks",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake 3.ipynb[3]",
-            "cell": "list bsps in a pak",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake 3.ipynb[4]",
-            "cell": "unpack pk3s",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake 3.ipynb[6]",
-            "cell": "make pk3 indexes",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake 3.ipynb[7]",
-            "cell": "md4 checksum",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake 3.ipynb[8]",
-            "cell": "crc checksum file",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake 3.ipynb[9]",
-            "cell": "test crc file",
-            "route": "",
-            "service": "Games"
-        },
-        {
             "id": "quake 3.ipynb[10]",
             "cell": "scan map graphs",
             "route": "",
@@ -3889,6 +3943,12 @@
             "service": "Games"
         },
         {
+            "id": "quake 3.ipynb[2]",
+            "cell": "find only bsps in map paks",
+            "route": "",
+            "service": "Games"
+        },
+        {
             "id": "quake 3.ipynb[26]",
             "cell": "brush to vertex",
             "route": "",
@@ -3917,6 +3977,12 @@
             "cell": "bit buffer",
             "route": "",
             "service": "Utilities"
+        },
+        {
+            "id": "quake 3.ipynb[3]",
+            "cell": "list bsps in a pak",
+            "route": "",
+            "service": "Games"
         },
         {
             "id": "quake 3.ipynb[30]",
@@ -3949,62 +4015,38 @@
             "service": "Games"
         },
         {
+            "id": "quake 3.ipynb[4]",
+            "cell": "unpack pk3s",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake 3.ipynb[6]",
+            "cell": "make pk3 indexes",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake 3.ipynb[7]",
+            "cell": "md4 checksum",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake 3.ipynb[8]",
+            "cell": "crc checksum file",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake 3.ipynb[9]",
+            "cell": "test crc file",
+            "route": "",
+            "service": "Games"
+        },
+        {
             "id": "quake3 server connector.ipynb[0]",
             "cell": "test sending a discord message",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[2]",
-            "cell": "respond discord commands",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[4]",
-            "cell": "challenge discord command",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[6]",
-            "cell": "quake 3 server commands",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[5]",
-            "cell": "discord bot",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[9]",
-            "cell": "format quake 3 response",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[16]",
-            "cell": "remove ctrl characters",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[8]",
-            "cell": "quake 3 server responses",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[15]",
-            "cell": "dns lookup",
-            "route": "",
-            "service": "Games"
-        },
-        {
-            "id": "quake3 server connector.ipynb[11]",
-            "cell": "huffman decode",
             "route": "",
             "service": "Games"
         },
@@ -4015,8 +4057,14 @@
             "service": "Games"
         },
         {
-            "id": "quake3 server connector.ipynb[7]",
-            "cell": "test quake 3 rcon commands",
+            "id": "quake3 server connector.ipynb[11]",
+            "cell": "huffman decode",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[8]",
+            "cell": "quake 3 server responses",
             "route": "",
             "service": "Games"
         },
@@ -4027,8 +4075,26 @@
             "service": "Games"
         },
         {
+            "id": "quake3 server connector.ipynb[6]",
+            "cell": "quake 3 server commands",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[16]",
+            "cell": "remove ctrl characters",
+            "route": "",
+            "service": "Games"
+        },
+        {
             "id": "quake3 server connector.ipynb[13]",
             "cell": "index",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[2]",
+            "cell": "respond discord commands",
             "route": "",
             "service": "Games"
         },
@@ -4045,8 +4111,38 @@
             "service": "Games"
         },
         {
+            "id": "quake3 server connector.ipynb[15]",
+            "cell": "dns lookup",
+            "route": "",
+            "service": "Games"
+        },
+        {
             "id": "quake3 server connector.ipynb[17]",
             "cell": "quake3 server status",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[4]",
+            "cell": "challenge discord command",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[5]",
+            "cell": "discord bot",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[9]",
+            "cell": "format quake 3 response",
+            "route": "",
+            "service": "Games"
+        },
+        {
+            "id": "quake3 server connector.ipynb[7]",
+            "cell": "test quake 3 rcon commands",
             "route": "",
             "service": "Games"
         },
@@ -4243,6 +4339,24 @@
             "service": "Google"
         },
         {
+            "id": "google drive.ipynb[10]",
+            "cell": "create a copy of study sauce template",
+            "route": "",
+            "service": "Google"
+        },
+        {
+            "id": "google drive.ipynb[6]",
+            "cell": "copy a file on google drive",
+            "route": "",
+            "service": "Google"
+        },
+        {
+            "id": "google drive.ipynb[11]",
+            "cell": "create a sheet handler",
+            "route": "",
+            "service": "Google"
+        },
+        {
             "id": "google drive.ipynb[4]",
             "cell": "create a sheet in google drive",
             "route": "",
@@ -4261,12 +4375,6 @@
             "service": "Google"
         },
         {
-            "id": "google drive.ipynb[6]",
-            "cell": "copy a file on google drive",
-            "route": "",
-            "service": "Google"
-        },
-        {
             "id": "google drive.ipynb[7]",
             "cell": "merge google drive",
             "route": "",
@@ -4281,18 +4389,6 @@
         {
             "id": "google drive.ipynb[9]",
             "cell": "sign a file url for uploading to google storage",
-            "route": "",
-            "service": "Google"
-        },
-        {
-            "id": "google drive.ipynb[10]",
-            "cell": "create a copy of study sauce template",
-            "route": "",
-            "service": "Google"
-        },
-        {
-            "id": "google drive.ipynb[11]",
-            "cell": "create a sheet handler",
             "route": "",
             "service": "Google"
         },
@@ -4423,6 +4519,18 @@
             "service": "Languages"
         },
         {
+            "id": "antlr.ipynb[12]",
+            "cell": "ext to lang",
+            "route": "",
+            "service": "Languages"
+        },
+        {
+            "id": "antlr.ipynb[13]",
+            "cell": "generate antlr parsers",
+            "route": "",
+            "service": "Languages"
+        },
+        {
             "id": "antlr.ipynb[8]",
             "cell": "",
             "route": "",
@@ -4449,18 +4557,6 @@
         {
             "id": "antlr.ipynb[9]",
             "cell": "antlr tree to es",
-            "route": "",
-            "service": "Languages"
-        },
-        {
-            "id": "antlr.ipynb[12]",
-            "cell": "ext to lang",
-            "route": "",
-            "service": "Languages"
-        },
-        {
-            "id": "antlr.ipynb[13]",
-            "cell": "generate antlr parsers",
             "route": "",
             "service": "Languages"
         },
@@ -4531,60 +4627,6 @@
             "service": "Marketing"
         },
         {
-            "id": "What is Selenium.ipynb[0]",
-            "cell": "What is Selenium",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "What is Selenium.ipynb[1]",
-            "cell": "connect to VNC through the web browser",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "What is Selenium.ipynb[2]",
-            "cell": "run a selenium cell on the Docker machine",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "utilities.ipynb[1]",
-            "cell": "all elements until",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "orchestration.ipynb[0]",
-            "cell": "resize selenium window",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "utilities.ipynb[2]",
-            "cell": "click spa link",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "forms.ipynb[0]",
-            "cell": "form utilities",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "What is Selenium.ipynb[3]",
-            "cell": "Test docker selenium",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
-            "id": "What is Selenium.ipynb[4]",
-            "cell": "Transfer login state to current browser",
-            "route": "",
-            "service": "Selenium"
-        },
-        {
             "id": "avidbrain.ipynb[0]",
             "cell": "Test avidbrain",
             "route": "",
@@ -4597,6 +4639,12 @@
             "service": "Selenium"
         },
         {
+            "id": "utilities.ipynb[1]",
+            "cell": "all elements until",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
             "id": "facebook connections.ipynb[3]",
             "cell": "connect on facebook",
             "route": "",
@@ -4605,6 +4653,12 @@
         {
             "id": "facebook connections.ipynb[4]",
             "cell": "connect add friends facebook",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
+            "id": "What is Selenium.ipynb[2]",
+            "cell": "run a selenium cell on the Docker machine",
             "route": "",
             "service": "Selenium"
         },
@@ -4701,6 +4755,12 @@
         {
             "id": "facebook webdriver.ipynb[2]",
             "cell": "add friend",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
+            "id": "forms.ipynb[0]",
+            "cell": "form utilities",
             "route": "",
             "service": "Selenium"
         },
@@ -4867,6 +4927,12 @@
             "service": "Selenium"
         },
         {
+            "id": "orchestration.ipynb[0]",
+            "cell": "resize selenium window",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
             "id": "orchestration.ipynb[1]",
             "cell": "only one window",
             "route": "",
@@ -4899,6 +4965,12 @@
         {
             "id": "orchestration.ipynb[7]",
             "cell": "clean up old selenium sessions",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
+            "id": "What is Selenium.ipynb[0]",
+            "cell": "What is Selenium",
             "route": "",
             "service": "Selenium"
         },
@@ -5035,6 +5107,12 @@
             "service": "Selenium"
         },
         {
+            "id": "utilities.ipynb[2]",
+            "cell": "click spa link",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
             "id": "utilities.ipynb[3]",
             "cell": "https://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.htmls_tid=gn_loc_drop",
             "route": "",
@@ -5079,6 +5157,24 @@
         {
             "id": "webdriver.ipynb[5]",
             "cell": "list sessions",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
+            "id": "What is Selenium.ipynb[1]",
+            "cell": "connect to VNC through the web browser",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
+            "id": "What is Selenium.ipynb[3]",
+            "cell": "Test docker selenium",
+            "route": "",
+            "service": "Selenium"
+        },
+        {
+            "id": "What is Selenium.ipynb[4]",
+            "cell": "Transfer login state to current browser",
             "route": "",
             "service": "Selenium"
         },
@@ -5185,6 +5281,12 @@
             "service": "Utilities"
         },
         {
+            "id": "shell-parse.ipynb[0]",
+            "cell": "shell parse",
+            "route": "",
+            "service": "Utilities"
+        },
+        {
             "id": "dylib.ipynb[3]",
             "cell": "test a csharp dylib",
             "route": "",
@@ -5205,12 +5307,6 @@
         {
             "id": "dylib.ipynb[6]",
             "cell": "get c exports",
-            "route": "",
-            "service": "Utilities"
-        },
-        {
-            "id": "shell-parse.ipynb[0]",
-            "cell": "shell parse",
             "route": "",
             "service": "Utilities"
         },
@@ -5351,103 +5447,11 @@
             "cell": "monitor active windows",
             "route": "",
             "service": "Utilities"
-        },
-        {
-            "id": "Angular 2.ipynb[0]",
-            "cell": "What is Angular 2",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "Angular components.ipynb[0]",
-            "cell": "Display search notebook component",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "Angular components.ipynb[1]",
-            "cell": "Search notebook service",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "Angular components.ipynb[2]",
-            "cell": "Display code results",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "Angular components.ipynb[3]",
-            "cell": "Sockify search notebook provider",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "Angular components.ipynb[5]",
-            "cell": "Display login form",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "Angular components.ipynb[6]",
-            "cell": "Authentication service",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "angular core modules.ipynb[0]",
-            "cell": "Useful list of material and core modules",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "angular render service.ipynb[0]",
-            "cell": "render Angular modules instead of using express",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "build Angular components.ipynb[0]",
-            "cell": "Run angular-cli commands from nodejs",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "build Angular components.ipynb[1]",
-            "cell": "Compile the project using webpack",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "build Angular components.ipynb[3]",
-            "cell": "Set angular theme colors",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "display angular.ipynb[0]",
-            "cell": "Include the script in the response",
-            "route": "",
-            "service": "Frameworks"
-        },
-        {
-            "id": "display angular.ipynb[1]",
-            "cell": "Display angular modules in jupyter",
-            "route": "",
-            "service": "Frameworks"
         }
     ],
     "edges": [
         {
-            "source": "demo.ipynb[8]",
-            "target": "node simple-imap.ipynb[0]"
-        },
-        {
             "source": "llama vision.ipynb[1]",
-            "target": "llama vision.ipynb[0]"
-        },
-        {
-            "source": "llama vision.ipynb[2]",
             "target": "llama vision.ipynb[0]"
         },
         {
@@ -5473,6 +5477,10 @@
         {
             "source": "llama vision.ipynb[13]",
             "target": "llama vision.ipynb[11]"
+        },
+        {
+            "source": "llama vision.ipynb[2]",
+            "target": "llama vision.ipynb[0]"
         },
         {
             "source": "llama.ipynb[0]",
@@ -5559,6 +5567,10 @@
             "target": "llm blogging.ipynb[1]"
         },
         {
+            "source": "llm blogging.ipynb[0]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
             "source": "llm chat.ipynb[0]",
             "target": "llm writing.ipynb[4]"
         },
@@ -5640,11 +5652,23 @@
         },
         {
             "source": "llm scaffold.ipynb[1]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "llm scaffold.ipynb[1]",
             "target": "llama vision.ipynb[2]"
         },
         {
             "source": "llm scaffold.ipynb[2]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "llm scaffold.ipynb[2]",
             "target": "llama vision.ipynb[2]"
+        },
+        {
+            "source": "llm scaffold.ipynb[3]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "llm scaffold.ipynb[3]",
@@ -5661,6 +5685,10 @@
         {
             "source": "llm tools.ipynb[0]",
             "target": "llm tools.ipynb[1]"
+        },
+        {
+            "source": "llm tools.ipynb[0]",
+            "target": "llm tools.ipynb[2]"
         },
         {
             "source": "llm tools.ipynb[0]",
@@ -5696,6 +5724,10 @@
         },
         {
             "source": "llm writing.ipynb[0]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "llm writing.ipynb[0]",
             "target": "llm writing.ipynb[4]"
         },
         {
@@ -5707,12 +5739,20 @@
             "target": "llm writing.ipynb[5]"
         },
         {
+            "source": "llm writing.ipynb[1]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
             "source": "llm writing.ipynb[2]",
             "target": "llama.ipynb[10]"
         },
         {
             "source": "llm writing.ipynb[2]",
             "target": "llama vision.ipynb[2]"
+        },
+        {
+            "source": "llm writing.ipynb[3]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "llm writing.ipynb[3]",
@@ -5745,6 +5785,18 @@
         {
             "source": "opencv.ipynb[0]",
             "target": "llama vision.ipynb[14]"
+        },
+        {
+            "source": "opencv.ipynb[10]",
+            "target": "opencv.ipynb[9]"
+        },
+        {
+            "source": "opencv.ipynb[10]",
+            "target": "llama vision.ipynb[14]"
+        },
+        {
+            "source": "opencv.ipynb[10]",
+            "target": "opencv.ipynb[8]"
         },
         {
             "source": "opencv.ipynb[6]",
@@ -5783,16 +5835,36 @@
             "target": "opencv.ipynb[8]"
         },
         {
-            "source": "opencv.ipynb[10]",
-            "target": "opencv.ipynb[9]"
+            "source": "data collection.ipynb[10]",
+            "target": "dates.ipynb[1]"
         },
         {
-            "source": "opencv.ipynb[10]",
-            "target": "llama vision.ipynb[14]"
+            "source": "data collection.ipynb[10]",
+            "target": "google calendar.ipynb[8]"
         },
         {
-            "source": "opencv.ipynb[10]",
-            "target": "opencv.ipynb[8]"
+            "source": "data collection.ipynb[10]",
+            "target": "google calendar.ipynb[0]"
+        },
+        {
+            "source": "data collection.ipynb[11]",
+            "target": "google calendar data.ipynb[2]"
+        },
+        {
+            "source": "data collection.ipynb[11]",
+            "target": "dates.ipynb[1]"
+        },
+        {
+            "source": "data collection.ipynb[11]",
+            "target": "data collection.ipynb[6]"
+        },
+        {
+            "source": "data collection.ipynb[11]",
+            "target": "data collection.ipynb[8]"
+        },
+        {
+            "source": "data collection.ipynb[11]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "data collection.ipynb[2]",
@@ -5828,6 +5900,10 @@
         },
         {
             "source": "data collection.ipynb[6]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "data collection.ipynb[6]",
             "target": "data collection.ipynb[6]"
         },
         {
@@ -5847,40 +5923,16 @@
             "target": "data collection.ipynb[7]"
         },
         {
-            "source": "data collection.ipynb[10]",
-            "target": "dates.ipynb[1]"
-        },
-        {
-            "source": "data collection.ipynb[10]",
-            "target": "google calendar.ipynb[8]"
-        },
-        {
-            "source": "data collection.ipynb[10]",
-            "target": "google calendar.ipynb[0]"
-        },
-        {
-            "source": "data collection.ipynb[11]",
-            "target": "google calendar data.ipynb[2]"
-        },
-        {
-            "source": "data collection.ipynb[11]",
-            "target": "dates.ipynb[1]"
-        },
-        {
-            "source": "data collection.ipynb[11]",
-            "target": "data collection.ipynb[6]"
-        },
-        {
-            "source": "data collection.ipynb[11]",
-            "target": "data collection.ipynb[8]"
-        },
-        {
             "source": "movie database.ipynb[0]",
             "target": "movie database.ipynb[4]"
         },
         {
             "source": "movie database.ipynb[1]",
             "target": "levenshtein.ipynb[1]"
+        },
+        {
+            "source": "movie database.ipynb[5]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "movie database.ipynb[5]",
@@ -5893,6 +5945,10 @@
         {
             "source": "movie database.ipynb[5]",
             "target": "movie database.ipynb[8]"
+        },
+        {
+            "source": "movie database.ipynb[6]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "movie database.ipynb[6]",
@@ -5937,6 +5993,18 @@
         {
             "source": "google cloud api.ipynb[1]",
             "target": "google cloud api.ipynb[0]"
+        },
+        {
+            "source": "google cloud api.ipynb[10]",
+            "target": "convert spreadsheet.ipynb[1]"
+        },
+        {
+            "source": "google cloud api.ipynb[10]",
+            "target": "google cloud api.ipynb[6]"
+        },
+        {
+            "source": "google cloud api.ipynb[10]",
+            "target": "google cloud api.ipynb[3]"
         },
         {
             "source": "google cloud api.ipynb[2]",
@@ -5985,18 +6053,6 @@
         {
             "source": "google cloud api.ipynb[7]",
             "target": "google cloud api.ipynb[6]"
-        },
-        {
-            "source": "google cloud api.ipynb[10]",
-            "target": "convert spreadsheet.ipynb[1]"
-        },
-        {
-            "source": "google cloud api.ipynb[10]",
-            "target": "google cloud api.ipynb[6]"
-        },
-        {
-            "source": "google cloud api.ipynb[10]",
-            "target": "google cloud api.ipynb[3]"
         },
         {
             "source": "google rpc.ipynb[0]",
@@ -6095,6 +6151,18 @@
             "target": "files.ipynb[1]"
         },
         {
+            "source": "files.ipynb[11]",
+            "target": "files.ipynb[5]"
+        },
+        {
+            "source": "files.ipynb[13]",
+            "target": "minimatch.ipynb[2]"
+        },
+        {
+            "source": "files.ipynb[17]",
+            "target": "files.ipynb[3]"
+        },
+        {
             "source": "files.ipynb[2]",
             "target": "d3.ipynb[0]"
         },
@@ -6131,18 +6199,6 @@
             "target": "files.ipynb[3]"
         },
         {
-            "source": "files.ipynb[11]",
-            "target": "files.ipynb[5]"
-        },
-        {
-            "source": "files.ipynb[13]",
-            "target": "minimatch.ipynb[2]"
-        },
-        {
-            "source": "files.ipynb[17]",
-            "target": "files.ipynb[3]"
-        },
-        {
             "source": "import.ipynb[0]",
             "target": "notebook extensions.ipynb[0]"
         },
@@ -6153,6 +6209,10 @@
         {
             "source": "import.ipynb[4]",
             "target": "quake3 server connector.ipynb[3]"
+        },
+        {
+            "source": "import.ipynb[5]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "import.ipynb[5]",
@@ -6177,6 +6237,10 @@
         {
             "source": "import.ipynb[6]",
             "target": "dylib.ipynb[10]"
+        },
+        {
+            "source": "import.ipynb[6]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "import.ipynb[6]",
@@ -6205,90 +6269,6 @@
         {
             "source": "kernels.ipynb[1]",
             "target": "kernels.ipynb[0]"
-        },
-        {
-            "source": "kernels.ipynb[2]",
-            "target": "kernels.ipynb[0]"
-        },
-        {
-            "source": "kernels.ipynb[4]",
-            "target": "patterns.ipynb[9]"
-        },
-        {
-            "source": "kernels.ipynb[4]",
-            "target": "kernels.ipynb[3]"
-        },
-        {
-            "source": "kernels.ipynb[5]",
-            "target": "kernels.ipynb[3]"
-        },
-        {
-            "source": "kernels.ipynb[5]",
-            "target": "kernels.ipynb[4]"
-        },
-        {
-            "source": "kernels.ipynb[6]",
-            "target": "patterns.ipynb[8]"
-        },
-        {
-            "source": "kernels.ipynb[6]",
-            "target": "patterns.ipynb[9]"
-        },
-        {
-            "source": "kernels.ipynb[6]",
-            "target": "kernels.ipynb[5]"
-        },
-        {
-            "source": "kernels.ipynb[6]",
-            "target": "kernels.ipynb[7]"
-        },
-        {
-            "source": "kernels.ipynb[6]",
-            "target": "kernels.ipynb[4]"
-        },
-        {
-            "source": "kernels.ipynb[7]",
-            "target": "files.ipynb[14]"
-        },
-        {
-            "source": "kernels.ipynb[8]",
-            "target": "patterns.ipynb[9]"
-        },
-        {
-            "source": "kernels.ipynb[8]",
-            "target": "kernels.ipynb[5]"
-        },
-        {
-            "source": "kernels.ipynb[8]",
-            "target": "kernels.ipynb[6]"
-        },
-        {
-            "source": "kernels.ipynb[8]",
-            "target": "kernels.ipynb[7]"
-        },
-        {
-            "source": "kernels.ipynb[8]",
-            "target": "patterns.ipynb[8]"
-        },
-        {
-            "source": "kernels.ipynb[9]",
-            "target": "patterns.ipynb[9]"
-        },
-        {
-            "source": "kernels.ipynb[9]",
-            "target": "kernels.ipynb[5]"
-        },
-        {
-            "source": "kernels.ipynb[9]",
-            "target": "patterns.ipynb[8]"
-        },
-        {
-            "source": "kernels.ipynb[9]",
-            "target": "kernels.ipynb[8]"
-        },
-        {
-            "source": "kernels.ipynb[9]",
-            "target": "kernels.ipynb[7]"
         },
         {
             "source": "kernels.ipynb[10]",
@@ -6383,6 +6363,10 @@
             "target": "patterns.ipynb[9]"
         },
         {
+            "source": "kernels.ipynb[2]",
+            "target": "kernels.ipynb[0]"
+        },
+        {
             "source": "kernels.ipynb[20]",
             "target": "kernels.ipynb[0]"
         },
@@ -6397,6 +6381,86 @@
         {
             "source": "kernels.ipynb[20]",
             "target": "git index.ipynb[19]"
+        },
+        {
+            "source": "kernels.ipynb[4]",
+            "target": "patterns.ipynb[9]"
+        },
+        {
+            "source": "kernels.ipynb[4]",
+            "target": "kernels.ipynb[3]"
+        },
+        {
+            "source": "kernels.ipynb[5]",
+            "target": "kernels.ipynb[3]"
+        },
+        {
+            "source": "kernels.ipynb[5]",
+            "target": "kernels.ipynb[4]"
+        },
+        {
+            "source": "kernels.ipynb[6]",
+            "target": "patterns.ipynb[8]"
+        },
+        {
+            "source": "kernels.ipynb[6]",
+            "target": "patterns.ipynb[9]"
+        },
+        {
+            "source": "kernels.ipynb[6]",
+            "target": "kernels.ipynb[5]"
+        },
+        {
+            "source": "kernels.ipynb[6]",
+            "target": "kernels.ipynb[7]"
+        },
+        {
+            "source": "kernels.ipynb[6]",
+            "target": "kernels.ipynb[4]"
+        },
+        {
+            "source": "kernels.ipynb[7]",
+            "target": "files.ipynb[14]"
+        },
+        {
+            "source": "kernels.ipynb[8]",
+            "target": "patterns.ipynb[9]"
+        },
+        {
+            "source": "kernels.ipynb[8]",
+            "target": "kernels.ipynb[5]"
+        },
+        {
+            "source": "kernels.ipynb[8]",
+            "target": "kernels.ipynb[6]"
+        },
+        {
+            "source": "kernels.ipynb[8]",
+            "target": "kernels.ipynb[7]"
+        },
+        {
+            "source": "kernels.ipynb[8]",
+            "target": "patterns.ipynb[8]"
+        },
+        {
+            "source": "kernels.ipynb[9]",
+            "target": "patterns.ipynb[9]"
+        },
+        {
+            "source": "kernels.ipynb[9]",
+            "target": "kernels.ipynb[5]"
+        },
+        {
+            "source": "kernels.ipynb[9]",
+            "target": "patterns.ipynb[8]"
+        },
+        {
+            "source": "kernels.ipynb[9]",
+            "target": "kernels.ipynb[8]"
+        },
+        {
+            "source": "kernels.ipynb[9]",
+            "target": "kernels.ipynb[7]"
         },
         {
             "source": "languages.ipynb[3]",
@@ -6429,50 +6493,6 @@
         {
             "source": "languages.ipynb[8]",
             "target": "notebook.ipynb[5]"
-        },
-        {
-            "source": "notebook.ipynb[4]",
-            "target": "syntax.ipynb[19]"
-        },
-        {
-            "source": "notebook.ipynb[4]",
-            "target": "languages.ipynb[3]"
-        },
-        {
-            "source": "notebook.ipynb[5]",
-            "target": "syntax.ipynb[19]"
-        },
-        {
-            "source": "notebook.ipynb[5]",
-            "target": "languages.ipynb[3]"
-        },
-        {
-            "source": "notebook.ipynb[5]",
-            "target": "notebook.ipynb[13]"
-        },
-        {
-            "source": "notebook.ipynb[5]",
-            "target": "syntax.ipynb[16]"
-        },
-        {
-            "source": "notebook.ipynb[5]",
-            "target": "json.ipynb[0]"
-        },
-        {
-            "source": "notebook.ipynb[7]",
-            "target": "languages.ipynb[3]"
-        },
-        {
-            "source": "notebook.ipynb[7]",
-            "target": "syntax.ipynb[19]"
-        },
-        {
-            "source": "notebook.ipynb[7]",
-            "target": "notebook.ipynb[13]"
-        },
-        {
-            "source": "notebook.ipynb[8]",
-            "target": "notebook.ipynb[7]"
         },
         {
             "source": "notebook.ipynb[10]",
@@ -6525,6 +6545,50 @@
         {
             "source": "notebook.ipynb[13]",
             "target": "notebook.ipynb[12]"
+        },
+        {
+            "source": "notebook.ipynb[4]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "notebook.ipynb[4]",
+            "target": "languages.ipynb[3]"
+        },
+        {
+            "source": "notebook.ipynb[5]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "notebook.ipynb[5]",
+            "target": "languages.ipynb[3]"
+        },
+        {
+            "source": "notebook.ipynb[5]",
+            "target": "notebook.ipynb[13]"
+        },
+        {
+            "source": "notebook.ipynb[5]",
+            "target": "syntax.ipynb[16]"
+        },
+        {
+            "source": "notebook.ipynb[5]",
+            "target": "json.ipynb[0]"
+        },
+        {
+            "source": "notebook.ipynb[7]",
+            "target": "languages.ipynb[3]"
+        },
+        {
+            "source": "notebook.ipynb[7]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "notebook.ipynb[7]",
+            "target": "notebook.ipynb[13]"
+        },
+        {
+            "source": "notebook.ipynb[8]",
+            "target": "notebook.ipynb[7]"
         },
         {
             "source": "patterns.ipynb[2]",
@@ -6635,42 +6699,6 @@
             "target": "syntax.ipynb[19]"
         },
         {
-            "source": "syntax.ipynb[2]",
-            "target": "syntax.ipynb[0]"
-        },
-        {
-            "source": "syntax.ipynb[3]",
-            "target": "syntax.ipynb[2]"
-        },
-        {
-            "source": "syntax.ipynb[3]",
-            "target": "files.ipynb[5]"
-        },
-        {
-            "source": "syntax.ipynb[4]",
-            "target": "syntax.ipynb[3]"
-        },
-        {
-            "source": "syntax.ipynb[5]",
-            "target": "syntax.ipynb[19]"
-        },
-        {
-            "source": "syntax.ipynb[7]",
-            "target": "syntax.ipynb[19]"
-        },
-        {
-            "source": "syntax.ipynb[7]",
-            "target": "syntax.ipynb[5]"
-        },
-        {
-            "source": "syntax.ipynb[8]",
-            "target": "syntax.ipynb[7]"
-        },
-        {
-            "source": "syntax.ipynb[9]",
-            "target": "syntax.ipynb[19]"
-        },
-        {
             "source": "syntax.ipynb[10]",
             "target": "syntax.ipynb[9]"
         },
@@ -6705,6 +6733,10 @@
         {
             "source": "syntax.ipynb[19]",
             "target": "syntax.ipynb[16]"
+        },
+        {
+            "source": "syntax.ipynb[2]",
+            "target": "syntax.ipynb[0]"
         },
         {
             "source": "syntax.ipynb[21]",
@@ -6759,6 +6791,46 @@
             "target": "syntax.ipynb[19]"
         },
         {
+            "source": "syntax.ipynb[3]",
+            "target": "syntax.ipynb[2]"
+        },
+        {
+            "source": "syntax.ipynb[3]",
+            "target": "files.ipynb[5]"
+        },
+        {
+            "source": "syntax.ipynb[4]",
+            "target": "syntax.ipynb[3]"
+        },
+        {
+            "source": "syntax.ipynb[5]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "syntax.ipynb[7]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "syntax.ipynb[7]",
+            "target": "syntax.ipynb[5]"
+        },
+        {
+            "source": "syntax.ipynb[8]",
+            "target": "syntax.ipynb[7]"
+        },
+        {
+            "source": "syntax.ipynb[9]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "voidzero.ipynb[3]",
+            "target": "voidzero.ipynb[1]"
+        },
+        {
+            "source": "voidzero.ipynb[3]",
+            "target": "llama.ipynb[0]"
+        },
+        {
             "source": "filesystem.ipynb[1]",
             "target": "llm writing.ipynb[4]"
         },
@@ -6773,6 +6845,10 @@
         {
             "source": "filesystem.ipynb[4]",
             "target": "llm writing.ipynb[4]"
+        },
+        {
+            "source": "filesystem.ipynb[5]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "filesystem.ipynb[5]",
@@ -6853,6 +6929,10 @@
         {
             "source": "git index.ipynb[18]",
             "target": "git index.ipynb[19]"
+        },
+        {
+            "source": "git index.ipynb[18]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "git index.ipynb[18]",
@@ -6999,6 +7079,10 @@
             "target": "google calendar.ipynb[7]"
         },
         {
+            "source": "demo.ipynb[8]",
+            "target": "node simple-imap.ipynb[0]"
+        },
+        {
             "source": "docker demo.ipynb[1]",
             "target": "selenium commands.ipynb[3]"
         },
@@ -7015,8 +7099,16 @@
             "target": "vnc.ipynb[4]"
         },
         {
-            "source": "How code should look.ipynb[0]",
-            "target": "node simple-imap.ipynb[5]"
+            "source": "Angular components.ipynb[3]",
+            "target": "gulp.ipynb[5]"
+        },
+        {
+            "source": "display angular.ipynb[1]",
+            "target": "files.ipynb[5]"
+        },
+        {
+            "source": "display angular.ipynb[1]",
+            "target": "angular render service.ipynb[0]"
         },
         {
             "source": "de-linting.ipynb[2]",
@@ -7063,6 +7155,10 @@
             "target": "gulp.ipynb[0]"
         },
         {
+            "source": "How code should look.ipynb[0]",
+            "target": "node simple-imap.ipynb[5]"
+        },
+        {
             "source": "node express.ipynb[0]",
             "target": "node express.ipynb[1]"
         },
@@ -7077,38 +7173,6 @@
         {
             "source": "node express.ipynb[1]",
             "target": "git index.ipynb[1]"
-        },
-        {
-            "source": "node express.ipynb[2]",
-            "target": "node express.ipynb[0]"
-        },
-        {
-            "source": "node express.ipynb[2]",
-            "target": "node express.ipynb[2]"
-        },
-        {
-            "source": "node express.ipynb[3]",
-            "target": "node express.ipynb[5]"
-        },
-        {
-            "source": "node express.ipynb[3]",
-            "target": "node express.ipynb[3]"
-        },
-        {
-            "source": "node express.ipynb[3]",
-            "target": "syntax.ipynb[7]"
-        },
-        {
-            "source": "node express.ipynb[3]",
-            "target": "git index.ipynb[1]"
-        },
-        {
-            "source": "node express.ipynb[6]",
-            "target": "node express.ipynb[2]"
-        },
-        {
-            "source": "node express.ipynb[6]",
-            "target": "node express.ipynb[4]"
         },
         {
             "source": "node express.ipynb[16]",
@@ -7141,6 +7205,38 @@
         {
             "source": "node express.ipynb[19]",
             "target": "node express.ipynb[17]"
+        },
+        {
+            "source": "node express.ipynb[2]",
+            "target": "node express.ipynb[0]"
+        },
+        {
+            "source": "node express.ipynb[2]",
+            "target": "node express.ipynb[2]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "node express.ipynb[5]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "node express.ipynb[3]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "syntax.ipynb[7]"
+        },
+        {
+            "source": "node express.ipynb[3]",
+            "target": "git index.ipynb[1]"
+        },
+        {
+            "source": "node express.ipynb[6]",
+            "target": "node express.ipynb[2]"
+        },
+        {
+            "source": "node express.ipynb[6]",
+            "target": "node express.ipynb[4]"
         },
         {
             "source": "node simple-imap.ipynb[0]",
@@ -7195,6 +7291,34 @@
             "target": "test runner.ipynb[0]"
         },
         {
+            "source": "test runner.ipynb[14]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "test runner.ipynb[14]",
+            "target": "gulp.ipynb[1]"
+        },
+        {
+            "source": "test runner.ipynb[14]",
+            "target": "gulp.ipynb[0]"
+        },
+        {
+            "source": "test runner.ipynb[15]",
+            "target": "antlr.ipynb[3]"
+        },
+        {
+            "source": "test runner.ipynb[16]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "test runner.ipynb[16]",
+            "target": "gulp.ipynb[1]"
+        },
+        {
+            "source": "test runner.ipynb[16]",
+            "target": "gulp.ipynb[0]"
+        },
+        {
             "source": "test runner.ipynb[2]",
             "target": "test runner.ipynb[0]"
         },
@@ -7219,38 +7343,6 @@
             "target": "test runner.ipynb[4]"
         },
         {
-            "source": "test runner.ipynb[13]",
-            "target": "gulp.ipynb[1]"
-        },
-        {
-            "source": "test runner.ipynb[13]",
-            "target": "gulp.ipynb[0]"
-        },
-        {
-            "source": "test runner.ipynb[13]",
-            "target": "llama.ipynb[0]"
-        },
-        {
-            "source": "test runner.ipynb[14]",
-            "target": "gulp.ipynb[1]"
-        },
-        {
-            "source": "test runner.ipynb[14]",
-            "target": "gulp.ipynb[0]"
-        },
-        {
-            "source": "test runner.ipynb[15]",
-            "target": "antlr.ipynb[3]"
-        },
-        {
-            "source": "test runner.ipynb[16]",
-            "target": "gulp.ipynb[1]"
-        },
-        {
-            "source": "test runner.ipynb[16]",
-            "target": "gulp.ipynb[0]"
-        },
-        {
             "source": "twilio.ipynb[0]",
             "target": "google calendar.ipynb[8]"
         },
@@ -7265,54 +7357,6 @@
         {
             "source": "zuora to eloqua.ipynb[0]",
             "target": "polyfills.ipynb[0]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[2]",
-            "target": "zuora to eloqua.ipynb[0]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[2]",
-            "target": "polyfills.ipynb[0]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[4]",
-            "target": "zuora to eloqua.ipynb[3]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[5]",
-            "target": "polyfills.ipynb[0]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[5]",
-            "target": "zuora to eloqua.ipynb[10]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[6]",
-            "target": "polyfills.ipynb[0]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[6]",
-            "target": "zuora to eloqua.ipynb[5]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[6]",
-            "target": "zuora to eloqua.ipynb[12]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[8]",
-            "target": "zuora to eloqua.ipynb[3]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[8]",
-            "target": "zuora to eloqua.ipynb[10]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[8]",
-            "target": "zuora to eloqua.ipynb[9]"
-        },
-        {
-            "source": "zuora to eloqua.ipynb[8]",
-            "target": "zuora to eloqua.ipynb[7]"
         },
         {
             "source": "zuora to eloqua.ipynb[11]",
@@ -7403,6 +7447,14 @@
             "target": "zuora to eloqua.ipynb[0]"
         },
         {
+            "source": "zuora to eloqua.ipynb[2]",
+            "target": "zuora to eloqua.ipynb[0]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[2]",
+            "target": "polyfills.ipynb[0]"
+        },
+        {
             "source": "zuora to eloqua.ipynb[20]",
             "target": "zuora to eloqua.ipynb[19]"
         },
@@ -7465,6 +7517,46 @@
         {
             "source": "zuora to eloqua.ipynb[27]",
             "target": "zuora to eloqua.ipynb[0]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[4]",
+            "target": "zuora to eloqua.ipynb[3]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[5]",
+            "target": "polyfills.ipynb[0]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[5]",
+            "target": "zuora to eloqua.ipynb[10]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[6]",
+            "target": "polyfills.ipynb[0]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[6]",
+            "target": "zuora to eloqua.ipynb[5]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[6]",
+            "target": "zuora to eloqua.ipynb[12]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[8]",
+            "target": "zuora to eloqua.ipynb[3]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[8]",
+            "target": "zuora to eloqua.ipynb[10]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[8]",
+            "target": "zuora to eloqua.ipynb[9]"
+        },
+        {
+            "source": "zuora to eloqua.ipynb[8]",
+            "target": "zuora to eloqua.ipynb[7]"
         },
         {
             "source": "brians resume.ipynb[0]",
@@ -7563,6 +7655,26 @@
             "target": "google sheets.ipynb[8]"
         },
         {
+            "source": "convert spreadsheet.ipynb[10]",
+            "target": "rpc.ipynb[7]"
+        },
+        {
+            "source": "convert spreadsheet.ipynb[10]",
+            "target": "convert spreadsheet.ipynb[2]"
+        },
+        {
+            "source": "convert spreadsheet.ipynb[10]",
+            "target": "files.ipynb[3]"
+        },
+        {
+            "source": "convert spreadsheet.ipynb[10]",
+            "target": "google storage api.ipynb[2]"
+        },
+        {
+            "source": "convert spreadsheet.ipynb[10]",
+            "target": "google storage api.ipynb[4]"
+        },
+        {
             "source": "convert spreadsheet.ipynb[2]",
             "target": "convert spreadsheet.ipynb[1]"
         },
@@ -7647,26 +7759,6 @@
             "target": "google storage api.ipynb[4]"
         },
         {
-            "source": "convert spreadsheet.ipynb[10]",
-            "target": "rpc.ipynb[7]"
-        },
-        {
-            "source": "convert spreadsheet.ipynb[10]",
-            "target": "convert spreadsheet.ipynb[2]"
-        },
-        {
-            "source": "convert spreadsheet.ipynb[10]",
-            "target": "files.ipynb[3]"
-        },
-        {
-            "source": "convert spreadsheet.ipynb[10]",
-            "target": "google storage api.ipynb[2]"
-        },
-        {
-            "source": "convert spreadsheet.ipynb[10]",
-            "target": "google storage api.ipynb[4]"
-        },
-        {
             "source": "discord activities.ipynb[3]",
             "target": "discord.ipynb[1]"
         },
@@ -7685,6 +7777,10 @@
         {
             "source": "discord imagine.ipynb[0]",
             "target": "discord.ipynb[2]"
+        },
+        {
+            "source": "discord imagine.ipynb[0]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "discord imagine.ipynb[0]",
@@ -7843,6 +7939,10 @@
             "target": "data collection.ipynb[8]"
         },
         {
+            "source": "discord tools.ipynb[0]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
             "source": "discord tools.ipynb[1]",
             "target": "usage.ipynb[2]"
         },
@@ -7873,6 +7973,10 @@
         {
             "source": "discord tools.ipynb[2]",
             "target": "discord.ipynb[3]"
+        },
+        {
+            "source": "discord tools.ipynb[2]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "discord tools.ipynb[2]",
@@ -8012,6 +8116,10 @@
         },
         {
             "source": "discord tools.ipynb[9]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "discord tools.ipynb[9]",
             "target": "discord.ipynb[0]"
         },
         {
@@ -8033,6 +8141,14 @@
         {
             "source": "discord.ipynb[1]",
             "target": "usage.ipynb[0]"
+        },
+        {
+            "source": "discord.ipynb[11]",
+            "target": "discord.ipynb[3]"
+        },
+        {
+            "source": "discord.ipynb[11]",
+            "target": "discord.ipynb[10]"
         },
         {
             "source": "discord.ipynb[3]",
@@ -8115,30 +8231,6 @@
             "target": "discord.ipynb[0]"
         },
         {
-            "source": "discord.ipynb[11]",
-            "target": "discord.ipynb[3]"
-        },
-        {
-            "source": "discord.ipynb[11]",
-            "target": "discord.ipynb[10]"
-        },
-        {
-            "source": "documentation.ipynb[0]",
-            "target": "rpc.ipynb[8]"
-        },
-        {
-            "source": "documentation.ipynb[0]",
-            "target": "rpc.ipynb[2]"
-        },
-        {
-            "source": "documentation.ipynb[0]",
-            "target": "rpc.ipynb[3]"
-        },
-        {
-            "source": "documentation.ipynb[0]",
-            "target": "syntax.ipynb[7]"
-        },
-        {
             "source": "documentation.ipynb[0]",
             "target": "node express.ipynb[4]"
         },
@@ -8168,6 +8260,10 @@
         },
         {
             "source": "documentation.ipynb[4]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "documentation.ipynb[4]",
             "target": "llama.ipynb[0]"
         },
         {
@@ -8181,34 +8277,6 @@
         {
             "source": "documentation.ipynb[4]",
             "target": "documentation.ipynb[7]"
-        },
-        {
-            "source": "edit anywhere.ipynb[4]",
-            "target": "edit anywhere.ipynb[3]"
-        },
-        {
-            "source": "edit anywhere.ipynb[6]",
-            "target": "patterns.ipynb[2]"
-        },
-        {
-            "source": "edit anywhere.ipynb[7]",
-            "target": "edit anywhere.ipynb[10]"
-        },
-        {
-            "source": "edit anywhere.ipynb[7]",
-            "target": "edit anywhere.ipynb[1]"
-        },
-        {
-            "source": "edit anywhere.ipynb[7]",
-            "target": "patterns.ipynb[2]"
-        },
-        {
-            "source": "edit anywhere.ipynb[7]",
-            "target": "edit anywhere.ipynb[6]"
-        },
-        {
-            "source": "edit anywhere.ipynb[7]",
-            "target": "edit anywhere.ipynb[5]"
         },
         {
             "source": "edit anywhere.ipynb[10]",
@@ -8237,6 +8305,34 @@
         {
             "source": "edit anywhere.ipynb[10]",
             "target": "edit anywhere.ipynb[10]"
+        },
+        {
+            "source": "edit anywhere.ipynb[4]",
+            "target": "edit anywhere.ipynb[3]"
+        },
+        {
+            "source": "edit anywhere.ipynb[6]",
+            "target": "patterns.ipynb[2]"
+        },
+        {
+            "source": "edit anywhere.ipynb[7]",
+            "target": "edit anywhere.ipynb[10]"
+        },
+        {
+            "source": "edit anywhere.ipynb[7]",
+            "target": "edit anywhere.ipynb[1]"
+        },
+        {
+            "source": "edit anywhere.ipynb[7]",
+            "target": "patterns.ipynb[2]"
+        },
+        {
+            "source": "edit anywhere.ipynb[7]",
+            "target": "edit anywhere.ipynb[6]"
+        },
+        {
+            "source": "edit anywhere.ipynb[7]",
+            "target": "edit anywhere.ipynb[5]"
         },
         {
             "source": "grafana.ipynb[0]",
@@ -8297,6 +8393,10 @@
         {
             "source": "linkedin.ipynb[21]",
             "target": "linkedin.ipynb[4]"
+        },
+        {
+            "source": "linkedin.ipynb[22]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "linkedin.ipynb[24]",
@@ -8451,22 +8551,6 @@
             "target": "files.ipynb[5]"
         },
         {
-            "source": "quake 3.ipynb[2]",
-            "target": "files.ipynb[5]"
-        },
-        {
-            "source": "quake 3.ipynb[4]",
-            "target": "files.ipynb[14]"
-        },
-        {
-            "source": "quake 3.ipynb[8]",
-            "target": "quake 3.ipynb[7]"
-        },
-        {
-            "source": "quake 3.ipynb[9]",
-            "target": "quake 3.ipynb[8]"
-        },
-        {
             "source": "quake 3.ipynb[11]",
             "target": "files.ipynb[3]"
         },
@@ -8559,6 +8643,10 @@
             "target": "quake 3.ipynb[24]"
         },
         {
+            "source": "quake 3.ipynb[2]",
+            "target": "files.ipynb[5]"
+        },
+        {
             "source": "quake 3.ipynb[23]",
             "target": "quake 3.ipynb[26]"
         },
@@ -8631,84 +8719,24 @@
             "target": "files.ipynb[3]"
         },
         {
-            "source": "quake3 server connector.ipynb[0]",
-            "target": "discord.ipynb[3]"
+            "source": "quake 3.ipynb[4]",
+            "target": "files.ipynb[14]"
         },
         {
-            "source": "quake3 server connector.ipynb[0]",
-            "target": "discord.ipynb[0]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[2]",
-            "target": "discord.ipynb[3]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[2]",
-            "target": "discord.ipynb[0]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[2]",
-            "target": "discord.ipynb[6]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[3]",
-            "target": "quake3 server connector.ipynb[2]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[4]",
-            "target": "discord.ipynb[3]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[4]",
-            "target": "quake3 server connector.ipynb[6]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[5]",
-            "target": "quake3 server connector.ipynb[4]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[5]",
-            "target": "discord.ipynb[3]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[5]",
-            "target": "quake3 server connector.ipynb[6]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[5]",
-            "target": "quake3 server connector.ipynb[9]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[5]",
-            "target": "quake3 server connector.ipynb[16]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[6]",
+            "source": "quake 3.ipynb[8]",
             "target": "quake 3.ipynb[7]"
         },
         {
-            "source": "quake3 server connector.ipynb[6]",
-            "target": "quake3 server connector.ipynb[8]"
+            "source": "quake 3.ipynb[9]",
+            "target": "quake 3.ipynb[8]"
         },
         {
-            "source": "quake3 server connector.ipynb[6]",
-            "target": "quake3 server connector.ipynb[15]"
+            "source": "quake3 server connector.ipynb[0]",
+            "target": "discord.ipynb[3]"
         },
         {
-            "source": "quake3 server connector.ipynb[6]",
-            "target": "quake3 server connector.ipynb[11]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[6]",
-            "target": "quake3 server connector.ipynb[10]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[7]",
-            "target": "quake3 server connector.ipynb[6]"
-        },
-        {
-            "source": "quake3 server connector.ipynb[9]",
-            "target": "quake3 server connector.ipynb[16]"
+            "source": "quake3 server connector.ipynb[0]",
+            "target": "discord.ipynb[0]"
         },
         {
             "source": "quake3 server connector.ipynb[10]",
@@ -8780,6 +8808,78 @@
         },
         {
             "source": "quake3 server connector.ipynb[18]",
+            "target": "quake3 server connector.ipynb[16]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[2]",
+            "target": "discord.ipynb[3]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[2]",
+            "target": "discord.ipynb[0]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[2]",
+            "target": "discord.ipynb[6]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[3]",
+            "target": "quake3 server connector.ipynb[2]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[4]",
+            "target": "discord.ipynb[3]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[4]",
+            "target": "quake3 server connector.ipynb[6]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[5]",
+            "target": "quake3 server connector.ipynb[4]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[5]",
+            "target": "discord.ipynb[3]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[5]",
+            "target": "quake3 server connector.ipynb[6]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[5]",
+            "target": "quake3 server connector.ipynb[9]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[5]",
+            "target": "quake3 server connector.ipynb[16]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[6]",
+            "target": "quake 3.ipynb[7]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[6]",
+            "target": "quake3 server connector.ipynb[8]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[6]",
+            "target": "quake3 server connector.ipynb[15]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[6]",
+            "target": "quake3 server connector.ipynb[11]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[6]",
+            "target": "quake3 server connector.ipynb[10]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[7]",
+            "target": "quake3 server connector.ipynb[6]"
+        },
+        {
+            "source": "quake3 server connector.ipynb[9]",
             "target": "quake3 server connector.ipynb[16]"
         },
         {
@@ -9031,6 +9131,38 @@
             "target": "google drive.ipynb[3]"
         },
         {
+            "source": "google drive.ipynb[10]",
+            "target": "convert spreadsheet.ipynb[1]"
+        },
+        {
+            "source": "google drive.ipynb[10]",
+            "target": "google drive.ipynb[6]"
+        },
+        {
+            "source": "google drive.ipynb[10]",
+            "target": "google drive.ipynb[2]"
+        },
+        {
+            "source": "google drive.ipynb[10]",
+            "target": "google drive.ipynb[3]"
+        },
+        {
+            "source": "google drive.ipynb[11]",
+            "target": "convert spreadsheet.ipynb[1]"
+        },
+        {
+            "source": "google drive.ipynb[11]",
+            "target": "google drive.ipynb[6]"
+        },
+        {
+            "source": "google drive.ipynb[11]",
+            "target": "google drive.ipynb[2]"
+        },
+        {
+            "source": "google drive.ipynb[11]",
+            "target": "google drive.ipynb[3]"
+        },
+        {
             "source": "google drive.ipynb[2]",
             "target": "google drive.ipynb[0]"
         },
@@ -9075,36 +9207,8 @@
             "target": "google authorize.ipynb[0]"
         },
         {
-            "source": "google drive.ipynb[10]",
-            "target": "convert spreadsheet.ipynb[1]"
-        },
-        {
-            "source": "google drive.ipynb[10]",
-            "target": "google drive.ipynb[6]"
-        },
-        {
-            "source": "google drive.ipynb[10]",
-            "target": "google drive.ipynb[2]"
-        },
-        {
-            "source": "google drive.ipynb[10]",
-            "target": "google drive.ipynb[3]"
-        },
-        {
-            "source": "google drive.ipynb[11]",
-            "target": "convert spreadsheet.ipynb[1]"
-        },
-        {
-            "source": "google drive.ipynb[11]",
-            "target": "google drive.ipynb[6]"
-        },
-        {
-            "source": "google drive.ipynb[11]",
-            "target": "google drive.ipynb[2]"
-        },
-        {
-            "source": "google drive.ipynb[11]",
-            "target": "google drive.ipynb[3]"
+            "source": "google drive.ipynb[8]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "google maps.ipynb[3]",
@@ -9195,6 +9299,10 @@
             "target": "google sheets.ipynb[0]"
         },
         {
+            "source": "google sheets.ipynb[10]",
+            "target": "rpc.ipynb[8]"
+        },
+        {
             "source": "google sheets.ipynb[2]",
             "target": "google sheets.ipynb[10]"
         },
@@ -9247,10 +9355,6 @@
             "target": "google sheets.ipynb[6]"
         },
         {
-            "source": "google sheets.ipynb[10]",
-            "target": "rpc.ipynb[8]"
-        },
-        {
             "source": "antlr.ipynb[1]",
             "target": "patterns.ipynb[2]"
         },
@@ -9265,6 +9369,18 @@
         {
             "source": "antlr.ipynb[1]",
             "target": "antlr.ipynb[3]"
+        },
+        {
+            "source": "antlr.ipynb[13]",
+            "target": "files.ipynb[3]"
+        },
+        {
+            "source": "antlr.ipynb[13]",
+            "target": "child process.ipynb[0]"
+        },
+        {
+            "source": "antlr.ipynb[13]",
+            "target": "files.ipynb[15]"
         },
         {
             "source": "antlr.ipynb[3]",
@@ -9299,18 +9415,6 @@
             "target": "languages.ipynb[3]"
         },
         {
-            "source": "antlr.ipynb[13]",
-            "target": "files.ipynb[3]"
-        },
-        {
-            "source": "antlr.ipynb[13]",
-            "target": "child process.ipynb[0]"
-        },
-        {
-            "source": "antlr.ipynb[13]",
-            "target": "files.ipynb[15]"
-        },
-        {
             "source": "bison.ipynb[1]",
             "target": "patterns.ipynb[2]"
         },
@@ -9325,6 +9429,10 @@
         {
             "source": "bison.ipynb[1]",
             "target": "google timeline.ipynb[5]"
+        },
+        {
+            "source": "csharp.ipynb[1]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "csharp.ipynb[1]",
@@ -9361,46 +9469,6 @@
         {
             "source": "python.ipynb[2]",
             "target": "antlr.ipynb[3]"
-        },
-        {
-            "source": "What is Selenium.ipynb[0]",
-            "target": "child process.ipynb[0]"
-        },
-        {
-            "source": "What is Selenium.ipynb[0]",
-            "target": "docker demo.ipynb[1]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "webdriver.ipynb[0]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "service auth.ipynb[0]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "utilities.ipynb[1]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "orchestration.ipynb[0]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "utilities.ipynb[2]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "quake 3.ipynb[11]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "forms.ipynb[0]"
-        },
-        {
-            "source": "What is Selenium.ipynb[2]",
-            "target": "llama.ipynb[0]"
         },
         {
             "source": "facebook connections.ipynb[0]",
@@ -9517,6 +9585,18 @@
         {
             "source": "google takeout.ipynb[3]",
             "target": "d3.ipynb[3]"
+        },
+        {
+            "source": "google timeline.ipynb[3]",
+            "target": "google calendar.ipynb[6]"
+        },
+        {
+            "source": "google timeline.ipynb[3]",
+            "target": "google calendar.ipynb[0]"
+        },
+        {
+            "source": "google timeline.ipynb[3]",
+            "target": "google maps.ipynb[3]"
         },
         {
             "source": "google timeline.ipynb[5]",
@@ -9720,6 +9800,10 @@
         },
         {
             "source": "scraping.ipynb[5]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "scraping.ipynb[5]",
             "target": "scraping.ipynb[6]"
         },
         {
@@ -9729,6 +9813,10 @@
         {
             "source": "scraping.ipynb[5]",
             "target": "llama.ipynb[10]"
+        },
+        {
+            "source": "scraping.ipynb[6]",
+            "target": "data collection.ipynb[7]"
         },
         {
             "source": "scraping.ipynb[6]",
@@ -9823,6 +9911,46 @@
             "target": "patterns.ipynb[0]"
         },
         {
+            "source": "What is Selenium.ipynb[0]",
+            "target": "child process.ipynb[0]"
+        },
+        {
+            "source": "What is Selenium.ipynb[0]",
+            "target": "docker demo.ipynb[1]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "webdriver.ipynb[0]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "service auth.ipynb[0]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "utilities.ipynb[1]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "orchestration.ipynb[0]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "utilities.ipynb[2]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "quake 3.ipynb[11]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "forms.ipynb[0]"
+        },
+        {
+            "source": "What is Selenium.ipynb[2]",
+            "target": "llama.ipynb[0]"
+        },
+        {
             "source": "you earned it.ipynb[1]",
             "target": "webdriver.ipynb[0]"
         },
@@ -9833,6 +9961,14 @@
         {
             "source": "ciede2000.ipynb[2]",
             "target": "ciede2000.ipynb[0]"
+        },
+        {
+            "source": "dylib.ipynb[10]",
+            "target": "data collection.ipynb[7]"
+        },
+        {
+            "source": "dylib.ipynb[10]",
+            "target": "shell-parse.ipynb[0]"
         },
         {
             "source": "dylib.ipynb[4]",
@@ -9849,10 +9985,6 @@
         {
             "source": "dylib.ipynb[8]",
             "target": "antlr.ipynb[3]"
-        },
-        {
-            "source": "dylib.ipynb[10]",
-            "target": "shell-parse.ipynb[0]"
         },
         {
             "source": "heartbeat.ipynb[1]",
@@ -9881,18 +10013,6 @@
         {
             "source": "windows.ipynb[0]",
             "target": "syntax.ipynb[21]"
-        },
-        {
-            "source": "Angular components.ipynb[3]",
-            "target": "gulp.ipynb[5]"
-        },
-        {
-            "source": "display angular.ipynb[1]",
-            "target": "files.ipynb[5]"
-        },
-        {
-            "source": "display angular.ipynb[1]",
-            "target": "angular render service.ipynb[0]"
         }
     ],
     "searches": {
@@ -10430,108 +10550,11 @@
         "realiable-websocket.js": "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb[5]",
         "match language to grammar": "",
         "color-fader.js": "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb[9]",
-        "git service list": "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb[16]"
-    },
-    "times": {
-        "/Users/briancullinan/jupyter_ops/Frameworks/node simple-imap.ipynb": 1578449241000,
-        "/Users/briancullinan/jupyter_ops/Algorithms/llama vision.ipynb": 1744667039123,
-        "/Users/briancullinan/jupyter_ops/Algorithms/llm writing.ipynb": 1742093404929,
-        "/Users/briancullinan/jupyter_ops/Algorithms/llama.ipynb": 1744564158320,
-        "/Users/briancullinan/jupyter_ops/Core/cache.ipynb": 1744934543549,
-        "/Users/briancullinan/jupyter_ops/Databases/caches.ipynb": 1744667976005,
-        "/Users/briancullinan/jupyter_ops/Core/files.ipynb": 1744480751345,
-        "/Users/briancullinan/jupyter_ops/Core/syntax.ipynb": 1744852876569,
-        "/Users/briancullinan/jupyter_ops/Utilities/dylib.ipynb": 1744682917044,
-        "/Users/briancullinan/jupyter_ops/Languages/python.ipynb": 1744922194290,
-        "/Users/briancullinan/jupyter_ops/Algorithms/llm blogging.ipynb": 1741116318292,
-        "/Users/briancullinan/jupyter_ops/Analytics/data collection.ipynb": 1738358792864,
-        "/Users/briancullinan/jupyter_ops/Algorithms/llm tools.ipynb": 1740355915824,
-        "/Users/briancullinan/jupyter_ops/Algorithms/llm chat.ipynb": 1744675441375,
-        "/Users/briancullinan/jupyter_ops/Databases/git index.ipynb": 1744654706227,
-        "/Users/briancullinan/jupyter_ops/Algorithms/opencv.ipynb": 1744155297727,
-        "/Users/briancullinan/jupyter_ops/Utilities/dates.ipynb": 1515722434000,
-        "/Users/briancullinan/jupyter_ops/Google/google calendar.ipynb": 1744609540769,
-        "/Users/briancullinan/jupyter_ops/Selenium/webdriver.ipynb": 1740347450381,
-        "/Users/briancullinan/jupyter_ops/Core/patterns.ipynb": 1744568464016,
-        "/Users/briancullinan/jupyter_ops/Google/google calendar data.ipynb": 1602124207000,
-        "/Users/briancullinan/jupyter_ops/Analytics/movie database.ipynb": 1744599566227,
-        "/Users/briancullinan/jupyter_ops/Utilities/levenshtein.ipynb": 1744756610268,
-        "/Users/briancullinan/jupyter_ops/Google/google search api.ipynb": 1592600875000,
-        "/Users/briancullinan/jupyter_ops/Google/google sheets.ipynb": 1624077444000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/d3.ipynb": 1557605560000,
-        "/Users/briancullinan/jupyter_ops/Analytics/resume.ipynb": 1557605569000,
-        "/Users/briancullinan/jupyter_ops/Core/rpc.ipynb": 1744777677855,
-        "/Users/briancullinan/jupyter_ops/Utilities/bash.ipynb": 1744650004950,
-        "/Users/briancullinan/jupyter_ops/Cloud Services/google cloud api.ipynb": 1738639631974,
-        "/Users/briancullinan/jupyter_ops/Cloud Services/google storage api.ipynb": 1643816558000,
-        "/Users/briancullinan/jupyter_ops/Frontends/convert spreadsheet.ipynb": 1738640531491,
-        "/Users/briancullinan/jupyter_ops/Cloud Services/google rpc.ipynb": 1603062959000,
-        "/Users/briancullinan/jupyter_ops/Core/notebook.ipynb": 1744567867652,
-        "/Users/briancullinan/jupyter_ops/Frameworks/zuora to eloqua.ipynb": 1652316506000,
-        "/Users/briancullinan/jupyter_ops/Core/languages.ipynb": 1649950603000,
-        "/Users/briancullinan/jupyter_ops/Languages/minimatch.ipynb": 1579235767000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/notebook extensions.ipynb": 1561923854000,
-        "/Users/briancullinan/jupyter_ops/Games/quake3 server connector.ipynb": 1738469780090,
-        "/Users/briancullinan/jupyter_ops/Languages/antlr.ipynb": 1744922555545,
-        "/Users/briancullinan/jupyter_ops/Languages/csharp.ipynb": 1740682674276,
-        "/Users/briancullinan/jupyter_ops/Frameworks/gulp.ipynb": 1744736148500,
-        "/Users/briancullinan/jupyter_ops/Core/pyimport.ipynb": 1741033686742,
-        "/Users/briancullinan/jupyter_ops/Core/kernels.ipynb": 1744650670982,
-        "/Users/briancullinan/jupyter_ops/Languages/json.ipynb": 1563421830000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/de-linting.ipynb": 1744493414944,
-        "/Users/briancullinan/jupyter_ops/Google/google contacts.ipynb": 1511887066000,
-        "/Users/briancullinan/jupyter_ops/Cloud Services/google cloud commands.ipynb": 1556343901000,
-        "/Users/briancullinan/jupyter_ops/Utilities/polyfills.ipynb": 1624084235000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/node express.ipynb": 1744934533069,
-        "/Users/briancullinan/jupyter_ops/Frontends/documentation.ipynb": 1744915009577,
-        "/Users/briancullinan/jupyter_ops/Utilities/child process.ipynb": 1738622135375,
-        "/Users/briancullinan/jupyter_ops/Databases/git.ipynb": 1602138669000,
-        "/Users/briancullinan/jupyter_ops/Databases/git commands.ipynb": 1581524399000,
-        "/Users/briancullinan/jupyter_ops/Selenium/selenium commands.ipynb": 1738787130700,
-        "/Users/briancullinan/jupyter_ops/Docker/node install.ipynb": 1511994770000,
-        "/Users/briancullinan/jupyter_ops/Utilities/vnc.ipynb": 1557180626000,
-        "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb": 1562192584000,
-        "/Users/briancullinan/jupyter_ops/Selenium/service auth.ipynb": 1559875029000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/autorewire.ipynb": 1510360183000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb": 1744936295661,
-        "/Users/briancullinan/jupyter_ops/Frontends/brians resume.ipynb": 1744492567579,
-        "/Users/briancullinan/jupyter_ops/Selenium/scraping.ipynb": 1740353079366,
-        "/Users/briancullinan/jupyter_ops/Frontends/discord.ipynb": 1744777071197,
-        "/Users/briancullinan/jupyter_ops/Frontends/discord imagine.ipynb": 1744505856291,
-        "/Users/briancullinan/jupyter_ops/Frontends/discord tools.ipynb": 1740329365088,
-        "/Users/briancullinan/jupyter_ops/Frontends/discord activities.ipynb": 1744505629643,
-        "/Users/briancullinan/jupyter_ops/Frontends/discord remote.ipynb": 1744505665676,
-        "/Users/briancullinan/jupyter_ops/Utilities/robot.ipynb": 1740350019065,
-        "/Users/briancullinan/jupyter_ops/Google/google scheduling.ipynb": 1602100679000,
-        "/Users/briancullinan/jupyter_ops/Utilities/usage.ipynb": 1740328788196,
-        "/Users/briancullinan/jupyter_ops/Frameworks/jupyter interaction.ipynb": 1510360183000,
-        "/Users/briancullinan/jupyter_ops/Frontends/edit anywhere.ipynb": 1649474240000,
-        "/Users/briancullinan/jupyter_ops/Frontends/linkedin.ipynb": 1744769297462,
-        "/Users/briancullinan/jupyter_ops/Frontends/opengl.ipynb": 1741319518493,
-        "/Users/briancullinan/jupyter_ops/Frontends/qt.ipynb": 1740529062865,
-        "/Users/briancullinan/jupyter_ops/Frontends/study sauce.ipynb": 1738639719542,
-        "/Users/briancullinan/jupyter_ops/Games/quake 3.ipynb": 1725690235536,
-        "/Users/briancullinan/jupyter_ops/Utilities/bitbuffer.ipynb": 1740434597666,
-        "/Users/briancullinan/jupyter_ops/Languages/balanced.ipynb": 1576626817000,
-        "/Users/briancullinan/jupyter_ops/Games/quakejs.ipynb": 1603053969000,
-        "/Users/briancullinan/jupyter_ops/Selenium/google takeout.ipynb": 1511803619000,
-        "/Users/briancullinan/jupyter_ops/Frameworks/d3 dates.ipynb": 1575774788000,
-        "/Users/briancullinan/jupyter_ops/Selenium/google authorize.ipynb": 1736557774759,
-        "/Users/briancullinan/jupyter_ops/Utilities/heartbeat.ipynb": 1515130518000,
-        "/Users/briancullinan/jupyter_ops/Selenium/facebook data.ipynb": 1557807638000,
-        "/Users/briancullinan/jupyter_ops/Google/google drive.ipynb": 1738639761450,
-        "/Users/briancullinan/jupyter_ops/Google/google maps.ipynb": 1624116520000,
-        "/Users/briancullinan/jupyter_ops/Utilities/ciede2000.ipynb": 1740340529429,
-        "/Users/briancullinan/jupyter_ops/Selenium/google timeline.ipynb": 1516259770000,
-        "/Users/briancullinan/jupyter_ops/Docker/docker demo.ipynb": 1744767762262,
-        "/Users/briancullinan/jupyter_ops/Selenium/utilities.ipynb": 1738860740883,
-        "/Users/briancullinan/jupyter_ops/Selenium/orchestration.ipynb": 1650994137000,
-        "/Users/briancullinan/jupyter_ops/Selenium/forms.ipynb": 1557163611000,
-        "/Users/briancullinan/jupyter_ops/Selenium/What is Selenium.ipynb": 1557180269000,
-        "/Users/briancullinan/jupyter_ops/Selenium/facebook messaging.ipynb": 1562123449000,
-        "/Users/briancullinan/jupyter_ops/Selenium/facebook webdriver.ipynb": 1738815480799,
-        "/Users/briancullinan/jupyter_ops/Selenium/reddit.ipynb": 1740355785388,
-        "/Users/briancullinan/jupyter_ops/Utilities/shell-parse.ipynb": 1740530933939,
-        "/Users/briancullinan/jupyter_ops/Frameworks/Angular/angular render service.ipynb": 1561487089000
+        "git service list": "/Users/briancullinan/jupyter_ops/Frameworks/test runner.ipynb[16]",
+        "attribute code": "/Users/briancullinan/jupyter_ops/Core/voidzero.ipynb[1]",
+        "cache.ipynb": "/Users/briancullinan/jupyter_ops/Core/cache.ipynb",
+        "cache locations nearby": "/Users/briancullinan/jupyter_ops/Google/google maps.ipynb[3]",
+        "typeof INTERPRET[search] === 'undefined' ? search : INTERPRET[search": "/Users/briancullinan/jupyter_ops/Core/import.ipynb[7]",
+        "INTERPRET[s] || s": ""
     }
 }

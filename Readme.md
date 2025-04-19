@@ -33,4 +33,4 @@ DevOps crestomathy in jupyter notebooks.
 9. User arcan-fe to pull out audio attributes and make a music duplicate finder, do the same with images
 10. Add a gist feature with an editor in git index.ipynb, save to the local git-bare filesystem
 11. Add live reloading to node express.ipynb service
-
+12. Convert entire notebook to use morpheus style attributes like this code https://stackoverflow.com/questions/29182244/convert-a-string-to-a-template-string
