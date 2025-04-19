@@ -2600,36 +2600,42 @@
         },
         {
             "id": "test runner.ipynb[10]",
+            "cell": "color-fader.js",
+            "route": "ROUTE = /color-fader.js",
+            "service": "Frameworks"
+        },
+        {
+            "id": "test runner.ipynb[11]",
             "cell": "update-view.js",
             "route": "ROUTE = /update-view.js",
             "service": "Frameworks"
         },
         {
-            "id": "test runner.ipynb[11]",
+            "id": "test runner.ipynb[12]",
             "cell": "render-remote.js",
             "route": "ROUTE = /render-remote.js",
             "service": "Frameworks"
         },
         {
-            "id": "test runner.ipynb[12]",
+            "id": "test runner.ipynb[13]",
             "cell": "animate-nodes.js",
             "route": "ROUTE = /animate-nodes.js",
             "service": "Frameworks"
         },
         {
-            "id": "test runner.ipynb[13]",
+            "id": "test runner.ipynb[14]",
             "cell": "cell nodes",
             "route": "ROUTE = /node-graph.json",
             "service": "Frameworks"
         },
         {
-            "id": "test runner.ipynb[14]",
+            "id": "test runner.ipynb[15]",
             "cell": "git repo nodes",
             "route": "ROUTE = /:project/node-graph.json",
             "service": "Frameworks"
         },
         {
-            "id": "test runner.ipynb[15]",
+            "id": "test runner.ipynb[16]",
             "cell": "match language to grammar",
             "route": "",
             "service": "Frameworks"
@@ -2641,7 +2647,7 @@
             "service": "Languages"
         },
         {
-            "id": "test runner.ipynb[16]",
+            "id": "test runner.ipynb[17]",
             "cell": "git service list",
             "route": "ROUTE = /:project/service-list.json",
             "service": "Frameworks"
@@ -2666,8 +2672,8 @@
         },
         {
             "id": "test runner.ipynb[9]",
-            "cell": "color-fader.js",
-            "route": "ROUTE = /color-fader.js",
+            "cell": "highlight-nodes.js",
+            "route": "ROUTE = /highlight-nodes.js",
             "service": "Frameworks"
         },
         {
@@ -2690,8 +2696,8 @@
         },
         {
             "id": "test runner.ipynb[8]",
-            "cell": "highlight-nodes.js",
-            "route": "ROUTE = /highlight-nodes.js",
+            "cell": "trace nodes",
+            "route": "ROUTE = /trace-nodes.js",
             "service": "Frameworks"
         },
         {
@@ -7291,32 +7297,16 @@
             "target": "test runner.ipynb[0]"
         },
         {
-            "source": "test runner.ipynb[14]",
+            "source": "test runner.ipynb[15]",
             "target": "data collection.ipynb[7]"
         },
         {
-            "source": "test runner.ipynb[14]",
-            "target": "gulp.ipynb[1]"
-        },
-        {
-            "source": "test runner.ipynb[14]",
-            "target": "gulp.ipynb[0]"
-        },
-        {
-            "source": "test runner.ipynb[15]",
+            "source": "test runner.ipynb[16]",
             "target": "antlr.ipynb[3]"
         },
         {
-            "source": "test runner.ipynb[16]",
+            "source": "test runner.ipynb[17]",
             "target": "data collection.ipynb[7]"
-        },
-        {
-            "source": "test runner.ipynb[16]",
-            "target": "gulp.ipynb[1]"
-        },
-        {
-            "source": "test runner.ipynb[16]",
-            "target": "gulp.ipynb[0]"
         },
         {
             "source": "test runner.ipynb[2]",
