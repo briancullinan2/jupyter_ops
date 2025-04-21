@@ -3847,6 +3847,24 @@
             "service": "Frontends"
         },
         {
+            "id": "timeline.ipynb[0]",
+            "cell": "show timeline history",
+            "route": "ROUTE = /timeline",
+            "service": "Frontends"
+        },
+        {
+            "id": "timeline.ipynb[1]",
+            "cell": "timeline template",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "timeline.ipynb[2]",
+            "cell": "timeline-styles.css",
+            "route": "ROUTE = /timeline-styles.css",
+            "service": "Frontends"
+        },
+        {
             "id": "quake 3 commands.ipynb[3]",
             "cell": "Try streaming the game over VNCis it awful Kind ofand inputs don't work as expected.",
             "route": "",
@@ -5277,6 +5295,24 @@
         {
             "id": "dates.ipynb[0]",
             "cell": "find Tuesdays late in the month",
+            "route": "",
+            "service": "Utilities"
+        },
+        {
+            "id": "diff.ipynb[3]",
+            "cell": "keep-markup.js",
+            "route": "ROUTE = /keep-markup.js",
+            "service": "Utilities"
+        },
+        {
+            "id": "diff.ipynb[1]",
+            "cell": "prism-style.css",
+            "route": "ROUTE = /prism-style.css",
+            "service": "Utilities"
+        },
+        {
+            "id": "diff.ipynb[2]",
+            "cell": "test prism js",
             "route": "",
             "service": "Utilities"
         },
@@ -8569,6 +8605,10 @@
             "target": "convert spreadsheet.ipynb[9]"
         },
         {
+            "source": "timeline.ipynb[0]",
+            "target": "timeline.ipynb[1]"
+        },
+        {
             "source": "quake 3.ipynb[1]",
             "target": "files.ipynb[5]"
         },
@@ -9985,6 +10025,30 @@
             "target": "ciede2000.ipynb[0]"
         },
         {
+            "source": "diff.ipynb[0]",
+            "target": "diff.ipynb[3]"
+        },
+        {
+            "source": "diff.ipynb[0]",
+            "target": "syntax.ipynb[19]"
+        },
+        {
+            "source": "diff.ipynb[2]",
+            "target": "gulp.ipynb[5]"
+        },
+        {
+            "source": "diff.ipynb[2]",
+            "target": "files.ipynb[5]"
+        },
+        {
+            "source": "diff.ipynb[2]",
+            "target": "diff.ipynb[0]"
+        },
+        {
+            "source": "diff.ipynb[2]",
+            "target": "diff.ipynb[1]"
+        },
+        {
             "source": "dylib.ipynb[10]",
             "target": "data collection.ipynb[7]"
         },
@@ -10576,7 +10640,12 @@
         "system usage graph": "/Users/briancullinan/jupyter_ops/Utilities/usage.ipynb[1]",
         "user32.dll": "",
         "SetLastError = true": "/Users/briancullinan/jupyter_ops/Core/syntax.ipynb[21]",
-        "CharSet = CharSet.Unicode": ""
+        "CharSet = CharSet.Unicode": "",
+        "timeline template": "/Users/briancullinan/jupyter_ops/Frontends/timeline.ipynb[1]",
+        "keep-markup.js": "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb[3]",
+        "search notebook component": "/Users/briancullinan/jupyter_ops/Frameworks/gulp.ipynb[5]",
+        "files in project": "/Users/briancullinan/jupyter_ops/Core/files.ipynb[5]",
+        "prism-style.css": "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb[1]"
     },
     "services": [
         "Algorithms",
