@@ -3847,37 +3847,43 @@
             "service": "Frontends"
         },
         {
-            "id": "timeline.ipynb[0]",
+            "id": "timeline map.ipynb[0]",
             "cell": "show timeline history",
             "route": "ROUTE = /timeline",
             "service": "Frontends"
         },
         {
-            "id": "timeline.ipynb[4]",
-            "cell": "occupations.json",
-            "route": "",
-            "service": "Frontends"
-        },
-        {
-            "id": "timeline.ipynb[1]",
+            "id": "timeline map.ipynb[1]",
             "cell": "timeline template",
             "route": "",
             "service": "Frontends"
         },
         {
-            "id": "timeline.ipynb[2]",
+            "id": "timeline map.ipynb[2]",
             "cell": "timeline-styles.css",
             "route": "ROUTE = /timeline-styles.css",
             "service": "Frontends"
         },
         {
-            "id": "timeline.ipynb[3]",
+            "id": "timeline map.ipynb[3]",
             "cell": "timeline-script.js",
             "route": "ROUTE = /timeline-script.js",
             "service": "Frontends"
         },
         {
-            "id": "timeline.ipynb[5]",
+            "id": "timeline map.ipynb[4]",
+            "cell": "category map controls",
+            "route": "ROUTE = /map-controls.js",
+            "service": "Frontends"
+        },
+        {
+            "id": "timeline map.ipynb[5]",
+            "cell": "occupations.json",
+            "route": "",
+            "service": "Frontends"
+        },
+        {
+            "id": "timeline map.ipynb[6]",
             "cell": "lat/lon provider",
             "route": "ROUTE = /countries.json",
             "service": "Frontends"
@@ -8623,14 +8629,6 @@
             "target": "convert spreadsheet.ipynb[9]"
         },
         {
-            "source": "timeline.ipynb[0]",
-            "target": "timeline.ipynb[4]"
-        },
-        {
-            "source": "timeline.ipynb[0]",
-            "target": "timeline.ipynb[1]"
-        },
-        {
             "source": "quake 3.ipynb[1]",
             "target": "files.ipynb[5]"
         },
@@ -10663,12 +10661,12 @@
         "user32.dll": "",
         "SetLastError = true": "/Users/briancullinan/jupyter_ops/Core/syntax.ipynb[21]",
         "CharSet = CharSet.Unicode": "",
-        "timeline template": "/Users/briancullinan/jupyter_ops/Frontends/timeline.ipynb[1]",
+        "timeline template": "",
         "keep-markup.js": "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb[3]",
         "search notebook component": "/Users/briancullinan/jupyter_ops/Frameworks/gulp.ipynb[5]",
         "files in project": "/Users/briancullinan/jupyter_ops/Core/files.ipynb[5]",
         "prism-style.css": "/Users/briancullinan/jupyter_ops/Utilities/diff.ipynb[1]",
-        "occupations.json": "/Users/briancullinan/jupyter_ops/Frontends/timeline.ipynb[4]"
+        "occupations.json": ""
     },
     "services": [
         "Algorithms",
