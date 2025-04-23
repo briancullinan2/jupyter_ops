@@ -25,6 +25,7 @@
         "url": "git+https://github.com/megamindbrian/jupyter_ops.git"
     },
     "dependencies": {
+        "bson": "^6.10.3",
         "escodegen": "^2.1.0",
         "esprima": "^4.0.1",
         "fuse.js": "^7.1.0",
