@@ -29,6 +29,7 @@
         "escodegen": "^2.1.0",
         "esprima": "^4.0.1",
         "fast-fuzzy": "^1.12.0",
+        "flexsearch": "^0.8.158",
         "fuse.js": "^7.1.0",
         "glob": "^11.0.0",
         "html-entities": "^2.6.0",
